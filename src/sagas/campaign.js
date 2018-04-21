@@ -44,9 +44,8 @@ function* create(action) {
 
 function* update(action) {
   try {
-    console.log(action);
     yield put(load());
-    const res = yield call(api.PUT, `campaign/${action.campaign.id}`);
+    const res = yield call(api.PUT, `campaign/${action.campaign.id}`, action.campaign);
     if(res.error)
       yield toast.error(res.message, toastConfig);
     else {

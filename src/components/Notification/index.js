@@ -7,7 +7,7 @@ import Switch from 'react-flexible-switch';
 import {getCookie} from 'components/Common/function';
 import moment from 'moment';
 
-import { fetchCampaign } from 'ducks/campaign';
+import { fetchCampaign, updateCampaign } from 'ducks/campaign';
 
 
 const notificationFields = [ 'S.No', 'Campaign', 'Domain', 'Status', 'Tracking ID', 'Log', 'Modified', 'Created' ];
@@ -24,6 +24,12 @@ class Notification extends Component {
     this.props.fetchCampaign();
   }
 
+  handleActiveChange(active, campaign) {
+    campaign['isActive'] = active;
+    delete campaign['_id'];
+    this.props.updateCampaign(campaign);
+  }
+
   // Map the notification data into table rows and return
   getNotificationRows = () => {
     return this.props.campaigns?this.props.campaigns.map((campaign, i) => (
@@ -32,19 +38,11 @@ class Notification extends Component {
         <td>{campaign.campaignName}</td>
         <td><i className="fas fa-globe"></i> <a href={campaign.websiteUrl} target="_blank">{campaign.websiteUrl}</a></td>
         <td>
-          {
-            campaign.isActive ?
-              <Switch switchStyles={{ width: 50 }}
-                value={campaign.isActive}
-                locked
-                circleStyles={{ onColor: 'blue', offColor: 'blue', diameter: 18 }}
-              />
-              : <Switch switchStyles={{ width: 50 }}
-                value={campaign.isActive}
-                locked
-                circleStyles={{ onColor: 'gray', offColor: 'gray', diameter: 18 }}
-              />
-          }
+          <Switch switchStyles={{ width: 50 }}
+            value={campaign.isActive}
+            onChange={(e) => this.handleActiveChange(e, campaign)}
+            circleStyles={{ onColor: 'blue', offColor: 'gray', diameter: 18 }}
+          />
         </td>
         <td>{campaign.trackingId}</td>
         <td>{campaign.log}</td>
@@ -106,7 +104,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
-  fetchCampaign
+  fetchCampaign,
+  updateCampaign
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Notification);
