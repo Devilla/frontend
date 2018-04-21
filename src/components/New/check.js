@@ -5,32 +5,38 @@ import InstallPixel from './install-pixel'
 import ConfigLeads from './capture-leads'
 import ConfigNotification from './configure-notification'
 import Notifications from './Notifications/Notifications';
+import { clearCampaign } from 'ducks/campaign';
 
 class Check extends Component {
 
  constructor(props){
  	super(props)
- 	this.state = {
- 		active : 1
- 	}
- 	this.activeState = this.activeState.bind(this);
- }
- componentDidmount(){
+   	this.state = {
+   		active : 1
+   	}
+ 	  this.activeState = this.activeState.bind(this);
+  }
 
- }
- activeState(val){
- 	if(val.tab){
- 		this.setState({
- 			active: val.tab.active
- 		})
+  componentDidmount() {
 
- 	}else{
- 		this.setState({
- 			active: val.active
- 		})
- 	}
+  }
 
- }
+  activeState(val){
+   	if(val.tab){
+   		this.setState({
+   			active: val.tab.active
+   		});
+   	} else {
+   		this.setState({
+   			active: val.active
+   		});
+   	}
+  }
+
+  componentWillUnmount() {
+    this.setState({active: 2});
+    this.props.clearCampaign();
+  }
 
   render() {
 		switch (this.state.active) {
@@ -52,4 +58,8 @@ const mapStateToProps = state => ({
   campaign: state.getIn(['campaign', 'campaign'])
 });
 
-export default connect(mapStateToProps)(Check);
+const mapDispatchToProps = {
+  clearCampaign
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Check);

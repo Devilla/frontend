@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Grid, Row, Col, Table } from 'react-bootstrap';
 import Card from 'components/utils/card'
-// import { thArray, tdArray } from './data';
 import Switch from 'react-flexible-switch';
-import {getCookie} from 'components/Common/function';
+import { getCookie } from 'components/Common/function';
 import moment from 'moment';
+import { browserHistory } from 'react-router';
 
-import { fetchCampaign, updateCampaign } from 'ducks/campaign';
+import { fetchCampaign, updateCampaign, successCampaign } from 'ducks/campaign';
 
 
 const notificationFields = [ 'S.No', 'Campaign', 'Domain', 'Status', 'Tracking ID', 'Log', 'Modified', 'Created' ];
@@ -30,10 +30,15 @@ class Notification extends Component {
     this.props.updateCampaign(campaign);
   }
 
+  handleRouteChange(campaign) {
+    this.props.successCampaign(campaign);
+    browserHistory.push('/new');
+  }
+
   // Map the notification data into table rows and return
   getNotificationRows = () => {
     return this.props.campaigns?this.props.campaigns.map((campaign, i) => (
-      <tr key={campaign._id}>
+      <tr key={campaign._id} onClick={() => this.handleRouteChange(campaign)}>
         <td>{i + 1 /* S.No */}</td>
         <td>{campaign.campaignName}</td>
         <td><i className="fas fa-globe"></i> <a href={campaign.websiteUrl} target="_blank">{campaign.websiteUrl}</a></td>
@@ -105,7 +110,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
   fetchCampaign,
-  updateCampaign
+  updateCampaign,
+  successCampaign
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Notification);
