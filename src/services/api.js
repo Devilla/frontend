@@ -10,7 +10,7 @@ export const base =
 // const base = `${base}`;
 
 export const GET = (url) => {
-  if (url.valueOf('plan')){
+  if (url == 'plan'){
     return fetch(base + url, {
       method: 'GET'
     })
@@ -90,7 +90,7 @@ export const DELETE = (url) => {
 export const POSTFILE = (url, body) => {
   const authToken = JSON.parse(localStorage.getItem('authToken'));
   const token = authToken?authToken.token:null;
-  
+
   return fetch(base + url, {
     method: 'POST',
     headers: {
