@@ -30,7 +30,7 @@ function* create(action) {
     yield put(load());
     const res = yield call(api.POST, `campaign`, action.campaign);
     if(res.error)
-      yield toast.error(res.message, toastConfig);
+      yield toast.error("Domain name already taken", toastConfig);
     else
       yield put(actions.successCampaign(res));
     yield put(loaded());
