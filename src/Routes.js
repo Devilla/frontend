@@ -26,6 +26,7 @@ import {
   LoginFlow,
   SelectNotification,
   Upgrade,
+  Integration,
   Error,
   ComingSoon
 } from 'components';
@@ -45,7 +46,7 @@ const MyRoutes = ({routerHistory, store}) => (
       <Route path="/new" component={New} />
       <Route path="/notification" component={Notification} />
       <Route path="/analytics" component={Analytics} />
-      <Route path="/integration" component={Dashboard} />
+      <Route path="/integration" component={Integration} />
       <Route path="/support" component={Dashboard} />
       <Route path="/notifications" component={SelectNotification} />
       <Route path="/upgrade" component={Upgrade} />
