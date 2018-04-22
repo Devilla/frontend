@@ -34,11 +34,12 @@ function* create(action) {
     if(res.error) {
       yield toast.error(res.message, toastConfig);
     } else {
-      let user = yield select(getUser);
-      user['id'] = user._id;
-      delete user['_id'];
-      user['profile'] = res._id;
-      yield call(api.PUT, `user/${user.id}`, user);
+      // let user = yield select(getUser);
+      // user['id'] = user._id;
+      // delete user['_id'];
+      // user['profile'] = res._id;
+      // if(user.profile)
+      //   yield call(api.PUT, `user/${user.id}`, user);
       yield put(actions.successProfile(res));
     }
 

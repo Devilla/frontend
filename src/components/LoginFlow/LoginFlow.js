@@ -85,7 +85,7 @@ class LoginFlow extends Component {
     event.preventDefault();
     let user = this.props.user?this.props.user:{};
     user['username'] = this.state.username;
-    this.props.updateUser(user);
+    // this.props.updateUser(user);
     const profile = {
       user: this.props.user._id,
       state: this.state.state,
