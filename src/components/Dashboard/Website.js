@@ -25,7 +25,7 @@ export class Website extends Component{
                  tasks
               }
              {!this.props.render &&
-                <tr><td><img src='images/loader-dashboard.gif' alt="loader"/></td></tr>
+                <tr><td style={{textAlign: 'center'}}><img style={{width: '60%'}} src='images/loader-dashboard.gif' alt="loader"/></td></tr>
              }
             </tbody>
         );
