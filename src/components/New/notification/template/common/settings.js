@@ -305,11 +305,10 @@ export class Setting extends Component {
                 </Row>
               </Col>
             </Row>
-
           </Tab>
           <Tab eventKey={3} title="Image">
             <ImagesUploader
-              url="http://localhost:3009/notmultiple"
+              url="http://localhost:1337/upload"
               optimisticPreviews
               multiple={false}
               onLoadEnd={(err) => {
