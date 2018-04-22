@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Spinner } from 'components';
 
 export class Website extends Component{
 
