@@ -8,6 +8,11 @@ class HeaderLinks extends Component {
     window.location.assign(window.location.origin+'/');
     // browserHistory.push('/');
   }
+
+  upgrade() {
+    browserHistory.push('/upgrade');
+  }
+  
   render() {
     return (<div>
       <div className="brodcastmsg">
@@ -19,7 +24,7 @@ class HeaderLinks extends Component {
         {/* <NavItem eventKey={2} href="#">Video Tutorials</NavItem> */}
         {/* <NavItem eventKey={3} href="#">Refer & Get Free Months</NavItem> */}
         <NavDropdown eventKey={4} title="Account" id="basic-nav-dropdown-right">
-          <MenuItem eventKey={4.1}>Upgrade</MenuItem>
+          <MenuItem eventKey={4.1} onClick={this.upgrade}>Upgrade</MenuItem>
           <MenuItem eventKey={4.2} onClick={this.logout}>Logout</MenuItem>
 
         </NavDropdown>

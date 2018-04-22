@@ -23,4 +23,6 @@ export { default as New } from './New';
 export { default as LoginFlow } from './LoginFlow/LoginFlow';
 export { default as SelectNotification } from './New/SelectNotification/SelectNotification';
 export { default as Spinner } from './Spinner/Spinner';
+export { default as Upgrade } from './Upgrade/Upgrade';
 export { default as Error } from './Error/Error';
+export { default as ComingSoon } from './ComingSoon/ComingSoon';
