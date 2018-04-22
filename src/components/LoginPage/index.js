@@ -118,7 +118,7 @@ export default class Login extends Component {
                     />
                   </div>
                   <div className="frmcntl forget right">
-                    <Link to="/reset-password">Forgot your password?</Link>
+                    <Link to="/forget-password">Forgot your password?</Link>
                   </div>
 
                   <div className="frmcntl">

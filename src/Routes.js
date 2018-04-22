@@ -53,6 +53,7 @@ const MyRoutes = ({routerHistory, store}) => (
     </Route>
     <Route path="/getting-started" component={LoginFlow} />
     <Route component={App}>
+      <Route path="/" component={Home} />
       <Route path="/about" component={About} />
       <Route path="/login" component={LoginPage} />
       <Route path="/profile/company/:token" component={CompanyDetails} />

@@ -98,6 +98,24 @@ export function* fetchRoles() {
   }
 }
 
+export function* forgotPassword(action) {
+  try {
+    yield put(load());
+    const res = yield call(api.POST, `auth/forgot-password`, action.data);
+    if(res.error)
+      yield toast.error(res.message, toastConfig);
+    else {
+      yield toast.error("Reset link sent.", toastConfig);
+      yield browserHistory.push('/login');
+    }
+
+    yield put(loaded());
+  } catch (error) {
+    yield put(loaded());
+    yield console.log(error);
+  }
+}
+
 export function* watchCheckToken() {
   yield takeLatest(actions.CHECK_TOKEN_EXISTS, checkTokenExists);
 }
@@ -114,11 +132,16 @@ export function* watchUpdateUser() {
   yield takeLatest(actions.UPDATE, updateUser);
 }
 
+export function* watchForgotPassword() {
+  yield takeLatest(actions.FORGOT_PASSWORD, forgotPassword);
+}
+
 export default function* rootSaga() {
   yield [
     fork(watchCheckToken),
     fork(watchFetchUser),
     fork(watchUpdateUser),
-    fork(watchFetchRoles)
+    fork(watchFetchRoles),
+    fork(watchForgotPassword)
   ];
 }

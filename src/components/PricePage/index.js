@@ -101,7 +101,7 @@ class Price extends Component {
   render() {
     const { paymentPage, planList, selectedPlan, handleCheckChange } = this.props;
     return (
-      <div style={paymentPage?{width:'100%'}:''}>
+      <div style={paymentPage?{width:'100%'}:{}}>
         {paymentPage?
           <PaymentPrice
             planList={planList}

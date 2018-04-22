@@ -5,27 +5,29 @@ export const base =
     ? process.env.REACT_APP_PRODUCTION_URL
     : process.env.REACT_APP_DEVELOPMENT_URL; // eslint-disable-line
 
+const unAuthorizedUrl = ['plan', 'auth/forgot-password']
 // const getToken = state => state.getIn(['auth', 'token']);//state.auth.token;
 
 // const base = `${base}`;
 
 export const GET = (url) => {
-  if (url == 'plan'){
-    return fetch(base + url, {
-      method: 'GET'
-    })
-      .then(res => res.json())
-      .then(res => res)
-  };
   const authToken = JSON.parse(localStorage.getItem('authToken'));
   const token = authToken?authToken.token:null;
+  let headers;
+
+  if(unAuthorizedUrl.indexOf(url) == 0)
+    headers = {};
+  else
+    headers = {
+      Authorization: `Bearer ${token}`
+    };
 
   return fetch(base + url, {
     method: 'GET',
-    headers: { Authorization: `Bearer ${token}` },
+    headers: headers,
   })
   .then(res => res.json())
-  .then(res => res)
+  .then(res => res);
 };
 
 
@@ -36,24 +38,33 @@ export const GETFILE = (url) => {
     method: 'GET',
     headers: { Authorization: `Bearer ${token}` },
   })
-  .then(res => res)
+  .then(res => res);
 };
 
 export const POST = (url, body) => {
   const authToken = JSON.parse(localStorage.getItem('authToken'));
   const token = authToken?authToken.token:null;
+  let headers;
 
-  return fetch(base + url, {
-    method: 'POST',
-    headers: {
+  if(unAuthorizedUrl.indexOf(url) == 0)
+    headers = {
+      Accept: 'application/json',
+      'Content-Type': 'application/json'
+    };
+  else
+    headers = {
       Accept: 'application/json',
       'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`,
-    },
+    };
+
+  return fetch(base + url, {
+    method: 'POST',
+    headers: headers,
     body: JSON.stringify(body),
   })
   .then(res => res.json())
-  .then(res => res)
+  .then(res => res);
 };
 
 export const PUT = (url, body) => {
@@ -70,7 +81,7 @@ export const PUT = (url, body) => {
     body: JSON.stringify(body),
   })
   .then(res => res.json())
-  .then(res => res)
+  .then(res => res);
 };
 
 export const DELETE = (url) => {
@@ -83,7 +94,7 @@ export const DELETE = (url) => {
       Authorization: `Bearer ${token}`,
     },
   })
-  .then(res => res)
+  .then(res => res);
 };
 
 // TODO refactor
@@ -99,5 +110,5 @@ export const POSTFILE = (url, body) => {
     body,
   })
   .then(res => res.json())
-  .then(res => res)
+  .then(res => res);
 };
