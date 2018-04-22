@@ -231,7 +231,7 @@ input:focus {
   }
   .sidebar .logo {
     padding: 10px 30px;
-    
+
     position: relative;
     z-index: 4; }
     .sidebar .logo p {
@@ -2532,7 +2532,7 @@ body > .navbar-collapse[data-color="purple"]:after {
     padding: 13px 0;
     color: #337ab7;
 }
-table.table{margin: 0} 
+table.table{margin: 0}
 .card p.border-top {
     font-size:  14px;
     border-top: 1px dashed #c3c3c3;
@@ -2948,10 +2948,9 @@ ul.innertab-tabs li:last-child:after {
 .notification .wrapper .imgwrapper {
   display: block;
     position: absolute;
-    top: 3px;
-    left: 3px;
-    height: 64px;
-    width: 64px;
+    top: 10%;
+    left: 3%;
+    width: 20%;
 }
 
 .notification .wrapper .content {

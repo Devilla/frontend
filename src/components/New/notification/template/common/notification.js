@@ -4,7 +4,7 @@ import power from './power.svg'
 export class Notification extends Component {
 
 	render() {
-		const { radius, borderWidth, borderColor, shadow, blur, backgroundColor, color, fontFamily, fontWeight} = this.props.notificationPanelStyle;
+		const { radius, borderWidth, borderColor, shadow, blur, backgroundColor, color, fontFamily, fontWeight, image} = this.props.notificationPanelStyle;
 
 		const notificationPanelStyle = {
 			backgroundColor: `rgba(${backgroundColor.r}, ${backgroundColor.g}, ${backgroundColor.b}, ${backgroundColor.a})`,
@@ -20,10 +20,17 @@ export class Notification extends Component {
 
 		return (
 			<div className="notification">
-				<div className="edit"><a href="javascript:;">Click to Edit Content</a></div>
+				{/* <div className="edit"><a href="javascript:;">Click to Edit Content</a></div> */}
 				<div className="wrapper" style={notificationPanelStyle}>
 					<div className="imgwrapper">
-						<img src="https://placeimg.com/80/80/people" style={{ borderRadius: `${radius}px` }} />
+						<img
+							src={image?
+									image
+								:
+									"images/554cf2e92cb6bf677667d90c_Testimonial-10 - Copy.jpg"
+								}
+							style={{ borderRadius: `${radius}px` }}
+						/>
 					</div>
 					<div className="content">
 						<div className="line first"><span>First Name</span>  from  <span>City</span>, <span>Country</span></div>
@@ -31,7 +38,7 @@ export class Notification extends Component {
 						<div className="line time"><span>Time </span> ago <small> <img src={power} /> <em>Influence</em></small></div>
 					</div>
 				</div>
-				<div className="desc">Best suited for Signups, Subscriptions etc.</div>
+				{/* <div className="desc">Best suited for Signups, Subscriptions etc.</div> */}
 			</div>
 		);
 	}

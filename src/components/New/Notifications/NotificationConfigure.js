@@ -23,15 +23,15 @@ const NotificationConfigure = ({
         <Col md={12}>
           <Card title="Recent User Activity"
             isDisabled={activity}
-            status={
-              <Switch
-                circleStyles={{ onColor: 'blue', offColor: 'gray', diameter: 18 }}
-                switchStyles={{ width: 50 }}
-                cssClass="alignsame"
-                value={activity}
-                onChange={handleActivityChange}
-              />
-            }
+            // status={
+            //   <Switch
+            //     circleStyles={{ onColor: 'blue', offColor: 'gray', diameter: 18 }}
+            //     switchStyles={{ width: 50 }}
+            //     cssClass="alignsame"
+            //     value={activity}
+            //     onChange={handleActivityChange}
+            //   />
+            // }
             content={
               <Row>
                 <Col md={6}>

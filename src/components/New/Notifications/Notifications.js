@@ -44,7 +44,8 @@ class Notifications extends Component {
         fontFamily: 'inherit',
         fontWeight: 'normal'
       },
-      contentText: ''
+      contentText: '',
+      image: ''
     };
     this.configure = this.configure.bind(this);
     this.handleActivityChange = this.handleActivityChange.bind(this);
@@ -106,7 +107,8 @@ class Notifications extends Component {
         fontFamily: 'inherit',
         fontWeight: 'normal'
       },
-      contentText: ''
+      contentText: '',
+      image: ''
     });
   }
 
