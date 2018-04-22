@@ -1,0 +1,87 @@
+.unknown-error {
+  width: 100%;
+}
+.unknown-error .content-wrap {
+  width: 100%;
+  height: 100%;
+  display: table;
+  position: relative;
+}
+.unknown-error .content-wrap .shadow-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.9;
+  background: -webkit-linear-gradient(left, black 0%, black 20%, transparent 100%);
+  background: -o-linear-gradient(left, black 0%, black 20%, transparent 100%);
+  background: linear-gradient(to right, black 0%, black 20%, transparent 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#000000', endColorstr='#00000000', GradientType=1);
+}
+.unknown-error .content-wrap .shadow-overlay .error_head {
+  margin-top: 4%;
+  margin-left: 5%;
+  color: white;
+  font-family: "roboto-black";
+}
+.unknown-error .content-wrap .shadow-overlay .error_head h1 {
+  font-size: 85px;
+}
+.unknown-error .content-wrap .shadow-overlay .error_head .line {
+  width: 25%;
+}
+.unknown-error .content-wrap .shadow-overlay .error_head .line hr {
+  border: none;
+  border-radius: 1px;
+  height: 5px;
+  background-color: white;
+  /* Modern Browsers */
+}
+.unknown-error .content-wrap .shadow-overlay .error_body {
+  margin-left: 5%;
+  color: white;
+  font-family: "roboto-black";
+}
+.unknown-error .content-wrap .shadow-overlay .error_body h1 {
+  font-size: 55px;
+}
+.unknown-error .content-wrap .shadow-overlay .error_body p {
+  width: 28%;
+  color: rgba(251, 248, 248, 0.78);
+  font-size: 22px;
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+}
+.unknown-error .content-wrap .shadow-overlay .error_body .error {
+  width: 100%;
+}
+.unknown-error .content-wrap .shadow-overlay .error_button {
+  margin-left: 5%;
+}
+.unknown-error .content-wrap .shadow-overlay .error_button button {
+  border: none;
+  border-radius: 4px;
+  font-size: 25px;
+  color: white;
+  background-color: #81831d;
+}
+
+ .unknown-error:after {
+   content: ' ';
+   display: block;
+   position: fixed;
+   left: 0;
+   top: 0;
+   width: 100%;
+   height: 100%;
+   z-index: -1;
+   /* opacity: 0.7; */
+   background-image: url('/images/error404.jpg');
+   background-repeat: no-repeat;
+   background-position: 50% 0;
+   -ms-background-size: cover;
+   -o-background-size: cover;
+   -moz-background-size: cover;
+   -webkit-background-size: cover;
+   background-size: cover;
+ }

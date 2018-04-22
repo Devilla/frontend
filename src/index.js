@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import Routes from './Routes';
 import registerServiceWorker from './registerServiceWorker';
 import { browserHistory } from 'react-router';
+import { AppContainer } from 'react-hot-loader';
 
 import './assets/css/bootstrap.min.css';
 import './assets/css/animate.min.css';
@@ -39,11 +40,13 @@ const rootEl = document.getElementById('root');
 
 const render = Component =>
   ReactDOM.render(
-    <Provider store={store}>
-      <StripeProvider apiKey={process.env.REACT_APP_STRIPE_KEY}>
-        <Component routerHistory={routerHistory} />
-      </StripeProvider>
-    </Provider>,
+    <AppContainer errorReporter={Error}>
+      <Provider store={store}>
+        <StripeProvider apiKey={process.env.REACT_APP_STRIPE_KEY}>
+          <Component routerHistory={routerHistory} />
+        </StripeProvider>
+      </Provider>
+    </AppContainer>,
     rootEl
   );
 

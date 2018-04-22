@@ -24,7 +24,8 @@ import {
   Analytics,
   New,
   LoginFlow,
-  SelectNotification
+  SelectNotification,
+  Error
 } from 'components';
 
 import {
@@ -61,9 +62,8 @@ const MyRoutes = ({routerHistory, store}) => (
       <Route path="/reset-password" component={ResetPassword} />
       {/* <Redirect from='price' to="/pricing" /> */}
       <Route path="/how-it-works" component={HowItWorks} />
-      <Route path="*" component={Home} />
     </Route>
-
+    <Route path="*" component={Error} />
   </Router>
 )
 
