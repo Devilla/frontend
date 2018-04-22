@@ -4,6 +4,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import { Elements, injectStripe } from 'react-stripe-elements';
 import PaymentPage from './PaymentPage';
 import axios from 'axios';
+import PricePage from 'components/PricePage';
 
 const toastConfig = {
   position: toast.POSITION.BOTTOM_LEFT,
@@ -103,7 +104,12 @@ class TrailPayment extends Component {
                   <h3 className="dashed">Confirm you account</h3>
                   <div className="section-divider-line"></div>
                   <div className="frmcntl" style={{display: 'flex', justifyContent: 'center', width: '100%', paddingBottom: '15px'}}>
-                    {this.renderPlan()}
+                    <PricePage
+                      paymentPage={true}
+                      selectedPlan={selectedPlan}
+                      handleCheckChange={handleCheckChange}
+                    />
+                    {/* {this.renderPlan()} */}
                   </div>
                   <div className="frmcntl">
                     <input
@@ -112,7 +118,7 @@ class TrailPayment extends Component {
                       id="username"
                       placeholder="Card Holder's Name"
                       type='text'
-                      value={user.name}
+                      value={user.username}
                       onChange={(e) => handleStateChange(e.target.value, e.target.id)}
                       required
                     />

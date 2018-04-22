@@ -1,7 +1,13 @@
 import React, {Component} from 'react';
 import { CardElement, injectStripe } from 'react-stripe-elements';
+import { toast, ToastContainer } from 'react-toastify';
 
-const PaymentPage = ({stripe, profile, user, plan, planList, username, setError, stripeError, handleStateChange, handleSubmit}) => {
+const toastConfig = {
+  position: toast.POSITION.BOTTOM_LEFT,
+  autoClose: 2000
+};
+
+const PaymentPage = ({stripe, profile, user, plan, planList, setError, stripeError, handleStateChange, handleSubmit}) => {
 
   const findObjectByKey = (array, key, value) => {
     for (var i = 0; i < array.length; i++) {
@@ -14,9 +20,12 @@ const PaymentPage = ({stripe, profile, user, plan, planList, username, setError,
 
   const submitForm = (event) => {
     event.preventDefault();
+    if(!user.username) {
+      return toast.error("Enter user name", toastConfig);
+    }
 
     const options = {
-      name: username,
+      name: user.username,
     };
     const plans =
         planList?findObjectByKey(planList, '_id', plan)
@@ -70,6 +79,7 @@ const PaymentPage = ({stripe, profile, user, plan, planList, username, setError,
               />
             </div>
           </form>
+          <ToastContainer />
         </div>
     )
 }
