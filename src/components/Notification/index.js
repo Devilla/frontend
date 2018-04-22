@@ -30,7 +30,11 @@ class Notification extends Component {
     this.props.updateCampaign(campaign);
   }
 
-  handleRouteChange(campaign) {
+  handleRouteChange(e, campaign) {
+    if(e.target.className == 'react-flexible-switch react-flexible-switch--active' ||
+      e.target.className == 'react-flexible-switch-circle'
+    )
+      return;
     this.props.successCampaign(campaign);
     browserHistory.push('/new');
   }
@@ -38,11 +42,11 @@ class Notification extends Component {
   // Map the notification data into table rows and return
   getNotificationRows = () => {
     return this.props.campaigns?this.props.campaigns.map((campaign, i) => (
-      <tr key={campaign._id} onClick={() => this.handleRouteChange(campaign)}>
+      <tr key={campaign._id} onClick={(e) => this.handleRouteChange(e, campaign)}>
         <td>{i + 1 /* S.No */}</td>
         <td>{campaign.campaignName}</td>
         <td><i className="fas fa-globe"></i> <a href={campaign.websiteUrl} target="_blank">{campaign.websiteUrl}</a></td>
-        <td>
+        <td >
           <Switch switchStyles={{ width: 50 }}
             value={campaign.isActive}
             onChange={(e) => this.handleActiveChange(e, campaign)}
