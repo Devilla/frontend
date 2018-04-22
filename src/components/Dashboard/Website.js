@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import { Spinner } from 'components';
 
 export class Website extends Component{
-    
+
     handleCheckbox = event => {
         const target = event.target;
         console.log(event.target);
@@ -9,27 +10,24 @@ export class Website extends Component{
             [target.name]: target.checked
         });
     };
-    
 
-    
-    render(){     
+    render(){
        let tasks=[];
         for (var i = 0; i < this.props.data.length; i++) {
            tasks.push(
-                <tr key={i}>                   
+                <tr key={i}>
                     <td><i className="fas fa-globe"></i> {this.props.data[i].domain}</td>
                 </tr>
             );
         }
         return (
             <tbody>
-              {this.props.render && 
+              {this.props.render &&
                  tasks
-                
               }
-             {!this.props.render && 
-                <tr><td><img src='loader.gif' alt="loader"/></td></tr>
-             }  
+             {!this.props.render &&
+                <tr><td><img src='images/loader-dashboard.gif' alt="loader"/></td></tr>
+             }
             </tbody>
         );
     }
