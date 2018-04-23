@@ -65,11 +65,7 @@ const PricePage = ({externalValue, handleMonthChange, handleSwitchChange, handle
           <div className="pricing-row w-row msg-bb">
             <div className="w-col w-col-12">
               <h3>
-                <strong>24 x 7 email support</strong>
-                and
-                <strong>
-                  24 x 5 phone support</strong>
-                included with all plans</h3>
+                <strong>24 x 7 email support</strong> is included with all the plans.</h3>
             </div>
           </div>
           <div className="pricing-row w-row msg-bb cta">
