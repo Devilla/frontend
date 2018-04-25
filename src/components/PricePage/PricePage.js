@@ -32,7 +32,7 @@ const PricePage = ({externalValue, handleMonthChange, handleSwitchChange, handle
                 <li>
                   <a href="javascript:;" className={!externalValue
                       ? 'active'
-                      : 'hidden'
+                      : ''
                     } onClick={handleMonthChange}>Monthly</a>
                 </li>
                 <li>
@@ -47,7 +47,7 @@ const PricePage = ({externalValue, handleMonthChange, handleSwitchChange, handle
                 <li>
                   <a href="javascript:;" className={externalValue
                       ? 'active'
-                      : 'hidden'
+                      : ''
                     }
                   onClick={handleYearChange}>Yearly</a>
                 </li>

@@ -11,7 +11,7 @@ const PaymentPrice = ({planList, returnRates, handleMonthChange, handleSwitchCha
               <li>
                 <a href="javascript:;" className={!externalValue
                     ? 'active'
-                    : 'hidden'
+                    : ''
                   } onClick={handleMonthChange}>Monthly</a>
               </li>
               <li>
@@ -26,7 +26,7 @@ const PaymentPrice = ({planList, returnRates, handleMonthChange, handleSwitchCha
               <li>
                 <a href="javascript:;" className={externalValue
                     ? 'active'
-                    : 'hidden'
+                    : ''
                   }
                 onClick={handleYearChange}>Yearly</a>
               </li>
