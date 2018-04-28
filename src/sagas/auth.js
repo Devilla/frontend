@@ -57,7 +57,8 @@ export function* fetchUser() {
     yield put(load());
     const res = yield call(api.GET, `user/me`);
     if(res.error)
-      yield toast.error(res.message, toastConfig);
+      //yield toast.error(res.message, toastConfig);
+      console.log(res.error);
     else
       yield put(actions.fetchUserSuccess(res));
     yield put(loaded());
@@ -72,7 +73,8 @@ export function* updateUser(action) {
     yield put(load());
     const res = yield call(api.PUT, `user/${action.user._id}`, action.user);
     if(res.error)
-      yield toast.error(res.message, toastConfig);
+      //yield toast.error(res.message, toastConfig);
+      console.log(res.error);
     else
       yield put(actions.fetchUserSuccess(action.user));
     yield put(loaded());
@@ -88,7 +90,8 @@ export function* fetchRoles() {
     yield put(load());
     const res = yield call(api.GET, `users-permissions/roles`);
     if(res.error)
-      yield toast.error(res.message, toastConfig);
+      // yield toast.error(res.message, toastConfig);
+      console.log(res.error);
     else
       yield put(actions.fetchRolesSuccess(res));
     yield put(loaded());
@@ -103,7 +106,8 @@ export function* forgotPassword(action) {
     yield put(load());
     const res = yield call(api.POST, `auth/forgot-password`, action.data);
     if(res.error)
-      yield toast.error(res.message, toastConfig);
+      //yield toast.error(res.message, toastConfig);
+      console.log(res.error)
     else {
       yield toast.error("Reset link sent.", toastConfig);
       yield browserHistory.push('/login');

@@ -14,7 +14,8 @@ function* fetch(action) {
     yield put(load());
     const res = yield call(api.GET, `campaign`);
     if(res.error)
-      yield toast.error(res.message, toastConfig);
+      //yield toast.error(res.message, toastConfig);
+      console.log(res.error);
     else
       yield put(actions.fetchSuccess(res));
     yield put(loaded());
@@ -30,7 +31,8 @@ function* create(action) {
     yield put(load());
     const res = yield call(api.POST, `campaign`, action.campaign);
     if(res.error)
-      yield toast.error("Domain name already taken", toastConfig);
+      //yield toast.error("Domain name already taken", toastConfig);
+      console.log(res.error);
     else
       yield put(actions.successCampaign(res));
     yield put(loaded());
@@ -47,7 +49,8 @@ function* update(action) {
     yield put(load());
     const res = yield call(api.PUT, `campaign/${action.campaign.id}`, action.campaign);
     if(res.error)
-      yield toast.error(res.message, toastConfig);
+      //yield toast.error(res.message, toastConfig);
+      console.log(res.error);
     else {
       let campaign = action.campaign;
       campaign["_id"] = campaign.id;

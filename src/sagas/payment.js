@@ -18,7 +18,8 @@ function* fetch(action) {
     yield put(load());
     const res = yield call(api.GET, `payment`);
     if(res.error)
-      yield toast.error(res.message, toastConfig);
+      // yield toast.error(res.message, toastConfig);
+      console.log(res.error);
     else
       yield put(actions.successPayment(res));
     yield put(loaded());
@@ -34,7 +35,8 @@ function* create(action) {
     yield put(load());
     const res = yield call(api.POST, `payment`, action.payment);
     if(res.error)
-      yield toast.error(res.message, toastConfig);
+      // yield toast.error(res.message, toastConfig);
+      console.log(res.error);
     else {
       let profile = yield select(getProfile);
       profile['id'] = profile._id;
@@ -57,7 +59,8 @@ function* update(action) {
     yield put(load());
     const res = yield call(api.PUT, `payment/${action.id}`);
     if(res.error)
-      yield toast.error(res.message, toastConfig);
+      // yield toast.error(res.message, toastConfig);
+      console.log(res.error);
     else
       yield put(actions.successPayment(res));
     yield put(loaded());

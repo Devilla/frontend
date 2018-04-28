@@ -16,7 +16,8 @@ function* fetch(action) {
     yield put(load());
     const res = yield call(api.GET, `profile`);
     if(res.error)
-      yield toast.error(res.message, toastConfig);
+      // yield toast.error(res.message, toastConfig);
+      console.log(res.error);
     else
       yield put(actions.successProfile(res));
     yield put(loaded());
@@ -32,7 +33,8 @@ function* create(action) {
     yield put(load());
     const res = yield call(api.POST, `profile`, action.profile);
     if(res.error) {
-      yield toast.error(res.message, toastConfig);
+      // yield toast.error(res.message, toastConfig);
+      console.log(res.error);
     } else {
       // let user = yield select(getUser);
       // user['id'] = user._id;
@@ -57,7 +59,8 @@ function* update(action) {
     delete action.profile['_id'];
     const res = yield call(api.PUT, `profile/${action.profile.id}`);
     if(res.error)
-      yield toast.error(res.message, toastConfig);
+      // yield toast.error(res.message, toastConfig);
+      console.log(res.error);
     else {
       let profile = action.profile;
       profile["_id"] = profile.id;

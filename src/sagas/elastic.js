@@ -14,7 +14,8 @@ function* fetch(action) {
     yield put(load());
     const res = yield call(api.GET, `elasticsearch/query?trackingId=${action.query}`);
     if(res.error)
-      yield toast.error(res.message, toastConfig);
+      // yield toast.error(res.message, toastConfig);
+      console.log(res.error);
     else
       yield put(actions.fetchSuccess(res));
     yield put(loaded());

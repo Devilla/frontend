@@ -14,7 +14,8 @@ function* fetch(action) {
     yield put(load());
     const res = yield call(api.GET, `rules`);
     if(res.error)
-      yield toast.error(res.message, toastConfig);
+      // yield toast.error(res.message, toastConfig);
+      console.log(res.error);
     else
       yield put(actions.fetchSuccess(res));
     yield put(loaded());
@@ -30,7 +31,8 @@ function* fetchOne(action) {
     yield put(load());
     const res = yield call(api.GET, `rules/campaign/${action.campId}`, );
     if(res.error)
-      yield toast.error(res.message, toastConfig);
+      // yield toast.error(res.message, toastConfig);
+      console.log(res.error);
     else
       yield put(actions.successRules(res));
 
@@ -47,7 +49,8 @@ function* create(action) {
     yield put(load());
     const res = yield call(api.POST, `rules`, action.rules);
     if(res.error)
-      yield toast.error(res.message, toastConfig);
+      // yield toast.error(res.message, toastConfig);
+      console.log(res.error);
     else {
       // yield toast.success("Rule added", toastConfig);
       yield put(actions.successRules(res));
@@ -68,7 +71,8 @@ function* update(action) {
     delete action.rules['_id'];
     const res = yield call(api.PUT, `rules/${action.rules.id}`, action.rules);
     if(res.error)
-      yield toast.error(res.message, toastConfig);
+      // yield toast.error(res.message, toastConfig);
+      console.log(res.error);
     else {
       let rules = action.rules;
       rules["_id"] = rules.id;

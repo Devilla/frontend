@@ -14,7 +14,8 @@ function* fetch(action) {
     yield put(load());
     const res = yield call(api.GET, `configuration`);
     if(res.error)
-      yield toast.error(res.message, toastConfig);
+      //yield toast.error(res.message, toastConfig);
+      console.log(res.error);
     else
       yield put(actions.createSuccess(res));
     yield put(loaded());
@@ -30,7 +31,8 @@ function* fetchCampaignConfiguration(action) {
     yield put(load());
     const res = yield call(api.GET, `configuration/campaign/${action.campId}/${action.notifId}`);
     if(res.error)
-      yield toast.error(res.message, toastConfig);
+      // yield toast.error(res.message, toastConfig);
+      console.log(res.error);
     else
       yield put(actions.createSuccess(res));
     yield put(loaded());
@@ -46,7 +48,8 @@ function* create(action) {
     yield put(load());
     const res = yield call(api.POST, `configuration`, action.configuration);
     if(res.error)
-      yield toast.error(res.message, toastConfig);
+      // yield toast.error(res.message, toastConfig);
+      console.log(res.error);
     else
       yield put(actions.createSuccess(res));
     yield put(loaded());
@@ -63,7 +66,8 @@ function* update(action) {
     yield put(load());
     const res = yield call(api.PUT, `configuration/${action.configuration.id}`, action.configuration);
     if(res.error)
-      yield toast.error(res.message, toastConfig);
+      // yield toast.error(res.message, toastConfig);
+      console.log(res.error);
     else {
       let configuration = action.configuration;
       configuration["_id"] = configuration.id;

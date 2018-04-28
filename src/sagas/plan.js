@@ -14,7 +14,8 @@ function* fetch(action) {
     yield put(load());
     const res = yield call(api.GET, `plan`);
     if(res.error)
-      yield toast.error(res.message, toastConfig);
+      // yield toast.error(res.message, toastConfig);
+      console.log(res.error);
     else
       yield put(actions.successPlan(res));
     yield put(loaded());
@@ -30,7 +31,8 @@ function* create(action) {
     yield put(load());
     const res = yield call(api.POST, `plan`, action.profile);
     if(res.error)
-      yield toast.error(res.message, toastConfig);
+      // yield toast.error(res.message, toastConfig);
+      console.log(res.error);
     else
       yield put(actions.successPlan(res));
     yield put(loaded());
@@ -47,7 +49,8 @@ function* update(action) {
     yield put(load());
     const res = yield call(api.PUT, `plan/:_id`);
     if(res.error)
-      yield toast.error(res.message, toastConfig);
+      // yield toast.error(res.message, toastConfig);
+      console.log(res.error);
     else
       yield put(actions.successPlan(res));
     yield put(loaded());
