@@ -5,7 +5,7 @@
     bottom: 0;
 }
 .login-flow .authpage .container{
-    position: fixed !important;
+    /* position: fixed !important; */
     top: 0;
     bottom: 0;
 }
@@ -14,7 +14,7 @@
   position: absolute;
   right: 0;
   /* bottom: 0; */
-  left: 34%;
+  left: 0;
   display: table;
   width: 85%;
   padding: 5%;
