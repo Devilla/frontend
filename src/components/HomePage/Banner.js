@@ -25,12 +25,12 @@ export default class Banner extends Component {
                     <Animated  className="hero-title word sm" animationIn="fadeInDown" animationOut="fadeOut" isVisible={true}>
                       Increase Your Website Conversions Using
                     </Animated >
-                    <Animated className="hero-title word" animationIn="fadeInDown" animationOut="fadeOut" isVisible={true}>Social Influence</Animated>
+                    <Animated className="hero-title word" animationIn="fadeInDown" animationOut="fadeOut" isVisible={true}>Social Proof Notifications</Animated>
 
                     <Animated className="hero-title title-2" animationIn="fadeInDown" animationOut="fadeOut" isVisible={true}>Influence helps you in converting more customers on your website by showing recent customer activity on your web pages</Animated>
                     <Animated className="hero-buttons-wrapper" animationIn="fadeInUp" animationOut="fadeOut" isVisible={true}>
                       <form className="getfrm">
-                        <input type="text" placeholder="Enter Your Email" />
+                        <input type="text" placeholder="Enter your email" />
                         <input type="submit" className="_2 hero-button" value="Start your free trial"/>
                       </form>
                     </Animated>

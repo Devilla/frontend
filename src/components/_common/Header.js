@@ -6,7 +6,7 @@ export default class Header extends Component {
   render() {
     return (
       	<nav className="navbar mr-auto navbar-expand-lg navbar-dark navbar-stick-dark" data-navbar="static"  data-animation="over-right" data-collapse="medium" data-contain="1" data-duration="400">
-        <div className="container">
+        <div className="container-fluid">
           <div className="navbar-left">
             <button className="navbar-toggler" type="button">&#9776;</button>
             <Link className="navbar-brand" to="/">
@@ -33,8 +33,8 @@ export default class Header extends Component {
               </li>
             </ul>
             <div>
-              <Link className="btn btn-xl btn-round btn-light  ml-lg-12 mr-5 login" to="/login">Login <em className="ion-ios-arrow-thin-right"></em></Link>
-              <Link className="btn btn-xl btn-round btn-success ml-lg-5 mr-2 signup" to="/register">Signup <em className="ion-ios-arrow-thin-right"></em></Link>
+              <Link className="btn btn-xl  btn-light  ml-lg-12 mr-5 login" to="/login">Login <em className="ion-ios-arrow-thin-right"></em></Link>
+              <Link className="btn btn-xl  btn-success ml-lg-5 mr-2 signup" to="/register">Signup <em className="ion-ios-arrow-thin-right"></em></Link>
             </div>
           </section>
 

@@ -195,9 +195,11 @@ p {
   left: 0px;
   top: 0px;
   right: 0px;
-  padding-top: 35px;
-  padding-bottom: 35px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 115px;
   background-color: transparent;
+  border-bottom: 0;
 }
 
 .hero {
@@ -226,6 +228,8 @@ p {
   width: 100%;
   float: left;
   text-align: center;
+  line-height: 3;
+  margin-top: 38px;
 }
 .innerpage h3.dashed {
     margin: 0;
@@ -257,17 +261,18 @@ p {
   line-height: 44px;
   letter-spacing: 1.3px;
   font-weight: 400;
-  text-transform: capitalize;
+  text-transform:;
   /* text-shadow: 0 0 1px #00000052; */
 }
 
 .hero-title.title-2 {
-  margin-top: 21px;
+  margin-top: 34px;
   font-size: 17px;
-  line-height: 25px;
+  line-height: 30px;
   font-weight: 300;
-  text-transform:  capitalize;
+  text-transform:;
   margin-right: 0;
+  margin-bottom: 60px;
 }
 .innerpage .wrapper {
     display:  table;
@@ -640,22 +645,22 @@ form.getfrm {
     top: 58px;
 }
 form.getfrm input[type='text'] {
-    padding: 1.1rem 16px;
-    width: 59%;
-    font-size: 17px;
+    padding: 1.2rem 17px;
+    width: 56%;
+    font-size: 15px;
     border: 1px solid #fff;
     outline: none;
     border-radius: 3px 0 0px 3px;
-    font-weight: 600;
+    font-weight: 500;
     font-family: 'Montserrat', sans-serif;
 }
 
 form.getfrm input._2.hero-button {
-    margin:  0;
+    margin:  1.2px;
     float: right;
     border:  none;
     border-radius: 0px;
-    padding: 1.2rem 24px;
+    padding: 1.22rem 24px;
     letter-spacing: 1.3px;
     border-radius: 0 3px 3px 0;
     cursor:  pointer;
@@ -924,7 +929,7 @@ form.getfrm input._2.hero-button:hover {
 }
 #stripes {
     width: 100%;
-    height: 100%;
+    height: 111%;
     overflow: hidden;
     transform: skewY(-3deg);
     transform-origin: 0;
@@ -1109,8 +1114,8 @@ form.getfrm input._2.hero-button:hover {
     margin: .75em 0;
 }
 .section.brand {
-    padding-top: 35px;
-    padding-bottom: 66px;
+    padding-top: 50px;
+    padding-bottom: 128px;
 }
 .powerstripes span {
     position:  absolute;
@@ -1253,7 +1258,7 @@ form.getfrm input._2.hero-button:hover {
   background-attachment:  fixed;
   float:  left;
   width: 100%;
-  padding-top: 90px;
+  padding-top: 60px;
 }
 
 .section.brands-section {
@@ -1459,7 +1464,7 @@ form.getfrm input._2.hero-button:hover {
   /* background: #f3f3f3; */
   float:  left;
   width: 100%;
-  padding: 36px 0 0;
+  padding: 60px 0 0;
 }
 
 .image-section-overlay {
@@ -2125,7 +2130,7 @@ form.getfrm input._2.hero-button:hover {
 }
 
 .hero-buttons-wrapper {
-  margin-top: 25px;
+  margin-top: 28px;
 }
 
 .success-bg {
@@ -3136,6 +3141,7 @@ html.w-mod-js *[data-ix="process-bar-fill-30"] {
   }
   .navbar {
     padding-left: 20px;
+    box-shadow: none;
   }
   .hero {
     height: 400px;
