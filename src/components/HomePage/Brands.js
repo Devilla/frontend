@@ -17,7 +17,7 @@ export default class Brands extends Component {
   	return (
  	    <div className="section brand">
         <div className="centered container w-container">
-            <div className="centered section-title-block">
+            <div className="centered section-title-block2">
                 <div className="section-title">We work with the finest brands!</div>
                 <div className="section-divider-line"></div>
             </div>

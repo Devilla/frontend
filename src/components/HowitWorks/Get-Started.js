@@ -8,7 +8,7 @@ export default class GetStarted extends Component {
       <div className="image-section">      
         <div className="_2 image-section-overlay">
             <div className="container w-container">
-                <div className="centered section-title-block">
+                <div className="centered section-title-block-hiw">
                     <div className="section-title">Get Started In Less Than 2 Minutes</div>
                     
                     <div className="section-divider-line"></div>

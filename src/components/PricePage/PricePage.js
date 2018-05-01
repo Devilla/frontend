@@ -15,14 +15,7 @@ const PricePage = ({externalValue, handleMonthChange, handleSwitchChange, handle
             </Animated>
           </div>
         </div>
-        <Animated className="offerblurb" animationIn="zoomIn" animationOut="fadeOut" isVisible={true}>
-          <div className="innerwrap">
-            You'll save
-            <span>20%</span>
-            with our
-            <br/>Yearly Plan
-          </div>
-        </Animated>
+        
       </div>
       <div className="section innerpage">
         <div className="container w-container newprice price">
@@ -137,12 +130,9 @@ const PricePage = ({externalValue, handleMonthChange, handleSwitchChange, handle
       <div className="section innerpage moreques">
         <div className="container  w-container  centered pb-30">
           <h3>More questions?</h3>
-          <h4>Our
-            <a href="javascript:;">help center</a>
-            is open 24/7</h4>
+          <h4>Our <a href="javascript:;">help center</a> is open 24/7</h4>
           <h4>or</h4>
-          <h4>Reach out to our global support team.
-            <a href="javascript:;">We're here to help.</a>
+          <h4>Reach out to our global support team.<a href="javascript:;"> We're here to help.</a>
           </h4>
         </div>
       </div>

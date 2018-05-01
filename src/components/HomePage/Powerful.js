@@ -15,7 +15,7 @@ export default class Powerful extends Component {
       </div>
         <div className="_2 image-section-overlay">
             <div className="container w-container">
-                <div className="centered section-title-block">
+                <div className="centered section-title-block3">
 
                     <h2 className="section-title">Powerful Conversion Tool</h2>
                     <h6 className="section-title smtxt">Convert new visitors using your existing customers and their engagement on your website</h6>
