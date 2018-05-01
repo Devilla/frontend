@@ -24,7 +24,7 @@ export default class Powerful extends Component {
                  <div className="features-row w-row">
                     <div className="feature-column w-col w-col-4">
                         <div className="feature-block">
-                            <div className="icon"><img src="images/recent-purchases.svg"/></div>
+                            <div className="icon"><img src="images/new-recent-purchases-2.svg"/></div>
                             <h2 className="feature-title">Recent Purchases</h2>
                             Display recent sales & activity and drive users to convert on your website.
                            
@@ -33,7 +33,7 @@ export default class Powerful extends Component {
                     </div>
                     <div className="feature-column w-col w-col-4">
                         <div className="feature-block">
-                        <div className="icon"><img src="images/currently-viewing.svg"/></div>
+                        <div className="icon"><img src="images/new-currently-viewing.svg"/></div>
                           <h2 className="feature-title">Currently viewing</h2>
                             You can even control to show your customers how many people are seeing your website right now.
 
@@ -43,7 +43,7 @@ export default class Powerful extends Component {
                     </div>
                     <div className="feature-column w-col w-col-4">
                         <div className="feature-block">
-                        <div className="icon"><img src="images/customer-journey.svg"/></div>
+                        <div className="icon"><img src="images/new-customer-journey.svg"/></div>
                           <h2 className="feature-title">Customer journey</h2>
                             We’ll provide you information for your customer so that you know who exactly you are dealing
                            
@@ -56,7 +56,7 @@ export default class Powerful extends Component {
                 <div className="features-row w-row">
                     <div className="feature-column w-col w-col-4">
                         <div className="feature-block">
-                        <div className="icon"><img src="images/profiling.svg"/></div>
+                        <div className="icon"><img src="images/new-profiling.svg"/></div>
                           <h2 className="feature-title">Profiling</h2>
                              We will get data for your customer so that you know exactly who are you dealing with and how to get them to buy more.
                            
@@ -65,7 +65,7 @@ export default class Powerful extends Component {
                     </div>
                     <div className="feature-column w-col w-col-4">
                         <div className="feature-block">
-                        <div className="icon"><img src="images/popup-timings.svg"/></div>
+                        <div className="icon"><img src="images/new-popup-timings.svg"/></div>
                             <h2 className="feature-title">Popup timings</h2>
                            You can control for when, how long and how should your notifications look like.
 
@@ -75,7 +75,7 @@ export default class Powerful extends Component {
                     </div>
                     <div className="feature-column w-col w-col-4">
                         <div className="feature-block">
-                        <div className="icon"><img src="images/mobile-ready.svg"/></div>
+                        <div className="icon"><img src="images/new-mobile-ready.svg"/></div>
                           <h2 className="feature-title">Mobile Ready</h2>
                             We are a mobile friendly application. We will show notifications to your mobile users as well.
                         </div>
@@ -87,7 +87,7 @@ export default class Powerful extends Component {
                 <div className="features-row w-row centered ">
                     <div className="feature-column w-col w-col-4">
                         <div className="feature-block">
-                        <div className="icon"><img src="images/localisation.svg"/></div>
+                        <div className="icon"><img src="images/new-localisation.svg"/></div>
                            <h2 className="feature-title">Localisation</h2>
                             Change your language to any language you want.
                         </div>

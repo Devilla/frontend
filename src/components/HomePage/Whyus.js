@@ -25,7 +25,7 @@ export default class WhyUs extends Component {
                 <div className="features-row w-row">
                     <div className="feature-column w-col w-col-4" data-ix="fade-in-on-load">
                         <div className="feature-block">
-                           <div className="svgicon"><img src="images/icon1.svg"/></div>
+                           <div className="svgicon"><img src="images/new-convert-more-customers.svg"/></div>
                             <h2 className="feature-title subtitle">Convert More </h2>
                             <h2 className="feature-title">Customers</h2>
                            
@@ -33,7 +33,7 @@ export default class WhyUs extends Component {
                     </div>
                     <div className="feature-column w-col w-col-4" data-ix="fade-in-on-load">
                         <div className="feature-block">
-                          <div className="svgicon"><img src="images/icon2.svg"/></div>
+                          <div className="svgicon"><img src="images/new-customer-acquisition-costs.svg"/></div>
                             <h2 className="feature-title subtitle">Lower Down Your Customer </h2>
                            <h2 className="feature-title">Acquisition Costs</h2>
                           
@@ -42,7 +42,7 @@ export default class WhyUs extends Component {
                     <div className="feature-column last w-col w-col-4" data-ix="fade-in-on-load">
                         <div className="feature-block">
                           
-                           <div className="svgicon"><img src="images/icon3.svg"/></div>
+                           <div className="svgicon"><img src="images/new-social-influence-1.svg"/></div>
                           <h2 className="feature-title subtitle">Add Social Influence For Your</h2>
                             <h2 className="feature-title">new visitors</h2>
                             
