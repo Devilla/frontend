@@ -23,13 +23,13 @@ export default class Brands extends Component {
             </div>
               
               <Slider {...settings} className="brand-slider">
-            <div> <img className="brand-logo" src={process.env.PUBLIC_URL +'images/551adbab15ec9fa344fb876f_logo-netflix.png'}/></div>
-            <div><img className="brand-logo" src="images/551adbec6d9dc0a2445e1041_logo-adobe.png"/></div>
-            <div><img className="brand-logo" src="images/551adbf5af91bd2c36f4fe8d_logo-google.png"/></div>
-            <div><img className="brand-logo"  src="images/551adbfcaf91bd2c36f4fe90_logo-webflow.png"/></div>
-            <div><img className="brand-logo" src="images/551adc04af91bd2c36f4fe94_Logo-spotify.png"/></div>
-            <div><img className="brand-logo" src="images/551adbab15ec9fa344fb876f_logo-netflix.png"/></div>
-            <div><img className="brand-logo" src="images/551adc0c15ec9fa344fb877b_Logo-skype.png"/></div>
+            <div> <img className="brand-logo" src={process.env.PUBLIC_URL +'images/carpathy.png'}/></div>
+            <div><img className="brand-logo" src="images/ipleaders.png"/></div>
+            <div><img className="brand-logo" src="images/carpathy.png"/></div>
+            <div><img className="brand-logo"  src="images/ipleaders.png"/></div>
+            <div><img className="brand-logo" src="images/carpathy.png"/></div>
+            <div><img className="brand-logo" src="images/ipleaders.png"/></div>
+            <div><img className="brand-logo" src="images/carpathy.png"/></div>
             </Slider>
            
           </div>
