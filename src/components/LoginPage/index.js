@@ -78,7 +78,7 @@ export default class Login extends Component {
   };
 
   render() {
-    const providers = ['facebook', 'google-plus'];
+    const providers = ['facebook', 'google'];
     return (
       <div>
         <div className="authpage section innerpage">

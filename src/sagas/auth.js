@@ -16,6 +16,7 @@ import { fetchProfile } from 'ducks/profile';
 import { fetchPlan } from 'ducks/plan';
 import { fetchPayment } from 'ducks/payment';
 import { load, loaded } from 'ducks/loading';
+import { storeToken } from 'services/Request';
 
 import * as api from 'services/api';
 import moment from 'moment';
@@ -120,6 +121,25 @@ export function* forgotPassword(action) {
   }
 }
 
+export function* socialLogin(action) {
+  try {
+    yield put(load());
+    const res = yield call(api.GET, action.url);
+    if(res.error) {
+      console.log(res.error)
+      yield browserHistory.push('/login');
+    } else {
+      yield storeToken(res.jwt)
+      yield browserHistory.push('/dashboard');
+    }
+    yield put(loaded());
+  } catch (error) {
+    yield put(loaded());
+    yield browserHistory.push('/login');
+    yield console.log(error);
+  }
+}
+
 export function* watchCheckToken() {
   yield takeLatest(actions.CHECK_TOKEN_EXISTS, checkTokenExists);
 }
@@ -140,12 +160,17 @@ export function* watchForgotPassword() {
   yield takeLatest(actions.FORGOT_PASSWORD, forgotPassword);
 }
 
+export function* watchSocialLogin() {
+  yield takeLatest(actions.SOCIAL_LOGIN, socialLogin);
+}
+
 export default function* rootSaga() {
   yield [
     fork(watchCheckToken),
     fork(watchFetchUser),
     fork(watchUpdateUser),
     fork(watchFetchRoles),
-    fork(watchForgotPassword)
+    fork(watchForgotPassword),
+    fork(watchSocialLogin)
   ];
 }

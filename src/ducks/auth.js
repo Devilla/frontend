@@ -10,6 +10,7 @@ export const FETCH_USER_SUCCESS = action('FETCH_USER_SUCCESS');
 export const FETCH_ROLES_SUCCESS = action('FETCH_ROLES_SUCCESS');
 export const UPDATE = action('UPDATE');
 export const FORGOT_PASSWORD = action('FORGOT_PASSWORD');
+export const SOCIAL_LOGIN = action('SOCIAL_LOGIN');
 
 export const fetchUser = () => ({ type: FETCH });
 export const fetchRoles = () => ({ type: FETCHROLES });
@@ -17,6 +18,7 @@ export const fetchUserSuccess = (user) => ({ type: FETCH_USER_SUCCESS, user });
 export const updateUser = (user) => ({ type: UPDATE, user });
 export const fetchRolesSuccess = (roles) => ({ type: FETCH_ROLES_SUCCESS, roles });
 export const forgotPassword = (data) => ({ type: FORGOT_PASSWORD, data });
+export const socialLogin = (url) => ({ type: SOCIAL_LOGIN, url });
 
 export const loginSuccess = (res) => ({ type: LOGIN_SUCCESS, res });
 export const checkTokenExists = (token) => ({ type: CHECK_TOKEN_EXISTS, token });

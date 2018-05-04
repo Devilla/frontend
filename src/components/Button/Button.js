@@ -31,7 +31,7 @@ function Button(props) {
         'button button-social-link',
         props.primary && 'primary',
         props.social === 'facebook' && 'facebook',
-        props.social === 'google-plus' && 'google-plus',
+        props.social === 'google' && 'google',
       )}
       type={props.type || 'button'}
       {...buttonProps}

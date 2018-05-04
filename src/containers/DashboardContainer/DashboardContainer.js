@@ -1,11 +1,7 @@
 import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import {browserHistory, Link} from 'react-router';
-
-import {Redirect} from 'react-router'
-import axios from 'axios';
-import $ from 'jquery';
-import {checkTokenExists} from 'ducks/auth';
+import { connect } from 'react-redux';
+import { browserHistory, Link } from 'react-router';
+import { checkTokenExists } from 'ducks/auth';
 import { Spinner, Header, Footer, Sidebar } from 'components';
 
 function getUrlVars() {
@@ -19,6 +15,7 @@ function getUrlVars() {
   }
   return vars;
 }
+
 function getCookie(cname) {
   var name = cname + "=";
   var ca = document.cookie.split(';');
@@ -72,23 +69,6 @@ class DashboardContainer extends Component {
 
   componentDidMount() {
     this.setState({_notificationSystem: this.refs.notificationSystem});
-    const {
-      match: { params: { provider } },
-      location: { search },
-    } = this.props;
-    const requestURL = `http://localhost:1337/auth/${provider}/callback${search}`;
-
-    fetch(requestURL, { method: 'GET' })
-      .then(response => {
-        console.log(response, "=============responsw");
-        // auth.setToken(response.jwt, true);
-        // auth.setUserInfo(response.user, true);
-        this.redirectUser('/');
-      })
-      .catch(err => {
-        console.log(err.response.payload);
-        this.redirectUser('/auth/login');
-      });
   }
 
   checkUserDetails(profile) {
