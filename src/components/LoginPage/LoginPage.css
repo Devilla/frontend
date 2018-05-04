@@ -1,0 +1,21 @@
+.col-md-12 {
+  display: grid;
+}
+
+.facebook, .google-plus {
+  width: 70%;
+  padding: 1% 0%;
+  height: 100%;
+}
+
+.fa {
+  padding: 0% 5%;
+  font-size: 30px;
+}
+
+.button-elements{
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+}

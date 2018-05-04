@@ -72,7 +72,23 @@ class DashboardContainer extends Component {
 
   componentDidMount() {
     this.setState({_notificationSystem: this.refs.notificationSystem});
+    const {
+      match: { params: { provider } },
+      location: { search },
+    } = this.props;
+    const requestURL = `http://localhost:1337/auth/${provider}/callback${search}`;
 
+    fetch(requestURL, { method: 'GET' })
+      .then(response => {
+        console.log(response, "=============responsw");
+        // auth.setToken(response.jwt, true);
+        // auth.setUserInfo(response.user, true);
+        this.redirectUser('/');
+      })
+      .catch(err => {
+        console.log(err.response.payload);
+        this.redirectUser('/auth/login');
+      });
   }
 
   checkUserDetails(profile) {

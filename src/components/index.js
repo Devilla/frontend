@@ -27,3 +27,4 @@ export { default as Upgrade } from './Upgrade/Upgrade';
 export { default as Error } from './Error/Error';
 export { default as ComingSoon } from './ComingSoon/ComingSoon';
 export { default as Integration } from './Integration/Integration';
+export { default as Button } from './Button/Button';

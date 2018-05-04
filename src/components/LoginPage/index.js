@@ -8,7 +8,8 @@ import { validateEmail, validatePassword, login, PASSWORD_MAX_LENGTH } from '../
 import { store } from '../../index.js';
 import { loginSuccess } from '../../ducks/auth';
 import { browserHistory } from 'react-router';
-
+import SocialLink from './SocialLink';
+import './LoginPage.css';
 
 const toastConfig = {
   position: toast.POSITION.BOTTOM_LEFT,
@@ -77,14 +78,22 @@ export default class Login extends Component {
   };
 
   render() {
+    const providers = ['facebook', 'google-plus'];
     return (
       <div>
         <div className="authpage section innerpage">
           <div className="container">
             <div className="wrapper">
               <Animated className="leftwrap center" animationIn="fadeIn" animationOut="fadeOut" isVisible={true}>
+
                 <form onSubmit={this.handleSubmit} className="loginfrm">
                   <h3 className="dashed">Welcome Back!</h3>
+                  <div className="section-divider-line"></div>
+                  <div className="row">
+                    <div className="col-md-12">
+                      {providers.map(provider => <SocialLink provider={provider} key={provider} />)}
+                    </div>
+                  </div>
                   <div className="section-divider-line"></div>
                   <div className="frmcntl">
                     <input
