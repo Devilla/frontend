@@ -12,12 +12,12 @@ const toastConfig = {
 function* fetch(action) {
   try {
     yield put(load());
-    const res = yield call(api.GET, `configuration`);
+    const res = yield call(api.GET, `configuration/${action.campId}`);
     if(res.error)
       //yield toast.error(res.message, toastConfig);
       console.log(res.error);
     else
-      yield put(actions.createSuccess(res));
+      yield put(actions.successConfiguration(res));
     yield put(loaded());
   } catch (error) {
     yield put(loaded());
@@ -71,7 +71,7 @@ function* update(action) {
     else {
       let configuration = action.configuration;
       configuration["_id"] = configuration.id;
-      yield put(actions.successConfiguration(action.configuration));
+      yield put(actions.fetchConfiguration(configuration.campaign));
     }
     yield put(loaded());
   } catch (error) {

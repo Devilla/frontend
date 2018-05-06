@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
-// import { NotificationTemplate } from '../notification/template/message-template/NotificationTemplate'
-// import { Rules } from '../notification/template/Rules/Rules'
-import {Row, Col} from 'react-bootstrap';
-import {Card} from '../notification/template/common';
+import { Row, Col } from 'react-bootstrap';
+import Switch from 'react-flexible-switch';
+import './NotificationList.css';
 
-const NotificationList = ({notificationList, configure}) => {
-
+const NotificationList = ({notificationList, configure, configurations, handleActivityChange, createSuccess}) => {
   const renderNotifications = () => {
     return notificationList.map(notification =>
-      <Col md={4}>
+      <Col md={4} key={notification._id}>
         <div className="card"
           style={{
             width: "25rem",
@@ -21,7 +19,7 @@ const NotificationList = ({notificationList, configure}) => {
               padding: '1.6rem 1rem',
               textAlign: 'center',
               border: '1px solid #ececf1',
-              backgroundColor: 'antiquewhite',
+              backgroundColor: 'white',
               borderTopRadiusLeft: '10px',
               borderTopRadiusRight: '10px'
             }}
@@ -29,13 +27,6 @@ const NotificationList = ({notificationList, configure}) => {
             <h2 className="h2-responsive">{notification.notificationType}</h2>
             <p>{notification.notificationName}</p>
           </div>
-          {/* <div style={{padding: '10px'}}>
-            <div className="card-body">
-              <h5 className="card-title">Card title</h5>
-              <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" className="btn btn-primary">Configure</a>
-            </div>
-          </div> */}
           <div className="button-config" onClick={() => configure(notification)} style={{ cursor:'pointer'}} data-toggle="modal" data-target="#notificationModal">
             <ul className="list-unstyled list-inline font-small mt-3" style={{ margin: '0 auto', padding: '10px'}}>
               <li className="list-inline-item pr-2 white-text" style={{display: 'flex', justifyContent: 'center'}}>
@@ -44,12 +35,21 @@ const NotificationList = ({notificationList, configure}) => {
             </ul>
           </div>
         </div>
+        <div className="notification-toggle">
+          <Switch
+            circleStyles={{ onColor: 'blue', offColor: 'gray', diameter: 18 }}
+            switchStyles={{ width: 50 }}
+            cssClass="alignsame"
+            value={notification.activity}
+            onChange={(e) => e !=notification.activity?handleActivityChange(e, notification._id, notification.configurationId):null}
+          />
+        </div>
       </Col>
     )
   };
 
   return (
-    <div>
+    <div className="notification-list">
       {renderNotifications()}
     </div>
   );

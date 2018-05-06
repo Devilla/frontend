@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
-// import { NotificationTemplate } from '../notification/template/message-template/NotificationTemplate'
-// import { Rules } from '../notification/template/Rules/Rules'
-import {Row, Col} from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 import {Card} from '../notification/template/common';
-import Switch from 'react-flexible-switch';
 import { Notification } from '../notification/template/common/notification'
 import { Setting } from '../notification/template/common/settings'
 
@@ -23,15 +20,6 @@ const NotificationConfigure = ({
         <Col md={12}>
           <Card title="Recent User Activity"
             isDisabled={activity}
-            // status={
-            //   <Switch
-            //     circleStyles={{ onColor: 'blue', offColor: 'gray', diameter: 18 }}
-            //     switchStyles={{ width: 50 }}
-            //     cssClass="alignsame"
-            //     value={activity}
-            //     onChange={handleActivityChange}
-            //   />
-            // }
             content={
               <Row>
                 <Col md={6}>

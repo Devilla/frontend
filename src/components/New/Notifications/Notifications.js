@@ -1,12 +1,8 @@
 import React, {Component} from 'react';
-// import { NotificationTemplate } from '../notification/template/message-template/NotificationTemplate'
-// import { Rules } from '../notification/template/Rules/Rules'
-import {Grid, Row, Col} from 'react-bootstrap';
-import {Card} from '../notification/template/common';
-import {connect} from 'react-redux';
-import $ from 'jquery';
-import {fetchNotification, createNotification} from 'ducks/notification';
-import {createConfiguration, fetchConfiguration, fetchCampaignConfiguration, clearConfiguration, updateConfiguration} from 'ducks/configuration';
+import { Grid, Row, Col } from 'react-bootstrap';
+import { connect } from 'react-redux';
+import { fetchNotification } from 'ducks/notification';
+import { createConfiguration, fetchConfiguration, fetchCampaignConfiguration, clearConfiguration, updateConfiguration, createSuccess } from 'ducks/configuration';
 import NotificationList from './NotificationList';
 import NotificationConfigure from './NotificationConfigure';
 import './Notifications.css';
@@ -18,6 +14,7 @@ class Notifications extends Component {
     super(props);
     this.state = {
       notification: '',
+      configuration: {},
       activity: true,
       notificationPanelStyle: { // TODO: Take style values from server
         radius: 35,
@@ -45,7 +42,8 @@ class Notifications extends Component {
         fontWeight: 'normal'
       },
       contentText: '',
-      image: ''
+      image: '',
+      notifications : [],
     };
     this.configure = this.configure.bind(this);
     this.handleActivityChange = this.handleActivityChange.bind(this);
@@ -57,12 +55,34 @@ class Notifications extends Component {
 
   componentWillMount() {
     this.props.fetchNotification();
+    this.props.fetchConfiguration(this.props.campaign._id);
   }
-
 
   componentWillReceiveProps(nextProps) {
     if(nextProps.configuration != this.props.configuration) {
       this.setNewConfig(nextProps.configuration);
+    }
+    if(nextProps.notifications != this.props.notifications || nextProps.configurations != this.props.configurations)
+      this.updateNotifications(nextProps.notifications, nextProps.configurations);
+  }
+
+  updateNotifications(notifications, configurations) {
+    if(notifications) {
+      let tempNotifications = notifications;
+      tempNotifications.map(notif => {
+        if(configurations) {
+          configurations.find(configuration => {
+            if(configuration.notificationType && configuration.notificationType._id == notif._id) {
+              notif['activity'] = configuration.activity;
+              notif['configurationId'] = configuration._id;
+              return notif;
+            }
+          });
+        } else {
+          return notif
+        }
+      });
+      this.setState({notifications: tempNotifications});
     }
   }
 
@@ -72,7 +92,6 @@ class Notifications extends Component {
       this.setState({
         activity: config.activity,
         notificationPanelStyle: config.panelStyle,
-        // config.panelStyle,
         contentText: config.contentText
       });
     }
@@ -112,12 +131,11 @@ class Notifications extends Component {
     });
   }
 
-  componentDidMount() {
-    //callbackFromParent('2')
-  }
-
-  handleActivityChange(e) {
-    this.setState({activity: e})
+  handleActivityChange(activity, id, configId) {
+    if(!id || typeof activity == 'object')
+      return;
+    this.setState({activity: activity});
+    this.saveConfiguration(activity, id, configId);
   }
 
   handleNotificationStyleChange = style => {
@@ -129,8 +147,8 @@ class Notifications extends Component {
   activeState(val) {
     var data = {
       'tab': val
-    }
-    this.props.callbackFromParent(data)
+    };
+    this.props.callbackFromParent(data);
   }
 
   configure(notification) {
@@ -138,18 +156,17 @@ class Notifications extends Component {
     this.props.fetchCampaignConfiguration(this.props.campaign._id, notification._id);
   }
 
-
-  saveConfiguration() {
+  saveConfiguration(activity, id, configId) {
     const configure = {
-      activity: this.state.activity,
-      notificationType: this.state.notification._id,
+      activity: activity != undefined ? activity : this.state.activity,
+      notificationType: id?id:this.state.notification._id,
       panelStyle: this.state.notificationPanelStyle,
       contentText: this.state.contentText,
       campaign: this.props.campaign._id
     };
-    let configuration = this.props.configuration.size?null:this.props.configuration;
-    if(configuration && configuration._id) {
-      configure['id'] = configuration._id;
+    let configuration = this.props.configuration.size == 0 ? null : this.props.configuration.size ? this.props.configuration.toJS() : this.props.configuration;
+    if((configuration && configuration._id) || configId) {
+      configure['id'] = configId?configId:configuration._id;
       this.props.updateConfiguration(configure);
     } else {
       this.props.createConfiguration(configure);
@@ -164,7 +181,7 @@ class Notifications extends Component {
   }
 
   render() {
-    const {notifications} = this.props;
+    const { notifications, configurations, createSuccess } = this.props;
     return (<div className="content">
       <Grid fluid>
         <Tabs active="3" callbackFromParent={this.activeState.bind(this)}/>
@@ -174,8 +191,11 @@ class Notifications extends Component {
               ?
                 <Row>
                   <NotificationList
-                    notificationList={notifications}
+                    notificationList={this.state.notifications}
+                    handleActivityChange={this.handleActivityChange}
                     configure={this.configure}
+                    configurations={configurations}
+                    createSuccess={createSuccess}
                   />
                 </Row>
               :
@@ -199,17 +219,19 @@ class Notifications extends Component {
 
 const mapStateToProps = state => ({
   configuration: state.getIn(['configuration', 'configuration']),
+  configurations: state.getIn(['configuration', 'configurations']),
   campaign: state.getIn(['campaign', 'campaign']),
-  // profile: state.getIn(['profile', 'profile']),
   notifications: state.getIn(['notification', 'notifications'])
 });
 
 const mapDispatchToProps = {
   fetchNotification,
   createConfiguration,
+  fetchConfiguration,
   fetchCampaignConfiguration,
   updateConfiguration,
-  clearConfiguration
+  clearConfiguration,
+  createSuccess
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Notifications);

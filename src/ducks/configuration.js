@@ -10,7 +10,7 @@ export const SUCCESS = action('SUCCESS');
 export const CREATE_SUCCESS = action('CREATE_SUCCESS');
 export const CLEAR = action('CLEAR');
 
-export const fetchConfiguration = () => ({ type: FETCH });
+export const fetchConfiguration = (campId) => ({ type: FETCH, campId });
 export const fetchCampaignConfiguration = (campId , notifId) => ({ type: FETCH_CAMPAIGN_CONFIG, campId, notifId });
 export const createConfiguration = (configuration) => ({ type: CREATE, configuration });
 export const updateConfiguration = (configuration) => ({ type: UPDATE, configuration });
@@ -19,7 +19,7 @@ export const createSuccess = (configuration) => ({ type: CREATE_SUCCESS, configu
 export const clearConfiguration = () => ({ type: CLEAR });
 
 const initialConfig = {
-  activity: true,
+  activity: false,
   panelStyle: { // TODO: Take style values from server
     radius: 35,
     borderWidth: 0,
@@ -49,14 +49,11 @@ const initialConfig = {
 };
 
 const initialState = fromJS({
-  // configurations: [],
   configuration: initialConfig
 });
 
 const configuration = (state = initialState, action) => {
   switch (action.type) {
-    // case FETCH:
-    //   return state.set("configuration", action.configuration);
     case SUCCESS:
       return state.set("configurations", action.configuration);
     case CREATE_SUCCESS:
