@@ -14,7 +14,6 @@ function* fetch(action) {
     yield put(load());
     const res = yield call(api.GET, `configuration/${action.campId}`);
     if(res.error)
-      //yield toast.error(res.message, toastConfig);
       console.log(res.error);
     else
       yield put(actions.successConfiguration(res));
@@ -31,7 +30,6 @@ function* fetchCampaignConfiguration(action) {
     yield put(load());
     const res = yield call(api.GET, `configuration/campaign/${action.campId}/${action.notifId}`);
     if(res.error)
-      // yield toast.error(res.message, toastConfig);
       console.log(res.error);
     else
       yield put(actions.createSuccess(res));
@@ -39,7 +37,6 @@ function* fetchCampaignConfiguration(action) {
   } catch (error) {
     yield put(loaded());
     console.log('Failed to fetch doc', error);
-    // yield toast.error(error.message, toastConfig);
   }
 }
 
@@ -48,7 +45,6 @@ function* create(action) {
     yield put(load());
     const res = yield call(api.POST, `configuration`, action.configuration);
     if(res.error)
-      // yield toast.error(res.message, toastConfig);
       console.log(res.error);
     else
       yield put(actions.createSuccess(res));
@@ -66,7 +62,6 @@ function* update(action) {
     yield put(load());
     const res = yield call(api.PUT, `configuration/${action.configuration.id}`, action.configuration);
     if(res.error)
-      // yield toast.error(res.message, toastConfig);
       console.log(res.error);
     else {
       let configuration = action.configuration;

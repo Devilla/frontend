@@ -18,7 +18,6 @@ function* fetch(action) {
     yield put(load());
     const res = yield call(api.GET, `payment`);
     if(res.error)
-      // yield toast.error(res.message, toastConfig);
       console.log(res.error);
     else
       yield put(actions.successPayment(res));
@@ -26,7 +25,7 @@ function* fetch(action) {
   } catch (error) {
     yield put(loaded());
     console.log('Failed to fetch doc', error);
-    // yield toast.error(error.message, toastConfig);
+    yield toast.error(error.message, toastConfig);
   }
 }
 
@@ -35,7 +34,6 @@ function* create(action) {
     yield put(load());
     const res = yield call(api.POST, `payment`, action.payment);
     if(res.error)
-      // yield toast.error(res.message, toastConfig);
       console.log(res.error);
     else {
       let profile = yield select(getProfile);
@@ -59,7 +57,6 @@ function* update(action) {
     yield put(load());
     const res = yield call(api.PUT, `payment/${action.id}`);
     if(res.error)
-      // yield toast.error(res.message, toastConfig);
       console.log(res.error);
     else
       yield put(actions.successPayment(res));
