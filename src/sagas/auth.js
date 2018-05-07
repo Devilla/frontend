@@ -126,7 +126,7 @@ export function* socialLogin(action) {
     yield put(load());
     const res = yield call(api.GET, action.url);
     if(res.error) {
-      console.log(res.message)
+      console.log(res.error)
       yield toast.error(res.message.message);
       yield setTimeout(function() {
          window.location.assign(window.location.origin+'/login');

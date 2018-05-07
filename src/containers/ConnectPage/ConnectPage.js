@@ -13,7 +13,6 @@ const toastConfig = {
 
 class ConnectPage extends React.Component {
   componentDidMount() {
-    console.log(this.props, "=======");
     const {
       params: { provider },
       location: { search },
