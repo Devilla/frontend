@@ -5,7 +5,7 @@ export const base =
     ? process.env.REACT_APP_PRODUCTION_URL
     : process.env.REACT_APP_DEVELOPMENT_URL; // eslint-disable-line
 
-const unAuthorizedUrl = ['plan', 'auth/forgot-password']
+const unAuthorizedUrl = ['plan', 'auth/forgot-password', 'auth/google/callback']
 // const getToken = state => state.getIn(['auth', 'token']);//state.auth.token;
 
 // const base = `${base}`;
@@ -15,7 +15,7 @@ export const GET = (url) => {
   const token = authToken?authToken.token:null;
   let headers;
 
-  if(unAuthorizedUrl.indexOf(url) == 0)
+  if(unAuthorizedUrl.indexOf(url.split("?")[0]) >= 0)
     headers = {};
   else
     headers = {

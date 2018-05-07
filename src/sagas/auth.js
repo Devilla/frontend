@@ -125,12 +125,16 @@ export function* socialLogin(action) {
   try {
     yield put(load());
     const res = yield call(api.GET, action.url);
+    console.log(res, "=================================");
     if(res.error) {
-      console.log(res.error)
-      yield browserHistory.push('/login');
+      console.log(res.message)
+      yield toast.error(res.message.message);
+      yield setTimeout(function() {
+         window.location.assign(window.location.origin+'/login');
+      }, 2000);
     } else {
       yield storeToken(res.jwt)
-      yield browserHistory.push('/dashboard');
+      yield window.location.assign(window.location.origin+'/dashboard');;
     }
     yield put(loaded());
   } catch (error) {

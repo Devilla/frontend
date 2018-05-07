@@ -53,7 +53,6 @@ const MyRoutes = ({routerHistory, store}) => (
       <Route path="/upgrade" component={Upgrade} />
     </Route>
     <Route path="/getting-started" component={LoginFlow} />
-    <Route exact path="/connect/:provider" component={ConnectPage} />
     <Route component={App}>
       <Route path="/" component={Home} />
       <Route path="/about" component={About} />
@@ -69,6 +68,7 @@ const MyRoutes = ({routerHistory, store}) => (
       <Route path="/reset-password" component={ResetPassword} />
       {/* <Redirect from='price' to="/pricing" /> */}
       <Route path="/how-it-works" component={HowItWorks} />
+      <Route exact path="/connect/:provider" component={ConnectPage} />
     </Route>
     <Route path="*" component={Error} />
   </Router>
