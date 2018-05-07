@@ -124,10 +124,13 @@ export function* forgotPassword(action) {
 export function* socialLogin(action) {
   try {
     yield put(load());
+    console.log("====================>test3");
     const res = yield call(api.GET, action.url);
     if(res.error) {
       console.log(res.error)
+      console.log("====================>test4");
       yield toast.error(res.message.message);
+      console.log("====================>test5");
       yield setTimeout(function() {
          window.location.assign(window.location.origin+'/login');
       }, 2000);

@@ -11,10 +11,11 @@ const unAuthorizedUrl = ['plan', 'auth/forgot-password', 'auth/google/callback',
 // const base = `${base}`;
 
 export const GET = (url) => {
+  console.log("==============test1");
   const authToken = JSON.parse(localStorage.getItem('authToken'));
   const token = authToken?authToken.token:null;
   let headers;
-
+  console.log(unAuthorizedUrl.indexOf(url.split("?")[0]), url.split("?")[0], "===============>test2");
   if(unAuthorizedUrl.indexOf(url.split("?")[0]) >= 0)
     headers = {};
   else
@@ -46,7 +47,7 @@ export const POST = (url, body) => {
   const token = authToken?authToken.token:null;
   let headers;
 
-  if(unAuthorizedUrl.indexOf(url) == 0)
+  if(unAuthorizedUrl.indexOf(url) >= 0)
     headers = {
       Accept: 'application/json',
       'Content-Type': 'application/json'
