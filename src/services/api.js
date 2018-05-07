@@ -11,11 +11,9 @@ const unAuthorizedUrl = ['plan', 'auth/forgot-password', 'auth/google/callback',
 // const base = `${base}`;
 
 export const GET = (url) => {
-  console.log("==============test1");
   const authToken = JSON.parse(localStorage.getItem('authToken'));
   const token = authToken?authToken.token:null;
   let headers;
-  console.log(unAuthorizedUrl.indexOf(url.split("?")[0]), url.split("?")[0], "===============>test2");
   if(unAuthorizedUrl.indexOf(url.split("?")[0]) >= 0)
     headers = {};
   else
