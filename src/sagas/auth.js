@@ -125,7 +125,6 @@ export function* socialLogin(action) {
   try {
     yield put(load());
     const res = yield call(api.GET, action.url);
-    console.log(res, "=================================");
     if(res.error) {
       console.log(res.message)
       yield toast.error(res.message.message);

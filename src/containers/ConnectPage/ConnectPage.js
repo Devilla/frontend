@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { socialLogin } from 'ducks/auth';
 import { ToastContainer, toast } from 'react-toastify';
-import { Spinner } from 'components/Spinner';
+import { Spinner } from 'components';
+import './ConnectPage.css';
 
 const toastConfig = {
   position: toast.POSITION.BOTTOM_LEFT,
@@ -25,7 +26,9 @@ class ConnectPage extends React.Component {
     return (
       <div>
         <Spinner loading={true}/>
-        <h1>Retrieving your token and checking its validity</h1>
+        <div className="token-container">
+          <h1>Retrieving your token and checking its validity</h1>
+        </div>
         <ToastContainer hideProgressBar={true} />
       </div>
     );
