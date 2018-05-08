@@ -36,11 +36,12 @@ function* create(action) {
     if(res.error)
       console.log(res.error);
     else {
-      let profile = yield select(getProfile);
-      profile['id'] = profile._id;
-      delete profile['_id'];
-      profile['profile_payments'] = res._id
-      yield put(updateProfile(profile));
+      console.log(res, "=============response");
+      // let profile = yield select(getProfile);
+      // profile['id'] = profile._id;
+      // delete profile['_id'];
+      // profile['profile_payments'] = res._id
+      // yield put(updateProfile(profile));
       yield put(actions.successPayment(res));
     }
     yield put(loaded());

@@ -34,12 +34,6 @@ function* create(action) {
     if(res.error) {
       console.log(res.error);
     } else {
-      // let user = yield select(getUser);
-      // user['id'] = user._id;
-      // delete user['_id'];
-      // user['profile'] = res._id;
-      // if(user.profile)
-      //   yield call(api.PUT, `user/${user.id}`, user);
       yield put(actions.successProfile(res));
     }
 

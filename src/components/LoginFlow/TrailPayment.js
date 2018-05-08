@@ -129,7 +129,7 @@ class TrailPayment extends Component {
                       <PaymentPage
                         user={user}
                         plan={plan}
-                        profile={profile}
+                        // profile={profile}
                         planList={planList}
                         stripeError={stripeError}
                         handleStateChange={handleStateChange}

@@ -73,7 +73,7 @@ class DashboardContainer extends Component {
 
   checkUserDetails(profile) {
     const user = this.props.user;
-    if (user && user.size !== 0 && (!profile || !profile.profile_payments)) {
+    if (user && user.size !== 0 && (!profile || !profile.plan)) {
       browserHistory.push('getting-started')
     }
   }

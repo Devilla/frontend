@@ -19,19 +19,19 @@ class LoginFlow extends Component {
     this.state = {
       flowStep: 0,
       username: '',
-      state: '',
-      address: '',
-      phoneNumber: '',
-      companyName: '',
+      // state: '',
+      // address: '',
+      // phoneNumber: '',
+      // companyName: '',
       plan:'',
-      website: '',
+      // website: '',
       stripeToken: {}
     };
 
     this.handleStateChange = this.handleStateChange.bind(this);
     this.handleCheckChange = this.handleCheckChange.bind(this);
-    this.submitCompanyInfo = this.submitCompanyInfo.bind(this);
-    this.submitAbout = this.submitAbout.bind(this);
+    // this.submitCompanyInfo = this.submitCompanyInfo.bind(this);
+    // this.submitAbout = this.submitAbout.bind(this);
     this.submitPayment = this.submitPayment.bind(this);
   }
 
@@ -43,21 +43,21 @@ class LoginFlow extends Component {
   componentWillReceiveProps(nextProps) {
       if(this.props != nextProps)
         this.updateState(nextProps.user, nextProps.profile, nextProps.plan);
-      if(nextProps.profile && nextProps.profile.profile_payments)
+      if(nextProps.profile && nextProps.profile.plan)
         browserHistory.push('dashboard');
-      if(nextProps.profile != this.props.profile) {
-        if(nextProps.profile.plan)
-          this.setState({flowStep:1});
-      }
+      // if(nextProps.profile != this.props.profile) {
+      //   if(nextProps.profile.plan)
+      //     this.setState({flowStep:1});
+      // }
   }
 
   updateState(user, profile, plan) {
       this.setState({
         username: user?user.username:'',
-        state: profile?profile.state:'',
-        address: profile?profile.address:'',
-        phoneNumber: profile?profile.phoneNumber:'',
-        companyName: profile?profile.companyName:'',
+        // state: profile?profile.state:'',
+        // address: profile?profile.address:'',
+        // phoneNumber: profile?profile.phoneNumber:'',
+        // companyName: profile?profile.companyName:'',
         plan: profile?profile.plan:''
       });
   }
@@ -76,36 +76,39 @@ class LoginFlow extends Component {
     this.setState({[stateName]:state});
   }
 
-  submitCompanyInfo(event) {
-    event.preventDefault();
-    this.setState({flowStep: 1});
-  }
+  // submitCompanyInfo(event) {
+  //   event.preventDefault();
+  //   this.setState({flowStep: 1});
+  // }
 
-  submitAbout(event, token) {
-    event.preventDefault();
-    let user = this.props.user?this.props.user:{};
-    user['username'] = this.state.username;
-    // this.props.updateUser(user);
-    const profile = {
-      user: this.props.user._id,
-      state: this.state.state,
-      address: this.state.address,
-      phoneNumber: this.state.phoneNumber,
-      companyName: this.state.companyName,
-    };
-    if(this.props.user.profile) {
-      return this.setState({flowStep: 2});
-    } else {
-      this.props.createProfile(profile);
-    }
-    this.setState({flowStep: 2});
-  }
+  // submitAbout(event, token) {
+  //   event.preventDefault();
+  //   let user = this.props.user?this.props.user:{};
+  //   user['username'] = this.state.username;
+  //   // this.props.updateUser(user);
+  //   const profile = {
+  //     user: this.props.user._id,
+  //     state: this.state.state,
+  //     address: this.state.address,
+  //     phoneNumber: this.state.phoneNumber,
+  //     companyName: this.state.companyName,
+  //   };
+  //   if(this.props.user.profile) {
+  //     return this.setState({flowStep: 2});
+  //   } else {
+  //     this.props.createProfile(profile);
+  //   }
+  //   this.setState({flowStep: 2});
+  // }
 
   submitPayment(data, token) {
-    let profile = this.props.profile;
-    profile['id'] = profile._id;
+    // let profile = this.props.profile;
+    // profile['id'] = profile._id;
+    let profile = {};
+    profile['user'] = this.props.user._id;
     profile['plan'] = data.plan;
-    this.props.updateProfile(profile)
+    this.props.createProfile(profile);
+    // this.props.updateProfile(profile)
     this.props.createPayment(data);
     browserHistory.push('dashboard');
   }
@@ -117,24 +120,24 @@ class LoginFlow extends Component {
 
   renderPage() {
       switch (this.state.flowStep) {
+        // case 0:
+        //   return <CompanyInfo
+        //     companyName={this.state.companyName}
+        //     website={this.state.website}
+        //     handleStateChange={this.handleStateChange}
+        //     handleSubmit={this.submitCompanyInfo}
+        //   />
+        //   break;
+        // case 1:
+        //   return <AboutYourself
+        //     username={this.state.username}
+        //     state={this.state.state}
+        //     address={this.state.address}
+        //     phoneNumber={this.state.phoneNumber}
+        //     handleStateChange={this.handleStateChange}
+        //     handleSubmit={this.submitAbout}
+        //   />
         case 0:
-          return <CompanyInfo
-            companyName={this.state.companyName}
-            website={this.state.website}
-            handleStateChange={this.handleStateChange}
-            handleSubmit={this.submitCompanyInfo}
-          />
-          break;
-        case 1:
-          return <AboutYourself
-            username={this.state.username}
-            state={this.state.state}
-            address={this.state.address}
-            phoneNumber={this.state.phoneNumber}
-            handleStateChange={this.handleStateChange}
-            handleSubmit={this.submitAbout}
-          />
-        case 2:
             return <TrailPayment
               selectedPlan={this.state.plan}
               user={this.props.user}

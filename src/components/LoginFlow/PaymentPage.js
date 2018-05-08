@@ -7,7 +7,9 @@ const toastConfig = {
   autoClose: 2000
 };
 
-const PaymentPage = ({stripe, profile, user, plan, planList, setError, stripeError, handleStateChange, handleSubmit}) => {
+const PaymentPage = ({stripe,
+  // profile,
+  user, plan, planList, setError, stripeError, handleStateChange, handleSubmit}) => {
 
   const findObjectByKey = (array, key, value) => {
     for (var i = 0; i < array.length; i++) {
@@ -41,7 +43,7 @@ const PaymentPage = ({stripe, profile, user, plan, planList, setError, stripeErr
           paymentProvider: result.token,
           paymentType: result.token.type,
           user: user._id,
-          profile: profile._id,
+          // profile: profile._id,
           plan: plan,
         };
         handleSubmit(data, result.token);
