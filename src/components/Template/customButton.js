@@ -7,7 +7,6 @@ import './Button.css';
 class CustomButton extends Component {
     render() {
         const { fill, simple, pullRight, round, block, ...rest } = this.props;
-        console.log(rest, "=================>rest");
         const btnClasses = cx({
             'btn-fill': fill,
             'btn-simple': simple,

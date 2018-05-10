@@ -3,6 +3,7 @@ import * as api from 'services/api';
 import * as actions from 'ducks/profile';
 import { load, loaded } from 'ducks/loading';
 import { ToastContainer, toast } from 'react-toastify';
+import { browserHistory } from 'react-router';
 
 const toastConfig = {
   position: toast.POSITION.BOTTOM_LEFT,
@@ -49,14 +50,9 @@ function* update(action) {
   try {
     yield put(load());
     delete action.profile['_id'];
-    const res = yield call(api.PUT, `profile/${action.profile.id}`);
+    const res = yield call(api.PUT, `profile/${action.profile.id}`, action.profile);
     if(res.error)
       console.log(res.error);
-    else {
-      let profile = action.profile;
-      profile["_id"] = profile.id;
-      yield put(actions.successProfile(profile));
-    }
     yield put(loaded());
   } catch (error) {
     yield put(loaded());

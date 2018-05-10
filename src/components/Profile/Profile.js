@@ -8,28 +8,26 @@ import {
   ControlLabel,
   FormControl
 } from 'react-bootstrap';
-import { browserHistory } from 'react-router';
 import CardHeader from 'components/Template/card-with-header'
 import FormInputs from 'components/Template/FormTemp';
 import Button from 'components/Template/customButton';
 import {ToastContainer, toast} from 'react-toastify';
 
 import './Profile.css';
-import { ComingSoon } from 'components';
-import { updateProfile } from 'ducks/profile';
+import { fetchProfile, updateProfile } from 'ducks/profile';
 
-function validate(username, website) {
-  // true means invalid, so our conditions got reversed
-  return {
-    name: username.length === 0,
-    email: !website
-  };
-}
+// function validate(username, website) {
+//   // true means invalid, so our conditions got reversed
+//   return {
+//     name: username.length === 0,
+//     email: !website
+//   };
+// }
 
 class Profile extends Component {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       username: '',
       firstName: '',
@@ -41,6 +39,7 @@ class Profile extends Component {
       companyName: '',
       profileState: 'edit'
     };
+    props.fetchProfile();
   }
 
   plansList() {
@@ -60,25 +59,62 @@ class Profile extends Component {
     )
   }
 
+  componentWillMount(){
+    if(this.props.profile)
+      this.setProfile(this.props.profile);
+  }
+  componentWillReceiveProps(nextProps) {
+    if(this.props.profile != nextProps.profile)
+      this.setProfile(nextProps.profile)
+  }
+
+  setProfile(profile) {
+    this.setState({
+      firstName: profile.firstName,
+      lastName: profile.lastName,
+      plan: profile.plan,
+      state: profile.state,
+      address: profile.address,
+      phoneNumber: profile.phoneNumber,
+      companyName: profile.companyName
+    });
+  }
+
+  updateProfile(e) {
+    e.preventDefault();
+    const { firstName, lastName, state, address, phoneNumber, companyName } = this.state;
+    let profile = {
+      id: this.props.profile._id,
+      firstName: firstName,
+      lastName: lastName,
+      state: state,
+      address: address,
+      phoneNumber: phoneNumber,
+      companyName: companyName,
+    };
+    this.props.updateProfile(profile);
+    return;
+  }
+
   handleStateChange(e) {
-    console.log(e.target.id, e.target.value , "=====ebvent");
     this.setState({[e.target.id]:e.target.value});
   }
 
-  handleEditState(value) {
+  handleEditState(e, value) {
     if(value == 'save') {
       this.setState({profileState: 'edit'});
+      this.updateProfile(e);
     } else {
       this.setState({profileState: 'save'});
     }
   }
 
   render() {
-    const errors = validate(this.state.username, this.state.plan);
+    // const errors = validate(this.state.username, this.state.plan);
     const isDisabled = this.state.profileState=='edit'?true:false;
-    const profile = this.props.profile?this.props.profile:this.state;
+    const profile = this.state;
     const username = this.props.user?this.props.user.username:null;
-    console.log(this.state, "===================>planList");
+
     return (
       <div className="content fill">
         <Grid fluid="fluid">
@@ -93,7 +129,7 @@ class Profile extends Component {
                       fill
                       type="button"
                       icon="usd"
-                      disabled={isDisabled}
+                      disabled={true}
                       >
                       Billing
                     </Button>
@@ -103,7 +139,7 @@ class Profile extends Component {
                       fill
                       type="button"
                       icon="cloud-upload"
-                      disabled={isDisabled}
+                      disabled={true}
                       >
                       Upgrade
                     </Button>
@@ -111,7 +147,7 @@ class Profile extends Component {
                   <div>
 
                   </div>
-                  <form onSubmit={this.handleNextButton}>
+                  <form>
                     <Row>
                       <div className="col-md-6">
                         <FormGroup>
@@ -122,7 +158,6 @@ class Profile extends Component {
                             placeholder="Enter username"
                             disabled={true}
                             id="username"
-                            // onChange={(e) => this.handleStateChange(e)}
                           />
                         </FormGroup>
                       </div>
@@ -223,7 +258,7 @@ class Profile extends Component {
                       fill
                       type="button"
                       icon={this.state.profileState=='save'?'save':'edit'}
-                      onClick={() => this.handleEditState(this.state.profileState)}
+                      onClick={(e) => this.handleEditState(e, this.state.profileState)}
                       >
                       {this.state.profileState=='save'?'Save':'Edit'}
                     </Button>
@@ -247,6 +282,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
+  fetchProfile,
   updateProfile
 };
 
