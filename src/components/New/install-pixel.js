@@ -5,7 +5,7 @@ import {
 import copy from 'copy-to-clipboard';
 import { toast, ToastContainer } from 'react-toastify';
 
-import Tabs from './template/tab';
+import Tabs from '../Template/tab';
 import Highlight from 'react-highlight';
 
 const toastConfig = {

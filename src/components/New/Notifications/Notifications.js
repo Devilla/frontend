@@ -6,7 +6,7 @@ import { createConfiguration, fetchConfiguration, fetchCampaignConfiguration, cl
 import NotificationList from './NotificationList';
 import NotificationConfigure from './NotificationConfigure';
 import './Notifications.css';
-import Tabs from '../template/tab'
+import Tabs from '../../Template/tab'
 
 class Notifications extends Component {
 

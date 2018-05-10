@@ -1,28 +1,28 @@
 import React, { Component } from 'react';
 import {
-    Grid, Row, Col, Table,  ControlLabel, InputGroup, FormControl,ButtonToolbar,Button 
+    Grid, Row, Col, Table,  ControlLabel, InputGroup, FormControl,ButtonToolbar,Button
 } from 'react-bootstrap';
-import CardHeader from './template/card-with-header'
-import FormInputs from './template/FormTemp';
-import Tabs from './template/tab'
-import CardTable from './template/card-with-page-table'
-import {pagethArray,pagetdArray} from './template/data'
+import CardHeader from '../Template/card-with-header'
+import FormInputs from '../Template/FormTemp';
+import Tabs from '../Template/tab'
+import CardTable from '../Template/card-with-page-table'
+import {pagethArray,pagetdArray} from '../Template/data'
 class ConfigLeads extends Component{
   constructor(){
     super();
     this.state = {
-       
+
     }
-   
-  }  
-  activeState(val){     
+
+  }
+  activeState(val){
       this.props.callbackFromParent(val)
   }
     render(){
         var  tasks  = []
         for (var i = 0; i < pagetdArray.length; i++) {
             tasks.push(
-                <tr key={i}>      
+                <tr key={i}>
                    <td className="serial">{i+1}</td>
                    <td className="url">{pagetdArray[i].url}</td>
                    <td className="status"><span className={pagetdArray[i].class}></span> {pagetdArray[i].status}</td>
@@ -32,14 +32,14 @@ class ConfigLeads extends Component{
         }
         return (
             <div className="content">
-                <Grid fluid>   
+                <Grid fluid>
                        <Tabs active="2" callbackFromParent ={this.activeState.bind(this)}/>
                    <div className="tabscontent">
-                       <Row>   
+                       <Row>
                         <Col md={12}>
-                           <h4>Details Of Your Lead Capturing Page</h4>     
+                           <h4>Details Of Your Lead Capturing Page</h4>
                         </Col>
-                       </Row> 
+                       </Row>
                        <Row>
                          <Col md={12}>
                             <p>Enter URL of page you are capturing conversions on. </p>
@@ -48,7 +48,7 @@ class ConfigLeads extends Component{
                                     <i className="fas fa-angle-right"></i> Your Pixel installed (if not, Go to Install Pixel)</small>
                             <p>&nbsp;</p>
                           </Col>
-                       </Row>      
+                       </Row>
                        <Row>
                         <Col md={12}>
                            <div className="input-group">
@@ -58,8 +58,8 @@ class ConfigLeads extends Component{
                               </span>
                             </div>
 
-                        </Col>                        
-                       </Row>  
+                        </Col>
+                       </Row>
                        <Row>
                         <Col md={12}>
                             <div className="status">
@@ -71,7 +71,7 @@ class ConfigLeads extends Component{
                                 </ul>
                               </div>
                         </Col>
-                       </Row>                          
+                       </Row>
                        <Row>
                         <Col md={12}>
                             <CardTable
@@ -102,16 +102,16 @@ class ConfigLeads extends Component{
                         </Col>
                        </Row>
 
-                            
-                       
+
+
 
                        <Row>
 
-                          <div className="text-center">  
-                            <Col md={12}> 
-                            <p>&nbsp;</p> <p>&nbsp;</p>                              
-                                  Having problems with Auto Lead Capture in your current setup? &nbsp;&nbsp; <a href="javascript:;" className="btn blue btn-sm">Use Webhook Integration</a>                                
-                            </Col>                            
+                          <div className="text-center">
+                            <Col md={12}>
+                            <p>&nbsp;</p> <p>&nbsp;</p>
+                                  Having problems with Auto Lead Capture in your current setup? &nbsp;&nbsp; <a href="javascript:;" className="btn blue btn-sm">Use Webhook Integration</a>
+                            </Col>
                            </div>
                        </Row>
                        <Row>
@@ -132,9 +132,9 @@ class ConfigLeads extends Component{
 
 
 
-                   </div> 
-                      
-                 </Grid>   
+                   </div>
+
+                 </Grid>
             </div>
         );
     }
@@ -142,4 +142,3 @@ class ConfigLeads extends Component{
 
 
 export default ConfigLeads;
-

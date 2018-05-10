@@ -4,8 +4,8 @@ import {Card} from '../common'
 import Switch from 'react-flexible-switch';
 import {Notification} from '../common/notification'
 import {Setting} from '../common/settings'
-import FormInputs from '../../../template/FormTemp';
-import Button from '../../../template/customButton';
+import FormInputs from '../../../../Template/FormTemp';
+import Button from '../../../../Template/customButton';
 
 export class NotificationTemplate extends Component {
   constructor() {

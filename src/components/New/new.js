@@ -9,9 +9,9 @@ import {
   FormControl
 } from 'react-bootstrap';
 import {browserHistory} from 'react-router';
-import CardHeader from './template/card-with-header'
-import FormInputs from './template/FormTemp';
-import Button from './template/customButton';
+import CardHeader from '../Template/card-with-header'
+import FormInputs from '../Template/FormTemp';
+import Button from '../Template/customButton';
 import Switch from 'react-flexible-switch';
 import $ from 'jquery';
 import {ToastContainer, toast} from 'react-toastify';
