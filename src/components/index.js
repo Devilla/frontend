@@ -28,3 +28,4 @@ export { default as Error } from './Error/Error';
 export { default as ComingSoon } from './ComingSoon/ComingSoon';
 export { default as Integration } from './Integration/Integration';
 export { default as Button } from './Button/Button';
+export { default as Profile } from './Profile/Profile';
