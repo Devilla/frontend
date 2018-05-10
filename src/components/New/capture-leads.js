@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import {
     Grid, Row, Col, Table,  ControlLabel, InputGroup, FormControl,ButtonToolbar,Button
 } from 'react-bootstrap';
-import CardHeader from '../Template/card-with-header'
-import FormInputs from '../Template/FormTemp';
-import Tabs from '../Template/tab'
-import CardTable from '../Template/card-with-page-table'
-import {pagethArray,pagetdArray} from '../Template/data'
+import CardHeader from 'components/Template/card-with-header'
+import FormInputs from 'components/Template/FormTemp';
+import Tabs from 'components/Template/tab'
+import CardTable from 'components/Template/card-with-page-table'
+import {pagethArray,pagetdArray} from 'components/Template/data'
 class ConfigLeads extends Component{
   constructor(){
     super();

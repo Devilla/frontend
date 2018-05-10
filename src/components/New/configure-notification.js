@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {
     Grid, Row, Col
 } from 'react-bootstrap';
-import Tabs from '../Template/tab'
+import Tabs from 'components/Template/tab'
 import Display from './notification/display'
 class ConfigNotification extends Component{
   constructor(){

@@ -9,9 +9,9 @@ import {
   FormControl
 } from 'react-bootstrap';
 import {browserHistory} from 'react-router';
-import CardHeader from '../Template/card-with-header'
-import FormInputs from '../Template/FormTemp';
-import Button from '../Template/customButton';
+import CardHeader from 'components/Template/card-with-header'
+import FormInputs from 'components/Template/FormTemp';
+import Button from 'components/Template/customButton';
 import Switch from 'react-flexible-switch';
 import $ from 'jquery';
 import {ToastContainer, toast} from 'react-toastify';
@@ -106,7 +106,7 @@ export class NewUser extends Component {
   }
 
   componentWillMount() {
-    if(this.props.campaign)
+    if(this.props.campaign && Object.keys(this.props.campaign).length !== 0 && this.props.campaign.constructor === Object)
       this.props.callbackFromParent({'active': 2});
   }
 

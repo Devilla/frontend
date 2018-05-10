@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Grid, Row, Col, Nav, NavItem} from 'react-bootstrap';
 import {connect} from 'react-redux';
 import {browserHistory} from 'react-router';
-import CommonCard from '../../Template/common-card';
+import CommonCard from 'components/Template/common-card';
 import {Templates} from '../notification/template/message-template/template'
 import { fetchNotification, createNotification } from 'ducks/notification';
 import { createRules } from 'ducks/rules';

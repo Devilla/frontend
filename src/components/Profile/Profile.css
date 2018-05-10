@@ -1,0 +1,11 @@
+.profile-container {
+  display: grid;
+}
+.profile-over-button{
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+button {
+  margin: 0% 2% !important;
+}
