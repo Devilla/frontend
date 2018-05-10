@@ -17,21 +17,21 @@ class Notifications extends Component {
       configuration: {},
       activity: true,
       notificationPanelStyle: { // TODO: Take style values from server
-        radius: 60,
-        borderWidth: 0.4,
+        radius: 50,
+        borderWidth: 0,
         borderColor: {
-          r: 190,
-          g: 150,
-          b: 150,
-          a: 0.3
+          r: 200,
+          g: 200,
+          b: 200,
+          a: 0.80
         },
         shadow: {
-          r: 0.15,
-          g: 0.15,
-          b: 0.25,
+          r: 0,
+          g: 0,
+          b: 0,
           color: 'lightgrey'
         },
-        blur: 0.25,
+        blur: 0,
         color: {
           r: 0,
           g: 0,

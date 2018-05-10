@@ -48,10 +48,15 @@ export class Notification extends Component {
 							<div style={{}}>
 								<div style={notificationName=="Recent Activity"?{}:{display: 'none'}}>
 									<div id="FPqR2fZIqJeA2fZI7MM9_0">
-										<div className="FPqR3zjZqJeA3zjZ7MM9_0 FPqR2riIqJeA2riI7MM9_0">
-											<div className="FPqR1JYFqJeA1JYF7MM9_0"><img src="images/554cf2e92cb6bf677667d90c_Testimonial-10 - Copy.jpg"/></div>
+										<div className="FPqR3zjZqJeA3zjZ7MM9_0 FPqR2riIqJeA2riI7MM9_0"
+											style={{
+												borderRadius: notificationPanelStyle.borderRadius,
+												backgroundColor: notificationPanelStyle.backgroundColor,
+												border: `${notificationPanelStyle.borderWidth} ${notificationPanelStyle.borderStyle} ${notificationPanelStyle.borderColor}`
+											 }}>
+											<div className="FPqR1JYFqJeA1JYF7MM9_0"><img src="images/554cf2e92cb6bf677667d90c_Testimonial-10 - Copy.jpg" style={{borderRadius:notificationPanelStyle.borderRadius}}/></div>
 											<div className="FPqR2EbCqJeA2EbC7MM9_0">
-												<div className="FPqR2AUlqJeA2AUl7MM9_0"> Jacob from London, UK </div>
+												<div className="FPqR2AUlqJeA2AUl7MM9_0"> Username from City, Country </div>
 												<div className="FPqR13BWqJeA13BW7MM9_0">Recently signed up for Influnece</div>
 												<div className="FPqR2PlWqJeA2PlW7MM9_0">a minute ago</div>
 												<div className="FPqR3eNuqJeA3eNu7MM9_0">
@@ -78,7 +83,12 @@ export class Notification extends Component {
 								</div>
 								<div style={notificationName=="Live Visitor Count"?{}:{display: 'none'}}>
 									<div id="FPqR3dGiqJeA3dGi7MM9_0">
-										<div className="FPqR2B_4qJeA2B_47MM9_0 rounded FPqRD2zVqJeAD2zV7MM9_0">
+										<div className="FPqR2B_4qJeA2B_47MM9_0 rounded FPqRD2zVqJeAD2zV7MM9_0"
+											style={{
+												borderRadius: notificationPanelStyle.borderRadius,
+												backgroundColor: notificationPanelStyle.backgroundColor,
+												border: `${notificationPanelStyle.borderWidth} ${notificationPanelStyle.borderStyle} ${notificationPanelStyle.borderColor}`
+											 }}>
 											<div id="FPqR3acHqJeA3acH7MM9_0">
 												<div className="FPqRH0WDqJeAH0WD7MM9_0">
 													<div className="FPqRh0ePqJeAh0eP7MM9_0"></div>
@@ -96,8 +106,13 @@ export class Notification extends Component {
 								</div>
 								<div style={notificationName=="Bulk Activity "?{}:{display: 'none'}}>
 									<div id="FPqR2lriqJeA2lri7MM9_0">
-										<div className="FPqR1XogqJeA1Xog7MM9_0 FPqR27wVqJeA27wV7MM9_0">
-											<div className="FPqR37xpqJeA37xp7MM9_0"><img src="https://useproof.s3.amazonaws.com/turbo1/flamelite.svg"/></div>
+										<div className="FPqR1XogqJeA1Xog7MM9_0 FPqR27wVqJeA27wV7MM9_0"
+											style={{
+												borderRadius: notificationPanelStyle.borderRadius,
+												backgroundColor: notificationPanelStyle.backgroundColor,
+												border: `${notificationPanelStyle.borderWidth} ${notificationPanelStyle.borderStyle} ${notificationPanelStyle.borderColor}`
+											 }}>
+											<div className="FPqR37xpqJeA37xp7MM9_0"><img src="https://useproof.s3.amazonaws.com/turbo1/flamelite.svg"style={{borderRadius:notificationPanelStyle.borderRadius}} /></div>
 											<div className="FPqRqu5HqJeAqu5H7MM9_0">
 												<div><span className="FPqRtoc3qJeAtoc37MM9_0"><span>2,002</span> people</span> signed up for Influence in the last 7 days
 												</div>
