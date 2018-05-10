@@ -23,7 +23,7 @@ const NotificationConfigure = ({
             content={
               <Row>
                 <Col md={6}>
-                  <Notification notificationPanelStyle={notificationPanelStyle} />
+                  <Notification notification={notification} notificationPanelStyle={notificationPanelStyle} />
                 </Col>
                 <Col md={6}>
                   <Setting notificationPanelStyle={notificationPanelStyle} onConfigChange={handleNotificationStyleChange} />
