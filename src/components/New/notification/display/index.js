@@ -62,12 +62,10 @@ export class Display extends Component{
     rule['campaign']=this.props.campaign._id;
     if(rules) {
       rule['id'] = rules._id;
-      console.log(rule, "======================>rule");
       delete rule['campaign'];
-      console.log(rule, "======================>rule");
       this.props.updateRules(rule);
     } else {
-      this.props.createRules(rule)
+      this.props.createRules(rule);
     }
   }
 
@@ -95,12 +93,14 @@ export class Display extends Component{
            </Row>
            <Row>
             <Col md={12}>
-                <div className="text-right">
-                  <button href="javascript:;" className="btn btn-default blue" onClick={this.saveRules}>
-                    Save
-                    <i className="fas fa-angle-right"></i>
-                  </button>
-                </div>
+              <div className="text-right">
+              </div>
+              <div className="text-right">
+                <button href="javascript:;" className="btn btn-default blue" onClick={this.saveRules}>
+                  Save
+                  <i className="fas fa-angle-right"></i>
+                </button>
+              </div>
             </Col>
            </Row>
         </div>

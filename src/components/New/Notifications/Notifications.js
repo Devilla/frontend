@@ -8,6 +8,38 @@ import NotificationConfigure from './NotificationConfigure';
 import './Notifications.css';
 import Tabs from 'components/Template/tab'
 
+const notificationPanelStyleDefault = { // TODO: Take style values from server
+  radius: 50,
+  borderWidth: 0,
+  borderColor: {
+    r: 200,
+    g: 200,
+    b: 200,
+    a: 0.80
+  },
+  shadow: {
+    r: 0,
+    g: 0,
+    b: 0,
+    color: 'lightgrey'
+  },
+  blur: 0,
+  color: {
+    r: 0,
+    g: 0,
+    b: 0,
+    a: 1
+  },
+  backgroundColor: {
+    r: 255,
+    g: 255,
+    b: 255,
+    a: 1
+  },
+  fontFamily: 'inherit',
+  fontWeight: 'normal'
+};
+
 class Notifications extends Component {
 
   constructor(props) {
@@ -16,37 +48,7 @@ class Notifications extends Component {
       notification: '',
       configuration: {},
       activity: true,
-      notificationPanelStyle: { // TODO: Take style values from server
-        radius: 50,
-        borderWidth: 0,
-        borderColor: {
-          r: 200,
-          g: 200,
-          b: 200,
-          a: 0.80
-        },
-        shadow: {
-          r: 0,
-          g: 0,
-          b: 0,
-          color: 'lightgrey'
-        },
-        blur: 0,
-        color: {
-          r: 0,
-          g: 0,
-          b: 0,
-          a: 1
-        },
-        backgroundColor: {
-          r: 255,
-          g: 255,
-          b: 255,
-          a: 1
-        },
-        fontFamily: 'inherit',
-        fontWeight: 'normal'
-      },
+      notificationPanelStyle: notificationPanelStyleDefault,
       contentText: '',
       image: '',
       notifications : [],
@@ -57,6 +59,7 @@ class Notifications extends Component {
     this.saveConfiguration = this.saveConfiguration.bind(this);
     this.backConfiguration = this.backConfiguration.bind(this);
     this.setNewConfig = this.setNewConfig.bind(this);
+    this.setDefaultPanel = this.setDefaultPanel.bind(this);
   }
 
   componentWillMount() {
@@ -107,34 +110,14 @@ class Notifications extends Component {
     this.setState({
       notification: '',
       activity: true,
-      notificationPanelStyle: { // TODO: Take style values from server
-        radius: 35,
-        borderWidth: 0,
-        borderColor: {
-          r: 200,
-          g: 200,
-          b: 200,
-          a: 1
-        },
-        shadow: 0,
-        blur: 2,
-        color: {
-          r: 0,
-          g: 0,
-          b: 0
-        },
-        backgroundColor: {
-          r: 255,
-          g: 255,
-          b: 255,
-          a: 1
-        },
-        fontFamily: 'inherit',
-        fontWeight: 'normal'
-      },
+      notificationPanelStyle: notificationPanelStyleDefault,
       contentText: '',
       image: ''
     });
+  }
+
+  setDefaultPanel() {
+      this.setState({notificationPanelStyle: notificationPanelStyleDefault});
   }
 
   handleActivityChange(activity, id, configId) {
@@ -210,6 +193,7 @@ class Notifications extends Component {
                     notification={this.state.notification}
                     activity={this.state.activity}
                     notificationPanelStyle={this.state.notificationPanelStyle}
+                    setDefaultPanel={this.setDefaultPanel}
                     handleActivityChange={this.handleActivityChange}
                     handleNotificationStyleChange={this.handleNotificationStyleChange}
                     saveConfiguration = {this.saveConfiguration}
