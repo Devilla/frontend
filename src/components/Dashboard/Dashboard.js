@@ -22,11 +22,11 @@ class Dashboard extends Component {
   }
 
   componentWillMount() {
-    this.props.fetchElastic("json.value.trackingId:INF-azg2fhewkjfwstxof");
+    this.props.fetchElastic("json.value.trackingId:INF-azg2fhcfgjh0hvi3v");
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log(nextProps.elastic.message, "====elasticsearch");
+    // console.log(nextProps.elastic.message, "====elasticsearch");
   }
 
   createLegend(json) {

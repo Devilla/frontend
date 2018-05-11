@@ -62,6 +62,9 @@ export class Display extends Component{
     rule['campaign']=this.props.campaign._id;
     if(rules) {
       rule['id'] = rules._id;
+      console.log(rule, "======================>rule");
+      delete rule['campaign'];
+      console.log(rule, "======================>rule");
       this.props.updateRules(rule);
     } else {
       this.props.createRules(rule)
