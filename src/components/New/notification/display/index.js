@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import {  Row, Col } from 'react-bootstrap';
+import { Grid, Row, Col, Button, Glyphicon } from 'react-bootstrap';
 import {connect} from 'react-redux';
 import LeftView from './left-view'
 import RightView from './right-view'
 import Localization from '../localization';
 import { fetchOneRules, createRules, updateRules, clearRules } from '../../../../ducks/rules';
+import Tabs from 'components/Template/tab'
 
 export class Display extends Component{
   constructor(){
@@ -23,7 +24,6 @@ export class Display extends Component{
     };
     this.handleStateChange = this.handleStateChange.bind(this);
     this.saveRules = this.saveRules.bind(this);
-
   }
 
   componentDidMount() {
@@ -67,6 +67,7 @@ export class Display extends Component{
     } else {
       this.props.createRules(rule);
     }
+    this.props.handleNextState();
   }
 
   componentWillUnmount() {
@@ -74,8 +75,9 @@ export class Display extends Component{
   }
 
   render(){
+    const { handleBackState } = this.props;
     return (
-      <div className="card plain inner-display" style={{width:'95%'}}>
+      <div className="plain inner-display" style={{width: '97.5%', background: 'white', padding: '2% 1%'}}>
         <div className="content">
           <Row>
             <Col xs={6}>
@@ -91,17 +93,23 @@ export class Display extends Component{
                />
             </Col>
            </Row>
-           <Row>
-            <Col md={12}>
-              <div className="text-right">
-              </div>
-              <div className="text-right">
-                <button href="javascript:;" className="btn btn-default blue" onClick={this.saveRules}>
-                  Save
-                  <i className="fas fa-angle-right"></i>
-                </button>
-              </div>
-            </Col>
+           <Row style={{margin: '0px auto 10%', padding: '5% 5% 5% 0%'}}>
+             <Col md={6}>
+               <div className=" text-left">
+                 <Button bsStyle="primary" onClick={handleBackState}>
+                   <Glyphicon glyph="chevron-left" />
+                   Back
+                 </Button>
+               </div>
+             </Col>
+             <Col md={6}>
+               <div className=" text-right">
+                <Button bsStyle="primary" onClick={this.saveRules}>
+                  <Glyphicon glyph="chevron-right" />
+                  Next
+                </Button>
+               </div>
+             </Col>
            </Row>
         </div>
       </div>
@@ -122,6 +130,3 @@ const mapDispatchToProps = {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Display);
-
-
-// export default Display;

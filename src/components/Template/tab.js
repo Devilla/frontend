@@ -20,44 +20,48 @@ class Tabs extends Component{
     else
       val = 1;
   }
-    render(){
-      return (
-          <div className="content tabs">
-              <Grid fluid>
-                  <Row>
-                      <Col md={12}>
-                       <CommonCard
-                         url={this.props.campaign
-                           ? this.props.campaign.websiteUrl
-                           : 'http://localhost:3000'}
-                         notification={this.props.campaign
-                           ? this.props.campaign.campaignName
-                           : 'http://localhost:3000'}
-                        content = {
-                         <Nav bsStyle="pills" className="tabmenu" justified activeKey={val}  onSelect={k => this.handleSelect(k)}>
-                            <NavItem eventKey={1} title="Install Pixel">
-                              <i className="fas fa-cog"></i> Install Pixel
-                            </NavItem>
-                            <NavItem eventKey={2} title="Notifications">
-                              <i className="fas fa-chart-line"></i> Notifications
-                            </NavItem>
-                            <NavItem eventKey={3} title="Configure" >
-                              <i className="far fa-bell"></i> Configure
-                            </NavItem>
-                            <NavItem eventKey={4} title="Capture Leads">
-                              <i className="fas fa-chart-line"></i> Capture Leads
-                            </NavItem>
-                            <NavItem eventKey={5} title="Display">
-                              <i className="fas fa-tv"></i> Display
-                            </NavItem>
-                          </Nav>
-                        }/>
-                      </Col>
-                  </Row>
-               </Grid>
-          </div>
-      );
-    }
+
+  render(){
+    if(val !== Number(this.props.active))
+      val = this.props.active?Number(this.props.active)-1:1;
+
+    return (
+        <div className="content tabs">
+            <Grid fluid>
+                <Row>
+                    <Col md={12}>
+                     <CommonCard
+                       url={this.props.campaign
+                         ? this.props.campaign.websiteUrl
+                         : 'http://localhost:3000'}
+                       notification={this.props.campaign
+                         ? this.props.campaign.campaignName
+                         : 'http://localhost:3000'}
+                      content = {
+                       <Nav bsStyle="pills" className="tabmenu" justified activeKey={val}  onSelect={k => this.handleSelect(k)}>
+                          <NavItem eventKey={1} title="Install Pixel">
+                            <i className="fas fa-cog"></i> Install Pixel
+                          </NavItem>
+                          <NavItem eventKey={2} title="Notifications">
+                            <i className="fas fa-chart-line"></i> Notifications
+                          </NavItem>
+                          <NavItem eventKey={3} title="Configure" >
+                            <i className="far fa-bell"></i> Configure
+                          </NavItem>
+                          <NavItem eventKey={4} title="Capture Leads">
+                            <i className="fas fa-chart-line"></i> Capture Leads
+                          </NavItem>
+                          <NavItem eventKey={5} title="Display">
+                            <i className="fas fa-tv"></i> Display
+                          </NavItem>
+                        </Nav>
+                      }/>
+                    </Col>
+                </Row>
+             </Grid>
+        </div>
+    );
+  }
 }
 
 const mapStateToProps = state => ({
