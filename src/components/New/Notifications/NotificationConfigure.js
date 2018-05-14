@@ -7,14 +7,15 @@ import { Setting } from '../notification/template/common/settings'
 const NotificationConfigure = ({
     notification,
     activity,
+    contentText,
     setDefaultPanel,
     handleActivityChange,
+    handleContentChange,
     notificationPanelStyle,
     handleNotificationStyleChange,
     backConfiguration,
     saveConfiguration
   }) => {
-
   return (
     <div className="notification-configure">
       <Row>
@@ -24,10 +25,19 @@ const NotificationConfigure = ({
             content={
               <Row>
                 <Col md={6}>
-                  <Notification notification={notification} notificationPanelStyle={notificationPanelStyle} />
+                  <Notification
+                    contentText={contentText}
+                    notification={notification}
+                    notificationPanelStyle={notificationPanelStyle}
+                  />
                 </Col>
                 <Col md={6}>
-                  <Setting notificationPanelStyle={notificationPanelStyle} onConfigChange={handleNotificationStyleChange} />
+                  <Setting
+                    contentText={contentText}
+                    notificationPanelStyle={notificationPanelStyle}
+                    onConfigChange={handleNotificationStyleChange}
+                    handleContentChange={handleContentChange}
+                  />
                 </Col>
               </Row>
             }

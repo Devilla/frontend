@@ -49,13 +49,14 @@ class Notifications extends Component {
       configuration: {},
       activity: true,
       notificationPanelStyle: notificationPanelStyleDefault,
-      contentText: '',
+      contentText: 'Recently signed up for Company Name',
       image: '',
       notifications : [],
     };
     this.configure = this.configure.bind(this);
     this.handleActivityChange = this.handleActivityChange.bind(this);
     this.handleNotificationStyleChange = this.handleNotificationStyleChange.bind(this);
+    this.handleContentChange = this.handleContentChange.bind(this);
     this.saveConfiguration = this.saveConfiguration.bind(this);
     this.backConfiguration = this.backConfiguration.bind(this);
     this.setNewConfig = this.setNewConfig.bind(this);
@@ -115,13 +116,13 @@ class Notifications extends Component {
       notification: '',
       activity: true,
       notificationPanelStyle: notificationPanelStyleDefault,
-      contentText: '',
+      contentText: 'Recently signed up for Company Name',
       image: ''
     });
   }
 
   setDefaultPanel() {
-      this.setState({notificationPanelStyle: notificationPanelStyleDefault});
+    this.setState({notificationPanelStyle: notificationPanelStyleDefault});
   }
 
   handleActivityChange(activity, id, configId) {
@@ -137,6 +138,9 @@ class Notifications extends Component {
     this.setState({notificationPanelStyle: notificationStyle});
   };
 
+  handleContentChange(content) {
+    this.setState({ contentText: content});
+  }
 
   activeState(val){
     this.setActiveState(val);
@@ -186,6 +190,7 @@ class Notifications extends Component {
 
   render() {
     const { notifications, configurations, createSuccess } = this.props;
+
     return (<div className="content notification-list">
       <Grid fluid>
         <Tabs active="3" callbackFromParent={this.activeState}/>
@@ -207,7 +212,9 @@ class Notifications extends Component {
                   <NotificationConfigure
                     notification={this.state.notification}
                     activity={this.state.activity}
+                    contentText={this.state.contentText}
                     notificationPanelStyle={this.state.notificationPanelStyle}
+                    handleContentChange={this.handleContentChange}
                     setDefaultPanel={this.setDefaultPanel}
                     handleActivityChange={this.handleActivityChange}
                     handleNotificationStyleChange={this.handleNotificationStyleChange}

@@ -116,7 +116,7 @@ export class Setting extends Component {
   }
 
   render() {
-    const notificationPanelStyle = this.props.notificationPanelStyle;
+    const { notificationPanelStyle, handleContentChange, contentText } = this.props;
     const styles = reactCSS({
       'default': {
         colorSwatch: {
@@ -301,6 +301,22 @@ export class Setting extends Component {
                       <option value="helvetica">Helvetica</option>
                       <option value="open sans">Default</option>
                     </FormControl>
+                  </Col>
+                </Row>
+              </Col>
+            </Row>
+            <Row>
+              <Col md={12}>
+                <h4>Content Setting</h4>
+                <Row>
+                  <Col md={12}>
+                    <FormControl
+                      type="text"
+                      value={contentText}
+                      placeholder="Enter content for notification"
+                      id="contentText"
+                      onChange={(e) => handleContentChange(e.target.value)}
+                    />
                   </Col>
                 </Row>
               </Col>
