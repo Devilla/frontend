@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Row, Col } from 'react-bootstrap';
-import {Card} from '../notification/template/common';
+import { Row, Col, Button, Glyphicon } from 'react-bootstrap';
+import { Card } from '../notification/template/common';
 import { Notification } from '../notification/template/common/notification'
 import { Setting } from '../notification/template/common/settings'
 
@@ -46,30 +46,27 @@ const NotificationConfigure = ({
       </Row>
       <Row>
         <Col md={4}>
-          <p>&nbsp;</p>
-          <div className="text-left">
-              <button className="btn btn-default" onClick={() => backConfiguration()}>
-                <i className="fas fa-angle-left"></i>
-                Back
-              </button>
+          <div className=" text-left">
+            <Button bsStyle="primary" onClick={backConfiguration}>
+              <Glyphicon glyph="chevron-left" />
+              Back
+            </Button>
           </div>
         </Col>
         <Col md={4}>
-          <p>&nbsp;</p>
-          <div className="text-center">
-              <button className="btn btn-default" onClick={() => setDefaultPanel()}>
-                <i className="fas fa-angle-left"></i>
-                Set Default
-              </button>
+          <div className=" text-center">
+           <Button bsStyle="primary" onClick={setDefaultPanel}>
+             <Glyphicon glyph="align-justify" />
+             Set Default
+            </Button>
           </div>
         </Col>
         <Col md={4}>
-          <p>&nbsp;</p>
-          <div className="text-right">
-              <button className="blue btn btn-default" onClick={() => saveConfiguration()}>
-                Save
-                <i className="fas fa-chevron-right"></i>
-              </button>
+          <div className=" text-right">
+           <Button bsStyle="primary" onClick={saveConfiguration}>
+             <Glyphicon glyph="save" />
+             Save
+            </Button>
           </div>
         </Col>
       </Row>

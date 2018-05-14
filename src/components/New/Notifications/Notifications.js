@@ -224,24 +224,26 @@ class Notifications extends Component {
                 </Row>
             }
         </div>
-        <Row className="notification-button-row">
-          <Col md={6}>
-            <div className=" text-left">
-              <Button bsStyle="primary" onClick={this.handleBackState}>
-                <Glyphicon glyph="chevron-left" />
-                Back
-              </Button>
-            </div>
-          </Col>
-          <Col md={6}>
-            <div className=" text-right">
-             <Button bsStyle="primary" onClick={this.handleNextState}>
-               <Glyphicon glyph="chevron-right" />
-               Next
-              </Button>
-            </div>
-          </Col>
-        </Row>
+        {!this.state.notification &&
+          <Row className="notification-button-row">
+            <Col md={6}>
+              <div className=" text-left">
+                <Button bsStyle="primary" onClick={this.handleBackState}>
+                  <Glyphicon glyph="chevron-left" />
+                  Back
+                </Button>
+              </div>
+            </Col>
+            <Col md={6}>
+              <div className=" text-right">
+               <Button bsStyle="primary" onClick={this.handleNextState}>
+                 <Glyphicon glyph="chevron-right" />
+                 Next
+                </Button>
+              </div>
+            </Col>
+          </Row>
+        }
       </Grid>
     </div>);
   }
