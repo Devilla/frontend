@@ -85,6 +85,12 @@ export class Setting extends Component {
     this.props.onConfigChange({ prop: 'color', value: color });
   }
 
+  handleTextLinkColorChange = (linkColor) => {
+    linkColor = linkColor.rgb;
+    this.setState({ linkColor });
+    this.props.onConfigChange({ prop: 'linkColor', value: linkColor });
+  }
+
   showTextColorSwatch = () => {
     this.setState({ isTextColorSwatchOpen: true });
   };
@@ -93,10 +99,24 @@ export class Setting extends Component {
     this.setState({ isTextColorSwatchOpen: false });
   };
 
+  showLinkColorSwatch = () => {
+    this.setState({ isLinkColorSwatchOpen: true });
+  };
+
+  hideLinkColorSwatch = () => {
+    this.setState({ isLinkColorSwatchOpen: false });
+  };
+
   handleFontChange = (e) => {
     const fontFamily = `${e.target.value}`;
     this.setState({ fontFamily });
     this.props.onConfigChange({ prop: 'fontFamily', value: fontFamily });
+  };
+
+  handleLinkFontChange = (e) => {
+    const linkFontFamily = `${e.target.value}`;
+    this.setState({ linkFontFamily });
+    this.props.onConfigChange({ prop: 'linkFontFamily', value: linkFontFamily });
   };
 
   handleFontWeightChange = () => {
@@ -108,6 +128,17 @@ export class Setting extends Component {
 
     this.setState({fontWeight});
     this.props.onConfigChange({ prop: 'fontWeight', value: fontWeight });
+  }
+
+  handleLinkFontWeightChange = () => {
+    let linkFontWeight = this.props.notificationPanelStyle.linkFontWeight;
+    if(linkFontWeight === FONT_WEIGHT_BOLD)
+      linkFontWeight = FONT_WEIGHT_NORMAL;
+    else
+      linkFontWeight = FONT_WEIGHT_BOLD;
+
+    this.setState({linkFontWeight});
+    this.props.onConfigChange({ prop: 'linkFontWeight', value: linkFontWeight });
   }
 
   componentWillReceiveProps(nextProps) {
@@ -132,6 +163,9 @@ export class Setting extends Component {
         },
         textColor: {
           backgroundColor: `rgb(${notificationPanelStyle.color.r}, ${notificationPanelStyle.color.g}, ${notificationPanelStyle.color.b})`
+        },
+        linkColor: {
+          backgroundColor: `rgb(${notificationPanelStyle.linkColor.r}, ${notificationPanelStyle.linkColor.g}, ${notificationPanelStyle.linkColor.b}, ${notificationPanelStyle.linkColor.a})`
         },
         swatch: {
           padding: '0px',
@@ -281,21 +315,21 @@ export class Setting extends Component {
                 <h4>Link Setting</h4>
                 <Row>
                   <Col md={4}>
-                    <div style={styles.swatch} className="bgcolor" onClick={this.handleClick}>
-                      <div style={styles.color} />
+                    <div style={styles.swatch} className="bgcolor" onClick={this.showLinkColorSwatch}>
+                      <div style={{ ...styles.colorSwatch, ...styles.linkColor }} />
                     </div>
-                    {this.state.displayColorPicker ? <div style={styles.popover}>
-                      <div style={styles.cover} onClick={this.handleClose} />
-                      <ChromePicker color={notificationPanelStyle.color} onChange={this.handleChange} />
+                    {this.state.isLinkColorSwatchOpen ? <div style={styles.popover}>
+                      <div style={styles.cover} onClick={this.hideLinkColorSwatch} />
+                      <ChromePicker color={notificationPanelStyle.linkColor} onChange={this.handleTextLinkColorChange} />
                     </div> : null}
                   </Col>
                   <Col md={4}>
-                    <Button bsSize="small" block>
+                    <Button bsSize="small" block active={notificationPanelStyle.linkFontWeight == FONT_WEIGHT_BOLD} onClick={this.handleLinkFontWeightChange}>
                       Bold
-                             </Button>
+                    </Button>
                   </Col>
                   <Col md={4}>
-                    <FormControl componentClass="select" bsSize="small" placeholder="select">
+                    <FormControl componentClass="select" bsSize="small" placeholder="select" value={notificationPanelStyle.linkFontFamily} onChange={this.handleLinkFontChange}>
                       <option value="arial">Arial</option>
                       <option value="sans-serif">Sen Serif</option>
                       <option value="helvetica">Helvetica</option>

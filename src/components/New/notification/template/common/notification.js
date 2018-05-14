@@ -13,8 +13,11 @@ export class Notification extends Component {
 			blur,
 			backgroundColor,
 			color,
+			linkColor,
 			fontFamily,
 			fontWeight,
+			linkFontFamily,
+			linkFontWeight,
 			image
 		} = this.props.notificationPanelStyle;
 		const { contentText } = this.props;
@@ -27,8 +30,11 @@ export class Notification extends Component {
 			color: `rgb(${color.r}, ${color.g}, ${color.b})`,
 			boxShadow: `${shadow.r}px ${shadow.b}px ${shadow.g}px ${blur}px ${shadow.color}`,
 			borderRadius: `${radius}px`,
+			linkColor: `rgb(${linkColor.r}, ${linkColor.g}, ${linkColor.b}, ${linkColor.a})`,
 			fontFamily,
-			fontWeight
+			fontWeight,
+			linkFontFamily,
+			linkFontWeight
 		};
 
 		const notificationName =  this.props.notification.notificationName;
@@ -49,7 +55,7 @@ export class Notification extends Component {
 											 }}>
 											<div className="FPqR1JYFqJeA1JYF7MM9_0"><img src="images/554cf2e92cb6bf677667d90c_Testimonial-10 - Copy.jpg" style={{borderRadius:notificationPanelStyle.borderRadius}}/></div>
 											<div className="FPqR2EbCqJeA2EbC7MM9_0">
-												<div className="FPqR2AUlqJeA2AUl7MM9_0"> Username from City, Country </div>
+												<div className="FPqR2AUlqJeA2AUl7MM9_0" style={{color: notificationPanelStyle.color, fontFamily: notificationPanelStyle.fontFamily, fontWeight: notificationPanelStyle.fontWeight}}> Username from City, Country </div>
 												<div className="FPqR13BWqJeA13BW7MM9_0">{contentText}</div>
 												<div className="FPqR2PlWqJeA2PlW7MM9_0">a minute ago</div>
 												<div className="FPqR3eNuqJeA3eNu7MM9_0">
@@ -62,7 +68,7 @@ export class Notification extends Component {
 														</svg>
 													</i>
 													<span>by</span>
-													<span className="FPqR12wMqJeA12wM7MM9_0">Influence</span>
+													<span className="FPqR12wMqJeA12wM7MM9_0" style={{color: notificationPanelStyle.linkColor, fontFamily: notificationPanelStyle.linkFontFamily, fontWeight: notificationPanelStyle.linkFontWeight}} >Influence</span>
 												</div>
 											</div>
 											<div className="FPqR1N_EqJeA1N_E7MM9_0" style={{display: 'none'}}>

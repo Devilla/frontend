@@ -30,6 +30,12 @@ const notificationPanelStyleDefault = { // TODO: Take style values from server
     b: 0,
     a: 1
   },
+  linkColor: {
+    r: 0,
+    g: 137,
+    b: 216,
+    a: 1
+  },
   backgroundColor: {
     r: 255,
     g: 255,
@@ -37,7 +43,9 @@ const notificationPanelStyleDefault = { // TODO: Take style values from server
     a: 1
   },
   fontFamily: 'inherit',
-  fontWeight: 'normal'
+  fontWeight: 'normal',
+  linkFontFamily: 'inherit',
+  linkFontWeight: 'normal'
 };
 
 class Notifications extends Component {
