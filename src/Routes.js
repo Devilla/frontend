@@ -3,7 +3,6 @@ import { Router, Route, browserHistory, IndexRedirect } from 'react-router';
 import { store } from './index.js';
 
 import {
-  App,
   About,
   CompanyDetails,
   ContactPage,
@@ -32,6 +31,7 @@ import {
 } from 'components';
 
 import {
+  App,
   DashboardContainer,
   ConnectPage
 } from 'containers';
