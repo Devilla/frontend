@@ -45,7 +45,7 @@ class Notification extends Component {
       <tr key={campaign._id} onClick={(e) => this.handleRouteChange(e, campaign)}>
         <td>{i + 1 /* S.No */}</td>
         <td>{campaign.campaignName}</td>
-        <td><i className="fas fa-globe"></i> <a href={campaign.websiteUrl} target="_blank">{campaign.websiteUrl}</a></td>
+        <td><i className="fas fa-globe"></i> <a>{campaign.websiteUrl}</a></td>
         <td >
           <Switch switchStyles={{ width: 50 }}
             value={campaign.isActive}
