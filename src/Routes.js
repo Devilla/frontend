@@ -27,7 +27,7 @@ import {
   Upgrade,
   Integration,
   Error,
-  ComingSoon
+  ComingSoon,
 } from 'components';
 
 import {

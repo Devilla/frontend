@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 import { Spinner } from '../../components/index.js';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
+import { WebsiteHeader, WebsiteFooter } from 'components';
 import '../../css/stack-interface.css';
 import '../../css/socicon.css';
 import '../../css/iconsmind.css';
@@ -18,24 +19,26 @@ class App extends Component {
   render(){
     return (
         <div className="basic-gradient-light" data-smooth-scroll-offset="77">
-           <Header />
+           <WebsiteHeader />
            <Spinner loading={this.props.loading} />
            <div className="content">
-             {this.props.children}
+             {/* {this.props.children} */}
            </div>
-           <Footer />
+           <WebsiteFooter />
         </div>
     );
   }
 
 }
 
-App.propTypes = {
-  children: PropTypes.node,
-};
+// App.propTypes = {
+//   children: PropTypes.node,
+// };
+//
+// const mapStateToProps = state => ({
+//   loading: state.getIn(['loading', 'state']),
+// });
 
-const mapStateToProps = state => ({
-  loading: state.getIn(['loading', 'state']),
-});
+// export default connect(mapStateToProps)(App);
 
-export default connect(mapStateToProps)(App);
+export default App;
