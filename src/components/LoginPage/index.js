@@ -94,7 +94,9 @@ export default class Login extends Component {
                       {providers.map(provider => <SocialLink provider={provider} key={provider} />)}
                     </div>
                   </div>
-                  <div className="section-divider-line"></div>
+                  <div className="section-divider-line">
+                    <p>or</p>
+                  </div>
                   <div className="frmcntl">
                     <input
                       className="field w-input"

@@ -4,8 +4,30 @@
 
 .facebook, .google {
   width: 70%;
-  padding: 1% 0%;
+  padding: 2% 0%;
   height: 100%;
+}
+
+.google {
+  border: 1px solid #d6d9dc;
+  color: #3C7AFC;
+  background-color: white !important;
+}
+
+.facebook {
+  border: 1px solid #d6d9dc;
+  color: #4060B8;
+  background-color : white !important;
+}
+
+.link {
+  padding: 3% 0%;
+}
+
+.section-divider-line p {
+    margin: -11% 40% 0%;
+    z-index: 10000000000000;
+    background: #f6f9fc;
 }
 
 .fa {

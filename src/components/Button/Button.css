@@ -49,12 +49,3 @@
 .primary:active {
    box-shadow: inset 1px 1px 3px rgba(0,0,0,.15);
 }
-
-.google {
-  border: 1px solid #d6d9dc;
-  background-color: #3C7AFC !important;
-}
-
-.facebook {
-  background-color : #4060B8 !important;
-}
