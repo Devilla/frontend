@@ -126,8 +126,10 @@ export function* socialLogin(action) {
     yield put(load());
     const res = yield call(api.GET, action.url);
     if(res.error) {
-      console.log(res.error, res, "============response");
-      yield toast.error(res.message.message);
+      if(res.message.length)
+        yield toast.error(res.message[0].message);
+      else
+        yield toast.error(res.message.message);
       yield setTimeout(function() {
          window.location.assign(window.location.origin+'/login');
       }, 2000);
