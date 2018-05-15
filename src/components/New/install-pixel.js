@@ -5,13 +5,14 @@ import {
     Col,
     FormGroup,
     ControlLabel,
-    FormControl,
     ButtonToolbar,
     Button,
     Glyphicon
 } from 'react-bootstrap';
+import { connect } from 'react-redux';
 import copy from 'copy-to-clipboard';
 import { toast, ToastContainer } from 'react-toastify';
+import { fetchElastic, clearElastic } from 'ducks/elastic';
 
 import Tabs from 'components/Template/tab';
 import Highlight from 'react-highlight';
@@ -24,12 +25,10 @@ const toastConfig = {
 class InstallPixel extends Component{
   constructor(){
     super();
-    this.state = {
-
-    };
     this.handlePixelCopy = this.handlePixelCopy.bind(this);
     this.handleNextState = this.handleNextState.bind(this);
     this.activeState = this.activeState.bind(this);
+    this.verifyPixelStatus = this.verifyPixelStatus.bind(this);
   }
 
   componentDidMount() {
@@ -49,6 +48,10 @@ class InstallPixel extends Component{
     this.props.callbackFromParent(data);
   }
 
+  verifyPixelStatus() {
+    this.props.fetchElastic(`json.value.trackingId:${this.props.campaign.trackingId}`);
+  }
+
   handlePixelCopy() {
     const pixelCode = `<script src="https://cdninfluence.nyc3.digitaloceanspaces.com/influence-analytics.js"></script>
 <script>
@@ -62,7 +65,12 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
     return toast("Pixel copied", toastConfig);
   }
 
+  componentWillUnmount() {
+    this.props.clearElastic();
+  }
+
   render(){
+    const { elastic } = this.props;
     return (
       <div className="content">
         <Grid fluid>
@@ -94,7 +102,7 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
 </script>` }
                   </Highlight>
                   <ButtonToolbar>
-                    <Button bsStyle="default" className="blue" bsSize="small">
+                    <Button bsStyle={elastic==undefined?"warning":elastic.error?"danger":"success"} className="blue" bsSize="small" onClick={this.verifyPixelStatus}>
                       Verify Pixel Status
                     </Button>
                     <Button bsSize="small" bsStyle="default" onClick={this.handlePixelCopy}>Copy to clipboard</Button>
@@ -132,5 +140,13 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
   }
 }
 
+const mapStateToProps = state => ({
+  elastic: state.getIn(['elastic', 'elastic'])
+});
 
-export default InstallPixel;
+const mapDispatchToProps = {
+  fetchElastic,
+  clearElastic
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(InstallPixel);
