@@ -22,9 +22,7 @@ class Tabs extends Component{
   }
 
   render(){
-    if(val !== Number(this.props.active))
-      val = this.props.active?Number(this.props.active)-1:1;
-
+    val = this.props.active?Number(this.props.active)-1:1;
     return (
         <div className="content tabs">
             <Grid fluid>
