@@ -21,7 +21,7 @@ import { fetchLeads, createLeads, clearLeads, removeLead } from 'ducks/leads';
 import { fetchOneRules, clearRules } from 'ducks/rules';
 
 
-class CaptureLeads extends Component{
+class DisplayPage extends Component{
   constructor(){
     super();
     this.state= {
@@ -47,7 +47,7 @@ class CaptureLeads extends Component{
 
   componentWillReceiveProps(nextProps) {
     if(this.props.rules != nextProps.rules)
-      this.props.fetchLeads('lead', nextProps.rules._id);
+      this.props.fetchLeads(nextProps.rules._id);
   }
 
   activeState(val){
@@ -80,8 +80,7 @@ class CaptureLeads extends Component{
     const lead = {
       url: e.target.value,
       status: 'undefined',
-      class: '',
-      type: 'lead'
+      class: ''
     };
     this.setState({lead: lead});
   }
@@ -130,14 +129,13 @@ class CaptureLeads extends Component{
           <div className="tabscontent">
             <Row>
               <Col md={12}>
-                <h4>Details Of Your Lead Capturing Page</h4>
+                <h4>Details Of Your Notification Display Page</h4>
               </Col>
             </Row>
             <Row>
               <Col md={12}>
-                <p>Enter URL of page you are capturing conversions on. </p>
+                <p>Enter URL of page you display notifications on. </p>
                 <small>This page must have:<br/>
-                <i className="fas fa-angle-right"></i> An email form field<br/>
                 <i className="fas fa-angle-right"></i> Your Pixel installed (if not, Go to Install Pixel)</small>
                 <p>&nbsp;</p>
               </Col>
@@ -223,4 +221,4 @@ const mapDispatchToProps = {
   clearRules
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(CaptureLeads);
+export default connect(mapStateToProps, mapDispatchToProps)(DisplayPage);

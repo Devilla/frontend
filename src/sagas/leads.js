@@ -12,7 +12,7 @@ const toastConfig = {
 function* fetch(action) {
   try {
     yield put(load());
-    const res = yield call(api.GET, `lead/rules/${action.ruleId}`);
+    const res = yield call(api.GET, `notificationpath/rules/${action.type}/${action.ruleId}`);
     if(res.error)
       console.log(res.error);
     else
@@ -28,7 +28,7 @@ function* fetch(action) {
 function* fetchOne(action) {
   try {
     yield put(load());
-    const res = yield call(api.GET, `lead/campaign/${action.campId}`, );
+    const res = yield call(api.GET, `notificationpath/campaign/${action.campId}`, );
     if(res.error)
       console.log(res.error);
     else
@@ -45,7 +45,7 @@ function* fetchOne(action) {
 function* create(action) {
   try {
     yield put(load());
-    const res = yield call(api.POST, `lead`, action.leads);
+    const res = yield call(api.POST, `notificationpath`, action.leads);
     if(res.error)
       console.log(res.error);
     else {
@@ -65,7 +65,7 @@ function* update(action) {
   try {
     yield put(load());
     delete action.leads['_id'];
-    const res = yield call(api.PUT, `lead/${action.leads.id}`, action.leads);
+    const res = yield call(api.PUT, `notificationpath/${action.leads.id}`, action.leads);
     if(res.error)
       console.log(res.error);
     else {
@@ -84,7 +84,7 @@ function* update(action) {
 function* remove(action) {
   try {
     yield put(load());
-    const res = yield call(api.DELETE, `lead/${action.id}`);
+    const res = yield call(api.DELETE, `notificationpath/${action.id}`);
     if(res.error)
       console.log(res.error);
     else {

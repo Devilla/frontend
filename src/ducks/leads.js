@@ -11,7 +11,7 @@ export const FETCH_SUCCESS = action('FETCH_SUCCESS');
 export const CLEAR_LEADS = action('CLEAR_LEADS');
 export const POP_LEAD = action('POP_LEAD');
 
-export const fetchLeads = (ruleId) => ({ type: FETCH, ruleId });
+export const fetchLeads = (type, ruleId) => ({ type: FETCH, type, ruleId });
 export const createLeads = (leads) => ({ type: CREATE, leads });
 export const removeLead = (id, index) => ({ type: REMOVE, id, index });
 export const updateLeads = (leads) => ({ type: UPDATE, leads });
