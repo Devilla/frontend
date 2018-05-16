@@ -4,19 +4,14 @@ import {
     Row,
     Col,
     Table,
-    ControlLabel,
-    InputGroup,
-    FormControl,
-    ButtonToolbar,
     Button,
     Glyphicon
 } from 'react-bootstrap';
+import { browserHistory } from 'react-router';
 import { connect } from 'react-redux';
-import CardHeader from 'components/Template/card-with-header'
-import FormInputs from 'components/Template/FormTemp';
 import Tabs from 'components/Template/tab'
 import CardTable from 'components/Template/card-with-page-table'
-import { pagethArray, pagetdArray } from 'components/Template/data'
+import { pagethArray } from 'components/Template/data'
 import { fetchPageUrl, createPageUrl, clearLeads, removePageUrl } from 'ducks/pageurl';
 import { fetchOneRules, clearRules } from 'ducks/rules';
 
@@ -26,7 +21,12 @@ class DisplayPage extends Component{
     super();
     this.state= {
       error: '',
-      lead: {},
+      displayUrl: {
+        url: '',
+        status: '',
+        class: '',
+        type: ''
+      },
     };
     this.handleNextState = this.handleNextState.bind(this);
     this.handleBackState = this.handleBackState.bind(this);
@@ -37,17 +37,23 @@ class DisplayPage extends Component{
   }
 
   componentWillMount() {
-    this.setActiveState({active: 5});
+    this.setActiveState({active: 6});
   }
 
   componentDidMount() {
     if(this.props.campaign)
       this.props.fetchOneRules(this.props.campaign._id);
+    if(this.props.rules)
+      this.fetchPathUrls(this.props.rules);
   }
 
   componentWillReceiveProps(nextProps) {
     if(this.props.rules != nextProps.rules)
-      this.props.fetchPageUrl('dispaly', nextProps.rules._id);
+      this.fetchPathUrls(nextProps.rules);
+  }
+
+  fetchPathUrls(rule) {
+    this.props.fetchPageUrl('display', rule._id);
   }
 
   activeState(val){
@@ -55,11 +61,11 @@ class DisplayPage extends Component{
   }
 
   handleNextState() {
-    this.setActiveState({active: 6});
+    browserHistory.push('/notification');
   }
 
   handleBackState() {
-    this.setActiveState({active: 4});
+    this.setActiveState({active: 5});
   }
 
   setActiveState(val) {
@@ -68,29 +74,54 @@ class DisplayPage extends Component{
   }
 
   addPageUrl() {
-    if(!this.state.lead && !this.state.lead.url)
+    if(this.state.displayUrl.url == '')
       return this.setState({error: "Please enter a valid url"});
-    let lead = this.state.lead;
-    lead['rule'] = this.props.rules._id;
-    this.props.createPageUrl(lead);
-    this.setState({lead: null});
+    let displayUrl = this.state.displayUrl;
+    displayUrl['rule'] = this.props.rules._id;
+    this.props.createPageUrl(displayUrl);
+    this.setState({displayUrl: {
+      url: '',
+      status: '',
+      class: '',
+      type: ''
+    }});
   }
 
   handlePageUrl(e) {
-    const lead = {
+    const displayUrl = {
       url: e.target.value,
-      status: 'undefined',
-      class: ''
+      status: 'warning',
+      class: 'warning',
+      type: 'display'
     };
-    this.setState({lead: lead});
+    this.setState({displayUrl: displayUrl});
   }
 
   deleteDisplayUrl(id, index) {
     this.props.removePageUrl(id, index);
   }
 
+  renderColor(classname) {
+    switch (classname) {
+      case 'warning':
+        return '#FFEB3B';
+        break;
+      case 'primary':
+        return '#2196F3';
+        break;
+      case 'danger':
+        return '#F44336';
+        break;
+      case 'success':
+        return '#4CAF50';
+        break;
+      default:
+        return '#ddd';
+    }
+  }
+
   renderLeads() {
-    var displayUrls = this.props.displayUrl?this.props.displayUrl:[];
+    var displayUrls = this.props.displayUrls?this.props.displayUrls:[];
     return (
       <Table>
         <thead>
@@ -110,7 +141,7 @@ class DisplayPage extends Component{
               return <tr>
                  <td className="serial">{i+1}</td>
                  <td className="url">{displayUrl.url}</td>
-                 <td className="status"><span className={displayUrl.class}></span> {displayUrl.status}</td>
+                 <td className="status"><span style={{backgroundColor:this.renderColor(displayUrl.class)}}></span></td>
                  <td><a href="javascript:;" onClick={() => this.deleteDisplayUrl(displayUrl._id, i)}><Glyphicon glyph="trash" /></a></td>
               </tr>
             })
@@ -121,7 +152,6 @@ class DisplayPage extends Component{
   }
 
   render(){
-
     return (
       <div className="content">
         <Grid fluid>
@@ -173,7 +203,6 @@ class DisplayPage extends Component{
                 />
               </Col>
             </Row>
-
             <Row style={{padding: '5% 0%'}}>
               <Col md={6}>
                 <div className=" text-left">
@@ -187,7 +216,7 @@ class DisplayPage extends Component{
                 <div className=" text-right">
                   <Button bsStyle="primary" onClick={this.saveRules}>
                     <Glyphicon glyph="chevron-right" />
-                    Next
+                    Finish
                   </Button>
                 </div>
               </Col>
@@ -201,7 +230,7 @@ class DisplayPage extends Component{
 
 const mapStateToProps = state => ({
   rules: state.getIn(['rules', 'rule']),
-  displayUrl: state.getIn(['pageurl', 'pageurls']),
+  displayUrls: state.getIn(['pageurl', 'pageurls']),
   campaign: state.getIn(['campaign', 'campaign']),
 });
 

@@ -4,19 +4,13 @@ import {
     Row,
     Col,
     Table,
-    ControlLabel,
-    InputGroup,
-    FormControl,
-    ButtonToolbar,
     Button,
     Glyphicon
 } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import CardHeader from 'components/Template/card-with-header'
-import FormInputs from 'components/Template/FormTemp';
 import Tabs from 'components/Template/tab'
 import CardTable from 'components/Template/card-with-page-table'
-import { pagethArray, pagetdArray } from 'components/Template/data'
+import { pagethArray } from 'components/Template/data'
 import { fetchPageUrl, createPageUrl, clearPageUrl, removePageUrl } from 'ducks/pageurl';
 import { fetchOneRules, clearRules } from 'ducks/rules';
 
@@ -79,7 +73,7 @@ class CaptureLeads extends Component{
   }
 
   addPageUrl() {
-    if(!this.state.lead && !this.state.lead.url)
+    if(this.state.lead.url == '')
       return this.setState({error: "Please enter a valid url"});
     let lead = this.state.lead;
     lead['rule'] = this.props.rules._id;
@@ -96,7 +90,7 @@ class CaptureLeads extends Component{
     const lead = {
       url: e.target.value,
       status: 'undefined',
-      class: '',
+      class: 'warning',
       type: 'lead'
     };
     this.setState({lead: lead});
@@ -104,6 +98,25 @@ class CaptureLeads extends Component{
 
   deleteLead(id, index) {
     this.props.removePageUrl(id, index);
+  }
+
+  renderColor(classname) {
+    switch (classname) {
+      case 'warning':
+        return '#FFEB3B';
+        break;
+      case 'primary':
+        return '#2196F3';
+        break;
+      case 'danger':
+        return '#F44336';
+        break;
+      case 'success':
+        return '#4CAF50';
+        break;
+      default:
+        return '#ddd';
+    }
   }
 
   renderLeads() {
@@ -127,7 +140,7 @@ class CaptureLeads extends Component{
               return <tr>
                  <td className="serial">{i+1}</td>
                  <td className="url">{lead.url}</td>
-                 <td className="status"><span className={leads.class}></span> {leads.status}</td>
+                 <td className="status"><span style={{backgroundColor:this.renderColor(leads.class)}}></span></td>
                  <td><a href="javascript:;" onClick={() => this.deleteLead(lead._id, i)}><Glyphicon glyph="trash" /></a></td>
               </tr>
             })
@@ -138,7 +151,6 @@ class CaptureLeads extends Component{
   }
 
   render(){
-
     return (
       <div className="content">
         <Grid fluid>
@@ -191,7 +203,6 @@ class CaptureLeads extends Component{
                 />
               </Col>
             </Row>
-
             <Row>
               <div className="text-center">
                 <Col md={12}>
