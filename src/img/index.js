@@ -1,2 +1,14 @@
 export { default as LogoInfluence } from './logo-influence.png';
-// export { default as LogoLight } from './'
+export { default as HigherConversion } from './new-convert-more-customers.svg';
+export { default as SaveAcquisitions } from './new-customer-acquisition-costs.svg';
+export { default as IncreaseVisitors } from './new-review-trust.svg';
+export { default as SocialInfluence } from './new-social-influence-1.svg';
+export { default as Device } from './device-1.png';
+export { default as AnalyticsInsights } from './user_analytics.jpg';
+export { default as EasiestSetup } from './simple_setup.jpg';
+export { default as ActivityNotifications } from './new-recent-purchases.svg';
+export { default as LiveViewers } from './new-currently-viewing.svg';
+export { default as CustomerProfiles } from './new-profiling.svg';
+export { default as CustomerJourneys } from './new-customer-journey.svg';
+export { default as CustomeRules } from './new-popup-timings.svg';
+export { default as MobileReady } from './new-mobile-ready.svg';

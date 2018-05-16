@@ -1,6 +1,7 @@
 // export { default as App } from "./App";
 export { default as WebsiteHeader } from "./WebsiteHeader/WebsiteHeader";
 export { default as WebsiteFooter } from "./WebsiteFooter/WebsiteFooter";
+export { default as WebsiteHome } from "./WebsiteHome/WebsiteHome";
 export { default as Footer } from "./Footer/Footer";
 export { default as Header } from "./Header/Header";
 export { default as About } from "./AboutPage/index.js";

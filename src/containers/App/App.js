@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import { browserHistory } from 'react-router';
 import {connect} from 'react-redux';
 import { Spinner } from '../../components/index.js';
-// import 'bootstrap/dist/css/bootstrap.min.css';
-
 import { WebsiteHeader, WebsiteFooter } from 'components';
 import '../../css/stack-interface.css';
 import '../../css/socicon.css';
@@ -22,7 +20,7 @@ class App extends Component {
            <WebsiteHeader />
            <Spinner loading={this.props.loading} />
            <div className="content">
-             {/* {this.props.children} */}
+             {this.props.children}
            </div>
            <WebsiteFooter />
         </div>

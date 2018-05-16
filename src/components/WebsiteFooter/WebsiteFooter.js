@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from "react-router";
-// import { LogoInfluence } from 'img';
-// import { Link } from "react-router-dom";
-// import logo from './logo.svg';
-// import './WebsiteFooter.css';
 
 class WebsiteFooter extends Component {
   render() {
@@ -43,8 +39,12 @@ class WebsiteFooter extends Component {
                         </div>
                         <div className="col-sm-6 col-md-3">
                             <h6 className="type--uppercase">Newsletter</h6>
-                            <form action="//mrare.us8.list-manage.com/subscribe/post?u=77142ece814d3cff52058a51f&amp;id=f300c9cce8" data-success="Thanks for signing up.  Please check your inbox for a confirmation email." data-error="Please provide your email address."> <input className="validate-required validate-email" type="text" name="EMAIL" placeholder="Email Address" /> <button type="submit" className="btn btn--primary type--uppercase">Subscribe</button>
-                                <div style={{position: 'absolute', left: '-5000px'}} aria-hidden="true"> <input type="text" name="b_77142ece814d3cff52058a51f_f300c9cce8" tabindex="-1" value="" /> </div>
+                            <form>
+                              <input style={{margin: '0% 0% 5% 0%'}} className="validate-required validate-email" type="text" name="EMAIL" placeholder="Email Address" />
+                              <button type="submit" className="btn btn--primary type--uppercase">Subscribe</button>
+                              <div style={{position: 'absolute', left: '-5000px'}} aria-hidden="true">
+                                <input type="text" name="b_77142ece814d3cff52058a51f_f300c9cce8" tabindex="-1" value="" />
+                              </div>
                             </form>
                         </div>
                     </div>

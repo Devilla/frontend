@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from "react-router";
 import { LogoInfluence } from 'img';
-// import { Link } from "react-router-dom";
-// import logo from './logo.svg';
-// import './WebsiteHeader.css';
 
 class WebsiteHeader extends Component {
   render() {

@@ -28,6 +28,7 @@ import {
   Integration,
   Error,
   ComingSoon,
+  WebsiteHome,
 } from 'components';
 
 import {
@@ -56,7 +57,7 @@ const MyRoutes = ({routerHistory, store}) => (
     <Route path="/getting-started" component={LoginFlow} />
     <Route exact path="/connect/:provider" component={ConnectPage} />
     <Route component={App}>
-      <Route path="/" component={Home} />
+      <Route path="/" component={WebsiteHome} />
       <Route path="/about" component={About} />
       <Route path="/login" component={LoginPage} />
       <Route path="/profile/company/:token" component={CompanyDetails} />
