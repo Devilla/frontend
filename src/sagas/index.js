@@ -8,7 +8,7 @@ import campaign from './campaign';
 import rules from './rules';
 import configuration from './configuration';
 import elastic from './elastic';
-import leads from './leads';
+import pageurl from './pageurl';
 
   export default function* rootSaga() {
     yield [
@@ -21,6 +21,6 @@ import leads from './leads';
       fork(rules),
       fork(configuration),
       fork(elastic),
-      fork(leads)
+      fork(pageurl)
     ];
   }

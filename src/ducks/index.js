@@ -11,7 +11,7 @@ import rules from './rules';
 import loading from './loading';
 import configuration from './configuration';
 import elastic from './elastic';
-import leads from './leads';
+import pageurl from './pageurl';
 
 const reducer = combineReducers({
   profile,
@@ -24,7 +24,7 @@ const reducer = combineReducers({
   loading,
   configuration,
   elastic,
-  leads,
+  pageurl,
   router: routerReducer
 });
 

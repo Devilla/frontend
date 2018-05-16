@@ -17,7 +17,7 @@ import FormInputs from 'components/Template/FormTemp';
 import Tabs from 'components/Template/tab'
 import CardTable from 'components/Template/card-with-page-table'
 import { pagethArray, pagetdArray } from 'components/Template/data'
-import { fetchLeads, createLeads, clearLeads, removeLead } from 'ducks/leads';
+import { fetchPageUrl, createPageUrl, clearPageUrl, removePageUrl } from 'ducks/pageurl';
 import { fetchOneRules, clearRules } from 'ducks/rules';
 
 
@@ -26,7 +26,12 @@ class CaptureLeads extends Component{
     super();
     this.state= {
       error: '',
-      lead: {},
+      lead: {
+        url: '',
+        status: '',
+        class: '',
+        type: ''
+      }
     };
     this.handleNextState = this.handleNextState.bind(this);
     this.handleBackState = this.handleBackState.bind(this);
@@ -43,11 +48,17 @@ class CaptureLeads extends Component{
   componentDidMount() {
     if(this.props.campaign)
       this.props.fetchOneRules(this.props.campaign._id);
+    if(this.props.rules)
+      this.fetchPathUrls(this.props.rules);
   }
 
   componentWillReceiveProps(nextProps) {
     if(this.props.rules != nextProps.rules)
-      this.props.fetchLeads('lead', nextProps.rules._id);
+      this.fetchPathUrls(nextProps.rules);
+  }
+
+  fetchPathUrls(rule) {
+    this.props.fetchPageUrl('lead', rule._id);
   }
 
   activeState(val){
@@ -72,8 +83,13 @@ class CaptureLeads extends Component{
       return this.setState({error: "Please enter a valid url"});
     let lead = this.state.lead;
     lead['rule'] = this.props.rules._id;
-    this.props.createLeads(lead);
-    this.setState({lead: null});
+    this.props.createPageUrl(lead);
+    this.setState({lead: {
+      url: '',
+      status: '',
+      class: '',
+      type: ''
+    }});
   }
 
   handlePageUrl(e) {
@@ -87,7 +103,7 @@ class CaptureLeads extends Component{
   }
 
   deleteLead(id, index) {
-    this.props.removeLead(id, index);
+    this.props.removePageUrl(id, index);
   }
 
   renderLeads() {
@@ -145,7 +161,7 @@ class CaptureLeads extends Component{
             <Row>
               <Col md={12}>
                 <div className="input-group">
-                  <input type="text" className="form-control txtpageurl" placeholder="Page URL" aria-describedby="urladd" onChange={this.handlePageUrl}/>
+                  <input type="text" className="form-control txtpageurl" placeholder="Page URL" aria-describedby="urladd" value={this.state.lead.url} onChange={this.handlePageUrl}/>
                   <span className="input-group-btn" id="urladd">
                     <a className="btn btn-raised btn-primary blue" href="javascript:;" onClick={this.addPageUrl}>Add</a>
                   </span>
@@ -211,15 +227,15 @@ class CaptureLeads extends Component{
 
 const mapStateToProps = state => ({
   rules: state.getIn(['rules', 'rule']),
-  leads: state.getIn(['leads', 'leads']),
+  leads: state.getIn(['pageurl', 'pageurls']),
   campaign: state.getIn(['campaign', 'campaign']),
 });
 
 const mapDispatchToProps = {
   fetchOneRules,
-  fetchLeads,
-  createLeads,
-  removeLead,
+  fetchPageUrl,
+  createPageUrl,
+  removePageUrl,
   clearRules
 };
 

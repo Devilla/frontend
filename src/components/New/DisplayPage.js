@@ -17,7 +17,7 @@ import FormInputs from 'components/Template/FormTemp';
 import Tabs from 'components/Template/tab'
 import CardTable from 'components/Template/card-with-page-table'
 import { pagethArray, pagetdArray } from 'components/Template/data'
-import { fetchLeads, createLeads, clearLeads, removeLead } from 'ducks/leads';
+import { fetchPageUrl, createPageUrl, clearLeads, removePageUrl } from 'ducks/pageurl';
 import { fetchOneRules, clearRules } from 'ducks/rules';
 
 
@@ -33,7 +33,7 @@ class DisplayPage extends Component{
     this.activeState = this.activeState.bind(this);
     this.addPageUrl = this.addPageUrl.bind(this);
     this.handlePageUrl = this.handlePageUrl.bind(this);
-    this.deleteLead = this.deleteLead.bind(this);
+    this.deleteDisplayUrl = this.deleteDisplayUrl.bind(this);
   }
 
   componentWillMount() {
@@ -47,7 +47,7 @@ class DisplayPage extends Component{
 
   componentWillReceiveProps(nextProps) {
     if(this.props.rules != nextProps.rules)
-      this.props.fetchLeads(nextProps.rules._id);
+      this.props.fetchPageUrl('dispaly', nextProps.rules._id);
   }
 
   activeState(val){
@@ -72,7 +72,7 @@ class DisplayPage extends Component{
       return this.setState({error: "Please enter a valid url"});
     let lead = this.state.lead;
     lead['rule'] = this.props.rules._id;
-    this.props.createLeads(lead);
+    this.props.createPageUrl(lead);
     this.setState({lead: null});
   }
 
@@ -85,12 +85,12 @@ class DisplayPage extends Component{
     this.setState({lead: lead});
   }
 
-  deleteLead(id, index) {
-    this.props.removeLead(id, index);
+  deleteDisplayUrl(id, index) {
+    this.props.removePageUrl(id, index);
   }
 
   renderLeads() {
-    var leads = this.props.leads?this.props.leads:[];
+    var displayUrls = this.props.displayUrl?this.props.displayUrl:[];
     return (
       <Table>
         <thead>
@@ -106,12 +106,12 @@ class DisplayPage extends Component{
         </thead>
         <tbody>
           {
-            leads.map((lead, i) => {
+            displayUrls.map((displayUrl, i) => {
               return <tr>
                  <td className="serial">{i+1}</td>
-                 <td className="url">{lead.url}</td>
-                 <td className="status"><span className={leads.class}></span> {leads.status}</td>
-                 <td><a href="javascript:;" onClick={() => this.deleteLead(lead._id, i)}><Glyphicon glyph="trash" /></a></td>
+                 <td className="url">{displayUrl.url}</td>
+                 <td className="status"><span className={displayUrl.class}></span> {displayUrl.status}</td>
+                 <td><a href="javascript:;" onClick={() => this.deleteDisplayUrl(displayUrl._id, i)}><Glyphicon glyph="trash" /></a></td>
               </tr>
             })
           }
@@ -174,14 +174,6 @@ class DisplayPage extends Component{
               </Col>
             </Row>
 
-            <Row>
-              <div className="text-center">
-                <Col md={12}>
-                <p>&nbsp;</p> <p>&nbsp;</p>
-                Having problems with Auto Lead Capture in your current setup? &nbsp;&nbsp; <a href="javascript:;" className="btn blue btn-sm">Use Webhook Integration</a>
-                </Col>
-              </div>
-            </Row>
             <Row style={{padding: '5% 0%'}}>
               <Col md={6}>
                 <div className=" text-left">
@@ -209,15 +201,15 @@ class DisplayPage extends Component{
 
 const mapStateToProps = state => ({
   rules: state.getIn(['rules', 'rule']),
-  leads: state.getIn(['leads', 'leads']),
+  displayUrl: state.getIn(['pageurl', 'pageurls']),
   campaign: state.getIn(['campaign', 'campaign']),
 });
 
 const mapDispatchToProps = {
   fetchOneRules,
-  fetchLeads,
-  createLeads,
-  removeLead,
+  fetchPageUrl,
+  createPageUrl,
+  removePageUrl,
   clearRules
 };
 

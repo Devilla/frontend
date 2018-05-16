@@ -1,6 +1,6 @@
 import { call, put, select, fork, takeLatest } from 'redux-saga/effects';
 import * as api from 'services/api';
-import * as actions from 'ducks/leads';
+import * as actions from 'ducks/pageurl';
 import { load, loaded } from 'ducks/loading';
 import { ToastContainer, toast } from 'react-toastify';
 
@@ -12,7 +12,7 @@ const toastConfig = {
 function* fetch(action) {
   try {
     yield put(load());
-    const res = yield call(api.GET, `notificationpath/rules/${action.type}/${action.ruleId}`);
+    const res = yield call(api.GET, `notificationpath/rules/${action.pageType}/${action.ruleId}`);
     if(res.error)
       console.log(res.error);
     else
@@ -32,7 +32,7 @@ function* fetchOne(action) {
     if(res.error)
       console.log(res.error);
     else
-      yield put(actions.successLeads(res));
+      yield put(actions.successPageUrl(res));
 
     yield put(loaded());
   } catch (error) {
@@ -45,11 +45,11 @@ function* fetchOne(action) {
 function* create(action) {
   try {
     yield put(load());
-    const res = yield call(api.POST, `notificationpath`, action.leads);
+    const res = yield call(api.POST, `notificationpath`, action.pageurl);
     if(res.error)
       console.log(res.error);
     else {
-      yield put(actions.successLeads(res));
+      yield put(actions.successPageUrl(res));
     }
 
     yield put(loaded());
@@ -64,14 +64,14 @@ function* create(action) {
 function* update(action) {
   try {
     yield put(load());
-    delete action.leads['_id'];
-    const res = yield call(api.PUT, `notificationpath/${action.leads.id}`, action.leads);
+    delete action.pageurl['_id'];
+    const res = yield call(api.PUT, `notificationpath/${action.pageurl.id}`, action.pageurl);
     if(res.error)
       console.log(res.error);
     else {
-      let leads = action.leads;
-      leads["_id"] = leads.id;
-      yield put(actions.successLeads(leads));
+      let pageurl = action.pageurl;
+      pageurl["_id"] = pageurl.id;
+      yield put(actions.successPageUrl(pageurl));
     }
     yield put(loaded());
   } catch (error) {
@@ -88,7 +88,7 @@ function* remove(action) {
     if(res.error)
       console.log(res.error);
     else {
-      yield put(actions.popLead(action.index));
+      yield put(actions.popPageUrl(action.index));
     }
     yield put(loaded());
   } catch (error) {
