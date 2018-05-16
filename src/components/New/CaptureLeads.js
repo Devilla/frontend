@@ -140,7 +140,7 @@ class CaptureLeads extends Component{
               return <tr>
                  <td className="serial">{i+1}</td>
                  <td className="url">{lead.url}</td>
-                 <td className="status"><span style={{backgroundColor:this.renderColor(leads.class)}}></span></td>
+                 <td className="status"><span style={{backgroundColor:this.renderColor(lead.class)}}></span></td>
                  <td><a href="javascript:;" onClick={() => this.deleteLead(lead._id, i)}><Glyphicon glyph="trash" /></a></td>
               </tr>
             })
@@ -154,7 +154,7 @@ class CaptureLeads extends Component{
     return (
       <div className="content">
         <Grid fluid>
-          <Tabs active="2" callbackFromParent ={this.activeState}/>
+          <Tabs active="5" callbackFromParent={this.activeState}/>
           <div className="tabscontent">
             <Row>
               <Col md={12}>
@@ -222,7 +222,7 @@ class CaptureLeads extends Component{
               </Col>
               <Col md={6}>
                 <div className=" text-right">
-                  <Button bsStyle="primary" onClick={this.saveRules}>
+                  <Button bsStyle="primary" onClick={this.handleNextState}>
                     <Glyphicon glyph="chevron-right" />
                     Next
                   </Button>

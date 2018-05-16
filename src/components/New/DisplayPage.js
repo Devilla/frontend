@@ -155,7 +155,7 @@ class DisplayPage extends Component{
     return (
       <div className="content">
         <Grid fluid>
-          <Tabs active="2" callbackFromParent ={this.activeState}/>
+          <Tabs active="6" callbackFromParent={this.activeState}/>
           <div className="tabscontent">
             <Row>
               <Col md={12}>
@@ -214,7 +214,7 @@ class DisplayPage extends Component{
               </Col>
               <Col md={6}>
                 <div className=" text-right">
-                  <Button bsStyle="primary" onClick={this.saveRules}>
+                  <Button bsStyle="primary" onClick={this.handleNextState}>
                     <Glyphicon glyph="chevron-right" />
                     Finish
                   </Button>
