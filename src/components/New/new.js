@@ -115,7 +115,7 @@ export class NewUser extends Component {
       this.props.callbackFromParent({'active': 2});
   }
 
-
+  
   render() {
     const errors = validate(this.state.campaignname, this.state.website);
     const isDisabled = Object.keys(errors).some(x => errors[x]);

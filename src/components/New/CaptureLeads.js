@@ -11,21 +11,42 @@ import {
     Button,
     Glyphicon
 } from 'react-bootstrap';
+import { connect } from 'react-redux';
 import CardHeader from 'components/Template/card-with-header'
 import FormInputs from 'components/Template/FormTemp';
 import Tabs from 'components/Template/tab'
 import CardTable from 'components/Template/card-with-page-table'
-import {pagethArray,pagetdArray} from 'components/Template/data'
-class ConfigLeads extends Component{
+import { pagethArray, pagetdArray } from 'components/Template/data'
+import { fetchLeads, createLeads, clearLeads } from 'ducks/leads';
+import { fetchOneRules, clearRules } from 'ducks/rules';
+
+
+class CaptureLeads extends Component{
   constructor(){
     super();
+    this.state= {
+      error: '',
+      lead: {},
+    };
     this.handleNextState = this.handleNextState.bind(this);
     this.handleBackState = this.handleBackState.bind(this);
     this.activeState = this.activeState.bind(this);
+    this.addPageUrl = this.addPageUrl.bind(this);
+    this.handlePageUrl = this.handlePageUrl.bind(this);
   }
 
   componentWillMount() {
     this.setActiveState({active: 5});
+  }
+
+  componentDidMount() {
+    if(this.props.campaign)
+      this.props.fetchOneRules(this.props.campaign._id);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if(this.props.rules != nextProps.rules)
+      this.props.fetchLeads(nextProps.rules._id);
   }
 
   activeState(val){
@@ -45,18 +66,57 @@ class ConfigLeads extends Component{
     this.props.callbackFromParent(data);
   }
 
+  addPageUrl() {
+    if(!this.state.lead && !this.state.lead.url)
+      return this.setState({error: "Please enter a valid url"});
+    let lead = this.state.lead;
+    lead['rule'] = this.props.rules._id;
+    this.props.createLeads(lead);
+    this.setState({lead: null});
+  }
+
+  handlePageUrl(e) {
+    const lead = {
+      url: e.target.value,
+      status: 'undefined',
+      class: ''
+    };
+    this.setState({lead: lead});
+  }
+
+  renderLeads() {
+    var leads = this.props.leads?this.props.leads:[];
+    return (
+      <Table>
+        <thead>
+          <tr>
+          {
+            pagethArray.map((prop, key) => {
+              return (
+              <th  key={key}>{prop}</th>
+              );
+            })
+          }
+          </tr>
+        </thead>
+        <tbody>
+          {
+            leads.map((lead, i) => {
+              return <tr>
+                 <td className="serial">{i+1}</td>
+                 <td className="url">{lead.url}</td>
+                 <td className="status"><span className={leads.class}></span> {leads.status}</td>
+                 <td><a href="javascript:;"><i className="far fa-trash-alt"></i></a> </td>
+              </tr>
+            })
+          }
+        </tbody>
+      </Table>
+    )
+  }
+
   render(){
-    var  tasks  = []
-    for (var i = 0; i < pagetdArray.length; i++) {
-        tasks.push(
-            <tr key={i}>
-               <td className="serial">{i+1}</td>
-               <td className="url">{pagetdArray[i].url}</td>
-               <td className="status"><span className={pagetdArray[i].class}></span> {pagetdArray[i].status}</td>
-               <td><a href="javascript:;"><i className="far fa-trash-alt"></i></a> </td>
-            </tr>
-        );
-    }
+
     return (
       <div className="content">
         <Grid fluid>
@@ -79,9 +139,9 @@ class ConfigLeads extends Component{
             <Row>
               <Col md={12}>
                 <div className="input-group">
-                  <input type="text" className="form-control txtpageurl" placeholder="Page URL" aria-describedby="urladd"/>
+                  <input type="text" className="form-control txtpageurl" placeholder="Page URL" aria-describedby="urladd" onChange={this.handlePageUrl}/>
                   <span className="input-group-btn" id="urladd">
-                    <a className="btn btn-raised btn-primary blue" href="javascript:;">Add</a>
+                    <a className="btn btn-raised btn-primary blue" href="javascript:;" onClick={this.addPageUrl}>Add</a>
                   </span>
                 </div>
               </Col>
@@ -103,24 +163,7 @@ class ConfigLeads extends Component{
                 <CardTable
                   content ={
                     <div className="text-center centertbl">
-                      <Table>
-                        <thead>
-                          <tr>
-                          {
-                            pagethArray.map((prop, key) => {
-                              return (
-                              <th  key={key}>{prop}</th>
-                              );
-                            })
-                          }
-                          </tr>
-                          </thead>
-                          <tbody>
-                            {
-                              tasks
-                            }
-                          </tbody>
-                      </Table>
+                      {this.renderLeads()}
                     </div>
                   }
                 />
@@ -160,5 +203,17 @@ class ConfigLeads extends Component{
   }
 }
 
+const mapStateToProps = state => ({
+  rules: state.getIn(['rules', 'rule']),
+  leads: state.getIn(['leads', 'leads']),
+  campaign: state.getIn(['campaign', 'campaign']),
+});
 
-export default ConfigLeads;
+const mapDispatchToProps = {
+  fetchOneRules,
+  fetchLeads,
+  createLeads,
+  clearRules
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(CaptureLeads);
