@@ -79,7 +79,23 @@ function* update(action) {
     console.log('Failed to fetch doc', error);
     yield toast.error(error.message, toastConfig);
   }
+}
 
+function* remove(action) {
+  try {
+    yield put(load());
+    const res = yield call(api.DELETE, `lead/${action.id}`);
+    if(res.error)
+      console.log(res.error);
+    else {
+      yield put(actions.popLead(action.index));
+    }
+    yield put(loaded());
+  } catch (error) {
+    yield put(loaded());
+    console.log('Failed to fetch doc', error);
+    yield toast.error(error.message, toastConfig);
+  }
 }
 
 export function* watchFetch() {
@@ -98,11 +114,16 @@ export function* watchUpdate() {
   yield takeLatest(actions.UPDATE, update);
 }
 
+export function* watchRemove() {
+  yield takeLatest(actions.REMOVE, remove);
+}
+
 export default function* rootSaga() {
   yield [
     fork(watchFetch),
     fork(watchFetchOne),
     fork(watchCreate),
-    fork(watchUpdate)
+    fork(watchUpdate),
+    fork(watchRemove)
   ];
 }

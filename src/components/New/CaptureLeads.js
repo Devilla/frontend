@@ -17,7 +17,7 @@ import FormInputs from 'components/Template/FormTemp';
 import Tabs from 'components/Template/tab'
 import CardTable from 'components/Template/card-with-page-table'
 import { pagethArray, pagetdArray } from 'components/Template/data'
-import { fetchLeads, createLeads, clearLeads } from 'ducks/leads';
+import { fetchLeads, createLeads, clearLeads, removeLead } from 'ducks/leads';
 import { fetchOneRules, clearRules } from 'ducks/rules';
 
 
@@ -33,6 +33,7 @@ class CaptureLeads extends Component{
     this.activeState = this.activeState.bind(this);
     this.addPageUrl = this.addPageUrl.bind(this);
     this.handlePageUrl = this.handlePageUrl.bind(this);
+    this.deleteLead = this.deleteLead.bind(this);
   }
 
   componentWillMount() {
@@ -84,6 +85,10 @@ class CaptureLeads extends Component{
     this.setState({lead: lead});
   }
 
+  deleteLead(id, index) {
+    this.props.removeLead(id, index);
+  }
+
   renderLeads() {
     var leads = this.props.leads?this.props.leads:[];
     return (
@@ -106,7 +111,7 @@ class CaptureLeads extends Component{
                  <td className="serial">{i+1}</td>
                  <td className="url">{lead.url}</td>
                  <td className="status"><span className={leads.class}></span> {leads.status}</td>
-                 <td><a href="javascript:;"><i className="far fa-trash-alt"></i></a> </td>
+                 <td><a href="javascript:;" onClick={() => this.deleteLead(lead._id, i)}><Glyphicon glyph="trash" /></a></td>
               </tr>
             })
           }
@@ -213,6 +218,7 @@ const mapDispatchToProps = {
   fetchOneRules,
   fetchLeads,
   createLeads,
+  removeLead,
   clearRules
 };
 
