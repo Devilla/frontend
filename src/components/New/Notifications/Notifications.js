@@ -183,7 +183,6 @@ class Notifications extends Component {
     let configuration = this.props.configuration.size == 0 ? null : this.props.configuration.size ? this.props.configuration.toJS() : this.props.configuration;
     if((configuration && configuration._id) || configId) {
       configure['id'] = configId?configId:configuration._id;
-      delete configure['campaign'];
       this.props.updateConfiguration(configure);
     } else {
       this.props.createConfiguration(configure);

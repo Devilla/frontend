@@ -60,14 +60,13 @@ function* create(action) {
 function* update(action) {
   try {
     yield put(load());
+    const campId =  action.configuration.campaign;
+    delete action.configuration['campaign'];
     const res = yield call(api.PUT, `configuration/${action.configuration.id}`, action.configuration);
     if(res.error)
       console.log(res.error);
-    else {
-      let configuration = action.configuration;
-      configuration["_id"] = configuration.id;
-      yield put(actions.fetchConfiguration(configuration.campaign));
-    }
+    else
+      yield put(actions.fetchConfiguration(campId));
     yield put(loaded());
   } catch (error) {
     yield put(loaded());
