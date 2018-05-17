@@ -168,13 +168,13 @@ class Notifications extends Component {
   }
 
   configure(notification) {
-    this.setState({notification: notification});
     this.props.fetchCampaignConfiguration(this.props.campaign._id, notification._id);
+    this.setState({notification: notification});
   }
 
   saveConfiguration(activity, id, configId) {
     const configure = {
-      activity: activity != undefined ? activity : this.state.activity,
+      activity: activity != undefined && id ? activity : this.state.activity,
       notificationType: id?id:this.state.notification._id,
       panelStyle: this.state.notificationPanelStyle,
       contentText: this.state.contentText,
@@ -183,6 +183,7 @@ class Notifications extends Component {
     let configuration = this.props.configuration.size == 0 ? null : this.props.configuration.size ? this.props.configuration.toJS() : this.props.configuration;
     if((configuration && configuration._id) || configId) {
       configure['id'] = configId?configId:configuration._id;
+      delete configure['campaign'];
       this.props.updateConfiguration(configure);
     } else {
       this.props.createConfiguration(configure);
@@ -198,7 +199,6 @@ class Notifications extends Component {
 
   render() {
     const { notifications, configurations, createSuccess } = this.props;
-
     return (<div className="content notification-list">
       <Grid fluid>
         <Tabs active="3" callbackFromParent={this.activeState}/>

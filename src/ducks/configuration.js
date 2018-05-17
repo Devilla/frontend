@@ -21,20 +21,32 @@ export const clearConfiguration = () => ({ type: CLEAR });
 const initialConfig = {
   activity: false,
   panelStyle: { // TODO: Take style values from server
-    radius: 35,
+    radius: 50,
     borderWidth: 0,
     borderColor: {
       r: 200,
       g: 200,
       b: 200,
-      a: 1
+      a: 0.80
     },
-    shadow: 0,
-    blur: 2,
+    shadow: {
+      r: 0,
+      g: 0,
+      b: 0,
+      color: 'lightgrey'
+    },
+    blur: 0,
     color: {
       r: 0,
       g: 0,
-      b: 0
+      b: 0,
+      a: 1
+    },
+    linkColor: {
+      r: 0,
+      g: 137,
+      b: 216,
+      a: 1
     },
     backgroundColor: {
       r: 255,
@@ -43,7 +55,9 @@ const initialConfig = {
       a: 1
     },
     fontFamily: 'inherit',
-    fontWeight: 'normal'
+    fontWeight: 'normal',
+    linkFontFamily: 'inherit',
+    linkFontWeight: 'normal'
   },
   contentText: ''
 };
