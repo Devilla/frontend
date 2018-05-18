@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Grid, Row, Col, Table } from 'react-bootstrap';
+import { Grid, Row, Col, Table, Glyphicon } from 'react-bootstrap';
 import Card from 'components/utils/card'
 import Switch from 'react-flexible-switch';
 import { getCookie } from 'components/Common/function';
 import moment from 'moment';
 import { browserHistory } from 'react-router';
 
-import { fetchCampaign, updateCampaign, successCampaign } from 'ducks/campaign';
+import { fetchCampaign, updateCampaign, successCampaign, removeCampaign } from 'ducks/campaign';
 
 
-const notificationFields = [ 'S.No', 'Campaign', 'Domain', 'Status', 'Tracking ID', 'Log', 'Modified', 'Created' ];
+const notificationFields = [ 'S.No', 'Campaign', 'Domain', 'Status', 'Tracking ID', 'Log', 'Created', 'Delete' ];
 
 class Notification extends Component {
   constructor() {
@@ -32,11 +32,17 @@ class Notification extends Component {
 
   handleRouteChange(e, campaign) {
     if(e.target.className == 'react-flexible-switch react-flexible-switch--active' ||
-      e.target.className == 'react-flexible-switch-circle'
+      e.target.className == 'react-flexible-switch react-flexible-switch--inactive' ||
+      e.target.className == 'react-flexible-switch-circle' ||
+      e.target.className == 'glyphicon glyphicon-trash'
     )
       return;
     this.props.successCampaign(campaign);
     browserHistory.push('/new');
+  }
+
+  deleteCampaign(index, campId) {
+    this.props.removeCampaign(index, campId);
   }
 
   // Map the notification data into table rows and return
@@ -55,8 +61,8 @@ class Notification extends Component {
         </td>
         <td>{campaign.trackingId}</td>
         <td>{campaign.log}</td>
-        <td>{moment(campaign.updatedAt).format('MM/DD/YYYY')}</td>
         <td>{moment(campaign.createdAt).format('MM/DD/YYYY')}</td>
+        <td><Glyphicon glyph="trash" onClick={() => this.deleteCampaign(i, campaign._id)} /></td>
       </tr>
     ))
     :
@@ -115,7 +121,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = {
   fetchCampaign,
   updateCampaign,
-  successCampaign
+  successCampaign,
+  removeCampaign
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Notification);

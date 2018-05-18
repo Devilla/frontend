@@ -62,7 +62,22 @@ function* update(action) {
     console.log('Failed to fetch doc', error);
     yield toast.error(error.message, toastConfig);
   }
+}
 
+function* remove(action) {
+  try {
+    yield put(load());
+    const res = yield call(api.DELETE, `campaign/${action.campaignId}`);
+    if(res.error)
+      console.log(res.error);
+    else
+      yield put(actions.popCampaign(action.index));
+    yield put(loaded());
+  } catch (error) {
+    yield put(loaded());
+    console.log('Failed to fetch doc', error);
+    yield toast.error(error.message, toastConfig);
+  }
 }
 
 function* fetchCampaignsInfo(action) {
@@ -93,6 +108,10 @@ export function* watchUpdate() {
   yield takeLatest(actions.UPDATE, update);
 }
 
+export function* watchRemove() {
+  yield takeLatest(actions.REMOVE, remove);
+}
+
 export function* watchCampaignInfo() {
   yield takeLatest(actions.FETCH_CAMPAIGN_INFO, fetchCampaignsInfo);
 }
@@ -102,6 +121,7 @@ export default function* rootSaga() {
     fork(watchFetch),
     fork(watchCreate),
     fork(watchUpdate),
+    fork(watchRemove),
     fork(watchCampaignInfo)
   ];
 }
