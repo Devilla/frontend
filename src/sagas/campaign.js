@@ -33,7 +33,7 @@ function* create(action) {
       if(res.message == "Invalid domain")
         yield toast.error("This website url is Invalid.", toastConfig);
       else
-        yield toast.error("This website is already configured", toastConfig);
+        yield toast.error("This website is already configured with this account", toastConfig);
     else
       yield put(actions.successCampaign(res));
     yield put(loaded());
