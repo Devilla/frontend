@@ -102,7 +102,7 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
 </script>` }
                   </Highlight>
                   <ButtonToolbar>
-                    <Button bsStyle={elastic==undefined?"warning":elastic.error?"danger":"success"} className="blue" bsSize="small" onClick={this.verifyPixelStatus}>
+                    <Button bsStyle={elastic==undefined?"":elastic.error?"warning":"success"} className="btn-default" bsSize="small" onClick={this.verifyPixelStatus}>
                       Verify Pixel Status
                     </Button>
                     <Button bsSize="small" bsStyle="default" onClick={this.handlePixelCopy}>Copy to clipboard</Button>
