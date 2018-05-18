@@ -10,7 +10,7 @@ import {Scrollbars} from 'react-custom-scrollbars';
 import {dataSales, optionsSales, responsiveSales, legendSales} from 'components/utils/variable.jsx';
 import { getCookie, ajaxgetrequest } from 'components';
 import { fetchElastic } from 'ducks/elastic';
-import { fetchCampaignInfo } from 'ducks/campaign';
+import { fetchCampaignInfo, successCampaign } from 'ducks/campaign';
 
 class Dashboard extends Component {
   constructor() {
@@ -20,6 +20,7 @@ class Dashboard extends Component {
       arrs: [],
       UniqueVisitor: 0
     }
+    this.handleRouteChange = this.handleRouteChange.bind(this);
   }
 
   componentWillMount() {
@@ -42,8 +43,14 @@ class Dashboard extends Component {
     return legend;
   }
 
+  handleRouteChange(campaign) {
+    console.log(campaign, "===========camp");
+    this.props.successCampaign(campaign);
+    browserHistory.push('/new');
+  }
+
   render() {
-    const { campaignInfo } = this.props;
+    const { campaignInfo, successCampaign } = this.props;
     return (<div className="content">
       <Grid fluid="fluid">
 
@@ -57,7 +64,7 @@ class Dashboard extends Component {
                           height: 150
                         }}>
                         <table className="table">
-                          <Website data={campaignInfo?campaignInfo.websiteLive:[]} render={campaignInfo?true:false}/>
+                          <Website data={campaignInfo?campaignInfo.websiteLive:[]} handleRouteChange={this.handleRouteChange} render={campaignInfo?true:false}/>
                         </table>
                       </Scrollbars>
                     </div>}/>
@@ -148,6 +155,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
   fetchElastic,
+  successCampaign,
   fetchCampaignInfo
 };
 
