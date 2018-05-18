@@ -13,7 +13,6 @@ const NotificationConfigure = ({
     handleContentChange,
     notificationPanelStyle,
     handleNotificationStyleChange,
-    backConfiguration,
     saveConfiguration
   }) => {
   return (
@@ -47,7 +46,7 @@ const NotificationConfigure = ({
       <Row>
         <Col md={4}>
           <div className=" text-left">
-            <Button bsStyle="primary" onClick={backConfiguration}>
+            <Button bsStyle="primary" onClick={saveConfiguration}>
               <Glyphicon glyph="chevron-left" />
               Back
             </Button>

@@ -66,7 +66,6 @@ class Notifications extends Component {
     this.handleNotificationStyleChange = this.handleNotificationStyleChange.bind(this);
     this.handleContentChange = this.handleContentChange.bind(this);
     this.saveConfiguration = this.saveConfiguration.bind(this);
-    this.backConfiguration = this.backConfiguration.bind(this);
     this.setNewConfig = this.setNewConfig.bind(this);
     this.setDefaultPanel = this.setDefaultPanel.bind(this);
     this.handleNextState = this.handleNextState.bind(this);
@@ -191,11 +190,6 @@ class Notifications extends Component {
     this.setInitialState();
   }
 
-  backConfiguration() {
-    this.props.clearConfiguration();
-    this.setInitialState();
-  }
-
   render() {
     const { notifications, configurations, createSuccess } = this.props;
     return (<div className="content notification-list">
@@ -226,7 +220,6 @@ class Notifications extends Component {
                     handleActivityChange={this.handleActivityChange}
                     handleNotificationStyleChange={this.handleNotificationStyleChange}
                     saveConfiguration = {this.saveConfiguration}
-                    backConfiguration = {this.backConfiguration}
                   />
                 </Row>
             }
