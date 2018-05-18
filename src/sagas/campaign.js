@@ -30,7 +30,10 @@ function* create(action) {
     yield put(load());
     const res = yield call(api.POST, `campaign`, action.campaign);
     if(res.error)
-      yield toast.error("This website is already configured", toastConfig);
+      if(res.message == "Invalid domain")
+        yield toast.error("This website url is Invalid.", toastConfig);
+      else
+        yield toast.error("This website is already configured", toastConfig);
     else
       yield put(actions.successCampaign(res));
     yield put(loaded());
