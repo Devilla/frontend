@@ -71,6 +71,7 @@ class Notifications extends Component {
     this.handleNextState = this.handleNextState.bind(this);
     this.handleBackState = this.handleBackState.bind(this);
     this.activeState = this.activeState.bind(this);
+    this.backConfiguration = this.backConfiguration.bind(this);
   }
 
   componentWillMount() {
@@ -162,6 +163,7 @@ class Notifications extends Component {
   }
 
   setActiveState(val) {
+    this.setState({notification: ''});
     var data = {'tab' : val};
     this.props.callbackFromParent(data);
   }
@@ -186,6 +188,11 @@ class Notifications extends Component {
     } else {
       this.props.createConfiguration(configure);
     }
+    this.props.clearConfiguration();
+    this.setInitialState();
+  }
+
+  backConfiguration() {
     this.props.clearConfiguration();
     this.setInitialState();
   }
@@ -220,6 +227,7 @@ class Notifications extends Component {
                     handleActivityChange={this.handleActivityChange}
                     handleNotificationStyleChange={this.handleNotificationStyleChange}
                     saveConfiguration = {this.saveConfiguration}
+                    backConfiguration= { this.backConfiguration }
                   />
                 </Row>
             }
