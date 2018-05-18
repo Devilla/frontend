@@ -1,6 +1,6 @@
 import { call, put, select, fork, takeLatest } from 'redux-saga/effects';
 import * as api from 'services/api';
-import * as actions from 'ducks/configuration';
+import * as actions from 'ducks/pageurl';
 import { load, loaded } from 'ducks/loading';
 import { ToastContainer, toast } from 'react-toastify';
 
@@ -12,42 +12,46 @@ const toastConfig = {
 function* fetch(action) {
   try {
     yield put(load());
-    const res = yield call(api.GET, `configuration/${action.campId}`);
+    const res = yield call(api.GET, `notificationpath/rules/${action.pageType}/${action.ruleId}`);
     if(res.error)
       console.log(res.error);
     else
-      yield put(actions.successConfiguration(res));
+      yield put(actions.fetchSuccess(res));
     yield put(loaded());
   } catch (error) {
     yield put(loaded());
     console.log('Failed to fetch doc', error);
-    // yield toast.error(error.message, toastConfig);
+    yield toast.error(error.message, toastConfig);
   }
 }
 
-function* fetchCampaignConfiguration(action) {
+function* fetchOne(action) {
   try {
     yield put(load());
-    const res = yield call(api.GET, `configuration/campaign/${action.campId}/${action.notifId}`);
+    const res = yield call(api.GET, `notificationpath/campaign/${action.campId}`, );
     if(res.error)
       console.log(res.error);
     else
-      yield put(actions.createSuccess(res));
+      yield put(actions.successPageUrl(res));
+
     yield put(loaded());
   } catch (error) {
     yield put(loaded());
     console.log('Failed to fetch doc', error);
+    yield toast.error(error.message, toastConfig);
   }
 }
 
 function* create(action) {
   try {
     yield put(load());
-    const res = yield call(api.POST, `configuration`, action.configuration);
+    const res = yield call(api.POST, `notificationpath`, action.pageurl);
     if(res.error)
       console.log(res.error);
-    else
-      yield put(actions.createSuccess(res));
+    else {
+      yield put(actions.successPageUrl(res));
+    }
+
     yield put(loaded());
   } catch (error) {
     yield put(loaded());
@@ -60,28 +64,46 @@ function* create(action) {
 function* update(action) {
   try {
     yield put(load());
-    const campId =  action.configuration.campaign;
-    delete action.configuration['campaign'];
-    const res = yield call(api.PUT, `configuration/${action.configuration.id}`, action.configuration);
+    delete action.pageurl['_id'];
+    const res = yield call(api.PUT, `notificationpath/${action.pageurl.id}`, action.pageurl);
     if(res.error)
       console.log(res.error);
-    else
-      yield put(actions.fetchConfiguration(campId));
+    else {
+      let pageurl = action.pageurl;
+      pageurl["_id"] = pageurl.id;
+      yield put(actions.successPageUrl(pageurl));
+    }
     yield put(loaded());
   } catch (error) {
     yield put(loaded());
     console.log('Failed to fetch doc', error);
     yield toast.error(error.message, toastConfig);
   }
+}
 
+function* remove(action) {
+  try {
+    yield put(load());
+    const res = yield call(api.DELETE, `notificationpath/${action.id}`);
+    if(res.error)
+      console.log(res.error);
+    else {
+      yield put(actions.popPageUrl(action.index));
+    }
+    yield put(loaded());
+  } catch (error) {
+    yield put(loaded());
+    console.log('Failed to fetch doc', error);
+    yield toast.error(error.message, toastConfig);
+  }
 }
 
 export function* watchFetch() {
   yield takeLatest(actions.FETCH, fetch);
 }
 
-export function* watchFetchCampaignConfig() {
-  yield takeLatest(actions.FETCH_CAMPAIGN_CONFIG, fetchCampaignConfiguration);
+export function* watchFetchOne() {
+  yield takeLatest(actions.FETCH_ONE, fetchOne);
 }
 
 export function* watchCreate() {
@@ -92,11 +114,16 @@ export function* watchUpdate() {
   yield takeLatest(actions.UPDATE, update);
 }
 
+export function* watchRemove() {
+  yield takeLatest(actions.REMOVE, remove);
+}
+
 export default function* rootSaga() {
   yield [
     fork(watchFetch),
+    fork(watchFetchOne),
     fork(watchCreate),
     fork(watchUpdate),
-    fork(watchFetchCampaignConfig)
+    fork(watchRemove)
   ];
 }

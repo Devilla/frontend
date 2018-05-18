@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import LeftView from './left-view'
 import RightView from './right-view'
 import Localization from '../localization';
-import { fetchOneRules, createRules, updateRules, clearRules } from '../../../../ducks/rules';
+import { fetchOneRules, createRules, updateRules, clearRules } from 'ducks/rules';
 import Tabs from 'components/Template/tab'
 
 export class Display extends Component{
@@ -70,9 +70,9 @@ export class Display extends Component{
     this.props.handleNextState();
   }
 
-  componentWillUnmount() {
-      this.props.clearRules();
-  }
+  // componentWillUnmount() {
+  //     this.props.clearRules();
+  // }
 
   render(){
     const { handleBackState } = this.props;
