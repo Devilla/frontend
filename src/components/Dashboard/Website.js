@@ -15,7 +15,7 @@ export class Website extends Component{
         for (var i = 0; i < this.props.data.length; i++) {
            tasks.push(
                 <tr key={i}>
-                    <td><i className="fas fa-globe"></i> {this.props.data[i]}</td>
+                    <td>{i+1}. <i className="fas fa-globe"></i> {this.props.data[i]}</td>
                 </tr>
             );
         }
