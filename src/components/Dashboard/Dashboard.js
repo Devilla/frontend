@@ -60,7 +60,7 @@ class Dashboard extends Component {
               <Col lg={6} sm={6}>
                 <Row>
                   <Col lg={12}>
-                    <Card title="Websites with Pixel" category="" content={<div className = "table-full-width" > <Scrollbars style={{
+                    <Card title="Active Campaigns" category="" content={<div className = "table-full-width" > <Scrollbars style={{
                           height: 150
                         }}>
                         <table className="table">
