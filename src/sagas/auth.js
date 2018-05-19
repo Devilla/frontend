@@ -145,6 +145,30 @@ export function* socialLogin(action) {
   }
 }
 
+export function* verifyUser(action) {
+  try {
+    yield put(load());
+    const res = yield call(api.GET, `auth/verify/${action.code}`);
+    if(res.error) {
+      if(res.message.length)
+        yield toast.error(res.message[0].message);
+      else
+        yield toast.error(res.message.message);
+      yield setTimeout(function() {
+         window.location.assign(window.location.origin+'/login');
+      }, 2000);
+    } else {
+      yield storeToken(res.jwt)
+      yield window.location.assign(window.location.origin+'/dashboard');;
+    }
+    yield put(loaded());
+  } catch (error) {
+    yield put(loaded());
+    yield browserHistory.push('/login');
+    yield console.log(error);
+  }
+}
+
 export function* watchCheckToken() {
   yield takeLatest(actions.CHECK_TOKEN_EXISTS, checkTokenExists);
 }
@@ -169,6 +193,10 @@ export function* watchSocialLogin() {
   yield takeLatest(actions.SOCIAL_LOGIN, socialLogin);
 }
 
+export function* watchVerifyUser() {
+  yield takeLatest(actions.VERIFY_USER, verifyUser);
+}
+
 export default function* rootSaga() {
   yield [
     fork(watchCheckToken),
@@ -176,6 +204,7 @@ export default function* rootSaga() {
     fork(watchUpdateUser),
     fork(watchFetchRoles),
     fork(watchForgotPassword),
-    fork(watchSocialLogin)
+    fork(watchSocialLogin),
+    fork(watchVerifyUser)
   ];
 }

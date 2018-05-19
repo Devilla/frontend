@@ -28,7 +28,8 @@ import {
   Upgrade,
   Integration,
   Error,
-  ComingSoon
+  ComingSoon,
+  VerificationPage
 } from 'components';
 
 import {
@@ -55,6 +56,7 @@ const MyRoutes = ({routerHistory, store}) => (
     </Route>
     <Route path="/getting-started" component={LoginFlow} />
     <Route exact path="/connect/:provider" component={ConnectPage} />
+    <Route exact path="/verify/:code" component={VerificationPage} />
     <Route component={App}>
       <Route path="/" component={Home} />
       <Route path="/about" component={About} />

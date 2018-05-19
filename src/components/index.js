@@ -30,3 +30,4 @@ export { default as Integration } from './Integration/Integration';
 export { default as Button } from './Button/Button';
 export { default as Profile } from './Profile/Profile';
 export { default as Template } from './Template';
+export { default as VerificationPage } from './VerificationPage/VerificationPage';
