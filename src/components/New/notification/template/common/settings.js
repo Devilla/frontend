@@ -356,7 +356,7 @@ export class Setting extends Component {
               </Col>
             </Row>
           </Tab>
-          <Tab eventKey={3} title="Image">
+          {/* <Tab eventKey={3} title="Image">
             <ImagesUploader
               url="http://localhost:1337/upload"
               optimisticPreviews
@@ -368,7 +368,7 @@ export class Setting extends Component {
               }}
               label="Upload a picture"
             />
-          </Tab>
+          </Tab> */}
         </Tabs>
       </div>
     );
