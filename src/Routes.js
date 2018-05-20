@@ -29,6 +29,7 @@ import {
   Error,
   ComingSoon,
   WebsiteHome,
+  WebsiteAbout
 } from 'components';
 
 import {
@@ -58,7 +59,7 @@ const MyRoutes = ({routerHistory, store}) => (
     <Route exact path="/connect/:provider" component={ConnectPage} />
     <Route component={App}>
       <Route path="/" component={WebsiteHome} />
-      <Route path="/about" component={About} />
+      <Route path="/about" component={WebsiteAbout} />
       <Route path="/login" component={LoginPage} />
       <Route path="/profile/company/:token" component={CompanyDetails} />
       <Route path="/register" component={RegisterPage} />

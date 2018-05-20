@@ -20,8 +20,8 @@ class WebsiteHome extends Component {
   render() {
     return (
       <div className="main-container">
-        <section className="cover imagebg text-center height-70 parallax" data-overlay="0">
-          <div className="container pos-vertical-center">
+        <section className="cover imagebg text-center parallax" data-overlay="0">
+          <div className="container">
             <div className="row">
               <div className="col-md-10 col-lg-10">
                 <h1>Increase your website conversions using social proof notifications <br/> </h1>
