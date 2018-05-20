@@ -44,7 +44,6 @@ class Dashboard extends Component {
   }
 
   handleRouteChange(campaign) {
-    console.log(campaign, "===========camp");
     this.props.successCampaign(campaign);
     browserHistory.push('/new');
   }

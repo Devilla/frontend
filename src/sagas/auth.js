@@ -159,7 +159,7 @@ export function* verifyUser(action) {
       }, 2000);
     } else {
       yield storeToken(res.jwt)
-      yield window.location.assign(window.location.origin+'/dashboard');;
+      yield window.location.assign(window.location.origin+'/getting-started');;
     }
     yield put(loaded());
   } catch (error) {
