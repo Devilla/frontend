@@ -29,7 +29,8 @@ import {
   Error,
   ComingSoon,
   WebsiteHome,
-  WebsiteAbout
+  WebsiteAbout,
+  WebsiteTerms
 } from 'components';
 
 import {
@@ -64,7 +65,7 @@ const MyRoutes = ({routerHistory, store}) => (
       <Route path="/profile/company/:token" component={CompanyDetails} />
       <Route path="/register" component={RegisterPage} />
       <Route path="/privacy-policy" component={PrivacyPage} />
-      <Route path="/terms-and-condtions" component={TermsPage} />
+      <Route path="/terms-and-condtions" component={WebsiteTerms} />
       <Route path="/privacy-policy" component={PrivacyPage} />
       <Route path="/contact" component={ContactPage} />
       <Route path="/pricing" component={PricePage} />
