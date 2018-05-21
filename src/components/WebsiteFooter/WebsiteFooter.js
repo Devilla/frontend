@@ -20,7 +20,7 @@ class WebsiteFooter extends Component {
                 <ul className="bar__module">
                   <li className="type--uppercase col-sm-4 col-md-2 h5"><Link to="/"> Product </Link></li>
                   <li className="type--uppercase col-sm-4 col-md-2 h6"><Link to="/how-it-works"> How It Works </Link></li>
-                  <li className="type--uppercase col-sm-4 col-md-2 h6"><Link to="/"> Pricing </Link></li>
+                  <li className="type--uppercase col-sm-4 col-md-2 h6"><Link to="/pricing"> Pricing </Link></li>
                   <li className="type--uppercase col-sm-4 col-md-2 h6"><Link to="/"> Features </Link></li>
                   <li className="type--uppercase col-sm-4 col-md-2 h6"><Link to="/"> Signup </Link></li>
                 </ul>

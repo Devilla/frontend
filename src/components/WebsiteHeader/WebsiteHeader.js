@@ -32,7 +32,7 @@ class WebsiteHeader extends Component {
                     <ul className="menu-horizontal text-left">
                       <li> <Link to="/how-it-works">How it works</Link> </li>
                       <li> <Link to="/integration">INTEGRATIONS</Link> </li>
-                      <li> <Link to="pricing.html">PRICING</Link> </li>
+                      <li> <Link to="/pricing">PRICING</Link> </li>
                       <li> <Link to="/about">ABOUT US </Link> </li>
                     </ul>
                   </div>

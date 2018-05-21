@@ -6,6 +6,7 @@ export { default as WebsiteAbout } from "./WebsiteAbout/WebsiteAbout";
 export { default as WebsiteTerms } from "./WebsiteTerms/WebsiteTerms";
 export { default as WebsiteHowItWorks } from "./WebsiteHowItWorks/WebsiteHowItWorks";
 export { default as WebsiteIntegrations } from "./WebsiteIntegrations/WebsiteIntegrations";
+export { default as WebsitePricing } from "./WebsitePricing/WebsitePricing";
 export { default as Footer } from "./Footer/Footer";
 export { default as Header } from "./Header/Header";
 export { default as About } from "./AboutPage/index.js";
