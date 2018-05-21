@@ -13,8 +13,6 @@ class LeftView extends Component {
       loopNotification,
       delayNotification,
       closeNotification,
-      hideAnonymous,
-      displayNotifications,
       handleStateChange
     } = this.props;
     return (
@@ -76,42 +74,6 @@ class LeftView extends Component {
           <Col md={10}>
             <span className="mt-5">Allow users to close notifications
             </span>
-          </Col>
-        </Row>
-        <Row>
-          <Col md={2}>
-            <Switch
-              circleStyles={{
-                onColor: 'blue',
-                offColor: 'gray',
-                diameter: 18
-              }}
-              switchStyles={{
-                width: 50
-              }}
-
-              cssClass="alignsame"
-              value={hideAnonymous}
-              onChange={(e) => handleStateChange('hideAnonymous', e)}
-            />
-          </Col>
-          <Col md={10}>
-            <span className="mt-5">Hide anonymous conversions
-            </span>
-          </Col>
-        </Row>
-        <Row>
-          <Col md={2}>
-            <Switch circleStyles={{
-                onColor: 'blue',
-                offColor: 'gray',
-                diameter: 18
-              }} switchStyles={{
-                width: 50
-              }} cssClass="alignsame" value={displayNotifications} onChange={(e) => handleStateChange('displayNotifications', e)}/>
-          </Col>
-          <Col md={10}>
-            <span className="mt-5">Only display notifications from user's country</span>
           </Col>
         </Row>
       </div>
