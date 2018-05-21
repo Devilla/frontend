@@ -1,3 +1,4 @@
+// Home Page Image
 export { default as LogoInfluence } from './logo-influence.png';
 export { default as HigherConversion } from './new-convert-more-customers.svg';
 export { default as SaveAcquisitions } from './new-customer-acquisition-costs.svg';
@@ -12,7 +13,11 @@ export { default as CustomerProfiles } from './new-profiling.svg';
 export { default as CustomerJourneys } from './new-customer-journey.svg';
 export { default as CustomeRules } from './new-popup-timings.svg';
 export { default as MobileReady } from './new-mobile-ready.svg';
+// How it works Page Image
 export { default as NewIntegrate } from './new-integrate.svg';
 export { default as NewInstall } from './new-install.svg';
 export { default as NewGoLive } from './new-go-live.svg';
 export { default as NewAnalyze } from './new-analyze.svg';
+// Integrations Page Image
+export { default as Integrations1 } from './integrations1.png';
+export { default as NewRecentPurchases } from './new-recent-purchases.svg';

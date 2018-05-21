@@ -31,7 +31,8 @@ import {
   WebsiteHome,
   WebsiteAbout,
   WebsiteTerms,
-  WebsiteHowItWorks
+  WebsiteHowItWorks,
+  WebsiteIntegrations
 } from 'components';
 
 import {
@@ -62,18 +63,19 @@ const MyRoutes = ({routerHistory, store}) => (
     <Route component={App}>
       <Route path="/" component={WebsiteHome} />
       <Route path="/about" component={WebsiteAbout} />
-      <Route path="/login" component={LoginPage} />
-      <Route path="/profile/company/:token" component={CompanyDetails} />
-      <Route path="/register" component={RegisterPage} />
-      <Route path="/privacy-policy" component={PrivacyPage} />
       <Route path="/terms-and-condtions" component={WebsiteTerms} />
-      <Route path="/privacy-policy" component={PrivacyPage} />
-      <Route path="/contact" component={ContactPage} />
-      <Route path="/pricing" component={PricePage} />
-      <Route path="/forget-password" component={ForgetPassword} />
-      <Route path="/reset-password" component={ResetPassword} />
-      {/* <Redirect from='price' to="/pricing" /> */}
       <Route path="/how-it-works" component={WebsiteHowItWorks} />
+      <Route path="/integrations" component={WebsiteIntegrations} />
+      {/* <Route path="/login" component={LoginPage} /> */}
+      {/* <Route path="/profile/company/:token" component={CompanyDetails} /> */}
+      {/* <Route path="/register" component={RegisterPage} /> */}
+      {/* <Route path="/privacy-policy" component={PrivacyPage} /> */}
+      {/* <Route path="/privacy-policy" component={PrivacyPage} /> */}
+      {/* <Route path="/contact" component={ContactPage} /> */}
+      {/* <Route path="/pricing" component={PricePage} /> */}
+      {/* <Route path="/forget-password" component={ForgetPassword} /> */}
+      {/* <Route path="/reset-password" component={ResetPassword} /> */}
+      {/* <Redirect from='price' to="/pricing" /> */}
     </Route>
     <Route path="*" component={Error} />
   </Router>
