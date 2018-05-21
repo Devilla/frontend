@@ -3,6 +3,7 @@ export { default as WebsiteHeader } from "./WebsiteHeader/WebsiteHeader";
 export { default as WebsiteFooter } from "./WebsiteFooter/WebsiteFooter";
 export { default as WebsiteHome } from "./WebsiteHome/WebsiteHome";
 export { default as WebsiteAbout } from "./WebsiteAbout/WebsiteAbout";
+export { default as WebsiteContact } from "./WebsiteContact/WebsiteContact";
 export { default as WebsiteTerms } from "./WebsiteTerms/WebsiteTerms";
 export { default as WebsiteHowItWorks } from "./WebsiteHowItWorks/WebsiteHowItWorks";
 export { default as WebsiteIntegrations } from "./WebsiteIntegrations/WebsiteIntegrations";

@@ -33,7 +33,8 @@ import {
   WebsiteTerms,
   WebsiteHowItWorks,
   WebsiteIntegrations,
-  WebsitePricing
+  WebsitePricing,
+  WebsiteContact,
 } from 'components';
 
 import {
@@ -64,6 +65,7 @@ const MyRoutes = ({routerHistory, store}) => (
     <Route component={App}>
       <Route path="/" component={WebsiteHome} />
       <Route path="/about" component={WebsiteAbout} />
+      <Route path="/contact" component={WebsiteContact} />
       <Route path="/terms-and-condtions" component={WebsiteTerms} />
       <Route path="/how-it-works" component={WebsiteHowItWorks} />
       <Route path="/integrations" component={WebsiteIntegrations} />
