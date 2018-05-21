@@ -8,6 +8,7 @@ export { default as WebsiteIntegrations } from "./WebsiteIntegrations/WebsiteInt
 export { default as WebsitePricing } from "./WebsitePricing/WebsitePricing";
 export { default as WebsiteAbout } from "./WebsiteAbout/WebsiteAbout";
 export { default as WebsiteSignIn } from "./WebsiteSignIn/WebsiteSignIn";
+export { default as WebsiteSignUp } from "./WebsiteSignUp/WebsiteSignUp";
 export { default as WebsiteContact } from "./WebsiteContact/WebsiteContact";
 export { default as WebsiteTerms } from "./WebsiteTerms/WebsiteTerms";
 export { default as WebsitePolicy } from "./WebsitePolicy/WebsitePolicy";

@@ -31,3 +31,6 @@ export { default as ContactAvatar3 } from './contactavatar5.png';
 export { default as ContactAvatar4 } from './contactavatar7.png';
 export { default as ContactAvatar5 } from './contactavatar11.png';
 export { default as ContactAvatar6 } from './contactavatar15.png';
+
+// Signup Page
+export { default as SignUp } from './signuppage2.png';

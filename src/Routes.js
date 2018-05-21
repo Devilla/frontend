@@ -34,6 +34,7 @@ import {
   WebsitePricing,
   WebsiteAbout,
   WebsiteSignIn,
+  WebsiteSignUp,
   WebsiteTerms,
   WebsitePolicy,
   WebsiteContact
@@ -71,6 +72,7 @@ const MyRoutes = ({routerHistory, store}) => (
       <Route path="/pricing" component={WebsitePricing} />
       <Route path="/about" component={WebsiteAbout} />
       <Route path="/login" component={WebsiteSignIn} />
+      <Route path="/signup" component={WebsiteSignUp} />
       <Route path="/terms-and-condtions" component={WebsiteTerms} />
       <Route path="/privacy-policy" component={WebsitePolicy} />
       <Route path="/contact" component={WebsiteContact} />

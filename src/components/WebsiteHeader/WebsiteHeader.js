@@ -31,14 +31,14 @@ class WebsiteHeader extends Component {
                   <div className="bar__module">
                     <ul className="menu-horizontal text-left">
                       <li> <Link to="/how-it-works">How it works</Link> </li>
-                      <li> <Link to="/integration">INTEGRATIONS</Link> </li>
+                      <li> <Link to="/integrations">INTEGRATIONS</Link> </li>
                       <li> <Link to="/pricing">PRICING</Link> </li>
                       <li> <Link to="/about">ABOUT US </Link> </li>
                     </ul>
                   </div>
                   <div className="bar__module">
                     <Link className="btn btn--sm type--uppercase" to="/login"> <span className="btn__text">Login</span> </Link>
-                    <Link className="btn btn--sm btn--primary type--uppercase" to="purchase-template"> <span className="btn__text">sign up</span> </Link>
+                    <Link className="btn btn--sm btn--primary type--uppercase" to="/signup"> <span className="btn__text">sign up</span> </Link>
                   </div>
                 </div>
               </div>
