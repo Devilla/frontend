@@ -11,6 +11,8 @@ import '../../css/bootstrap.css';
 import '../../css/theme.css';
 import '../../css/custom.css';
 import '../../css/font-raleway.css';
+import '../../css/flickity.css';
+import '../../css/font-sourcesanspro.css';
 import './App.css';
 
 class App extends Component {

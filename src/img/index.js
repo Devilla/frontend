@@ -12,3 +12,7 @@ export { default as CustomerProfiles } from './new-profiling.svg';
 export { default as CustomerJourneys } from './new-customer-journey.svg';
 export { default as CustomeRules } from './new-popup-timings.svg';
 export { default as MobileReady } from './new-mobile-ready.svg';
+export { default as NewIntegrate } from './new-integrate.svg';
+export { default as NewInstall } from './new-install.svg';
+export { default as NewGoLive } from './new-go-live.svg';
+export { default as NewAnalyze } from './new-analyze.svg';

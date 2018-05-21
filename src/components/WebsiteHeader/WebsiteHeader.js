@@ -30,7 +30,7 @@ class WebsiteHeader extends Component {
                 <div className="col-lg-11 text-right text-left-xs text-left-sm">
                   <div className="bar__module">
                     <ul className="menu-horizontal text-left">
-                      <li> <Link to="/about">How it works</Link> </li>
+                      <li> <Link to="/how-it-works">How it works</Link> </li>
                       <li> <Link to="integrations.html">INTEGRATIONS</Link> </li>
                       <li> <Link to="pricing.html">PRICING</Link> </li>
                       <li> <Link to="/about">ABOUT US </Link> </li>

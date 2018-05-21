@@ -30,7 +30,8 @@ import {
   ComingSoon,
   WebsiteHome,
   WebsiteAbout,
-  WebsiteTerms
+  WebsiteTerms,
+  WebsiteHowItWorks
 } from 'components';
 
 import {
@@ -72,7 +73,7 @@ const MyRoutes = ({routerHistory, store}) => (
       <Route path="/forget-password" component={ForgetPassword} />
       <Route path="/reset-password" component={ResetPassword} />
       {/* <Redirect from='price' to="/pricing" /> */}
-      <Route path="/how-it-works" component={HowItWorks} />
+      <Route path="/how-it-works" component={WebsiteHowItWorks} />
     </Route>
     <Route path="*" component={Error} />
   </Router>

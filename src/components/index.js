@@ -4,6 +4,7 @@ export { default as WebsiteFooter } from "./WebsiteFooter/WebsiteFooter";
 export { default as WebsiteHome } from "./WebsiteHome/WebsiteHome";
 export { default as WebsiteAbout } from "./WebsiteAbout/WebsiteAbout";
 export { default as WebsiteTerms } from "./WebsiteTerms/WebsiteTerms";
+export { default as WebsiteHowItWorks } from "./WebsiteHowItWorks/WebsiteHowItWorks";
 export { default as Footer } from "./Footer/Footer";
 export { default as Header } from "./Header/Header";
 export { default as About } from "./AboutPage/index.js";
