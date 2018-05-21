@@ -13,7 +13,7 @@ class WebsiteFooter extends Component {
                   <li className="type--uppercase col-sm-4 col-md-2 h5"><Link to="/"> Company</Link></li>
                   <li className="type--uppercase col-sm-4 col-md-2 h6"><Link to="/about"> About Us </Link> </li>
                   <li className="type--uppercase col-sm-4 col-md-2 h6"><Link to="/terms-and-condtions"> Terms &amp; Conditions </Link></li>
-                  <li className="type--uppercase col-sm-4 col-md-2 h6"><Link to="/"> Privacy Policy </Link></li>
+                  <li className="type--uppercase col-sm-4 col-md-2 h6"><Link to="/privacy-policy"> Privacy Policy </Link></li>
                 </ul>
               </div>
               <div className="menu-vertical col-md-3">

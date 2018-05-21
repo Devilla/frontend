@@ -35,6 +35,7 @@ import {
   WebsiteIntegrations,
   WebsitePricing,
   WebsiteContact,
+  WebsitePolicy
 } from 'components';
 
 import {
@@ -70,6 +71,7 @@ const MyRoutes = ({routerHistory, store}) => (
       <Route path="/how-it-works" component={WebsiteHowItWorks} />
       <Route path="/integrations" component={WebsiteIntegrations} />
       <Route path="/pricing" component={WebsitePricing} />
+      <Route path="/privacy-policy" component={WebsitePolicy} />
       {/* <Route path="/login" component={LoginPage} /> */}
       {/* <Route path="/profile/company/:token" component={CompanyDetails} /> */}
       {/* <Route path="/register" component={RegisterPage} /> */}
