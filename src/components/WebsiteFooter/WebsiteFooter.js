@@ -10,7 +10,7 @@ class WebsiteFooter extends Component {
             <div className="row">
               <div className="menu-vertical col-md-3">
                 <ul className="bar__module">
-                  <li className="type--uppercase col-sm-4 col-md-2 h5"><Link to="/"> Company</Link></li>
+                  <li className="type--uppercase col-sm-4 col-md-2 h5"><Link to=""> Company</Link></li>
                   <li className="type--uppercase col-sm-4 col-md-2 h6"><Link to="/about"> About Us </Link> </li>
                   <li className="type--uppercase col-sm-4 col-md-2 h6"><Link to="/terms-and-condtions"> Terms &amp; Conditions </Link></li>
                   <li className="type--uppercase col-sm-4 col-md-2 h6"><Link to="/privacy-policy"> Privacy Policy </Link></li>
@@ -18,20 +18,20 @@ class WebsiteFooter extends Component {
               </div>
               <div className="menu-vertical col-md-3">
                 <ul className="bar__module">
-                  <li className="type--uppercase col-sm-4 col-md-2 h5"><Link to="/"> Product </Link></li>
+                  <li className="type--uppercase col-sm-4 col-md-2 h5"><Link to=""> Product </Link></li>
                   <li className="type--uppercase col-sm-4 col-md-2 h6"><Link to="/how-it-works"> How It Works </Link></li>
                   <li className="type--uppercase col-sm-4 col-md-2 h6"><Link to="/pricing"> Pricing </Link></li>
-                  <li className="type--uppercase col-sm-4 col-md-2 h6"><Link to="/"> Features </Link></li>
+                  <li className="type--uppercase col-sm-4 col-md-2 h6"><Link to=""> Features </Link></li>
                   <li className="type--uppercase col-sm-4 col-md-2 h6"><Link to="/signup"> Signup </Link></li>
                 </ul>
               </div>
               <div className="menu-vertical col-md-3">
                 <ul>
-                  <li className="type--uppercase col-sm-4 col-md-2 h5"><Link to="/"> Resources </Link></li>
-                  <li className="type--uppercase col-sm-4 col-md-2 h6"><Link to="/"> FAQs </Link></li>
-                  <li className="type--uppercase col-sm-4 col-md-2 h6"><Link to="/"> Help Center </Link></li>
-                  <li className="type--uppercase col-sm-4 col-md-2 h6"><Link to="/"> Blog </Link></li>
-                  <li className="type--uppercase col-sm-4 col-md-2 h6"><Link to="/"> Careers </Link> </li>
+                  <li className="type--uppercase col-sm-4 col-md-2 h5"><Link to=""> Resources </Link></li>
+                  <li className="type--uppercase col-sm-4 col-md-2 h6"><Link to=""> FAQs </Link></li>
+                  <li className="type--uppercase col-sm-4 col-md-2 h6"><Link to=""> Help Center </Link></li>
+                  <li className="type--uppercase col-sm-4 col-md-2 h6"><Link to=""> Blog </Link></li>
+                  <li className="type--uppercase col-sm-4 col-md-2 h6"><Link to=""> Careers </Link> </li>
                   <li className="type--uppercase col-sm-4 col-md-2 h6"><Link to="/contact"> Contact Us </Link></li>
                 </ul>
               </div>

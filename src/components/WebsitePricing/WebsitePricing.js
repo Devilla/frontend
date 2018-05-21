@@ -63,7 +63,7 @@ class WebsitePricing extends Component {
           <div className="container">
             <div className="row">
               <div className="col-md-12">
-                <span className="h3"> Looking for a Bigger Plan? &nbsp; <Link to="" style={{ textDecoration: 'underline' }}> Contact us</Link></span>
+                <span className="h3"> Looking for a Bigger Plan? &nbsp; <Link to="/contact">Contact us</Link></span>
               </div>
             </div>
           </div>
