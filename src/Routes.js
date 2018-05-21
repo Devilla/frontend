@@ -29,13 +29,14 @@ import {
   Error,
   ComingSoon,
   WebsiteHome,
-  WebsiteAbout,
-  WebsiteTerms,
   WebsiteHowItWorks,
   WebsiteIntegrations,
   WebsitePricing,
-  WebsiteContact,
-  WebsitePolicy
+  WebsiteAbout,
+  WebsiteSignIn,
+  WebsiteTerms,
+  WebsitePolicy,
+  WebsiteContact
 } from 'components';
 
 import {
@@ -65,13 +66,14 @@ const MyRoutes = ({routerHistory, store}) => (
     <Route exact path="/connect/:provider" component={ConnectPage} />
     <Route component={App}>
       <Route path="/" component={WebsiteHome} />
-      <Route path="/about" component={WebsiteAbout} />
-      <Route path="/contact" component={WebsiteContact} />
-      <Route path="/terms-and-condtions" component={WebsiteTerms} />
       <Route path="/how-it-works" component={WebsiteHowItWorks} />
       <Route path="/integrations" component={WebsiteIntegrations} />
       <Route path="/pricing" component={WebsitePricing} />
+      <Route path="/about" component={WebsiteAbout} />
+      <Route path="/login" component={WebsiteSignIn} />
+      <Route path="/terms-and-condtions" component={WebsiteTerms} />
       <Route path="/privacy-policy" component={WebsitePolicy} />
+      <Route path="/contact" component={WebsiteContact} />
       {/* <Route path="/login" component={LoginPage} /> */}
       {/* <Route path="/profile/company/:token" component={CompanyDetails} /> */}
       {/* <Route path="/register" component={RegisterPage} /> */}

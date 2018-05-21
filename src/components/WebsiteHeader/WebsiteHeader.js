@@ -37,7 +37,7 @@ class WebsiteHeader extends Component {
                     </ul>
                   </div>
                   <div className="bar__module">
-                    <Link className="btn btn--sm type--uppercase" to="customise-template"> <span className="btn__text">Login</span> </Link>
+                    <Link className="btn btn--sm type--uppercase" to="/login"> <span className="btn__text">Login</span> </Link>
                     <Link className="btn btn--sm btn--primary type--uppercase" to="purchase-template"> <span className="btn__text">sign up</span> </Link>
                   </div>
                 </div>
