@@ -103,7 +103,7 @@ export class Notification extends Component {
 										</div>
 									</div>
 								</div>
-								<div style={notificationName=="Bulk Activity "?{}:{display: 'none'}}>
+								<div style={notificationName=="Bulk Activity"?{}:{display: 'none'}}>
 									<div id="FPqR2lriqJeA2lri7MM9_0">
 										<div className="FPqR1XogqJeA1Xog7MM9_0 FPqR27wVqJeA27wV7MM9_0"
 											style={{
