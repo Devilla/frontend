@@ -9,6 +9,8 @@ import {
   ContactAvatar6
 } from 'img';
 
+var Recaptcha = require('react-recaptcha');
+
 class WebsiteContact extends Component {
   render() {
     return (
@@ -91,6 +93,11 @@ class WebsiteContact extends Component {
                   <div className="col-md-12 col-12">
                     <label>Message:</label>
                     <textarea rows="4" name="Message" className="validate-required"></textarea>
+                  </div>
+                  <div className="col-md-12 col-12">
+                    <div className="recaptcha">
+                      <Recaptcha sitekey="sdfsdfsdfdsfsd" />
+                    </div>
                   </div>
                   <button type="submit" className="btn btn--primary type--uppercase">Send Enquiry</button>
                 </form>

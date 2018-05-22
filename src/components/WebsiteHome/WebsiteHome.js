@@ -29,8 +29,9 @@ class WebsiteHome extends Component {
                 <p className="lead col-md-12 text-center"> Influence helps you in converting more customers on your website by showing recent customer activity on your web pages </p>
                 <div className="">
                   <form className="form--horizontal row">
+                    <div className="col-md-1"></div>
                     <div className="col-md-6"> <input type="text" name="email" placeholder="Enter your email" /> </div>
-                    <div className="col-md-6"> <button type="submit" className="btn btn--primary type--uppercase">start your free trial</button> </div>
+                    <div className="col-md-4"> <button type="submit" className="btn btn--primary type--uppercase">start your free trial</button> </div>
                   </form>
                 </div>
               </div>
@@ -97,10 +98,11 @@ class WebsiteHome extends Component {
               <div className="feature2 col-md-12 space--xxxs2">
                 <span className="label--inline h4">A Conversion Supercharger! </span>
               </div>
-              <div className="feature2 col-md-12 space--xxxs1">
+              <div className="feature2 col-md-12 space--xxxs1 text-center">
                 <form className="form--horizontal row">
+                  <div className="col-md-1"></div>
                   <div className="col-md-6"> <input type="text" name="search" placeholder="Enter your email." /> </div>
-                  <div className="col-md-6"> <button type="submit" className="btn btn--primary type--uppercase">start your 7 days free trial</button> </div>
+                  <div className="col-md-4"> <button type="submit" className="btn btn--primary type--uppercase">start your 7 days free trial</button> </div>
                 </form>
               </div>
             </div>
