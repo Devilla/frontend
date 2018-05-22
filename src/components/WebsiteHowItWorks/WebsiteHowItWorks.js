@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from "react-router";
+import Slider from 'react-slick';
 import {
   NewIntegrate,
   NewInstall,
@@ -9,6 +10,14 @@ import {
 
 class WebsiteHowItWorks extends Component {
   render() {
+    const settings = {
+      dots: true,
+      infinite: true,
+      speed: 500,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      autoplay: true,
+    };
     return (
       <div className="main-container">
         <section className="cover text-center unpad--bottom bg--secondary">
@@ -23,58 +32,62 @@ class WebsiteHowItWorks extends Component {
           </div>
         </section>
         <section className="bg--secondary">
-          <div className="container">
-            <div className="row">
-              <div className="col-md-12">
-                <div className="slider slider--inline-arrows" data-paging="true">
-                  <ul className="slides">
-                    <li>
-                      <div className="testimonial row justify-content-center">
-                        <div className="col-lg-2 col-md-4 col-6 text-center">
-                          <img className="testimonial__image" alt="Image" src={ NewIntegrate } />
-                        </div>
-                        <div className="col-lg-7 col-md-8 col-12">
-                          <span className="h3">
-                            <p>
-                              “We’ve been using Stack to prototype designs quickly and
-                              efficiently. Needless to say we’re hugely impressed by the style and value.”
-                            </p>
-                          </span>
-                          <h5>Maguerite Holland</h5> <span>Interface Designer — Yoke</span>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="testimonial row justify-content-center">
-                        <div className="col-lg-2 col-md-4 col-6 text-center">
-                          <img className="testimonial__image" alt="Image" src={ NewIntegrate } />
-                        </div>
-                        <div className="col-lg-7 col-md-8 col-12">
-                          <span className="h3">
-                            “I've been using Medium Rare's templates for a couple of years now and Stack is without a doubt their best work yet. It's fast, performant and absolutely stunning.”
-                          </span>
-                          <h5>Lucas Nguyen</h5> <span>Freelance Designer</span>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="testimonial row justify-content-center">
-                        <div className="col-lg-2 col-md-4 col-6 text-center">
-                          <img className="testimonial__image" alt="Image" src={ NewIntegrate } />
-                        </div>
-                        <div className="col-lg-7 col-md-8 col-12">
-                          <span className="h3">
-                            “Variant has been a massive plus for my workflow — I can now get live mockups out in a matter of hours, my clients really love it.”
-                          </span>
-                          <h5>Rob Vasquez</h5> <span>Interface Designer — Yoke</span>
-                        </div>
-                      </div>
-                    </li>
-                  </ul>
+          <Slider {...settings}>
+            <div>
+              <div className="row">
+                <div className="col-lg-2">
+                </div>
+                <div className="col-lg-2 col-md-4 col-6 text-center">
+                  <img className="testimonial__image" alt="Image" src={ NewIntegrate } />
+                </div>
+                <div className="col-lg-6 col-md-8 col-12">
+                  <span className="h3">
+                    <p>
+                      “We’ve been using Stack to prototype designs quickly and
+                      efficiently. Needless to say we’re hugely impressed by the style and value.”
+                    </p>
+                  </span>
+                  <h5>Maguerite Holland</h5> <span>Interface Designer — Yoke</span>
+                </div>
+                <div className="col-lg-2">
                 </div>
               </div>
             </div>
-          </div>
+            <div>
+              <div className="row">
+                <div className="col-lg-2">
+                </div>
+                <div className="col-lg-2 col-md-4 col-6 text-center">
+                  <img className="testimonial__image" alt="Image" src={ NewIntegrate } />
+                </div>
+                <div className="col-lg-6 col-md-8 col-12">
+                  <span className="h3">
+                    “I've been using Medium Rare's templates for a couple of years now and Stack is without a doubt their best work yet. It's fast, performant and absolutely stunning.”
+                  </span>
+                  <h5>Lucas Nguyen</h5> <span>Freelance Designer</span>
+                </div>
+                <div className="col-lg-2">
+                </div>
+              </div>
+            </div>
+            <div>
+              <div className="row">
+                <div className="col-lg-2">
+                </div>
+                <div className="col-lg-2 col-md-4 col-6 text-center">
+                  <img className="testimonial__image" alt="Image" src={ NewIntegrate } />
+                </div>
+                <div className="col-lg-6 col-md-8 col-12">
+                  <span className="h3">
+                    “Variant has been a massive plus for my workflow — I can now get live mockups out in a matter of hours, my clients really love it.”
+                  </span>
+                  <h5>Rob Vasquez</h5> <span>Interface Designer — Yoke</span>
+                </div>
+                <div className="col-lg-2">
+                </div>
+              </div>
+            </div>
+          </Slider>
         </section>
         <section className="text-center">
           <div className="container">
@@ -135,7 +148,7 @@ class WebsiteHowItWorks extends Component {
             <div className="row">
               <div className="col-md-8 col-lg-6">
                 <div className="cta">
-                  {/* <Link className="btn btn--primary btn--lg type--uppercase" to="#purchase-template"><span>Start your trial</span><br><span className="label">7 Days</span></Link> */}
+                  <Link className="btn btn--primary btn--lg type--uppercase" to=""><span>Start your trial</span><br/><span className="label">7 Days</span></Link>
                   <p className="lead"> Join the thousand companies using influence&nbsp;</p>
                   <p className="type--fine-print">or check out <Link to="index.html">more&nbsp;</Link></p>
                 </div>

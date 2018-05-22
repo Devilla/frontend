@@ -17,6 +17,7 @@ import {
 } from 'img';
 
 class WebsiteHome extends Component {
+
   render() {
     return (
       <div className="main-container">
@@ -28,7 +29,7 @@ class WebsiteHome extends Component {
                 <p className="lead col-md-12 text-center"> Influence helps you in converting more customers on your website by showing recent customer activity on your web pages </p>
                 <div className="">
                   <form className="form--horizontal row">
-                    <div className="col-md-6"> <input type="text" name="search" placeholder="Enter your email" /> </div>
+                    <div className="col-md-6"> <input type="text" name="email" placeholder="Enter your email" /> </div>
                     <div className="col-md-6"> <button type="submit" className="btn btn--primary type--uppercase">start your free trial</button> </div>
                   </form>
                 </div>

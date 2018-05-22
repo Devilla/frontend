@@ -44,6 +44,7 @@
     "react-scripts": "^1.0.10",
     "react-select": "^1.2.1",
     "react-slick": "^0.18.1",
+    "react-slick-carousel": "^0.14.9",
     "react-stepzilla": "^4.7.0",
     "react-stripe-elements": "^1.6.0",
     "react-text-loop": "^1.1.0",
@@ -57,7 +58,8 @@
     "redux-persist": "^5.9.1",
     "redux-persist-transform-immutable": "^5.0.0",
     "redux-saga": "^0.16.0",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "slick-carousel": "^1.8.1"
   },
   "scripts": {
     "start": "set PORT=3002 && react-scripts start",
