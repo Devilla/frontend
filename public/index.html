@@ -46,8 +46,8 @@
   <!-- End Google Tag Manager -->
 
   <script type="text/javascript">
+    const routes = ['dashboard', 'getting-started','Billing', 'notifcations', 'new', 'notification','BillingFinal', 'analytics', 'integration', 'support', 'Upgrade', 'profile','Models'];
     var file = location.pathname.split( "/" ).pop();
-    const routes = ['dashboard', 'getting-started', 'notifcations', 'new', 'notification', 'analytics', 'integration', 'support', 'upgrade', 'profile'];
     var link = document.createElement( "link" );
     if(routes.indexOf(file) !== -1)
       link.href = "style.css";
