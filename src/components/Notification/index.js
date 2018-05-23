@@ -78,7 +78,7 @@ class Notification extends Component {
             <Col md={12}>
               <Card
                 plain
-                title="Manage Notifications"
+                title="Notifications"
                 category=""
                 ctTableFullWidth ctTableResponsive
                 content={

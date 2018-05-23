@@ -18,6 +18,9 @@ export class Display extends Component{
       hideAnonymous: false,
       displayNotifications: false,
       initialDelay: 120,
+      bulkData:5,
+      recentNumber:5,
+      recentConv:5,
       displayTime: 120,
       delayBetween: 120,
       displayPosition: 'bottom'
@@ -46,6 +49,9 @@ export class Display extends Component{
       hideAnonymous: rules.hideAnonymous,
       displayNotifications: rules.displayNotifications,
       initialDelay: rules.initialDelay,
+      bulkData: rules.bulkData,
+      recentNumber:rules.recentNumber,
+      recentConv:rules.recentConv,
       displayTime: rules.displayTime,
       delayBetween: rules.delayBetween,
       displayPosition: rules.displayPosition

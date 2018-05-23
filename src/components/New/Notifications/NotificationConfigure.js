@@ -34,6 +34,7 @@ const NotificationConfigure = ({
                 <Col md={6}>
                   <Setting
                     contentText={contentText}
+                    notification={notification}
                     notificationPanelStyle={notificationPanelStyle}
                     onConfigChange={handleNotificationStyleChange}
                     handleContentChange={handleContentChange}

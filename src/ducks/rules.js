@@ -25,6 +25,9 @@ const initialRules = {
   hideAnonymous: false,
   displayNotifications: false,
   initialDelay: 120,
+  bulkData:5,
+  recentNumber:5,
+  recentConv:5,
   displayTime: 120,
   delayBetween: 120,
   displayPosition: 'bottom'
