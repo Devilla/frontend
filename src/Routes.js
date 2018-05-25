@@ -10,8 +10,10 @@ import {
   ForgetPassword,
   Home,
   Profile,
+  Billing,
+  BillingFinal,
   HowItWorks,
-  LoginPage,
+  LoginPage,Modals,
   PricePage,
   PrivacyPage,
   RegisterPage,
@@ -53,6 +55,10 @@ const MyRoutes = ({routerHistory, store}) => (
       <Route path="/notifications" component={SelectNotification} />
       <Route path="/upgrade" component={Upgrade} />
       <Route path="/profile" component={Profile} />
+      <Route path="/Billing" component={Billing} />
+      <Route path="/BillingFinal" component={BillingFinal} />
+      <Route path="/Modals" component={Modals} />
+
     </Route>
     <Route path="/getting-started" component={LoginFlow} />
     <Route exact path="/connect/:provider" component={ConnectPage} />
