@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import { browserHistory } from 'react-router';
 import {
   Grid,
   Row,
@@ -117,19 +116,41 @@ class Profile extends Component {
     const username = this.props.user?this.props.user.username:null;
 
     return (
-      <div className="content fill backgroundclr">
+      <div className="content fill">
         <Grid fluid="fluid">
-          <Row className="inlineclr">
-            <Col md={12}> 
+          <Row>
+            <Col md={12}>
               <CardHeader title="Profile Page" content={
                 <div className="profile-container">
+                  <div className="profile-over-button">
+                    <Button
+                      bsStyle="info"
+                      pullRight
+                      fill
+                      type="button"
+                      icon="usd"
+                      disabled={true}
+                      >
+                      Billing
+                    </Button>
+                    <Button
+                      bsStyle="info"
+                      pullRight
+                      fill
+                      type="button"
+                      icon="cloud-upload"
+                      disabled={true}
+                      >
+                      Upgrade
+                    </Button>
+                  </div>
+                  <div>
 
+                  </div>
+                  <form>
                     <Row>
-                    <div className="col-md-4">
-                        <img className="profilePic"src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg"/>
-                  
-                      
-                        <FormGroup className="userName">
+                      <div className="col-md-6">
+                        <FormGroup>
                           <ControlLabel>Username</ControlLabel>
                           <FormControl
                             type="text"
@@ -140,142 +161,62 @@ class Profile extends Component {
                           />
                         </FormGroup>
                       </div>
-                
-                  <div className="col-md-2" >
-                       <FormGroup className="planUp" controlId="formControlsSelect">
-                          <ControlLabel>Plan</ControlLabel>{this.plansList()}
-                        </FormGroup>  
+                      <div className="col-md-6">
+                        <FormGroup controlId="formControlsSelect">
+                          <ControlLabel>Plan</ControlLabel>
+                          {this.plansList()}
+                        </FormGroup>
                       </div>
-                <div className="col-md-2">
-                <div className="profile-over-button">
-                    <Button onClick={() => browserHistory.push('/Upgrade')} 
-                      bsStyle="info"
-                      pullRight
-                      fill
-                      type="button"
-                      icon="cloud-upload"
-                      disabled={false}
-                      >Upgrade
-                    </Button>
-                    </div>
-
-                  <div className="profile-over-button">
-                    <Button onClick={() => browserHistory.push('/BillingFinal')}
-                      bsStyle="info"
-                      pullRight
-                      fill
-                      type="button"
-                      icon="usd"
-                      disabled={false}
-                      >Billing
-                    </Button>
-                  </div>
-                  </div>
-                  <div>
-
-                  </div>
-                  </Row>
-
-                  <form>
+                    </Row>
                     <Row>
-                      <div className="col-md-1">
-                      First Name  
-                      </div>
-                      <div className="col-md-3">
+                      <div className="col-md-6">
                         <FormGroup>
+                          <ControlLabel>First Name</ControlLabel>
                           <FormControl
                             type="text"
                             value={profile.firstName}
-                            placeholder="First Name"
+                            placeholder="Enter First Name"
                             disabled={isDisabled}
                             id="firstName"
                             onChange={(e) => this.handleStateChange(e)}
                           />
                         </FormGroup>
                       </div>
-                      <div className="col-md-1">
-                          Last Name
-                      </div>
-                      <div className="col-md-3">
+                      <div className="col-md-6">
                         <FormGroup>
+                          <ControlLabel>Last Name</ControlLabel>
                           <FormControl
                             type="text"
-                            value=""
-                            placeholder=""
+                            value={profile.lastName}
+                            placeholder="Enter Last Name"
                             disabled={isDisabled}
-                            id="lastName2"
+                            id="lastName"
                             onChange={(e) => this.handleStateChange(e)}
                           />
                         </FormGroup>
                       </div>
                     </Row>
                     <Row>
-                      <div className="col-md-1">
-                          Address
-                      </div>
-                      <div className="col-md-9">
-                      <FormGroup>
+                      <div className="col-md-6">
+                        <FormGroup>
+                          <ControlLabel>Address</ControlLabel>
                           <FormControl
                             type="text"
                             value={profile.address}
-                            placeholder="Address"
+                            placeholder="Enter Address"
                             disabled={isDisabled}
                             id="address"
                             onChange={(e) => this.handleStateChange(e)}
                           />
                         </FormGroup>
                       </div>
-                      </Row>
-                      <Row>
-                      <div className="col-md-10">
+                      <div className="col-md-6">
                         <FormGroup>
-                          
-                          <FormControl
-                            type="text"
-                            value=""
-                            placeholder=""
-                            disabled={isDisabled}
-                            id="address3"
-                            onChange={(e) => this.handleStateChange(e)}
-                          />
-                        </FormGroup>
-                      </div>
-
-                      </Row>
-                      <Row>
-                      <div className="col-md-2">
-                        <FormGroup controlId="formControlsSelect">
-                          <ControlLabel>Country</ControlLabel>
-                          <FormControl
-                            type="text"
-                            value={profile.country}
-                            placeholder="COUNTRY"
-                            disabled={isDisabled}
-                            id="state"
-                            onChange={(e) => this.handleStateChange(e)}
-                          />
-                        </FormGroup>
-                      </div>
-                      <div className="col-md-2">
-                        <FormGroup controlId="formControlsSelect">
                           <ControlLabel>State</ControlLabel>
                           <FormControl
                             type="text"
                             value={profile.state}
-                            placeholder="STATE"
-                            disabled={isDisabled}
-                            id="state"
-                            onChange={(e) => this.handleStateChange(e)}
-                          />
-                        </FormGroup>
-                      </div>
-                      <div className="col-md-2">
-                        <FormGroup controlId="formControlsSelect">
-                          <ControlLabel>City</ControlLabel>
-                          <FormControl
-                            type="text"
-                            value={profile.city}
-                            placeholder="CITY"
+                            placeholder="Enter State"
                             disabled={isDisabled}
                             id="state"
                             onChange={(e) => this.handleStateChange(e)}
@@ -284,7 +225,7 @@ class Profile extends Component {
                       </div>
                     </Row>
                     <Row>
-                      <div className="col-md-2">
+                      <div className="col-md-6">
                         <FormGroup>
                           <ControlLabel>Phone Number</ControlLabel>
                           <FormControl
@@ -297,22 +238,7 @@ class Profile extends Component {
                           />
                         </FormGroup>
                       </div>
-
-                      <div className="col-md-4">
-                        <FormGroup>
-                          <ControlLabel></ControlLabel>
-                          <FormControl
-                            type="text"
-                            value=""
-                            placeholder="Phone No."
-                            disabled={isDisabled}
-                            id="phoneNumber"
-                            onChange={(e) => this.handleStateChange(e)}
-                          />
-                        </FormGroup>
-                      </div>
-  
-                      <div className="col-md-2">
+                      <div className="col-md-6">
                         <FormGroup>
                           <ControlLabel>Company Name</ControlLabel>
                           <FormControl
@@ -325,45 +251,17 @@ class Profile extends Component {
                           />
                         </FormGroup>
                       </div>
-                      <div className="col-md-2">
-                        <FormGroup>
-                          <ControlLabel>Email Address</ControlLabel>
-                          <FormControl
-                            type="text"
-                            value={profile.email}
-                            placeholder="Email Address"
-                            disabled={isDisabled}
-                            id="emailAddress"
-                            onChange={(e) => this.handleStateChange(e)}
-                          />
-                        </FormGroup>
-                      </div>
                     </Row>
-                    <Row>
-                   <div  className="save"> <Button
-                      bsStyle="info"
-                      pullRight
-                      fill
-                      type="button"
-                      icon={this.state.profileState=='save'}
-                      onClick={(e) => this.handleEditState(e, this.state.profileState)}
-                      >
-                      {'Save'}
-                    </Button>
-                    </div>
-                    <div className="edit">
                     <Button
                       bsStyle="info"
                       pullRight
                       fill
                       type="button"
-                      icon={this.state.profileState=='edit'}
+                      icon={this.state.profileState=='save'?'save':'edit'}
                       onClick={(e) => this.handleEditState(e, this.state.profileState)}
                       >
-                      {'Edit'}
+                      {this.state.profileState=='save'?'Save':'Edit'}
                     </Button>
-                    </div>
-                    </Row>
                     <div className="clearfix"></div>
                   </form>
                 </div>

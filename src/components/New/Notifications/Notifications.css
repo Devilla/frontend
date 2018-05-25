@@ -308,13 +308,11 @@
 
 
 .button-config {
-  width: 40%;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  margin-inline-start: 80px;
+  width: 100%;
   background-color: #4B91CA;
   color: white;
-  border-radius: 25px;
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 0px;
   -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
 }

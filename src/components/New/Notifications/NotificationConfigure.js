@@ -35,7 +35,6 @@ const NotificationConfigure = ({
                   <Setting
                     notificationName={notification.notificationName}
                     contentText={contentText}
-                    notification={notification}
                     notificationPanelStyle={notificationPanelStyle}
                     onConfigChange={handleNotificationStyleChange}
                     handleContentChange={handleContentChange}
