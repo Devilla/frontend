@@ -11,18 +11,18 @@ export class Display extends Component{
   constructor(){
     super();
     this.state = {
-      hideNotification: false,
-      loopNotification: false,
+      hideNotification: true,
+      loopNotification: true,
       delayNotification: false,
       closeNotification: false,
-      hideAnonymous: false,
-      displayNotifications: false,
-      initialDelay: 120,
       bulkData:5,
       recentNumber:5,
       recentConv:5,
-      displayTime: 120,
-      delayBetween: 120,
+      hideAnonymous: false,
+      displayNotifications: false,
+      initialDelay: 1,
+      displayTime: 3,
+      delayBetween: 3,
       displayPosition: 'bottom'
     };
     this.handleStateChange = this.handleStateChange.bind(this);
@@ -46,8 +46,6 @@ export class Display extends Component{
       loopNotification: rules.loopNotification,
       delayNotification: rules.delayNotification,
       closeNotification: rules.closeNotification,
-      hideAnonymous: rules.hideAnonymous,
-      displayNotifications: rules.displayNotifications,
       initialDelay: rules.initialDelay,
       bulkData: rules.bulkData,
       recentNumber:rules.recentNumber,

@@ -104,6 +104,7 @@ class Price extends Component {
       <div style={paymentPage?{width:'100%'}:{}}>
         {paymentPage?
           <PaymentPrice
+            planPeriod={this.state.planPeriod}
             planList={planList}
             returnRates={this.returnRates}
             handleMonthChange={this.handleMonthChange}

@@ -4,6 +4,7 @@ import * as actions from 'ducks/payment';
 import { updateProfile } from 'ducks/profile';
 import { load, loaded } from 'ducks/loading';
 import { ToastContainer, toast } from 'react-toastify';
+import { browserHistory } from 'react-router';
 
 const toastConfig = {
   position: toast.POSITION.BOTTOM_LEFT,
@@ -33,17 +34,10 @@ function* create(action) {
   try {
     yield put(load());
     const res = yield call(api.POST, `payment`, action.payment);
-    if(res.error)
-      console.log(res.error);
-    else {
-      console.log(res, "=============response");
-      // let profile = yield select(getProfile);
-      // profile['id'] = profile._id;
-      // delete profile['_id'];
-      // profile['profile_payments'] = res._id
-      // yield put(updateProfile(profile));
-      yield put(actions.successPayment(res));
-    }
+    if(res.message)
+      yield toast.error(res.message, toastConfig);
+    else
+      browserHistory.push('/dashboard');
     yield put(loaded());
   } catch (error) {
     yield put(loaded());

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Row,FormGroup, Col, Tabs, Tab, Button, FormControl } from 'react-bootstrap';
+import { Row, FormGroup, Col, Tabs, Tab, Button, FormControl } from 'react-bootstrap';
 import Switch from 'react-flexible-switch';
 import Slider from 'react-rangeslider'
 import reactCSS from 'reactcss'
@@ -152,10 +152,12 @@ export class Setting extends Component {
         Object.assign(this.state, this.props.notificationPanelStyle);
   }
 
+  handleStateChange() {
+
+  }
+
   render() {
     const { notificationPanelStyle, handleContentChange, contentText, notification } = this.props;
-    // console.log(notificationPanelStyle,'<<<<------------------------------->>>>')
-    // console.log(notification, '==========================.')
     const styles = reactCSS({
       'default': {
         colorSwatch: {
