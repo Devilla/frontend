@@ -30,7 +30,7 @@ const NotificationList = ({notificationList, configure, configurations, handleAc
           <div className="button-config" onClick={() => configure(notification)} style={{ cursor:'pointer'}} data-toggle="modal" data-target="#notificationModal">
             <ul className="list-unstyled list-inline font-small mt-3" style={{ margin: '0 auto', padding: '10px'}}>
               <li className="list-inline-item pr-2 white-text" style={{display: 'flex', justifyContent: 'center'}}>
-               <strong> Configure</strong>
+                Configure
               </li>
             </ul>
           </div>

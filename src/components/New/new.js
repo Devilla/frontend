@@ -170,6 +170,7 @@ export class NewUser extends Component {
     </div>);
   }
 }
+
 const mapStateToProps = state => ({
   profile: state.getIn(['profile', 'profile']),
   campaign: state.getIn(['campaign', 'campaign'])
