@@ -346,24 +346,22 @@ export class Setting extends Component {
                 </Row>
               </Col>
             </Row>
-            {notificationName=="Recent Activity" &&
-              <Row>
-                <Col md={12}>
-                  <h4>Content Setting</h4>
-                  <Row>
-                    <Col md={12}>
-                      <FormControl
-                        type="text"
-                        value={contentText}
-                        placeholder="Enter content for notification"
-                        id="contentText"
-                        onChange={(e) => handleContentChange(e.target.value)}
-                      />
-                    </Col>
-                  </Row>
-                </Col>
-              </Row>
-            }
+            <Row>
+              <Col md={12}>
+                <h4>Content Setting</h4>
+                <Row>
+                  <Col md={12}>
+                    <FormControl
+                      type="text"
+                      value={contentText}
+                      placeholder="Enter content for notification"
+                      id="contentText"
+                      onChange={(e) => handleContentChange(e.target.value)}
+                    />
+                  </Col>
+                </Row>
+              </Col>
+            </Row>
           </Tab>
           {/* {notificationName=="Recent Activity" &&
             <Tab eventKey={3} title="Others">
