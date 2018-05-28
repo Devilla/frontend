@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { Row, Col, Tabs, Tab, Button, FormControl } from 'react-bootstrap';
+import { Row,FormGroup, Col, Tabs, Tab, Button, FormControl } from 'react-bootstrap';
 import Switch from 'react-flexible-switch';
-
 import Slider from 'react-rangeslider'
 import reactCSS from 'reactcss'
 import ImagesUploader from 'react-images-uploader';
@@ -11,7 +10,6 @@ import { ChromePicker } from 'react-color';
 
 const FONT_WEIGHT_BOLD = 'bold';
 const FONT_WEIGHT_NORMAL = 'normal';
-
 
 export class Setting extends Component {
   constructor(props) {
@@ -24,10 +22,16 @@ export class Setting extends Component {
     }
     Object.assign(this.state, props.notificationPanelStyle);
   }
-
+  
+  notificationPanelStyleDefault(e) {
+    this.setState({[e.target.id]:e.target.value});
+  }
   handleRadiusChange = (radius) => {
     this.setState({ radius });
     this.props.onConfigChange({ prop: 'radius', value: radius });
+  };
+  handleStateChange(e) {
+    this.setState({[e.target.id]:e.target.value});
   };
 
   handleBorderWidthChange = (borderWidth) => {
@@ -148,12 +152,10 @@ export class Setting extends Component {
         Object.assign(this.state, this.props.notificationPanelStyle);
   }
 
-  handleStateChange() {
-
-  }
-
   render() {
-    const { notificationPanelStyle, handleContentChange, contentText, notificationName, hideAnonymous, displayNotifications } = this.props;
+    const { notificationPanelStyle, handleContentChange, contentText, notification } = this.props;
+    // console.log(notificationPanelStyle,'<<<<------------------------------->>>>')
+    // console.log(notification, '==========================.')
     const styles = reactCSS({
       'default': {
         colorSwatch: {
@@ -194,7 +196,6 @@ export class Setting extends Component {
         },
       },
     });
-    console.log(notificationName, "================>notification");
     return (
       <div className="setting" style={{ backgroundColor: 'white' }}>
         <Tabs justified defaultActiveKey={1} id="uncontrolled-tab-example">
@@ -243,33 +244,6 @@ export class Setting extends Component {
             </Row>
             <Row>
               <Col md={12}>
-                <h4>Shadow</h4>
-                <Row>
-                  <Col md={6}>
-                    <div className='slider hf'>
-                      <Slider
-                        tooltip={false}
-                        min={0}
-                        max={10}
-                        value={notificationPanelStyle.shadow}
-                        onChange={this.handleShadowChange}
-                      />
-                      <small>stroke</small>
-                    </div>
-                  </Col>
-                  <Col md={6}>
-                    <div className='slider hf'>
-                      <Slider
-                        tooltip={false}
-                        min={0}
-                        max={25}
-                        value={notificationPanelStyle.blur}
-                        onChange={this.handleBlurChange}
-                      />
-                      <small>blur</small>
-                    </div>
-                  </Col>
-                </Row>
                 <Row>
                   <Col md={4}>
                     <h4>Background Color</h4>
@@ -346,78 +320,126 @@ export class Setting extends Component {
                 </Row>
               </Col>
             </Row>
-            {notificationName=="Recent Activity" &&
-              <Row>
-                <Col md={12}>
-                  <h4>Content Setting</h4>
-                  <Row>
-                    <Col md={12}>
-                      <FormControl
-                        type="text"
-                        value={contentText}
-                        placeholder="Enter content for notification"
-                        id="contentText"
-                        onChange={(e) => handleContentChange(e.target.value)}
-                      />
-                    </Col>
-                  </Row>
-                </Col>
-              </Row>
-            }
+            <Row>
+              <Col md={12}>
+                <h4>Content Setting</h4>
+                <Row>
+                  <Col md={12}>
+                    <FormControl
+                      type="text"
+                      value={contentText}
+                      placeholder="Enter content for notification"
+                      id="contentText"
+                      onChange={(e) => this.setState(e.target.value)}
+                    />
+                  </Col>
+                </Row>
+              </Col>
+            </Row>
           </Tab>
-          {/* {notificationName=="Recent Activity" &&
-            <Tab eventKey={3} title="Others">
-              <Row>
-                <Col md={2}>
-                  <Switch
-                    circleStyles={{
-                      onColor: 'blue',
-                      offColor: 'gray',
-                      diameter: 18
-                    }}
-                    switchStyles={{
-                      width: 50
-                    }}
+{notification.notificationName === "Bulk Activity"  &&
+<Tab eventKey={3} title="Bulk Activity" >
+<Row>
+        <Col md={5}>
+        
+        Display bulk data from last
+        </Col>
+        <Col md={2}>
+          <FormGroup>
+            <FormControl
+              type="number"
+              value={notificationPanelStyle.bulkData}
+              onChange={(e) => this.handleStateChange(e)}
+              bsSize="sm"
+            />{notificationPanelStyle.bulkData}
+          </FormGroup>
+        </Col>
+		<Col md={5}>
+		hours/days.
+        </Col>
+      </Row>
 
-                    cssClass="alignsame"
-                    value={hideAnonymous}
-                    onChange={(e) => this.handleStateChange('hideAnonymous', e)}
-                  />
-                </Col>
-                <Col md={10}>
-                  <span className="mt-5">Hide anonymous conversions
-                  </span>
-                </Col>
-              </Row>
-              <Row>
-                <Col md={2}>
-                  <Switch circleStyles={{
-                      onColor: 'blue',
-                      offColor: 'gray',
-                      diameter: 18
-                    }} switchStyles={{
-                      width: 50
-                    }} cssClass="alignsame" value={displayNotifications} onChange={(e) => this.handleStateChange('displayNotifications', e)}/>
-                </Col>
-                <Col md={10}>
-                  <span className="mt-5">Only display notifications from user's country</span>
-                </Col>
-              </Row>
-            </Tab>
-          } */}
-          {/* <Tab eventKey={3} title="Image">
-            <ImagesUploader
-              url="http://localhost:1337/upload"
-              optimisticPreviews
-              multiple={false}
-              onLoadEnd={(err) => {
-                if (err) {
-                  console.error(err);
-                }
+</Tab>
+}
+{notification.notificationName === "Recent Activity" &&
+  <Tab eventKey={3} title="Recent Activity">
+<div>
+	<Row>
+        <Col md={3}>
+          Display the last
+        </Col>
+        <Col md={2}>
+          <FormGroup>
+            <FormControl
+              type="number"
+              bsSize="sm"
+              value={notificationPanelStyle.recentNumber}
+
+            />{notificationPanelStyle.recentNumber}
+          </FormGroup>
+        </Col>
+		<Col md={5}>
+		number of conversions.
+        </Col>
+      </Row>
+	  <Row>
+        <Col md={5}>
+		Display conversation from last
+        </Col>
+        <Col md={2}>
+          <FormGroup>
+            <FormControl
+              type="number"
+              value={notificationPanelStyle.recentConv}
+              bsSize="sm"
+            />{notificationPanelStyle.recentConv}
+          </FormGroup>
+        </Col>
+		<Col md={5}>
+		hours/days.
+        </Col>
+      </Row>	
+			
+		<Row>
+          <Col md={2}>
+            <Switch
+              circleStyles={{
+                onColor: 'blue',
+                offColor: 'gray',
+                diameter: 18
               }}
-              label="Upload a picture"
+              switchStyles={{
+                width: 50
+              }}
+
+              cssClass="alignsame"
+
             />
-          </Tab> */}
+          </Col>
+          <Col md={10}>
+            <span className="mt-5">Hide anonymous conversions
+            </span>
+          </Col>
+        </Row>
+        <Row>
+          <Col md={2}>
+            <Switch circleStyles={{
+                onColor: 'blue',
+                offColor: 'gray',
+                diameter: 18
+              }} switchStyles={{
+                width: 50
+              }} cssClass="alignsame"/>
+          </Col>
+          <Col md={10}>
+            <span className="mt-5">Only display notifications from user's country</span>
+          </Col>
+        </Row>
+		</div>
+
+            </Tab>
+          }
+          
         </Tabs>
       </div>
     );

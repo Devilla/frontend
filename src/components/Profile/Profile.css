@@ -1,11 +1,47 @@
 .profile-container {
   display: grid;
 }
+.profilePic{
+  margin-left: 10px;
+  height:100px;
+  width:100px;
+}
+.name{
+
+  margin-top: 10px;
+  width:100px;
+  
+}
+.userName{
+  margin-top: 10px;
+  width:100px;
+}
+.formgroup-small-width{
+  width:100px;
+}
+ 
+.planUp{
+  margin-inline-start: 0px;
+
+}
+.Fname{
+
+  width:150px;
+
+}
 .profile-over-button{
     display: flex;
-    justify-content: flex-end;
+    margin-left: 200px;
+  margin-top: 20px;
     width: 100%;
 }
-button {
+.save{
+  margin-right: 150px;
+}
+.edit{
+  margin-right: 250px;
+}
+.button {
   margin: 0% 2% !important;
 }
+

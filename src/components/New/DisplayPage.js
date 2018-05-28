@@ -14,7 +14,10 @@ import CardTable from 'components/Template/card-with-page-table'
 import { pagethArray } from 'components/Template/data'
 import { fetchPageUrl, createPageUrl, clearLeads, removePageUrl } from 'ducks/pageurl';
 import { fetchOneRules, clearRules } from 'ducks/rules';
-
+import { validatewebsite } from 'components/Common/function';
+import { ToastContainer, toast } from 'react-toastify';
+import { css, checked } from 'glamor';
+import $ from 'jquery';
 
 class DisplayPage extends Component{
   constructor(){
@@ -34,6 +37,7 @@ class DisplayPage extends Component{
     this.addPageUrl = this.addPageUrl.bind(this);
     this.handlePageUrl = this.handlePageUrl.bind(this);
     this.deleteDisplayUrl = this.deleteDisplayUrl.bind(this);
+    this.handleAddButton = this.handleAddButton.bind(this)
   }
 
   componentWillMount() {
@@ -73,8 +77,8 @@ class DisplayPage extends Component{
     this.props.callbackFromParent(data);
   }
 
-  addPageUrl() {
-    if(this.state.displayUrl.url == '')
+  addPageUrl(e) {
+    if(this.state.displayUrl.url == '' || !validatewebsite(this.state.displayUrl.url))
       return this.setState({error: "Please enter a valid url"});
     let displayUrl = this.state.displayUrl;
     displayUrl['rule'] = this.props.rules._id;
@@ -83,8 +87,23 @@ class DisplayPage extends Component{
       url: '',
       status: '',
       class: '',
-      type: ''
+      type: '',
+      checkUrl:false
     }});
+  }
+  handleWebsiteAuth(evt) {
+    if (!validatewebsite(evt.target.value)) {
+      checkUrl:true
+      toast("Enter valid website name", {
+        position: toast.POSITION.BOTTOM_LEFT,
+        className: css({background: "#dd5258", color: '#fff'}),
+        autoClose: 2000
+      });
+
+    } else {
+      $('.error-bg').fadeOut().html('')
+      $('#' + evt.target.id).removeClass('has-error')
+    }
   }
 
   handlePageUrl(e) {
@@ -97,6 +116,18 @@ class DisplayPage extends Component{
     this.setState({displayUrl: displayUrl});
   }
 
+  handleAddButton(evt) {
+    evt.preventDefault();
+    var tokenverify = this.handleCheckCookie();
+    const data = {
+      campaignName: this.state.campaignname,
+      websiteUrl: this.state.website,
+      profile: this.props.profile._id
+    };
+    return this.props.createCampaign(data)
+    // this.props.callbackFromParent({'active': 2});
+
+  }
   deleteDisplayUrl(id, index) {
     this.props.removePageUrl(id, index);
   }
@@ -171,13 +202,33 @@ class DisplayPage extends Component{
               </Col>
             </Row>
             <Row>
+              
               <Col md={12}>
+              <form onSubmit={this.handleAddButton}>
                 <div className="input-group">
-                  <input type="text" className="form-control txtpageurl" placeholder="Page URL" aria-describedby="urladd" onChange={this.handlePageUrl}/>
+                  <input 
+                  id="website"
+                  type="text" 
+                  className="form-control txtpageurl" 
+                  placeholder="Page URL" 
+                  aria-describedby="urladd" 
+                  onChange={this.handlePageUrl}
+                  onBlur={this.handleWebsiteAuth.bind(this)}
+                  value={this.state.displayUrl.url}
+                  
+                  />
                   <span className="input-group-btn" id="urladd">
-                    <a className="btn btn-raised btn-primary blue" href="javascript:;" onClick={this.addPageUrl}>Add</a>
+                    <Button 
+                    className="btn btn-raised btn-primary blue" 
+                    href="javascript:;" 
+                    onClick={this.addPageUrl}
+                    type="submit"
+                    >
+                    Add
+                    </Button>
                   </span>
                 </div>
+                </form>
               </Col>
             </Row>
             <Row>
@@ -223,6 +274,7 @@ class DisplayPage extends Component{
             </Row>
           </div>
         </Grid>
+        <ToastContainer hideProgressBar={true}/>
       </div>
     );
   }

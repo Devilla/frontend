@@ -18,6 +18,7 @@ class App extends Component {
     return (
         <div className="app-container">
           <Header />
+          
           <Spinner loading={this.props.loading} />
           <div className="content">
             {this.props.children}

@@ -25,6 +25,9 @@ export default class Header extends Component {
               <li className="nav-item">
                 <a className="nav-link w-nav-link" href="javascript:;">Integrations</a>
               </li>
+              <li>
+              <a className="nav-link w-nav-link" href="javascript:;">Help</a>
+              </li>
               <li className="nav-item">
                 <a className="nav-link" href="/about">About <span className="arrow"/></a>
                 <nav className="nav">

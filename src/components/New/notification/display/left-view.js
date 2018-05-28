@@ -13,6 +13,8 @@ class LeftView extends Component {
       loopNotification,
       delayNotification,
       closeNotification,
+      hideAnonymous,
+      displayNotifications,
       handleStateChange
     } = this.props;
     return (
@@ -76,6 +78,7 @@ class LeftView extends Component {
             </span>
           </Col>
         </Row>
+
       </div>
     );
   }

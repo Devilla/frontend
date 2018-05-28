@@ -8,6 +8,7 @@ import NotificationConfigure from './NotificationConfigure';
 import './Notifications.css';
 import Tabs from 'components/Template/tab'
 
+
 const notificationPanelStyleDefault = { // TODO: Take style values from server
   radius: 50,
   borderWidth: 0,
@@ -42,10 +43,14 @@ const notificationPanelStyleDefault = { // TODO: Take style values from server
     b: 255,
     a: 1
   },
+
   fontFamily: 'inherit',
   fontWeight: 'normal',
   linkFontFamily: 'inherit',
-  linkFontWeight: 'normal'
+  linkFontWeight: 'normal',
+  bulkData:5,
+  recentNumber:5,
+  recentConv:5
 };
 
 class Notifications extends Component {
@@ -198,6 +203,7 @@ class Notifications extends Component {
   }
 
   render() {
+    
     const { notifications, configurations, createSuccess } = this.props;
     return (<div className="content notification-list">
       <Grid fluid>

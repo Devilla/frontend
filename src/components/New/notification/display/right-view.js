@@ -13,7 +13,10 @@ class RightView extends Component {
       initialDelay,
       displayTime,
       delayBetween,
-      displayPosition
+      delayNotification,
+      displayPosition,
+      shouldHide,
+      closeNotification
     } = this.props;
 
     return (<div className="pnl np-border">
@@ -47,7 +50,7 @@ class RightView extends Component {
           </FormGroup>
         </Col>
       </Row>
-      <Row>
+      <Row className={this.props.delayNotification ? 'hidden' : ''}>
         <Col md={8}>
           <span className="mt-5">Delay between subsequent notifications</span>
         </Col>
