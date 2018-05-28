@@ -173,7 +173,7 @@ class DisplayPage extends Component{
             <Row>
               <Col md={12}>
                 <div className="input-group">
-                  <input type="text" className="form-control txtpageurl" placeholder="Page URL" aria-describedby="urladd" onChange={this.handlePageUrl}/>
+                  <input type="text" className="form-control txtpageurl" placeholder="Page URL" aria-describedby="urladd" value={this.state.displayUrl.url} onChange={this.handlePageUrl} onKeyUp={(e) => e.keyCode === 13?this.addPageUrl():null}/>
                   <span className="input-group-btn" id="urladd">
                     <a className="btn btn-raised btn-primary blue" href="javascript:;" onClick={this.addPageUrl}>Add</a>
                   </span>
