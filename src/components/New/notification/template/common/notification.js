@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import power from './power.svg'
-import './notification.css';
+import './notification.scss';
 
 export class Notification extends Component {
 

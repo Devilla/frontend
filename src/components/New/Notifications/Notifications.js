@@ -5,7 +5,6 @@ import { fetchNotification } from 'ducks/notification';
 import { createConfiguration, fetchConfiguration, fetchCampaignConfiguration, clearConfiguration, updateConfiguration, createSuccess } from 'ducks/configuration';
 import NotificationList from './NotificationList';
 import NotificationConfigure from './NotificationConfigure';
-import './Notifications.css';
 import Tabs from 'components/Template/tab'
 
 const notificationPanelStyleDefault = { // TODO: Take style values from server

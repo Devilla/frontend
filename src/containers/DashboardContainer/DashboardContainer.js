@@ -4,15 +4,15 @@ import { browserHistory, Link } from 'react-router';
 import { checkTokenExists } from 'ducks/auth';
 import { Spinner, Header, Footer, Sidebar } from 'components';
 
+import './DashboardContainer.scss';
 import './assets/css/bootstrap.min.scss';
 import './assets/css/animate.min.scss';
 import './assets/css/demo.scss';
-import './assets/css/pe-icon-7-stroke.scss';
+import './assets/css/pe-icon-7-stroke.css';
 import 'react-select/dist/react-select.css';
 // import './assets/stylesheets/style.scss';
 // import './assets/assets/css/page.scss';
 // import './assets/sass/light-bootstrap-dashboard.scss';
-import './DashboardContainer.scss';
 
 
 function getUrlVars() {
@@ -104,7 +104,7 @@ class DashboardContainer extends Component {
           {!this.state.render && <p>Please wait</p>}
           {this.state.render && <Sidebar {...this.props}/>}
           {
-            this.state.render && <div id="main-panel" className="main-panel">
+            this.state.render && <div id="main-panel" className="main-panel" style={{width: 'calc(100% - 195px)', marginTop: '-.5%', marginRight: '-1%'}}>
                 <Header {...this.props}/>
                 {this.props.children}
                 {/* <Footer/> */}

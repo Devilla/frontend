@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Button, Glyphicon } from 'react-bootstrap';
 import cx from 'classnames';
 import PropTypes from 'prop-types';
-import './Button.css';
+import './Button.scss';
 
 class CustomButton extends Component {
     render() {
