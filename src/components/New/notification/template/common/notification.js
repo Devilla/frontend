@@ -102,7 +102,7 @@ export class Notification extends Component {
 												</div>
 												<div className="FPqR14UVqJeA14UV7MM9_0">
 													Verified by <i><svg width="7" height="13" viewBox="0 0 7 13" xmlns="http://www.w3.org/2000/svg"><g fill="none" fillRule="evenodd"><path d="M4.127.496C4.51-.12 5.37.356 5.16 1.07L3.89 5.14H6.22c.483 0 .757.616.464 1.044l-4.338 6.34c-.407.595-1.244.082-1.01-.618L2.72 7.656H.778c-.47 0-.748-.59-.48-1.02L4.13.495z" fill="#F6A623"></path><path fill="#FEF79E" d="M4.606.867L.778 7.007h2.807l-1.7 5.126 4.337-6.34H3.16"></path></g></svg></i>
-													<a href="https://useinfluence.co" rel="nofollow" target="_blank">Influence</a></div>
+													<a href="https://useinfluence.co" rel="nofollow" target="_blank">{contentText}</a></div>
 											</div>
 											<div className="FPqR159fqJeA159f7MM9_0" style={{display: 'none'}}><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.597 17.954l-4.591-4.55-4.555 4.596-1.405-1.405 4.547-4.592-4.593-4.552 1.405-1.405 4.588 4.543 4.545-4.589 1.416 1.403-4.546 4.587 4.592 4.548-1.403 1.416z"></path></svg></div>
 										</div>
@@ -118,7 +118,7 @@ export class Notification extends Component {
 											 }}>
 											<div className="FPqR37xpqJeA37xp7MM9_0"><img src="https://useproof.s3.amazonaws.com/turbo1/flamelite.svg"style={{borderRadius:notificationPanelStyle.borderRadius}} /></div>
 											<div className="FPqRqu5HqJeAqu5H7MM9_0">
-												<div><span className="FPqRtoc3qJeAtoc37MM9_0"><span>2,002</span> people</span> signed up for Influence in the last 7 days
+												<div><span className="FPqRtoc3qJeAtoc37MM9_0"><span>2,002</span> people</span> signed up for {contentText} in the last 7 days
 												</div>
 											</div>
 											<div className="FPqR29e1qJeA29e17MM9_0" style={{display: 'none'}}><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.597 17.954l-4.591-4.55-4.555 4.596-1.405-1.405 4.547-4.592-4.593-4.552 1.405-1.405 4.588 4.543 4.545-4.589 1.416 1.403-4.546 4.587 4.592 4.548-1.403 1.416z"></path></svg></div>

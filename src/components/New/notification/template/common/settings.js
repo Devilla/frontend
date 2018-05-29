@@ -7,6 +7,7 @@ import ImagesUploader from 'react-images-uploader';
 import 'react-images-uploader/styles.css';
 import 'react-images-uploader/font.css';
 import { ChromePicker } from 'react-color';
+import './settings.css';
 
 const FONT_WEIGHT_BOLD = 'bold';
 const FONT_WEIGHT_NORMAL = 'normal';
@@ -22,7 +23,7 @@ export class Setting extends Component {
     }
     Object.assign(this.state, props.notificationPanelStyle);
   }
-  
+
   notificationPanelStyleDefault(e) {
     this.setState({[e.target.id]:e.target.value});
   }
@@ -339,118 +340,114 @@ export class Setting extends Component {
                       value={contentText}
                       placeholder="Enter content for notification"
                       id="contentText"
-                      onChange={(e) => this.setState(e.target.value)}
+                      onChange={(e) => handleContentChange(e.target.value)}
                     />
                   </Col>
                 </Row>
               </Col>
             </Row>
           </Tab>
-{notification.notificationName === "Bulk Activity"  &&
-<Tab eventKey={3} title="Bulk Setting">
-<Row>
-        <Col md={5}>
-        
-        Display bulk data from last
-        </Col>
-        <Col md={2}>
-          <FormGroup>
-            <FormControl
-              type="number"
-              value={notificationPanelStyle.bulkData}
-              onChange={(e) => this.handleStateChangeDay(e)}
-              bsSize="sm"
-            />
-          </FormGroup>
-        </Col>
-		<Col md={5}>
-		hours/days.
-        </Col>
-      </Row>
-
-</Tab>
-}
-{notification.notificationName === "Recent Activity" &&
-  <Tab eventKey={3} title="Recent Setting">
-<div>
-	<Row>
-        <Col md={3}>
-          Display the last
-        </Col>
-        <Col md={2}>
-          <FormGroup>
-            <FormControl
-              type="number"
-              onChange={(e) => this.handleStateChangeNumber(e)}
-              bsSize="sm"
-              value={notificationPanelStyle.recentNumber}
-
-            />
-          </FormGroup>
-        </Col>
-		<Col md={5}>
-		number of conversions.
-        </Col>
-      </Row>
-	  <Row>
-        <Col md={5}>
-		Display conversation from last
-        </Col>
-        <Col md={2}>
-          <FormGroup>
-            <FormControl
-              type="number"
-              value={notificationPanelStyle.recentConv}
-              onChange={(e) => this.handleStateChangeConv(e)}
-              bsSize="sm"
-            />
-          </FormGroup>
-        </Col>
-		<Col md={5}>
-		hours/days.
-        </Col>
-      </Row>	
-			
-		<Row>
-          <Col md={2}>
-            <Switch
-              circleStyles={{
-                onColor: 'blue',
-                offColor: 'gray',
-                diameter: 18
-              }}
-              switchStyles={{
-                width: 50
-              }}
-
-              cssClass="alignsame"
-
-            />
-          </Col>
-          <Col md={10}>
-            <span className="mt-5">Hide anonymous conversions
-            </span>
-          </Col>
-        </Row>
-        <Row>
-          <Col md={2}>
-            <Switch circleStyles={{
-                onColor: 'blue',
-                offColor: 'gray',
-                diameter: 18
-              }} switchStyles={{
-                width: 50
-              }} cssClass="alignsame"/>
-          </Col>
-          <Col md={10}>
-            <span className="mt-5">Only display notifications from user's country</span>
-          </Col>
-        </Row>
-		</div>
-
+          {notification.notificationName === "Bulk Activity"  &&
+            <Tab eventKey={3} title="Setting" className="bulk-settings">
+              <Row>
+                <Col md={5} style={{'paddingRight': 0}}>
+                  Display bulk data from last
+                </Col>
+                <Col md={1} style={{'padding': 0}}>
+                  <FormGroup>
+                    <FormControl
+                      type="number"
+                      min="0"
+                      value={notificationPanelStyle.bulkData}
+                      onChange={(e) => this.handleStateChangeDay(e)}
+                      bsSize="sm"
+                    />
+                  </FormGroup>
+                </Col>
+        		    <Col md={5} style={{'paddingLeft': '5px'}}>
+        		      hours/days.
+                </Col>
+              </Row>
             </Tab>
           }
-          
+          {notification.notificationName === "Recent Activity" &&
+            <Tab eventKey={3} title="Setting" className="recent-settings">
+              <div>
+	              <Row>
+                  <Col md={3} style={{'paddingRight': 0}}>
+                    Display the last
+                  </Col>
+                  <Col md={1} style={{'padding': 0}}>
+                    <FormGroup>
+                      <FormControl
+                        type="number"
+                        min="0"
+                        onChange={(e) => this.handleStateChangeNumber(e)}
+                        bsSize="sm"
+                        value={notificationPanelStyle.recentNumber}
+
+                      />
+                    </FormGroup>
+                  </Col>
+              		<Col md={5} style={{'paddingLeft': '5px'}}>
+              		    number of conversions.
+                  </Col>
+                </Row>
+	              <Row>
+                  <Col md={5} style={{'paddingRight': 0, width: '45%'}}>
+          		      Display conversation from last
+                  </Col>
+                  <Col md={1} style={{ padding: 0 }}>
+                    <FormGroup>
+                      <FormControl
+                        type="number"
+                        min="0"
+                        value={notificationPanelStyle.recentConv}
+                        onChange={(e) => this.handleStateChangeConv(e)}
+                        bsSize="sm"
+                      />
+                    </FormGroup>
+                  </Col>
+          		    <Col md={5} style={{'paddingLeft': '5px'}}>
+          		      hours/days.
+                  </Col>
+                </Row>
+            		<Row>
+                  <Col md={2}>
+                    <Switch
+                      circleStyles={{
+                        onColor: 'blue',
+                        offColor: 'gray',
+                        diameter: 18
+                      }}
+                      switchStyles={{
+                        width: 50
+                      }}
+                      cssClass="alignsame"
+                    />
+                  </Col>
+                  <Col md={10}>
+                    <span className="mt-5">Hide anonymous conversions
+                    </span>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col md={2}>
+                    <Switch circleStyles={{
+                        onColor: 'blue',
+                        offColor: 'gray',
+                        diameter: 18
+                      }} switchStyles={{
+                        width: 50
+                      }} cssClass="alignsame"/>
+                  </Col>
+                  <Col md={10}>
+                    <span className="mt-5">Only display notifications from user's country</span>
+                  </Col>
+                </Row>
+      		    </div>
+            </Tab>
+          }
         </Tabs>
       </div>
     );

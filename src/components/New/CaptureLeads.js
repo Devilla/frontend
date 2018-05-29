@@ -13,11 +13,7 @@ import CardTable from 'components/Template/card-with-page-table'
 import { pagethArray } from 'components/Template/data'
 import { fetchPageUrl, createPageUrl, clearPageUrl, removePageUrl } from 'ducks/pageurl';
 import { fetchOneRules, clearRules } from 'ducks/rules';
-import { validatewebsite } from 'components/Common/function';
 import { ToastContainer, toast } from 'react-toastify';
-import { css, checked } from 'glamor';
-import $ from 'jquery';
-
 
 class CaptureLeads extends Component{
   constructor(){
@@ -77,10 +73,9 @@ class CaptureLeads extends Component{
   }
 
   addPageUrl() {
-    if(this.state.lead.url == '' || !validatewebsite(this.state.lead.url))
+    if(this.state.lead.url == '')
       return this.setState({error: "Please enter a valid url"});
     let lead = this.state.lead;
-    console.log(this.state.lead.url,"++++++++++++++++++++++++++++++")
     lead['rule'] = this.props.rules._id;
     this.props.createPageUrl(lead);
     this.setState({lead: {
@@ -100,36 +95,6 @@ class CaptureLeads extends Component{
     };
     this.setState({lead: lead});
   }
-  handleWebsiteAuth(evt) {
-    if (!validatewebsite(evt.target.value)) {
-      checkUrl:true
-      toast("Enter valid website name", {
-        position: toast.POSITION.BOTTOM_LEFT,
-        className: css({background: "#dd5258", color: '#fff'}),
-        autoClose: 2000
-      });
-
-    } else {
-      $('.error-bg').fadeOut().html('')
-    }
-  }
-
-
-  handleAddButton(evt) {
-    evt.preventDefault();
-    var tokenverify = this.handleCheckCookie();
-    const data = {
-      campaignName: this.state.campaignname,
-      websiteUrl: this.state.website,
-      profile: this.props.profile._id
-    };
-    return this.props.createCampaign(data)
-    // this.props.callbackFromParent({'active': 2});
-
-  }
-
-
-
 
   deleteLead(id, index) {
     this.props.removePageUrl(id, index);
@@ -207,32 +172,12 @@ class CaptureLeads extends Component{
             </Row>
             <Row>
               <Col md={12}>
-              <form onSubmit={this.handleAddButton}>
-                <div 
-                className="input-group">
-                  <input
-                       type="text"
-                       className="form-control txtpageurl" 
-                       placeholder="Page URL" 
-                       aria-describedby="urladd" 
-                       aria-describedby="urladd" 
-                      onChange={this.handlePageUrl}
-                      onBlur={this.handleWebsiteAuth.bind(this)}
-                       value={this.state.lead.url} 
-                       onChange={this.handlePageUrl}/>
-                  <span 
-                       className="input-group-btn" 
-                       id="urladd">
-                    <a 
-                    className="btn btn-raised btn-primary blue" 
-                    href="javascript:;" 
-                    onClick={this.addPageUrl}>
-                    Add
-                    </a>
+                <div className="input-group">
+                  <input type="text" className="form-control txtpageurl" placeholder="Page URL" aria-describedby="urladd" value={this.state.lead.url} onChange={this.handlePageUrl} onKeyUp={(e) => e.keyCode === 13?this.addPageUrl():null}/>
+                  <span className="input-group-btn" id="urladd">
+                    <a className="btn btn-raised btn-primary blue" href="javascript:;" onClick={this.addPageUrl}>Add</a>
                   </span>
-                  
                 </div>
-                </form>
               </Col>
             </Row>
             <Row>
