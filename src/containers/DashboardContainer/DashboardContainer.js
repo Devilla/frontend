@@ -7,7 +7,7 @@ import { Spinner, Header, Footer, Sidebar } from 'components';
 import './assets/css/bootstrap.min.scss';
 import './assets/css/animate.min.scss';
 import './assets/css/demo.scss';
-import './assets/css/pe-icon-7-stroke.scss';
+import './assets/css/pe-icon-7-stroke.css';
 import 'react-select/dist/react-select.css';
 // import './assets/stylesheets/style.scss';
 // import './assets/assets/css/page.scss';
