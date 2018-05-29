@@ -13,7 +13,7 @@ RUN npm install -g serve
 COPY . .
 
 
-EXPOSE 5000
+EXPOSE 3000
 
 
 ## Remove stack docker from the dir
