@@ -25,16 +25,17 @@ class WebsiteHome extends Component {
           <div className="container">
             <div className="row">
               <div className="col-md-10 col-lg-10">
-                <h1>Increase your website conversions using social proof notifications <br/> </h1>
+                <h1 style={{fontSize: '46px'}}>Increase your website conversions using social proof notifications <br/> </h1>
                 <p className="lead col-md-12 text-center"> Influence helps you in converting more customers on your website by showing recent customer activity on your web pages </p>
-                <div className="">
-                  <form className="form--horizontal row">
-                    <div className="col-md-1"></div>
-                    <div className="col-md-6"> <input type="text" name="email" placeholder="Enter your email" /> </div>
-                    <div className="col-md-4"> <button type="submit" className="btn btn--primary type--uppercase">start your free trial</button> </div>
-                  </form>
-                </div>
               </div>
+            </div>
+            <br/> <br/>
+            <div className="">
+              <form className="form--horizontal row">
+                <div className="col-md-1"></div>
+                <div className="col-md-6"> <input type="text" name="email" placeholder="Enter your email" /> </div>
+                <div className="col-md-4"> <button type="submit" className="btn btn--primary type--uppercase">start your free trial</button> </div>
+              </form>
             </div>
           </div>
         </section>

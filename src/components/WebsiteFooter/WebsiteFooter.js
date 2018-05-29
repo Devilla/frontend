@@ -10,10 +10,10 @@ class WebsiteFooter extends Component {
             <div className="row">
               <div className="menu-vertical col-md-3">
                 <ul className="bar__module">
-                  <li className="type--uppercase col-sm-4 col-md-2 h5"><Link to=""> Company</Link></li>
-                  <li className="type--uppercase col-sm-4 col-md-2 h6"><Link to="/about"> About Us </Link> </li>
-                  <li className="type--uppercase col-sm-4 col-md-2 h6"><Link to="/terms-and-condtions"> Terms &amp; Conditions </Link></li>
-                  <li className="type--uppercase col-sm-4 col-md-2 h6"><Link to="/privacy-policy"> Privacy Policy </Link></li>
+                  <li className="type--uppercase col-sm-4 col-md-2 h5"><Link className="footer-menu-link" to=""> Company</Link></li>
+                  <li className="type--uppercase col-sm-4 col-md-2 h6"><Link className="footer-menu-link" to="/about"> About Us </Link> </li>
+                  <li className="type--uppercase col-sm-4 col-md-2 h6"><Link className="footer-menu-link" to="/terms-and-condtions"> Terms &amp; Conditions </Link></li>
+                  <li className="type--uppercase col-sm-4 col-md-2 h6"><Link className="footer-menu-link" to="/privacy-policy"> Privacy Policy </Link></li>
                 </ul>
               </div>
               <div className="menu-vertical col-md-3">

@@ -20,7 +20,7 @@ class WebsitePricing extends Component {
           <div className="container">
             <div className="row">
               <div className="col-md-12">
-                <span className="label label--inline" style={{ right: '0', left:'45%', width: '7%'  }}>Hot!</span>
+                <span className="label label--inline">Hot!</span>
                 <span className="h4"> Save 20% with our Annual plans</span>
               </div>
             </div>

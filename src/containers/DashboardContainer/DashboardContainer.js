@@ -4,6 +4,17 @@ import { browserHistory, Link } from 'react-router';
 import { checkTokenExists } from 'ducks/auth';
 import { Spinner, Header, Footer, Sidebar } from 'components';
 
+import './assets/css/bootstrap.min.scss';
+import './assets/css/animate.min.scss';
+import './assets/css/demo.scss';
+import './assets/css/pe-icon-7-stroke.scss';
+import 'react-select/dist/react-select.css';
+// import './assets/stylesheets/style.scss';
+// import './assets/assets/css/page.scss';
+// import './assets/sass/light-bootstrap-dashboard.scss';
+import './DashboardContainer.scss';
+
+
 function getUrlVars() {
   var vars = [],
     hash;
