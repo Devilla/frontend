@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import NewUser from './new'
-import InstallPixel from './install-pixel'
-import ConfigLeads from './capture-leads'
+import NewUser from './new';
+import InstallPixel from './install-pixel';
+import CaptureLeads from './CaptureLeads';
+import DisplayPage from './DisplayPage';
 import ConfigNotification from './configure-notification'
 import Notifications from './Notifications/Notifications';
 import { clearCampaign } from 'ducks/campaign';
@@ -49,8 +50,11 @@ class Check extends Component {
       case 4:
 			   return <ConfigNotification  callbackFromParent ={this.activeState}/>
       case 5:
-			   return <ConfigLeads  callbackFromParent ={this.activeState}/>
-		}
+			   return <CaptureLeads  callbackFromParent ={this.activeState}/>
+      case 6:
+  			return <DisplayPage  callbackFromParent ={this.activeState}/>
+
+    }
 	}
 }
 

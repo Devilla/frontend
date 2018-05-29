@@ -74,7 +74,7 @@ class DashboardContainer extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.props.profile != nextProps.profile)
+    if (this.props.profile != nextProps.profile || !nextProps.profile)
       this.checkUserDetails(nextProps.profile);
   }
 

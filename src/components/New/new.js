@@ -9,14 +9,13 @@ import {
   FormControl
 } from 'react-bootstrap';
 import {browserHistory} from 'react-router';
+import $ from 'jquery';
 import CardHeader from 'components/Template/card-with-header'
 import FormInputs from 'components/Template/FormTemp';
 import Button from 'components/Template/customButton';
-import Switch from 'react-flexible-switch';
-import $ from 'jquery';
-import {ToastContainer, toast} from 'react-toastify';
-import {css} from 'glamor';
-import {validatewebsite, validateemail, validphone, getCookie} from 'components/Common/function';
+import { ToastContainer, toast } from 'react-toastify';
+import { css } from 'glamor';
+import { validatewebsite } from 'components/Common/function';
 import { createCampaign } from 'ducks/campaign';
 
 function validate(campaignname, website) {

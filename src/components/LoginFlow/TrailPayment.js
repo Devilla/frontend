@@ -51,48 +51,48 @@ class TrailPayment extends Component {
     });
   }
 
-  returnRates(price) {
-    if(this.state.country_code=="IN") {
-      return '₹'+Math.floor(price*this.state.rate*this.state.planPeriod);
-    } else {
-      return '$'+Math.floor(price*this.state.planPeriod);
-    }
-  }
+  // returnRates(price) {
+  //   if(this.state.country_code=="IN") {
+  //     return '₹'+Math.floor(price*this.state.rate*this.state.planPeriod);
+  //   } else {
+  //     return '$'+Math.floor(price*this.state.planPeriod);
+  //   }
+  // }
 
-  renderPlan() {
-    const { planList, selectedPlan, handleCheckChange } = this.props;
-    return planList?planList.map(plans => {
-      return <div className="card" style={{ width: '50%', padding: '5%', margin: '0 1%'}}>
-        <div className="card-body">
-          <h5 className="card-title">{plans.planName}</h5>
-          <span className="card-text">
-            {plans.planType}
-          </span>
-          <p className="card-text">
-            <h5>{this.returnRates(plans.amount)}</h5>
-          </p>
-          <input
-            type="radio"
-            value={plans._id}
-            checked={
-              plans._id == selectedPlan ?
-                "checked"
-              :
-                false
-              }
-            id="plan"
-            name="plan"
-            onChange={(e) => handleCheckChange(e.target, e.target.value)}
-          />
-        </div>
-      </div>
-      })
-    :
-      <div>No Plan to select</div>
-  }
+  // renderPlan() {
+  //   const { planList, selectedPlan, handleCheckChange } = this.props;
+  //   return planList?planList.map(plans => {
+  //     return <div className="card" style={{ width: '50%', padding: '5%', margin: '0 1%'}}>
+  //       <div className="card-body">
+  //         <h5 className="card-title">{plans.planName}</h5>
+  //         <span className="card-text">
+  //           {plans.planType}
+  //         </span>
+  //         <p className="card-text">
+  //           <h5>{this.returnRates(plans.amount)}</h5>
+  //         </p>
+  //         <input
+  //           type="radio"
+  //           value={plans._id}
+  //           checked={
+  //             plans._id == selectedPlan ?
+  //               "checked"
+  //             :
+  //               false
+  //             }
+  //           id="plan"
+  //           name="plan"
+  //           onChange={(e) => handleCheckChange(e.target, e.target.value)}
+  //         />
+  //       </div>
+  //     </div>
+  //     })
+  //   :
+  //     <div>No Plan to select</div>
+  // }
 
   render() {
-    const { user, profile, plan, selectedPlan, username, planList, stripeError, handleCheckChange, handleStateChange, handleSubmit } = this.props;
+    const { user, amount, profile, plan, selectedPlan, username, planList, stripeError, handleCheckChange, handleStateChange, handleSubmit, load } = this.props;
 
     return (
       <div>
@@ -127,8 +127,10 @@ class TrailPayment extends Component {
 
                     <Elements >
                       <PaymentPage
+                        amount={amount}
                         user={user}
                         plan={plan}
+                        load={load}
                         // profile={profile}
                         planList={planList}
                         stripeError={stripeError}

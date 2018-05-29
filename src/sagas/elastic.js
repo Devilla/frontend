@@ -13,10 +13,7 @@ function* fetch(action) {
   try {
     yield put(load());
     const res = yield call(api.GET, `elasticsearch/query?trackingId=${action.query}`);
-    if(res.error)
-      console.log(res.error);
-    else
-      yield put(actions.fetchSuccess(res));
+    yield put(actions.fetchSuccess(res));
     yield put(loaded());
   } catch (error) {
     yield put(loaded());

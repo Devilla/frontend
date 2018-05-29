@@ -316,3 +316,14 @@
   -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
 }
+
+.notification-list .tabscontent {
+  margin: 0px auto 0%;
+  padding: 5% 5%;
+}
+
+.notification-list .notification-button-row {
+  margin: 0px auto 10%;
+  padding: 5% 7% 5% 5%;
+  background: white;
+}

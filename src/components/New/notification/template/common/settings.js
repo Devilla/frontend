@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Row, Col, Tabs, Tab, Button, FormControl } from 'react-bootstrap';
+import Switch from 'react-flexible-switch';
+
 import Slider from 'react-rangeslider'
 import reactCSS from 'reactcss'
 import ImagesUploader from 'react-images-uploader';
@@ -85,6 +87,12 @@ export class Setting extends Component {
     this.props.onConfigChange({ prop: 'color', value: color });
   }
 
+  handleTextLinkColorChange = (linkColor) => {
+    linkColor = linkColor.rgb;
+    this.setState({ linkColor });
+    this.props.onConfigChange({ prop: 'linkColor', value: linkColor });
+  }
+
   showTextColorSwatch = () => {
     this.setState({ isTextColorSwatchOpen: true });
   };
@@ -93,10 +101,24 @@ export class Setting extends Component {
     this.setState({ isTextColorSwatchOpen: false });
   };
 
+  showLinkColorSwatch = () => {
+    this.setState({ isLinkColorSwatchOpen: true });
+  };
+
+  hideLinkColorSwatch = () => {
+    this.setState({ isLinkColorSwatchOpen: false });
+  };
+
   handleFontChange = (e) => {
     const fontFamily = `${e.target.value}`;
     this.setState({ fontFamily });
     this.props.onConfigChange({ prop: 'fontFamily', value: fontFamily });
+  };
+
+  handleLinkFontChange = (e) => {
+    const linkFontFamily = `${e.target.value}`;
+    this.setState({ linkFontFamily });
+    this.props.onConfigChange({ prop: 'linkFontFamily', value: linkFontFamily });
   };
 
   handleFontWeightChange = () => {
@@ -110,13 +132,28 @@ export class Setting extends Component {
     this.props.onConfigChange({ prop: 'fontWeight', value: fontWeight });
   }
 
+  handleLinkFontWeightChange = () => {
+    let linkFontWeight = this.props.notificationPanelStyle.linkFontWeight;
+    if(linkFontWeight === FONT_WEIGHT_BOLD)
+      linkFontWeight = FONT_WEIGHT_NORMAL;
+    else
+      linkFontWeight = FONT_WEIGHT_BOLD;
+
+    this.setState({linkFontWeight});
+    this.props.onConfigChange({ prop: 'linkFontWeight', value: linkFontWeight });
+  }
+
   componentWillReceiveProps(nextProps) {
       if(nextProps != this.props)
         Object.assign(this.state, this.props.notificationPanelStyle);
   }
 
+  handleStateChange() {
+
+  }
+
   render() {
-    const notificationPanelStyle = this.props.notificationPanelStyle;
+    const { notificationPanelStyle, handleContentChange, contentText, notificationName, hideAnonymous, displayNotifications } = this.props;
     const styles = reactCSS({
       'default': {
         colorSwatch: {
@@ -132,6 +169,9 @@ export class Setting extends Component {
         },
         textColor: {
           backgroundColor: `rgb(${notificationPanelStyle.color.r}, ${notificationPanelStyle.color.g}, ${notificationPanelStyle.color.b})`
+        },
+        linkColor: {
+          backgroundColor: `rgb(${notificationPanelStyle.linkColor.r}, ${notificationPanelStyle.linkColor.g}, ${notificationPanelStyle.linkColor.b}, ${notificationPanelStyle.linkColor.a})`
         },
         swatch: {
           padding: '0px',
@@ -154,6 +194,7 @@ export class Setting extends Component {
         },
       },
     });
+    console.log(notificationName, "================>notification");
     return (
       <div className="setting" style={{ backgroundColor: 'white' }}>
         <Tabs justified defaultActiveKey={1} id="uncontrolled-tab-example">
@@ -281,21 +322,21 @@ export class Setting extends Component {
                 <h4>Link Setting</h4>
                 <Row>
                   <Col md={4}>
-                    <div style={styles.swatch} className="bgcolor" onClick={this.handleClick}>
-                      <div style={styles.color} />
+                    <div style={styles.swatch} className="bgcolor" onClick={this.showLinkColorSwatch}>
+                      <div style={{ ...styles.colorSwatch, ...styles.linkColor }} />
                     </div>
-                    {this.state.displayColorPicker ? <div style={styles.popover}>
-                      <div style={styles.cover} onClick={this.handleClose} />
-                      <ChromePicker color={notificationPanelStyle.color} onChange={this.handleChange} />
+                    {this.state.isLinkColorSwatchOpen ? <div style={styles.popover}>
+                      <div style={styles.cover} onClick={this.hideLinkColorSwatch} />
+                      <ChromePicker color={notificationPanelStyle.linkColor} onChange={this.handleTextLinkColorChange} />
                     </div> : null}
                   </Col>
                   <Col md={4}>
-                    <Button bsSize="small" block>
+                    <Button bsSize="small" block active={notificationPanelStyle.linkFontWeight == FONT_WEIGHT_BOLD} onClick={this.handleLinkFontWeightChange}>
                       Bold
-                             </Button>
+                    </Button>
                   </Col>
                   <Col md={4}>
-                    <FormControl componentClass="select" bsSize="small" placeholder="select">
+                    <FormControl componentClass="select" bsSize="small" placeholder="select" value={notificationPanelStyle.linkFontFamily} onChange={this.handleLinkFontChange}>
                       <option value="arial">Arial</option>
                       <option value="sans-serif">Sen Serif</option>
                       <option value="helvetica">Helvetica</option>
@@ -305,8 +346,64 @@ export class Setting extends Component {
                 </Row>
               </Col>
             </Row>
+            <Row>
+              <Col md={12}>
+                <h4>Content Setting</h4>
+                <Row>
+                  <Col md={12}>
+                    <FormControl
+                      type="text"
+                      value={contentText}
+                      placeholder="Enter content for notification"
+                      id="contentText"
+                      onChange={(e) => handleContentChange(e.target.value)}
+                    />
+                  </Col>
+                </Row>
+              </Col>
+            </Row>
           </Tab>
-          <Tab eventKey={3} title="Image">
+          {/* {notificationName=="Recent Activity" &&
+            <Tab eventKey={3} title="Others">
+              <Row>
+                <Col md={2}>
+                  <Switch
+                    circleStyles={{
+                      onColor: 'blue',
+                      offColor: 'gray',
+                      diameter: 18
+                    }}
+                    switchStyles={{
+                      width: 50
+                    }}
+
+                    cssClass="alignsame"
+                    value={hideAnonymous}
+                    onChange={(e) => this.handleStateChange('hideAnonymous', e)}
+                  />
+                </Col>
+                <Col md={10}>
+                  <span className="mt-5">Hide anonymous conversions
+                  </span>
+                </Col>
+              </Row>
+              <Row>
+                <Col md={2}>
+                  <Switch circleStyles={{
+                      onColor: 'blue',
+                      offColor: 'gray',
+                      diameter: 18
+                    }} switchStyles={{
+                      width: 50
+                    }} cssClass="alignsame" value={displayNotifications} onChange={(e) => this.handleStateChange('displayNotifications', e)}/>
+                </Col>
+                <Col md={10}>
+                  <span className="mt-5">Only display notifications from user's country</span>
+                </Col>
+              </Row>
+            </Tab>
+          } */}
+          {/* <Tab eventKey={3} title="Image">
             <ImagesUploader
               url="http://localhost:1337/upload"
               optimisticPreviews
@@ -318,7 +415,7 @@ export class Setting extends Component {
               }}
               label="Upload a picture"
             />
-          </Tab>
+          </Tab> */}
         </Tabs>
       </div>
     );

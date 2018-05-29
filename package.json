@@ -41,7 +41,6 @@
     "jquery": "^3.3.1",
     "lodash": "^4.17.5",
     "moment": "^2.22.0",
-    "node-sass": "^4.9.0",
     "node-sass-chokidar": "0.0.3",
     "object-assign": "4.1.1",
     "postcss-flexbugs-fixes": "3.2.0",
@@ -91,7 +90,6 @@
     "redux-saga": "^0.16.0",
     "redux-thunk": "^2.2.0",
     "resolve": "1.6.0",
-    "sass-loader": "^7.0.1",
     "slick-carousel": "^1.8.1",
     "style-loader": "0.19.0",
     "sw-precache-webpack-plugin": "0.11.4",
@@ -110,7 +108,9 @@
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
-    "babel-preset-react": "^6.24.1"
+    "babel-preset-react": "^6.24.1",
+    "node-sass": "^4.9.0",
+    "sass-loader": "^7.0.1"
   },
   "jest": {
     "collectCoverageFrom": [

@@ -10,6 +10,7 @@ import {Scrollbars} from 'react-custom-scrollbars';
 import {dataSales, optionsSales, responsiveSales, legendSales} from 'components/utils/variable.jsx';
 import { getCookie, ajaxgetrequest } from 'components';
 import { fetchElastic } from 'ducks/elastic';
+import { fetchCampaignInfo, successCampaign } from 'ducks/campaign';
 
 class Dashboard extends Component {
   constructor() {
@@ -19,10 +20,12 @@ class Dashboard extends Component {
       arrs: [],
       UniqueVisitor: 0
     }
+    this.handleRouteChange = this.handleRouteChange.bind(this);
   }
 
   componentWillMount() {
     this.props.fetchElastic("json.value.trackingId:INF-azg2fhcfgjh0hvi3v");
+    this.props.fetchCampaignInfo();
   }
 
   componentWillReceiveProps(nextProps) {
@@ -39,27 +42,14 @@ class Dashboard extends Component {
     }
     return legend;
   }
-  // checkauth(){
-  //     var k = this;
-  //     var usertoken = getCookie("usertoken");
-  //     var data = ajaxgetrequest('http://localhost:3000/website',usertoken);
-  //     window.setTimeout(function(){
-  //         for(var i=0;i<data.length;i++){
-  //             k.setState({
-  //                 arrs :  [...k.state.arrs, data[i]],
-  //                 render: true,
-  //                 UniqueVisitor: data[i].domain?data[i].domain.length:0
-  //             })
-  //         }
-  //
-  //         console.log(k.state.arrs)
-  //
-  //     },3000)
-  //
-  //
-  // }
+
+  handleRouteChange(campaign) {
+    this.props.successCampaign(campaign);
+    browserHistory.push('/new');
+  }
 
   render() {
+    const { campaignInfo, successCampaign } = this.props;
     return (<div className="content">
       <Grid fluid="fluid">
 
@@ -69,11 +59,11 @@ class Dashboard extends Component {
               <Col lg={6} sm={6}>
                 <Row>
                   <Col lg={12}>
-                    <Card title="Websites with Pixel" category="" content={<div className = "table-full-width" > <Scrollbars style={{
+                    <Card title="Active Campaigns" category="" content={<div className = "table-full-width" > <Scrollbars style={{
                           height: 150
                         }}>
                         <table className="table">
-                          <Website data={this.state.arrs} render={this.state.render}/>
+                          <Website data={campaignInfo?campaignInfo.websiteLive:[]} handleRouteChange={this.handleRouteChange} render={campaignInfo?true:false}/>
                         </table>
                       </Scrollbars>
                     </div>}/>
@@ -107,7 +97,7 @@ class Dashboard extends Component {
                 </Row>
                 <Row>
                   <Col lg={12} sm={12}>
-                    <StatsCard statsClass="card card-stats  eqheight" statsText="Notifications Shown" statsValue="0"/>
+                    <StatsCard statsClass="card card-stats  eqheight" statsText="Notifications Shown" statsValue={campaignInfo?campaignInfo.notificationCount:0}/>
                   </Col>
                 </Row>
               </Col>
@@ -144,14 +134,14 @@ class Dashboard extends Component {
             </Row>
           </Col>
         </Row>
-        <Row>
+        {/* <Row>
           <Col md={12}>
             <p className="text-center">
               Get one of our experts to do it all for you! &nbsp;
-              {/* <a href="javascript:;">Click here</a> */}
+              <a href="javascript:;">Click here</a>
             </p>
           </Col>
-        </Row>
+        </Row> */}
       </Grid>
     </div>);
   }
@@ -159,10 +149,13 @@ class Dashboard extends Component {
 
 const mapStateToProps = state => ({
   elastic: state.getIn(['elastic', 'elastic']),
+  campaignInfo: state.getIn(['campaign', 'campaignInfo']),
 });
 
 const mapDispatchToProps = {
-  fetchElastic
+  fetchElastic,
+  successCampaign,
+  fetchCampaignInfo
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

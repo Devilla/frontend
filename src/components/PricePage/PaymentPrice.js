@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Switch from 'react-flexible-switch';
 
-const PaymentPrice = ({planList, returnRates, handleMonthChange, handleSwitchChange, handleYearChange, externalValue, selectedPlan, handleCheckChange }) => {
+const PaymentPrice = ({planList, planPeriod, returnRates, handleMonthChange, handleSwitchChange, handleYearChange, externalValue, selectedPlan, handleCheckChange }) => {
   return (
     <div style={{width:'100%'}}>
       <div className="price">
@@ -57,7 +57,7 @@ const PaymentPrice = ({planList, returnRates, handleMonthChange, handleSwitchCha
                     }
                   id="plan"
                   name="plan"
-                  onChange={(e) => handleCheckChange(e.target, e.target.value)}
+                  onChange={(e) => handleCheckChange(e.target, e.target.value, plan.amount*planPeriod)}
                 />
               </div>
             </div>

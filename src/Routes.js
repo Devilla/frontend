@@ -4,16 +4,10 @@ import { store } from './index.js';
 
 import {
   About,
-  CompanyDetails,
-  ContactPage,
   ForgetPassword,
   Home,
   Profile,
   HowItWorks,
-  LoginPage,
-  PricePage,
-  PrivacyPage,
-  RegisterPage,
   ResetPassword,
   Sidebar,
   StatsCard,
@@ -37,7 +31,8 @@ import {
   WebsiteSignUp,
   WebsiteTerms,
   WebsitePolicy,
-  WebsiteContact
+  WebsiteContact,
+  VerificationPage
 } from 'components';
 
 import {
@@ -65,6 +60,7 @@ const MyRoutes = ({routerHistory, store}) => (
     </Route>
     <Route path="/getting-started" component={LoginFlow} />
     <Route exact path="/connect/:provider" component={ConnectPage} />
+    <Route exact path="/verify/:code" component={VerificationPage} />
     <Route component={App}>
       <Route path="/" component={WebsiteHome} />
       <Route path="/how-it-works" component={WebsiteHowItWorks} />
@@ -83,8 +79,8 @@ const MyRoutes = ({routerHistory, store}) => (
       {/* <Route path="/privacy-policy" component={PrivacyPage} /> */}
       {/* <Route path="/contact" component={ContactPage} /> */}
       {/* <Route path="/pricing" component={PricePage} /> */}
-      {/* <Route path="/forget-password" component={ForgetPassword} /> */}
-      {/* <Route path="/reset-password" component={ResetPassword} /> */}
+      <Route path="/forget-password" component={ForgetPassword} />
+      <Route path="/reset-password" component={ResetPassword} />
       {/* <Redirect from='price' to="/pricing" /> */}
     </Route>
     <Route path="*" component={Error} />

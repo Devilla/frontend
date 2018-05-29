@@ -1,20 +1,21 @@
 import React, { Component } from 'react';
-import { Row, Col } from 'react-bootstrap';
-import {Card} from '../notification/template/common';
+import { Row, Col, Button, Glyphicon } from 'react-bootstrap';
+import { Card } from '../notification/template/common';
 import { Notification } from '../notification/template/common/notification'
 import { Setting } from '../notification/template/common/settings'
 
 const NotificationConfigure = ({
     notification,
     activity,
+    contentText,
     setDefaultPanel,
     handleActivityChange,
+    handleContentChange,
     notificationPanelStyle,
     handleNotificationStyleChange,
-    backConfiguration,
-    saveConfiguration
+    saveConfiguration,
+    backConfiguration
   }) => {
-
   return (
     <div className="notification-configure">
       <Row>
@@ -24,10 +25,20 @@ const NotificationConfigure = ({
             content={
               <Row>
                 <Col md={6}>
-                  <Notification notification={notification} notificationPanelStyle={notificationPanelStyle} />
+                  <Notification
+                    contentText={contentText}
+                    notification={notification}
+                    notificationPanelStyle={notificationPanelStyle}
+                  />
                 </Col>
                 <Col md={6}>
-                  <Setting notificationPanelStyle={notificationPanelStyle} onConfigChange={handleNotificationStyleChange} />
+                  <Setting
+                    notificationName={notification.notificationName}
+                    contentText={contentText}
+                    notificationPanelStyle={notificationPanelStyle}
+                    onConfigChange={handleNotificationStyleChange}
+                    handleContentChange={handleContentChange}
+                  />
                 </Col>
               </Row>
             }
@@ -36,30 +47,27 @@ const NotificationConfigure = ({
       </Row>
       <Row>
         <Col md={4}>
-          <p>&nbsp;</p>
-          <div className="text-left">
-              <button className="btn btn-default" onClick={() => backConfiguration()}>
-                <i className="fas fa-angle-left"></i>
-                Back
-              </button>
+          <div className=" text-left">
+            <Button bsStyle="primary" onClick={backConfiguration}>
+              <Glyphicon glyph="chevron-left" />
+              Back
+            </Button>
           </div>
         </Col>
         <Col md={4}>
-          <p>&nbsp;</p>
-          <div className="text-center">
-              <button className="btn btn-default" onClick={() => setDefaultPanel()}>
-                <i className="fas fa-angle-left"></i>
-                Set Default
-              </button>
+          <div className=" text-center">
+           <Button bsStyle="primary" onClick={setDefaultPanel}>
+             <Glyphicon glyph="align-justify" />
+             Set Default
+            </Button>
           </div>
         </Col>
         <Col md={4}>
-          <p>&nbsp;</p>
-          <div className="text-right">
-              <button className="blue btn btn-default" onClick={() => saveConfiguration()}>
-                Save
-                <i className="fas fa-chevron-right"></i>
-              </button>
+          <div className=" text-right">
+           <Button bsStyle="primary" onClick={saveConfiguration}>
+             <Glyphicon glyph="save" />
+             Save
+            </Button>
           </div>
         </Col>
       </Row>
