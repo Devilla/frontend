@@ -30,8 +30,17 @@ export class Setting extends Component {
     this.setState({ radius });
     this.props.onConfigChange({ prop: 'radius', value: radius });
   };
-  handleStateChange(e) {
+  handleStateChangeDay(e) {
     this.setState({[e.target.id]:e.target.value});
+    this.props.onConfigChange({ prop: 'bulkData', value: e.target.value });
+  };
+  handleStateChangeNumber(e) {
+    this.setState({[e.target.id]:e.target.value});
+    this.props.onConfigChange({ prop: 'recentNumber', value: e.target.value });
+  };
+  handleStateChangeConv(e) {
+    this.setState({[e.target.id]:e.target.value});
+    this.props.onConfigChange({ prop: 'recentConv', value: e.target.value });
   };
 
   handleBorderWidthChange = (borderWidth) => {
@@ -338,7 +347,7 @@ export class Setting extends Component {
             </Row>
           </Tab>
 {notification.notificationName === "Bulk Activity"  &&
-<Tab eventKey={3} title="Bulk Activity" >
+<Tab eventKey={3} title="Bulk Setting">
 <Row>
         <Col md={5}>
         
@@ -349,9 +358,9 @@ export class Setting extends Component {
             <FormControl
               type="number"
               value={notificationPanelStyle.bulkData}
-              onChange={(e) => this.handleStateChange(e)}
+              onChange={(e) => this.handleStateChangeDay(e)}
               bsSize="sm"
-            />{notificationPanelStyle.bulkData}
+            />
           </FormGroup>
         </Col>
 		<Col md={5}>
@@ -362,7 +371,7 @@ export class Setting extends Component {
 </Tab>
 }
 {notification.notificationName === "Recent Activity" &&
-  <Tab eventKey={3} title="Recent Activity">
+  <Tab eventKey={3} title="Recent Setting">
 <div>
 	<Row>
         <Col md={3}>
@@ -372,10 +381,11 @@ export class Setting extends Component {
           <FormGroup>
             <FormControl
               type="number"
+              onChange={(e) => this.handleStateChangeNumber(e)}
               bsSize="sm"
               value={notificationPanelStyle.recentNumber}
 
-            />{notificationPanelStyle.recentNumber}
+            />
           </FormGroup>
         </Col>
 		<Col md={5}>
@@ -391,8 +401,9 @@ export class Setting extends Component {
             <FormControl
               type="number"
               value={notificationPanelStyle.recentConv}
+              onChange={(e) => this.handleStateChangeConv(e)}
               bsSize="sm"
-            />{notificationPanelStyle.recentConv}
+            />
           </FormGroup>
         </Col>
 		<Col md={5}>

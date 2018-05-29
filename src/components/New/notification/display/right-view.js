@@ -21,7 +21,7 @@ class RightView extends Component {
 
     return (<div className="pnl np-border">
       <Row>
-        <Col md={8}>
+        <Col md={6}>
           <span className="mt-5">Initial delay in starting first notification</span>
         </Col>
         <Col md={4}>
@@ -34,9 +34,12 @@ class RightView extends Component {
             />
           </FormGroup>
         </Col>
+        <Col md={2}>
+          <span className="mt-5">seconds</span>
+        </Col>
       </Row>
       <Row>
-        <Col md={8}>
+        <Col md={6}>
           <span className="mt-5">Display time for each notification</span>
         </Col>
         <Col md={4}>
@@ -49,9 +52,13 @@ class RightView extends Component {
             />
           </FormGroup>
         </Col>
+        <Col md={2}>
+          <span className="mt-5">seconds</span>
+        </Col>
+
       </Row>
-      <Row className={this.props.delayNotification ? 'hidden' : ''}>
-        <Col md={8}>
+      <Row>
+        <Col md={6}>
           <span className="mt-5">Delay between subsequent notifications</span>
         </Col>
         <Col md={4}>
@@ -63,11 +70,11 @@ class RightView extends Component {
               onChange={(e) => handleStateChange('delayBetween', e.target.value)}/>
           </FormGroup>
         </Col>
+        <Col md={2}>
+          <span className="mt-5">seconds</span>
+        </Col>
       </Row>
       <Row>
-        <Col md={6}>
-          <span className="mt-5">Display position on Desktop</span>
-        </Col>
         <Col md={6}>
           <FormGroup>
             <FormControl value={displayPosition} onChange={(e) => handleStateChange('displayPosition', e.target.value)} componentClass="select" bsSize="sm" placeholder="select">

@@ -183,7 +183,7 @@ class Profile extends Component {
                           <FormControl
                             type="text"
                             value={profile.firstName}
-                            placeholder="First Name"
+                            placeholder=""
                             disabled={isDisabled}
                             id="firstName"
                             onChange={(e) => this.handleStateChange(e)}
@@ -215,7 +215,7 @@ class Profile extends Component {
                           <FormControl
                             type="text"
                             value={profile.address}
-                            placeholder="Address"
+                            placeholder="Enter Address"
                             disabled={isDisabled}
                             id="address"
                             onChange={(e) => this.handleStateChange(e)}
@@ -246,7 +246,7 @@ class Profile extends Component {
                           <FormControl
                             type="text"
                             value={profile.country}
-                            placeholder="COUNTRY"
+                            placeholder=""
                             disabled={isDisabled}
                             id="state"
                             onChange={(e) => this.handleStateChange(e)}
@@ -259,7 +259,7 @@ class Profile extends Component {
                           <FormControl
                             type="text"
                             value={profile.state}
-                            placeholder="STATE"
+                            placeholder=""
                             disabled={isDisabled}
                             id="state"
                             onChange={(e) => this.handleStateChange(e)}
@@ -272,7 +272,7 @@ class Profile extends Component {
                           <FormControl
                             type="text"
                             value={profile.city}
-                            placeholder="CITY"
+                            placeholder=""
                             disabled={isDisabled}
                             id="state"
                             onChange={(e) => this.handleStateChange(e)}
@@ -337,7 +337,8 @@ class Profile extends Component {
                       </div>
                     </Row>
                     <Row>
-                   <div  className="save"> <Button
+                   <div  className="save"> 
+                   <Button
                       bsStyle="info"
                       pullRight
                       fill

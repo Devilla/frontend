@@ -24,13 +24,10 @@
     border:none;
     padding-left: 300px;
 }
-.inlineclr
-{
-    /* background-color: #1b2b34; */
-}
+
 table {
     width:95%;
-    margin-left: 30px;
+
 }
 
 table, th, td {

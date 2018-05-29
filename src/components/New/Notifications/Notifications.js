@@ -190,7 +190,8 @@ class Notifications extends Component {
     if((configuration && configuration._id) || configId) {
       configure['id'] = configId?configId:configuration._id;
       this.props.updateConfiguration(configure);
-    } else {
+    } else 
+    {
       this.props.createConfiguration(configure);
     }
     this.props.clearConfiguration();
