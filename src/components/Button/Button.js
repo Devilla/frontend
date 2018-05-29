@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 import { isEmpty } from 'lodash';
 import cn from 'classnames';
 
-import './Button.css';
+import './Button.scss';
 
 /* eslint-disable react/require-default-props */
 function Button(props) {

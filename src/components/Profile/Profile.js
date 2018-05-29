@@ -13,7 +13,7 @@ import FormInputs from 'components/Template/FormTemp';
 import Button from 'components/Template/customButton';
 import {ToastContainer, toast} from 'react-toastify';
 
-import './Profile.css';
+import './Profile.scss';
 import { fetchProfile, updateProfile } from 'ducks/profile';
 
 // function validate(username, website) {

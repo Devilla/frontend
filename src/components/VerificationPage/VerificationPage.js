@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { verifyUser } from 'ducks/auth';
 import { ToastContainer, toast } from 'react-toastify';
 import { Spinner } from 'components';
-import './VerificationPage.css';
+import './VerificationPage.scss';
 
 const toastConfig = {
   position: toast.POSITION.BOTTOM_LEFT,

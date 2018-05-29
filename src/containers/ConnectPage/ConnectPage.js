@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { socialLogin } from 'ducks/auth';
 import { ToastContainer, toast } from 'react-toastify';
 import { Spinner } from 'components';
-import './ConnectPage.css';
+import './ConnectPage.scss';
 
 const toastConfig = {
   position: toast.POSITION.BOTTOM_LEFT,
