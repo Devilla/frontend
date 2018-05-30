@@ -15,7 +15,6 @@ import {
   CustomeRules,
   MobileReady,
 } from 'img';
-import './WebsiteHome.css'
 
 class WebsiteHome extends Component {
 
@@ -74,63 +73,33 @@ class WebsiteHome extends Component {
 
 
 
-        
+
         <section className="text-center">
           <div className="container">
             <div className="row">
               <div className="col-md-3">
                 <Link to="/" className="block">
-                  <div className="feature boxed boxed--border border--round"> <img className="icon-n2" src={ HigherConversion } /> <span className="h4 color--primary"><h5>Higher conversion&nbsp;</h5></span> </div>
+                  <div className="feature boxed boxed--border border--round"> <img className="icon-n1" src="images/higherconversion2.svg" /> <span className="h4 color--primary"><h5>Higher conversion&nbsp;</h5></span> </div>
                 </Link>
               </div>
               <div className="col-md-3">
                 <Link to="/" className="block">
-                  <div className="feature boxed boxed--border border--round"> <img className="icon-n2" src={ SaveAcquisitions } /> <span className="h4 color--primary"><h5>Save on acquisitions</h5></span> </div>
+                  <div className="feature boxed boxed--border border--round"> <img className="icon-n1" src="images/saveonacquisitions2.svg"/> <span className="h4 color--primary"><h5>Save on acquisitions</h5></span> </div>
                 </Link>
               </div>
               <div className="col-md-3">
                 <Link to="/" className="block">
-                  <div className="feature boxed boxed--border border--round"> <img className="icon-n2" src={ IncreaseVisitors } /> <span className="h4 color--primary"><h5>Increase Visitors trust</h5></span> </div>
+                  <div className="feature boxed boxed--border border--round"> <img className="icon-n1" src="images/visitortrust2.svg"/> <span className="h4 color--primary"><h5>Increase Visitors trust</h5></span> </div>
                 </Link>
               </div>
               <div className="col-md-3">
                 <Link to="/" className="block">
-                  <div className="feature boxed boxed--border border--round"> <img className="icon-n2" src={ SocialInfluence } /> <span className="h4 color--primary"><h5>Social Influence</h5></span> </div>
+                  <div className="feature boxed boxed--border border--round"> <img className="icon-n1" src="images/socialinfluence2.svg"/> <span className="h4 color--primary"><h5>Social Influence</h5></span> </div>
                 </Link>
               </div>
             </div>
           </div>
         </section>
-        <section class="text-center">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-3">
-                            <a href="#" class="block">
-                                <div class="feature boxed boxed--border border--round"> 
-                                <img class="icon-n3" src="images/higherconversion2.svg"/> <span class="h4 color--primary"><h4>Higher conversion&nbsp;</h4></span> </div>
-                            </a>
-                        </div>
-                        <div class="col-md-3">
-                            <a href="#" class="block">
-                                <div class="feature boxed boxed--border border--round"> 
-                                <img class="icon-n3" src="images/saveonacquisitions2.svg"/> <span class="h4 color--primary"><h4>Save on acquisitions</h4></span> </div>
-                            </a>
-                        </div>
-                        <div class="col-md-3">
-                            <a href="#" class="block">
-                                <div class="feature boxed boxed--border border--round"> 
-                                <img class="icon-n3" src="images/visitortrust2.svg"/> <span class="h4 color--primary"><h4>Increase Visitors trust</h4></span> </div>
-                            </a>
-                        </div>
-                        <div class="col-md-3">
-                            <a href="#" class="block">
-                                <div class="feature boxed boxed--border border--round"> 
-                                <img class="icon-n3" src="images/socialinfluence2.svg"/> <span class="h4 color--primary"><h4>Social Influence</h4></span> </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </section>
         <section className="text-center">
           <div className="container">
             <div className="row">
@@ -151,7 +120,7 @@ class WebsiteHome extends Component {
                 </div>
               </div>
               <div className="col-md-6 col-lg-4 col-12 text-center">
-                <img alt="Image" src={ Device } />
+                <img alt="Image" src="images/D12.png" />
               </div>
             </div>
           </div>
@@ -166,7 +135,7 @@ class WebsiteHome extends Component {
                 </div>
               </div>
               <div className="col-md-6 col-lg-4 col-12 text-center">
-                <img alt="Image" src={ Device } />
+                <img alt="Image" src="images/B24.png" />
               </div>
             </div>
           </div>
@@ -180,8 +149,8 @@ class WebsiteHome extends Component {
                   <p className="lead"> Get to know about the minute details of your customer's journey on your website. </p> <Link to="/">Learn More »</Link>
                 </div>
               </div>
-              <div className="col-md-6 col-lg-4 col-12 text-center">
-                <img alt="Image" src={ Device } />
+              <div className="col-md-6 col-lg-7 col-12 text-center">
+                <img alt="Image" src="images/customerjourney5.png"/>
               </div>
             </div>
           </div>
@@ -196,7 +165,7 @@ class WebsiteHome extends Component {
                 </div>
               </div>
               <div className="col-md-6 col-lg-4 col-12 text-center">
-                <img alt="Image" src={ AnalyticsInsights } />
+                <img alt="Image" src="images/analyticsinsights10.png"/>
               </div>
             </div>
           </div>
@@ -213,7 +182,7 @@ class WebsiteHome extends Component {
                 <span className="block type--fine-print">or <Link to="index.html"> View Demos</Link></span>
               </div>
               <div className="col-md-6">
-                <img alt="Image" src={ EasiestSetup } />
+                <img alt="Image" src="images/easiestsetup.png"/>
               </div>
             </div>
           </div>
@@ -233,19 +202,19 @@ class WebsiteHome extends Component {
           <div className="container">
             <div className="row">
               <div className="col-md-4">
-                <div className="feature feature-3 boxed boxed--lg boxed--border"> <img className="icon-n" src={ ActivityNotifications } />
+                <div className="feature feature-3 boxed boxed--lg boxed--border"> <img className="icon-n1" src="images/activitynotifications2.svg" />
                   <h3>Activity Notifications&nbsp;</h3>
                   <p> Display recent sales &amp; activity and drive users to convert on your website. </p> <Link to=""> Learn More </Link>
                 </div>
               </div>
               <div className="col-md-4">
-                <div className="feature feature-3 boxed boxed--lg boxed--border"> <img className="icon-n" src={ LiveViewers } />
+                <div className="feature feature-3 boxed boxed--lg boxed--border"> <img className="icon-n1" src="images/liveviewers2.svg" />
                   <h3>Live Viewers</h3>
                   <p> Show your new visitors that they are not the only ones on your website. Instill a 'Fear of missing out'.  </p> <Link to="#"> Learn More </Link> <span className="label">New</span>
                 </div>
               </div>
               <div className="col-md-4">
-                <div className="feature feature-3 boxed boxed--lg boxed--border"> <img className="icon-n" src={ CustomerProfiles } />
+                <div className="feature feature-3 boxed boxed--lg boxed--border"> <img className="icon-n1" src="images/customerprofiles2.svg" />
                   <h3>Customer Profiles</h3>
                   <p> We will show you the true identities of your customers. Knowing more will help you in selling more!</p> <Link to="#"> Learn More </Link>
                 </div>
@@ -257,20 +226,20 @@ class WebsiteHome extends Component {
           <div className="container">
             <div className="row">
               <div className="col-md-4">
-                <div className="feature feature-3 boxed boxed--lg boxed--border"> <img className="icon-n" src={ CustomerJourneys } />
+                <div className="feature feature-3 boxed boxed--lg boxed--border"> <img className="icon-n1" src="images/customerjourney2.svg" />
                   <h3>Customer Journeys</h3>
                   <p> Get to know about your customer's journey before it converts. </p> <Link to="#"> Learn More </Link>
                 </div>
               </div>
               <div className="col-md-4">
-                <div className="feature feature-3 boxed boxed--lg boxed--border"> <img className="icon-n" src={ CustomeRules } />
+                <div className="feature feature-3 boxed boxed--lg boxed--border"> <img className="icon-n1" src="images/customrules2.svg" />
                   <h3>Custom Rules</h3>
                   <p> Control notifications behavior on your website. Customize timings &amp; delays. </p> <Link to="#"> Learn More </Link>
                   <span className="label">New</span>
                 </div>
               </div>
               <div className="col-md-4">
-                <div className="feature feature-3 boxed boxed--lg boxed--border"> <img className="icon-n" src= { MobileReady } />
+                <div className="feature feature-3 boxed boxed--lg boxed--border"> <img className="icon-n1" src="images/mobileready2.svg" />
                   <h3>Mobile Ready</h3>
                   <p> Show notifications to your mobile users as well. Customize behavior according to your user's location. </p> <Link to="#"> Learn More </Link>
                 </div>
