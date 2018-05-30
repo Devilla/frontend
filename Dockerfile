@@ -8,12 +8,12 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 
 RUN npm install
-RUN npm install -g serve
+RUN npm install -g serve@6.4.11
 
 COPY . .
 
 
-EXPOSE 3000
+EXPOSE 5000
 
 
 ## Remove stack docker from the dir
