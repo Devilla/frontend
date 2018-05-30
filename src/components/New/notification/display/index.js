@@ -8,18 +8,21 @@ import { fetchOneRules, createRules, updateRules, clearRules } from 'ducks/rules
 import Tabs from 'components/Template/tab'
 
 export class Display extends Component{
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     this.state = {
-      hideNotification: true,
-      loopNotification: true,
+      hideNotification: false,
+      loopNotification: false,
       delayNotification: false,
       closeNotification: false,
-      // hideAnonymous: false,
-      // displayNotifications: false,
-      initialDelay: 1,
-      displayTime: 3,
-      delayBetween: 3,
+      hideAnonymous: false,
+      displayNotifications: false,
+      initialDelay: 120,
+      bulkData:5,
+      recentNumber:5,
+      recentConv:5,
+      displayTime: 120,
+      delayBetween: 120,
       displayPosition: 'bottom'
     };
     this.handleStateChange = this.handleStateChange.bind(this);
@@ -43,7 +46,14 @@ export class Display extends Component{
       loopNotification: rules.loopNotification,
       delayNotification: rules.delayNotification,
       closeNotification: rules.closeNotification,
+      hideAnonymous: rules.hideAnonymous,
+      displayNotifications: rules.displayNotifications,
       initialDelay: rules.initialDelay,
+      bulkData: rules.bulkData,
+      hideAnonymousConversion:rules.hideAnonymousConversion,
+      onlyDisplayNotification:rules.onlyDisplayNotification,
+      recentNumber:rules.recentNumber,
+      recentConv:rules.recentConv,
       displayTime: rules.displayTime,
       delayBetween: rules.delayBetween,
       displayPosition: rules.displayPosition

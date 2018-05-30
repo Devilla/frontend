@@ -7,6 +7,7 @@ import NotificationList from './NotificationList';
 import NotificationConfigure from './NotificationConfigure';
 import Tabs from 'components/Template/tab'
 
+
 const notificationPanelStyleDefault = { // TODO: Take style values from server
   radius: 50,
   borderWidth: 0,
@@ -41,10 +42,16 @@ const notificationPanelStyleDefault = { // TODO: Take style values from server
     b: 255,
     a: 1
   },
+
   fontFamily: 'inherit',
   fontWeight: 'normal',
   linkFontFamily: 'inherit',
-  linkFontWeight: 'normal'
+  linkFontWeight: 'normal',
+  bulkData:5,
+  recentNumber:5,
+  recentConv:5,
+  hideAnonymousConversion:true,
+  onlyDisplayNotification:false
 };
 
 class Notifications extends Component {
@@ -184,7 +191,8 @@ class Notifications extends Component {
     if((configuration && configuration._id) || configId) {
       configure['id'] = configId?configId:configuration._id;
       this.props.updateConfiguration(configure);
-    } else {
+    } else
+    {
       this.props.createConfiguration(configure);
     }
     this.props.clearConfiguration();
@@ -197,6 +205,7 @@ class Notifications extends Component {
   }
 
   render() {
+
     const { notifications, configurations, createSuccess } = this.props;
     return (<div className="content notification-list">
       <Grid fluid>

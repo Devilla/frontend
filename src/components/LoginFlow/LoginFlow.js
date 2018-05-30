@@ -5,12 +5,10 @@ import { browserHistory } from 'react-router';
 import CompanyInfo from './CompanyInfo';
 import AboutYourself from './AboutYourself';
 import TrailPayment from './TrailPayment';
-import { Spinner } from 'components';
+
 import { updateUser, checkTokenExists } from 'ducks/auth';
 import { createProfile, updateProfile } from 'ducks/profile';
 import { createPayment } from 'ducks/payment';
-import { load, loaded } from 'ducks/loading';
-
 import './LoginFlow.css';
 
 import { store } from 'index.js';
@@ -26,7 +24,6 @@ class LoginFlow extends Component {
       // phoneNumber: '',
       // companyName: '',
       plan:'',
-      amount: 0,
       // website: '',
       stripeToken: {}
     };
@@ -113,11 +110,11 @@ class LoginFlow extends Component {
     this.props.createProfile(profile);
     // this.props.updateProfile(profile)
     this.props.createPayment(data);
+    browserHistory.push('dashboard');
   }
 
-  handleCheckChange(checked, value, amount) {
-    console.log(amount, "===========================gfdf");
-    this.setState({plan: checked?value:null, amount: amount})
+  handleCheckChange(checked, value, state) {
+    this.setState({plan: checked?value:null})
   }
 
 
@@ -142,8 +139,6 @@ class LoginFlow extends Component {
         //   />
         case 0:
             return <TrailPayment
-              load={this.props.load}
-              amount={this.state.amount}
               selectedPlan={this.state.plan}
               user={this.props.user}
               profile={this.props.profile}
@@ -159,10 +154,8 @@ class LoginFlow extends Component {
   }
 
   render() {
-    const { loading } = this.props;
     return (
       <div className="login-flow">
-        <Spinner loading={loading} />
         {this.renderPage()}
       </div>
     );
@@ -172,17 +165,14 @@ class LoginFlow extends Component {
 const mapStateToProps = state => ({
   profile: state.getIn(['profile', 'profile']),
   user: state.getIn(['auth','user']),
-  planList: state.getIn(['plan', 'plan']),
-  loading: state.getIn(['loading', 'state'])
+  planList: state.getIn(['plan', 'plan'])
 });
 
 const mapDispatchToProps = {
   updateUser,
   createProfile,
   updateProfile,
-  createPayment,
-  load,
-  loaded
+  createPayment
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginFlow);

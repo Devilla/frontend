@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
+import {Row, Col, FormGroup, FormControl} from 'react-bootstrap';
+import Switch from 'react-flexible-switch';
 import power from './power.svg'
 import './notification.scss';
 
 export class Notification extends Component {
+	  constructor(props) {
+    super(props);
+  }
 
 	render() {
 		const {

@@ -87,11 +87,9 @@ const login = (identifier, password) => {
       password
     }, true).then(res => {
       // Try storing token in storage and throw error if failed
-      if(res.jwt) {
-        if (!storeToken(res['jwt'])) {
-          throw 'failed to store token';
-          return;
-        }
+      if (!storeToken(res['jwt'])) {
+        throw 'failed to store token';
+        return;
       }
 
       if (res.statusCode && res.statusCode !== 200) {

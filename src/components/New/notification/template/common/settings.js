@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
-import { Row, Col, Tabs, Tab, Button, FormControl } from 'react-bootstrap';
+import { Row,FormGroup, Col, Tabs, Tab, Button, FormControl } from 'react-bootstrap';
 import Switch from 'react-flexible-switch';
-
 import Slider from 'react-rangeslider'
 import reactCSS from 'reactcss'
 import ImagesUploader from 'react-images-uploader';
 import 'react-images-uploader/styles.css';
 import 'react-images-uploader/font.css';
 import { ChromePicker } from 'react-color';
+import './settings.css';
+import { css, checked } from 'glamor';
 
 const FONT_WEIGHT_BOLD = 'bold';
 const FONT_WEIGHT_NORMAL = 'normal';
-
 
 export class Setting extends Component {
   constructor(props) {
@@ -20,14 +20,29 @@ export class Setting extends Component {
       isBorderColorSwatchOpen: false,
       isBgColorSwatchOpen: false,
       isTextColorSwatchOpen: false,
-      isLinkColorSwatchOpen: false
+      isLinkColorSwatchOpen: false,
     }
     Object.assign(this.state, props.notificationPanelStyle);
   }
 
+  notificationPanelStyleDefault(e) {
+    this.setState({[e.target.id]:e.target.value});
+  }
   handleRadiusChange = (radius) => {
     this.setState({ radius });
     this.props.onConfigChange({ prop: 'radius', value: radius });
+  };
+  handleStateChangeDay(e) {
+    this.setState({[e.target.id]:e.target.value});
+    this.props.onConfigChange({ prop: 'bulkData', value: e.target.value });
+  };
+  handleStateChangeNumber(e) {
+    this.setState({[e.target.id]:e.target.value});
+    this.props.onConfigChange({ prop: 'recentNumber', value: e.target.value });
+  };
+  handleStateChangeConv(e) {
+    this.setState({[e.target.id]:e.target.value});
+    this.props.onConfigChange({ prop: 'recentConv', value: e.target.value });
   };
 
   handleBorderWidthChange = (borderWidth) => {
@@ -97,6 +112,18 @@ export class Setting extends Component {
     this.setState({ isTextColorSwatchOpen: true });
   };
 
+
+  handleAnonymousConversionsChange =(e)=> {
+    this.setState({hideAnonymousConversion: e });
+    this.props.onConfigChange({ prop: 'hideAnonymousConversion', value: e });
+
+  };
+
+  handleOnlyDisplayNotification =(e)=> {
+    this.setState({onlyDisplayNotification: e });
+    this.props.onConfigChange({ prop: 'onlyDisplayNotification', value: e });
+  };
+
   hideTextColorSwatch = () => {
     this.setState({ isTextColorSwatchOpen: false });
   };
@@ -142,18 +169,18 @@ export class Setting extends Component {
     this.setState({linkFontWeight});
     this.props.onConfigChange({ prop: 'linkFontWeight', value: linkFontWeight });
   }
-
+  handleConvChange(e) {
+    this.setState({convChange: e})
+  }
   componentWillReceiveProps(nextProps) {
       if(nextProps != this.props)
         Object.assign(this.state, this.props.notificationPanelStyle);
   }
 
-  handleStateChange() {
-
-  }
-
   render() {
-    const { notificationPanelStyle, handleContentChange, contentText, notificationName, hideAnonymous, displayNotifications } = this.props;
+    const { notificationPanelStyle, handleContentChange, contentText, notification } = this.props;
+    // console.log(notificationPanelStyle,'<<<<------------------------------->>>>')
+    // console.log(notification, '==========================.')
     const styles = reactCSS({
       'default': {
         colorSwatch: {
@@ -194,7 +221,6 @@ export class Setting extends Component {
         },
       },
     });
-    console.log(notificationName, "================>notification");
     return (
       <div className="setting" style={{ backgroundColor: 'white' }}>
         <Tabs justified defaultActiveKey={1} id="uncontrolled-tab-example">
@@ -243,33 +269,6 @@ export class Setting extends Component {
             </Row>
             <Row>
               <Col md={12}>
-                <h4>Shadow</h4>
-                <Row>
-                  <Col md={6}>
-                    <div className='slider hf'>
-                      <Slider
-                        tooltip={false}
-                        min={0}
-                        max={10}
-                        value={notificationPanelStyle.shadow}
-                        onChange={this.handleShadowChange}
-                      />
-                      <small>stroke</small>
-                    </div>
-                  </Col>
-                  <Col md={6}>
-                    <div className='slider hf'>
-                      <Slider
-                        tooltip={false}
-                        min={0}
-                        max={25}
-                        value={notificationPanelStyle.blur}
-                        onChange={this.handleBlurChange}
-                      />
-                      <small>blur</small>
-                    </div>
-                  </Col>
-                </Row>
                 <Row>
                   <Col md={4}>
                     <h4>Background Color</h4>
@@ -363,59 +362,154 @@ export class Setting extends Component {
               </Col>
             </Row>
           </Tab>
-          {/* {notificationName=="Recent Activity" &&
-            <Tab eventKey={3} title="Others">
+          {notification.notificationName === "Bulk Activity"  &&
+            <Tab eventKey={3} title="Setting" className="bulk-settings">
               <Row>
-                <Col md={2}>
-                  <Switch
-                    circleStyles={{
-                      onColor: 'blue',
-                      offColor: 'gray',
-                      diameter: 18
-                    }}
-                    switchStyles={{
-                      width: 50
-                    }}
+                <Col md={5} style={{'paddingRight': 0, width: '45%'}}>
+                  <span className="mt-5"> Display bulk data from last</span>
+                </Col>
+                <Col md={1} style={{'padding': 0, width: '10%'}}>
+                  <FormGroup>
+                    <FormControl
+                      type="number"
+                      min="0"
+                      value={notificationPanelStyle.bulkData}
+                      onChange={(e) => this.handleStateChangeDay(e)}
+                      bsSize="sm"
+                    />
+                  </FormGroup>
+                </Col>
+        		    <Col md={5} style={{'paddingLeft': '5px'}}>
+                <div class="col-md-2">
+                  <div class="planUp form-group">
+                    <select
+                      placeholder="select"
+                      disabled=""
+                      id="formControlsSelect"
+                      class="form-control">
+                      <option value="select">
+                        Select</option>
+                      <option
+                        value="5b01264d61fa070011200cd4">
+                        hours
+                      </option>
 
-                    cssClass="alignsame"
-                    value={hideAnonymous}
-                    onChange={(e) => this.handleStateChange('hideAnonymous', e)}
-                  />
-                </Col>
-                <Col md={10}>
-                  <span className="mt-5">Hide anonymous conversions
-                  </span>
-                </Col>
-              </Row>
-              <Row>
-                <Col md={2}>
-                  <Switch circleStyles={{
-                      onColor: 'blue',
-                      offColor: 'gray',
-                      diameter: 18
-                    }} switchStyles={{
-                      width: 50
-                    }} cssClass="alignsame" value={displayNotifications} onChange={(e) => this.handleStateChange('displayNotifications', e)}/>
-                </Col>
-                <Col md={10}>
-                  <span className="mt-5">Only display notifications from user's country</span>
+                      <option value="5b01266261fa070011200cd5">
+                        days
+                      </option>
+
+                    </select>
+                  </div>
+                </div>
                 </Col>
               </Row>
             </Tab>
-          } */}
-          {/* <Tab eventKey={3} title="Image">
-            <ImagesUploader
-              url="http://localhost:1337/upload"
-              optimisticPreviews
-              multiple={false}
-              onLoadEnd={(err) => {
-                if (err) {
-                  console.error(err);
-                }
-              }}
-              label="Upload a picture"
-            />
-          </Tab> */}
+          }
+          {notification.notificationName === "Recent Activity" &&
+            <Tab eventKey={3} title="Setting" className="recent-settings">
+              <div>
+	              <Row>
+                  <Col md={3} style={{'paddingRight': 0}}>
+                    <span className="mt-5">Display the last</span>
+                  </Col>
+                  <Col md={1} style={{'padding': 0, width: '10%'}}>
+                    <FormGroup>
+                      <FormControl
+                        type="number"
+                        min="0"
+                        onChange={(e) => this.handleStateChangeNumber(e)}
+                        bsSize="sm"
+                        value={notificationPanelStyle.recentNumber}
+
+                      />
+                    </FormGroup>
+                  </Col>
+              		<Col md={5} style={{'paddingLeft': '5px'}}>
+              		  <span className="mt-5"> number of conversions.</span>
+                  </Col>
+                </Row>
+	              <Row>
+                  <Col md={5} style={{'paddingRight': 0, width: '50%'}}>
+          		      <span className="mt-5">Display conversation from last</span>
+                  </Col>
+                  <Col md={1} style={{ padding: 0, width: '10%' }}>
+                    <FormGroup>
+                      <FormControl
+                        type="number"
+                        min="0"
+                        value={notificationPanelStyle.recentConv}
+                        onChange={(e) => this.handleStateChangeConv(e)}
+                        bsSize="sm"
+                      />
+                    </FormGroup>
+                  </Col>
+          		    <Col md={5} style={{'paddingLeft': '5px', width: '25%'}}>
+                    <div class="col-md-2">
+                      <div class="planUp form-group">
+                        <select
+                          placeholder="select"
+                          disabled=""
+                          id="formControlsSelect"
+                          class="form-control">
+                          <option value="select">
+                            Select</option>
+                          <option
+                            value="5b01264d61fa070011200cd4">
+                            hours
+                          </option>
+
+                          <option value="5b01266261fa070011200cd5">
+                            days
+                          </option>
+
+                        </select>
+                      </div>
+                    </div>
+                  </Col>
+                </Row>
+            		<Row>
+                  <Col md={2}>
+                    <Switch
+                      circleStyles={{
+                        onColor: 'blue',
+                        offColor: 'gray',
+                        diameter: 18
+                      }}
+                      switchStyles={{
+                        width: 50
+                      }}
+
+                      cssClass="alignsame"
+                      value={notificationPanelStyle.hideAnonymousConversion}
+                      onChange={(e) => this.handleAnonymousConversionsChange(e)}
+                    />
+                  </Col>
+                  <Col md={10}>
+                    <span className="mt-5">Hide anonymous conversions
+                    </span>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col md={2}>
+                    <Switch circleStyles={{
+                        onColor: 'blue',
+                        offColor: 'gray',
+                        diameter: 18
+                      }} switchStyles={{
+                        width: 50
+                      }} cssClass="alignsame"
+                      value={notificationPanelStyle.onlyDisplayNotification}
+                      onChange={(e) => this.handleOnlyDisplayNotification(e)}
+
+                      />
+                  </Col>
+                  <Col md={10}>
+                    <span className="mt-5">Only display notifications from user's country</span>
+                  </Col>
+                </Row>
+      		    </div>
+            </Tab>
+          }
         </Tabs>
       </div>
     );

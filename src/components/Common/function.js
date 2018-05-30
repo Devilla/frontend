@@ -4,6 +4,11 @@ export function validatewebsite(website){
   return re.test(website);
 }
 
+export function validatePath(path){
+  var re = /\/\b([-a-zA-Z0-9\+~#?&//=])/;  
+  return re.test(path);
+}
+
 export function validphone(phone){
   var re = /^(\+[\d]{1,5}|0)?[7-9]\d{9}$/;
   return re.test(phone);

@@ -7,6 +7,10 @@ import {
   ForgetPassword,
   Home,
   Profile,
+  Billing,
+  BillingFinal,
+  Help,
+  PaymentPage,
   HowItWorks,
   ResetPassword,
   Sidebar,
@@ -57,6 +61,10 @@ const MyRoutes = ({routerHistory, store}) => (
       <Route path="/notifications" component={SelectNotification} />
       <Route path="/upgrade" component={Upgrade} />
       <Route path="/profile" component={Profile} />
+      <Route path="/Billing" component={Billing} />
+      <Route path="/billingFinal" component={BillingFinal} />
+      <Route path="/Help" component={Help} />
+	     <Route path="/PaymentPage" component={PaymentPage} />
     </Route>
     <Route path="/getting-started" component={LoginFlow} />
     <Route exact path="/connect/:provider" component={ConnectPage} />

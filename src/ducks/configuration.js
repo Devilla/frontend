@@ -59,7 +59,10 @@ const initialConfig = {
     linkFontFamily: 'inherit',
     linkFontWeight: 'normal'
   },
-  contentText: ''
+  contentText: '',
+  bulkData:5,
+  recentNumber:5,
+  recentConv:5,
 };
 
 const initialState = fromJS({

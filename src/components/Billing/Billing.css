@@ -1,0 +1,43 @@
+.Cancel{
+    margin-right: 150px;
+  }
+  .Update{
+    margin-right: 250px;
+  }
+
+  .visa{
+      margin-top: 10px;
+  }
+  .marginTop{
+    margin-top: 10px;
+}
+.backgroundclr{
+    background-color: #1b2b34
+   ;
+}
+#feedbackPopup
+{
+    margin-left: 100px;
+    margin-top: 30px;
+}
+#noBorder{
+    border:none;
+    padding-left: 300px;
+}
+
+table {
+    width:95%;
+
+}
+
+table, th, td {
+    border-collapse: collapse;
+    
+}
+td {
+    text-align: center;
+}
+th {
+    padding-left: 500px;
+    text-align: center;
+}

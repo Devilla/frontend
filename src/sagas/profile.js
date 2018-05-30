@@ -38,7 +38,7 @@ function* create(action) {
       yield put(actions.successProfile(res));
     }
 
-    // yield put(loaded());
+    yield put(loaded());
   } catch (error) {
     yield put(loaded());
     console.log('Failed to fetch doc', error);

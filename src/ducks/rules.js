@@ -18,14 +18,22 @@ export const fetchSuccess = (rules) => ({ type: FETCH_SUCCESS, rules });
 export const clearRules = (rules) => ({ type: CLEAR_RULES, rules });
 
 const initialRules = {
-  hideNotification: true,
-  loopNotification: true,
+  hideNotification: false,
+  loopNotification: false,
   delayNotification: false,
   closeNotification: false,
+  // hideAnonymous:true,
+  // displayNotifications: false,
   initialDelay: 1,
+  // bulkData:5,
+  // shouldhide:false,
+  // recentNumber:5,
+  // recentConv:5,
+  // convChange:false,
   displayTime: 3,
   delayBetween: 3,
-  displayPosition: 'bottom'
+  displayPosition: 'bottom',
+  // hideAnonymousConversion:false
 };
 
 const initialState = fromJS({
