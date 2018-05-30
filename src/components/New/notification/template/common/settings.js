@@ -114,18 +114,16 @@ export class Setting extends Component {
 
 
   handleAnonymousConversionsChange =(e)=> {
-    console.log(e);
     this.setState({hideAnonymousConversion: e });
     this.props.onConfigChange({ prop: 'hideAnonymousConversion', value: e });
 
   };
 
   handleOnlyDisplayNotification =(e)=> {
-    console.log(e);
     this.setState({onlyDisplayNotification: e });
     this.props.onConfigChange({ prop: 'onlyDisplayNotification', value: e });
   };
-  
+
   hideTextColorSwatch = () => {
     this.setState({ isTextColorSwatchOpen: false });
   };
@@ -367,10 +365,10 @@ export class Setting extends Component {
           {notification.notificationName === "Bulk Activity"  &&
             <Tab eventKey={3} title="Setting" className="bulk-settings">
               <Row>
-                <Col md={5} style={{'paddingRight': 0}}>
-                  Display bulk data from last
+                <Col md={5} style={{'paddingRight': 0, width: '45%'}}>
+                  <span className="mt-5"> Display bulk data from last</span>
                 </Col>
-                <Col md={1} style={{'padding': 0}}>
+                <Col md={1} style={{'padding': 0, width: '10%'}}>
                   <FormGroup>
                     <FormControl
                       type="number"
@@ -412,9 +410,9 @@ export class Setting extends Component {
               <div>
 	              <Row>
                   <Col md={3} style={{'paddingRight': 0}}>
-                    Display the last
+                    <span className="mt-5">Display the last</span>
                   </Col>
-                  <Col md={1} style={{'padding': 0}}>
+                  <Col md={1} style={{'padding': 0, width: '10%'}}>
                     <FormGroup>
                       <FormControl
                         type="number"
@@ -427,14 +425,14 @@ export class Setting extends Component {
                     </FormGroup>
                   </Col>
               		<Col md={5} style={{'paddingLeft': '5px'}}>
-              		    number of conversions.
+              		  <span className="mt-5"> number of conversions.</span>
                   </Col>
                 </Row>
 	              <Row>
-                  <Col md={5} style={{'paddingRight': 0, width: '45%'}}>
-          		      Display conversation from last
+                  <Col md={5} style={{'paddingRight': 0, width: '50%'}}>
+          		      <span className="mt-5">Display conversation from last</span>
                   </Col>
-                  <Col md={1} style={{ padding: 0 }}>
+                  <Col md={1} style={{ padding: 0, width: '10%' }}>
                     <FormGroup>
                       <FormControl
                         type="number"
@@ -445,28 +443,28 @@ export class Setting extends Component {
                       />
                     </FormGroup>
                   </Col>
-          		    <Col md={5} style={{'paddingLeft': '5px'}}>
-                  <div class="col-md-2">
-                  <div class="planUp form-group">
-                    <select
-                      placeholder="select"
-                      disabled=""
-                      id="formControlsSelect"
-                      class="form-control">
-                      <option value="select">
-                        Select</option>
-                      <option
-                        value="5b01264d61fa070011200cd4">
-                        hours
-                      </option>
+          		    <Col md={5} style={{'paddingLeft': '5px', width: '25%'}}>
+                    <div class="col-md-2">
+                      <div class="planUp form-group">
+                        <select
+                          placeholder="select"
+                          disabled=""
+                          id="formControlsSelect"
+                          class="form-control">
+                          <option value="select">
+                            Select</option>
+                          <option
+                            value="5b01264d61fa070011200cd4">
+                            hours
+                          </option>
 
-                      <option value="5b01266261fa070011200cd5">
-                        days
-                      </option>
+                          <option value="5b01266261fa070011200cd5">
+                            days
+                          </option>
 
-                    </select>
-                  </div>
-                </div>
+                        </select>
+                      </div>
+                    </div>
                   </Col>
                 </Row>
             		<Row>
@@ -483,7 +481,7 @@ export class Setting extends Component {
 
                       cssClass="alignsame"
                       value={notificationPanelStyle.hideAnonymousConversion}
-                      onChange={(e)=>this.handleAnonymousConversionsChange(e)}
+                      onChange={(e) => this.handleAnonymousConversionsChange(e)}
                     />
                   </Col>
                   <Col md={10}>
@@ -501,8 +499,8 @@ export class Setting extends Component {
                         width: 50
                       }} cssClass="alignsame"
                       value={notificationPanelStyle.onlyDisplayNotification}
-                      onChange={(e)=>this.handleOnlyDisplayNotification(e)}
-                   
+                      onChange={(e) => this.handleOnlyDisplayNotification(e)}
+
                       />
                   </Col>
                   <Col md={10}>
