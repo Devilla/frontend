@@ -15,6 +15,8 @@ export class Rules extends Component {
       liveActivity: true,
       bulkActivity: true,
       disableSubmit: true,
+      hideAnonymousConversions:false,
+      onlyDisplayNotification:false
     }
   }
 

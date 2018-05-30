@@ -22,16 +22,18 @@ const initialRules = {
   loopNotification: false,
   delayNotification: false,
   closeNotification: false,
-  hideAnonymous: false,
+  hideAnonymous:true,
   displayNotifications: false,
-  initialDelay: 120,
+  initialDelay: 1,
   bulkData:5,
   shouldhide:false,
   recentNumber:5,
   recentConv:5,
-  displayTime: 120,
-  delayBetween: 120,
-  displayPosition: 'bottom'
+  convChange:false,
+  displayTime: 3,
+  delayBetween: 3,
+  displayPosition: 'bottom',
+  hideAnonymousConversion:false
 };
 
 const initialState = fromJS({

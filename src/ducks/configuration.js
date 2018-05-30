@@ -62,7 +62,7 @@ const initialConfig = {
   contentText: '',
   bulkData:5,
   recentNumber:5,
-  recentConv:5
+  recentConv:5,
 };
 
 const initialState = fromJS({

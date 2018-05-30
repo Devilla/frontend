@@ -35,13 +35,14 @@
   margin-top: 20px;
     width: 100%;
 }
-.save{
-  margin-right: 150px;
-}
+
 .edit{
-  margin-right: 250px;
+  margin-right: 265px;
 }
 .button {
   margin: 0% 2% !important;
+}
+#lastnm{
+  margin-left: 255px;
 }
 

@@ -50,7 +50,7 @@ const notificationPanelStyleDefault = { // TODO: Take style values from server
   linkFontWeight: 'normal',
   bulkData:5,
   recentNumber:5,
-  recentConv:5
+  recentConv:5,
 };
 
 class Notifications extends Component {

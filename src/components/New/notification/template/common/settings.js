@@ -19,7 +19,7 @@ export class Setting extends Component {
       isBorderColorSwatchOpen: false,
       isBgColorSwatchOpen: false,
       isTextColorSwatchOpen: false,
-      isLinkColorSwatchOpen: false
+      isLinkColorSwatchOpen: false,
     }
     Object.assign(this.state, props.notificationPanelStyle);
   }
@@ -111,6 +111,20 @@ export class Setting extends Component {
     this.setState({ isTextColorSwatchOpen: true });
   };
 
+
+  handleAnonymousConversionsChange =(e)=> {
+    console.log(e);
+    this.setState({hideAnonymousConversion: e });
+    this.props.onConfigChange({ prop: 'hideAnonymousConversion', value: e });
+
+  };
+
+  handleOnlyDisplayNotification =(e)=> {
+    console.log(e);
+    this.setState({onlyDisplayNotification: e });
+    this.props.onConfigChange({ prop: 'onlyDisplayNotification', value: e });
+  };
+  
   hideTextColorSwatch = () => {
     this.setState({ isTextColorSwatchOpen: false });
   };
@@ -156,7 +170,9 @@ export class Setting extends Component {
     this.setState({linkFontWeight});
     this.props.onConfigChange({ prop: 'linkFontWeight', value: linkFontWeight });
   }
-
+  handleConvChange(e) {
+    this.setState({convChange: e})
+  }
   componentWillReceiveProps(nextProps) {
       if(nextProps != this.props)
         Object.assign(this.state, this.props.notificationPanelStyle);
@@ -423,7 +439,10 @@ export class Setting extends Component {
                       switchStyles={{
                         width: 50
                       }}
+
                       cssClass="alignsame"
+                      value={notificationPanelStyle.hideAnonymousConversion}
+                      onChange={(e)=>this.handleAnonymousConversionsChange(e)}
                     />
                   </Col>
                   <Col md={10}>
@@ -439,7 +458,11 @@ export class Setting extends Component {
                         diameter: 18
                       }} switchStyles={{
                         width: 50
-                      }} cssClass="alignsame"/>
+                      }} cssClass="alignsame"
+                      value={notificationPanelStyle.onlyDisplayNotification}
+                      onChange={(e)=>this.handleOnlyDisplayNotification(e)}
+                   
+                      />
                   </Col>
                   <Col md={10}>
                     <span className="mt-5">Only display notifications from user's country</span>

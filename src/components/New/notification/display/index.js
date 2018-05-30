@@ -50,6 +50,8 @@ export class Display extends Component{
       displayNotifications: rules.displayNotifications,
       initialDelay: rules.initialDelay,
       bulkData: rules.bulkData,
+      hideAnonymousConversion:rules.hideAnonymousConversion,
+      onlyDisplayNotification:rules.onlyDisplayNotification,
       recentNumber:rules.recentNumber,
       recentConv:rules.recentConv,
       displayTime: rules.displayTime,

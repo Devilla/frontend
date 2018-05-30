@@ -34,8 +34,11 @@ class Profile extends Component {
       firstName: '',
       lastName: '',
       plan: '',
-      state: '',
+      states: '',
+      city:'',
+      country:'',
       address: '',
+      address2: '',
       phoneNumber: '',
       companyName: '',
       profileState: 'edit'
@@ -74,8 +77,11 @@ class Profile extends Component {
       firstName: profile.firstName,
       lastName: profile.lastName,
       plan: profile.plan,
-      state: profile.state,
+      states: profile.states,
+      city:profile.city,
+      country:profile.country,
       address: profile.address,
+      address2:profile.address2,
       phoneNumber: profile.phoneNumber,
       companyName: profile.companyName
     });
@@ -83,13 +89,16 @@ class Profile extends Component {
 
   updateProfile(e) {
     e.preventDefault();
-    const { firstName, lastName, state, address, phoneNumber, companyName } = this.state;
+    const { firstName, lastName, states,city,country, address,address2, phoneNumber, companyName } = this.state;
     let profile = {
       id: this.props.profile._id,
       firstName: firstName,
       lastName: lastName,
-      state: state,
+      states: states,
+      city:city,
+      country:country,
       address: address,
+      address2:address2,
       phoneNumber: phoneNumber,
       companyName: companyName,
     };
@@ -190,17 +199,17 @@ class Profile extends Component {
                           />
                         </FormGroup>
                       </div>
-                      <div className="col-md-1">
+                      <div id="lastnm" className="col-md-1">
                           Last Name
                       </div>
                       <div className="col-md-3">
                         <FormGroup>
                           <FormControl
                             type="text"
-                            value=""
+                            value={profile.lastName}
                             placeholder=""
                             disabled={isDisabled}
-                            id="lastName2"
+                            id="lastName"
                             onChange={(e) => this.handleStateChange(e)}
                           />
                         </FormGroup>
@@ -229,10 +238,10 @@ class Profile extends Component {
                           
                           <FormControl
                             type="text"
-                            value=""
+                            value={profile.address2}
                             placeholder=""
                             disabled={isDisabled}
-                            id="address3"
+                            id="address2"
                             onChange={(e) => this.handleStateChange(e)}
                           />
                         </FormGroup>
@@ -248,7 +257,7 @@ class Profile extends Component {
                             value={profile.country}
                             placeholder=""
                             disabled={isDisabled}
-                            id="state"
+                            id="country"
                             onChange={(e) => this.handleStateChange(e)}
                           />
                         </FormGroup>
@@ -258,10 +267,10 @@ class Profile extends Component {
                           <ControlLabel>State</ControlLabel>
                           <FormControl
                             type="text"
-                            value={profile.state}
+                            value={profile.states}
                             placeholder=""
                             disabled={isDisabled}
-                            id="state"
+                            id="states"
                             onChange={(e) => this.handleStateChange(e)}
                           />
                         </FormGroup>
@@ -274,7 +283,7 @@ class Profile extends Component {
                             value={profile.city}
                             placeholder=""
                             disabled={isDisabled}
-                            id="state"
+                            id="city"
                             onChange={(e) => this.handleStateChange(e)}
                           />
                         </FormGroup>
@@ -293,22 +302,7 @@ class Profile extends Component {
                             onChange={(e) => this.handleStateChange(e)}
                           />
                         </FormGroup>
-                      </div>
-
-                      <div className="col-md-4">
-                        <FormGroup>
-                          <ControlLabel></ControlLabel>
-                          <FormControl
-                            type="text"
-                            value=""
-                            placeholder="Phone No."
-                            disabled={isDisabled}
-                            id="phoneNumber"
-                            onChange={(e) => this.handleStateChange(e)}
-                          />
-                        </FormGroup>
-                      </div>
-  
+                      </div>  
                       <div className="col-md-2">
                         <FormGroup>
                           <ControlLabel>Company Name</ControlLabel>
@@ -337,18 +331,6 @@ class Profile extends Component {
                       </div>
                     </Row>
                     <Row>
-                   <div  className="save"> 
-                   <Button
-                      bsStyle="info"
-                      pullRight
-                      fill
-                      type="button"
-                      icon={this.state.profileState=='save'}
-                      onClick={(e) => this.handleEditState(e, this.state.profileState)}
-                      >
-                      {'Save'}
-                    </Button>
-                    </div>
                     <div className="edit">
                     <Button
                       bsStyle="info"
@@ -358,7 +340,7 @@ class Profile extends Component {
                       icon={this.state.profileState=='edit'}
                       onClick={(e) => this.handleEditState(e, this.state.profileState)}
                       >
-                      {'Edit'}
+                      {'Edit/Save'}
                     </Button>
                     </div>
                     </Row>
