@@ -9,7 +9,7 @@ import TrailPayment from './TrailPayment';
 import { updateUser, checkTokenExists } from 'ducks/auth';
 import { createProfile, updateProfile } from 'ducks/profile';
 import { createPayment } from 'ducks/payment';
-import './LoginFlow.css';
+import './LoginFlow.scss';
 
 import { store } from 'index.js';
 
@@ -155,8 +155,10 @@ class LoginFlow extends Component {
 
   render() {
     return (
-      <div className="login-flow">
-        {this.renderPage()}
+      <div className="website-app dashboard-container">
+        <div className="login-flow">
+          {this.renderPage()}
+        </div>
       </div>
     );
   }

@@ -37,7 +37,7 @@ const PaymentPrice = ({planList, returnRates, handleMonthChange, handleSwitchCha
       <div style={{width: '100%', display: 'flex'}}>
         {planList?
           planList.map((plan, index) =>
-            <div className="card" style={{ width: '50%', padding: '5%', margin: '0 1%'}}>
+            <div className="card" style={{ width: '50%', padding: '3%', margin: '0 1%'}}>
               <div className="card-body">
                 <h5 className="card-title">{plan.planName}</h5>
                 <span className="card-text">

@@ -103,7 +103,7 @@ class TrailPayment extends Component {
                 <div className="loginfrm" style={{width: '100%'}}>
                   <h3 className="dashed">Confirm you account</h3>
                   <div className="section-divider-line"></div>
-                  <div className="frmcntl" style={{display: 'flex', justifyContent: 'center', width: '100%', paddingBottom: '5px'}}>
+                  <div className="frmcntl" style={{display: 'flex', justifyContent: 'center', width: '100%', paddingBottom: '25px'}}>
                     <PricePage
                       paymentPage={true}
                       selectedPlan={selectedPlan}
