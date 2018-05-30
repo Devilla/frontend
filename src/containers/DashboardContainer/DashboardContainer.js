@@ -23,7 +23,7 @@ class DashboardContainer extends Component {
 
     this.checkLogin((err) => {
       if(err) {
-        yield browserHistory.push('/login');
+        browserHistory.push('/login');
       } else {
         this.checkUserDetails(this.props.profile);
       }

@@ -22,9 +22,7 @@ import './App.scss';
 class App extends Component {
   componentWillMount() {
     this.checkLogin((err) => {
-      if(err) {
-        browserHistory.push('/login');
-      } else {
+      if(!err) {
         browserHistory.push('/dashboard');
       }
     });
