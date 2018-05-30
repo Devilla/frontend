@@ -3,21 +3,15 @@ import { Router, Route, browserHistory, IndexRedirect } from 'react-router';
 import { store } from './index.js';
 
 import {
-  App,
   About,
-  CompanyDetails,
-  ContactPage,
   ForgetPassword,
   Home,
   Profile,
   Billing,
   billingIn,
+  Help,
   PaymentPage,
   HowItWorks,
-  LoginPage,Help,
-  PricePage,
-  PrivacyPage,
-  RegisterPage,
   ResetPassword,
   Sidebar,
   StatsCard,
@@ -32,10 +26,21 @@ import {
   Integration,
   Error,
   ComingSoon,
+  WebsiteHome,
+  WebsiteHowItWorks,
+  WebsiteIntegrations,
+  WebsitePricing,
+  WebsiteAbout,
+  WebsiteSignIn,
+  WebsiteSignUp,
+  WebsiteTerms,
+  WebsitePolicy,
+  WebsiteContact,
   VerificationPage
 } from 'components';
 
 import {
+  App,
   DashboardContainer,
   ConnectPage
 } from 'containers';
@@ -60,27 +65,33 @@ const MyRoutes = ({routerHistory, store}) => (
       <Route path="/billingIn" component={billingIn} />
       <Route path="/Help" component={Help} />
 	  <Route path="/PaymentPage" component={PaymentPage} />
-	  
+
 
     </Route>
     <Route path="/getting-started" component={LoginFlow} />
     <Route exact path="/connect/:provider" component={ConnectPage} />
     <Route exact path="/verify/:code" component={VerificationPage} />
     <Route component={App}>
-      <Route path="/" component={Home} />
-      <Route path="/about" component={About} />
-      <Route path="/login" component={LoginPage} />
-      <Route path="/profile/company/:token" component={CompanyDetails} />
-      <Route path="/register" component={RegisterPage} />
-      <Route path="/privacy-policy" component={PrivacyPage} />
-      <Route path="/terms-and-condtions" component={TermsPage} />
-      <Route path="/privacy-policy" component={PrivacyPage} />
-      <Route path="/contact" component={ContactPage} />
-      <Route path="/pricing" component={PricePage} />
+      <Route path="/" component={WebsiteHome} />
+      <Route path="/how-it-works" component={WebsiteHowItWorks} />
+      <Route path="/integrations" component={WebsiteIntegrations} />
+      <Route path="/pricing" component={WebsitePricing} />
+      <Route path="/about" component={WebsiteAbout} />
+      <Route path="/login" component={WebsiteSignIn} />
+      <Route path="/signup" component={WebsiteSignUp} />
+      <Route path="/terms-and-condtions" component={WebsiteTerms} />
+      <Route path="/privacy-policy" component={WebsitePolicy} />
+      <Route path="/contact" component={WebsiteContact} />
+      {/* <Route path="/login" component={LoginPage} /> */}
+      {/* <Route path="/profile/company/:token" component={CompanyDetails} /> */}
+      {/* <Route path="/register" component={RegisterPage} /> */}
+      {/* <Route path="/privacy-policy" component={PrivacyPage} /> */}
+      {/* <Route path="/privacy-policy" component={PrivacyPage} /> */}
+      {/* <Route path="/contact" component={ContactPage} /> */}
+      {/* <Route path="/pricing" component={PricePage} /> */}
       <Route path="/forget-password" component={ForgetPassword} />
       <Route path="/reset-password" component={ResetPassword} />
       {/* <Redirect from='price' to="/pricing" /> */}
-      <Route path="/how-it-works" component={HowItWorks} />
     </Route>
     <Route path="*" component={Error} />
   </Router>

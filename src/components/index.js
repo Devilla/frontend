@@ -1,4 +1,19 @@
-export { default as App } from "./App";
+// export { default as App } from "./App";
+// Company Website
+export { default as WebsiteHeader } from "./WebsiteHeader/WebsiteHeader";
+export { default as WebsiteFooter } from "./WebsiteFooter/WebsiteFooter";
+export { default as WebsiteHome } from "./WebsiteHome/WebsiteHome";
+export { default as WebsiteHowItWorks } from "./WebsiteHowItWorks/WebsiteHowItWorks";
+export { default as WebsiteIntegrations } from "./WebsiteIntegrations/WebsiteIntegrations";
+export { default as WebsitePricing } from "./WebsitePricing/WebsitePricing";
+export { default as WebsiteAbout } from "./WebsiteAbout/WebsiteAbout";
+export { default as WebsiteSignIn } from "./WebsiteSignIn/WebsiteSignIn";
+export { default as WebsiteSignUp } from "./WebsiteSignUp/WebsiteSignUp";
+export { default as WebsiteContact } from "./WebsiteContact/WebsiteContact";
+export { default as WebsiteTerms } from "./WebsiteTerms/WebsiteTerms";
+export { default as WebsitePolicy } from "./WebsitePolicy/WebsitePolicy";
+
+
 export { default as Footer } from "./Footer/Footer";
 export { default as Header } from "./Header/Header";
 export { default as About } from "./AboutPage/index.js";
@@ -7,11 +22,11 @@ export { default as ContactPage } from "./ContactPage";
 export { default as ForgetPassword } from "./ForgetPassword";
 export { default as Home } from "./HomePage";
 export { default as HowItWorks } from "./HowitWorks";
-export { default as LoginPage } from "./LoginPage";
+// export { default as LoginPage } from "./LoginPage";
 export { default as PricePage } from "./PricePage";
 export { default as PrivacyPage } from "./PrivacyPage";
 export { default as Common } from "./Common/function";
-export { default as RegisterPage } from "./RegisterPage";
+// export { default as RegisterPage } from "./RegisterPage";
 export { default as ResetPassword } from "./ResetPassword";
 export { default as Sidebar } from "./Sidebar/Sidebar";
 export { default as StatsCard } from "./StatsCard/StatsCard";

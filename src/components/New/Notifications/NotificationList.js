@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'react-bootstrap';
 import Switch from 'react-flexible-switch';
-import './NotificationList.css';
+import './NotificationList.scss';
 
 const NotificationList = ({notificationList, configure, configurations, handleActivityChange, createSuccess}) => {
   const renderNotifications = () => {
@@ -9,7 +9,7 @@ const NotificationList = ({notificationList, configure, configurations, handleAc
       <Col md={4} key={notification._id}>
         <div className="card"
           style={{
-            width: "25rem",
+            width: "15rem",
             margin: "0 auto",
             borderRadius: '10px'
           }}
