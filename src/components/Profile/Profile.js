@@ -18,13 +18,6 @@ import './Profile.scss';
 import './Profile.css';
 import { fetchProfile, updateProfile } from 'ducks/profile';
 
-// function validate(username, website) {
-//   // true means invalid, so our conditions got reversed
-//   return {
-//     name: username.length === 0,
-//     email: !website
-//   };
-// }
 
 class Profile extends Component {
 

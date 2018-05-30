@@ -15,6 +15,7 @@ import {
   CustomeRules,
   MobileReady,
 } from 'img';
+import './WebsiteHome.css'
 
 class WebsiteHome extends Component {
 
@@ -60,13 +61,20 @@ class WebsiteHome extends Component {
         <section className="text-center">
           <div className="container">
             <div className="row">
-              <div className="col-md-10 col-lg-8">
+              <div className="col-md-10 col-lg-10">
                 <h2>Influence makes conversions easy</h2>
                 <p className="lead"> Let your customers do the selling for you. <br /> Put a stamp of Social Proof to BOOST your conversions.</p>
               </div>
             </div>
           </div>
         </section>
+
+
+        {/* NEW CHANGES ARE HERE !! */}
+
+
+
+        
         <section className="text-center">
           <div className="container">
             <div className="row">
@@ -93,22 +101,36 @@ class WebsiteHome extends Component {
             </div>
           </div>
         </section>
-        <section className="text-center cta cta-4 space--xxxs border--bottom imagebg" style={{ background: 'linear-gradient(to left, #b721ff,#21d4fd)'}} data-gradient-bg="#b721ff,#21d4fd,#21d4fd,#b721ff">
-          <div className="container">
-            <div className="row">
-              <div className="feature2 col-md-12 space--xxxs2">
-                <span className="label--inline h4">A Conversion Supercharger! </span>
-              </div>
-              <div className="feature2 col-md-12 space--xxxs1 text-center">
-                <form className="form--horizontal row">
-                  <div className="col-md-1"></div>
-                  <div className="col-md-6"> <input type="text" name="search" placeholder="Enter your email." /> </div>
-                  <div className="col-md-4"> <button type="submit" className="btn btn--primary type--uppercase">start your 7 days free trial</button> </div>
-                </form>
-              </div>
-            </div>
-          </div>
-        </section>
+        <section class="text-center">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <a href="#" class="block">
+                                <div class="feature boxed boxed--border border--round"> 
+                                <img class="icon-n3" src="images/higherconversion2.svg"/> <span class="h4 color--primary"><h4>Higher conversion&nbsp;</h4></span> </div>
+                            </a>
+                        </div>
+                        <div class="col-md-3">
+                            <a href="#" class="block">
+                                <div class="feature boxed boxed--border border--round"> 
+                                <img class="icon-n3" src="images/saveonacquisitions2.svg"/> <span class="h4 color--primary"><h4>Save on acquisitions</h4></span> </div>
+                            </a>
+                        </div>
+                        <div class="col-md-3">
+                            <a href="#" class="block">
+                                <div class="feature boxed boxed--border border--round"> 
+                                <img class="icon-n3" src="images/visitortrust2.svg"/> <span class="h4 color--primary"><h4>Increase Visitors trust</h4></span> </div>
+                            </a>
+                        </div>
+                        <div class="col-md-3">
+                            <a href="#" class="block">
+                                <div class="feature boxed boxed--border border--round"> 
+                                <img class="icon-n3" src="images/socialinfluence2.svg"/> <span class="h4 color--primary"><h4>Social Influence</h4></span> </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
         <section className="text-center">
           <div className="container">
             <div className="row">

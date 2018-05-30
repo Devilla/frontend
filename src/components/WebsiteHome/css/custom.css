@@ -1,0 +1,24 @@
+/*! Place your custom styles here */
+
+ .col-md-4-n {
+    flex: 0 0 33.3333333333%;
+    max-width: 33.3333333333%; 
+}
+
+
+.col-md-8-n {
+    flex: 0 0 66.6666666667%;
+    max-width: 47.6666666667%; 
+}
+
+.icon-n {
+	
+	height: 7em;
+	opacity: 0.8;
+}
+
+.icon-n2 {
+	
+	height: 5.7em;
+	opacity: 0.9;
+}
