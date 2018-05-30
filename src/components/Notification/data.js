@@ -5,6 +5,4 @@ export const tdArray = [
     {"name": "Notification 3","website":"http://www.socialtrooper.com","totalnotification": "203","univisitor":"30","status":true },
     {"name": "Notification 4","website":"http://www.shahidkhan.com","totalnotification": "103","univisitor":"30","status":true },
     {"name": "Notification 5","website":"http://www.socialtrooper.com","totalnotification": "13","univisitor":"30","status":false },
-
-  
 ];

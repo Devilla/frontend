@@ -8,6 +8,7 @@ import 'react-images-uploader/styles.css';
 import 'react-images-uploader/font.css';
 import { ChromePicker } from 'react-color';
 import './settings.css';
+import { css, checked } from 'glamor';
 
 const FONT_WEIGHT_BOLD = 'bold';
 const FONT_WEIGHT_NORMAL = 'normal';
@@ -381,7 +382,27 @@ export class Setting extends Component {
                   </FormGroup>
                 </Col>
         		    <Col md={5} style={{'paddingLeft': '5px'}}>
-        		      hours/days.
+                <div class="col-md-2">
+                  <div class="planUp form-group">
+                    <select
+                      placeholder="select"
+                      disabled=""
+                      id="formControlsSelect"
+                      class="form-control">
+                      <option value="select">
+                        Select</option>
+                      <option
+                        value="5b01264d61fa070011200cd4">
+                        hours
+                      </option>
+
+                      <option value="5b01266261fa070011200cd5">
+                        days
+                      </option>
+
+                    </select>
+                  </div>
+                </div>
                 </Col>
               </Row>
             </Tab>
@@ -425,7 +446,27 @@ export class Setting extends Component {
                     </FormGroup>
                   </Col>
           		    <Col md={5} style={{'paddingLeft': '5px'}}>
-          		      hours/days.
+                  <div class="col-md-2">
+                  <div class="planUp form-group">
+                    <select
+                      placeholder="select"
+                      disabled=""
+                      id="formControlsSelect"
+                      class="form-control">
+                      <option value="select">
+                        Select</option>
+                      <option
+                        value="5b01264d61fa070011200cd4">
+                        hours
+                      </option>
+
+                      <option value="5b01266261fa070011200cd5">
+                        days
+                      </option>
+
+                    </select>
+                  </div>
+                </div>
                   </Col>
                 </Row>
             		<Row>

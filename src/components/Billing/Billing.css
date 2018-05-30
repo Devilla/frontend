@@ -35,10 +35,9 @@ table, th, td {
     
 }
 td {
-    padding: 15px;
     text-align: center;
 }
 th {
-    padding-left: 50px;
+    padding-left: 500px;
     text-align: center;
 }

@@ -15,6 +15,7 @@ import Button from 'components/Template/customButton';
 import {ToastContainer, toast} from 'react-toastify';
 
 import './Profile.scss';
+import './Profile.css';
 import { fetchProfile, updateProfile } from 'ducks/profile';
 
 // function validate(username, website) {
@@ -169,7 +170,7 @@ class Profile extends Component {
                     </div>
 
                   <div className="profile-over-button">
-                    <Button onClick={() => browserHistory.push('/billingIn')}
+                    <Button onClick={() => browserHistory.push('/billingFinal')}
                       bsStyle="info"
                       pullRight
                       fill

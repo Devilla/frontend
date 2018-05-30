@@ -19,7 +19,7 @@ class Notification extends Component {
       notifications: [],
     }
   }
-
+  
   componentDidMount() {
     this.props.fetchCampaign();
   }

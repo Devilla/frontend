@@ -153,7 +153,7 @@ export default class Billing extends Component{
                       </div>
                     </Row>
                     <Row>
-                    <div  className="Previous"> <Button onClick={()=> browserHistory.push('/billingIn')}
+                    <div  className="Previous"> <Button onClick={()=> browserHistory.push('/billingFinal')}
                       bsStyle="info"
                       pullLeft
                       fill
