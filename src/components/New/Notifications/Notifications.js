@@ -47,6 +47,8 @@ const notificationPanelStyleDefault = { // TODO: Take style values from server
   fontWeight: 'normal',
   linkFontFamily: 'inherit',
   linkFontWeight: 'normal',
+  selectDurationData:'hours',
+  selectLastDisplayConversation:'hours',
   bulkData:5,
   recentNumber:5,
   recentConv:5,
