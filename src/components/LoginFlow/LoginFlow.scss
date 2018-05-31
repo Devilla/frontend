@@ -1,0 +1,87 @@
+.login-flow {
+  text-align: center;
+  .authpage {
+    min-height: 780px;
+  //   width: 100%;
+  //   position: fixed !important;
+  //   position: absolute;
+  //   top: 0;
+  //   bottom: 0;
+    // .container {
+      /* position: fixed !important; */
+    //   top: 0;
+    //   bottom: 0;
+    }
+    .flow-wrapper {
+      /* position: fixed !important; */
+      // position: absolute;
+      // right: 0;
+      /* bottom: 0; */
+      // left: 0;
+      // display: table;
+      width: 85%;
+      // padding: 5%;
+      /* position: relative; */
+      // background-color: white;
+      // top: 5%;
+      // min-height: 40vh !important;
+      margin: 0 auto;
+      .price {
+        ul {
+          display: flex;
+          justify-content: center;
+          padding: 1%;
+          li {
+            list-style: none;
+            padding: 1%;
+          }
+        }
+      }
+      .card-holder {
+        input {
+          height: 45px;
+        }
+      }
+      .card-body {
+        input[type=radio] {
+          height: 1em;
+          width: 1em !important;
+        }
+      }
+    }
+    iframe {
+      min-height: 50px !important;
+    }
+  // }
+  .button.submit-button {
+    display: initial;
+  }
+  .vertical-col {
+    display: flex;
+  }
+  .min-col {
+    width: 50%;
+  }
+  .Select-control {
+    border-color: transparent;
+    border-radius: 0;
+    border: none;
+  }
+  .Select.is-focused:not(.is-open) > .Select-control {
+    border-color: none;
+    -webkit-box-shadows: none;
+    box-shadow: none;
+    background: #fff;
+  }
+  .Select-placeholder {
+    color: #999999;
+  }
+  .w-input {
+    margin-bottom: 0;
+  }
+  .card .card-body {
+    .card-title, .card-text {
+      font-size: 13px;
+    }
+  }
+}

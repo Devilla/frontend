@@ -4,6 +4,7 @@ import { browserHistory } from 'react-router';
 import $ from 'jquery';
 import axios from 'axios';
 import { fetchPlan } from 'ducks/plan';
+import * as api from 'services/api';
 
 import PricePage from './PricePage';
 import PaymentPrice from './PaymentPrice';
@@ -20,7 +21,8 @@ class Price extends Component {
       proprice: '',
       country_code: 'USD',
       rate: 0,
-      planPeriod: 12
+      planPeriod: 12,
+      servicebotPlans: []
     };
     this.handleChange = this.handleChange.bind(this);
     this.returnRates =  this.returnRates.bind(this);
@@ -34,6 +36,11 @@ class Price extends Component {
     this.props.fetchPlan();
     this.initCountry();
     this.currencyRates();
+    fetch('http://servicebot.useinfluence.co/api/v1/service-templates/public')
+    .then((res) => res.json())
+    .then((res) => {
+      this.setState({servicebotPlans: res});
+    });
   }
 
   componentDidMount() {
@@ -104,7 +111,8 @@ class Price extends Component {
       <div style={paymentPage?{width:'100%'}:{}}>
         {paymentPage?
           <PaymentPrice
-            planList={planList}
+            planPeriod={this.state.planPeriod}
+            planList={this.state.servicebotPlans}
             returnRates={this.returnRates}
             handleMonthChange={this.handleMonthChange}
             handleSwitchChange={this.handleSwitchChange}

@@ -47,11 +47,9 @@ class WebsiteHome extends Component {
               </div>
               <div className="col-md-8">
                 <ul className="list-inline social-list">
-                  <li className="list-inline-item"> <img alt="Image" className="image--xxs" src="img/partner-3.png" /> </li>
-                  <li className="list-inline-item"> <img alt="Image" className="image--xxs" src="img/partner-2.png" /> </li>
-                  <li className="list-inline-item"> <img alt="Image" className="image--xxs" src="img/partner-4.png" /> </li>
-                  <li className="list-inline-item"> <img alt="Image" className="image--xxs" src="img/partner-5.png" /> </li>
-                  <li className="list-inline-item"> <img alt="Image" className="image--xxs" src="img/partner-6.png" /> </li>
+                  <li className="list-inline-item"> <img alt="Image" className="image--xxs" src="images/inc42glyph.png" /> </li>
+                  <li className="list-inline-item"> <img alt="Image" className="image--xxs" src="images/tnwglyph3.png" /> </li>
+                  <li className="list-inline-item"> <img alt="Image" className="image--xxs" src="images/yourstoryglyph3.png" /> </li>
                 </ul>
               </div>
             </div>

@@ -10,37 +10,7 @@ import './assets/css/animate.min.scss';
 import './assets/css/demo.scss';
 import './assets/css/pe-icon-7-stroke.css';
 import 'react-select/dist/react-select.css';
-// import './assets/stylesheets/style.scss';
-// import './assets/assets/css/page.scss';
-// import './assets/sass/light-bootstrap-dashboard.scss';
 
-
-function getUrlVars() {
-  var vars = [],
-    hash;
-  var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
-  for (var i = 0; i < hashes.length; i++) {
-    hash = hashes[i].split('=');
-    vars.push(hash[0]);
-    vars[hash[0]] = hash[1];
-  }
-  return vars;
-}
-
-function getCookie(cname) {
-  var name = cname + "=";
-  var ca = document.cookie.split(';');
-  for (var i = 0; i < ca.length; i++) {
-    var c = ca[i];
-    while (c.charAt(0) == ' ') {
-      c = c.substring(1);
-    }
-    if (c.indexOf(name) == 0) {
-      return c.substring(name.length, c.length);
-    }
-  }
-  return "";
-}
 
 class DashboardContainer extends Component {
   constructor(props) {
@@ -48,12 +18,13 @@ class DashboardContainer extends Component {
     this.componentDidMount = this.componentDidMount.bind(this);
 
     this.state = {
-      render: true
+      render: true,
+      disableButton: false
     };
 
     this.checkLogin((err) => {
       if(err) {
-        window.location.assign(window.location.origin+'/login');
+        browserHistory.push('/login');
       } else {
         this.checkUserDetails(this.props.profile);
       }
@@ -74,18 +45,17 @@ class DashboardContainer extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.props.profile != nextProps.profile || !nextProps.profile)
+    if (!nextProps.profile && nextProps.user.size != 0 && !this.state.disableButton  )
       this.checkUserDetails(nextProps.profile);
-  }
-
-  componentDidMount() {
-    this.setState({_notificationSystem: this.refs.notificationSystem});
+    if(this.props.profile != nextProps.profile && nextProps.profile && nextProps.profile.plan)
+      this.setState({disableButton: false});
   }
 
   checkUserDetails(profile) {
     const user = this.props.user;
     if (user && user.size !== 0 && (!profile || !profile.plan)) {
-      browserHistory.push('getting-started')
+      this.setState({disableButton: true});
+      browserHistory.push('getting-started');
     }
   }
 
@@ -102,13 +72,13 @@ class DashboardContainer extends Component {
         <div className="wrapper">
           <Spinner loading={loading} />
           {!this.state.render && <p>Please wait</p>}
-          {this.state.render && <Sidebar {...this.props}/>}
+          {this.state.render && <Sidebar {...this.props} disableButton={this.state.disableButton} />}
           {
-            this.state.render && <div id="main-panel" className="main-panel" style={{width: 'calc(100% - 195px)', marginTop: '-.5%', marginRight: '-1%'}}>
-                <Header {...this.props}/>
-                {this.props.children}
-                {/* <Footer/> */}
-              </div>
+            this.state.render &&
+            <div id="main-panel" className="main-panel" style={{width: 'calc(100% - 195px)', marginTop: '-.5%', marginRight: '-1%'}}>
+              <Header {...this.props}/>
+              {this.props.children}
+            </div>
           }
         </div>
       </div>

@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { browserHistory } from 'react-router';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import { Spinner } from '../../components/index.js';
 import { WebsiteHeader, WebsiteFooter } from 'components';
+
+import { checkTokenExists } from 'ducks/auth';
+
+
 import './scss/stack-interface.scss';
 import './scss/socicon.css';
 import './scss/iconsmind.scss';
@@ -16,6 +20,27 @@ import './scss/font-sourcesanspro.scss';
 import './App.scss';
 
 class App extends Component {
+  componentWillMount() {
+    this.checkLogin((err) => {
+      if(!err) {
+        browserHistory.push('/dashboard');
+      }
+    });
+  }
+
+  checkLogin(callback) {
+    const cookie = localStorage.getItem('authToken');
+    const authToken = cookie
+      ? JSON.parse(cookie)
+      : null;
+    if (authToken) {
+      this.props.checkTokenExists(authToken);
+      callback()
+    } else {
+      callback("not logged in")
+    }
+  }
+
   render(){
     return (
       <div className="website-app">
@@ -33,14 +58,8 @@ class App extends Component {
 
 }
 
-// App.propTypes = {
-//   children: PropTypes.node,
-// };
-//
-// const mapStateToProps = state => ({
-//   loading: state.getIn(['loading', 'state']),
-// });
+const mapDispatchToProps = {
+  checkTokenExists
+};
 
-// export default connect(mapStateToProps)(App);
-
-export default App;
+export default connect(null, mapDispatchToProps)(App);

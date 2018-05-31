@@ -114,18 +114,16 @@ export class Setting extends Component {
 
 
   handleAnonymousConversionsChange =(e)=> {
-    console.log(e);
     this.setState({hideAnonymousConversion: e });
     this.props.onConfigChange({ prop: 'hideAnonymousConversion', value: e });
 
   };
 
   handleOnlyDisplayNotification =(e)=> {
-    console.log(e);
     this.setState({onlyDisplayNotification: e });
     this.props.onConfigChange({ prop: 'onlyDisplayNotification', value: e });
   };
-  
+
   hideTextColorSwatch = () => {
     this.setState({ isTextColorSwatchOpen: false });
   };
@@ -142,6 +140,18 @@ export class Setting extends Component {
     const fontFamily = `${e.target.value}`;
     this.setState({ fontFamily });
     this.props.onConfigChange({ prop: 'fontFamily', value: fontFamily });
+  };
+
+ handleDurationChange = (e) => {
+    const selectDurationData = `${e.target.value}`;
+    this.setState({ selectDurationData });
+    this.props.onConfigChange({ prop: 'selectDurationData', value: selectDurationData });
+  };
+
+  handleLastDisplayDurationChange = (e) => {
+    const selectLastDisplayConversation = `${e.target.value}`;
+    this.setState({ selectLastDisplayConversation });
+    this.props.onConfigChange({ prop: 'selectLastDisplayConversation', value: selectLastDisplayConversation });
   };
 
   handleLinkFontChange = (e) => {
@@ -318,35 +328,7 @@ export class Setting extends Component {
                 </Row>
               </Col>
             </Row>
-            <Row>
-              <Col md={12}>
-                <h4>Link Setting</h4>
-                <Row>
-                  <Col md={4}>
-                    <div style={styles.swatch} className="bgcolor" onClick={this.showLinkColorSwatch}>
-                      <div style={{ ...styles.colorSwatch, ...styles.linkColor }} />
-                    </div>
-                    {this.state.isLinkColorSwatchOpen ? <div style={styles.popover}>
-                      <div style={styles.cover} onClick={this.hideLinkColorSwatch} />
-                      <ChromePicker color={notificationPanelStyle.linkColor} onChange={this.handleTextLinkColorChange} />
-                    </div> : null}
-                  </Col>
-                  <Col md={4}>
-                    <Button bsSize="small" block active={notificationPanelStyle.linkFontWeight == FONT_WEIGHT_BOLD} onClick={this.handleLinkFontWeightChange}>
-                      Bold
-                    </Button>
-                  </Col>
-                  <Col md={4}>
-                    <FormControl componentClass="select" bsSize="small" placeholder="select" value={notificationPanelStyle.linkFontFamily} onChange={this.handleLinkFontChange}>
-                      <option value="arial">Arial</option>
-                      <option value="sans-serif">Sen Serif</option>
-                      <option value="helvetica">Helvetica</option>
-                      <option value="open sans">Default</option>
-                    </FormControl>
-                  </Col>
-                </Row>
-              </Col>
-            </Row>
+
             <Row>
               <Col md={12}>
                 <h4>Content Setting</h4>
@@ -367,10 +349,10 @@ export class Setting extends Component {
           {notification.notificationName === "Bulk Activity"  &&
             <Tab eventKey={3} title="Setting" className="bulk-settings">
               <Row>
-                <Col md={5} style={{'paddingRight': 0}}>
-                  Display bulk data from last
+                <Col md={5} style={{'paddingRight': 0, width: '45%'}}>
+                  <span className="mt-5"> Display bulk data from last</span>
                 </Col>
-                <Col md={1} style={{'padding': 0}}>
+                <Col md={1} style={{'padding': 0, width: '10%'}}>
                   <FormGroup>
                     <FormControl
                       type="number"
@@ -381,29 +363,12 @@ export class Setting extends Component {
                     />
                   </FormGroup>
                 </Col>
-        		    <Col md={5} style={{'paddingLeft': '5px'}}>
-                <div class="col-md-2">
-                  <div class="planUp form-group">
-                    <select
-                      placeholder="select"
-                      disabled=""
-                      id="formControlsSelect"
-                      class="form-control">
-                      <option value="select">
-                        Select</option>
-                      <option
-                        value="5b01264d61fa070011200cd4">
-                        hours
-                      </option>
-
-                      <option value="5b01266261fa070011200cd5">
-                        days
-                      </option>
-
-                    </select>
-                  </div>
-                </div>
-                </Col>
+                <Col md={4}>
+                    <FormControl componentClass="select" bsSize="small" value={notificationPanelStyle.selectDurationData} onChange={this.handleDurationChange}>
+                      <option value="hours">hours</option>
+                      <option value="days">days</option>
+                    </FormControl>
+                  </Col>
               </Row>
             </Tab>
           }
@@ -412,9 +377,9 @@ export class Setting extends Component {
               <div>
 	              <Row>
                   <Col md={3} style={{'paddingRight': 0}}>
-                    Display the last
+                    <span className="mt-5">Display the last</span>
                   </Col>
-                  <Col md={1} style={{'padding': 0}}>
+                  <Col md={1} style={{'padding': 0, width: '10%'}}>
                     <FormGroup>
                       <FormControl
                         type="number"
@@ -427,14 +392,14 @@ export class Setting extends Component {
                     </FormGroup>
                   </Col>
               		<Col md={5} style={{'paddingLeft': '5px'}}>
-              		    number of conversions.
+              		  <span className="mt-5"> number of conversions.</span>
                   </Col>
                 </Row>
 	              <Row>
-                  <Col md={5} style={{'paddingRight': 0, width: '45%'}}>
-          		      Display conversation from last
+                  <Col md={5} style={{'paddingRight': 0, width: '50%'}}>
+          		      <span className="mt-5">Display conversation from last</span>
                   </Col>
-                  <Col md={1} style={{ padding: 0 }}>
+                  <Col md={1} style={{ padding: 0, width: '10%' }}>
                     <FormGroup>
                       <FormControl
                         type="number"
@@ -445,28 +410,11 @@ export class Setting extends Component {
                       />
                     </FormGroup>
                   </Col>
-          		    <Col md={5} style={{'paddingLeft': '5px'}}>
-                  <div class="col-md-2">
-                  <div class="planUp form-group">
-                    <select
-                      placeholder="select"
-                      disabled=""
-                      id="formControlsSelect"
-                      class="form-control">
-                      <option value="select">
-                        Select</option>
-                      <option
-                        value="5b01264d61fa070011200cd4">
-                        hours
-                      </option>
-
-                      <option value="5b01266261fa070011200cd5">
-                        days
-                      </option>
-
-                    </select>
-                  </div>
-                </div>
+          		     <Col md={4}>
+                    <FormControl componentClass="select" bsSize="small" value={notificationPanelStyle.selectLastDisplayConversation} onChange={this.handleLastDisplayDurationChange}>
+                      <option value="hours">hours</option>
+                      <option value="days">days</option>
+                    </FormControl>
                   </Col>
                 </Row>
             		<Row>
@@ -483,7 +431,7 @@ export class Setting extends Component {
 
                       cssClass="alignsame"
                       value={notificationPanelStyle.hideAnonymousConversion}
-                      onChange={(e)=>this.handleAnonymousConversionsChange(e)}
+                      onChange={(e) => this.handleAnonymousConversionsChange(e)}
                     />
                   </Col>
                   <Col md={10}>
@@ -501,8 +449,8 @@ export class Setting extends Component {
                         width: 50
                       }} cssClass="alignsame"
                       value={notificationPanelStyle.onlyDisplayNotification}
-                      onChange={(e)=>this.handleOnlyDisplayNotification(e)}
-                   
+                      onChange={(e) => this.handleOnlyDisplayNotification(e)}
+
                       />
                   </Col>
                   <Col md={10}>

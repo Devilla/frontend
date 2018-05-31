@@ -79,11 +79,11 @@ class WebsiteSignUp extends Component {
 
     // TODO: Show 'Check email for further instructions.' message on success
     register(this.state.email, this.state.password).then(res => {
-      
+
         toast.info('Successfull', toastConfig);
         store.dispatch(loginSuccess(res));
-        window.location.assign(window.location.origin+'/getting-started');
-        // browserHistory.push('/getting-started');
+        // window.location.assign(window.location.origin+'/getting-started');
+        browserHistory.push('/getting-started');
         this.setState({isRegistered: true});
       // TODO: check response before treating it as successfull
     }).catch(err => {
@@ -93,10 +93,10 @@ class WebsiteSignUp extends Component {
   };
 
   render() {
-    
 
 
-    
+
+
     const isEmailValid = validateEmail(this.state.email);
     const isPwdValid = validatePassword(this.state.password) && validatePassword(this.state.confirmPassword)  && this.state.confirmPassword===this.state.confirmpassword;
     const isFormValid = isEmailValid && isPwdValid;
@@ -124,25 +124,25 @@ class WebsiteSignUp extends Component {
                       <div className="col-12">
                           <input type="text"
                            name="firstname"
-                           value={this.state.firstname} 
+                           value={this.state.firstname}
                            placeholder="Your Name" />
                       </div>
                         <div className="col-12">
-                          <input 
+                          <input
                           name="email"
-                          value={this.state.email} 
+                          value={this.state.email}
                           onBlur={this.handleEmailBlur}
                           onChange={this.handleInputChange}
-                          placeholder="Email Address" 
+                          placeholder="Email Address"
                           type="email" />
                         </div>
                         <div className="col-12">
                           <input
                            name="password"
-                           maxLength={PASSWORD_MAX_LENGTH} 
-                           value={this.state.name} 
-                           onBlur={this.handlePasswordBlur} 
-                           onChange={this.handleInputChange} 
+                           maxLength={PASSWORD_MAX_LENGTH}
+                           value={this.state.name}
+                           onBlur={this.handlePasswordBlur}
+                           onChange={this.handleInputChange}
                            type={this.state.isPasswordShown? 'text': 'password'}
                            placeholder="Password"
                             />
@@ -150,10 +150,10 @@ class WebsiteSignUp extends Component {
                         <div className="col-12">
                           <input
                            name="passwordConfirm"
-                           maxLength={PASSWORD_MAX_LENGTH} 
+                           maxLength={PASSWORD_MAX_LENGTH}
                            value={this.state.name}
-                           onBlur={this.handlePasswordBlur} 
-                           onChange={this.handleInputChange} 
+                           onBlur={this.handlePasswordBlur}
+                           onChange={this.handleInputChange}
                            type={this.state.isPasswordShown? 'text': 'password'}
                            placeholder="Confirm Password" />
                         </div>
@@ -165,10 +165,10 @@ class WebsiteSignUp extends Component {
                           <span>Remember Me</span>
                         </div>
                         <div className="frmcntl col-12">
-                          <input 
-                          type="submit" 
-                          className="button submit-button w-button btn btn--primary" 
-                          value="Create Account" 
+                          <input
+                          type="submit"
+                          className="button submit-button w-button btn btn--primary"
+                          value="Create Account"
                           disabled={false}/>
                         </div>
                         <hr />
@@ -188,19 +188,19 @@ class WebsiteSignUp extends Component {
             </div>
           </section>
         </div>);
-return (   
-<div>
+    return (
+    <div>
       <div className="authpage section innerpage">
         <div className="container">
           <div className="wrapper">
-            <Animated 
-            className="leftwrap center" 
+            <Animated
+            className="leftwrap center"
 
-            animationIn="fadeIn" 
-            animationOut="fadeOut" 
+            animationIn="fadeIn"
+            animationOut="fadeOut"
             isVisible={true}>
-              <form 
-              className="loginfrm" 
+              <form
+              className="loginfrm"
               onSubmit={this.handleSubmit}>
                 {formContent}
               </form>
@@ -209,6 +209,7 @@ return (
           </div>
         </div>
       </div>
+      <ToastContainer hideProgressBar={true} />
     </div>
     );
   }

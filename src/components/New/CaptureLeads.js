@@ -79,7 +79,7 @@ class CaptureLeads extends Component{
     if(this.state.lead.url == '' || !validatePath(this.state.lead.url))
       return this.setState({error: "Please enter a valid path"});
     let lead = this.state.lead;
-    // lead['rule'] = this.props.rules._id;
+    lead['rule'] = this.props.rules._id;
     this.props.createPageUrl(lead);
     this.setState({lead: {
       url: '',
@@ -110,17 +110,6 @@ class CaptureLeads extends Component{
     } else {
       $('.error-bg').fadeOut().html('')
     }
-  }
-  handleAddButton(evt) {
-    evt.preventDefault();
-    var tokenverify = this.handleCheckCookie();
-    const data = {
-      websiteUrl: this.state.website,
-      profile: this.props.profile._id
-    };
-    return this.props.createCampaign(data)
-    // this.props.callbackFromParent({'active': 2});
-
   }
 
   deleteLead(id, index) {
@@ -199,23 +188,23 @@ class CaptureLeads extends Component{
             </Row>
             <Row>
               <Col md={12}>
-                <form onSubmit={this.handleAddButton} className="input-group">
+                <div className="input-group">
                   <input type="text"
-                   className="form-control txtpageurl" 
+                   className="form-control txtpageurl"
                    placeholder="Path URL  (For eg. /mypage, /register, /products, /design/front etc."
-                   aria-describedby="urladd" 
-                   value={this.state.lead.url} 
-                   onChange={this.handlePageUrl} 
+                   aria-describedby="urladd"
+                   value={this.state.lead.url}
+                   onChange={this.handlePageUrl}
                    onBlur={this.handleWebsiteAuth.bind(this)}
                    onKeyUp={(e) => e.keyCode === 13?this.addPageUrl():null}
 
                   />
                   <span className="input-group-btn"
                    id="urladd">
-                    <a className="btn btn-raised btn-primary blue" 
+                    <a className="btn btn-raised btn-primary blue"
                     href="#" onClick={this.addPageUrl}>Add</a>
                   </span>
-                </form>
+                </div>
               </Col>
             </Row>
             <Row>
@@ -245,7 +234,7 @@ class CaptureLeads extends Component{
               <div className="text-center">
                 <Col md={12}>
                 <p>&nbsp;</p> <p>&nbsp;</p>
-                Having problems with Auto Lead Capture in your current setup? &nbsp;&nbsp; <a 
+                Having problems with Auto Lead Capture in your current setup? &nbsp;&nbsp; <a
                 href="#" className="btn blue btn-sm">Use Webhook Integration</a>
                 </Col>
               </div>
