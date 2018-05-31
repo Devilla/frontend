@@ -59,6 +59,8 @@ const initialConfig = {
     linkFontFamily: 'inherit',
     linkFontWeight: 'normal'
   },
+  selectDurationData:'hours',
+  selectLastDisplayConversation:'hours',
   contentText: '',
   bulkData:5,
   recentNumber:5,

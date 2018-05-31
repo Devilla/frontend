@@ -16,7 +16,7 @@ import Footer from '../_common/Footer';
 
 
 
-export default class PaymentPage extends Component {
+export default class Payment extends Component {
   constructor(props) {
     super(props);
   }
