@@ -36,18 +36,11 @@ class Price extends Component {
     this.props.fetchPlan();
     this.initCountry();
     this.currencyRates();
-    const list = fetch('http://servicebot.useinfluence.co/api/v1/service-templates/public')
-    // .then(res => res.json())
+    fetch('http://servicebot.useinfluence.co/api/v1/service-templates/public')
     .then((res) => res.json())
     .then((res) => {
       this.setState({servicebotPlans: res});
-      console.log(res, "=====ersrsr");
     });
-    // api.GET('http://servicebot.useinfluence.co/service-templates/public')
-    // .then(res => {
-    //   console.log(res, "=====");
-    // })
-    console.log(list, "=========");
   }
 
   componentDidMount() {
