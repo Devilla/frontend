@@ -1,5 +1,13 @@
 import React, {Component} from 'react';
 import { Animated } from "react-animated-css";
+import {
+  Grid,
+  Row,
+  Col,
+  FormGroup,
+  ControlLabel,
+  FormControl
+} from 'react-bootstrap';
 import { ToastContainer, toast } from 'react-toastify';
 import { Elements, injectStripe } from 'react-stripe-elements';
 import PaymentPage from './PaymentPage';
@@ -109,22 +117,23 @@ class TrailPayment extends Component {
                       selectedPlan={selectedPlan}
                       handleCheckChange={handleCheckChange}
                     />
-                    {/* {this.renderPlan()} */}
                   </div>
-                  <div className="frmcntl">
-                    <input
-                      className="field w-input"
-                      name="username"
-                      id="username"
-                      placeholder="Card Holder's Name"
-                      type='text'
-                      value={user.username}
-                      onChange={(e) => handleStateChange(e.target.value, e.target.id)}
-                      required
-                    />
-                  </div>
-                  <div className="frmcntl" style={{padding:'1% 2%'}}>
-
+                  <Row>
+                    <Col md={12}>
+                      <FormGroup style={{textAlign: 'initial'}} className="card-holder">
+                        <ControlLabel style={{fontWeight: '500'}}>Card Holder's Name</ControlLabel>
+                        <FormControl
+                          type="text"
+                          value={user.username}
+                          placeholder="Enter Card Holder's Name"
+                          id="username"
+                          onChange={(e) => handleStateChange(e.target.value, e.target.id)}
+                          required
+                        />
+                      </FormGroup>
+                    </Col>
+                  </Row>
+                  <div className="frmcntl" style={{padding:'1% 2%', border: '1px solid #cccccc', height: '45px', borderRadius: '4px', background: 'white'}}>
                     <Elements >
                       <PaymentPage
                         user={user}

@@ -25,21 +25,22 @@ const PaymentPage = ({stripe,
     if(!user.username) {
       return toast.error("Enter user name", toastConfig);
     }
-
+    if(!plan)
+      return toast.error("Select a plan", toastConfig);
     const options = {
       name: user.username,
     };
-    const plans =
-        planList?findObjectByKey(planList, '_id', plan)
-      :
-        {};
+    // const plans =
+    //     planList?findObjectByKey(planList, '_id', plan)
+    //   :
+    //     {};
 
     stripe.createToken(options).then((result) => {
       if (result.error) {
         handleStateChange(result.error.message, 'stripeError');
       } else {
         const data = {
-          amount: plans.amount,
+          amount: plan.amount,
           paymentProvider: result.token,
           paymentType: result.token.type,
           user: user._id,
@@ -68,22 +69,22 @@ const PaymentPage = ({stripe,
   }}
 
 
-    return (
-        <div className="credit-form">
-          <form onSubmit={(e) => submitForm(e)}>
-            <CardElement
-              style={style}
-            />
-            <div className="frmcntl">
-              <input className="button submit-button w-button"
-                type="submit"
-                value="Next"
-              />
-            </div>
-          </form>
-          <ToastContainer />
+  return (
+    <div className="credit-form">
+      <form onSubmit={(e) => submitForm(e)}>
+        <CardElement
+          style={style}
+        />
+        <div className="frmcntl">
+          <input className="btn btn-primary"
+            type="submit"
+            value="Next"
+            style={{width: '50%', height: '45px'}}
+          />
         </div>
-    )
+      </form>
+    </div>
+  )
 }
 
 

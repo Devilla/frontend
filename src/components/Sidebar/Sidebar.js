@@ -4,6 +4,7 @@ import HeaderLinks from '../Header/HeaderLinks';
 import logo from 'assets/img/logo.png';
 
 import appRoutes from 'routes/app';
+import './Sidebar.scss';
 
 class Sidebar extends Component{
     constructor(props){
@@ -23,37 +24,36 @@ class Sidebar extends Component{
         window.addEventListener("resize", this.updateDimensions.bind(this));
     }
     render(){
+      const { disableButton } = this.props;
+      return (
+        <div id="sidebar" className="sidebar" data-color="gray">
+          <div className="logo" style={{cursor: 'pointer'}} onClick={() => browserHistory.push('/dashboard')}>
+            <img src={logo} alt="logo_image"/>
+          </div>
 
-        return (
-            <div id="sidebar" className="sidebar" data-color="gray">
-                 <div className="logo" style={{cursor: 'pointer'}} onClick={() => browserHistory.push('/dashboard')}>
-                       <img src={logo} alt="logo_image"/>
-                    </div>
-
-
-                <div className="sidebar-wrapper">
-                    <ul className="nav">
-                        { this.state.width <= 991 ? (<HeaderLinks />):null }
-                        {
-                            appRoutes.map((prop,key) => {
-                                if(!prop.redirect)
-                                    return (
-                                        <li className={prop.upgrade ? "active  newbtn":this.activeRoute(prop.path)} key={key}>
-                                            <Link to={prop.path} className={prop.upgrade ? "new nav-link" : "nav-link"} activeClassName="active">
-                                                {
-                                                    prop.upgrade ? "" : <i className={prop.icon}></i>
-                                                }
-                                                <p>{prop.name}</p>
-                                            </Link>
-                                        </li>
-                                    );
-                                return null;
-                            })
-                        }
-                    </ul>
-                </div>
-            </div>
-        );
+          <div className="sidebar-wrapper">
+            <ul className="nav">
+              { this.state.width <= 991 ? (<HeaderLinks />):null }
+              {
+                appRoutes.map((prop,key) => {
+                  if(!prop.redirect)
+                    return (
+                      <li className={prop.upgrade ? "active  newbtn":this.activeRoute(prop.path)} key={key}>
+                        <Link to={prop.path} className={prop.upgrade && disableButton ? "new disabled-link" : disableButton ? 'disabled-link' : prop.upgrade ? "new nav-link" :  "nav-link"} disabled={disableButton} activeClassName="active">
+                          {
+                            prop.upgrade ? "" : <i className={prop.icon}></i>
+                          }
+                          <p>{prop.name}</p>
+                        </Link>
+                      </li>
+                    );
+                  return null;
+                })
+              }
+            </ul>
+          </div>
+        </div>
+      );
     }
 }
 

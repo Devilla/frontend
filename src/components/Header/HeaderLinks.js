@@ -5,14 +5,14 @@ import {browserHistory} from 'react-router';
 class HeaderLinks extends Component {
   logout() {
     localStorage.removeItem('authToken');
-    window.location.assign(window.location.origin+'/');
-    // browserHistory.push('/');
+    // window.location.assign(window.location.origin+'/');
+    browserHistory.push('/');
   }
 
   upgrade() {
     browserHistory.push('/upgrade');
   }
-  
+
   render() {
     return (<div>
       <div className="brodcastmsg">

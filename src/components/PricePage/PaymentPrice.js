@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import Switch from 'react-flexible-switch';
+import './PaymentPrice.scss';
 
-const PaymentPrice = ({planList, returnRates, handleMonthChange, handleSwitchChange, handleYearChange, externalValue, selectedPlan, handleCheckChange }) => {
+const PaymentPrice = ({planPeriod, planList, returnRates, handleMonthChange, handleSwitchChange, handleYearChange, externalValue, selectedPlan, handleCheckChange }) => {
+  planList = planList.filter(plan => planPeriod == 12 ? plan.interval=='year': plan.interval=='month')
   return (
     <div style={{width:'100%'}}>
       <div className="price">
@@ -34,39 +36,36 @@ const PaymentPrice = ({planList, returnRates, handleMonthChange, handleSwitchCha
           </div>
         </div>
       </div>
-      <div style={{width: '100%', display: 'flex'}}>
+      <div className="row"
+        // style={{width: '100%', display: 'flex'}}
+        >
         {planList?
           planList.map((plan, index) =>
-            <div className="card" style={{ width: '50%', padding: '3%', margin: '0 1%'}}>
-              <div className="card-body">
-                <h5 className="card-title">{plan.planName}</h5>
-                <span className="card-text">
-                  {plan.planType}
-                </span>
-                <p className="card-text">
-                  <h5>{returnRates(plan.amount)}</h5>
-                </p>
-                <input
-                  type="radio"
-                  value={plan._id}
-                  checked={
-                    plan._id == selectedPlan ?
-                      "checked"
-                    :
-                      false
-                    }
-                  id="plan"
-                  name="plan"
-                  onChange={(e) => handleCheckChange(e.target, e.target.value)}
-                />
+            // <div className="row">
+              <div className="col-md-3 col-sm-6">
+                <div className="pricingTable">
+                  <div style={{minHeight: '110px'}}>
+                    <h3 className="title">{plan.name}</h3>
+                    <div className="price-value">${plan.interval === 'year' ? plan.amount/1200 : plan.amount/100}
+                        <span className="month">Per Month</span>
+                    </div>
+                  </div>
+                  <div className="pricing-content">
+                      <ul>
+                          <li>{plan.description}</li>
+                      </ul>
+                      <a className={selectedPlan.id === plan.id ? "pricingTable-signup-active" : "pricingTable-signup"} onClick={(e) => handleCheckChange(true, plan)}>
+                        Select
+                      </a>
+                  </div>
+                </div>
               </div>
-            </div>
           )
         :
           <div>No Plan to select from.</div>
         }
-      </div>
 
+      </div>
     </div>
   );
 }

@@ -49,7 +49,6 @@ export function* checkTokenExists(action) {
 
 export function* logOut() {
   yield call(removeAuthToken);
-  // window.location.assign(window.location.origin+'/dashboard');
   yield call(browserHistory.push, '/login');
 }
 
@@ -57,14 +56,13 @@ export function* fetchUser() {
   try {
     yield put(load());
     const res = yield call(api.GET, `user/me`);
-    if(res.error)
-      //yield toast.error(res.message, toastConfig);
-      console.log(res.error);
-    else
+    if(!res.error)
       yield put(actions.fetchUserSuccess(res));
     yield put(loaded());
   } catch (error) {
     yield put(loaded());
+    yield call(removeAuthToken);
+    yield call(browserHistory.push, '/login');
     yield console.log(error);
   }
 }
@@ -74,7 +72,6 @@ export function* updateUser(action) {
     yield put(load());
     const res = yield call(api.PUT, `user/${action.user._id}`, action.user);
     if(res.error)
-      //yield toast.error(res.message, toastConfig);
       console.log(res.error);
     else
       yield put(actions.fetchUserSuccess(action.user));
