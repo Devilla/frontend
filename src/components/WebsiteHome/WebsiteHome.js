@@ -119,7 +119,7 @@ class WebsiteHome extends Component {
                   <p className="lead"> Show recent signups or purchases on your website. Get your existing customers to sell your products for you on an autopilot mode.</p> <Link to="/">Learn More »</Link>
                 </div>
               </div>
-              <div className="col-md-6 col-lg-4 col-12 text-center">
+              <div className="col-md-6 col-lg-6 col-12 text-center">
                 <img alt="Image" src="images/D12.png" />
               </div>
             </div>
@@ -134,7 +134,7 @@ class WebsiteHome extends Component {
                   <p className="lead">Show live visitor count notifications. Let your new visitors know they’re not the only ones buying from you. <br /></p> <Link to="/">Learn More »</Link>
                 </div>
               </div>
-              <div className="col-md-6 col-lg-4 col-12 text-center">
+              <div className="col-md-6 col-lg-6 col-12 text-center">
                 <img alt="Image" src="images/B24.png" />
               </div>
             </div>
@@ -164,10 +164,10 @@ class WebsiteHome extends Component {
                   <p className="lead"> Once the visitor/customer enters in their email, we’ll show you who they really are using our intelligence data servers. We keep on adding more features to your analytics.</p> <Link to="">Learn More »</Link>
                 </div>
               </div>
-              <div className="col-md-6 col-lg-4 col-12 text-center">
+              <div className="col-md-6 col-lg-7 col-12 text-center">
                 <img alt="Image" src="images/analyticsinsights10.png"/>
               </div>
-            </div>
+            </div><hr></hr>
           </div>
         </section>
         <section className="cover unpad--bottom switchable text-center-xs switchable--switch">
@@ -184,7 +184,8 @@ class WebsiteHome extends Component {
               <div className="col-md-6">
                 <img alt="Image" src="images/easiestsetup.png"/>
               </div>
-            </div>
+            </div><hr></hr>
+
           </div>
         </section>
         <section> </section>
