@@ -111,17 +111,6 @@ class CaptureLeads extends Component{
       $('.error-bg').fadeOut().html('')
     }
   }
-  handleAddButton(evt) {
-    evt.preventDefault();
-    var tokenverify = this.handleCheckCookie();
-    const data = {
-      websiteUrl: this.state.website,
-      profile: this.props.profile._id
-    };
-    return this.props.createCampaign(data)
-    // this.props.callbackFromParent({'active': 2});
-
-  }
 
   deleteLead(id, index) {
     this.props.removePageUrl(id, index);
@@ -199,7 +188,7 @@ class CaptureLeads extends Component{
             </Row>
             <Row>
               <Col md={12}>
-                <form onSubmit={this.handleAddButton} className="input-group">
+                <form className="input-group">
                   <input type="text"
                    className="form-control txtpageurl" 
                    placeholder="Path URL  (For eg. /mypage, /register, /products, /design/front etc."

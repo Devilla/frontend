@@ -144,6 +144,18 @@ export class Setting extends Component {
     this.props.onConfigChange({ prop: 'fontFamily', value: fontFamily });
   };
 
+ handleDurationChange = (e) => {
+    const selectDurationData = `${e.target.value}`;
+    this.setState({ selectDurationData });
+    this.props.onConfigChange({ prop: 'selectDurationData', value: selectDurationData });
+  };
+
+  handleLastDisplayDurationChange = (e) => {
+    const selectLastDisplayConversation = `${e.target.value}`;
+    this.setState({ selectLastDisplayConversation });
+    this.props.onConfigChange({ prop: 'selectLastDisplayConversation', value: selectLastDisplayConversation });
+  };
+
   handleLinkFontChange = (e) => {
     const linkFontFamily = `${e.target.value}`;
     this.setState({ linkFontFamily });
@@ -318,35 +330,7 @@ export class Setting extends Component {
                 </Row>
               </Col>
             </Row>
-            <Row>
-              <Col md={12}>
-                <h4>Link Setting</h4>
-                <Row>
-                  <Col md={4}>
-                    <div style={styles.swatch} className="bgcolor" onClick={this.showLinkColorSwatch}>
-                      <div style={{ ...styles.colorSwatch, ...styles.linkColor }} />
-                    </div>
-                    {this.state.isLinkColorSwatchOpen ? <div style={styles.popover}>
-                      <div style={styles.cover} onClick={this.hideLinkColorSwatch} />
-                      <ChromePicker color={notificationPanelStyle.linkColor} onChange={this.handleTextLinkColorChange} />
-                    </div> : null}
-                  </Col>
-                  <Col md={4}>
-                    <Button bsSize="small" block active={notificationPanelStyle.linkFontWeight == FONT_WEIGHT_BOLD} onClick={this.handleLinkFontWeightChange}>
-                      Bold
-                    </Button>
-                  </Col>
-                  <Col md={4}>
-                    <FormControl componentClass="select" bsSize="small" placeholder="select" value={notificationPanelStyle.linkFontFamily} onChange={this.handleLinkFontChange}>
-                      <option value="arial">Arial</option>
-                      <option value="sans-serif">Sen Serif</option>
-                      <option value="helvetica">Helvetica</option>
-                      <option value="open sans">Default</option>
-                    </FormControl>
-                  </Col>
-                </Row>
-              </Col>
-            </Row>
+
             <Row>
               <Col md={12}>
                 <h4>Content Setting</h4>
@@ -381,29 +365,12 @@ export class Setting extends Component {
                     />
                   </FormGroup>
                 </Col>
-        		    <Col md={5} style={{'paddingLeft': '5px'}}>
-                <div class="col-md-2">
-                  <div class="planUp form-group">
-                    <select
-                      placeholder="select"
-                      disabled=""
-                      id="formControlsSelect"
-                      class="form-control">
-                      <option value="select">
-                        Select</option>
-                      <option
-                        value="5b01264d61fa070011200cd4">
-                        hours
-                      </option>
-
-                      <option value="5b01266261fa070011200cd5">
-                        days
-                      </option>
-
-                    </select>
-                  </div>
-                </div>
-                </Col>
+                <Col md={4}>
+                    <FormControl componentClass="select" bsSize="small" value={notificationPanelStyle.selectDurationData} onChange={this.handleDurationChange}>
+                      <option value="hours">hours</option>
+                      <option value="days">days</option>
+                    </FormControl>
+                  </Col>
               </Row>
             </Tab>
           }
@@ -445,29 +412,21 @@ export class Setting extends Component {
                       />
                     </FormGroup>
                   </Col>
-          		    <Col md={5} style={{'paddingLeft': '5px'}}>
-                  <div class="col-md-2">
-                  <div class="planUp form-group">
-                    <select
-                      placeholder="select"
-                      disabled=""
-                      id="formControlsSelect"
-                      class="form-control">
-                      <option value="select">
-                        Select</option>
-                      <option
-                        value="5b01264d61fa070011200cd4">
-                        hours
-                      </option>
 
-                      <option value="5b01266261fa070011200cd5">
-                        days
-                      </option>
 
-                    </select>
-                  </div>
-                </div>
+
+
+          		     <Col md={4}>
+                    <FormControl componentClass="select" bsSize="small" value={notificationPanelStyle.selectLastDisplayConversation} onChange={this.handleLastDisplayDurationChange}>
+                      <option value="hours">hours</option>
+                      <option value="days">days</option>
+                    </FormControl>
                   </Col>
+
+
+
+
+
                 </Row>
             		<Row>
                   <Col md={2}>

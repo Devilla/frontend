@@ -9,7 +9,7 @@ const toastConfig = {
 
 const PaymentPage = ({stripe,
   // profile,
-  user, plan, planList, setError, stripeError, handleStateChange, handleSubmit}) => {
+  user, amount, plan, planList, setError, stripeError, handleStateChange, handleSubmit, load}) => {
 
   const findObjectByKey = (array, key, value) => {
     for (var i = 0; i < array.length; i++) {
@@ -27,19 +27,19 @@ const PaymentPage = ({stripe,
     }
 
     const options = {
-      name: user.username,
+      name: user.username,  
     };
-    const plans =
-        planList?findObjectByKey(planList, '_id', plan)
-      :
-        {};
-
+    // const plans =
+    //     planList?findObjectByKey(planList, '_id', plan)
+    //   :
+    //     {};
+    console.log(amount, "========");
     stripe.createToken(options).then((result) => {
       if (result.error) {
         handleStateChange(result.error.message, 'stripeError');
       } else {
         const data = {
-          amount: plans.amount,
+          amount: amount,
           paymentProvider: result.token,
           paymentType: result.token.type,
           user: user._id,
