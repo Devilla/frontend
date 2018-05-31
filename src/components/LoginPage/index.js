@@ -70,7 +70,7 @@ export default class Login extends Component {
     login(this.refs.email.value, this.refs.password.value).then(res => {
         store.dispatch(loginSuccess(res));
         toast.info('Successfull', toastConfig);
-        window.location.assign(window.location.origin+'/dashboard');
+        browserHistory.push('/dashboard');
     }).catch(err => {
       toast.error(err, toastConfig);
     });

@@ -80,7 +80,7 @@ class DisplayPage extends Component{
     if(this.state.displayUrl.url == '' || !validatePath(this.state.displayUrl.url))
       return this.setState({error: "Please enter a valid path"});
     let displayUrl = this.state.displayUrl;
-  //  displayUrl['rule'] = this.props.rules._id;
+    displayUrl['rule'] = this.props.rules._id;
     this.props.createPageUrl(displayUrl);
     this.setState({displayUrl: {
       url: '',
@@ -200,29 +200,29 @@ class DisplayPage extends Component{
             </Row>
             <Row>
               <Col md={12}>
-              <form onSubmit={this.handleAddButton}>
-                <div className="input-group">
-                  <input 
-                  type="text" 
-                  className="form-control txtpageurl" 
-                  placeholder="Path URL  (For eg. /mypage, /register, /products, /design/front etc."
-                  aria-describedby="urladd" 
-                  value={this.state.displayUrl.url} 
-                  onChange={this.handlePageUrl} 
-                  onBlur={this.handleWebsiteAuth.bind(this)}
-                  onKeyUp={(e) => e.keyCode === 13?this.addPageUrl():null}/>
-                  <span className="input-group-btn" id="urladd">
-                    <Button
-                    className="btn btn-raised btn-primary blue"
-                    href="javascript:;"
-                    onClick={this.addPageUrl}
-                    type="submit"
-                    >
-                    Add
-                    </Button>
-                  </span>
+                <div onSubmit={this.handleAddButton}>
+                  <div className="input-group">
+                    <input
+                    type="text"
+                    className="form-control txtpageurl"
+                    placeholder="Path URL  (For eg. /mypage, /register, /products, /design/front etc."
+                    aria-describedby="urladd"
+                    value={this.state.displayUrl.url}
+                    onChange={this.handlePageUrl}
+                    onBlur={this.handleWebsiteAuth.bind(this)}
+                    onKeyUp={(e) => e.keyCode === 13?this.addPageUrl():null}/>
+                    <span className="input-group-btn" id="urladd">
+                      <Button
+                      className="btn btn-raised btn-primary blue"
+                      href="javascript:;"
+                      onClick={this.addPageUrl}
+                      type="submit"
+                      >
+                      Add
+                      </Button>
+                    </span>
+                  </div>
                 </div>
-                </form>
               </Col>
             </Row>
             <Row>

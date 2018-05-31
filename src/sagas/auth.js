@@ -49,22 +49,20 @@ export function* checkTokenExists(action) {
 
 export function* logOut() {
   yield call(removeAuthToken);
-  window.location.assign(window.location.origin+'/dashboard');
-  // yield call(browserHistory.push, '/login');
+  yield call(browserHistory.push, '/login');
 }
 
 export function* fetchUser() {
   try {
     yield put(load());
     const res = yield call(api.GET, `user/me`);
-    if(res.error)
-      //yield toast.error(res.message, toastConfig);
-      console.log(res.error);
-    else
+    if(!res.error)
       yield put(actions.fetchUserSuccess(res));
     yield put(loaded());
   } catch (error) {
     yield put(loaded());
+    yield call(removeAuthToken);
+    yield call(browserHistory.push, '/login');
     yield console.log(error);
   }
 }
@@ -74,7 +72,6 @@ export function* updateUser(action) {
     yield put(load());
     const res = yield call(api.PUT, `user/${action.user._id}`, action.user);
     if(res.error)
-      //yield toast.error(res.message, toastConfig);
       console.log(res.error);
     else
       yield put(actions.fetchUserSuccess(action.user));
@@ -131,11 +128,13 @@ export function* socialLogin(action) {
       else
         yield toast.error(res.message.message);
       yield setTimeout(function() {
-         window.location.assign(window.location.origin+'/login');
+        browserHistory.push('/login');
+         // window.location.assign(window.location.origin+'/login');
       }, 2000);
     } else {
       yield storeToken(res.jwt)
-      yield window.location.assign(window.location.origin+'/dashboard');;
+      yield browserHistory.push('/dashboard');
+      // yield window.location.assign(window.location.origin+'/dashboard');;
     }
     yield put(loaded());
   } catch (error) {
@@ -155,11 +154,13 @@ export function* verifyUser(action) {
       else
         yield toast.error(res.message.message);
       yield setTimeout(function() {
-         window.location.assign(window.location.origin+'/login');
+        browserHistory.push('/login');
+         // window.location.assign(window.location.origin+'/login');
       }, 2000);
     } else {
       yield storeToken(res.jwt)
-      yield window.location.assign(window.location.origin+'/getting-started');;
+      yield browserHistory.push('/getting-started');
+      // yield window.location.assign(window.location.origin+'/getting-started');;
     }
     yield put(loaded());
   } catch (error) {

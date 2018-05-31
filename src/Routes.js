@@ -8,7 +8,7 @@ import {
   Home,
   Profile,
   Billing,
-  billingFinal,
+  BillingFinal,
   Help,
   Payment,
   HowItWorks,
@@ -62,13 +62,11 @@ const MyRoutes = ({routerHistory, store}) => (
       <Route path="/upgrade" component={Upgrade} />
       <Route path="/profile" component={Profile} />
       <Route path="/Billing" component={Billing} />
-      <Route path="/billingFinal" component={billingFinal} />
+      <Route path="/billingFinal" component={BillingFinal} />
       <Route path="/Help" component={Help} />
-	  <Route path="/Payment" component={Payment} />
-
-
+  	  <Route path="/Payment" component={Payment} />
+      <Route path="/getting-started" component={LoginFlow} />
     </Route>
-    <Route path="/getting-started" component={LoginFlow} />
     <Route exact path="/connect/:provider" component={ConnectPage} />
     <Route exact path="/verify/:code" component={VerificationPage} />
     <Route component={App}>

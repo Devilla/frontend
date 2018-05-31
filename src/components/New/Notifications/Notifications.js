@@ -52,6 +52,8 @@ const notificationPanelStyleDefault = { // TODO: Take style values from server
   bulkData:5,
   recentNumber:5,
   recentConv:5,
+  hideAnonymousConversion:true,
+  onlyDisplayNotification:false
 };
 
 class Notifications extends Component {
@@ -191,7 +193,7 @@ class Notifications extends Component {
     if((configuration && configuration._id) || configId) {
       configure['id'] = configId?configId:configuration._id;
       this.props.updateConfiguration(configure);
-    } else 
+    } else
     {
       this.props.createConfiguration(configure);
     }
@@ -205,7 +207,7 @@ class Notifications extends Component {
   }
 
   render() {
-    
+
     const { notifications, configurations, createSuccess } = this.props;
     return (<div className="content notification-list">
       <Grid fluid>

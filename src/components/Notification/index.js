@@ -8,7 +8,7 @@ import moment from 'moment';
 import { browserHistory } from 'react-router';
 
 import { fetchCampaign, updateCampaign, successCampaign, removeCampaign } from 'ducks/campaign';
-
+import './Notification.scss'
 
 const notificationFields = [ 'S.No', 'Campaign', 'Domain', 'Status', 'Tracking ID', 'Log', 'Created', 'Delete' ];
 
@@ -19,7 +19,7 @@ class Notification extends Component {
       notifications: [],
     }
   }
-  
+
   componentDidMount() {
     this.props.fetchCampaign();
   }
@@ -71,7 +71,7 @@ class Notification extends Component {
 
   render() {
     return (
-      <div className="content">
+      <div className="content manage-notification">
         <Grid fluid>
 
           <Row>

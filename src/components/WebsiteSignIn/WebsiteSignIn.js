@@ -19,7 +19,7 @@ const toastConfig = {
 
 class WebsiteSignIn extends Component {
 
-  
+
   constructor() {
     super();
     this.state = {
@@ -33,24 +33,24 @@ class WebsiteSignIn extends Component {
   // Submit form
   handleSubmit = (event) => {
     console.log(this.refs.email.value);
-    console.log(this.refs.password.value);  
+    console.log(this.refs.password.value);
     event.stopPropagation();
     event.preventDefault();
     console.log(this.refs.email.value);
-    console.log(this.refs.password.value);   
+    console.log(this.refs.password.value);
 
     // TODO: Redirect to dashboard on successfull login.
     login(this.refs.email.value, this.refs.password.value).then(res => {
         store.dispatch(loginSuccess(res));
         toast.info('Successfull', toastConfig);
-        window.location.assign(window.location.origin+'/dashboard');
+        browserHistory.push('/dashboard');
     }).catch(err => {
       toast.error(err, toastConfig);
     });
 
   };
 
-    
+
   handleInputChange = (event) => {
     const { name, value } = event.target;
     const isEmailValid = validateEmail(this.refs.email.value);
@@ -84,7 +84,7 @@ class WebsiteSignIn extends Component {
   };
 
 
-  
+
   render() {
     return (
       <div classNameName="main-container">
@@ -104,8 +104,8 @@ class WebsiteSignIn extends Component {
                     <div className="row">
                       <div className="col-9 ">
                         <input name="email"
-                        ref="email" 
-                        className="field w-input"                     
+                        ref="email"
+                        className="field w-input"
                         value={this.state.email}
                         onBlur={this.handleEmailBlur}
                         onChange={this.handleInputChange}
@@ -114,19 +114,19 @@ class WebsiteSignIn extends Component {
                         />
                       </div>
                       <div className="col-9">
-                        <input type="password" 
+                        <input type="password"
                         name="Password"
                         className="field w-input"
                         name="password"
                         ref="password"
-                        placeholder="Password"                        
+                        placeholder="Password"
                         type={this.state.isPasswordShown ? 'text' : 'password'}
                         maxLength={PASSWORD_MAX_LENGTH}
                         value={this.state.name}
                         onBlur={this.handlePasswordBlur}
-                        onChange={this.handleInputChange}                    
+                        onChange={this.handleInputChange}
                         />
-                        
+
                         <Ionicon
                         icon="ios-eye-outline"
                         className="svgicons input"
@@ -138,7 +138,7 @@ class WebsiteSignIn extends Component {
                         <div className="input-checkbox">
                           <input
                            type="checkbox"
-                            name="agree" 
+                            name="agree"
                             id="input-assigned-1" />
                           <label for="input-assigned-1"></label>
                         </div>
@@ -187,6 +187,7 @@ class WebsiteSignIn extends Component {
             </div>
           </div>
         </section>
+        <ToastContainer hideProgressBar={true} />
       </div>
     );
   }

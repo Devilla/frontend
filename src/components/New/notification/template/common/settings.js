@@ -114,18 +114,16 @@ export class Setting extends Component {
 
 
   handleAnonymousConversionsChange =(e)=> {
-    console.log(e);
     this.setState({hideAnonymousConversion: e });
     this.props.onConfigChange({ prop: 'hideAnonymousConversion', value: e });
 
   };
 
   handleOnlyDisplayNotification =(e)=> {
-    console.log(e);
     this.setState({onlyDisplayNotification: e });
     this.props.onConfigChange({ prop: 'onlyDisplayNotification', value: e });
   };
-  
+
   hideTextColorSwatch = () => {
     this.setState({ isTextColorSwatchOpen: false });
   };
@@ -351,10 +349,10 @@ export class Setting extends Component {
           {notification.notificationName === "Bulk Activity"  &&
             <Tab eventKey={3} title="Setting" className="bulk-settings">
               <Row>
-                <Col md={5} style={{'paddingRight': 0}}>
-                  Display bulk data from last
+                <Col md={5} style={{'paddingRight': 0, width: '45%'}}>
+                  <span className="mt-5"> Display bulk data from last</span>
                 </Col>
-                <Col md={1} style={{'padding': 0}}>
+                <Col md={1} style={{'padding': 0, width: '10%'}}>
                   <FormGroup>
                     <FormControl
                       type="number"
@@ -379,9 +377,9 @@ export class Setting extends Component {
               <div>
 	              <Row>
                   <Col md={3} style={{'paddingRight': 0}}>
-                    Display the last
+                    <span className="mt-5">Display the last</span>
                   </Col>
-                  <Col md={1} style={{'padding': 0}}>
+                  <Col md={1} style={{'padding': 0, width: '10%'}}>
                     <FormGroup>
                       <FormControl
                         type="number"
@@ -394,14 +392,14 @@ export class Setting extends Component {
                     </FormGroup>
                   </Col>
               		<Col md={5} style={{'paddingLeft': '5px'}}>
-              		    number of conversions.
+              		  <span className="mt-5"> number of conversions.</span>
                   </Col>
                 </Row>
 	              <Row>
-                  <Col md={5} style={{'paddingRight': 0, width: '45%'}}>
-          		      Display conversation from last
+                  <Col md={5} style={{'paddingRight': 0, width: '50%'}}>
+          		      <span className="mt-5">Display conversation from last</span>
                   </Col>
-                  <Col md={1} style={{ padding: 0 }}>
+                  <Col md={1} style={{ padding: 0, width: '10%' }}>
                     <FormGroup>
                       <FormControl
                         type="number"
@@ -412,21 +410,12 @@ export class Setting extends Component {
                       />
                     </FormGroup>
                   </Col>
-
-
-
-
           		     <Col md={4}>
                     <FormControl componentClass="select" bsSize="small" value={notificationPanelStyle.selectLastDisplayConversation} onChange={this.handleLastDisplayDurationChange}>
                       <option value="hours">hours</option>
                       <option value="days">days</option>
                     </FormControl>
                   </Col>
-
-
-
-
-
                 </Row>
             		<Row>
                   <Col md={2}>
@@ -442,7 +431,7 @@ export class Setting extends Component {
 
                       cssClass="alignsame"
                       value={notificationPanelStyle.hideAnonymousConversion}
-                      onChange={(e)=>this.handleAnonymousConversionsChange(e)}
+                      onChange={(e) => this.handleAnonymousConversionsChange(e)}
                     />
                   </Col>
                   <Col md={10}>
@@ -460,8 +449,8 @@ export class Setting extends Component {
                         width: 50
                       }} cssClass="alignsame"
                       value={notificationPanelStyle.onlyDisplayNotification}
-                      onChange={(e)=>this.handleOnlyDisplayNotification(e)}
-                   
+                      onChange={(e) => this.handleOnlyDisplayNotification(e)}
+
                       />
                   </Col>
                   <Col md={10}>
