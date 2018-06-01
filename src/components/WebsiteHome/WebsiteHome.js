@@ -98,7 +98,23 @@ class WebsiteHome extends Component {
             </div>
           </div>
         </section>
-        
+          <section className="switchable bg--secondary">
+                                <div className="container">
+                                    <div className="row justify-content-around">
+                                        <div className="col-lg-6 col-md-6 my-auto ml-5">
+                                            <h3 className="text-center">Start your conversion journey!</h3>
+                                             <form>
+                                              <div className="text-center ml-2">  <input className="validate-required validate-email" type="email" name="EMAIL" placeholder="Email Address"/> </div>
+                                              <div className="mt--1">  <button type="submit" className="btn btn--primary type--uppercase">Start your free trial</button> </div>
+                                                
+                                            </form>
+                                        </div>
+                                      <div className="col-lg-5 col-md-2 mr-5">
+                                    <img alt="Image" src="images/startconverting.png"/>
+                                      </div>
+                                </div>
+                               </div>
+                            </section>
 
         <section className="text-center">
           <div className="container">
@@ -259,7 +275,7 @@ class WebsiteHome extends Component {
                       Let's get you started
                     </div>
                     <div className="col-lg-4 ">
-                      <Link className="btn btn--primary type--uppercase" to="#"> <span className="btn__text">Start your 7 days free trial<br /></span> </Link>
+                      <Link className="btn btn--primary type--uppercase my-auto" to="#"> <span className="btn__text">Start your 7 days free trial<br /></span> </Link>
                     </div>
                   </div>
                 </div>
