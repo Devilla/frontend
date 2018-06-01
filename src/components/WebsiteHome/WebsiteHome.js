@@ -275,7 +275,7 @@ class WebsiteHome extends Component {
                       Let's get you started
                     </div>
                     <div className="col-lg-4 ">
-                      <Link className="btn btn--primary type--uppercase my-auto" to="#"> <span className="btn__text">Start your 7 days free trial<br /></span> </Link>
+                      <Link className="btn btn--primary type--uppercase" to="#"> <span className="btn__text">Start your 7 days free trial<br /></span> </Link>
                     </div>
                   </div>
                 </div>
