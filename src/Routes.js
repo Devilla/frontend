@@ -54,7 +54,7 @@ const MyRoutes = ({routerHistory, store}) => (
     <Route component={DashboardContainer}>
       <Route path="/dashboard" component={Dashboard} />
       <Route path="/new" component={New} />
-      <Route path="/notification" component={Notification} />
+      <Route path="/campaigns" component={Notification} />
       <Route path="/analytics" component={Analytics} />
       <Route path="/integration" component={Integration} />
       <Route path="/support" component={Dashboard} />
