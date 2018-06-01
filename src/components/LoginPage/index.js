@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import { Animated } from "react-animated-css";
-import { ToastContainer, toast } from 'react-toastify';
 import Ionicon from 'react-ionicons';
 import { css } from 'glamor';
 import { validateEmail, validatePassword, login, PASSWORD_MAX_LENGTH } from '../../services/FormUtils';
@@ -10,11 +9,6 @@ import { loginSuccess } from '../../ducks/auth';
 import { browserHistory } from 'react-router';
 import SocialLink from './SocialLink';
 import './LoginPage.css';
-
-const toastConfig = {
-  position: toast.POSITION.BOTTOM_LEFT,
-  autoClose: 2000
-};
 
 export default class Login extends Component {
 
@@ -148,8 +142,6 @@ export default class Login extends Component {
             </div>
           </div>
         </div>
-
-        <ToastContainer hideProgressBar={true} />
       </div>
     );
 
