@@ -5,7 +5,7 @@ import {
 } from 'react-bootstrap';
 import {browserHistory} from 'react-router';
 import { connect } from 'react-redux';
-import './PaymentPage.css';
+import './PaymentPage.scss';
 import CardHeader from 'components/Template/card-with-header'
 import FormInputs from 'components/Template/FormTemp';
 import { ToastContainer, toast } from 'react-toastify';
@@ -16,14 +16,14 @@ import Footer from '../_common/Footer';
 
 
 
-export default class PaymentPage extends Component {
+export default class Payment extends Component {
   constructor(props) {
     super(props);
   }
 
   render() {
     return (
-      <div className="content fill ">
+      <div className="content fill payment-page">
         <Grid fluid="fluid" >
           <Row className="inlineclr">
             <Col md={30}>
@@ -108,8 +108,8 @@ export default class PaymentPage extends Component {
                       <Col md={4}>
                       <FormGroup>
                       <Radio name="radioGroup" inline> With 7 days free trial
-                      </Radio>     
-                      </FormGroup>              
+                      </Radio>
+                      </FormGroup>
                       </Col>
                       <FormGroup>
                       <Radio name="radioGroup" inline>Without trial & get more offers
@@ -135,13 +135,13 @@ export default class PaymentPage extends Component {
                       <FormGroup>
                             <Checkbox inline>
                             Your card will not be charged until the end of your 7-day trial
-                            </Checkbox>     
+                            </Checkbox>
                         </FormGroup>
 
-                     </div> 
-                  
+                     </div>
+
                 </Row>
-                
+
                 <Row>
                 <div className="col-md-4">
                         <FormGroup >
@@ -181,11 +181,11 @@ export default class PaymentPage extends Component {
                       <FormGroup>
                             <Checkbox inline>
                             Self-cancel anytime
-                            </Checkbox>     
+                            </Checkbox>
                         </FormGroup>
 
-                     </div> 
-                  
+                     </div>
+
                 </Row>
 
                 <Row>
@@ -248,4 +248,3 @@ export default class PaymentPage extends Component {
     )
   }
 }
-

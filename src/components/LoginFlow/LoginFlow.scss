@@ -1,36 +1,45 @@
 .login-flow {
   text-align: center;
   .authpage {
-    width: 100%;
-    position: fixed !important;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    .container {
+    min-height: 780px;
+  //   width: 100%;
+  //   position: fixed !important;
+  //   position: absolute;
+  //   top: 0;
+  //   bottom: 0;
+    // .container {
       /* position: fixed !important; */
-      top: 0;
-      bottom: 0;
+    //   top: 0;
+    //   bottom: 0;
     }
     .flow-wrapper {
       /* position: fixed !important; */
-      position: absolute;
-      right: 0;
+      // position: absolute;
+      // right: 0;
       /* bottom: 0; */
-      left: 0;
-      display: table;
+      // left: 0;
+      // display: table;
       width: 85%;
-      padding: 5%;
+      // padding: 5%;
       /* position: relative; */
-      background-color: white;
-      top: 5%;
-      min-height: 40vh !important;
+      // background-color: white;
+      // top: 5%;
+      // min-height: 40vh !important;
       margin: 0 auto;
-      ul {
-        display: flex;
-        justify-content: center;
-        padding: 1%;
-        li {
+      .price {
+        ul {
+          display: flex;
+          justify-content: center;
           padding: 1%;
+          li {
+            list-style: none;
+            padding: 1%;
+          }
+        }
+      }
+      .card-holder {
+        input {
+          height: 45px;
         }
       }
       .card-body {
@@ -43,7 +52,7 @@
     iframe {
       min-height: 50px !important;
     }
-  }
+  // }
   .button.submit-button {
     display: initial;
   }
