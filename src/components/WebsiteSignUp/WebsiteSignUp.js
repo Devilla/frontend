@@ -17,6 +17,9 @@ const toastConfig = {
   autoClose: 2000
 };
 
+
+
+
 class WebsiteSignUp extends Component {
 
   constructor() {
@@ -191,7 +194,7 @@ class WebsiteSignUp extends Component {
     return (
     <div>
       <div className="authpage section innerpage">
-        <div className="container">
+        {/* <div className="container"> */}
           <div className="wrapper">
             <Animated
             className="leftwrap center"
@@ -207,7 +210,7 @@ class WebsiteSignUp extends Component {
               <div className="support"></div>
             </Animated>
           </div>
-        </div>
+        {/* </div> */}
       </div>
       <ToastContainer hideProgressBar={true} />
     </div>
