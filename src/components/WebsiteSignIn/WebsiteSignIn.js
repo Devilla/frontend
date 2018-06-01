@@ -86,6 +86,9 @@ class WebsiteSignIn extends Component {
 
 
   render() {
+    const mousepoint ={
+      cursor : "pointer"
+    }
     return (
       <div classNameName="main-container">
         <section className="switchable switchable--switch bg--secondary">
@@ -127,28 +130,15 @@ class WebsiteSignIn extends Component {
                         onChange={this.handleInputChange}
                         />
 
-                        <Ionicon
-                        icon="ios-eye-outline"
-                        className="svgicons input"
-                        fontSize="35px" color="#999"
-                        onClick={this.togglePasswordShown}
-                      />
+                      
                       </div>
-                      <div className="col-12">
-                        <div className="input-checkbox">
-                          <input
-                           type="checkbox"
-                            name="agree"
-                            id="input-assigned-1" />
-                          <label for="input-assigned-1"></label>
-                        </div>
-                        <span>Remember Me</span>
-                      </div>
+                 
                       <div className="col-4 frmcntl">
                         <input
                          className="button submit-button w-button btn btn--primary"
                          type="submit"
                          value="Login"
+                         style={mousepoint}
                          disabled={!this.state.isEmailValid || !this.state.isPwdValid}
                           />
                       </div>
@@ -156,15 +146,18 @@ class WebsiteSignIn extends Component {
                   </form>
                 </div>
               </div>
-              <div className="col-md-3">
+              <div className="col-md-2">
                 <p> <br /> </p>
                 <p> <br /> </p>
+                <p> <br /> </p>          
                 <h3 className="mt--2"> &nbsp; &nbsp; Or, <br />You can </h3>
               </div>
-              <div className="col-md-6 col-lg-5">
+              <div className="col-md-3 col-lg-4">
                 <p> <br /></p>
                 <p> <br /></p>
-                <div className="mt--3">
+                <p> <br /></p>    
+                <br/>         
+                <div className="mt--2">
                 <a href={`${base}connect/facebook`} className="link">
                   <Link className="btn btn--icon bg--facebook" to="">
                     <span className="btn__text">
