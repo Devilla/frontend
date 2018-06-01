@@ -33,7 +33,7 @@ class WebsiteHeader extends Component {
                       <li> <Link to="/how-it-works">How it works</Link> </li>
                       <li> <Link to="/integrations">INTEGRATIONS</Link> </li>
                       <li> <Link to="/pricing">PRICING</Link> </li>
-                      <li> <Link to="/about">ABOUT US </Link> </li>
+                      <li> <Link to="/about">BLOG </Link> </li>
                     </ul>
                   </div>
                   <div className="bar__module">
