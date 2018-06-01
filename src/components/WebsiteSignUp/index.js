@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import {Link} from 'react-router';
 import { connect } from 'react-redux';
 import {Animated} from "react-animated-css";
-import {ToastContainer, toast} from 'react-toastify';
 import Ionicon from 'react-ionicons';
 import {css} from 'glamor';
 import {Alert} from 'react-bootstrap';
@@ -11,11 +10,6 @@ import {store} from 'index.js';
 import {loginSuccess, fetchRoles} from 'ducks/auth';
 import {browserHistory} from 'react-router';
 
-
-const toastConfig = {
-  position: toast.POSITION.BOTTOM_LEFT,
-  autoClose: 2000
-};
 export default class Register extends Component {
   constructor() {
     super();
@@ -96,57 +90,55 @@ export default class Register extends Component {
         <p>Enter your email to access your account</p>
         <div className="frmcntl">
           <input
-           className="field w-input" 
-           name="email" 
-           value={this.state.email} 
-           onBlur={this.handleEmailBlur} 
-           onChange={this.handleInputChange} 
-           placeholder="Email Address" 
+           className="field w-input"
+           name="email"
+           value={this.state.email}
+           onBlur={this.handleEmailBlur}
+           onChange={this.handleInputChange}
+           placeholder="Email Address"
            type="email"/>
         </div>
         <div className="frmcntl">
           <input
            className="field w-input"
-           name="password" 
-           placeholder="Password" 
-           maxLength={PASSWORD_MAX_LENGTH} 
-           value={this.state.name} 
-           onBlur={this.handlePasswordBlur} 
-           onChange={this.handleInputChange} 
+           name="password"
+           placeholder="Password"
+           maxLength={PASSWORD_MAX_LENGTH}
+           value={this.state.name}
+           onBlur={this.handlePasswordBlur}
+           onChange={this.handleInputChange}
            type={this.state.isPasswordShown ? 'text' : 'password'}/>
-          <Ionicon 
-          icon="ios-eye-outline" 
+          <Ionicon
+          icon="ios-eye-outline"
           className="svgicons input"
-          fontSize="35px" 
-          color="#999" 
+          fontSize="35px"
+          color="#999"
           onClick={this.togglePasswordShown}/>
         </div>
         <div className="frmcntl">
-          <input 
-          className="button submit-button w-button" 
-          type="submit" 
-          value="Create Account" 
+          <input
+          className="button submit-button w-button"
+          type="submit"
+          value="Create Account"
           disabled={!isEmailValid || !isPwdValid}/>
         </div>
         <div className="frmcntl register_link">
           Already have an account?
           <Link to="/login">Login here</Link>
         </div>
-
-        <ToastContainer hideProgressBar={true}/>
       </div>);
 
     return (<div>
       <div className="authpage section innerpage">
         <div className="container">
           <div className="wrapper">
-            <Animated 
-            className="leftwrap center" 
-            animationIn="fadeIn" 
-            animationOut="fadeOut" 
+            <Animated
+            className="leftwrap center"
+            animationIn="fadeIn"
+            animationOut="fadeOut"
             isVisible={true}>
-              <form 
-              className="loginfrm" 
+              <form
+              className="loginfrm"
               onSubmit={this.handleSubmit}>
                 {formContent}
               </form>

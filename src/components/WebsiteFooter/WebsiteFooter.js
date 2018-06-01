@@ -28,10 +28,10 @@ class WebsiteFooter extends Component {
               <div className="menu-vertical col-md-3">
                 <ul>
                   <li className="type--uppercase col-sm-4 col-md-2 h5"><Link to=""> Resources </Link></li>
-                  <li className="type--uppercase col-sm-4 col-md-2 h6"><Link to=""> FAQs </Link></li>
+                  <li className="type--uppercase col-sm-4 col-md-2 h6"><Link href="https://useinfluence.freshdesk.com/support/home"> FAQs </Link></li>
                   <li className="type--uppercase col-sm-4 col-md-2 h6"><Link to=""> Help Center </Link></li>
-                  <li className="type--uppercase col-sm-4 col-md-2 h6"><Link to=""> Blog </Link></li>
-                  <li className="type--uppercase col-sm-4 col-md-2 h6"><Link to=""> Careers </Link> </li>
+                  <li className="type--uppercase col-sm-4 col-md-2 h6"><Link to="/Blog"> Blog </Link></li>
+                  <li className="type--uppercase col-sm-4 col-md-2 h6"><Link href="https://angel.co/influence-8/jobs"> Careers </Link> </li>
                   <li className="type--uppercase col-sm-4 col-md-2 h6"><Link to="/contact"> Contact Us </Link></li>
                 </ul>
               </div>

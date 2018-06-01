@@ -50,6 +50,7 @@ const notificationPanelStyleDefault = { // TODO: Take style values from server
   selectDurationData:'hours',
   selectLastDisplayConversation:'hours',
   bulkData:5,
+  liveVisitorCount:5,
   recentNumber:5,
   recentConv:5,
   hideAnonymousConversion:true,

@@ -15,6 +15,7 @@ import {
   CustomeRules,
   MobileReady,
 } from 'img';
+import { browserHistory } from 'react-router';
 
 class WebsiteHome extends Component {
 
@@ -34,7 +35,7 @@ class WebsiteHome extends Component {
               <form className="form--horizontal row">
                 <div className="col-md-1"></div>
                 <div className="col-md-6"> <input type="text" name="email" placeholder="Enter your email" /> </div>
-                <div className="col-md-4"> <button type="submit" className="btn btn--primary type--uppercase">start your free trial</button> </div>
+                <div className="col-md-4"> <button type="submit" onClick={()=> browserHistory.push('/signup')} className="btn btn--primary type--uppercase">start your free trial</button> </div>
               </form>
             </div>
           </div>
@@ -43,9 +44,9 @@ class WebsiteHome extends Component {
           <div className="container">
             <div className="row">
               <div className="col-md-4">
-                <p className="lead">You are at right place, we work with amazing companies.<br /></p>
+                <p className="lead">You are at right place, we are featured in,<br /></p>
               </div>
-              <div className="col-md-8">
+              <div className="col-md-8 text-center">
                 <ul className="list-inline social-list">
                   <li className="list-inline-item"> <img alt="Image" className="image--xxs" src="images/inc42glyph.png" /> </li>
                   <li className="list-inline-item"> <img alt="Image" className="image--xxs" src="images/tnwglyph3.png" /> </li>
@@ -98,12 +99,14 @@ class WebsiteHome extends Component {
             </div>
           </div>
         </section>
+        
+
         <section className="text-center">
           <div className="container">
             <div className="row">
               <div className="col-md-10 col-lg-8">
                 <h2>Features</h2>
-                <p className="lead"> Let your customers do the selling for you. <br /> Put a stamp of Social Proof to BOOST your conversions. <br /> Real-time Notifications for new visitors.</p>
+                <p className="lead"> Let your customers do the selling for you. <br /> Put a stamp of Social Proof to BOOST conversions. <br /> Real-time Notifications for new visitors.</p>
               </div>
             </div>
           </div>
@@ -111,7 +114,7 @@ class WebsiteHome extends Component {
         <section className="switchable feature-large unpad--bottom switchable--switch">
           <div className="container ">
             <div className="row justify-content-around">
-              <div className="col-md-6">
+              <div className="col-md-6 my-auto">
                 <div className="switchable__text">
                   <h3>Recent Activity Notifications</h3>
                   <p className="lead"> Show recent signups or purchases on your website. Get your existing customers to sell your products for you on an autopilot mode.</p> <Link to="/">Learn More »</Link>
@@ -126,10 +129,10 @@ class WebsiteHome extends Component {
         <section className="switchable feature-large unpad--bottom">
           <div className="container">
             <div className="row justify-content-around">
-              <div className="col-md-6">
+              <div className="col-md-6 my-auto">
                 <div className="switchable__text">
                   <h3>Show Live &amp; Realtime Activities</h3>
-                  <p className="lead">Show live visitor count notifications. Let your new visitors know they’re not the only ones buying from you. <br /></p> <Link to="/">Learn More »</Link>
+                  <p className="lead">Show live visitor count. Let your new visitors know they’re not the only ones buying from you. <br /></p> <Link to="/">Learn More »</Link>
                 </div>
               </div>
               <div className="col-md-6 col-lg-6 col-12 text-center">
@@ -140,8 +143,8 @@ class WebsiteHome extends Component {
         </section>
         <section className="switchable feature-large unpad--bottom switchable--switch">
           <div className="container">
-            <div className="row justify-content-around">
-              <div className="col-md-6">
+            <div className="row justify-content-around mt--2">
+              <div className="col-md-6 my-auto">
                 <div className="switchable__text">
                   <h3>Track Your Customer Journey</h3>
                   <p className="lead"> Get to know about the minute details of your customer's journey on your website. </p> <Link to="/">Learn More »</Link>
@@ -153,13 +156,13 @@ class WebsiteHome extends Component {
             </div>
           </div>
         </section>
-        <section className="switchable feature-large unpad--bottom">
+        <section className="switchable feature-large">
           <div className="container">
-            <div className="row justify-content-around">
-              <div className="col-md-6">
+            <div className="row justify-content-around mt--3 mb--3">
+              <div className="col-md-6 my-auto">
                 <div className="switchable__text">
                   <h3>Analytics &amp; Insights</h3>
-                  <p className="lead"> Once the visitor/customer enters in their email, we’ll show you who they really are using our intelligence data servers. We keep on adding more features to your analytics.</p> <Link to="">Learn More »</Link>
+                  <p className="lead"> Once the visitor/customer enters in their email, we’ll show you who they really are using our intelligence data servers. We keep on adding more features to your analytics.</p> <Link to="#">Learn More »</Link>
                 </div>
               </div>
               <div className="col-md-6 col-lg-7 col-12 text-center">
@@ -168,10 +171,10 @@ class WebsiteHome extends Component {
             </div><hr></hr>
           </div>
         </section>
-        <section className="cover unpad--bottom switchable text-center-xs switchable--switch">
+        <section className="cover switchable text-center-xs switchable--switch">
           <div className="container">
             <div className="row justify-content-between align-items-center">
-              <div className="col-md-6 col-lg-5 mt--3">
+              <div className="col-md-6 col-lg-5">
                 <h2>Easiest Setup!</h2>
                 <p className="lead"> Anyone can setup Influence following few simple steps.</p>
                 <Link className="btn btn--primary type--uppercase" to="#customise-template">
@@ -182,11 +185,12 @@ class WebsiteHome extends Component {
               <div className="col-md-6">
                 <img alt="Image" src="images/easiestsetup.png"/>
               </div>
-            </div><hr></hr>
+            </div>
 
           </div>
         </section>
-        <section> </section>
+        <hr/>
+        
         <section className="text-center">
           <div className="container">
             <div className="row">
@@ -203,7 +207,7 @@ class WebsiteHome extends Component {
               <div className="col-md-4">
                 <div className="feature feature-3 boxed boxed--lg boxed--border"> <img className="icon-n1" src="images/activitynotifications2.svg" />
                   <h3>Activity Notifications&nbsp;</h3>
-                  <p> Display recent sales &amp; activity and drive users to convert on your website. </p> <Link to=""> Learn More </Link>
+                  <p> Display recent sales &amp; activity and drive users to convert on your website. </p> <Link to="#"> Learn More </Link>
                 </div>
               </div>
               <div className="col-md-4">
@@ -252,10 +256,10 @@ class WebsiteHome extends Component {
               <div className="col-md-12">
                 <div className="cta cta-1 cta--horizontal boxed boxed--border text-center-xs">
                   <div className="row justify-content-center p-5">
-                    <div className="col-lg-4">
-                      <h3>Let's get you started</h3>
+                    <div className="col-lg-4 my-auto h3">
+                      Let's get you started
                     </div>
-                    <div className="col-lg-4">
+                    <div className="col-lg-4 ">
                       <Link className="btn btn--primary type--uppercase" to="#"> <span className="btn__text">Start your 7 days free trial<br /></span> </Link>
                     </div>
                   </div>

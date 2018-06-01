@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Link } from 'react-router';
 import {Animated} from "react-animated-css";
 import $ from 'jquery';
-import { ToastContainer, toast } from 'react-toastify';
 import Ionicon from 'react-ionicons';
 import { css } from 'glamor';
 import axios from 'axios';
@@ -195,9 +194,6 @@ export default class Step1 extends Component {
                <div className="frmcntl register_link">
                       Already have an account? <Link to="/login">Login here</Link>
                </div>
-            <ToastContainer hideProgressBar ={true}
-
-              />
         </div>
     );
   }

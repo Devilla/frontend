@@ -4,17 +4,18 @@ import { SignUp } from 'img';
 import {validateEmail, validatePassword, register, PASSWORD_MAX_LENGTH} from 'services/FormUtils';
 import { connect } from 'react-redux';
 import {Animated} from "react-animated-css";
-import {ToastContainer, toast} from 'react-toastify';
 import Ionicon from 'react-ionicons';
 import {css} from 'glamor';
 import {Alert} from 'react-bootstrap';
 import {store} from 'index.js';
 import {loginSuccess, fetchRoles} from 'ducks/auth';
 import {browserHistory} from 'react-router';
+import { toast } from 'react-toastify';
 
 const toastConfig = {
   position: toast.POSITION.BOTTOM_LEFT,
-  autoClose: 2000
+  autoClose: 2000,
+  className: 'toast-style'
 };
 
 
@@ -212,7 +213,6 @@ class WebsiteSignUp extends Component {
           </div>
         {/* </div> */}
       </div>
-      <ToastContainer hideProgressBar={true} />
     </div>
     );
   }

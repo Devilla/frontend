@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import {Animated} from "react-animated-css";
 import $ from 'jquery';
-import {ToastContainer, toast} from 'react-toastify';
 import {css} from 'glamor';
 import axios from 'axios';
 import Ionicon from 'react-ionicons';
@@ -108,7 +107,6 @@ class ForgetPassword extends Component {
           </div>
         </div>
       </div>
-      <ToastContainer hideProgressBar={true}/>
     </div>);
   }
 }

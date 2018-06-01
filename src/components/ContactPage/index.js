@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import {Animated} from "react-animated-css";
 import $ from 'jquery';
-import { ToastContainer, toast } from 'react-toastify';
 import { css } from 'glamor';
 import axios from 'axios';
 function validate(name, email, authEmail) {
@@ -89,7 +88,7 @@ export default class Contact extends Component {
                 "message": this.state.msg
 
             }
-            
+
             let urls;
             if (process.env.NODE_ENV === 'production')
               urls = `${process.env.REACT_APP_PRODUCTION_URL}contact`;
@@ -207,9 +206,6 @@ export default class Contact extends Component {
 
 
               </div>
-              <ToastContainer hideProgressBar ={true}
-
-              />
         </div>
     );
   }

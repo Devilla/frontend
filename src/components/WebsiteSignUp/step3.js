@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Ionicon from 'react-ionicons';
 import {Animated} from "react-animated-css";
 import $ from 'jquery';
-import { ToastContainer, toast } from 'react-toastify';
 import { css } from 'glamor';
 import axios from 'axios';
 var CryptoJS = require("crypto-js");
@@ -291,11 +290,6 @@ export default class Step3 extends Component {
                        disabled={isDisabled}
                        />
                     </div>
-
-
-            <ToastContainer hideProgressBar ={true}
-
-              />
         </div>
     );
   }

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Ionicon from 'react-ionicons';
 import {Animated} from "react-animated-css";
 import $ from 'jquery';
-import { ToastContainer, toast } from 'react-toastify';
 import { css } from 'glamor';
 function validate(cname, website, authEmail){
     return{
@@ -22,7 +21,7 @@ export default class Step2 extends Component {
       authEmail: false,
       nextState: 3
     }
-    
+
   }
    componentDidMount(){
      window.scrollTo(0, 0)
@@ -70,13 +69,13 @@ export default class Step2 extends Component {
       }else{
            $('.error-bg').fadeOut().html('')
             $('#'+evt.target.id).removeClass('has-error')
-           
+
        }
    }
 
    handleselect(evt) {
      this.setState({country: evt.target.value})
-   }   
+   }
   canBeSubmitted() {
     const errors = validate(
                     this.state.cname,
@@ -97,8 +96,8 @@ export default class Step2 extends Component {
         localStorage.setItem('cweb', JSON.stringify(cweb));
         this.props.callbackFromParent(this.state.nextState);
       }
-   } 
-   
+   }
+
   render() {
     const errors = validate(
                     this.state.cname,
@@ -109,11 +108,11 @@ export default class Step2 extends Component {
     return (
         <div>
             <h3 className="dashed">Tell us about your company</h3>
-            <div className="section-divider-line"></div>  
+            <div className="section-divider-line"></div>
             <div className="frmcntl">
-                      <input 
+                      <input
                         className="field w-input"
-                        id="cname" 
+                        id="cname"
                         name="cname"
                         value={this.state.cname}
                         onBlur={this.handleCNameAuth.bind(this)}
@@ -122,16 +121,16 @@ export default class Step2 extends Component {
                         type="text" />
                     </div>
                     <div className="frmcntl">
-                    <input 
+                    <input
                       className="field w-input"
                       id="website"
-                      name="website" 
+                      name="website"
                       type="text"
                       value = {this.state.website}
                       onBlur = {this.handleWebsiteAuth.bind(this)}
                       onChange = {this.handleWebsiteChange.bind(this)}
                       placeholder="Website"
-                       />                    
+                       />
                     </div>
                     <div className="frmcntl">
                       <select className="field w-input" onChange={this.handleselect.bind(this)}>
@@ -141,16 +140,13 @@ export default class Step2 extends Component {
                       </select>
                   </div><br />
                  <div className="frmcntl">
-                      <input className="button submit-button w-button" 
+                      <input className="button submit-button w-button"
                        type="button"
-                       value="Next" 
+                       value="Next"
                        disabled={isDisabled}
                        onClick = {this.handleForm.bind(this)}
-                        />    
+                        />
                     </div>
-              <ToastContainer hideProgressBar ={true}
-
-              />
         </div>
     );
   }
