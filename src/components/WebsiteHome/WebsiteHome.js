@@ -43,7 +43,7 @@ class WebsiteHome extends Component {
           <div className="container">
             <div className="row">
               <div className="col-md-4">
-                <p className="lead">You are at right place, we work with amazing companies.<br /></p>
+                <p className="lead">You are at right place, we are featured in,<br /></p>
               </div>
               <div className="col-md-8">
                 <ul className="list-inline social-list">
