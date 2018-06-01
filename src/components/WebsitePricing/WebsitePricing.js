@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from "react-router";
+import {
+    Grid, Row, Col, Button, Glyphicon, FormGroup,
+    ControlLabel, FormControl
+  } from 'react-bootstrap';
+  import Switch from 'react-flexible-switch';
 
 class WebsitePricing extends Component {
   render() {
@@ -15,6 +20,34 @@ class WebsitePricing extends Component {
             </div>
           </div>
         </section>
+
+                            
+ <section className="text-center">
+          <div className="container">
+                        
+            <div className="row">
+            <Row>
+              <div className="md-2 myauto" id="leftmg"><div><strong>Monthly &nbsp; &nbsp;  &nbsp;</strong></div></div>
+              <div className="2">  <div className="notification-toggle">
+                <Switch
+                  circleStyles={{ onColor: 'green', offColor: 'blue', diameter: 18 }}
+                  switchStyles={{ width: 40 }}
+                  cssClass="alignCenter"
+                  value=""
+                // onChange={(e) => e != notification.activity ? handleActivityChange(e, notification._id, notification.configurationId) : null}
+                />
+              </div>
+              </div>
+              <div>
+              <span>
+                <div className="md-2" ><strong>&nbsp;  &nbsp;  &nbsp;Yearly</strong></div>
+                </span>
+              </div>
+            </Row>
+
+            </div>
+          </div>
+</section>
          
                     
         <section className="text-center">
