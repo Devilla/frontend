@@ -78,11 +78,9 @@ class WebsiteSignIn extends Component {
     });
   };
 
-
-
   render() {
     return (
-      <div classNameName="main-container">
+      <div className="main-container">
         <section className="switchable switchable--switch bg--secondary">
           <div className="container">
             <div className="row justify-content-between">
