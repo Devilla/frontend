@@ -252,7 +252,7 @@ class BillingFinal extends Component {
               </Row>
 
               <div className="col-md-2 marginTop">
-                <Button icon="share-alt" type="info">Back To Profile</Button>
+                <Button onClick={() => browserHistory.push('/Profile')} icon="share-alt" type="info">Back To Profile</Button>
               </div>
 
             </div>}/>
