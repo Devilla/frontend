@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { ToastContainer } from 'react-toastify';
 import { browserHistory } from 'react-router';
 import { connect } from 'react-redux';
 import { Spinner } from '../../components/index.js';
@@ -18,6 +19,7 @@ import './scss/font-raleway.scss';
 import './scss/flickity.scss';
 import './scss/font-sourcesanspro.scss';
 import './App.scss';
+
 
 class App extends Component {
   componentWillMount() {
@@ -52,6 +54,7 @@ class App extends Component {
            </div>
            <WebsiteFooter />
         </div>
+        <ToastContainer hideProgressBar={true} />
       </div>
     );
   }
