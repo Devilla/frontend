@@ -103,7 +103,7 @@ class WebsiteHome extends Component {
             <div className="row">
               <div className="col-md-10 col-lg-8">
                 <h2>Features</h2>
-                <p className="lead"> Let your customers do the selling for you. <br /> Put a stamp of Social Proof to BOOST your conversions. <br /> Real-time Notifications for new visitors.</p>
+                <p className="lead"> Let your customers do the selling for you. <br /> Put a stamp of Social Proof to BOOST conversions. <br /> Real-time Notifications for new visitors.</p>
               </div>
             </div>
           </div>
@@ -111,7 +111,7 @@ class WebsiteHome extends Component {
         <section className="switchable feature-large unpad--bottom switchable--switch">
           <div className="container ">
             <div className="row justify-content-around">
-              <div className="col-md-6">
+              <div className="col-md-6 my-auto">
                 <div className="switchable__text">
                   <h3>Recent Activity Notifications</h3>
                   <p className="lead"> Show recent signups or purchases on your website. Get your existing customers to sell your products for you on an autopilot mode.</p> <Link to="/">Learn More »</Link>
@@ -126,10 +126,10 @@ class WebsiteHome extends Component {
         <section className="switchable feature-large unpad--bottom">
           <div className="container">
             <div className="row justify-content-around">
-              <div className="col-md-6">
+              <div className="col-md-6 my-auto">
                 <div className="switchable__text">
                   <h3>Show Live &amp; Realtime Activities</h3>
-                  <p className="lead">Show live visitor count notifications. Let your new visitors know they’re not the only ones buying from you. <br /></p> <Link to="/">Learn More »</Link>
+                  <p className="lead">Show live visitor count. Let your new visitors know they’re not the only ones buying from you. <br /></p> <Link to="/">Learn More »</Link>
                 </div>
               </div>
               <div className="col-md-6 col-lg-6 col-12 text-center">
@@ -140,8 +140,8 @@ class WebsiteHome extends Component {
         </section>
         <section className="switchable feature-large unpad--bottom switchable--switch">
           <div className="container">
-            <div className="row justify-content-around">
-              <div className="col-md-6">
+            <div className="row justify-content-around mt--2">
+              <div className="col-md-6 my-auto">
                 <div className="switchable__text">
                   <h3>Track Your Customer Journey</h3>
                   <p className="lead"> Get to know about the minute details of your customer's journey on your website. </p> <Link to="/">Learn More »</Link>
@@ -153,13 +153,13 @@ class WebsiteHome extends Component {
             </div>
           </div>
         </section>
-        <section className="switchable feature-large unpad--bottom">
+        <section className="switchable feature-large">
           <div className="container">
-            <div className="row justify-content-around">
-              <div className="col-md-6">
+            <div className="row justify-content-around mt--3 mb--3">
+              <div className="col-md-6 my-auto">
                 <div className="switchable__text">
                   <h3>Analytics &amp; Insights</h3>
-                  <p className="lead"> Once the visitor/customer enters in their email, we’ll show you who they really are using our intelligence data servers. We keep on adding more features to your analytics.</p> <Link to="">Learn More »</Link>
+                  <p className="lead"> Find the true identity of your users using our intelligence data servers. We keep on adding more features to your analytics.</p> <Link to="">Learn More »</Link>
                 </div>
               </div>
               <div className="col-md-6 col-lg-7 col-12 text-center">
