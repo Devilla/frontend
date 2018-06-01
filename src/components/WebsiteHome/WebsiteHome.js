@@ -255,10 +255,10 @@ class WebsiteHome extends Component {
               <div className="col-md-12">
                 <div className="cta cta-1 cta--horizontal boxed boxed--border text-center-xs">
                   <div className="row justify-content-center p-5">
-                    <div className="col-lg-4">
-                      <h3>Let's get you started</h3>
+                    <div className="col-lg-4 my-auto h3">
+                      Let's get you started
                     </div>
-                    <div className="col-lg-4">
+                    <div className="col-lg-4 ">
                       <Link className="btn btn--primary type--uppercase" to="#"> <span className="btn__text">Start your 7 days free trial<br /></span> </Link>
                     </div>
                   </div>
