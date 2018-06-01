@@ -45,7 +45,7 @@ class WebsiteHome extends Component {
               <div className="col-md-4">
                 <p className="lead">You are at right place, we are featured in,<br /></p>
               </div>
-              <div className="col-md-8">
+              <div className="col-md-8 text-center">
                 <ul className="list-inline social-list">
                   <li className="list-inline-item"> <img alt="Image" className="image--xxs" src="images/inc42glyph.png" /> </li>
                   <li className="list-inline-item"> <img alt="Image" className="image--xxs" src="images/tnwglyph3.png" /> </li>
