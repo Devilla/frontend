@@ -173,7 +173,7 @@ class WebsiteHome extends Component {
         <section className="cover switchable text-center-xs switchable--switch">
           <div className="container">
             <div className="row justify-content-between align-items-center">
-              <div className="col-md-6 col-lg-5 mt--2">
+              <div className="col-md-6 col-lg-5">
                 <h2>Easiest Setup!</h2>
                 <p className="lead"> Anyone can setup Influence following few simple steps.</p>
                 <Link className="btn btn--primary type--uppercase" to="#customise-template">
