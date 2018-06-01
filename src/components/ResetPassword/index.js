@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {Animated} from "react-animated-css";
 import $ from 'jquery';
-import { ToastContainer, toast } from 'react-toastify';
 import Ionicon from 'react-ionicons';
 import { css } from 'glamor';
 import axios from 'axios';
@@ -181,9 +180,6 @@ export default class forget extends Component{
         </div>
         </div>
     </div>
-    <ToastContainer hideProgressBar ={true}
-
-              />
         </div>
 		);
 	}

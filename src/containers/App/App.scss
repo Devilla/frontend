@@ -4,3 +4,12 @@
 body {
   font-family: "Raleway, Source Sans Pro, Verdana, Helvetica", sans-serif;
 }
+
+.toast-style {
+  div[role=alert] {
+    padding: 25px 7px;
+  }
+  button {
+    height: 4.2em;
+  }
+}

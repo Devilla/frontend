@@ -15,8 +15,6 @@ import 'react-select/dist/react-select.css';
 class DashboardContainer extends Component {
   constructor(props) {
     super(props);
-    this.componentDidMount = this.componentDidMount.bind(this);
-
     this.state = {
       render: true,
       disableButton: false

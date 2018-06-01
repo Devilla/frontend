@@ -975,7 +975,7 @@ div[data-overlay] {
 }
 
 .btn--primary {
-  background: #584eef;
+  background-color: #584eef;
   border-color: #4a90e2;
   &:visited {
     background: #584eef;
@@ -3345,6 +3345,7 @@ form {
 
 .switchable {
   position: relative;
+  margin : -7px;
   div[class*='col-'] {
     &:first-child {
       float: left;
