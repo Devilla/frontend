@@ -72,7 +72,7 @@ class WebsiteContact extends Component {
             <div className="row justify-content-between">
               <div className="col-md-5">
                 <p className="lead">
-                  E:<a href="#">info@useinfluence.co</a>
+                  E:&nbsp;<a href="#">info@useinfluence.co</a>
                   <br />
                 </p>
                 <p className="lead">
