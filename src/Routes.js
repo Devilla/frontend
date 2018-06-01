@@ -9,6 +9,7 @@ import {
   Profile,
   Billing,
   BillingFinal,
+  Blog,
   Help,
   Payment,
   HowItWorks,
@@ -63,6 +64,8 @@ const MyRoutes = ({routerHistory, store}) => (
       <Route path="/profile" component={Profile} />
       <Route path="/Billing" component={Billing} />
       <Route path="/billingFinal" component={BillingFinal} />
+      <Route path="/Blog" component={Blog} />
+      
       <Route path="/Help" component={Help} />
   	  <Route path="/Payment" component={Payment} />
       <Route path="/getting-started" component={LoginFlow} />

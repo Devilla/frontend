@@ -46,6 +46,7 @@ export { default as Button } from './Button/Button';
 export { default as Profile } from './Profile/Profile';
 export { default as Billing } from './Billing/Billing';
 export { default as BillingFinal } from './Billing/BillingFinal';
+export { default as Blog } from './Blog/Blog';
 export { default as  Help } from './Billing/Help';
 export { default as Payment } from './Billing/Payment';
 
