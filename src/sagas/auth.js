@@ -124,7 +124,7 @@ export function* socialLogin(action) {
     const res = yield call(api.GET, action.url);
     if(res.error) {
       if(res.message.length)
-        yield toast.error(res.message[0].message);
+        yield toast.error(res.message[0].messages[0].id == "Auth.form.error.email.taken"? "Email address already taken": "Email address already registered");
       else
         yield toast.error(res.message.message);
       yield setTimeout(function() {
