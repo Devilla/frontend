@@ -170,10 +170,10 @@ class WebsiteHome extends Component {
             </div><hr></hr>
           </div>
         </section>
-        <section className="cover unpad--bottom switchable text-center-xs switchable--switch">
+        <section className="cover switchable text-center-xs switchable--switch">
           <div className="container">
             <div className="row justify-content-between align-items-center">
-              <div className="col-md-6 col-lg-5 mt--3">
+              <div className="col-md-6 col-lg-5 mt--2">
                 <h2>Easiest Setup!</h2>
                 <p className="lead"> Anyone can setup Influence following few simple steps.</p>
                 <Link className="btn btn--primary type--uppercase" to="#customise-template">
@@ -184,11 +184,12 @@ class WebsiteHome extends Component {
               <div className="col-md-6">
                 <img alt="Image" src="images/easiestsetup.png"/>
               </div>
-            </div><hr></hr>
+            </div>
 
           </div>
         </section>
-        <section> </section>
+        <hr/>
+        
         <section className="text-center">
           <div className="container">
             <div className="row">
