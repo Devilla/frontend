@@ -15,6 +15,7 @@ import {
   CustomeRules,
   MobileReady,
 } from 'img';
+import { browserHistory } from 'react-router';
 
 class WebsiteHome extends Component {
 
@@ -34,7 +35,7 @@ class WebsiteHome extends Component {
               <form className="form--horizontal row">
                 <div className="col-md-1"></div>
                 <div className="col-md-6"> <input type="text" name="email" placeholder="Enter your email" /> </div>
-                <div className="col-md-4"> <button type="submit" className="btn btn--primary type--uppercase">start your free trial</button> </div>
+                <div className="col-md-4"> <button type="submit" onClick={()=> browserHistory.push('/signup')} className="btn btn--primary type--uppercase">start your free trial</button> </div>
               </form>
             </div>
           </div>
@@ -98,7 +99,23 @@ class WebsiteHome extends Component {
             </div>
           </div>
         </section>
-        
+          <section className="switchable bg--secondary">
+                                <div className="container">
+                                    <div className="row justify-content-around">
+                                        <div className="col-lg-6 col-md-6 my-auto ml-5">
+                                            <h3 className="text-center">Start your conversion journey!</h3>
+                                             <form>
+                                              <div className="text-center ml-2">  <input className="validate-required validate-email" type="email" name="EMAIL" placeholder="Email Address"/> </div>
+                                              <div className="mt--1">  <button type="submit" className="btn btn--primary type--uppercase">Start your free trial</button> </div>
+                                                
+                                            </form>
+                                        </div>
+                                      <div className="col-lg-5 col-md-2 mr-5">
+                                    <img alt="Image" src="images/startconverting.png"/>
+                                      </div>
+                                </div>
+                               </div>
+                            </section>
 
         <section className="text-center">
           <div className="container">
@@ -161,7 +178,7 @@ class WebsiteHome extends Component {
               <div className="col-md-6 my-auto">
                 <div className="switchable__text">
                   <h3>Analytics &amp; Insights</h3>
-                  <p className="lead"> Find the true identity of your users using our intelligence data servers. We keep on adding more features to your analytics.</p> <Link to="">Learn More »</Link>
+                  <p className="lead"> Once the visitor/customer enters in their email, we’ll show you who they really are using our intelligence data servers. We keep on adding more features to your analytics.</p> <Link to="#">Learn More »</Link>
                 </div>
               </div>
               <div className="col-md-6 col-lg-7 col-12 text-center">
@@ -170,10 +187,10 @@ class WebsiteHome extends Component {
             </div><hr></hr>
           </div>
         </section>
-        <section className="cover unpad--bottom switchable text-center-xs switchable--switch">
+        <section className="cover switchable text-center-xs switchable--switch">
           <div className="container">
             <div className="row justify-content-between align-items-center">
-              <div className="col-md-6 col-lg-5 mt--3">
+              <div className="col-md-6 col-lg-5">
                 <h2>Easiest Setup!</h2>
                 <p className="lead"> Anyone can setup Influence following few simple steps.</p>
                 <Link className="btn btn--primary type--uppercase" to="#customise-template">
@@ -184,11 +201,12 @@ class WebsiteHome extends Component {
               <div className="col-md-6">
                 <img alt="Image" src="images/easiestsetup.png"/>
               </div>
-            </div><hr></hr>
+            </div>
 
           </div>
         </section>
-        <section> </section>
+        <hr/>
+        
         <section className="text-center">
           <div className="container">
             <div className="row">
@@ -205,7 +223,7 @@ class WebsiteHome extends Component {
               <div className="col-md-4">
                 <div className="feature feature-3 boxed boxed--lg boxed--border"> <img className="icon-n1" src="images/activitynotifications2.svg" />
                   <h3>Activity Notifications&nbsp;</h3>
-                  <p> Display recent sales &amp; activity and drive users to convert on your website. </p> <Link to=""> Learn More </Link>
+                  <p> Display recent sales &amp; activity and drive users to convert on your website. </p> <Link to="#"> Learn More </Link>
                 </div>
               </div>
               <div className="col-md-4">
@@ -254,10 +272,10 @@ class WebsiteHome extends Component {
               <div className="col-md-12">
                 <div className="cta cta-1 cta--horizontal boxed boxed--border text-center-xs">
                   <div className="row justify-content-center p-5">
-                    <div className="col-lg-4">
-                      <h3>Let's get you started</h3>
+                    <div className="col-lg-4 my-auto h3">
+                      Let's get you started
                     </div>
-                    <div className="col-lg-4">
+                    <div className="col-lg-4 ">
                       <Link className="btn btn--primary type--uppercase" to="#"> <span className="btn__text">Start your 7 days free trial<br /></span> </Link>
                     </div>
                   </div>

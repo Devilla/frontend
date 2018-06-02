@@ -36,6 +36,10 @@ export class Setting extends Component {
     this.setState({[e.target.id]:e.target.value});
     this.props.onConfigChange({ prop: 'bulkData', value: e.target.value });
   };
+  handleLiveVistorCount(e) {
+    this.setState({[e.target.id]:e.target.value});
+    this.props.onConfigChange({ prop: 'liveVisitorCount', value: e.target.value });
+  };
   handleStateChangeNumber(e) {
     this.setState({[e.target.id]:e.target.value});
     this.props.onConfigChange({ prop: 'recentNumber', value: e.target.value });
@@ -346,6 +350,26 @@ export class Setting extends Component {
               </Col>
             </Row>
           </Tab>
+          {notification.notificationName === "Live Visitor Count"  &&
+            <Tab eventKey={3} title="Setting" className="bulk-settings">
+              <Row>
+                <Col md={8} style={{'paddingRight': 0, width: '45%'}}>
+                  <span className="mt-8"> Hide 'Live Viewer' if viewers less than</span>
+                </Col>
+                <Col md={1} style={{'padding': 0, width: '10%'}}>
+                  <FormGroup>
+                    <FormControl
+                      type="number"
+                      min="0"
+                      value={notificationPanelStyle.liveVisitorCount}
+                      onChange={(e) => this.handleLiveVistorCount(e)}
+                      bsSize="sm"
+                    />
+                  </FormGroup>
+                </Col>
+              </Row>
+            </Tab>
+          }
           {notification.notificationName === "Bulk Activity"  &&
             <Tab eventKey={3} title="Setting" className="bulk-settings">
               <Row>

@@ -62,7 +62,7 @@ const MyRoutes = ({routerHistory, store}) => (
       <Route path="/upgrade" component={Upgrade} />
       <Route path="/profile" component={Profile} />
       <Route path="/Billing" component={Billing} />
-      <Route path="/billingFinal" component={BillingFinal} />
+      <Route path="/billingFinal" component={BillingFinal} />      
       <Route path="/Help" component={Help} />
   	  <Route path="/Payment" component={Payment} />
       <Route path="/getting-started" component={LoginFlow} />
