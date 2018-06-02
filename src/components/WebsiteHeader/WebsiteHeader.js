@@ -6,7 +6,7 @@ class WebsiteHeader extends Component {
   render() {
     return (
       <div className="nav-container">
-        <div className="via-1525204262136" via="via-1525204262136" vio="Influencenav">
+        <div>
           <div className="bar bar--sm visible-xs">
             <div className="container">
               <div className="row">
@@ -19,7 +19,7 @@ class WebsiteHeader extends Component {
               </div>
             </div>
           </div>
-          <nav id="menu1" className="bar bar-1 hidden-xs bar--transparent">
+          <nav id="menu1" className="bar bar--sm " id="menu3">
             <div className="container">
               <div className="row">
                 <div className="col-lg-1 col-md-2 hidden-xs">
