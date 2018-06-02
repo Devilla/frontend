@@ -78,14 +78,12 @@ class WebsiteSignIn extends Component {
     });
   };
 
-
-
   render() {
     const mousepoint ={
       cursor : "pointer"
     }
     return (
-      <div classNameName="main-container">
+      <div className="main-container">
         <section className="switchable switchable--switch bg--secondary">
           <div className="container">
             <div className="row justify-content-between">
