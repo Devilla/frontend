@@ -161,13 +161,6 @@ class WebsiteSignUp extends Component {
                            type={this.state.isPasswordShown? 'text': 'password'}
                            placeholder="Confirm Password" />
                         </div>
-                        <div className="col-12">
-                          <div className="input-checkbox">
-                            <input type="checkbox" name="agree" id="input-assigned-1" />
-                            <label for="input-assigned-1"></label>
-                          </div>
-                          <span>Remember Me</span>
-                        </div>
                         <div className="frmcntl col-12">
                           <input
                           type="submit"
