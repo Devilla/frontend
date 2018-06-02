@@ -25,17 +25,17 @@ class WebsiteHome extends Component {
         <section className="cover imagebg text-center parallax" data-overlay="0">
           <div className="container">
             <div className="row">
-              <div className="col-md-10 col-lg-10">
-                <h1 style={{fontSize: '46px'}}>Increase your website conversions using social proof notifications <br/> </h1>
-                <p className="lead col-md-12 text-center"> Influence helps you in converting more customers on your website by showing recent customer activity on your web pages </p>
+              <div className="col-md-10 col-lg-10 text-center">
+                <h2>Increase your website conversions using social proof notifications <br/> </h2>
+                <p className="type--uppercase typed-text typed-text--cursor"> Use Influence and Get 3x more business right away &nbsp;</p>
               </div>
             </div>
             <br/> <br/>
-            <div className="">
+            <div className="text-center">
               <form className="form--horizontal row">
-                <div className="col-md-1"></div>
-                <div className="col-md-6"> <input type="text" name="email" placeholder="Enter your email" /> </div>
-                <div className="col-md-4"> <button type="submit" onClick={()=> browserHistory.push('/signup')} className="btn btn--primary type--uppercase">start your free trial</button> </div>
+                <div className="col-md-3 mr-1 pr-0 ml-0 pl-0"></div>
+                <div className="col-md-4 ml-0 pl-0 mr-0 pr-0"> <input type="text" name="email" placeholder="Enter your email" /> </div>
+                <div className="col-md-2 ml-0 pl-0 mr-0 pr-0"> <button type="submit" onClick={()=> browserHistory.push('/signup')} className="btn btn--primary">Start Free Trial</button> </div>
               </form>
             </div>
           </div>
