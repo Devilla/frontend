@@ -5,7 +5,7 @@ export function validatewebsite(website){
 }
 
 export function validatePath(path){
-  var re = /\/\b([-a-zA-Z0-9\+~#?&//=])/;  
+  var re = /\//;  
   return re.test(path);
 }
 
