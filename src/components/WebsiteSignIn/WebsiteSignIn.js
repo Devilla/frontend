@@ -142,16 +142,11 @@ class WebsiteSignIn extends Component {
                 </div>
               </div>
               <div className="col-md-2">
-                <p> <br /> </p>
-                <p> <br /> </p>
-                <p> <br /> </p>          
+                <p> <br /> </p>        
                 <h3 className="mt--2"> &nbsp; &nbsp; Or, <br />You can </h3>
               </div>
               <div className="col-md-3 col-lg-4">
-                <p> <br /></p>
-                <p> <br /></p>
-                <p> <br /></p>    
-                <br/>         
+                <p> <br /></p> 
                 <div className="mt--2">
                 <a href={`${base}connect/facebook`} className="link">
                   <Link className="btn btn--icon bg--facebook" to="">

@@ -3133,6 +3133,7 @@ a {
 .bg--googleplus {
   background: #dd4b39;
   color: #fff;
+  font-size:17px;
 }
 
 .bg--instagram {
@@ -3874,7 +3875,10 @@ div[class*='col-'] > div[class*='col-'] {
     margin-top: 1.85714286em;
   }
   .mt--2 {
-    margin-top: 3.71428571em;
+    margin-top: 11.71428571em;
+  }
+  h3.mt--2 {
+    margin-top : 7.7223232em;
   }
   .mt--3 {
     margin-top: 5.57142857em;
@@ -3890,10 +3894,14 @@ div[class*='col-'] > div[class*='col-'] {
   }
 }
 
-@media all and (max-width: 990px) {
-  .mt--1, .mt--2 {
+@media all and (max-width: 993px) {
+  .mt--1 {
     margin-top: 1.85714286em;
   }
+  mt--2 {
+    margin-top: 1.85714286em;
+  }
+
   .mt--3 {
     margin-top: 2.78571429em;
   }
@@ -8273,10 +8281,15 @@ button.btn, input[type="submit"].btn {
   font-weight: 700;
   padding-left: 0;
   padding-right: 0;
+  margin: 0
 }
 
 button.btn.btn--primary, input[type="submit"].btn.btn--primary {
   color: #fff;
+}
+
+div.frmcntl.col-12 {
+  padding-left: 0px;
 }
 
 button.btn.type--uppercase, input[type="submit"].btn.type--uppercase {
