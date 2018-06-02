@@ -22,13 +22,13 @@ class WebsitePricing extends Component {
         </section>
 
                             
- <section className="text-center">
+ <section className="text-center unpad--bottom">
           <div className="container">
                         
-            <div className="row">
-            <Row>
-              <div className="md-2 myauto" id="leftmg"><div><strong>Monthly &nbsp; &nbsp;  &nbsp;</strong></div></div>
-              <div className="2">  <div className="notification-toggle">
+            <div className="row text-center">
+            
+              <div className="col-md-1 my-auto" id="leftmg"><div><strong>Monthly</strong></div></div>
+              <div className="col-sm-1 my-auto text-center">
                 <Switch
                   circleStyles={{ onColor: 'green', offColor: 'blue', diameter: 18 }}
                   switchStyles={{ width: 40 }}
@@ -37,22 +37,14 @@ class WebsitePricing extends Component {
                 // onChange={(e) => e != notification.activity ? handleActivityChange(e, notification._id, notification.configurationId) : null}
                 />
               </div>
-              </div>
-              <div>
-              <span>
-                <div className="md-2" ><strong>&nbsp;  &nbsp;  &nbsp;Yearly</strong></div>
-                </span>
-              </div>
-            </Row>
-
+                <div className="col-md-1 text-left my-auto pl-0 ml-0" ><strong>Yearly</strong></div>
             </div>
           </div>
 </section>
          
                     
         <section className="text-center">
-          <div className="container">
-                        
+          <div className="container">                        
             <div className="row">
               <div className="col-md-3">
                 <div className="pricing pricing-1 boxed boxed--border boxed--lg">

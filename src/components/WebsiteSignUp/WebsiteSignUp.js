@@ -118,7 +118,7 @@ class WebsiteSignUp extends Component {
               <div className="row justify-content-between align-items-center">
                 <div className="col-md-6 col-lg-6">
                   <div className="switchable__text">
-                    <h2>Your first step towards conversions, Signup here.</h2>
+                    <h3>Your first step towards conversions, Signup here.</h3>
                     <span>Already have an account?&nbsp;
                       <Link to="/login">Sign in</Link>
                     </span>
