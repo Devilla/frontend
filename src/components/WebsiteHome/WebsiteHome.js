@@ -177,7 +177,7 @@ class WebsiteHome extends Component {
               <div className="col-md-6 my-auto">
                 <div className="switchable__text">
                   <h3>Analytics &amp; Insights</h3>
-                  <p className="lead"> Once the visitor/customer enters in their email, we’ll show you who they really are using our intelligence data servers. We keep on adding more features to your analytics.</p> <Link to="#">Learn More »</Link>
+                  <p className="lead"> Find the true identity of your users using our intelligence data servers. We keep on adding more features to your analytics.</p> <Link to="">Learn More »</Link>
                 </div>
               </div>
               <div className="col-md-6 col-lg-7 col-12 text-center">
@@ -222,7 +222,7 @@ class WebsiteHome extends Component {
               <div className="col-md-4">
                 <div className="feature feature-3 boxed boxed--lg boxed--border"> <img className="icon-n1" src="images/activitynotifications2.svg" />
                   <h3>Activity Notifications&nbsp;</h3>
-                  <p> Display recent sales &amp; activity and drive users to convert on your website. </p> <Link to="#"> Learn More </Link>
+                  <p> Display recent sales &amp; activity and drive users to convert on your website. </p> <Link to=""> Learn More </Link>
                 </div>
               </div>
               <div className="col-md-4">
