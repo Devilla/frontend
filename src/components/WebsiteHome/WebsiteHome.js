@@ -15,6 +15,7 @@ import {
   CustomeRules,
   MobileReady,
 } from 'img';
+import { browserHistory } from 'react-router';
 
 class WebsiteHome extends Component {
 
@@ -34,7 +35,7 @@ class WebsiteHome extends Component {
               <form className="form--horizontal row">
                 <div className="col-md-1"></div>
                 <div className="col-md-6"> <input type="text" name="email" placeholder="Enter your email" /> </div>
-                <div className="col-md-4"> <button type="submit" className="btn btn--primary type--uppercase">start your free trial</button> </div>
+                <div className="col-md-4"> <button type="submit" onClick={()=> browserHistory.push('/signup')} className="btn btn--primary type--uppercase">start your free trial</button> </div>
               </form>
             </div>
           </div>
