@@ -21,14 +21,11 @@ class WebsiteHeader extends Component {
               </div>
             </div>
           </div>
-<<<<<<< HEAD
+
 
           <nav id="menu1" className="bar bar-sm bar-1 hidden-xs bar--transparent">
             <div className="container pr-0 pl-0">
-=======
-          <nav id="menu1" className="bar bar--sm " id="menu3">
-            <div className="container">
->>>>>>> f9bf0c8b2bd572da0fcffd34c9c94287e8fdc434
+
               <div className="row">
                 <div className="col-lg-2 col-md-3 hidden-xs pl-0 pr-0">
                   <div className="bar__module">
