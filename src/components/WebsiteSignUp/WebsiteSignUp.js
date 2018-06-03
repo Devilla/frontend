@@ -119,7 +119,7 @@ class WebsiteSignUp extends Component {
                 <div className="col-md-6 col-lg-6">
                   <div className="switchable__text">
                     <h3>Your first step towards conversions, Signup here.</h3>
-                    <span>Already have an account?&nbsp;
+                    <span className=" type--fine-print">Already have an account?&nbsp;
                       <Link to="/login">Sign in</Link>
                     </span>
                     <hr className="short" />

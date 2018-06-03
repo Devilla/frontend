@@ -27,7 +27,7 @@ class WebsiteHome extends Component {
             <div className="row">
               <div className="col-md-10 col-lg-10 text-center">
                 <h2>Increase your website conversions using social proof notifications <br/> </h2>
-                <p className="type--uppercase typed-text typed-text--cursor"> Use Influence and Get 3x more business right away &nbsp;</p>
+                <p className="typed-text typed-text--cursor h3"> Use Influence and get 3x more business right away &nbsp;</p>
               </div>
             </div>
             <br/> <br/>
@@ -88,12 +88,12 @@ class WebsiteHome extends Component {
               </div>
               <div className="col-md-3">
                 <Link to="/" className="block">
-                  <div className="feature boxed boxed--border border--round"> <img className="icon-n1" src="images/visitortrust2.svg"/> <span className="h4 color--primary"><h5>Increase Visitors trust</h5></span> </div>
+                  <div className="feature boxed boxed--border border--round"> <img className="icon-n1" src="images/visitortrust2.svg"/> <span className="h4 color--primary"><h5>Increase visitor trust</h5></span> </div>
                 </Link>
               </div>
               <div className="col-md-3">
                 <Link to="/" className="block">
-                  <div className="feature boxed boxed--border border--round"> <img className="icon-n1" src="images/socialinfluence2.svg"/> <span className="h4 color--primary"><h5>Social Influence</h5></span> </div>
+                  <div className="feature boxed boxed--border border--round"> <img className="icon-n1" src="images/socialinfluence2.svg"/> <span className="h4 color--primary"><h5>Social influence</h5></span> </div>
                 </Link>
               </div>
             </div>
@@ -152,7 +152,7 @@ class WebsiteHome extends Component {
                 </div>
               </div>
               <div className="col-md-6 col-lg-6 col-12 text-center">
-                <img alt="Image" src="images/B24.png" />
+                <img alt="Image" src="images/B25.png" />
               </div>
             </div>
           </div>
