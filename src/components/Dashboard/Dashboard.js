@@ -6,8 +6,8 @@ import ChartistGraph from 'react-chartist';
 import StatsCard from './Stats'
 import Website from './Website'
 import Card from './Card'
-import {Scrollbars} from 'react-custom-scrollbars';
-import {dataSales, optionsSales, responsiveSales, legendSales} from 'components/utils/variable.jsx';
+import { Scrollbars } from 'react-custom-scrollbars';
+import { dataSales, optionsSales, responsiveSales, legendSales } from 'components/utils/variable.jsx';
 import { getCookie, ajaxgetrequest } from 'components';
 import { fetchElastic } from 'ducks/elastic';
 import { fetchCampaignInfo, successCampaign } from 'ducks/campaign';

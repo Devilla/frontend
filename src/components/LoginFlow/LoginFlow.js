@@ -64,6 +64,12 @@ class LoginFlow extends Component {
     let profile = {};
     profile['user'] = this.props.user._id;
     profile['plan'] = data.plan;
+    if(this.state.username != this.props.user.username) {
+      let userInfo = {};
+      userInfo['id'] = this.props.user._id;
+      userInfo['username'] = this.state.username;
+      this.props.updateUser(userInfo);
+    }
     this.props.createProfile(profile);
     this.props.createPayment(data);
     browserHistory.push('dashboard');

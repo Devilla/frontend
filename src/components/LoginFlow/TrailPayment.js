@@ -125,9 +125,10 @@ class TrailPayment extends Component {
                         <FormControl
                           type="text"
                           onChange={(e) => handleStateChange(e.target.value, e.target.id)}
-                          value={user.username}
+                          defaultValue={user.username}
                           placeholder="Enter Card Holder's Name"
                           id="username"
+                          key={user.username}
                           // required
                         />
                       </FormGroup>

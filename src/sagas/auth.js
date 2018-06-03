@@ -70,11 +70,11 @@ export function* fetchUser() {
 export function* updateUser(action) {
   try {
     yield put(load());
-    const res = yield call(api.PUT, `user/${action.user._id}`, action.user);
+    const res = yield call(api.PUT, `user/${action.user.id}`, action.user);
     if(res.error)
       console.log(res.error);
     else
-      yield put(actions.fetchUserSuccess(action.user));
+      yield put(actions.fetchUserSuccess(res));
     yield put(loaded());
   } catch (error) {
     yield put(loaded());
