@@ -2,14 +2,11 @@ import React, { Component } from 'react';
 import { Link } from "react-router";
 import { SignUp } from 'img';
 import {validateEmail, validatePassword, register, PASSWORD_MAX_LENGTH} from 'services/FormUtils';
-import { connect } from 'react-redux';
-import {Animated} from "react-animated-css";
-import Ionicon from 'react-ionicons';
-import {css} from 'glamor';
-import {Alert} from 'react-bootstrap';
-import {store} from 'index.js';
-import {loginSuccess, fetchRoles} from 'ducks/auth';
-import {browserHistory} from 'react-router';
+import { Animated } from "react-animated-css";
+import { Alert, HelpBlock } from 'react-bootstrap';
+import { store } from 'index.js';
+import { loginSuccess } from 'ducks/auth';
+import { browserHistory } from 'react-router';
 import { toast } from 'react-toastify';
 
 const toastConfig = {
@@ -17,9 +14,6 @@ const toastConfig = {
   autoClose: 2000,
   className: 'toast-style'
 };
-
-
-
 
 class WebsiteSignUp extends Component {
 
@@ -34,41 +28,28 @@ class WebsiteSignUp extends Component {
     };
   }
 
-
-  componentWillMount() {
-    store.dispatch(fetchRoles());
-  }
-
   handleInputChange = event => {
     const {name, value} = event.target;
-    this.setState({[name]: value});
+    this.setState({[name]: value, error: ''});
   };
-
-    // triggers when user leaves the First Name input field
-  handleFirstnameBlur = event => {
-    const value = event.target.value;
-
-    if (!validateEmail(value))
-      toast.error("Enter a valid Email id", toastConfig);
-
-    };
 
   // triggers when user leaves the email input field
   handleEmailBlur = event => {
     const value = event.target.value;
-
-    if (!validateEmail(value))
-      toast.error("Enter a valid Email id", toastConfig);
-
-    };
+    if(!value)
+      this.setState({error: 'Email id required'});
+    else if (!validateEmail(value))
+      this.setState({error: 'Enter a valid Email id'});
+  };
 
   // triggers when user leaves the password input field
   handlePasswordBlur = event => {
     const value = event.target.value;
-
-    if (!validatePassword(value))
-      toast.error("Enter valid Password!", toastConfig);
-    };
+    if(!value)
+      this.setState({error: 'Password required'});
+    else if (!validatePassword(value))
+      this.setState({error: 'Enter a valid Password'});
+  };
 
   togglePasswordShown = () => {
     this.setState({
@@ -80,32 +61,26 @@ class WebsiteSignUp extends Component {
   handleSubmit = (event) => {
     event.stopPropagation();
     event.preventDefault();
+    if(this.state.password !== this.state.confirmPassword)
+      return this.setState({error: 'Password doesnot match'});
 
     // TODO: Show 'Check email for further instructions.' message on success
     register(this.state.email, this.state.password).then(res => {
-
         toast.info('Successfull', toastConfig);
         store.dispatch(loginSuccess(res));
-        // window.location.assign(window.location.origin+'/getting-started');
         browserHistory.push('/getting-started');
-        this.setState({isRegistered: true});
-      // TODO: check response before treating it as successfull
+        this.setState({isRegistered: true, error: ''});
     }).catch(err => {
-      toast.error(err, toastConfig);
+      this.setState({error: err});
     });
 
   };
 
   render() {
 
-
-
-
     const isEmailValid = validateEmail(this.state.email);
     const isPwdValid = validatePassword(this.state.password) && validatePassword(this.state.confirmPassword)  && this.state.confirmPassword===this.state.confirmpassword;
     const isFormValid = isEmailValid && isPwdValid;
-
-
     // if registered show 'check mail' message else show the registration form
     const formContent = this.state.isRegistered
       ? (<Alert bsStyle="success">
@@ -160,6 +135,9 @@ class WebsiteSignUp extends Component {
                            onChange={this.handleInputChange}
                            type={this.state.isPasswordShown? 'text': 'password'}
                            placeholder="Confirm Password" />
+                           <HelpBlock>
+                             <p className="website-error">{this.state.error}</p>
+                           </HelpBlock>
                         </div>
                         <div className="frmcntl col-12">
                           <input
@@ -188,23 +166,21 @@ class WebsiteSignUp extends Component {
     return (
     <div>
       <div className="authpage section innerpage">
-        {/* <div className="container"> */}
-          <div className="wrapper">
-            <Animated
-            className="leftwrap center"
+        <div className="wrapper">
+          <Animated
+          className="leftwrap center"
 
-            animationIn="fadeIn"
-            animationOut="fadeOut"
-            isVisible={true}>
-              <form
-              className="loginfrm"
-              onSubmit={this.handleSubmit}>
-                {formContent}
-              </form>
-              <div className="support"></div>
-            </Animated>
-          </div>
-        {/* </div> */}
+          animationIn="fadeIn"
+          animationOut="fadeOut"
+          isVisible={true}>
+            <form
+            className="loginfrm"
+            onSubmit={this.handleSubmit}>
+              {formContent}
+            </form>
+            <div className="support"></div>
+          </Animated>
+        </div>
       </div>
     </div>
     );
