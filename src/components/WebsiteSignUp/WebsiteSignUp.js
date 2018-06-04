@@ -134,10 +134,6 @@ class WebsiteSignUp extends Component {
                     }
                     <hr className="short" />
                     <form>
-<<<<<<< HEAD
-                      <div className="row pl-5">
-                        <div className="col-11">
-=======
                       <div className="row">
                       <div className="col-12">
                           <input type="text"
@@ -150,7 +146,6 @@ class WebsiteSignUp extends Component {
                            </HelpBlock>
                       </div>
                         <div className="col-12">
->>>>>>> frontend/master
                           <input
                           name="email"
                           onBlur={this.handleEmailBlur}
