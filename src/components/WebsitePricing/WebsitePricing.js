@@ -58,7 +58,7 @@ class WebsitePricing extends Component {
     });
     return planList.map(plan => {
       return <div className="col-md-3 pl-0 pr-0">
-        <div className="pricing pricing-1 boxed boxed--border boxed--lg pr-0 pl-0 unpad--top">
+        <div className="pricing pricing-1 boxed boxed--border boxed--lg pr-0 pl-0">
           <h4>{plan.name}</h4>
           <span className="h1">
             <span className="pricing__dollar">${plan.interval === 'year' ? plan.amount/1200 : plan.amount/100}</span></span>
@@ -148,7 +148,7 @@ class WebsitePricing extends Component {
         </div>
       </section>
 
-      <section className="text-center">
+      <section className="text-center unpad--top">
         <div className="container">
           <div className="row">
             {this.renderPriceList()}
