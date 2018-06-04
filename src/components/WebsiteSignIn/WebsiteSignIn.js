@@ -63,7 +63,9 @@ class WebsiteSignIn extends Component {
     const value = event.target.value;
     const isEmailValid = validateEmail(value);
     this.setState({isEmailValid});
-    if (!isEmailValid)
+    if(!value)
+      this.setState({error: 'Email id required'});
+    else if (!isEmailValid)
       this.setState({error: 'Enter a valid Email id'});
   };
 
@@ -72,7 +74,9 @@ class WebsiteSignIn extends Component {
     const value = event.target.value;
     const isPwdValid = validatePassword(value);
     this.setState({isPwdValid});
-    if (!isPwdValid)
+    if(!value)
+      this.setState({error: 'Password required'});
+    else if (!isPwdValid)
       this.setState({error: 'Enter a valid Password'});
   };
 

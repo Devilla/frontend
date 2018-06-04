@@ -36,20 +36,20 @@ class WebsiteSignUp extends Component {
   // triggers when user leaves the email input field
   handleEmailBlur = event => {
     const value = event.target.value;
-    if(!value) {
+    if(!value)
       this.setState({error: 'Email id required'});
-    } else if (!validateEmail(value))
+    else if (!validateEmail(value))
       this.setState({error: 'Enter a valid Email id'});
-    };
+  };
 
   // triggers when user leaves the password input field
   handlePasswordBlur = event => {
     const value = event.target.value;
-    if(!value) {
+    if(!value)
       this.setState({error: 'Password required'});
-    } else if (!validatePassword(value))
+    else if (!validatePassword(value))
       this.setState({error: 'Enter a valid Password'});
-    };
+  };
 
   togglePasswordShown = () => {
     this.setState({
