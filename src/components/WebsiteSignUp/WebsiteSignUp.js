@@ -119,7 +119,7 @@ class WebsiteSignUp extends Component {
                           <input
                            name="password"
                            maxLength={PASSWORD_MAX_LENGTH}
-                           value={this.state.name}
+                           // value={this.state.name}
                            onBlur={this.handlePasswordBlur}
                            onChange={this.handleInputChange}
                            type={this.state.isPasswordShown? 'text': 'password'}
@@ -128,9 +128,9 @@ class WebsiteSignUp extends Component {
                         </div>
                         <div className="col-12">
                           <input
-                           name="passwordConfirm"
+                           name="confirmPassword"
                            maxLength={PASSWORD_MAX_LENGTH}
-                           value={this.state.name}
+                           // value={this.state.name}
                            onBlur={this.handlePasswordBlur}
                            onChange={this.handleInputChange}
                            type={this.state.isPasswordShown? 'text': 'password'}
