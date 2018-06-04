@@ -9,6 +9,8 @@ import { loginSuccess } from 'ducks/auth';
 import { browserHistory } from 'react-router';
 import { toast } from 'react-toastify';
 
+import './WebsiteSignUp.scss';
+
 const toastConfig = {
   position: toast.POSITION.BOTTOM_LEFT,
   autoClose: 2000,
@@ -20,35 +22,40 @@ class WebsiteSignUp extends Component {
   constructor() {
     super();
     this.state = {
+      username: '',
       email: '',
       password: '',
       confirmPassword:'',
       isPasswordShown: false,
-      isRegistered: false
+      isRegistered: false,
+      errorPassword: '',
+      errorEmail: '',
+      errorConfirmPassword: '',
+      error: ''
     };
   }
 
   handleInputChange = event => {
     const {name, value} = event.target;
-    this.setState({[name]: value, error: ''});
+    this.setState({[name]: value, error: '', errorUsername: '', errorEmail: '', errorPassword:'', errorConfirmPassword:''});
   };
 
   // triggers when user leaves the email input field
   handleEmailBlur = event => {
     const value = event.target.value;
     if(!value)
-      this.setState({error: 'Email id required'});
+      this.setState({errorEmail: 'Email id required'});
     else if (!validateEmail(value))
-      this.setState({error: 'Enter a valid Email id'});
+      this.setState({errorEmail: 'Enter a valid Email id'});
   };
 
   // triggers when user leaves the password input field
   handlePasswordBlur = event => {
     const value = event.target.value;
     if(!value)
-      this.setState({error: 'Password required'});
+      this.setState({errorPassword: 'Password required'});
     else if (!validatePassword(value))
-      this.setState({error: 'Enter a valid Password'});
+      this.setState({errorPassword: 'Enter a valid Password'});
   };
 
   togglePasswordShown = () => {
@@ -61,11 +68,15 @@ class WebsiteSignUp extends Component {
   handleSubmit = (event) => {
     event.stopPropagation();
     event.preventDefault();
-    if(this.state.password !== this.state.confirmPassword)
-      return this.setState({error: 'Password doesnot match'});
+    const { email, password, confirmPassword, username } = this.state;
+
+    if(!email || !password || !confirmPassword || !username)
+      return this.setState({error: "All fields are required"});
+    if(password !== confirmPassword)
+      return this.setState({errorConfirmPassword: 'Password doesnot match'});
 
     // TODO: Show 'Check email for further instructions.' message on success
-    register(this.state.email, this.state.password).then(res => {
+    register(email, password).then(res => {
         toast.info('Successfull', toastConfig);
         store.dispatch(loginSuccess(res));
         browserHistory.push('/getting-started');
@@ -73,16 +84,32 @@ class WebsiteSignUp extends Component {
     }).catch(err => {
       this.setState({error: err});
     });
-
   };
+
+  componentWillUnmount() {
+    this.setState({
+      username: '',
+      email: '',
+      password: '',
+      confirmPassword: '',
+      error: '',
+      errorUsername: '',
+      errorEmail: '',
+      errorPassword: '' ,
+      errorConfirmPassword: ''
+    });
+  }
 
   render() {
 
     const isEmailValid = validateEmail(this.state.email);
     const isPwdValid = validatePassword(this.state.password) && validatePassword(this.state.confirmPassword)  && this.state.confirmPassword===this.state.confirmpassword;
     const isFormValid = isEmailValid && isPwdValid;
+
+    const { isRegistered, error, errorUsername, errorEmail, isPasswordShown, errorPassword, errorConfirmPassword } = this.state;
+
     // if registered show 'check mail' message else show the registration form
-    const formContent = this.state.isRegistered
+    const formContent = isRegistered
       ? (<Alert bsStyle="success">
         Please check your mail for further instructions.
       </Alert>)
@@ -97,46 +124,58 @@ class WebsiteSignUp extends Component {
                     <span className=" type--fine-print">Already have an account?&nbsp;
                       <Link to="/login">Sign in</Link>
                     </span>
+                    {error &&
+                      <Alert bsStyle="warning">
+                      <strong>{error}</strong>
+                      </Alert>
+                    }
                     <hr className="short" />
                     <form>
                       <div className="row">
                       <div className="col-12">
                           <input type="text"
-                           name="firstname"
-                           value={this.state.firstname}
+                           name="username"
+                           onChange={this.handleInputChange}
+                           onBlur={(e) => !e.target.value?this.setState({errorUsername: "Username required"}):null}
                            placeholder="Your Name" />
+                           <HelpBlock>
+                             <p className="website-error">{errorUsername}</p>
+                           </HelpBlock>
                       </div>
                         <div className="col-12">
                           <input
                           name="email"
-                          value={this.state.email}
                           onBlur={this.handleEmailBlur}
                           onChange={this.handleInputChange}
                           placeholder="Email Address"
                           type="email" />
+                          <HelpBlock>
+                            <p className="website-error">{errorEmail}</p>
+                          </HelpBlock>
                         </div>
                         <div className="col-12">
                           <input
                            name="password"
                            maxLength={PASSWORD_MAX_LENGTH}
-                           // value={this.state.name}
                            onBlur={this.handlePasswordBlur}
                            onChange={this.handleInputChange}
-                           type={this.state.isPasswordShown? 'text': 'password'}
+                           type={isPasswordShown? 'text': 'password'}
                            placeholder="Password"
                             />
+                          <HelpBlock>
+                            <p className="website-error">{errorPassword}</p>
+                          </HelpBlock>
                         </div>
                         <div className="col-12">
                           <input
                            name="confirmPassword"
                            maxLength={PASSWORD_MAX_LENGTH}
-                           // value={this.state.name}
-                           onBlur={this.handlePasswordBlur}
+                           onBlur={(e) => !e.target.value?this.setState({errorConfirmPassword: "Confirm Password required"}):null}
                            onChange={this.handleInputChange}
-                           type={this.state.isPasswordShown? 'text': 'password'}
+                           type={isPasswordShown? 'text': 'password'}
                            placeholder="Confirm Password" />
                            <HelpBlock>
-                             <p className="website-error">{this.state.error}</p>
+                             <p className="website-error">{errorConfirmPassword}</p>
                            </HelpBlock>
                         </div>
                         <div className="frmcntl col-12">
