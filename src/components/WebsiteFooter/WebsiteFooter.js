@@ -53,7 +53,7 @@ class WebsiteFooter extends Component {
           <div className="footer__lower text-center-xs unpad--bottom">
             <div className="container">
               <div className="row">
-                <div className="col-sm-6"> <span className="type--fine-print">© <span className="update-year">2018 Influence&nbsp;</span>&nbsp;— All Rights Reserved</span>
+                <div className="col-sm-6"> <span className="type--fine-print">Â© <span className="update-year">2018 Influence&nbsp;</span>&nbsp;â€” All Rights Reserved</span>
                 </div>
                 <div className="col-sm-6 text-right text-center-xs">
                   <ul className="social-list list-inline">
