@@ -22,7 +22,7 @@ class WebsitePricing extends Component {
         </section>
 
                             
- <section className="text-center unpad--bottom">
+        <section className="text-center unpad--bottom">
           <div className="container">
                         
             <div className="row text-center">
@@ -254,6 +254,63 @@ class WebsitePricing extends Component {
             </div>
           </div>
         </section>
+
+        <section className="bg--secondary">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-lg-4">
+                            <div className="text-block">
+                                <h4>Frequently Asked Questions</h4>
+                            </div>
+                        </div>
+                        <div className="col-lg-4">
+                            <div className="text-block">
+                                <h5 className="mb-2">What do you mean by visitors?</h5>
+                                <p className="type--fine-print text-justify">
+                                    The billing counts unique visitors as the metric for billing. A unique visitor is the one who visits the website page where the pixel code is installed. A visitor can visit the page multiple times on all the pixelated pages but that will be counted as one unique visit only.
+                                </p>
+                            </div>
+                            <div className="text-block">
+                                <h5 className="mb-2">But will it work for me?</h5>
+                                <p className="type--fine-print text-justify">
+                                    Influence works for all the websites and platforms that are out there. We are rolling out more and more integrations every month so that you can sync them up with your favorite services and marketing tools. You can even see the integrations we have listed on our integrations section.
+                                </p>
+                            </div>
+                            <div className="text-block">
+                                <h5 className="mb-2">Will Influence work for all the customers on my website?</h5>
+                                <p className="type--fine-print text-justify">
+                                    Influence not only works for customer details capturing, but it also works for lead captures, webinar pages and other places where you can capture the customer’s details. &nbsp;
+                                    <a href="#">Contact Us</a> for info.
+                                </p>
+                            </div>
+                        </div>
+                        <div className="col-lg-4">
+                            <div className="text-block">
+                                <h5 className="mb-2">Are these notifications legit?</h5>
+                                <p className="type--fine-print text-justify">
+                                     When we thought of building this product, we thought of helping brands and customers bring transparency to each other in the nicest possible manner. If we get to work together and you use our product, all the notifications that you will see on your website will be 100% legit and the data would be the one which your customers would use.
+                 
+                                </p>
+                            </div>
+                            <div className="text-block">
+                                <h5 className="mb-2">Can I cancel it anytime?</h5>
+                                <p className="type--fine-print text-justify">
+                                    Yes. You can cancel the subscription whenever you want. If you are in monthly contract you will only be billed on a monthly basis.
+                                </p>
+                            </div>
+                            <div className="text-block">
+                                <h5 className="mb-2">What will happen if I get more unique visitors on plan? Will it charge me automatically?</h5>
+                                <p className="type--fine-print text-justify">
+                                     Once you start inching closer to your traffic limit, we’ll send you notifications before you even actually hit that limit. Once you go above your plan limit we’ll automatically upgrade you for the next plan after your consent for payment.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </section>
+
+
       </div>
     );
   }
