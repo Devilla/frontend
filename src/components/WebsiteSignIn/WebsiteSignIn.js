@@ -43,7 +43,7 @@ class WebsiteSignIn extends Component {
     login(this.refs.email.value, this.refs.password.value).then(res => {
       store.dispatch(loginSuccess(res));
       this.setState({error: ''});
-      toast.info('Successfull');
+      toast.info('Successfull', toastConfig);
       browserHistory.push('/dashboard');
     }).catch(err => {
       this.setState({error: err});
