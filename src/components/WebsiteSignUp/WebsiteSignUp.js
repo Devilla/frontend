@@ -11,6 +11,8 @@ import {store} from 'index.js';
 import {loginSuccess, fetchRoles} from 'ducks/auth';
 import {browserHistory} from 'react-router';
 import { toast } from 'react-toastify';
+import { base } from 'services/api';
+
 
 const toastConfig = {
   position: toast.POSITION.BOTTOM_LEFT,
@@ -116,22 +118,17 @@ class WebsiteSignUp extends Component {
           <section className="switchable bg--secondary">
             <div className="container">
               <div className="row justify-content-between align-items-center">
-                <div className="col-md-6 col-lg-6">
+                <div className="col-md-6 col-lg-6 text-center">
                   <div className="switchable__text">
+                  
                     <h3>Your first step towards conversions, Signup here.</h3>
                     <span className=" type--fine-print">Already have an account?&nbsp;
                       <Link to="/login">Sign in</Link>
                     </span>
                     <hr className="short" />
                     <form>
-                      <div className="row">
-                      <div className="col-12">
-                          <input type="text"
-                           name="firstname"
-                           value={this.state.firstname}
-                           placeholder="Your Name" />
-                      </div>
-                        <div className="col-12">
+                      <div className="row pl-5">
+                        <div className="col-11">
                           <input
                           name="email"
                           value={this.state.email}
@@ -140,7 +137,7 @@ class WebsiteSignUp extends Component {
                           placeholder="Email Address"
                           type="email" />
                         </div>
-                        <div className="col-12">
+                        <div className="col-11">
                           <input
                            name="password"
                            maxLength={PASSWORD_MAX_LENGTH}
@@ -151,20 +148,11 @@ class WebsiteSignUp extends Component {
                            placeholder="Password"
                             />
                         </div>
-                        <div className="col-12">
-                          <input
-                           name="passwordConfirm"
-                           maxLength={PASSWORD_MAX_LENGTH}
-                           value={this.state.name}
-                           onBlur={this.handlePasswordBlur}
-                           onChange={this.handleInputChange}
-                           type={this.state.isPasswordShown? 'text': 'password'}
-                           placeholder="Confirm Password" />
-                        </div>
-                        <div className="frmcntl col-12">
+                        
+                        <div className="frmcntl col-11">
                           <input
                           type="submit"
-                          className="button submit-button w-button btn btn--primary"
+                          className="button submit-button w-button btn btn--primary ml-0"
                           value="Create Account"
                           disabled={false}/>
                         </div>
@@ -174,14 +162,42 @@ class WebsiteSignUp extends Component {
                             <Link to="/terms-and-condtions">Terms of Service</Link>
                           </span>
                         </div>
-                      </div>
-                    </form>
+                        </div>
+                      
+                     </form>
+                    <hr className="short"/>
+                  
+                   <p> <span className=" type--fine-print b">Or Signup using: &nbsp;
+                  
+                    </span> </p>
+                        <div className="">
+                        <a href={`${base}connect/facebook`} className="link ">
+                          <Link className="btn btn--icon bg--facebook" to="">
+                            <span className="btn__text ">
+                              <i className="socicon socicon-facebook"></i>
+                              Signup using Facebook
+                            </span>
+                          </Link>
+                          </a>
+                          <p></p>
+                          <a href={`${base}connect/google`} className="link">
+                          <Link className="btn btn--icon bg--googleplus" to="">
+                            <span className="btn__text">
+                              <i className="socicon socicon-google"></i>
+                              Signup using Google 
+                            </span>
+                          </Link>
+                          </a>
+                        </div>
+                    
+            
                   </div>
                 </div>
-                <div className="col-md-8 col-lg-8">
+                <div className="col-md-8 col-lg-8 pr-0">
                   <img alt="Image" src={ SignUp } />
                 </div>
               </div>
+              
             </div>
           </section>
         </div>);

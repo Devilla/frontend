@@ -52,6 +52,22 @@
   padding: 0;
 }
 
+/**extra div for vertical rule **/
+.vristrue {
+  position: relative;
+  top :  210px;
+  right : 50px;
+  height : 160px;
+  width : 1px;
+  background-color : #C1C1C1;
+  display: block;
+}
+
+@media all and (max-width:767px) {
+  .vristrue {
+    display: none;
+  }
+}
 /**! 02. Typography **/
 
 html {
@@ -8288,9 +8304,7 @@ button.btn.btn--primary, input[type="submit"].btn.btn--primary {
   color: #fff;
 }
 
-div.frmcntl.col-12 {
-  padding-left: 0px;
-}
+
 
 button.btn.type--uppercase, input[type="submit"].btn.type--uppercase {
   letter-spacing: .5px;
