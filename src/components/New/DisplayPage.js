@@ -16,8 +16,11 @@ import { fetchPageUrl, createPageUrl, clearLeads, removePageUrl } from 'ducks/pa
 import { fetchOneRules, clearRules } from 'ducks/rules';
 import { validatePath } from 'components/Common/function';
 import { ToastContainer, toast } from 'react-toastify';
-import { css, checked } from 'glamor';
+import { css } from 'glamor';
 import $ from 'jquery';
+import Popup from 'react-popup';
+
+import './DisplayPage.scss';
 
 class DisplayPage extends Component{
   constructor(){
@@ -64,7 +67,20 @@ class DisplayPage extends Component{
   }
 
   handleNextState() {
-    browserHistory.push('/notification');
+    Popup.create({
+      title: "Campaign is Live",
+      // content: 'Campaign is Live',
+      buttons: {
+        right: [{
+          text: 'Finish',
+          className: 'default',
+          action: function () {
+            browserHistory.push('/dashboard');
+            Popup.close();
+          }
+        }]
+      }
+    });
   }
 
   handleBackState() {
@@ -100,6 +116,7 @@ class DisplayPage extends Component{
     };
     this.setState({displayUrl: displayUrl});
   }
+
   handleWebsiteAuth(evt) {
     if (! validatePath(evt.target.value)) {
       checkUrl:true
@@ -113,6 +130,7 @@ class DisplayPage extends Component{
       $('.error-bg').fadeOut().html('')
     }
   }
+
   handleAddButton(evt) {
     evt.preventDefault();
     var tokenverify = this.handleCheckCookie();
@@ -181,7 +199,7 @@ class DisplayPage extends Component{
 
   render(){
     return (
-      <div className="content">
+      <div className="content display-page">
         <Grid fluid>
           <Tabs active="6" callbackFromParent={this.activeState}/>
           <div className="tabscontent">

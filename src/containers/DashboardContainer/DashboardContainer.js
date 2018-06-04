@@ -10,6 +10,8 @@ import './assets/css/animate.min.scss';
 import './assets/css/demo.scss';
 import './assets/css/pe-icon-7-stroke.css';
 import 'react-select/dist/react-select.css';
+import Popup from 'react-popup';
+import 'react-popup/style.css';
 
 
 class DashboardContainer extends Component {
@@ -67,6 +69,7 @@ class DashboardContainer extends Component {
     const { loading } = this.props;
     return (
       <div className="dashboard-container">
+        <Popup />
         <div className="wrapper">
           <Spinner loading={loading} />
           {!this.state.render && <p>Please wait</p>}
