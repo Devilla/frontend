@@ -10,7 +10,7 @@ import { browserHistory } from 'react-router';
 import SocialLink from './SocialLink';
 import { base } from 'services/api';
 import { toast } from 'react-toastify';
-import { HelpBlock } from 'react-bootstrap';
+import { Alert, HelpBlock } from 'react-bootstrap';
 
 import './WebsiteSignIn.scss';
 
@@ -31,13 +31,18 @@ class WebsiteSignIn extends Component {
       isPasswordShown: false,
       isEmailValid: false,
       isPwdValid: false,
-      error: ''
+      error: '',
+      errorEmail: '',
+      errorPassword: ''
     };
   }
   // Submit form
   handleSubmit = (event) => {
     event.stopPropagation();
     event.preventDefault();
+
+    if(!this.refs.email.value || !this.refs.password.value)
+      this.setState({error: 'All fields are required'});
 
     // TODO: Redirect to dashboard on successfull login.
     login(this.refs.email.value, this.refs.password.value).then(res => {
@@ -55,7 +60,7 @@ class WebsiteSignIn extends Component {
     const { name, value } = event.target;
     const isEmailValid = validateEmail(this.refs.email.value);
     const isPwdValid = validatePassword(this.refs.password.value);
-    this.setState({ [name]: value, isEmailValid, isPwdValid, error: '' });
+    this.setState({ [name]: value, isEmailValid, isPwdValid, error: '', errorEmail: '', errorPassword: '' });
   };
 
   // triggers when user leaves the email input field
@@ -64,9 +69,9 @@ class WebsiteSignIn extends Component {
     const isEmailValid = validateEmail(value);
     this.setState({isEmailValid});
     if(!value)
-      this.setState({error: 'Email id required'});
+      this.setState({errorEmail: 'Email id required'});
     else if (!isEmailValid)
-      this.setState({error: 'Enter a valid Email id'});
+      this.setState({errorEmail: 'Enter a valid Email id'});
   };
 
   // triggers when user leaves the password input field
@@ -75,9 +80,9 @@ class WebsiteSignIn extends Component {
     const isPwdValid = validatePassword(value);
     this.setState({isPwdValid});
     if(!value)
-      this.setState({error: 'Password required'});
+      this.setState({errorPassword: 'Password required'});
     else if (!isPwdValid)
-      this.setState({error: 'Enter a valid Password'});
+      this.setState({errorPassword: 'Enter a valid Password'});
   };
 
   togglePasswordShown = () => {
@@ -90,6 +95,9 @@ class WebsiteSignIn extends Component {
     const mousepoint ={
       cursor : "pointer"
     }
+
+    const { error, errorEmail, isPasswordShown, errorPassword, isEmailValid, isPwdValid } = this.state;
+
     return (
       <div className="main-container">
         <section className="switchable switchable--switch bg--secondary">
@@ -104,18 +112,26 @@ class WebsiteSignIn extends Component {
                     </span>
                   </p>
                   <hr className="short" />
+
                   <form   onSubmit={this.handleSubmit} className="loginfrm" >
                     <div className="row">
+                      {error &&
+                        <Alert bsStyle="warning" className="col-9">
+                        <strong>{error}</strong>
+                        </Alert>
+                      }
                       <div className="col-9 ">
                         <input name="email"
                         ref="email"
                         className="field w-input"
-                        value={this.state.email}
                         onBlur={this.handleEmailBlur}
                         onChange={this.handleInputChange}
                         placeholder="Email Address"
                         type="email"
                         />
+                        <HelpBlock>
+                          <p className="website-error">{errorEmail}</p>
+                        </HelpBlock>
                       </div>
                       <div className="col-9">
                         <input type="password"
@@ -124,14 +140,13 @@ class WebsiteSignIn extends Component {
                         name="password"
                         ref="password"
                         placeholder="Password"
-                        type={this.state.isPasswordShown ? 'text' : 'password'}
+                        type={isPasswordShown ? 'text' : 'password'}
                         maxLength={PASSWORD_MAX_LENGTH}
-                        value={this.state.name}
                         onBlur={this.handlePasswordBlur}
                         onChange={this.handleInputChange}
                         />
                         <HelpBlock>
-                          <p className="website-error">{this.state.error}</p>
+                          <p className="website-error">{errorPassword}</p>
                         </HelpBlock>
                       </div>
 
@@ -141,7 +156,7 @@ class WebsiteSignIn extends Component {
                          type="submit"
                          value="Login"
                          style={mousepoint}
-                         disabled={!this.state.isEmailValid || !this.state.isPwdValid}
+                         disabled={!isEmailValid || !isPwdValid}
                           />
                       </div>
                     </div>
