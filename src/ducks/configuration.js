@@ -59,12 +59,15 @@ const initialConfig = {
     linkFontFamily: 'inherit',
     linkFontWeight: 'normal'
   },
-  selectDurationData:'hours',
-  selectLastDisplayConversation:'hours',
+  selectDurationData: 'hours',
+  selectLastDisplayConversation: 'hours',
   contentText: '',
-  bulkData:5,
-  recentNumber:5,
-  recentConv:5,
+  bulkData: 5,
+  recentNumber: 5,
+  recentConv: 5,
+  hideAnonymousConversion: true,
+  onlyDisplayNotification: false,
+  liveVisitorCount: 0
 };
 
 const initialState = fromJS({

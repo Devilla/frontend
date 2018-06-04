@@ -42,19 +42,18 @@ const notificationPanelStyleDefault = { // TODO: Take style values from server
     b: 255,
     a: 1
   },
-
   fontFamily: 'inherit',
   fontWeight: 'normal',
   linkFontFamily: 'inherit',
   linkFontWeight: 'normal',
-  selectDurationData:'hours',
-  selectLastDisplayConversation:'hours',
-  bulkData:5,
-  liveVisitorCount:5,
-  recentNumber:5,
-  recentConv:5,
-  hideAnonymousConversion:true,
-  onlyDisplayNotification:false
+  selectDurationData: 'hours',
+  selectLastDisplayConversation: 'hours',
+  bulkData: 5,
+  liveVisitorCount: 0,
+  recentNumber: 5,
+  recentConv: 5,
+  hideAnonymousConversion: true,
+  onlyDisplayNotification: false
 };
 
 class Notifications extends Component {
@@ -198,11 +197,14 @@ class Notifications extends Component {
     {
       this.props.createConfiguration(configure);
     }
+  }
+
+  backConfiguration() {
     this.props.clearConfiguration();
     this.setInitialState();
   }
 
-  backConfiguration() {
+  componentWillUnmount() {
     this.props.clearConfiguration();
     this.setInitialState();
   }
