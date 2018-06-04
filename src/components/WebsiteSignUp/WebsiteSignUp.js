@@ -30,14 +30,10 @@ class WebsiteSignUp extends Component {
       confirmPassword:'',
       isPasswordShown: false,
       isRegistered: false,
-<<<<<<< HEAD
-      error:''
-=======
       errorPassword: '',
       errorEmail: '',
       errorConfirmPassword: '',
       error: ''
->>>>>>> frontend/master
     };
   }
 
