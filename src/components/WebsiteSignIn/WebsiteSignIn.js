@@ -86,8 +86,8 @@ class WebsiteSignIn extends Component {
       <div className="main-container">
         <section className="switchable switchable--switch bg--secondary">
           <div className="container">
-            <div className="row justify-content-between">
-              <div className="col-md-6 col-lg-6">
+            <div className="row justify-content-center">
+              <div className="col-sm-12 col-md-7 col-lg-5">
                 <div className="">
                   <h2>Welcome back!</h2>
                   <p className="lead">
@@ -112,7 +112,7 @@ class WebsiteSignIn extends Component {
                       <div className="col-9">
                         <input type="password"
                         name="Password"
-                        className="field w-input"
+                        className="field w-input "
                         name="password"
                         ref="password"
                         placeholder="Password"
@@ -126,9 +126,9 @@ class WebsiteSignIn extends Component {
                       
                       </div>
                  
-                      <div className="col-4 frmcntl">
+                      <div className="col-9 frmcntl">
                         <input
-                         className="button submit-button w-button btn btn--primary"
+                         className="button submit-button w-button btn btn--primary ml-0"
                          type="submit"
                          value="Login"
                          style={mousepoint}
@@ -139,16 +139,16 @@ class WebsiteSignIn extends Component {
                   </form>
                 </div>
               </div>
-              <div className="col-md-2">
-                <p> <br /> </p>        
-                <h3 className="mt--2"> &nbsp; &nbsp; Or, <br />You can </h3>
-              </div>
-              <div className="col-md-3 col-lg-4">
+
+            <div className="vristrue">
+            </div>
+
+              <div className="col-md-4 col-lg-4">
                 <p> <br /></p> 
                 <div className="mt--2">
-                <a href={`${base}connect/facebook`} className="link">
+                <a href={`${base}connect/facebook`} className="link ">
                   <Link className="btn btn--icon bg--facebook" to="">
-                    <span className="btn__text">
+                    <span className="btn__text ">
                       <i className="socicon socicon-facebook"></i>
                       Login with Facebook
                     </span>
@@ -159,7 +159,7 @@ class WebsiteSignIn extends Component {
                   <Link className="btn btn--icon bg--googleplus" to="">
                     <span className="btn__text">
                       <i className="socicon socicon-google"></i>
-                      Login with Google
+                      Login with Google 
                     </span>
                   </Link>
                   </a>

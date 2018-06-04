@@ -27,7 +27,7 @@ class WebsiteHome extends Component {
             <div className="row">
               <div className="col-md-10 col-lg-10 text-center">
                 <h2>Increase your website conversions using social proof notifications <br/> </h2>
-                <p className="type--uppercase typed-text typed-text--cursor"> Use Influence and Get 3x more business right away &nbsp;</p>
+                <p className="typed-text typed-text--cursor h3"> Use Influence and get 3x more business right away &nbsp;</p>
               </div>
             </div>
             <br/> <br/>
@@ -44,7 +44,7 @@ class WebsiteHome extends Component {
           <div className="container">
             <div className="row">
               <div className="col-md-4">
-                <p className="lead">You are at right place, we are featured in,<br /></p>
+                <p className="lead">You are at right place, we are featured in:<br /></p>
               </div>
               <div className="col-md-8 text-center">
                 <ul className="list-inline social-list">
@@ -88,12 +88,12 @@ class WebsiteHome extends Component {
               </div>
               <div className="col-md-3">
                 <Link to="/" className="block">
-                  <div className="feature boxed boxed--border border--round"> <img className="icon-n1" src="images/visitortrust2.svg"/> <span className="h4 color--primary"><h5>Increase Visitors trust</h5></span> </div>
+                  <div className="feature boxed boxed--border border--round"> <img className="icon-n1" src="images/visitortrust2.svg"/> <span className="h4 color--primary"><h5>Increase visitor trust</h5></span> </div>
                 </Link>
               </div>
               <div className="col-md-3">
                 <Link to="/" className="block">
-                  <div className="feature boxed boxed--border border--round"> <img className="icon-n1" src="images/socialinfluence2.svg"/> <span className="h4 color--primary"><h5>Social Influence</h5></span> </div>
+                  <div className="feature boxed boxed--border border--round"> <img className="icon-n1" src="images/socialinfluence2.svg"/> <span className="h4 color--primary"><h5>Social influence</h5></span> </div>
                 </Link>
               </div>
             </div>
@@ -152,7 +152,7 @@ class WebsiteHome extends Component {
                 </div>
               </div>
               <div className="col-md-6 col-lg-6 col-12 text-center">
-                <img alt="Image" src="images/B24.png" />
+                <img alt="Image" src="images/B25.png" />
               </div>
             </div>
           </div>
@@ -178,7 +178,7 @@ class WebsiteHome extends Component {
               <div className="col-md-6 my-auto">
                 <div className="switchable__text">
                   <h3>Analytics &amp; Insights</h3>
-                  <p className="lead"> Find the true identity of your users using our intelligence data servers. We keep on adding more features to your analytics.</p> <Link to="">Learn More »</Link>
+                  <p className="lead"> Find the true identity of your users using our intelligence data servers. We keep on adding more features to your analytics.</p> <Link to="/">Learn More »</Link>
                 </div>
               </div>
               <div className="col-md-6 col-lg-7 col-12 text-center">
@@ -196,7 +196,7 @@ class WebsiteHome extends Component {
                 <Link className="btn btn--primary type--uppercase" to="#customise-template">
                   <span className="btn__text">Follow the steps</span>
                 </Link>
-                <span className="block type--fine-print">or <Link to="index.html"> View Demos</Link></span>
+                <span className="block type--fine-print">or &nbsp; <Link to="index.html">  View Demos</Link></span>
               </div>
               <div className="col-md-6">
                 <img alt="Image" src="images/easiestsetup.png"/>
@@ -207,7 +207,7 @@ class WebsiteHome extends Component {
         </section>
         <hr/>
         
-        <section className="text-center">
+        <section className="text-center pb-2">
           <div className="container">
             <div className="row">
               <div className="col-md-10 col-lg-8">
@@ -217,25 +217,25 @@ class WebsiteHome extends Component {
             </div>
           </div>
         </section>
-        <section className="text-center">
+        <section className="text-center unpad--bottom">
           <div className="container">
             <div className="row">
-              <div className="col-md-4">
-                <div className="feature feature-3 boxed boxed--lg boxed--border"> <img className="icon-n1" src="images/activitynotifications2.svg" />
+              <div className="col-md-4 pr-0 pb-0 pl-0 pt-0">
+                <div className="feature feature-3 boxed boxed--lg boxed--border pr-0 pb-0 pl-0 pt-0"> <img className="icon-n1 mb-0" src="images/activitynotifications2.svg" />
                   <h3>Activity Notifications&nbsp;</h3>
-                  <p> Display recent sales &amp; activity and drive users to convert on your website. </p> <Link to=""> Learn More </Link>
+                  <p className="mb-0"> Display recent sales &amp; activity and drive users to convert on your website. </p> 
                 </div>
               </div>
-              <div className="col-md-4">
-                <div className="feature feature-3 boxed boxed--lg boxed--border"> <img className="icon-n1" src="images/liveviewers2.svg" />
+              <div className="col-md-4 pr-0 pb-0 pl-0 pt-0">
+                <div className="feature feature-3 boxed boxed--lg boxed--border pr-0 pb-0 pl-0 pt-0"> <img className="icon-n1 mb-0" src="images/liveviewers2.svg" />
                   <h3>Live Viewers</h3>
-                  <p> Show your new visitors that they are not the only ones on your website. Instill a 'Fear of missing out'.  </p> <Link to="#"> Learn More </Link> <span className="label">New</span>
+                  <p className="mb-0"> Show your new visitors that they are not the only ones on your website. Instill a 'Fear of missing out'.  </p>  <span className="label">New</span>
                 </div>
               </div>
-              <div className="col-md-4">
-                <div className="feature feature-3 boxed boxed--lg boxed--border"> <img className="icon-n1" src="images/customerprofiles2.svg" />
+              <div className="col-md-4 pr-0 pb-0 pl-0 pt-0">
+                <div className="feature feature-3 boxed boxed--lg boxed--border pr-0 pb-0 pl-0 pt-0"> <img className="icon-n1 mb-0" src="images/customerprofiles2.svg" />
                   <h3>Customer Profiles</h3>
-                  <p> We will show you the true identities of your customers. Knowing more will help you in selling more!</p> <Link to="#"> Learn More </Link>
+                  <p className="mb-0"> We will show you the true identities of your customers. Knowing more will help you in selling more!</p>
                 </div>
               </div>
             </div>
@@ -244,23 +244,23 @@ class WebsiteHome extends Component {
         <section className="text-center">
           <div className="container">
             <div className="row">
-              <div className="col-md-4">
-                <div className="feature feature-3 boxed boxed--lg boxed--border"> <img className="icon-n1" src="images/customerjourney2.svg" />
+              <div className="col-md-4 pr-0 pb-0 pl-0 pt-0">
+                <div className="feature feature-3 boxed boxed--lg boxed--border pr-0 pb-0 pl-0 pt-0"> <img className="icon-n1 mb-0" src="images/customerjourney2.svg" />
                   <h3>Customer Journeys</h3>
-                  <p> Get to know about your customer's journey before it converts. </p> <Link to="#"> Learn More </Link>
+                  <p className="mb-0"> Get to know about your customer's journey before it converts. </p>
                 </div>
               </div>
-              <div className="col-md-4">
-                <div className="feature feature-3 boxed boxed--lg boxed--border"> <img className="icon-n1" src="images/customrules2.svg" />
+              <div className="col-md-4 pr-0 pb-0 pl-0 pt-0">
+                <div className="feature feature-3 boxed boxed--lg boxed--border pr-0 pb-0 pl-0 pt-0"> <img className="icon-n1 mb-0" src="images/customrules2.svg" />
                   <h3>Custom Rules</h3>
-                  <p> Control notifications behavior on your website. Customize timings &amp; delays. </p> <Link to="#"> Learn More </Link>
+                  <p className="mb-0"> Control notifications behavior on your website. Customize timings &amp; delays. </p> 
                   <span className="label">New</span>
                 </div>
               </div>
-              <div className="col-md-4">
-                <div className="feature feature-3 boxed boxed--lg boxed--border"> <img className="icon-n1" src="images/mobileready2.svg" />
+              <div className="col-md-4 pr-0 pb-0 pl-0 pt-0">
+                <div className="feature feature-3 boxed boxed--lg boxed--border pr-0 pb-0 pl-0 pt-0"> <img className="icon-n1 mb-0" src="images/mobileready2.svg" />
                   <h3>Mobile Ready</h3>
-                  <p> Show notifications to your mobile users as well. Customize behavior according to your user's location. </p> <Link to="#"> Learn More </Link>
+                  <p className="mb-0"> Show notifications to your mobile users as well. Customize behavior according to your user's location. </p> 
                 </div>
               </div>
             </div>
