@@ -340,6 +340,7 @@ export class Setting extends Component {
                   <Col md={12}>
                     <FormControl
                       type="text"
+                      maxLength={notification.notificationName === "Recent Activity"?"35":"15"}
                       value={contentText}
                       placeholder="Enter content for notification"
                       id="contentText"
