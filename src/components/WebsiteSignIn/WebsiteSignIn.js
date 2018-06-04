@@ -10,6 +10,9 @@ import { browserHistory } from 'react-router';
 import SocialLink from './SocialLink';
 import { base } from 'services/api';
 import { toast } from 'react-toastify';
+import { HelpBlock } from 'react-bootstrap';
+
+import './WebsiteSignIn.scss';
 
 const toastConfig = {
   position: toast.POSITION.BOTTOM_LEFT,
@@ -27,7 +30,8 @@ class WebsiteSignIn extends Component {
       password: '',
       isPasswordShown: false,
       isEmailValid: false,
-      isPwdValid: false
+      isPwdValid: false,
+      error: ''
     };
   }
   // Submit form
@@ -38,10 +42,11 @@ class WebsiteSignIn extends Component {
     // TODO: Redirect to dashboard on successfull login.
     login(this.refs.email.value, this.refs.password.value).then(res => {
       store.dispatch(loginSuccess(res));
+      this.setState({error: ''});
       toast.info('Successfull', toastConfig);
       browserHistory.push('/dashboard');
     }).catch(err => {
-      toast.error(err, toastConfig);
+      this.setState({error: err});
     });
   };
 
@@ -50,7 +55,7 @@ class WebsiteSignIn extends Component {
     const { name, value } = event.target;
     const isEmailValid = validateEmail(this.refs.email.value);
     const isPwdValid = validatePassword(this.refs.password.value);
-    this.setState({ [name]: value, isEmailValid, isPwdValid });
+    this.setState({ [name]: value, isEmailValid, isPwdValid, error: '' });
   };
 
   // triggers when user leaves the email input field
@@ -58,9 +63,10 @@ class WebsiteSignIn extends Component {
     const value = event.target.value;
     const isEmailValid = validateEmail(value);
     this.setState({isEmailValid});
-    if (!isEmailValid)
-      toast.error("Enter a valid Email id", toastConfig);
-
+    if(!value)
+      this.setState({error: 'Email id required'});
+    else if (!isEmailValid)
+      this.setState({error: 'Enter a valid Email id'});
   };
 
   // triggers when user leaves the password input field
@@ -68,8 +74,10 @@ class WebsiteSignIn extends Component {
     const value = event.target.value;
     const isPwdValid = validatePassword(value);
     this.setState({isPwdValid});
-    if (!isPwdValid)
-      toast.error("Enter valid Password!", toastConfig);
+    if(!value)
+      this.setState({error: 'Password required'});
+    else if (!isPwdValid)
+      this.setState({error: 'Enter a valid Password'});
   };
 
   togglePasswordShown = () => {
@@ -122,10 +130,11 @@ class WebsiteSignIn extends Component {
                         onBlur={this.handlePasswordBlur}
                         onChange={this.handleInputChange}
                         />
-
-                      
+                        <HelpBlock>
+                          <p className="website-error">{this.state.error}</p>
+                        </HelpBlock>
                       </div>
-                 
+
                       <div className="col-9 frmcntl">
                         <input
                          className="button submit-button w-button btn btn--primary ml-0"
@@ -144,7 +153,7 @@ class WebsiteSignIn extends Component {
             </div>
 
               <div className="col-md-4 col-lg-4">
-                <p> <br /></p> 
+                <p> <br /></p>
                 <div className="mt--2">
                 <a href={`${base}connect/facebook`} className="link ">
                   <Link className="btn btn--icon bg--facebook" to="">
@@ -159,7 +168,7 @@ class WebsiteSignIn extends Component {
                   <Link className="btn btn--icon bg--googleplus" to="">
                     <span className="btn__text">
                       <i className="socicon socicon-google"></i>
-                      Login with Google 
+                      Login with Google
                     </span>
                   </Link>
                   </a>
