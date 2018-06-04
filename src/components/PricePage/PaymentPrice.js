@@ -4,6 +4,9 @@ import './PaymentPrice.scss';
 
 const PaymentPrice = ({planPeriod, planList, returnRates, handleMonthChange, handleSwitchChange, handleYearChange, externalValue, selectedPlan, handleCheckChange }) => {
   planList = planList.filter(plan => planPeriod == 12 ? plan.interval=='year': plan.interval=='month')
+  planList = planList.sort(function(a, b) {
+    return b.id - a.id;
+  });
   return (
     <div style={{width:'100%'}}>
       <div className="price">
