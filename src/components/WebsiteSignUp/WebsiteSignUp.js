@@ -123,10 +123,6 @@ class WebsiteSignUp extends Component {
                            placeholder="Password"
                             />
                         </div>
-<<<<<<< HEAD
-                        
-                        <div className="frmcntl col-11">
-=======
                         <div className="col-12">
                           <input
                            name="confirmPassword"
@@ -141,7 +137,6 @@ class WebsiteSignUp extends Component {
                            </HelpBlock>
                         </div>
                         <div className="frmcntl col-12">
->>>>>>> frontend/master
                           <input
                           type="submit"
                           className="button submit-button w-button btn btn--primary ml-0"
