@@ -36,7 +36,7 @@ import {
   WebsiteTerms,
   WebsitePolicy,
   WebsiteContact,
-  VerificationPage
+  VerificationPage,
 } from 'components';
 
 import {
@@ -44,6 +44,8 @@ import {
   DashboardContainer,
   ConnectPage
 } from 'containers';
+
+import WebsiteDemoPage from './components/WebsiteDemoPage/WebsiteDemoPage';
 
 
 
@@ -80,6 +82,7 @@ const MyRoutes = ({routerHistory, store}) => (
       <Route path="/terms-and-condtions" component={WebsiteTerms} />
       <Route path="/privacy-policy" component={WebsitePolicy} />
       <Route path="/contact" component={WebsiteContact} />
+      <Route path="/demopage" component={WebsiteDemoPage} />
       {/* <Route path="/login" component={LoginPage} /> */}
       {/* <Route path="/profile/company/:token" component={CompanyDetails} /> */}
       {/* <Route path="/register" component={RegisterPage} /> */}

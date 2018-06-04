@@ -12,6 +12,7 @@ export { default as WebsiteSignUp } from "./WebsiteSignUp/WebsiteSignUp";
 export { default as WebsiteContact } from "./WebsiteContact/WebsiteContact";
 export { default as WebsiteTerms } from "./WebsiteTerms/WebsiteTerms";
 export { default as WebsitePolicy } from "./WebsitePolicy/WebsitePolicy";
+export { default as WebsiteDemoPage}  from "./WebsiteDemoPage/WebsiteDemoPage";
 
 
 export { default as Footer } from "./Footer/Footer";

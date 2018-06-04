@@ -1,0 +1,124 @@
+import React, { Component } from 'react';
+import { Link } from "react-router";
+import {validateEmail, validatePassword, register, PASSWORD_MAX_LENGTH} from 'services/FormUtils';
+import { Animated } from "react-animated-css";
+import { Alert, HelpBlock } from 'react-bootstrap';
+import { store } from 'index.js';
+import { loginSuccess } from 'ducks/auth';
+import { browserHistory } from 'react-router';
+import { toast } from 'react-toastify';
+import { base } from 'services/api';
+
+
+class WebsiteDemoPage extends  Component  {
+
+
+    render()  {
+        
+        return (
+            <div className="main-container">
+            <section className="imagebg image--light cover cover-blocks bg--secondary">
+
+                <div className="container">
+                    <div className="row">
+                        <div className="col-md-6 col-lg-5 ">
+                            <div>
+                                <h1>Let’s start the show</h1>
+                                <p className="lead">
+                                    Tell us a little bit about yourself, and we’ll tell you a lot more about us.
+                                </p>
+                                <hr className="short" />
+                            </div>
+                        </div>
+                    </div>
+              
+                    <div className="col-md-4">
+                     <form>
+                        <div className="row">
+                            <div className="col-md-12">
+                                <input type="text" name="First Name" placeholder="First Name" />
+                            </div>
+                            <div className="col-md-12">
+                                <input type="text" name="Last Name" placeholder="Last Name" />
+                            </div>
+                            <div className="col-md-12">
+                                <input type="email" name="Email Address" placeholder="Email" />
+                            </div>
+                            <div className="col-md-12">
+                                <input type="number" name="Phone Number" placeholder="Phone" />
+                            </div>
+                            <div className="col-md-12">
+                                <button type="button" className="btn btn--primary col-md-12">Schedule a demo</button>
+                            </div>
+                        </div>
+                        <p><br/></p>
+                        <div className="row">
+                                <div className="col-md-12 col-lg-12">
+                                        <div>
+                                            <h1>Let's add your company details</h1>
+                                            <p className="lead">
+                                                    Tell us more about your use case so we can show you the very best of Influence.
+                                            </p>
+                                            <hr className="short" />
+                                        </div>
+                                </div>
+                                <div className="col-md-12">
+                                    <input type="text" name="Company" placeholder="Company" />
+                                </div>
+                                <div className="col-md-12">
+                                    <select  style={{"color": "#A8A8A8","fontSize":"16px"}} className="employees required select" id="account[help_desk_size]" name="account[help_desk_size]" placeholder="Number of employees" type="select">
+                                        <option value="" selected="">Number of employees</option>
+                                        <option value="5000+">5000+</option>
+                                        <option value="1000-4999">1000-4999</option>
+                                        <option value="500-999">500-999</option>
+                                        <option value="250-499">250-499</option>
+                                        <option value="100-249">100-249</option>
+                                        <option value="50-99">50-99</option>
+                                        <option value="10-49">10-49</option>
+                                        <option value="1-9">1-9</option>
+                                    </select>                                
+                                </div> 
+                                <div className="col-md-12">
+                                        <select style={{"color": "#A8A8A8","fontSize": "16px"}} className="department required select" id="department" name="department" placeholder="Department" type="select">
+                                            <option value="" selected="">Department</option>
+                                            <option value="Customer Service">Customer Service</option>
+                                            <option value="Facilities">Facilities</option>
+                                            <option value="Finance/Accounting">Finance/Accounting</option>
+                                            <option value="Human Resources">Human Resources</option>
+                                            <option value="IT">IT</option>
+                                            <option value="Legal">Legal</option>
+                                            <option value="Marketing">Marketing</option>
+                                            <option value="Professional Services/Consulting">Professional Services/Consulting</option>
+                                            <option value="Shared Service">Shared Service</option>
+                                        </select>
+                                </div>
+                                <div className="col-md-12">
+                                    <button id="button" className="btn btn--primary col-md-12">Submit</button>
+                                </div>
+                            </div>
+                        <p><br/></p>
+                        <div className="row">
+                                <div className="col-md-12 col-lg-12 ">
+                                        <div>
+                                            <h1>Thanks!</h1>
+                                            <p className="lead">
+                                                    We will be in touch with you shortly. In the meantime, we highly recommend starting a free trial.
+                                            </p>
+                                            <hr className="short" />
+                                        </div>
+                                    </div>
+                                <div className="col-md-12">
+                                    <button type="button" className="btn btn--primary col-md-12">Start your trial</button>
+                                </div>
+                            </div>
+                     </form>
+                   </div>
+                </div>
+            </section>
+        </div>
+        );
+    }
+
+}
+
+export default WebsiteDemoPage;

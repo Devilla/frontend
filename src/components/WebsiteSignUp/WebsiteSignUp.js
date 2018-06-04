@@ -26,7 +26,8 @@ class WebsiteSignUp extends Component {
       password: '',
       confirmPassword:'',
       isPasswordShown: false,
-      isRegistered: false
+      isRegistered: false,
+      error:''
     };
   }
 
