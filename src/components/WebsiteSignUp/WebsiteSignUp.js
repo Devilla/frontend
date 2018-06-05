@@ -101,9 +101,6 @@ class WebsiteSignUp extends Component {
       errorConfirmPassword: ''
     });
   }
-  componentDidMount(){
-    window.scrollTo(0, 0)
-  } 
 
   render() {
 
@@ -159,7 +156,7 @@ class WebsiteSignUp extends Component {
                             <p className="website-error">{errorEmail}</p>
                           </HelpBlock>
                         </div>
-                        <div className="col-12">
+                        <div className="col-11">
                           <input
                            name="password"
                            maxLength={PASSWORD_MAX_LENGTH}

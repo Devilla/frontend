@@ -37,6 +37,9 @@ import {
   WebsitePolicy,
   WebsiteContact,
   VerificationPage,
+  WebsiteDemoPage,
+  WebsiteCustStory
+
 } from 'components';
 
 import {
@@ -45,8 +48,8 @@ import {
   ConnectPage
 } from 'containers';
 
-import WebsiteDemoPage from 'components/WebsiteDemoPage/WebsiteDemoPage';
-import WebsiteCustStory from 'components/WebsiteCustStory/WebsiteCustStory';
+// import WebsiteDemoPage from 'components/WebsiteDemoPage/WebsiteDemoPage';
+// import WebsiteCustStory from 'components/WebsiteCustStory/WebsiteCustStory';
 
 
 
