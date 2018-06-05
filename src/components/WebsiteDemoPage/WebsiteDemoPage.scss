@@ -1,0 +1,16 @@
+div {
+    &.row.form-details-1 {
+        display: block;
+    }
+    &.row.form-details-2 {
+        display: none;
+    }
+    &.row.form-details-3 {
+        display: none;
+    }
+}
+
+.website-error {
+    padding: 10px 0px 0px 5px !important;
+    color: red;
+}
