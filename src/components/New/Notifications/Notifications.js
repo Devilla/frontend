@@ -198,8 +198,8 @@ class Notifications extends Component {
     {
       this.props.createConfiguration(configure);
     }
-    this.props.clearConfiguration();
-    this.setInitialState();
+    // this.props.clearConfiguration();
+    // this.setInitialState();
   }
 
   backConfiguration() {
