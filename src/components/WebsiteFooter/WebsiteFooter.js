@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from "react-router";
+import { Gdpr } from "img";
 
 class WebsiteFooter extends Component {
   render() {
@@ -42,14 +43,10 @@ class WebsiteFooter extends Component {
                   <li className="type--uppercase col-sm-4 col-md-2 h6"><Link to="/contact"> Contact Us </Link></li>
                 </ul>
               </div>
-              <div className="menu-vertical col-md-2">
+    
+              <div className="menu-vertical col-md-4 text-center ">
                 <ul>
-                <li className="type--uppercase col-sm-4 col-md-3 h6"><Link className="footer-menu-link" to="/privacy-policy"> <img src="./"/> </Link></li>
-                </ul>
-              </div>
-              <div className="menu-vertical col-md-2">
-                <ul>
-                 
+                <Link to="/privacy-policy"> <img alt="GDPR" src={Gdpr} width="100px" height="100px" className="mr-3"/></Link>
                 </ul>
               </div>
             </div>

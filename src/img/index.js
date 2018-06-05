@@ -29,6 +29,7 @@ export { default as Analyticsinsights10 } from './analyticsinsights10.png';
 export { default as Easiestsetup } from './easiestsetup.png';
 export { default as Activitynotifications2 } from './activitynotifications2.svg';
 export { default as Liveviewers2 } from './liveviewers2.svg';
+export { default as Gdpr }  from './gdpr.png';
 
 
 
