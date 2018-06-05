@@ -194,9 +194,8 @@ export class Setting extends Component {
   }
 
   render() {
-    const { notificationPanelStyle, handleContentChange, contentText, notification } = this.props;
-    // console.log(notificationPanelStyle,'<<<<------------------------------->>>>')
-    // console.log(notification, '==========================.')
+    const { notificationPanelStyle, handleContentChange, contentText, visitorText, notification } = this.props;
+
     const styles = reactCSS({
       'default': {
         colorSwatch: {
@@ -344,12 +343,31 @@ export class Setting extends Component {
                       value={contentText}
                       placeholder="Enter content for notification"
                       id="contentText"
-                      onChange={(e) => handleContentChange(e.target.value)}
+                      onChange={(e) => handleContentChange(e.target.id, e.target.value)}
                     />
                   </Col>
                 </Row>
               </Col>
             </Row>
+            {notification.notificationName !== "Recent Activity"  &&
+              <Row>
+                <Col md={12}>
+                  <h4>Name Setting</h4>
+                  <Row>
+                    <Col md={12}>
+                      <FormControl
+                        type="text"
+                        maxLength="10"
+                        value={visitorText}
+                        placeholder="Enter content for notification"
+                        id="visitorText"
+                        onChange={(e) => handleContentChange(e.target.id, e.target.value)}
+                      />
+                    </Col>
+                  </Row>
+                </Col>
+              </Row>
+            }
           </Tab>
           {notification.notificationName === "Live Visitor Count"  &&
             <Tab eventKey={3} title="Setting" className="bulk-settings">

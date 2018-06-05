@@ -57,17 +57,18 @@ const initialConfig = {
     fontFamily: 'inherit',
     fontWeight: 'normal',
     linkFontFamily: 'inherit',
-    linkFontWeight: 'normal'
+    linkFontWeight: 'normal',
+    selectDurationData: 'hours',
+    selectLastDisplayConversation: 'hours',
+    bulkData: 5,
+    recentNumber: 5,
+    recentConv: 5,
+    hideAnonymousConversion: true,
+    onlyDisplayNotification: false,
+    liveVisitorCount: 0
   },
-  selectDurationData: 'hours',
-  selectLastDisplayConversation: 'hours',
-  contentText: '',
-  bulkData: 5,
-  recentNumber: 5,
-  recentConv: 5,
-  hideAnonymousConversion: true,
-  onlyDisplayNotification: false,
-  liveVisitorCount: 0
+  visitorText: '',
+  contentText: ''
 };
 
 const initialState = fromJS({
