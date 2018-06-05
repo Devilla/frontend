@@ -115,7 +115,10 @@ class WebsitePricing extends Component {
       </div>
     })
   }
-
+  componentDidMount(){
+    window.scrollTo(0, 0)
+  } 
+  
   render() {
     return (<div className="main-container">
       <section className="text-center bg--secondary">

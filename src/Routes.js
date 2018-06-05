@@ -45,7 +45,10 @@ import {
   ConnectPage
 } from 'containers';
 
-import WebsiteDemoPage from './components/WebsiteDemoPage/WebsiteDemoPage';
+import WebsiteDemoPage from 'components/WebsiteDemoPage/WebsiteDemoPage';
+import WebsiteCustStory from 'components/WebsiteCustStory/WebsiteCustStory';
+
+
 
 
 
@@ -83,6 +86,8 @@ const MyRoutes = ({routerHistory, store}) => (
       <Route path="/privacy-policy" component={WebsitePolicy} />
       <Route path="/contact" component={WebsiteContact} />
       <Route path="/demopage" component={WebsiteDemoPage} />
+      <Route path="/customerStories" component={WebsiteCustStory} />
+      
       {/* <Route path="/login" component={LoginPage} /> */}
       {/* <Route path="/profile/company/:token" component={CompanyDetails} /> */}
       {/* <Route path="/register" component={RegisterPage} /> */}

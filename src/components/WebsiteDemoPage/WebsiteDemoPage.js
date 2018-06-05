@@ -27,6 +27,10 @@ class WebsiteDemoPage extends  Component  {
         };
     }
 
+    componentDidMount(){
+        window.scrollTo(0, 0)
+      } 
+      
     b1StepHandler = (event) => {
         (event.target.type === "button") ?   [ [$(".row.form-details-1").hide()],[  $(".row.form-details-2").show()] ] : " ";        
        
