@@ -14,6 +14,9 @@ class WebsiteFooter extends Component {
                   <li className="type--uppercase col-sm-4 col-md-3 h6"><Link className="footer-menu-link" to="/about"> About Us </Link> </li>
                   <li className="type--uppercase col-sm-4 col-md-3 h6"><Link className="footer-menu-link" to="/terms-and-condtions"> Terms &amp; Conditions </Link></li>
                   <li className="type--uppercase col-sm-4 col-md-3 h6"><Link className="footer-menu-link" to="/privacy-policy"> Privacy Policy </Link></li>
+                  
+                  
+
                 </ul>
               </div>
               <div className="menu-vertical col-md-3">
@@ -25,6 +28,9 @@ class WebsiteFooter extends Component {
                   <li className="type--uppercase col-sm-4 col-md-2 h6"><Link to="/login"> Login (Already a user?) </Link></li>
                   <li className="type--uppercase col-sm-4 col-md-2 h6"><Link to="/demopage"> SCHEDULE A DEMO </Link></li>
                   <li className="type--uppercase col-sm-4 col-md-2 h6"><Link to="/customerStories">customer stories</Link></li>
+                  <li className="type--uppercase col-sm-4 col-md-2 h6"><Link to="/featurepage">Features</Link></li>
+                  
+
                 </ul>
               </div>
               <div className="menu-vertical col-md-2">
@@ -38,7 +44,7 @@ class WebsiteFooter extends Component {
               </div>
               <div className="menu-vertical col-md-2">
                 <ul>
-                  
+                <li className="type--uppercase col-sm-4 col-md-3 h6"><Link className="footer-menu-link" to="/privacy-policy"> <img src="./"/> </Link></li>
                 </ul>
               </div>
               <div className="menu-vertical col-md-2">
@@ -54,7 +60,7 @@ class WebsiteFooter extends Component {
           <div className="footer__lower text-center-xs unpad--bottom">
             <div className="container">
               <div className="row">
-                <div className="col-sm-6"> <span className="type--fine-print">Â© <span className="update-year">2018 Influence&nbsp;</span>&nbsp;â€” All Rights Reserved</span>
+                <div className="col-sm-6"> <span className="type--fine-print">© <span className="update-year">2018 Influence&nbsp;</span>&nbsp; All Rights Reserved</span>
                 </div>
                 <div className="col-sm-6 text-right text-center-xs">
                   <ul className="social-list list-inline">

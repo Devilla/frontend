@@ -38,8 +38,8 @@ import {
   WebsiteContact,
   VerificationPage,
   WebsiteDemoPage,
-  WebsiteCustStory
-
+  WebsiteCustStory,
+  WebsiteFeature
 } from 'components';
 
 import {
@@ -47,9 +47,6 @@ import {
   DashboardContainer,
   ConnectPage
 } from 'containers';
-
-// import WebsiteDemoPage from 'components/WebsiteDemoPage/WebsiteDemoPage';
-// import WebsiteCustStory from 'components/WebsiteCustStory/WebsiteCustStory';
 
 
 
@@ -90,6 +87,7 @@ const MyRoutes = ({routerHistory, store}) => (
       <Route path="/contact" component={WebsiteContact} />
       <Route path="/demopage" component={WebsiteDemoPage} />
       <Route path="/customerStories" component={WebsiteCustStory} />
+      <Route path="/featurepage" component={WebsiteFeature} />
       
       {/* <Route path="/login" component={LoginPage} /> */}
       {/* <Route path="/profile/company/:token" component={CompanyDetails} /> */}

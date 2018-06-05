@@ -32,12 +32,18 @@ class WebsiteDemoPage extends  Component  {
       } 
       
     b1StepHandler = (event) => {
-        (event.target.type === "button") ?   [ [$(".row.form-details-1").hide()],[  $(".row.form-details-2").show()] ] : " ";        
+        (event.target.type === "button") ?   [ [$(".row.form-details-1").fadeOut(),
+                                                $(".row.form-details-1").hide()],
+                                              [ $(".row.form-details-2").fadeIn(),
+                                                $(".row.form-details-2").show()] ] : " ";        
        
     }
 
     b2StepHandler = (event) => {
-        (event.target.type === "button") ?   [ [$(".row.form-details-2").hide()],[  $(".row.form-details-3").show()] ] : " ";
+        (event.target.type === "button") ?   [ [$(".row.form-details-2").fadeOut(),
+                                                $(".row.form-details-2").hide()],
+                                               [ $(".row.form-details-3").fadeIn(),
+                                                 $(".row.form-details-3").show()] ] : " ";
         
     }
     nextStepHandler = () => {
