@@ -4,7 +4,7 @@ import { Card } from '../notification/template/common';
 import { Notification } from '../notification/template/common/notification'
 import { Setting } from '../notification/template/common/settings'
 import Switch from 'react-flexible-switch';
-import './NotificationConfigure.css';
+import './NotificationConfigure.scss';
 
 const NotificationConfigure = ({
     notification,
@@ -43,7 +43,7 @@ const NotificationConfigure = ({
                     notificationPanelStyle={notificationPanelStyle}
                   />
                 </Col>
-                <div>
+                <div className="notificationSwitch">
                   <Switch
                     circleStyles={{ onColor: 'blue', offColor: 'gray', diameter: 18 }}
                     switchStyles={{ width: 50 }}
