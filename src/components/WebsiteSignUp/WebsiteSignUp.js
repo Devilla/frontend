@@ -35,6 +35,12 @@ class WebsiteSignUp extends Component {
     };
   }
 
+  componentWillMount() {
+    console.log(this.props.location.query.email, "=========location")
+    if(this.props.location && this.props.location.query.email)
+      this.setState({email: this.props.location.query.email});
+  }
+
   handleInputChange = event => {
     const {name, value} = event.target;
     this.setState({[name]: value, error: '', errorUsername: '', errorEmail: '', errorPassword:'', errorConfirmPassword:''});
@@ -106,7 +112,7 @@ class WebsiteSignUp extends Component {
     const isPwdValid = validatePassword(this.state.password) && validatePassword(this.state.confirmPassword)  && this.state.confirmPassword===this.state.confirmpassword;
     const isFormValid = isEmailValid && isPwdValid;
 
-    const { isRegistered, error, errorUsername, errorEmail, isPasswordShown, errorPassword, errorConfirmPassword } = this.state;
+    const { email, isRegistered, error, errorUsername, errorEmail, isPasswordShown, errorPassword, errorConfirmPassword } = this.state;
 
     // if registered show 'check mail' message else show the registration form
     const formContent = isRegistered
@@ -145,6 +151,7 @@ class WebsiteSignUp extends Component {
                         <div className="col-12">
                           <input
                           name="email"
+                          value={email}
                           onBlur={this.handleEmailBlur}
                           onChange={this.handleInputChange}
                           placeholder="Email Address"
