@@ -5,7 +5,8 @@ import {
     Col,
     Table,
     Button,
-    Glyphicon
+    Glyphicon,
+    HelpBlock
 } from 'react-bootstrap';
 import { browserHistory } from 'react-router';
 import { connect } from 'react-redux';
@@ -15,9 +16,11 @@ import { pagethArray } from 'components/Template/data'
 import { fetchPageUrl, createPageUrl, clearLeads, removePageUrl } from 'ducks/pageurl';
 import { fetchOneRules, clearRules } from 'ducks/rules';
 import { validatePath } from 'components/Common/function';
-import { ToastContainer, toast } from 'react-toastify';
-import { css, checked } from 'glamor';
+import { css } from 'glamor';
 import $ from 'jquery';
+import Popup from 'react-popup';
+
+import './DisplayPage.scss';
 
 class DisplayPage extends Component{
   constructor(){
@@ -28,7 +31,8 @@ class DisplayPage extends Component{
         url: '',
         status: '',
         class: '',
-        type: ''
+        type: '',
+        error: ''
       },
     };
     this.handleNextState = this.handleNextState.bind(this);
@@ -64,7 +68,24 @@ class DisplayPage extends Component{
   }
 
   handleNextState() {
-    browserHistory.push('/notification');
+    console.log(this.props.displayUrls, "=============>");
+    if(!this.props.displayUrls.length)
+      return this.setState({error: "Add a display path"});
+    // if()
+    // Popup.create({
+    //   title: "Campaign is Live",
+    //   // content: 'Campaign is Live',
+    //   buttons: {
+    //     right: [{
+    //       text: 'Finish',
+    //       className: 'default',
+    //       action: function () {
+    //         browserHistory.push('/dashboard');
+    //         Popup.close();
+    //       }
+    //     }]
+    //   }
+    // });
   }
 
   handleBackState() {
@@ -98,33 +119,14 @@ class DisplayPage extends Component{
       class: 'warning',
       type: 'display'
     };
-    this.setState({displayUrl: displayUrl});
+    this.setState({displayUrl: displayUrl, error: ''});
   }
+
   handleWebsiteAuth(evt) {
-    if (! validatePath(evt.target.value)) {
-      checkUrl:true
-      toast("Enter valid path", {
-        position: toast.POSITION.BOTTOM_LEFT,
-        className: css({background: "#dd5258", color: '#fff'}),
-        autoClose: 2000
-      });
-
-    } else {
-      $('.error-bg').fadeOut().html('')
-    }
+    if (! validatePath(evt.target.value))
+      return this.setState({error: "Please enter a valid path"});
   }
-  handleAddButton(evt) {
-    evt.preventDefault();
-    var tokenverify = this.handleCheckCookie();
-    const data = {
-      campaignName: this.state.campaignname,
-      websiteUrl: this.state.website,
-      profile: this.props.profile._id
-    };
-    return this.props.createCampaign(data)
-    // this.props.callbackFromParent({'active': 2});
 
-  }
   deleteDisplayUrl(id, index) {
     this.props.removePageUrl(id, index);
   }
@@ -180,8 +182,9 @@ class DisplayPage extends Component{
   }
 
   render(){
+    const { error, displayUrl } = this.state;
     return (
-      <div className="content">
+      <div className="content display-page">
         <Grid fluid>
           <Tabs active="6" callbackFromParent={this.activeState}/>
           <div className="tabscontent">
@@ -200,14 +203,14 @@ class DisplayPage extends Component{
             </Row>
             <Row>
               <Col md={12}>
-                <div onSubmit={this.handleAddButton}>
+                <div>
                   <div className="input-group">
                     <input
                     type="text"
                     className="form-control txtpageurl"
                     placeholder="Path URL  (For eg. /mypage, /register, /products, /design/front etc."
                     aria-describedby="urladd"
-                    value={this.state.displayUrl.url}
+                    value={displayUrl.url}
                     onChange={this.handlePageUrl}
                     onBlur={this.handleWebsiteAuth.bind(this)}
                     onKeyUp={(e) => e.keyCode === 13?this.addPageUrl():null}/>
@@ -222,6 +225,9 @@ class DisplayPage extends Component{
                       </Button>
                     </span>
                   </div>
+                  <HelpBlock>
+                    <p className="website-error">{error}</p>
+                  </HelpBlock>
                 </div>
               </Col>
             </Row>
@@ -268,7 +274,6 @@ class DisplayPage extends Component{
             </Row>
           </div>
         </Grid>
-        <ToastContainer hideProgressBar={true}/>
       </div>
     );
   }

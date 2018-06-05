@@ -10,6 +10,9 @@ import { browserHistory } from 'react-router';
 import SocialLink from './SocialLink';
 import { base } from 'services/api';
 import { toast } from 'react-toastify';
+import { Alert, HelpBlock } from 'react-bootstrap';
+
+import './WebsiteSignIn.scss';
 
 const toastConfig = {
   position: toast.POSITION.BOTTOM_LEFT,
@@ -27,7 +30,10 @@ class WebsiteSignIn extends Component {
       password: '',
       isPasswordShown: false,
       isEmailValid: false,
-      isPwdValid: false
+      isPwdValid: false,
+      error: '',
+      errorEmail: '',
+      errorPassword: ''
     };
   }
   // Submit form
@@ -35,13 +41,17 @@ class WebsiteSignIn extends Component {
     event.stopPropagation();
     event.preventDefault();
 
+    if(!this.refs.email.value || !this.refs.password.value)
+      this.setState({error: 'All fields are required'});
+
     // TODO: Redirect to dashboard on successfull login.
     login(this.refs.email.value, this.refs.password.value).then(res => {
       store.dispatch(loginSuccess(res));
+      this.setState({error: ''});
       toast.info('Successfull', toastConfig);
       browserHistory.push('/dashboard');
     }).catch(err => {
-      toast.error(err, toastConfig);
+      this.setState({error: err});
     });
   };
 
@@ -50,7 +60,7 @@ class WebsiteSignIn extends Component {
     const { name, value } = event.target;
     const isEmailValid = validateEmail(this.refs.email.value);
     const isPwdValid = validatePassword(this.refs.password.value);
-    this.setState({ [name]: value, isEmailValid, isPwdValid });
+    this.setState({ [name]: value, isEmailValid, isPwdValid, error: '', errorEmail: '', errorPassword: '' });
   };
 
   // triggers when user leaves the email input field
@@ -58,9 +68,10 @@ class WebsiteSignIn extends Component {
     const value = event.target.value;
     const isEmailValid = validateEmail(value);
     this.setState({isEmailValid});
-    if (!isEmailValid)
-      toast.error("Enter a valid Email id", toastConfig);
-
+    if(!value)
+      this.setState({errorEmail: 'Email id required'});
+    else if (!isEmailValid)
+      this.setState({errorEmail: 'Enter a valid Email id'});
   };
 
   // triggers when user leaves the password input field
@@ -68,8 +79,10 @@ class WebsiteSignIn extends Component {
     const value = event.target.value;
     const isPwdValid = validatePassword(value);
     this.setState({isPwdValid});
-    if (!isPwdValid)
-      toast.error("Enter valid Password!", toastConfig);
+    if(!value)
+      this.setState({errorPassword: 'Password required'});
+    else if (!isPwdValid)
+      this.setState({errorPassword: 'Enter a valid Password'});
   };
 
   togglePasswordShown = () => {
@@ -78,18 +91,19 @@ class WebsiteSignIn extends Component {
     });
   };
 
-
-
   render() {
     const mousepoint ={
       cursor : "pointer"
     }
+
+    const { error, errorEmail, isPasswordShown, errorPassword, isEmailValid, isPwdValid } = this.state;
+
     return (
-      <div classNameName="main-container">
+      <div className="main-container">
         <section className="switchable switchable--switch bg--secondary">
           <div className="container">
-            <div className="row justify-content-between">
-              <div className="col-md-6 col-lg-6">
+            <div className="row justify-content-center">
+              <div className="col-sm-12 col-md-7 col-lg-5">
                 <div className="">
                   <h2>Welcome back!</h2>
                   <p className="lead">
@@ -98,59 +112,67 @@ class WebsiteSignIn extends Component {
                     </span>
                   </p>
                   <hr className="short" />
+
                   <form   onSubmit={this.handleSubmit} className="loginfrm" >
                     <div className="row">
+                      {error &&
+                        <Alert bsStyle="warning" className="col-9">
+                        <strong>{error}</strong>
+                        </Alert>
+                      }
                       <div className="col-9 ">
                         <input name="email"
                         ref="email"
                         className="field w-input"
-                        value={this.state.email}
                         onBlur={this.handleEmailBlur}
                         onChange={this.handleInputChange}
                         placeholder="Email Address"
                         type="email"
                         />
+                        <HelpBlock>
+                          <p className="website-error">{errorEmail}</p>
+                        </HelpBlock>
                       </div>
                       <div className="col-9">
                         <input type="password"
                         name="Password"
-                        className="field w-input"
+                        className="field w-input "
                         name="password"
                         ref="password"
                         placeholder="Password"
-                        type={this.state.isPasswordShown ? 'text' : 'password'}
+                        type={isPasswordShown ? 'text' : 'password'}
                         maxLength={PASSWORD_MAX_LENGTH}
-                        value={this.state.name}
                         onBlur={this.handlePasswordBlur}
                         onChange={this.handleInputChange}
                         />
-
-                      
+                        <HelpBlock>
+                          <p className="website-error">{errorPassword}</p>
+                        </HelpBlock>
                       </div>
-                 
-                      <div className="col-4 frmcntl">
+
+                      <div className="col-9 frmcntl">
                         <input
-                         className="button submit-button w-button btn btn--primary"
+                         className="button submit-button w-button btn btn--primary ml-0"
                          type="submit"
                          value="Login"
                          style={mousepoint}
-                         disabled={!this.state.isEmailValid || !this.state.isPwdValid}
+                         disabled={!isEmailValid || !isPwdValid}
                           />
                       </div>
                     </div>
                   </form>
                 </div>
               </div>
-              <div className="col-md-2">
-                <p> <br /> </p>        
-                <h3 className="mt--2"> &nbsp; &nbsp; Or, <br />You can </h3>
-              </div>
-              <div className="col-md-3 col-lg-4">
-                <p> <br /></p> 
+
+            <div className="vristrue">
+            </div>
+
+              <div className="col-md-4 col-lg-4">
+                <p> <br /></p>
                 <div className="mt--2">
-                <a href={`${base}connect/facebook`} className="link">
+                <a href={`${base}connect/facebook`} className="link ">
                   <Link className="btn btn--icon bg--facebook" to="">
-                    <span className="btn__text">
+                    <span className="btn__text ">
                       <i className="socicon socicon-facebook"></i>
                       Login with Facebook
                     </span>

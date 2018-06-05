@@ -5,7 +5,8 @@ import {
     Col,
     Table,
     Button,
-    Glyphicon
+    Glyphicon,
+    HelpBlock
 } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import Tabs from 'components/Template/tab'
@@ -14,7 +15,6 @@ import { pagethArray } from 'components/Template/data'
 import { fetchPageUrl, createPageUrl, clearPageUrl, removePageUrl } from 'ducks/pageurl';
 import { fetchOneRules, clearRules } from 'ducks/rules';
 import { validatePath } from 'components/Common/function';
-import { ToastContainer, toast } from 'react-toastify';
 import { css, checked } from 'glamor';
 import $ from 'jquery';
 
@@ -27,7 +27,8 @@ class CaptureLeads extends Component{
         url: '',
         status: '',
         class: '',
-        type: ''
+        type: '',
+        error: ''
       }
     };
     this.handleNextState = this.handleNextState.bind(this);
@@ -63,6 +64,8 @@ class CaptureLeads extends Component{
   }
 
   handleNextState() {
+    if(!this.props.leads.length)
+      return this.setState({error: "Add a display path"});
     this.setActiveState({active: 6});
   }
 
@@ -96,20 +99,12 @@ class CaptureLeads extends Component{
       class: 'warning',
       type: 'lead'
     };
-    this.setState({lead: lead});
+    this.setState({lead: lead, error: ''});
   }
-  handleWebsiteAuth(evt) {
-    if (! validatePath(evt.target.value)) {
-      checkUrl:true
-      toast("Enter valid path", {
-        position: toast.POSITION.BOTTOM_LEFT,
-        className: css({background: "#dd5258", color: '#fff'}),
-        autoClose: 2000
-      });
 
-    } else {
-      $('.error-bg').fadeOut().html('')
-    }
+  handleWebsiteAuth(evt) {
+    if (! validatePath(evt.target.value))
+      return this.setState({error: "Please enter a valid path"});
   }
 
   deleteLead(id, index) {
@@ -167,6 +162,7 @@ class CaptureLeads extends Component{
   }
 
   render(){
+    const { error, lead } = this.state;
     return (
       <div className="content">
         <Grid fluid>
@@ -193,7 +189,7 @@ class CaptureLeads extends Component{
                    className="form-control txtpageurl"
                    placeholder="Path URL  (For eg. /mypage, /register, /products, /design/front etc."
                    aria-describedby="urladd"
-                   value={this.state.lead.url}
+                   value={lead.url}
                    onChange={this.handlePageUrl}
                    onBlur={this.handleWebsiteAuth.bind(this)}
                    onKeyUp={(e) => e.keyCode === 13?this.addPageUrl():null}
@@ -205,6 +201,9 @@ class CaptureLeads extends Component{
                     href="#" onClick={this.addPageUrl}>Add</a>
                   </span>
                 </div>
+                <HelpBlock>
+                  <p className="website-error">{error}</p>
+                </HelpBlock>
               </Col>
             </Row>
             <Row>
@@ -259,7 +258,6 @@ class CaptureLeads extends Component{
             </Row>
           </div>
         </Grid>
-        <ToastContainer hideProgressBar={true}/>
       </div>
     );
   }

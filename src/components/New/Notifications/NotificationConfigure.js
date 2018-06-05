@@ -10,6 +10,7 @@ const NotificationConfigure = ({
     notification,
     activity,
     contentText,
+    visitorText,
     setDefaultPanel,
     handleActivityChange,
     handleContentChange,
@@ -37,6 +38,7 @@ const NotificationConfigure = ({
                 <Col md={6}>
                   <Notification
                     contentText={contentText}
+                    visitorText={visitorText}
                     notification={notification}
                     notificationPanelStyle={notificationPanelStyle}
                   />
@@ -54,6 +56,7 @@ const NotificationConfigure = ({
                 <Col md={6}>
                   <Setting
                     contentText={contentText}
+                    visitorText={visitorText}
                     notification={notification}
                     notificationPanelStyle={notificationPanelStyle}
                     onConfigChange={handleNotificationStyleChange}

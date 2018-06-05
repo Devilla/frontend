@@ -2,15 +2,14 @@ import React, { Component } from 'react';
 import { Link } from "react-router";
 import { SignUp } from 'img';
 import {validateEmail, validatePassword, register, PASSWORD_MAX_LENGTH} from 'services/FormUtils';
-import { connect } from 'react-redux';
-import {Animated} from "react-animated-css";
-import Ionicon from 'react-ionicons';
-import {css} from 'glamor';
-import {Alert} from 'react-bootstrap';
-import {store} from 'index.js';
-import {loginSuccess, fetchRoles} from 'ducks/auth';
-import {browserHistory} from 'react-router';
+import { Animated } from "react-animated-css";
+import { Alert, HelpBlock } from 'react-bootstrap';
+import { store } from 'index.js';
+import { loginSuccess } from 'ducks/auth';
+import { browserHistory } from 'react-router';
 import { toast } from 'react-toastify';
+
+import './WebsiteSignUp.scss';
 
 const toastConfig = {
   position: toast.POSITION.BOTTOM_LEFT,
@@ -18,57 +17,52 @@ const toastConfig = {
   className: 'toast-style'
 };
 
-
-
-
 class WebsiteSignUp extends Component {
 
   constructor() {
     super();
     this.state = {
+      username: '',
       email: '',
       password: '',
       confirmPassword:'',
       isPasswordShown: false,
-      isRegistered: false
+      isRegistered: false,
+      errorPassword: '',
+      errorEmail: '',
+      errorConfirmPassword: '',
+      error: ''
     };
   }
 
-
   componentWillMount() {
-    store.dispatch(fetchRoles());
+    console.log(this.props.location.query.email, "=========location")
+    if(this.props.location && this.props.location.query.email)
+      this.setState({email: this.props.location.query.email});
   }
 
   handleInputChange = event => {
     const {name, value} = event.target;
-    this.setState({[name]: value});
+    this.setState({[name]: value, error: '', errorUsername: '', errorEmail: '', errorPassword:'', errorConfirmPassword:''});
   };
-
-    // triggers when user leaves the First Name input field
-  handleFirstnameBlur = event => {
-    const value = event.target.value;
-
-    if (!validateEmail(value))
-      toast.error("Enter a valid Email id", toastConfig);
-
-    };
 
   // triggers when user leaves the email input field
   handleEmailBlur = event => {
     const value = event.target.value;
-
-    if (!validateEmail(value))
-      toast.error("Enter a valid Email id", toastConfig);
-
-    };
+    if(!value)
+      this.setState({errorEmail: 'Email id required'});
+    else if (!validateEmail(value))
+      this.setState({errorEmail: 'Enter a valid Email id'});
+  };
 
   // triggers when user leaves the password input field
   handlePasswordBlur = event => {
     const value = event.target.value;
-
-    if (!validatePassword(value))
-      toast.error("Enter valid Password!", toastConfig);
-    };
+    if(!value)
+      this.setState({errorPassword: 'Password required'});
+    else if (!validatePassword(value))
+      this.setState({errorPassword: 'Enter a valid Password'});
+  };
 
   togglePasswordShown = () => {
     this.setState({
@@ -80,34 +74,48 @@ class WebsiteSignUp extends Component {
   handleSubmit = (event) => {
     event.stopPropagation();
     event.preventDefault();
+    const { email, password, confirmPassword, username } = this.state;
+
+    if(!email || !password || !confirmPassword || !username)
+      return this.setState({error: "All fields are required"});
+    if(password !== confirmPassword)
+      return this.setState({errorConfirmPassword: 'Password doesnot match'});
 
     // TODO: Show 'Check email for further instructions.' message on success
-    register(this.state.email, this.state.password).then(res => {
-
+    register(email, password).then(res => {
         toast.info('Successfull', toastConfig);
         store.dispatch(loginSuccess(res));
-        // window.location.assign(window.location.origin+'/getting-started');
         browserHistory.push('/getting-started');
-        this.setState({isRegistered: true});
-      // TODO: check response before treating it as successfull
+        this.setState({isRegistered: true, error: ''});
     }).catch(err => {
-      toast.error(err, toastConfig);
+      this.setState({error: err});
     });
-
   };
 
+  componentWillUnmount() {
+    this.setState({
+      username: '',
+      email: '',
+      password: '',
+      confirmPassword: '',
+      error: '',
+      errorUsername: '',
+      errorEmail: '',
+      errorPassword: '' ,
+      errorConfirmPassword: ''
+    });
+  }
+
   render() {
-
-
-
 
     const isEmailValid = validateEmail(this.state.email);
     const isPwdValid = validatePassword(this.state.password) && validatePassword(this.state.confirmPassword)  && this.state.confirmPassword===this.state.confirmpassword;
     const isFormValid = isEmailValid && isPwdValid;
 
+    const { email, isRegistered, error, errorUsername, errorEmail, isPasswordShown, errorPassword, errorConfirmPassword } = this.state;
 
     // if registered show 'check mail' message else show the registration form
-    const formContent = this.state.isRegistered
+    const formContent = isRegistered
       ? (<Alert bsStyle="success">
         Please check your mail for further instructions.
       </Alert>)
@@ -118,48 +126,64 @@ class WebsiteSignUp extends Component {
               <div className="row justify-content-between align-items-center">
                 <div className="col-md-6 col-lg-6">
                   <div className="switchable__text">
-                    <h2>Your first step towards conversions, Signup here.</h2>
-                    <span>Already have an account?&nbsp;
+                    <h3>Your first step towards conversions, Signup here.</h3>
+                    <span className=" type--fine-print">Already have an account?&nbsp;
                       <Link to="/login">Sign in</Link>
                     </span>
+                    {error &&
+                      <Alert bsStyle="warning">
+                      <strong>{error}</strong>
+                      </Alert>
+                    }
                     <hr className="short" />
                     <form>
                       <div className="row">
                       <div className="col-12">
                           <input type="text"
-                           name="firstname"
-                           value={this.state.firstname}
+                           name="username"
+                           onChange={this.handleInputChange}
+                           onBlur={(e) => !e.target.value?this.setState({errorUsername: "Username required"}):null}
                            placeholder="Your Name" />
+                           <HelpBlock>
+                             <p className="website-error">{errorUsername}</p>
+                           </HelpBlock>
                       </div>
                         <div className="col-12">
                           <input
                           name="email"
-                          value={this.state.email}
+                          value={email}
                           onBlur={this.handleEmailBlur}
                           onChange={this.handleInputChange}
                           placeholder="Email Address"
                           type="email" />
+                          <HelpBlock>
+                            <p className="website-error">{errorEmail}</p>
+                          </HelpBlock>
                         </div>
                         <div className="col-12">
                           <input
                            name="password"
                            maxLength={PASSWORD_MAX_LENGTH}
-                           value={this.state.name}
                            onBlur={this.handlePasswordBlur}
                            onChange={this.handleInputChange}
-                           type={this.state.isPasswordShown? 'text': 'password'}
+                           type={isPasswordShown? 'text': 'password'}
                            placeholder="Password"
                             />
+                          <HelpBlock>
+                            <p className="website-error">{errorPassword}</p>
+                          </HelpBlock>
                         </div>
                         <div className="col-12">
                           <input
-                           name="passwordConfirm"
+                           name="confirmPassword"
                            maxLength={PASSWORD_MAX_LENGTH}
-                           value={this.state.name}
-                           onBlur={this.handlePasswordBlur}
+                           onBlur={(e) => !e.target.value?this.setState({errorConfirmPassword: "Confirm Password required"}):null}
                            onChange={this.handleInputChange}
-                           type={this.state.isPasswordShown? 'text': 'password'}
+                           type={isPasswordShown? 'text': 'password'}
                            placeholder="Confirm Password" />
+                           <HelpBlock>
+                             <p className="website-error">{errorConfirmPassword}</p>
+                           </HelpBlock>
                         </div>
                         <div className="frmcntl col-12">
                           <input
@@ -188,23 +212,21 @@ class WebsiteSignUp extends Component {
     return (
     <div>
       <div className="authpage section innerpage">
-        {/* <div className="container"> */}
-          <div className="wrapper">
-            <Animated
-            className="leftwrap center"
+        <div className="wrapper">
+          <Animated
+          className="leftwrap center"
 
-            animationIn="fadeIn"
-            animationOut="fadeOut"
-            isVisible={true}>
-              <form
-              className="loginfrm"
-              onSubmit={this.handleSubmit}>
-                {formContent}
-              </form>
-              <div className="support"></div>
-            </Animated>
-          </div>
-        {/* </div> */}
+          animationIn="fadeIn"
+          animationOut="fadeOut"
+          isVisible={true}>
+            <form
+            className="loginfrm"
+            onSubmit={this.handleSubmit}>
+              {formContent}
+            </form>
+            <div className="support"></div>
+          </Animated>
+        </div>
       </div>
     </div>
     );

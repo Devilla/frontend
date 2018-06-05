@@ -39,23 +39,30 @@ import { browserHistory } from 'react-router';
 
 class WebsiteHome extends Component {
 
+  constructor() {
+    super();
+    this.state = {
+      email: ''
+    }
+  }
+
   render() {
     return (
       <div className="main-container">
         <section className="cover imagebg text-center parallax" data-overlay="0">
           <div className="container">
             <div className="row">
-              <div className="col-md-10 col-lg-10">
-                <h1 style={{fontSize: '46px'}}>Increase your website conversions using social proof notifications <br/> </h1>
-                <p className="lead col-md-12 text-center"> Influence helps you in converting more customers on your website by showing recent customer activity on your web pages </p>
+              <div className="col-md-10 col-lg-10 text-center">
+                <h2>Increase your website conversions using social proof notifications <br/> </h2>
+                <p className="typed-text typed-text--cursor h3"> Use Influence and get 3x more business right away &nbsp;</p>
               </div>
             </div>
             <br/> <br/>
-            <div className="">
+            <div className="text-center">
               <form className="form--horizontal row">
-                <div className="col-md-1"></div>
-                <div className="col-md-6"> <input type="text" name="email" placeholder="Enter your email" /> </div>
-                <div className="col-md-4"> <button type="submit" onClick={()=> browserHistory.push('/signup')} className="btn btn--primary type--uppercase">start your free trial</button> </div>
+                <div className="col-md-3 mr-1 pr-0 ml-0 pl-0"></div>
+                <div className="col-md-4 ml-0 pl-0 mr-0 pr-0"> <input type="text" name="email" placeholder="Enter your email" onChange={(e) => this.setState({email:e.target.value})} /> </div>
+                <div className="col-md-2 ml-0 pl-0 mr-0 pr-0"> <button type="submit" onClick={()=> browserHistory.push(`/signup?email=${this.state.email}`)} className="btn btn--primary">Start Free Trial</button> </div>
               </form>
             </div>
           </div>
@@ -64,7 +71,7 @@ class WebsiteHome extends Component {
           <div className="container">
             <div className="row">
               <div className="col-md-4">
-                <p className="lead">You are at right place, we are featured in,<br /></p>
+                <p className="lead">You are at right place, we are featured in:<br /></p>
               </div>
               <div className="col-md-8 text-center">
                 <ul className="list-inline social-list">
@@ -125,9 +132,9 @@ class WebsiteHome extends Component {
                                         <div className="col-lg-6 col-md-6 my-auto ml-5">
                                             <h3 className="text-center">Start your conversion journey!</h3>
                                              <form>
-                                              <div className="text-center ml-2">  <input className="validate-required validate-email" type="email" name="EMAIL" placeholder="Email Address"/> </div>
-                                              <div className="mt--1">  <button type="submit" className="btn btn--primary type--uppercase">Start your free trial</button> </div>
-                                                
+                                              <div className="text-center ml-2">  <input className="validate-required validate-email" type="email" name="EMAIL" placeholder="Email Address" onChange={(e) => this.setState({email:e.target.value})} /> </div>
+                                              <div className="mt--1">  <button type="submit" onClick={()=> browserHistory.push(`/signup?email=${this.state.email}`)} className="btn btn--primary type--uppercase">Start your free trial</button> </div>
+
                                             </form>
                                         </div>
                                       <div className="col-lg-5 col-md-2 mr-5">
@@ -198,7 +205,7 @@ class WebsiteHome extends Component {
               <div className="col-md-6 my-auto">
                 <div className="switchable__text">
                   <h3>Analytics &amp; Insights</h3>
-                  <p className="lead"> Once the visitor/customer enters in their email, we’ll show you who they really are using our intelligence data servers. We keep on adding more features to your analytics.</p> <Link to="#">Learn More »</Link>
+                  <p className="lead"> Find the true identity of your users using our intelligence data servers. We keep on adding more features to your analytics.</p> <Link to="/">Learn More »</Link>
                 </div>
               </div>
               <div className="col-md-6 col-lg-7 col-12 text-center">
@@ -216,7 +223,7 @@ class WebsiteHome extends Component {
                 <Link className="btn btn--primary type--uppercase" to="#customise-template">
                   <span className="btn__text">Follow the steps</span>
                 </Link>
-                <span className="block type--fine-print">or <Link to="index.html"> View Demos</Link></span>
+                <span className="block type--fine-print">or &nbsp; <Link to="index.html">  View Demos</Link></span>
               </div>
               <div className="col-md-6">
                 <img alt="Image" src={Easiestsetup}/>
@@ -226,8 +233,8 @@ class WebsiteHome extends Component {
           </div>
         </section>
         <hr/>
-        
-        <section className="text-center">
+
+        <section className="text-center pb-2">
           <div className="container">
             <div className="row">
               <div className="col-md-10 col-lg-8">
@@ -237,25 +244,25 @@ class WebsiteHome extends Component {
             </div>
           </div>
         </section>
-        <section className="text-center">
+        <section className="text-center unpad--bottom">
           <div className="container">
             <div className="row">
-              <div className="col-md-4">
-                <div className="feature feature-3 boxed boxed--lg boxed--border"> <img className="icon-n1" src={Activitynotifications2} />
+              <div className="col-md-4 pr-0 pb-0 pl-0 pt-0">
+                <div className="feature feature-3 boxed boxed--lg boxed--border pr-0 pb-0 pl-0 pt-0"> <img className="icon-n1 mb-0" src={Activitynotifications2} />
                   <h3>Activity Notifications&nbsp;</h3>
-                  <p> Display recent sales &amp; activity and drive users to convert on your website. </p> <Link to="#"> Learn More </Link>
+                  <p className="mb-0"> Display recent sales &amp; activity and drive users to convert on your website. </p>
                 </div>
               </div>
-              <div className="col-md-4">
-                <div className="feature feature-3 boxed boxed--lg boxed--border"> <img className="icon-n1" src={Liveviewers2} />
+              <div className="col-md-4 pr-0 pb-0 pl-0 pt-0">
+                <div className="feature feature-3 boxed boxed--lg boxed--border pr-0 pb-0 pl-0 pt-0"> <img className="icon-n1 mb-0" src={Liveviewers2} />
                   <h3>Live Viewers</h3>
-                  <p> Show your new visitors that they are not the only ones on your website. Instill a 'Fear of missing out'.  </p> <Link to="#"> Learn More </Link> <span className="label">New</span>
+                  <p className="mb-0"> Show your new visitors that they are not the only ones on your website. Instill a 'Fear of missing out'.  </p>  <span className="label">New</span>
                 </div>
               </div>
-              <div className="col-md-4">
-                <div className="feature feature-3 boxed boxed--lg boxed--border"> <img className="icon-n1" src={Customerprofiles2} />
+              <div className="col-md-4 pr-0 pb-0 pl-0 pt-0">
+                <div className="feature feature-3 boxed boxed--lg boxed--border pr-0 pb-0 pl-0 pt-0"> <img className="icon-n1 mb-0" src={Customerprofiles2} />
                   <h3>Customer Profiles</h3>
-                  <p> We will show you the true identities of your customers. Knowing more will help you in selling more!</p> <Link to="#"> Learn More </Link>
+                  <p className="mb-0"> We will show you the true identities of your customers. Knowing more will help you in selling more!</p>
                 </div>
               </div>
             </div>
@@ -264,23 +271,23 @@ class WebsiteHome extends Component {
         <section className="text-center">
           <div className="container">
             <div className="row">
-              <div className="col-md-4">
-                <div className="feature feature-3 boxed boxed--lg boxed--border"> <img className="icon-n1" src={Customerjourney2} />
+              <div className="col-md-4 pr-0 pb-0 pl-0 pt-0">
+                <div className="feature feature-3 boxed boxed--lg boxed--border pr-0 pb-0 pl-0 pt-0"> <img className="icon-n1 mb-0" src={Customerjourney2} />
                   <h3>Customer Journeys</h3>
-                  <p> Get to know about your customer's journey before it converts. </p> <Link to="#"> Learn More </Link>
+                  <p className="mb-0"> Get to know about your customer's journey before it converts. </p>
                 </div>
               </div>
-              <div className="col-md-4">
-                <div className="feature feature-3 boxed boxed--lg boxed--border"> <img className="icon-n1" src={Customrules2} />
+              <div className="col-md-4 pr-0 pb-0 pl-0 pt-0">
+                <div className="feature feature-3 boxed boxed--lg boxed--border pr-0 pb-0 pl-0 pt-0"> <img className="icon-n1 mb-0" src={Customrules2} />
                   <h3>Custom Rules</h3>
-                  <p> Control notifications behavior on your website. Customize timings &amp; delays. </p> <Link to="#"> Learn More </Link>
+                  <p className="mb-0"> Control notifications behavior on your website. Customize timings &amp; delays. </p>
                   <span className="label">New</span>
                 </div>
               </div>
-              <div className="col-md-4">
-                <div className="feature feature-3 boxed boxed--lg boxed--border"> <img className="icon-n1" src={Mobileready2} />
+              <div className="col-md-4 pr-0 pb-0 pl-0 pt-0">
+                <div className="feature feature-3 boxed boxed--lg boxed--border pr-0 pb-0 pl-0 pt-0"> <img className="icon-n1 mb-0" src={Mobileready2} />
                   <h3>Mobile Ready</h3>
-                  <p> Show notifications to your mobile users as well. Customize behavior according to your user's location. </p> <Link to="#"> Learn More </Link>
+                  <p className="mb-0"> Show notifications to your mobile users as well. Customize behavior according to your user's location. </p>
                 </div>
               </div>
             </div>
@@ -296,7 +303,7 @@ class WebsiteHome extends Component {
                       Let's get you started
                     </div>
                     <div className="col-lg-4 ">
-                      <Link className="btn btn--primary type--uppercase" to="#"> <span className="btn__text">Start your 7 days free trial<br /></span> </Link>
+                      <Link className="btn btn--primary type--uppercase" to="/signup"> <span className="btn__text">Start your 7 days free trial<br /></span> </Link>
                     </div>
                   </div>
                 </div>

@@ -70,11 +70,11 @@ export function* fetchUser() {
 export function* updateUser(action) {
   try {
     yield put(load());
-    const res = yield call(api.PUT, `user/${action.user._id}`, action.user);
+    const res = yield call(api.PUT, `user/${action.user.id}`, action.user);
     if(res.error)
       console.log(res.error);
     else
-      yield put(actions.fetchUserSuccess(action.user));
+      yield put(actions.fetchUserSuccess(res));
     yield put(loaded());
   } catch (error) {
     yield put(loaded());
@@ -124,7 +124,7 @@ export function* socialLogin(action) {
     const res = yield call(api.GET, action.url);
     if(res.error) {
       if(res.message.length)
-        yield toast.error(res.message[0].message);
+        yield toast.error(res.message[0].messages[0].id == "Auth.form.error.email.taken"? "Email address already taken": "Email address already registered");
       else
         yield toast.error(res.message.message);
       yield setTimeout(function() {

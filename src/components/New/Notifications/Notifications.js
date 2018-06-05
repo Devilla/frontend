@@ -42,19 +42,19 @@ const notificationPanelStyleDefault = { // TODO: Take style values from server
     b: 255,
     a: 1
   },
-
   fontFamily: 'inherit',
   fontWeight: 'normal',
   linkFontFamily: 'inherit',
   linkFontWeight: 'normal',
-  selectDurationData:'hours',
-  selectLastDisplayConversation:'hours',
-  bulkData:5,
-  liveVisitorCount:5,
-  recentNumber:5,
-  recentConv:5,
-  hideAnonymousConversion:true,
-  onlyDisplayNotification:false
+  selectDurationData: 'hours',
+  selectLastDisplayConversation: 'hours',
+  bulkData: 5,
+  liveVisitorCount: 0,
+  recentNumber: 5,
+  recentConv: 5,
+  hideAnonymousConversion: true,
+  onlyDisplayNotification: false,
+  visitorText: 'people'
 };
 
 class Notifications extends Component {
@@ -67,6 +67,7 @@ class Notifications extends Component {
       activity: true,
       notificationPanelStyle: notificationPanelStyleDefault,
       contentText: 'Recently signed up for Company Name',
+      visitorText: 'people',
       image: '',
       notifications : [],
     };
@@ -123,7 +124,8 @@ class Notifications extends Component {
       this.setState({
         activity: config.activity,
         notificationPanelStyle: config.panelStyle,
-        contentText: config.contentText
+        contentText: config.contentText,
+        visitorText: config.visitorText
       });
     }
   }
@@ -134,6 +136,7 @@ class Notifications extends Component {
       activity: true,
       notificationPanelStyle: notificationPanelStyleDefault,
       contentText: 'Recently signed up for Company Name',
+      visitorText: 'people',
       image: ''
     });
   }
@@ -155,8 +158,8 @@ class Notifications extends Component {
     this.setState({notificationPanelStyle: notificationStyle});
   };
 
-  handleContentChange(content) {
-    this.setState({ contentText: content});
+  handleContentChange(target, content) {
+    this.setState({ [target]: content});
   }
 
   activeState(val){
@@ -188,6 +191,7 @@ class Notifications extends Component {
       notificationType: id?id:this.state.notification._id,
       panelStyle: this.state.notificationPanelStyle,
       contentText: this.state.contentText,
+      visitorText: this.state.visitorText,
       campaign: this.props.campaign._id
     };
     let configuration = this.props.configuration.size == 0 ? null : this.props.configuration.size ? this.props.configuration.toJS() : this.props.configuration;
@@ -198,11 +202,14 @@ class Notifications extends Component {
     {
       this.props.createConfiguration(configure);
     }
-    // this.props.clearConfiguration();
-    // this.setInitialState();
   }
 
   backConfiguration() {
+    this.props.clearConfiguration();
+    this.setInitialState();
+  }
+
+  componentWillUnmount() {
     this.props.clearConfiguration();
     this.setInitialState();
   }
@@ -232,6 +239,7 @@ class Notifications extends Component {
                     notification={this.state.notification}
                     activity={this.state.activity}
                     contentText={this.state.contentText}
+                    visitorText={this.state.visitorText}
                     notificationPanelStyle={this.state.notificationPanelStyle}
                     handleContentChange={this.handleContentChange}
                     setDefaultPanel={this.setDefaultPanel}
