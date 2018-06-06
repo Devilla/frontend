@@ -18,9 +18,14 @@ import {
 import { browserHistory } from 'react-router';
 
 class WebsiteHome extends Component {
-  componentDidMount(){
-    window.scrollTo(0, 0)
-  } 
+
+  constructor() {
+    super();
+    this.state = {
+      email: ''
+    }
+  }
+
   render() {
     return (
       <div className="main-container">
@@ -36,8 +41,8 @@ class WebsiteHome extends Component {
             <div className="text-center">
               <form className="form--horizontal row">
                 <div className="col-md-3 mr-1 pr-0 ml-0 pl-0"></div>
-                <div className="col-md-4 ml-0 pl-0 mr-0 pr-0"> <input type="text" name="email" placeholder="Enter your email" /> </div>
-                <div className="col-md-2 ml-0 pl-0 mr-0 pr-0"> <button type="submit" onClick={()=> browserHistory.push('/signup')} className="btn btn--primary">Start Free Trial</button> </div>
+                <div className="col-md-4 ml-0 pl-0 mr-0 pr-0"> <input type="text" name="email" placeholder="Enter your email" onChange={(e) => this.setState({email:e.target.value})} /> </div>
+                <div className="col-md-2 ml-0 pl-0 mr-0 pr-0"> <button type="submit" onClick={()=> browserHistory.push(`/signup?email=${this.state.email}`)} className="btn btn--primary">Start Free Trial</button> </div>
               </form>
             </div>
           </div>
@@ -107,9 +112,9 @@ class WebsiteHome extends Component {
                                         <div className="col-lg-6 col-md-6 my-auto ml-5">
                                             <h3 className="text-center">Start your conversion journey!</h3>
                                              <form>
-                                              <div className="text-center ml-2">  <input className="validate-required validate-email" type="email" name="EMAIL" placeholder="Email Address"/> </div>
-                                              <div className="mt--1">  <button type="submit" className="btn btn--primary type--uppercase">Start your free trial</button> </div>
-                                                
+                                              <div className="text-center ml-2">  <input className="validate-required validate-email" type="email" name="EMAIL" placeholder="Email Address" onChange={(e) => this.setState({email:e.target.value})} /> </div>
+                                              <div className="mt--1">  <button type="submit" onClick={()=> browserHistory.push(`/signup?email=${this.state.email}`)} className="btn btn--primary type--uppercase">Start your free trial</button> </div>
+
                                             </form>
                                         </div>
                                       <div className="col-lg-5 col-md-2 mr-5">
@@ -208,7 +213,7 @@ class WebsiteHome extends Component {
           </div>
         </section>
         <hr/>
-        
+
         <section className="text-center pb-2">
           <div className="container">
             <div className="row">
@@ -225,7 +230,7 @@ class WebsiteHome extends Component {
               <div className="col-md-4 pr-0 pb-0 pl-0 pt-0">
                 <div className="feature feature-3 boxed boxed--lg boxed--border pr-0 pb-0 pl-0 pt-0"> <img className="icon-n1 mb-0" src="images/activitynotifications2.svg" />
                   <h3>Activity Notifications&nbsp;</h3>
-                  <p className="mb-0"> Display recent sales &amp; activity and drive users to convert on your website. </p> 
+                  <p className="mb-0"> Display recent sales &amp; activity and drive users to convert on your website. </p>
                 </div>
               </div>
               <div className="col-md-4 pr-0 pb-0 pl-0 pt-0">
@@ -255,14 +260,14 @@ class WebsiteHome extends Component {
               <div className="col-md-4 pr-0 pb-0 pl-0 pt-0">
                 <div className="feature feature-3 boxed boxed--lg boxed--border pr-0 pb-0 pl-0 pt-0"> <img className="icon-n1 mb-0" src="images/customrules2.svg" />
                   <h3>Custom Rules</h3>
-                  <p className="mb-0"> Control notifications behavior on your website. Customize timings &amp; delays. </p> 
+                  <p className="mb-0"> Control notifications behavior on your website. Customize timings &amp; delays. </p>
                   <span className="label">New</span>
                 </div>
               </div>
               <div className="col-md-4 pr-0 pb-0 pl-0 pt-0">
                 <div className="feature feature-3 boxed boxed--lg boxed--border pr-0 pb-0 pl-0 pt-0"> <img className="icon-n1 mb-0" src="images/mobileready2.svg" />
                   <h3>Mobile Ready</h3>
-                  <p className="mb-0"> Show notifications to your mobile users as well. Customize behavior according to your user's location. </p> 
+                  <p className="mb-0"> Show notifications to your mobile users as well. Customize behavior according to your user's location. </p>
                 </div>
               </div>
             </div>
@@ -278,7 +283,7 @@ class WebsiteHome extends Component {
                       Let's get you started
                     </div>
                     <div className="col-lg-4 ">
-                      <Link className="btn btn--primary type--uppercase" to="#"> <span className="btn__text">Start your 7 days free trial<br /></span> </Link>
+                      <Link className="btn btn--primary type--uppercase" to="/signup"> <span className="btn__text">Start your 7 days free trial<br /></span> </Link>
                     </div>
                   </div>
                 </div>
