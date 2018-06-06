@@ -4,9 +4,13 @@ div {
     }
     &.row.form-details-2 {
         display: none;
+        position: relative;
+        top: -50px;
     }
     &.row.form-details-3 {
         display: none;
+        position: relative;
+        top: -85px;
     }
 }
 

@@ -87,7 +87,7 @@ class WebsiteDemoPage extends  Component  {
                             <div className="col-md-8">
                                 <button
                                     type="button" 
-                                    className="btn btn--primary col-md-12"
+                                    className="btn btn--primary col-md-12 ml-0"
                                     onClick={this.b1StepHandler} >Schedule a demo
                                 </button>
                             </div>
@@ -136,7 +136,7 @@ class WebsiteDemoPage extends  Component  {
                                 <div className="col-md-8">
                                     <button 
                                         type="button"
-                                        className="btn btn--primary col-md-12"
+                                        className="btn btn--primary col-md-12 ml-0"
                                         onClick={this.b2StepHandler}>Submit
                                     </button>
                                 </div>
@@ -155,7 +155,7 @@ class WebsiteDemoPage extends  Component  {
                                 <div className="col-md-8">
                                     <button 
                                         type="button" 
-                                        className="btn btn--primary col-md-12"
+                                        className="btn btn--primary col-md-12 ml-0"
                                         onClick={this.nextStepHandler}>Start your trial
                                     </button>
                                 </div>

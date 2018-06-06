@@ -32,7 +32,7 @@ import {
   Customerjourney2,
   Customrules2,
   Mobileready2,
-  
+  Integration
 
 } from 'img';
 import { browserHistory } from 'react-router';
@@ -127,13 +127,13 @@ class WebsiteHome extends Component {
                                         <div className="col-lg-6 col-md-6 my-auto ml-5">
                                             <h3 className="text-center">Start your conversion journey!</h3>
                                              <form>
-                                              <div className="text-center ml-2">  <input className="validate-required validate-email" type="email" name="EMAIL" placeholder="Email Address"/> </div>
-                                              <div className="mt--1">  <button type="submit" className="btn btn--primary type--uppercase">Start your free trial</button> </div>
+                                              <div className="text-center ml-2 ">  <input className="validate-required validate-email col-md-7" type="email" name="EMAIL" placeholder="Email Address"/> </div>
+                                              <div className=" text-center mt--1 ml-2 ">  <button type="submit" className="btn btn--primary col-md-7">Start your free trial</button> </div>
                                                 
                                             </form>
                                         </div>
                                       <div className="col-lg-5 col-md-2 mr-5">
-                                    <img alt="Image" src={Startconverting}/>
+                                    <img alt="Conversion" src={Startconverting}/>
                                       </div>
                                 </div>
                                </div>
@@ -215,7 +215,7 @@ class WebsiteHome extends Component {
               <div className="col-md-6 col-lg-5">
                 <h2>Easiest Setup!</h2>
                 <p className="lead"> Anyone can setup Influence following few simple steps.</p>
-                <Link className="btn btn--primary type--uppercase" to="#customise-template">
+                <Link className="btn btn--primary " to="#customise-template">
                   <span className="btn__text">Follow the steps</span>
                 </Link>
                 <span className="block type--fine-print">or &nbsp; <Link to="index.html">  View Demos</Link></span>
@@ -288,6 +288,21 @@ class WebsiteHome extends Component {
             </div>
           </div>
         </section>
+        <section className="switchable col-md-12 mb-2">
+         <div className="container">
+            <div className="row justify-content-between align-items-center">
+              <div className="col-md-6 col-lg-5">
+                <p className="lead"> Make your cutomer conversion simple with brand new Pixel.Secure it now</p>
+                <Link className="btn btn--primary " to="/integrations">
+                  <span className="btn__text">Integration</span>
+                </Link>
+              </div>
+              <div className="col-md-6">
+                <img alt="Integration" src={Integration}/>
+              </div>
+            </div>
+            </div>
+        </section>
         <section className="imagebg" style={{ background: 'linear-gradient(to left, #b721ff,#21d4fd)'}} data-gradient-bg="#b721ff,#21d4fd,#21d4fd,#b721ff">
           <div className="container">
             <div className="row">
@@ -296,8 +311,9 @@ class WebsiteHome extends Component {
                   <div className="row justify-content-center p-5">
                     <div className="col-lg-4 my-auto h3">
                       Let's get you started
+                      
                     </div>
-                    <div className="col-lg-4 ">
+                    <div className="col-lg-4 col-sm-3 col-xs-2 my-auto">
                       <Link className="btn btn--primary type--uppercase" to="#"> <span className="btn__text">Start your 7 days free trial<br /></span> </Link>
                     </div>
                   </div>

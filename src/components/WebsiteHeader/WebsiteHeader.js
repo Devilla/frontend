@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react';
 import { Link } from "react-router";
 import { LogoInfluence } from 'img';
@@ -15,7 +16,7 @@ class WebsiteHeader extends Component {
                   <Link to="/"> <img className="logo logo-light" alt="logo" src={ LogoInfluence } /> </Link>
                 </div>
                 <div className="col-9 col-md-10 text-right">
-                  <Link to="/" className="hamburger-toggle" data-toggle-class="#menu1;hidden-xs hidden-sm"> 
+                  <Link to="/" className="hamburger-toggle" data-toggle-class="#menu1;hidden-xs"> 
                    <i className="icon icon--sm stack-interface stack-menu"></i> </Link>
                 </div>
               </div>
@@ -23,7 +24,7 @@ class WebsiteHeader extends Component {
           </div>
 
 
-          <nav id="menu1" className="bar bar-sm bar-1 hidden-xs bar--transparent">
+          <nav id="menu1" className="bar bar--sm bar-1 hidden-xs bar--transparent">
             <div className="container pr-0 pl-0">
 
               <div className="row">
@@ -33,13 +34,12 @@ class WebsiteHeader extends Component {
                   </div>
                 </div>
                 <div className="col-sm-0 pl-0 pr-0"></div>
-                <div className="col-lg-10 col-md-11 text-right pr-0 pl-0 my-auto">
-                  <div className="bar__module text-center">
-                    <ul className="menu-horizontal text-center">
+                <div className="col-lg-10 col-md-11 text-right pr-0 pl-0 text-left-xs text-left-sm">
+                  <div className="bar__module ">
+                    <ul className="menu-horizontal text-left">
                       <li> <Link to="/how-it-works">How it works</Link> </li>
-                      <li> <Link to="/integrations">INTEGRATIONS</Link> </li>
                       <li> <Link to="/pricing">PRICING</Link> </li>
-                      <li> <a href="https://blog.useinfluence.co/">BLOG</a></li>
+                      <li> <a href="https://blog.useinfluence.co/" target="_blank" >BLOG</a></li>
                     </ul>
                   </div>
                   <div className="bar__module ml-1">
