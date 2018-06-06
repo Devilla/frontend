@@ -250,19 +250,19 @@ class WebsiteHome extends Component {
               <div className="col-md-4">
                 <div className="feature feature-3 boxed boxed--lg boxed--border"> <img className="icon-n1" src={Activitynotifications2} />
                   <h3>Activity Notifications&nbsp;</h3>
-                  <p className="mb-0"> Display recent sales &amp; activity and drive users to convert on your website. </p>
+                  <p className="mb-0 lead h4"> Display recent sales &amp; activity and drive users to convert on your website. </p>
                 </div>
               </div>
               <div className="col-md-4">
                 <div className="feature feature-3 boxed boxed--lg boxed--border"> <img className="icon-n1" src={Liveviewers2} />
                   <h3>Live Viewers</h3>
-                  <p className="mb-0"> Show your new visitors that they are not the only ones on your website. Instill a 'Fear of missing out'.  </p>  <span className="label">New</span>
+                  <p className="mb-0 lead h4"> Show your new visitors that they are not the only ones on your website. Instill a 'Fear of missing out'.  </p>  <span className="label">New</span>
                 </div>
               </div>
               <div className="col-md-4">
                 <div className="feature feature-3 boxed boxed--lg boxed--border"> <img className="icon-n1" src={Customerprofiles2} />
                   <h3>Customer Profiles</h3>
-                  <p className="mb-0"> We will show you the true identities of your customers. Knowing more will help you in selling more!</p>
+                  <p className="mb-0 lead h4"> We will show you the true identities of your customers. Knowing more will help you in selling more!</p>
                 </div>
               </div>
             </div>
@@ -274,30 +274,31 @@ class WebsiteHome extends Component {
               <div className="col-md-4">
                 <div className="feature feature-3 boxed boxed--lg boxed--border"> <img className="icon-n1" src={Customerjourney2} />
                   <h3>Customer Journeys</h3>
-                  <p className="mb-0"> Get to know about your customer's journey before it converts. </p>
+                  <p className="mb-0 lead h4"> Get to know about your customer's journey before it converts. </p>
                 </div>
               </div>
               <div className="col-md-4">
                 <div className="feature feature-3 boxed boxed--lg boxed--border"> <img className="icon-n1" src={Customrules2} />
                   <h3>Custom Rules</h3>
-                  <p className="mb-0"> Control notifications behavior on your website. Customize timings &amp; delays. </p>
+                  <p className="mb-0 lead h4"> Control notifications behavior on your website. Customize timings &amp; delays. </p>
                   <span className="label">New</span>
                 </div>
               </div>
               <div className="col-md-4">
                 <div className="feature feature-3 boxed boxed--lg boxed--border"> <img className="icon-n1" src={Mobileready2} />
                   <h3>Mobile Ready</h3>
-                  <p className="mb-0"> Show notifications to your mobile users as well. Customize behavior according to your user's location. </p>
+                  <p className="mb-0 lead h4"> Show notifications to your mobile users as well. Customize behavior according to your user's location. </p>
                 </div>
               </div>
             </div>
           </div>
-        </section>
+        </section><hr/>
         <section className="switchable col-md-12 mb-2">
          <div className="container">
             <div className="row justify-content-between align-items-center">
               <div className="col-md-6 col-lg-5">
-                <p className="lead"> Make your cutomer conversion simple with brand new Pixel.Secure it now</p>
+                <h2>Hey ! What are you waiting for ? </h2>
+                <p className="lead"> Make your cutomer conversion simple with brand new Pixel. Secure it now !</p>
                 <Link className="btn btn--primary " to="/integrations">
                   <span className="btn__text">Integration</span>
                 </Link>
@@ -308,18 +309,18 @@ class WebsiteHome extends Component {
             </div>
             </div>
         </section>
-        <section className="imagebg" style={{ background: 'linear-gradient(to left, #b721ff,#21d4fd)'}} data-gradient-bg="#b721ff,#21d4fd,#21d4fd,#b721ff">
+        <section className="imagebg" style={{ background: "#14BBFA"}}>
           <div className="container">
             <div className="row">
               <div className="col-md-12">
                 <div className="cta cta-1 cta--horizontal text-center-xs">
                   <div className="row p-5">
-                    <div className="col-lg-4 my-auto h3">
-                      This could be the begining of a beautiful relationship
+                    <div className="col-md-12 text-center ">
+                      <span className="h2">This could be the begining of a beautiful relationship</span>
                     </div>
                   </div>
-                  <div className="row p-5">
-                    <div className="col-lg-4 ">
+                  <div className="row ">
+                    <div className="col-md-12 text-center pb-2">
                       <Link className="btn btn--primary type--uppercase" to="/signup"> <span className="btn__text">Start your 7 days free trial<br /></span> </Link>
                     </div>
                   </div>
