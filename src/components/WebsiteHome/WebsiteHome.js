@@ -38,9 +38,14 @@ import {
 import { browserHistory } from 'react-router';
 
 class WebsiteHome extends Component {
-  componentDidMount(){
-    window.scrollTo(0, 0)
-  } 
+
+  constructor() {
+    super();
+    this.state = {
+      email: ''
+    }
+  }
+
   render() {
     return (
       <div className="main-container">
@@ -56,8 +61,8 @@ class WebsiteHome extends Component {
             <div className="text-center">
               <form className="form--horizontal row">
                 <div className="col-md-3 mr-1 pr-0 ml-0 pl-0"></div>
-                <div className="col-md-4 ml-0 pl-0 mr-0 pr-0"> <input type="text" name="email" placeholder="Enter your email" /> </div>
-                <div className="col-md-2 ml-0 pl-0 mr-0 pr-0"> <button type="submit" onClick={()=> browserHistory.push('/signup')} className="btn btn--primary">Start Free Trial</button> </div>
+                <div className="col-md-4 ml-0 pl-0 mr-0 pr-0"> <input type="text" name="email" placeholder="Enter your email" onChange={(e) => this.setState({email:e.target.value})} /> </div>
+                <div className="col-md-2 ml-0 pl-0 mr-0 pr-0"> <button type="submit" onClick={()=> browserHistory.push(`/signup?email=${this.state.email}`)} className="btn btn--primary">Start Free Trial</button> </div>
               </form>
             </div>
           </div>
@@ -228,7 +233,7 @@ class WebsiteHome extends Component {
           </div>
         </section>
         <hr/>
-        
+
         <section className="text-center pb-2">
           <div className="container">
             <div className="row">
@@ -245,7 +250,7 @@ class WebsiteHome extends Component {
               <div className="col-md-4">
                 <div className="feature feature-3 boxed boxed--lg boxed--border"> <img className="icon-n1" src={Activitynotifications2} />
                   <h3>Activity Notifications&nbsp;</h3>
-                  <p className="mb-0"> Display recent sales &amp; activity and drive users to convert on your website. </p> 
+                  <p className="mb-0"> Display recent sales &amp; activity and drive users to convert on your website. </p>
                 </div>
               </div>
               <div className="col-md-4">
@@ -275,14 +280,14 @@ class WebsiteHome extends Component {
               <div className="col-md-4">
                 <div className="feature feature-3 boxed boxed--lg boxed--border"> <img className="icon-n1" src={Customrules2} />
                   <h3>Custom Rules</h3>
-                  <p className="mb-0"> Control notifications behavior on your website. Customize timings &amp; delays. </p> 
+                  <p className="mb-0"> Control notifications behavior on your website. Customize timings &amp; delays. </p>
                   <span className="label">New</span>
                 </div>
               </div>
               <div className="col-md-4">
                 <div className="feature feature-3 boxed boxed--lg boxed--border"> <img className="icon-n1" src={Mobileready2} />
                   <h3>Mobile Ready</h3>
-                  <p className="mb-0"> Show notifications to your mobile users as well. Customize behavior according to your user's location. </p> 
+                  <p className="mb-0"> Show notifications to your mobile users as well. Customize behavior according to your user's location. </p>
                 </div>
               </div>
             </div>
@@ -313,8 +318,8 @@ class WebsiteHome extends Component {
                       Let's get you started
                       
                     </div>
-                    <div className="col-lg-4 col-sm-3 col-xs-2 my-auto">
-                      <Link className="btn btn--primary type--uppercase" to="#"> <span className="btn__text">Start your 7 days free trial<br /></span> </Link>
+                    <div className="col-lg-4 ">
+                      <Link className="btn btn--primary type--uppercase" to="/signup"> <span className="btn__text">Start your 7 days free trial<br /></span> </Link>
                     </div>
                   </div>
                 </div>

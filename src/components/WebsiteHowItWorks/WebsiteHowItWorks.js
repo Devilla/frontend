@@ -149,7 +149,7 @@ class WebsiteHowItWorks extends Component {
             <div className="row">
               <div className="col-md-8 col-lg-6">
                 <div className="cta">
-                  <Link className="btn btn--primary btn--lg type--uppercase" to=""><span>Start your trial</span><br/><span className="labelm">7 Days</span></Link>
+                  <Link className="btn btn--primary btn--lg type--uppercase" to="/signup"><span>Start your trial</span><br/><span className="labelm">7 Days</span></Link>
                   <p className="lead"> Join the thousand companies using influence&nbsp;</p>
                   <p className="type--fine-print">or check out &nbsp;<Link to="index.html">more</Link></p>
                 </div>

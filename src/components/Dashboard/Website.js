@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { browserHistory } from 'react-router';
 
 export class Website extends Component{
 
@@ -15,7 +16,7 @@ export class Website extends Component{
        let tasks=[];
         for (var i = 0; i < data.length; i++) {
            tasks.push(
-                <tr key={i}>
+                <tr key={i} onClick={() => browserHistory.push('/campaigns')} style={{ cursor: 'pointer'}}>
                     <td>{i+1}. <i className="fas fa-globe"></i> {data[i].campaignName}</td>
                 </tr>
             );
