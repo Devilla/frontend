@@ -51,6 +51,9 @@ class WebsiteDemoPage extends  Component  {
         //handler for last button
     }
 
+    componentDidMount() {
+        window.scrollTo(0,0);
+      }
     render()  {
      
         return (

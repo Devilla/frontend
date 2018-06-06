@@ -90,7 +90,9 @@ class WebsiteSignIn extends Component {
       isPasswordShown: !this.state.isPasswordShown
     });
   };
-
+  componentDidMount() {
+    window.scrollTo(0,0);
+  }
  
   render() {
     const mousepoint ={

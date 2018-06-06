@@ -312,12 +312,13 @@ class WebsiteHome extends Component {
           <div className="container">
             <div className="row">
               <div className="col-md-12">
-                <div className="cta cta-1 cta--horizontal boxed boxed--border text-center-xs">
-                  <div className="row justify-content-center p-5">
+                <div className="cta cta-1 cta--horizontal text-center-xs">
+                  <div className="row p-5">
                     <div className="col-lg-4 my-auto h3">
-                      Let's get you started
-                      
+                      This could be the begining of a beautiful relationship
                     </div>
+                  </div>
+                  <div className="row p-5">
                     <div className="col-lg-4 ">
                       <Link className="btn btn--primary type--uppercase" to="/signup"> <span className="btn__text">Start your 7 days free trial<br /></span> </Link>
                     </div>

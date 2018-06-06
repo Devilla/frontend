@@ -30,6 +30,9 @@ class WebsitePricing extends Component {
       this.setState({servicebotPlans: res});
     });
   }
+  componentDidMount() {
+    window.scrollTo(0,0);
+  }
 
   handleChange(checked) {
     this.setState({checked});

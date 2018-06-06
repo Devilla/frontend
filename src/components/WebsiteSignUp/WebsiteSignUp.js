@@ -107,6 +107,9 @@ class WebsiteSignUp extends Component {
       errorConfirmPassword: ''
     });
   }
+  componentDidMount() {
+    window.scrollTo(0,0);
+  }
 
   render() {
 
