@@ -8,7 +8,7 @@ export const tdArray = [
 ];
 
 export const profileHeader = [
-	"Photo","Name","Email","Location","Country","Social Profile","Page View","Last Seen","First Seen","Action"
+	"Photo","Name","Email","Location","Country", "Sign up on","Action"
 ]
 
 export const profileData = [
