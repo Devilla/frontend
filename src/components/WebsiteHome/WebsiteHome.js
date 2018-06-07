@@ -70,10 +70,7 @@ class WebsiteHome extends Component {
         <section className="testimonials-1 space--xs bg--secondary">
           <div className="container">
             <div className="row">
-              <div className="col-md-4">
-                <p className="lead">You are at right place, we are featured in:<br /></p>
-              </div>
-              <div className="col-md-8 text-center">
+              <div className="col-md-12 text-center">
                 <ul className="list-inline social-list">
                   <li className="list-inline-item"> <img alt="Image" className="image--xxs" src={Inc42}/> </li>
                   <li className="list-inline-item"> <img alt="Image" className="image--xxs" src={Tnwg} /> </li>

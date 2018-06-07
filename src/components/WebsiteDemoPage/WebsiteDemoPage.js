@@ -1,12 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from "react-router";
-import {validateEmail, validatePassword, register, PASSWORD_MAX_LENGTH} from 'services/FormUtils';
-import { Animated } from "react-animated-css";
-import { Alert, HelpBlock } from 'react-bootstrap';
-import { store } from 'index.js';
-import { toast, style } from 'react-toastify';
 import './WebsiteDemoPage.scss';
-import $ from 'jquery';
 
 
 class WebsiteDemoPage extends  Component  {
@@ -14,7 +7,7 @@ class WebsiteDemoPage extends  Component  {
     constructor() {
         super();
 
-        // this states are to be assigned
+        // this states are to be assigned to gather information
         this.state = {
             firstname : '',
             lastname : '',
@@ -23,7 +16,10 @@ class WebsiteDemoPage extends  Component  {
             company :'',
             totalemp : '',
             dept : '',
-            errorEmail: ''
+            errorEmail: '',
+            fm1 : true,
+            fm2 : false,
+            fm3 : false
         };
     }
 
@@ -31,31 +27,29 @@ class WebsiteDemoPage extends  Component  {
         window.scrollTo(0, 0)
       } 
       
-    b1StepHandler = (event) => {
-        (event.target.type === "button") ?   [ [$(".row.form-details-1").fadeOut(),
-                                                $(".row.form-details-1").hide()],
-                                              [ $(".row.form-details-2").fadeIn(),
-                                                $(".row.form-details-2").show()] ] : " ";        
-       
+
+    b1StepHandler =() => {
+        this.setState( prevState => ({
+            fm1: !prevState.fm1,
+            fm2: !prevState.fm2
+          }));
     }
 
-    b2StepHandler = (event) => {
-        (event.target.type === "button") ?   [ [$(".row.form-details-2").fadeOut(),
-                                                $(".row.form-details-2").hide()],
-                                               [ $(".row.form-details-3").fadeIn(),
-                                                 $(".row.form-details-3").show()] ] : " ";
-        
+    b2StepHandler =() => {
+        this.setState( prevState => ({
+            fm2: !prevState.fm2,
+            fm3: !prevState.fm3
+          }));
     }
+
     nextStepHandler = () => {
         //next functionlaity to be added 
         //handler for last button
     }
 
-    componentDidMount() {
-        window.scrollTo(0,0);
-      }
+
     render()  {
-     
+        let { fm1, fm2 , fm3 }  = this.state;
         return (
             <div className="main-container">
             <section className="imagebg image--light cover cover-blocks bg--secondary">
@@ -63,7 +57,9 @@ class WebsiteDemoPage extends  Component  {
                 <div className="container">
                     <div className="col-md-6">
                      <form>
-                        <div className="row form-details-1" >
+
+                    { (fm1)  ?
+                        (<div className="row form-details-1" >
                             <div className="col-md-12 col-lg-12 ">
                                 <div>
                                     <h1>Let’s start the show</h1>
@@ -90,13 +86,19 @@ class WebsiteDemoPage extends  Component  {
                             <div className="col-md-8">
                                 <button
                                     type="button" 
+                                    name="schedule"
                                     className="btn btn--primary col-md-12 ml-0"
                                     onClick={this.b1StepHandler} >Schedule a demo
                                 </button>
                             </div>
-                        </div>
-                        <p><br/></p>
-                        <div className="row form-details-2">
+                        </div>) : (
+                            ""
+                         ) 
+                    }
+                      
+
+                    { (fm2) ?
+                        (<div className="row form-details-2">
                                 <div className="col-md-12 col-lg-12">
                                         <div>
                                             <h1>Let's add your company details</h1>
@@ -139,13 +141,18 @@ class WebsiteDemoPage extends  Component  {
                                 <div className="col-md-8">
                                     <button 
                                         type="button"
+                                        name="submitdata"
                                         className="btn btn--primary col-md-12 ml-0"
                                         onClick={this.b2StepHandler}>Submit
                                     </button>
                                 </div>
-                            </div>
-                        <p><br/></p>
-                        <div className="row form-details-3">
+                            </div>) : (
+                                ""
+                            )
+                        }
+                       
+                        { (fm3) ?
+                            (<div className="row form-details-3">
                                 <div className="col-md-12 col-lg-12 ">
                                         <div>
                                             <h1>Thanks!</h1>
@@ -158,11 +165,15 @@ class WebsiteDemoPage extends  Component  {
                                 <div className="col-md-8">
                                     <button 
                                         type="button" 
+                                        name="trialbtn"
                                         className="btn btn--primary col-md-12 ml-0"
                                         onClick={this.nextStepHandler}>Start your trial
                                     </button>
                                 </div>
-                            </div>
+                            </div>) :(
+                                ""
+                            )
+                        }
                      </form>
                    </div>
                 </div>
