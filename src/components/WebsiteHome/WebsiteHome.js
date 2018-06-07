@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from "react-router";
 import Slider from 'react-slick';
-import Swiver from './WebsiteHome.scss';
+import  './WebsiteHome.scss';
 
 import {
   HigherConversion,
@@ -29,6 +29,7 @@ import {
   Customerjourney5,
   Analyticsinsights10,
   Easiestsetup,
+  Marvel,
   Activitynotifications2,
   Liveviewers2,
   Customerprofiles2,
@@ -83,7 +84,7 @@ class WebsiteHome extends Component {
             </div>
           </div>
         </section>
-        <section className="testimonials-1 space--xs bg--secondary">
+        {/* <section className="testimonials-1 space--xs bg--secondary">
           <div className="container">
             <div className="row">
               <div className="col-md-12 text-center">
@@ -95,17 +96,18 @@ class WebsiteHome extends Component {
               </div>
             </div>
           </div>
-        </section>
-        <section className="text-center">
+        </section> */}
+        <p><br /></p><hr className="my-auto col-md-6" />
+        {/* <section className="text-center pt-5">
           <div className="container">
             <div className="row">
               <div className="col-md-10 col-lg-10">
                 <h2>Influence makes conversions easy</h2>
-                <p className="lead"> Let your customers do the selling for you. <br /> Put a stamp of Social Proof to BOOST your conversions.</p>
+                <p className="lead"> Let your customers do the selling for you. <br /> Put a stamp of Influence to boost your conversions.</p>
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
 
 
         {/* NEW CHANGES ARE HERE !! */}
@@ -113,7 +115,7 @@ class WebsiteHome extends Component {
 
 
 
-        <section className="text-center">
+        {/* <section className="text-center">
           <div className="container">
             <div className="row">
               <div className="col-md-3">
@@ -138,8 +140,8 @@ class WebsiteHome extends Component {
               </div>
             </div>
           </div>
-        </section>
-        <section className="switchable bg--secondary">
+        </section> */}
+        {/* <section className="switchable bg--secondary">
           <div className="container">
             <div className="row justify-content-around">
               <div className="col-lg-6 col-md-6 my-auto ml-5">
@@ -155,149 +157,164 @@ class WebsiteHome extends Component {
               </div>
             </div>
           </div>
-        </section>
-
-        <section className="text-center">
-          <div className="container">
-            <div className="row">
-              <div className="col-md-10 col-lg-8">
-                <h2>Features</h2>
-                <p className="lead"> Let your customers do the selling for you. <br /> Put a stamp of Social Proof to BOOST conversions. <br /> Real-time Notifications for new visitors.</p>
+        </section> */}
+        <section className="col-md-12 pl-0 pt-3 pr-0 unpad--bottom " style={{ backgroundColor: "#00B7FF" }} >
+          <div className="container pt-5 pb-5">
+            <div className="row  ">
+            <div className="col-md-6 text-left pt-5 pb-5 ">
+                <h2 className="color--white "> Thousands of teams use Marvel to make design their competitive edge. </h2>
+               
+              </div>
+              <div className="col-md-6 text-left pt-5 pb-5  pl-3">
+                <img src={Marvel} alt="img" className="enterprise-logo"/>
               </div>
             </div>
           </div>
-        </section>
-        <section className="switchable feature-large unpad--bottom switchable--switch">
-          <div className="container ">
-            <div className="row justify-content-around">
-              <div className="col-md-6 my-auto">
-                <div className="switchable__text">
-                  <h3>Recent Activity Notifications</h3>
-                  <p className="lead"> Show recent signups or purchases on your website. Get your existing customers to sell your products for you on an autopilot mode.</p> <Link to="/">Learn More »</Link>
-                </div>
-              </div>
-              <div className="col-md-6 col-lg-6 col-12 text-center">
-                <div className="mainImg">
-                  <img alt="Swivelscreen" src={Swivelscreen} />
+      </section>
 
-                  <Slider {...settings} className="im1">
-                    <div>
-                      <img alt="Sw1" src={Sw1} />
-                    </div>
-                    <div>
-                      <img alt="Sw2" src={Sw2} />
-                    </div>
-                  </Slider>
 
+
+          <section className="text-center pt-5">
+            <div className="container ">
+              <div className="row">
+                <div className="col-md-10 col-lg-8">
+                  <h1 className="pt-5">Features</h1>
                 </div>
               </div>
             </div>
-          </div>
-        </section>
-        <section className="switchable feature-large unpad--bottom">
-          <div className="container">
-            <div className="row justify-content-around">
-              <div className="col-md-6 my-auto">
-                <div className="switchable__text">
-                  <h3>Show Live &amp; Realtime Activities</h3>
-                  <p className="lead">Show live visitor count. Let your new visitors know they’re not the only ones buying from you. <br /></p> <Link to="/">Learn More »</Link>
+          </section>
+          <section className="switchable feature-large unpad--bottom switchable--switch">
+            <div className="container ">
+              <div className="row justify-content-around">
+                <div className="col-md-6 my-auto">
+                  <div className="switchable__text">
+                    <h3>Recent Activity Notifications</h3>
+                    <p className="lead"> Show recent signups or purchases on your website. Get your existing customers to sell your products for you on an autopilot mode.</p> <Link to="/">Learn More »</Link>
+                  </div>
                 </div>
-              </div>
-              <div className="col-md-6 col-lg-6 col-12 text-center">
-                <div className="mainImg">
-                  <img alt="Swivelscreen" src={Swivelscreen} />
+                <div className="col-md-6 col-lg-6 col-12 text-center">
+                  <div className="mainImg">
+                    <img alt="Swivelscreen" src={Swivelscreen} />
 
-                  <Slider {...settings} className="im1">
-                    <div>
-                      <img alt="Sw1" src={Sw1} />
-                    </div>
-                    <div>
-                      <img alt="Sw2" src={Sw2} />
-                    </div>
-                  </Slider>
+                    <Slider {...settings} className="im1">
+                      <div>
+                        <img alt="Sw1" src={Sw1} />
+                      </div>
+                      <div>
+                        <img alt="Sw2" src={Sw2} />
+                      </div>
+                    </Slider>
 
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-        <section className="switchable feature-large unpad--bottom switchable--switch">
-          <div className="container">
-            <div className="row justify-content-around">
-              <div className="col-md-6 my-auto">
-                <div className="switchable__text">
-                  <h3>Text &amp; to be inserted here , Provide it</h3>
-                  <p className="lead">Lorem ipsum are you aware of this technology <br /></p> <Link to="/">Learn More »</Link>
-                </div>
-              </div>
-              <div className="col-md-6 col-lg-6 col-12 text-center">
-                <div className="mainImg">
-                  <img alt="Swivelscreen" src={Swivelscreen} />
-
-                  <Slider {...settings} className="im1">
-                    <div>
-                      <img alt="Sw1" src={Sw1} />
-                    </div>
-                    <div>
-                      <img alt="Sw2" src={Sw2} />
-                    </div>
-                  </Slider>
-
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </section><hr />
-        <section className="switchable feature-large unpad--bottom switchable--switch">
-          <div className="container">
-            <div className="row justify-content-around mt--2">
-              <div className="col-md-6 my-auto">
-                <div className="switchable__text">
-                  <h3>Track Your Customer Journey</h3>
-                  <p className="lead"> Get to know about the minute details of your customer's journey on your website. </p> <Link to="/">Learn More »</Link>
+          </section>
+          <section className="switchable feature-large unpad--bottom">
+            <div className="container">
+              <div className="row justify-content-around">
+                <div className="col-md-6 my-auto">
+                  <div className="switchable__text">
+                    <h3>Show Live &amp; Realtime Activities</h3>
+                    <p className="lead">Show live visitor count. Let your new visitors know they’re not the only ones buying from you. <br /></p> <Link to="/">Learn More »</Link>
+                  </div>
+                </div>
+                <div className="col-md-6 col-lg-6 col-12 text-center">
+                  <div className="mainImg">
+                    <img alt="Swivelscreen" src={Swivelscreen} />
+
+                    <Slider {...settings} className="im1">
+                      <div>
+                        <img alt="Sw1" src={Sw1} />
+                      </div>
+                      <div>
+                        <img alt="Sw2" src={Sw2} />
+                      </div>
+                    </Slider>
+
+                  </div>
                 </div>
               </div>
-              <div className="col-md-6 col-lg-7 col-12 text-center">
-                <img alt="Image" src={Customerjourney5} />
-              </div>
             </div>
-          </div>
-        </section>
-        <section className="switchable feature-large">
-          <div className="container">
-            <div className="row justify-content-around mt--3 mb--3">
-              <div className="col-md-6 my-auto">
-                <div className="switchable__text">
-                  <h3>Analytics &amp; Insights</h3>
-                  <p className="lead"> Find the true identity of your users using our intelligence data servers. We keep on adding more features to your analytics.</p> <Link to="/">Learn More »</Link>
+          </section>
+          <section className="switchable feature-large unpad--bottom switchable--switch">
+            <div className="container">
+              <div className="row justify-content-around">
+                <div className="col-md-6 my-auto">
+                  <div className="switchable__text">
+                    <h3>Text &amp; to be inserted here , Provide it</h3>
+                    <p className="lead">Lorem ipsum are you aware of this technology <br /></p> <Link to="/">Learn More »</Link>
+                  </div>
+                </div>
+                <div className="col-md-6 col-lg-6 col-12 text-center">
+                  <div className="mainImg">
+                    <img alt="Swivelscreen" src={Swivelscreen} />
+
+                    <Slider {...settings} className="im1">
+                      <div>
+                        <img alt="Sw1" src={Sw1} />
+                      </div>
+                      <div>
+                        <img alt="Sw2" src={Sw2} />
+                      </div>
+                    </Slider>
+
+                  </div>
                 </div>
               </div>
-              <div className="col-md-6 col-lg-7 col-12 text-center">
-                <img alt="Image" src={Analyticsinsights10} />
-              </div>
-            </div><hr></hr>
-          </div>
-        </section>
-        <section className="cover switchable text-center-xs switchable--switch">
-          <div className="container">
-            <div className="row justify-content-between align-items-center">
-              <div className="col-md-6 col-lg-5">
-                <h2>Easiest Setup!</h2>
-                <p className="lead"> Anyone can setup Influence following few simple steps.</p>
-                <Link className="btn btn--primary " to="#customise-template">
-                  <span className="btn__text">Follow the steps</span>
-                </Link>
-
-              </div>
-              <div className="col-md-6">
-                <img alt="Image" src={Easiestsetup} />
+            </div>
+            </section>
+          {/* </section><hr className="my-auto col-md-6" /> */}
+          {/* <section className="switchable feature-large unpad--bottom switchable--switch">
+            <div className="container">
+              <div className="row justify-content-around mt--2">
+                <div className="col-md-6 my-auto">
+                  <div className="switchable__text">
+                    <h3>Track Your Customer Journey</h3>
+                    <p className="lead"> Get to know about the minute details of your customer's journey on your website. </p> <Link to="/">Learn More »</Link>
+                  </div>
+                </div>
+                <div className="col-md-6 col-lg-7 col-12 text-center">
+                  <img alt="Image" src={Customerjourney5} />
+                </div>
               </div>
             </div>
+          </section>
+          <section className="switchable feature-large">
+            <div className="container">
+              <div className="row justify-content-around mt--3 mb--3">
+                <div className="col-md-6 my-auto">
+                  <div className="switchable__text">
+                    <h3>Analytics &amp; Insights</h3>
+                    <p className="lead"> Find the true identity of your users using our intelligence data servers. We keep on adding more features to your analytics.</p> <Link to="/">Learn More »</Link>
+                  </div>
+                </div>
+                <div className="col-md-6 col-lg-7 col-12 text-center">
+                  <img alt="Image" src={Analyticsinsights10} />
+                </div>
+              </div><hr className="my-auto col-md-6" />
+            </div>
+          </section> */}
+          {/* <section className="cover switchable text-center-xs switchable--switch mb-5">
+            <div className="container">
+              <div className="row justify-content-between align-items-center">
+                <div className="col-md-6 col-lg-5">
+                  <h2>Easiest Setup!</h2>
+                  <p className="lead"> Anyone can setup Influence following few simple steps.</p>
+                  <Link className="btn btn--primary " to="#customise-template">
+                    <span className="btn__text">Follow the steps</span>
+                  </Link>
 
-          </div>
-        </section>
+                </div>
+                <div className="col-md-6">
+                  <img alt="Image" src={Easiestsetup} />
+                </div>
+              </div>
 
-        {/* <section className="text-center pb-2">
+            </div>
+          </section> */}
+
+          {/* <section className="text-center pb-2">
           <div className="container">
             <div className="row">
               <div className="col-md-10 col-lg-8">
@@ -307,7 +324,7 @@ class WebsiteHome extends Component {
             </div>
           </div>
         </section> */}
-        {/* <section className="text-center unpad--bottom">
+          {/* <section className="text-center unpad--bottom">
           <div className="container">
             <div className="row">
               <div className="col-md-4 pr-0 pb-0 pl-0 pt-0">
@@ -357,85 +374,85 @@ class WebsiteHome extends Component {
           </div>
         </section><hr /> */}
 
-        <section className="col-md-12 pl-0 pt-3 pr-0  " style={{ backgroundColor: "#f3f0ee" }} >
-          <div className="container pt-5 pb-5">
+          <section className="col-md-12 pl-0 pt-3 pr-0  " style={{ backgroundColor: "#f3f0ee" }} >
+            <div className="container pt-5 pb-5">
 
-            <Slider {...settings}>
-              <div>
-                <div className="row ">
-                  <div className="col-md-4 text-left pt-5 pb-5  ">
-                    <img src={LogoInfluence} alt="img" />
-                  </div>
-                  <div className="col-md-8 text-left pt-5 pb-5">
-                    <p className="h3"> “We wanted a solution that integrated all channels and that gave us the flexibility to implement in the way that we needed ”  </p>
-                    <p className="h5 small-meta"> – Orlando Gadea Ros, Business Innovation Manager at Stanley Black & Decker </p>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <div className="row ">
-                  <div className="col-md-4 text-left pt-5 pb-5  ">
-                    <img src={LogoInfluence} alt="img" />
-                  </div>
-                  <div className="col-md-8 text-left pt-5 pb-5">
-                    <p className="h3"> “We wanted a solution that integrated all channels and that gave us the flexibility to implement in the way that we needed ”  </p>
-                    <p className="h5 small-meta"> – Orlando Gadea Ros, Business Innovation Manager at Stanley Black & Decker </p>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <div className="row ">
-                  <div className="col-md-4 text-left pt-5 pb-5  ">
-                    <img src={LogoInfluence} alt="img" />
-                  </div>
-                  <div className="col-md-8 text-left pt-5 pb-5">
-                    <p className="h3"> “We wanted a solution that integrated all channels and that gave us the flexibility to implement in the way that we needed ”  </p>
-                    <p className="h5 small-meta"> – Orlando Gadea Ros, Business Innovation Manager at Stanley Black & Decker </p>
-                  </div>
-                </div>
-              </div>
-            </Slider>
-          </div>
-        </section>
-        <section className="switchable col-md-12 mb-2">
-          <div className="container">
-            <div className="row justify-content-between align-items-center">
-              <div className="col-md-6 col-lg-5">
-                <h2>Power up with Integrations</h2>
-                <p className="lead"> Get upto 3x more conversion with integrations into your favorite tools</p>
-                <Link className="btn btn--primary " to="/integrations">
-                  <span className="btn__text col-md-7">Integration</span>
-                </Link>
-              </div>
-              <div className="col-md-6">
-                <img alt="Integration" src={Integration} />
-              </div>
-            </div>
-          </div>
-        </section>
-        <section className="imagebg" style={{ background: "#14BBFA" }}>
-          <div className="container">
-            <div className="row">
-              <div className="col-md-12">
-                <div className="cta cta-1 cta--horizontal text-center-xs">
-                  <div className="row p-2">
-                    <div className="col-md-12 text-center ">
-                      <span className="h2">This could be the begining of a beautiful relationship</span>
-                    </div>
-                  </div>
+              <Slider {...settings}>
+                <div>
                   <div className="row ">
-                    <div className="col-md-12 text-center pb-2">
-                      <Link className="btn btn--primary " to="/signup"> <span className="btn__text">Start my free trial<br /></span> </Link>
+                    <div className="col-md-4 text-left pt-5 pb-5  ">
+                      <img src={LogoInfluence} alt="img" />
+                    </div>
+                    <div className="col-md-8 text-left pt-5 pb-5">
+                      <p className="h3"> “We wanted a solution that integrated all channels and that gave us the flexibility to implement in the way that we needed ”  </p>
+                      <p className="h5 small-meta"> – Orlando Gadea Ros, Business Innovation Manager at Stanley Black & Decker </p>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <div className="row ">
+                    <div className="col-md-4 text-left pt-5 pb-5  ">
+                      <img src={LogoInfluence} alt="img" />
+                    </div>
+                    <div className="col-md-8 text-left pt-5 pb-5">
+                      <p className="h3"> “We wanted a solution that integrated all channels and that gave us the flexibility to implement in the way that we needed ”  </p>
+                      <p className="h5 small-meta"> – Orlando Gadea Ros, Business Innovation Manager at Stanley Black & Decker </p>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <div className="row ">
+                    <div className="col-md-4 text-left pt-5 pb-5  ">
+                      <img src={LogoInfluence} alt="img" />
+                    </div>
+                    <div className="col-md-8 text-left pt-5 pb-5">
+                      <p className="h3"> “We wanted a solution that integrated all channels and that gave us the flexibility to implement in the way that we needed ”  </p>
+                      <p className="h5 small-meta"> – Orlando Gadea Ros, Business Innovation Manager at Stanley Black & Decker </p>
+                    </div>
+                  </div>
+                </div>
+              </Slider>
+            </div>
+          </section>
+          <section className="switchable col-md-12 mb-5 mt-5">
+            <div className="container">
+              <div className="row justify-content-between align-items-center">
+                <div className="col-md-6 col-lg-5">
+                  <h2>Power up with Integrations</h2>
+                  <p className="lead"> Get upto 3x more conversion with integrations into your favorite tools</p>
+                  <Link className="btn btn--primary " to="/integrations">
+                    <span className="btn__text col-md-7">Integration</span>
+                  </Link>
+                </div>
+                <div className="col-md-6">
+                  <img alt="Integration" src={Integration} />
+                </div>
+              </div>
+            </div>
+          </section>
+          <section className="imagebg" style={{ background: "#14BBFA" }}>
+            <div className="container">
+              <div className="row">
+                <div className="col-md-12">
+                  <div className="cta cta-1 cta--horizontal text-center-xs">
+                    <div className="row p-2">
+                      <div className="col-md-12 text-center ">
+                        <span className="h2">This could be the begining of a beautiful relationship</span>
+                      </div>
+                    </div>
+                    <div className="row ">
+                      <div className="col-md-12 text-center pb-2">
+                        <Link className="btn btn--primary " to="/signup"> <span className="btn__text">Start my free trial<br /></span> </Link>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
       </div>
-    );
-  }
-}
-
-export default WebsiteHome;
+        );
+      }
+    }
+    
+    export default WebsiteHome;

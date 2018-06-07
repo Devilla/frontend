@@ -18,3 +18,11 @@
 .slick-arrow.slick-next::before {
     display: none;
 }
+
+img {
+
+    &.enterprise-logo {
+         margin-top: 15%;
+         padding-left: 10PX;
+    }
+}

@@ -5,7 +5,8 @@ import {
   NewIntegrate,
   NewInstall,
   NewGoLive,
-  NewAnalyze
+  NewAnalyze,
+  Easiestsetup
 } from 'img';
 
 class WebsiteHowItWorks extends Component {
@@ -144,19 +145,25 @@ class WebsiteHowItWorks extends Component {
             </div>
           </div>
         </section>
-        <section className="text-center imagebg" style={{ background: 'linear-gradient(to left, #b721ff,#21d4fd)'}} data-gradient-bg="#b721ff,#21d4fd,#21d4fd,#b721ff">
-          <div className="container">
-            <div className="row">
-              <div className="col-md-8 col-lg-6">
-                <div className="cta">
-                  <Link className="btn btn--primary btn--lg type--uppercase" to="/signup"><span>Start your trial</span><br/><span className="labelm">7 Days</span></Link>
-                  <p className="lead"> Join the thousand companies using influence&nbsp;</p>
-                  <p className="type--fine-print">or check out &nbsp;<Link to="index.html">more</Link></p>
+        <hr className="my-auto col-md-6" />
+       <section className="cover switchable text-center-xs switchable--switch mb-5">
+            <div className="container">
+              <div className="row justify-content-between align-items-center">
+                <div className="col-md-6 col-lg-5">
+                  <h2>Setup Easily!</h2>
+                  <p className="lead"> </p>
+                  <Link className="btn btn--primary col-md-7" to="#customise-template">
+                    <span className="btn__text">Start your trial</span>
+                  </Link>
+
+                </div>
+                <div className="col-md-6">
+                  <img alt="set up" src={Easiestsetup} />
                 </div>
               </div>
+
             </div>
-          </div>
-        </section>
+          </section>
       </div>
     );
   }
