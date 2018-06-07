@@ -166,7 +166,7 @@ class WebsiteSignUp extends Component {
                             <p className="website-error">{errorEmail}</p>
                           </HelpBlock>
                         </div>
-                        <div className="col-11">
+                        <div className="col-12">
                           <input
                            name="password"
                            maxLength={PASSWORD_MAX_LENGTH}
