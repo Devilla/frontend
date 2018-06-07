@@ -33,7 +33,7 @@ const initialRules = {
   displayTime: 3,
   delayBetween: 3,
   displayPosition: 'bottom',
-  popupAnimation:'Fadeinout'
+  popupAnimation:'fadeinout'
   // hideAnonymousConversion:false
 };
 

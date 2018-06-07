@@ -25,7 +25,7 @@ export class Display extends Component{
       displayTime: 120,
       delayBetween: 120,
       displayPosition: 'bottom',
-      popupAnimation:'Fadeinout'
+      popupAnimation:'fadeinout'
     };
     this.handleStateChange = this.handleStateChange.bind(this);
     this.saveRules = this.saveRules.bind(this);
@@ -73,13 +73,11 @@ export class Display extends Component{
     let rule = this.state;
     rule['campaign']=this.props.campaign._id;
     if(rules) {
-      console.log(rules,"-----------------------------------------------------------------------------------")
       rule['id'] = rules._id;
       delete rule['campaign'];
       this.props.updateRules(rule);
     } else {
       this.props.createRules(rule);
-      console.log(rules,"-----------------------------------------------------------------------------------")
     }
     this.props.handleNextState();
   }

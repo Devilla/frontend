@@ -106,10 +106,10 @@ class RightView extends Component {
       <Row>
              <Col md={6}>
                     <FormControl value={popupAnimation} onChange={(e) => handleStateChange('popupAnimation', e.target.value)} componentClass="select" bsSize="sm" placeholder="select" >
-                      <option value="Fadeinout">Fade In/Out</option>
-                      <option value="Bottominout">Bottom In/Out</option>
-                      <option value="Leftinout"> Left In/Out</option>
-                      <option value="Fadeinout">Default</option>
+                      <option value="fadeinout">Fade In/Out</option>
+                      <option value="bottominout">Bottom In/Out</option>
+                      <option value="leftinout"> Left In/Out</option>
+                      <option value="fadeinout">Default</option>
                     </FormControl>
              </Col>    
         </Row>
