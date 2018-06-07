@@ -38,7 +38,8 @@ import {
   Integration,
   Swivelscreen,
   Sw1,
-  Sw2
+  Sw2,
+  LogoInfluence
 
 
 } from 'img';
@@ -176,9 +177,9 @@ class WebsiteHome extends Component {
                 </div>
               </div>
               <div className="col-md-6 col-lg-6 col-12 text-center">
-              <div className="mainImg">
+                <div className="mainImg">
                   <img alt="Swivelscreen" src={Swivelscreen} />
-               
+
                   <Slider {...settings} className="im1">
                     <div>
                       <img alt="Sw1" src={Sw1} />
@@ -188,7 +189,7 @@ class WebsiteHome extends Component {
                     </div>
                   </Slider>
 
-                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -203,9 +204,9 @@ class WebsiteHome extends Component {
                 </div>
               </div>
               <div className="col-md-6 col-lg-6 col-12 text-center">
-              <div className="mainImg">
+                <div className="mainImg">
                   <img alt="Swivelscreen" src={Swivelscreen} />
-               
+
                   <Slider {...settings} className="im1">
                     <div>
                       <img alt="Sw1" src={Sw1} />
@@ -215,7 +216,7 @@ class WebsiteHome extends Component {
                     </div>
                   </Slider>
 
-                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -232,7 +233,7 @@ class WebsiteHome extends Component {
               <div className="col-md-6 col-lg-6 col-12 text-center">
                 <div className="mainImg">
                   <img alt="Swivelscreen" src={Swivelscreen} />
-               
+
                   <Slider {...settings} className="im1">
                     <div>
                       <img alt="Sw1" src={Sw1} />
@@ -242,7 +243,7 @@ class WebsiteHome extends Component {
                     </div>
                   </Slider>
 
-                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -295,9 +296,8 @@ class WebsiteHome extends Component {
 
           </div>
         </section>
-        <hr />
 
-        <section className="text-center pb-2">
+        {/* <section className="text-center pb-2">
           <div className="container">
             <div className="row">
               <div className="col-md-10 col-lg-8">
@@ -306,8 +306,8 @@ class WebsiteHome extends Component {
               </div>
             </div>
           </div>
-        </section>
-        <section className="text-center unpad--bottom">
+        </section> */}
+        {/* <section className="text-center unpad--bottom">
           <div className="container">
             <div className="row">
               <div className="col-md-4 pr-0 pb-0 pl-0 pt-0">
@@ -355,15 +355,56 @@ class WebsiteHome extends Component {
               </div>
             </div>
           </div>
-        </section><hr />
+        </section><hr /> */}
+
+        <section className="col-md-12 pl-0 pt-3 pr-0  " style={{ backgroundColor: "#f3f0ee" }} >
+          <div className="container pt-5 pb-5">
+
+            <Slider {...settings}>
+              <div>
+                <div className="row ">
+                  <div className="col-md-4 text-left pt-5 pb-5  ">
+                    <img src={LogoInfluence} alt="img" />
+                  </div>
+                  <div className="col-md-8 text-left pt-5 pb-5">
+                    <p className="h3"> “We wanted a solution that integrated all channels and that gave us the flexibility to implement in the way that we needed ”  </p>
+                    <p className="h5 small-meta"> – Orlando Gadea Ros, Business Innovation Manager at Stanley Black & Decker </p>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div className="row ">
+                  <div className="col-md-4 text-left pt-5 pb-5  ">
+                    <img src={LogoInfluence} alt="img" />
+                  </div>
+                  <div className="col-md-8 text-left pt-5 pb-5">
+                    <p className="h3"> “We wanted a solution that integrated all channels and that gave us the flexibility to implement in the way that we needed ”  </p>
+                    <p className="h5 small-meta"> – Orlando Gadea Ros, Business Innovation Manager at Stanley Black & Decker </p>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div className="row ">
+                  <div className="col-md-4 text-left pt-5 pb-5  ">
+                    <img src={LogoInfluence} alt="img" />
+                  </div>
+                  <div className="col-md-8 text-left pt-5 pb-5">
+                    <p className="h3"> “We wanted a solution that integrated all channels and that gave us the flexibility to implement in the way that we needed ”  </p>
+                    <p className="h5 small-meta"> – Orlando Gadea Ros, Business Innovation Manager at Stanley Black & Decker </p>
+                  </div>
+                </div>
+              </div>
+            </Slider>
+          </div>
+        </section>
         <section className="switchable col-md-12 mb-2">
           <div className="container">
             <div className="row justify-content-between align-items-center">
               <div className="col-md-6 col-lg-5">
-                <h2>Hey ! What are you waiting for ? </h2>
-                <p className="lead"> Make your cutomer conversion simple with brand new Pixel. Secure it now !</p>
+                <h2>Power up with Integrations</h2>
+                <p className="lead"> Get upto 3x more conversion with integrations into your favorite tools</p>
                 <Link className="btn btn--primary " to="/integrations">
-                  <span className="btn__text">Integration</span>
+                  <span className="btn__text col-md-7">Integration</span>
                 </Link>
               </div>
               <div className="col-md-6">
