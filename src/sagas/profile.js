@@ -16,9 +16,12 @@ function* fetch(action) {
   try {
     yield put(load());
     const res = yield call(api.GET, `profile`);
-    if(res.error)
-      console.log(res.error);
-    else
+    if(res.error) {
+      if(res.statusCode == 401) {
+        localStorage.removeItem('authToken');
+        browserHistory.push('/login');
+      }
+    } else
       yield put(actions.successProfile(res));
     yield put(loaded());
   } catch (error) {
