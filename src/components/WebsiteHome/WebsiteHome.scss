@@ -1,0 +1,15 @@
+.mainImg {
+    position:  relative;
+   
+}
+
+.im1  {
+    position: absolute;
+    width: 60%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.slick-arrow.slick-prev {
+    display: none;
+}

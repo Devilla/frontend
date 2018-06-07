@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from "react-router";
+import Slider from 'react-slick';
+import Swiver from './WebsiteHome.scss';
+
 import {
   HigherConversion,
   SaveAcquisitions,
@@ -22,9 +25,9 @@ import {
   Visitortrust2,
   Startconverting,
   Socialinfluence2,
-  D12,B24,
+  D12, B24,
   Customerjourney5,
-  Analyticsinsights10,  
+  Analyticsinsights10,
   Easiestsetup,
   Activitynotifications2,
   Liveviewers2,
@@ -33,7 +36,10 @@ import {
   Customrules2,
   Mobileready2,
   Integration,
-  Swivelscreen
+  Swivelscreen,
+  Sw1,
+  Sw2
+
 
 } from 'img';
 import { browserHistory } from 'react-router';
@@ -48,22 +54,30 @@ class WebsiteHome extends Component {
   }
 
   render() {
+    const settings = {
+      dots: true,
+      infinite: true,
+      speed: 500,
+      slideToShow: 1,
+      slideToScroll: 1,
+      autoplay: true
+    };
     return (
       <div className="main-container">
         <section className="cover text-center parallax" data-overlay="0">
           <div className="container">
             <div className="row pb-5">
               <div className="col-md-10 col-lg-10 text-center">
-                <h1 className="pt-2">Increase your website conversions using social proof notifications <br/> </h1>
-                <p className="typed-text typed-text--cursor h3"> Use Influence and get <span className="type--bold" style={{color:"#584EEF"}}>3x more business </span>right away &nbsp;</p>
+                <h1 className="pt-2">Increase your website conversions using social proof notifications <br /> </h1>
+                <p className="typed-text typed-text--cursor h3"> Use Influence and get <span className="type--bold" style={{ color: "#584EEF" }}>3x more business </span>right away &nbsp;</p>
               </div>
             </div>
-            <br/> <br/>
+            <br /> <br />
             <div className="text-center pb-5">
               <form className="form--horizontal row">
                 <div className="col-md-3 mr-1 pr-0 ml-0 pl-0"></div>
-                <div className="col-md-4 ml-0 pl-0 mr-0 pr-0"> <input type="text" name="email" placeholder="Enter your email" onChange={(e) => this.setState({email:e.target.value})} /> </div>
-                <div className="col-md-2 ml-0 pl-0 mr-0 pr-0"> <button type="submit" onClick={()=> browserHistory.push(`/signup?email=${this.state.email}`)} className="btn btn--primary">Start Free Trial</button> </div>
+                <div className="col-md-4 ml-0 pl-0 mr-0 pr-0"> <input type="text" name="email" placeholder="Enter your email" onChange={(e) => this.setState({ email: e.target.value })} /> </div>
+                <div className="col-md-2 ml-0 pl-0 mr-0 pr-0"> <button type="submit" onClick={() => browserHistory.push(`/signup?email=${this.state.email}`)} className="btn btn--primary">Start Free Trial</button> </div>
               </form>
             </div>
           </div>
@@ -73,7 +87,7 @@ class WebsiteHome extends Component {
             <div className="row">
               <div className="col-md-12 text-center">
                 <ul className="list-inline social-list">
-                  <li className="list-inline-item"> <img alt="Image" className="image--xxs" src={Inc42}/> </li>
+                  <li className="list-inline-item"> <img alt="Image" className="image--xxs" src={Inc42} /> </li>
                   <li className="list-inline-item"> <img alt="Image" className="image--xxs" src={Tnwg} /> </li>
                   <li className="list-inline-item"> <img alt="Image" className="image--xxs" src={Yourstory} /> </li>
                 </ul>
@@ -108,39 +122,39 @@ class WebsiteHome extends Component {
               </div>
               <div className="col-md-3">
                 <Link to="/" className="block">
-                  <div className="feature boxed boxed--border border--round"> <img className="icon-n1" src={Saveonacquisitions2}/> <span className="h4 color--primary"><h5>Save on acquisitions</h5></span> </div>
+                  <div className="feature boxed boxed--border border--round"> <img className="icon-n1" src={Saveonacquisitions2} /> <span className="h4 color--primary"><h5>Save on acquisitions</h5></span> </div>
                 </Link>
               </div>
               <div className="col-md-3">
                 <Link to="/" className="block">
-                  <div className="feature boxed boxed--border border--round"> <img className="icon-n1" src={Visitortrust2}/> <span className="h4 color--primary"><h5>Increase Visitors trust</h5></span> </div>
+                  <div className="feature boxed boxed--border border--round"> <img className="icon-n1" src={Visitortrust2} /> <span className="h4 color--primary"><h5>Increase Visitors trust</h5></span> </div>
                 </Link>
               </div>
               <div className="col-md-3">
                 <Link to="/" className="block">
-                  <div className="feature boxed boxed--border border--round"> <img className="icon-n1" src={Socialinfluence2}/> <span className="h4 color--primary"><h5>Social Influence</h5></span> </div>
+                  <div className="feature boxed boxed--border border--round"> <img className="icon-n1" src={Socialinfluence2} /> <span className="h4 color--primary"><h5>Social Influence</h5></span> </div>
                 </Link>
               </div>
             </div>
           </div>
         </section>
-          <section className="switchable bg--secondary">
-                                <div className="container">
-                                    <div className="row justify-content-around">
-                                        <div className="col-lg-6 col-md-6 my-auto ml-5">
-                                            <h3 className="text-center">Start your conversion journey!</h3>
-                                             <form>
-                                           
-                                              <div className=" text-center ml-2 ">  <button type="submit" className="btn btn--primary col-md-7">Start your free trial</button> </div>
-                                                
-                                            </form>
-                                        </div>
-                                      <div className="col-lg-5 col-md-2 mr-5">
-                                    <img alt="Conversion" src={Startconverting}/>
-                                      </div>
-                                </div>
-                               </div>
-                            </section>
+        <section className="switchable bg--secondary">
+          <div className="container">
+            <div className="row justify-content-around">
+              <div className="col-lg-6 col-md-6 my-auto ml-5">
+                <h3 className="text-center">Start your conversion journey!</h3>
+                <form>
+
+                  <div className=" text-center ml-2 ">  <button type="submit" className="btn btn--primary col-md-7">Start your free trial</button> </div>
+
+                </form>
+              </div>
+              <div className="col-lg-5 col-md-2 mr-5">
+                <img alt="Conversion" src={Startconverting} />
+              </div>
+            </div>
+          </div>
+        </section>
 
         <section className="text-center">
           <div className="container">
@@ -162,7 +176,19 @@ class WebsiteHome extends Component {
                 </div>
               </div>
               <div className="col-md-6 col-lg-6 col-12 text-center">
-                <img alt="Image" src={D12} />
+              <div className="mainImg">
+                  <img alt="Swivelscreen" src={Swivelscreen} />
+               
+                  <Slider {...settings} className="im1">
+                    <div>
+                      <img alt="Sw1" src={Sw1} />
+                    </div>
+                    <div>
+                      <img alt="Sw2" src={Sw2} />
+                    </div>
+                  </Slider>
+
+                  </div>
               </div>
             </div>
           </div>
@@ -177,7 +203,19 @@ class WebsiteHome extends Component {
                 </div>
               </div>
               <div className="col-md-6 col-lg-6 col-12 text-center">
-                <img alt="Image" src={B24} />
+              <div className="mainImg">
+                  <img alt="Swivelscreen" src={Swivelscreen} />
+               
+                  <Slider {...settings} className="im1">
+                    <div>
+                      <img alt="Sw1" src={Sw1} />
+                    </div>
+                    <div>
+                      <img alt="Sw2" src={Sw2} />
+                    </div>
+                  </Slider>
+
+                  </div>
               </div>
             </div>
           </div>
@@ -192,11 +230,23 @@ class WebsiteHome extends Component {
                 </div>
               </div>
               <div className="col-md-6 col-lg-6 col-12 text-center">
-                <img alt="Image" src={Swivelscreen} />
+                <div className="mainImg">
+                  <img alt="Swivelscreen" src={Swivelscreen} />
+               
+                  <Slider {...settings} className="im1">
+                    <div>
+                      <img alt="Sw1" src={Sw1} />
+                    </div>
+                    <div>
+                      <img alt="Sw2" src={Sw2} />
+                    </div>
+                  </Slider>
+
+                  </div>
               </div>
             </div>
           </div>
-        </section><hr/>
+        </section><hr />
         <section className="switchable feature-large unpad--bottom switchable--switch">
           <div className="container">
             <div className="row justify-content-around mt--2">
@@ -207,7 +257,7 @@ class WebsiteHome extends Component {
                 </div>
               </div>
               <div className="col-md-6 col-lg-7 col-12 text-center">
-                <img alt="Image" src={Customerjourney5}/>
+                <img alt="Image" src={Customerjourney5} />
               </div>
             </div>
           </div>
@@ -222,7 +272,7 @@ class WebsiteHome extends Component {
                 </div>
               </div>
               <div className="col-md-6 col-lg-7 col-12 text-center">
-                <img alt="Image" src={Analyticsinsights10}/>
+                <img alt="Image" src={Analyticsinsights10} />
               </div>
             </div><hr></hr>
           </div>
@@ -236,16 +286,16 @@ class WebsiteHome extends Component {
                 <Link className="btn btn--primary " to="#customise-template">
                   <span className="btn__text">Follow the steps</span>
                 </Link>
-             
+
               </div>
               <div className="col-md-6">
-                <img alt="Image" src={Easiestsetup}/>
+                <img alt="Image" src={Easiestsetup} />
               </div>
             </div>
 
           </div>
         </section>
-        <hr/>
+        <hr />
 
         <section className="text-center pb-2">
           <div className="container">
@@ -305,9 +355,9 @@ class WebsiteHome extends Component {
               </div>
             </div>
           </div>
-        </section><hr/>
+        </section><hr />
         <section className="switchable col-md-12 mb-2">
-         <div className="container">
+          <div className="container">
             <div className="row justify-content-between align-items-center">
               <div className="col-md-6 col-lg-5">
                 <h2>Hey ! What are you waiting for ? </h2>
@@ -317,12 +367,12 @@ class WebsiteHome extends Component {
                 </Link>
               </div>
               <div className="col-md-6">
-                <img alt="Integration" src={Integration}/>
+                <img alt="Integration" src={Integration} />
               </div>
             </div>
-            </div>
+          </div>
         </section>
-        <section className="imagebg" style={{ background: "#14BBFA"}}>
+        <section className="imagebg" style={{ background: "#14BBFA" }}>
           <div className="container">
             <div className="row">
               <div className="col-md-12">
