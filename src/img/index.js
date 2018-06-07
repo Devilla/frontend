@@ -47,6 +47,11 @@ export { default as Customrules2 } from './customrules2.svg';
 export { default as Mobileready2 } from './mobileready2.svg';
 
 
+//Notifications Page Image
+export { default as GroupActivity } from './group activity card 9.png';
+export { default as RecentActivity } from './recent activity card 6.png';
+export { default as LiveActivity } from './live activity card 7.png';
+
 
 // Integrations Page Image
 export { default as Integrations1 } from './integrations1.png';
