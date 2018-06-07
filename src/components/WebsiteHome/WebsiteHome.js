@@ -49,16 +49,16 @@ class WebsiteHome extends Component {
   render() {
     return (
       <div className="main-container">
-        <section className="cover imagebg text-center parallax" data-overlay="0">
+        <section className="cover text-center parallax" data-overlay="0">
           <div className="container">
-            <div className="row">
+            <div className="row pb-5">
               <div className="col-md-10 col-lg-10 text-center">
-                <h2>Increase your website conversions using social proof notifications <br/> </h2>
-                <p className="typed-text typed-text--cursor h3"> Use Influence and get 3x more business right away &nbsp;</p>
+                <h1 className="pt-2">Increase your website conversions using social proof notifications <br/> </h1>
+                <p className="typed-text typed-text--cursor h3"> Use Influence and get <span className="type--bold" style={{color:"#584EEF"}}>3x more business </span>right away &nbsp;</p>
               </div>
             </div>
             <br/> <br/>
-            <div className="text-center">
+            <div className="text-center pb-5">
               <form className="form--horizontal row">
                 <div className="col-md-3 mr-1 pr-0 ml-0 pl-0"></div>
                 <div className="col-md-4 ml-0 pl-0 mr-0 pr-0"> <input type="text" name="email" placeholder="Enter your email" onChange={(e) => this.setState({email:e.target.value})} /> </div>
@@ -129,8 +129,8 @@ class WebsiteHome extends Component {
                                         <div className="col-lg-6 col-md-6 my-auto ml-5">
                                             <h3 className="text-center">Start your conversion journey!</h3>
                                              <form>
-                                              <div className="text-center ml-2 ">  <input className="validate-required validate-email col-md-7" type="email" name="EMAIL" placeholder="Email Address"/> </div>
-                                              <div className=" text-center mt--1 ml-2 ">  <button type="submit" className="btn btn--primary col-md-7">Start your free trial</button> </div>
+                                           
+                                              <div className=" text-center ml-2 ">  <button type="submit" className="btn btn--primary col-md-7">Start your free trial</button> </div>
                                                 
                                             </form>
                                         </div>
@@ -220,7 +220,7 @@ class WebsiteHome extends Component {
                 <Link className="btn btn--primary " to="#customise-template">
                   <span className="btn__text">Follow the steps</span>
                 </Link>
-                <span className="block type--fine-print">or &nbsp; <Link to="index.html">  View Demos</Link></span>
+             
               </div>
               <div className="col-md-6">
                 <img alt="Image" src={Easiestsetup}/>
@@ -311,14 +311,14 @@ class WebsiteHome extends Component {
             <div className="row">
               <div className="col-md-12">
                 <div className="cta cta-1 cta--horizontal text-center-xs">
-                  <div className="row p-5">
+                  <div className="row p-2">
                     <div className="col-md-12 text-center ">
                       <span className="h2">This could be the begining of a beautiful relationship</span>
                     </div>
                   </div>
                   <div className="row ">
                     <div className="col-md-12 text-center pb-2">
-                      <Link className="btn btn--primary type--uppercase" to="/signup"> <span className="btn__text">Start your 7 days free trial<br /></span> </Link>
+                      <Link className="btn btn--primary " to="/signup"> <span className="btn__text">Start my free trial<br /></span> </Link>
                     </div>
                   </div>
                 </div>

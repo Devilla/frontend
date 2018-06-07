@@ -25,7 +25,7 @@ class WebsiteHowItWorks extends Component {
           <div className="container">
             <div className="row">
               <div className="col-md-12">
-                <div className="typed-headline"> <span className="h2 inline-block"><p>Nothing beats Live Social Proof for&nbsp;</p></span>
+                <div className="typed-headline"> <span className="inline-block"><h2>Nothing beats Live Social Proof for&nbsp;</h2></span>
                   <span className="h2 inline-block typed-text typed-text--cursor color--primary"> Businesses!</span>
                 </div>
               </div>
