@@ -244,20 +244,20 @@ class WebsiteHome extends Component {
         <section className="text-center unpad--bottom">
           <div className="container">
             <div className="row">
-              <div className="col-md-4">
-                <div className="feature feature-3 boxed boxed--lg boxed--border"> <img className="icon-n1" src={Activitynotifications2} />
+              <div className="col-md-4 pr-0 pb-0 pl-0 pt-0">
+                <div className="feature feature-3 boxed boxed--lg boxed--border pr-0 pb-0 pl-0 pt-0"> <img className="icon-n1 mb-0" src={Activitynotifications2} />
                   <h3>Activity Notifications&nbsp;</h3>
                   <p className="mb-0 lead h4"> Display recent sales &amp; activity and drive users to convert on your website. </p>
                 </div>
               </div>
-              <div className="col-md-4">
-                <div className="feature feature-3 boxed boxed--lg boxed--border"> <img className="icon-n1" src={Liveviewers2} />
+              <div className="col-md-4 pr-0 pb-0 pl-0 pt-0">
+                <div className="feature feature-3 boxed boxed--lg boxed--border pr-0 pb-0 pl-0 pt-0"> <img className="icon-n1 mb-0" src={Liveviewers2} />
                   <h3>Live Viewers</h3>
                   <p className="mb-0 lead h4"> Show your new visitors that they are not the only ones on your website. Instill a 'Fear of missing out'.  </p>  <span className="label">New</span>
                 </div>
               </div>
-              <div className="col-md-4">
-                <div className="feature feature-3 boxed boxed--lg boxed--border"> <img className="icon-n1" src={Customerprofiles2} />
+              <div className="col-md-4 pr-0 pb-0 pl-0 pt-0">
+                <div className="feature feature-3 boxed boxed--lg boxed--border pr-0 pb-0 pl-0 pt-0"> <img className="icon-n1 mb-0" src={Customerprofiles2} />
                   <h3>Customer Profiles</h3>
                   <p className="mb-0 lead h4"> We will show you the true identities of your customers. Knowing more will help you in selling more!</p>
                 </div>
@@ -268,21 +268,21 @@ class WebsiteHome extends Component {
         <section className="text-center">
           <div className="container">
             <div className="row">
-              <div className="col-md-4">
-                <div className="feature feature-3 boxed boxed--lg boxed--border"> <img className="icon-n1" src={Customerjourney2} />
+              <div className="col-md-4 pr-0 pb-0 pl-0 pt-0">
+                <div className="feature feature-3 boxed boxed--lg boxed--border pr-0 pb-0 pl-0 pt-0"> <img className="icon-n1 mb-0" src={Customerjourney2} />
                   <h3>Customer Journeys</h3>
                   <p className="mb-0 lead h4"> Get to know about your customer's journey before it converts. </p>
                 </div>
               </div>
-              <div className="col-md-4">
-                <div className="feature feature-3 boxed boxed--lg boxed--border"> <img className="icon-n1" src={Customrules2} />
+              <div className="col-md-4 pr-0 pb-0 pl-0 pt-0">
+                <div className="feature feature-3 boxed boxed--lg boxed--border pr-0 pb-0 pl-0 pt-0"> <img className="icon-n1 mb-0" src={Customrules2} />
                   <h3>Custom Rules</h3>
                   <p className="mb-0 lead h4"> Control notifications behavior on your website. Customize timings &amp; delays. </p>
                   <span className="label">New</span>
                 </div>
               </div>
-              <div className="col-md-4">
-                <div className="feature feature-3 boxed boxed--lg boxed--border"> <img className="icon-n1" src={Mobileready2} />
+              <div className="col-md-4 pr-0 pb-0 pl-0 pt-0">
+                <div className="feature feature-3 boxed boxed--lg boxed--border pr-0 pb-0 pl-0 pt-0"> <img className="icon-n1 mb-0" src={Mobileready2} />
                   <h3>Mobile Ready</h3>
                   <p className="mb-0 lead h4"> Show notifications to your mobile users as well. Customize behavior according to your user's location. </p>
                 </div>

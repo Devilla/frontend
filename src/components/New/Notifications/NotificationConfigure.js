@@ -3,6 +3,8 @@ import { Row, Col, Button, Glyphicon } from 'react-bootstrap';
 import { Card } from '../notification/template/common';
 import { Notification } from '../notification/template/common/notification'
 import { Setting } from '../notification/template/common/settings'
+import Switch from 'react-flexible-switch';
+import './NotificationConfigure.scss';
 
 const NotificationConfigure = ({
     notification,
@@ -20,8 +22,16 @@ const NotificationConfigure = ({
   return (
     <div className="notification-configure">
       <Row>
+
+        
+
+        
         <Col md={12}>
+
+
           <Card title="Recent User Activity"
+
+          
             isDisabled={activity}
             content={
               <Row>
@@ -33,6 +43,16 @@ const NotificationConfigure = ({
                     notificationPanelStyle={notificationPanelStyle}
                   />
                 </Col>
+                <div className="notificationSwitch">
+                  <Switch
+                    circleStyles={{ onColor: 'blue', offColor: 'gray', diameter: 18 }}
+                    switchStyles={{ width: 50 }}
+                    cssClass="alignsame"
+                    value={notification.activity}
+                    onChange={(e) => e != notification.activity ? handleActivityChange(e, notification._id, notification.configurationId) : null}
+                  />
+                </div>
+
                 <Col md={6}>
                   <Setting
                     contentText={contentText}
