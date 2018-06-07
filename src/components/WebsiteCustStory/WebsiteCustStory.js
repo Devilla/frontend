@@ -3,12 +3,7 @@ import './WebsiteCustStory.scss';
 
 
 class WebsiteCustStory extends Component {
-    constructor() {
-        super();
-        this.state = {
-            customerStories: []
-        }
-    }
+  
     componentDidMount() {
         window.scrollTo(0,0);
       }

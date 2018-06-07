@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from "react-router";
-import { Animated } from "react-animated-css";
-import Ionicon from 'react-ionicons';
-import { css } from 'glamor';
 import { validateEmail, validatePassword, login, PASSWORD_MAX_LENGTH } from '../../services/FormUtils';
 import { store } from '../../index.js';
 import { loginSuccess } from '../../ducks/auth';

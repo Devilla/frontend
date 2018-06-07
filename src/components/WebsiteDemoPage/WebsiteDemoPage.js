@@ -1,30 +1,35 @@
 import React, { Component } from 'react';
 
-
+const initialState = {
+    firstname : '',
+    lastname : '',
+    email : '',
+    Phone :'',
+    company :'',
+    totalemp : '',
+    dept : '',
+    errorEmail: '',
+    fm1 : true,
+    fm2 : false,
+    fm3 : false
+};
 class WebsiteDemoPage extends  Component  {
 
     constructor() {
         super();
 
         // this states are to be assigned to gather information
-        this.state = {
-            firstname : '',
-            lastname : '',
-            email : '',
-            Phone :'',
-            company :'',
-            totalemp : '',
-            dept : '',
-            errorEmail: '',
-            fm1 : true,
-            fm2 : false,
-            fm3 : false
-        };
+        this.state = initialState;
+    
     }
-
+   
     componentDidMount(){
         window.scrollTo(0, 0)
       } 
+
+    componentWillUnmount() {
+        this.setState(initialState);
+    }
       
 
     b1StepHandler =() => {

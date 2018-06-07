@@ -1,8 +1,5 @@
 import React, {Component} from 'react';
 import { Link } from "react-router";
-import {
-  Col
-} from 'react-bootstrap';
 import Switch from 'react-flexible-switch';
 import { fetchPlan } from 'ducks/plan';
 

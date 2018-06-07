@@ -1,9 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from "react-router";
-import { Animated } from "react-animated-css";
-import { Alert, HelpBlock } from 'react-bootstrap';
-import { store } from 'index.js';
-import { toast, style } from 'react-toastify'; 
 
 
 class WebsiteFeature extends Component {

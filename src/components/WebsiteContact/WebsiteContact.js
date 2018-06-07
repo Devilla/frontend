@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from "react-router";
 import {
   ContactAvatar1,
   ContactAvatar2,
