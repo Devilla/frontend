@@ -172,7 +172,7 @@ class Profile extends Component {
 
                   <div className="profile-over-button">
                     <Button
-                      onClick={() => browserHistory.push('/billingFinal')}
+                      onClick={() => browserHistory.push('/billing-details')}
                       bsStyle="info"
                       pullRight="pullRight"
                       fill="fill"

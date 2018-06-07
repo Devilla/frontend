@@ -16,7 +16,7 @@ const getProfile = state => state.getIn(['profile', 'profile']);
 function* fetch(action) {
   try {
     yield put(load());
-    const res = yield call(api.GET, `payment`);
+    const res = yield call(api.GET, `payment/user`);
     if(res.error)
       console.log(res.error);
     else

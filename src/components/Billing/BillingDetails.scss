@@ -1,0 +1,25 @@
+.billing-details {
+  .billing-buttons {
+    padding: 2% 0%;
+  }
+  .billing-info-list{
+    overflow-x: scroll;
+    height: 600px;
+  }
+  .payment-info {
+    padding: 2%;
+  }
+  .billing-list {
+    border: 1px solid lightgray;
+    border-left: 0;
+    border-right: 0;
+    margin: 1%;
+    padding: 2% 0%;
+    .table {
+      margin: 0% 3% !important;
+      td {
+        text-align: left;
+      }
+    }
+  }
+}

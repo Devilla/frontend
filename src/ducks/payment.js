@@ -17,7 +17,7 @@ const initialState = fromJS({});
 const payment = (state = initialState, action) => {
   switch (action.type) {
     case SUCCESS:
-      return state.set("payment", action.payment);
+      return state.set("payments", action.payment);
     default:
       return state
   }
