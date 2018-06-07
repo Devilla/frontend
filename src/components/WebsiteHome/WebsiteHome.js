@@ -32,7 +32,8 @@ import {
   Customerjourney2,
   Customrules2,
   Mobileready2,
-  Integration
+  Integration,
+  Swivelscreen
 
 } from 'img';
 import { browserHistory } from 'react-router';
@@ -181,6 +182,21 @@ class WebsiteHome extends Component {
             </div>
           </div>
         </section>
+        <section className="switchable feature-large unpad--bottom switchable--switch">
+          <div className="container">
+            <div className="row justify-content-around">
+              <div className="col-md-6 my-auto">
+                <div className="switchable__text">
+                  <h3>Text &amp; to be inserted here , Provide it</h3>
+                  <p className="lead">Lorem ipsum are you aware of this technology <br /></p> <Link to="/">Learn More »</Link>
+                </div>
+              </div>
+              <div className="col-md-6 col-lg-6 col-12 text-center">
+                <img alt="Image" src={Swivelscreen} />
+              </div>
+            </div>
+          </div>
+        </section><hr/>
         <section className="switchable feature-large unpad--bottom switchable--switch">
           <div className="container">
             <div className="row justify-content-around mt--2">
