@@ -6,10 +6,15 @@
 .im1  {
     position: absolute;
     width: 60%;
-    top: 50%;
+    top: 45%;
     left: 50%;
     transform: translate(-50%,-50%);
 }
-.slick-arrow.slick-prev {
+
+
+.slick-arrow.slick-prev::before {
+    display: none;
+}
+.slick-arrow.slick-next::before {
     display: none;
 }
