@@ -9,6 +9,7 @@ import {
 } from 'img';
 
 class WebsiteHowItWorks extends Component {
+
   render() {
     const settings = {
       dots: true,
