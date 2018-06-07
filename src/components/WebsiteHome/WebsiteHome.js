@@ -32,7 +32,7 @@ import {
   Customerjourney2,
   Customrules2,
   Mobileready2,
-  
+  Integration
 
 } from 'img';
 import { browserHistory } from 'react-router';
@@ -70,10 +70,7 @@ class WebsiteHome extends Component {
         <section className="testimonials-1 space--xs bg--secondary">
           <div className="container">
             <div className="row">
-              <div className="col-md-4">
-                <p className="lead">You are at right place, we are featured in:<br /></p>
-              </div>
-              <div className="col-md-8 text-center">
+              <div className="col-md-12 text-center">
                 <ul className="list-inline social-list">
                   <li className="list-inline-item"> <img alt="Image" className="image--xxs" src={Inc42}/> </li>
                   <li className="list-inline-item"> <img alt="Image" className="image--xxs" src={Tnwg} /> </li>
@@ -132,13 +129,13 @@ class WebsiteHome extends Component {
                                         <div className="col-lg-6 col-md-6 my-auto ml-5">
                                             <h3 className="text-center">Start your conversion journey!</h3>
                                              <form>
-                                              <div className="text-center ml-2">  <input className="validate-required validate-email" type="email" name="EMAIL" placeholder="Email Address" onChange={(e) => this.setState({email:e.target.value})} /> </div>
-                                              <div className="mt--1">  <button type="submit" onClick={()=> browserHistory.push(`/signup?email=${this.state.email}`)} className="btn btn--primary type--uppercase">Start your free trial</button> </div>
-
+                                              <div className="text-center ml-2 ">  <input className="validate-required validate-email col-md-7" type="email" name="EMAIL" placeholder="Email Address"/> </div>
+                                              <div className=" text-center mt--1 ml-2 ">  <button type="submit" className="btn btn--primary col-md-7">Start your free trial</button> </div>
+                                                
                                             </form>
                                         </div>
                                       <div className="col-lg-5 col-md-2 mr-5">
-                                    <img alt="Image" src={Startconverting}/>
+                                    <img alt="Conversion" src={Startconverting}/>
                                       </div>
                                 </div>
                                </div>
@@ -220,7 +217,7 @@ class WebsiteHome extends Component {
               <div className="col-md-6 col-lg-5">
                 <h2>Easiest Setup!</h2>
                 <p className="lead"> Anyone can setup Influence following few simple steps.</p>
-                <Link className="btn btn--primary type--uppercase" to="#customise-template">
+                <Link className="btn btn--primary " to="#customise-template">
                   <span className="btn__text">Follow the steps</span>
                 </Link>
                 <span className="block type--fine-print">or &nbsp; <Link to="index.html">  View Demos</Link></span>
@@ -250,19 +247,19 @@ class WebsiteHome extends Component {
               <div className="col-md-4 pr-0 pb-0 pl-0 pt-0">
                 <div className="feature feature-3 boxed boxed--lg boxed--border pr-0 pb-0 pl-0 pt-0"> <img className="icon-n1 mb-0" src={Activitynotifications2} />
                   <h3>Activity Notifications&nbsp;</h3>
-                  <p className="mb-0"> Display recent sales &amp; activity and drive users to convert on your website. </p>
+                  <p className="mb-0 lead h4"> Display recent sales &amp; activity and drive users to convert on your website. </p>
                 </div>
               </div>
               <div className="col-md-4 pr-0 pb-0 pl-0 pt-0">
                 <div className="feature feature-3 boxed boxed--lg boxed--border pr-0 pb-0 pl-0 pt-0"> <img className="icon-n1 mb-0" src={Liveviewers2} />
                   <h3>Live Viewers</h3>
-                  <p className="mb-0"> Show your new visitors that they are not the only ones on your website. Instill a 'Fear of missing out'.  </p>  <span className="label">New</span>
+                  <p className="mb-0 lead h4"> Show your new visitors that they are not the only ones on your website. Instill a 'Fear of missing out'.  </p>  <span className="label">New</span>
                 </div>
               </div>
               <div className="col-md-4 pr-0 pb-0 pl-0 pt-0">
                 <div className="feature feature-3 boxed boxed--lg boxed--border pr-0 pb-0 pl-0 pt-0"> <img className="icon-n1 mb-0" src={Customerprofiles2} />
                   <h3>Customer Profiles</h3>
-                  <p className="mb-0"> We will show you the true identities of your customers. Knowing more will help you in selling more!</p>
+                  <p className="mb-0 lead h4"> We will show you the true identities of your customers. Knowing more will help you in selling more!</p>
                 </div>
               </div>
             </div>
@@ -274,35 +271,53 @@ class WebsiteHome extends Component {
               <div className="col-md-4 pr-0 pb-0 pl-0 pt-0">
                 <div className="feature feature-3 boxed boxed--lg boxed--border pr-0 pb-0 pl-0 pt-0"> <img className="icon-n1 mb-0" src={Customerjourney2} />
                   <h3>Customer Journeys</h3>
-                  <p className="mb-0"> Get to know about your customer's journey before it converts. </p>
+                  <p className="mb-0 lead h4"> Get to know about your customer's journey before it converts. </p>
                 </div>
               </div>
               <div className="col-md-4 pr-0 pb-0 pl-0 pt-0">
                 <div className="feature feature-3 boxed boxed--lg boxed--border pr-0 pb-0 pl-0 pt-0"> <img className="icon-n1 mb-0" src={Customrules2} />
                   <h3>Custom Rules</h3>
-                  <p className="mb-0"> Control notifications behavior on your website. Customize timings &amp; delays. </p>
+                  <p className="mb-0 lead h4"> Control notifications behavior on your website. Customize timings &amp; delays. </p>
                   <span className="label">New</span>
                 </div>
               </div>
               <div className="col-md-4 pr-0 pb-0 pl-0 pt-0">
                 <div className="feature feature-3 boxed boxed--lg boxed--border pr-0 pb-0 pl-0 pt-0"> <img className="icon-n1 mb-0" src={Mobileready2} />
                   <h3>Mobile Ready</h3>
-                  <p className="mb-0"> Show notifications to your mobile users as well. Customize behavior according to your user's location. </p>
+                  <p className="mb-0 lead h4"> Show notifications to your mobile users as well. Customize behavior according to your user's location. </p>
                 </div>
               </div>
             </div>
           </div>
+        </section><hr/>
+        <section className="switchable col-md-12 mb-2">
+         <div className="container">
+            <div className="row justify-content-between align-items-center">
+              <div className="col-md-6 col-lg-5">
+                <h2>Hey ! What are you waiting for ? </h2>
+                <p className="lead"> Make your cutomer conversion simple with brand new Pixel. Secure it now !</p>
+                <Link className="btn btn--primary " to="/integrations">
+                  <span className="btn__text">Integration</span>
+                </Link>
+              </div>
+              <div className="col-md-6">
+                <img alt="Integration" src={Integration}/>
+              </div>
+            </div>
+            </div>
         </section>
-        <section className="imagebg" style={{ background: 'linear-gradient(to left, #b721ff,#21d4fd)'}} data-gradient-bg="#b721ff,#21d4fd,#21d4fd,#b721ff">
+        <section className="imagebg" style={{ background: "#14BBFA"}}>
           <div className="container">
             <div className="row">
               <div className="col-md-12">
-                <div className="cta cta-1 cta--horizontal boxed boxed--border text-center-xs">
-                  <div className="row justify-content-center p-5">
-                    <div className="col-lg-4 my-auto h3">
-                      Let's get you started
+                <div className="cta cta-1 cta--horizontal text-center-xs">
+                  <div className="row p-5">
+                    <div className="col-md-12 text-center ">
+                      <span className="h2">This could be the begining of a beautiful relationship</span>
                     </div>
-                    <div className="col-lg-4 ">
+                  </div>
+                  <div className="row ">
+                    <div className="col-md-12 text-center pb-2">
                       <Link className="btn btn--primary type--uppercase" to="/signup"> <span className="btn__text">Start your 7 days free trial<br /></span> </Link>
                     </div>
                   </div>
