@@ -1,7 +1,8 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { Link, browserHistory } from 'react-router';
 import HeaderLinks from '../Header/HeaderLinks';
 import logo from 'assets/img/logo.png';
+import { Glyphicon } from 'react-bootstrap';
 
 import appRoutes from 'routes/app';
 import './Sidebar.scss';
@@ -13,16 +14,20 @@ class Sidebar extends Component{
             width: window.innerWidth
         }
     }
+
     activeRoute(routeName) {
         return this.props.location.pathname.indexOf(routeName) > -1 ? 'active' : '';
     }
-    updateDimensions(){
-        this.setState({width:window.innerWidth});
-    }
+
+    // updateDimensions(){
+    //     this.setState({width:window.innerWidth});
+    // }
+
     componentDidMount() {
-        this.updateDimensions();
-        window.addEventListener("resize", this.updateDimensions.bind(this));
+        // this.updateDimensions();
+        // window.addEventListener("resize", this.updateDimensions.bind(this));
     }
+
     render(){
       const { disableButton } = this.props;
       return (
@@ -43,7 +48,7 @@ class Sidebar extends Component{
                           {
                             prop.upgrade ? "" : <i className={prop.icon}></i>
                           }
-                          <p>{prop.name}</p>
+                          <p>{prop.upgrade && <Glyphicon glyph="plus" />}{prop.name}</p>
                         </Link>
                       </li>
                     );
