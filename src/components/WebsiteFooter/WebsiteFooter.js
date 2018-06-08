@@ -6,8 +6,8 @@ class WebsiteFooter extends Component {
   render() {
     return (
       <div className="main-container">
-        <footer className="footer-6 unpad--bottom">
-          <div className="container">
+        <footer className="footer-6 pb-5">
+          <div className="container mt-1">
             <div className="row">
               <div className="menu-vertical col-md-3">
                 <ul className="bar__module">
@@ -52,8 +52,6 @@ class WebsiteFooter extends Component {
               </div>
             </div>
           </div>
-          <p></p>
-            <p><br /> </p>   
             <p> <br/></p>
           <div className="footer__lower text-center-xs unpad--bottom">
             <div className="container">
