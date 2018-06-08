@@ -158,7 +158,7 @@ class Profile extends Component {
                 <div className="col-md-2">
                   <div className="profile-over-button">
                     <Button
-                      onClick={() => browserHistory.push('/Upgrade')}
+                      onClick={() => browserHistory.push('/upgrade')}
                       bsStyle="info"
                       pullRight="pullRight"
                       fill="fill"
@@ -166,7 +166,7 @@ class Profile extends Component {
                       icon="cloud-upload"
                       disabled={false}
                     >
-                      Upgrade
+                      Upgrade Plan
                     </Button>
                   </div>
 
