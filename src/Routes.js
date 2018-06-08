@@ -8,7 +8,7 @@ import {
   Home,
   Profile,
   Billing,
-  BillingFinal,
+  BillingDetails,
   Help,
   Payment,
   HowItWorks,
@@ -67,8 +67,8 @@ const MyRoutes = ({routerHistory, store}) => (
       <Route path="/notifications" component={SelectNotification} />
       <Route path="/upgrade" component={Upgrade} />
       <Route path="/profile" component={Profile} />
-      <Route path="/Billing" component={Billing} />
-      <Route path="/billingFinal" component={BillingFinal} />
+      <Route path="/billing" component={Billing} />
+      <Route path="/billing-details" component={BillingDetails} />
       <Route path="/Help" component={Help} />
   	  <Route path="/Payment" component={Payment} />
       <Route path="/getting-started" component={LoginFlow} />
@@ -89,7 +89,7 @@ const MyRoutes = ({routerHistory, store}) => (
       <Route path="/demopage" component={WebsiteDemoPage} />
       <Route path="/customerStories" component={WebsiteCustStory} />
       <Route path="/featurepage" component={WebsiteFeature} />
-      
+
       {/* <Route path="/login" component={LoginPage} /> */}
       {/* <Route path="/profile/company/:token" component={CompanyDetails} /> */}
       {/* <Route path="/register" component={RegisterPage} /> */}

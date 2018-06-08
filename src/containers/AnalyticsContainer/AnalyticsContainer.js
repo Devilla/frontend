@@ -137,7 +137,16 @@ class AnalyticsContainer extends Component {
       dataSet.push(dataContent);
       return dataSet;
     } else {
-      return [];
+      return [{
+        label: "",
+        fillColor: "rgba(220,220,220,0.2)",
+        strokeColor: "rgba(220,220,220,1)",
+        pointColor: "rgba(220,220,220,1)",
+        pointStrokeColor: "#fff",
+        pointHighlightFill: "#fff",
+        pointHighlightStroke: "rgba(220,220,220,1)",
+        data: [0, 0, 0, 0, 0, 0, 0]
+      }];
     }
   }
 
@@ -169,24 +178,29 @@ class AnalyticsContainer extends Component {
     if(this.props.campaignInfo && this.props.campaignInfo.websiteLive.length)
       return this.props.campaignInfo.websiteLive.map((website, index) => {
         let visitor = 0;
-        website.uniqueUsers.aggregations.users.buckets.map(bucket => {
-          visitor = visitor + bucket.visitors.sum_other_doc_count
-        });
+        website.uniqueUsers?
+          website.uniqueUsers.aggregations.users.buckets.map(bucket => {
+            visitor = visitor + bucket.visitors.sum_other_doc_count
+          })
+        :
+          visitor = 0;
 
+        const userDetails = website.signups?website.signups.userDetails:[];
+        const uniqueUsers = website.uniqueUsers?website.uniqueUsers.aggregations.users.buckets:[];
         return <tr key={index}>
             <td className="website"><i className="fas fa-globe"></i> <a href={website.websiteUrl} target="_blank">{website.websiteUrl}</a></td>
             <td className="vistor">{visitor}</td>
-            <td><a href="javascript:;" onClick={() => this.handleViewProfile(website.signups.userDetails)} className="pname">
-                <b>{website.signups.userDetails.length} </b> <span>View Profile</span></a>
+            <td><a href="javascript:;" onClick={() => this.handleViewProfile(userDetails)} className="pname">
+                <b>{userDetails.length} </b> <span>View Profile</span></a>
             </td>
             <td className="liveuser">-</td>
             <td className="conversion">
               {
-                ((website.signups.userDetails.length / visitor)   * 100).toFixed(2)
+                userDetails.length?((userDetails.length / visitor)   * 100).toFixed(2):0
               } %
             </td>
           <td>
-            <a href="javascript:;" onClick={() => this.showGraph(website.websiteUrl, website.uniqueUsers.aggregations.users.buckets)}><i className="fas fa-chart-area"></i> Show Graph</a>
+            <a href="javascript:;" onClick={() => this.showGraph(website.websiteUrl, uniqueUsers)}><i className="fas fa-chart-area"></i> Show Graph</a>
           </td>
         </tr>
       })
