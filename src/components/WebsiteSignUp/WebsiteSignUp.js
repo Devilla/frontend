@@ -145,7 +145,7 @@ class WebsiteSignUp extends Component {
                 
                   
                     <h3>Your first step towards conversions, Signup here.</h3>
-                    <span className=" type--fine-print mb-4">Already have an account?&nbsp;
+                    <span className=" type--fine-print  ">Already have an account?&nbsp;
                       <Link to="/login">Sign in</Link>
                     </span>
                     {error &&
@@ -153,7 +153,7 @@ class WebsiteSignUp extends Component {
                       <strong>{error}</strong>
                       </Alert>
                     }
-                    <div className="mt-5"  style={{backgroundColor:"#f8d0c8" ,fontSize:"15px"}} id="av-flash-block" className="c-flashBlock" >   <div data-mc-group="flashBlock"  c > <ul className="pt-2 pb-2"><li>Please check your entry and try again.</li></ul> </div> </div>
+                    <div className="mt-5"  style={{backgroundColor:"#f8d0c8" ,fontSize:"15px"}} id="av-flash-block" className="c-flashBlock" >   <div data-mc-group="flashBlock"  c > <ul className=" mt-3 pt-2 pb-2"><li>Please check your entry and try again.</li></ul> </div> </div>
                     <hr />
                     
                     <form>
