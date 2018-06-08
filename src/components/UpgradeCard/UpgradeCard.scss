@@ -1,0 +1,22 @@
+.upgrade-card-container {
+  .tab-content {
+    padding: 4% 4% 0% 4%;
+  }
+  .visa {
+    .tab-name {
+      color: #9a9a9a
+    }
+  }
+  .credit-card-details {
+    padding: 0% 2%;
+    label {
+      width: 100%;
+    }
+    .StripeElement {
+      border: 1px solid lightgray !important;
+      height: 45px  !important;
+      border-radius: 3px  !important;
+      padding: 2% 2%;
+    }
+  }
+}

@@ -32,7 +32,7 @@ class BillingDetails extends Component {
       planSelected: {}
     };
     props.fetchPayment();
-    props.fetchInvoices();
+    // props.fetchInvoices();
   }
 
   plansList() {
@@ -97,7 +97,7 @@ class BillingDetails extends Component {
                           </Button>
                         </div>
                         <div className="">
-                          <Button onClick={() => browserHistory.push('/Billing')} bsStyle="info" pullRight="pullRight" fill="fill" type="button" icon="usd" disabled={false}> Upgrade Payment
+                          <Button onClick={() => browserHistory.push('/card-details?type=upgrade')} bsStyle="info" pullRight="pullRight" fill="fill" type="button" icon="usd" disabled={false}> Upgrade Payment
                           </Button>
                         </div>
                       </div>
