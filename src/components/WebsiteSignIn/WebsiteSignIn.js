@@ -159,6 +159,7 @@ class WebsiteSignIn extends Component {
                          disabled={!isEmailValid || !isPwdValid}
                           />
                       </div>
+                      <div><a href="/forget-password" influence_scanned="true" style="padding: 25px">Forgot password?</a></div>
                     </div>
                   </form>
                 </div>
