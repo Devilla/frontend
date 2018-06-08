@@ -1,24 +1,20 @@
 import React, {Component} from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import {
   Grid,
   Row,
   Col,
   FormGroup,
-  ControlLabel,
   FormControl,
   Tabs,
-  Tab,
-  Panel
+  Tab
 } from 'react-bootstrap';
 import { Elements } from 'react-stripe-elements';
 
-import { browserHistory } from 'react-router';
 import CardHeader from 'components/Template/card-with-header'
-import FormInputs from 'components/Template/FormTemp';
-import Button from 'components/Template/customButton';
 import StripeCard from './StripeCard';
-import { updatePaymentMethod } from 'ducks/payment';
+import { updatePaymentMethod, createPayment } from 'ducks/payment';
+import { updateProfile } from 'ducks/profile';
 import './UpgradeCard.scss';
 
 class UpgradeCard extends Component {
@@ -29,28 +25,37 @@ class UpgradeCard extends Component {
       key: 1
     };
     this.handleSelect =  this.handleSelect.bind(this);
+    this.makePayment = this.makePayment.bind(this);
   }
 
   componentWillMount() {
-    if(this.props.location.query.type == "upgrade")
-      this.setState({currentState: 'upgrade'})
+    window.scrollTo(0, 0);
+    if(this.props.location && this.props.location.query.type == "upgrade")
+      this.setState({currentState: 'upgrade'});
     else
       this.setState({currentState: 'payment'});
   }
 
   handleSelect(key) {
-    this.setState({ key })
+    this.setState({ key });
   }
 
+  makePayment(data, token) {
+    let profile = {};
+    profile['plan'] = this.props.plan;
+    profile['id'] = this.props.profile._id;
+    this.props.updateProfile(profile);
+    this.props.createPayment(data);
+  }
 
   render() {
-    console.log(this.state.key);
-    const { updatePaymentMethod } = this.props;
+    const { updatePaymentMethod, plan, user } = this.props;
+    const { currentState, key } = this.state;
     return (<div className="content fill ">
       <Grid fluid="fluid">
         <Row className="inlineclr">
           <Col md={30}>
-            <CardHeader title={this.state.currentState==="upgrade"?"Upgrade Payment Method" : "Make Payment"}
+            <CardHeader title={currentState==="upgrade"?"Upgrade Payment Method" : "Make Payment"}
               content={
                 <div className = "upgrade-card-container" >
                   <div className="panel panel-default">
@@ -59,7 +64,7 @@ class UpgradeCard extends Component {
                       <Tabs
                         defaultActiveKey={1}
                         animation={true}
-                        activeKey={this.state.key}
+                        activeKey={key}
                         onSelect={this.handleSelect}
                         id="controlled-tab-example"
                       >
@@ -71,7 +76,13 @@ class UpgradeCard extends Component {
                           </Row>
                           <Row className="visa credit-card-details">
                             <Elements>
-                              <StripeCard updatePaymentMethod={updatePaymentMethod} currentState={this.state.currentState} />
+                              <StripeCard
+                                plan={plan}
+                                user={user}
+                                makePayment={this.makePayment}
+                                updatePaymentMethod={updatePaymentMethod}
+                                currentState={currentState}
+                              />
                             </Elements>
                           </Row>
                         </Tab>
@@ -150,14 +161,16 @@ class UpgradeCard extends Component {
   }
 }
 
-// const mapStateToProps = state => ({
-//   profile: state.getIn(['profile', 'profile']),
-//   user: state.getIn(['auth', 'user']),
-//   planList: state.getIn(['plan', 'plan'])
-// });
+const mapStateToProps = state => ({
+  profile: state.getIn(['profile', 'profile']),
+  user: state.getIn(['auth', 'user'])
+  // planList: state.getIn(['plan', 'plan'])
+});
 
 const mapDispatchToProps = {
-  updatePaymentMethod
+  updatePaymentMethod,
+  createPayment,
+  updateProfile
 };
 
-export default connect(null, mapDispatchToProps)(UpgradeCard);
+export default connect(mapStateToProps, mapDispatchToProps)(UpgradeCard);

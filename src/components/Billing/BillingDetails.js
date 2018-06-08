@@ -8,7 +8,6 @@ import {
   ControlLabel,
   FormControl,
   Table,
-  Panel,
   Glyphicon
 } from 'react-bootstrap';
 import { browserHistory } from 'react-router';

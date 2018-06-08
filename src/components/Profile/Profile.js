@@ -158,7 +158,7 @@ class Profile extends Component {
                 <div className="col-md-2">
                   <div className="profile-over-button">
                     <Button
-                      onClick={() => browserHistory.push('/card-details')}
+                      onClick={() => browserHistory.push('/upgrade')}
                       bsStyle="info"
                       pullRight="pullRight"
                       fill="fill"

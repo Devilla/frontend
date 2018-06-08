@@ -47,13 +47,23 @@ class StripeCard extends Component {
 
   handleSubmit = (ev) => {
     ev.preventDefault();
-    const { stripe, currentState, updatePaymentMethod } = this.props;
+    const { stripe, currentState, updatePaymentMethod, makePayment, plan, user } = this.props;
     if (stripe) {
       stripe
       .createToken()
       .then((payload) => {
         if(currentState == 'upgrade')
           updatePaymentMethod(payload.token);
+        else {
+          const data = {
+            amount: plan.amount,
+            paymentProvider: payload.token,
+            paymentType: payload.token.type,
+            user: user._id,
+            plan: plan,
+          };
+          makePayment(data);
+        }
         console.log('[token]', payload)
       });
     } else {
@@ -117,7 +127,7 @@ class StripeCard extends Component {
             </label>
           </Col>
         </Row>
-        <Row>
+        <Row class="upgrade-card-buttons">
           <div className="col-md-2 pull-left">
             <Button type="button" icon="chevron-left" bsStyle="info" fill="fill" onClick={() => browserHistory.push(currentState==="upgrade"?"/billing-details" : "/profile")}>Back</Button>
           </div>

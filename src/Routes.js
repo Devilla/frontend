@@ -27,6 +27,7 @@ import {
   Error,
   ComingSoon,
   UpgradeCard,
+  UpgradePlan,
   WebsiteHome,
   WebsiteHowItWorks,
   WebsiteIntegrations,
@@ -66,7 +67,7 @@ const MyRoutes = ({routerHistory, store}) => (
       <Route path="/integration" component={Integration} />
       <Route path="/support" component={Dashboard} />
       <Route path="/notifications" component={SelectNotification} />
-      <Route path="/upgrade" component={Upgrade} />
+      <Route path="/upgrade" component={UpgradePlan} />
       <Route path="/profile" component={Profile} />
       <Route path="/billing" component={Billing} />
       <Route path="/card-details" component={UpgradeCard} />

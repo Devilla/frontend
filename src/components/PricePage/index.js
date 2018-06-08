@@ -113,7 +113,6 @@ class Price extends Component {
           <PaymentPrice
             planPeriod={this.state.planPeriod}
             planList={this.state.servicebotPlans}
-            returnRates={this.returnRates}
             handleMonthChange={this.handleMonthChange}
             handleSwitchChange={this.handleSwitchChange}
             handleYearChange={this.handleYearChange}

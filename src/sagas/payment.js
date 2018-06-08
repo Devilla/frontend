@@ -54,12 +54,14 @@ function* create(action) {
       console.log(res.error);
     else {
       console.log(res, "=============response");
+
       // let profile = yield select(getProfile);
       // profile['id'] = profile._id;
       // delete profile['_id'];
       // profile['profile_payments'] = res._id
       // yield put(updateProfile(profile));
       yield put(actions.successPayment(res));
+      yield browserHistory.push('billing-details');
     }
     yield put(loaded());
   } catch (error) {
