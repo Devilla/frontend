@@ -2,15 +2,21 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import {browserHistory} from 'react-router';
 import {Grid, Row, Col} from 'react-bootstrap';
-import ChartistGraph from 'react-chartist';
+import moment from 'moment';
 import StatsCard from './Stats'
 import Website from './Website'
-import Card from './Card'
+import Card from './Card';
+
 import { Scrollbars } from 'react-custom-scrollbars';
 import { dataSales, optionsSales, responsiveSales, legendSales } from 'components/utils/variable.jsx';
 import { getCookie, ajaxgetrequest } from 'components';
 import { fetchElastic } from 'ducks/elastic';
 import { fetchCampaignInfo, successCampaign } from 'ducks/campaign';
+import ReactChartJs from 'react-chartjs';
+import './Dashboard.scss';
+
+var LineChart = ReactChartJs.Line;
+
 
 class Dashboard extends Component {
   constructor() {
@@ -43,8 +49,107 @@ class Dashboard extends Component {
     browserHistory.push('/new');
   }
 
+  getUniqueUsers(users) {
+    let sum = 0;
+    users.map(user => {
+      user.aggregations.users.buckets.map(bucket => {
+        sum = sum + bucket.visitors.sum_other_doc_count
+      })
+    });
+    return sum;
+  }
+
+  getDataset() {
+    if(this.props.campaignInfo && this.props.campaignInfo.uniqueUsers.length) {
+      let dataSet = [];
+      let dataContent = {
+    			label: "My First dataset",
+    			fillColor: "rgba(220,220,220,0.2)",
+    			strokeColor: "rgba(220,220,220,1)",
+    			pointColor: "rgba(220,220,220,1)",
+    			pointStrokeColor: "#fff",
+    			pointHighlightFill: "#fff",
+    			pointHighlightStroke: "rgba(220,220,220,1)",
+    			data: [0, 0, 0, 0, 0, 0, 0]
+    		}
+      this.props.campaignInfo.uniqueUsers.map(user => {
+        user.aggregations.users.buckets.map(bucket => {
+          dataContent['label'] = moment(bucket.key_as_string).format('LL');
+          dataContent['data'][moment(bucket.key_as_string).day()] = bucket.visitors.sum_other_doc_count;
+        });
+        dataSet.push(dataContent);
+      });
+      return dataSet;
+    } else {
+      return [{
+    			label: "",
+    			fillColor: "rgba(220,220,220,0.2)",
+    			strokeColor: "rgba(220,220,220,1)",
+    			pointColor: "rgba(220,220,220,1)",
+    			pointStrokeColor: "#fff",
+    			pointHighlightFill: "#fff",
+    			pointHighlightStroke: "rgba(220,220,220,1)",
+    			data: [0, 0, 0, 0, 0, 0, 0]
+    		}];
+    }
+  }
+
   render() {
     const { campaignInfo, successCampaign } = this.props;
+
+    var chartData = {
+    	labels: moment.weekdays(),
+    	datasets: this.getDataset()
+    };
+
+    var chartOptions = {
+      responsive: true,
+
+      maintainAspectRatio: false,
+
+    	///Boolean - Whether grid lines are shown across the chart
+    	scaleShowGridLines : true,
+
+    	//String - Colour of the grid lines
+    	scaleGridLineColor : "rgba(0,0,0,.05)",
+
+    	//Number - Width of the grid lines
+    	scaleGridLineWidth : 1,
+
+    	//Boolean - Whether to show horizontal lines (except X axis)
+    	scaleShowHorizontalLines: true,
+
+    	//Boolean - Whether to show vertical lines (except Y axis)
+    	scaleShowVerticalLines: true,
+
+    	//Boolean - Whether the line is curved between points
+    	bezierCurve : true,
+
+    	//Number - Tension of the bezier curve between points
+    	bezierCurveTension : 0.4,
+
+    	//Boolean - Whether to show a dot for each point
+    	pointDot : true,
+
+    	//Number - Radius of each point dot in pixels
+    	pointDotRadius : 4,
+
+    	//Number - Pixel width of point dot stroke
+    	pointDotStrokeWidth : 1,
+
+    	//Number - amount extra to add to the radius to cater for hit detection outside the drawn point
+    	pointHitDetectionRadius : 20,
+
+    	//Boolean - Whether to show a stroke for datasets
+    	datasetStroke : true,
+
+    	//Number - Pixel width of dataset stroke
+    	datasetStrokeWidth : 2,
+
+    	//Boolean - Whether to horizontally center the label and point dot inside the grid
+    	offsetGridLines : false
+    };
+
     return (<div className="content">
       <Grid fluid="fluid">
 
@@ -87,7 +192,7 @@ class Dashboard extends Component {
 
                 <Row>
                   <Col lg={12} sm={12}>
-                    <StatsCard statsClass="card card-stats  eqheight" statsText="Unique Visitors" statsValue={this.state.UniqueVisitor}/>
+                    <StatsCard statsClass="card card-stats  eqheight" statsText="Unique Visitors" statsValue={campaignInfo && campaignInfo.uniqueUsers.length?this.getUniqueUsers(campaignInfo.uniqueUsers):0}/>
                   </Col>
                 </Row>
                 <Row>
@@ -106,22 +211,12 @@ class Dashboard extends Component {
                 <Card
                   statsIcon="fa fa-history"
                   id="chartHours"
-                  title="Website Traffic"
+                  title="Website Traffic this week"
                   category="24 Hours performance"
                   stats="Updated 3 minutes ago"
                   content={
                     <div className = "ct-chart">
-                      <ChartistGraph
-                        data={dataSales}
-                        type="Line"
-                        options={optionsSales}
-                        responsiveOptions={responsiveSales}
-                      />
-                    </div>
-                  }
-                  legend={
-                    <div className = "legend" >
-                      {this.createLegend(legendSales)}
+                      <LineChart data={chartData} options={chartOptions} height="250" redraw/>
                     </div>
                   }
                 />

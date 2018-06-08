@@ -8,7 +8,7 @@ import {
   Home,
   Profile,
   Billing,
-  BillingFinal,
+  BillingDetails,
   Help,
   Payment,
   HowItWorks,
@@ -45,7 +45,8 @@ import {
 import {
   App,
   DashboardContainer,
-  ConnectPage
+  ConnectPage,
+  AnalyticsContainer
 } from 'containers';
 
 
@@ -60,14 +61,14 @@ const MyRoutes = ({routerHistory, store}) => (
       <Route path="/dashboard" component={Dashboard} />
       <Route path="/new" component={New} />
       <Route path="/campaigns" component={Notification} />
-      <Route path="/analytics" component={Analytics} />
+      <Route path="/analytics" component={AnalyticsContainer} />
       <Route path="/integration" component={Integration} />
       <Route path="/support" component={Dashboard} />
       <Route path="/notifications" component={SelectNotification} />
       <Route path="/upgrade" component={Upgrade} />
       <Route path="/profile" component={Profile} />
-      <Route path="/Billing" component={Billing} />
-      <Route path="/billingFinal" component={BillingFinal} />      
+      <Route path="/billing" component={Billing} />
+      <Route path="/billing-details" component={BillingDetails} />
       <Route path="/Help" component={Help} />
   	  <Route path="/Payment" component={Payment} />
       <Route path="/getting-started" component={LoginFlow} />
@@ -88,7 +89,7 @@ const MyRoutes = ({routerHistory, store}) => (
       <Route path="/demopage" component={WebsiteDemoPage} />
       <Route path="/customerStories" component={WebsiteCustStory} />
       <Route path="/featurepage" component={WebsiteFeature} />
-      
+
       {/* <Route path="/login" component={LoginPage} /> */}
       {/* <Route path="/profile/company/:token" component={CompanyDetails} /> */}
       {/* <Route path="/register" component={RegisterPage} /> */}

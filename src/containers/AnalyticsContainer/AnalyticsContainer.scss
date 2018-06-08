@@ -1,0 +1,33 @@
+.analytics-container {
+
+  .table {
+    margin: 0% 3% !important;
+  }
+
+  .analytics-profile {
+    .card {
+      max-height: 700px;
+    }
+    .img {
+      img{
+        width: 40px;
+        height: 40px;
+        border-radius: 50px;
+      }
+    }
+    .backBtn {
+      margin: 15% 2%;
+    }
+  }
+
+}
+
+.analytics-chart {
+  canvas {
+    padding: 3%;
+  }
+}
+.mm-popup__box {
+  width: 35%;
+  left: 45%;
+}
