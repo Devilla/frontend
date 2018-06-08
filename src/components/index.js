@@ -15,7 +15,8 @@ export { default as WebsitePolicy } from "./WebsitePolicy/WebsitePolicy";
 export { default as WebsiteDemoPage}  from "./WebsiteDemoPage/WebsiteDemoPage";
 export { default as WebsiteCustStory}  from "./WebsiteCustStory/WebsiteCustStory";
 export { default as WebsiteFeature}  from "./WebsiteFeature/WebsiteFeature";
-
+export { default as Affiliate}  from "./Affiliate/Affiliate";
+export { default as AffiliateRegister}  from "./Affiliate/AffiliateRegister";
 
 
 
