@@ -36,14 +36,14 @@ class WebsiteHowItWorks extends Component {
             </div>
           </div>
         </section>
-        <section className="bg--secondary col-md-12 ">
-        <Slider {...settings}>
+        <section className="col-md-12 bg--secondary">
+        <Slider {...settings} className="pb-5">
                 <div>
                   <div className="row ">
                     <div className="col-md-4 text-center pt-5 pb-5  ">
                       <img src={Carpathy} alt="img" className="mr-0" />
                     </div>
-                    <div className="col-md-8 text-left pt-5 pb-5 ">
+                    <div className="col-md-8 text-left pt-5 pb-5  type--fine-print">
                       <p className="h3"> “We wanted a solution that could help us in increasing our conversions on our portal. We got an instant conversions boost after using Influence on our main portal ”  </p>
                       <p className="h5 lead"> – Carpathy, Akshat Lavania</p>
                     </div>
@@ -54,7 +54,7 @@ class WebsiteHowItWorks extends Component {
                     <div className="col-md-4 text-center pt-5 pb-5  ">
                       <img src={Lawsikho} alt="img" className="mr-0"/>
                     </div>
-                    <div className="col-md-8 text-left pt-5 pb-5">
+                    <div className="col-md-8 text-left pt-5 pb-5 type--fine-print">
                       <p className="h3"> “Great Tool. Gave us instant boost of 36% on our landing pages on an average ”  </p>
                       <p className="h5 lead"> – LawSikho, Abhyudya Aggarwal </p>
                     </div>

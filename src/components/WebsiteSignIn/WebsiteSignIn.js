@@ -4,7 +4,6 @@ import { validateEmail, validatePassword, login, PASSWORD_MAX_LENGTH } from '../
 import { store } from '../../index.js';
 import { loginSuccess } from '../../ducks/auth';
 import { browserHistory } from 'react-router';
-import SocialLink from './SocialLink';
 import { base } from 'services/api';
 import { toast } from 'react-toastify';
 import { Alert, HelpBlock } from 'react-bootstrap';
@@ -159,7 +158,7 @@ class WebsiteSignIn extends Component {
                          disabled={!isEmailValid || !isPwdValid}
                           />
                       </div>
-                      <div><a href="/forget-password" influence_scanned="true" style="padding: 25px">Forgot password?</a></div>
+                      <div><a href="/forget-password"  style={{padding: "25px"}}>Forgot password?</a></div>
                     </div>
                   </form>
                 </div>
