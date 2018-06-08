@@ -59,10 +59,13 @@ class WebsitePricing extends Component {
     return planList.map(plan => {
       return <div className="col-md-3 pl-0 pr-0">
         <div className="pricing pricing-1 boxed boxed--border boxed--lg pr-0 pl-0">
-          <h4>{plan.name}</h4>
+        {(plan.name === "Enterprise Yearly Plan" || plan.name === "Enterprise Monthly Plan") &&  <h3 className="h3 text-center">Enterprise</h3>}
+        {(plan.name === "Advanced Yearly Plan" || plan.name === "Advanced Monthly Plan")  &&  <h3 className="text-center">Advanced</h3>}
+        {(plan.name === "Small Businesses Yearly Plan" || plan.name === "Small Businesses Monthly Plan") &&  <h3 className="text-center">Small</h3>}
+        {(plan.name === "Startups Yearly Plan" || plan.name === "Startups Monthly Plan") &&  <h3 className="text-center">Startups</h3>} 
           <span className="h1">
             <span className="pricing__dollar">${plan.interval === 'year' ? plan.amount/1200 : plan.amount/100}</span></span>
-          <span className="type--fine-print">Per Month</span>
+         
           <hr/>
           <ul className="h6">
             <li>
@@ -73,34 +76,34 @@ class WebsitePricing extends Component {
             </li><hr/>
             <li className="text-left pl-5">
               <span className="checkmark bg--primary-1"></span>
-              <span>
+              <span className="h5 inline-block">
                 Unlimited Notifications</span>
             </li>
 
             <li className="text-left pl-5">
               <span className="checkmark bg--primary-1"></span>
-              <span>Unlimited Domains</span>
+              <span className="h5 inline-block">Unlimited Domains</span>
             </li>
             <li className="text-left pl-5">
               <span className="checkmark bg--primary-1"></span>
-              <span>Custom Settings</span>
+              <span className="h5 inline-block">Custom Settings</span>
             </li>
 
             <li className="text-left pl-5">
               <span className="checkmark bg--primary-1"></span>
-              <span>Elite Club</span>
+              <span className="h5 inline-block">Elite Club</span>
             </li>
             <li className="text-left pl-5">
               <span className="checkmark bg--primary-1"></span>
-              <span>Priority Support</span>
+              <span className="h5 inline-block">Priority Support</span>
             </li>
             <li className="text-left pl-5">
               <span className="checkmark bg--primary-1"></span>
-              <span>Beta Features</span>
+              <span className="h5 inline-block">Beta Features</span>
             </li>
             <li className="text-left pl-5">
               <span className="checkmark bg--primary-1"></span>
-              <span>White Label</span>
+              <span className="h5 inline-block">White Label</span>
             </li>
             <li className="text-left pl-5">
               <span className=" bg--primary-1"></span>
@@ -108,7 +111,7 @@ class WebsitePricing extends Component {
             </li>
           </ul>
 
-          <Link className="btn btn--primary" to="">
+          <Link className="btn btn--primary col-md-12 text-center" to="">
             <span className="btn__text">Access Now</span>
           </Link>
         </div>
@@ -131,11 +134,11 @@ class WebsitePricing extends Component {
         </div>
       </section>
 
-      <section className="text-center unpad--bottom">
+      <section className="text-center">
         <div className="container">
           <div className="row text-center">
-            <div className="col-md-1 my-auto" id="leftmg"><div><strong onClick={this.handleMonthChange}>Monthly</strong></div></div>
-            <div className="col-sm-1 my-auto text-center">
+            <div className="col-md-1 mr-3 text-left " id="leftmg"><div><strong onClick={this.handleMonthChange} className="h3 type--bold">Monthly</strong></div></div>
+            <div className="col-md-1 col-sm-1 my-auto text-center pl-4">
               <Switch
                 circleStyles={{ onColor: 'green', offColor: 'blue', diameter: 18 }}
                 switchStyles={{ width: 40 }}
@@ -143,7 +146,7 @@ class WebsitePricing extends Component {
                 value={this.state.externalValue} onChange={this.handleSwitchChange}
               />
             </div>
-            <div className="col-md-1 text-left my-auto pl-0 ml-0" ><strong onClick={this.handleYearChange}>Yearly</strong></div>
+            <div className="col-md-1 text-left my-auto pl-0 ml-0" ><strong onClick={this.handleYearChange} className="h3 type--bold">Yearly</strong></div>
           </div>
         </div>
       </section>
@@ -154,7 +157,7 @@ class WebsitePricing extends Component {
             {this.renderPriceList()}
           </div>
         </div>
-      </section>
+      </section><hr className="my-auto col-md-6" />
       <section className="text-center pt-5 mt-4 mb-5">
           <div className="container ">
             <div className="row">

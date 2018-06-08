@@ -8,7 +8,7 @@ import {
   Notification,
   Analytics,
   New,
-  Profile
+  Profile,
 } from 'components'
 
 const appRoutes = [
