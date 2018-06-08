@@ -36,7 +36,7 @@ export { default as StatsCard } from "./StatsCard/StatsCard";
 export { default as TermsPage } from "./TermsPage";
 export { default as Dashboard } from './Dashboard/Dashboard';
 export { default as Notification } from './Notification';
-export { default as Analytics } from './Analytics/Analytics';
+export { default as Analytics } from './Analytics/analytics';
 export { default as AnalyticsProfile } from './Analytics/AnalyticsProfile';
 export { default as New } from './New';
 export { default as LoginFlow } from './LoginFlow/LoginFlow';
