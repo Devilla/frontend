@@ -64,7 +64,6 @@ const PaymentPage = ({stripe,
     },
   }}
 
-
   return (
     <div className="credit-form">
       <form onSubmit={(e) => submitForm(e)}>
