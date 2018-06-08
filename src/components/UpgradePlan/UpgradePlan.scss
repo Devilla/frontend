@@ -1,0 +1,56 @@
+.upgrade-plan-container{
+  padding: 30px 15px;
+  min-height: calc(100% - 86px);
+  .upgrade-plan {
+    text-align: center;
+    .authpage {
+      // min-height: 780px;
+    }
+    .flow-wrapper {
+      width: 85%;
+      margin: 0 auto;
+      .upgrade-price-div {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        padding-bottom: 25px;
+      }
+      .upgrade-button {
+        padding: 5% 0%;
+      }
+      .price {
+        .button.submit-button {
+          display: initial;
+        }
+        .vertical-col {
+          display: flex;
+        }
+        .min-col {
+          width: 50%;
+        }
+        .Select-control {
+          border-color: transparent;
+          border-radius: 0;
+          border: none;
+        }
+        .Select.is-focused:not(.is-open) > .Select-control {
+          border-color: none;
+          -webkit-box-shadows: none;
+          box-shadow: none;
+          background: #fff;
+        }
+        .Select-placeholder {
+          color: #999999;
+        }
+        .w-input {
+          margin-bottom: 0;
+        }
+        .card .card-body {
+          .card-title, .card-text {
+            font-size: 13px;
+          }
+        }
+      }
+    }
+  }
+}
