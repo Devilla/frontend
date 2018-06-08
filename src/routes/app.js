@@ -9,7 +9,10 @@ import {
   Analytics,
   New,
   Profile,
+<<<<<<< HEAD
   Help
+=======
+>>>>>>> master
 } from 'components'
 
 const appRoutes = [

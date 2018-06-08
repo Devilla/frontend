@@ -40,7 +40,12 @@ import {
   Swivelscreen,
   Sw1,
   Sw2,
-  LogoInfluence
+  LogoInfluence,
+  Lawsikho,
+  Stagephod,
+  Userc,
+  Userr,
+  Carpathy
 
 
 } from 'img';
@@ -162,8 +167,7 @@ class WebsiteHome extends Component {
           <div className="container pt-5 pb-5">
             <div className="row  ">
             <div className="col-md-6 text-left pt-5 pb-5 ">
-                <h2 className="color--white "> Thousands of teams use Marvel to make design their competitive edge. </h2>
-               
+                <h2 className="color--white "> Thousands of brands are using Influence to get more customers </h2>
               </div>
               <div className="col-md-6 text-left pt-5 pb-5  pl-3">
                 <img src={Marvel} alt="img" className="enterprise-logo"/>
@@ -188,8 +192,8 @@ class WebsiteHome extends Component {
               <div className="row justify-content-around">
                 <div className="col-md-6 my-auto">
                   <div className="switchable__text">
-                    <h3>Recent Activity Notifications</h3>
-                    <p className="lead"> Show recent signups or purchases on your website. Get your existing customers to sell your products for you on an autopilot mode.</p> <Link to="/">Learn More »</Link>
+                    <h3>Recent user activity</h3>
+                    <p className="lead"> You can show your recent user activity to all your visitors and push to buy sign up more for your offerings </p> <Link to="/">Learn More »</Link>
                   </div>
                 </div>
                 <div className="col-md-6 col-lg-6 col-12 text-center">
@@ -198,10 +202,10 @@ class WebsiteHome extends Component {
 
                     <Slider {...settings} className="im1">
                       <div>
-                        <img alt="Sw1" src={Sw1} />
+                        <img alt="Sw1" src={Userc} />
                       </div>
                       <div>
-                        <img alt="Sw2" src={Sw2} />
+                        <img alt="Sw2" src={Userr} />
                       </div>
                     </Slider>
 
@@ -215,8 +219,8 @@ class WebsiteHome extends Component {
               <div className="row justify-content-around">
                 <div className="col-md-6 my-auto">
                   <div className="switchable__text">
-                    <h3>Show Live &amp; Realtime Activities</h3>
-                    <p className="lead">Show live visitor count. Let your new visitors know they’re not the only ones buying from you. <br /></p> <Link to="/">Learn More »</Link>
+                    <h3>Live users activity</h3>
+                    <p className="lead"> Show your visitors how many live people are seeing your offerings and influence them to buy from you <br /></p> <Link to="/">Learn More »</Link>
                   </div>
                 </div>
                 <div className="col-md-6 col-lg-6 col-12 text-center">
@@ -242,8 +246,8 @@ class WebsiteHome extends Component {
               <div className="row justify-content-around">
                 <div className="col-md-6 my-auto">
                   <div className="switchable__text">
-                    <h3>Text &amp; to be inserted here , Provide it</h3>
-                    <p className="lead">Lorem ipsum are you aware of this technology <br /></p> <Link to="/">Learn More »</Link>
+                    <h3>Group activity</h3>
+                    <p className="lead">Show overall number of people that have signed up on your website <br /></p> <Link to="/">Learn More »</Link>
                   </div>
                 </div>
                 <div className="col-md-6 col-lg-6 col-12 text-center">
@@ -381,33 +385,33 @@ class WebsiteHome extends Component {
                 <div>
                   <div className="row ">
                     <div className="col-md-4 text-left pt-5 pb-5  ">
-                      <img src={LogoInfluence} alt="img" />
+                      <img src={Carpathy} alt="img" />
                     </div>
                     <div className="col-md-8 text-left pt-5 pb-5">
-                      <p className="h3"> “We wanted a solution that integrated all channels and that gave us the flexibility to implement in the way that we needed ”  </p>
-                      <p className="h5 small-meta"> – Orlando Gadea Ros, Business Innovation Manager at Stanley Black & Decker </p>
+                      <p className="h3"> “We wanted a solution that could help us in increasing our conversions on our portal. We got an instant conversions boost after using Influence on our main portal ”  </p>
+                      <p className="h5 lead"> – Carpathy, Akshat Lavania</p>
                     </div>
                   </div>
                 </div>
                 <div>
                   <div className="row ">
                     <div className="col-md-4 text-left pt-5 pb-5  ">
-                      <img src={LogoInfluence} alt="img" />
+                      <img src={Stagephod} alt="img" />
                     </div>
                     <div className="col-md-8 text-left pt-5 pb-5">
-                      <p className="h3"> “We wanted a solution that integrated all channels and that gave us the flexibility to implement in the way that we needed ”  </p>
-                      <p className="h5 small-meta"> – Orlando Gadea Ros, Business Innovation Manager at Stanley Black & Decker </p>
+                      <p className="h3"> “ We got an instant boost of 84% in our landing page conversions after using influence ”  </p>
+                      <p className="h5 lead"> – Stagephod, Nikhilesh Tayal</p>
                     </div>
                   </div>
                 </div>
                 <div>
                   <div className="row ">
                     <div className="col-md-4 text-left pt-5 pb-5  ">
-                      <img src={LogoInfluence} alt="img" />
+                      <img src={Lawsikho} alt="img" />
                     </div>
                     <div className="col-md-8 text-left pt-5 pb-5">
-                      <p className="h3"> “We wanted a solution that integrated all channels and that gave us the flexibility to implement in the way that we needed ”  </p>
-                      <p className="h5 small-meta"> – Orlando Gadea Ros, Business Innovation Manager at Stanley Black & Decker </p>
+                      <p className="h3"> “Great Tool. Gave us instant boost of 36% on our landing pages on an average ”  </p>
+                      <p className="h5 lead"> – LawSikho, Abhyudya Aggarwal </p>
                     </div>
                   </div>
                 </div>
@@ -430,14 +434,14 @@ class WebsiteHome extends Component {
               </div>
             </div>
           </section>
-          <section className="imagebg" style={{ background: "#14BBFA" }}>
-            <div className="container">
+          <section className="imagebg " style={{ background: "#14BBFA" }}>
+            <div className="container pb-5 pt-5">
               <div className="row">
                 <div className="col-md-12">
                   <div className="cta cta-1 cta--horizontal text-center-xs">
                     <div className="row p-2">
                       <div className="col-md-12 text-center ">
-                        <span className="h2">This could be the begining of a beautiful relationship</span>
+                        <span className="h2">Ready to boost up your conversion rates ?</span>
                       </div>
                     </div>
                     <div className="row ">

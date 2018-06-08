@@ -6,7 +6,10 @@ import {
   NewInstall,
   NewGoLive,
   NewAnalyze,
-  Easiestsetup
+  Easiestsetup,
+  Lawsikho,
+  Stagephod,
+  Carpathy
 } from 'img';
 
 class WebsiteHowItWorks extends Component {
@@ -33,63 +36,31 @@ class WebsiteHowItWorks extends Component {
             </div>
           </div>
         </section>
-        <section className="bg--secondary">
-          <Slider {...settings}>
-            <div>
-              <div className="row">
-                <div className="col-lg-2">
+        <section className="bg--secondary col-md-12 ">
+        <Slider {...settings}>
+                <div>
+                  <div className="row ">
+                    <div className="col-md-4 text-center pt-5 pb-5  ">
+                      <img src={Carpathy} alt="img" className="mr-0" />
+                    </div>
+                    <div className="col-md-8 text-left pt-5 pb-5 ">
+                      <p className="h3"> “We wanted a solution that could help us in increasing our conversions on our portal. We got an instant conversions boost after using Influence on our main portal ”  </p>
+                      <p className="h5 lead"> – Carpathy, Akshat Lavania</p>
+                    </div>
+                  </div>
                 </div>
-                <div className="col-lg-2 col-md-4 col-6 text-center">
-                  <img className="testimonial__image" alt="Image" src={ NewIntegrate } />
+                <div>
+                  <div className="row ">
+                    <div className="col-md-4 text-center pt-5 pb-5  ">
+                      <img src={Lawsikho} alt="img" className="mr-0"/>
+                    </div>
+                    <div className="col-md-8 text-left pt-5 pb-5">
+                      <p className="h3"> “Great Tool. Gave us instant boost of 36% on our landing pages on an average ”  </p>
+                      <p className="h5 lead"> – LawSikho, Abhyudya Aggarwal </p>
+                    </div>
+                  </div>
                 </div>
-                <div className="col-lg-6 col-md-8 col-12">
-                  <span className="h3">
-                    <p>
-                      “We’ve been using Stack to prototype designs quickly and
-                      efficiently. Needless to say we’re hugely impressed by the style and value.”
-                    </p>
-                  </span>
-                  <h5>Maguerite Holland</h5> <span>Interface Designer — Yoke</span>
-                </div>
-                <div className="col-lg-2">
-                </div>
-              </div>
-            </div>
-            <div>
-              <div className="row">
-                <div className="col-lg-2">
-                </div>
-                <div className="col-lg-2 col-md-4 col-6 text-center">
-                  <img className="testimonial__image" alt="Image" src={ NewIntegrate } />
-                </div>
-                <div className="col-lg-6 col-md-8 col-12">
-                  <span className="h3">
-                    “I've been using Medium Rare's templates for a couple of years now and Stack is without a doubt their best work yet. It's fast, performant and absolutely stunning.”
-                  </span>
-                  <h5>Lucas Nguyen</h5> <span>Freelance Designer</span>
-                </div>
-                <div className="col-lg-2">
-                </div>
-              </div>
-            </div>
-            <div>
-              <div className="row">
-                <div className="col-lg-2">
-                </div>
-                <div className="col-lg-2 col-md-4 col-6 text-center">
-                  <img className="testimonial__image" alt="Image" src={ NewIntegrate } />
-                </div>
-                <div className="col-lg-6 col-md-8 col-12">
-                  <span className="h3">
-                    “Variant has been a massive plus for my workflow — I can now get live mockups out in a matter of hours, my clients really love it.”
-                  </span>
-                  <h5>Rob Vasquez</h5> <span>Interface Designer — Yoke</span>
-                </div>
-                <div className="col-lg-2">
-                </div>
-              </div>
-            </div>
-          </Slider>
+              </Slider>
         </section>
         <section className="text-center">
           <div className="container">
@@ -105,18 +76,18 @@ class WebsiteHowItWorks extends Component {
           <div className="container">
             <div className="row">
               <div className="col-md-6">
-                <div className="feature feature-5 boxed boxed--lg boxed--border"> <img className="icon-n2" alt="Image" src={ NewIntegrate } />
+                <div className="feature feature-5 boxed  boxed--border"> <img className="icon-n2" alt="Image" src={ NewIntegrate } />
                   <div className="feature__body">
                     <h3>1. Install our Pixel</h3>
-                    <p> Just copy &amp; paste the pixel inside your the head tag of your website. We recommend you to do it on all of your website's pages.</p> <Link to="#">Learn More</Link>
+                    <p className="lead"> Just copy &amp; paste the pixel inside your the head tag of your website. We recommend you to do it on all of your website's pages.</p>
                   </div>
                 </div>
               </div>
               <div className="col-md-6">
-                <div className="feature feature-5 boxed boxed--lg boxed--border"> <img className="icon-n2" alt="Image" src={ NewInstall } />
+                <div className="feature feature-5 boxed boxed--border"> <img className="icon-n2" alt="Image" src={ NewInstall } />
                   <div className="feature__body">
                     <h3>2. Create Campaign</h3>
-                    <p> Create notification campaign for your connected website. Customize the style & behaviour of your notifications.</p> <Link to="#">Learn More</Link>
+                    <p className="lead"> Create notification campaign for your connected website. Customize the style & behaviour of your notifications.</p> 
                   </div>
                 </div>
               </div>
@@ -127,18 +98,18 @@ class WebsiteHowItWorks extends Component {
           <div className="container">
             <div className="row">
               <div className="col-md-6">
-                <div className="feature feature-5 boxed boxed--lg boxed--border"> <img className="icon-n2" alt="Image" src={ NewGoLive } />
+                <div className="feature feature-5 boxed boxed--border"> <img className="icon-n2" alt="Image" src={ NewGoLive } />
                   <div className="feature__body">
                     <h3>3. Go Live</h3>
-                    <p> Launch your campaign. See the notifications running on your website for more conversions. </p> <Link to="#">Learn More</Link>
+                    <p className="lead"> Launch your campaign. See the notifications running on your website for more conversions. </p> 
                   </div>
                 </div>
               </div>
               <div className="col-md-6">
-                <div className="feature feature-5 boxed boxed--lg boxed--border"> <img className="icon-n2" alt="Image" src={ NewAnalyze } />
+                <div className="feature feature-5 boxed  boxed--border"> <img className="icon-n2" alt="Image" src={ NewAnalyze } />
                   <div className="feature__body">
                     <h3>4. Analyze & Monitor</h3>
-                    <p> Look into your campaign analytics. Monitor the conversion charts, see the conversion charts shoot up! </p> <Link to="#">Learn More</Link>
+                    <p className="lead"> Look into your campaign analytics. Monitor the conversion charts, see the conversion charts shoot up! </p> 
                   </div>
                 </div>
               </div>
@@ -149,21 +120,22 @@ class WebsiteHowItWorks extends Component {
        <section className="cover switchable text-center-xs switchable--switch mb-5">
             <div className="container">
               <div className="row justify-content-between align-items-center">
-                <div className="col-md-6 col-lg-5">
-                  <h2>Setup Easily!</h2>
+                <div className="col-md-8 col-lg-6">
+                  <h2>Set it up in 15 seconds ! </h2>
                   <p className="lead"> </p>
                   <Link className="btn btn--primary col-md-7" to="#customise-template">
-                    <span className="btn__text">Start your trial</span>
+                    <span className="btn__text">Try Free </span>
                   </Link>
 
                 </div>
-                <div className="col-md-6">
+                <div className="col-md-4">
                   <img alt="set up" src={Easiestsetup} />
                 </div>
               </div>
 
             </div>
           </section>
+          <hr className="my-auto col-md-6" />
       </div>
     );
   }

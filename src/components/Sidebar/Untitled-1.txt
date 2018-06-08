@@ -9,10 +9,10 @@ import {
     ControlLabel,
     FormControl
   } from 'react-bootstrap';
-
+  import CardHeader from 'components/Template/card-with-header';
   import FormInputs from 'components/Template/FormTemp';
   import Button from 'components/Template/customButton';
-
+  import {ToastContainer, toast} from 'react-toastify';
 
   
 export default class Help extends React.Component {
@@ -36,7 +36,12 @@ export default class Help extends React.Component {
   }
 
   render() {
-   
+    const popover = (
+      <Popover id="modal-popover" title="popover">
+        very popover. such engagement
+      </Popover>
+    );
+    const tooltip = <Tooltip id="modal-tooltip">wow.</Tooltip>;
 
     return (
       <div>
@@ -46,7 +51,7 @@ export default class Help extends React.Component {
         </Button>
 
         <Modal show={this.state.show} onHide={this.handleClose}>
-      <Row>
+      <Row> 
           <Modal.Header closeButton>  
              <Modal.Title id="feedbackPopup">How can we help you today</Modal.Title> 
           </Modal.Header>
@@ -55,10 +60,10 @@ export default class Help extends React.Component {
               <FormGroup>
                 <Radio name="radioGroup" inline>
                   I need help setting up my team
-                </Radio>
+                </Radio>{' '}
                 <Radio name="radioGroup" inline>
                   I want to know how to use flock
-                </Radio>
+                </Radio>{' '}
                 <Radio name="radioGroup" inline>
                   Something is not working
                 </Radio>
@@ -73,11 +78,12 @@ export default class Help extends React.Component {
               </FormGroup>
 
             <h4>Tell us more</h4>
-          
+            {/* <label for="exampleFormControlTextarea1">Large textarea</label>
             <textarea class="form-control z-depth-1" style={{ height: 200, width:500 }} id="exampleFormControlTextarea6"  rows="3" placeholder="Briefly explain what happened and steps to replicate the issue.">
                 
-            </textarea>
-          
+            </textarea> */}
+
+
         
           </Modal.Body>
           <Modal.Footer>
