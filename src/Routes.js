@@ -40,7 +40,8 @@ import {
   WebsiteDemoPage,
   WebsiteCustStory,
   WebsiteFeature,
-  Affiliate
+  Affiliate,
+  AffiliateRegister
 } from 'components';
 
 import {
@@ -91,9 +92,8 @@ const MyRoutes = ({routerHistory, store}) => (
       <Route path="/customerStories" component={WebsiteCustStory} />
       <Route path="/featurepage" component={WebsiteFeature} />
       <Route path="/affiliatepage" component={Affiliate} />
-      
-
-      
+      <Route path="/affiliateregister" component={AffiliateRegister} />
+    
 
       {/* <Route path="/login" component={LoginPage} /> */}
       {/* <Route path="/profile/company/:token" component={CompanyDetails} /> */}

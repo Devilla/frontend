@@ -75,7 +75,7 @@ export default class Affiliate extends Component {
                                     <p className="lead"  style={{color:"white"}}>
                                         Join us today to be a part of something exciting and start making money.
                                 </p>
-                                    <a className="btn btn--primary type--uppercase" href="#">
+                                    <a className="btn btn--primary type--uppercase" href="/affiliateregister">
                                         <span className="btn__text">
                                             BECOME A INFLUENCE AFFILIATE
                                     </span>
