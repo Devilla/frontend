@@ -16,7 +16,7 @@ import moment from 'moment';
 
 import CardHeader from 'components/Template/card-with-header'
 import Button from 'components/Template/customButton';
-import { fetchPayment } from 'ducks/payment' ;
+import { fetchPayment, fetchInvoices } from 'ducks/payment' ;
 
 import './Billing.css';
 import './BillingDetails.scss';
@@ -32,6 +32,7 @@ class BillingDetails extends Component {
       planSelected: {}
     };
     props.fetchPayment();
+    props.fetchInvoices();
   }
 
   plansList() {
@@ -50,10 +51,10 @@ class BillingDetails extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if(this.props.payments != nextProps.payments) {
+    if(this.props.payments != nextProps.payments && nextProps.payments.length) {
       const { payments } = nextProps;
-      let planSelected = payments[payments.length-1].payment_plan;
-      planSelected['updated_at'] = payments[payments.length-1].updated_at;
+      let planSelected = payments?payments[payments.length-1].payment_plan:{};
+      planSelected['updated_at'] = payments?payments[payments.length-1].updated_at:"";
       this.setState({planSelected});
     }
   }
@@ -126,7 +127,7 @@ class BillingDetails extends Component {
                               Next Payment Due Date: {planSelected.interval?moment(planSelected.interval.updated_at).add(planSelected.interval_count, 'day').format('DD MMM YYYY'):"-"}
                             </div>
                             <div className="col-md-4">
-                              Payment Method: Card
+                              Payment Method: {planSelected.interval?'Card':'-'}
                             </div>
                             <div className="col-md-2">
                             </div>
@@ -167,11 +168,13 @@ class BillingDetails extends Component {
 }
 
 const mapStateToProps = state => ({
-  payments: state.getIn(['payment', 'payments'])
+  payments: state.getIn(['payment', 'payments']),
+  invoices: state.getIn(['payment', 'invoices'])
 });
 
 const mapDispatchToProps = {
-  fetchPayment
+  fetchPayment,
+  fetchInvoices
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(BillingDetails);

@@ -29,6 +29,22 @@ function* fetch(action) {
   }
 }
 
+function* fetchInvoices(action) {
+  try {
+    yield put(load());
+    const res = yield call(api.GET, `payment/servicebot/invoice`);
+    if(res.error)
+      console.log(res.error);
+    else
+      yield put(actions.successInvoice(res));
+    yield put(loaded());
+  } catch (error) {
+    yield put(loaded());
+    console.log('Failed to fetch doc', error);
+    yield toast.error(error.message, toastConfig);
+  }
+}
+
 function* create(action) {
   try {
     yield put(load());
@@ -74,6 +90,10 @@ export function* watchFetch() {
   yield takeLatest(actions.FETCH, fetch);
 }
 
+export function* watchFetchInvoices() {
+  yield takeLatest(actions.FETCH_INVOICES, fetchInvoices);
+}
+
 export function* watchCreate() {
   yield takeLatest(actions.CREATE, create);
 }
@@ -86,6 +106,7 @@ export default function* rootSaga() {
   yield [
     fork(watchFetch),
     fork(watchCreate),
-    fork(watchUpdate)
+    fork(watchUpdate),
+    fork(watchFetchInvoices)
   ];
 }
