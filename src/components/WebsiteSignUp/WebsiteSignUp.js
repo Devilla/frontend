@@ -1,6 +1,17 @@
 import React, { Component } from 'react';
 import { Link } from "react-router";
 import { SignUp } from 'img';
+import {
+  Grid,
+  Row,
+  Col,
+  FormGroup,
+  ControlLabel,
+  FormControl,
+  Table,
+  Panel,
+  Glyphicon
+} from 'react-bootstrap';
 import {validateEmail, validatePassword, register, PASSWORD_MAX_LENGTH} from 'services/FormUtils';
 import { Animated } from "react-animated-css";
 import { Alert, HelpBlock } from 'react-bootstrap';
@@ -81,7 +92,7 @@ class WebsiteSignUp extends Component {
     if(!email || !password || !confirmPassword || !username)
       return this.setState({error: "All fields are required"});
     if(password !== confirmPassword)
-      return this.setState({errorConfirmPassword: 'Password doesnot match'});
+      return this.setState({errorConfirmPassword: 'Password do not match'});
 
     // TODO: Show 'Check email for further instructions.' message on success
     register(email, password).then(res => {
@@ -131,9 +142,10 @@ class WebsiteSignUp extends Component {
               <div className="row justify-content-between align-items-center">
                 <div className="col-md-6 col-lg-6 text-center">
                   <div className="switchable__text">
+                
                   
                     <h3>Your first step towards conversions, Signup here.</h3>
-                    <span className=" type--fine-print">Already have an account?&nbsp;
+                    <span className=" type--fine-print mb-4">Already have an account?&nbsp;
                       <Link to="/login">Sign in</Link>
                     </span>
                     {error &&
@@ -141,9 +153,11 @@ class WebsiteSignUp extends Component {
                       <strong>{error}</strong>
                       </Alert>
                     }
-                    <hr className="short" />
+                    <div className="mt-5"  style={{backgroundColor:"#f8d0c8" ,fontSize:"15px"}} id="av-flash-block" className="c-flashBlock" >   <div data-mc-group="flashBlock"  c > <ul className="pt-2 pb-2"><li>Please check your entry and try again.</li></ul> </div> </div>
+                    <hr />
+                    
                     <form>
-                      <div className="row">
+                      <div classNameName="row">
                       <div className="col-12">
                           <input type="text"
                            name="username"
@@ -167,7 +181,7 @@ class WebsiteSignUp extends Component {
                           </HelpBlock>
                         </div>
                         <div className="col-12">
-                          <input
+                          <input className="invalid av-password"
                            name="password"
                            maxLength={PASSWORD_MAX_LENGTH}
                            onBlur={this.handlePasswordBlur}
@@ -181,6 +195,7 @@ class WebsiteSignUp extends Component {
                         </div>
                         <div className="col-12">
                           <input
+                          className="invalid av-password"
                            name="confirmPassword"
                            maxLength={PASSWORD_MAX_LENGTH}
                            onBlur={(e) => !e.target.value?this.setState({errorConfirmPassword: "Confirm Password required"}):null}
@@ -191,6 +206,10 @@ class WebsiteSignUp extends Component {
                              <p className="website-error">{errorConfirmPassword}</p>
                            </HelpBlock>
                         </div>
+                        <div><Glyphicon glyph="trash" /></div>
+                        <div className="ml-2 mt-3  mb-5 pt-2 pb-2" style={{backgroundColor:"#d4ece6"}}>
+                        <div >Your password is secure and you're all set!</div>
+                      </div>
                         <div className="frmcntl col-12">
                           <input
                           type="submit"
@@ -204,13 +223,10 @@ class WebsiteSignUp extends Component {
                             <Link to="/terms-and-condtions">Terms of Service</Link>
                           </span>
                         </div>
-                        </div>
-                      
+                        </div>    
                      </form>
-                    <hr className="short"/>
-                  
-                   <p> <span className=" type--fine-print b">Or Signup using: &nbsp;
-                  
+                    <hr />                 
+                   <p> <span className=" type--fine-print b">Or Signup using: &nbsp;                 
                     </span> </p>
                         <div className="">
                         <a href={`${base}connect/facebook`} className="link ">
