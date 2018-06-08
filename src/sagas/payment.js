@@ -4,6 +4,7 @@ import * as actions from 'ducks/payment';
 import { updateProfile } from 'ducks/profile';
 import { load, loaded } from 'ducks/loading';
 import { ToastContainer, toast } from 'react-toastify';
+import { browserHistory } from 'react-router';
 
 const toastConfig = {
   position: toast.POSITION.BOTTOM_LEFT,
@@ -53,12 +54,14 @@ function* create(action) {
       console.log(res.error);
     else {
       console.log(res, "=============response");
+
       // let profile = yield select(getProfile);
       // profile['id'] = profile._id;
       // delete profile['_id'];
       // profile['profile_payments'] = res._id
       // yield put(updateProfile(profile));
       yield put(actions.successPayment(res));
+      yield browserHistory.push('billing-details');
     }
     yield put(loaded());
   } catch (error) {
@@ -72,7 +75,7 @@ function* create(action) {
 function* update(action) {
   try {
     yield put(load());
-    const res = yield call(api.PUT, `payment/${action.id}`);
+    const res = yield call(api.PUT, `payment/${action.id}`, action.payment);
     if(res.error)
       console.log(res.error);
     else
@@ -84,6 +87,23 @@ function* update(action) {
     yield toast.error(error.message, toastConfig);
   }
 
+}
+
+function* updatePaymentMethod(action) {
+  try {
+    yield put(load());
+    const res = yield call(api.PUT, `payment/servicebot/card`, action.details);
+    if(res.error)
+      console.log(res.error);
+    else
+      browserHistory.push('/billing-details')
+      // yield put(actions.successPayment(res));
+    yield put(loaded());
+  } catch (error) {
+    yield put(loaded());
+    console.log('Failed to fetch doc', error);
+    yield toast.error(error.message, toastConfig);
+  }
 }
 
 export function* watchFetch() {
@@ -102,11 +122,16 @@ export function* watchUpdate() {
   yield takeLatest(actions.UPDATE, update);
 }
 
+export function* watchUpdatePaymentMethod() {
+  yield takeLatest(actions.UPDATE_PAYMENT_METHOD, updatePaymentMethod);
+}
+
 export default function* rootSaga() {
   yield [
     fork(watchFetch),
     fork(watchCreate),
     fork(watchUpdate),
-    fork(watchFetchInvoices)
+    fork(watchFetchInvoices),
+    fork(watchUpdatePaymentMethod)
   ];
 }

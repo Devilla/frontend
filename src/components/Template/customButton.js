@@ -20,8 +20,9 @@ class CustomButton extends Component {
                 className={btnClasses}
                 {...rest}
             >
-            {rest.icon && <Glyphicon glyph={rest.icon} />}
+            {rest.icon && rest.icon_pull!='right' && <Glyphicon glyph={rest.icon} />}
             {rest.children}
+            {rest.icon && rest.icon_pull=='right' && <Glyphicon style={{padding: '0px 0px 0px 10px'}} glyph={rest.icon} />}
           </Button>
         );
   }

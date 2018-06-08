@@ -1,20 +1,18 @@
-import React, {Component} from 'react';
+import React from 'react';
 import { CardElement, injectStripe } from 'react-stripe-elements';
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 const toastConfig = {
   position: toast.POSITION.BOTTOM_LEFT,
   autoClose: 2000
 };
 
-const PaymentPage = ({stripe,
-  // profile,
-  user, amount, plan, planList, setError, stripeError, handleStateChange, handleSubmit, load}) => {
+const PaymentPage = ({stripe, user, amount, plan, planList, setError, stripeError, handleStateChange, handleSubmit, load}) => {
 
   const findObjectByKey = (array, key, value) => {
     for (var i = 0; i < array.length; i++) {
       if (array[i][key] === value) {
-          return array[i];
+        return array[i];
       }
     }
     return null;
@@ -40,7 +38,6 @@ const PaymentPage = ({stripe,
           paymentProvider: result.token,
           paymentType: result.token.type,
           user: user._id,
-          // profile: profile._id,
           plan: plan,
         };
         handleSubmit(data, result.token);

@@ -53,7 +53,8 @@ export { default as Billing } from './Billing/Billing';
 export { default as BillingDetails } from './Billing/BillingDetails';
 export { default as  Help } from './Billing/Help';
 export { default as Payment } from './Billing/Payment';
-
+export { default as UpgradeCard } from './UpgradeCard/UpgradeCard';
+export { default as UpgradePlan } from './UpgradePlan/UpgradePlan';
 
 
 export { default as Template } from './Template';

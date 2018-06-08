@@ -1,3 +1,14 @@
+.price {
+  ul {
+    display: flex;
+    justify-content: center;
+    padding: 1%;
+    li {
+      list-style: none;
+      padding: 1%;
+    }
+  }
+}
 .pricingTable {
   padding: 25px 0 0;
   background: #dcdbdb;
