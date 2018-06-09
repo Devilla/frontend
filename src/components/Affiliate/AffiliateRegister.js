@@ -15,7 +15,7 @@ export default class AffiliateRegister extends Component {
     render() {
         const {handleChange}=this.props;
         return (
-            <div classNameName="main-container">
+            <div className="main-container">
             <section>
                 <div className="container">
                     <div className="row justify-content-around">

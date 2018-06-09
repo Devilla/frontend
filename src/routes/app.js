@@ -8,7 +8,7 @@ import {
   Notification,
   Analytics,
   New,
-  Profile
+  Profile,
 } from 'components'
 
 const appRoutes = [
@@ -18,6 +18,7 @@ const appRoutes = [
     { path: "/campaigns", name: "Campaigns", icon: "pe-7s-bell", component: Notification },
     { path: "/analytics", name: "Analytics", icon: "pe-7s-graph1", component: Analytics },
     { path: "/integration", name: "Integrations", icon: "pe-7s-display1", component: Dashboard },
+  
     // { path: "/support", name: "Customer Care", icon: "pe-7s-call", component: Dashboard },
     { redirect: true },
 

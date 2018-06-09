@@ -3,7 +3,7 @@ import { Link, browserHistory } from 'react-router';
 import HeaderLinks from '../Header/HeaderLinks';
 import logo from 'assets/img/logo.png';
 import { Glyphicon } from 'react-bootstrap';
-
+import Help from '../Billing/Help';
 import appRoutes from 'routes/app';
 import './Sidebar.scss';
 
@@ -36,8 +36,12 @@ class Sidebar extends Component{
             <img src={logo} alt="logo_image"/>
           </div>
 
+      
+
           <div className="sidebar-wrapper">
             <ul className="nav">
+
+           
               { this.state.width <= 991 ? (<HeaderLinks />):null }
               {
                 appRoutes.map((prop,key) => {
@@ -55,7 +59,11 @@ class Sidebar extends Component{
                   return null;
                 })
               }
+               <Link to="/help" ><Help /></Link>
             </ul>
+          </div>
+          <div >
+
           </div>
         </div>
       );

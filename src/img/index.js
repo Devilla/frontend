@@ -35,6 +35,15 @@ export { default as Swivelscreen } from './swivelscreen.png';
 export { default as Sw1 }  from './sw1.png';
 export { default as Sw2 }  from './sw2.png';
 export { default as Marvel } from './marvel.png';
+export { default as Lawsikho }  from './lawsikho.png';
+export { default as Stagephod } from './stagephod.png';
+export { default as Userc } from './usercircle.png';
+export { default as Userr }  from './userrect.png';
+export { default as Carpathy } from './carpathy.png';
+export { default as Tbars } from './3bars.png';
+export { default as Smallicon } from './smallicon.png';
+export { default as Ticon } from './3icon.png';
+export { default as Profile } from './profile.png';
 
 
 
