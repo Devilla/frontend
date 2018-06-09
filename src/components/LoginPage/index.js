@@ -105,7 +105,7 @@ export default class Login extends Component {
                   </div>
                   <div className="frmcntl">
                     <input
-                      className="field w-input"
+                   className="field w-input"
                       name="password"
                       ref="password"
                       placeholder="Password"
