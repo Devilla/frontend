@@ -51,18 +51,33 @@ class WebsitePricing extends Component {
     }
   }
 
+  filterPlanName=(planName)=> {
+    let res="";
+
+    switch(true) {
+
+      case /\b(Enterprise)\b/m.test(planName) :  res=  "Enterprise" ; break;
+      case /\b(Advanced)\b/m.test(planName) :  res=  "Advanced"; break;
+      case /\b(Small)\b/m.test(planName) :  res=  "Small"; break;
+      case /\b(Startups)\b/m.test(planName) : res=  "Startups"; break;
+    default :  break;
+    
+    }
+    return res;
+
+  }
+
   renderPriceList() {
-    let planList = this.state.servicebotPlans.filter(plan => this.state.planPeriod == 12 ? plan.interval=='year': plan.interval=='month')
+    let planList = this.state.servicebotPlans.filter(plan => this.state.planPeriod === 12 ? plan.interval==='year': plan.interval==='month')
     planList = planList.sort(function(a, b) {
       return b.id - a.id;
     });
     return planList.map(plan => {
       return <div className="col-md-3 pl-0 pr-0">
         <div className="pricing pricing-1 boxed boxed--border boxed--lg pr-0 pl-0">
-        {(plan.name === "Enterprise Yearly Plan" || plan.name === "Enterprise Monthly Plan") &&  <h3 className="h3 text-center">Enterprise</h3>}
-        {(plan.name === "Advanced Yearly Plan" || plan.name === "Advanced Monthly Plan")  &&  <h3 className="text-center">Advanced</h3>}
-        {(plan.name === "Small Businesses Yearly Plan" || plan.name === "Small Businesses Monthly Plan") &&  <h3 className="text-center">Small</h3>}
-        {(plan.name === "Startups Yearly Plan" || plan.name === "Startups Monthly Plan") &&  <h3 className="text-center">Startups</h3>} 
+
+
+        <h3>{this.filterPlanName(plan.name)}</h3>
           <span className="h1">
             <span className="pricing__dollar">${plan.interval === 'year' ? plan.amount/1200 : plan.amount/100}</span></span>
          
