@@ -31,7 +31,6 @@ const toastConfig = {
 };
 
 class WebsiteSignUp extends Component {
-
   constructor() {
     super();
     this.state = {
@@ -90,7 +89,7 @@ class WebsiteSignUp extends Component {
     const { email, password, confirmPassword, username } = this.state;
 
     if(!email || !password || !confirmPassword || !username)
-      return this.setState({error: "All fields are required"});
+      return this.setState({error: "Please check your entry and try again."});
     if(password !== confirmPassword)
       return this.setState({errorConfirmPassword: 'Password do not match'});
 
@@ -128,7 +127,7 @@ class WebsiteSignUp extends Component {
     const isPwdValid = validatePassword(this.state.password) && validatePassword(this.state.confirmPassword)  && this.state.confirmPassword===this.state.confirmpassword;
     const isFormValid = isEmailValid && isPwdValid;
 
-    const { email, isRegistered, error, errorUsername, errorEmail, isPasswordShown, errorPassword, errorConfirmPassword } = this.state;
+    const { email, isRegistered, error,username, errorUsername, errorEmail, isPasswordShown, errorPassword, errorConfirmPassword } = this.state;
 
     // if registered show 'check mail' message else show the registration form
     const formContent = isRegistered
@@ -152,16 +151,15 @@ class WebsiteSignUp extends Component {
                       <Alert bsStyle="warning">
                       <strong>{error}</strong>
                       </Alert>
-                    }
-                    <div className="mt-5"  style={{backgroundColor:"#f8d0c8" ,fontSize:"15px"}} id="av-flash-block" className="c-flashBlock" >   <div data-mc-group="flashBlock"  c > <ul className=" mt-3 pt-2 pb-2"><li>Please check your entry and try again.</li></ul> </div> </div>
-                    <hr />
+                    }        
                     
-                    <form>
-                      <div classNameName="row">
+                    <form className="mt-3">
+                      <div className="row">
                       <div className="col-12">
                           <input type="text"
                            name="username"
                            onChange={this.handleInputChange}
+                           value={username}
                            onBlur={(e) => !e.target.value?this.setState({errorUsername: "Username required"}):null}
                            placeholder="Your Name" />
                            <HelpBlock>
@@ -206,8 +204,7 @@ class WebsiteSignUp extends Component {
                              <p className="website-error">{errorConfirmPassword}</p>
                            </HelpBlock>
                         </div>
-                        <div><Glyphicon glyph="trash" /></div>
-                        <div className="ml-2 mt-3  mb-5 pt-2 pb-2" style={{backgroundColor:"#d4ece6"}}>
+                        <div className="ml-3 mt-3 mb-4 pt-2 pl-5 pb-2 pr-5" style={{backgroundColor:"#d4ece6"}}>
                         <div >Your password is secure and you're all set!</div>
                       </div>
                         <div className="frmcntl col-12">
@@ -252,7 +249,7 @@ class WebsiteSignUp extends Component {
                   </div>
                 </div>
                 <div className="col-md-8 col-lg-8 pr-0">
-                  <img alt="Image" src={ SignUp } />
+                  <img alt="Image" src={SignUp} />
                 </div>
               </div>
               
