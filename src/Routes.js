@@ -9,7 +9,6 @@ import {
   Profile,
   Billing,
   BillingDetails,
-  Help,
   Payment,
   HowItWorks,
   ResetPassword,
@@ -74,7 +73,6 @@ const MyRoutes = ({routerHistory, store}) => (
       <Route path="/billing" component={Billing} />
       <Route path="/card-details" component={UpgradeCard} />
       <Route path="/billing-details" component={BillingDetails} />
-      <Route path="/Help" component={Help} />
   	  <Route path="/payment" component={Payment} />
       <Route path="/getting-started" component={LoginFlow} />
     </Route>
@@ -96,18 +94,8 @@ const MyRoutes = ({routerHistory, store}) => (
       <Route path="/featurepage" component={WebsiteFeature} />
       <Route path="/affiliatepage" component={Affiliate} />
       <Route path="/affiliateregister" component={AffiliateRegister} />
-    
-
-      {/* <Route path="/login" component={LoginPage} /> */}
-      {/* <Route path="/profile/company/:token" component={CompanyDetails} /> */}
-      {/* <Route path="/register" component={RegisterPage} /> */}
-      {/* <Route path="/privacy-policy" component={PrivacyPage} /> */}
-      {/* <Route path="/privacy-policy" component={PrivacyPage} /> */}
-      {/* <Route path="/contact" component={ContactPage} /> */}
-      {/* <Route path="/pricing" component={PricePage} /> */}
       <Route path="/forget-password" component={ForgetPassword} />
       <Route path="/reset-password" component={ResetPassword} />
-      {/* <Redirect from='price' to="/pricing" /> */}
     </Route>
     <Route path="*" component={Error} />
   </Router>

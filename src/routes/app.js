@@ -1,15 +1,10 @@
-// import Dashboard from '../components/Dashboard/Dashboard';
-// import Notification from '../components/Notification';
-// import Analytics from '../components/Analytics';
-// import New from '../components/New';
-
 import {
   Dashboard,
   Notification,
   Analytics,
   New,
-  Profile,
-} from 'components'
+  Profile
+} from 'components';
 
 const appRoutes = [
     { upgrade: true, path: "/new", name: "New", icon: "", component: New },
@@ -18,10 +13,8 @@ const appRoutes = [
     { path: "/campaigns", name: "Campaigns", icon: "pe-7s-bell", component: Notification },
     { path: "/analytics", name: "Analytics", icon: "pe-7s-graph1", component: Analytics },
     { path: "/integration", name: "Integrations", icon: "pe-7s-display1", component: Dashboard },
-  
-    // { path: "/support", name: "Customer Care", icon: "pe-7s-call", component: Dashboard },
-    { redirect: true },
-
+    { name: "Help", icon: "pe-7s-call" },
+    { redirect: true }
 ];
 
 export default appRoutes;
