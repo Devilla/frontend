@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import { Grid, Row, Col, Button, Glyphicon } from 'react-bootstrap';
-import {connect} from 'react-redux';
+import { Row, Col, Button, Glyphicon } from 'react-bootstrap';
+import { connect } from 'react-redux';
 import LeftView from './left-view'
 import RightView from './right-view'
-import Localization from '../localization';
-import { fetchOneRules, createRules, updateRules, clearRules } from 'ducks/rules';
+import { fetchOneRules, createRules, updateRules } from 'ducks/rules';
 import Tabs from 'components/Template/tab'
 
 export class Display extends Component{
@@ -25,7 +24,8 @@ export class Display extends Component{
       displayTime: 120,
       delayBetween: 120,
       displayPosition: 'bottom',
-      popupAnimation:'fadeinout'
+      popupAnimationIn:'fadeInUp',
+      popupAnimationOut:'fadeOutDown'
     };
     this.handleStateChange = this.handleStateChange.bind(this);
     this.saveRules = this.saveRules.bind(this);
@@ -60,7 +60,8 @@ export class Display extends Component{
       displayTime: rules.displayTime,
       delayBetween: rules.delayBetween,
       displayPosition: rules.displayPosition,
-      popupAnimation : rules.popupAnimation,
+      popupAnimationIn : rules.popupAnimationIn,
+      popupAnimationOut : rules.popupAnimationOut
     });
   }
 
@@ -81,10 +82,6 @@ export class Display extends Component{
     }
     this.props.handleNextState();
   }
-
-  // componentWillUnmount() {
-  //     this.props.clearRules();
-  // }
 
   render(){
     const { handleBackState } = this.props;
@@ -137,8 +134,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = {
   fetchOneRules,
   createRules,
-  updateRules,
-  clearRules
+  updateRules
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Display);
