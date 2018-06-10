@@ -24,7 +24,8 @@ export class Display extends Component{
       recentConv:5,
       displayTime: 120,
       delayBetween: 120,
-      displayPosition: 'bottom'
+      displayPosition: 'bottom',
+      popupAnimation:'fadeinout'
     };
     this.handleStateChange = this.handleStateChange.bind(this);
     this.saveRules = this.saveRules.bind(this);
@@ -58,7 +59,8 @@ export class Display extends Component{
       recentConv:rules.recentConv,
       displayTime: rules.displayTime,
       delayBetween: rules.delayBetween,
-      displayPosition: rules.displayPosition
+      displayPosition: rules.displayPosition,
+      popupAnimation : rules.popupAnimation,
     });
   }
 

@@ -15,6 +15,7 @@ class RightView extends Component {
       delayBetween,
       delayNotification,
       displayPosition,
+      popupAnimation,
       shouldHide,
       closeNotification
     } = this.props;
@@ -75,6 +76,13 @@ class RightView extends Component {
         </Col>
       </Row>
       <Row>
+          <Col md={6}>
+            <span className="mt-5">
+             Select Position for Popup Notification
+             </span>
+          </Col>
+      </Row>
+      <Row>
         <Col md={6}>
           <FormGroup>
             <FormControl value={displayPosition} onChange={(e) => handleStateChange('displayPosition', e.target.value)} componentClass="select" bsSize="sm" placeholder="select">
@@ -88,6 +96,23 @@ class RightView extends Component {
           </FormGroup>
         </Col>
       </Row>
+      <Row>
+          <Col md={6}>
+            <span className="mt-5">
+             Select Popup Notification Animation
+             </span>
+          </Col>
+      </Row>
+      <Row>
+             <Col md={6}>
+                    <FormControl value={popupAnimation} onChange={(e) => handleStateChange('popupAnimation', e.target.value)} componentClass="select" bsSize="sm" placeholder="select" >
+                      <option value="fadeinout">Fade In/Out</option>
+                      <option value="bottominout">Bottom In/Out</option>
+                      <option value="leftinout"> Left In/Out</option>
+                      <option value="fadeinout">Default</option>
+                    </FormControl>
+             </Col>    
+        </Row>
     </div>);
 
   }
