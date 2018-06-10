@@ -3,7 +3,6 @@ import { Link, browserHistory } from 'react-router';
 import HeaderLinks from '../Header/HeaderLinks';
 import logo from 'assets/img/logo.png';
 import { Glyphicon } from 'react-bootstrap';
-import Help from '../Billing/Help';
 import appRoutes from 'routes/app';
 import './Sidebar.scss';
 
