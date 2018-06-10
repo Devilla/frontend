@@ -59,7 +59,7 @@ class Sidebar extends Component{
                   return null;
                 })
               }
-               <Link to="/help" ><Help /></Link>
+             
             </ul>
           </div>
           <div >
