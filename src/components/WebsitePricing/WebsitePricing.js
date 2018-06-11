@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { Link } from "react-router";
 import Switch from 'react-flexible-switch';
-import { fetchPlan } from 'ducks/plan';
+
 
 class WebsitePricing extends Component {
 
@@ -67,22 +67,29 @@ class WebsitePricing extends Component {
 
   }
 
+  stellarFeel = (name) => {
+    let stellar ="";
+    this.filterPlanName(name) === "Advanced" ? stellar = "bg--primary" : stellar = "";
+    return stellar;
+  }
+
   renderPriceList() {
-    let planList = this.state.servicebotPlans.filter(plan => this.state.planPeriod === 12 ? plan.interval==='year': plan.interval==='month')
+
+    let planList = this.state.servicebotPlans.filter(plan => this.state.planPeriod === 12 ? plan.interval==='year': plan.interval==='month');
     planList = planList.sort(function(a, b) {
       return b.id - a.id;
     });
     return planList.map(plan => {
-      return <div className="col-md-3 pl-0 pr-0">
-        <div className="pricing pricing-1 boxed boxed--border boxed--lg pr-0 pl-0">
-
-
+      return <div className="col-md-3 pl-3 pr-0">
+        <div className="pricing pricing-1  pr-0 pl-0">
+     
+      <div className={`pricing__head ${this.stellarFeel(plan.name) }  boxed boxed--border boxed--lg`}>
         <h3>{this.filterPlanName(plan.name)}</h3>
           <span className="h1">
-            <span className="pricing__dollar">${plan.interval === 'year' ? plan.amount/1200 : plan.amount/100}</span></span>
-         
+            <span className="pricing__dollar">$</span><span>{plan.interval === 'year' ? plan.amount/1200 : plan.amount/100}</span></span>
+      </div>
           <hr/>
-          <ul className="h6">
+          <ul className="h6 ">
             <li>
               <span className="bg--primary-1"></span>
               <span className="h3">
@@ -126,7 +133,7 @@ class WebsitePricing extends Component {
             </li>
           </ul>
 
-          <Link className="btn btn--primary col-md-12 text-center" to="">
+          <Link className="btn btn--primary col-md-12 text-center" to="" >
             <span className="btn__text">Access Now</span>
           </Link>
         </div>
@@ -152,8 +159,8 @@ class WebsitePricing extends Component {
       <section className="text-center">
         <div className="container">
           <div className="row text-center">
-            <div className="col-md-1 mr-3 text-left " id="leftmg"><div><strong onClick={this.handleMonthChange} className="h3 type--bold">Monthly</strong></div></div>
-            <div className="col-md-1 col-sm-1 my-auto text-center pl-4">
+            <div className="col-md-1 mr-0 text-left " id="leftmg"><div><strong onClick={this.handleMonthChange} className="h5 type--bold">Monthly</strong></div></div>
+            <div className="col-md-1 col-sm-1 my-auto text-center pl-2">
               <Switch
                 circleStyles={{ onColor: 'green', offColor: 'blue', diameter: 18 }}
                 switchStyles={{ width: 40 }}
@@ -161,7 +168,7 @@ class WebsitePricing extends Component {
                 value={this.state.externalValue} onChange={this.handleSwitchChange}
               />
             </div>
-            <div className="col-md-1 text-left my-auto pl-0 ml-0" ><strong onClick={this.handleYearChange} className="h3 type--bold">Yearly</strong></div>
+            <div className="col-md-1 text-left my-auto pl-0 ml-0" ><strong onClick={this.handleYearChange} className="h5 type--bold">Yearly</strong></div>
           </div>
         </div>
       </section>
@@ -189,20 +196,7 @@ class WebsitePricing extends Component {
             </div>
           </div>
         </section>
-      {/* <section className="text-center imagebg" style={{
-          background: 'linear-gradient(to left, #b721ff,#21d4fd)'
-        }} data-gradient-bg="#b721ff,#21d4fd,#21d4fd,#b721ff">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-12">
-              <span className="h3 my-auto">
-                Looking for a Bigger Plan? &nbsp;
-                <Link to="/contact">Contact us</Link>
-              </span>
-            </div>
-          </div>
-        </div>
-      </section> */}
+    
 
         <section className="bg--secondary">
                 <div className="container">
