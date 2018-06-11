@@ -1,26 +1,17 @@
 import {
-  About,
   ForgetPassword,
-  Home,
   Profile,
   Billing,
   BillingDetails,
   Payment,
-  HowItWorks,
   ResetPassword,
-  Sidebar,
-  StatsCard,
-  TermsPage,
   Dashboard,
   Notification,
-  Analytics,
   New,
   LoginFlow,
   SelectNotification,
-  Upgrade,
   Integration,
   Error,
-  ComingSoon,
   UpgradeCard,
   UpgradePlan,
   WebsiteHome,
@@ -52,7 +43,7 @@ import {
 
 
 
-const MyRoutes = ({routerHistory, store}) => (
+const MyRoutes = ({ routerHistory }) => (
 
   <Router history={routerHistory}>
 
@@ -69,7 +60,7 @@ const MyRoutes = ({routerHistory, store}) => (
       <Route path="/billing" component={Billing} />
       <Route path="/card-details" component={UpgradeCard} />
       <Route path="/billing-details" component={BillingDetails} />
-  	  <Route path="/payment" component={Payment} />
+      <Route path="/payment" component={Payment} />
       <Route path="/getting-started" component={LoginFlow} />
     </Route>
     <Route exact path="/connect/:provider" component={ConnectPage} />
@@ -90,7 +81,7 @@ const MyRoutes = ({routerHistory, store}) => (
       <Route path="/featurepage" component={WebsiteFeature} />
       <Route path="/affiliatepage" component={Affiliate} />
       <Route path="/affiliateregister" component={AffiliateRegister} />
-    
+
 
       {/* <Route path="/login" component={LoginPage} /> */}
       {/* <Route path="/profile/company/:token" component={CompanyDetails} /> */}
@@ -105,6 +96,6 @@ const MyRoutes = ({routerHistory, store}) => (
     </Route>
     <Route path="*" component={Error} />
   </Router>
-)
+);
 
 export default MyRoutes;

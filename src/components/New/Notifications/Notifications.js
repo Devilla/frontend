@@ -1,11 +1,7 @@
-import {Component} from 'react';
-import { Grid, Row, Col, Button, Glyphicon } from 'react-bootstrap';
+import { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchNotification } from 'ducks/notification';
 import { createConfiguration, fetchConfiguration, fetchCampaignConfiguration, clearConfiguration, updateConfiguration, createSuccess } from 'ducks/configuration';
-import NotificationList from './NotificationList';
-import NotificationConfigure from './NotificationConfigure';
-import Tabs from 'components/Template/tab'
 
 
 const notificationPanelStyleDefault = { // TODO: Take style values from server
@@ -69,7 +65,7 @@ class Notifications extends Component {
       contentText: 'Recently signed up for Company Name',
       visitorText: 'people',
       image: '',
-      notifications : [],
+      notifications: [],
     };
     this.configure = this.configure.bind(this);
     this.handleActivityChange = this.handleActivityChange.bind(this);
@@ -87,40 +83,39 @@ class Notifications extends Component {
   componentWillMount() {
     this.props.fetchNotification();
     this.props.fetchConfiguration(this.props.campaign._id);
-    this.setActiveState({active: 3});
+    this.setActiveState({ active: 3 });
   }
 
   componentWillReceiveProps(nextProps) {
-    if(nextProps.configuration != this.props.configuration) {
+    if (nextProps.configuration != this.props.configuration) {
       this.setNewConfig(nextProps.configuration);
     }
-    if(nextProps.notifications != this.props.notifications || nextProps.configurations != this.props.configurations)
+    if (nextProps.notifications != this.props.notifications || nextProps.configurations != this.props.configurations)
       this.updateNotifications(nextProps.notifications, nextProps.configurations);
   }
 
   updateNotifications(notifications, configurations) {
-    if(notifications) {
+    if (notifications) {
       let tempNotifications = notifications;
       tempNotifications.map(notif => {
-        if(configurations) {
+        if (configurations) {
           configurations.find(configuration => {
-            if(configuration.notificationType && configuration.notificationType._id == notif._id) {
+            if (configuration.notificationType && configuration.notificationType._id == notif._id) {
               notif['activity'] = configuration.activity;
               notif['configurationId'] = configuration._id;
               return notif;
             }
           });
         } else {
-          return notif
+          return notif;
         }
       });
-      this.setState({notifications: tempNotifications});
+      this.setState({ notifications: tempNotifications });
     }
   }
 
   setNewConfig(config) {
-    if(config) {
-      const panelStyle = config.panelStyle;
+    if (config) {
       this.setState({
         activity: config.activity,
         notificationPanelStyle: config.panelStyle,
@@ -142,64 +137,63 @@ class Notifications extends Component {
   }
 
   setDefaultPanel() {
-    this.setState({notificationPanelStyle: notificationPanelStyleDefault});
+    this.setState({ notificationPanelStyle: notificationPanelStyleDefault });
   }
 
   handleActivityChange(activity, id, configId) {
-    if(!id || typeof activity == 'object')
+    if (!id || typeof activity == 'object')
       return;
-    this.setState({activity: activity});
+    this.setState({ activity: activity });
     this.saveConfiguration(activity, id, configId);
   }
 
   handleNotificationStyleChange = style => {
     const notificationStyle = Object.assign({}, this.state.notificationPanelStyle);
     notificationStyle[style.prop] = style.value;
-    this.setState({notificationPanelStyle: notificationStyle});
+    this.setState({ notificationPanelStyle: notificationStyle });
   };
 
   handleContentChange(target, content) {
-    this.setState({ [target]: content});
+    this.setState({ [target]: content });
   }
 
-  activeState(val){
+  activeState(val) {
     this.setActiveState(val);
   }
 
   handleNextState() {
-    this.setActiveState({active: 4});
+    this.setActiveState({ active: 4 });
   }
 
   handleBackState() {
-    this.setActiveState({active: 2});
+    this.setActiveState({ active: 2 });
   }
 
   setActiveState(val) {
-    this.setState({notification: ''});
-    var data = {'tab' : val};
+    this.setState({ notification: '' });
+    var data = { 'tab': val };
     this.props.callbackFromParent(data);
   }
 
   configure(notification) {
     this.props.fetchCampaignConfiguration(this.props.campaign._id, notification._id);
-    this.setState({notification: notification});
+    this.setState({ notification: notification });
   }
 
   saveConfiguration(activity, id, configId) {
     const configure = {
       activity: activity != undefined && id ? activity : this.state.activity,
-      notificationType: id?id:this.state.notification._id,
+      notificationType: id ? id : this.state.notification._id,
       panelStyle: this.state.notificationPanelStyle,
       contentText: this.state.contentText,
       visitorText: this.state.visitorText,
       campaign: this.props.campaign._id
     };
     let configuration = this.props.configuration.size == 0 ? null : this.props.configuration.size ? this.props.configuration.toJS() : this.props.configuration;
-    if((configuration && configuration._id) || configId) {
-      configure['id'] = configId?configId:configuration._id;
+    if ((configuration && configuration._id) || configId) {
+      configure['id'] = configId ? configId : configuration._id;
       this.props.updateConfiguration(configure);
-    } else
-    {
+    } else {
       this.props.createConfiguration(configure);
     }
   }
@@ -216,40 +210,40 @@ class Notifications extends Component {
 
   render() {
 
-    const { notifications, configurations, createSuccess } = this.props;
+    const { configurations, createSuccess } = this.props;
     return (<div className="content notification-list">
       <Grid fluid>
-        <Tabs active="3" callbackFromParent={this.activeState}/>
+        <Tabs active="3" callbackFromParent={this.activeState} />
         <div className="tabscontent">
           {
             !this.state.notification
               ?
-                <Row>
-                  <NotificationList
-                    notificationList={this.state.notifications}
-                    handleActivityChange={this.handleActivityChange}
-                    configure={this.configure}
-                    configurations={configurations}
-                    createSuccess={createSuccess}
-                  />
-                </Row>
+              <Row>
+                <NotificationList
+                  notificationList={this.state.notifications}
+                  handleActivityChange={this.handleActivityChange}
+                  configure={this.configure}
+                  configurations={configurations}
+                  createSuccess={createSuccess}
+                />
+              </Row>
               :
-                <Row>
-                  <NotificationConfigure
-                    notification={this.state.notification}
-                    activity={this.state.activity}
-                    contentText={this.state.contentText}
-                    visitorText={this.state.visitorText}
-                    notificationPanelStyle={this.state.notificationPanelStyle}
-                    handleContentChange={this.handleContentChange}
-                    setDefaultPanel={this.setDefaultPanel}
-                    handleActivityChange={this.handleActivityChange}
-                    handleNotificationStyleChange={this.handleNotificationStyleChange}
-                    saveConfiguration = {this.saveConfiguration}
-                    backConfiguration= { this.backConfiguration }
-                  />
-                </Row>
-            }
+              <Row>
+                <NotificationConfigure
+                  notification={this.state.notification}
+                  activity={this.state.activity}
+                  contentText={this.state.contentText}
+                  visitorText={this.state.visitorText}
+                  notificationPanelStyle={this.state.notificationPanelStyle}
+                  handleContentChange={this.handleContentChange}
+                  setDefaultPanel={this.setDefaultPanel}
+                  handleActivityChange={this.handleActivityChange}
+                  handleNotificationStyleChange={this.handleNotificationStyleChange}
+                  saveConfiguration={this.saveConfiguration}
+                  backConfiguration={this.backConfiguration}
+                />
+              </Row>
+          }
         </div>
         {!this.state.notification &&
           <Row className="notification-button-row">
@@ -263,9 +257,9 @@ class Notifications extends Component {
             </Col>
             <Col md={6}>
               <div className=" text-right">
-               <Button bsStyle="primary" onClick={this.handleNextState}>
-                 <Glyphicon glyph="chevron-right" />
-                 Next
+                <Button bsStyle="primary" onClick={this.handleNextState}>
+                  <Glyphicon glyph="chevron-right" />
+                  Next
                 </Button>
               </div>
             </Col>

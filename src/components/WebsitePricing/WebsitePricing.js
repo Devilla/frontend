@@ -1,7 +1,4 @@
-import {Component} from 'react';
-import { Link } from "react-router";
-import Switch from 'react-flexible-switch';
-import { fetchPlan } from 'ducks/plan';
+import {fetch, Component} from 'react';
 
 class WebsitePricing extends Component {
 
@@ -22,10 +19,10 @@ class WebsitePricing extends Component {
 
   componentWillMount() {
     fetch('https://servicebot.useinfluence.co/api/v1/service-templates/public')
-    .then((res) => res.json())
-    .then((res) => {
-      this.setState({servicebotPlans: res});
-    });
+      .then((res) => res.json())
+      .then((res) => {
+        this.setState({servicebotPlans: res});
+      });
   }
   componentDidMount() {
     window.scrollTo(0,0);
@@ -52,14 +49,14 @@ class WebsitePricing extends Component {
   }
 
   filterPlanName=(planName)=> {
-    let res="";
+    let res='';
 
     switch(true) {
 
-      case /\b(Enterprise)\b/m.test(planName) :  res=  "Enterprise" ; break;
-      case /\b(Advanced)\b/m.test(planName) :  res=  "Advanced"; break;
-      case /\b(Small)\b/m.test(planName) :  res=  "Small"; break;
-      case /\b(Startups)\b/m.test(planName) : res=  "Startups"; break;
+      case /\b(Enterprise)\b/m.test(planName) :  res=  'Enterprise' ; break;
+      case /\b(Advanced)\b/m.test(planName) :  res=  'Advanced'; break;
+      case /\b(Small)\b/m.test(planName) :  res=  'Small'; break;
+      case /\b(Startups)\b/m.test(planName) : res=  'Startups'; break;
     default :  break;
     
     }
@@ -68,7 +65,7 @@ class WebsitePricing extends Component {
   }
 
   renderPriceList() {
-    let planList = this.state.servicebotPlans.filter(plan => this.state.planPeriod === 12 ? plan.interval==='year': plan.interval==='month')
+    let planList = this.state.servicebotPlans.filter(plan => this.state.planPeriod === 12 ? plan.interval==='year': plan.interval==='month');
     planList = planList.sort(function(a, b) {
       return b.id - a.id;
     });
@@ -130,8 +127,8 @@ class WebsitePricing extends Component {
             <span className="btn__text">Access Now</span>
           </Link>
         </div>
-      </div>
-    })
+      </div>;
+    });
   }
 
   render() {

@@ -31,7 +31,7 @@ const PaymentPrice = ({ planPeriod, planList, handleMonthChange, handleSwitchCha
                   ? 'active'
                   : ''
                 }
-                  onClick={handleYearChange}>Yearly</a>
+                onClick={handleYearChange}>Yearly</a>
               </li>
             </ul>
           </div>

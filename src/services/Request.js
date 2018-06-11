@@ -4,6 +4,7 @@
  * Example Usage:
  *  GET('https://api.example.com/getdata').then(data => {console.log(data);});
  */
+import localStorage from 'local-storage';
 
 
 const TOKEN_KEY = 'authToken';

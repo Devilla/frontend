@@ -1,21 +1,6 @@
 import { Component } from 'react';
-import {
-  Grid, Row, Col, Button, Glyphicon, FormGroup,
-  ControlLabel, FormControl
-} from 'react-bootstrap';
 import {browserHistory} from 'react-router';
-import { connect } from 'react-redux';
 import './Upgrade.css';
-
-import CardHeader from 'components/Template/card-with-header'
-import FormInputs from 'components/Template/FormTemp';
-import { ToastContainer, toast } from 'react-toastify';
-import Label from 'react-flexible-switch/lib/Label';
-import Switch from 'react-flexible-switch';
-import Footer from '../_common/Footer';
-
-
-
 
 export default class Upgrade extends Component {
   constructor(props) {
@@ -123,7 +108,7 @@ export default class Upgrade extends Component {
         </Grid>
         <ToastContainer hideProgressBar={true} />
       </div>
-    )
+    );
   }
 }
 

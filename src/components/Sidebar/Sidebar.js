@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import logo from 'assets/img/logo.png';
 import appRoutes from 'routes/app';
+import { browserHistory } from 'react-router';
 import './Sidebar.scss';
 
 class Sidebar extends Component {

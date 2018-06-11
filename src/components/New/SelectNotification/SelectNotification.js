@@ -1,12 +1,8 @@
-import {Component} from 'react';
-import {Grid, Row, Col, Nav, NavItem} from 'react-bootstrap';
-import {connect} from 'react-redux';
-import {browserHistory} from 'react-router';
-import CommonCard from 'components/Template/common-card';
-import {Templates} from '../notification/template/message-template/template'
+import { Component } from 'react';
+import { connect } from 'react-redux';
+import { browserHistory } from 'react-router';
 import { fetchNotification, createNotification } from 'ducks/notification';
 import { createRules } from 'ducks/rules';
-import NotificationContent from './NotificationContent';
 
 const notificationList = [
   {
@@ -48,7 +44,7 @@ class SelectNotification extends Component {
     notificationItem.index = index;
     notificationItem.id = notification.id;
     notificationItem.name = notification.name; //updating value
-    this.setState({notificationItem});
+    this.setState({ notificationItem });
   }
 
   componentWillMount() {
@@ -57,13 +53,13 @@ class SelectNotification extends Component {
 
   renderNotifications() {
     return notificationList.map((item, index) => <NavItem eventKey={index} title={item.name}>
-        <i className="far fa-bell"></i>
-        {item.name}
-      </NavItem>);
+      <i className="far fa-bell"></i>
+      {item.name}
+    </NavItem>);
   }
 
   handleRuleChange(value, target) {
-    this.setState({[target]: value});
+    this.setState({ [target]: value });
   }
 
   handleNotificationSubmit() {
@@ -74,7 +70,7 @@ class SelectNotification extends Component {
     };
     this.props.createNotification(notification);
     notificationItem.index = 'rule';//updating value
-    this.setState({notificationItem});
+    this.setState({ notificationItem });
   }
 
   handleRulesSubmit(e) {
@@ -104,18 +100,18 @@ class SelectNotification extends Component {
                 ? this.props.campaign.campaignName
                 : 'http://localhost:3000'}
               content={
-              <div>
-                <Nav bsStyle="pills" className="tabmenu" justified activeKey={this.state.notificationItem.index}  onSelect={k => this.handleSelect(k)}>
-                  {this.renderNotifications()}
-                </Nav>
-                <NotificationContent
-                  handleNotificationSubmit={this.handleNotificationSubmit}
-                  handleRuleChange={this.handleRuleChange}
-                  handleRulesSubmit={this.handleRulesSubmit}
-                  {...this.state}
-                />
-              </div>
-              }/>
+                <div>
+                  <Nav bsStyle="pills" className="tabmenu" justified activeKey={this.state.notificationItem.index} onSelect={k => this.handleSelect(k)}>
+                    {this.renderNotifications()}
+                  </Nav>
+                  <NotificationContent
+                    handleNotificationSubmit={this.handleNotificationSubmit}
+                    handleRuleChange={this.handleRuleChange}
+                    handleRulesSubmit={this.handleRulesSubmit}
+                    {...this.state}
+                  />
+                </div>
+              } />
           </Col>
         </Row>
       </Grid>

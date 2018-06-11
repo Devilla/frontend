@@ -30,10 +30,10 @@ function* create(action) {
     yield put(load());
     const res = yield call(api.POST, 'campaign', action.campaign);
     if(res.error)
-      if(res.message == "Invalid domain")
-        yield toast.error("This website url is Invalid.", toastConfig);
+      if(res.message == 'Invalid domain')
+        yield toast.error('This website url is Invalid.', toastConfig);
       else
-        yield toast.error("This website is already configured with this account", toastConfig);
+        yield toast.error('This website is already configured with this account', toastConfig);
     else
       yield put(actions.successCampaign(res));
     yield put(loaded());
@@ -53,7 +53,7 @@ function* update(action) {
       console.log(res.error);
     else {
       let campaign = action.campaign;
-      campaign["_id"] = campaign.id;
+      campaign['_id'] = campaign.id;
       yield put(actions.successCampaign(action.campaign));
     }
     yield put(loaded());
@@ -80,7 +80,7 @@ function* remove(action) {
   }
 }
 
-function* fetchCampaignsInfo(action) {
+function* fetchCampaignsInfo() {
   try {
     yield put(load());
     const res = yield call(api.GET, 'campaign/user/info');

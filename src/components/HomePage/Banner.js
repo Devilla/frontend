@@ -21,7 +21,7 @@ export default class Banner extends Component {
             <div className="hero-text-block">
               <Animated className="hero-title word sm" animationIn="fadeInDown" animationOut="fadeOut" isVisible={true}>
                 Increase Your Website Conversions Using
-                    </Animated >
+              </Animated >
               <Animated className="hero-title word" animationIn="fadeInDown" animationOut="fadeOut" isVisible={true}>Social Proof Notifications</Animated>
 
               <Animated className="hero-title title-2" animationIn="fadeInDown" animationOut="fadeOut" isVisible={true}>Influence helps you in converting more customers on your website by showing recent customer activity on your web pages</Animated>
@@ -36,6 +36,6 @@ export default class Banner extends Component {
           </div>
         </div>
       </header>
-    )
+    );
   }
 }
