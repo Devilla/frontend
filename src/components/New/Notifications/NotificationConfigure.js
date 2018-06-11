@@ -1,37 +1,31 @@
-import React, { Component } from 'react';
-import { Row, Col, Button, Glyphicon } from 'react-bootstrap';
-import { Card } from '../notification/template/common';
-import { Notification } from '../notification/template/common/notification'
-import { Setting } from '../notification/template/common/settings'
-import Switch from 'react-flexible-switch';
 import './NotificationConfigure.scss';
 
 const NotificationConfigure = ({
-    notification,
-    activity,
-    contentText,
-    visitorText,
-    setDefaultPanel,
-    handleActivityChange,
-    handleContentChange,
-    notificationPanelStyle,
-    handleNotificationStyleChange,
-    saveConfiguration,
-    backConfiguration
-  }) => {
+  notification,
+  activity,
+  contentText,
+  visitorText,
+  setDefaultPanel,
+  handleActivityChange,
+  handleContentChange,
+  notificationPanelStyle,
+  handleNotificationStyleChange,
+  saveConfiguration,
+  backConfiguration
+}) => {
   return (
     <div className="notification-configure">
       <Row>
 
-        
 
-        
+
+
         <Col md={12}>
 
 
           <Card title="Recent User Activity"
 
-          
+
             isDisabled={activity}
             content={
               <Row>
@@ -79,23 +73,23 @@ const NotificationConfigure = ({
         </Col>
         <Col md={4}>
           <div className=" text-center">
-           <Button bsStyle="primary" onClick={setDefaultPanel}>
-             <Glyphicon glyph="align-justify" />
-             Set Default
+            <Button bsStyle="primary" onClick={setDefaultPanel}>
+              <Glyphicon glyph="align-justify" />
+              Set Default
             </Button>
           </div>
         </Col>
         <Col md={4}>
           <div className=" text-right">
-           <Button bsStyle="primary" onClick={saveConfiguration}>
-             <Glyphicon glyph="save" />
-             Save
+            <Button bsStyle="primary" onClick={saveConfiguration}>
+              <Glyphicon glyph="save" />
+              Save
             </Button>
           </div>
         </Col>
       </Row>
     </div>
   );
-}
+};
 
 export default NotificationConfigure;

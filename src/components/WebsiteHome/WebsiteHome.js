@@ -1,41 +1,9 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import { Link } from "react-router";
 import Slider from 'react-slick';
 import  './WebsiteHome.scss';
 
 import {
-  // HigherConversion,
-  // SaveAcquisitions,
-  // IncreaseVisitors,
-  // SocialInfluence,
-  // Device,
-  // AnalyticsInsights,
-  // EasiestSetup,
-  // ActivityNotifications,
-  // LiveViewers,
-  // CustomerProfiles,
-  // CustomerJourneys,
-  // CustomeRules,
-  // MobileReady,
-  // Inc42,
-  // Tnwg,
-  // Yourstory,
-  // HigherConversion2,
-  // Saveonacquisitions2,
-  // Visitortrust2,
-  // Startconverting,
-  // Socialinfluence2,
-  // D12, B24,
-  // Customerjourney5,
-  // Analyticsinsights10,
-  // Easiestsetup,
-  // Marvel,
-  // Activitynotifications2,
-  // Liveviewers2,
-  // Customerprofiles2,
-  // Customerjourney2,
-  // Customrules2,
-  // Mobileready2,
   Marvel,
   Integration,
   Swivelscreen,

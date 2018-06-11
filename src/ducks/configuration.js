@@ -1,6 +1,6 @@
-import { fromJS, Map } from 'immutable';
+import { fromJS } from 'immutable';
 
-const action = name => `/configuration/${name}`;
+const action = name => '/configuration/${name}';
 
 export const FETCH = action('FETCH');
 export const FETCH_CAMPAIGN_CONFIG = action('FETCH_CAMPAIGN_CONFIG');

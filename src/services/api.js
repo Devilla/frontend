@@ -1,5 +1,3 @@
-import { call, put, select } from 'redux-saga/effects';
-
 export const base =
   process.env.NODE_ENV === 'production'
     ? process.env.REACT_APP_PRODUCTION_URL

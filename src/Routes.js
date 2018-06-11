@@ -1,7 +1,3 @@
-import React from 'react';
-import { Router, Route, browserHistory, IndexRedirect } from 'react-router';
-import { store } from './index.js';
-
 import {
   About,
   ForgetPassword,
@@ -9,7 +5,6 @@ import {
   Profile,
   Billing,
   BillingDetails,
-  Help,
   Payment,
   HowItWorks,
   ResetPassword,
@@ -74,7 +69,6 @@ const MyRoutes = ({routerHistory, store}) => (
       <Route path="/billing" component={Billing} />
       <Route path="/card-details" component={UpgradeCard} />
       <Route path="/billing-details" component={BillingDetails} />
-      <Route path="/Help" component={Help} />
   	  <Route path="/payment" component={Payment} />
       <Route path="/getting-started" component={LoginFlow} />
     </Route>

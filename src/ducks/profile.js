@@ -1,6 +1,4 @@
-import { fromJS, Map } from 'immutable';
-
-const action = name => `/profile/${name}`;
+import { fromJS } from 'immutable';
 
 export const FETCH = action('FETCH');
 export const CREATE = action('CREATE');
@@ -19,10 +17,10 @@ const profile = (state = initialState, action) => {
     // case FETCH:
     //   return state.set("profile", action.profile);
     case SUCCESS:
-      return state.set("profile", action.profile);
+      return state.set('profile', action.profile);
     default:
       return state
-  }
-}
+  };
+};
 
 export default profile;

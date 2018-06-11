@@ -1,19 +1,16 @@
-import React, { Component } from 'react';
-import { Row, Col } from 'react-bootstrap';
-import Switch from 'react-flexible-switch';
 import './NotificationList.scss';
 
-const NotificationList = ({notificationList, configure, configurations, handleActivityChange, createSuccess}) => {
+const NotificationList = ({ notificationList, configure, handleActivityChange }) => {
   const renderNotifications = () => {
     return notificationList.map(notification =>
       <Col md={4} key={notification._id}>
-        <div className="card"
+        <div className='card'
           style={{
-            width: "15rem",
-            margin: "0 auto",
+            width: '15rem',
+            margin: '0 auto',
             borderRadius: '10px'
           }}
-          >
+        >
           <div className="view gradient-card-header blue-gradient"
             style={{
               padding: '1.6rem 1rem',
@@ -23,14 +20,14 @@ const NotificationList = ({notificationList, configure, configurations, handleAc
               borderTopRadiusLeft: '10px',
               borderTopRadiusRight: '10px'
             }}
-            >
+          >
             <h2 className="h2-responsive">{notification.notificationType}</h2>
             <p>{notification.notificationName}</p>
           </div>
-          <div className="button-config" onClick={() => configure(notification)} style={{ cursor:'pointer'}} data-toggle="modal" data-target="#notificationModal">
-            <ul className="list-unstyled list-inline font-small mt-3" style={{ margin: '0 auto', padding: '10px'}}>
-              <li className="list-inline-item pr-2 white-text" style={{display: 'flex', justifyContent: 'center'}}>
-               <strong> Configure</strong>
+          <div className="button-config" onClick={() => configure(notification)} style={{ cursor: 'pointer' }} data-toggle="modal" data-target="#notificationModal">
+            <ul className="list-unstyled list-inline font-small mt-3" style={{ margin: '0 auto', padding: '10px' }}>
+              <li className="list-inline-item pr-2 white-text" style={{ display: 'flex', justifyContent: 'center' }}>
+                <strong> Configure</strong>
               </li>
             </ul>
           </div>
@@ -41,11 +38,11 @@ const NotificationList = ({notificationList, configure, configurations, handleAc
             switchStyles={{ width: 50 }}
             cssClass="alignsame"
             value={notification.activity}
-            onChange={(e) => e !=notification.activity?handleActivityChange(e, notification._id, notification.configurationId):null}
+            onChange={(e) => e != notification.activity ? handleActivityChange(e, notification._id, notification.configurationId) : null}
           />
         </div>
       </Col>
-    )
+    );
   };
 
   return (
@@ -53,6 +50,6 @@ const NotificationList = ({notificationList, configure, configurations, handleAc
       {renderNotifications()}
     </div>
   );
-}
+};
 
 export default NotificationList;

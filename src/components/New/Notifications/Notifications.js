@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import {Component} from 'react';
 import { Grid, Row, Col, Button, Glyphicon } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { fetchNotification } from 'ducks/notification';

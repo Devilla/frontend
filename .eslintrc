@@ -21,13 +21,14 @@
   },
   "globals": {
     "strapi": true,
-    "window": true
+    "window": true,
+    "browser": true
   },
   "rules": {
     "generator-star-spacing": 0,
     "babel/generator-star-spacing": 0,
     "indent": ["error", 2, { "SwitchCase": 1 }],
-    "linebreak-style": ["error", "unix"],
+    "linebreak-style": ["error", "windows"],
     "no-console": 0,
     "quotes": ["error", "single"],
     "semi": ["error", "always"]

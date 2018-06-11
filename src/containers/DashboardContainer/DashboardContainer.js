@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import {Component} from 'react';
 import { connect } from 'react-redux';
 import { browserHistory, Link } from 'react-router';
 import { checkTokenExists } from 'ducks/auth';

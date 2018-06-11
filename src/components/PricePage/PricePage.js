@@ -1,9 +1,3 @@
-import React, { Component } from 'react';
-import {Animated} from 'react-animated-css';
-import Switch from 'react-flexible-switch';
-
-import PriceList from './PriceList';
-
 const PricePage = ({externalValue, handleMonthChange, handleSwitchChange, handleYearChange, planList, returnRates}) => {
   return (
     <div>

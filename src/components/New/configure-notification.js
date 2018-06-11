@@ -1,46 +1,42 @@
-import React, { Component } from 'react';
-import {
-    Grid, Row, Col
-} from 'react-bootstrap';
-import Tabs from 'components/Template/tab'
-import Display from './notification/display'
-class ConfigNotification extends Component{
-  constructor(){
+import { Component } from 'react';
+
+class ConfigNotification extends Component {
+  constructor() {
     super();
     this.state = {
 
-    }
+    };
     this.handleNextState = this.handleNextState.bind(this);
     this.handleBackState = this.handleBackState.bind(this);
     this.activeState = this.activeState.bind(this);
   }
 
   componentWillMount() {
-    this.setActiveState({active: 4});
+    this.setActiveState({ active: 4 });
   }
 
-  activeState(val){
+  activeState(val) {
     this.setActiveState(val);
   }
 
   handleNextState() {
-    this.setActiveState({active: 5});
+    this.setActiveState({ active: 5 });
   }
 
   handleBackState() {
-    this.setActiveState({active: 3});
+    this.setActiveState({ active: 3 });
   }
 
   setActiveState(val) {
-    var data = {'tab' : val};
+    var data = { 'tab': val };
     this.props.callbackFromParent(data);
   }
 
-  render(){
+  render() {
     return (
       <div className="content">
         <Grid fluid>
-          <Tabs active="4" callbackFromParent ={this.activeState.bind(this)}/>
+          <Tabs active="4" callbackFromParent={this.activeState.bind(this)} />
           <Row >
             <Display
               handleBackState={this.handleBackState}

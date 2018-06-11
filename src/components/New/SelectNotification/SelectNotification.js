@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import {Component} from 'react';
 import {Grid, Row, Col, Nav, NavItem} from 'react-bootstrap';
 import {connect} from 'react-redux';
 import {browserHistory} from 'react-router';

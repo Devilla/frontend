@@ -1,6 +1,6 @@
-import { fromJS, Map } from 'immutable';
+import { fromJS} from 'immutable';
 
-const action = name => `/elastic/${name}`;
+const action = name => '/elastic/${name}';
 
 export const FETCH = action('FETCH');
 export const FETCH_SUCCESS = action('FETCH_SUCCESS');
@@ -15,12 +15,12 @@ const initialState = fromJS({});
 const elastic = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_SUCCESS:
-      return state.set("elastic", action.elastic);
+      return state.set('elastic', action.elastic);
     case CLEAR_ELASTIC:
-      return state.set("elastic", undefined);
+      return state.set('elastic', undefined);
     default:
       return state
-  }
-}
+  };
+};
 
 export default elastic;

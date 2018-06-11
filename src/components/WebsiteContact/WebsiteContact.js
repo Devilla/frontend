@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import {
   ContactAvatar1,
   ContactAvatar2,
@@ -8,12 +8,10 @@ import {
   ContactAvatar6
 } from 'img';
 
-var Recaptcha = require('react-recaptcha');
-
 class WebsiteContact extends Component {
-  componentDidMount(){
-    window.scrollTo(0, 0)
-  } 
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
   render() {
     return (
       <div className="main-container">
@@ -32,37 +30,37 @@ class WebsiteContact extends Component {
             <div className="row">
               <div className="col-md-4">
                 <div className="feature feature-8">
-                  <img alt="Image" src={ ContactAvatar1 } />
+                  <img alt="Image" src={ContactAvatar1} />
                   <h5>Kate</h5>
                 </div>
               </div>
               <div className="col-md-4">
                 <div className="feature feature-8">
-                  <img alt="Image" src={ ContactAvatar2 } />
+                  <img alt="Image" src={ContactAvatar2} />
                   <h5>Ram</h5>
                 </div>
               </div>
               <div className="col-md-4">
                 <div className="feature feature-8">
-                  <img alt="Image" src={ ContactAvatar3 } />
+                  <img alt="Image" src={ContactAvatar3} />
                   <h5>Sarah</h5>
                 </div>
               </div>
               <div className="col-md-4">
                 <div className="feature feature-8">
-                  <img alt="Image" src={ ContactAvatar4 } />
+                  <img alt="Image" src={ContactAvatar4} />
                   <h5>Kirti</h5>
                 </div>
               </div>
               <div className="col-md-4">
                 <div className="feature feature-8">
-                  <img alt="Image" src={ ContactAvatar5 } />
+                  <img alt="Image" src={ContactAvatar5} />
                   <h5>Alice</h5>
                 </div>
               </div>
               <div className="col-md-4">
                 <div className="feature feature-8">
-                  <img alt="Image" src={ ContactAvatar6 } />
+                  <img alt="Image" src={ContactAvatar6} />
                   <h5>John</h5>
                 </div>
               </div>

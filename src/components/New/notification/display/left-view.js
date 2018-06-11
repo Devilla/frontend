@@ -1,6 +1,4 @@
-import React, {Component} from 'react';
-import {Row, Col, FormGroup, FormControl} from 'react-bootstrap';
-import Switch from 'react-flexible-switch';
+import {Component} from 'react';
 
 class LeftView extends Component {
   constructor() {
@@ -13,8 +11,6 @@ class LeftView extends Component {
       loopNotification,
       delayNotification,
       closeNotification,
-      hideAnonymous,
-      displayNotifications,
       handleStateChange
     } = this.props;
     return (

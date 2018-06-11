@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import {Component} from 'react';
 import {Row, Col} from 'react-bootstrap';
 import {Card} from '../common'
 import Switch from 'react-flexible-switch';

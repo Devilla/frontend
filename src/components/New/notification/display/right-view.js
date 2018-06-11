@@ -1,6 +1,5 @@
-import React, {Component} from 'react';
+import {Component} from 'react';
 import {Row, Col, FormGroup, FormControl} from 'react-bootstrap';
-import Switch from 'react-flexible-switch';
 
 class RightView extends Component {
   constructor() {
@@ -13,10 +12,7 @@ class RightView extends Component {
       initialDelay,
       displayTime,
       delayBetween,
-      delayNotification,
       displayPosition,
-      shouldHide,
-      closeNotification
     } = this.props;
 
     return (<div className="pnl np-border">

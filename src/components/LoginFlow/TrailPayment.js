@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import {Component} from 'react';
 import { Animated } from "react-animated-css";
 import {
   Grid,

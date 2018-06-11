@@ -1,8 +1,4 @@
-import React, { Component } from 'react';
-import { ToastContainer, toast } from 'react-toastify';
-
-import { UpgradeCard } from 'components';
-import PlanList from './PlanList';
+import { Component } from 'react';
 import './UpgradePlan.scss';
 
 const toastConfig = {
@@ -15,45 +11,45 @@ export default class UpgradePlan extends Component {
     super(props);
     this.state = {
       plan: '',
-      proceed:false
+      proceed: false
     };
     this.handleCheckChange = this.handleCheckChange.bind(this);
     this.makePayment = this.makePayment.bind(this);
   }
 
-  componentDidMount(){
+  componentDidMount() {
     window.scrollTo(0, 0);
   }
 
-  handleCheckChange(checked, value, state) {
-    this.setState({plan: checked?value:null})
+  handleCheckChange(checked, value) {
+    this.setState({ plan: checked ? value : null });
   }
 
   makePayment() {
-    if(!this.state.plan)
-      return toast.warn("Select a plan", toastConfig);
-    this.setState({proceed: true});
+    if (!this.state.plan)
+      return toast.warn('Select a plan', toastConfig);
+    this.setState({ proceed: true });
   }
 
   componentWillUnmount() {
-    this.setState({proceed: false});
+    this.setState({ proceed: false });
   }
 
   render() {
     const { proceed, plan } = this.state;
     return (
       <div className="upgrade-plan-container">
-        {!proceed?
+        {!proceed ?
           <PlanList
             plan={plan}
             handleCheckChange={this.handleCheckChange}
             makePayment={this.makePayment}
           />
-        :
+          :
           <UpgradeCard plan={plan} />
         }
         <ToastContainer hideProgressBar={true} />
       </div>
-    )
+    );
   }
 }

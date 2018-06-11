@@ -1,4 +1,4 @@
-import { fromJS, Map, List } from 'immutable';
+import { fromJS, List } from 'immutable';
 
 const action = name => `/auth/${name}`;
 
@@ -40,7 +40,7 @@ const auth = (state = initialState, action) => {
       return state.set('roles', action.roles.roles);
     default:
       return state
-  }
-}
+  };
+};
 
 export default auth;

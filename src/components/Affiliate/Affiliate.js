@@ -1,8 +1,4 @@
-import React, { Component } from 'react';
-import { Link } from "react-router";
-import { browserHistory } from 'react-router';
-import { toast } from 'react-toastify';
-import { Alert, HelpBlock } from 'react-bootstrap';
+import { Component } from 'react';
 
 export default class Affiliate extends Component {
     constructor() {
@@ -11,7 +7,7 @@ export default class Affiliate extends Component {
     render() {
         return (
             <div className="main-container">
-                <section className="text-center" style={{paddingTop:"   200px"}}>
+                <section className="text-center" style={{ paddingTop: '200px' }}>
                     <div className="container pos-vertical-center">
                         <div className="row">
                             <div className="col-md-8">
@@ -59,20 +55,20 @@ export default class Affiliate extends Component {
                             </div>
                             <div className="col-md-4">
                                 <Link to="/" className="block">
-                                    <div className="feature boxed boxed--border border--round"><span className="h4 color--primary"><h4>On-time Payment</h4></span>  
-                                    <img className="icon-n1" src="" /><p  class="align-center text-left lead">It cannot get sweeter than this. You just take care of spreading the word about  Freshworks and leave the rest to us. We will ensure you are paid on-time for your efforts and in your local currency, for your convenience.</p> </div>
+                                    <div className="feature boxed boxed--border border--round"><span className="h4 color--primary"><h4>On-time Payment</h4></span>
+                                        <img className="icon-n1" src="" /><p class="align-center text-left lead">It cannot get sweeter than this. You just take care of spreading the word about  Freshworks and leave the rest to us. We will ensure you are paid on-time for your efforts and in your local currency, for your convenience.</p> </div>
                                 </Link>
                             </div>
                         </div>
                     </div>
                 </section>
-                <section className="text-center " style={{background:"#14BBFA"}}>
-                    <div className="container pt-5" >
+                <section className='text-center' style={{ background: '#14BBFA' }}>
+                    <div className='container pt-5' >
                         <div className="row">
                             <div className="col-md-10 col-lg-8">
-                                <div className="cta">
-                                    <h2  style={{color:"white", fontWeight:"Bold"}}>So what are you waiting for?</h2>
-                                    <p className="lead"  style={{color:"white"}}>
+                                <div className='cta'>
+                                    <h2 style={{ color: 'white', fontWeight: 'Bold' }}>So what are you waiting for?</h2>
+                                    <p className='lead' style={{ color: 'white' }}>
                                         Join us today to be a part of something exciting and start making money.
                                 </p>
                                     <a className="btn btn--primary type--uppercase" href="/affiliateregister">

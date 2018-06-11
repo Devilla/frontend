@@ -1,18 +1,18 @@
-import { call, put, select, fork, takeLatest } from 'redux-saga/effects';
+import { call, put, fork, takeLatest } from 'redux-saga/effects';
 import * as api from 'services/api';
 import * as actions from 'ducks/campaign';
 import { load, loaded } from 'ducks/loading';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 const toastConfig = {
   position: toast.POSITION.BOTTOM_LEFT,
   autoClose: 2000
 };
 
-function* fetch(action) {
+function* fetch() {
   try {
     yield put(load());
-    const res = yield call(api.GET, `campaign`);
+    const res = yield call(api.GET, 'campaign');
     if(res.error)
       console.log(res.error);
     else
@@ -28,7 +28,7 @@ function* fetch(action) {
 function* create(action) {
   try {
     yield put(load());
-    const res = yield call(api.POST, `campaign`, action.campaign);
+    const res = yield call(api.POST, 'campaign', action.campaign);
     if(res.error)
       if(res.message == "Invalid domain")
         yield toast.error("This website url is Invalid.", toastConfig);
@@ -48,7 +48,7 @@ function* create(action) {
 function* update(action) {
   try {
     yield put(load());
-    const res = yield call(api.PUT, `campaign/${action.campaign.id}`, action.campaign);
+    const res = yield call(api.PUT, 'campaign/${action.campaign.id}', action.campaign);
     if(res.error)
       console.log(res.error);
     else {
@@ -67,7 +67,7 @@ function* update(action) {
 function* remove(action) {
   try {
     yield put(load());
-    const res = yield call(api.DELETE, `campaign/${action.campaignId}`);
+    const res = yield call(api.DELETE, 'campaign/${action.campaignId}');
     if(res.error)
       console.log(res.error);
     else
@@ -83,7 +83,7 @@ function* remove(action) {
 function* fetchCampaignsInfo(action) {
   try {
     yield put(load());
-    const res = yield call(api.GET, `campaign/user/info`);
+    const res = yield call(api.GET, 'campaign/user/info');
     if(res.error)
       console.log(res.error);
     else

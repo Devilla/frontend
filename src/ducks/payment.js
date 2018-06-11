@@ -1,6 +1,6 @@
-import { fromJS, Map } from 'immutable';
+import { fromJS } from 'immutable';
 
-const action = name => `/payment/${name}`;
+const action = name => '/payment/${name}';
 
 export const FETCH = action('FETCH');
 export const CREATE = action('CREATE');
@@ -23,12 +23,12 @@ const initialState = fromJS({});
 const payment = (state = initialState, action) => {
   switch (action.type) {
     case SUCCESS:
-      return state.set("payments", action.payment);
+      return state.set('payments', action.payment);
     case SUCCESS_INVOICE:
-      return state.set("invoices", action.invoices);
+      return state.set('invoices', action.invoices);
     default:
       return state
-  }
-}
+  };
+};
 
 export default payment;

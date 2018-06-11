@@ -1,10 +1,6 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { ToastContainer } from 'react-toastify';
+import { Component } from 'react';
 import { browserHistory } from 'react-router';
 import { connect } from 'react-redux';
-import { Spinner } from '../../components/index.js';
-import { WebsiteHeader, WebsiteFooter } from 'components';
 
 import { checkTokenExists } from 'ducks/auth';
 
@@ -24,7 +20,7 @@ import './App.scss';
 class App extends Component {
   componentWillMount() {
     this.checkLogin((err) => {
-      if(!err) {
+      if (!err) {
         browserHistory.push('/dashboard');
       }
     });
@@ -37,22 +33,22 @@ class App extends Component {
       : null;
     if (authToken) {
       this.props.checkTokenExists(authToken);
-      callback()
+      callback();
     } else {
-      callback("not logged in")
+      callback('not logged in');
     }
   }
 
-  render(){
+  render() {
     return (
       <div className="website-app">
         <div className="basic-gradient-light" data-smooth-scroll-offset="77">
-           <WebsiteHeader />
-           <Spinner loading={this.props.loading} />
-           <div className="content">
-             {this.props.children}
-           </div>
-           <WebsiteFooter />
+          <WebsiteHeader />
+          <Spinner loading={this.props.loading} />
+          <div className="content">
+            {this.props.children}
+          </div>
+          <WebsiteFooter />
         </div>
         <ToastContainer hideProgressBar={true} />
       </div>

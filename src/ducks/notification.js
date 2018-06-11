@@ -1,6 +1,6 @@
-import { fromJS, Map } from 'immutable';
+import { fromJS } from 'immutable';
 
-const action = name => `/notification/${name}`;
+const action = name => '/notification/${name}';
 
 export const FETCH = action('FETCH');
 export const CREATE = action('CREATE');
@@ -24,13 +24,13 @@ const notification = (state = initialState, action) => {
     // case FETCH:
     //   return state.set("notification", action.notification);
     case SUCCESS:
-      return state.set("notifications", action.notification);
+      return state.set('notifications', action.notification);
     case CREATE_SUCCESS:
-      return state.set("notification", action.notification);
+      return state.set('notification', action.notification);
 
     default:
       return state
-  }
-}
+  };
+};
 
 export default notification;

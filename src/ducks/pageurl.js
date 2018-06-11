@@ -1,5 +1,5 @@
-import { fromJS, Map, List } from 'immutable';
-const action = name => `/pageurl/${name}`;
+import { fromJS, List } from 'immutable';
+const action = name => '/pageurl/${name}';
 
 export const FETCH = action('FETCH');
 export const FETCH_ONE = action('FETCH_ONE');
@@ -34,16 +34,16 @@ const initialState = fromJS({
 const pageurl = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_SUCCESS:
-      return state.set("pageurls", action.pageurl);
+      return state.set('pageurls', action.pageurl);
     case CREATE_SUCCESS:
       return state.set('pageurls', state.get('pageurls').concat(action.pageurl));
     case POP_PAGE_URL:
-      return state.set("pageurls", state.get('pageurls').slice(0,action.index).concat(state.get('pageurls').slice(action.index+1)));
+      return state.set('pageurls', state.get('pageurls').slice(0,action.index).concat(state.get('pageurls').slice(action.index+1)));
     case CLEAR_PAGE_URL:
-      return state.set("pageurls", null);
+      return state.set('pageurls', null);
     default:
       return state
-  }
-}
+  };
+};
 
 export default pageurl;

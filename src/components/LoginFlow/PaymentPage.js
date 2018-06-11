@@ -1,5 +1,4 @@
-import React from 'react';
-import { CardElement, injectStripe } from 'react-stripe-elements';
+import { injectStripe } from 'react-stripe-elements';
 import { toast } from 'react-toastify';
 
 const toastConfig = {

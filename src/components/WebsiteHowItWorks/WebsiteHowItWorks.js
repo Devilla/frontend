@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import { Link } from "react-router";
 import Slider from 'react-slick';
 import {

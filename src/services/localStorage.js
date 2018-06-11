@@ -1,5 +1,3 @@
-import { fromJS } from 'immutable';
-
 export const loadState = () => {
   try {
     const serializedState = localStorage.getItem('state');
@@ -19,4 +17,4 @@ export const saveState = (state) => {
   } catch(err) {
     //Ignore
   }
-}
+};

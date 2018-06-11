@@ -1,6 +1,6 @@
-import { fromJS, Map } from 'immutable';
+import { fromJS} from 'immutable';
 
-const action = name => `/plan/${name}`;
+const action = name => '/plan/${name}';
 
 export const FETCH = action('FETCH');
 export const CREATE = action('CREATE');
@@ -18,7 +18,7 @@ const plan = (state = initialState, action) => {
     //
     //   return state.set("plan", action.plan);
     case SUCCESS:
-      return state.set("plan", action.plan);
+      return state.set('plan', action.plan);
     default:
       return state
   }

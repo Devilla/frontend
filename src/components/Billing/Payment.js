@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import {
   Grid, Radio,Checkbox,Row, Col, Button, Glyphicon, FormGroup,
   ControlLabel, FormControl
