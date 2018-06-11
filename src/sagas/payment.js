@@ -1,9 +1,9 @@
-import { call, put, select, fork, takeLatest } from 'redux-saga/effects';
+import { call, put, fork, takeLatest } from 'redux-saga/effects';
 import * as api from 'services/api';
 import * as actions from 'ducks/payment';
-import { updateProfile } from 'ducks/profile';
+import { createProfile } from 'ducks/profile';
 import { load, loaded } from 'ducks/loading';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import { browserHistory } from 'react-router';
 
 const toastConfig = {
@@ -53,13 +53,7 @@ function* create(action) {
     if(res.error)
       console.log(res.error);
     else {
-      console.log(res, "=============response");
-
-      // let profile = yield select(getProfile);
-      // profile['id'] = profile._id;
-      // delete profile['_id'];
-      // profile['profile_payments'] = res._id
-      // yield put(updateProfile(profile));
+      yield put(createProfile(action.profile));
       yield put(actions.successPayment(res));
       yield browserHistory.push('billing-details');
     }

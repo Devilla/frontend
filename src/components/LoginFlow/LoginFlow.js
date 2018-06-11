@@ -4,7 +4,6 @@ import { browserHistory } from 'react-router';
 import { ToastContainer } from 'react-toastify';
 
 import { updateUser, checkTokenExists, validateCoupon, clearCouponError } from 'ducks/auth';
-import { createProfile } from 'ducks/profile';
 import { createPayment } from 'ducks/payment';
 import TrailPayment from './TrailPayment';
 import './LoginFlow.scss';
@@ -77,8 +76,7 @@ class LoginFlow extends Component {
       userInfo['username'] = this.state.username;
       this.props.updateUser(userInfo);
     }
-    this.props.createPayment(data);
-    this.props.createProfile(profile);
+    this.props.createPayment(data, profile);
     browserHistory.push('dashboard');
   }
 
@@ -160,7 +158,6 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
   updateUser,
-  createProfile,
   createPayment,
   checkTokenExists,
   validateCoupon,

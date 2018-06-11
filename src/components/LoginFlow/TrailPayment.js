@@ -103,10 +103,7 @@ const TrailPayment = ({
                         </Elements>
                       </div>
                     }
-                    {/* </div>
-                  } */}
                 </div>
-
               </div>
             </Animated>
           </div>

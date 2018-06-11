@@ -3,7 +3,6 @@ import {
   Row,
   Col,
   FormGroup,
-  ControlLabel,
   FormControl,
   HelpBlock
 } from 'react-bootstrap';
