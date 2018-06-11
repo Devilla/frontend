@@ -1,12 +1,5 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { browserHistory } from 'react-router';
-import $ from 'jquery';
-import axios from 'axios';
-import { fetchPlan } from 'ducks/plan';
-import * as api from 'services/api';
 
-import PricePage from './PricePage';
 import PaymentPrice from './PaymentPrice';
 
 class Price extends Component {
@@ -15,27 +8,16 @@ class Price extends Component {
     this.state = {
       checked: false,
       externalValue: true,
-      sprice: '',
-      sbprice: '',
-      advprice: '',
-      proprice: '',
-      country_code: 'USD',
-      rate: 0,
       planPeriod: 12,
       servicebotPlans: []
     };
     this.handleChange = this.handleChange.bind(this);
-    this.returnRates =  this.returnRates.bind(this);
     this.handleMonthChange = this.handleMonthChange.bind(this);
     this.handleYearChange = this.handleYearChange.bind(this);
     this.handleSwitchChange = this.handleSwitchChange.bind(this);
-
   }
 
   componentWillMount() {
-    this.props.fetchPlan();
-    this.initCountry();
-    this.currencyRates();
     fetch('https://servicebot.useinfluence.co/api/v1/service-templates/public')
     .then((res) => res.json())
     .then((res) => {
@@ -45,7 +27,6 @@ class Price extends Component {
 
   componentDidMount() {
     window.scrollTo(0, 0);
-    this.accordian();
   }
 
   handleChange(checked) {
@@ -68,80 +49,23 @@ class Price extends Component {
     }
   }
 
-  accordian() {
-    $('.faq .faqwrap ul li .questions').on('click', function() {
-      $('.faq .faqwrap ul li .questions').removeClass('active');
-      $(this).parent().toggleClass('active');
-      $(this).next().slideToggle(300);
-    });
-  }
-
-  currencyRates() {
-    axios.get('https://openexchangerates.org/api/latest.json?app_id=95df1c8c28bb434cbdee931132592e21&base=USD').then((response) => {
-      this.setState({rate: response.data.rates.INR});
-    })
-    .catch(err => {
-      console.log(err);
-    });
-  }
-
-  initCountry(price) {
-    axios.get('https://geoip-db.com/json/geoip.php').then((response) => {
-      if (response.data.country_code == 'IN') {
-        this.setState({country_code: 'IN'});
-      } else if(response.data.country_code == 'USD') {
-        this.setState({country_code: 'USD'});
-      }
-    }).catch(function(error) {
-      console.log(error);
-    });
-  }
-
-  returnRates(price) {
-    if(this.state.country_code=='IN') {
-      return '₹'+Math.floor(price*this.state.rate*this.state.planPeriod);
-    } else {
-      return '$'+Math.floor(price*this.state.planPeriod);
-    }
-  }
-
   render() {
-    const { paymentPage, planList, selectedPlan, handleCheckChange } = this.props;
+    const { planList, selectedPlan, handleCheckChange } = this.props;
     return (
-      <div style={paymentPage?{width:'100%'}:{}}>
-        {paymentPage?
-          <PaymentPrice
-            planPeriod={this.state.planPeriod}
-            planList={this.state.servicebotPlans}
-            handleMonthChange={this.handleMonthChange}
-            handleSwitchChange={this.handleSwitchChange}
-            handleYearChange={this.handleYearChange}
-            externalValue={this.state.externalValue}
-            selectedPlan={selectedPlan}
-            handleCheckChange={handleCheckChange}
-          />
-        :
-          <PricePage
-            externalValue={this.state.externalValue}
-            handleMonthChange={this.handleMonthChange}
-            handleSwitchChange={this.handleSwitchChange}
-            handleYearChange={this.handleYearChange}
-            planList={planList}
-            returnRates={this.returnRates}
-          />
-        }
+      <div style={{width:'100%'}}>
+        <PaymentPrice
+          planPeriod={this.state.planPeriod}
+          planList={this.state.servicebotPlans}
+          handleMonthChange={this.handleMonthChange}
+          handleSwitchChange={this.handleSwitchChange}
+          handleYearChange={this.handleYearChange}
+          externalValue={this.state.externalValue}
+          selectedPlan={selectedPlan}
+          handleCheckChange={handleCheckChange}
+        />
       </div>
     );
   }
-
 }
 
-const mapStateToProps = state => ({
-  planList: state.getIn(['plan', 'plan'])
-});
-
-const mapDispatchToProps = {
-  fetchPlan
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Price);
+export default Price;
