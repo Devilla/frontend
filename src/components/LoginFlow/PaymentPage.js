@@ -7,24 +7,27 @@ const toastConfig = {
   autoClose: 2000
 };
 
-const PaymentPage = ({stripe, user, amount, plan, planList, setError, stripeError, handleStateChange, handleSubmit, load}) => {
-
-  const findObjectByKey = (array, key, value) => {
-    for (var i = 0; i < array.length; i++) {
-      if (array[i][key] === value) {
-        return array[i];
-      }
-    }
-    return null;
-  }
+const PaymentPage = ({
+  stripe,
+  user,
+  amount,
+  plan,
+  setError,
+  stripeError,
+  handleStateChange,
+  handleSubmit,
+  load
+}) => {
 
   const submitForm = (event) => {
     event.preventDefault();
     if(!user.username) {
       return toast.error("Enter user name", toastConfig);
     }
+
     if(!plan)
       return toast.error("Select a plan", toastConfig);
+
     const options = {
       name: user.username,
     };
