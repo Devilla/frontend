@@ -22,11 +22,13 @@ const TrailPayment = ({
   selectedPlan,
   username,
   coupon,
+  couponDetails,
   handleErrorChange,
   handleCheckChange,
   handleStateChange,
   handleSubmit,
-  submitCoupon
+  submitCoupon,
+  couponProceed
 }) => {
   return (
     <div>
@@ -39,6 +41,7 @@ const TrailPayment = ({
                 <div className="section-divider-line"></div>
                 <div className="frmcntl auth-price-list">
                   <PricePage
+                    couponDetails={couponDetails}
                     paymentPage={true}
                     selectedPlan={selectedPlan}
                     handleCheckChange={handleCheckChange}
@@ -66,26 +69,42 @@ const TrailPayment = ({
                   <div className="frmcntl auth-coupon-page">
                     <CouponPage
                       coupon={coupon}
+                      couponDetails={couponDetails}
                       error={couponError}
                       handleStateChange={handleStateChange}
                       submitCoupon={submitCoupon}
                     />
                   </div>
-                  <div className="auth-divider">
-                    <div className="line-divider"></div>
-                    <h1>Or</h1>
-                  </div>
-                  <div className="frmcntl auth-card-details">
-                    <Elements >
-                      <PaymentPage
-                        user={user}
-                        plan={plan}
-                        error={cardError}
-                        handleErrorChange={handleErrorChange}
-                        handleSubmit={handleSubmit}
-                      />
-                    </Elements>
-                  </div>
+                    <div className="auth-divider">
+                      <div className="line-divider"></div>
+                      <h1>Or</h1>
+                    </div>
+                    {couponDetails ?
+                      <div className="frmcntl coupon-proceed">
+                        <input className="btn btn-primary coupon-payment-button"
+                          type="submit"
+                          value="Proceed"
+                          onClick={couponProceed}
+                        />
+                        <HelpBlock>
+                          <p className="error-text">{cardError}</p>
+                        </HelpBlock>
+                      </div>
+                    :
+                      <div className="frmcntl auth-card-details">
+                        <Elements >
+                          <PaymentPage
+                            user={user}
+                            plan={plan}
+                            error={cardError}
+                            handleErrorChange={handleErrorChange}
+                            handleSubmit={handleSubmit}
+                          />
+                        </Elements>
+                      </div>
+                    }
+                    {/* </div>
+                  } */}
                 </div>
 
               </div>

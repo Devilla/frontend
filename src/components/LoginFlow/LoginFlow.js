@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 import { ToastContainer } from 'react-toastify';
 
-import { updateUser, checkTokenExists } from 'ducks/auth';
+import { updateUser, checkTokenExists, validateCoupon, clearCouponError } from 'ducks/auth';
 import { createProfile } from 'ducks/profile';
 import { createPayment } from 'ducks/payment';
 import TrailPayment from './TrailPayment';
@@ -26,6 +26,7 @@ class LoginFlow extends Component {
     this.handleErrorChange = this.handleErrorChange.bind(this);
     this.submitPayment = this.submitPayment.bind(this);
     this.submitCoupon = this.submitCoupon.bind(this);
+    this.couponProceed = this.couponProceed.bind(this);
   }
 
   componentWillMount() {
@@ -61,10 +62,12 @@ class LoginFlow extends Component {
   }
 
   handleStateChange(state, stateName) {
+    if(stateName === 'coupon')
+      this.props.clearCouponError();
     this.setState({[stateName]:state, couponError: '', cardError: '', nameError: ''});
   }
 
-  submitPayment(data, token) {
+  submitPayment(data) {
     let profile = {};
     profile['user'] = this.props.user._id;
     profile['plan'] = data.plan;
@@ -74,8 +77,8 @@ class LoginFlow extends Component {
       userInfo['username'] = this.state.username;
       this.props.updateUser(userInfo);
     }
-    this.props.createProfile(profile);
     this.props.createPayment(data);
+    this.props.createProfile(profile);
     browserHistory.push('dashboard');
   }
 
@@ -87,19 +90,49 @@ class LoginFlow extends Component {
   submitCoupon(event) {
     event.preventDefault();
     if(!this.state.coupon)
-      this.setState({couponError: 'Enter a valid coupon', cardError: '', nameError: ''});
-    this.setState({'couponApplied':true});
+      return this.setState({couponError: 'Enter a valid coupon', cardError: '', nameError: ''});
+    this.props.validateCoupon(this.state.coupon);
+  }
+
+  componentWillUnmount() {
+    this.setState({
+      username: '',
+      plan:'',
+      coupon: '',
+      couponError: '',
+      cardError: '',
+      nameError: ''
+    });
+    this.props.clearCouponError();
+  }
+
+  couponProceed(event) {
+    event.preventDefault();
+    const { plan } = this.state;
+    const { user, couponDetails } = this.props;
+    if(!plan)
+      return this.setState({cardError: "Select a plan"});
+    const data = {
+      amount: plan.amount,
+      paymentProvider: null,
+      paymentType: null,
+      coupon: couponDetails,
+      user: user._id,
+      plan: plan
+    };
+    return this.submitPayment(data)
   }
 
   render() {
     const { couponError, nameError, cardError, coupon, plan } = this.state;
-    const { user, profile } = this.props;
+    const { user, profile, couponDetails, couponRequestError } = this.props;
     return (
       <div className="content login-flow">
         <TrailPayment
-          couponError={couponError}
+          couponError={couponError || couponRequestError}
           nameError={nameError}
           cardError={cardError}
+          couponDetails={couponDetails}
           coupon={coupon}
           selectedPlan={plan}
           user={user}
@@ -110,6 +143,7 @@ class LoginFlow extends Component {
           handleStateChange={this.handleStateChange}
           handleSubmit={this.submitPayment}
           submitCoupon={this.submitCoupon}
+          couponProceed={this.couponProceed}
         />
         <ToastContainer hideProgressBar={true} />
       </div>
@@ -119,14 +153,18 @@ class LoginFlow extends Component {
 
 const mapStateToProps = state => ({
   profile: state.getIn(['profile', 'profile']),
-  user: state.getIn(['auth','user'])
+  user: state.getIn(['auth','user']),
+  couponDetails: state.getIn(['auth', 'coupon']),
+  couponRequestError: state.getIn(['auth', 'couponError'])
 });
 
 const mapDispatchToProps = {
   updateUser,
   createProfile,
   createPayment,
-  checkTokenExists
+  checkTokenExists,
+  validateCoupon,
+  clearCouponError
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginFlow);

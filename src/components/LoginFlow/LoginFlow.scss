@@ -27,10 +27,13 @@
       justify-content: space-between;
       .auth-coupon-page {
         width: 40%;
-        .coupon-payment-button {
-          width: 50%;
-          height: 45px;
-        }
+      }
+      .coupon-payment-button {
+        width: 50%;
+        height: 45px;
+      }
+      .coupon-proceed{
+        width: 40%;
       }
       .auth-divider {
         .line-divider {

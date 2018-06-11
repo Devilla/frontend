@@ -8,7 +8,13 @@ import {
   HelpBlock
 } from 'react-bootstrap';
 
-const CouponPage = ({coupon, error, handleStateChange, submitCoupon}) => {
+const CouponPage = ({
+  coupon,
+  error,
+  handleStateChange,
+  submitCoupon,
+  couponDetails
+}) => {
   return (
     <div className="coupon-page">
       <form>
@@ -18,10 +24,8 @@ const CouponPage = ({coupon, error, handleStateChange, submitCoupon}) => {
               <FormControl
                 type="text"
                 onChange={(e) => handleStateChange(e.target.value, e.target.id)}
-                defaultValue={coupon}
                 placeholder="Enter Coupon Code"
                 id="coupon"
-                key={coupon}
               />
             </FormGroup>
           </Col>
@@ -34,8 +38,9 @@ const CouponPage = ({coupon, error, handleStateChange, submitCoupon}) => {
             <div className="frmcntl">
               <input className="btn btn-primary coupon-payment-button"
                 type="submit"
-                value="Apply Coupon"
+                value={couponDetails?"Applied":"Apply Coupon"}
                 onClick={submitCoupon}
+                disabled={couponDetails?true:false}
               />
             </div>
           </Col>

@@ -50,10 +50,11 @@ class Price extends Component {
   }
 
   render() {
-    const { planList, selectedPlan, handleCheckChange } = this.props;
+    const { planList, selectedPlan, handleCheckChange, couponDetails } = this.props;
     return (
       <div style={{width:'100%'}}>
         <PaymentPrice
+          couponDetails={couponDetails}
           planPeriod={this.state.planPeriod}
           planList={this.state.servicebotPlans}
           handleMonthChange={this.handleMonthChange}

@@ -11,11 +11,11 @@ const PaymentPrice = ({
   externalValue,
   selectedPlan,
   handleCheckChange,
-  couponApplied
+  couponDetails
 }) => {
 
-  if(couponApplied) {
-    planList = planList.filter(plan => plan.references.service_template_properties[0].data.value === couponApplied)
+  if(couponDetails) {
+    planList = planList.filter(plan => plan.references.service_template_properties.length && plan.references.service_template_properties[0].data.value === couponDetails.code)
   } else {
     planList = planList.filter(plan =>
       (planPeriod == 12 ? plan.interval=='year': plan.interval=='month') &&
@@ -31,7 +31,7 @@ const PaymentPrice = ({
     <div style={{width:'100%'}}>
       <div className="price">
         <div className="pricing-row w-row" style={{width:'100%'}}>
-          {!couponApplied &&
+          {!couponDetails &&
             <div className="w-col">
               <ul>
                 <li>

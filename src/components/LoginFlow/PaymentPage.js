@@ -33,6 +33,7 @@ const PaymentPage = ({
           paymentType: result.token.type,
           user: user._id,
           plan: plan,
+          coupon: {}
         };
         handleSubmit(data, result.token);
       }
@@ -64,7 +65,7 @@ const PaymentPage = ({
         <div className="frmcntl">
           <input className="btn btn-primary auth-payment-button"
             type="submit"
-            value="Next"
+            value="Make Payment"
           />
         </div>
       </form>
