@@ -14,12 +14,18 @@ class LoginFlow extends Component {
     super(props);
     this.state = {
       username: '',
-      plan:''
+      plan:'',
+      coupon: '',
+      couponError: '',
+      cardError: '',
+      nameError: ''
     };
 
     this.handleStateChange = this.handleStateChange.bind(this);
     this.handleCheckChange = this.handleCheckChange.bind(this);
+    this.handleErrorChange = this.handleErrorChange.bind(this);
     this.submitPayment = this.submitPayment.bind(this);
+    this.submitCoupon = this.submitCoupon.bind(this);
   }
 
   componentWillMount() {
@@ -50,8 +56,12 @@ class LoginFlow extends Component {
       return window.location.assign(window.location.origin+'/login');
   }
 
-  handleStateChange(state, stateName) {
+  handleErrorChange(state, stateName) {
     this.setState({[stateName]:state});
+  }
+
+  handleStateChange(state, stateName) {
+    this.setState({[stateName]:state, couponError: '', cardError: '', nameError: ''});
   }
 
   submitPayment(data, token) {
@@ -70,22 +80,36 @@ class LoginFlow extends Component {
   }
 
   handleCheckChange(checked, value, state) {
-    this.setState({plan: checked?value:null})
+    this.setState({ plan: checked?value:null, couponError: '', cardError: '', nameError: '' })
   }
 
 
+  submitCoupon(event) {
+    event.preventDefault();
+    if(!this.state.coupon)
+      this.setState({couponError: 'Enter a valid coupon', cardError: '', nameError: ''});
+    this.setState({'couponApplied':true});
+  }
+
   render() {
+    const { couponError, nameError, cardError, coupon, plan } = this.state;
+    const { user, profile } = this.props;
     return (
       <div className="content login-flow">
         <TrailPayment
-          selectedPlan={this.state.plan}
-          user={this.props.user}
-          profile={this.props.profile}
-          stripeError={this.state.stripeError}
-          plan={this.state.plan}
+          couponError={couponError}
+          nameError={nameError}
+          cardError={cardError}
+          coupon={coupon}
+          selectedPlan={plan}
+          user={user}
+          profile={profile}
+          plan={plan}
+          handleErrorChange={this.handleErrorChange}
           handleCheckChange={this.handleCheckChange}
           handleStateChange={this.handleStateChange}
           handleSubmit={this.submitPayment}
+          submitCoupon={this.submitCoupon}
         />
         <ToastContainer hideProgressBar={true} />
       </div>

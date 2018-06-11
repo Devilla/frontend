@@ -1,28 +1,23 @@
 import React from 'react';
 import { CardElement, injectStripe } from 'react-stripe-elements';
-import { toast } from 'react-toastify';
-
-const toastConfig = {
-  position: toast.POSITION.BOTTOM_LEFT,
-  autoClose: 2000
-};
+import { HelpBlock } from 'react-bootstrap';
 
 const PaymentPage = ({
   stripe,
   user,
   plan,
-  handleStateChange,
+  error,
+  handleErrorChange,
   handleSubmit
 }) => {
 
   const submitForm = (event) => {
     event.preventDefault();
-    if(!user.username) {
-      return toast.error("Enter user name", toastConfig);
-    }
+    if(!user.username)
+      return handleErrorChange("Enter user name", "nameError");
 
     if(!plan)
-      return toast.error("Select a plan", toastConfig);
+      return handleErrorChange("Select a plan", "cardError");
 
     const options = {
       name: user.username,
@@ -30,7 +25,7 @@ const PaymentPage = ({
 
     stripe.createToken(options).then((result) => {
       if (result.error) {
-        handleStateChange(result.error.message, 'stripeError');
+        handleErrorChange(result.error.message, 'cardError');
       } else {
         const data = {
           amount: plan.amount,
@@ -61,6 +56,11 @@ const PaymentPage = ({
         <CardElement
           style={style}
         />
+        {error &&
+          <HelpBlock>
+            <p className="error-text">{error}</p>
+          </HelpBlock>
+         }
         <div className="frmcntl">
           <input className="btn btn-primary auth-payment-button"
             type="submit"

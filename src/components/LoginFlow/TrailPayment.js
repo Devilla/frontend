@@ -5,20 +5,28 @@ import {
   Col,
   FormGroup,
   ControlLabel,
-  FormControl
+  FormControl,
+  HelpBlock
 } from 'react-bootstrap';
 import { Elements } from 'react-stripe-elements';
 import PaymentPage from './PaymentPage';
 import PricePage from 'components/PricePage';
+import CouponPage from './CouponPage';
 
 const TrailPayment = ({
   user,
   plan,
+  couponError,
+  cardError,
+  nameError,
   selectedPlan,
   username,
+  coupon,
+  handleErrorChange,
   handleCheckChange,
   handleStateChange,
-  handleSubmit
+  handleSubmit,
+  submitCoupon
 }) => {
   return (
     <div>
@@ -48,19 +56,38 @@ const TrailPayment = ({
                         id="username"
                         key={user.username}
                       />
+                      <HelpBlock>
+                        <p className="error-text">{nameError}</p>
+                      </HelpBlock>
                     </FormGroup>
                   </Col>
                 </Row>
-                <div className="frmcntl auth-card-details">
-                  <Elements >
-                    <PaymentPage
-                      user={user}
-                      plan={plan}
+                <div className="auth-pages">
+                  <div className="frmcntl auth-coupon-page">
+                    <CouponPage
+                      coupon={coupon}
+                      error={couponError}
                       handleStateChange={handleStateChange}
-                      handleSubmit={handleSubmit}
+                      submitCoupon={submitCoupon}
                     />
-                  </Elements>
+                  </div>
+                  <div className="auth-divider">
+                    <div className="line-divider"></div>
+                    <h1>Or</h1>
+                  </div>
+                  <div className="frmcntl auth-card-details">
+                    <Elements >
+                      <PaymentPage
+                        user={user}
+                        plan={plan}
+                        error={cardError}
+                        handleErrorChange={handleErrorChange}
+                        handleSubmit={handleSubmit}
+                      />
+                    </Elements>
+                  </div>
                 </div>
+
               </div>
             </Animated>
           </div>
