@@ -2,7 +2,33 @@
   text-align: center;
   .authpage {
     min-height: 780px;
+    .loginfrm {
+      width: 100%;
     }
+    .auth-price-list {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      padding-bottom: 25px;
+    }
+    .card-holder {
+      text-align: initial;
+      label {
+        font-weight: 500;
+      }
+    }
+    .auth-card-details {
+      padding: 1% 2%;
+      border: 1px solid #cccccc;
+      height: 45px;
+      border-radius: 4px;
+      background: white;
+      .auth-payment-button {
+        width: 50%;
+        height: 45px;
+      }
+    }
+  }
     .flow-wrapper {
       width: 85%;
       margin: 0 auto;

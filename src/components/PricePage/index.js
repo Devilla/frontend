@@ -21,7 +21,6 @@ class Price extends Component {
     fetch('https://servicebot.useinfluence.co/api/v1/service-templates/public')
     .then((res) => res.json())
     .then((res) => {
-      console.log(res, "==========res");
       this.setState({servicebotPlans: res});
     });
   }

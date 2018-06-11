@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
-
-import TrailPayment from './TrailPayment';
+import { ToastContainer } from 'react-toastify';
 
 import { updateUser, checkTokenExists } from 'ducks/auth';
 import { createProfile } from 'ducks/profile';
 import { createPayment } from 'ducks/payment';
+import TrailPayment from './TrailPayment';
 import './LoginFlow.scss';
 
 class LoginFlow extends Component {
@@ -87,6 +87,7 @@ class LoginFlow extends Component {
           handleStateChange={this.handleStateChange}
           handleSubmit={this.submitPayment}
         />
+        <ToastContainer hideProgressBar={true} />
       </div>
     );
   }

@@ -10,13 +10,9 @@ const toastConfig = {
 const PaymentPage = ({
   stripe,
   user,
-  amount,
   plan,
-  setError,
-  stripeError,
   handleStateChange,
-  handleSubmit,
-  load
+  handleSubmit
 }) => {
 
   const submitForm = (event) => {
@@ -49,19 +45,14 @@ const PaymentPage = ({
   }
 
   const style = {base: {
-    height: '50px',
     fontSize: '14px',
     fontFamily: 'Raleway, sans-serif',
-    border: '1px solid #cccccc',
     lineHeight: '1.42857143',
-    borderColor: 'hsla(0, 0%, 100%, .2)',
-    borderRadius: '2px',
     fontWeight: '100',
     color: 'black',
     '::placeholder': {
-      height: '30px',
-      color: '#999999',
-    },
+      color: '#999999'
+    }
   }}
 
   return (
@@ -71,16 +62,14 @@ const PaymentPage = ({
           style={style}
         />
         <div className="frmcntl">
-          <input className="btn btn-primary"
+          <input className="btn btn-primary auth-payment-button"
             type="submit"
             value="Next"
-            style={{width: '50%', height: '45px'}}
           />
         </div>
       </form>
     </div>
   )
 }
-
 
 export default injectStripe(PaymentPage);
