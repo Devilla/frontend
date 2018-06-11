@@ -1,7 +1,5 @@
-import React, { Component } from 'react';
-import { browserHistory } from 'react-router';
+import { Component } from 'react';
 import './Integration.css';
-import { ComingSoon } from 'components';
 
 class Integration extends Component {
 

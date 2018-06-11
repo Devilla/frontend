@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 
 class WebsiteAbout extends Component {
-  componentDidMount(){
-    window.scrollTo(0, 0)
-  } 
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
   render() {
     return (
       <div className="main-container">

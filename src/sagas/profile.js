@@ -10,6 +10,7 @@ const toastConfig = {
   autoClose: 2000
 };
 
+
 function* fetch() {
   try {
     yield put(load());
