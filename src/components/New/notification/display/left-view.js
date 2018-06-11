@@ -1,6 +1,7 @@
 import React from 'react';
-import {Row, Col, FormGroup, FormControl} from 'react-bootstrap';
+import { Row, Col, FormGroup, FormControl } from 'react-bootstrap';
 import Switch from 'react-flexible-switch';
+import NotificationView from './NotificationView';
 
 const LeftView = ({
   hideNotification,
@@ -9,7 +10,10 @@ const LeftView = ({
   closeNotification,
   hideAnonymous,
   displayNotifications,
-  handleStateChange
+  handleStateChange,
+  sampleDisplay,
+  displayPosition,
+  animation
 }) => {
   return (
     <div className="pnl">
@@ -71,6 +75,9 @@ const LeftView = ({
           <span className="mt-5">Allow users to close notifications
           </span>
         </Col>
+      </Row>
+      <Row>
+        <NotificationView animation={animation} display={sampleDisplay} position={displayPosition} />
       </Row>
     </div>
   );
