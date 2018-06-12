@@ -84,46 +84,78 @@ class Sidebar extends Component{
     render(){
       const { disableButton } = this.props;
       return (
-        <div id="sidebar" className="sidebar" data-color="gray">
-          <div className="logo" style={{cursor: 'pointer'}} onClick={() => browserHistory.push('/dashboard')}>
-            <img src={logo} alt="logo_image"/>
-          </div>
+        <div id="wrapper">
+        <div className="left side-menu">
+        <div>
+         <div className="topbar-left">
+                        <Link to="/dashboard" class="logo">
+                            <span>
+                                <img src="assets/images/influence.png" alt="" height="35" />
+                            </span>
+                        </Link>
+                    </div>
+                    <div className="user-box">
+                        <h5></h5>
+                        <p clasName="text-muted"></p>
+                    </div>
+                
+                    <div id="sidebar-menu">
 
-          <div className="sidebar-wrapper">
-            <ul className="nav">
+                         <button type="button" className="btn btn-pink  waves-effect waves-light ml-5 mb-4 w-lg "> <span>+ New</span> </button>
 
-              { this.state.width <= 991 ? (<HeaderLinks />):null }
-              {
-                appRoutes.map((prop,key) => {
-                  if(!prop.redirect)
-                    return (
-                      <li className={prop.upgrade ? "active  newbtn":this.activeRoute(prop.path)} key={key}>
-                        {prop.name === 'Help'?
-                          <Link onClick={this.renderHelp} className={disableButton ? 'disabled-link' : "nav-link"} disabled={disableButton} activeClassName="active">
-                            <i className={prop.icon}></i>
-                            <p>{prop.upgrade && <Glyphicon glyph="plus" />}{prop.name}</p>
-                          </Link>
-                        :
-                          <Link to={prop.path} className={prop.upgrade && disableButton ? "new disabled-link" : disableButton ? 'disabled-link' : prop.upgrade ? "new nav-link" :  "nav-link"} disabled={disableButton} activeClassName="active">
-                            {
-                              prop.upgrade ? "" : <i className={prop.icon}></i>
-                            }
-                            <p>{prop.upgrade && <Glyphicon glyph="plus" />}{prop.name}</p>
-                          </Link>
-                        }
+                        <ul className="metismenu" id="side-menu">
 
-                      </li>
-                    );
-                  return null;
-                })
-              }
+                            <li>
+                                <Link to="/dashboard">
+                                    <i className="fi-air-play"></i> <span> Dashboard </span>
+                                </Link>
+                            </li>
 
-            </ul>
-          </div>
-          <div >
+                            <li>
+                                <Link to="javascript: void(0);"><i className="fi-layers"></i> <span> Campaigns </span> </Link>
+                                
+                            </li>
 
-          </div>
-        </div>
+                           
+                            <li>
+                                <Link to ="javascript: void(0);"><i className="fi-bar-graph-2"></i><span> Analytics </span> </Link>
+                                
+                            </li>
+
+
+                            <li>
+                                <Link to="/dashboard">
+                                    <i className="fi-command"></i> <span> Integrations </span>
+                                </Link>
+                            </li>
+
+                            
+
+                            <li className="menu-title">More</li>
+
+                            <li>
+                                <Link to="javascript: void(0);"><i className="fi-location-2"></i> <span> Beta Features </span> <span class="menu-arrow"></span></Link>
+                                <ul className="nav-second-level" aria-expanded="false">
+                                    <li><Link to="/dashboard">Live Stream</Link></li>
+                                    
+                                </ul>
+                            </li>
+
+                            
+
+                        </ul>
+
+                    </div>
+               
+
+                    <div class="clearfix"></div>
+
+                </div>
+       
+
+            </div>
+       
+         </div>
       );
     }
 }

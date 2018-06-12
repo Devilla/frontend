@@ -20,6 +20,7 @@ import './scss/flickity.scss';
 import './scss/font-sourcesanspro.scss';
 import './App.scss';
 import './assets/scss/style.scss';
+import './assets/scss/icons.scss';
 
 
 class App extends Component {
