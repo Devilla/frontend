@@ -16,8 +16,6 @@ export const profileData = [
   { 'image': 'http://via.placeholder.com/140X100', 'Name': 'Notifiaction1', 'Email': 'test@test.com', 'Location': 'Delhi', 'country': 'India', 'social': 'yes', 'pview': '200', 'lastseen': '03/03/2018 09:51AM', 'firstseen': '01/03/2018 07:51AM' },
   { 'image': 'http://via.placeholder.com/140X100', 'Name': 'Notifiaction1', 'Email': 'test@test.com', 'Location': 'Delhi', 'country': 'India', 'social': 'yes', 'pview': '200', 'lastseen': '03/03/2018 09:51AM', 'firstseen': '01/03/2018 07:51AM' },
   { 'image': 'http://via.placeholder.com/140X100', 'Name': 'Notifiaction1', 'Email': 'test@test.com', 'Location': 'Delhi', 'country': 'India', 'social': 'yes', 'pview': '200', 'lastseen': '03/03/2018 09:51AM', 'firstseen': '01/03/2018 07:51AM' }
-
-
 ];
 
 export const chartdata = [

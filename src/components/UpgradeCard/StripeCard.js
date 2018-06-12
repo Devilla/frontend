@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { injectStripe } from 'react-stripe-elements';
 import { browserHistory } from 'react-router';
+import { CardNumberElement, CardExpiryElement, CardCVCElement, PostalCodeElement, injectStripe } from 'react-stripe-elements';
+import { Col, Row } from 'react-bootstrap';
+import Button from 'components/Template/customButton';
 
 const createOptions = (fontSize, padding) => {
   return {

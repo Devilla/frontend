@@ -5,7 +5,7 @@ import {
   Ticon,
   Profile,
 } from 'img';
-
+import { Link } from 'react-router';
 
 class WebsiteFeature extends Component {
 

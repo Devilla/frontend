@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
+import Slider from 'react-slick';
 import {
   NewIntegrate,
   NewInstall,

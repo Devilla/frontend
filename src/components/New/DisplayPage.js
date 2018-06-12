@@ -1,24 +1,20 @@
 import React, { Component } from 'react';
 import {
-    Grid,
-    Row,
-    Col,
-    Table,
-    Button,
-    Glyphicon,
-    HelpBlock
+  Grid,
+  Row,
+  Col,
+  Table,
+  Button,
+  Glyphicon,
+  HelpBlock
 } from 'react-bootstrap';
-import { browserHistory } from 'react-router';
 import { connect } from 'react-redux';
-import Tabs from 'components/Template/tab'
-import CardTable from 'components/Template/card-with-page-table'
-import { pagethArray } from 'components/Template/data'
-import { fetchPageUrl, createPageUrl, clearLeads, removePageUrl } from 'ducks/pageurl';
+import Tabs from 'components/Template/tab';
+import CardTable from 'components/Template/card-with-page-table';
+import { pagethArray } from 'components/Template/data';
+import { fetchPageUrl, createPageUrl, removePageUrl } from 'ducks/pageurl';
 import { fetchOneRules, clearRules } from 'ducks/rules';
 import { validatePath } from 'components/Common/function';
-import { css } from 'glamor';
-import $ from 'jquery';
-import Popup from 'react-popup';
 
 import './DisplayPage.scss';
 
@@ -68,9 +64,9 @@ class DisplayPage extends Component{
   }
 
   handleNextState() {
-    console.log(this.props.displayUrls, "=============>");
+    console.log(this.props.displayUrls, '=============>');
     if(!this.props.displayUrls.length)
-      return this.setState({error: "Add a display path"});
+      return this.setState({error: 'Add a display path'});
     // if()
     // Popup.create({
     //   title: "Campaign is Live",
@@ -97,9 +93,9 @@ class DisplayPage extends Component{
     this.props.callbackFromParent(data);
   }
 
-  addPageUrl(e) {
+  addPageUrl() {
     if(this.state.displayUrl.url == '' || !validatePath(this.state.displayUrl.url))
-      return this.setState({error: "Please enter a valid path"});
+      return this.setState({error: 'Please enter a valid path'});
     let displayUrl = this.state.displayUrl;
     displayUrl['rule'] = this.props.rules._id;
     this.props.createPageUrl(displayUrl);
@@ -124,7 +120,7 @@ class DisplayPage extends Component{
 
   handleWebsiteAuth(evt) {
     if (! validatePath(evt.target.value))
-      return this.setState({error: "Please enter a valid path"});
+      return this.setState({error: 'Please enter a valid path'});
   }
 
   deleteDisplayUrl(id, index) {
@@ -135,16 +131,12 @@ class DisplayPage extends Component{
     switch (classname) {
       case 'warning':
         return '#FFEB3B';
-        break;
       case 'primary':
         return '#2196F3';
-        break;
       case 'danger':
         return '#F44336';
-        break;
       case 'success':
         return '#4CAF50';
-        break;
       default:
         return '#ddd';
     }
@@ -156,29 +148,29 @@ class DisplayPage extends Component{
       <Table>
         <thead>
           <tr>
-          {
-            pagethArray.map((prop, key) => {
-              return (
-              <th  key={key}>{prop}</th>
-              );
-            })
-          }
+            {
+              pagethArray.map((prop, key) => {
+                return (
+                  <th  key={key}>{prop}</th>
+                );
+              })
+            }
           </tr>
         </thead>
         <tbody>
           {
             displayUrls.map((displayUrl, i) => {
               return <tr>
-                 <td className="serial">{i+1}</td>
-                 <td className="url">{displayUrl.url}</td>
-                 <td className="status"><span style={{backgroundColor:this.renderColor(displayUrl.class)}}></span></td>
-                 <td><a href="javascript:;" onClick={() => this.deleteDisplayUrl(displayUrl._id, i)}><Glyphicon glyph="trash" /></a></td>
-              </tr>
+                <td className="serial">{i+1}</td>
+                <td className="url">{displayUrl.url}</td>
+                <td className="status"><span style={{backgroundColor:this.renderColor(displayUrl.class)}}></span></td>
+                <td><a href="javascript:;" onClick={() => this.deleteDisplayUrl(displayUrl._id, i)}><Glyphicon glyph="trash" /></a></td>
+              </tr>;
             })
           }
         </tbody>
       </Table>
-    )
+    );
   }
 
   render(){
@@ -197,7 +189,7 @@ class DisplayPage extends Component{
               <Col md={12}>
                 <p>Enter URL of page you display notifications on. </p>
                 <small>This page must have:<br/>
-                <i className="fas fa-angle-right"></i> Your Pixel installed (if not, Go to Install Pixel)</small>
+                  <i className="fas fa-angle-right"></i> Your Pixel installed (if not, Go to Install Pixel)</small>
                 <p>&nbsp;</p>
               </Col>
             </Row>
@@ -206,20 +198,20 @@ class DisplayPage extends Component{
                 <div>
                   <div className="input-group">
                     <input
-                    type="text"
-                    className="form-control txtpageurl"
-                    placeholder="Path URL  (For eg. /mypage, /register, /products, /design/front etc."
-                    aria-describedby="urladd"
-                    value={displayUrl.url}
-                    onChange={this.handlePageUrl}
-                    onBlur={this.handleWebsiteAuth.bind(this)}
-                    onKeyUp={(e) => e.keyCode === 13?this.addPageUrl():null}/>
+                      type="text"
+                      className="form-control txtpageurl"
+                      placeholder="Path URL  (For eg. /mypage, /register, /products, /design/front etc."
+                      aria-describedby="urladd"
+                      value={displayUrl.url}
+                      onChange={this.handlePageUrl}
+                      onBlur={this.handleWebsiteAuth.bind(this)}
+                      onKeyUp={(e) => e.keyCode === 13?this.addPageUrl():null}/>
                     <span className="input-group-btn" id="urladd">
                       <Button
-                      className="btn btn-raised btn-primary blue"
-                      href="javascript:;"
-                      onClick={this.addPageUrl}
-                      type="submit"
+                        className="btn btn-raised btn-primary blue"
+                        href="javascript:;"
+                        onClick={this.addPageUrl}
+                        type="submit"
                       >
                       Add
                       </Button>

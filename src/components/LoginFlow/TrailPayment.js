@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import { toast } from 'react-toastify';
 import axios from 'axios';
-
-const toastConfig = {
-  position: toast.POSITION.BOTTOM_LEFT,
-  autoClose: 2000
-};
-
+import { Animated } from 'react-animated-css';
+import { Elements } from 'react-stripe-elements';
+import PaymentPage from './PaymentPage';
+import PricePage from 'components/PricePage';
+import { ToastContainer } from 'react-toastify';
+import {Row, Col, FormGroup,ControlLabel,FormControl} from 'react-bootstrap';
 class TrailPayment extends Component {
 
   constructor() {
@@ -21,18 +20,18 @@ class TrailPayment extends Component {
   }
 
   componentWillMount() {
-      // this.props.fetchPlan();
-      this.initCountry();
-      this.currencyRates();
+    // this.props.fetchPlan();
+    this.initCountry();
+    this.currencyRates();
   }
 
   currencyRates() {
     axios.get('https://openexchangerates.org/api/latest.json?app_id=95df1c8c28bb434cbdee931132592e21&base=USD').then((response) => {
       this.setState({rate: response.data.rates.INR});
     })
-    .catch(err => {
-      console.log(err);
-    });
+      .catch(err => {
+        console.log(err);
+      });
   }
 
   initCountry() {
@@ -73,17 +72,17 @@ class TrailPayment extends Component {
             checked={
               plans._id == selectedPlan ?
                 'checked'
-              :
+                :
                 false
-              }
+            }
             id='plan'
             name='plan'
             onChange={(e) => handleCheckChange(e.target, e.target.value)}
           />
         </div>
       </div>;
-      })
-    :
+    })
+      :
       <div>No Plan to select</div>;
   }
 

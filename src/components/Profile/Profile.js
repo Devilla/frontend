@@ -3,6 +3,17 @@ import {connect} from 'react-redux';
 import {browserHistory} from 'react-router';
 import './Profile.scss';
 import './Profile.css';
+import {
+  Grid,
+  Row,
+  Col,
+  FormGroup,
+  ControlLabel,
+  FormControl,
+  Button
+} from 'react-bootstrap';
+import CardHeader from 'components/Template/card-with-header';
+import {ToastContainer} from 'react-toastify';
 import { fetchProfile, updateProfile } from 'ducks/profile';
 
 class Profile extends Component {

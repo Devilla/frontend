@@ -5,6 +5,8 @@ import Popup from 'react-popup';
 
 import { fetchElastic } from 'ducks/elastic';
 import { fetchCampaignInfo, successCampaign } from 'ducks/campaign';
+import { Tooltip, OverlayTrigger } from 'react-bootstrap';
+import { Analytics, AnalyticsProfile } from 'components';
 import './AnalyticsContainer.scss';
 
 const chartOptions = {

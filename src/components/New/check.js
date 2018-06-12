@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import { clearCampaign } from 'ducks/campaign';
+import NewUser from './new';
+import InstallPixel from './install-pixel';
+import CaptureLeads from './CaptureLeads';
+import DisplayPage from './DisplayPage';
+import ConfigNotification from './configure-notification';
+import Notifications from './Notifications/Notifications';
 
 class Check extends Component {
 

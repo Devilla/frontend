@@ -39,7 +39,6 @@ function* create(action) {
     } else {
       yield put(actions.successProfile(res));
     }
-
     yield put(loaded());
   } catch (error) {
     yield put(loaded());

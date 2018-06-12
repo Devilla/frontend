@@ -1,4 +1,5 @@
 import React from 'react';
+import Switch from 'react-flexible-switch';
 import './PaymentPrice.scss';
 
 const PaymentPrice = ({ planPeriod, planList, handleMonthChange, handleSwitchChange, handleYearChange, externalValue, selectedPlan, handleCheckChange }) => {

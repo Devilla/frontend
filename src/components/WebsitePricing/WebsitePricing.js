@@ -18,11 +18,9 @@ class WebsitePricing extends Component {
   }
 
   componentWillMount() {
-    fetch('https://servicebot.useinfluence.co/api/v1/service-templates/public')
-      .then((res) => res.json())
-      .then((res) => {
-        this.setState({servicebotPlans: res});
-      });
+    fetch('https://servicebot.useinfluence.co/api/v1/service-templates/public').then((res) => res.json()).then((res) => {
+      this.setState({servicebotPlans: res});
+    });
   }
   componentDidMount() {
     window.scrollTo(0,0);

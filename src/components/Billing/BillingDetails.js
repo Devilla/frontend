@@ -3,6 +3,19 @@ import {connect} from 'react-redux';
 import { browserHistory } from 'react-router';
 import moment from 'moment';
 import { fetchPayment, fetchInvoices } from 'ducks/payment' ;
+import {
+  Grid,
+  Row,
+  Col,
+  FormGroup,
+  ControlLabel,
+  FormControl,
+  Table,
+  Glyphicon
+} from 'react-bootstrap';
+
+import CardHeader from 'components/Template/card-with-header';
+import Button from 'components/Template/customButton';
 
 import './Billing.css';
 import './BillingDetails.scss';

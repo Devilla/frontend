@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import appRoutes from '../../routes/app';
+import { Navbar } from 'react-bootstrap';
+import HeaderLinks from './HeaderLinks';
 
 class Header extends Component {
   constructor(props) {

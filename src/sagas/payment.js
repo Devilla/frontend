@@ -1,6 +1,7 @@
 import { call, put, fork, takeLatest } from 'redux-saga/effects';
 import * as api from 'services/api';
 import * as actions from 'ducks/payment';
+import { createProfile, updateProfile } from 'ducks/profile';
 import { load, loaded } from 'ducks/loading';
 import { toast } from 'react-toastify';
 import { browserHistory } from 'react-router';
@@ -49,8 +50,13 @@ function* create(action) {
     if(res.error)
       console.log(res.error);
     else {
-      yield put(actions.successPayment(res));
-      yield browserHistory.push('billing-details');
+      yield put(actions.successPayment([res]));
+      if(action.update) {
+        yield put(updateProfile(action.profile));
+        yield browserHistory.push('billing-details');
+      } else {
+        yield put(createProfile(action.profile));
+      }
     }
     yield put(loaded());
   } catch (error) {

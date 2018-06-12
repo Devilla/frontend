@@ -1,5 +1,3 @@
-// export { default as App } from "./App";
-// Company Website
 export { default as WebsiteHeader } from "./WebsiteHeader/WebsiteHeader";
 export { default as WebsiteFooter } from "./WebsiteFooter/WebsiteFooter";
 export { default as WebsiteHome } from "./WebsiteHome/WebsiteHome";
@@ -17,8 +15,6 @@ export { default as WebsiteCustStory}  from "./WebsiteCustStory/WebsiteCustStory
 export { default as WebsiteFeature}  from "./WebsiteFeature/WebsiteFeature";
 export { default as Affiliate}  from "./Affiliate/Affiliate";
 export { default as AffiliateRegister}  from "./Affiliate/AffiliateRegister";
-
-
 
 export { default as Footer } from "./Footer/Footer";
 export { default as Header } from "./Header/Header";
@@ -54,7 +50,6 @@ export { default as BillingDetails } from './Billing/BillingDetails';
 export { default as Payment } from './Billing/Payment';
 export { default as UpgradeCard } from './UpgradeCard/UpgradeCard';
 export { default as UpgradePlan } from './UpgradePlan/UpgradePlan';
-
 
 export { default as Template } from './Template';
 export { default as VerificationPage } from './VerificationPage/VerificationPage';

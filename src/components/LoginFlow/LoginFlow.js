@@ -4,6 +4,7 @@ import { browserHistory } from 'react-router';
 import { updateUser, checkTokenExists } from 'ducks/auth';
 import { createProfile, updateProfile } from 'ducks/profile';
 import { createPayment } from 'ducks/payment';
+import TrailPayment from './TrailPayment';
 import './LoginFlow.scss';
 
 import { store } from 'index.js';

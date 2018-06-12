@@ -100,7 +100,6 @@ export function* fetchRoles() {
     yield put(load());
     const res = yield call(api.GET, 'users-permissions/roles');
     if(res.error)
-      // yield toast.error(res.message, toastConfig);
       console.log(res.error);
     else
       yield put(actions.fetchRolesSuccess(res));
@@ -144,7 +143,6 @@ export function* socialLogin(action) {
     } else {
       yield storeToken(res.jwt);
       yield browserHistory.push('/dashboard');
-      // yield window.location.assign(window.location.origin+'/dashboard');;
     }
     yield put(loaded());
   } catch (error) {
@@ -169,12 +167,27 @@ export function* verifyUser(action) {
     } else {
       yield storeToken(res.jwt);
       yield browserHistory.push('/getting-started');
-      // yield window.location.assign(window.location.origin+'/getting-started');;
     }
     yield put(loaded());
   } catch (error) {
     yield put(loaded());
     yield browserHistory.push('/login');
+    yield console.log(error);
+  }
+}
+
+export function* validateCoupon(action) {
+  try {
+    yield put(load());
+    const res = yield call(api.GET, `coupon/validate/${action.coupon}`);
+    if(res.error) {
+      yield put(actions.couponError('Coupon not valid'));
+    } else {
+      yield put(actions.couponSuccess(res));
+    }
+    yield put(loaded());
+  } catch (error) {
+    yield put(loaded());
     yield console.log(error);
   }
 }
@@ -207,6 +220,10 @@ export function* watchVerifyUser() {
   yield takeLatest(actions.VERIFY_USER, verifyUser);
 }
 
+export function* watchValidateCoupon() {
+  yield takeLatest(actions.VALIDATE_COUPON, validateCoupon);
+}
+
 export default function* rootSaga() {
   yield [
     fork(watchCheckToken),
@@ -215,6 +232,7 @@ export default function* rootSaga() {
     fork(watchFetchRoles),
     fork(watchForgotPassword),
     fork(watchSocialLogin),
-    fork(watchVerifyUser)
+    fork(watchVerifyUser),
+    fork(watchValidateCoupon)
   ];
 }

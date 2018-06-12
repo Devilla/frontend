@@ -2,9 +2,17 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 import moment from 'moment';
+import {Grid, Row, Col} from 'react-bootstrap';
 import { fetchElastic } from 'ducks/elastic';
 import { fetchCampaignInfo, successCampaign } from 'ducks/campaign';
 import './Dashboard.scss';
+import StatsCard from './Stats';
+import Website from './Website';
+import Card from './Card';
+import ReactChartJs from 'react-chartjs';
+import { Scrollbars } from 'react-custom-scrollbars';
+
+var LineChart = ReactChartJs.Line;
 
 class Dashboard extends Component {
   constructor() {

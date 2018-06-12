@@ -8,6 +8,8 @@ import {
   ContactAvatar6
 } from 'img';
 
+var Recaptcha = require('react-recaptcha');
+
 class WebsiteContact extends Component {
   componentDidMount() {
     window.scrollTo(0, 0);
