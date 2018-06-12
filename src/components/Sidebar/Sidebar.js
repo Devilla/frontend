@@ -8,7 +8,7 @@ import {
   FormControl
 } from 'react-bootstrap';
 import HeaderLinks from '../Header/HeaderLinks';
-import logo from 'assets/img/logo.png';
+import logo from '../../containers/DashboardContainer/asset/images/influence.png';
 import { Glyphicon } from 'react-bootstrap';
 import appRoutes from 'routes/app';
 import './Sidebar.scss';
@@ -90,7 +90,7 @@ class Sidebar extends Component{
          <div className="topbar-left">
                         <Link to="/dashboard" class="logo">
                             <span>
-                                <img src="assets/images/influence.png" alt="" height="35" />
+                                <img src={logo} alt="influence-img" height="35" />
                             </span>
                         </Link>
                     </div>
@@ -101,7 +101,7 @@ class Sidebar extends Component{
                 
                     <div id="sidebar-menu">
 
-                         <button type="button" className="btn btn-pink  waves-effect waves-light ml-5 mb-4 w-lg "> <span>+ New</span> </button>
+                        <button type="button" className="btn btn-info  waves-effect waves-light ml-5 mb-4 w-lg "> <span> New</span> </button>
 
                         <ul className="metismenu" id="side-menu">
 
@@ -110,18 +110,18 @@ class Sidebar extends Component{
                               appRoutes.map((prop,key) => {
                                 if(!prop.redirect)
                                   return (
-                                    <li className={prop.upgrade ? "active  newbtn":this.activeRoute(prop.path)} key={key}>
+                                    <li className={prop.upgrade ? "active show":this.activeRoute(prop.path)} key={key}>
                                       {prop.name === 'Help'?
                                         <Link onClick={this.renderHelp} className={disableButton ? 'disabled-link' : "nav-link"} disabled={disableButton} activeClassName="active">
                                           <i className={prop.icon}></i>
-                                          <p>{prop.upgrade && <Glyphicon glyph="plus" />}{prop.name}</p>
+                                          <span>{prop.upgrade && <Glyphicon glyph="plus" />}{prop.name}</span>
                                         </Link>
                                       :
                                         <Link to={prop.path} className={prop.upgrade && disableButton ? "new disabled-link" : disableButton ? 'disabled-link' : prop.upgrade ? "new nav-link" :  "nav-link"} disabled={disableButton} activeClassName="active">
                                           {
                                             prop.upgrade ? "" : <i className={prop.icon}></i>
                                           }
-                                          <p>{prop.upgrade && <Glyphicon glyph="plus" />}{prop.name}</p>
+                                          <span>{prop.upgrade && <Glyphicon glyph="plus" />}{prop.name}</span>
                                         </Link>
                                       }
                                      </li>

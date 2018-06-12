@@ -8,10 +8,11 @@ import './DashboardContainer.scss';
 import './assets/css/bootstrap.min.scss';
 import './assets/css/animate.min.scss';
 import './assets/css/demo.scss';
-import './assets/css/pe-icon-7-stroke.css';
 import 'react-select/dist/react-select.css';
 import Popup from 'react-popup';
 import 'react-popup/style.css';
+import './asset/scss/style.scss';
+import './asset/scss/icons.scss';
 
 
 class DashboardContainer extends Component {
@@ -73,6 +74,7 @@ class DashboardContainer extends Component {
         <div className="wrapper">
           <Spinner loading={loading} />
           {!this.state.render && <p>Please wait</p>}
+          <div id="wrapper">
           {this.state.render && <Sidebar {...this.props} disableButton={this.state.disableButton} />}
           {
             this.state.render &&
@@ -81,6 +83,7 @@ class DashboardContainer extends Component {
               {this.props.children}
             </div>
           }
+          </div>
         </div>
       </div>
 
