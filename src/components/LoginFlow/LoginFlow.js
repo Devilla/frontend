@@ -67,9 +67,14 @@ class LoginFlow extends Component {
   }
 
   submitPayment(data) {
-    let profile = {};
-    profile['user'] = this.props.user._id;
-    profile['plan'] = data.plan;
+    let profile = {
+      user: this.props.user._id,
+      plan: data.plan,
+      uniqueVisitorQouta: Number(data.plan.description),
+      uniqueVisitors: 0,
+      uniqueVisitorsQoutaLeft: Number(data.plan.description)
+    };
+
     if(this.state.username != this.props.user.username) {
       let userInfo = {};
       userInfo['id'] = this.props.user._id;
