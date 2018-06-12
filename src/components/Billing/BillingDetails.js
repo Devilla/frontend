@@ -123,7 +123,7 @@ class BillingDetails extends Component {
                           <div className="panel-heading">Payment Info</div>
                           <div className="panel-body">
                             <div className="col-md-4">
-                              Next Payment Due Date: {planSelected.interval?moment(planSelected.interval.updated_at).add(planSelected.interval_count, 'day').format('DD MMM YYYY'):"-"}
+                              Next Payment Due Date: {planSelected.interval?moment(planSelected.interval.updated_at).add(planSelected.interval_count, planSelected.interval).format('DD MMM YYYY'):"-"}
                             </div>
                             <div className="col-md-4">
                               Payment Method: {planSelected.interval?'Card':'-'}

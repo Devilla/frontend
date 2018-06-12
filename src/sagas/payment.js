@@ -53,9 +53,12 @@ function* create(action) {
     if(res.error)
       console.log(res.error);
     else {
-      yield put(createProfile(action.profile));
-      yield put(actions.successPayment(res));
-      yield browserHistory.push('billing-details');
+      yield put(actions.successPayment([res]));
+      if(action.profile) {
+        yield put(createProfile(action.profile));
+      } else {
+        yield browserHistory.push('billing-details');
+      }
     }
     yield put(loaded());
   } catch (error) {
