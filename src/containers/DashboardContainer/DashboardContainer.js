@@ -2,7 +2,8 @@ import { browserHistory } from 'react-router';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { checkTokenExists } from 'ducks/auth';
-
+import Popup from 'react-popup';
+import { Spinner, Header, Sidebar } from 'components';
 import './DashboardContainer.scss';
 import './assets/css/bootstrap.min.scss';
 import './assets/css/animate.min.scss';

@@ -1,3 +1,5 @@
+import React from 'react';
+
 const CompanyInfo = ({ companyName, website, handleStateChange, handleSubmit }) => {
   return (
     <div>

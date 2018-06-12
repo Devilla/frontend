@@ -1,3 +1,4 @@
+import React from 'react';
 import { injectStripe } from 'react-stripe-elements';
 import { toast } from 'react-toastify';
 

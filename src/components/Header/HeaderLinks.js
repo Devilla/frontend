@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {NavItem, Nav, NavDropdown, MenuItem} from 'react-bootstrap';
+import { Nav, NavDropdown, MenuItem} from 'react-bootstrap';
 import {browserHistory} from 'react-router';
 
 class HeaderLinks extends Component {
@@ -20,9 +20,6 @@ class HeaderLinks extends Component {
 
       </div>
       <Nav pullRight="pullRight">
-        {/* <NavItem eventKey={1} href="#">Help Guide</NavItem> */}
-        {/* <NavItem eventKey={2} href="#">Video Tutorials</NavItem> */}
-        {/* <NavItem eventKey={3} href="#">Refer & Get Free Months</NavItem> */}
         <NavDropdown eventKey={4} title="Account" id="basic-nav-dropdown-right">
           <MenuItem eventKey={4.1} onClick={this.upgrade}>Upgrade</MenuItem>
           <MenuItem eventKey={4.2} onClick={this.logout}>Logout</MenuItem>

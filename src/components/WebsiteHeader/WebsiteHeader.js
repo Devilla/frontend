@@ -1,5 +1,6 @@
 
 import React, { Component } from 'react';
+import { Link } from 'react-router';
 import { LogoInfluence } from 'img';
 
 class WebsiteHeader extends Component {

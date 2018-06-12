@@ -1,3 +1,4 @@
+import React from 'react';
 const AboutYourself = ({ username, state, address, phoneNumber, handleStateChange, handleSubmit }) => {
   return (
     <div>

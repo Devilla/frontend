@@ -2,7 +2,11 @@ import React, { Component } from 'react';
 import logo from 'assets/img/logo.png';
 import appRoutes from 'routes/app';
 import { browserHistory } from 'react-router';
+import HeaderLinks from '../Header/HeaderLinks';
+import { Link } from 'react-router';
+import { Glyphicon } from 'react-bootstrap';
 import './Sidebar.scss';
+
 
 class Sidebar extends Component {
   constructor(props) {

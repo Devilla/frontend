@@ -1,4 +1,4 @@
-import {React} from 'react';
+import React from 'react';
 import './PaymentPrice.scss';
 
 const PaymentPrice = ({ planPeriod, planList, handleMonthChange, handleSwitchChange, handleYearChange, externalValue, selectedPlan, handleCheckChange }) => {

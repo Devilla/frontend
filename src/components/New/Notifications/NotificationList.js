@@ -1,3 +1,4 @@
+import React from 'react';
 import './NotificationList.scss';
 
 const NotificationList = ({ notificationList, configure, handleActivityChange }) => {

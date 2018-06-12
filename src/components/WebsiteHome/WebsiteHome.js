@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
+import Slider from 'react-slick';
 import './WebsiteHome.scss';
 
 import {
@@ -18,7 +20,6 @@ import {
 import { browserHistory } from 'react-router';
 
 class WebsiteHome extends Component {
-
   constructor() {
     super();
     this.state = {
