@@ -12,8 +12,7 @@ const RightView = ({
   popupAnimationIn,
   popupAnimationOut,
   shouldHide,
-  closeNotification,
-  handleAnimation
+  closeNotification
 }) => {
   return (
     <div className="pnl np-border">
@@ -96,7 +95,7 @@ const RightView = ({
              </span>
           </Col>
           <Col md={4}>
-           <FormControl value={popupAnimationIn} onChange={(e) => { handleStateChange('popupAnimationIn', e.target.value); handleAnimation(e.target.value)  }} componentClass="select" bsSize="sm" placeholder="select" >
+           <FormControl value={popupAnimationIn} onChange={(e) => handleStateChange('popupAnimationIn', e.target.value)} componentClass="select" bsSize="sm" placeholder="select" >
              <option value="fadeIn">Fade In</option>
              <option value="fadeInUp">Fade In Up</option>
              <option value="fadeInLeft">Fade In Left</option>
@@ -115,7 +114,7 @@ const RightView = ({
              </span>
           </Col>
           <Col md={4}>
-           <FormControl value={popupAnimationOut} onChange={(e) => { handleStateChange('popupAnimationOut', e.target.value); handleAnimation(e.target.value)  }} componentClass="select" bsSize="sm" placeholder="select" >
+           <FormControl value={popupAnimationOut} onChange={(e) => handleStateChange('popupAnimationOut', e.target.value)} componentClass="select" bsSize="sm" placeholder="select" >
              <option value="fadeOut">Fade Out</option>
              <option value="fadeOutDown">Fade Out Down</option>
              <option value="fadeOutLeft">Fade Out Left</option>
