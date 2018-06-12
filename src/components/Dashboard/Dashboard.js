@@ -160,7 +160,7 @@ class Dashboard extends Component {
 
                 <Row>
                   <Col lg={12} sm={12}>
-                    <StatsCard statsClass="card card-stats  eqheight" statsText="Unique Visitors" statsValue={profile?profile.uniqueVisitors:0}/>
+                    <StatsCard statsClass="card card-stats  eqheight" statsText="Unique Visitors" statsValue={profile?profile.uniqueVisitors.toLocaleString():0}/>
                   </Col>
                 </Row>
                 <Row>
