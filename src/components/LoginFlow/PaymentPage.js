@@ -1,37 +1,31 @@
 import React from 'react';
 import { CardElement, injectStripe } from 'react-stripe-elements';
-import { toast } from 'react-toastify';
+import { HelpBlock } from 'react-bootstrap';
 
-const toastConfig = {
-  position: toast.POSITION.BOTTOM_LEFT,
-  autoClose: 2000
-};
-
-const PaymentPage = ({stripe, user, amount, plan, planList, setError, stripeError, handleStateChange, handleSubmit, load}) => {
-
-  const findObjectByKey = (array, key, value) => {
-    for (var i = 0; i < array.length; i++) {
-      if (array[i][key] === value) {
-        return array[i];
-      }
-    }
-    return null;
-  }
+const PaymentPage = ({
+  stripe,
+  user,
+  plan,
+  error,
+  handleErrorChange,
+  handleSubmit
+}) => {
 
   const submitForm = (event) => {
     event.preventDefault();
-    if(!user.username) {
-      return toast.error("Enter user name", toastConfig);
-    }
+    if(!user.username)
+      return handleErrorChange("Enter user name", "nameError");
+
     if(!plan)
-      return toast.error("Select a plan", toastConfig);
+      return handleErrorChange("Select a plan", "cardError");
+
     const options = {
       name: user.username,
     };
 
     stripe.createToken(options).then((result) => {
       if (result.error) {
-        handleStateChange(result.error.message, 'stripeError');
+        handleErrorChange(result.error.message, 'cardError');
       } else {
         const data = {
           amount: plan.amount,
@@ -39,6 +33,7 @@ const PaymentPage = ({stripe, user, amount, plan, planList, setError, stripeErro
           paymentType: result.token.type,
           user: user._id,
           plan: plan,
+          coupon: {}
         };
         handleSubmit(data, result.token);
       }
@@ -46,19 +41,14 @@ const PaymentPage = ({stripe, user, amount, plan, planList, setError, stripeErro
   }
 
   const style = {base: {
-    height: '50px',
     fontSize: '14px',
     fontFamily: 'Raleway, sans-serif',
-    border: '1px solid #cccccc',
     lineHeight: '1.42857143',
-    borderColor: 'hsla(0, 0%, 100%, .2)',
-    borderRadius: '2px',
     fontWeight: '100',
     color: 'black',
     '::placeholder': {
-      height: '30px',
-      color: '#999999',
-    },
+      color: '#999999'
+    }
   }}
 
   return (
@@ -67,17 +57,20 @@ const PaymentPage = ({stripe, user, amount, plan, planList, setError, stripeErro
         <CardElement
           style={style}
         />
+        {error &&
+          <HelpBlock>
+            <p className="error-text">{error}</p>
+          </HelpBlock>
+         }
         <div className="frmcntl">
-          <input className="btn btn-primary"
+          <input className="btn btn-primary auth-payment-button"
             type="submit"
-            value="Next"
-            style={{width: '50%', height: '45px'}}
+            value="Make Payment"
           />
         </div>
       </form>
     </div>
   )
 }
-
 
 export default injectStripe(PaymentPage);
