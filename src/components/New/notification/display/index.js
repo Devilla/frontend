@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import { Row, Col, Glyphicon } from 'react-bootstrap';
+import { Row, Col, Button, Glyphicon } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import LeftView from './left-view'
 import RightView from './right-view'
 import { fetchOneRules, createRules, updateRules } from 'ducks/rules';
 import Tabs from 'components/Template/tab'
-import Button from 'components/Template/customButton';
 
 export class Display extends Component{
   constructor(props){
@@ -24,16 +23,12 @@ export class Display extends Component{
       recentConv:5,
       displayTime: 120,
       delayBetween: 120,
-      displayPosition: 'Bottom Left',
+      displayPosition: 'bottom',
       popupAnimationIn:'fadeInUp',
-      popupAnimationOut:'fadeOutDown',
-      sampleDisplay: false,
-      animation: 'fadeIn'
+      popupAnimationOut:'fadeOutDown'
     };
     this.handleStateChange = this.handleStateChange.bind(this);
     this.saveRules = this.saveRules.bind(this);
-    this.showNotification = this.showNotification.bind(this);
-    this.handleAnimation = this.handleAnimation.bind(this);
   }
 
   componentDidMount() {
@@ -88,14 +83,6 @@ export class Display extends Component{
     this.props.handleNextState();
   }
 
-  showNotification() {
-    this.setState({sampleDisplay: !this.state.sampleDisplay});
-  }
-
-  handleAnimation(value) {
-    this.setState({animation: value})
-  }
-
   render(){
     const { handleBackState } = this.props;
     return (
@@ -111,29 +98,23 @@ export class Display extends Component{
             <Col xs={6}>
                <RightView
                  handleStateChange={this.handleStateChange}
-                 handleAnimation={this.handleAnimation}
                  {...this.state}
                />
             </Col>
            </Row>
            <Row style={{margin: '0px auto 10%', padding: '5% 5% 5% 0%'}}>
-             <Col md={4}>
+             <Col md={6}>
                <div className=" text-left">
-                 <Button bsStyle="primary" icon="chevron-left" onClick={handleBackState}>
+                 <Button bsStyle="primary" onClick={handleBackState}>
+                   <Glyphicon glyph="chevron-left" />
                    Back
                  </Button>
                </div>
              </Col>
-             <Col md={4}>
-               <div className=" text-center">
-                 <Button bsStyle="primary" icon="tasks" onClick={this.showNotification}>
-                   {this.state.sampleDisplay?'Hide':'Show'} Notification
-                 </Button>
-               </div>
-             </Col>
-             <Col md={4}>
+             <Col md={6}>
                <div className=" text-right">
-                <Button bsStyle="primary" icon="chevron-right" onClick={this.saveRules}>
+                <Button bsStyle="primary" onClick={this.saveRules}>
+                  <Glyphicon glyph="chevron-right" />
                   Next
                 </Button>
                </div>
