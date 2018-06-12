@@ -12,7 +12,7 @@ export const UPDATE_PAYMENT_METHOD = action('UPDATE_PAYMENT_METHOD');
 
 export const fetchPayment = () => ({ type: FETCH });
 export const fetchInvoices = () => ({ type: FETCH_INVOICES });
-export const createPayment = (payment) => ({ type: CREATE, payment });
+export const createPayment = (payment, profile) => ({ type: CREATE, payment, profile });
 export const updatePayment = (payment) => ({ type: UPDATE, payment });
 export const updatePaymentMethod = (details) => ({ type: UPDATE_PAYMENT_METHOD, details });
 export const successPayment = (payment) => ({ type: SUCCESS, payment });
