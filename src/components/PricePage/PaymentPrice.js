@@ -74,7 +74,7 @@ const PaymentPrice = ({
                 </div>
                 <div className="pricing-content">
                     <ul>
-                        <li>{plan.description}</li>
+                      <li><div dangerouslySetInnerHTML={{ __html: plan.details }} /></li>
                     </ul>
                     <a className={selectedPlan.id === plan.id ? "pricingTable-signup-active" : "pricingTable-signup"} onClick={(e) => handleCheckChange(true, plan)}>
                       Select
