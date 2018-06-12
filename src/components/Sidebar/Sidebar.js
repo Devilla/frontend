@@ -84,7 +84,7 @@ class Sidebar extends Component{
     render(){
       const { disableButton } = this.props;
       return (
-        <div id="wrapper">
+       
         <div className="left side-menu">
         <div>
          <div className="topbar-left">
@@ -105,42 +105,30 @@ class Sidebar extends Component{
 
                         <ul className="metismenu" id="side-menu">
 
-                            <li>
-                                <Link to="/dashboard">
-                                    <i className="fi-air-play"></i> <span> Dashboard </span>
-                                </Link>
-                            </li>
-
-                            <li>
-                                <Link to="javascript: void(0);"><i className="fi-layers"></i> <span> Campaigns </span> </Link>
-                                
-                            </li>
-
-                           
-                            <li>
-                                <Link to ="javascript: void(0);"><i className="fi-bar-graph-2"></i><span> Analytics </span> </Link>
-                                
-                            </li>
-
-
-                            <li>
-                                <Link to="/dashboard">
-                                    <i className="fi-command"></i> <span> Integrations </span>
-                                </Link>
-                            </li>
-
-                            
-
-                            <li className="menu-title">More</li>
-
-                            <li>
-                                <Link to="javascript: void(0);"><i className="fi-location-2"></i> <span> Beta Features </span> <span class="menu-arrow"></span></Link>
-                                <ul className="nav-second-level" aria-expanded="false">
-                                    <li><Link to="/dashboard">Live Stream</Link></li>
-                                    
-                                </ul>
-                            </li>
-
+                          { this.state.width <= 991 ? (<HeaderLinks />):null }
+                            {
+                              appRoutes.map((prop,key) => {
+                                if(!prop.redirect)
+                                  return (
+                                    <li className={prop.upgrade ? "active  newbtn":this.activeRoute(prop.path)} key={key}>
+                                      {prop.name === 'Help'?
+                                        <Link onClick={this.renderHelp} className={disableButton ? 'disabled-link' : "nav-link"} disabled={disableButton} activeClassName="active">
+                                          <i className={prop.icon}></i>
+                                          <p>{prop.upgrade && <Glyphicon glyph="plus" />}{prop.name}</p>
+                                        </Link>
+                                      :
+                                        <Link to={prop.path} className={prop.upgrade && disableButton ? "new disabled-link" : disableButton ? 'disabled-link' : prop.upgrade ? "new nav-link" :  "nav-link"} disabled={disableButton} activeClassName="active">
+                                          {
+                                            prop.upgrade ? "" : <i className={prop.icon}></i>
+                                          }
+                                          <p>{prop.upgrade && <Glyphicon glyph="plus" />}{prop.name}</p>
+                                        </Link>
+                                      }
+                                     </li>
+                                    );
+                                 return null;
+                               })
+                            }
                             
 
                         </ul>
@@ -155,7 +143,7 @@ class Sidebar extends Component{
 
             </div>
        
-         </div>
+    
       );
     }
 }
