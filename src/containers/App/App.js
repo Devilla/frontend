@@ -19,6 +19,7 @@ import './scss/font-raleway.scss';
 import './scss/flickity.scss';
 import './scss/font-sourcesanspro.scss';
 import './App.scss';
+import './assets/scss/style.scss';
 
 
 class App extends Component {
