@@ -1,15 +1,13 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {browserHistory} from 'react-router';
-import {Grid, Row, Col} from 'react-bootstrap';
+import { browserHistory } from 'react-router';
+import { Grid, Row, Col } from 'react-bootstrap';
 import moment from 'moment';
 import StatsCard from './Stats'
 import Website from './Website'
 import Card from './Card';
 
 import { Scrollbars } from 'react-custom-scrollbars';
-import { dataSales, optionsSales, responsiveSales, legendSales } from 'components/utils/variable.jsx';
-import { getCookie, ajaxgetrequest } from 'components';
 import { fetchElastic } from 'ducks/elastic';
 import { fetchCampaignInfo, successCampaign } from 'ducks/campaign';
 import ReactChartJs from 'react-chartjs';
@@ -17,14 +15,12 @@ import './Dashboard.scss';
 
 var LineChart = ReactChartJs.Line;
 
-
 class Dashboard extends Component {
   constructor() {
     super();
     this.state = {
       render: false,
       arrs: [],
-      UniqueVisitor: 0
     }
     this.handleRouteChange = this.handleRouteChange.bind(this);
   }
@@ -47,16 +43,6 @@ class Dashboard extends Component {
   handleRouteChange(campaign) {
     this.props.successCampaign(campaign);
     browserHistory.push('/new');
-  }
-
-  getUniqueUsers(users) {
-    let sum = 0;
-    users.map(user => {
-      user.aggregations.users.buckets.map(bucket => {
-        sum = sum + bucket.visitors.sum_other_doc_count
-      })
-    });
-    return sum;
   }
 
   getDataset() {
@@ -95,7 +81,7 @@ class Dashboard extends Component {
   }
 
   render() {
-    const { campaignInfo, successCampaign } = this.props;
+    const { campaignInfo, successCampaign, profile } = this.props;
 
     var chartData = {
     	labels: moment.weekdays(),
@@ -169,30 +155,12 @@ class Dashboard extends Component {
                     </div>}/>
                   </Col>
                 </Row>
-                {/* <Row>
-                  <Col lg={12}>
-                    <div className="card card-stats ga-connect">
-                      <div className="content">
-                        <Row>
-                          <Col xs={12}>
-                            <div className="icon-big text-center">
-                              <i className="pe-7s-lock"></i>
-                            </div>
-                            <div className="txt">
-                              <a href="#">Connect to GA for more</a>
-                            </div>
-                          </Col>
-                        </Row>
-                      </div>
-                    </div>
-                  </Col>
-                </Row> */}
               </Col>
               <Col lg={6} sm={6}>
 
                 <Row>
                   <Col lg={12} sm={12}>
-                    <StatsCard statsClass="card card-stats  eqheight" statsText="Unique Visitors" statsValue={campaignInfo && campaignInfo.uniqueUsers.length?this.getUniqueUsers(campaignInfo.uniqueUsers):0}/>
+                    <StatsCard statsClass="card card-stats  eqheight" statsText="Unique Visitors" statsValue={profile?profile.uniqueVisitors:0}/>
                   </Col>
                 </Row>
                 <Row>
@@ -224,14 +192,6 @@ class Dashboard extends Component {
             </Row>
           </Col>
         </Row>
-        {/* <Row>
-          <Col md={12}>
-            <p className="text-center">
-              Get one of our experts to do it all for you! &nbsp;
-              <a href="javascript:;">Click here</a>
-            </p>
-          </Col>
-        </Row> */}
       </Grid>
     </div>);
   }
@@ -239,6 +199,7 @@ class Dashboard extends Component {
 
 const mapStateToProps = state => ({
   elastic: state.getIn(['elastic', 'elastic']),
+  profile: state.getIn(['profile', 'profile']),
   campaignInfo: state.getIn(['campaign', 'campaignInfo']),
 });
 
