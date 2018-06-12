@@ -42,7 +42,9 @@ const validatePassword = pwd => typeof pwd === 'string' && pwd.match(PASSWORD_RE
 
 // Company Validation
 const validateCompanyName = name => typeof name === 'string' && name.trim().length > 0;
+/* eslint-disable */
 const WEBSITE_REGEXP = /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/;   // https://www.regextester.com/93652
+/* eslint-disable */
 const validateWebsite = url => typeof url === 'string' && url.match(WEBSITE_REGEXP) !== null;
 
 

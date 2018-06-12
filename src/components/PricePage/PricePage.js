@@ -1,3 +1,5 @@
+import React from 'react';
+
 const PricePage = ({ externalValue, handleMonthChange, handleSwitchChange, handleYearChange, planList, returnRates }) => {
   return (
     <div>

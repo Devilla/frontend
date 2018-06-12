@@ -1,4 +1,6 @@
+import React, { Component } from 'react';
 import { Gdpr } from 'img';
+
 
 class WebsiteFooter extends Component {
   render() {

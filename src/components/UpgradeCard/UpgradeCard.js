@@ -1,18 +1,5 @@
-import {Component} from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {
-  Grid,
-  Row,
-  Col,
-  FormGroup,
-  FormControl,
-  Tabs,
-  Tab
-} from 'react-bootstrap';
-import { Elements } from 'react-stripe-elements';
-
-import CardHeader from 'components/Template/card-with-header'
-import StripeCard from './StripeCard';
 import { updatePaymentMethod, createPayment } from 'ducks/payment';
 import { updateProfile } from 'ducks/profile';
 import './UpgradeCard.scss';
@@ -30,7 +17,7 @@ class UpgradeCard extends Component {
 
   componentWillMount() {
     window.scrollTo(0, 0);
-    if(this.props.location && this.props.location.query.type == "upgrade")
+    if(this.props.location && this.props.location.query.type == 'upgrade')
       this.setState({currentState: 'upgrade'});
     else
       this.setState({currentState: 'payment'});
@@ -40,7 +27,7 @@ class UpgradeCard extends Component {
     this.setState({ key });
   }
 
-  makePayment(data, token) {
+  makePayment(data) {
     let profile = {};
     profile['plan'] = this.props.plan;
     profile['id'] = this.props.profile._id;
@@ -55,7 +42,7 @@ class UpgradeCard extends Component {
       <Grid fluid="fluid">
         <Row className="inlineclr">
           <Col md={30}>
-            <CardHeader title={currentState==="upgrade"?"Upgrade Payment Method" : "Make Payment"}
+            <CardHeader title={currentState==='upgrade'?'Upgrade Payment Method' : 'Make Payment'}
               content={
                 <div className = "upgrade-card-container" >
                   <div className="panel panel-default">
@@ -157,7 +144,7 @@ class UpgradeCard extends Component {
           </Col>
         </Row>
       </Grid>
-    </div>)
+    </div>);
   }
 }
 

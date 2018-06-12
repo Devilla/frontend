@@ -42,8 +42,8 @@ const rules = (state = initialState, action) => {
     case CLEAR_RULES:
       return state.set('rule', null);
     default:
-      return state
-  };
+      return state;
+  }
 };
 
 export default rules;

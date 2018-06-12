@@ -1,10 +1,15 @@
 {
   "parser": "babel-eslint",
-  "extends": "eslint:recommended",
+  "extends": [
+    "eslint:recommended",
+    "plugin:redux-saga/recommended",
+    "plugin:duck/recommended"
+  ],
   "plugins": [
     "react",
     "babel",
-    "redux-saga"
+    "redux-saga",
+    "duck"
   ],
   "env": {
     "commonjs": true,
@@ -22,7 +27,12 @@
   "globals": {
     "strapi": true,
     "window": true,
-    "browser": true
+    "browser": true,
+    "localStorage":true,
+    "fetch":true,
+    "Headers":true,
+    "document":true
+
   },
   "rules": {
     "generator-star-spacing": 0,
@@ -31,6 +41,10 @@
     "linebreak-style": ["error", "windows"],
     "no-console": 0,
     "quotes": ["error", "single"],
-    "semi": ["error", "always"]
+    "semi": ["error", "always"],
+    "strict": [2, "never"],
+    "react/jsx-uses-react": 2,
+    "react/jsx-uses-vars": 2,
+    "react/react-in-jsx-scope": 2
   }
 }

@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import React, { Component } from 'react';
 import './WebsiteHome.scss';
 
 import {
@@ -42,7 +42,7 @@ class WebsiteHome extends Component {
             <div className="row pb-5">
               <div className="col-md-10 col-lg-10 text-center">
                 <h1 className="pt-2">Increase your website conversions using social proof notifications <br /> </h1>
-                <p className="typed-text typed-text--cursor h3"> Use Influence and get <span className="type--bold" style={{ color: "#584EEF" }}>3x more business </span>right away &nbsp;</p>
+                <p className="typed-text typed-text--cursor h3"> Use Influence and get <span className="type--bold" style={{ color: '#584EEF' }}>3x more business </span>right away &nbsp;</p>
               </div>
             </div>
             <br /> <br />
@@ -58,7 +58,7 @@ class WebsiteHome extends Component {
 
         <p><br /></p><hr className="my-auto col-md-6" />
 
-        <section className="col-md-12 pl-0 pt-3 pr-0 unpad--bottom " style={{ backgroundColor: "#00B7FF" }} >
+        <section className="col-md-12 pl-0 pt-3 pr-0 unpad--bottom " style={{ backgroundColor: '#00B7FF' }} >
           <div className="container pt-5 pb-5">
             <div className="row  ">
               <div className="col-md-6 text-left pt-5 pb-5 ">
@@ -165,7 +165,7 @@ class WebsiteHome extends Component {
         </section>
 
 
-        <section className="col-md-12 pl-0 pt-3 pr-0  " style={{ backgroundColor: "#f3f0ee" }} >
+        <section className="col-md-12 pl-0 pt-3 pr-0  " style={{ backgroundColor: '#f3f0ee' }} >
           <div className="container pt-5 pb-5">
 
             <Slider {...settings}>
@@ -221,7 +221,7 @@ class WebsiteHome extends Component {
             </div>
           </div>
         </section>
-        <section className="imagebg " style={{ background: "#14BBFA" }}>
+        <section className="imagebg " style={{ background: '#14BBFA' }}>
           <div className="container pb-5 pt-5">
             <div className="row">
               <div className="col-md-12">

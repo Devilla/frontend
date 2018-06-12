@@ -1,4 +1,4 @@
-import {Component} from 'react';
+import React, { Component } from 'react';
 import {Row, Col, FormGroup, FormControl} from 'react-bootstrap';
 
 class RightView extends Component {

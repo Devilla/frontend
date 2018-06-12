@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import React, { Component } from 'react';
 export default class Join extends Component {
   componentDidMount() {
 

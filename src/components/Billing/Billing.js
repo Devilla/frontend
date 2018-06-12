@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import React, { Component } from 'react';
 import { browserHistory } from 'react-router';
 import './Billing.css';
 
@@ -41,7 +41,7 @@ export default class Billing extends Component {
                   <Row className="visa">
                     <div className="col-md-1">
                       VISA
-                </div>
+                    </div>
                     <div className="col-md-6">
                       <FormGroup>
                         <FormControl type="text" value="" placeholder="4*** **** **** 2006" id="VisaNumber" onChange={(e) => this.handleStateChange(e)} />
@@ -52,7 +52,7 @@ export default class Billing extends Component {
                   <Row>
                     <div className="col-md-1">
                       Address :
-                </div>
+                    </div>
                     <div className="col-md-6">
                       <FormGroup>
                         <FormControl type="text" value="" placeholder="Address Line 1" id="address" onChange={(e) => this.handleStateChange(e)} />
@@ -67,7 +67,7 @@ export default class Billing extends Component {
                     </div>
                     <div className="col-md-1">
                       Postal Code:
-                </div>
+                    </div>
                     <div className="col-md-2">
                       <FormGroup>
                         <FormControl type="text" value="" placeholder="" id="postalcode" onChange={(e) => this.handleStateChange(e)} />
@@ -98,17 +98,17 @@ export default class Billing extends Component {
                     <div className="Previous">
                       <Button onClick={() => browserHistory.push('/billingFinal')} bsStyle="info" pullLeft="pullLeft" fill="fill" type="button" icon="share-alt">
                         Previous
-                  </Button>
+                      </Button>
                     </div>
                     <div className="Cancel">
                       <Button bsStyle="warning" pullRight="pullRight" fill="fill" type="button">
                         Cancel
-                  </Button>
+                      </Button>
                     </div>
                     <div className="Update">
                       <Button bsStyle="success" pullRight="pullRight" fill="fill" type="button">
                         Update
-                  </Button>
+                      </Button>
                     </div>
                   </Row>
                 </div>} />

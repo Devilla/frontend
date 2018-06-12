@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import React, { Component } from 'react';
 import { injectStripe } from 'react-stripe-elements';
 import { browserHistory } from 'react-router';
 

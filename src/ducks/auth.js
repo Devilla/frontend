@@ -39,8 +39,8 @@ const auth = (state = initialState, action) => {
     case FETCH_ROLES_SUCCESS:
       return state.set('roles', action.roles.roles);
     default:
-      return state
-  };
+      return state;
+  }
 };
 
 export default auth;

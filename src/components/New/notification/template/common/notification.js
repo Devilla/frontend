@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import React, { Component } from 'react';
 import './notification.scss';
 export class Notification extends Component {
 	constructor(props) {

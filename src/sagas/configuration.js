@@ -43,7 +43,7 @@ function* fetchCampaignConfiguration(action) {
 function* create(action) {
   try {
     yield put(load());
-    const res = yield call(api.POST, `configuration`, action.configuration);
+    const res = yield call(api.POST, 'configuration', action.configuration);
     if(res.error)
       console.log(res.error);
     else

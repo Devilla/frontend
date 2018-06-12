@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import React, { Component } from 'react';
 
 class WebsitePolicy extends Component {
   componentDidMount() {
@@ -83,7 +83,7 @@ class WebsitePolicy extends Component {
                   <h4> Updates to our Privacy Policy </h4>
                   <p> Our privacy policy, is covered at www.useinfluence.co or we may update it from time to time. Please check with the latest version to see updated things being covered.When we change the policy in a material manner, we will let you know and update the ‘last modified’ date at the bottom of this page.  If you object to any changes, you may close your account. Continuing to use our Service after we publish changes to this Privacy Policy means that you are consenting to the changes.
                       This privacy policy was last modified on May 31, 2018
-          </p>
+                  </p>
                 </div>
               </div>
             </div>

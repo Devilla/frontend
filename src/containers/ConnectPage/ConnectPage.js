@@ -2,14 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { socialLogin } from 'ducks/auth';
-import { ToastContainer, toast } from 'react-toastify';
-import { Spinner } from 'components';
 import './ConnectPage.scss';
-
-const toastConfig = {
-  position: toast.POSITION.BOTTOM_LEFT,
-  autoClose: 2000
-};
 
 class ConnectPage extends React.Component {
   componentDidMount() {

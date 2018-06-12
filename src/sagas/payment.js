@@ -1,9 +1,8 @@
 import { call, put, fork, takeLatest } from 'redux-saga/effects';
 import * as api from 'services/api';
 import * as actions from 'ducks/payment';
-import { updateProfile } from 'ducks/profile';
 import { load, loaded } from 'ducks/loading';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import { browserHistory } from 'react-router';
 
 const toastConfig = {
@@ -11,13 +10,10 @@ const toastConfig = {
   autoClose: 2000
 };
 
-const getProfile = state => state.getIn(['profile', 'profile']);
-
-
-function* fetch(action) {
+function* fetch() {
   try {
     yield put(load());
-    const res = yield call(api.GET, `payment/user`);
+    const res = yield call(api.GET, 'payment/user');
     if(res.error)
       console.log(res.error);
     else
@@ -30,10 +26,10 @@ function* fetch(action) {
   }
 }
 
-function* fetchInvoices(action) {
+function* fetchInvoices() {
   try {
     yield put(load());
-    const res = yield call(api.GET, `payment/servicebot/invoice`);
+    const res = yield call(api.GET, 'payment/servicebot/invoice');
     if(res.error)
       console.log(res.error);
     else
@@ -49,17 +45,10 @@ function* fetchInvoices(action) {
 function* create(action) {
   try {
     yield put(load());
-    const res = yield call(api.POST, `payment`, action.payment);
+    const res = yield call(api.POST, 'payment', action.payment);
     if(res.error)
       console.log(res.error);
     else {
-      console.log(res, "=============response");
-
-      // let profile = yield select(getProfile);
-      // profile['id'] = profile._id;
-      // delete profile['_id'];
-      // profile['profile_payments'] = res._id
-      // yield put(updateProfile(profile));
       yield put(actions.successPayment(res));
       yield browserHistory.push('billing-details');
     }
@@ -92,11 +81,11 @@ function* update(action) {
 function* updatePaymentMethod(action) {
   try {
     yield put(load());
-    const res = yield call(api.PUT, `payment/servicebot/card`, action.details);
+    const res = yield call(api.PUT, 'payment/servicebot/card', action.details);
     if(res.error)
       console.log(res.error);
     else
-      browserHistory.push('/billing-details')
+      browserHistory.push('/billing-details');
       // yield put(actions.successPayment(res));
     yield put(loaded());
   } catch (error) {

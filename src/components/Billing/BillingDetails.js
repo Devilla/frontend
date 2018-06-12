@@ -1,27 +1,14 @@
-import {Component} from 'react';
+import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import {
-  Grid,
-  Row,
-  Col,
-  FormGroup,
-  ControlLabel,
-  FormControl,
-  Table,
-  Glyphicon
-} from 'react-bootstrap';
 import { browserHistory } from 'react-router';
 import moment from 'moment';
-
-import CardHeader from 'components/Template/card-with-header'
-import Button from 'components/Template/customButton';
 import { fetchPayment, fetchInvoices } from 'ducks/payment' ;
 
 import './Billing.css';
 import './BillingDetails.scss';
 
 const billingHeader = [
-	"Billing Date","Amount","Transaction Id","Interval", "Download"
+  'Billing Date','Amount','Transaction Id','Interval', 'Download'
 ];
 
 class BillingDetails extends Component {
@@ -45,7 +32,7 @@ class BillingDetails extends Component {
     } else {
       <FormControl componentClass="select" placeholder="select" disabled={true}>
         <option value="select">No Plan Selected</option>
-      </FormControl>
+      </FormControl>;
     }
   }
 
@@ -53,7 +40,7 @@ class BillingDetails extends Component {
     if(this.props.payments != nextProps.payments && nextProps.payments.length) {
       const { payments } = nextProps;
       let planSelected = payments?payments[payments.length-1].payment_plan:{};
-      planSelected['updated_at'] = payments?payments[payments.length-1].updated_at:"";
+      planSelected['updated_at'] = payments?payments[payments.length-1].updated_at:'';
       this.setState({planSelected});
     }
   }
@@ -62,18 +49,18 @@ class BillingDetails extends Component {
     if(this.props.payments) {
       this.props.payments.sort((a, b) => {
         return moment(a.createdAt) < moment(b.createdAt) ? 1 : moment(a.createdAt) > moment(b.createdAt) ? -1 : 0;
-      })
+      });
       return this.props.payments.map((payment, index) => {
         return <tr key={index}>
-           <td className="name">{moment(payment.createdAt).format('DD MMM YYYY')}</td>
-           <td className="email">${payment.payment_plan.amount/100}</td>
-           <td className="location">{payment.subscription_id}</td>
-           <td className="country">{payment.payment_plan.interval.charAt(0).toUpperCase() + payment.payment_plan.interval.slice(1)}</td>
-           <td className="lastseen"><Glyphicon glyph="download" /></td>
-         </tr>
-      })
+          <td className="name">{moment(payment.createdAt).format('DD MMM YYYY')}</td>
+          <td className="email">${payment.payment_plan.amount/100}</td>
+          <td className="location">{payment.subscription_id}</td>
+          <td className="country">{payment.payment_plan.interval.charAt(0).toUpperCase() + payment.payment_plan.interval.slice(1)}</td>
+          <td className="lastseen"><Glyphicon glyph="download" /></td>
+        </tr>;
+      });
     } else
-      return <tr>nothing</tr>
+      return <tr>nothing</tr>;
   }
 
   render() {
@@ -110,10 +97,10 @@ class BillingDetails extends Component {
                               <ControlLabel>Plan</ControlLabel>{this.plansList()}
                             </FormGroup>
                             <div className="col-md-4">
-                              Last Paid: {planSelected.interval?moment(planSelected.interval.updated_at).format('DD MMM YYYY'):"-"}
+                              Last Paid: {planSelected.interval?moment(planSelected.interval.updated_at).format('DD MMM YYYY'):'-'}
                             </div>
                             <div className="col-md-2">
-                              Billing Cycle: {planSelected.interval?(planSelected.interval.charAt(0).toUpperCase() + planSelected.interval.slice(1)):"-"}
+                              Billing Cycle: {planSelected.interval?(planSelected.interval.charAt(0).toUpperCase() + planSelected.interval.slice(1)):'-'}
                             </div>
                           </div>
                         </div>
@@ -123,7 +110,7 @@ class BillingDetails extends Component {
                           <div className="panel-heading">Payment Info</div>
                           <div className="panel-body">
                             <div className="col-md-4">
-                              Next Payment Due Date: {planSelected.interval?moment(planSelected.interval.updated_at).add(planSelected.interval_count, 'day').format('DD MMM YYYY'):"-"}
+                              Next Payment Due Date: {planSelected.interval?moment(planSelected.interval.updated_at).add(planSelected.interval_count, 'day').format('DD MMM YYYY'):'-'}
                             </div>
                             <div className="col-md-4">
                               Payment Method: {planSelected.interval?'Card':'-'}
@@ -142,22 +129,22 @@ class BillingDetails extends Component {
                                 <tr>
                                   {
                                     billingHeader.map((prop, key) => {
-                                        return (
+                                      return (
                                         <th  key={key}>{prop}</th>
-                                        );
+                                      );
                                     })
                                   }
                                 </tr>
                               </thead>
                               <tbody>
-                                 {this.renderPaymentList()}
+                                {this.renderPaymentList()}
                               </tbody>
                             </Table>
                           </div>
                         </div>
                       </Row>
                     </div>
-              </div>}/>
+                  </div>}/>
             </Col>
           </Row>
         </Grid>

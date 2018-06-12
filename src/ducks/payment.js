@@ -1,6 +1,6 @@
 import { fromJS } from 'immutable';
 
-const action = name => '/payment/${name}';
+const action = name => `/payment/${name}`;
 
 export const FETCH = action('FETCH');
 export const CREATE = action('CREATE');
@@ -27,8 +27,8 @@ const payment = (state = initialState, action) => {
     case SUCCESS_INVOICE:
       return state.set('invoices', action.invoices);
     default:
-      return state
-  };
+      return state;
+  }
 };
 
 export default payment;

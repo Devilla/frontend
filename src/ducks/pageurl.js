@@ -1,5 +1,7 @@
 import { fromJS, List } from 'immutable';
 
+const action = name => `/pageurl/${name}`;
+
 export const FETCH = action('FETCH');
 export const FETCH_ONE = action('FETCH_ONE');
 export const CREATE = action('CREATE');

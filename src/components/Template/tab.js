@@ -1,6 +1,5 @@
-import { Component } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import CommonCard from './common-card';
 
 var val = 1;
 
@@ -35,19 +34,19 @@ class Tabs extends Component {
                   <Nav bsStyle="pills" className="tabmenu" justified activeKey={val} onSelect={k => this.handleSelect(k)}>
                     <NavItem eventKey={1} title="Install Pixel">
                       <i className="fas fa-cog"></i> Install Pixel
-                          </NavItem>
+                    </NavItem>
                     <NavItem eventKey={2} title="Notifications">
                       <i className="fas fa-chart-line"></i> Notifications
-                          </NavItem>
+                    </NavItem>
                     <NavItem eventKey={3} title="Configure" >
                       <i className="far fa-bell"></i> Configure
-                          </NavItem>
+                    </NavItem>
                     <NavItem eventKey={4} title="Capture Leads">
                       <i className="fas fa-chart-line"></i> Capture Leads
-                          </NavItem>
+                    </NavItem>
                     <NavItem eventKey={5} title="Display">
                       <i className="fas fa-tv"></i> Display
-                          </NavItem>
+                    </NavItem>
                   </Nav>
                 } />
             </Col>

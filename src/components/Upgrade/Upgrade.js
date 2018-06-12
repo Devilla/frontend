@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import React, { Component } from 'react';
 import {browserHistory} from 'react-router';
 import './Upgrade.css';
 
@@ -74,33 +74,33 @@ export default class Upgrade extends Component {
                     </Col>
                   </Row>
                   <Row id="togglemy">
-                  <Col md={1} id="leftmg"><div><strong>Monthly</strong></div></Col>
-                <Col md={1}>  <div className="notification-toggle">
-                    <Switch
-                      circleStyles={{ onColor: 'green', offColor: 'blue', diameter: 18 }}
-                      switchStyles={{ width: 50 }}
-                      cssClass="alignCenter"
-                      value=""
-                    // onChange={(e) => e != notification.activity ? handleActivityChange(e, notification._id, notification.configurationId) : null}
-                    />
-                  </div>
-                  </Col>
-                  <Col md={1}>
-                  <div><strong>Yearly</strong></div>
-                  </Col>
-                </Row>
-
-                <div id="Footer"><p>Note : We use prorating process for subscriptions.<a href="#">Learn More</a></p></div>
-                <div  className="Previous"> <Button onClick={()=> browserHistory.push('/Profile')}
-                      bsStyle="info"
-                      pullLeft
-                      fill
-                      type="button"
-                      icon="share-alt"
-                      >
-                        Previous
-                    </Button>
+                    <Col md={1} id="leftmg"><div><strong>Monthly</strong></div></Col>
+                    <Col md={1}>  <div className="notification-toggle">
+                      <Switch
+                        circleStyles={{ onColor: 'green', offColor: 'blue', diameter: 18 }}
+                        switchStyles={{ width: 50 }}
+                        cssClass="alignCenter"
+                        value=""
+                        // onChange={(e) => e != notification.activity ? handleActivityChange(e, notification._id, notification.configurationId) : null}
+                      />
                     </div>
+                    </Col>
+                    <Col md={1}>
+                      <div><strong>Yearly</strong></div>
+                    </Col>
+                  </Row>
+
+                  <div id="Footer"><p>Note : We use prorating process for subscriptions.<a href="#">Learn More</a></p></div>
+                  <div  className="Previous"> <Button onClick={()=> browserHistory.push('/Profile')}
+                    bsStyle="info"
+                    pullLeft
+                    fill
+                    type="button"
+                    icon="share-alt"
+                  >
+                        Previous
+                  </Button>
+                  </div>
                 </div>
               } />
             </Col>
@@ -111,4 +111,3 @@ export default class Upgrade extends Component {
     );
   }
 }
-

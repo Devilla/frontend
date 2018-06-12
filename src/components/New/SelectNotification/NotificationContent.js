@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import React, { Component } from 'react';
 import { NotificationTemplate } from '../notification/template/message-template/NotificationTemplate'
 import { Rules } from '../notification/template/Rules/Rules'
 import { Row, Col } from 'react-bootstrap';

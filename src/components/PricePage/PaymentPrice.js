@@ -1,3 +1,4 @@
+import {React} from 'react';
 import './PaymentPrice.scss';
 
 const PaymentPrice = ({ planPeriod, planList, handleMonthChange, handleSwitchChange, handleYearChange, externalValue, selectedPlan, handleCheckChange }) => {
@@ -54,7 +55,7 @@ const PaymentPrice = ({ planPeriod, planList, handleMonthChange, handleSwitchCha
                   </ul>
                   <a className={selectedPlan.id === plan.id ? 'pricingTable-signup-active' : 'pricingTable-signup'} onClick={() => handleCheckChange(true, plan)}>
                     Select
-                    </a>
+                  </a>
                 </div>
               </div>
             </div>

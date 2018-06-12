@@ -1,6 +1,6 @@
 import { fromJS} from 'immutable';
 
-const action = name => '/elastic/${name}';
+const action = name => `/elastic/${name}`;
 
 export const FETCH = action('FETCH');
 export const FETCH_SUCCESS = action('FETCH_SUCCESS');
@@ -19,8 +19,8 @@ const elastic = (state = initialState, action) => {
     case CLEAR_ELASTIC:
       return state.set('elastic', undefined);
     default:
-      return state
-  };
+      return state;
+  }
 };
 
 export default elastic;

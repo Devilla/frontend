@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import React, { Component } from 'react';
 import { Row,FormGroup, Col, Tabs, Tab, Button, FormControl } from 'react-bootstrap';
 import Switch from 'react-flexible-switch';
 import Slider from 'react-rangeslider'

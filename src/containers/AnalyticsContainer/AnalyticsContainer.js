@@ -1,16 +1,12 @@
-import { Component } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import moment  from 'moment';
-import ReactChartJs from 'react-chartjs';
 import Popup from 'react-popup';
-import { Tooltip, OverlayTrigger } from 'react-bootstrap';
 
 import { fetchElastic } from 'ducks/elastic';
 import { fetchCampaignInfo, successCampaign } from 'ducks/campaign';
-import { Analytics, AnalyticsProfile } from 'components';
 import './AnalyticsContainer.scss';
 
-const LineChart = ReactChartJs.Line;
 const chartOptions = {
   responsive: true,
 
@@ -20,7 +16,7 @@ const chartOptions = {
   scaleShowGridLines : true,
 
   //String - Colour of the grid lines
-  scaleGridLineColor : "rgba(0,0,0,.05)",
+  scaleGridLineColor : 'rgba(0,0,0,.05)',
 
   //Number - Width of the grid lines
   scaleGridLineWidth : 1,
@@ -65,7 +61,7 @@ class AnalyticsContainer extends Component {
     super();
     this.state = {
       usersList: []
-    }
+    };
     this.handleViewProfile = this.handleViewProfile.bind(this);
     this.renderList = this.renderList.bind(this);
     this.renderProfileList = this.renderProfileList.bind(this);
@@ -87,15 +83,10 @@ class AnalyticsContainer extends Component {
   }
 
   renderProfileList() {
-    const tooltip = (
-      <Tooltip id="tooltip">
-        <strong>Coming Soon</strong>
-      </Tooltip>
-    );
     if(this.state.usersList.length)
       return this.state.usersList.map((user, index) => {
-       return <tr key={index}>
-          <td className="img"><img src={user.profile_pic?user.profile_pic:"https://www.totaldenturecare.com.au/wp-content/uploads/2017/06/default-user-image-female.png"} /></td>
+        return <tr key={index}>;
+          <td className="img"><img src={user.profile_pic?user.profile_pic:'https://www.totaldenturecare.com.au/wp-content/uploads/2017/06/default-user-image-female.png'} /></td>
           <td className="name">{user.username}</td>
           <td className="email">{user.email}</td>
           <td className="location">{user.city}</td>
@@ -111,7 +102,7 @@ class AnalyticsContainer extends Component {
               <a>Journey Coming Soon</a>
             </OverlayTrigger>
           </td>
-        </tr>
+        </tr>;
       });
     else
       return [];
@@ -121,13 +112,13 @@ class AnalyticsContainer extends Component {
     if(uniqueUsers && uniqueUsers.length) {
       let dataSet = [];
       let dataContent = {
-        label: "",
-        fillColor: "rgba(220,220,220,0.2)",
-        strokeColor: "rgba(220,220,220,1)",
-        pointColor: "rgba(220,220,220,1)",
-        pointStrokeColor: "#fff",
-        pointHighlightFill: "#fff",
-        pointHighlightStroke: "rgba(220,220,220,1)",
+        label: '',
+        fillColor: 'rgba(220,220,220,0.2)',
+        strokeColor: 'rgba(220,220,220,1)',
+        pointColor: 'rgba(220,220,220,1)',
+        pointStrokeColor: '#fff',
+        pointHighlightFill: '#fff',
+        pointHighlightStroke: 'rgba(220,220,220,1)',
         data: [0, 0, 0, 0, 0, 0, 0]
       };
       uniqueUsers.map(bucket => {
@@ -138,13 +129,13 @@ class AnalyticsContainer extends Component {
       return dataSet;
     } else {
       return [{
-        label: "",
-        fillColor: "rgba(220,220,220,0.2)",
-        strokeColor: "rgba(220,220,220,1)",
-        pointColor: "rgba(220,220,220,1)",
-        pointStrokeColor: "#fff",
-        pointHighlightFill: "#fff",
-        pointHighlightStroke: "rgba(220,220,220,1)",
+        label: '',
+        fillColor: 'rgba(220,220,220,0.2)',
+        strokeColor: 'rgba(220,220,220,1)',
+        pointColor: 'rgba(220,220,220,1)',
+        pointStrokeColor: '#fff',
+        pointHighlightFill: '#fff',
+        pointHighlightStroke: 'rgba(220,220,220,1)',
         data: [0, 0, 0, 0, 0, 0, 0]
       }];
     }
@@ -152,8 +143,8 @@ class AnalyticsContainer extends Component {
 
   showGraph(name, uniqueUsers) {
     const chartData = {
-    	labels: moment.weekdays(),
-    	datasets: this.getDataset(uniqueUsers)
+      labels: moment.weekdays(),
+      datasets: this.getDataset(uniqueUsers)
     };
 
     Popup.create({
@@ -180,32 +171,32 @@ class AnalyticsContainer extends Component {
         let visitor = 0;
         website.uniqueUsers?
           website.uniqueUsers.aggregations.users.buckets.map(bucket => {
-            visitor = visitor + bucket.visitors.sum_other_doc_count
+            visitor = visitor + bucket.visitors.sum_other_doc_count;
           })
-        :
+          :
           visitor = 0;
 
         const userDetails = website.signups?website.signups.userDetails:[];
         const uniqueUsers = website.uniqueUsers?website.uniqueUsers.aggregations.users.buckets:[];
         return <tr key={index}>
-            <td className="website"><i className="fas fa-globe"></i> <a href={website.websiteUrl} target="_blank">{website.websiteUrl}</a></td>
-            <td className="vistor">{visitor}</td>
-            <td><a href="javascript:;" onClick={() => this.handleViewProfile(userDetails)} className="pname">
-                <b>{userDetails.length} </b> <span>View Profile</span></a>
-            </td>
-            <td className="liveuser">-</td>
-            <td className="conversion">
-              {
-                userDetails.length?((userDetails.length / visitor)   * 100).toFixed(2):0
-              } %
-            </td>
+          <td className="website"><i className="fas fa-globe"></i> <a href={website.websiteUrl} target="_blank">{website.websiteUrl}</a></td>
+          <td className="vistor">{visitor}</td>
+          <td><a href="javascript:;" onClick={() => this.handleViewProfile(userDetails)} className="pname">
+            <b>{userDetails.length} </b> <span>View Profile</span></a>
+          </td>
+          <td className="liveuser">-</td>
+          <td className="conversion">
+            {
+              userDetails.length?((userDetails.length / visitor)   * 100).toFixed(2):0
+            } %
+          </td>
           <td>
             <a href="javascript:;" onClick={() => this.showGraph(website.websiteUrl, uniqueUsers)}><i className="fas fa-chart-area"></i> Show Graph</a>
           </td>
-        </tr>
-      })
+        </tr>;
+      });
     else
-      return <tr><td>Nothing to display</td></tr>
+      return <tr><td>Nothing to display</td></tr>;
   }
 
   render() {
@@ -213,11 +204,11 @@ class AnalyticsContainer extends Component {
       <div className="analytics-container">
         {!this.state.usersList.length ?
           <Analytics  renderList={this.renderList} />
-        :
+          :
           <AnalyticsProfile handleProfileBack={this.handleProfileBack} renderProfileList={this.renderProfileList} />
         }
       </div>
-    )
+    );
   }
 }
 

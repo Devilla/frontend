@@ -1,7 +1,6 @@
-import { Component } from 'react';
+import React, { Component } from 'react';
 import { browserHistory } from 'react-router';
 import { connect } from 'react-redux';
-import localStorage  from 'local-storage';
 import { checkTokenExists } from 'ducks/auth';
 
 
