@@ -151,7 +151,10 @@ class Dashboard extends Component {
     	offsetGridLines : false
     };
 
-    return (<div className="content">
+    return (
+    <div className="content">
+      <div class="container-fluid">
+        
       <Grid fluid="fluid">
 
         <Row>
@@ -234,6 +237,7 @@ class Dashboard extends Component {
           </Col>
         </Row> */}
       </Grid>
+      </div>
     </div>);
   }
 }

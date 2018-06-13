@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Navbar } from 'react-bootstrap';
-
+import { Link } from 'react-router';
 import HeaderLinks from './HeaderLinks';
 
 import appRoutes from '../../routes/app';
@@ -60,7 +60,8 @@ class Header extends Component{
             <Navbar fluid>
                 <Navbar.Header>
                     <Navbar.Brand>
-                        
+                       <p className="h3"> Welcome Home</p>
+                        <p className="lead"> Keep track of your customers </p>
                     </Navbar.Brand>
                     <Navbar.Toggle onClick={this.mobileSidebarToggle}/>
                 </Navbar.Header>

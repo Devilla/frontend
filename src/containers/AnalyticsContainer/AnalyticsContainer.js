@@ -191,7 +191,7 @@ class AnalyticsContainer extends Component {
             <td className="website"><i className="fas fa-globe"></i> <a href={website.websiteUrl} target="_blank">{website.websiteUrl}</a></td>
             <td className="vistor">{visitor}</td>
             <td><a href="javascript:;" onClick={() => this.handleViewProfile(userDetails)} className="pname">
-                <b>{userDetails.length} </b> <span>View Profile</span></a>
+                <b>{userDetails && userDetails.length} </b> <span>View Profile</span></a>
             </td>
             <td className="liveuser">-</td>
             <td className="conversion">

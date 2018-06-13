@@ -73,16 +73,24 @@ class DashboardContainer extends Component {
       <div className="dashboard-container">
         <Popup />
         <div className="wrapper">
+        <div id="wrapper">
           <Spinner loading={loading} />
           {!this.state.render && <p>Please wait</p>}
-          <div id="wrapper">
+         
           {this.state.render && <Sidebar {...this.props} disableButton={this.state.disableButton} />}
           {
             this.state.render &&
-            <div id="main-panel" className="main-panel" style={{width: 'calc(100% - 195px)', marginTop: '-.5%', marginRight: '-1%'}}>
-              <Header {...this.props}/>
-              {this.props.children}
-            </div>
+            <div className="content-page">
+            <div class="topbar">
+              <nav class="navbar-custom">
+                <div class="topbar-right-menu float-right mb-0">
+                  <Header {...this.props}/>
+               
+                  {this.props.children}
+                  </div>
+                  </nav>
+                </div>
+                </div>
           }
           </div>
         </div>
