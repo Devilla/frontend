@@ -9,6 +9,7 @@ import { browserHistory } from 'react-router';
 
 import { fetchCampaign, updateCampaign, successCampaign, removeCampaign } from 'ducks/campaign';
 import './Notification.scss'
+import '../../containers/DashboardContainer/asset/scss/style.scss';
 
 const notificationFields = [ 'S.No', 'Campaign', 'Domain', 'Status', 'Tracking ID', 'Log', 'Created', 'Delete' ];
 
@@ -48,11 +49,11 @@ class Notification extends Component {
   // Map the notification data into table rows and return
   getNotificationRows = () => {
     return this.props.campaigns?this.props.campaigns.map((campaign, i) => (
-      <tr className="text-center" key={campaign._id} onClick={(e) => this.handleRouteChange(e, campaign)}>
+      <tr className = { i%2 === 0 ? "text-center " : "text-center table-info "} key={campaign._id} onClick={(e) => this.handleRouteChange(e, campaign)}>
         <td>{i + 1 /* S.No */}</td>
         <td>{campaign.campaignName}</td>
-        <td><i className="icon-globe"></i> <a>{campaign.websiteUrl}</a></td>
-        <td className="text-center">
+        <td> <a>{campaign.websiteUrl}</a></td>
+        <td className="text-right ml-2">
           <Switch switchStyles={{ width: 40 }}
             value={campaign.isActive}
             onChange={(e) => this.handleActiveChange(e, campaign)}
@@ -60,7 +61,7 @@ class Notification extends Component {
           />
         </td>
         <td>{campaign.trackingId}</td>
-        <td>{campaign.log}</td>
+        <td>{campaign.log || '---'}</td>
         <td>{moment(campaign.createdAt).format('MM/DD/YYYY')}</td>
         <td><i className="icon-trash" onClick={() => this.deleteCampaign(i, campaign._id)}></i></td>
       </tr>
@@ -80,15 +81,16 @@ class Notification extends Component {
                 plain
                 title="Notifications"
                 category=""
+                className="m-t-0 header-title"
                 ctTableFullWidth ctTableResponsive
                 content={
-                  <table hover>
+                  <table hover className="table">
                     <thead>
                       <tr>
                         {
                           notificationFields.map((prop, key) => {
                             return (
-                              <th className="text-center" key={key}>{prop}</th>
+                              <th className="text-center" key={key}>{prop === "Domain" ? <i className="icon-globe"></i>: "" }&nbsp;<span className="h5">{prop}</span></th>
                             );
                           })
                         }
