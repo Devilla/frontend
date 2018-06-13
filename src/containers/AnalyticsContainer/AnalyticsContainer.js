@@ -2,12 +2,15 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import moment  from 'moment';
 import Popup from 'react-popup';
+import ReactChartJs from 'react-chartjs';
 
 import { fetchElastic } from 'ducks/elastic';
 import { fetchCampaignInfo, successCampaign } from 'ducks/campaign';
 import { Tooltip, OverlayTrigger } from 'react-bootstrap';
 import { Analytics, AnalyticsProfile } from 'components';
 import './AnalyticsContainer.scss';
+
+const LineChart = ReactChartJs.Line;
 
 const chartOptions = {
   responsive: true,

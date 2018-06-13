@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { browserHistory } from 'react-router';
+import { Row, Grid, Col, Button, FormGroup, FormControl } from 'react-bootstrap';
+
 import './Billing.css';
 
 export default class Billing extends Component {
@@ -115,7 +117,6 @@ export default class Billing extends Component {
           </Col>
         </Row>
       </Grid>
-      <ToastContainer hideProgressBar={true} />
     </div>);
   }
 }
