@@ -23,7 +23,7 @@ class HeaderLinks extends Component {
   render() {
     return (
     <div>
-      <Nav pullRight="pullLeft">
+      <Nav pullRight>
         <NavDropdown eventKey={4} title="Account" id="basic-nav-dropdown-right">
           <MenuItem eventKey={4.1} onClick={this.myaccount}>My Account</MenuItem>
           <MenuItem eventKey={4.2} onClick={this.settings}>Settings</MenuItem>

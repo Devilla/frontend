@@ -62,7 +62,7 @@ class DashboardContainer extends Component {
   }
 
   componentDidUpdate(e) {
-    if (window.innerWidth < 993 && e.history.location.pathname !== e.location.pathname && document.documentElement.className.indexOf('nav-open') !== -1) {
+    if (window.innerWidth < 993 && this.props.history.location.pathname !== e.location.pathname && document.documentElement.className.indexOf('nav-open') !== -1) {
       document.documentElement.classList.toggle('nav-open');
     }
   }
@@ -76,7 +76,7 @@ class DashboardContainer extends Component {
         <div id="wrapper">
           <Spinner loading={loading} />
           {!this.state.render && <p>Please wait</p>}
-         
+
           {this.state.render && <Sidebar {...this.props} disableButton={this.state.disableButton} />}
           {
             this.state.render &&
@@ -85,7 +85,7 @@ class DashboardContainer extends Component {
               <nav class="navbar-custom">
                 <div class="topbar-right-menu float-right mb-0">
                   <Header {...this.props}/>
-               
+
                   {this.props.children}
                   </div>
                   </nav>
