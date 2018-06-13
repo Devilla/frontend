@@ -3,19 +3,14 @@ import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 import { Grid, Row, Col } from 'react-bootstrap';
 import moment from 'moment';
-import StatsCard from './Stats'
-import Website from './Website'
-import Card from './Card';
 
 import { Scrollbars } from 'react-custom-scrollbars';
-import { fetchElastic } from 'ducks/elastic';
 import { fetchCampaignInfo, successCampaign } from 'ducks/campaign';
 import './Dashboard.scss';
 import StatsCard from './Stats';
 import Website from './Website';
 import Card from './Card';
 import ReactChartJs from 'react-chartjs';
-import { Scrollbars } from 'react-custom-scrollbars';
 
 var LineChart = ReactChartJs.Line;
 
@@ -206,7 +201,6 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
-  fetchElastic,
   successCampaign,
   fetchCampaignInfo
 };

@@ -28,17 +28,17 @@
     "strapi": true,
     "window": true,
     "browser": true,
-    "localStorage":true,
-    "fetch":true,
-    "Headers":true,
-    "document":true
+    "localStorage": true,
+    "fetch": true,
+    "Headers": true,
+    "document": true
 
   },
   "rules": {
     "generator-star-spacing": 0,
     "babel/generator-star-spacing": 0,
     "indent": ["error", 2, { "SwitchCase": 1 }],
-    "linebreak-style": ["error", "windows"],
+    "linebreak-style": 0,
     "no-console": 0,
     "quotes": ["error", "single"],
     "semi": ["error", "always"],

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchNotification } from 'ducks/notification';
 import { createConfiguration, fetchConfiguration, fetchCampaignConfiguration, clearConfiguration, updateConfiguration, createSuccess } from 'ducks/configuration';
-import { Grid, Row, Col, Tabs, Button, Glyphicon } from 'react-bootstrap';
+import { Grid, Row, Col, Button, Glyphicon } from 'react-bootstrap';
 import NotificationConfigure from './NotificationConfigure';
 import NotificationList from './NotificationList';
 import Tabs from 'components/Template/tab';

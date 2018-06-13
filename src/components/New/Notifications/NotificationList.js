@@ -1,10 +1,12 @@
 import React from 'react';
-import './NotificationList.scss';
+import { Row, Col } from 'react-bootstrap';
+import Switch from 'react-flexible-switch';
 import {
   RecentActivity,
   GroupActivity,
   LiveActivity
 } from 'img';
+import './NotificationList.scss';
 
 const NotificationList = ({ notificationList, configure, handleActivityChange }) => {
   const renderNotifications = () => {
