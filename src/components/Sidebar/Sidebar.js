@@ -87,21 +87,22 @@ class Sidebar extends Component{
        
         <div className="left side-menu">
         <div>
-         <div className="topbar-left">
-                        <Link to="/dashboard" class="logo">
+        <div className="user-box">
+                        <h5></h5>
+                        <p clasName="text-muted"></p>
+                    </div>
+         <div className="topbar-left mt-5 pt-5">
+                        <Link to="/dashboard" class="logo ">
                             <span>
                                 <img src={logo} alt="influence-img" height="35" />
                             </span>
                         </Link>
                     </div>
-                    <div className="user-box">
-                        <h5></h5>
-                        <p clasName="text-muted"></p>
-                    </div>
+                   
                 
                     <div id="sidebar-menu">
 
-                        <button type="button" className="btn btn-info  waves-effect waves-light ml-5 mb-4 w-lg "> <span> New</span> </button>
+                        <Link to ="/new"><button type="button" className="btn btn-info  waves-effect waves-light ml-5 pl-5 mb-4 w-lg "><i className="fi file-add"></i> <span>New</span> </button></Link>
 
                         <ul className="metismenu" id="side-menu">
 
@@ -110,7 +111,7 @@ class Sidebar extends Component{
                               appRoutes.map((prop,key) => {
                                 if(!prop.redirect)
                                   return (
-                                    <li className={prop.upgrade ? "active show":this.activeRoute(prop.path)} key={key}>
+                                    <li className={prop.upgrade ? "active newbtn":this.activeRoute(prop.path)} key={key}>
                                       {prop.name === 'Help'?
                                         <Link onClick={this.renderHelp} className={disableButton ? 'disabled-link' : "nav-link"} disabled={disableButton} activeClassName="active">
                                           <i className={prop.icon}></i>

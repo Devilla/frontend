@@ -15,6 +15,7 @@ import { fetchCampaignInfo, successCampaign } from 'ducks/campaign';
 import ReactChartJs from 'react-chartjs';
 import './Dashboard.scss';
 
+
 var LineChart = ReactChartJs.Line;
 
 
