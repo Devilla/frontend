@@ -59,14 +59,11 @@ class Header extends Component{
         return (
             <Navbar fluid>
                 <Navbar.Header>
-                    <Navbar.Brand>
-                       <p className="h3"> Welcome Home</p>
-                        <p className="lead"> Keep track of your customers </p>
-                    </Navbar.Brand>
-                    <Navbar.Toggle onClick={this.mobileSidebarToggle}/>
                 </Navbar.Header>
                 <Navbar.Collapse>
-                    <HeaderLinks />
+                <HeaderLinks />
+                <h3> Welcome Home</h3>
+                <p> Keep track of your customers </p>
                 </Navbar.Collapse>
             </Navbar>
         );

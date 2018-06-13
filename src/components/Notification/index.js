@@ -11,6 +11,8 @@ import Popup from 'react-popup';
 import { fetchCampaign, updateCampaign, successCampaign, removeCampaign } from 'ducks/campaign';
 import './Notification.scss'
 import '../../containers/DashboardContainer/asset/scss/style.scss';
+import '../../containers/DashboardContainer/asset/scss/icons.scss';
+
 
 const notificationFields = [ 'S.No', 'Campaign', 'Domain', 'Status', 'Tracking ID', 'Log', 'Created', 'Delete' ];
 
@@ -71,20 +73,22 @@ class Notification extends Component {
   getNotificationRows = () => {
     return this.props.campaigns?this.props.campaigns.map((campaign, i) => (
       <tr className = { i%2 === 0 ? "text-center " : "text-center table-info "} key={campaign._id} onClick={(e) => this.handleRouteChange(e, campaign)}>
-        <td>{i + 1 /* S.No */}</td>
+        <td>{i + 1}</td>
         <td>{campaign.campaignName}</td>
         <td> <a>{campaign.websiteUrl}</a></td>
-        <td className="text-right ml-2">
+        <td className="ml-5 text-left">
           <Switch switchStyles={{ width: 40 }}
             value={campaign.isActive}
             onChange={(e) => this.handleActiveChange(e, campaign)}
             circleStyles={{ onColor: 'blue', offColor: 'gray', diameter: 18 }}
+          
           />
+        
         </td>
         <td>{campaign.trackingId}</td>
         <td>{campaign.log || '---'}</td>
         <td>{moment(campaign.createdAt).format('MM/DD/YYYY')}</td>
-        <td><i className="icon-trash" onClick={() => this.deleteCampaign(i, campaign._id)}></i></td>
+        <td><i className=" icon-trash" onClick={() => this.deleteCampaign(i, campaign._id)}></i></td>
       </tr>
     ))
     :
