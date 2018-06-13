@@ -104,10 +104,10 @@ class Sidebar extends Component {
 
           <div id="sidebar-menu">
             <div className="button-list"> 
-              <Link to="/new"><button type="button" className="btn  btn-pink waves-effect w ml-5 p-3 pt-0 pb-0 mb-4 w-lg "><i className="fi-file-add"></i>&nbsp; <span>New</span> </button></Link>
+              <Link to="/new"><button type="button" className="btn  btn-pink waves-effect  ml-5 p-3  pt-0 pb-0 mb-4 w-lg "><i className="fi-file-add " style={{fontSize:"20px"}}></i>&nbsp; <span className="h4">New</span> </button></Link>
             </div>
-            <ul className="metismenu" id="side-menu">
 
+            <ul className="metismenu" id="side-menu">
               {this.state.width <= 991 ? (<HeaderLinks />) : null}
               {
                 appRoutes.map((prop, key) => {
@@ -132,18 +132,10 @@ class Sidebar extends Component {
                   return null;
                 })
               }
-
-
             </ul>
-
           </div>
-
-
-          <div class="clearfix"></div>
-
+         
         </div>
-
-
       </div>
 
 
