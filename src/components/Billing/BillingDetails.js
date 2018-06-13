@@ -110,18 +110,18 @@ class BillingDetails extends Component {
                             </FormGroup>
                             <Row className="plan-info-details">
                               <div className="col-md-4">
-                                Last Paid: {planSelected.interval?moment(planSelected.interval.updated_at).format('DD MMM YYYY'):"-"}
+                                Last Paid: {planSelected.interval?moment(planSelected.interval.updated_at).format('DD MMM YYYY'):'-'}
                               </div>
                               <div className="col-md-4">
-                                Billing Cycle: {planSelected.interval?(planSelected.interval.charAt(0).toUpperCase() + planSelected.interval.slice(1)):"-"}
+                                Billing Cycle: {planSelected.interval?(planSelected.interval.charAt(0).toUpperCase() + planSelected.interval.slice(1)):'-'}
                               </div>
                             </Row>
                             <Row className="plan-info-details">
                               <div className="col-md-4">
-                                Visitor Qouta: {profile?profile.uniqueVisitorQouta.toLocaleString():"-"} Unique Visitors
+                                Visitor Qouta: {profile?profile.uniqueVisitorQouta.toLocaleString():'-'} Unique Visitors
                               </div>
                               <div className="col-md-4">
-                                Visitor Qouta Left: {profile?profile.uniqueVisitorsQoutaLeft.toLocaleString():"-"} Unique Visitors
+                                Visitor Qouta Left: {profile?profile.uniqueVisitorsQoutaLeft.toLocaleString():'-'} Unique Visitors
                               </div>
                             </Row>
                           </div>
@@ -132,7 +132,7 @@ class BillingDetails extends Component {
                           <div className="panel-heading">Payment Info</div>
                           <div className="panel-body">
                             <div className="col-md-4">
-                              Next Payment Due Date: {planSelected.interval?moment(planSelected.interval.updated_at).add(planSelected.interval_count, planSelected.interval).format('DD MMM YYYY'):"-"}
+                              Next Payment Due Date: {planSelected.interval?moment(planSelected.interval.updated_at).add(planSelected.interval_count, planSelected.interval).format('DD MMM YYYY'):'-'}
                             </div>
                             <div className="col-md-4">
                               Payment Method: {planSelected.interval?'Card':'-'}

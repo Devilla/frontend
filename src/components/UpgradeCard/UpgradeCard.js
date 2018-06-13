@@ -39,7 +39,7 @@ class UpgradeCard extends Component {
     this.setState({ key });
   }
 
-  makePayment(data, token) {
+  makePayment(data) {
     let profile = {
       plan: this.props.plan,
       id: this.props.profile._id,

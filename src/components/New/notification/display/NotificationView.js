@@ -1,35 +1,33 @@
-import React, { Component } from 'react';
-import { Row, Col, FormGroup, FormControl } from 'react-bootstrap';
-import Switch from 'react-flexible-switch';
-import power from './power.svg'
+import React from 'react';
 import './display.scss';
 
 const NotificationView = ({display, position, animation}) => {
   let notificationPosition;
   switch (position) {
-    case "Bottom Right":
+    case 'Bottom Right':
       notificationPosition = {right: '10px', bottom: '0px'};
       break;
-    case "Bottom Left":
+    case 'Bottom Left':
       notificationPosition = {left: '0px', bottom: '0px'};
       break;
-    case "Bottom Center":
+    case 'Bottom Center':
       notificationPosition = {left: '50%', transform: 'translate(-50%, 0)', bottom: '0px'};
       break;
-    case "Top Left":
+    case 'Top Left':
       notificationPosition = {left: '0px', top: '10px'};
       break;
-    case "Top Right":
+    case 'Top Right':
       notificationPosition = {right: '10px', top: '10px'};
       break;
-    case "Top Center":
+    case 'Top Center':
       notificationPosition = {left: '50%', transform: 'translate(-50%, 0)', top: '10px'};
       break;
     default:
       notificationPosition = {left: '0px', bottom: '0px'};
   }
-	return (
-    <div className={"notification-view animated " + animation} style={notificationPosition}>
+
+  return (
+    <div className={'notification-view animated ' + animation} style={notificationPosition}>
       <div id="FPqR2DbIqJeA2DbI7MM9_0" >
         <div id="FPqR3tRBqJeA3tRB7MM9_0" className="">
           <div>
@@ -71,7 +69,7 @@ const NotificationView = ({display, position, animation}) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default NotificationView;

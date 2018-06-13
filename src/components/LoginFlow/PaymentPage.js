@@ -14,10 +14,10 @@ const PaymentPage = ({
   const submitForm = (event) => {
     event.preventDefault();
     if(!user.username)
-      return handleErrorChange("Enter user name", "nameError");
+      return handleErrorChange('Enter user name', 'nameError');
 
     if(!plan)
-      return handleErrorChange("Select a plan", "cardError");
+      return handleErrorChange('Select a plan', 'cardError');
 
     const options = {
       name: user.username,
@@ -61,7 +61,7 @@ const PaymentPage = ({
           <HelpBlock>
             <p className="error-text">{error}</p>
           </HelpBlock>
-         }
+        }
         <div className="frmcntl">
           <input className="btn btn-primary auth-payment-button"
             type="submit"

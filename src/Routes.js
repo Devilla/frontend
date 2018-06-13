@@ -78,6 +78,6 @@ const MyRoutes = ({routerHistory}) => (
     </Route>
     <Route path="*" component={Error} />
   </Router>
-)
+);
 
 export default MyRoutes;

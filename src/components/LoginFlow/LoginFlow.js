@@ -85,8 +85,8 @@ class LoginFlow extends Component {
     browserHistory.push('dashboard');
   }
 
-  handleCheckChange(checked, value, state) {
-    this.setState({ plan: checked?value:null, couponError: '', cardError: '', nameError: '' })
+  handleCheckChange(checked, value) {
+    this.setState({ plan: checked?value:null, couponError: '', cardError: '', nameError: '' });
   }
 
 
@@ -114,7 +114,7 @@ class LoginFlow extends Component {
     const { plan } = this.state;
     const { user, couponDetails } = this.props;
     if(!plan)
-      return this.setState({cardError: "Select a plan"});
+      return this.setState({cardError: 'Select a plan'});
     const data = {
       amount: plan.amount,
       paymentProvider: null,
@@ -123,7 +123,7 @@ class LoginFlow extends Component {
       user: user._id,
       plan: plan
     };
-    return this.submitPayment(data)
+    return this.submitPayment(data);
   }
 
   render() {

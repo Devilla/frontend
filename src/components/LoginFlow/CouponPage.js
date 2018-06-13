@@ -8,7 +8,6 @@ import {
 } from 'react-bootstrap';
 
 const CouponPage = ({
-  coupon,
   error,
   handleStateChange,
   submitCoupon,

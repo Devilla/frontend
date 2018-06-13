@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
-import { Animated } from "react-animated-css";
+import { Animated } from 'react-animated-css';
 
 export default class Banner extends Component {
   render() {

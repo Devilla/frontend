@@ -20,7 +20,7 @@ class Dashboard extends Component {
     this.state = {
       render: false,
       arrs: []
-    }
+    };
     this.handleRouteChange = this.handleRouteChange.bind(this);
   }
   componentWillMount() {
@@ -78,7 +78,7 @@ class Dashboard extends Component {
   }
 
   render() {
-    const { campaignInfo, successCampaign, profile } = this.props;
+    const { campaignInfo, profile } = this.props;
 
     var chartData = {
       labels: moment.weekdays(),

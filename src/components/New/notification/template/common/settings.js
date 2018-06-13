@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
 import { Row,FormGroup, Col, Tabs, Tab, Button, FormControl } from 'react-bootstrap';
 import Switch from 'react-flexible-switch';
-import Slider from 'react-rangeslider'
-import reactCSS from 'reactcss'
-import ImagesUploader from 'react-images-uploader';
+import Slider from 'react-rangeslider';
+import reactCSS from 'reactcss';
 import 'react-images-uploader/styles.css';
 import 'react-images-uploader/font.css';
 import { ChromePicker } from 'react-color';
 import './settings.css';
-import { css, checked } from 'glamor';
 
 const FONT_WEIGHT_BOLD = 'bold';
 const FONT_WEIGHT_NORMAL = 'normal';
@@ -21,33 +19,38 @@ export class Setting extends Component {
       isBgColorSwatchOpen: false,
       isTextColorSwatchOpen: false,
       isLinkColorSwatchOpen: false,
-    }
+    };
     Object.assign(this.state, props.notificationPanelStyle);
   }
 
   notificationPanelStyleDefault(e) {
     this.setState({[e.target.id]:e.target.value});
   }
+
   handleRadiusChange = (radius) => {
     this.setState({ radius });
     this.props.onConfigChange({ prop: 'radius', value: radius });
-  };
+  }
+
   handleStateChangeDay(e) {
     this.setState({[e.target.id]:e.target.value});
     this.props.onConfigChange({ prop: 'bulkData', value: e.target.value });
-  };
+  }
+
   handleLiveVistorCount(e) {
     this.setState({[e.target.id]:e.target.value});
     this.props.onConfigChange({ prop: 'liveVisitorCount', value: e.target.value });
-  };
+  }
+
   handleStateChangeNumber(e) {
     this.setState({[e.target.id]:e.target.value});
     this.props.onConfigChange({ prop: 'recentNumber', value: e.target.value });
-  };
+  }
+
   handleStateChangeConv(e) {
     this.setState({[e.target.id]:e.target.value});
     this.props.onConfigChange({ prop: 'recentConv', value: e.target.value });
-  };
+  }
 
   handleBorderWidthChange = (borderWidth) => {
     this.setState({ borderWidth });
@@ -146,7 +149,7 @@ export class Setting extends Component {
     this.props.onConfigChange({ prop: 'fontFamily', value: fontFamily });
   };
 
- handleDurationChange = (e) => {
+  handleDurationChange = (e) => {
     const selectDurationData = `${e.target.value}`;
     this.setState({ selectDurationData });
     this.props.onConfigChange({ prop: 'selectDurationData', value: selectDurationData });
@@ -185,12 +188,14 @@ export class Setting extends Component {
     this.setState({linkFontWeight});
     this.props.onConfigChange({ prop: 'linkFontWeight', value: linkFontWeight });
   }
+
   handleConvChange(e) {
-    this.setState({convChange: e})
+    this.setState({convChange: e});
   }
+
   componentWillReceiveProps(nextProps) {
-      if(nextProps != this.props)
-        Object.assign(this.state, this.props.notificationPanelStyle);
+    if(nextProps != this.props)
+      Object.assign(this.state, this.props.notificationPanelStyle);
   }
 
   render() {
@@ -339,7 +344,7 @@ export class Setting extends Component {
                   <Col md={12}>
                     <FormControl
                       type="text"
-                      maxLength={notification.notificationName === "Recent Activity"?"35":"15"}
+                      maxLength={notification.notificationName === 'Recent Activity'?'35':'15'}
                       value={contentText}
                       placeholder="Enter content for notification"
                       id="contentText"
@@ -349,7 +354,7 @@ export class Setting extends Component {
                 </Row>
               </Col>
             </Row>
-            {notification.notificationName !== "Recent Activity"  &&
+            {notification.notificationName !== 'Recent Activity'  &&
               <Row>
                 <Col md={12}>
                   <h4>Name Setting</h4>
@@ -369,7 +374,7 @@ export class Setting extends Component {
               </Row>
             }
           </Tab>
-          {notification.notificationName === "Live Visitor Count"  &&
+          {notification.notificationName === 'Live Visitor Count'  &&
             <Tab eventKey={3} title="Setting" className="bulk-settings">
               <Row>
                 <Col md={8} style={{'paddingRight': 0, width: '45%'}}>
@@ -389,7 +394,7 @@ export class Setting extends Component {
               </Row>
             </Tab>
           }
-          {notification.notificationName === "Bulk Activity"  &&
+          {notification.notificationName === 'Bulk Activity'  &&
             <Tab eventKey={3} title="Setting" className="bulk-settings">
               <Row>
                 <Col md={5} style={{'paddingRight': 0, width: '45%'}}>
@@ -407,18 +412,18 @@ export class Setting extends Component {
                   </FormGroup>
                 </Col>
                 <Col md={4}>
-                    <FormControl componentClass="select" bsSize="small" value={notificationPanelStyle.selectDurationData} onChange={this.handleDurationChange}>
-                      <option value="hours">hours</option>
-                      <option value="days">days</option>
-                    </FormControl>
-                  </Col>
+                  <FormControl componentClass="select" bsSize="small" value={notificationPanelStyle.selectDurationData} onChange={this.handleDurationChange}>
+                    <option value="hours">hours</option>
+                    <option value="days">days</option>
+                  </FormControl>
+                </Col>
               </Row>
             </Tab>
           }
-          {notification.notificationName === "Recent Activity" &&
+          {notification.notificationName === 'Recent Activity' &&
             <Tab eventKey={3} title="Setting" className="recent-settings">
               <div>
-	              <Row>
+                <Row>
                   <Col md={3} style={{'paddingRight': 0}}>
                     <span className="mt-5">Display the last</span>
                   </Col>
@@ -434,13 +439,13 @@ export class Setting extends Component {
                       />
                     </FormGroup>
                   </Col>
-              		<Col md={5} style={{'paddingLeft': '5px'}}>
-              		  <span className="mt-5"> number of conversions.</span>
+                  <Col md={5} style={{'paddingLeft': '5px'}}>
+                    <span className="mt-5"> number of conversions.</span>
                   </Col>
                 </Row>
-	              <Row>
+                <Row>
                   <Col md={5} style={{'paddingRight': 0, width: '50%'}}>
-          		      <span className="mt-5">Display conversation from last</span>
+                    <span className="mt-5">Display conversation from last</span>
                   </Col>
                   <Col md={1} style={{ padding: 0, width: '10%' }}>
                     <FormGroup>
@@ -453,14 +458,14 @@ export class Setting extends Component {
                       />
                     </FormGroup>
                   </Col>
-          		     <Col md={4}>
+                  <Col md={4}>
                     <FormControl componentClass="select" bsSize="small" value={notificationPanelStyle.selectLastDisplayConversation} onChange={this.handleLastDisplayDurationChange}>
                       <option value="hours">hours</option>
                       <option value="days">days</option>
                     </FormControl>
                   </Col>
                 </Row>
-            		<Row>
+                <Row>
                   <Col md={2}>
                     <Switch
                       circleStyles={{
@@ -485,22 +490,21 @@ export class Setting extends Component {
                 <Row>
                   <Col md={2}>
                     <Switch circleStyles={{
-                        onColor: 'blue',
-                        offColor: 'gray',
-                        diameter: 18
-                      }} switchStyles={{
-                        width: 50
-                      }} cssClass="alignsame"
-                      value={notificationPanelStyle.onlyDisplayNotification}
-                      onChange={(e) => this.handleOnlyDisplayNotification(e)}
-
-                      />
+                      onColor: 'blue',
+                      offColor: 'gray',
+                      diameter: 18
+                    }} switchStyles={{
+                      width: 50
+                    }} cssClass="alignsame"
+                    value={notificationPanelStyle.onlyDisplayNotification}
+                    onChange={(e) => this.handleOnlyDisplayNotification(e)}
+                    />
                   </Col>
                   <Col md={10}>
                     <span className="mt-5">Only display notifications from user's country</span>
                   </Col>
                 </Row>
-      		    </div>
+              </div>
             </Tab>
           }
         </Tabs>
