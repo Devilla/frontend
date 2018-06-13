@@ -60,19 +60,22 @@ class LoginFlow extends Component {
     this.setState({[stateName]:state});
   }
 
-  submitPayment(data, token) {
-    let profile = {};
-    profile['user'] = this.props.user._id;
-    profile['plan'] = data.plan;
+  submitPayment(data) {
+    let profile = {
+      user: this.props.user._id,
+      plan: data.plan,
+      uniqueVisitorQouta: Number(data.plan.description),
+      uniqueVisitors: 0,
+      uniqueVisitorsQoutaLeft: Number(data.plan.description)
+    };
+
     if(this.state.username != this.props.user.username) {
       let userInfo = {};
       userInfo['id'] = this.props.user._id;
       userInfo['username'] = this.state.username;
       this.props.updateUser(userInfo);
     }
-    this.props.createProfile(profile);
-    this.props.createPayment(data);
-    browserHistory.push('dashboard');
+    this.props.createPayment(data, profile, false);
   }
 
   handleCheckChange(checked, value, state) {

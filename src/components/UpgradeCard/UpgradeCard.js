@@ -41,11 +41,13 @@ class UpgradeCard extends Component {
   }
 
   makePayment(data, token) {
-    let profile = {};
-    profile['plan'] = this.props.plan;
-    profile['id'] = this.props.profile._id;
-    this.props.updateProfile(profile);
-    this.props.createPayment(data);
+    let profile = {
+      plan: this.props.plan,
+      id: this.props.profile._id,
+      uniqueVisitorQouta: this.props.profile.uniqueVisitorQouta + Number(this.props.plan.description),
+      uniqueVisitorsQoutaLeft: this.props.profile.uniqueVisitorsQoutaLeft + Number(this.props.plan.description)
+    };
+    this.props.createPayment(data, profile, true);
   }
 
   render() {

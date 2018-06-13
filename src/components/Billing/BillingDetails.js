@@ -50,10 +50,9 @@ class BillingDetails extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if(this.props.payments != nextProps.payments && nextProps.payments.length) {
-      const { payments } = nextProps;
-      let planSelected = payments?payments[payments.length-1].payment_plan:{};
-      planSelected['updated_at'] = payments?payments[payments.length-1].updated_at:"";
+    if(nextProps.profile) {
+      const { profile } = nextProps;
+      let planSelected = profile?profile.plan:{};
       this.setState({planSelected});
     }
   }
@@ -78,6 +77,7 @@ class BillingDetails extends Component {
 
   render() {
     const { planSelected }  = this.state;
+    const { profile } = this.props;
     return (
       <div className="content fill billing-details">
         <Grid fluid="fluid">
@@ -109,12 +109,22 @@ class BillingDetails extends Component {
                             <FormGroup className="planUp" controlId="formControlsSelect">
                               <ControlLabel>Plan</ControlLabel>{this.plansList()}
                             </FormGroup>
-                            <div className="col-md-4">
-                              Last Paid: {planSelected.interval?moment(planSelected.interval.updated_at).format('DD MMM YYYY'):"-"}
-                            </div>
-                            <div className="col-md-2">
-                              Billing Cycle: {planSelected.interval?(planSelected.interval.charAt(0).toUpperCase() + planSelected.interval.slice(1)):"-"}
-                            </div>
+                            <Row className="plan-info-details">
+                              <div className="col-md-4">
+                                Last Paid: {planSelected.interval?moment(planSelected.interval.updated_at).format('DD MMM YYYY'):"-"}
+                              </div>
+                              <div className="col-md-4">
+                                Billing Cycle: {planSelected.interval?(planSelected.interval.charAt(0).toUpperCase() + planSelected.interval.slice(1)):"-"}
+                              </div>
+                            </Row>
+                            <Row className="plan-info-details">
+                              <div className="col-md-4">
+                                Visitor Qouta: {profile?profile.uniqueVisitorQouta.toLocaleString():"-"} Unique Visitors
+                              </div>
+                              <div className="col-md-4">
+                                Visitor Qouta Left: {profile?profile.uniqueVisitorsQoutaLeft.toLocaleString():"-"} Unique Visitors
+                              </div>
+                            </Row>
                           </div>
                         </div>
                       </Row>
@@ -123,7 +133,7 @@ class BillingDetails extends Component {
                           <div className="panel-heading">Payment Info</div>
                           <div className="panel-body">
                             <div className="col-md-4">
-                              Next Payment Due Date: {planSelected.interval?moment(planSelected.interval.updated_at).add(planSelected.interval_count, 'day').format('DD MMM YYYY'):"-"}
+                              Next Payment Due Date: {planSelected.interval?moment(planSelected.interval.updated_at).add(planSelected.interval_count, planSelected.interval).format('DD MMM YYYY'):"-"}
                             </div>
                             <div className="col-md-4">
                               Payment Method: {planSelected.interval?'Card':'-'}
@@ -168,6 +178,7 @@ class BillingDetails extends Component {
 
 const mapStateToProps = state => ({
   payments: state.getIn(['payment', 'payments']),
+  profile: state.getIn(['profile', 'profile']),
   invoices: state.getIn(['payment', 'invoices'])
 });
 

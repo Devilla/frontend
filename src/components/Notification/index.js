@@ -6,6 +6,7 @@ import Switch from 'react-flexible-switch';
 import { getCookie } from 'components/Common/function';
 import moment from 'moment';
 import { browserHistory } from 'react-router';
+import Popup from 'react-popup';
 
 import { fetchCampaign, updateCampaign, successCampaign, removeCampaign } from 'ducks/campaign';
 import './Notification.scss'
@@ -26,9 +27,29 @@ class Notification extends Component {
   }
 
   handleActiveChange(active, campaign) {
-    campaign['isActive'] = active;
-    delete campaign['_id'];
-    this.props.updateCampaign(campaign);
+    if(active && this.props.profile.uniqueVisitorsQoutaLeft <= 0) {
+      return Popup.create({
+        title: 'Limit exceeded',
+        content:
+          <div className="popup-notification-div">
+            <h6>Please, upgrade your plan to continue.</h6>
+          </div>,
+        buttons: {
+          right: [{
+            text: 'Upgrade Plan',
+            className: 'primary popup-notification-button',
+            action: function () {
+              browserHistory.push('/upgrade')
+              Popup.close();
+            }
+          }]
+        }
+      }, true);
+    } else {
+      campaign['isActive'] = active;
+      delete campaign['_id'];
+      this.props.updateCampaign(campaign);
+    }
   }
 
   handleRouteChange(e, campaign) {
@@ -102,14 +123,6 @@ class Notification extends Component {
               />
             </Col>
           </Row>
-          {/* <Row>
-            <Col md={12}>
-              <p className="text-center">
-                Get one of our experts to do it all for you! &nbsp; <a href="javascript:;">Click here</a>
-              </p>
-            </Col>
-          </Row> */}
-
         </Grid>
       </div>
     );
@@ -117,7 +130,8 @@ class Notification extends Component {
 }
 
 const mapStateToProps = state => ({
-  campaigns: state.getIn(['campaign', 'campaigns'])
+  campaigns: state.getIn(['campaign', 'campaigns']),
+  profile: state.getIn(['profile', 'profile'])
 });
 
 const mapDispatchToProps = {
