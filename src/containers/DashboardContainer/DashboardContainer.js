@@ -80,7 +80,7 @@ class DashboardContainer extends Component {
           {this.state.render && <Sidebar {...this.props} disableButton={this.state.disableButton} />}
           {
             this.state.render &&
-            <div className="content-page">
+            <div className="content-page bg--secondary">
             <div class="topbar">
               <nav class="navbar-custom">
                 <div class="topbar-right-menu float-right mb-0">

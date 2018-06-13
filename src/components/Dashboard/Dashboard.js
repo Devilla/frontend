@@ -152,7 +152,7 @@ class Dashboard extends Component {
     };
 
     return (
-    <div className="content">
+    <div className="content fill">
       <div class="container-fluid">
         
       <Grid fluid="fluid">
