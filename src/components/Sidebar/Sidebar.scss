@@ -17,3 +17,23 @@ a[disabled] {
     padding: 5% 7%;
     font-size: 15px;
 }
+
+
+div.button-list {
+  & .btn-pink {
+    background-color: #ff679b;
+    border: 1px solid #ff679b;
+  &:hover {
+    background-color: #ff4e8a;
+    border-color: #ff4e8a;
+  }
+  &:active {
+    background-color: #ff4e8a;
+    border-color: #ff4e8a;
+  }
+  &:focus {
+    background-color: #ff4e8a;
+    border-color: #ff4e8a;
+  }
+  }
+}

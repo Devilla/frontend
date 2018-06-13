@@ -12,6 +12,8 @@ import logo from '../../containers/DashboardContainer/asset/images/influence.png
 import { Glyphicon } from 'react-bootstrap';
 import appRoutes from 'routes/app';
 import './Sidebar.scss';
+import '../../containers/DashboardContainer/asset/css/style.css'; 
+
 
 
 class Sidebar extends Component {
@@ -101,9 +103,9 @@ class Sidebar extends Component {
 
 
           <div id="sidebar-menu">
-
-            <Link to="/new"><button type="button" className="btn btn-primary  waves-effect waves-light ml-5 p-3 pt-0 pb-0 mb-4 w-lg "><i className="fi-file-add"></i>&nbsp; <span>New</span> </button></Link>
-
+            <div className="button-list"> 
+              <Link to="/new"><button type="button" className="btn  btn-pink waves-effect w ml-5 p-3 pt-0 pb-0 mb-4 w-lg "><i className="fi-file-add"></i>&nbsp; <span>New</span> </button></Link>
+            </div>
             <ul className="metismenu" id="side-menu">
 
               {this.state.width <= 991 ? (<HeaderLinks />) : null}
