@@ -22,7 +22,7 @@ const Analytics = ({ renderList }) => {
                      {
                       thArray.map((prop, key) => {
                         return (
-                        <th  key={key}>{prop}</th>
+                        <th  key={key}><span className="h5">{prop === "Connected Website" ? <i className="icon-globe"></i> : ""}&nbsp;{prop}</span></th>
                         );
                       })
                       }
@@ -39,10 +39,10 @@ const Analytics = ({ renderList }) => {
         </Row>
         <Row>
           <Col md={12}>
-            <p className="text-center">
+            <p className="text-center h5 mt-5">
             Get one of our experts to do it all for you!
             &nbsp;
-             <a href="javascript:;">Click here</a></p>
+            <button type="button" className="btn btn-info waves-effect  ml-1 ">Click here</button> </p>
           </Col>
         </Row>
       </Grid>

@@ -10,8 +10,6 @@ import Popup from 'react-popup';
 
 import { fetchCampaign, updateCampaign, successCampaign, removeCampaign } from 'ducks/campaign';
 import './Notification.scss'
-import '../../containers/DashboardContainer/asset/scss/style.scss';
-import '../../containers/DashboardContainer/asset/scss/icons.scss';
 
 
 const notificationFields = [ 'S.No', 'Campaign', 'Domain', 'Status', 'Tracking ID', 'Log', 'Created', 'Delete' ];

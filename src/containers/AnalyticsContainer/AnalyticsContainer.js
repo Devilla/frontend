@@ -9,6 +9,7 @@ import { fetchElastic } from 'ducks/elastic';
 import { fetchCampaignInfo, successCampaign } from 'ducks/campaign';
 import { Analytics, AnalyticsProfile } from 'components';
 import './AnalyticsContainer.scss';
+import '../DashboardContainer/asset/scss/style.scss';
 
 const LineChart = ReactChartJs.Line;
 const chartOptions = {
@@ -187,8 +188,8 @@ class AnalyticsContainer extends Component {
 
         const userDetails = website.signups?website.signups.userDetails:[];
         const uniqueUsers = website.uniqueUsers?website.uniqueUsers.aggregations.users.buckets:[];
-        return <tr key={index}>
-            <td className="website"><i className="fas fa-globe"></i> <a href={website.websiteUrl} target="_blank">{website.websiteUrl}</a></td>
+        return <tr  className = { index % 2 === 0 ? "text-center " : "text-center table-info "} key={index}>
+            <td className="website"> <a href={website.websiteUrl} target="_blank">{website.websiteUrl}</a></td>
             <td className="vistor">{visitor}</td>
             <td><a href="javascript:;" onClick={() => this.handleViewProfile(userDetails)} className="pname">
                 <b>{userDetails && userDetails.length} </b> <span>View Profile</span></a>
