@@ -12,8 +12,9 @@ import 'react-select/dist/react-select.css';
 import Popup from 'react-popup';
 import 'react-popup/style.css';
 
-import './asset/scss/style.scss';
+import './asset/css/style.css';
 import './asset/scss/icons.scss';
+import './asset/css/bootstrap.min.css';
 
 
 class DashboardContainer extends Component {

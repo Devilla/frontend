@@ -6,7 +6,6 @@ import {
 } from 'components';
 
 const appRoutes = [
-    { upgrade: true, path: "/new", name: "New", icon: "fi-file-add", component: New },
     { path: "/dashboard", name: "Home", icon: "fi-air-play", component: Dashboard },
     { path: "/campaigns", name: "Campaigns", icon: "fi-layers", component: Notification },
     { path: "/analytics", name: "Analytics", icon: "fi-bar-graph-2", component: Analytics },
