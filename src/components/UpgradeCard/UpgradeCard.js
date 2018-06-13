@@ -39,8 +39,7 @@ class UpgradeCard extends Component {
     this.setState({ key });
   }
 
-
-  makePayment(data) {
+  makePayment(data, token) {
     let profile = {
       plan: this.props.plan,
       id: this.props.profile._id,
@@ -166,7 +165,6 @@ class UpgradeCard extends Component {
 const mapStateToProps = state => ({
   profile: state.getIn(['profile', 'profile']),
   user: state.getIn(['auth', 'user'])
-  // planList: state.getIn(['plan', 'plan'])
 });
 
 const mapDispatchToProps = {

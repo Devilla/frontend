@@ -27,7 +27,6 @@ const initialRules = {
   delayBetween: 3,
   displayPosition: 'bottom',
   popupAnimation:'fadeinout'
-
 };
 
 const initialState = fromJS({

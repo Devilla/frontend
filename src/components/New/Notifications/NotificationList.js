@@ -1,5 +1,10 @@
 import React from 'react';
 import './NotificationList.scss';
+import {
+  RecentActivity,
+  GroupActivity,
+  LiveActivity
+} from 'img';
 
 const NotificationList = ({ notificationList, configure, handleActivityChange }) => {
   const renderNotifications = () => {
@@ -14,7 +19,7 @@ const NotificationList = ({ notificationList, configure, handleActivityChange })
         >
           <div className="view gradient-card-header blue-gradient"
             style={{
-              padding: '1.6rem 1rem',
+              padding: '0 1rem',
               textAlign: 'center',
               border: '1px solid #ececf1',
               backgroundColor: 'white',
@@ -22,8 +27,19 @@ const NotificationList = ({ notificationList, configure, handleActivityChange })
               borderTopRadiusRight: '10px'
             }}
           >
-            <h2 className="h2-responsive">{notification.notificationType}</h2>
-            <p>{notification.notificationName}</p>
+            <h2 className="h2-responsive">
+              {notification.notificationName === "Bulk Activity" && <img src={GroupActivity} />}
+
+              {notification.notificationName === "Live Visitor Count" && <img src={LiveActivity} />}
+
+              {notification.notificationName === "Recent Activity" && <img src={RecentActivity} />}
+            </h2>
+            <h4>{notification.notificationName}</h4>
+            {notification.notificationName === "Bulk Activity" && <p style={{ color: 'grey', fontFamily: 'Arial', fontWeight: 'normal' }}>Show the total visitors or signups over a period of time</p>}
+
+            {notification.notificationName === "Live Visitor Count" && <p style={{ color: 'grey', fontFamily: 'Arial', fontWeight: 'normal' }} >Show how many people are currently on your page </p>}
+
+            {notification.notificationName === "Recent Activity" && <p style={{ color: 'grey', fontFamily: 'Arial', fontWeight: 'normal' }} >Show individual people that recently signed up </p>}
           </div>
           <div className="button-config" onClick={() => configure(notification)} style={{ cursor: 'pointer' }} data-toggle="modal" data-target="#notificationModal">
             <ul className="list-unstyled list-inline font-small mt-3" style={{ margin: '0 auto', padding: '10px' }}>
