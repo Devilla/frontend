@@ -20,7 +20,6 @@ import './scss/flickity.scss';
 import './scss/font-sourcesanspro.scss';
 import './App.scss';
 
-
 class App extends Component {
   componentWillMount() {
     this.checkLogin((err) => {
