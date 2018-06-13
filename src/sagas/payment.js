@@ -68,21 +68,26 @@ function* create(action) {
       } else {
         yield put(createProfile(action.profile));
       }
+      Popup.create({
+        title: 'Payment successful',
+        content: <div style={{padding: '30px 15px', fontSize: 'medium'}}>
+          {action.profile.plan.name} has been successfully activated for your account
+        </div>,
+        buttons: {}
+      }, true);
     }
     yield put(loaded());
-    Popup.create({
-      title: 'Payment successful',
-      content: <div style={{padding: '30px 15px', fontSize: 'medium'}}>
-        {action.profile.plan.name} has been successfully activated for your account
-      </div>,
-      buttons: {}
-      }, true);
   } catch (error) {
     yield put(loaded());
     console.log('Failed to fetch doc', error);
-    yield toast.error(error.message, toastConfig);
+    Popup.create({
+      title: 'Payment failed',
+      content: <div style={{padding: '30px 15px', fontSize: 'medium'}}>
+        Payment failed due to Card Declined
+      </div>,
+      buttons: {}
+    }, true);
   }
-
 }
 
 function* update(action) {
