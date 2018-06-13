@@ -1,3 +1,4 @@
+import React from 'react';
 import { call, put, fork, takeLatest } from 'redux-saga/effects';
 import * as api from 'services/api';
 import * as actions from 'ducks/payment';
@@ -5,6 +6,7 @@ import { createProfile, updateProfile } from 'ducks/profile';
 import { load, loaded } from 'ducks/loading';
 import { toast } from 'react-toastify';
 import { browserHistory } from 'react-router';
+import Popup from 'react-popup';
 
 const toastConfig = {
   position: toast.POSITION.BOTTOM_LEFT,
@@ -50,9 +52,15 @@ function* create(action) {
   try {
     yield put(load());
     const res = yield call(api.POST, `payment`, action.payment);
-    if(res.error)
-      console.log(res.error);
-    else {
+    if(res.error) {
+      Popup.create({
+        title: 'Payment failed',
+        content: <div style={{padding: '30px 15px', fontSize: 'medium'}}>
+          Payment failed due to {res.error}
+        </div>,
+        buttons: {}
+        }, true);
+    } else {
       yield put(actions.successPayment([res]));
       if(action.update) {
         yield put(updateProfile(action.profile));
@@ -62,6 +70,13 @@ function* create(action) {
       }
     }
     yield put(loaded());
+    Popup.create({
+      title: 'Payment successful',
+      content: <div style={{padding: '30px 15px', fontSize: 'medium'}}>
+        {action.profile.plan.name} has been successfully activated for your account
+      </div>,
+      buttons: {}
+      }, true);
   } catch (error) {
     yield put(loaded());
     console.log('Failed to fetch doc', error);

@@ -1,4 +1,5 @@
-import { fromJS, Map } from 'immutable';
+import { fromJS } from 'immutable';
+import Popup from 'react-popup';
 
 const action = name => `/profile/${name}`;
 

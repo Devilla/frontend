@@ -82,7 +82,6 @@ class LoginFlow extends Component {
       this.props.updateUser(userInfo);
     }
     this.props.createPayment(data, profile, false);
-    browserHistory.push('dashboard');
   }
 
   handleCheckChange(checked, value, state) {
