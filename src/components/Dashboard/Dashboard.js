@@ -170,24 +170,6 @@ class Dashboard extends Component {
                     </div>}/>
                   </Col>
                 </Row>
-                {/* <Row>
-                  <Col lg={12}>
-                    <div className="card card-stats ga-connect">
-                      <div className="content">
-                        <Row>
-                          <Col xs={12}>
-                            <div className="icon-big text-center">
-                              <i className="pe-7s-lock"></i>
-                            </div>
-                            <div className="txt">
-                              <a href="#">Connect to GA for more</a>
-                            </div>
-                          </Col>
-                        </Row>
-                      </div>
-                    </div>
-                  </Col>
-                </Row> */}
               </Col>
               <Col lg={6} sm={6}>
 
@@ -225,14 +207,6 @@ class Dashboard extends Component {
             </Row>
           </Col>
         </Row>
-        {/* <Row>
-          <Col md={12}>
-            <p className="text-center">
-              Get one of our experts to do it all for you! &nbsp;
-              <a href="javascript:;">Click here</a>
-            </p>
-          </Col>
-        </Row> */}
       </div>
     </div>);
   }
