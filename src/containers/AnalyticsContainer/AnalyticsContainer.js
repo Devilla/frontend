@@ -196,7 +196,7 @@ class AnalyticsContainer extends Component {
             <td className="liveuser">-</td>
             <td className="conversion">
               {
-                userDetails.length?((userDetails.length / visitor)   * 100).toFixed(2):0
+                userDetails?((userDetails.length / visitor)   * 100).toFixed(2):0
               } %
             </td>
           <td>

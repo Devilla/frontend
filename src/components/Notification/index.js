@@ -48,12 +48,12 @@ class Notification extends Component {
   // Map the notification data into table rows and return
   getNotificationRows = () => {
     return this.props.campaigns?this.props.campaigns.map((campaign, i) => (
-      <tr key={campaign._id} onClick={(e) => this.handleRouteChange(e, campaign)}>
+      <tr className="text-center" key={campaign._id} onClick={(e) => this.handleRouteChange(e, campaign)}>
         <td>{i + 1 /* S.No */}</td>
         <td>{campaign.campaignName}</td>
-        <td><i className="fas fa-globe"></i> <a>{campaign.websiteUrl}</a></td>
-        <td >
-          <Switch switchStyles={{ width: 50 }}
+        <td><i className="icon-globe"></i> <a>{campaign.websiteUrl}</a></td>
+        <td className="text-center">
+          <Switch switchStyles={{ width: 40 }}
             value={campaign.isActive}
             onChange={(e) => this.handleActiveChange(e, campaign)}
             circleStyles={{ onColor: 'blue', offColor: 'gray', diameter: 18 }}
@@ -62,7 +62,7 @@ class Notification extends Component {
         <td>{campaign.trackingId}</td>
         <td>{campaign.log}</td>
         <td>{moment(campaign.createdAt).format('MM/DD/YYYY')}</td>
-        <td><Glyphicon glyph="trash" onClick={() => this.deleteCampaign(i, campaign._id)} /></td>
+        <td><i className="icon-trash" onClick={() => this.deleteCampaign(i, campaign._id)}></i></td>
       </tr>
     ))
     :
@@ -82,20 +82,20 @@ class Notification extends Component {
                 category=""
                 ctTableFullWidth ctTableResponsive
                 content={
-                  <Table hover>
+                  <table hover>
                     <thead>
                       <tr>
                         {
                           notificationFields.map((prop, key) => {
                             return (
-                              <th key={key}>{prop}</th>
+                              <th className="text-center" key={key}>{prop}</th>
                             );
                           })
                         }
                       </tr>
                     </thead>
                     <tbody>{ this.getNotificationRows() }</tbody>
-                  </Table>
+                  </table>
                 }
               />
             </Col>
