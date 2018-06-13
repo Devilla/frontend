@@ -17,7 +17,6 @@ import {
 import CardHeader from 'components/Template/card-with-header';
 import Button from 'components/Template/customButton';
 
-import './Billing.css';
 import './BillingDetails.scss';
 
 const billingHeader = [

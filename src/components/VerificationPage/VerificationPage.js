@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { verifyUser } from 'ducks/auth';
+import { Spinner } from 'components';
+import { ToastContainer } from 'react-toastify';
 import './VerificationPage.scss';
 
 class VerificationPage extends React.Component {

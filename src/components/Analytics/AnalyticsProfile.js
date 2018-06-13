@@ -1,4 +1,6 @@
 import React from 'react';
+import { Grid, Row, Col, Table } from 'react-bootstrap';
+import Card from '../utils/card';
 import { profileHeader } from './data';
 
 const AnalyticsProfile = ({ handleProfileBack, renderProfileList }) => {

@@ -1,4 +1,14 @@
 import React, { Component } from 'react';
+import { Row } from 'react-bootstrap';
+
+function FieldGroup({ label, ...props }) {
+    return (
+        <FormGroup>
+            <ControlLabel>{label}</ControlLabel>
+            <FormControl {...props} />
+        </FormGroup>
+    );
+}
 
 class FormTemp extends Component{
   render(){

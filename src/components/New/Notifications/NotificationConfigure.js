@@ -1,4 +1,9 @@
 import React from 'react';
+import { Grid, Row, Col, Tabs, Glyphicon } from 'react-bootstrap';
+import { Card } from '../notification/template/common';
+import { Notification } from '../notification/template/common/notification'
+import { Setting } from '../notification/template/common/settings'
+import Switch from 'react-flexible-switch';
 import './NotificationConfigure.scss';
 
 const NotificationConfigure = ({

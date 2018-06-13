@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Animated } from "react-animated-css";
 
 export default class Banner extends Component {
 

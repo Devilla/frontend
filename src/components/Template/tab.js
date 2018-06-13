@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Grid, Row, Col, Nav, NavItem } from 'react-bootstrap';
+import CommonCard from './common-card';
 
 var val = 1;
 

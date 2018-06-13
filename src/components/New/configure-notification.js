@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { Grid, Row, Glyphicon } from 'react-bootstrap';
+import Tabs from 'components/Template/tab';
+import Display from './notification/display';
 
 class ConfigNotification extends Component {
   constructor() {
