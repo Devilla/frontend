@@ -93,16 +93,16 @@ const RightView = ({
           </span>
         </Col>
         <Col md={4}>
-         <FormControl value={popupAnimationIn} onChange={(e) => { handleStateChange('popupAnimationIn', e.target.value); handleAnimation(e.target.value)  }} componentClass="select" bsSize="sm" placeholder="select" >
-           <option value="fadeIn">Fade In</option>
-           <option value="fadeInUp">Fade In Up</option>
-           <option value="fadeInLeft">Fade In Left</option>
-           <option value="fadeInRight">Fade In Right</option>
-           <option value="bounceInUp">Bounce In Up</option>
-           <option value="bounceInLeft">Bounce In Left</option>
-           <option value="bounceInRight">Bounce In Right</option>
-           <option value="bounceInDown">Bounce In Down</option>
-         </FormControl>
+          <FormControl value={popupAnimationIn} onChange={(e) => { handleStateChange('popupAnimationIn', e.target.value); handleAnimation(e.target.value);  }} componentClass="select" bsSize="sm" placeholder="select" >
+            <option value="fadeIn">Fade In</option>
+            <option value="fadeInUp">Fade In Up</option>
+            <option value="fadeInLeft">Fade In Left</option>
+            <option value="fadeInRight">Fade In Right</option>
+            <option value="bounceInUp">Bounce In Up</option>
+            <option value="bounceInLeft">Bounce In Left</option>
+            <option value="bounceInRight">Bounce In Right</option>
+            <option value="bounceInDown">Bounce In Down</option>
+          </FormControl>
         </Col>
       </Row>
       <Row>
@@ -112,20 +112,20 @@ const RightView = ({
           </span>
         </Col>
         <Col md={4}>
-         <FormControl value={popupAnimationOut} onChange={(e) => { handleStateChange('popupAnimationOut', e.target.value); handleAnimation(e.target.value)  }} componentClass="select" bsSize="sm" placeholder="select" >
-           <option value="fadeOut">Fade Out</option>
-           <option value="fadeOutDown">Fade Out Down</option>
-           <option value="fadeOutLeft">Fade Out Left</option>
-           <option value="fadeOutRight">Fade Out Right</option>
-           <option value="bounceOutDown">Bounce Out Down</option>
-           <option value="bounceOutLeft">Bounce Out Left</option>
-           <option value="bounceOutRight">Bounce Out Right</option>
-           <option value="bounceOutUp">Bounce Out Up</option>
-         </FormControl>
+          <FormControl value={popupAnimationOut} onChange={(e) => { handleStateChange('popupAnimationOut', e.target.value); handleAnimation(e.target.value);  }} componentClass="select" bsSize="sm" placeholder="select" >
+            <option value="fadeOut">Fade Out</option>
+            <option value="fadeOutDown">Fade Out Down</option>
+            <option value="fadeOutLeft">Fade Out Left</option>
+            <option value="fadeOutRight">Fade Out Right</option>
+            <option value="bounceOutDown">Bounce Out Down</option>
+            <option value="bounceOutLeft">Bounce Out Left</option>
+            <option value="bounceOutRight">Bounce Out Right</option>
+            <option value="bounceOutUp">Bounce Out Up</option>
+          </FormControl>
         </Col>
       </Row>
     </div>
   );
-}
+};
 
 export default RightView;
