@@ -151,11 +151,9 @@ class Profile extends Component {
                     {/* <FormControl type="text" value={username} placeholder="Enter username" disabled={true} id="username"/> */}
                     <p className="text-light mb-0">Country</p>
                   </div>
-
                 </Col>
                 <Col sm={6}>
                   <div className="text-right">
-
                     <button type="button" className="btn btn-success waves-effect" onClick={(e) => this.handleEditState(e, this.state.profileState)}>
                       <i className="mdi mdi-account-settings-variant mr-1"></i> Edit Profile
                    </button>
@@ -165,7 +163,6 @@ class Profile extends Component {
             </div>
           </Col>
         </Row>
-        <Row>
           <Col md={4}>
             <div className="card-box">
               <h4 className="header-title mt-0 m-b-20">Personal Information</h4>
@@ -173,7 +170,6 @@ class Profile extends Component {
                 <hr />
                 <div className="text-left">
                   <form>
-
                     <Row>
                       <Col md={12}>
                         <span className="text-muted font-13 p"><strong>First Name :</strong> </span>
@@ -243,7 +239,7 @@ class Profile extends Component {
                 </div>
               </div>
             </div>
-          
+
           </Col>
           <Col md={8}>
             <Row>
@@ -278,8 +274,6 @@ class Profile extends Component {
               </span>
             </div>
           </Col>
-      
-        </Row>
       </Grid>
 
 
