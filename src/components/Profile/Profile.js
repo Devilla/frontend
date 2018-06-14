@@ -243,9 +243,7 @@ class Profile extends Component {
                 </div>
               </div>
             </div>
-            {/* <FormGroup className="planUp" controlId="formControlsSelect">
-                    <ControlLabel>Plan</ControlLabel>{this.plansList()}
-                  </FormGroup> */}
+          
           </Col>
           <Col md={8}>
             <Row>
@@ -260,12 +258,13 @@ class Profile extends Component {
                   </form>
                 </div>
               </Col>
-             
+              <Col sm={4}>
+              </Col>
               <Col sm={4}>
                 <div className=" ">
-                  <button type="button" className="btn btn-block btn-success waves-light waves-effect">Upgrade</button>
+                  <button type="button"   onClick={() => browserHistory.push('/upgrade')} className="btn btn-block btn-success waves-light waves-effect">Upgrade</button>
                   <div> <br /></div>
-                  <button type="button" className="btn btn-block btn-warning waves-light waves-effect">Billing</button>
+                  <button type="button"   onClick={() => browserHistory.push('/billing-details')} className="btn btn-block btn-warning waves-light waves-effect">Billing</button>
                 </div>
               </Col>
             </Row>
@@ -279,124 +278,7 @@ class Profile extends Component {
               </span>
             </div>
           </Col>
-          {/* <div className="col-md-2">
-                <div className="profile-over-button">
-                  <Button
-                    onClick={() => browserHistory.push('/upgrade')}
-                    bsStyle="info"
-                    pullRight="pullRight"
-                    fill="fill"
-                    type="button"
-                    icon="cloud-upload"
-                    disabled={false}
-                  >
-                    Upgrade Plan
-                    </Button>
-                </div>
-
-                <div className="profile-over-button">
-                  <Button
-                    onClick={() => browserHistory.push('/billing-details')}
-                    bsStyle="info"
-                    pullRight="pullRight"
-                    fill="fill"
-                    type="button"
-                    icon="usd"
-                    disabled={false}
-                  >
-                    Billing
-                    </Button>
-                </div>
-              </div> */}
-
-
-          {/* <form>
-                <Row>
-                  <div className="col-md-1">
-                    First Name
-                  </div>
-                  <div className="col-md-3">
-                    <FormGroup>
-                      <FormControl type="text" value={profile.firstName} placeholder="" disabled={isDisabled} id="firstName" onChange={(e) => this.handleStateChange(e)} />
-                    </FormGroup>
-                  </div>
-                  <div id="lastnm" className="col-md-1">
-                    Last Name
-                  </div>
-                  <div className="col-md-3">
-                    <FormGroup>
-                      <FormControl type="text" value={profile.lastName} placeholder="" disabled={isDisabled} id="lastName" onChange={(e) => this.handleStateChange(e)} />
-                    </FormGroup>
-                  </div>
-                </Row>
-                <Row>
-                  <div className="col-md-1">
-                    Address
-                  </div>
-                  <div className="col-md-9">
-                    <FormGroup>
-                      <FormControl type="text" value={profile.address} placeholder="Enter Address" disabled={isDisabled} id="address" onChange={(e) => this.handleStateChange(e)} />
-                    </FormGroup>
-                  </div>
-                </Row>
-                <Row>
-                  <div className="col-md-10">
-                    <FormGroup>
-
-                      <FormControl type="text" value={profile.address2} placeholder="" disabled={isDisabled} id="address2" onChange={(e) => this.handleStateChange(e)} />
-                    </FormGroup>
-                  </div>
-
-                </Row>
-                <Row>
-                  <div className="col-md-2">
-                    <FormGroup controlId="formControlsSelect">
-                      <ControlLabel>Country</ControlLabel>
-                      <FormControl type="text" value={profile.country} placeholder="" disabled={isDisabled} id="country" onChange={(e) => this.handleStateChange(e)} />
-                    </FormGroup>
-                  </div>
-                  <div className="col-md-2">
-                    <FormGroup controlId="formControlsSelect">
-                      <ControlLabel>State</ControlLabel>
-                      <FormControl type="text" value={profile.states} placeholder="" disabled={isDisabled} id="states" onChange={(e) => this.handleStateChange(e)} />
-                    </FormGroup>
-                  </div>
-                  <div className="col-md-2">
-                    <FormGroup controlId="formControlsSelect">
-                      <ControlLabel>City</ControlLabel>
-                      <FormControl type="text" value={profile.city} placeholder="" disabled={isDisabled} id="city" onChange={(e) => this.handleStateChange(e)} />
-                    </FormGroup>
-                  </div>
-                </Row>
-                <Row>
-                  <div className="col-md-2">
-                    <FormGroup>
-                      <ControlLabel>Phone Number</ControlLabel>
-                      <FormControl type="text" value={profile.phoneNumber} placeholder="Enter Phone Number" disabled={isDisabled} id="phoneNumber" onChange={(e) => this.handleStateChange(e)} />
-                    </FormGroup>
-                  </div>
-                  <div className="col-md-2">
-                    <FormGroup>
-                      <ControlLabel>Company Name</ControlLabel>
-                      <FormControl type="text" value={profile.companyName} placeholder="Enter Company Name" disabled={isDisabled} id="companyName" onChange={(e) => this.handleStateChange(e)} />
-                    </FormGroup>
-                  </div>
-                  <div className="col-md-2">
-                    <FormGroup>
-                      <ControlLabel>Email Address</ControlLabel>
-                      <FormControl type="text" value={profile.email} placeholder="Email Address" disabled={isDisabled} id="emailAddress" onChange={(e) => this.handleStateChange(e)} />
-                    </FormGroup>
-                  </div>
-                </Row>
-                <Row>
-                  <div className="edit">
-                    <Button bsStyle="info" pullRight="pullRight" fill="fill" type="button" icon={this.state.profileState == 'edit'} onClick={(e) => this.handleEditState(e, this.state.profileState)}>
-                      {'Edit/Save'}
-                    </Button>
-                  </div>
-                </Row>
-                <div className="clearfix"></div>
-              </form> */}
+      
         </Row>
       </Grid>
 
