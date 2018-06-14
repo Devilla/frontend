@@ -132,9 +132,16 @@ class Sidebar extends Component {
                   return null;
                 })
               }
+              <li className="menu-title">More</li>
+              <li>
+                  <a href ="#dashboard"><i className="fi-location-2"></i> <span> Beta Features </span> <span className="menu-arrow"></span></a>
+                  <ul className="nav-second-level" aria-expanded="false">
+                      <li><a href="#dashboard">Live Stream</a></li>     
+                  </ul>
+              </li>
             </ul>
-          </div>
-         
+          </div>  
+          <div className="clearfix"></div>
         </div>
       </div>
 
