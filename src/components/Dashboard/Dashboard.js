@@ -136,6 +136,8 @@ class Dashboard extends Component {
     	offsetGridLines : false
     };
 
+    console.log(process.env.REACT_APP_STRIPE_KEY);
+
     return (<div className="content">
       <Grid fluid="fluid">
 
