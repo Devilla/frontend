@@ -3,7 +3,7 @@ export const base =
     ? process.env.REACT_APP_PRODUCTION_URL
     : process.env.REACT_APP_DEVELOPMENT_URL; // eslint-disable-line
 
-const unAuthorizedUrl = ['plan', 'auth/forgot-password', 'auth/google/callback', 'auth/facebook/callback']
+const unAuthorizedUrl = ['plan', 'auth/forgot-password', 'auth/google/callback', 'auth/facebook/callback'];
 // const getToken = state => state.getIn(['auth', 'token']);//state.auth.token;
 
 // const base = `${base}`;
@@ -12,7 +12,7 @@ export const GET = (url) => {
   const authToken = JSON.parse(localStorage.getItem('authToken'));
   const token = authToken?authToken.token:null;
   let headers;
-  if(unAuthorizedUrl.indexOf(url.split("?")[0]) >= 0)
+  if(unAuthorizedUrl.indexOf(url.split('?')[0]) >= 0)
     headers = {};
   else
     headers = {
@@ -23,8 +23,8 @@ export const GET = (url) => {
     method: 'GET',
     headers: headers,
   })
-  .then(res => res.json())
-  .then(res => res);
+    .then(res => res.json())
+    .then(res => res);
 };
 
 
@@ -35,7 +35,7 @@ export const GETFILE = (url) => {
     method: 'GET',
     headers: { Authorization: `Bearer ${token}` },
   })
-  .then(res => res);
+    .then(res => res);
 };
 
 export const POST = (url, body) => {
@@ -60,8 +60,8 @@ export const POST = (url, body) => {
     headers: headers,
     body: JSON.stringify(body),
   })
-  .then(res => res.json())
-  .then(res => res);
+    .then(res => res.json())
+    .then(res => res);
 };
 
 export const PUT = (url, body) => {
@@ -77,8 +77,8 @@ export const PUT = (url, body) => {
     },
     body: JSON.stringify(body),
   })
-  .then(res => res.json())
-  .then(res => res);
+    .then(res => res.json())
+    .then(res => res);
 };
 
 export const DELETE = (url) => {
@@ -91,7 +91,7 @@ export const DELETE = (url) => {
       Authorization: `Bearer ${token}`,
     },
   })
-  .then(res => res);
+    .then(res => res);
 };
 
 // TODO refactor
@@ -106,6 +106,6 @@ export const POSTFILE = (url, body) => {
     },
     body,
   })
-  .then(res => res.json())
-  .then(res => res);
+    .then(res => res.json())
+    .then(res => res);
 };

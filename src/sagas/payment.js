@@ -1,23 +1,22 @@
+import React from 'react';
 import { call, put, fork, takeLatest } from 'redux-saga/effects';
 import * as api from 'services/api';
 import * as actions from 'ducks/payment';
-import { updateProfile } from 'ducks/profile';
+import { createProfile, updateProfile } from 'ducks/profile';
 import { load, loaded } from 'ducks/loading';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import { browserHistory } from 'react-router';
+import Popup from 'react-popup';
 
 const toastConfig = {
   position: toast.POSITION.BOTTOM_LEFT,
   autoClose: 2000
 };
 
-const getProfile = state => state.getIn(['profile', 'profile']);
-
-
-function* fetch(action) {
+function* fetch() {
   try {
     yield put(load());
-    const res = yield call(api.GET, `payment/user`);
+    const res = yield call(api.GET, 'payment/user');
     if(res.error)
       console.log(res.error);
     else
@@ -30,10 +29,10 @@ function* fetch(action) {
   }
 }
 
-function* fetchInvoices(action) {
+function* fetchInvoices() {
   try {
     yield put(load());
-    const res = yield call(api.GET, `payment/servicebot/invoice`);
+    const res = yield call(api.GET, 'payment/servicebot/invoice');
     if(res.error)
       console.log(res.error);
     else
@@ -49,27 +48,43 @@ function* fetchInvoices(action) {
 function* create(action) {
   try {
     yield put(load());
-    const res = yield call(api.POST, `payment`, action.payment);
-    if(res.error)
-      console.log(res.error);
-    else {
-      console.log(res, "=============response");
-
-      // let profile = yield select(getProfile);
-      // profile['id'] = profile._id;
-      // delete profile['_id'];
-      // profile['profile_payments'] = res._id
-      // yield put(updateProfile(profile));
-      yield put(actions.successPayment(res));
-      yield browserHistory.push('billing-details');
+    const res = yield call(api.POST, 'payment', action.payment);
+    if(res.error) {
+      Popup.create({
+        title: 'Payment failed',
+        content: <div style={{padding: '30px 15px', fontSize: 'medium'}}>
+          Payment failed due to {res.error}
+        </div>,
+        buttons: {}
+      }, true);
+    } else {
+      yield put(actions.successPayment([res]));
+      if(action.update) {
+        yield put(updateProfile(action.profile));
+        yield browserHistory.push('billing-details');
+      } else {
+        yield put(createProfile(action.profile));
+      }
+      Popup.create({
+        title: 'Payment successful',
+        content: <div style={{padding: '30px 15px', fontSize: 'medium'}}>
+          {action.profile.plan.name} has been successfully activated for your account
+        </div>,
+        buttons: {}
+      }, true);
     }
     yield put(loaded());
   } catch (error) {
     yield put(loaded());
     console.log('Failed to fetch doc', error);
-    yield toast.error(error.message, toastConfig);
+    Popup.create({
+      title: 'Payment failed',
+      content: <div style={{padding: '30px 15px', fontSize: 'medium'}}>
+        Payment failed due to Card Declined
+      </div>,
+      buttons: {}
+    }, true);
   }
-
 }
 
 function* update(action) {
@@ -92,11 +107,11 @@ function* update(action) {
 function* updatePaymentMethod(action) {
   try {
     yield put(load());
-    const res = yield call(api.PUT, `payment/servicebot/card`, action.details);
+    const res = yield call(api.PUT, 'payment/servicebot/card', action.details);
     if(res.error)
       console.log(res.error);
     else
-      browserHistory.push('/billing-details')
+      browserHistory.push('/billing-details');
       // yield put(actions.successPayment(res));
     yield put(loaded());
   } catch (error) {

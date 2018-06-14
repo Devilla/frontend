@@ -1,3 +1,6 @@
+import React from 'react';
+import { Grid, Row, Col, Table } from 'react-bootstrap';
+import Card from '../utils/card';
 import { profileHeader } from './data';
 
 const AnalyticsProfile = ({ handleProfileBack, renderProfileList }) => {
@@ -42,7 +45,7 @@ const AnalyticsProfile = ({ handleProfileBack, renderProfileList }) => {
             <p className="text-center">
               Get one of our experts to do it all for you!
               &nbsp;
-             <a href="javascript:;">Click here</a></p>
+              <a href="javascript:;">Click here</a></p>
           </Col>
         </Row>
       </Grid>

@@ -1,3 +1,9 @@
+import React from 'react';
+import { Row, Col, Button, Glyphicon } from 'react-bootstrap';
+import { Card } from '../notification/template/common';
+import { Notification } from '../notification/template/common/notification';
+import { Setting } from '../notification/template/common/settings';
+import Switch from 'react-flexible-switch';
 import './NotificationConfigure.scss';
 
 const NotificationConfigure = ({
@@ -16,16 +22,8 @@ const NotificationConfigure = ({
   return (
     <div className="notification-configure">
       <Row>
-
-
-
-
         <Col md={12}>
-
-
           <Card title="Recent User Activity"
-
-
             isDisabled={activity}
             content={
               <Row>

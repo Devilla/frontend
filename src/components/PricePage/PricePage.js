@@ -1,4 +1,6 @@
-const PricePage = ({externalValue, handleMonthChange, handleSwitchChange, handleYearChange, planList, returnRates}) => {
+import React from 'react';
+
+const PricePage = ({ externalValue, handleMonthChange, handleSwitchChange, handleYearChange, planList, returnRates }) => {
   return (
     <div>
       <div className="page-header ">
@@ -9,7 +11,7 @@ const PricePage = ({externalValue, handleMonthChange, handleSwitchChange, handle
             </Animated>
           </div>
         </div>
-        
+
       </div>
       <div className="section innerpage">
         <div className="container w-container newprice price">
@@ -18,9 +20,9 @@ const PricePage = ({externalValue, handleMonthChange, handleSwitchChange, handle
               <ul>
                 <li>
                   <a href="javascript:;" className={!externalValue
-                      ? 'active'
-                      : ''
-                    } onClick={handleMonthChange}>Monthly</a>
+                    ? 'active'
+                    : ''
+                  } onClick={handleMonthChange}>Monthly</a>
                 </li>
                 <li>
                   <Switch circleStyles={{
@@ -29,13 +31,13 @@ const PricePage = ({externalValue, handleMonthChange, handleSwitchChange, handle
                     diameter: 18
                   }} switchStyles={{
                     width: 50
-                  }} value={externalValue} onChange={handleSwitchChange}/>
+                  }} value={externalValue} onChange={handleSwitchChange} />
                 </li>
                 <li>
                   <a href="javascript:;" className={externalValue
-                      ? 'active'
-                      : ''
-                    }
+                    ? 'active'
+                    : ''
+                  }
                   onClick={handleYearChange}>Yearly</a>
                 </li>
               </ul>
@@ -65,7 +67,7 @@ const PricePage = ({externalValue, handleMonthChange, handleSwitchChange, handle
           </div>
           <div className="pricing-row w-row pledge">
             <div className="w-col w-col-4 logo">
-              <img src="images/pledge-logo.png"/>
+              <img src="images/pledge-logo.png" />
             </div>
             <div className="w-col w-col-8">
               <h6>Your plan gives back</h6>
@@ -101,7 +103,7 @@ const PricePage = ({externalValue, handleMonthChange, handleSwitchChange, handle
               <li>
                 <div className="questions">Are these notifications legit?</div>
                 <div className="ans">
-                  When we thought of building this product, we thought of helping brands and customers bring transparency to each other in the nicest possible manner.<br/><br/>
+                  When we thought of building this product, we thought of helping brands and customers bring transparency to each other in the nicest possible manner.<br /><br />
                   If we get to work together and you use our product, all the notifications that you will see on your website will be 100% legit and the data would be the one which your customers would use.
 
                 </div>
@@ -132,6 +134,6 @@ const PricePage = ({externalValue, handleMonthChange, handleSwitchChange, handle
       </div>
     </div>
   );
-}
+};
 
 export default PricePage;

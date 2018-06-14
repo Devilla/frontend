@@ -1,17 +1,17 @@
-import {Component} from 'react';
+import { browserHistory } from 'react-router';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { browserHistory, Link } from 'react-router';
 import { checkTokenExists } from 'ducks/auth';
-import { Spinner, Header, Footer, Sidebar } from 'components';
-
+import Popup from 'react-popup';
+import { Spinner, Header, Sidebar } from 'components';
 import './DashboardContainer.scss';
 import './assets/css/bootstrap.min.scss';
 import './assets/css/animate.min.scss';
 import './assets/css/demo.scss';
 import './assets/css/pe-icon-7-stroke.css';
 import 'react-select/dist/react-select.css';
-import Popup from 'react-popup';
 import 'react-popup/style.css';
+import document from 'react';
 
 
 class DashboardContainer extends Component {
@@ -38,9 +38,9 @@ class DashboardContainer extends Component {
       : null;
     if (authToken) {
       this.props.checkTokenExists(authToken);
-      callback()
+      callback();
     } else {
-      callback("not logged in")
+      callback('not logged in');
     }
   }
 

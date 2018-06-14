@@ -1,8 +1,10 @@
-import { Component } from 'react';
+import React, { Component } from 'react';
 import { browserHistory } from 'react-router';
 import { connect } from 'react-redux';
-
 import { checkTokenExists } from 'ducks/auth';
+import { WebsiteHeader, WebsiteFooter } from 'components';
+import { Spinner } from '../../components/index.js';
+import { ToastContainer } from 'react-toastify';
 
 
 import './scss/stack-interface.scss';

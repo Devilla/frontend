@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import React, { Component } from 'react';
 import {
   ContactAvatar1,
   ContactAvatar2,
@@ -7,6 +7,8 @@ import {
   ContactAvatar5,
   ContactAvatar6
 } from 'img';
+
+var Recaptcha = require('react-recaptcha');
 
 class WebsiteContact extends Component {
   componentDidMount() {

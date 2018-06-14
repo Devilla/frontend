@@ -1,4 +1,4 @@
-import {Component} from 'react';
+import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import {
   Grid,
@@ -10,20 +10,12 @@ import {
   HelpBlock
 } from 'react-bootstrap';
 import {browserHistory} from 'react-router';
-import $ from 'jquery';
-import CardHeader from 'components/Template/card-with-header'
-import FormInputs from 'components/Template/FormTemp';
+import CardHeader from 'components/Template/card-with-header';
 import Button from 'components/Template/customButton';
-import { ToastContainer, toast } from 'react-toastify';
-import { css } from 'glamor';
+import { ToastContainer } from 'react-toastify';
 import { validatewebsite } from 'components/Common/function';
 import { createCampaign } from 'ducks/campaign';
 
-const toastConfig = {
-  position: toast.POSITION.BOTTOM_LEFT,
-  autoClose: 2000,
-  className: 'toast-style'
-};
 
 function validate(campaignname, website) {
   // true means invalid, so our conditions got reversed
@@ -42,8 +34,8 @@ export class NewUser extends Component {
       status: {},
       errorName: '',
       errorWebsiteUrl: ''
-    }
-    this.handleNextButton = this.handleNextButton.bind(this)
+    };
+    this.handleNextButton = this.handleNextButton.bind(this);
   }
 
   handleCampaignNameChange(evt) {
@@ -56,14 +48,14 @@ export class NewUser extends Component {
 
   handleCampaignAuth(evt) {
     if (evt.target.value == '')
-      this.setState({errorName: "Enter campaign name"})
+      this.setState({errorName: 'Enter campaign name'});
   }
 
   handleWebsiteAuth(evt) {
     if(evt.target.value) {
-      this.setState({errorWebsiteUrl: "Enter website url"})
+      this.setState({errorWebsiteUrl: 'Enter website url'});
     } else if(!validatewebsite(evt.target.value)) {
-      this.setState({errorWebsiteUrl: "Enter a valid website url"});
+      this.setState({errorWebsiteUrl: 'Enter a valid website url'});
     }
   }
 
@@ -74,8 +66,8 @@ export class NewUser extends Component {
   }
 
   handleCheckCookie() {
-    var usertoken = localStorage.getItem("authToken");
-    if (usertoken != "") {
+    var usertoken = localStorage.getItem('authToken');
+    if (usertoken != '') {
       return usertoken;
     } else {
       this.setState({render: false});
@@ -85,13 +77,12 @@ export class NewUser extends Component {
 
   handleNextButton(evt) {
     evt.preventDefault();
-    var tokenverify = this.handleCheckCookie();
     const data = {
       campaignName: this.state.campaignname,
       websiteUrl: this.state.website,
       profile: this.props.profile._id
     };
-    return this.props.createCampaign(data)
+    return this.props.createCampaign(data);
   }
 
   componentWillMount() {
@@ -159,7 +150,7 @@ export class NewUser extends Component {
                   fill
                   type="submit"
                   disabled={isDisabled}
-                  >
+                >
                   Next >
                 </Button>
                 <div className="clearfix"></div>

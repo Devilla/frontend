@@ -1,13 +1,13 @@
-import { Component } from 'react';
+import React, { Component } from 'react';
 import {
-    Grid,
-    Row,
-    Col,
-    FormGroup,
-    ControlLabel,
-    ButtonToolbar,
-    Button,
-    Glyphicon
+  Grid,
+  Row,
+  Col,
+  FormGroup,
+  ControlLabel,
+  ButtonToolbar,
+  Button,
+  Glyphicon
 } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import copy from 'copy-to-clipboard';
@@ -62,7 +62,7 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
     copy(pixelCode, {
       debug: true
     });
-    return toast("Pixel copied", toastConfig);
+    return toast('Pixel copied', toastConfig);
   }
 
   componentWillUnmount() {
@@ -102,7 +102,7 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
 </script>` }
                   </Highlight>
                   <ButtonToolbar>
-                    <Button bsStyle={elastic==undefined?"default":elastic.error?"danger":"success"} className="btn-default" bsSize="small" onClick={() => this.verifyPixelStatus()}>
+                    <Button bsStyle={elastic==undefined?'default':elastic.error?'danger':'success'} className="btn-default" bsSize="small" onClick={() => this.verifyPixelStatus()}>
                       Verify Pixel Status
                     </Button>
                     <Button bsSize="small" bsStyle="default" onClick={this.handlePixelCopy}>Copy to clipboard</Button>
@@ -133,9 +133,9 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
               </Col>
             </Row>
           </div>
-       </Grid>
-       <ToastContainer autoClose={8000} />
-     </div>
+        </Grid>
+        <ToastContainer autoClose={8000} />
+      </div>
     );
   }
 }

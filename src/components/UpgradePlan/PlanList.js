@@ -1,4 +1,15 @@
+import React from 'react';
 import { browserHistory } from 'react-router';
+import {
+  Grid,
+  Row,
+  Col
+} from 'react-bootstrap';
+import CardHeader from 'components/Template/card-with-header';
+import { Animated } from 'react-animated-css';
+
+import Button from 'components/Template/customButton';
+import PricePage from 'components/PricePage';
 
 const PlanList = ({ plan, handleCheckChange, makePayment }) => {
   return (
@@ -24,7 +35,7 @@ const PlanList = ({ plan, handleCheckChange, makePayment }) => {
                           </div>
                           <Row className="upgrade-button">
                             <div className='col-md-2 pull-left'>
-                              <Button type='button' icon="chevron-left" bsStyle="info" fill="fill" onClick={() => browserHistory.push("/profile")}>Back</Button>
+                              <Button type='button' icon="chevron-left" bsStyle="info" fill="fill" onClick={() => browserHistory.push('/profile')}>Back</Button>
                             </div>
                             <div className="col-md-2 pull-right">
                               <Button type="submit" icon="chevron-right" icon_pull="right" bsStyle="info" fill="fill" onClick={() => makePayment()}>Proceed</Button>

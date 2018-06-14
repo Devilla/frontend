@@ -2,22 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { verifyUser } from 'ducks/auth';
-import { ToastContainer, toast } from 'react-toastify';
 import { Spinner } from 'components';
+import { ToastContainer } from 'react-toastify';
 import './VerificationPage.scss';
-
-const toastConfig = {
-  position: toast.POSITION.BOTTOM_LEFT,
-  autoClose: 2000
-};
 
 class VerificationPage extends React.Component {
   componentDidMount() {
     const {
-      params: { code },
-      location: { search },
+      params: { code }
     } = this.props;
-    // const requestURL = `auth/${provider}/callback${search}`;
     this.props.verifyUser(code);
   }
 

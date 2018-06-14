@@ -1,4 +1,7 @@
-import { Component } from 'react';
+import React, { Component } from 'react';
+import { Grid, Row } from 'react-bootstrap';
+import Tabs from 'components/Template/tab';
+import Display from './notification/display';
 
 class ConfigNotification extends Component {
   constructor() {

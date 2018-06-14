@@ -1,4 +1,7 @@
-import { Component } from 'react';
+import React, { Component } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import { UpgradeCard } from 'components';
+import PlanList from './PlanList';
 import './UpgradePlan.scss';
 
 const toastConfig = {

@@ -10,6 +10,7 @@ const toastConfig = {
   autoClose: 2000
 };
 
+
 function* fetch() {
   try {
     yield put(load());
@@ -38,7 +39,6 @@ function* create(action) {
     } else {
       yield put(actions.successProfile(res));
     }
-
     yield put(loaded());
   } catch (error) {
     yield put(loaded());

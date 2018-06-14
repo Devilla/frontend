@@ -1,6 +1,6 @@
 import { fromJS } from 'immutable';
 
-const action = name => '/configuration/${name}';
+const action = name => `/configuration/${name}`;
 
 export const FETCH = action('FETCH');
 export const FETCH_CAMPAIGN_CONFIG = action('FETCH_CAMPAIGN_CONFIG');
@@ -78,15 +78,15 @@ const initialState = fromJS({
 const configuration = (state = initialState, action) => {
   switch (action.type) {
     case SUCCESS:
-      return state.set("configurations", action.configuration);
+      return state.set('configurations', action.configuration);
     case CREATE_SUCCESS:
-      return state.set("configuration", action.configuration);
+      return state.set('configuration', action.configuration);
     case CLEAR:
-      return state.set("configuration", initialConfig);
+      return state.set('configuration', initialConfig);
 
     default:
-      return state
+      return state;
   }
-}
+};
 
 export default configuration;

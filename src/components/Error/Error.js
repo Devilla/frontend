@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import React, { Component } from 'react';
 import { browserHistory } from 'react-router';
 import './Error.css';
 

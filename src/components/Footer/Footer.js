@@ -1,17 +1,17 @@
-import { Component } from 'react';
+import React, { Component } from 'react';
 
 class Footer extends Component {
-    render() {
-        return (
-            <footer className="footer">
+  render() {
+    return (
+      <footer className="footer">
 
-                <p className="copyright center">
+        <p className="copyright center">
                     Copyright  &copy; {(new Date()).getFullYear()} All rights reserved.
-                    </p>
+        </p>
 
-            </footer>
-        );
-    }
+      </footer>
+    );
+  }
 }
 
 export default Footer;

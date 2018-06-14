@@ -1,22 +1,20 @@
-import { Component } from 'react';
+import React, { Component } from 'react';
 import {
-    Grid,
-    Row,
-    Col,
-    Table,
-    Button,
-    Glyphicon,
-    HelpBlock
+  Grid,
+  Row,
+  Col,
+  Table,
+  Button,
+  Glyphicon,
+  HelpBlock
 } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import Tabs from 'components/Template/tab'
-import CardTable from 'components/Template/card-with-page-table'
-import { pagethArray } from 'components/Template/data'
-import { fetchPageUrl, createPageUrl, clearPageUrl, removePageUrl } from 'ducks/pageurl';
+import Tabs from 'components/Template/tab';
+import CardTable from 'components/Template/card-with-page-table';
+import { pagethArray } from 'components/Template/data';
+import { fetchPageUrl, createPageUrl, removePageUrl } from 'ducks/pageurl';
 import { fetchOneRules, clearRules } from 'ducks/rules';
 import { validatePath } from 'components/Common/function';
-import { css, checked } from 'glamor';
-import $ from 'jquery';
 
 class CaptureLeads extends Component{
   constructor(){
@@ -65,7 +63,7 @@ class CaptureLeads extends Component{
 
   handleNextState() {
     if(!this.props.leads.length)
-      return this.setState({error: "Add a display path"});
+      return this.setState({error: 'Add a display path'});
     this.setActiveState({active: 6});
   }
 
@@ -80,7 +78,7 @@ class CaptureLeads extends Component{
 
   addPageUrl() {
     if(this.state.lead.url == '' || !validatePath(this.state.lead.url))
-      return this.setState({error: "Please enter a valid path"});
+      return this.setState({error: 'Please enter a valid path'});
     let lead = this.state.lead;
     lead['rule'] = this.props.rules._id;
     this.props.createPageUrl(lead);
@@ -104,7 +102,7 @@ class CaptureLeads extends Component{
 
   handleWebsiteAuth(evt) {
     if (! validatePath(evt.target.value))
-      return this.setState({error: "Please enter a valid path"});
+      return this.setState({error: 'Please enter a valid path'});
   }
 
   deleteLead(id, index) {
@@ -115,16 +113,12 @@ class CaptureLeads extends Component{
     switch (classname) {
       case 'warning':
         return '#FFEB3B';
-        break;
       case 'primary':
         return '#2196F3';
-        break;
       case 'danger':
         return '#F44336';
-        break;
       case 'success':
         return '#4CAF50';
-        break;
       default:
         return '#ddd';
     }
@@ -136,29 +130,29 @@ class CaptureLeads extends Component{
       <Table>
         <thead>
           <tr>
-          {
-            pagethArray.map((prop, key) => {
-              return (
-              <th  key={key}>{prop}</th>
-              );
-            })
-          }
+            {
+              pagethArray.map((prop, key) => {
+                return (
+                  <th  key={key}>{prop}</th>
+                );
+              })
+            }
           </tr>
         </thead>
         <tbody>
           {
             leads.map((lead, i) => {
               return <tr>
-                 <td className="serial">{i+1}</td>
-                 <td className="url">{lead.url}</td>
-                 <td className="status"><span style={{backgroundColor:this.renderColor(lead.class)}}></span></td>
-                 <td><a href="#" onClick={() => this.deleteLead(lead._id, i)}><Glyphicon glyph="trash" /></a></td>
-              </tr>
+                <td className="serial">{i+1}</td>
+                <td className="url">{lead.url}</td>
+                <td className="status"><span style={{backgroundColor:this.renderColor(lead.class)}}></span></td>
+                <td><a href="#" onClick={() => this.deleteLead(lead._id, i)}><Glyphicon glyph="trash" /></a></td>
+              </tr>;
             })
           }
         </tbody>
       </Table>
-    )
+    );
   }
 
   render(){
@@ -177,8 +171,8 @@ class CaptureLeads extends Component{
               <Col md={12}>
                 <p>Enter URL of page you are capturing conversions on. </p>
                 <small>This page must have:<br/>
-                <i className="fas fa-angle-right"></i> An email form field<br/>
-                <i className="fas fa-angle-right"></i> Your Pixel installed (if not, Go to Install Pixel)</small>
+                  <i className="fas fa-angle-right"></i> An email form field<br/>
+                  <i className="fas fa-angle-right"></i> Your Pixel installed (if not, Go to Install Pixel)</small>
                 <p>&nbsp;</p>
               </Col>
             </Row>
@@ -186,19 +180,19 @@ class CaptureLeads extends Component{
               <Col md={12}>
                 <div className="input-group">
                   <input type="text"
-                   className="form-control txtpageurl"
-                   placeholder="Path URL  (For eg. /mypage, /register, /products, /design/front etc."
-                   aria-describedby="urladd"
-                   value={lead.url}
-                   onChange={this.handlePageUrl}
-                   onBlur={this.handleWebsiteAuth.bind(this)}
-                   onKeyUp={(e) => e.keyCode === 13?this.addPageUrl():null}
+                    className="form-control txtpageurl"
+                    placeholder="Path URL  (For eg. /mypage, /register, /products, /design/front etc."
+                    aria-describedby="urladd"
+                    value={lead.url}
+                    onChange={this.handlePageUrl}
+                    onBlur={this.handleWebsiteAuth.bind(this)}
+                    onKeyUp={(e) => e.keyCode === 13?this.addPageUrl():null}
 
                   />
                   <span className="input-group-btn"
-                   id="urladd">
+                    id="urladd">
                     <a className="btn btn-raised btn-primary blue"
-                    href="#" onClick={this.addPageUrl}>Add</a>
+                      href="#" onClick={this.addPageUrl}>Add</a>
                   </span>
                 </div>
                 <HelpBlock>
@@ -232,9 +226,9 @@ class CaptureLeads extends Component{
             <Row>
               <div className="text-center">
                 <Col md={12}>
-                <p>&nbsp;</p> <p>&nbsp;</p>
+                  <p>&nbsp;</p> <p>&nbsp;</p>
                 Having problems with Auto Lead Capture in your current setup? &nbsp;&nbsp; <a
-                href="#" className="btn blue btn-sm">Use Webhook Integration</a>
+                    href="#" className="btn blue btn-sm">Use Webhook Integration</a>
                 </Col>
               </div>
             </Row>

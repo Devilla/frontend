@@ -26,6 +26,7 @@ const initialRules = {
   displayTime: 3,
   delayBetween: 3,
   displayPosition: 'bottom',
+  popupAnimation:'fadeinout'
 };
 
 const initialState = fromJS({
@@ -42,8 +43,8 @@ const rules = (state = initialState, action) => {
     case CLEAR_RULES:
       return state.set('rule', null);
     default:
-      return state
-  };
+      return state;
+  }
 };
 
 export default rules;

@@ -45,7 +45,7 @@ function* fetchOne(action) {
 function* create(action) {
   try {
     yield put(load());
-    const res = yield call(api.POST, `notificationpath`, action.pageurl);
+    const res = yield call(api.POST, 'notificationpath', action.pageurl);
     if(res.error)
       console.log(res.error);
     else {
@@ -70,7 +70,7 @@ function* update(action) {
       console.log(res.error);
     else {
       let pageurl = action.pageurl;
-      pageurl["_id"] = pageurl.id;
+      pageurl['_id'] = pageurl.id;
       yield put(actions.successPageUrl(pageurl));
     }
     yield put(loaded());

@@ -1,5 +1,6 @@
 import { fromJS, List } from 'immutable';
-const action = name => '/pageurl/${name}';
+
+const action = name => `/pageurl/${name}`;
 
 export const FETCH = action('FETCH');
 export const FETCH_ONE = action('FETCH_ONE');
@@ -42,8 +43,8 @@ const pageurl = (state = initialState, action) => {
     case CLEAR_PAGE_URL:
       return state.set('pageurls', null);
     default:
-      return state
-  };
+      return state;
+  }
 };
 
 export default pageurl;

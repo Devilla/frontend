@@ -1,6 +1,6 @@
 import { fromJS } from 'immutable';
 
-const action = name => '/campaign/${name}';
+const action = name => `/campaign/${name}`;
 
 export const FETCH = action('FETCH');
 export const CREATE = action('CREATE');
@@ -40,8 +40,8 @@ const campaign = (state = initialState, action) => {
     case FETCH_DASHBOARD_SUCCESS:
       return state.set('campaignInfo', action.campaign);
     default:
-      return state
-  };
+      return state;
+  }
 };
 
 export default campaign;

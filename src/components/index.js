@@ -1,5 +1,3 @@
-// export { default as App } from "./App";
-// Company Website
 export { default as WebsiteHeader } from "./WebsiteHeader/WebsiteHeader";
 export { default as WebsiteFooter } from "./WebsiteFooter/WebsiteFooter";
 export { default as WebsiteHome } from "./WebsiteHome/WebsiteHome";
@@ -17,8 +15,6 @@ export { default as WebsiteCustStory}  from "./WebsiteCustStory/WebsiteCustStory
 export { default as WebsiteFeature}  from "./WebsiteFeature/WebsiteFeature";
 export { default as Affiliate}  from "./Affiliate/Affiliate";
 export { default as AffiliateRegister}  from "./Affiliate/AffiliateRegister";
-
-
 
 export { default as Footer } from "./Footer/Footer";
 export { default as Header } from "./Header/Header";
@@ -41,21 +37,15 @@ export { default as Analytics } from './Analytics/analytics';
 export { default as AnalyticsProfile } from './Analytics/AnalyticsProfile';
 export { default as New } from './New';
 export { default as LoginFlow } from './LoginFlow/LoginFlow';
-export { default as SelectNotification } from './New/SelectNotification/SelectNotification';
 export { default as Spinner } from './Spinner/Spinner';
-export { default as Upgrade } from './Upgrade/Upgrade';
 export { default as Error } from './Error/Error';
 export { default as ComingSoon } from './ComingSoon/ComingSoon';
 export { default as Integration } from './Integration/Integration';
 export { default as Button } from './Button/Button';
 export { default as Profile } from './Profile/Profile';
-export { default as Billing } from './Billing/Billing';
 export { default as BillingDetails } from './Billing/BillingDetails';
-export { default as  Help } from './Billing/Help';
-export { default as Payment } from './Billing/Payment';
 export { default as UpgradeCard } from './UpgradeCard/UpgradeCard';
 export { default as UpgradePlan } from './UpgradePlan/UpgradePlan';
-
 
 export { default as Template } from './Template';
 export { default as VerificationPage } from './VerificationPage/VerificationPage';

@@ -1,6 +1,6 @@
 import { fromJS } from 'immutable';
 
-const action = name => '/payment/${name}';
+const action = name => `/payment/${name}`;
 
 export const FETCH = action('FETCH');
 export const CREATE = action('CREATE');
@@ -12,7 +12,7 @@ export const UPDATE_PAYMENT_METHOD = action('UPDATE_PAYMENT_METHOD');
 
 export const fetchPayment = () => ({ type: FETCH });
 export const fetchInvoices = () => ({ type: FETCH_INVOICES });
-export const createPayment = (payment) => ({ type: CREATE, payment });
+export const createPayment = (payment, profile, update) => ({ type: CREATE, payment, profile, update });
 export const updatePayment = (payment) => ({ type: UPDATE, payment });
 export const updatePaymentMethod = (details) => ({ type: UPDATE_PAYMENT_METHOD, details });
 export const successPayment = (payment) => ({ type: SUCCESS, payment });
@@ -27,8 +27,8 @@ const payment = (state = initialState, action) => {
     case SUCCESS_INVOICE:
       return state.set('invoices', action.invoices);
     default:
-      return state
-  };
+      return state;
+  }
 };
 
 export default payment;
