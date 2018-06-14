@@ -17,15 +17,15 @@ class HeaderLinks extends Component {
     browserHistory.push('/dashboard');
   }
   myaccount() {
-    browserHistory.push('/dashboard');
+    browserHistory.push('/profile');
   }
 
   render() {
     return (
     <div>
       <Nav pullRight>
-        <NavDropdown eventKey={4} title="Account" id="basic-nav-dropdown-right">
-          <MenuItem eventKey={4.1} onClick={this.myaccount}>My Account</MenuItem>
+        <NavDropdown eventKey={4} title="My Account" id="basic-nav-dropdown-right">
+          <MenuItem eventKey={4.1} onClick={this.myaccount}>My Profile</MenuItem>
           <MenuItem eventKey={4.2} onClick={this.settings}>Settings</MenuItem>
           <MenuItem eventKey={4.3} onClick={this.upgrade}>Upgrade </MenuItem>
           <MenuItem eventKey={4.4} onClick={this.logout}>Log out </MenuItem>

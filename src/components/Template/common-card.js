@@ -6,7 +6,7 @@ import {
 export class CommonCard extends Component{
     render(){
         return (
-            <div className="card card-plain">
+            <div className="">
                 <div className="header">
                 <Breadcrumb>
                      <Breadcrumb.Item href="#"><i className="fas fa-globe"></i> {this.props.url}</Breadcrumb.Item>

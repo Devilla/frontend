@@ -9,6 +9,7 @@ import {
   FormControl,
   HelpBlock
 } from 'react-bootstrap';
+import { Integrations1 } from 'img';
 import {browserHistory} from 'react-router';
 import $ from 'jquery';
 import CardHeader from 'components/Template/card-with-header'
@@ -18,6 +19,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import { css } from 'glamor';
 import { validatewebsite } from 'components/Common/function';
 import { createCampaign } from 'ducks/campaign';
+import '../../containers/DashboardContainer/asset/css/style.css'; 
 
 const toastConfig = {
   position: toast.POSITION.BOTTOM_LEFT,
@@ -55,7 +57,7 @@ export class NewUser extends Component {
   }
 
   handleCampaignAuth(evt) {
-    if (evt.target.value == '')
+    if (evt.target.value === '')
       this.setState({errorName: "Enter campaign name"})
   }
 
@@ -75,7 +77,7 @@ export class NewUser extends Component {
 
   handleCheckCookie() {
     var usertoken = localStorage.getItem("authToken");
-    if (usertoken != "") {
+    if (usertoken !== "") {
       return usertoken;
     } else {
       this.setState({render: false});
@@ -100,7 +102,7 @@ export class NewUser extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if(nextProps.campaign != this.props.campaign)
+    if(nextProps.campaign !== this.props.campaign)
       this.props.callbackFromParent({'active': 2});
   }
 
@@ -112,13 +114,13 @@ export class NewUser extends Component {
     return (<div className="content fill">
       <Grid fluid="fluid">
         <Row>
-          <Col md={12}>
-            <CardHeader title="Website" content={
+          <Col md={6}>
+            <CardHeader title="Register Your Website"  content={
               <form onSubmit={this.handleNextButton}>
                 <Row>
-                  <div className="col-md-6">
+                  <div className="col-md-12">
                     <FormGroup>
-                      <ControlLabel>Name</ControlLabel>
+                      <ControlLabel className="text-muted h5">Name</ControlLabel>
                       <FormControl
                         type="text"
                         bsClass="form-control"
@@ -134,9 +136,9 @@ export class NewUser extends Component {
                       </HelpBlock>
                     </FormGroup>
                   </div>
-                  <div className="col-md-6">
+                  <div className="col-md-12">
                     <FormGroup>
-                      <ControlLabel>Website URL</ControlLabel>
+                      <ControlLabel className="text-muted h5">Website URL</ControlLabel>
                       <FormControl
                         type="text"
                         bsClass="form-control"
@@ -165,6 +167,17 @@ export class NewUser extends Component {
                 <div className="clearfix"></div>
               </form>
             }/>
+          </Col>
+          <Col md ={6}>
+            <img alt="background" src={Integrations1} />
+          </Col>
+        </Row>
+        <Row>
+          <Col md={12}>
+              <p className="text-muted">" We are in the midst of a human-data revolution"
+                 <br/>
+                  <b className="text-right">- Mark lehr</b>
+              </p>
           </Col>
         </Row>
       </Grid>
