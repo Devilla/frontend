@@ -115,7 +115,7 @@ export class NewUser extends Component {
       <Grid fluid="fluid">
         <Row>
           <Col md={6}>
-            <CardHeader title="Register Your Website"  content={
+            <CardHeader title="Create Your Campaign"  content={
               <form onSubmit={this.handleNextButton}>
                 <Row>
                   <div className="col-md-12">
@@ -172,6 +172,7 @@ export class NewUser extends Component {
             <img alt="background" src={Integrations1} />
           </Col>
         </Row>
+        <p><br/></p>
         <Row>
           <Col md={12}>
               <p className="text-muted">" We are in the midst of a human-data revolution"
