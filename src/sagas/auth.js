@@ -19,7 +19,8 @@ import moment from 'moment';
 
 const toastConfig = {
   position: toast.POSITION.BOTTOM_LEFT,
-  autoClose: 2000
+  autoClose: 2000,
+  className: 'toast-style'
 };
 
 export const removeAuthToken = () => localStorage.removeItem('authToken');
@@ -115,16 +116,15 @@ export function* forgotPassword(action) {
     yield put(load());
     const res = yield call(api.POST, 'auth/forgot-password', action.data);
     if(res.error)
-      console.log(res.error);
+      yield toast.error(res.message, toastConfig);
     else {
-      yield toast.error('Reset link sent.', toastConfig);
+      yield toast.info('Reset link sent.', toastConfig);
       yield browserHistory.push('/login');
     }
-
     yield put(loaded());
   } catch (error) {
     yield put(loaded());
-    yield console.log(error);
+    yield toast.error(error, toastConfig);
   }
 }
 

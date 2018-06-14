@@ -16,8 +16,6 @@ const initialState = fromJS({});
 
 const profile = (state = initialState, action) => {
   switch (action.type) {
-    // case FETCH:
-    //   return state.set("profile", action.profile);
     case SUCCESS:
       return state.set('profile', action.profile);
     default:
