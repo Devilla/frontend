@@ -77,49 +77,40 @@ export default class Contact extends Component {
     }
 
     handleSubmit(evt){
-          if (!this.canBeSubmitted()) {
-              evt.preventDefault();
-              return;
-          }else{
-            evt.preventDefault();
-            const data = {
-                "name" : this.state.name,
-                "email" :  this.state.email,
-                "message": this.state.msg
+      if (!this.canBeSubmitted()) {
+        evt.preventDefault();
+        return;
+      }else{
+        evt.preventDefault();
+        const data = {
+          "name" : this.state.name,
+          "email" :  this.state.email,
+          "message": this.state.msg
+        }
 
-            }
+        let urls;
+        if (process.env.NODE_ENV === 'production')
+          urls = `${process.env.REACT_APP_PRODUCTION_URL}contact`;
+        else if(process.env.NODE_ENV === 'staging')
+          urls = `${process.env.REACT_APP_STAGING_URL}contact`;
+        else
+          urls = `${process.env.REACT_APP_DEVELOPMENT_URL}contact`;
 
-            let urls;
-            if (process.env.NODE_ENV === 'production')
-              urls = `${process.env.REACT_APP_PRODUCTION_URL}contact`;
-            else
-              urls = `${process.env.REACT_APP_DEVELOPMENT_URL}contact`
-
-            // toast.success('Thank you for your query', {
-            //      position: toast.POSITION.BOTTOM_CENTER
-            // });
-
-            axios.post(urls ,data).then(function(response){
-              toast.info('We will get back to you shortly', {
-                 position: toast.POSITION.BOTTOM_CENTER
-              });
-            }) .catch(function (error) {
-              console.log(error);
+        axios.post(urls ,data).then(function(response){
+          toast.info('We will get back to you shortly', {
+             position: toast.POSITION.BOTTOM_CENTER
           });
+        }) .catch(function (error) {
+          console.log(error);
+        });
 
-
-
-
-
-            this.setState({
-               name : '',
-               email:'',
-               msg: ''
-            })
-          }
-     }
-
-
+        this.setState({
+           name : '',
+           email:'',
+           msg: ''
+        })
+      }
+    }
 
     canBeSubmitted() {
     const errors = validate(

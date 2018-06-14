@@ -87,6 +87,8 @@ export default class forget extends Component{
             let urls;
             if (process.env.NODE_ENV === 'production')
               urls = `${process.env.REACT_APP_PRODUCTION_URL}auth/reset_password`;
+            else if(process.env.NODE_ENV === 'staging')
+              urls = `${process.env.REACT_APP_STAGING_URL}auth/reset_password`
             else
               urls = `${process.env.REACT_APP_DEVELOPMENT_URL}auth/reset_password`
 

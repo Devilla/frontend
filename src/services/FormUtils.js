@@ -11,9 +11,11 @@ if (process.env.NODE_ENV === 'production') {
   LOGIN_API_URL = `${process.env.REACT_APP_PRODUCTION_URL}auth/local`;
   REGISTER_API_URL = `${process.env.REACT_APP_PRODUCTION_URL}auth/local/register`;
   COMPANY_DETAILS_API_URL = `${process.env.REACT_APP_PRODUCTION_URL}company-details`;
-
-}
-else {
+} else if(process.env.NODE_ENV === 'staging') {
+  LOGIN_API_URL = `${process.env.REACT_APP_STAGING_URL}auth/local`;
+  REGISTER_API_URL = `${process.env.REACT_APP_STAGING_URL}auth/local/register`;
+  COMPANY_DETAILS_API_URL = `${process.env.REACT_APP_STAGING_URL}company-details`;
+} else {
   LOGIN_API_URL = `${process.env.REACT_APP_DEVELOPMENT_URL}auth/local`;
   REGISTER_API_URL = `${process.env.REACT_APP_DEVELOPMENT_URL}auth/local/register`;
   COMPANY_DETAILS_API_URL = `${process.env.REACT_APP_DEVELOPMENT_URL}company-details`;

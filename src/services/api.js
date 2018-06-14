@@ -1,7 +1,9 @@
 export const base =
   process.env.NODE_ENV === 'production'
     ? process.env.REACT_APP_PRODUCTION_URL
-    : process.env.REACT_APP_DEVELOPMENT_URL; // eslint-disable-line
+    : process.env.NODE_ENV === 'staging'
+      ? process.env.REACT_APP_STAGING_URL
+      : process.env.REACT_APP_DEVELOPMENT_URL; // eslint-disable-line
 
 const unAuthorizedUrl = ['plan', 'auth/forgot-password', 'auth/google/callback', 'auth/facebook/callback'];
 // const getToken = state => state.getIn(['auth', 'token']);//state.auth.token;
