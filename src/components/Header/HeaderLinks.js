@@ -24,11 +24,12 @@ class HeaderLinks extends Component {
     return (
     <div>
       <Nav pullRight>
-        <NavDropdown eventKey={4} title="My Account" id="basic-nav-dropdown-right">
-          <MenuItem eventKey={4.1} onClick={this.myaccount}>My Profile</MenuItem>
-          <MenuItem eventKey={4.2} onClick={this.settings}>Settings</MenuItem>
-          <MenuItem eventKey={4.3} onClick={this.upgrade}>Upgrade </MenuItem>
-          <MenuItem eventKey={4.4} onClick={this.logout}>Log out </MenuItem>
+        <NavDropdown eventKey={4} title="My Account" id="basic-nav-dropdown" className="p-2">
+          <MenuItem eventKey={4.1} onClick={this.myaccount}><i className="fi-head"></i>&nbsp; Profile</MenuItem>
+          <MenuItem eventKey={4.2} onClick={this.settings}><i className="fi-cog"></i>&nbsp;Settings</MenuItem>
+          <MenuItem eventKey={4.3} onClick={this.upgrade}><i className="fi-bar-graph"></i>&nbsp;Upgrade </MenuItem>
+          <MenuItem divider />
+          <MenuItem eventKey={4.4} onClick={this.logout}><i className="fi-unlock"></i>&nbsp;Log out </MenuItem>
         </NavDropdown>
       </Nav>
     </div>);

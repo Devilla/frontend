@@ -57,13 +57,13 @@ class Header extends Component{
     }
     render(){
         return (
-            <Navbar fluid>
+            
                 <Navbar.Collapse>
                     <HeaderLinks />
-                    <h3> Welcome Home</h3>
-                    <p> Keep track of your customers </p>
+                    <span className="h3"> Welcome Home</span>
+                  
                 </Navbar.Collapse>
-            </Navbar>
+          
         );
     }
 }

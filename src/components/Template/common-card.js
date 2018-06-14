@@ -14,7 +14,7 @@ export class CommonCard extends Component{
                  </Breadcrumb>    
                     
                 </div>
-                <div className="content">  
+                <div className="">  
                     {this.props.content}            
                 </div>
             </div>
