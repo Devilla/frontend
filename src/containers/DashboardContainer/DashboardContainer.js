@@ -72,7 +72,7 @@ class DashboardContainer extends Component {
     return (
       <div className="dashboard-container">
         <Popup />
-        <div className="wrapper">
+       
         <div id="wrapper">
           <Spinner loading={loading} />
           {!this.state.render && <p>Please wait</p>}
@@ -81,21 +81,24 @@ class DashboardContainer extends Component {
           {
             this.state.render &&
             <div className="content-page bg--secondary">
-            <div class="topbar">
-              <nav class="navbar-custom">
-                <div class="topbar-right-menu float-right mb-0">
+            <div className="topbar">
+           
+            <nav class="navbar-custom">
                   <Header {...this.props}/>
-
-                  {this.props.children}
+              </nav>
                   </div>
-                  </nav>
-                </div>
+                  <div className="content">
+                    <div className="container-fluid">
+                  {this.props.children}
+                 </div>
+                 </div>
+                
+              
                 </div>
           }
           </div>
         </div>
-      </div>
-
+   
     );
   }
 }
