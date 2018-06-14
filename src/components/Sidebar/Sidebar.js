@@ -93,7 +93,7 @@ class Sidebar extends Component {
             <h5></h5>
             <p clasName="text-muted"></p>
           </div>
-          <div className="topbar-left mt-5">
+          <div className="topbar-left mt-3">
             <Link to="/dashboard" class="logo ">
               <span>
                 <img src={logo} alt="influence-img" height="35" />

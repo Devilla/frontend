@@ -55,10 +55,10 @@ class Notification extends Component {
   }
 
   handleRouteChange(e, campaign) {
-    if(e.target.className == 'react-flexible-switch react-flexible-switch--active' ||
-      e.target.className == 'react-flexible-switch react-flexible-switch--inactive' ||
-      e.target.className == 'react-flexible-switch-circle' ||
-      e.target.className == 'glyphicon glyphicon-trash'
+    if(e.target.className === 'react-flexible-switch react-flexible-switch--active' ||
+      e.target.className === 'react-flexible-switch react-flexible-switch--inactive' ||
+      e.target.className === 'react-flexible-switch-circle' ||
+      e.target.className === 'glyphicon glyphicon-trash'
     )
       return;
     this.props.successCampaign(campaign);
