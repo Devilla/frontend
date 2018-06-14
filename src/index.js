@@ -42,7 +42,7 @@ const render = Component =>
   ReactDOM.render(
     <AppContainer errorReporter={Error}>
       <Provider store={store}>
-        <StripeProvider apiKey={process.env.REACT_APP_STRIPE_KEY}>
+        <StripeProvider apiKey={process.env.NODE_ENV === 'production' ? process.env.REACT_APP_STRIPE_KEY : process.env.REACT_APP_DEVELOPMENT_STRIPE_KEY}>
           <Component routerHistory={routerHistory} />
         </StripeProvider>
       </Provider>

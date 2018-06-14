@@ -89,7 +89,7 @@ class WebsiteSignIn extends Component {
   componentDidMount() {
     window.scrollTo(0,0);
   }
- 
+
   render() {
     const mousepoint ={
       cursor : "pointer"
@@ -158,7 +158,7 @@ class WebsiteSignIn extends Component {
                          disabled={!isEmailValid || !isPwdValid}
                           />
                       </div>
-                      <div><a href="/forget-password"  style={{padding: "25px"}}>Forgot password?</a></div>
+                      <div><Link to="/forget-password"  style={{padding: "25px"}}>Forgot password?</Link></div>
                     </div>
                   </form>
                 </div>
