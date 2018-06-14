@@ -72,8 +72,8 @@ class DashboardContainer extends Component {
     return (
       <div className="dashboard-container">
         <Popup />
-       
-        <div id="wrapper">
+       <div className="wrapper">
+        {/* <div id="wrapper"> */}
           <Spinner loading={loading} />
           {!this.state.render && <p>Please wait</p>}
 
@@ -97,6 +97,7 @@ class DashboardContainer extends Component {
                 </div>
           }
           </div>
+          {/* </div> */}
         </div>
    
     );
