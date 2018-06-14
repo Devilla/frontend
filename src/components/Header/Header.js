@@ -60,7 +60,7 @@ class Header extends Component{
             
                 <Navbar.Collapse>
                     <HeaderLinks />
-                    <span className="h3"> Welcome Home</span>
+                  
                   
                 </Navbar.Collapse>
           

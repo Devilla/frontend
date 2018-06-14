@@ -172,15 +172,7 @@ export class NewUser extends Component {
             <img alt="background" src={Integrations1} />
           </Col>
         </Row>
-        <p><br/></p>
-        <Row>
-          <Col md={12}>
-              <p className="text-muted">" We are in the midst of a human-data revolution"
-                 <br/>
-                  <b className="text-right">- Mark lehr</b>
-              </p>
-          </Col>
-        </Row>
+        
       </Grid>
       <ToastContainer hideProgressBar={true}/>
     </div>);
