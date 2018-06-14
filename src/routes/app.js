@@ -10,7 +10,7 @@ const appRoutes = [
     { path: "/campaigns", name: "Campaigns", icon: "fi-layers", component: Notification },
     { path: "/analytics", name: "Analytics", icon: "fi-bar-graph-2", component: Analytics },
     { path: "/integration", name: "Integrations", icon: "fi-command", component: Dashboard },
-    { name: "Help", icon: "fi-speech-bubble" },
+    // { name: "Help", icon: "fi-speech-bubble" },
     { redirect: true }
 ];
 
