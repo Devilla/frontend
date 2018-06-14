@@ -24,7 +24,9 @@ class HeaderLinks extends Component {
     return (
     <div>
       <Nav pullRight>
-        <NavDropdown eventKey={4} title="My Account" id="basic-nav-dropdown" className="p-2">
+        <NavDropdown eventKey={4} title="My Account" id="basic-nav-dropdown" className="text-muted h5 ">
+           <MenuItem eventKey={4.1} className= "small-meta">Welcome! </MenuItem>   
+          <MenuItem divider/>
           <MenuItem eventKey={4.1} onClick={this.myaccount}><i className="fi-head"></i>&nbsp; Profile</MenuItem>
           <MenuItem eventKey={4.2} onClick={this.settings}><i className="fi-cog"></i>&nbsp;Settings</MenuItem>
           <MenuItem eventKey={4.3} onClick={this.upgrade}><i className="fi-bar-graph"></i>&nbsp;Upgrade </MenuItem>
