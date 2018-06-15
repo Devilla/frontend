@@ -83,16 +83,8 @@ class Tabs extends Component{
                 <CaptureLeads setActiveState={this.setActiveState} />
               </div>
 
-              <div className={`tab-pane ${activeClass == 5?'show active':''}`} id="settings1">
-                  <p>Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo,
-                      rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede
-                      mollis pretium. Integer tincidunt.Cras dapibus. Vivamus elementum semper nisi.
-                      Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat
-                      vitae, eleifend ac, enim.</p>
-                  <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget
-                      dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes,
-                      nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium
-                      quis, sem. Nulla consequat massa quis enim.</p>
+              <div className={`tab-pane ${activeClass == 5?'show active':''}`} id="settings2">
+                <DisplayPage setActiveState={this.setActiveState} />
               </div>
           </div>
         </div>
@@ -101,13 +93,4 @@ class Tabs extends Component{
   }
 }
 
-// const mapStateToProps = state => ({
-//   campaign: state.getIn(['campaign', 'campaign'])
-// });
-//
-// const mapDispatchToProps = {
-//   clearCampaign
-// };
-//
-// export default connect(mapStateToProps, mapDispatchToProps)(Tabs);
 export default Tabs;

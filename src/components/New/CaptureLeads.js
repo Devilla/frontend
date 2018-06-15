@@ -9,10 +9,9 @@ import {
     HelpBlock
 } from 'react-bootstrap';
 import { connect } from 'react-redux';
-// import Tabs from 'components/Template/tab'
 import CardTable from 'components/Template/card-with-page-table'
 import { pagethArray } from 'components/Template/data'
-import { fetchPageUrl, createPageUrl, clearPageUrl, removePageUrl } from 'ducks/pageurl';
+import { fetchLeadUrl, createPageUrl, clearPageUrl, removePageUrl } from 'ducks/pageurl';
 import { fetchOneRules, clearRules } from 'ducks/rules';
 import { validatePath } from 'components/Common/function';
 import { css, checked } from 'glamor';
@@ -39,7 +38,8 @@ class CaptureLeads extends Component{
   }
 
   componentWillUnmount() {
-    this.setActiveState(1);
+    this.props.setActiveState(1);
+    // this.props.clearPageUrl();
   }
 
   componentDidMount() {
@@ -55,7 +55,7 @@ class CaptureLeads extends Component{
   }
 
   fetchPathUrls(rule) {
-    this.props.fetchPageUrl('lead', rule._id);
+    this.props.fetchLeadUrl('lead', rule._id);
   }
 
   handleNextState() {
@@ -98,8 +98,8 @@ class CaptureLeads extends Component{
       return this.setState({error: "Please enter a valid path"});
   }
 
-  deleteLead(id, index) {
-    this.props.removePageUrl(id, index);
+  deleteLead(id, index, type) {
+    this.props.removePageUrl(id, index, type);
   }
 
   renderColor(classname) {
@@ -122,7 +122,7 @@ class CaptureLeads extends Component{
   }
 
   renderLeads() {
-    var leads = this.props.leads?this.props.leads:[];
+    var leads = this.props.leads?this.props.leads.filter(lead => lead.type == 'lead'):[];
     return (
       <Table>
         <thead>
@@ -143,7 +143,7 @@ class CaptureLeads extends Component{
                  <td className="serial">{i+1}</td>
                  <td className="url">{lead.url}</td>
                  <td className="status"><span style={{backgroundColor:this.renderColor(lead.class)}}></span></td>
-                 <td><a href="#" onClick={() => this.deleteLead(lead._id, i)}><Glyphicon glyph="trash" /></a></td>
+                 <td><a href="#" onClick={() => this.deleteLead(lead._id, i, lead.type)}><Glyphicon glyph="trash" /></a></td>
               </tr>
             })
           }
@@ -242,15 +242,16 @@ class CaptureLeads extends Component{
 
 const mapStateToProps = state => ({
   rules: state.getIn(['rules', 'rule']),
-  leads: state.getIn(['pageurl', 'pageurls']),
+  leads: state.getIn(['pageurl', 'lead']),
   campaign: state.getIn(['campaign', 'campaign']),
 });
 
 const mapDispatchToProps = {
   fetchOneRules,
-  fetchPageUrl,
+  fetchLeadUrl,
   createPageUrl,
   removePageUrl,
+  clearPageUrl,
   clearRules
 };
 
