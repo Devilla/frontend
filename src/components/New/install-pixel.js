@@ -10,6 +10,7 @@ import {
     Glyphicon
 } from 'react-bootstrap';
 import { connect } from 'react-redux';
+import { browserHistory } from 'react-router';
 import copy from 'copy-to-clipboard';
 import { toast, ToastContainer } from 'react-toastify';
 import { fetchElastic, clearElastic } from 'ducks/elastic';
@@ -84,7 +85,7 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
         </p>
 
         <div className="m-t-50 float-right align-install-btn">
-            <button type="button" className="btn btn-custom  waves-light waves-effect number ">Previous</button>
+            <button type="button" className="btn btn-custom  waves-light waves-effect number " onClick={() => browserHistory.push('/campaigns')}>Previous</button>
             <button type="button" className="btn btn-custom  waves-light waves-effect number ml-2 pl-4 pr-4" onClick={() => setActiveState(2)}>Next </button>
         </div>
         <div className="clearfix"></div>
