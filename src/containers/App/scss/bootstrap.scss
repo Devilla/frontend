@@ -1,6 +1,10 @@
+
+
+
 @-ms-viewport {
   width: device-width;
 }
+
 
 .website-app{/*!
  * Bootstrap v4.0.0-beta.3 (https://getbootstrap.com)
@@ -55,7 +59,6 @@ html {
   -ms-overflow-style: scrollbar;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
-
 
 
 article, aside, dialog, figcaption, figure, footer, header, hgroup, main, nav, section {
@@ -523,6 +526,29 @@ pre {
   margin-left: auto;
 }
 
+@media (min-width: 576px) {
+  .container {
+    max-width: 540px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 720px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    max-width: 960px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+  }
+}
 
 .row {
   display: flex;

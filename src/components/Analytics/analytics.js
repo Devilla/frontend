@@ -22,7 +22,7 @@ const Analytics = ({ renderList }) => {
                      {
                       thArray.map((prop, key) => {
                         return (
-                        <th  key={key}><span className="h5">{prop === "Connected Website" ? <i className="icon-globe"></i> : ""}&nbsp;{prop}</span></th>
+                        <th  key={key}><span className="h6 text-muted">{prop === "Connected Website" ? <i className="icon-globe"></i> : ""}&nbsp;{prop}</span></th>
                         );
                       })
                       }

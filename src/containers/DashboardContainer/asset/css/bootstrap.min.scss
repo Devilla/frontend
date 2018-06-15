@@ -1,16 +1,14 @@
-@-ms-viewport {
+@-ms-viewport  {
   width: device-width;
 }
-
+/*!
+ * Bootstrap v4.1.0 (https://getbootstrap.com/)
+ * Copyright 2011-2018 The Bootstrap Authors
+ * Copyright 2011-2018 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ */
 .dashboard-container {
-  /*!
-   * Bootstrap v4.1.0 (https://getbootstrap.com/)
-   * Copyright 2011-2018 The Bootstrap Authors
-   * Copyright 2011-2018 Twitter, Inc.
-   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
-   */
-
-  :root {
+ :root {
     --blue: #007bff;
     --indigo: #6610f2;
     --purple: #6f42c1;
@@ -53,7 +51,6 @@
     -ms-overflow-style: scrollbar;
     -webkit-tap-highlight-color: transparent;
   }
-
 
 
 
