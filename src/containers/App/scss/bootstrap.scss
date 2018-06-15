@@ -1,3 +1,7 @@
+@-ms-viewport {
+  width: device-width;
+}
+
 .website-app{/*!
  * Bootstrap v4.0.0-beta.3 (https://getbootstrap.com)
  * Copyright 2011-2017 The Bootstrap Authors
@@ -52,9 +56,6 @@ html {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-@-ms-viewport {
-  width: device-width;
-}
 
 
 article, aside, dialog, figcaption, figure, footer, header, hgroup, main, nav, section {
@@ -522,29 +523,6 @@ pre {
   margin-left: auto;
 }
 
-@media (min-width: 576px) {
-  .container {
-    max-width: 540px;
-  }
-}
-
-@media (min-width: 768px) {
-  .container {
-    max-width: 720px;
-  }
-}
-
-@media (min-width: 992px) {
-  .container {
-    max-width: 960px;
-  }
-}
-
-@media (min-width: 1200px) {
-  .container {
-    max-width: 1140px;
-  }
-}
 
 .row {
   display: flex;

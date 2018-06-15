@@ -14,7 +14,8 @@ import copy from 'copy-to-clipboard';
 import { toast, ToastContainer } from 'react-toastify';
 import { fetchElastic, clearElastic } from 'ducks/elastic';
 
-import Tabs from 'components/Template/tab';
+import Tabs from './Tabs';
+
 import Highlight from 'react-highlight';
 
 const toastConfig = {

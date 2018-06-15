@@ -4,17 +4,15 @@ import { browserHistory, Link } from 'react-router';
 import { checkTokenExists } from 'ducks/auth';
 import { Spinner, Header, Footer, Sidebar } from 'components';
 
-import './DashboardContainer.scss';
-import './assets/css/bootstrap.min.scss';
-import './assets/css/animate.min.scss';
-import './assets/css/demo.scss';
+import './asset/css/bootstrap.min.scss';
+import './asset/css/style.scss';
+import './asset/scss/icons.scss';
+import './animate.min.scss';
 import 'react-select/dist/react-select.css';
 import Popup from 'react-popup';
 import 'react-popup/style.css';
 
-import './asset/css/style.css';
-import './asset/scss/icons.scss';
-import './asset/css/bootstrap.min.css';
+
 
 class DashboardContainer extends Component {
   constructor(props) {
@@ -46,12 +44,12 @@ class DashboardContainer extends Component {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (!nextProps.profile && nextProps.user.size != 0 && !this.state.disableButton  )
-      this.checkUserDetails(nextProps.profile);
-    if(this.props.profile != nextProps.profile && nextProps.profile && nextProps.profile.plan)
-      this.setState({disableButton: false});
-  }
+  // componentWillReceiveProps(nextProps) {
+  //   if (!nextProps.profile && nextProps.user.size != 0 && !this.state.disableButton  )
+  //     this.checkUserDetails(nextProps.profile);
+  //   if(this.props.profile != nextProps.profile && nextProps.profile && nextProps.profile.plan)
+  //     this.setState({disableButton: false});
+  // }
 
   checkUserDetails(profile) {
     const user = this.props.user;
@@ -82,7 +80,7 @@ class DashboardContainer extends Component {
             this.state.render &&
             <div className="content-page" style={{backgroundColor: "#FCFCFC"}}>
             <div className="topbar" >
-           
+
             <nav className="navbar-custom">
                   <Header {...this.props}/>
               </nav>
@@ -92,14 +90,14 @@ class DashboardContainer extends Component {
                   {this.props.children}
                  </div>
                  </div>
-                
-              
+
+
                 </div>
           }
           </div>
           {/* </div> */}
         </div>
-   
+
     );
   }
 }

@@ -8,7 +8,6 @@ import { WebsiteHeader, WebsiteFooter } from 'components';
 
 import { checkTokenExists } from 'ducks/auth';
 
-
 import './scss/stack-interface.scss';
 import './scss/socicon.css';
 import './scss/iconsmind.scss';

@@ -10,7 +10,7 @@ import {
 } from 'react-bootstrap';
 import { browserHistory } from 'react-router';
 import { connect } from 'react-redux';
-import Tabs from 'components/Template/tab'
+import Tabs from './Tabs';
 import CardTable from 'components/Template/card-with-page-table'
 import { pagethArray } from 'components/Template/data'
 import { fetchPageUrl, createPageUrl, clearLeads, removePageUrl } from 'ducks/pageurl';

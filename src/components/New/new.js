@@ -19,7 +19,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import { css } from 'glamor';
 import { validatewebsite } from 'components/Common/function';
 import { createCampaign } from 'ducks/campaign';
-import '../../containers/DashboardContainer/asset/css/style.css'; 
+// import '../../containers/DashboardContainer/asset/css/style.css'; 
 
 const toastConfig = {
   position: toast.POSITION.BOTTOM_LEFT,
@@ -172,7 +172,7 @@ export class NewUser extends Component {
             <img alt="background" src={Integrations1} />
           </Col>
         </Row>
-        
+
       </Grid>
       <ToastContainer hideProgressBar={true}/>
     </div>);
