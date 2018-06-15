@@ -1,13 +1,10 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { browserHistory, Link } from 'react-router';
 import { checkTokenExists } from 'ducks/auth';
 import { Spinner, Header, Footer, Sidebar } from 'components';
 
-// import './DashboardContainer.scss';
-// import './assets/css/bootstrap.min.scss';
 import './animate.min.scss';
-//import './assets/css/demo.scss';
 import 'react-select/dist/react-select.css';
 import Popup from 'react-popup';
 import 'react-popup/style.css';
@@ -25,7 +22,7 @@ class DashboardContainer extends Component {
     };
 
     this.checkLogin((err) => {
-      if(err) {
+      if (err) {
         browserHistory.push('/login');
       } else {
         this.checkUserDetails(this.props.profile);
@@ -47,16 +44,16 @@ class DashboardContainer extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (!nextProps.profile && nextProps.user.size != 0 && !this.state.disableButton  )
+    if (!nextProps.profile && nextProps.user.size != 0 && !this.state.disableButton)
       this.checkUserDetails(nextProps.profile);
-    if(this.props.profile != nextProps.profile && nextProps.profile && nextProps.profile.plan)
-      this.setState({disableButton: false});
+    if (this.props.profile != nextProps.profile && nextProps.profile && nextProps.profile.plan)
+      this.setState({ disableButton: false });
   }
 
   checkUserDetails(profile) {
     const user = this.props.user;
     if (user && user.size !== 0 && (!profile || !profile.plan)) {
-      this.setState({disableButton: true});
+      this.setState({ disableButton: true });
       browserHistory.push('getting-started');
     }
   }
@@ -72,35 +69,31 @@ class DashboardContainer extends Component {
     return (
       <div className="dashboard-container">
         <Popup />
-       <div className="wrapper" style={{height:"100%",backgroundColor:"#fcfcfc"}} >
-        {/* <div id="wrapper"> */}
+        <div className="wrapper" style={{ height: "100%", backgroundColor: "#fcfcfc" }} >
           <Spinner loading={loading} />
           {!this.state.render && <p>Please wait</p>}
-
           {this.state.render && <Sidebar {...this.props} disableButton={this.state.disableButton} />}
           {
             this.state.render &&
-         <div>
-            <div className="topbar" > 
-            <nav className="navbar-custom">
-                  <Header {...this.props}/>
-              </nav>
-                  </div>
-                  <div className="content-page" >
-                  <div className="content" style={{backgroundColor: "#FFF"}}>
-                    <div className="container-fluid">
-                  {this.props.children}
-                 </div>
-                 </div>
-                
+            <div >
+            <div className="content-page" >
+              <div className="topbar" >
+                <nav className="navbar-custom">
+                  <Header {...this.props} />
+                </nav>
+              </div>
               
+                <div className="content" style={{ backgroundColor: "#FFF" }}>
+                  <div className="container-fluid">
+                    {this.props.children}
+                  </div>
                 </div>
-                </div>
+              </div>
+            </div>
           }
-          </div>
-          {/* </div> */}
         </div>
-   
+      </div>
+
     );
   }
 }

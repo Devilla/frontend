@@ -2,66 +2,89 @@ import React, { Component } from 'react';
 import Switch from 'react-flexible-switch';
 import './PaymentPrice.scss';
 
-const PaymentPrice = ({planPeriod, planList, handleMonthChange, handleSwitchChange, handleYearChange, externalValue, selectedPlan, handleCheckChange }) => {
-  planList = planList.filter(plan => planPeriod == 12 ? plan.interval=='year': plan.interval=='month')
-  planList = planList.sort(function(a, b) {
+const PaymentPrice = ({ planPeriod, planList, handleMonthChange, handleSwitchChange, handleYearChange, externalValue, selectedPlan, handleCheckChange }) => {
+  planList = planList.filter(plan => planPeriod == 12 ? plan.interval == 'year' : plan.interval == 'month')
+  planList = planList.sort(function (a, b) {
     return b.id - a.id;
   });
+
+
+  function filterPlanName(planName) {
+    let res = "";
+
+    switch (true) {
+
+      case /\b(Enterprise)\b/m.test(planName): res = "Enterprise"; break;
+      case /\b(Advanced)\b/m.test(planName): res = "Advanced"; break;
+      case /\b(Small)\b/m.test(planName): res = "Small"; break;
+      case /\b(Startups)\b/m.test(planName): res = "Startups"; break;
+      default: break;
+
+    }
+    return res;
+  }
+
+
   return (
-    <div style={{width:'100%'}}>
+    <div style={{ width: '100%' }}>
       <div className="price">
-        <div className="pricing-row w-row" style={{width:'100%'}}>
+        <div className="pricing-row w-row" style={{ width: '100%' }}>
           <div className="w-col">
             <ul>
               <li>
-                <a href="javascript:;" className={!externalValue
-                    ? 'active'
-                    : ''
-                  } onClick={handleMonthChange}>Monthly</a>
+                <span className={!externalValue
+                  ? 'active btn btn-outline-success waves-light waves-effect mr-2'
+                  : 'btn btn-outline-info waves-light waves-effect mr-2'
+                } onClick={handleMonthChange}>Monthly</span>
+              </li>
+              <li className="mt-3" style={{ display: "none" }}>
+                <Switch
+                  circleStyles={{
+                    onColor: 'blue',
+                    offColor: 'blue',
+                    diameter: 18
+                  }} switchStyles={{
+                    width: 50
+                  }} value={externalValue} onChange={handleSwitchChange} />
               </li>
               <li>
-                <Switch circleStyles={{
-                  onColor: 'blue',
-                  offColor: 'blue',
-                  diameter: 18
-                }} switchStyles={{
-                  width: 50
-                }} value={externalValue} onChange={handleSwitchChange}/>
-              </li>
-              <li>
-                <a href="javascript:;" className={externalValue
-                    ? 'active'
-                    : ''
-                  }
-                onClick={handleYearChange}>Yearly</a>
+                <span className={externalValue
+                  ? 'active btn btn-outline-success waves-light waves-effect ml-2 '
+                  : 'btn btn-outline-info waves-light waves-effect ml-2 '
+                }
+                  onClick={handleYearChange}>&nbsp;Yearly&nbsp;</span>
               </li>
             </ul>
           </div>
         </div>
       </div>
       <div className="row">
-        {planList?
+        {planList ?
           planList.map((plan, index) =>
             <div className="col-md-3 col-sm-6">
               <div className="pricingTable">
-                <div style={{minHeight: '110px'}}>
-                  <h3 className="title">{plan.name}</h3>
-                  <div className="price-value">${plan.interval === 'year' ? plan.amount/1200 : plan.amount/100}
-                      <span className="month">Per Month</span>
+                <div className="price_card text-center">
+                  <div className="pricing-header bg-custom">
+                    <span className="price">${plan.interval === 'year' ? plan.amount / 1200 : plan.amount / 100}</span>
+                    <span className="name">{filterPlanName(plan.name)}</span>
                   </div>
-                </div>
-                <div className="pricing-content">
-                    <ul>
+                  <div className="pricing-content">
+                    <ul className="price-features" style={{ minHeight: "150px" }}>
                       <li><div dangerouslySetInnerHTML={{ __html: plan.details }} /></li>
                     </ul>
+
                     <a className={selectedPlan.id === plan.id ? "pricingTable-signup-active" : "pricingTable-signup"} onClick={(e) => handleCheckChange(true, plan)}>
                       Select
                     </a>
+
+                  </div>
+
                 </div>
               </div>
             </div>
+
           )
-        :
+          :
           <div>No Plan to select from.</div>
         }
       </div>
