@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import {
   Grid,
   Row,
@@ -15,13 +15,13 @@ import moment from 'moment';
 
 import CardHeader from 'components/Template/card-with-header'
 import Button from 'components/Template/customButton';
-import { fetchPayment, fetchInvoices } from 'ducks/payment' ;
+import { fetchPayment, fetchInvoices } from 'ducks/payment';
 
 import './Billing.css';
 import './BillingDetails.scss';
 
 const billingHeader = [
-	"Billing Date","Amount","Transaction Id","Interval", "Download"
+  "Billing Date", "Amount", "Transaction Id", "Interval", "Download"
 ];
 
 class BillingDetails extends Component {
@@ -36,7 +36,7 @@ class BillingDetails extends Component {
 
   plansList() {
     const { planSelected } = this.state;
-    if(planSelected) {
+    if (planSelected) {
       return (
         <FormControl componentClass="select" placeholder="select" value={planSelected.name} disabled={true}>
           <option value="select">{planSelected.name}</option>
@@ -50,128 +50,142 @@ class BillingDetails extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if(nextProps.profile) {
+    if (nextProps.profile) {
       const { profile } = nextProps;
-      let planSelected = profile?profile.plan:{};
-      this.setState({planSelected});
+      let planSelected = profile ? profile.plan : {};
+      this.setState({ planSelected });
     }
   }
 
   renderPaymentList() {
-    if(this.props.payments) {
+    if (this.props.payments) {
       this.props.payments.sort((a, b) => {
         return moment(a.createdAt) < moment(b.createdAt) ? 1 : moment(a.createdAt) > moment(b.createdAt) ? -1 : 0;
       })
       return this.props.payments.map((payment, index) => {
-        return <tr key={index}>
-           <td className="name">{moment(payment.createdAt).format('DD MMM YYYY')}</td>
-           <td className="email">${payment.payment_plan.amount/100}</td>
-           <td className="location">{payment.subscription_id}</td>
-           <td className="country">{payment.payment_plan.interval.charAt(0).toUpperCase() + payment.payment_plan.interval.slice(1)}</td>
-           <td className="lastseen"><Glyphicon glyph="download" /></td>
-         </tr>
+        return <tr className=" text-center text-muted font-13" key={index}>
+          <td className="name ">{moment(payment.createdAt).format('DD MMM YYYY')}</td>
+          <td className="email">${payment.payment_plan.amount / 100}</td>
+          <td className="location">{payment.subscription_id}</td>
+          <td className="country">{payment.payment_plan.interval.charAt(0).toUpperCase() + payment.payment_plan.interval.slice(1)}</td>
+          <td className="lastseen"><i className="fi-download"></i></td>
+        </tr>
       })
     } else
       return <tr>nothing</tr>
   }
 
   render() {
-    const { planSelected }  = this.state;
+    const { planSelected } = this.state;
     const { profile } = this.props;
     return (
-      <div className="content fill billing-details">
+      <div className="content fill billing-details ml-1">
         <Grid fluid="fluid">
           <Row className="inlineclr">
-            <Col md={30}>
-              <CardHeader title="Billing Details"
+            <Col md={12}>
+              <CardHeader title="Billing Details" className="text-center mt-3"
                 content={
                   <div className="Billing-container">
                     <Row>
-                      <div className="col-md-4 billing-buttons">
-                        <Button onClick={() => browserHistory.push('/Profile')} icon="chevron-left" bsStyle="info" fill="fill" >Back To Profile</Button>
-                      </div>
                       <div className="col-md-8 billing-buttons">
-                        <div className="">
-                          <Button onClick={() => browserHistory.push('/Upgrade')} bsStyle="info" pullRight="pullRight" fill="fill" type="button" icon="cloud-upload" disabled={false}>Upgrade Plan
-                          </Button>
-                        </div>
-                        <div className="">
-                          <Button onClick={() => browserHistory.push('/card-details?type=upgrade')} bsStyle="info" pullRight="pullRight" fill="fill" type="button" icon="usd" disabled={false}> Upgrade Payment
-                          </Button>
-                        </div>
+                        <Button onClick={() => browserHistory.push('/Profile')} icon="chevron-left" className="btn btn-info " fill="fill" >Back To Profile</Button>
                       </div>
+                      <div className="col-md-4 billing-buttons float-right">
+
+                        <Button onClick={() => browserHistory.push('/Upgrade')} className="btn btn-success" pullRight="pullRight" fill="fill" type="button" icon="cloud-upload" disabled={false}>Upgrade Plan
+                          </Button>
+
+
+                        <Button onClick={() => browserHistory.push('/card-details?type=upgrade')} className="btn btn-success" pullRight="pullRight" fill="fill" type="button" icon="usd" disabled={false}> Upgrade Payment
+                          </Button>
+
+                      </div>
+                      <div className="clearfix"></div>
                     </Row>
                     <div className="billing-info-list">
                       <Row className="payment-info">
-                        <div className="panel panel-default">
-                          <div className="panel-heading">Plan Details</div>
-                          <div className="panel-body">
-                            <FormGroup className="planUp" controlId="formControlsSelect">
-                              <ControlLabel>Plan</ControlLabel>{this.plansList()}
-                            </FormGroup>
-                            <Row className="plan-info-details">
-                              <div className="col-md-4">
-                                Last Paid: {planSelected.interval?moment(planSelected.interval.updated_at).format('DD MMM YYYY'):"-"}
+                        <Col md={6}>
+                          <div className="panel panel-default">
+                            <div className="card-box">
+                              <h4 className="header-title mt-0 m-b-20">Plan details</h4>
+                              <div className="panel-body">
+                                <hr />
+                                <div className="text-left">
+                                  <p className="text-muted font-13"><strong>Plan Choosed :</strong> <span class="m-l-15">
+                                    <FormGroup>
+                                      <FormControl
+                                        type="text"
+                                        bsClass="form-control"
+                                        id="campaignname"
+                                        disabled
+                                      />
+                                    </FormGroup>
+                                  </span>
+                                  </p>
+                                </div>
                               </div>
-                              <div className="col-md-4">
-                                Billing Cycle: {planSelected.interval?(planSelected.interval.charAt(0).toUpperCase() + planSelected.interval.slice(1)):"-"}
-                              </div>
-                            </Row>
-                            <Row className="plan-info-details">
-                              <div className="col-md-4">
-                                Visitor Qouta: {profile?profile.uniqueVisitorQouta.toLocaleString():"-"} Unique Visitors
-                              </div>
-                              <div className="col-md-4">
-                                Visitor Qouta Left: {profile?profile.uniqueVisitorsQoutaLeft.toLocaleString():"-"} Unique Visitors
-                              </div>
-                            </Row>
-                          </div>
-                        </div>
-                      </Row>
-                      <Row className="payment-info">
-                        <div className="panel panel-default">
-                          <div className="panel-heading">Payment Info</div>
-                          <div className="panel-body">
-                            <div className="col-md-4">
-                              Next Payment Due Date: {planSelected.interval?moment(planSelected.interval.updated_at).add(planSelected.interval_count, planSelected.interval).format('DD MMM YYYY'):"-"}
                             </div>
-                            <div className="col-md-4">
-                              Payment Method: {planSelected.interval?'Card':'-'}
-                            </div>
-                            <div className="col-md-2">
+                            <div className="text-left pl-3">
+                              <p className="text-muted font-13"><strong>Last Paid :</strong> <span class="m-l-15">{planSelected.interval ? moment(planSelected.interval.updated_at).format('DD MMM YYYY') : "-"}</span></p>
+                              <p className="text-muted font-13"><strong>Billing Cycle :</strong><span class="m-l-15">{planSelected.interval ? (planSelected.interval.charAt(0).toUpperCase() + planSelected.interval.slice(1)) : "-"}</span></p>
+                              <p className="text-muted font-13"><strong>Visitor Quota :</strong> <span class="m-l-15">{profile ? profile.uniqueVisitorQouta.toLocaleString() : "-"} Unique Visitors</span></p>
+                              <p className="text-muted font-13"><strong>Visitor Quota Left :</strong> <span class="m-l-15"> {profile ? profile.uniqueVisitorsQoutaLeft.toLocaleString() : "-"} Unique Visitors</span></p>
                             </div>
                           </div>
-                        </div>
+                        </Col>
+                        <Col md={6}>
+                          <div className="panel panel-default">
+                            <div className="card-box">
+                              <h4 className="header-title mt-0 m-b-20">Payment Info </h4>
+                              <div className="panel-body">
+                                <hr />
+                                <div className="text-left">
+                                  <p className="text-muted font-13"><strong>Next Payment Due Date :</strong> <span class="m-l-15">{planSelected.interval ? moment(planSelected.interval.updated_at).add(planSelected.interval_count, planSelected.interval).format('DD MMM YYYY') : "-"} </span></p>
+                                  <p className="text-muted font-13"><strong>Payment Method :</strong> <span class="m-l-15"> {planSelected.interval ? 'Card' : '-'}</span></p>
+                                 
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </Col>
+
                       </Row>
+
                       <Row className="payment-info">
                         <div className="panel panel-default">
-                          <div className="panel-heading">Invoices</div>
-                          <div className="panel-body billing-list">
-                            <Table hover className="table-responsive">
-                              <thead>
-                                <tr>
-                                  {
-                                    billingHeader.map((prop, key) => {
-                                        return (
-                                        <th  key={key}>{prop}</th>
-                                        );
-                                    })
-                                  }
-                                </tr>
-                              </thead>
-                              <tbody>
-                                 {this.renderPaymentList()}
-                              </tbody>
-                            </Table>
+                          <div className="card-box">
+                            <h4 className="header-title mt-0 m-b-20">Invoices </h4>
+                            <div className="panel-body billing-list">
+                              <Col md={12}>
+                              <div className="text-left ">
+                                <Table hover className="table-responsive">
+                                  <thead>
+                                    <tr>
+                                      {
+                                        billingHeader.map((prop, key) => {
+                                          return (
+                                            <th className=" h6" key={key}>{prop}</th>
+                                          );
+                                        })
+                                      }
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    {this.renderPaymentList()}
+                                  </tbody>
+                                </Table>
+                              </div>
+                              </Col>
+                            </div>
                           </div>
                         </div>
                       </Row>
                     </div>
-              </div>}/>
+                  </div>} />
             </Col>
           </Row>
         </Grid>
-      </div>
+      </div >
     );
   }
 }

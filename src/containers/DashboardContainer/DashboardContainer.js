@@ -84,7 +84,7 @@ class DashboardContainer extends Component {
               </div>
               
                 <div className="content" style={{ backgroundColor: "#FFF" }}>
-                  <div className="container-fluid">
+                  <div className="container-fluid p-5">
                     {this.props.children}
                   </div>
                 </div>
