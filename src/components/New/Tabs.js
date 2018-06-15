@@ -24,7 +24,7 @@ class Tabs extends Component{
     return (
       <div className="col-md-12">
         <div className="card-box">
-          <h3 className=" m-t-0 m-b-30">{this.props.campaign
+          <h3 className=" m-t-0 m-b-30 new-campaign-header">{this.props.campaign
             ? this.props.campaign.websiteUrl
             : 'http://localhost:3000'} / {this.props.campaign
               ? this.props.campaign.campaignName
@@ -32,7 +32,7 @@ class Tabs extends Component{
               <div className="clearfix"></div>
 
 
-          <ul className="nav nav-pills navtab-bg nav-justified pull-in ">
+          <ul className="nav nav-pills navtab-bg nav-justified pull-in new-campaign-tab-pills">
               <li className="nav-item waves-effect">
                   <a data-toggle="tab" aria-expanded="false" className={`nav-link ${activeClass == 1?'active':''}`} onClick={() => this.setActiveState(1)}>
 

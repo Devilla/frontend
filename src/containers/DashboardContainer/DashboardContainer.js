@@ -69,7 +69,7 @@ class DashboardContainer extends Component {
     return (
       <div className="dashboard-container">
         <Popup />
-       <div className="wrapper" style={{height:"100%",backgroundColor:"#fcfcfc"}} >
+       <div className="wrapper" style={{height:"100%",backgroundColor:"#f4f6f8"}} >
         {/* <div id="wrapper"> */}
           <Spinner loading={loading} />
           {!this.state.render && <p>Please wait</p>}
