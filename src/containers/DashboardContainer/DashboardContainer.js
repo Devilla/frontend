@@ -4,17 +4,17 @@ import { browserHistory, Link } from 'react-router';
 import { checkTokenExists } from 'ducks/auth';
 import { Spinner, Header, Footer, Sidebar } from 'components';
 
-import './DashboardContainer.scss';
-import './assets/css/bootstrap.min.scss';
-import './assets/css/animate.min.scss';
-import './assets/css/demo.scss';
+// import './DashboardContainer.scss';
+// import './assets/css/bootstrap.min.scss';
+import './animate.min.scss';
+//import './assets/css/demo.scss';
 import 'react-select/dist/react-select.css';
 import Popup from 'react-popup';
 import 'react-popup/style.css';
 
-import './asset/css/style.css';
+import './asset/scss/style.scss';
 import './asset/scss/icons.scss';
-import './asset/css/bootstrap.min.css';
+import './asset/css/bootstrap.min.scss';
 
 class DashboardContainer extends Component {
   constructor(props) {
@@ -72,7 +72,7 @@ class DashboardContainer extends Component {
     return (
       <div className="dashboard-container">
         <Popup />
-       <div className="wrapper">
+       <div className="wrapper" style={{height:"100%",backgroundColor:"#fcfcfc"}} >
         {/* <div id="wrapper"> */}
           <Spinner loading={loading} />
           {!this.state.render && <p>Please wait</p>}
@@ -80,20 +80,21 @@ class DashboardContainer extends Component {
           {this.state.render && <Sidebar {...this.props} disableButton={this.state.disableButton} />}
           {
             this.state.render &&
-            <div className="content-page" style={{backgroundColor: "#FCFCFC"}}>
-            <div className="topbar" >
-           
+         <div>
+            <div className="topbar" > 
             <nav className="navbar-custom">
                   <Header {...this.props}/>
               </nav>
                   </div>
-                  <div className="content fill" style={{backgroundColor: "#FFF"}}>
+                  <div className="content-page" >
+                  <div className="content" style={{backgroundColor: "#FFF"}}>
                     <div className="container-fluid">
                   {this.props.children}
                  </div>
                  </div>
                 
               
+                </div>
                 </div>
           }
           </div>

@@ -10,8 +10,7 @@ import Popup from 'react-popup';
 
 import { fetchCampaign, updateCampaign, successCampaign, removeCampaign } from 'ducks/campaign';
 import './Notification.scss'
-import '../../containers/DashboardContainer/asset/scss/style.scss';
-import '../../containers/DashboardContainer/asset/scss/icons.scss';
+
 
 
 const notificationFields = [ 'S.No', 'Campaign', 'Domain', 'Status', 'Tracking ID', 'Log', 'Created', 'Delete' ];
@@ -115,7 +114,7 @@ class Notification extends Component {
                         {
                           notificationFields.map((prop, key) => {
                             return (
-                              <th className="text-center" key={key}>{prop === "Domain" ? <i className="icon-globe"></i>: "" }&nbsp;<span className="h5">{prop}</span></th>
+                              <th className="text-center" key={key}>{prop === "Domain" ? <i className="icon-globe"></i>: "" }&nbsp;<span className="h6 text-muted">{prop}</span></th>
                             );
                           })
                         }
