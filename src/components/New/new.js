@@ -97,16 +97,8 @@ export class NewUser extends Component {
   }
 
   componentWillUnmount() {
-    // if(this.props.campaign && Object.keys(this.props.campaign).length !== 0 && this.props.campaign.constructor === Object)
-    //   this.props.callbackFromParent({'active': 2});
     this.props.clearCampaign();
   }
-
-  // componentWillReceiveProps(nextProps) {
-  //   if(nextProps.campaign !== this.props.campaign)
-  //     this.props.callbackFromParent({'active': 2});
-  // }
-
 
   render() {
     console.log(this.props.campaign, "==sdjagsda");
