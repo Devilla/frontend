@@ -4,14 +4,14 @@ import { browserHistory, Link } from 'react-router';
 import { checkTokenExists } from 'ducks/auth';
 import { Spinner, Header, Footer, Sidebar } from 'components';
 
+import './asset/css/bootstrap.min.scss';
+// import './asset/css/style.scss';
+import './asset/scss/icons.scss';
 import './animate.min.scss';
 import 'react-select/dist/react-select.css';
 import Popup from 'react-popup';
 import 'react-popup/style.css';
 
-import './asset/scss/style.scss';
-import './asset/scss/icons.scss';
-import './asset/css/bootstrap.min.scss';
 
 class DashboardContainer extends Component {
   constructor(props) {
@@ -69,7 +69,7 @@ class DashboardContainer extends Component {
     return (
       <div className="dashboard-container">
         <Popup />
-        <div className="wrapper" style={{ height: "100%", backgroundColor: "#fcfcfc" }} >
+        <div className="wrapper" style={{ height: "100%", backgroundColor: "#f4f6f8" }} >
           <Spinner loading={loading} />
           {!this.state.render && <p>Please wait</p>}
           {this.state.render && <Sidebar {...this.props} disableButton={this.state.disableButton} />}
@@ -82,7 +82,7 @@ class DashboardContainer extends Component {
                   <Header {...this.props} />
                 </nav>
               </div>
-              
+
                 <div className="content" style={{ backgroundColor: "#FFF" }}>
                   <div className="container-fluid p-5">
                     {this.props.children}
@@ -93,7 +93,6 @@ class DashboardContainer extends Component {
           }
         </div>
       </div>
-
     );
   }
 }

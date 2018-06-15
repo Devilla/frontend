@@ -1,6 +1,4 @@
-import React, { Component } from 'react';
-import { Row, Col } from 'react-bootstrap';
-import Switch from 'react-flexible-switch';
+import React from 'react';
 import './NotificationList.scss';
 import {
   RecentActivity,
@@ -11,64 +9,73 @@ import {
 const NotificationList = ({notificationList, configure, configurations, handleActivityChange, createSuccess}) => {
   const renderNotifications = () => {
     return notificationList.map(notification =>
-      <Col md={4} key={notification._id}>
-        <div className="card"
-          style={{
-            width: "15rem",
-            margin: "0 auto",
-            borderRadius: '10px'
-          }}
-          >
-          <div className="view gradient-card-header blue-gradient"
-            style={{
-              padding: '0 1rem',
-              textAlign: 'center',
-              border: '1px solid #ececf1',
-              backgroundColor: 'white',
-              borderTopRadiusLeft: '10px',
-              borderTopRadiusRight: '10px'
-            }}
-          >
-            <h2 className="h2-responsive">
-              {notification.notificationName === "Bulk Activity" && <img src={GroupActivity} />}
+      <div key={notification._id} className="col-md-4">
+        <div className="card-box ribbon-box bx-shadow">
+            <div className="ribbon ribbon-success">
+                <span>{
+                  notification.notificationName === "Bulk Activity" ?
+                    'GROUP'
+                  :
+                    notification.notificationName === "Live Visitor Count" ?
+                      'LIVE'
+                    :
+                      'RECENT'
+                } </span>
+            </div>
+            <div className="text-center card-box ">
 
-              {notification.notificationName === "Live Visitor Count" && <img src={LiveActivity} />}
+                <div className="member-card pt-2 pb-2">
+                    <div className="thumb-lg member-thumb m-b-10 mx-auto">
+                        <img src={`assets/images/users/${notification.notificationName === "Bulk Activity" ?
+                          'GROUP'
+                        :
+                          notification.notificationName === "Live Visitor Count" ?
+                            'LIVE'
+                          :
+                            'RECENT'}.jpg`} className="rounded-circle img-thumbnail" alt="profile-image" />
+                    </div>
 
-              {notification.notificationName === "Recent Activity" && <img src={RecentActivity} />}
-            </h2>
-            <h4>{notification.notificationName}</h4>
-            {notification.notificationName === "Bulk Activity" && <p style={{ color: 'grey', fontFamily: 'Arial', fontWeight: 'normal' }}>Show the total visitors or signups over a period of time</p>}
+                    <div className=" m-t-30">
+                        <h4 className="m-b-5">Group Activity</h4>
+                        <p className="text-muted notification-list-content">Show the total visitors over a period of time
+                            <span> | </span>
+                            <span>
+                                <a href="#" className="text-pink">websitename.com</a>
+                            </span>
+                        </p>
+                    </div>
 
-            {notification.notificationName === "Live Visitor Count" && <p style={{ color: 'grey', fontFamily: 'Arial', fontWeight: 'normal' }} >Show how many people are currently on your page </p>}
+                    <div className="checkbox checkbox-success checkbox-circle">
+                        <input
+                          id={notification._id}
+                          type="checkbox"
+                          checked={notification.activity}
+                          onChange={(e) => e.target.checked !=notification.activity?handleActivityChange(e.target.checked, notification._id, notification.configurationId):null}
+                        />
+                        <label htmlFor={notification._id}>
+                            Enable {notification.activity}
+                        </label>
+                    </div>
 
-            {notification.notificationName === "Recent Activity" && <p style={{ color: 'grey', fontFamily: 'Arial', fontWeight: 'normal' }} >Show individual people that recently signed up </p>}
-          </div>
-          <div className="button-config" onClick={() => configure(notification)} style={{ cursor:'pointer'}} data-toggle="modal" data-target="#notificationModal">
-            <ul className="list-unstyled list-inline font-small mt-3" style={{ margin: '0 auto', padding: '10px'}}>
-              <li className="list-inline-item pr-2 white-text" style={{display: 'flex', justifyContent: 'center'}}>
-               <strong> Configure</strong>
-              </li>
-            </ul>
-          </div>
+                    <button
+                      type="button"
+                      className="btn btn-primary m-t-20 btn-rounded btn-bordered waves-effect w-md waves-light"
+                      onClick={() => configure(notification)}
+                    >
+                      Configure
+                    </button>
+                </div>
+            </div>
         </div>
-        <div className="notification-toggle">
-          <Switch
-            circleStyles={{ onColor: 'blue', offColor: 'gray', diameter: 18 }}
-            switchStyles={{ width: 50 }}
-            cssClass="alignsame"
-            value={notification.activity}
-            onChange={(e) => e !=notification.activity?handleActivityChange(e, notification._id, notification.configurationId):null}
-          />
-        </div>
-      </Col>
-    )
+      </div>
+    );
   };
 
   return (
-    <div className="notification-list">
+    <div className="row m-t-50 notification-list">
       {renderNotifications()}
     </div>
   );
-}
+};
 
 export default NotificationList;

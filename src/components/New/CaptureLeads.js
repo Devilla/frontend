@@ -9,10 +9,9 @@ import {
     HelpBlock
 } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import Tabs from 'components/Template/tab'
 import CardTable from 'components/Template/card-with-page-table'
 import { pagethArray } from 'components/Template/data'
-import { fetchPageUrl, createPageUrl, clearPageUrl, removePageUrl } from 'ducks/pageurl';
+import { fetchLeadUrl, createPageUrl, clearPageUrl, removePageUrl } from 'ducks/pageurl';
 import { fetchOneRules, clearRules } from 'ducks/rules';
 import { validatePath } from 'components/Common/function';
 import { css, checked } from 'glamor';
@@ -33,14 +32,14 @@ class CaptureLeads extends Component{
     };
     this.handleNextState = this.handleNextState.bind(this);
     this.handleBackState = this.handleBackState.bind(this);
-    this.activeState = this.activeState.bind(this);
     this.addPageUrl = this.addPageUrl.bind(this);
     this.handlePageUrl = this.handlePageUrl.bind(this);
     this.deleteLead = this.deleteLead.bind(this);
   }
 
-  componentWillMount() {
-    this.setActiveState({active: 5});
+  componentWillUnmount() {
+    this.props.setActiveState(1);
+    // this.props.clearPageUrl();
   }
 
   componentDidMount() {
@@ -56,27 +55,19 @@ class CaptureLeads extends Component{
   }
 
   fetchPathUrls(rule) {
-    this.props.fetchPageUrl('lead', rule._id);
-  }
-
-  activeState(val){
-    this.setActiveState(val);
+    this.props.fetchLeadUrl('lead', rule._id);
   }
 
   handleNextState() {
     if(!this.props.leads.length)
       return this.setState({error: "Add a display path"});
-    this.setActiveState({active: 6});
+    this.props.setActiveState(5);
   }
 
   handleBackState() {
-    this.setActiveState({active: 4});
+    this.props.setActiveState(3);
   }
 
-  setActiveState(val) {
-    var data = {'tab' : val};
-    this.props.callbackFromParent(data);
-  }
 
   addPageUrl() {
     if(this.state.lead.url == '' || !validatePath(this.state.lead.url))
@@ -107,8 +98,8 @@ class CaptureLeads extends Component{
       return this.setState({error: "Please enter a valid path"});
   }
 
-  deleteLead(id, index) {
-    this.props.removePageUrl(id, index);
+  deleteLead(id, index, type) {
+    this.props.removePageUrl(id, index, type);
   }
 
   renderColor(classname) {
@@ -131,7 +122,7 @@ class CaptureLeads extends Component{
   }
 
   renderLeads() {
-    var leads = this.props.leads?this.props.leads:[];
+    var leads = this.props.leads?this.props.leads.filter(lead => lead.type == 'lead'):[];
     return (
       <Table>
         <thead>
@@ -152,7 +143,7 @@ class CaptureLeads extends Component{
                  <td className="serial">{i+1}</td>
                  <td className="url">{lead.url}</td>
                  <td className="status"><span style={{backgroundColor:this.renderColor(lead.class)}}></span></td>
-                 <td><a href="#" onClick={() => this.deleteLead(lead._id, i)}><Glyphicon glyph="trash" /></a></td>
+                 <td><a href="#" onClick={() => this.deleteLead(lead._id, i, lead.type)}><Glyphicon glyph="trash" /></a></td>
               </tr>
             })
           }
@@ -166,7 +157,6 @@ class CaptureLeads extends Component{
     return (
       <div className="content">
         <Grid fluid>
-          <Tabs active="5" callbackFromParent={this.activeState}/>
           <div className="tabscontent">
             <Row>
               <Col md={12}>
@@ -238,24 +228,11 @@ class CaptureLeads extends Component{
                 </Col>
               </div>
             </Row>
-            <Row style={{padding: '5% 0%'}}>
-              <Col md={6}>
-                <div className=" text-left">
-                  <Button bsStyle="primary" onClick={this.handleBackState}>
-                    <Glyphicon glyph="chevron-left" />
-                    Back
-                  </Button>
-                </div>
-              </Col>
-              <Col md={6}>
-                <div className=" text-right">
-                  <Button bsStyle="primary" onClick={this.handleNextState}>
-                    <Glyphicon glyph="chevron-right" />
-                    Next
-                  </Button>
-                </div>
-              </Col>
-            </Row>
+            <div className="m-t-50 float-right align-install-btn">
+                <button type="button" className="btn btn-custom  waves-light waves-effect number " onClick={this.handleBackState}>Previous</button>
+                <button type="button" className="btn btn-custom  waves-light waves-effect number ml-2 pl-4 pr-4" onClick={this.handleNextState}>Next </button>
+            </div>
+            <div className="clearfix"></div>
           </div>
         </Grid>
       </div>
@@ -265,15 +242,16 @@ class CaptureLeads extends Component{
 
 const mapStateToProps = state => ({
   rules: state.getIn(['rules', 'rule']),
-  leads: state.getIn(['pageurl', 'pageurls']),
+  leads: state.getIn(['pageurl', 'lead']),
   campaign: state.getIn(['campaign', 'campaign']),
 });
 
 const mapDispatchToProps = {
   fetchOneRules,
-  fetchPageUrl,
+  fetchLeadUrl,
   createPageUrl,
   removePageUrl,
+  clearPageUrl,
   clearRules
 };
 

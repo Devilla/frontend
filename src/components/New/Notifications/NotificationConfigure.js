@@ -22,19 +22,11 @@ const NotificationConfigure = ({
   return (
     <div className="notification-configure">
       <Row>
-
-        
-
-        
         <Col md={12}>
-
-
           <Card title="Recent User Activity"
-
-          
             isDisabled={activity}
             content={
-              <Row>
+              <div className="notification-configure-content">
                 <Col md={6}>
                   <Notification
                     contentText={contentText}
@@ -63,7 +55,7 @@ const NotificationConfigure = ({
                     handleContentChange={handleContentChange}
                   />
                 </Col>
-              </Row>
+              </div>
             }
           />
         </Col>

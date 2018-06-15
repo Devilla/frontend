@@ -5,9 +5,6 @@ import logo from '../../containers/DashboardContainer/asset/images/influence.png
 import appRoutes from 'routes/app';
 import './Sidebar.scss';
 
-
-
-
 class Sidebar extends Component {
   constructor(props) {
     super(props);
@@ -20,7 +17,7 @@ class Sidebar extends Component {
     return this.props.location.pathname.indexOf(routeName) > -1 ? 'active' : '';
   }
 
- 
+
 
   render() {
     const { disableButton } = this.props;
@@ -42,7 +39,7 @@ class Sidebar extends Component {
 
 
           <div id="sidebar-menu">
-            <div className="button-list"> 
+            <div className="button-list">
               <Link to="/new"><button type="button" className="btn  btn-pink waves-effect  ml-4 p-2  pt-0 pb-0 mb-4 w-lg "><i className="fi-file-add " style={{fontSize:"15px"}}></i>&nbsp; <span className="h5">New</span> </button></Link>
             </div>
 
@@ -75,11 +72,11 @@ class Sidebar extends Component {
               <li>
                   <a href ="#dashboard"><i className="fi-location-2"></i> <span> Beta Features </span> <span className="menu-arrow"></span></a>
                   <ul className="nav-second-level" aria-expanded="false">
-                      <li><a href="#dashboard">Live Stream</a></li>     
+                      <li><a href="#dashboard">Live Stream</a></li>
                   </ul>
               </li>
             </ul>
-          </div>  
+          </div>
           <div className="clearfix"></div>
         </div>
       </div>

@@ -1,12 +1,11 @@
 import React, {Component} from 'react';
-import { Grid, Row, Col, Button, Glyphicon } from 'react-bootstrap';
+import { Row } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { fetchNotification } from 'ducks/notification';
 import { createConfiguration, fetchConfiguration, fetchCampaignConfiguration, clearConfiguration, updateConfiguration, createSuccess } from 'ducks/configuration';
 import NotificationList from './NotificationList';
 import NotificationConfigure from './NotificationConfigure';
-import Tabs from 'components/Template/tab'
-
+import './Notifications.scss'
 
 const notificationPanelStyleDefault = { // TODO: Take style values from server
   radius: 50,
@@ -80,14 +79,12 @@ class Notifications extends Component {
     this.setDefaultPanel = this.setDefaultPanel.bind(this);
     this.handleNextState = this.handleNextState.bind(this);
     this.handleBackState = this.handleBackState.bind(this);
-    this.activeState = this.activeState.bind(this);
     this.backConfiguration = this.backConfiguration.bind(this);
   }
 
   componentWillMount() {
     this.props.fetchNotification();
     this.props.fetchConfiguration(this.props.campaign._id);
-    this.setActiveState({active: 3});
   }
 
   componentWillReceiveProps(nextProps) {
@@ -162,22 +159,14 @@ class Notifications extends Component {
     this.setState({ [target]: content});
   }
 
-  activeState(val){
-    this.setActiveState(val);
-  }
-
   handleNextState() {
-    this.setActiveState({active: 4});
+    this.setState({notification: ''});
+    this.props.setActiveState(3);
   }
 
   handleBackState() {
-    this.setActiveState({active: 2});
-  }
-
-  setActiveState(val) {
     this.setState({notification: ''});
-    var data = {'tab' : val};
-    this.props.callbackFromParent(data);
+    this.props.setActiveState(1);
   }
 
   configure(notification) {
@@ -210,6 +199,7 @@ class Notifications extends Component {
   }
 
   componentWillUnmount() {
+    this.props.setActiveState(1);
     this.props.clearConfiguration();
     this.setInitialState();
   }
@@ -217,62 +207,49 @@ class Notifications extends Component {
   render() {
 
     const { notifications, configurations, createSuccess } = this.props;
-    return (<div className="content notification-list">
-      <Grid fluid>
-        <Tabs active="3" callbackFromParent={this.activeState}/>
-        <div className="tabscontent">
-          {
-            !this.state.notification
-              ?
-                <Row>
-                  <NotificationList
-                    notificationList={this.state.notifications}
-                    handleActivityChange={this.handleActivityChange}
-                    configure={this.configure}
-                    configurations={configurations}
-                    createSuccess={createSuccess}
-                  />
-                </Row>
-              :
-                <Row>
-                  <NotificationConfigure
-                    notification={this.state.notification}
-                    activity={this.state.activity}
-                    contentText={this.state.contentText}
-                    visitorText={this.state.visitorText}
-                    notificationPanelStyle={this.state.notificationPanelStyle}
-                    handleContentChange={this.handleContentChange}
-                    setDefaultPanel={this.setDefaultPanel}
-                    handleActivityChange={this.handleActivityChange}
-                    handleNotificationStyleChange={this.handleNotificationStyleChange}
-                    saveConfiguration = {this.saveConfiguration}
-                    backConfiguration= { this.backConfiguration }
-                  />
-                </Row>
-            }
+    return (
+      <div className="notification-list">
+        <div>
+          {!this.state.notification
+            ?
+              // <Row>
+                <NotificationList
+                  notificationList={this.state.notifications}
+                  handleActivityChange={this.handleActivityChange}
+                  configure={this.configure}
+                  configurations={configurations}
+                  createSuccess={createSuccess}
+                />
+              // </Row>
+            :
+              <Row>
+                <NotificationConfigure
+                  notification={this.state.notification}
+                  activity={this.state.activity}
+                  contentText={this.state.contentText}
+                  visitorText={this.state.visitorText}
+                  notificationPanelStyle={this.state.notificationPanelStyle}
+                  handleContentChange={this.handleContentChange}
+                  setDefaultPanel={this.setDefaultPanel}
+                  handleActivityChange={this.handleActivityChange}
+                  handleNotificationStyleChange={this.handleNotificationStyleChange}
+                  saveConfiguration = {this.saveConfiguration}
+                  backConfiguration= { this.backConfiguration }
+                />
+              </Row>
+          }
         </div>
         {!this.state.notification &&
-          <Row className="notification-button-row">
-            <Col md={6}>
-              <div className=" text-left">
-                <Button bsStyle="primary" onClick={this.handleBackState}>
-                  <Glyphicon glyph="chevron-left" />
-                  Back
-                </Button>
-              </div>
-            </Col>
-            <Col md={6}>
-              <div className=" text-right">
-               <Button bsStyle="primary" onClick={this.handleNextState}>
-                 <Glyphicon glyph="chevron-right" />
-                 Next
-                </Button>
-              </div>
-            </Col>
-          </Row>
+          <div>
+            <div className="m-t-50 float-right notification-button-row">
+              <button type="button" className="btn btn-custom  waves-light waves-effect number " onClick={this.handleBackState}>Previous</button>
+              <button type="button" className="btn btn-custom  waves-light waves-effect number ml-2 pl-4 pr-4" onClick={this.handleNextState}>Next </button>
+            </div>
+            <div className="clearfix"></div>
+          </div>
         }
-      </Grid>
-    </div>);
+      </div>
+    );
   }
 }
 
