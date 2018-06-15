@@ -9,7 +9,7 @@ import {
     HelpBlock
 } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import Tabs from 'components/Template/tab'
+// import Tabs from 'components/Template/tab'
 import CardTable from 'components/Template/card-with-page-table'
 import { pagethArray } from 'components/Template/data'
 import { fetchPageUrl, createPageUrl, clearPageUrl, removePageUrl } from 'ducks/pageurl';
@@ -33,14 +33,13 @@ class CaptureLeads extends Component{
     };
     this.handleNextState = this.handleNextState.bind(this);
     this.handleBackState = this.handleBackState.bind(this);
-    this.activeState = this.activeState.bind(this);
     this.addPageUrl = this.addPageUrl.bind(this);
     this.handlePageUrl = this.handlePageUrl.bind(this);
     this.deleteLead = this.deleteLead.bind(this);
   }
 
-  componentWillMount() {
-    this.setActiveState({active: 5});
+  componentWillUnmount() {
+    this.setActiveState(1);
   }
 
   componentDidMount() {
@@ -59,24 +58,16 @@ class CaptureLeads extends Component{
     this.props.fetchPageUrl('lead', rule._id);
   }
 
-  activeState(val){
-    this.setActiveState(val);
-  }
-
   handleNextState() {
     if(!this.props.leads.length)
       return this.setState({error: "Add a display path"});
-    this.setActiveState({active: 6});
+    this.props.setActiveState(5);
   }
 
   handleBackState() {
-    this.setActiveState({active: 4});
+    this.props.setActiveState(3);
   }
 
-  setActiveState(val) {
-    var data = {'tab' : val};
-    this.props.callbackFromParent(data);
-  }
 
   addPageUrl() {
     if(this.state.lead.url == '' || !validatePath(this.state.lead.url))
@@ -166,7 +157,6 @@ class CaptureLeads extends Component{
     return (
       <div className="content">
         <Grid fluid>
-          <Tabs active="5" callbackFromParent={this.activeState}/>
           <div className="tabscontent">
             <Row>
               <Col md={12}>
@@ -238,24 +228,11 @@ class CaptureLeads extends Component{
                 </Col>
               </div>
             </Row>
-            <Row style={{padding: '5% 0%'}}>
-              <Col md={6}>
-                <div className=" text-left">
-                  <Button bsStyle="primary" onClick={this.handleBackState}>
-                    <Glyphicon glyph="chevron-left" />
-                    Back
-                  </Button>
-                </div>
-              </Col>
-              <Col md={6}>
-                <div className=" text-right">
-                  <Button bsStyle="primary" onClick={this.handleNextState}>
-                    <Glyphicon glyph="chevron-right" />
-                    Next
-                  </Button>
-                </div>
-              </Col>
-            </Row>
+            <div className="m-t-50 float-right align-install-btn">
+                <button type="button" className="btn btn-custom  waves-light waves-effect number " onClick={this.handleBackState}>Previous</button>
+                <button type="button" className="btn btn-custom  waves-light waves-effect number ml-2 pl-4 pr-4" onClick={this.handleNextState}>Next </button>
+            </div>
+            <div className="clearfix"></div>
           </div>
         </Grid>
       </div>
