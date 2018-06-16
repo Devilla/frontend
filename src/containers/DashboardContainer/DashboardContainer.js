@@ -31,6 +31,7 @@ class DashboardContainer extends Component {
     this.logout = this.logout.bind(this);
     this.renderHelp = this.renderHelp.bind(this);
     this.settings = this.settings.bind(this);
+    this.closeDropdown = this.closeDropdown.bind(this);
 
     this.checkLogin((err) => {
       if (err) {
@@ -88,6 +89,10 @@ class DashboardContainer extends Component {
       this.setState({style: {}});
     else
       this.setState({style: {visibility: 'visible', opacity: 1}});
+  }
+
+  closeDropdown() {
+    this.setState({style: {}});
   }
 
   logout() {
@@ -155,6 +160,8 @@ class DashboardContainer extends Component {
 
   settings() {
     this.openCloseDropdown();
+    if(this.state.disableButton)
+      return;
     browserHistory.push('/dashboard');
   }
 
@@ -166,7 +173,7 @@ class DashboardContainer extends Component {
         <div className="wrapper" style={{ height: '100%', backgroundColor: '#f4f6f8' }} >
           <Spinner loading={loading} />
           {!this.state.render && <p>Please wait</p>}
-          {this.state.render && <Sidebar {...this.props} disableButton={this.state.disableButton} onClick={this.openCloseDropdown} />}
+          {this.state.render && <Sidebar {...this.props} disableButton={this.state.disableButton} onClick={this.closeDropdown} />}
           {this.state.render &&
           <div>
             <div className="content-page" >
@@ -183,7 +190,7 @@ class DashboardContainer extends Component {
                 </nav>
               </div>
 
-              <div className="content" style={{ backgroundColor: '#FFF' }} onClick={this.openCloseDropdown}>
+              <div className="content" style={{ backgroundColor: '#FFF' }} onClick={this.closeDropdown}>
                 <div className="container-fluid p-5">
                   {this.props.children}
                 </div>
