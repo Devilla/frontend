@@ -92,3 +92,7 @@ export { default as Avatar7 } from './avatar-7.jpg'
 export { default as Avatar8 } from './avatar-8.jpg'
 export { default as Avatar9 } from './avatar-9.jpg'
 export { default as Avatar10 } from './avatar-10.jpg'
+
+
+//logo
+export { default as Influence } from './influence.png';

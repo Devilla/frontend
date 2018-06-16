@@ -15,7 +15,7 @@ import './asset/scss/icons.scss';
 import './animate.min.scss';
 import 'react-select/dist/react-select.css';
 import 'react-popup/style.css';
-import document from 'react';
+// import document from 'react';
 import Popup from 'react-popup';
 
 
@@ -31,6 +31,7 @@ class DashboardContainer extends Component {
     this.logout = this.logout.bind(this);
     this.renderHelp = this.renderHelp.bind(this);
     this.settings = this.settings.bind(this);
+
     this.checkLogin((err) => {
       if (err) {
         browserHistory.push('/login');
@@ -38,6 +39,14 @@ class DashboardContainer extends Component {
         this.checkUserDetails(this.props.profile);
       }
     });
+  }
+
+  componentWillMount() {
+    document.body.style = 'background-color:#f4f6f8';
+  }
+
+  componentWillUmount() {
+    document.body.style = 'background-color:white';
   }
 
   checkLogin(callback) {
@@ -69,7 +78,7 @@ class DashboardContainer extends Component {
   }
 
   componentDidUpdate(e) {
-    if (window.innerWidth < 993 && this.props.history.location.pathname !== e.location.pathname && document.documentElement.className.indexOf('nav-open') !== -1) {
+    if (window.innerWidth < 993 && this.props.location.pathname !== e.location.pathname && document.documentElement.className.indexOf('nav-open') !== -1) {
       document.documentElement.classList.toggle('nav-open');
     }
   }

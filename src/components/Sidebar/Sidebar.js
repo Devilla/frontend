@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
-import HeaderLinks from '../Header/HeaderLinks';
-// import logo from 'assets/img/logo.png';
-import logo from 'containers/DashboardContainer/asset/images/influence.png';
+import { Influence } from 'img';
 import appRoutes from 'routes/app';
 import './Sidebar.scss';
 
@@ -30,7 +28,7 @@ class Sidebar extends Component {
           <div className="topbar-left mt-3 ml-2 pt-2 pl-2" style={{width:'200px'}}>
             <Link to="/dashboard" className="logo ">
               <span>
-                <img src={logo} alt="influence-img" height="35" />
+                <img src={Influence} alt="influence-img" height="35" />
               </span>
             </Link>
           </div>
@@ -42,7 +40,6 @@ class Sidebar extends Component {
             </div>
 
             <ul className="metismenu" id="side-menu">
-              {this.state.width <= 991 ? (<HeaderLinks />) : null}
               {
                 appRoutes.map((prop, key) => {
                   if (!prop.redirect)
