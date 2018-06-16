@@ -22,8 +22,8 @@ class Tabs extends Component{
   render(){
     const { activeClass } = this.state;
     return (
-      <div className="col-md-12">
-        <div className="card-box">
+      <div className="col-md-12 tab-notification-container">
+        <div className="card-box tab-notification-box">
           <h3 className=" m-t-0 m-b-30 new-campaign-header">{this.props.campaign
             ? this.props.campaign.websiteUrl
             : 'http://localhost:3000'} / {this.props.campaign
