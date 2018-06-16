@@ -1,3 +1,11 @@
 .react-flexible-switch{
 z-index: 10000;
 }
+
+.notification-configure-content {
+  display: flex;
+  -ms-flex-wrap: wrap;
+  justify-content: space-between;
+  margin-right: -15px;
+  margin-left: -15px;
+}

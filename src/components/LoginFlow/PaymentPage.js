@@ -11,6 +11,15 @@ const PaymentPage = ({
   handleSubmit
 }) => {
 
+  const findObjectByKey = (array, key, value) => {
+    for (var i = 0; i < array.length; i++) {
+      if (array[i][key] === value) {
+        return array[i];
+      }
+    }
+    return null;
+  }
+
   const submitForm = (event) => {
     event.preventDefault();
     if(!user.username)
@@ -33,7 +42,6 @@ const PaymentPage = ({
           paymentType: result.token.type,
           user: user._id,
           plan: plan,
-          coupon: {}
         };
         handleSubmit(data, result.token);
       }
@@ -72,5 +80,6 @@ const PaymentPage = ({
     </div>
   );
 };
+
 
 export default injectStripe(PaymentPage);

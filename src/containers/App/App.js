@@ -6,7 +6,6 @@ import { WebsiteHeader, WebsiteFooter } from 'components';
 import { Spinner } from '../../components/index.js';
 import { ToastContainer } from 'react-toastify';
 
-
 import './scss/stack-interface.scss';
 import './scss/socicon.css';
 import './scss/iconsmind.scss';
@@ -17,7 +16,6 @@ import './scss/font-raleway.scss';
 import './scss/flickity.scss';
 import './scss/font-sourcesanspro.scss';
 import './App.scss';
-
 
 class App extends Component {
   componentWillMount() {

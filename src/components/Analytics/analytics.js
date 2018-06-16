@@ -16,22 +16,22 @@ const Analytics = ({ renderList }) => {
               ctTableFullWidth ctTableResponsive
               content={
                 <div className="text-center centertbl">
-                  <Table hover>
-                    <thead>
-                      <tr>
-                        {
-                          thArray.map((prop, key) => {
-                            return (
-                              <th key={key}>{prop}</th>
-                            );
-                          })
-                        }
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {renderList()}
-                    </tbody>
-                  </Table>
+                <Table hover>
+                  <thead>
+                    <tr>
+                     {
+                      thArray.map((prop, key) => {
+                        return (
+                        <th  key={key}><span className="h6 text-muted">{prop === "Connected Website" ? <i className="icon-globe"></i> : ""}&nbsp;{prop}</span></th>
+                        );
+                      })
+                      }
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {renderList()}
+                  </tbody>
+                </Table>
                 </div>
               }
             />
@@ -39,10 +39,10 @@ const Analytics = ({ renderList }) => {
         </Row>
         <Row>
           <Col md={12}>
-            <p className="text-center">
-              Get one of our experts to do it all for you!
-              &nbsp;
-              <a href="javascript:;">Click here</a></p>
+            <p className="text-center h5 mt-5">
+            Get one of our experts to do it all for you!
+            &nbsp;
+            <button type="button" className="btn btn-info waves-effect  ml-1 ">Click here</button> </p>
           </Col>
         </Row>
       </Grid>

@@ -1,20 +1,14 @@
 import React, { Component } from 'react';
 import {
-  Grid,
-  Row,
   Col,
-  FormGroup,
-  ControlLabel,
-  ButtonToolbar,
   Button,
-  Glyphicon
 } from 'react-bootstrap';
 import { connect } from 'react-redux';
+import { browserHistory } from 'react-router';
 import copy from 'copy-to-clipboard';
 import { toast, ToastContainer } from 'react-toastify';
 import { fetchElastic, clearElastic } from 'ducks/elastic';
 
-import Tabs from 'components/Template/tab';
 import Highlight from 'react-highlight';
 
 const toastConfig = {
@@ -26,26 +20,7 @@ class InstallPixel extends Component{
   constructor(){
     super();
     this.handlePixelCopy = this.handlePixelCopy.bind(this);
-    this.handleNextState = this.handleNextState.bind(this);
-    this.activeState = this.activeState.bind(this);
     this.verifyPixelStatus = this.verifyPixelStatus.bind(this);
-  }
-
-  componentDidMount() {
-    this.setActiveState({active: 2});
-  }
-
-  activeState(val){
-    this.setActiveState(val);
-  }
-
-  handleNextState() {
-    this.setActiveState({active: 3});
-  }
-
-  setActiveState(val) {
-    var data = {'tab' : val};
-    this.props.callbackFromParent(data);
   }
 
   verifyPixelStatus() {
@@ -70,72 +45,45 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
   }
 
   render(){
-    const { elastic } = this.props;
+    const { elastic, setActiveState, campaign } = this.props;
     return (
-      <div className="content">
-        <Grid fluid>
-          <Tabs active="2" callbackFromParent ={this.activeState}/>
-          <div className="tabscontent">
-            <Row>
-              <Col md={12}>
-                <h4>Install Pixel to Your Website</h4>
-              </Col>
-            </Row>
-            <Row>
-              <Col md={12}>
-                {/* <small>Follow the instructions below Or Get Our <a href="javascript:;">Expert's Help</a></small><br/>
-                <small>If you're using a third-party platform (Wordpress, Squarespace, etc) there are <a href="javascript:;">instructions here</a>.</small>
-                <p>&nbsp;</p> */}
-              </Col>
-            </Row>
-            <Row>
-              <Col md={12}>
-                <h4>Step 1 </h4>
-                <FormGroup controlId="formstep1">
-                  <ControlLabel>Please copy your unique script & paste it in the Header of your Website. Add this To every page where you want To track, measure And show notifications.</ControlLabel>
-                  <Highlight innerHTML={false}>
-                    {`<script src="https://cdninfluence.nyc3.digitaloceanspaces.com/influence-analytics.js"></script>
-<script>
-  new Influence({
-    trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX'}'
-  });
-</script>` }
-                  </Highlight>
-                  <ButtonToolbar>
-                    <Button bsStyle={elastic==undefined?'default':elastic.error?'danger':'success'} className="btn-default" bsSize="small" onClick={() => this.verifyPixelStatus()}>
-                      Verify Pixel Status
-                    </Button>
-                    <Button bsSize="small" bsStyle="default" onClick={this.handlePixelCopy}>Copy to clipboard</Button>
-                  </ButtonToolbar>
-                </FormGroup>
-              </Col>
-            </Row>
-            <Row>
-              <Col md={12}>
-                <h4>Step 2 </h4>
-                <FormGroup controlId="formstep2">
-                  <ControlLabel>
-                    Wait For Your Pixel To Go LIVE. Check By Clicking On The Button " Verify Pixel Status ".
-                    If You're Facing Any Problems With It, Please Contact Our Support By <a href="#">Clicking Here.</a>
-                  </ControlLabel>
-                </FormGroup>
-              </Col>
-            </Row>
+      <div className="install-pixel">
+        <h4 className="lead m-b-30 m-t-50">Install Pixel to Your Website</h4>
+        <button type="button" className="btn btn-outline-info btn-rounded waves-light waves-effect m-b-30">Step 1</button>
+        <p className="text-muted text-left">Please copy your unique script & paste it in the Header of your Website. Add this
+            To every page where you want To track, measure And show notifications.</p>
+        <div className="bg-custom text-monospace text-white border-dark ">
+            <p className="m-l-30">script src="https://cdninfluence.nyc3.digitaloceanspaces.com/influence-analytics.js">
+                /script
+                <br/> script
+                <br/> new Influence(
+                <br/> trackingId: '${campaign?campaign.trackingId:'INF-XXXXXXX'}'
+                <br/> );
+                <br/> script
+                <br/>
+            </p>
+        </div>
+        <button type="button" style={elastic==undefined?{backgroundColor:'#02c0ce'}:elastic.error?{backgroundColor:'#f12c0b'}:{backgroundColor:'#e68f1f'}} className="btn btn-custom  waves-light waves-effect number p-l-r-10" onClick={() => this.verifyPixelStatus()}>Verify Pixel Status</button>
+        <button type="button" className="btn btn-custom  waves-light waves-effect number" onClick={this.handlePixelCopy}>Copy to Clipboard</button>
+        <p className="m-t-30">
+            <br/>
+            <hr />
+        </p>
+        <p className="m-t-30">
+            <br/>
+        </p>
+        <button type="button" className="btn btn-outline-info btn-rounded waves-light waves-effect m-b-30">Step 2</button>
+        <p className="text-muted text-left">Wait For Your Pixel To Go LIVE. Check By Clicking On The Button " Verify Pixel Status
+            ". If You're Facing Any Problems With It, Please Contact Our Support By
+            <a href="#">Clicking Here.</a>
+        </p>
 
-            <Row style={{margin: '0px auto 10%', padding: '5% 0% 0% 5%' }}>
-              <Col md={12}>
-                <div className=" text-right">
-                  <Button bsStyle="primary" onClick={this.handleNextState}>
-                    <Glyphicon glyph="chevron-right" />
-                    Next
-                  </Button>
-                </div>
-              </Col>
-            </Row>
-          </div>
-        </Grid>
-        <ToastContainer autoClose={8000} />
-      </div>
+        <div className="m-t-50 float-right align-install-btn">
+            <button type="button" className="btn btn-custom  waves-light waves-effect number " onClick={() => browserHistory.push('/campaigns')}>Previous</button>
+            <button type="button" className="btn btn-custom  waves-light waves-effect number ml-2 pl-4 pr-4" onClick={() => setActiveState(2)}>Next </button>
+        </div>
+        <div className="clearfix"></div>
+     </div>
     );
   }
 }

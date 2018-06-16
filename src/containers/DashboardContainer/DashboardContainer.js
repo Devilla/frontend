@@ -2,16 +2,16 @@ import { browserHistory } from 'react-router';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { checkTokenExists } from 'ducks/auth';
-import Popup from 'react-popup';
-import { Spinner, Header, Sidebar } from 'components';
-import './DashboardContainer.scss';
-import './assets/css/bootstrap.min.scss';
-import './assets/css/animate.min.scss';
-import './assets/css/demo.scss';
-import './assets/css/pe-icon-7-stroke.css';
+import { Spinner, Header, Footer, Sidebar } from 'components';
+
+import './asset/css/bootstrap.min.scss';
+// import './asset/css/style.scss';
+import './asset/scss/icons.scss';
+import './animate.min.scss';
 import 'react-select/dist/react-select.css';
 import 'react-popup/style.css';
 import document from 'react';
+import Popup from 'react-popup';
 
 
 class DashboardContainer extends Component {
@@ -23,7 +23,7 @@ class DashboardContainer extends Component {
     };
 
     this.checkLogin((err) => {
-      if(err) {
+      if (err) {
         browserHistory.push('/login');
       } else {
         this.checkUserDetails(this.props.profile);
@@ -45,22 +45,22 @@ class DashboardContainer extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (!nextProps.profile && nextProps.user.size != 0 && !this.state.disableButton  )
+    if (!nextProps.profile && nextProps.user.size != 0 && !this.state.disableButton)
       this.checkUserDetails(nextProps.profile);
-    if(this.props.profile != nextProps.profile && nextProps.profile && nextProps.profile.plan)
-      this.setState({disableButton: false});
+    if (this.props.profile != nextProps.profile && nextProps.profile && nextProps.profile.plan)
+      this.setState({ disableButton: false });
   }
 
   checkUserDetails(profile) {
     const user = this.props.user;
     if (user && user.size !== 0 && (!profile || !profile.plan)) {
-      this.setState({disableButton: true});
+      this.setState({ disableButton: true });
       browserHistory.push('getting-started');
     }
   }
 
   componentDidUpdate(e) {
-    if (window.innerWidth < 993 && e.history.location.pathname !== e.location.pathname && document.documentElement.className.indexOf('nav-open') !== -1) {
+    if (window.innerWidth < 993 && this.props.history.location.pathname !== e.location.pathname && document.documentElement.className.indexOf('nav-open') !== -1) {
       document.documentElement.classList.toggle('nav-open');
     }
   }
@@ -70,20 +70,30 @@ class DashboardContainer extends Component {
     return (
       <div className="dashboard-container">
         <Popup />
-        <div className="wrapper">
+        <div className="wrapper" style={{ height: "100%", backgroundColor: "#f4f6f8" }} >
           <Spinner loading={loading} />
           {!this.state.render && <p>Please wait</p>}
           {this.state.render && <Sidebar {...this.props} disableButton={this.state.disableButton} />}
           {
             this.state.render &&
-            <div id="main-panel" className="main-panel" style={{width: 'calc(100% - 195px)', marginTop: '-.5%', marginRight: '-1%'}}>
-              <Header {...this.props}/>
-              {this.props.children}
+            <div >
+            <div className="content-page" >
+              <div className="topbar" >
+                <nav className="navbar-custom">
+                  <Header {...this.props} />
+                </nav>
+              </div>
+
+                <div className="content" style={{ backgroundColor: "#FFF" }}>
+                  <div className="container-fluid p-5">
+                    {this.props.children}
+                  </div>
+                </div>
+              </div>
             </div>
           }
         </div>
       </div>
-
     );
   }
 }

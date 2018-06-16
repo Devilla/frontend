@@ -26,7 +26,7 @@ const NotificationConfigure = ({
           <Card title="Recent User Activity"
             isDisabled={activity}
             content={
-              <Row>
+              <div className="notification-configure-content">
                 <Col md={6}>
                   <Notification
                     contentText={contentText}
@@ -55,7 +55,7 @@ const NotificationConfigure = ({
                     handleContentChange={handleContentChange}
                   />
                 </Col>
-              </Row>
+              </div>
             }
           />
         </Col>

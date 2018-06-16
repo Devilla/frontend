@@ -12,6 +12,7 @@ import Website from './Website';
 import Card from './Card';
 import ReactChartJs from 'react-chartjs';
 
+
 var LineChart = ReactChartJs.Line;
 
 class Dashboard extends Component {
@@ -133,9 +134,9 @@ class Dashboard extends Component {
       offsetGridLines: false
     };
 
-    return (<div className="content dashboard-content">
-      <Grid fluid="fluid">
-
+    return (
+    <div className="content">
+      <div className="container-fluid">
         <Row>
           <Col md={6}>
             <Row>
@@ -189,7 +190,7 @@ class Dashboard extends Component {
             </Row>
           </Col>
         </Row>
-      </Grid>
+      </div>
     </div>);
   }
 }

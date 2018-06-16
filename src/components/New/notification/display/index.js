@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
-import { Row, Col, Glyphicon } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import LeftView from './left-view'
 import RightView from './right-view'
 import { fetchOneRules, createRules, updateRules } from 'ducks/rules';
-import Tabs from 'components/Template/tab'
-import Button from 'components/Template/customButton';
 
 export class Display extends Component{
   constructor(props){
@@ -24,16 +21,12 @@ export class Display extends Component{
       recentConv:5,
       displayTime: 120,
       delayBetween: 120,
-      displayPosition: 'Bottom Left',
+      displayPosition: 'bottom',
       popupAnimationIn:'fadeInUp',
-      popupAnimationOut:'fadeOutDown',
-      sampleDisplay: false,
-      animation: 'fadeIn'
+      popupAnimationOut:'fadeOutDown'
     };
     this.handleStateChange = this.handleStateChange.bind(this);
     this.saveRules = this.saveRules.bind(this);
-    this.showNotification = this.showNotification.bind(this);
-    this.handleAnimation = this.handleAnimation.bind(this);
   }
 
   componentDidMount() {
@@ -88,58 +81,25 @@ export class Display extends Component{
     this.props.handleNextState();
   }
 
-  showNotification() {
-    this.setState({sampleDisplay: !this.state.sampleDisplay});
-  }
-
-  handleAnimation(value) {
-    this.setState({animation: value})
-  }
-
   render(){
     const { handleBackState } = this.props;
     return (
-      <div className="plain inner-display" style={{width: '97.5%', background: 'white', padding: '2% 1%'}}>
-        <div className="content">
-          <Row>
-            <Col xs={6}>
-              <LeftView
-                handleStateChange={this.handleStateChange}
-                {...this.state}
-              />
-           </Col>
-            <Col xs={6}>
-               <RightView
-                 handleStateChange={this.handleStateChange}
-                 handleAnimation={this.handleAnimation}
-                 {...this.state}
-               />
-            </Col>
-           </Row>
-           <Row style={{margin: '0px auto 10%', padding: '5% 5% 5% 0%'}}>
-             <Col md={4}>
-               <div className=" text-left">
-                 <Button bsStyle="primary" icon="chevron-left" onClick={handleBackState}>
-                   Back
-                 </Button>
-               </div>
-             </Col>
-             <Col md={4}>
-               <div className=" text-center">
-                 <Button bsStyle="primary" icon="tasks" onClick={this.showNotification}>
-                   {this.state.sampleDisplay?'Hide':'Show'} Notification
-                 </Button>
-               </div>
-             </Col>
-             <Col md={4}>
-               <div className=" text-right">
-                <Button bsStyle="primary" icon="chevron-right" onClick={this.saveRules}>
-                  Next
-                </Button>
-               </div>
-             </Col>
-           </Row>
+      <div>
+        <div className="row m-t-30 m-b-30">
+          <LeftView
+            handleStateChange={this.handleStateChange}
+            {...this.state}
+          />
+          <RightView
+            handleStateChange={this.handleStateChange}
+            {...this.state}
+          />
         </div>
+        <div className="m-t-50 float-right align-install-btn">
+          <button type="button" className="btn btn-custom  waves-light waves-effect number " onClick={handleBackState}>Previous</button>
+          <button type="button" className="btn btn-custom  waves-light waves-effect number ml-2 pl-4 pr-4" onClick={this.saveRules}>Next </button>
+        </div>
+        <div className="clearfix"></div>
       </div>
     );
   }

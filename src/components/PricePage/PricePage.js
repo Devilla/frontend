@@ -1,6 +1,10 @@
 import React from 'react';
+import {Animated} from 'react-animated-css';
+import Switch from 'react-flexible-switch';
 
-const PricePage = ({ externalValue, handleMonthChange, handleSwitchChange, handleYearChange, planList, returnRates }) => {
+import PriceList from './PriceList';
+
+const PricePage = ({externalValue, handleMonthChange, handleSwitchChange, handleYearChange, planList, returnRates}) => {
   return (
     <div>
       <div className="page-header ">
@@ -11,7 +15,6 @@ const PricePage = ({ externalValue, handleMonthChange, handleSwitchChange, handl
             </Animated>
           </div>
         </div>
-
       </div>
       <div className="section innerpage">
         <div className="container w-container newprice price">

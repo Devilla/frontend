@@ -1,22 +1,24 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 import { ToastContainer } from 'react-toastify';
-import { updateUser, checkTokenExists, validateCoupon, clearCouponError } from 'ducks/auth';
-import { createPayment } from 'ducks/payment';
+
 import TrailPayment from './TrailPayment';
+import { updateUser, checkTokenExists, validateCoupon, clearCouponError } from 'ducks/auth';
+import { createProfile, updateProfile } from 'ducks/profile';
+import { createPayment } from 'ducks/payment';
 import './LoginFlow.scss';
+
+import { store } from 'index.js';
 
 class LoginFlow extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      flowStep: 0,
       username: '',
       plan:'',
-      coupon: '',
-      couponError: '',
-      cardError: '',
-      nameError: ''
+      stripeToken: {}
     };
 
     this.handleStateChange = this.handleStateChange.bind(this);
@@ -50,7 +52,7 @@ class LoginFlow extends Component {
     const cookie = localStorage.getItem('authToken');
     const authToken = cookie?JSON.parse(cookie):null;
     if(authToken)
-      this.props.checkTokenExists(authToken);
+      store.dispatch(checkTokenExists(authToken));
     else
       return window.location.assign(window.location.origin+'/login');
   }
@@ -59,11 +61,8 @@ class LoginFlow extends Component {
     this.setState({[stateName]:state});
   }
 
-
   handleStateChange(state, stateName) {
-    if(stateName === 'coupon')
-      this.props.clearCouponError();
-    this.setState({[stateName]:state, couponError: '', cardError: '', nameError: ''});
+    this.setState({[stateName]:state});
   }
 
   submitPayment(data) {
@@ -162,8 +161,9 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
   updateUser,
+  createProfile,
+  updateProfile,
   createPayment,
-  checkTokenExists,
   validateCoupon,
   clearCouponError
 };
