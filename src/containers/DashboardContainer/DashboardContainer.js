@@ -190,7 +190,7 @@ class DashboardContainer extends Component {
               </div>
 
               <div className="content dashboard-content" style={{ backgroundColor: '#FFF' }} onClick={this.closeDropdown}>
-                <div className="container-fluid p-5">
+                <div className="container-fluid">
                   {this.props.children}
                 </div>
               </div>

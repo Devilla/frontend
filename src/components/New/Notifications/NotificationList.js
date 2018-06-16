@@ -1,4 +1,5 @@
 import React from 'react';
+import { Avatar2, Avatar3, Avatar4 } from 'img';
 import './NotificationList.scss';
 
 const NotificationList = ({ notificationList, configure, handleActivityChange }) => {
@@ -22,13 +23,13 @@ const NotificationList = ({ notificationList, configure, handleActivityChange })
           <div className="text-center card-box ">
             <div className="member-card pt-2 pb-2">
               <div className="thumb-lg member-thumb m-b-10 mx-auto">
-                <img src={`assets/images/users/${notification.notificationName === 'Bulk Activity' ?
-                  'GROUP'
+                <img src={notification.notificationName === 'Bulk Activity' ?
+                  Avatar2
                   :
                   notification.notificationName === 'Live Visitor Count' ?
-                    'LIVE'
+                    Avatar3
                     :
-                    'RECENT'}.jpg`} className="rounded-circle img-thumbnail" alt="profile-image" />
+                    Avatar4} className="rounded-circle img-thumbnail" alt="profile-image" />
               </div>
 
               <div className=" m-t-30">
