@@ -1,6 +1,7 @@
 import React from 'react';
 import { Avatar1 } from 'img';
 import './Header.scss';
+import { browserHistory } from 'react-router';
 
 const Header = ({ openCloseDropdown, dropdownStyle, logout, renderHelp, settings }) => {
   return (
@@ -30,7 +31,8 @@ const Header = ({ openCloseDropdown, dropdownStyle, logout, renderHelp, settings
           data-toggle="dropdown"
           role="button"
           aria-haspopup="false"
-          aria-expanded="false"
+          aria-expanded="false" 
+          style={{cursor:'pointer'}}
           onClick={openCloseDropdown}
         >
           <img src={Avatar1} alt="user" className="rounded-circle" />
@@ -45,7 +47,7 @@ const Header = ({ openCloseDropdown, dropdownStyle, logout, renderHelp, settings
 
           <a href="javascript:void(0);" className="dropdown-item notify-item">
             <i className="fi-head"></i>
-            <span>My Account</span>
+            <span onClick={()=>{browserHistory.push('/profile');}}>Your Profile</span>
           </a>
 
           <a href="javascript:void(0);" className="dropdown-item notify-item" onClick={settings}>
