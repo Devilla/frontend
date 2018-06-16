@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 const PriceList = ({planList, returnRates, externalValue }) => {
   return (
@@ -9,7 +9,7 @@ const PriceList = ({planList, returnRates, externalValue }) => {
             'pricing-column w-col w-col-3'
             :
             'last pricing-titlecolumn w-col w-col-3'}
-            >
+          >
             <div className="pricing-block">
               <div className="pricing-price-wrapper">
                 <h2 className="pricing-title">{plan.planName}</h2>
@@ -17,10 +17,10 @@ const PriceList = ({planList, returnRates, externalValue }) => {
                   {returnRates(plan.amount)}
                 </h2>
                 <h2 className="monthly pricing-title d1">{
-                    externalValue
-                      ? 'Per month, billed annually'
-                      : 'Per month'
-                  }</h2>
+                  externalValue
+                    ? 'Per month, billed annually'
+                    : 'Per month'
+                }</h2>
                 <div className="feature-divider section-divider-line"></div>
               </div>
               <ul className="pricing-feature-list w-list-unstyled">
@@ -67,11 +67,11 @@ const PriceList = ({planList, returnRates, externalValue }) => {
             </div>
           </div>
         )
-      :
+        :
         <div>No Plan to select from.</div>
       }
     </div>
   );
-}
+};
 
 export default PriceList;

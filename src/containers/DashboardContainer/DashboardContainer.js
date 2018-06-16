@@ -2,7 +2,7 @@ import { browserHistory } from 'react-router';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { checkTokenExists } from 'ducks/auth';
-import { Spinner, Header, Footer, Sidebar } from 'components';
+import { Spinner, Header, Sidebar } from 'components';
 
 import './asset/css/bootstrap.min.scss';
 // import './asset/css/style.scss';
@@ -70,13 +70,12 @@ class DashboardContainer extends Component {
     return (
       <div className="dashboard-container">
         <Popup />
-        <div className="wrapper" style={{ height: "100%", backgroundColor: "#f4f6f8" }} >
+        <div className="wrapper" style={{ height: '100%', backgroundColor: '#f4f6f8' }} >
           <Spinner loading={loading} />
           {!this.state.render && <p>Please wait</p>}
           {this.state.render && <Sidebar {...this.props} disableButton={this.state.disableButton} />}
-          {
-            this.state.render &&
-            <div >
+          {this.state.render &&
+          <div>
             <div className="content-page" >
               <div className="topbar" >
                 <nav className="navbar-custom">
@@ -84,13 +83,13 @@ class DashboardContainer extends Component {
                 </nav>
               </div>
 
-                <div className="content" style={{ backgroundColor: "#FFF" }}>
-                  <div className="container-fluid p-5">
-                    {this.props.children}
-                  </div>
+              <div className="content" style={{ backgroundColor: '#FFF' }}>
+                <div className="container-fluid p-5">
+                  {this.props.children}
                 </div>
               </div>
             </div>
+          </div>
           }
         </div>
       </div>

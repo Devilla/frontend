@@ -6,8 +6,6 @@ import {
   Col
 } from 'react-bootstrap';
 import { Animated } from 'react-animated-css';
-
-import Button from 'components/Template/customButton';
 import PricePage from 'components/PricePage';
 
 const PlanList = ({ plan, handleCheckChange, makePayment }) => {
@@ -31,7 +29,7 @@ const PlanList = ({ plan, handleCheckChange, makePayment }) => {
               </Row>
               <Row className="float-right">
                 <div className="m-t-50 ">
-                  <span type="button" className="btn btn-custom  waves-light waves-effect number ml-2 pl-4 pr-4" onClick={() => browserHistory.push("/profile")}>&nbsp;&nbsp;Back&nbsp;&nbsp;</span>
+                  <span type="button" className="btn btn-custom  waves-light waves-effect number ml-2 pl-4 pr-4" onClick={() => browserHistory.push('/profile')}>&nbsp;&nbsp;Back&nbsp;&nbsp;</span>
                   <span type="button" className="btn btn-custom  waves-light waves-effect number ml-2 pl-4 pr-4" onClick={() => makePayment()}>Proceed </span>
                 </div>
               </Row>

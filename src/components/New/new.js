@@ -50,7 +50,7 @@ export class NewUser extends Component {
 
   handleCampaignAuth(evt) {
     if (evt.target.value === '')
-      this.setState({errorName: "Enter campaign name"})
+      this.setState({errorName: 'Enter campaign name'});
   }
 
   handleWebsiteAuth(evt) {
@@ -68,8 +68,8 @@ export class NewUser extends Component {
   }
 
   handleCheckCookie() {
-    var usertoken = localStorage.getItem("authToken");
-    if (usertoken !== "") {
+    var usertoken = localStorage.getItem('authToken');
+    if (usertoken !== '') {
       return usertoken;
     } else {
       this.setState({render: false});
@@ -97,77 +97,77 @@ export class NewUser extends Component {
     const { errorName, errorWebsiteUrl, campaignname, website } = this.state;
     return (
       <div>
-      {this.props.campaign && Object.keys(this.props.campaign).length !== 0 && this.props.campaign.constructor === Object?
-        <div>
-          <Tabs campaign={this.props.campaign} />
-        </div>
-      :
-        <div className="content fill">
-          <Grid fluid="fluid">
-            <Row>
-              <Col md={6}>
-                <CardHeader title="Create Your Campaign"  content={
-                  <form onSubmit={this.handleNextButton}>
-                    <Row>
-                      <div className="col-md-12">
-                        <FormGroup>
-                          <ControlLabel className="text-muted h5">Name</ControlLabel>
-                          <FormControl
-                            type="text"
-                            bsClass="form-control"
-                            id="campaignname"
-                            placeholder="example: Acme Co, Blog, Online Store"
-                            onChange={this.handleCampaignNameChange.bind(this)}
-                            onBlur={this.handleCampaignAuth.bind(this)}
-                            value={campaignname}
-                            required={true}
-                          />
-                          <HelpBlock>
-                            <p className="website-error">{errorName}</p>
-                          </HelpBlock>
-                        </FormGroup>
-                      </div>
-                      <div className="col-md-12">
-                        <FormGroup>
-                          <ControlLabel className="text-muted h5">Website URL</ControlLabel>
-                          <FormControl
-                            type="text"
-                            bsClass="form-control"
-                            placeholder="http://"
-                            id="website"
-                            onChange={this.handleWebsiteChange.bind(this)}
-                            onBlur={this.handleWebsiteAuth.bind(this)}
-                            value={website}
-                            required={true}
-                          />
-                          <HelpBlock>
-                            <p className="website-error">{errorWebsiteUrl}</p>
-                          </HelpBlock>
-                        </FormGroup>
-                      </div>
-                    </Row>
-                    <Button
-                      bsStyle="info"
-                      pullRight
-                      fill
-                      type="submit"
-                      disabled={isDisabled}
+        {this.props.campaign && Object.keys(this.props.campaign).length !== 0 && this.props.campaign.constructor === Object?
+          <div>
+            <Tabs campaign={this.props.campaign} />
+          </div>
+          :
+          <div className="content fill">
+            <Grid fluid="fluid">
+              <Row>
+                <Col md={6}>
+                  <CardHeader title="Create Your Campaign"  content={
+                    <form onSubmit={this.handleNextButton}>
+                      <Row>
+                        <div className="col-md-12">
+                          <FormGroup>
+                            <ControlLabel className="text-muted h5">Name</ControlLabel>
+                            <FormControl
+                              type="text"
+                              bsClass="form-control"
+                              id="campaignname"
+                              placeholder="example: Acme Co, Blog, Online Store"
+                              onChange={this.handleCampaignNameChange.bind(this)}
+                              onBlur={this.handleCampaignAuth.bind(this)}
+                              value={campaignname}
+                              required={true}
+                            />
+                            <HelpBlock>
+                              <p className="website-error">{errorName}</p>
+                            </HelpBlock>
+                          </FormGroup>
+                        </div>
+                        <div className="col-md-12">
+                          <FormGroup>
+                            <ControlLabel className="text-muted h5">Website URL</ControlLabel>
+                            <FormControl
+                              type="text"
+                              bsClass="form-control"
+                              placeholder="http://"
+                              id="website"
+                              onChange={this.handleWebsiteChange.bind(this)}
+                              onBlur={this.handleWebsiteAuth.bind(this)}
+                              value={website}
+                              required={true}
+                            />
+                            <HelpBlock>
+                              <p className="website-error">{errorWebsiteUrl}</p>
+                            </HelpBlock>
+                          </FormGroup>
+                        </div>
+                      </Row>
+                      <Button
+                        bsStyle="info"
+                        pullRight
+                        fill
+                        type="submit"
+                        disabled={isDisabled}
                       >
-                      Next >
-                    </Button>
-                    <div className="clearfix"></div>
-                  </form>
-                }/>
-              </Col>
-              <Col md ={6}>
-                <img alt="background" src={Integrations1} />
-              </Col>
-            </Row>
+                        Next >
+                      </Button>
+                      <div className="clearfix"></div>
+                    </form>
+                  }/>
+                </Col>
+                <Col md ={6}>
+                  <img alt="background" src={Integrations1} />
+                </Col>
+              </Row>
 
-          </Grid>
-          <ToastContainer hideProgressBar={true}/>
-        </div>
-      }
+            </Grid>
+            <ToastContainer hideProgressBar={true}/>
+          </div>
+        }
       </div>
     );
   }

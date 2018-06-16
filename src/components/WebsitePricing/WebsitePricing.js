@@ -65,8 +65,8 @@ class WebsitePricing extends Component {
   }
 
   stellarFeel = (name) => {
-    let stellar ="";
-    this.filterPlanName(name) === "Advanced" ? stellar = "bg--primary" : stellar = "";
+    let stellar ='';
+    this.filterPlanName(name) === 'Advanced' ? stellar = 'bg--primary' : stellar = '';
     return stellar;
   }
 
@@ -78,12 +78,13 @@ class WebsitePricing extends Component {
     return planList.map(plan => {
       return <div className="col-md-3 pl-3 pr-0">
         <div className="pricing pricing-1  pr-0 pl-0">
-
-      <div className={`pricing__head ${this.stellarFeel(plan.name) }  boxed boxed--border boxed--lg`}>
-        <h3>{this.filterPlanName(plan.name)}</h3>
-          <span className="h1">
-            <span className="pricing__dollar">$</span><span>{plan.interval === 'year' ? plan.amount/1200 : plan.amount/100}</span></span>
-      </div>
+          <div className={`pricing__head ${this.stellarFeel(plan.name) }  boxed boxed--border boxed--lg`}>
+            <h3>{this.filterPlanName(plan.name)}</h3>
+            <span className="h1">
+              <span className="pricing__dollar">$</span>
+              <span>{plan.interval === 'year' ? plan.amount/1200 : plan.amount/100}</span>
+            </span>
+          </div>
           <hr/>
           <ul className="h6 ">
             <li>

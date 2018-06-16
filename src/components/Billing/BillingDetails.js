@@ -8,10 +8,8 @@ import {
   Row,
   Col,
   FormGroup,
-  ControlLabel,
   FormControl,
-  Table,
-  Glyphicon
+  Table
 } from 'react-bootstrap';
 
 import CardHeader from 'components/Template/card-with-header';
@@ -20,7 +18,7 @@ import Button from 'components/Template/customButton';
 import './BillingDetails.scss';
 
 const billingHeader = [
-  "Billing Date", "Amount", "Transaction Id", "Interval", "Download"
+  'Billing Date', 'Amount', 'Transaction Id', 'Interval', 'Download'
 ];
 
 class BillingDetails extends Component {
@@ -68,8 +66,8 @@ class BillingDetails extends Component {
           <td className="location">{payment.subscription_id}</td>
           <td className="country">{payment.payment_plan.interval.charAt(0).toUpperCase() + payment.payment_plan.interval.slice(1)}</td>
           <td className="lastseen"><i className="fi-download"></i></td>
-        </tr>
-      })
+        </tr>;
+      });
     } else
       return <tr>nothing</tr>;
   }
@@ -152,25 +150,25 @@ class BillingDetails extends Component {
                               <p className="text-muted font-13">
                                 <strong>Last Paid :</strong>
                                 <span class="m-l-15">
-                                  {planSelected.interval ? moment(planSelected.interval.updated_at).format('DD MMM YYYY') : "-"}
+                                  {planSelected.interval ? moment(planSelected.interval.updated_at).format('DD MMM YYYY') : '-'}
                                 </span>
                               </p>
                               <p className="text-muted font-13">
                                 <strong>Billing Cycle :</strong>
                                 <span class="m-l-15">
-                                  {planSelected.interval ? (planSelected.interval.charAt(0).toUpperCase() + planSelected.interval.slice(1)) : "-"}
+                                  {planSelected.interval ? (planSelected.interval.charAt(0).toUpperCase() + planSelected.interval.slice(1)) : '-'}
                                 </span>
                               </p>
                               <p className="text-muted font-13">
                                 <strong>Visitor Quota :</strong>
                                 <span class="m-l-15">
-                                  {profile ? profile.uniqueVisitorQouta.toLocaleString() : "-"} Unique Visitors
+                                  {profile ? profile.uniqueVisitorQouta.toLocaleString() : '-'} Unique Visitors
                                 </span>
                               </p>
                               <p className="text-muted font-13">
                                 <strong>Visitor Quota Left :</strong>
                                 <span class="m-l-15">
-                                  {profile ? profile.uniqueVisitorsQoutaLeft.toLocaleString() : "-"} Unique Visitors
+                                  {profile ? profile.uniqueVisitorsQoutaLeft.toLocaleString() : '-'} Unique Visitors
                                 </span>
                               </p>
                             </div>
@@ -186,7 +184,7 @@ class BillingDetails extends Component {
                                   <p className="text-muted font-13">
                                     <strong>Next Payment Due Date :</strong>
                                     <span class="m-l-15">
-                                      {planSelected.interval ? moment(planSelected.interval.updated_at).add(planSelected.interval_count, planSelected.interval).format('DD MMM YYYY') : "-"}
+                                      {planSelected.interval ? moment(planSelected.interval.updated_at).add(planSelected.interval_count, planSelected.interval).format('DD MMM YYYY') : '-'}
                                     </span>
                                   </p>
                                   <p className="text-muted font-13">

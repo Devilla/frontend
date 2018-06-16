@@ -10,7 +10,6 @@ import {
 } from 'react-bootstrap';
 import { Elements } from 'react-stripe-elements';
 import PaymentPage from './PaymentPage';
-import axios from 'axios';
 import PricePage from 'components/PricePage';
 import CouponPage from './CouponPage';
 

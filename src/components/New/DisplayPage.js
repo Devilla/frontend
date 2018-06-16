@@ -10,8 +10,8 @@ import {
 } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
-import CardTable from 'components/Template/card-with-page-table'
-import { pagethArray } from 'components/Template/data'
+import CardTable from 'components/Template/card-with-page-table';
+import { pagethArray } from 'components/Template/data';
 import { fetchDisplayUrl, createPageUrl, clearPageUrl, removePageUrl } from 'ducks/pageurl';
 import { fetchOneRules, clearRules } from 'ducks/rules';
 import { validatePath } from 'components/Common/function';
@@ -63,9 +63,9 @@ class DisplayPage extends Component{
 
   handleNextState() {
     if(!this.props.displayUrls.length)
-      return this.setState({error: "Add a display path"});
+      return this.setState({error: 'Add a display path'});
     Popup.create({
-      title: "Campaign is Live",
+      title: 'Campaign is Live',
       buttons: {
         right: [{
           text: 'Finish',
@@ -151,11 +151,11 @@ class DisplayPage extends Component{
           {
             displayUrls.map((displayUrl, i) => {
               return <tr>
-                 <td className="serial">{i+1}</td>
-                 <td className="url">{displayUrl.url}</td>
-                 <td className="status"><span style={{backgroundColor:this.renderColor(displayUrl.class)}}></span></td>
-                 <td><a href="javascript:;" onClick={() => this.deleteDisplayUrl(displayUrl._id, i, displayUrl.type)}><Glyphicon glyph="trash" /></a></td>
-              </tr>
+                <td className="serial">{i+1}</td>
+                <td className="url">{displayUrl.url}</td>
+                <td className="status"><span style={{backgroundColor:this.renderColor(displayUrl.class)}}></span></td>
+                <td><a href="javascript:;" onClick={() => this.deleteDisplayUrl(displayUrl._id, i, displayUrl.type)}><Glyphicon glyph="trash" /></a></td>
+              </tr>;
             })
           }
         </tbody>
@@ -236,8 +236,8 @@ class DisplayPage extends Component{
               </Col>
             </Row>
             <div className="m-t-50 float-right align-install-btn">
-                <button type="button" className="btn btn-custom  waves-light waves-effect number " onClick={this.handleBackState}>Previous</button>
-                <button type="button" className="btn btn-custom  waves-light waves-effect number ml-2 pl-4 pr-4" onClick={this.handleNextState}>Finish </button>
+              <button type="button" className="btn btn-custom  waves-light waves-effect number " onClick={this.handleBackState}>Previous</button>
+              <button type="button" className="btn btn-custom  waves-light waves-effect number ml-2 pl-4 pr-4" onClick={this.handleNextState}>Finish </button>
             </div>
             <div className="clearfix"></div>
           </div>

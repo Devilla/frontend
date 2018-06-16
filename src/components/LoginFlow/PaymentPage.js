@@ -11,15 +11,6 @@ const PaymentPage = ({
   handleSubmit
 }) => {
 
-  const findObjectByKey = (array, key, value) => {
-    for (var i = 0; i < array.length; i++) {
-      if (array[i][key] === value) {
-        return array[i];
-      }
-    }
-    return null;
-  }
-
   const submitForm = (event) => {
     event.preventDefault();
     if(!user.username)
@@ -29,7 +20,7 @@ const PaymentPage = ({
       return handleErrorChange('Select a plan', 'cardError');
 
     const options = {
-      name: user.username,
+      name: user.username
     };
 
     stripe.createToken(options).then((result) => {

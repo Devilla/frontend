@@ -16,11 +16,11 @@ class ComingSoon extends Component {
 
   render() {
     return (
-      <div >
+      <div>
         <div className="content-wrap">
           <div>
-        		<div ><img src={Integrations1}/></div>
-        	</div>
+            <div><img src={Integrations1}/></div>
+          </div>
         </div>
       </div>
     );

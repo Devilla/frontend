@@ -8,8 +8,8 @@ import {
   HelpBlock
 } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import CardTable from 'components/Template/card-with-page-table'
-import { pagethArray } from 'components/Template/data'
+import CardTable from 'components/Template/card-with-page-table';
+import { pagethArray } from 'components/Template/data';
 import { fetchLeadUrl, createPageUrl, clearPageUrl, removePageUrl } from 'ducks/pageurl';
 import { fetchOneRules, clearRules } from 'ducks/rules';
 import { validatePath } from 'components/Common/function';
@@ -57,7 +57,7 @@ class CaptureLeads extends Component{
 
   handleNextState() {
     if(!this.props.leads.length)
-      return this.setState({error: "Add a display path"});
+      return this.setState({error: 'Add a display path'});
     this.props.setActiveState(5);
   }
 
@@ -133,11 +133,11 @@ class CaptureLeads extends Component{
           {
             leads.map((lead, i) => {
               return <tr>
-                 <td className="serial">{i+1}</td>
-                 <td className="url">{lead.url}</td>
-                 <td className="status"><span style={{backgroundColor:this.renderColor(lead.class)}}></span></td>
-                 <td><a href="#" onClick={() => this.deleteLead(lead._id, i, lead.type)}><Glyphicon glyph="trash" /></a></td>
-              </tr>
+                <td className="serial">{i+1}</td>
+                <td className="url">{lead.url}</td>
+                <td className="status"><span style={{backgroundColor:this.renderColor(lead.class)}}></span></td>
+                <td><a href="#" onClick={() => this.deleteLead(lead._id, i, lead.type)}><Glyphicon glyph="trash" /></a></td>
+              </tr>;
             })
           }
         </tbody>
@@ -176,7 +176,6 @@ class CaptureLeads extends Component{
                     onChange={this.handlePageUrl}
                     onBlur={this.handleWebsiteAuth.bind(this)}
                     onKeyUp={(e) => e.keyCode === 13?this.addPageUrl():null}
-
                   />
                   <span className="input-group-btn"
                     id="urladd">
@@ -222,8 +221,8 @@ class CaptureLeads extends Component{
               </div>
             </Row>
             <div className="m-t-50 float-right align-install-btn">
-                <button type="button" className="btn btn-custom  waves-light waves-effect number " onClick={this.handleBackState}>Previous</button>
-                <button type="button" className="btn btn-custom  waves-light waves-effect number ml-2 pl-4 pr-4" onClick={this.handleNextState}>Next </button>
+              <button type="button" className="btn btn-custom  waves-light waves-effect number " onClick={this.handleBackState}>Previous</button>
+              <button type="button" className="btn btn-custom  waves-light waves-effect number ml-2 pl-4 pr-4" onClick={this.handleNextState}>Next </button>
             </div>
             <div className="clearfix"></div>
           </div>

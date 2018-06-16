@@ -184,18 +184,18 @@ class AnalyticsContainer extends Component {
 
         const userDetails = website.signups?website.signups.userDetails:[];
         const uniqueUsers = website.uniqueUsers?website.uniqueUsers.aggregations.users.buckets:[];
-        return <tr  className = { index % 2 === 0 ? "text-center " : "text-center table-info "} key={index}>
-            <td className="website"> <a href={website.websiteUrl} target="_blank">{website.websiteUrl}</a></td>
-            <td className="vistor">{visitor}</td>
-            <td><a href="javascript:;" onClick={() => this.handleViewProfile(userDetails)} className="pname">
-                <b>{userDetails && userDetails.length} </b> <span>View Profile</span></a>
-            </td>
-            <td className="liveuser">-</td>
-            <td className="conversion">
-              {
-                userDetails?((userDetails.length / visitor)   * 100).toFixed(2):0
-              } %
-            </td>
+        return <tr  className = { index % 2 === 0 ? 'text-center ' : 'text-center table-info '} key={index}>
+          <td className="website"> <a href={website.websiteUrl} target="_blank">{website.websiteUrl}</a></td>
+          <td className="vistor">{visitor}</td>
+          <td><a href="javascript:;" onClick={() => this.handleViewProfile(userDetails)} className="pname">
+            <b>{userDetails && userDetails.length} </b> <span>View Profile</span></a>
+          </td>
+          <td className="liveuser">-</td>
+          <td className="conversion">
+            {
+              userDetails?((userDetails.length / visitor)   * 100).toFixed(2):0
+            } %
+          </td>
           <td>
             <a href="javascript:;" onClick={() => this.showGraph(website.websiteUrl, uniqueUsers)}><i className="fas fa-chart-area"></i> Show Graph</a>
           </td>

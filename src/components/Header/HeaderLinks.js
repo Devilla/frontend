@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import { Nav,
-  NavItem,
+import {
+  Nav,
   NavDropdown,
   MenuItem,
   Radio,
@@ -13,7 +13,6 @@ import Popup from 'react-popup';
 class HeaderLinks extends Component {
   logout() {
     localStorage.removeItem('authToken');
-    // window.location.assign(window.location.origin+'/');
     browserHistory.push('/');
   }
 
@@ -40,27 +39,27 @@ class HeaderLinks extends Component {
           <Row className="help-form-fields">
             <Radio name="radioGroup" inline="inline">
               I need help setting up my team
-              </Radio>
+            </Radio>
           </Row>
           <Row className="help-form-fields">
             <Radio name="radioGroup" inline="inline">
               I want to know how to use flock
-              </Radio>
+            </Radio>
           </Row>
           <Row className="help-form-fields">
             <Radio name="radioGroup" inline="inline">
               Something is not working
-              </Radio>
+            </Radio>
           </Row>
           <Row className="help-form-fields">
             <Radio name="radioGroup" inline="inline">
               I have feedback / feature request
-              </Radio>
+            </Radio>
           </Row>
           <Row className="help-form-fields">
             <Radio name="radioGroup" inline="inline">
               I need help with something else
-              </Radio>
+            </Radio>
           </Row>
         </FormGroup>
         <Row>
@@ -92,12 +91,12 @@ class HeaderLinks extends Component {
       <div>
         <Nav pullRight className="mr-5">
           <NavDropdown eventKey={4} title={<i className="fi-bell"></i>} id="basic-nav-dropdown" className="text-muted h4 dropdown notification-list" >
-            <MenuItem eventKey={4.1} onClick={() => { browserHistory.push("/dashboard") }}>
+            <MenuItem eventKey={4.1} onClick={() => browserHistory.push('/dashboard')}>
               <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated dropdown-lg">
                 <div className="dropdown-item noti-title">
                   <h5 className="m-0"><span className="float-right"> </span>Get Help</h5>
                 </div>
-                <div className="" style={{ maxHeight: "100px" }}>
+                <div className="" style={{ maxHeight: '100px' }}>
                   <Link to="#hello" className="dropdown-item notify-item">
                     <button type="button" className="btn btn-block btn-info waves-effect waves-light w-lg"> <span>Click to talk</span> </button>
                   </Link>

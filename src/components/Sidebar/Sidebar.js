@@ -1,10 +1,7 @@
-import React, {Component} from 'react';
-import {Link, browserHistory} from 'react-router';
-import Popup from 'react-popup';
-import {Radio, Row, FormGroup} from 'react-bootstrap';
+import React, { Component } from 'react';
+import { Link } from 'react-router';
 import HeaderLinks from '../Header/HeaderLinks';
 // import logo from 'assets/img/logo.png';
-import {Glyphicon} from 'react-bootstrap';
 import logo from 'containers/DashboardContainer/asset/images/influence.png';
 import appRoutes from 'routes/app';
 import './Sidebar.scss';
@@ -14,7 +11,7 @@ class Sidebar extends Component {
     super(props);
     this.state = {
       width: window.innerWidth
-    }
+    };
   }
 
   activeRoute(routeName) {
@@ -30,7 +27,7 @@ class Sidebar extends Component {
             <h5></h5>
             <p clasName="text-muted"></p>
           </div>
-          <div className="topbar-left mt-3 ml-2 pt-2 pl-2" style={{width:"200px"}}>
+          <div className="topbar-left mt-3 ml-2 pt-2 pl-2" style={{width:'200px'}}>
             <Link to="/dashboard" class="logo ">
               <span>
                 <img src={logo} alt="influence-img" height="35" />
@@ -41,7 +38,7 @@ class Sidebar extends Component {
 
           <div id="sidebar-menu">
             <div className="button-list">
-              <Link to="/new"><button type="button" className="btn  btn-pink waves-effect  ml-4 p-2  pt-0 pb-0 mb-4 w-lg "><i className="fi-file-add " style={{fontSize:"15px"}}></i>&nbsp; <span className="h5">New</span> </button></Link>
+              <Link to="/new"><button type="button" className="btn  btn-pink waves-effect  ml-4 p-2  pt-0 pb-0 mb-4 w-lg "><i className="fi-file-add " style={{fontSize:'15px'}}></i>&nbsp; <span className="h5">New</span> </button></Link>
             </div>
 
             <ul className="metismenu" id="side-menu">
@@ -50,16 +47,16 @@ class Sidebar extends Component {
                 appRoutes.map((prop, key) => {
                   if (!prop.redirect)
                     return (
-                      <li className={prop.upgrade ? "active newbtn" : this.activeRoute(prop.path)} key={key}>
+                      <li className={prop.upgrade ? 'active newbtn' : this.activeRoute(prop.path)} key={key}>
                         {prop.name === 'Help' ?
-                          <Link onClick={this.renderHelp} className={disableButton ? 'disabled-link' : "nav-link"} disabled={disableButton} activeClassName="active">
+                          <Link onClick={this.renderHelp} className={disableButton ? 'disabled-link' : 'nav-link'} disabled={disableButton} activeClassName="active">
                             <i className={prop.icon}></i>
                             <span>{prop.upgrade}{prop.name}</span>
                           </Link>
                           :
-                          <Link to={prop.path} className={prop.upgrade && disableButton ? "new disabled-link" : disableButton ? 'disabled-link' : prop.upgrade ? "new nav-link" : "nav-link"} disabled={disableButton} activeClassName="active">
+                          <Link to={prop.path} className={prop.upgrade && disableButton ? 'new disabled-link' : disableButton ? 'disabled-link' : prop.upgrade ? 'new nav-link' : 'nav-link'} disabled={disableButton} activeClassName="active">
                             {
-                              prop.upgrade ? "" : <i className={prop.icon}></i>
+                              prop.upgrade ? '' : <i className={prop.icon}></i>
                             }
                             <span>{prop.upgrade}{prop.name}</span>
                           </Link>
@@ -71,10 +68,10 @@ class Sidebar extends Component {
               }
               <li className="menu-title">More</li>
               <li>
-                  <a href ="#dashboard"><i className="fi-location-2"></i> <span> Beta Features </span> <span className="menu-arrow"></span></a>
-                  <ul className="nav-second-level" aria-expanded="false">
-                      <li><a href="#dashboard">Live Stream</a></li>
-                  </ul>
+                <a href ="#dashboard"><i className="fi-location-2"></i> <span> Beta Features </span> <span className="menu-arrow"></span></a>
+                <ul className="nav-second-level" aria-expanded="false">
+                  <li><a href="#dashboard">Live Stream</a></li>
+                </ul>
               </li>
             </ul>
           </div>

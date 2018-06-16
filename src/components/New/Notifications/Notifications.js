@@ -2,10 +2,10 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import { fetchNotification } from 'ducks/notification';
 import { createConfiguration, fetchConfiguration, fetchCampaignConfiguration, clearConfiguration, updateConfiguration, createSuccess } from 'ducks/configuration';
-import { Row, Col } from 'react-bootstrap';
+import { Row } from 'react-bootstrap';
 import NotificationConfigure from './NotificationConfigure';
 import NotificationList from './NotificationList';
-import './Notifications.scss'
+import './Notifications.scss';
 
 const notificationPanelStyleDefault = { // TODO: Take style values from server
   radius: 50,
@@ -204,35 +204,35 @@ class Notifications extends Component {
 
   render() {
 
-    const { notifications, configurations, createSuccess } = this.props;
+    const { configurations, createSuccess } = this.props;
     return (
       <div className="notification-list">
         <div>
           {!this.state.notification
             ?
-              <NotificationList
-                notificationList={this.state.notifications}
-                handleActivityChange={this.handleActivityChange}
-                configure={this.configure}
-                configurations={configurations}
-                createSuccess={createSuccess}
-              />
+            <NotificationList
+              notificationList={this.state.notifications}
+              handleActivityChange={this.handleActivityChange}
+              configure={this.configure}
+              configurations={configurations}
+              createSuccess={createSuccess}
+            />
             :
-              <Row>
-                <NotificationConfigure
-                  notification={this.state.notification}
-                  activity={this.state.activity}
-                  contentText={this.state.contentText}
-                  visitorText={this.state.visitorText}
-                  notificationPanelStyle={this.state.notificationPanelStyle}
-                  handleContentChange={this.handleContentChange}
-                  setDefaultPanel={this.setDefaultPanel}
-                  handleActivityChange={this.handleActivityChange}
-                  handleNotificationStyleChange={this.handleNotificationStyleChange}
-                  saveConfiguration={this.saveConfiguration}
-                  backConfiguration={this.backConfiguration}
-                />
-              </Row>
+            <Row>
+              <NotificationConfigure
+                notification={this.state.notification}
+                activity={this.state.activity}
+                contentText={this.state.contentText}
+                visitorText={this.state.visitorText}
+                notificationPanelStyle={this.state.notificationPanelStyle}
+                handleContentChange={this.handleContentChange}
+                setDefaultPanel={this.setDefaultPanel}
+                handleActivityChange={this.handleActivityChange}
+                handleNotificationStyleChange={this.handleNotificationStyleChange}
+                saveConfiguration={this.saveConfiguration}
+                backConfiguration={this.backConfiguration}
+              />
+            </Row>
           }
         </div>
         {!this.state.notification &&
