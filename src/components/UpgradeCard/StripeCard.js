@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import { browserHistory } from 'react-router';
-import { CardNumberElement, CardExpiryElement, CardCVCElement, PostalCodeElement, injectStripe } from 'react-stripe-elements';
+import { CardNumberElement,
+  CardExpiryElement,
+  CardCVCElement,
+  PostalCodeElement,
+  injectStripe
+} from 'react-stripe-elements';
 import { Col, Row } from 'react-bootstrap';
 import Button from 'components/Template/customButton';
 
@@ -25,19 +30,6 @@ const createOptions = (fontSize, padding) => {
       },
     },
   };
-};
-
-const handleBlur = () => {
-  console.log('[blur]');
-};
-const handleChange = (change) => {
-  console.log('[change]', change);
-};
-const handleFocus = () => {
-  console.log('[focus]');
-};
-const handleReady = () => {
-  console.log('[ready]');
 };
 
 class StripeCard extends Component {
@@ -77,10 +69,6 @@ class StripeCard extends Component {
             <label>
               Card number
               <CardNumberElement
-                onBlur={handleBlur}
-                onChange={handleChange}
-                onFocus={handleFocus}
-                onReady={handleReady}
                 {...createOptions(5)}
               />
             </label>
@@ -89,10 +77,6 @@ class StripeCard extends Component {
             <label>
               Expiration date
               <CardExpiryElement
-                onBlur={handleBlur}
-                onChange={handleChange}
-                onFocus={handleFocus}
-                onReady={handleReady}
                 {...createOptions(fontSize)}
               />
             </label>
@@ -103,10 +87,6 @@ class StripeCard extends Component {
             <label>
               CVC
               <CardCVCElement
-                onBlur={handleBlur}
-                onChange={handleChange}
-                onFocus={handleFocus}
-                onReady={handleReady}
                 {...createOptions(fontSize)}
               />
             </label>
@@ -115,10 +95,6 @@ class StripeCard extends Component {
             <label>
               Postal code
               <PostalCodeElement
-                onBlur={handleBlur}
-                onChange={handleChange}
-                onFocus={handleFocus}
-                onReady={handleReady}
                 {...createOptions(fontSize)}
               />
             </label>
