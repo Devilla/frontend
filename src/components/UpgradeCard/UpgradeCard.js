@@ -124,7 +124,7 @@ class UpgradeCard extends Component {
                                 </div>
                               </Row>
                               <Row className="visa">
-                                <div className="col-md-6">
+                                <div className="col-md-4">
                                   <FormGroup>
                                     <FormControl
                                       type="text"
@@ -140,9 +140,7 @@ class UpgradeCard extends Component {
                                 <div className='col-md-4 pull-left'>
                                   <Button type='button' icon='chevron-left' bsStyle='info' fill='fill' onClick={() => browserHistory.push(currentState === 'upgrade' ? '/billing-details' : '/profile')}>&nbsp;&nbsp;Back&nbsp;&nbsp;</Button>
                                 </div>
-                                <div className='col-md-6 pull-right mr-2'>
-                                  <Button type='submit' icon='usd' bsStyle='info' fill='fill' >{currentState === 'upgrade' ? 'Upgrade Card' : 'Make Payment'}</Button>
-                                </div>
+                               
                               </Row>
                             </div>
 
@@ -153,7 +151,7 @@ class UpgradeCard extends Component {
                                 </div>
                               </Row>
                               <Row className="visa">
-                                <div className="col-md-6">
+                                <div className="col-md-4">
                                   <FormGroup>
                                     <FormControl
                                       type="text"
@@ -169,9 +167,7 @@ class UpgradeCard extends Component {
                                 <div className='col-md-4 pull-left'>
                                   <Button type='button' icon='chevron-left' bsStyle='info' fill='fill' onClick={() => browserHistory.push(currentState === 'upgrade' ? '/billing-details' : '/profile')}>&nbsp;&nbsp;Back&nbsp;&nbsp;</Button>
                                 </div>
-                                <div className='col-md-6 pull-right mr-2'>
-                                  <Button type='submit' icon='usd' bsStyle='info' fill='fill' >{currentState === 'upgrade' ? 'Upgrade Card' : 'Make Payment'}</Button>
-                                </div>
+                               
                               </Row>
                             </div>
                             <div className={`tab-pane ${activeClass == 4?'show active':''}`} id="bitcoin">
@@ -181,7 +177,7 @@ class UpgradeCard extends Component {
                                 </div>
                               </Row>
                               <Row className="visa">
-                                <div className="col-md-6">
+                                <div className="col-md-4">
                                   <FormGroup>
                                     <FormControl
                                       type="text"
@@ -197,15 +193,27 @@ class UpgradeCard extends Component {
                                 <div className='col-md-4 pull-left'>
                                   <Button type='button' icon='chevron-left' bsStyle='info' fill='fill' onClick={() => browserHistory.push(currentState === 'upgrade' ? '/billing-details' : '/profile')}>&nbsp;&nbsp;Back&nbsp;&nbsp;</Button>
                                 </div>
-                                <div className='col-md-6 pull-right mr-2'>
-                                  <Button type='submit' icon='usd' bsStyle='info' fill='fill' >{currentState === 'upgrade' ? 'Upgrade Card' : 'Make Payment'}</Button>
-                                </div>
+                              
                               </Row>
                             </div>
                             <div className={`tab-pane ${activeClass == 5?'show active':''}`} id="savedcards">
-                              <Row class='upgrade-card-buttons'>
-                                <div className='col-md-4 pull-left'>
-                                  <Button type='button' icon='chevron-left' bsStyle='info' fill='fill' onClick={() => browserHistory.push(currentState === 'upgrade' ? '/billing-details' : '/profile')}>&nbsp;&nbsp;Back&nbsp;&nbsp;</Button>
+                              <Row className="visa">
+                                <div className="col-md-6 tab-name mb-5 text-muted">
+                                  Saved Cards
+                                </div>
+                              </Row>
+                              <Row className="visa">
+                                <div className="col-md-4">
+                                  <FormGroup>
+                                    <FormControl
+                                      type="text"
+                                      value=""
+                                      placeholder="4*** **** **** 2006"
+                                      id="VisaNumber"
+                                      onChange={(e) => this.handleStateChange(e)}
+                                      disabled
+                                    />
+                                  </FormGroup>
                                 </div>
                               </Row>
                             </div>
