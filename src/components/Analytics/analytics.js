@@ -5,7 +5,7 @@ import { thArray } from './data';
 
 const Analytics = ({ renderList }) => {
   return (
-    <div className="content fill">
+    <div className="content">
       <Grid fluid>
         <Row>
           <Col md={12}>
@@ -16,7 +16,7 @@ const Analytics = ({ renderList }) => {
               ctTableFullWidth ctTableResponsive
               content={
                 <div className="text-center centertbl">
-                  <Table hover>
+                  <Table hover className="table">
                     <thead>
                       <tr>
                         {
@@ -39,7 +39,7 @@ const Analytics = ({ renderList }) => {
         </Row>
         <Row>
           <Col md={12}>
-            <p className="text-center h5 mt-5">
+            <p className="text-center h6 mt-5 text-muted">
               Get one of our experts to do it all for you!
               &nbsp;
               <button type="button" className="btn btn-info waves-effect  ml-1 ">Click here</button>

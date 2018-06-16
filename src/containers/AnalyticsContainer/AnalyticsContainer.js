@@ -171,6 +171,14 @@ class AnalyticsContainer extends Component {
     });
   }
 
+  colorTable(i) {
+    if(i%10 ===1) return 'text-center table-active';
+    if(i%2 ===0 ) return ' text-center '; 
+    if(i%3 ===0) return 'text-center table-info'; 
+    if(i%5 ===0)  return 'text-center table-success';
+    if(i%7 ===0 ) return 'text-center table-warning'; 
+  }
+
   renderList() {
     if(this.props.campaignInfo && this.props.campaignInfo.websiteLive.length)
       return this.props.campaignInfo.websiteLive.map((website, index) => {
@@ -184,7 +192,7 @@ class AnalyticsContainer extends Component {
 
         const userDetails = website.signups?website.signups.userDetails:[];
         const uniqueUsers = website.uniqueUsers?website.uniqueUsers.aggregations.users.buckets:[];
-        return <tr  className = { index % 2 === 0 ? 'text-center ' : 'text-center table-info '} key={index}>
+        return <tr  className = { this.colorTable(index)} key={index}>
           <td className="website"> <a href={website.websiteUrl} target="_blank">{website.websiteUrl}</a></td>
           <td className="vistor">{visitor}</td>
           <td><a href="javascript:;" onClick={() => this.handleViewProfile(userDetails)} className="pname">
@@ -207,7 +215,7 @@ class AnalyticsContainer extends Component {
 
   render() {
     return (
-      <div className="analytics-container">
+      <div className="container">
         {!this.state.usersList.length ?
           <Analytics  renderList={this.renderList} />
           :
