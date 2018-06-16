@@ -65,7 +65,7 @@ class StripeCard extends Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <Row>
-          <Col md={6}>
+          <Col md={12} className="mb-3 text-muted">
             <label>
               Card number
               <CardNumberElement
@@ -73,7 +73,7 @@ class StripeCard extends Component {
               />
             </label>
           </Col>
-          <Col md={6}>
+          <Col md={12} className="mb-3 text-muted">
             <label>
               Expiration date
               <CardExpiryElement
@@ -83,7 +83,7 @@ class StripeCard extends Component {
           </Col>
         </Row>
         <Row>
-          <Col md={6}>
+          <Col md={12} className="mb-3 text-muted">
             <label>
               CVC
               <CardCVCElement
@@ -91,7 +91,7 @@ class StripeCard extends Component {
               />
             </label>
           </Col>
-          <Col md={6}>
+          <Col md={12} className="mb-3 text-muted">
             <label>
               Postal code
               <PostalCodeElement
@@ -101,10 +101,10 @@ class StripeCard extends Component {
           </Col>
         </Row>
         <Row class='upgrade-card-buttons'>
-          <div className='col-md-2 pull-left'>
-            <Button type='button' icon='chevron-left' bsStyle='info' fill='fill' onClick={() => browserHistory.push(currentState === 'upgrade' ? '/billing-details' : '/profile')}>Back</Button>
+          <div className='col-md-4 pull-left'>
+            <Button type='button' icon='chevron-left' bsStyle='info' fill='fill' onClick={() => browserHistory.push(currentState === 'upgrade' ? '/billing-details' : '/profile')}>&nbsp;&nbsp;Back&nbsp;&nbsp;</Button>
           </div>
-          <div className='col-md-2 pull-right'>
+          <div className='col-md-6 pull-right mr-2'>
             <Button type='submit' icon='usd' bsStyle='info' fill='fill' >{currentState === 'upgrade' ? 'Upgrade Card' : 'Make Payment'}</Button>
           </div>
         </Row>

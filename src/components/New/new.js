@@ -111,7 +111,7 @@ export class NewUser extends Component {
                       <Row>
                         <div className="col-md-12">
                           <FormGroup>
-                            <ControlLabel className="text-muted h5">Name</ControlLabel>
+                            <ControlLabel className="text-muted h6">Name</ControlLabel>
                             <FormControl
                               type="text"
                               bsClass="form-control"
@@ -129,7 +129,7 @@ export class NewUser extends Component {
                         </div>
                         <div className="col-md-12">
                           <FormGroup>
-                            <ControlLabel className="text-muted h5">Website URL</ControlLabel>
+                            <ControlLabel className="text-muted h6">Website URL</ControlLabel>
                             <FormControl
                               type="text"
                               bsClass="form-control"
