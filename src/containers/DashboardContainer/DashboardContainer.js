@@ -10,12 +10,11 @@ import {
 } from 'react-bootstrap';
 
 import './asset/css/bootstrap.min.scss';
-// import './asset/css/style.scss';
 import './asset/scss/icons.scss';
 import './animate.min.scss';
 import 'react-select/dist/react-select.css';
 import 'react-popup/style.css';
-// import document from 'react';
+import './DashboardContainer.scss';
 import Popup from 'react-popup';
 
 
@@ -190,7 +189,7 @@ class DashboardContainer extends Component {
                 </nav>
               </div>
 
-              <div className="content" style={{ backgroundColor: '#FFF' }} onClick={this.closeDropdown}>
+              <div className="content dashboard-content" style={{ backgroundColor: '#FFF' }} onClick={this.closeDropdown}>
                 <div className="container-fluid p-5">
                   {this.props.children}
                 </div>

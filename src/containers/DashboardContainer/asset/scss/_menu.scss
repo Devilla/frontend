@@ -126,7 +126,7 @@
 
 .side-menu {
   width: $leftbar-width;
-  z-index: 10;
+  z-index: 100000000;
   background: $bg-leftbar;
   bottom: 0;
   margin-top: 0;
@@ -695,7 +695,7 @@ body.enlarged.bg-transparent {
     }
   }
   .navbar-custom {
-    background-color: $white;
+    background-color: #f4f6f8;
     position: fixed;
     left: 0;
     right: 0;
@@ -846,5 +846,3 @@ body.enlarged.bg-transparent {
   }
 
 }
-
-
