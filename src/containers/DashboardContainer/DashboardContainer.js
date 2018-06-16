@@ -3,6 +3,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { checkTokenExists } from 'ducks/auth';
 import { Spinner, Header, Sidebar } from 'components';
+import {
+  Radio,
+  Row,
+  FormGroup
+} from 'react-bootstrap';
 
 import './asset/css/bootstrap.min.scss';
 // import './asset/css/style.scss';
@@ -19,9 +24,13 @@ class DashboardContainer extends Component {
     super(props);
     this.state = {
       render: true,
-      disableButton: false
+      disableButton: false,
+      style: {}
     };
-
+    this.openCloseDropdown = this.openCloseDropdown.bind(this);
+    this.logout = this.logout.bind(this);
+    this.renderHelp = this.renderHelp.bind(this);
+    this.settings = this.settings.bind(this);
     this.checkLogin((err) => {
       if (err) {
         browserHistory.push('/login');
@@ -65,6 +74,80 @@ class DashboardContainer extends Component {
     }
   }
 
+  openCloseDropdown() {
+    if(Object.keys(this.state.style).length !== 0)
+      this.setState({style: {}});
+    else
+      this.setState({style: {visibility: 'visible', opacity: 1}});
+  }
+
+  logout() {
+    this.openCloseDropdown();
+    localStorage.removeItem('authToken');
+    browserHistory.push('/');
+  }
+
+  renderHelp() {
+    this.openCloseDropdown();
+    Popup.create({
+      title: 'How can we help you today',
+      content: <div className="help-container">
+        <FormGroup>
+          <Row className="help-form-fields">
+            <Radio name="radioGroup" inline="inline">
+              I need help setting up my team
+            </Radio>
+          </Row>
+          <Row className="help-form-fields">
+            <Radio name="radioGroup" inline="inline">
+              I want to know how to use flock
+            </Radio>
+          </Row>
+          <Row className="help-form-fields">
+            <Radio name="radioGroup" inline="inline">
+              Something is not working
+            </Radio>
+          </Row>
+          <Row className="help-form-fields">
+            <Radio name="radioGroup" inline="inline">
+              I have feedback / feature request
+            </Radio>
+          </Row>
+          <Row className="help-form-fields">
+            <Radio name="radioGroup" inline="inline">
+              I need help with something else
+            </Radio>
+          </Row>
+        </FormGroup>
+        <Row>
+          <h4>Tell us more</h4>
+          <textarea className="form-control z-depth-1" id="exampleFormControlTextarea6" rows="3" placeholder="Briefly explain what happened and steps to replicate the issue."></textarea>
+        </Row>
+      </div>,
+      buttons: {
+        left: [{
+          text: 'Cancel',
+          className: 'warning',
+          action: function () {
+            Popup.close();
+          }
+        }],
+        right: [{
+          text: 'Submit',
+          className: 'primary',
+          action: function () {
+            Popup.close();
+          }
+        }]
+      }
+    }, true);
+  }
+
+  settings() {
+    this.openCloseDropdown();
+    browserHistory.push('/dashboard');
+  }
+
   render() {
     const { loading } = this.props;
     return (
@@ -73,17 +156,24 @@ class DashboardContainer extends Component {
         <div className="wrapper" style={{ height: '100%', backgroundColor: '#f4f6f8' }} >
           <Spinner loading={loading} />
           {!this.state.render && <p>Please wait</p>}
-          {this.state.render && <Sidebar {...this.props} disableButton={this.state.disableButton} />}
+          {this.state.render && <Sidebar {...this.props} disableButton={this.state.disableButton} onClick={this.openCloseDropdown} />}
           {this.state.render &&
           <div>
             <div className="content-page" >
               <div className="topbar" >
                 <nav className="navbar-custom">
-                  <Header {...this.props} />
+                  <Header
+                    openCloseDropdown={this.openCloseDropdown}
+                    logout={this.logout}
+                    renderHelp={this.renderHelp}
+                    settings={this.settings}
+                    dropdownStyle={this.state.style}
+                    {...this.props}
+                  />
                 </nav>
               </div>
 
-              <div className="content" style={{ backgroundColor: '#FFF' }}>
+              <div className="content" style={{ backgroundColor: '#FFF' }} onClick={this.openCloseDropdown}>
                 <div className="container-fluid p-5">
                   {this.props.children}
                 </div>

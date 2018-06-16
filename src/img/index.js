@@ -78,7 +78,17 @@ export { default as ContactAvatar4 } from './contactavatar7.png';
 export { default as ContactAvatar5 } from './contactavatar11.png';
 export { default as ContactAvatar6 } from './contactavatar15.png';
 
-
-
 // Signup Page
 export { default as SignUp } from './signuppage2.png';
+
+//Avatars
+export { default as Avatar1 } from './avatar-1.jpg'
+export { default as Avatar2 } from './avatar-2.jpg'
+export { default as Avatar3 } from './avatar-3.jpg'
+export { default as Avatar4 } from './avatar-4.jpg'
+export { default as Avatar5 } from './avatar-5.jpg'
+export { default as Avatar6 } from './avatar-6.jpg'
+export { default as Avatar7 } from './avatar-7.jpg'
+export { default as Avatar8 } from './avatar-8.jpg'
+export { default as Avatar9 } from './avatar-9.jpg'
+export { default as Avatar10 } from './avatar-10.jpg'

@@ -1,68 +1,71 @@
-import React, { Component } from 'react';
-import appRoutes from '../../routes/app';
-import { Navbar } from 'react-bootstrap';
-import HeaderLinks from './HeaderLinks';
+import React from 'react';
+import { Avatar1 } from 'img';
+import './Header.scss';
 
+const Header = ({ openCloseDropdown, dropdownStyle, logout, renderHelp, settings }) => {
+  return (
+    <ul className="list-unstyled topbar-right-menu float-right mb-0 nav-custom-header">
+      <li className="dropdown notification-list">
+        <a className="nav-link dropdown-toggle arrow-none" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+          <i className="fi-speech-bubble noti-icon"></i>
+          <span className="badge badge-custom badge-pill noti-icon-badge">6</span>
+        </a>
+        <div className="dropdown-menu dropdown-menu-right dropdown-menu-animated dropdown-lg">
+          <div className="dropdown-item noti-title">
+            <h5 className="m-0">
+              <span className="float-right"></span>Get Help
+            </h5>
+          </div>
 
-class Header extends Component {
-  constructor(props) {
-    super(props);
-    this.mobileSidebarToggle = this.mobileSidebarToggle.bind(this);
-    this.state = {
-      sidebarExists: false
-    };
-  }
+          <div className="" style={{maxHeight: '100px'}}>
+            <a href="javascript:void(0);" className="dropdown-item notify-item">
+              <button type="button" className="btn btn-block btn-info waves-effect waves-light w-lg"> <span>Click to talk</span> </button>
+            </a>
+          </div>
+        </div>
+      </li>
+      <li className="dropdown notification-list">
+        <a
+          className="nav-link dropdown-toggle nav-user"
+          data-toggle="dropdown"
+          role="button"
+          aria-haspopup="false"
+          aria-expanded="false"
+          onClick={openCloseDropdown}
+        >
+          <img src={Avatar1} alt="user" className="rounded-circle" />
+          <span className="ml-1">Username
+            <i className="mdi mdi-chevron-down"></i>
+          </span>
+        </a>
+        <div className="dropdown-menu dropdown-menu-right dropdown-menu-animated profile-dropdown" style={dropdownStyle}>
+          <div className="dropdown-item noti-title">
+            <h6 className="text-overflow m-0">Welcome !</h6>
+          </div>
 
-  mobileSidebarToggle(e) {
-    if (this.state.sidebarExists === false) {
-      this.setState({
-        sidebarExists: true
-      });
-    }
-    e.preventDefault();
-    document.documentElement.classList.toggle('nav-open');
-    var node = document.createElement('div');
-    node.id = 'bodyClick';
-    node.onclick = function () {
-      this.parentElement.removeChild(this);
-      document.documentElement.classList.toggle('nav-open');
-    };
-    document.body.appendChild(node);
-  }
+          <a href="javascript:void(0);" className="dropdown-item notify-item">
+            <i className="fi-head"></i>
+            <span>My Account</span>
+          </a>
 
-  getBrand() {
-    var name;
-    appRoutes.map((prop) => {
-      if (prop.collapse) {
-        prop.views.map((prop) => {
-          if (prop.path === this.props.location.pathname) {
-            name = prop.name;
-          }
-          return null;
-        });
-      } else {
-        if (prop.redirect) {
-          if (prop.path === this.props.location.pathname) {
-            name = prop.name;
-          }
-        } else {
-          if (prop.path === this.props.location.pathname) {
-            name = prop.name;
-          }
-        }
-      }
-      return null;
-    });
-    return name;
-  }
+          <a href="javascript:void(0);" className="dropdown-item notify-item" onClick={settings}>
+            <i className="fi-cog"></i>
+            <span>Settings</span>
+          </a>
 
-  render() {
-    return (
-      <Navbar.Collapse>
-        <HeaderLinks />
-      </Navbar.Collapse>
-    );
-  }
-}
+          <a href="javascript:void(0);" className="dropdown-item notify-item" onClick={renderHelp}>
+            <i className="fi-help"></i>
+            <span>Support</span>
+          </a>
+
+          <a href="javascript:void(0);" className="dropdown-item notify-item" onClick={logout} >
+            <i className="fi-power"></i>
+            <span>Logout</span>
+          </a>
+        </div>
+      </li>
+    </ul>
+  );
+};
 
 export default Header;

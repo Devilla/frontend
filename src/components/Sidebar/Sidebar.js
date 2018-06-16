@@ -28,7 +28,7 @@ class Sidebar extends Component {
             <p clasName="text-muted"></p>
           </div>
           <div className="topbar-left mt-3 ml-2 pt-2 pl-2" style={{width:'200px'}}>
-            <Link to="/dashboard" class="logo ">
+            <Link to="/dashboard" className="logo ">
               <span>
                 <img src={logo} alt="influence-img" height="35" />
               </span>
