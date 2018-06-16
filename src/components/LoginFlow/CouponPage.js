@@ -27,11 +27,13 @@ const CouponPage = ({
               />
             </FormGroup>
           </Col>
+          {error &&
           <HelpBlock>
             <p className="error-text">{error}</p>
           </HelpBlock>
+          }
         </Row>
-        <Row>
+        <Row style={{margin: '0% 30%'}}>
           <Col>
             <div className="frmcntl">
               <input className="btn btn-primary coupon-payment-button"
