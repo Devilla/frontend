@@ -4,6 +4,18 @@
 
 } */
 .manage-notification {
+  .card-box {
+    padding: 20px 15px;
+  }
+  .react-flexible-switch {
+    background-color: black !important;
+    width: 35px !important;
+    .react-flexible-switch-circle{
+      background-color: white !important;
+      width: 12px !important;
+      height: 12px !important;
+    }
+  }
   th:first-child, td:first-child {
     padding-left: 15px !important;
   }
