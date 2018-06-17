@@ -171,14 +171,6 @@ class AnalyticsContainer extends Component {
     });
   }
 
-  colorTable(i) {
-    if(i%10 ===1) return 'text-center table-active';
-    if(i%2 ===0 ) return ' text-center '; 
-    if(i%3 ===0) return 'text-center table-info'; 
-    if(i%5 ===0)  return 'text-center table-success';
-    if(i%7 ===0 ) return 'text-center table-warning'; 
-  }
-
   renderList() {
     if(this.props.campaignInfo && this.props.campaignInfo.websiteLive.length)
       return this.props.campaignInfo.websiteLive.map((website, index) => {
@@ -192,21 +184,17 @@ class AnalyticsContainer extends Component {
 
         const userDetails = website.signups?website.signups.userDetails:[];
         const uniqueUsers = website.uniqueUsers?website.uniqueUsers.aggregations.users.buckets:[];
-        return <tr  className = { this.colorTable(index)} key={index}>
-          <td className="website"> <a href={website.websiteUrl} target="_blank">{website.websiteUrl}</a></td>
-          <td className="vistor">{visitor}</td>
-          <td><a href="javascript:;" onClick={() => this.handleViewProfile(userDetails)} className="pname">
-            <b>{userDetails && userDetails.length} </b> <span>View Profile</span></a>
-          </td>
-          <td className="liveuser">-</td>
-          <td className="conversion">
+        return <tr className="table-active" key={index}>
+          <th scope="row">{index + 1}</th>
+          <td className="text-center">{website.websiteUrl}</td>
+          <td className="text-center">{visitor}</td>
+          <td className="text-center">{userDetails && userDetails.length} <a href="javascript:;" onClick={() => this.handleViewProfile(userDetails)}>&nbsp; Profiles</a></td>
+          <td className="text-center">-</td>
+          <td className="text-center">
             {
               userDetails?((userDetails.length / visitor)   * 100).toFixed(2):0
-            } %
-          </td>
-          <td>
-            <a href="javascript:;" onClick={() => this.showGraph(website.websiteUrl, uniqueUsers)}><i className="fas fa-chart-area"></i> Show Graph</a>
-          </td>
+            } %</td>
+          <td className="text-center"><a href="javascript:;" onClick={() => this.showGraph(website.websiteUrl, uniqueUsers)}>Graph</a></td>
         </tr>;
       });
     else
@@ -215,7 +203,7 @@ class AnalyticsContainer extends Component {
 
   render() {
     return (
-      <div className="container">
+      <div>
         {!this.state.usersList.length ?
           <Analytics  renderList={this.renderList} />
           :

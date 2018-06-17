@@ -9,5 +9,13 @@
   }
 }
 .dashboard-content {
-      margin-top: 5% !important;
+  font-size: 14px;
+  margin-top: 5% !important;
+}
+
+.mm-popup__overlay {
+  z-index: 100000000;
+}
+.mm-popup__box{
+  z-index: 100000000;
 }

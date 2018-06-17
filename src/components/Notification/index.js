@@ -57,7 +57,7 @@ class Notification extends Component {
     if (e.target.className === 'react-flexible-switch react-flexible-switch--active' ||
       e.target.className === 'react-flexible-switch react-flexible-switch--inactive' ||
       e.target.className === 'react-flexible-switch-circle' ||
-      e.target.className === 'glyphicon glyphicon-trash'
+      e.target.className === 'ml-3 icon-trash'
     )
       return;
     this.props.successCampaign(campaign);
@@ -68,22 +68,14 @@ class Notification extends Component {
     this.props.removeCampaign(index, campId);
   }
 
-  colorTable(i) {
-      if(i%10 ===1) return 'text-center table-active'
-      if(i%2 ===0 ) return ' text-center '; 
-      if(i%3 ===0) return 'text-center table-info'; 
-      if(i%5 ===0)  return 'text-center table-success';
-      if(i%7 ===0 ) return 'text-center table-warning'; 
-    }
-  
   // Map the notification data into table rows and return
   getNotificationRows = () => {
     return this.props.campaigns ? this.props.campaigns.map((campaign, i) => (
-      <tr className={this.colorTable(i)} key={campaign._id} onClick={(e) => this.handleRouteChange(e, campaign)}>
-        <td>{i + 1}</td>
+      <tr key={campaign._id} onClick={(e) => this.handleRouteChange(e, campaign)}>
+        <th scope="row">{i + 1}</th>
         <td>{campaign.campaignName}</td>
-        <td> <a>{campaign.websiteUrl}</a></td>
-        <td >
+        <td>{campaign.websiteUrl}</td>
+        <td>
           <Switch
             switchStyles={{ width: 40 }}
             value={campaign.isActive}
@@ -92,48 +84,37 @@ class Notification extends Component {
           />
         </td>
         <td>{campaign.trackingId}</td>
-        <td>{campaign.log || '---'}</td>
         <td>{moment(campaign.createdAt).format('MM/DD/YYYY')}</td>
-        <td><i className=" icon-trash" onClick={() => this.deleteCampaign(i, campaign._id)}></i></td>
+        <td><a href=""><i className="ml-3 icon-trash" onClick={() => this.deleteCampaign(i, campaign._id)}></i></a></td>
       </tr>
     ))
-      :
-      <div></div>
+    :
+    <div></div>;
   }
 
   render() {
     return (
-      <div className="content manage-notification">
-        <Grid fluid>
+      <div className="manage-notification">
+        <div className="card-box">
+          <h4 className="m-t-0 header-title">Notifications</h4>
+          <table className="table table-striped">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>CAMPAIGN</th>
+                <th>DOMAIN</th>
+                <th>STATUS</th>
+                <th>TRACK ID</th>
 
-          <Row>
-            <Col md={12}>
-              <Card
-                plain
-                title="Notifications"
-                category=""
-                className="m-t-0 header-title"
-                ctTableFullWidth ctTableResponsive
-                content={
-                  <table hover className="table">
-                    <thead>
-                      <tr>
-                        {
-                          notificationFields.map((prop, key) => {
-                            return (
-                              <th className="text-center" key={key}>{prop === "Domain" ? <i className="icon-globe"></i> : ""}&nbsp;<span className="h6 text-muted">{prop}</span></th>
-                            );
-                          })
-                        }
-                      </tr>
-                    </thead>
-                    <tbody>{this.getNotificationRows()}</tbody>
-                  </table>
-                }
-              />
-            </Col>
-          </Row>
-        </Grid>
+                <th>CREATED</th>
+                <th>DELETE</th>
+            </tr>
+            </thead>
+            <tbody>
+            {this.getNotificationRows()}
+            </tbody>
+          </table>
+        </div>
       </div>
     );
   }
