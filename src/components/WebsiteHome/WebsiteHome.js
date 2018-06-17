@@ -9,6 +9,8 @@ import {
   Swivelscreen,
   Sw1,
   Sw2,
+  Sw3,
+  Sw4,
   Lawsikho,
   Stagephod,
   Userc,
@@ -125,10 +127,10 @@ class WebsiteHome extends Component {
 
                   <Slider {...settings} className="im1">
                     <div>
-                      <img alt="Sw1" src={Sw1} />
+                      <img alt="Sw1" src={Sw3} />
                     </div>
                     <div>
-                      <img alt="Sw2" src={Sw2} />
+                      <img alt="Sw2" src={Sw4} />
                     </div>
                   </Slider>
 
