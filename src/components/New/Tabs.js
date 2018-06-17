@@ -60,7 +60,7 @@ class Tabs extends Component{
             </li>
           </ul>
 
-          <div className="tab-content">
+          <div className="tab-content p-5">
             <div className={`tab-pane ${activeClass == 1?'show active':''}`} id="home1">
               <InstallPixel setActiveState={this.setActiveState} campaign={this.props.campaign}/>
             </div>

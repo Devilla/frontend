@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Col, Button, Glyphicon } from 'react-bootstrap';
+import { Row, Col, Glyphicon } from 'react-bootstrap';
 import { Card } from '../notification/template/common';
 import { Notification } from '../notification/template/common/notification';
 import { Setting } from '../notification/template/common/settings';
@@ -35,7 +35,7 @@ const NotificationConfigure = ({
                     notificationPanelStyle={notificationPanelStyle}
                   />
                 </Col>
-                <div className="notificationSwitch">
+                <div className="notificationSwitch ">
                   <Switch
                     circleStyles={{ onColor: 'blue', offColor: 'gray', diameter: 18 }}
                     switchStyles={{ width: 50 }}
@@ -60,32 +60,29 @@ const NotificationConfigure = ({
           />
         </Col>
       </Row>
-      <Row>
-        <Col md={4}>
-          <div className=" text-left">
-            <Button bsStyle="primary" onClick={backConfiguration}>
-              <Glyphicon glyph="chevron-left" />
-              Back
-            </Button>
-          </div>
-        </Col>
-        <Col md={4}>
-          <div className=" text-center">
-            <Button bsStyle="primary" onClick={setDefaultPanel}>
-              <Glyphicon glyph="align-justify" />
-              Set Default
-            </Button>
-          </div>
-        </Col>
-        <Col md={4}>
-          <div className=" text-right">
-            <Button bsStyle="primary" onClick={saveConfiguration}>
-              <Glyphicon glyph="save" />
-              Save
-            </Button>
-          </div>
-        </Col>
-      </Row>
+   
+      <div className="m-t-50 pull-right">
+
+        <span className="btn btn-info mr-3" onClick={backConfiguration}>
+          <Glyphicon glyph="chevron-left" />
+          Back
+        </span>
+
+
+        <span className="btn btn-info mr-3" >
+          <Glyphicon glyph="align-justify" onClick={setDefaultPanel} />
+          Set Default
+        </span>
+
+
+        <span className="btn btn-info mr-3" onClick={saveConfiguration}>
+          <Glyphicon glyph="save" />
+          Save
+        </span>
+      </div>
+  
+     
+     
     </div>
   );
 };

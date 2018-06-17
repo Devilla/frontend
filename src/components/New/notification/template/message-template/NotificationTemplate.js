@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import {Row, Col} from 'react-bootstrap';
-import {Card} from '../common'
+import { Row, Col } from 'react-bootstrap';
+import { Card } from '../common';
 import Switch from 'react-flexible-switch';
-import {Notification} from '../common/notification'
-import {Setting} from '../common/settings'
+import { Notification } from '../common/notification';
+import { Setting } from '../common/settings';
 import FormInputs from 'components/Template/FormTemp';
 import Button from 'components/Template/customButton';
 
@@ -43,27 +43,27 @@ export class NotificationTemplate extends Component {
     }
   }
   handleRecentChange(e) {
-    this.setState({recentActivity: e})
+    this.setState({ recentActivity: e });
   }
   handleLiveActivity(e) {
-    this.setState({liveActivity: e})
+    this.setState({ liveActivity: e });
   }
   handleBulkActivity(e) {
-    this.setState({bulkActivity: e})
+    this.setState({ bulkActivity: e });
   }
 
   handleNotificationStyleChange = style => {
     const notificationStyle = Object.assign({}, this.state.notificationPanelStyle);
     notificationStyle[style.prop] = style.value;
-    this.setState({notificationPanelStyle: notificationStyle});
+    this.setState({ notificationPanelStyle: notificationStyle });
   };
 
   isDisabled() {
-    const {conversions, message, days, delay, mostRecent} = this.props;
+    const { conversions, message, days, delay, mostRecent } = this.props;
     if (!conversions || !message || !days || !delay || !mostRecent)
-      return this.setState({disableSubmit: true});
+      return this.setState({ disableSubmit: true });
     else
-      return this.setState({disableSubmit: false});
+      return this.setState({ disableSubmit: false });
   }
 
   componentWillReceiveProps(nextProps) {
@@ -76,22 +76,22 @@ export class NotificationTemplate extends Component {
       <Row>
         <Col md={12}>
           <Card title="Recent User Activity" isDisabled={this.state.recentActivity} status={<Switch
-            circleStyles = {{ onColor: 'blue', offColor: 'gray', diameter: 18 }}
-            switchStyles = {{ width: 50 }}
-            cssClass = "alignsame"
-            value = {
+            circleStyles={{ onColor: 'blue', offColor: 'gray', diameter: 18 }}
+            switchStyles={{ width: 50 }}
+            cssClass="alignsame"
+            value={
               this.state.recentActivity
             }
-            onChange = {
+            onChange={
               this.handleRecentChange.bind(this)
             }
-            />} content={<Row > <Col md={6}>
-              <Notification notificationPanelStyle={this.state.notificationPanelStyle}/>
-            </Col>
-            <Col md={6}>
-              <Setting notificationPanelStyle={this.state.notificationPanelStyle} onConfigChange={this.handleNotificationStyleChange}/>
-            </Col>
-          </Row>}/>
+          />} content={<Row > <Col md={6}>
+            <Notification notificationPanelStyle={this.state.notificationPanelStyle} />
+          </Col>
+          <Col md={6}>
+            <Setting notificationPanelStyle={this.state.notificationPanelStyle} onConfigChange={this.handleNotificationStyleChange} />
+          </Col>
+          </Row>} />
           <Button bsStyle="info" pullRight="pullRight" fill="fill" type="button" onClick={handleNotificationSubmit} >
 
             Submit >
