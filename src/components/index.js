@@ -29,7 +29,6 @@ export { default as Dashboard } from './Dashboard/Dashboard';
 export { default as Notification } from './Notification';
 export { default as Analytics } from './Analytics/analytics';
 export { default as AnalyticsProfile } from './Analytics/AnalyticsProfile';
-export { default as New } from './New/new';
 export { default as LoginFlow } from './LoginFlow/LoginFlow';
 export { default as Spinner } from './Spinner/Spinner';
 export { default as Error } from './Error/Error';
