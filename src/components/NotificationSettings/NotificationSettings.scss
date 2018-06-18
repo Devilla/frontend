@@ -1,0 +1,27 @@
+.notification-settings {
+  .notification-button-row  {
+      width: 20%;
+  }
+  .notification-list {
+  	.notification-list-content {
+  		min-height: 80px;
+  	}
+  }
+  .notificationSwitch{
+      .react-flexible-switch {
+        z-index: 10000;
+        float:right;
+        margin-top: -30px;
+        margin-right: 15px;
+      }
+  }
+
+  .notification-configure-content {
+    display: flex;
+    -ms-flex-wrap: wrap;
+    justify-content: space-between;
+    margin-right: -15px;
+    margin-left: -15px;
+  }
+
+}

@@ -47,8 +47,8 @@ class Profile extends Component {
       <option value="select">Select Plan</option>
       {
         planList
-          ? planList.map(plan => {
-            return <option value={plan._id}>{plan.planName}</option>;
+          ? planList.map((plan, i) => {
+            return <option key={i} value={plan._id}>{plan.planName}</option>;
           })
           : null
       }
