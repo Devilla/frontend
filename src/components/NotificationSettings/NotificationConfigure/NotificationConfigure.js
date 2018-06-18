@@ -4,7 +4,7 @@ import { Card } from './Card';
 import NotificationDesign from './NotificationDesign';
 import { NotificationDesignSetting } from './NotificationDesignSetting';
 import Switch from 'react-flexible-switch';
-
+import './NotificationConfigure.scss';
 
 const NotificationConfigure = ({
   notification,
@@ -34,17 +34,7 @@ const NotificationConfigure = ({
                     notification={notification}
                     notificationPanelStyle={notificationPanelStyle}
                   />
-
                 </Col>
-                <div className="notificationSwitch ">
-                  <Switch
-                    circleStyles={{ onColor: 'blue', offColor: 'gray', diameter: 18 }}
-                    switchStyles={{ width: 50 }}
-                    cssClass="alignsame"
-                    value={notification.activity}
-                    onChange={(e) => e != notification.activity ? handleActivityChange(e, notification._id, notification.configurationId) : null}
-                  />
-                </div>
                 <Col md={6}>
                   <NotificationDesignSetting
                     contentText={contentText}
@@ -58,7 +48,7 @@ const NotificationConfigure = ({
 
                 <div className="notificationSwitch">
                   <Switch
-                    circleStyles={{ onColor: 'blue', offColor: 'gray', diameter: 18 }}
+                    circleStyles={{ onColor: '#097fff', offColor: 'gray', diameter: 18 }}
                     switchStyles={{ width: 50 }}
                     cssClass="alignsame"
                     value={notification.activity}
@@ -70,6 +60,7 @@ const NotificationConfigure = ({
           />
         </Col>
       </Row>
+
       <div className="m-t-50 pull-right">
         <span className="btn btn-info mr-3" onClick={backConfiguration}>
           <Glyphicon glyph="chevron-left" />
