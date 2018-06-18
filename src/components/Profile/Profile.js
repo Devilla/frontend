@@ -154,115 +154,109 @@ class Profile extends Component {
             </div>
           </Col>
         </Row>
-        <Col md={4}>
-          <div className="card-box">
-            <h4 className="header-title mt-0 m-b-20">Personal Information</h4>
-            <div className="panel-body">
-              <hr />
-              <div className="text-left">
-                <form>
-                  <Row>
-                    <Col md={12}>
-                      <span className="text-muted font-13 p"><strong>First Name :</strong> </span>
-                      <FormGroup>
-                        <FormControl type="text" value={profile.firstName} placeholder="" disabled={isDisabled} id="firstName" onChange={(e) => this.handleStateChange(e)} />
-                      </FormGroup>
-                    </Col>
-                  </Row>
-                  <Row>
-                    <Col md={12}>
-                      <span className="text-muted font-13 p"><strong>Last Name :</strong> </span>
-                      <FormGroup>
-                        <FormControl type="text" value={profile.lastName} placeholder="" disabled={isDisabled} id="lastName" onChange={(e) => this.handleStateChange(e)} />
-                      </FormGroup>
-                    </Col>
-                  </Row>
-                  <Row>
-                    <Col md={12}>
-                      <span className="text-muted font-13 p"><strong>Phone :</strong> </span>
-                      <FormGroup>
-                        <FormControl type="text" value={profile.phoneNumber} placeholder="" disabled={isDisabled} id="phoneNumber" onChange={(e) => this.handleStateChange(e)} />
-                      </FormGroup>
-                    </Col>
-                  </Row>
-                  <Row>
-                    <Col md={12}>
-                      <span className="text-muted font-13 p"><strong>Email :</strong> </span>
-                      <FormGroup>
-                        <FormControl type="text" value={profile.email} placeholder="" disabled={isDisabled} id="email" onChange={(e) => this.handleStateChange(e)} />
-                      </FormGroup>
-                    </Col>
-                  </Row>
-                  <Row>
-                    <Col md={12}>
-                      <span className="text-muted font-13 p"><strong>Address :</strong> </span>
-                      <FormGroup>
-                        <FormControl type="text" value={profile.address} placeholder="" disabled={isDisabled} id="address" onChange={(e) => this.handleStateChange(e)} />
-                      </FormGroup>
-                    </Col>
-                  </Row>
-                  <Row>
-                    <Col md={12}>
-                      <span className="text-muted font-13 p"><strong>City :</strong> </span>
-                      <FormGroup>
-                        <FormControl type="text" value={profile.city} placeholder="" disabled={isDisabled} id="city" onChange={(e) => this.handleStateChange(e)} />
-                      </FormGroup>
-                    </Col>
-                  </Row>
-                  <Row>
-                    <Col md={12}>
-                      <span className="text-muted font-13 p"><strong>Country :</strong> </span>
-                      <FormGroup>
-                        <FormControl type="text" value={profile.country} placeholder="" disabled={isDisabled} id="country" onChange={(e) => this.handleStateChange(e)} />
-                      </FormGroup>
-                    </Col>
-                  </Row>
-                  <Row>
-                    <Col md={12}>
-                      <span className="text-muted font-13 p"><strong>Company :</strong> </span>
-                      <FormGroup>
-                        <FormControl type="text" value={profile.companyName} placeholder="" disabled={isDisabled} id="companyName" onChange={(e) => this.handleStateChange(e)} />
-                      </FormGroup>
-                    </Col>
-                  </Row>
-                </form>
+        <Row>
+          <Col md={4}>
+            <div className="card-box">
+              <h4 className="header-title mt-0 m-b-20">Personal Information</h4>
+              <div className="panel-body">
+                <hr />
+                <div className="text-left">
+                  <form>
+                    <Row>
+                      <Col md={12}>
+                        <span className="text-muted font-13 p"><strong>First Name :</strong> </span>
+                        <FormGroup>
+                          <FormControl type="text" value={profile.firstName} placeholder="" disabled={isDisabled} id="firstName" onChange={(e) => this.handleStateChange(e)} />
+                        </FormGroup>
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col md={12}>
+                        <span className="text-muted font-13 p"><strong>Last Name :</strong> </span>
+                        <FormGroup>
+                          <FormControl type="text" value={profile.lastName} placeholder="" disabled={isDisabled} id="lastName" onChange={(e) => this.handleStateChange(e)} />
+                        </FormGroup>
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col md={12}>
+                        <span className="text-muted font-13 p"><strong>Phone :</strong> </span>
+                        <FormGroup>
+                          <FormControl type="text" value={profile.phoneNumber} placeholder="" disabled={isDisabled} id="phoneNumber" onChange={(e) => this.handleStateChange(e)} />
+                        </FormGroup>
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col md={12}>
+                        <span className="text-muted font-13 p"><strong>Email :</strong> </span>
+                        <FormGroup>
+                          <FormControl type="text" value={profile.email} placeholder="" disabled={isDisabled} id="email" onChange={(e) => this.handleStateChange(e)} />
+                        </FormGroup>
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col md={12}>
+                        <span className="text-muted font-13 p"><strong>Address :</strong> </span>
+                        <FormGroup>
+                          <FormControl type="text" value={profile.address} placeholder="" disabled={isDisabled} id="address" onChange={(e) => this.handleStateChange(e)} />
+                        </FormGroup>
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col md={12}>
+                        <span className="text-muted font-13 p"><strong>City :</strong> </span>
+                        <FormGroup>
+                          <FormControl type="text" value={profile.city} placeholder="" disabled={isDisabled} id="city" onChange={(e) => this.handleStateChange(e)} />
+                        </FormGroup>
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col md={12}>
+                        <span className="text-muted font-13 p"><strong>Country :</strong> </span>
+                        <FormGroup>
+                          <FormControl type="text" value={profile.country} placeholder="" disabled={isDisabled} id="country" onChange={(e) => this.handleStateChange(e)} />
+                        </FormGroup>
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col md={12}>
+                        <span className="text-muted font-13 p"><strong>Company :</strong> </span>
+                        <FormGroup>
+                          <FormControl type="text" value={profile.companyName} placeholder="" disabled={isDisabled} id="companyName" onChange={(e) => this.handleStateChange(e)} />
+                        </FormGroup>
+                      </Col>
+                    </Row>
+                  </form>
+                </div>
               </div>
             </div>
-          </div>
-        </Col>
-        <Col md={8}>
-          <Row>
-            <Col sm={4}>
-              <div className="card-box tilebox-one">
-                <i className="icon-badge float-right text-muted"></i>
-                <h6 className="text-muted text-uppercase mt-0">Plan Type :</h6>
-                <form>
-                  <FormGroup className="planUp" controlId="formControlsSelect">
-                    <ControlLabel>Plan</ControlLabel>{this.plansList()}
-                  </FormGroup>
-                </form>
-              </div>
-            </Col>
-            <Col sm={4}>
-            </Col>
-            <Col sm={4}>
-              <div className=" ">
-                <button type="button"   onClick={() => browserHistory.push('/upgrade')} className="btn btn-block btn-success waves-light waves-effect">Upgrade</button>
-                <div> <br /></div>
-                <button type="button"   onClick={() => browserHistory.push('/billing-details')} className="btn btn-block btn-warning waves-light waves-effect">Billing</button>
-              </div>
-            </Col>
-          </Row>
+          </Col>
+          <Col md={8}>
+            <Row>
+              <Col sm={4}>
+                <div className="card-box tilebox-one">
+                  <i className="icon-badge float-right text-muted"></i>
+                  <h6 className="text-muted text-uppercase mt-0">Plan Type :</h6>
+                  <form>
+                    <FormGroup className="planUp" controlId="formControlsSelect">
+                      <ControlLabel>Plan</ControlLabel>{this.plansList()}
+                    </FormGroup>
+                  </form>
+                </div>
+              </Col>
+              <Col sm={4}>
+              </Col>
+              <Col sm={4}>
+                <div className="mt-3 ">
+                  <button type="button"   onClick={() => browserHistory.push('/upgrade')} className="btn btn-block btn-info waves-light waves-effect upgrade1">Upgrade</button>
+                  <div> <br /></div>
+                  <button type="button"   onClick={() => browserHistory.push('/billing-details')} className="btn btn-block btn-info waves-light waves-effect billing1">Billing</button>
+                </div>
+              </Col>
+            </Row>
 
-
-          <div className="card-box">
-            <span>
-              <h4 className="header-title mt-2 text-custom">
-                Last Login :  mm-dd-yyyy
-              </h4>
-            </span>
-          </div>
-        </Col>
+          </Col>
+        </Row>
       </Grid>
       <ToastContainer hideProgressBar={true} />
     </div>);
