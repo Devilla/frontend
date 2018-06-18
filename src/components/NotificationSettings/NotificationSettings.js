@@ -205,6 +205,7 @@ class Notifications extends Component {
     return (
       <div className="notification-settings">
         <div>
+          <h4 className="lead text-center m-b-30 m-t-20">Notifications</h4>
           {!this.state.notification
             ?
             <NotificationList

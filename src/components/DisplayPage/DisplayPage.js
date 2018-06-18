@@ -167,7 +167,7 @@ class DisplayPage extends Component{
           <div className="tabscontent">
             <Row>
               <Col md={12}>
-                <h4>Details Of Your Notification Display Page</h4>
+                <h4 className="lead text-center m-b-30 m-t-20">Details Of Your Notification Display Page</h4>
               </Col>
             </Row>
             <Row>
