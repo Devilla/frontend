@@ -1,8 +1,8 @@
 import React from 'react';
 import { Row, Col, Glyphicon } from 'react-bootstrap';
-import { Card } from '../notification/template/common';
-import { Notification } from '../notification/template/common/notification';
-import { Setting } from '../notification/template/common/settings';
+import { Card } from './Card';
+import { NotificationDesign } from './NotificationDesign';
+import { NotificationDesignSetting } from './NotificationDesignSetting';
 import Switch from 'react-flexible-switch';
 import './NotificationConfigure.scss';
 
@@ -28,7 +28,7 @@ const NotificationConfigure = ({
             content={
               <div className="notification-configure-content">
                 <Col md={6}>
-                  <Notification
+                  <NotificationDesign
                     contentText={contentText}
                     visitorText={visitorText}
                     notification={notification}
@@ -44,9 +44,8 @@ const NotificationConfigure = ({
                     onChange={(e) => e != notification.activity ? handleActivityChange(e, notification._id, notification.configurationId) : null}
                   />
                 </div>
-
                 <Col md={6}>
-                  <Setting
+                  <NotificationDesignSetting
                     contentText={contentText}
                     visitorText={visitorText}
                     notification={notification}
@@ -60,29 +59,23 @@ const NotificationConfigure = ({
           />
         </Col>
       </Row>
-   
-      <div className="m-t-50 pull-right">
 
+      <div className="m-t-50 pull-right">
         <span className="btn btn-info mr-3" onClick={backConfiguration}>
           <Glyphicon glyph="chevron-left" />
           Back
         </span>
-
 
         <span className="btn btn-info mr-3" >
           <Glyphicon glyph="align-justify" onClick={setDefaultPanel} />
           Set Default
         </span>
 
-
         <span className="btn btn-info mr-3" onClick={saveConfiguration}>
           <Glyphicon glyph="save" />
           Save
         </span>
       </div>
-  
-     
-     
     </div>
   );
 };

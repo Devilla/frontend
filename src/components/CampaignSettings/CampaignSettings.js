@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
-import InstallPixel from '../New/install-pixel';
-import CaptureLeads from '../New/CaptureLeads';
-import DisplayPage from '../New/DisplayPage';
-import ConfigNotification from '../New/configure-notification';
-import Notifications from '../New/Notifications/Notifications';
+import  { InstallPixel, CapturePage, DisplayPage, Rules, NotificationSettings } from 'components';
+
 import './CampaignSettings.scss';
 
 class CampaignSettings extends Component{
@@ -73,15 +70,15 @@ class CampaignSettings extends Component{
             </div>
 
             <div className={`tab-pane ${activeClass == 2?'show active':''}`} id="profile1">
-              <Notifications setActiveState={this.setActiveState} />
+              <NotificationSettings setActiveState={this.setActiveState} />
             </div>
 
             <div className={`tab-pane ${activeClass == 3?'show active':''}`} id="messages1">
-              <ConfigNotification setActiveState={this.setActiveState} />
+              <Rules setActiveState={this.setActiveState} />
             </div>
 
             <div className={`tab-pane ${activeClass == 4?'show active':''}`} id="settings1">
-              <CaptureLeads setActiveState={this.setActiveState} />
+              <CapturePage setActiveState={this.setActiveState} />
             </div>
 
             <div className={`tab-pane ${activeClass == 5?'show active':''}`} id="settings2">

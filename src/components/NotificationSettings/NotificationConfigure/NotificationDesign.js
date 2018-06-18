@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
-import './notification.scss';
 
-export class Notification extends Component {
+export class NotificationDesign extends Component {
   render() {
     const {
       radius,
@@ -211,4 +210,4 @@ export class Notification extends Component {
   }
 }
 
-export default Notification;
+export default NotificationDesign;

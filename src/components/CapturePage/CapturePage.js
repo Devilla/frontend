@@ -14,7 +14,7 @@ import { fetchLeadUrl, createPageUrl, clearPageUrl, removePageUrl } from 'ducks/
 import { fetchOneRules, clearRules } from 'ducks/rules';
 import { validatePath } from 'components/Common/function';
 
-class CaptureLeads extends Component{
+class CapturePage extends Component{
   constructor(){
     super();
     this.state= {
@@ -247,4 +247,4 @@ const mapDispatchToProps = {
   clearRules
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(CaptureLeads);
+export default connect(mapStateToProps, mapDispatchToProps)(CapturePage);

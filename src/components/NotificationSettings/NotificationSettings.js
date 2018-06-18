@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import { fetchNotification } from 'ducks/notification';
 import { createConfiguration, fetchConfiguration, fetchCampaignConfiguration, clearConfiguration, updateConfiguration, createSuccess } from 'ducks/configuration';
 import { Row } from 'react-bootstrap';
-import NotificationConfigure from './NotificationConfigure';
-import NotificationList from './NotificationList';
-import './Notifications.scss';
+import NotificationConfigure from './NotificationConfigure/NotificationConfigure';
+import NotificationList from './NotificationList/NotificationList';
+import './NotificationSettings.scss';
 
 const notificationPanelStyleDefault = { // TODO: Take style values from server
   radius: 50,
@@ -206,7 +206,7 @@ class Notifications extends Component {
 
     const { configurations, createSuccess } = this.props;
     return (
-      <div className="notification-list">
+      <div className="notification-settings">
         <div>
           {!this.state.notification
             ?

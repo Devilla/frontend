@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import LeftView from './left-view'
-import RightView from './right-view'
+import LeftView from './LeftView';
+import RightView from './RightView';
 import { fetchOneRules, createRules, updateRules } from 'ducks/rules';
 
-export class Display extends Component{
-  constructor(props){
-    super(props);
+class Rules extends Component{
+  constructor(){
+    super();
     this.state = {
       hideNotification: false,
       loopNotification: false,
@@ -27,6 +27,8 @@ export class Display extends Component{
     };
     this.handleStateChange = this.handleStateChange.bind(this);
     this.saveRules = this.saveRules.bind(this);
+    this.handleNextState = this.handleNextState.bind(this);
+    this.handleBackState = this.handleBackState.bind(this);
   }
 
   componentDidMount() {
@@ -78,11 +80,23 @@ export class Display extends Component{
     } else {
       this.props.createRules(rule);
     }
-    this.props.handleNextState();
+    this.handleNextState();
   }
 
-  render(){
-    const { handleBackState } = this.props;
+
+  componentWillUnmount() {
+    this.props.setActiveState(1);
+  }
+
+  handleNextState() {
+    this.props.setActiveState(4);
+  }
+
+  handleBackState() {
+    this.props.setActiveState(2);
+  }
+
+  render() {
     return (
       <div>
         <div className="row m-t-30 m-b-30">
@@ -96,7 +110,7 @@ export class Display extends Component{
           />
         </div>
         <div className="m-t-50 float-right align-install-btn">
-          <button type="button" className="btn btn-custom  waves-light waves-effect number " onClick={handleBackState}>Previous</button>
+          <button type="button" className="btn btn-custom  waves-light waves-effect number " onClick={this.handleBackState}>Previous</button>
           <button type="button" className="btn btn-custom  waves-light waves-effect number ml-2 pl-4 pr-4" onClick={this.saveRules}>Next </button>
         </div>
         <div className="clearfix"></div>
@@ -116,4 +130,4 @@ const mapDispatchToProps = {
   updateRules
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Display);
+export default connect(mapStateToProps, mapDispatchToProps)(Rules);

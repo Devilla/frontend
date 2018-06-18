@@ -1,5 +1,4 @@
 import React from 'react';
-import './display.scss';
 
 const NotificationView = ({display, position, animation}) => {
   let notificationPosition;
