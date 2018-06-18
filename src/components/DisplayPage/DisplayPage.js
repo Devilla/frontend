@@ -54,7 +54,6 @@ class DisplayPage extends Component{
     this.props.fetchDisplayUrl('display', rule._id);
   }
 
-
   handleNextState() {
     if(!this.props.displayUrls.length)
       return this.setState({error: 'Add a display path'});

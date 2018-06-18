@@ -108,61 +108,15 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
   render() {
     const errors = validate(this.state.campaignname, this.state.website);
     const isDisabled = Object.keys(errors).some(x => errors[x]);
-    const {
-      elastic,
-      rules,
-      fetchOneRules,
-      createRules,
-      updateRules,
-      configuration,
-      configurations,
-      notifications,
-      fetchNotification,
-      createConfiguration,
-      fetchConfiguration,
-      fetchCampaignConfiguration,
-      updateConfiguration,
-      clearConfiguration,
-      createSuccess,
-      displayUrls,
-      leads,
-      fetchDisplayUrl,
-      fetchLeadUrl,
-      createPageUrl,
-      removePageUrl,
-      clearPageUrl
-    } = this.props;
     return (
       <div>
         {this.props.campaign && Object.keys(this.props.campaign).length !== 0 && this.props.campaign.constructor === Object?
           <CampaignSettings
-            elastic={elastic}
-            rules={rules}
-            fetchOneRules={fetchOneRules}
-            createRules={createRules}
-            updateRules={updateRules}
-            configuration={configuration}
-            configurations={configurations}
-            notifications={notifications}
-            fetchNotification={fetchNotification}
-            createConfiguration={createConfiguration}
-            fetchConfiguration={fetchConfiguration}
-            fetchCampaignConfiguration={fetchCampaignConfiguration}
-            updateConfiguration={updateConfiguration}
-            clearConfiguration={clearConfiguration}
-            createSuccess={createSuccess}
-            displayUrls={displayUrls}
-            leads={leads}
-            fetchDisplayUrl={fetchDisplayUrl}
-            fetchLeadUrl={fetchLeadUrl}
-            createPageUrl={createPageUrl}
-            removePageUrl={removePageUrl}
-            clearPageUrl={clearPageUrl}
             verifyPixelStatus={this.verifyPixelStatus}
             handlePixelCopy={this.handlePixelCopy}
             activeClass={this.state.activeClass}
             setActiveState={this.setActiveState}
-            campaign={this.props.campaign}
+            {...this.props}
           />
           :
           <Campaign
