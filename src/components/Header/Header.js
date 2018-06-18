@@ -25,7 +25,7 @@ const Header = ({ openCloseDropdown, dropdownStyle, logout, renderHelp, settings
           </div>
         </div>
       </li>
-      <li className="dropdown notification-list">
+      <li className="dropdown notification-list mt-1">
         <a
           className="nav-link dropdown-toggle nav-user"
           data-toggle="dropdown"
@@ -36,7 +36,7 @@ const Header = ({ openCloseDropdown, dropdownStyle, logout, renderHelp, settings
           onClick={openCloseDropdown}
         >
           <img src={Avatar1} alt="user" className="rounded-circle" />
-          <span className="ml-1">Username
+          <span className="ml-1">&nbsp;
             <i className="mdi mdi-chevron-down"></i>
           </span>
         </a>

@@ -23,7 +23,7 @@ class Sidebar extends Component {
         <div>
           <div className="user-box">
             <h5></h5>
-            <p clasName="text-muted"></p>
+            <p className="text-muted"></p>
           </div>
           <div className="topbar-left mt-3 ml-2 pt-2 pl-2" style={{width:'200px'}}>
             <Link to="/dashboard" className="logo ">
@@ -36,7 +36,7 @@ class Sidebar extends Component {
 
           <div id="sidebar-menu">
             <div className="button-list">
-              <Link to="/new"><button type="button" className="btn  btn-pink waves-effect  ml-4 p-2  pt-0 pb-0 mb-4 w-lg "><i className="fi-file-add " style={{fontSize:'15px'}}></i>&nbsp; <span className="h5">New</span> </button></Link>
+              <Link to="/new"><button type="button" className="btn  btn-pink waves-effect  ml-4 p-2  pt-0 pb-0 mb-4 w-lg "><i className="fi-plus " style={{fontSize:'15px'}}></i>&nbsp; <span className="h5">New</span> </button></Link>
             </div>
 
             <ul className="metismenu" id="side-menu">
