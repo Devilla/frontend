@@ -12,6 +12,9 @@
 .dashboard-content {
   font-size: 14px;
   margin-top: 5% !important;
+  .css-1ar5iql, [data-css-1ar5iql] {
+    z-index: 999999999;
+  }
 }
 
 .mm-popup__overlay {
