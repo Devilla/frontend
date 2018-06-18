@@ -19,6 +19,7 @@ import './App.scss';
 
 class App extends Component {
   componentWillMount() {
+    document.body.style = 'background-color:white';
     this.checkLogin((err) => {
       if (!err) {
         browserHistory.push('/dashboard');
