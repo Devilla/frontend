@@ -50,7 +50,7 @@ const notificationPanelStyleDefault = { // TODO: Take style values from server
   recentConv: 5,
   hideAnonymousConversion: true,
   onlyDisplayNotification: false,
-  visitorText: 'people'
+  visitorText: ' people '
 };
 
 class Notifications extends Component {
@@ -62,7 +62,7 @@ class Notifications extends Component {
       configuration: {},
       activity: true,
       notificationPanelStyle: notificationPanelStyleDefault,
-      contentText: 'Recently signed up for Company Name',
+      contentText: 'Company Name ',
       visitorText: 'people',
       image: '',
       notifications: [],
@@ -128,7 +128,7 @@ class Notifications extends Component {
       notification: '',
       activity: true,
       notificationPanelStyle: notificationPanelStyleDefault,
-      contentText: 'Recently signed up for Company Name',
+      contentText: 'Company Name',
       visitorText: 'people',
       image: ''
     });

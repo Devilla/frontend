@@ -10,6 +10,10 @@
 
 
 
+
+
+
+
 #FPqR2DbIqJeA2DbI7MM9_0 div {
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
@@ -24,10 +28,16 @@
   text-align: left;
 }
 
+
+
+
+
 FPqR3dGiqJeA3dGi7MM9_0 .FPqR2B_4qJeA2B_47MM9_0 {
   pointer-events: auto;
   overflow: hidden;
   position: relative;
+
+
   height: 70px;
   width: 96%;
   margin: 0 auto;
@@ -65,7 +75,7 @@ FPqR3dGiqJeA3dGi7MM9_0 .FPqR2B_4qJeA2B_47MM9_0 {
     display: block;
     margin: 9px 0 0 67px;
     font-size: 14px;
-    color: #666;
+    color: #0095f7;
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
@@ -164,12 +174,12 @@ svg:not(:root) {
     float: left;
     top: 3px;
     left: 3px;
-    height: 64px;
-    width: 64px;
+    height: 83px;
+    width: 83px;
     img {
       border-radius: 10px;
-      height: 64px;
-      width: 64px;
+      height: 83px;
+      width: 83px;
     }
   }
 }
@@ -181,7 +191,6 @@ svg:not(:root) {
 }
 
 img {
-  max-width: 100%;
   vertical-align: middle;
   display: inline-block;
   border-width: 0px;
@@ -356,17 +365,17 @@ img {
     width: 320px;
     margin: 0 0 10px 10px;
     box-shadow: 0 0 1px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05), 0 8px 50px rgba(0, 0, 0, 0.05);
-    border-radius: 50px;
+    border-radius: 100px;
   }
   #FPqR3dGiqJeA3dGi7MM9_0 .FPqR2B_4qJeA2B_47MM9_0 {
     width: 320px;
     margin: 0 0 10px 10px;
-    border-radius: 50px;
-    box-shadow: 0 0 1px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05), 0 8px 50px rgba(0, 0, 0, 0.05);
+    border-radius: 100px;
   }
 }
 
 .recent-settings .form-group input, .bulk-settings .form-group input {
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05), 0 8px 50px rgba(0, 0, 0, 0.05);
   border: 0;
   box-shadow: 0 0 0 0;
   border-bottom: 1px solid;

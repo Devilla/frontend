@@ -2,9 +2,12 @@ import React from 'react';
 
 const NotificationDesign = ({
   contentText,
-  visitorText,
+  visitorText = ' ' +visitorText+ ' ',
   notificationPanelStyle,
-  notification
+  notification,
+  totaltext='2,002 ',
+  pretext='signed up for ',
+  posttext=' in the last 7 days'
 }) => {
   const {
     radius,
@@ -43,8 +46,7 @@ const NotificationDesign = ({
       <div className="text-center">
         <div className="row">
           <div className="col-md-12 ">
-            <div className="card-box widget-flat border-custom bg-custom text-white pt-5 pb-5 ">
-              <i className="fi-tag"></i>
+            <div className="card-box  text-white pt-5 pb-5 ">
               <div id="FPqR2DbIqJeA2DbI7MM9_0">
                 <div id="FPqR3tRBqJeA3tRB7MM9_0" className="">
                   <div>
@@ -118,20 +120,12 @@ const NotificationDesign = ({
                                 fontFamily: notificationStyle.fontFamily,
                                 fontWeight: notificationStyle.fontWeight
                               }}>
-                                <div className="FPqR2fwXqJeA2fwX7MM9_0" style={{
-                                  color: notificationStyle.color,
-                                  fontFamily: notificationStyle.fontFamily,
-                                  fontWeight: notificationStyle.fontWeight
-                                }}>
+                                <div className="FPqR2fwXqJeA2fwX7MM9_0">
                                   <span className="FPqR1Jr6qJeA1Jr67MM9_0">
-                                    <span style={{
-                                      color: notificationStyle.color,
-                                      fontFamily: notificationStyle.fontFamily,
-                                      fontWeight: notificationStyle.fontWeight
-                                    }}>431</span>
-                                  </span>
-                                  {visitorText}</div>
-                                are viewing this site
+                                    <span >431</span>
+                                  </span><span>
+                                    {visitorText}</span></div><span>
+                                are viewing this site</span>
                               </div>
                               <div className="FPqR14UVqJeA14UV7MM9_0">
                                 Verified by
@@ -179,14 +173,12 @@ const NotificationDesign = ({
                                   fontFamily: notificationStyle.fontFamily,
                                   fontWeight: notificationStyle.fontWeight
                                 }}>
-                                  <span style={{
-                                    color: notificationStyle.color,
-                                    fontFamily: notificationStyle.fontFamily,
-                                    fontWeight: notificationStyle.fontWeight
-                                  }}>2,002</span>
-                                  {visitorText}</span>
-                                signed up for {contentText}
-                                in the last 7 days
+                                  <span>{totaltext}
+                                    {visitorText}
+                                  </span>
+                                </span>
+                                <span>{pretext}{contentText}
+                                  {posttext}</span>
                               </div>
                             </div>
                             <div className="FPqR29e1qJeA29e17MM9_0" style={{
