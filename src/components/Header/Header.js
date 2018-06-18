@@ -3,7 +3,7 @@ import { Avatar1 } from 'img';
 import './Header.scss';
 import { browserHistory } from 'react-router';
 
-const Header = ({ openCloseDropdown, dropdownStyle, logout, renderHelp, settings }) => {
+const Header = ({ openCloseDropdown, dropdownStyle, logout, renderHelp }) => {
   return (
     <ul className="list-unstyled topbar-right-menu float-right mb-0 nav-custom-header">
       <li className="dropdown notification-list">
@@ -31,7 +31,7 @@ const Header = ({ openCloseDropdown, dropdownStyle, logout, renderHelp, settings
           data-toggle="dropdown"
           role="button"
           aria-haspopup="false"
-          aria-expanded="false" 
+          aria-expanded="false"
           style={{cursor:'pointer'}}
           onClick={openCloseDropdown}
         >
@@ -48,11 +48,6 @@ const Header = ({ openCloseDropdown, dropdownStyle, logout, renderHelp, settings
           <a href="javascript:void(0);" className="dropdown-item notify-item">
             <i className="fi-head"></i>
             <span onClick={()=>{browserHistory.push('/profile');}}>Your Profile</span>
-          </a>
-
-          <a href="javascript:void(0);" className="dropdown-item notify-item" onClick={settings}>
-            <i className="fi-cog"></i>
-            <span>Settings</span>
           </a>
 
           <a href="javascript:void(0);" className="dropdown-item notify-item" onClick={renderHelp}>
