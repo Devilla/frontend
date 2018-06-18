@@ -8,7 +8,7 @@ import {
   HelpBlock
 } from 'react-bootstrap';
 import { browserHistory } from 'react-router';
-import { connect } from 'react-router';
+import { connect } from 'react-redux';
 import CardTable from 'components/Template/card-with-page-table';
 import { pagethArray } from 'components/Template/data';
 import { fetchDisplayUrl, createPageUrl, clearPageUrl, removePageUrl } from 'ducks/pageurl';
