@@ -9,6 +9,7 @@ import { fetchElastic, clearElastic } from 'ducks/elastic';
 import { fetchOneRules, createRules, updateRules } from 'ducks/rules';
 import { fetchNotification } from 'ducks/notification';
 import { createConfiguration, fetchConfiguration, fetchCampaignConfiguration, clearConfiguration, updateConfiguration, createSuccess } from 'ducks/configuration';
+import { fetchLeadUrl, fetchDisplayUrl, createPageUrl, clearPageUrl, removePageUrl } from 'ducks/pageurl';
 import { CampaignSettings, Campaign } from 'components';
 
 const toastConfig = {
@@ -96,7 +97,6 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
     copy(pixelCode, {
       debug: true
     });
-    console.log('====sdasda');
     return toast('Pixel copied', toastConfig);
   }
 
@@ -123,7 +123,14 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
       fetchCampaignConfiguration,
       updateConfiguration,
       clearConfiguration,
-      createSuccess
+      createSuccess,
+      displayUrls,
+      leads,
+      fetchDisplayUrl,
+      fetchLeadUrl,
+      createPageUrl,
+      removePageUrl,
+      clearPageUrl
     } = this.props;
     return (
       <div>
@@ -144,6 +151,13 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
             updateConfiguration={updateConfiguration}
             clearConfiguration={clearConfiguration}
             createSuccess={createSuccess}
+            displayUrls={displayUrls}
+            leads={leads}
+            fetchDisplayUrl={fetchDisplayUrl}
+            fetchLeadUrl={fetchLeadUrl}
+            createPageUrl={createPageUrl}
+            removePageUrl={removePageUrl}
+            clearPageUrl={clearPageUrl}
             verifyPixelStatus={this.verifyPixelStatus}
             handlePixelCopy={this.handlePixelCopy}
             activeClass={this.state.activeClass}
@@ -173,7 +187,9 @@ const mapStateToProps = state => ({
   rules: state.getIn(['rules', 'rule']),
   configuration: state.getIn(['configuration', 'configuration']),
   configurations: state.getIn(['configuration', 'configurations']),
-  notifications: state.getIn(['notification', 'notifications'])
+  notifications: state.getIn(['notification', 'notifications']),
+  displayUrls: state.getIn(['pageurl', 'display']),
+  leads: state.getIn(['pageurl', 'lead'])
 });
 
 const mapDispatchToProps = {
@@ -190,7 +206,12 @@ const mapDispatchToProps = {
   fetchCampaignConfiguration,
   updateConfiguration,
   clearConfiguration,
-  createSuccess
+  createSuccess,
+  fetchDisplayUrl,
+  fetchLeadUrl,
+  createPageUrl,
+  removePageUrl,
+  clearPageUrl
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewCampaignContainer);

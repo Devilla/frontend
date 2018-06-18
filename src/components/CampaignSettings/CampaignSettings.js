@@ -24,7 +24,14 @@ const CampaignSettings = ({
   fetchCampaignConfiguration,
   updateConfiguration,
   clearConfiguration,
-  createSuccess
+  createSuccess,
+  displayUrls,
+  leads,
+  fetchDisplayUrl,
+  fetchLeadUrl,
+  createPageUrl,
+  removePageUrl,
+  clearPageUrl
 }) => {
   return (
     <div className="col-md-12 tab-notification-container">
@@ -111,6 +118,11 @@ const CampaignSettings = ({
             <CapturePage
               campaign={campaign}
               rules={rules}
+              leads={leads}
+              fetchLeadUrl={fetchLeadUrl}
+              createPageUrl={createPageUrl}
+              removePageUrl={removePageUrl}
+              clearPageUrl={clearPageUrl}
               setActiveState={setActiveState}
             />
           </div>
@@ -119,6 +131,11 @@ const CampaignSettings = ({
             <DisplayPage
               campaign={campaign}
               rules={rules}
+              displayUrls={displayUrls}
+              fetchDisplayUrl={fetchDisplayUrl}
+              createPageUrl={createPageUrl}
+              removePageUrl={removePageUrl}
+              clearPageUrl={clearPageUrl}
               setActiveState={setActiveState}
             />
           </div>
