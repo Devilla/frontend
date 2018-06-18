@@ -108,11 +108,19 @@ const CampaignSettings = ({
           </div>
 
           <div className={`tab-pane ${activeClass == 4?'show active':''}`} id="settings1">
-            <CapturePage setActiveState={setActiveState} />
+            <CapturePage
+              campaign={campaign}
+              rules={rules}
+              setActiveState={setActiveState}
+            />
           </div>
 
           <div className={`tab-pane ${activeClass == 5?'show active':''}`} id="settings2">
-            <DisplayPage setActiveState={setActiveState} />
+            <DisplayPage
+              campaign={campaign}
+              rules={rules}
+              setActiveState={setActiveState}
+            />
           </div>
         </div>
       </div>

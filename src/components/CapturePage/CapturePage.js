@@ -4,14 +4,12 @@ import {
   Row,
   Col,
   Table,
-  Glyphicon,
   HelpBlock
 } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import CardTable from 'components/Template/card-with-page-table';
 import { pagethArray } from 'components/Template/data';
 import { fetchLeadUrl, createPageUrl, clearPageUrl, removePageUrl } from 'ducks/pageurl';
-import { fetchOneRules, clearRules } from 'ducks/rules';
 import { validatePath } from 'components/Common/function';
 
 class CapturePage extends Component{
@@ -36,12 +34,9 @@ class CapturePage extends Component{
 
   componentWillUnmount() {
     this.props.setActiveState(1);
-    // this.props.clearPageUrl();
   }
 
   componentDidMount() {
-    if(this.props.campaign)
-      this.props.fetchOneRules(this.props.campaign._id);
     if(this.props.rules)
       this.fetchPathUrls(this.props.rules);
   }
@@ -132,11 +127,11 @@ class CapturePage extends Component{
         <tbody>
           {
             leads.map((lead, i) => {
-              return <tr>
+              return <tr key={i}>
                 <td className="serial">{i+1}</td>
                 <td className="url">{lead.url}</td>
                 <td className="status"><span style={{backgroundColor:this.renderColor(lead.class)}}></span></td>
-                <td><a href="#" onClick={() => this.deleteLead(lead._id, i, lead.type)}><Glyphicon glyph="trash" /></a></td>
+                <td><a href="javascript:;"><i className="ml-3 icon-trash" onClick={() => this.deleteLead(lead._id, i, lead.type)}></i></a></td>
               </tr>;
             })
           }
@@ -233,18 +228,14 @@ class CapturePage extends Component{
 }
 
 const mapStateToProps = state => ({
-  rules: state.getIn(['rules', 'rule']),
-  leads: state.getIn(['pageurl', 'lead']),
-  campaign: state.getIn(['campaign', 'campaign']),
+  leads: state.getIn(['pageurl', 'lead'])
 });
 
 const mapDispatchToProps = {
-  fetchOneRules,
   fetchLeadUrl,
   createPageUrl,
   removePageUrl,
-  clearPageUrl,
-  clearRules
+  clearPageUrl
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(CapturePage);

@@ -5,7 +5,6 @@ import {
   Col,
   Table,
   Button,
-  Glyphicon,
   HelpBlock
 } from 'react-bootstrap';
 import { connect } from 'react-redux';
@@ -13,7 +12,6 @@ import { browserHistory } from 'react-router';
 import CardTable from 'components/Template/card-with-page-table';
 import { pagethArray } from 'components/Template/data';
 import { fetchDisplayUrl, createPageUrl, clearPageUrl, removePageUrl } from 'ducks/pageurl';
-import { fetchOneRules, clearRules } from 'ducks/rules';
 import { validatePath } from 'components/Common/function';
 import Popup from 'react-popup';
 
@@ -45,8 +43,6 @@ class DisplayPage extends Component{
   }
 
   componentDidMount() {
-    if(this.props.campaign)
-      this.props.fetchOneRules(this.props.campaign._id);
     if(this.props.rules)
       this.fetchPathUrls(this.props.rules);
   }
@@ -150,11 +146,11 @@ class DisplayPage extends Component{
         <tbody>
           {
             displayUrls.map((displayUrl, i) => {
-              return <tr>
+              return <tr key={i}>
                 <td className="serial">{i+1}</td>
                 <td className="url">{displayUrl.url}</td>
                 <td className="status"><span style={{backgroundColor:this.renderColor(displayUrl.class)}}></span></td>
-                <td><a href="javascript:;" onClick={() => this.deleteDisplayUrl(displayUrl._id, i, displayUrl.type)}><Glyphicon glyph="trash" /></a></td>
+                <td><a href="javascript:;"><i className="ml-3 icon-trash" onClick={() => this.deleteDisplayUrl(displayUrl._id, i, displayUrl.type)}></i></a></td>
               </tr>;
             })
           }
@@ -248,18 +244,14 @@ class DisplayPage extends Component{
 }
 
 const mapStateToProps = state => ({
-  rules: state.getIn(['rules', 'rule']),
-  displayUrls: state.getIn(['pageurl', 'display']),
-  campaign: state.getIn(['campaign', 'campaign']),
+  displayUrls: state.getIn(['pageurl', 'display'])
 });
 
 const mapDispatchToProps = {
-  fetchOneRules,
   fetchDisplayUrl,
   createPageUrl,
   removePageUrl,
-  clearPageUrl,
-  clearRules
+  clearPageUrl
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(DisplayPage);
