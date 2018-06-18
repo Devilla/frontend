@@ -34,7 +34,7 @@ class Tabs extends Component {
                   : 'http://localhost:3000'}
                 content={
                   <Nav bsStyle="pills" className="tabmenu" justified activeKey={val} onSelect={k => this.handleSelect(k)}>
-                    <NavItem eventKey={1} title="Install Pixel">
+                    <NavItem className="pb-3 pt-3" eventKey={1} title="Install Pixel">
                       <i className="fas fa-cog"></i> Install Pixel
                     </NavItem>
                     <NavItem eventKey={2} title="Notifications">

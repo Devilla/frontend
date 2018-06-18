@@ -7,7 +7,6 @@ import {
   ResetPassword,
   Dashboard,
   Notification,
-  New,
   LoginFlow,
   Integration,
   Error,
@@ -35,7 +34,8 @@ import {
   App,
   DashboardContainer,
   ConnectPage,
-  AnalyticsContainer
+  AnalyticsContainer,
+  NewCampaignContainer
 } from 'containers';
 
 const MyRoutes = ({routerHistory}) => (
@@ -44,7 +44,7 @@ const MyRoutes = ({routerHistory}) => (
 
     <Route component={DashboardContainer}>
       <Route path="/dashboard" component={Dashboard} />
-      <Route path="/new" component={New} />
+      <Route path="/new" component={NewCampaignContainer} />
       <Route path="/campaigns" component={Notification} />
       <Route path="/analytics" component={AnalyticsContainer} />
       <Route path="/integration" component={Integration} />

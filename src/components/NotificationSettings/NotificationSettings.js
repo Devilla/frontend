@@ -1,11 +1,8 @@
-import React, {Component} from 'react';
-import { connect } from 'react-redux';
-import { fetchNotification } from 'ducks/notification';
-import { createConfiguration, fetchConfiguration, fetchCampaignConfiguration, clearConfiguration, updateConfiguration, createSuccess } from 'ducks/configuration';
+import React, { Component } from 'react';
 import { Row } from 'react-bootstrap';
-import NotificationConfigure from './NotificationConfigure';
-import NotificationList from './NotificationList';
-import './Notifications.scss';
+import NotificationConfigure from './NotificationConfigure/NotificationConfigure';
+import NotificationList from './NotificationList/NotificationList';
+import './NotificationSettings.scss';
 
 const notificationPanelStyleDefault = { // TODO: Take style values from server
   radius: 50,
@@ -206,8 +203,9 @@ class Notifications extends Component {
 
     const { configurations, createSuccess } = this.props;
     return (
-      <div className="notification-list">
+      <div className="notification-settings">
         <div>
+          <h4 className="lead text-center m-b-30 m-t-20">Notifications</h4>
           {!this.state.notification
             ?
             <NotificationList
@@ -249,21 +247,4 @@ class Notifications extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  configuration: state.getIn(['configuration', 'configuration']),
-  configurations: state.getIn(['configuration', 'configurations']),
-  campaign: state.getIn(['campaign', 'campaign']),
-  notifications: state.getIn(['notification', 'notifications'])
-});
-
-const mapDispatchToProps = {
-  fetchNotification,
-  createConfiguration,
-  fetchConfiguration,
-  fetchCampaignConfiguration,
-  updateConfiguration,
-  clearConfiguration,
-  createSuccess
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Notifications);
+export default Notifications;

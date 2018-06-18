@@ -11,8 +11,6 @@ import Popup from 'react-popup';
 import { fetchCampaign, updateCampaign, successCampaign, removeCampaign } from 'ducks/campaign';
 import './Notification.scss'
 
-
-
 const notificationFields = ['S.No', 'Campaign', 'Domain', 'Status', 'Tracking ID', 'Log', 'Created', 'Delete'];
 
 class Notification extends Component {

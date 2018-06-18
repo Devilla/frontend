@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {FormGroup, Row, Col, Button, FormControl } from 'react-bootstrap';
+import { FormGroup, Row, Col, Button, FormControl } from 'react-bootstrap';
 import Switch from 'react-flexible-switch';
 import Slider from 'react-rangeslider';
 import reactCSS from 'reactcss';
@@ -7,12 +7,11 @@ import reactCSS from 'reactcss';
 import 'react-images-uploader/styles.css';
 import 'react-images-uploader/font.css';
 import { ChromePicker } from 'react-color';
-import './settings.css';
 
 const FONT_WEIGHT_BOLD = 'bold';
 const FONT_WEIGHT_NORMAL = 'normal';
 
-export class Setting extends Component {
+export class NotificationDesignSetting extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -124,7 +123,6 @@ export class Setting extends Component {
   showTextColorSwatch = () => {
     this.setState({ isTextColorSwatchOpen: true });
   };
-
 
   handleAnonymousConversionsChange = (e) => {
     this.setState({ hideAnonymousConversion: e });
@@ -404,7 +402,7 @@ export class Setting extends Component {
                 }
               </div>
 
-              <div className={`tab-pane ${activeClass == 3 ? 'show active' : ''}`} id="paypal">   
+              <div className={`tab-pane ${activeClass == 3 ? 'show active' : ''}`} id="paypal">
                 <Row className="mb-3">
                   <Col md={7} style={{'paddingRight': 0}}>
                     <span className="mt-5 text-muted h6">Display the last conversion</span>
@@ -414,7 +412,7 @@ export class Setting extends Component {
                       <FormControl
                         type="number"
                         min="0"
-                        
+
                         onChange={(e) => this.handleStateChangeNumber(e)}
                         bsSize="sm"
                         value={notificationPanelStyle.recentNumber}
@@ -422,7 +420,7 @@ export class Setting extends Component {
                       />
                     </FormGroup>
                   </Col>
-                  
+
                 </Row>
                 <Row className="mb-3">
                   <Col md={7} style={{'paddingRight': 0, width: '50%'}}>
@@ -484,7 +482,7 @@ export class Setting extends Component {
                     onChange={(e) => this.handleOnlyDisplayNotification(e)}
                     />
                   </Col>
-                </Row>            
+                </Row>
               </div>
             </div>
           </div>
@@ -494,4 +492,4 @@ export class Setting extends Component {
   }
 }
 
-export default Setting;
+export default NotificationDesignSetting;

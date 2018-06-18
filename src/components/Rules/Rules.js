@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import LeftView from './left-view'
-import RightView from './right-view'
-import { fetchOneRules, createRules, updateRules } from 'ducks/rules';
+import LeftView from './LeftView';
+import RightView from './RightView';
 
-export class Display extends Component{
-  constructor(props){
-    super(props);
+class Rules extends Component{
+  constructor(){
+    super();
     this.state = {
       hideNotification: false,
       loopNotification: false,
@@ -27,6 +25,8 @@ export class Display extends Component{
     };
     this.handleStateChange = this.handleStateChange.bind(this);
     this.saveRules = this.saveRules.bind(this);
+    this.handleNextState = this.handleNextState.bind(this);
+    this.handleBackState = this.handleBackState.bind(this);
   }
 
   componentDidMount() {
@@ -78,13 +78,28 @@ export class Display extends Component{
     } else {
       this.props.createRules(rule);
     }
-    this.props.handleNextState();
+    this.handleNextState();
   }
 
-  render(){
-    const { handleBackState } = this.props;
+
+  componentWillUnmount() {
+    this.props.setActiveState(1);
+  }
+
+  handleNextState() {
+    this.props.setActiveState(4);
+  }
+
+  handleBackState() {
+    this.props.setActiveState(2);
+  }
+
+  render() {
     return (
       <div>
+        <div className="text-center  m-t-20">
+          <h4 className="lead m-l-100 m-b-30">Settings</h4>
+        </div>
         <div className="row m-t-30 m-b-30">
           <LeftView
             handleStateChange={this.handleStateChange}
@@ -96,7 +111,7 @@ export class Display extends Component{
           />
         </div>
         <div className="m-t-50 float-right align-install-btn">
-          <button type="button" className="btn btn-custom  waves-light waves-effect number " onClick={handleBackState}>Previous</button>
+          <button type="button" className="btn btn-custom  waves-light waves-effect number " onClick={this.handleBackState}>Previous</button>
           <button type="button" className="btn btn-custom  waves-light waves-effect number ml-2 pl-4 pr-4" onClick={this.saveRules}>Next </button>
         </div>
         <div className="clearfix"></div>
@@ -105,15 +120,4 @@ export class Display extends Component{
   }
 }
 
-const mapStateToProps = state => ({
-  rules: state.getIn(['rules', 'rule']),
-  campaign: state.getIn(['campaign', 'campaign']),
-});
-
-const mapDispatchToProps = {
-  fetchOneRules,
-  createRules,
-  updateRules
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Display);
+export default Rules;

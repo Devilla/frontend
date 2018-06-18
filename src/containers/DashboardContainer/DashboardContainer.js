@@ -30,6 +30,7 @@ class DashboardContainer extends Component {
     this.logout = this.logout.bind(this);
     this.renderHelp = this.renderHelp.bind(this);
     this.settings = this.settings.bind(this);
+    this.openProfile = this.openProfile.bind(this);
     this.closeDropdown = this.closeDropdown.bind(this);
 
     this.checkLogin((err) => {
@@ -164,8 +165,15 @@ class DashboardContainer extends Component {
     browserHistory.push('/dashboard');
   }
 
+  openProfile() {
+    this.openCloseDropdown();
+    if(this.state.disableButton)
+      return;
+    browserHistory.push('/profile');
+  }
+
   render() {
-    const { loading } = this.props;
+    const { loading, user } = this.props;
     return (
       <div className="dashboard-container">
         <Popup />
@@ -179,10 +187,12 @@ class DashboardContainer extends Component {
               <div className="topbar" >
                 <nav className="navbar-custom">
                   <Header
+                    username={user.username}
                     openCloseDropdown={this.openCloseDropdown}
                     logout={this.logout}
                     renderHelp={this.renderHelp}
                     settings={this.settings}
+                    openProfile={this.openProfile}
                     dropdownStyle={this.state.style}
                     {...this.props}
                   />

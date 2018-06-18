@@ -4,49 +4,39 @@ import {
   Row,
   Col,
   Table,
-  Button,
-  Glyphicon,
   HelpBlock
 } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import { browserHistory } from 'react-router';
 import CardTable from 'components/Template/card-with-page-table';
 import { pagethArray } from 'components/Template/data';
-import { fetchDisplayUrl, createPageUrl, clearPageUrl, removePageUrl } from 'ducks/pageurl';
-import { fetchOneRules, clearRules } from 'ducks/rules';
+import { fetchLeadUrl, createPageUrl, clearPageUrl, removePageUrl } from 'ducks/pageurl';
 import { validatePath } from 'components/Common/function';
-import Popup from 'react-popup';
 
-import './DisplayPage.scss';
-
-class DisplayPage extends Component{
+class CapturePage extends Component{
   constructor(){
     super();
     this.state= {
       error: '',
-      displayUrl: {
+      lead: {
         url: '',
         status: '',
         class: '',
         type: '',
         error: ''
-      },
+      }
     };
     this.handleNextState = this.handleNextState.bind(this);
     this.handleBackState = this.handleBackState.bind(this);
     this.addPageUrl = this.addPageUrl.bind(this);
     this.handlePageUrl = this.handlePageUrl.bind(this);
-    this.deleteDisplayUrl = this.deleteDisplayUrl.bind(this);
+    this.deleteLead = this.deleteLead.bind(this);
   }
 
   componentWillUnmount() {
     this.props.setActiveState(1);
-    this.props.clearPageUrl();
   }
 
   componentDidMount() {
-    if(this.props.campaign)
-      this.props.fetchOneRules(this.props.campaign._id);
     if(this.props.rules)
       this.fetchPathUrls(this.props.rules);
   }
@@ -57,55 +47,42 @@ class DisplayPage extends Component{
   }
 
   fetchPathUrls(rule) {
-    this.props.fetchDisplayUrl('display', rule._id);
+    this.props.fetchLeadUrl('lead', rule._id);
   }
 
-
   handleNextState() {
-    if(!this.props.displayUrls.length)
+    if(!this.props.leads.length)
       return this.setState({error: 'Add a display path'});
-    Popup.create({
-      title: 'Campaign is Live',
-      buttons: {
-        right: [{
-          text: 'Finish',
-          className: 'default',
-          action: function () {
-            browserHistory.push('/dashboard');
-            Popup.close();
-          }
-        }]
-      }
-    });
+    this.props.setActiveState(5);
   }
 
   handleBackState() {
-    this.props.setActiveState(4);
+    this.props.setActiveState(3);
   }
 
+
   addPageUrl() {
-    if(this.state.displayUrl.url == '' || !validatePath(this.state.displayUrl.url))
+    if(this.state.lead.url == '' || !validatePath(this.state.lead.url))
       return this.setState({error: 'Please enter a valid path'});
-    let displayUrl = this.state.displayUrl;
-    displayUrl['rule'] = this.props.rules._id;
-    this.props.createPageUrl(displayUrl);
-    this.setState({displayUrl: {
+    let lead = this.state.lead;
+    lead['rule'] = this.props.rules._id;
+    this.props.createPageUrl(lead);
+    this.setState({lead: {
       url: '',
       status: '',
       class: '',
-      type: '',
-      checkUrl:false
+      type: ''
     }});
   }
 
   handlePageUrl(e) {
-    const displayUrl = {
+    const lead = {
       url: e.target.value,
-      status: 'warning',
+      status: 'undefined',
       class: 'warning',
-      type: 'display'
+      type: 'lead'
     };
-    this.setState({displayUrl: displayUrl, error: ''});
+    this.setState({lead: lead, error: ''});
   }
 
   handleWebsiteAuth(evt) {
@@ -113,7 +90,7 @@ class DisplayPage extends Component{
       return this.setState({error: 'Please enter a valid path'});
   }
 
-  deleteDisplayUrl(id, index, type) {
+  deleteLead(id, index, type) {
     this.props.removePageUrl(id, index, type);
   }
 
@@ -133,7 +110,7 @@ class DisplayPage extends Component{
   }
 
   renderLeads() {
-    var displayUrls = this.props.displayUrls?this.props.displayUrls.filter(lead => lead.type == 'display'):[];
+    var leads = this.props.leads?this.props.leads.filter(lead => lead.type == 'lead'):[];
     return (
       <Table>
         <thead>
@@ -149,12 +126,12 @@ class DisplayPage extends Component{
         </thead>
         <tbody>
           {
-            displayUrls.map((displayUrl, i) => {
-              return <tr>
+            leads.map((lead, i) => {
+              return <tr key={i}>
                 <td className="serial">{i+1}</td>
-                <td className="url">{displayUrl.url}</td>
-                <td className="status"><span style={{backgroundColor:this.renderColor(displayUrl.class)}}></span></td>
-                <td><a href="javascript:;" onClick={() => this.deleteDisplayUrl(displayUrl._id, i, displayUrl.type)}><Glyphicon glyph="trash" /></a></td>
+                <td className="url">{lead.url}</td>
+                <td className="status"><span style={{backgroundColor:this.renderColor(lead.class)}}></span></td>
+                <td><a href="javascript:;"><i className="ml-3 icon-trash" onClick={() => this.deleteLead(lead._id, i, lead.type)}></i></a></td>
               </tr>;
             })
           }
@@ -164,52 +141,46 @@ class DisplayPage extends Component{
   }
 
   render(){
-    const { error, displayUrl } = this.state;
+    const { error, lead } = this.state;
     return (
-      <div className="content display-page">
+      <div className="content">
         <Grid fluid>
           <div className="tabscontent">
             <Row>
               <Col md={12}>
-                <h4>Details Of Your Notification Display Page</h4>
+                <h4 className="lead text-center m-b-30 m-t-20">Details Of Your Lead Capturing Page</h4>
               </Col>
             </Row>
             <Row>
               <Col md={12}>
-                <p>Enter URL of page you display notifications on. </p>
+                <p>Enter URL of page you are capturing conversions on. </p>
                 <small>This page must have:<br/>
+                  <i className="fas fa-angle-right"></i> An email form field<br/>
                   <i className="fas fa-angle-right"></i> Your Pixel installed (if not, Go to Install Pixel)</small>
                 <p>&nbsp;</p>
               </Col>
             </Row>
             <Row>
               <Col md={12}>
-                <div>
-                  <div className="input-group">
-                    <input
-                      type="text"
-                      className="form-control txtpageurl"
-                      placeholder="Path URL  (For eg. /mypage, /register, /products, /design/front etc."
-                      aria-describedby="urladd"
-                      value={displayUrl.url}
-                      onChange={this.handlePageUrl}
-                      onBlur={this.handleWebsiteAuth.bind(this)}
-                      onKeyUp={(e) => e.keyCode === 13?this.addPageUrl():null}/>
-                    <span className="input-group-btn" id="urladd">
-                      <Button
-                        className="btn btn-raised btn-primary blue"
-                        href="javascript:;"
-                        onClick={this.addPageUrl}
-                        type="submit"
-                      >
-                      Add
-                      </Button>
-                    </span>
-                  </div>
-                  <HelpBlock>
-                    <p className="website-error">{error}</p>
-                  </HelpBlock>
+                <div className="input-group">
+                  <input type="text"
+                    className="form-control txtpageurl"
+                    placeholder="Path URL  (For eg. /mypage, /register, /products, /design/front etc."
+                    aria-describedby="urladd"
+                    value={lead.url}
+                    onChange={this.handlePageUrl}
+                    onBlur={this.handleWebsiteAuth.bind(this)}
+                    onKeyUp={(e) => e.keyCode === 13?this.addPageUrl():null}
+                  />
+                  <span className="input-group-btn"
+                    id="urladd">
+                    <a className="btn btn-raised btn-primary blue"
+                      href="#" onClick={this.addPageUrl}>Add</a>
+                  </span>
                 </div>
+                <HelpBlock>
+                  <p className="website-error">{error}</p>
+                </HelpBlock>
               </Col>
             </Row>
             <Row>
@@ -235,9 +206,18 @@ class DisplayPage extends Component{
                 />
               </Col>
             </Row>
+            <Row>
+              <div className="text-center">
+                <Col md={12}>
+                  <p>&nbsp;</p> <p>&nbsp;</p>
+                Having problems with Auto Lead Capture in your current setup? &nbsp;&nbsp; <a
+                    href="#" className="btn blue btn-sm">Use Webhook Integration</a>
+                </Col>
+              </div>
+            </Row>
             <div className="m-t-50 float-right align-install-btn">
               <button type="button" className="btn btn-custom  waves-light waves-effect number " onClick={this.handleBackState}>Previous</button>
-              <button type="button" className="btn btn-custom  waves-light waves-effect number ml-2 pl-4 pr-4" onClick={this.handleNextState}>Finish </button>
+              <button type="button" className="btn btn-custom  waves-light waves-effect number ml-2 pl-4 pr-4" onClick={this.handleNextState}>Next </button>
             </div>
             <div className="clearfix"></div>
           </div>
@@ -248,18 +228,14 @@ class DisplayPage extends Component{
 }
 
 const mapStateToProps = state => ({
-  rules: state.getIn(['rules', 'rule']),
-  displayUrls: state.getIn(['pageurl', 'display']),
-  campaign: state.getIn(['campaign', 'campaign']),
+  leads: state.getIn(['pageurl', 'lead'])
 });
 
 const mapDispatchToProps = {
-  fetchOneRules,
-  fetchDisplayUrl,
+  fetchLeadUrl,
   createPageUrl,
   removePageUrl,
-  clearPageUrl,
-  clearRules
+  clearPageUrl
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(DisplayPage);
+export default connect(mapStateToProps, mapDispatchToProps)(CapturePage);

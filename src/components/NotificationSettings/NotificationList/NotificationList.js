@@ -1,6 +1,5 @@
 import React from 'react';
 import { Avatar2, Avatar3, Avatar4 } from 'img';
-import './NotificationList.scss';
 
 const NotificationList = ({ notificationList, configure, handleActivityChange }) => {
   const renderNotifications = () => {
