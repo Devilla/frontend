@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import LeftView from './LeftView';
 import RightView from './RightView';
-import { fetchOneRules, createRules, updateRules } from 'ducks/rules';
 
 class Rules extends Component{
   constructor(){
@@ -119,15 +117,4 @@ class Rules extends Component{
   }
 }
 
-const mapStateToProps = state => ({
-  rules: state.getIn(['rules', 'rule']),
-  campaign: state.getIn(['campaign', 'campaign']),
-});
-
-const mapDispatchToProps = {
-  fetchOneRules,
-  createRules,
-  updateRules
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Rules);
+export default Rules;

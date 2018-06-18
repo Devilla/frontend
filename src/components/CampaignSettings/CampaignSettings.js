@@ -10,7 +10,11 @@ const CampaignSettings = ({
   goLive,
   elastic,
   verifyPixelStatus,
-  handlePixelCopy
+  handlePixelCopy,
+  rules,
+  fetchOneRules,
+  createRules,
+  updateRules
 }) => {
   return (
     <div className="col-md-12 tab-notification-container">
@@ -73,7 +77,14 @@ const CampaignSettings = ({
           </div>
 
           <div className={`tab-pane ${activeClass == 3?'show active':''}`} id="messages1">
-            <Rules setActiveState={setActiveState} />
+            <Rules
+              campaign={campaign}
+              rules={rules}
+              fetchOneRules={fetchOneRules}
+              createRules={createRules}
+              updateRules={updateRules}
+              setActiveState={setActiveState}
+            />
           </div>
 
           <div className={`tab-pane ${activeClass == 4?'show active':''}`} id="settings1">

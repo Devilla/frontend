@@ -6,6 +6,7 @@ import copy from 'copy-to-clipboard';
 import { validatewebsite } from 'components/Common/function';
 import { createCampaign, clearCampaign } from 'ducks/campaign';
 import { fetchElastic, clearElastic } from 'ducks/elastic';
+import { fetchOneRules, createRules, updateRules } from 'ducks/rules';
 import { CampaignSettings, Campaign } from 'components';
 
 const toastConfig = {
@@ -105,12 +106,16 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
   render() {
     const errors = validate(this.state.campaignname, this.state.website);
     const isDisabled = Object.keys(errors).some(x => errors[x]);
-    const { elastic } = this.props;
+    const { elastic, rules, fetchOneRules, createRules, updateRules } = this.props;
     return (
       <div>
         {this.props.campaign && Object.keys(this.props.campaign).length !== 0 && this.props.campaign.constructor === Object?
           <CampaignSettings
             elastic={elastic}
+            rules={rules}
+            fetchOneRules={fetchOneRules}
+            createRules={createRules}
+            updateRules={updateRules}
             verifyPixelStatus={this.verifyPixelStatus}
             handlePixelCopy={this.handlePixelCopy}
             activeClass={this.state.activeClass}
@@ -136,14 +141,18 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
 const mapStateToProps = state => ({
   profile: state.getIn(['profile', 'profile']),
   campaign: state.getIn(['campaign', 'campaign']),
-  elastic: state.getIn(['elastic', 'elastic'])
+  elastic: state.getIn(['elastic', 'elastic']),
+  rules: state.getIn(['rules', 'rule'])
 });
 
 const mapDispatchToProps = {
   createCampaign,
   clearCampaign,
   fetchElastic,
-  clearElastic
+  clearElastic,
+  fetchOneRules,
+  createRules,
+  updateRules
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewCampaignContainer);
