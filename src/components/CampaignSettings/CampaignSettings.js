@@ -66,7 +66,10 @@ const CampaignSettings = ({
           </div>
 
           <div className={`tab-pane ${activeClass == 2?'show active':''}`} id="profile1">
-            <NotificationSettings setActiveState={setActiveState} />
+            <NotificationSettings
+              campaign={campaign}
+              setActiveState={setActiveState}
+            />
           </div>
 
           <div className={`tab-pane ${activeClass == 3?'show active':''}`} id="messages1">

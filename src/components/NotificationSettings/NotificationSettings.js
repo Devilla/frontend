@@ -252,7 +252,6 @@ class Notifications extends Component {
 const mapStateToProps = state => ({
   configuration: state.getIn(['configuration', 'configuration']),
   configurations: state.getIn(['configuration', 'configurations']),
-  campaign: state.getIn(['campaign', 'campaign']),
   notifications: state.getIn(['notification', 'notifications'])
 });
 

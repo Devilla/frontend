@@ -1,7 +1,7 @@
 import React from 'react';
 import { Row, Col, Glyphicon } from 'react-bootstrap';
 import { Card } from './Card';
-import { NotificationDesign } from './NotificationDesign';
+import NotificationDesign from './NotificationDesign';
 import { NotificationDesignSetting } from './NotificationDesignSetting';
 import Switch from 'react-flexible-switch';
 import './NotificationConfigure.scss';

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {FormGroup, Row, Col, Button, FormControl } from 'react-bootstrap';
+import { FormGroup, Row, Col, Button, FormControl } from 'react-bootstrap';
 import Switch from 'react-flexible-switch';
 import Slider from 'react-rangeslider';
 import reactCSS from 'reactcss';
@@ -123,7 +123,6 @@ export class NotificationDesignSetting extends Component {
   showTextColorSwatch = () => {
     this.setState({ isTextColorSwatchOpen: true });
   };
-
 
   handleAnonymousConversionsChange = (e) => {
     this.setState({ hideAnonymousConversion: e });
