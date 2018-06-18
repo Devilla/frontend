@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { ToastContainer } from 'react-toastify';
 import { validatewebsite } from 'components/Common/function';
 import { createCampaign, clearCampaign } from 'ducks/campaign';
-import { Tabs, Campaign } from 'components';
+import { CampaignSettings, Campaign } from 'components';
 
 
 function validate(campaignname, website) {
@@ -75,7 +75,7 @@ class NewCampaignContainer extends Component {
     return (
       <div>
         {this.props.campaign && Object.keys(this.props.campaign).length !== 0 && this.props.campaign.constructor === Object?
-          <Tabs
+          <CampaignSettings
             campaign={this.props.campaign}
           />
           :

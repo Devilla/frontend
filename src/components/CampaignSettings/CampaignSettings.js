@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import InstallPixel from './install-pixel';
-import CaptureLeads from './CaptureLeads';
-import DisplayPage from './DisplayPage';
-import ConfigNotification from './configure-notification';
-import Notifications from './Notifications/Notifications';
-import './Tabs.scss';
+import InstallPixel from '../New/install-pixel';
+import CaptureLeads from '../New/CaptureLeads';
+import DisplayPage from '../New/DisplayPage';
+import ConfigNotification from '../New/configure-notification';
+import Notifications from '../New/Notifications/Notifications';
+import './CampaignSettings.scss';
 
-class Tabs extends Component{
+class CampaignSettings extends Component{
   constructor(props) {
     super(props);
     this.state = {
@@ -17,6 +17,10 @@ class Tabs extends Component{
 
   setActiveState(val) {
     this.setState({activeClass: val});
+  }
+
+  goLive() {
+
   }
 
   render(){
@@ -31,7 +35,7 @@ class Tabs extends Component{
               ? this.props.campaign.campaignName
               : 'http://localhost:3000'}
             </h3>
-            <button type="button" className="btn btn-custom  waves-light waves-effect number ">Go Live</button>
+            <button type="button" className="btn btn-custom  waves-light waves-effect number " onClick={this.goLive}>Go Live</button>
           </div>
           <div className="clearfix"></div>
 
@@ -90,4 +94,4 @@ class Tabs extends Component{
   }
 }
 
-export default Tabs;
+export default CampaignSettings;
