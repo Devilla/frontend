@@ -10,8 +10,8 @@ const LeftView = ({
   popupAnimationOut
 }) => {
   return (
+
     <div className="col-md-6 border-right">
-      <h4 className="lead m-b-30 m-t-50">Configure Actions on UI</h4>
       <ul className="text-muted text-left list-unstyled ">
         <li>
           <div className="checkbox checkbox-pink">

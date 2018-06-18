@@ -151,11 +151,7 @@ class CaptureLeads extends Component{
       <div className="content">
         <Grid fluid>
           <div className="tabscontent">
-            <Row>
-              <Col md={12}>
-                <h4>Details Of Your Lead Capturing Page</h4>
-              </Col>
-            </Row>
+            <h4 className="lead text-center m-b-30 m-t-0">Details Of Your Lead Capturing Page</h4>
             <Row>
               <Col md={12}>
                 <p>Enter URL of page you are capturing conversions on. </p>

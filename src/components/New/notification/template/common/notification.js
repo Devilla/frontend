@@ -182,7 +182,7 @@ export class Notification extends Component {
                                       color: notificationPanelStyle.color,
                                       fontFamily: notificationPanelStyle.fontFamily,
                                       fontWeight: notificationPanelStyle.fontWeight
-                                    }}>2,002</span>
+                                    }}>2,002 </span>
                                     {visitorText}</span>
                                   signed up for {contentText}
                                   in the last 7 days

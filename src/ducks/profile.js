@@ -8,9 +8,9 @@ export const UPDATE = action('UPDATE');
 export const SUCCESS = action('SUCCESS');
 
 export const fetchProfile = () => ({ type: FETCH });
-export const createProfile = (profile) => ({ type: CREATE, profile });
-export const updateProfile = (profile) => ({ type: UPDATE, profile });
-export const successProfile = (profile) => ({ type: SUCCESS, profile });
+export const createProfile = profile => ({ type: CREATE, profile });
+export const updateProfile = profile => ({ type: UPDATE, profile });
+export const successProfile = profile => ({ type: SUCCESS, profile });
 
 const initialState = fromJS({});
 

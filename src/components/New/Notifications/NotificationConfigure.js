@@ -34,18 +34,10 @@ const NotificationConfigure = ({
                     notification={notification}
                     notificationPanelStyle={notificationPanelStyle}
                   />
-                </Col>
-                <div className="notificationSwitch ">
-                  <Switch
-                    circleStyles={{ onColor: 'blue', offColor: 'gray', diameter: 18 }}
-                    switchStyles={{ width: 50 }}
-                    cssClass="alignsame"
-                    value={notification.activity}
-                    onChange={(e) => e != notification.activity ? handleActivityChange(e, notification._id, notification.configurationId) : null}
-                  />
-                </div>
 
-                <Col md={6}>
+                </Col>
+                <Col md={6} className="alignRight">
+
                   <Setting
                     contentText={contentText}
                     visitorText={visitorText}
@@ -55,12 +47,22 @@ const NotificationConfigure = ({
                     handleContentChange={handleContentChange}
                   />
                 </Col>
+
+                <div className="notificationSwitch">
+                  <Switch
+                    circleStyles={{ onColor: 'blue', offColor: 'gray', diameter: 18 }}
+                    switchStyles={{ width: 50 }}
+                    cssClass="alignsame"
+                    value={notification.activity}
+                    onChange={(e) => e != notification.activity ? handleActivityChange(e, notification._id, notification.configurationId) : null}
+                  />
+                </div>
               </div>
             }
           />
         </Col>
       </Row>
-   
+
       <div className="m-t-50 pull-right">
 
         <span className="btn btn-info mr-3" onClick={backConfiguration}>
@@ -80,9 +82,9 @@ const NotificationConfigure = ({
           Save
         </span>
       </div>
-  
-     
-     
+
+
+
     </div>
   );
 };

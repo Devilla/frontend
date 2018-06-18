@@ -169,11 +169,7 @@ class DisplayPage extends Component{
       <div className="content display-page">
         <Grid fluid>
           <div className="tabscontent">
-            <Row>
-              <Col md={12}>
-                <h4>Details Of Your Notification Display Page</h4>
-              </Col>
-            </Row>
+            <h4 className="lead text-center m-b-30 m-t-20">Details Of Your Notification Display Page</h4>
             <Row>
               <Col md={12}>
                 <p>Enter URL of page you display notifications on. </p>

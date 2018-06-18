@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import LeftView from './left-view'
-import RightView from './right-view'
+import LeftView from './left-view';
+import RightView from './right-view';
+import {Row} from 'react-bootstrap';
 import { fetchOneRules, createRules, updateRules } from 'ducks/rules';
 
 export class Display extends Component{
@@ -85,6 +86,7 @@ export class Display extends Component{
     const { handleBackState } = this.props;
     return (
       <div>
+      <div className="text-center  m-t-20">  <h4 className="lead m-l-100 m-b-30">Settings</h4></div>
         <div className="row m-t-30 m-b-30">
           <LeftView
             handleStateChange={this.handleStateChange}

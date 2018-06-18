@@ -2875,7 +2875,8 @@ tbody.collapse.show {
     color: #a5b3c7; }
 
 .nav-tabs {
-  border-bottom: 1px solid #f1f2f3; }
+  border-bottom: 1px solid #f1f2f3;
+}
   .nav-tabs .nav-item {
     margin-bottom: -1px; }
   .nav-tabs .nav-link {
@@ -2904,7 +2905,7 @@ tbody.collapse.show {
 .nav-pills .nav-link.active,
 .nav-pills .show > .nav-link {
   color: #757575;
-  background-color: #e9ecf0; }
+  background-color: #02c0ce; }
 
 .nav-fill .nav-item {
   -webkit-box-flex: 1;
