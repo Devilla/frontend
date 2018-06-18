@@ -7,11 +7,13 @@ import {
   Button,
   HelpBlock
 } from 'react-bootstrap';
-import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 import CardTable from 'components/Template/card-with-page-table';
 import { pagethArray } from 'components/Template/data';
+<<<<<<< HEAD:src/components/DisplayPage/DisplayPage.js
 import { fetchDisplayUrl, createPageUrl, clearPageUrl, removePageUrl } from 'ducks/pageurl';
+=======
+>>>>>>> 7203155c6ce47a88fe7dc93cfae105124320f434:src/components/DisplayPage/DisplayPage.js
 import { validatePath } from 'components/Common/function';
 import Popup from 'react-popup';
 
@@ -55,7 +57,6 @@ class DisplayPage extends Component{
   fetchPathUrls(rule) {
     this.props.fetchDisplayUrl('display', rule._id);
   }
-
 
   handleNextState() {
     if(!this.props.displayUrls.length)
@@ -243,6 +244,7 @@ class DisplayPage extends Component{
   }
 }
 
+<<<<<<< HEAD:src/components/DisplayPage/DisplayPage.js
 const mapStateToProps = state => ({
   displayUrls: state.getIn(['pageurl', 'display'])
 });
@@ -255,3 +257,6 @@ const mapDispatchToProps = {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(DisplayPage);
+=======
+export default DisplayPage;
+>>>>>>> 7203155c6ce47a88fe7dc93cfae105124320f434:src/components/DisplayPage/DisplayPage.js

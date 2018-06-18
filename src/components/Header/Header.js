@@ -1,9 +1,16 @@
 import React from 'react';
 import { Avatar1 } from 'img';
 import './Header.scss';
-import { browserHistory } from 'react-router';
 
-const Header = ({ openCloseDropdown, dropdownStyle, logout, renderHelp, settings }) => {
+const Header = ({
+  openCloseDropdown,
+  dropdownStyle,
+  logout,
+  renderHelp,
+  settings,
+  openProfile,
+  username
+}) => {
   return (
     <ul className="list-unstyled topbar-right-menu float-right mb-0 nav-custom-header">
       <li className="dropdown notification-list">
@@ -31,12 +38,16 @@ const Header = ({ openCloseDropdown, dropdownStyle, logout, renderHelp, settings
           data-toggle="dropdown"
           role="button"
           aria-haspopup="false"
-          aria-expanded="false" 
+          aria-expanded="false"
           style={{cursor:'pointer'}}
           onClick={openCloseDropdown}
         >
           <img src={Avatar1} alt="user" className="rounded-circle" />
+<<<<<<< HEAD
           <span className="ml-1">&nbsp;
+=======
+          <span className="ml-1">{username}
+>>>>>>> 7203155c6ce47a88fe7dc93cfae105124320f434
             <i className="mdi mdi-chevron-down"></i>
           </span>
         </a>
@@ -45,9 +56,9 @@ const Header = ({ openCloseDropdown, dropdownStyle, logout, renderHelp, settings
             <h6 className="text-overflow m-0">Welcome !</h6>
           </div>
 
-          <a href="javascript:void(0);" className="dropdown-item notify-item">
+          <a href="javascript:void(0);" className="dropdown-item notify-item" onClick={openProfile}>
             <i className="fi-head"></i>
-            <span onClick={()=>{browserHistory.push('/profile');}}>Your Profile</span>
+            <span>Your Profile</span>
           </a>
 
           <a href="javascript:void(0);" className="dropdown-item notify-item" onClick={settings}>
