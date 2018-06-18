@@ -7,6 +7,8 @@ import { validatewebsite } from 'components/Common/function';
 import { createCampaign, clearCampaign } from 'ducks/campaign';
 import { fetchElastic, clearElastic } from 'ducks/elastic';
 import { fetchOneRules, createRules, updateRules } from 'ducks/rules';
+import { fetchNotification } from 'ducks/notification';
+import { createConfiguration, fetchConfiguration, fetchCampaignConfiguration, clearConfiguration, updateConfiguration, createSuccess } from 'ducks/configuration';
 import { CampaignSettings, Campaign } from 'components';
 
 const toastConfig = {
@@ -106,7 +108,23 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
   render() {
     const errors = validate(this.state.campaignname, this.state.website);
     const isDisabled = Object.keys(errors).some(x => errors[x]);
-    const { elastic, rules, fetchOneRules, createRules, updateRules } = this.props;
+    const {
+      elastic,
+      rules,
+      fetchOneRules,
+      createRules,
+      updateRules,
+      configuration,
+      configurations,
+      notifications,
+      fetchNotification,
+      createConfiguration,
+      fetchConfiguration,
+      fetchCampaignConfiguration,
+      updateConfiguration,
+      clearConfiguration,
+      createSuccess
+    } = this.props;
     return (
       <div>
         {this.props.campaign && Object.keys(this.props.campaign).length !== 0 && this.props.campaign.constructor === Object?
@@ -116,6 +134,16 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
             fetchOneRules={fetchOneRules}
             createRules={createRules}
             updateRules={updateRules}
+            configuration={configuration}
+            configurations={configurations}
+            notifications={notifications}
+            fetchNotification={fetchNotification}
+            createConfiguration={createConfiguration}
+            fetchConfiguration={fetchConfiguration}
+            fetchCampaignConfiguration={fetchCampaignConfiguration}
+            updateConfiguration={updateConfiguration}
+            clearConfiguration={clearConfiguration}
+            createSuccess={createSuccess}
             verifyPixelStatus={this.verifyPixelStatus}
             handlePixelCopy={this.handlePixelCopy}
             activeClass={this.state.activeClass}
@@ -142,7 +170,10 @@ const mapStateToProps = state => ({
   profile: state.getIn(['profile', 'profile']),
   campaign: state.getIn(['campaign', 'campaign']),
   elastic: state.getIn(['elastic', 'elastic']),
-  rules: state.getIn(['rules', 'rule'])
+  rules: state.getIn(['rules', 'rule']),
+  configuration: state.getIn(['configuration', 'configuration']),
+  configurations: state.getIn(['configuration', 'configurations']),
+  notifications: state.getIn(['notification', 'notifications'])
 });
 
 const mapDispatchToProps = {
@@ -152,7 +183,14 @@ const mapDispatchToProps = {
   clearElastic,
   fetchOneRules,
   createRules,
-  updateRules
+  updateRules,
+  fetchNotification,
+  createConfiguration,
+  fetchConfiguration,
+  fetchCampaignConfiguration,
+  updateConfiguration,
+  clearConfiguration,
+  createSuccess
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewCampaignContainer);

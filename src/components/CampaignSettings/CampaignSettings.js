@@ -14,7 +14,17 @@ const CampaignSettings = ({
   rules,
   fetchOneRules,
   createRules,
-  updateRules
+  updateRules,
+  configuration,
+  configurations,
+  notifications,
+  fetchNotification,
+  createConfiguration,
+  fetchConfiguration,
+  fetchCampaignConfiguration,
+  updateConfiguration,
+  clearConfiguration,
+  createSuccess
 }) => {
   return (
     <div className="col-md-12 tab-notification-container">
@@ -72,6 +82,16 @@ const CampaignSettings = ({
           <div className={`tab-pane ${activeClass == 2?'show active':''}`} id="profile1">
             <NotificationSettings
               campaign={campaign}
+              configuration={configuration}
+              configurations={configurations}
+              notifications={notifications}
+              fetchNotification={fetchNotification}
+              createConfiguration={createConfiguration}
+              fetchConfiguration={fetchConfiguration}
+              fetchCampaignConfiguration={fetchCampaignConfiguration}
+              updateConfiguration={updateConfiguration}
+              clearConfiguration={clearConfiguration}
+              createSuccess={createSuccess}
               setActiveState={setActiveState}
             />
           </div>

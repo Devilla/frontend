@@ -1,7 +1,4 @@
-import React, {Component} from 'react';
-import { connect } from 'react-redux';
-import { fetchNotification } from 'ducks/notification';
-import { createConfiguration, fetchConfiguration, fetchCampaignConfiguration, clearConfiguration, updateConfiguration, createSuccess } from 'ducks/configuration';
+import React, { Component } from 'react';
 import { Row } from 'react-bootstrap';
 import NotificationConfigure from './NotificationConfigure/NotificationConfigure';
 import NotificationList from './NotificationList/NotificationList';
@@ -249,20 +246,4 @@ class Notifications extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  configuration: state.getIn(['configuration', 'configuration']),
-  configurations: state.getIn(['configuration', 'configurations']),
-  notifications: state.getIn(['notification', 'notifications'])
-});
-
-const mapDispatchToProps = {
-  fetchNotification,
-  createConfiguration,
-  fetchConfiguration,
-  fetchCampaignConfiguration,
-  updateConfiguration,
-  clearConfiguration,
-  createSuccess
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Notifications);
+export default Notifications;
