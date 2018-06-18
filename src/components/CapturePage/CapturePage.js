@@ -6,8 +6,10 @@ import {
   Table,
   HelpBlock
 } from 'react-bootstrap';
+import { connect } from 'react-redux';
 import CardTable from 'components/Template/card-with-page-table';
 import { pagethArray } from 'components/Template/data';
+import { fetchLeadUrl, createPageUrl, clearPageUrl, removePageUrl } from 'ducks/pageurl';
 import { validatePath } from 'components/Common/function';
 
 class CapturePage extends Component{
@@ -225,4 +227,15 @@ class CapturePage extends Component{
   }
 }
 
-export default CapturePage;
+const mapStateToProps = state => ({
+  leads: state.getIn(['pageurl', 'lead'])
+});
+
+const mapDispatchToProps = {
+  fetchLeadUrl,
+  createPageUrl,
+  removePageUrl,
+  clearPageUrl
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(CapturePage);

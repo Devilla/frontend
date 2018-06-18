@@ -8,8 +8,10 @@ import {
   HelpBlock
 } from 'react-bootstrap';
 import { browserHistory } from 'react-router';
+import { connect } from 'react-router';
 import CardTable from 'components/Template/card-with-page-table';
 import { pagethArray } from 'components/Template/data';
+import { fetchDisplayUrl, createPageUrl, clearPageUrl, removePageUrl } from 'ducks/pageurl';
 import { validatePath } from 'components/Common/function';
 import Popup from 'react-popup';
 
@@ -240,4 +242,15 @@ class DisplayPage extends Component{
   }
 }
 
-export default DisplayPage;
+const mapStateToProps = state => ({
+  displayUrls: state.getIn(['pageurl', 'display'])
+});
+
+const mapDispatchToProps = {
+  fetchDisplayUrl,
+  createPageUrl,
+  removePageUrl,
+  clearPageUrl
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(DisplayPage);

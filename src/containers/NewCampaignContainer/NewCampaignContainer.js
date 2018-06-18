@@ -1,19 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { ToastContainer, toast } from 'react-toastify';
-import { browserHistory } from 'react-router';
 import copy from 'copy-to-clipboard';
-import Popup from 'react-popup';
 
+import { validatewebsite } from 'components/Common/function';
 import { createCampaign, clearCampaign } from 'ducks/campaign';
 import { fetchElastic, clearElastic } from 'ducks/elastic';
 import { fetchOneRules, createRules, updateRules } from 'ducks/rules';
 import { fetchNotification } from 'ducks/notification';
 import { createConfiguration, fetchConfiguration, fetchCampaignConfiguration, clearConfiguration, updateConfiguration, createSuccess } from 'ducks/configuration';
-import { fetchLeadUrl, fetchDisplayUrl, createPageUrl, clearPageUrl, removePageUrl } from 'ducks/pageurl';
 import { CampaignSettings, Campaign } from 'components';
-import { validatewebsite } from 'components/Common/function';
-import './NewCampaignContainer.scss';
 
 const toastConfig = {
   position: toast.POSITION.BOTTOM_LEFT,
@@ -48,7 +44,6 @@ class NewCampaignContainer extends Component {
     this.setActiveState = this.setActiveState.bind(this);
     this.handlePixelCopy = this.handlePixelCopy.bind(this);
     this.verifyPixelStatus = this.verifyPixelStatus.bind(this);
-    this.goLive = this.goLive.bind(this);
   }
 
   handleCampaignNameChange(evt) {
@@ -100,6 +95,7 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
     copy(pixelCode, {
       debug: true
     });
+    console.log('====sdasda');
     return toast('Pixel copied', toastConfig);
   }
 
@@ -108,53 +104,50 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
     this.props.clearElastic();
   }
 
-  goLive() {
-    let title, content, buttonText, path;
-    if(!this.props.leads.length) {
-      title = 'Alert';
-      content = 'Add a capture page before going live.';
-      buttonText = 'Close';
-    } else if(!this.props.displayUrls.length) {
-      title = 'Alert';
-      content = 'Add a display page before going live.';
-      buttonText = 'Close';
-    } else {
-      title = 'Campaign is Live';
-      content = 'Campaign has be successfully created';
-      buttonText = 'Finish';
-      path = 'campaigns';
-    }
-
-    Popup.create({
-      title: title,
-      content: content,
-      buttons: {
-        right: [{
-          text: buttonText,
-          className: 'default',
-          action: function () {
-            if(path)
-              browserHistory.push(path);
-            Popup.close();
-          }
-        }]
-      }
-    });
-  }
-
   render() {
     const errors = validate(this.state.campaignname, this.state.website);
     const isDisabled = Object.keys(errors).some(x => errors[x]);
+    const {
+      elastic,
+      rules,
+      fetchOneRules,
+      createRules,
+      updateRules,
+      configuration,
+      configurations,
+      notifications,
+      fetchNotification,
+      createConfiguration,
+      fetchConfiguration,
+      fetchCampaignConfiguration,
+      updateConfiguration,
+      clearConfiguration,
+      createSuccess
+    } = this.props;
     return (
       <div>
         {this.props.campaign && Object.keys(this.props.campaign).length !== 0 && this.props.campaign.constructor === Object?
           <CampaignSettings
-            goLive={this.goLive}
+            elastic={elastic}
+            rules={rules}
+            fetchOneRules={fetchOneRules}
+            createRules={createRules}
+            updateRules={updateRules}
+            configuration={configuration}
+            configurations={configurations}
+            notifications={notifications}
+            fetchNotification={fetchNotification}
+            createConfiguration={createConfiguration}
+            fetchConfiguration={fetchConfiguration}
+            fetchCampaignConfiguration={fetchCampaignConfiguration}
+            updateConfiguration={updateConfiguration}
+            clearConfiguration={clearConfiguration}
+            createSuccess={createSuccess}
             verifyPixelStatus={this.verifyPixelStatus}
             handlePixelCopy={this.handlePixelCopy}
             activeClass={this.state.activeClass}
             setActiveState={this.setActiveState}
-            {...this.props}
+            campaign={this.props.campaign}
           />
           :
           <Campaign
@@ -179,9 +172,7 @@ const mapStateToProps = state => ({
   rules: state.getIn(['rules', 'rule']),
   configuration: state.getIn(['configuration', 'configuration']),
   configurations: state.getIn(['configuration', 'configurations']),
-  notifications: state.getIn(['notification', 'notifications']),
-  displayUrls: state.getIn(['pageurl', 'display']),
-  leads: state.getIn(['pageurl', 'lead'])
+  notifications: state.getIn(['notification', 'notifications'])
 });
 
 const mapDispatchToProps = {
@@ -198,12 +189,7 @@ const mapDispatchToProps = {
   fetchCampaignConfiguration,
   updateConfiguration,
   clearConfiguration,
-  createSuccess,
-  fetchDisplayUrl,
-  fetchLeadUrl,
-  createPageUrl,
-  removePageUrl,
-  clearPageUrl
+  createSuccess
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewCampaignContainer);

@@ -2,6 +2,7 @@ import React from 'react';
 import { Avatar1 } from 'img';
 import './Header.scss';
 
+<<<<<<< HEAD
 const Header = ({
   openCloseDropdown,
   dropdownStyle,
@@ -10,6 +11,9 @@ const Header = ({
   openProfile
   
 }) => {
+=======
+const Header = ({ openCloseDropdown, dropdownStyle, logout, renderHelp }) => {
+>>>>>>> 6f239a24092c60b05261faa6b15e7020ea6b9405
   return (
     <ul className="list-unstyled topbar-right-menu float-right mb-0 nav-custom-header">
       <li className="dropdown notification-list ">
@@ -55,7 +59,10 @@ const Header = ({
             <span>Your Profile</span>
           </a>
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6f239a24092c60b05261faa6b15e7020ea6b9405
           <a href="javascript:void(0);" className="dropdown-item notify-item" onClick={renderHelp}>
             <i className="fi-help"></i>
             <span>Support</span>
