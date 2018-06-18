@@ -8,10 +8,6 @@ import {
 } from 'react-bootstrap';
 import CardTable from 'components/Template/card-with-page-table';
 import { pagethArray } from 'components/Template/data';
-<<<<<<< HEAD:src/components/CapturePage/CapturePage.js
-import { fetchLeadUrl, createPageUrl, clearPageUrl, removePageUrl } from 'ducks/pageurl';
-=======
->>>>>>> 7203155c6ce47a88fe7dc93cfae105124320f434:src/components/CapturePage/CapturePage.js
 import { validatePath } from 'components/Common/function';
 
 class CapturePage extends Component{
@@ -229,19 +225,4 @@ class CapturePage extends Component{
   }
 }
 
-<<<<<<< HEAD:src/components/CapturePage/CapturePage.js
-const mapStateToProps = state => ({
-  leads: state.getIn(['pageurl', 'lead'])
-});
-
-const mapDispatchToProps = {
-  fetchLeadUrl,
-  createPageUrl,
-  removePageUrl,
-  clearPageUrl
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(CapturePage);
-=======
 export default CapturePage;
->>>>>>> 7203155c6ce47a88fe7dc93cfae105124320f434:src/components/CapturePage/CapturePage.js

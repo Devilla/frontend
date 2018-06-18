@@ -10,11 +10,7 @@ import { browserHistory } from 'react-router';
 const InstallPixel = ({ elastic, setActiveState, campaign, verifyPixelStatus, handlePixelCopy }) => {
   return (
     <div className="install-pixel">
-<<<<<<< HEAD
-      <h4 className="lead text-center m-b-30 m-t-20">Install Pixel to Your Website</h4>
-=======
       <h4 className="lead m-b-30 m-t-50">Install Pixel to Your Website</h4>
->>>>>>> 7203155c6ce47a88fe7dc93cfae105124320f434
       <button type="button" className="btn btn-outline-info btn-rounded waves-light waves-effect m-b-30">Step 1</button>
       <p className="text-muted text-left">Please copy your unique script & paste it in the Header of your Website. Add this
         To every page where you want To track, measure And show notifications.</p>

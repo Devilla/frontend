@@ -153,7 +153,7 @@ class Dashboard extends Component {
                           size={100}
                           lineWidth={24}
                           progress={campaignInfo? campaignInfo.websiteLive.length : []}//to edit
-                          progressColor="cornflowerblue"  
+                          progressColor="#0acf97"  
                           bgColor="whitesmoke" 
                           textColor="hotpink"
                           textStyle={{ 
@@ -180,7 +180,7 @@ class Dashboard extends Component {
                           size={100}
                           lineWidth={24}
                           progress={1100} //to edit
-                          progressColor="cornflowerblue"  
+                          progressColor="#f9bc0b"  
                           bgColor="whitesmoke" 
                           textColor="hotpink"
                           textStyle={{
@@ -207,7 +207,7 @@ class Dashboard extends Component {
                           size={100}
                           lineWidth={24}
                           progress={campaignInfo ? campaignInfo.notificationCount : 0} //to edit
-                          progressColor="cornflowerblue"
+                          progressColor="#f1556c"
                           bgColor="whitesmoke"
                           textColor="hotpink"
                           textStyle={{
@@ -234,7 +234,7 @@ class Dashboard extends Component {
                           size={100}
                           lineWidth={24}
                           progress={campaignInfo ? campaignInfo.uniqueUsers.length : []} //to edit
-                          progressColor="cornflowerblue"
+                          progressColor="#2d7bf4"
                           bgColor="whitesmoke"
                           textColor="hotpink"
                           textStyle={{

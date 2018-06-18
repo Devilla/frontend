@@ -8,15 +8,14 @@ const Header = ({
   logout,
   renderHelp,
   settings,
-  openProfile,
-  username
+  openProfile
+  
 }) => {
   return (
     <ul className="list-unstyled topbar-right-menu float-right mb-0 nav-custom-header">
-      <li className="dropdown notification-list">
+      <li className="dropdown notification-list ">
         <a className="nav-link dropdown-toggle arrow-none" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-          <i className="fi-speech-bubble noti-icon"></i>
-          <span className="badge badge-custom badge-pill noti-icon-badge">6</span>
+          <i className=" mdi mdi-bell-ring" style={{fontSize:'25px'}}></i>
         </a>
         <div className="dropdown-menu dropdown-menu-right dropdown-menu-animated dropdown-lg">
           <div className="dropdown-item noti-title">
@@ -43,11 +42,7 @@ const Header = ({
           onClick={openCloseDropdown}
         >
           <img src={Avatar1} alt="user" className="rounded-circle" />
-<<<<<<< HEAD
-          <span className="ml-1">&nbsp;
-=======
-          <span className="ml-1">{username}
->>>>>>> 7203155c6ce47a88fe7dc93cfae105124320f434
+          <span className="ml-1">
             <i className="mdi mdi-chevron-down"></i>
           </span>
         </a>

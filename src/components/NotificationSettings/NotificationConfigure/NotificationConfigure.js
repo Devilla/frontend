@@ -70,10 +70,6 @@ const NotificationConfigure = ({
           />
         </Col>
       </Row>
-<<<<<<< HEAD:src/components/NotificationSettings/NotificationConfigure/NotificationConfigure.js
-=======
-
->>>>>>> 7203155c6ce47a88fe7dc93cfae105124320f434:src/components/NotificationSettings/NotificationConfigure/NotificationConfigure.js
       <div className="m-t-50 pull-right">
         <span className="btn btn-info mr-3" onClick={backConfiguration}>
           <Glyphicon glyph="chevron-left" />
