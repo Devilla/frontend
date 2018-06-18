@@ -7,7 +7,6 @@ const Header = ({
   dropdownStyle,
   logout,
   renderHelp,
-  settings,
   openProfile
   
 }) => {
@@ -56,10 +55,6 @@ const Header = ({
             <span>Your Profile</span>
           </a>
 
-          <a href="javascript:void(0);" className="dropdown-item notify-item" onClick={settings}>
-            <i className="fi-cog"></i>
-            <span>Settings</span>
-          </a>
 
           <a href="javascript:void(0);" className="dropdown-item notify-item" onClick={renderHelp}>
             <i className="fi-help"></i>
