@@ -79,7 +79,7 @@ class Dashboard extends Component {
   }
 
   render() {
-    const { campaignInfo } = this.props;
+    const { campaignInfo,profile } = this.props;
 
     var chartData = {
       labels: moment.weekdays(),
@@ -155,7 +155,7 @@ class Dashboard extends Component {
                           progress={campaignInfo? campaignInfo.websiteLive.length : []}//to edit
                           progressColor="#0acf97"  
                           bgColor="whitesmoke" 
-                          textColor="hotpink"
+                          textColor="#FFFFFF"
                           textStyle={{ 
                             font: 'bold 5rem Helvetica, Arial, sans-serif' 
                           }}
@@ -167,6 +167,7 @@ class Dashboard extends Component {
                       </div>
                       <div className="widget-chart-two-content">
                         <span className="text-muted mb-0 mt-2">Active Campaigns</span>
+                        <h3 className="">{campaignInfo? campaignInfo.websiteLive.length : []}</h3>
                       </div>
                     </div>
                   </div>
@@ -179,10 +180,10 @@ class Dashboard extends Component {
                           responsive={false} 
                           size={100}
                           lineWidth={24}
-                          progress={1100} //to edit
+                          progress={profile? Number(profile.uniqueVisitors) :0 } //to edit
                           progressColor="#f9bc0b"  
                           bgColor="whitesmoke" 
-                          textColor="hotpink"
+                          textColor="#FFFFFF"
                           textStyle={{
                             font: 'bold 5rem Helvetica, Arial, sans-serif'
                           }}
@@ -194,6 +195,7 @@ class Dashboard extends Component {
                       </div>
                       <div className="widget-chart-two-content">
                         <span className="text-muted mb-0 mt-2">Unique Visitors</span>
+                        <h3 className="">{profile?profile.uniqueVisitors.toLocaleString():0}</h3>
                       </div>
                     </div>
                   </div>
@@ -209,7 +211,7 @@ class Dashboard extends Component {
                           progress={campaignInfo ? campaignInfo.notificationCount : 0} //to edit
                           progressColor="#f1556c"
                           bgColor="whitesmoke"
-                          textColor="hotpink"
+                          textColor="#FFFFFF"
                           textStyle={{
                             font: 'bold 5rem Helvetica, Arial, sans-serif'
                           }}
@@ -221,6 +223,7 @@ class Dashboard extends Component {
                       </div>
                       <div className="widget-chart-two-content">
                         <span className="text-muted mb-0 mt-2">Notifications Served</span>
+                        <h3 className="">{campaignInfo ? campaignInfo.notificationCount : 0}</h3>
                       </div>
                     </div>
                   </div>
@@ -236,7 +239,7 @@ class Dashboard extends Component {
                           progress={campaignInfo ? campaignInfo.uniqueUsers.length : []} //to edit
                           progressColor="#2d7bf4"
                           bgColor="whitesmoke"
-                          textColor="hotpink"
+                          textColor="#FFFFFF"
                           textStyle={{
                             font: 'bold 5rem Helvetica, Arial, sans-serif'
                           }}
@@ -248,6 +251,7 @@ class Dashboard extends Component {
                       </div>
                       <div className="widget-chart-two-content">
                         <span className="text-muted mb-0 mt-2">Total Signups</span>
+                        <h3 className="">{campaignInfo ? campaignInfo.uniqueUsers.length : []}</h3>
                       </div>
                     </div>
                   </div>
