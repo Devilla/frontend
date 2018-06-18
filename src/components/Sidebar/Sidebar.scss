@@ -21,19 +21,19 @@ a[disabled] {
 
 div.button-list {
   & .btn-pink {
-    background-color: #ff679b;
-    border: 1px solid #ff679b;
+    background-color: #097fff;
+    border: 1px solid #097fff;
   &:hover {
-    background-color: #ff4e8a;
-    border-color: #ff4e8a;
+    background-color: blue;
+    border-color: blue;
   }
   &:active {
-    background-color: #ff4e8a;
-    border-color: #ff4e8a;
+    background-color: blue;
+    border-color: blue;
   }
   &:focus {
-    background-color: #ff4e8a;
-    border-color: #ff4e8a;
+    background-color: blue;
+    border-color: blue;
   }
   }
 }

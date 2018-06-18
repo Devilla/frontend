@@ -8,8 +8,7 @@ const Header = ({ openCloseDropdown, dropdownStyle, logout, renderHelp }) => {
     <ul className="list-unstyled topbar-right-menu float-right mb-0 nav-custom-header">
       <li className="dropdown notification-list">
         <a className="nav-link dropdown-toggle arrow-none" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-          <i className="fi-speech-bubble noti-icon"></i>
-          <span className="badge badge-custom badge-pill noti-icon-badge">6</span>
+          <i className="fi-bell noti-icon"></i>
         </a>
         <div className="dropdown-menu dropdown-menu-right dropdown-menu-animated dropdown-lg">
           <div className="dropdown-item noti-title">
