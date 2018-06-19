@@ -55,8 +55,8 @@ const PricePage = ({
               <li className="mt-3" style={{ display: 'none' }}>
                 <Switch
                   circleStyles={{
-                    onColor: 'blue',
-                    offColor: 'blue',
+                    onColor: '#097fff',
+                    offColor: 'grey',
                     diameter: 18
                   }} switchStyles={{
                     width: 50

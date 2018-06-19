@@ -78,7 +78,7 @@ class Notification extends Component {
             switchStyles={{ width: 40 }}
             value={campaign.isActive}
             onChange={(e) => this.handleActiveChange(e, campaign)}
-            circleStyles={{ onColor: 'blue', offColor: 'gray', diameter: 18 }}
+            circleStyles={{ onColor: '#097fff', offColor: 'gray', diameter: 18 }}
           />
         </td>
         <td>{campaign.trackingId}</td>

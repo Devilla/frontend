@@ -358,7 +358,7 @@ export class NotificationDesignSetting extends Component {
                           <option value="arial">Arial</option>
                           <option value="monospace">Monospace</option>
                           <option value="georgia">Georgia</option>
-                          <option value="inherit">Default</option>
+                          <option value='Roboto,helvetica,arial,sans-serif!important'>Default</option>
                         </FormControl>
                       </Col>
                     </Row>
@@ -452,7 +452,7 @@ export class NotificationDesignSetting extends Component {
                   <Col md={2}>
                     <Switch
                       circleStyles={{
-                        onColor: 'blue',
+                        onColor: '#097fff',
                         offColor: 'gray',
                         diameter: 18
                       }}
@@ -472,7 +472,7 @@ export class NotificationDesignSetting extends Component {
                   </Col>
                   <Col md={2}>
                     <Switch circleStyles={{
-                      onColor: 'blue',
+                      onColor: '#097fff',
                       offColor: 'gray',
                       diameter: 18
                     }} switchStyles={{

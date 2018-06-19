@@ -2,25 +2,25 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 import { Row, Col } from 'react-bootstrap';
-import moment from 'moment';
+import Moment from 'moment';
+import { extendMoment } from 'moment-range';
 import Circle from 'react-circle';
-//import { Scrollbars } from 'react-custom-scrollbars';
 import { fetchCampaignInfo, successCampaign } from 'ducks/campaign';
 import './Dashboard.scss';
-//import StatsCard from './Stats';
-//import Website from './Website';
 import Card from './Card';
 import ReactChartJs from 'react-chartjs';
 
 
 var LineChart = ReactChartJs.Line;
+let moment = extendMoment(Moment);
 
 class Dashboard extends Component {
   constructor() {
     super();
     this.state = {
       render: false,
-      arrs: []
+      arrs: [],
+      daysClicked: ''
     };
     this.handleRouteChange = this.handleRouteChange.bind(this);
   }
@@ -58,8 +58,8 @@ class Dashboard extends Component {
       };
       this.props.campaignInfo.uniqueUsers.map(user => {
         user.aggregations.users.buckets.map(bucket => {
-          dataContent['label'] = moment(bucket.key_as_string).format('LL');
-          dataContent['data'][moment(bucket.key_as_string).day()] = bucket.visitors.sum_other_doc_count;
+          dataContent['label'] = Moment(bucket.key_as_string).format('LL');
+          dataContent['data'][Moment(bucket.key_as_string).day()] = bucket.visitors.sum_other_doc_count;
         });
         dataSet.push(dataContent);
       });
@@ -78,11 +78,74 @@ class Dashboard extends Component {
     }
   }
 
+  getdays = () => {
+    let start, end , range1, acc  ;
+    switch(this.state.daysClicked)  {
+      case '7' :
+        start  = moment().subtract(7,'d').format('YYYY-MM-DD');
+        end    = new Date();
+        range1 = moment.range(start, end);
+        acc = Array.from(range1.by('day', { step: 1 }));
+        acc = acc.map(m => m.format('DD MMM'));
+        break;
+      
+      
+      case '14' :
+        start  = moment().subtract(14,'d').format('YYYY-MM-DD');
+        end    = new Date();
+        range1 = moment.range(start, end);
+        acc = Array.from(range1.by('day', { step: 2 }));
+        acc = acc.map(m => m.format('DD MMM'));
+        break;
+
+      case '28' :
+        start  = moment().subtract(28,'d').format('YYYY-MM-DD');
+        end    = new Date();
+        range1 = moment.range(start, end);
+        acc = Array.from(range1.by('day', { step: 4 }));
+        acc = acc.map(m => m.format('DD MMM'));
+        break;
+      
+      case 'Today' :
+        start  = moment().startOf('day').format('YYYY-MM-DD HH:mm:ss');
+        end    = moment().endOf('day').format('YYYY-MM-DD HH:mm:ss');
+    
+        range1 = moment.range(start, end);
+        acc = Array.from(range1.by('hour', {   step:4}));
+        acc.length =6;
+        acc = acc.map(m => m.format('HH:mm A'));
+        break;
+        
+      case 'Yesterday' :
+        start  = moment().subtract(1,'d').startOf('day').format('YYYY-MM-DD HH:mm:ss');
+        end    = moment().subtract(1,'d').endOf('day').format('YYYY-MM-DD HH:mm:ss');
+     
+        range1 = moment.range(start, end);
+        acc = Array.from(range1.by('hour', {   step:4}));
+        acc.length =6;
+        acc = acc.map(m => m.format('HH:mm A'));
+        break;
+
+
+      default : 
+        start  = moment().startOf('day').format('YYYY-MM-DD HH:mm:ss');
+        end    = moment().endOf('day').format('YYYY-MM-DD HH:mm:ss');
+  
+        range1 = moment.range(start, end);
+        acc = Array.from(range1.by('hour', {   step:4}));
+        acc.length =6;
+        acc = acc.map(m => m.format('HH:mm A'));
+        break;
+    }
+    return acc;
+  }
+
   render() {
     const { campaignInfo,profile } = this.props;
-
+    let datafetch = this.getdays();
+ 
     var chartData = {
-      labels: moment.weekdays(),
+      labels:   datafetch,
       datasets: this.getDataset()
     };
 
@@ -143,46 +206,19 @@ class Dashboard extends Component {
               <div className="card-box">
                 <h4 className="header-title mb-4">Account Usage Overview</h4>
                 <hr/>
+
                 <Row>
                   <div className="col-sm-6 col-lg-6 col-xl-3">
                     <div className="card-box mb-0 widget-chart-two">
                       <div className="float-right">
                         <Circle
-                          animate={true} 
-                          responsive={false} 
+                          animate={true}
+                          responsive={false}
                           size={100}
                           lineWidth={24}
                           progress={campaignInfo? campaignInfo.websiteLive.length : []}//to edit
-                          progressColor="#0acf97"  
-                          bgColor="whitesmoke" 
-                          textColor="#FFFFFF"
-                          textStyle={{ 
-                            font: 'bold 5rem Helvetica, Arial, sans-serif' 
-                          }}
-                          percentSpacing={10} 
-                          roundedStroke={true} 
-                          showPercentage={true} 
-                          showPercentageSymbol={false} 
-                        />
-                      </div>
-                      <div className="widget-chart-two-content">
-                        <span className="text-muted mb-0 mt-2">Active Campaigns</span>
-                        <h3 className="">{campaignInfo? campaignInfo.websiteLive.length : []}</h3>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="col-sm-6 col-lg-6 col-xl-3">
-                    <div className="card-box mb-0 widget-chart-two">
-                      <div className="float-right">
-                        <Circle
-                          animate={true} 
-                          responsive={false} 
-                          size={100}
-                          lineWidth={24}
-                          progress={profile? Number(profile.uniqueVisitors) :0 } //to edit
-                          progressColor="#f9bc0b"  
-                          bgColor="whitesmoke" 
+                          progressColor="#0acf97"
+                          bgColor="whitesmoke"
                           textColor="#FFFFFF"
                           textStyle={{
                             font: 'bold 5rem Helvetica, Arial, sans-serif'
@@ -193,7 +229,35 @@ class Dashboard extends Component {
                           showPercentageSymbol={false}
                         />
                       </div>
-                      <div className="widget-chart-two-content">
+                      <div className="widget-chart-two-content dash">
+                        <span className="text-muted mb-0 mt-2">Active Campaigns</span>
+                        <h3 className="">{campaignInfo? campaignInfo.websiteLive.length : []}</h3>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="col-sm-6 col-lg-6 col-xl-3">
+                    <div className="card-box mb-0 widget-chart-two">
+                      <div className="float-right">
+                        <Circle
+                          animate={true}
+                          responsive={false}
+                          size={100}
+                          lineWidth={24}
+                          progress={profile? Number(profile.uniqueVisitors) :0 } //to edit
+                          progressColor="#f9bc0b"
+                          bgColor="whitesmoke"
+                          textColor="#FFFFFF"
+                          textStyle={{
+                            font: 'bold 5rem Helvetica, Arial, sans-serif'
+                          }}
+                          percentSpacing={10}
+                          roundedStroke={true}
+                          showPercentage={true}
+                          showPercentageSymbol={false}
+                        />
+                      </div>
+                      <div className="widget-chart-two-content dash" >
                         <span className="text-muted mb-0 mt-2">Unique Visitors</span>
                         <h3 className="">{profile?profile.uniqueVisitors.toLocaleString():0}</h3>
                       </div>
@@ -221,8 +285,8 @@ class Dashboard extends Component {
                           showPercentageSymbol={false}
                         />
                       </div>
-                      <div className="widget-chart-two-content">
-                        <span className="text-muted mb-0 mt-2">Notifications Served</span>
+                      <div className="widget-chart-two-content dash">
+                        <span className="text-muted mb-0 mt-2">Notifications</span>
                         <h3 className="">{campaignInfo ? campaignInfo.notificationCount : 0}</h3>
                       </div>
                     </div>
@@ -249,103 +313,67 @@ class Dashboard extends Component {
                           showPercentageSymbol={false}
                         />
                       </div>
-                      <div className="widget-chart-two-content">
+                      <div className="widget-chart-two-content dash">
                         <span className="text-muted mb-0 mt-2">Total Signups</span>
                         <h3 className="">{campaignInfo ? campaignInfo.uniqueUsers.length : []}</h3>
                       </div>
                     </div>
                   </div>
                 </Row>
-                {/* <Row className="pl-2">
-                  <div className="btn btn-info ml-4 " onClick={() => { browserHistory.push('/campaigns'); }}>Campaign Insights</div>
-                </Row> */}
               </div>
             </Col>
           </Row>
-
-         
-
           <Row>
             <Col md={12}>
               <div className="card-box">
-                <h4 className="header-title">Website traffic this week</h4>
                 <hr/>
-                <Col md={12}>
-                  <Card
-                    statsIcon="fa fa-history"
-                    id="chartHours"
-                    stats="Updated 3 minutes ago"
-                  
-                    content={
-                      <div className="ct-chart">
-                        <LineChart data={chartData} options={chartOptions} height="250" redraw />
-                      </div>
-                    }
-                  />
-                </Col>
+                <Row>
+                  <Col md={8}>
+                    <h4 className="header-title mt-2 ">Website traffic this week</h4>
+                  </Col>
+                  <Col md={4}>
+                    <div className=" pull-right">
+                      <select className="form-control text-muted" onChange={(e) =>  this.setState({daysClicked:e.target.value})}>
+                        <option key={'today'+1} value={'Today'} >
+                            Today
+                        </option>
+                        <option key={'yesterday'+1} value={'Yesterday'} >
+                            Yesterday
+                        </option>
+                        <option key={7} value={'7'}>
+                            7 days
+                        </option>
+                        <option key={14} value={'14'} >
+                            14 days
+                        </option>
+                        <option key={28} value={'28'} >
+                            28 days
+                        </option>
+                      </select>
+                    </div>
+                    <div className="clearfix"></div>
+                  </Col>
+                </Row>
+
+                <hr/>
+                <Row>
+                  <Col md={12}>
+                    <Card
+                      statsIcon="fa fa-history"
+                      id="chartHours"
+                      stats="Updated 3 minutes ago"
+
+                      content={
+                        <div className="ct-chart">
+                          <LineChart data={chartData} options={chartOptions} height="250" redraw />
+                        </div>
+                      }
+                    />
+                  </Col>
+                </Row>
               </div>
             </Col>
           </Row>
-
-
- 
-
-
-                        
-
-          {/* <Row>
-            <Col md={6}>
-              <Row>
-                <Col lg={6} sm={6}>
-                  <Row>
-                    <Col lg={12}>
-                      <Card title="Active Campaigns" category="" content={<div className="table-full-width" > <Scrollbars style={{
-                        height: 150
-                      }}>
-                        <table className="table">
-                          <Website data={campaignInfo ? campaignInfo.websiteLive : []} handleRouteChange={this.handleRouteChange} render={campaignInfo ? true : false} />
-                        </table>
-                      </Scrollbars>
-                      </div>} />
-                    </Col>
-                  </Row>
-                </Col>
-                <Col lg={6} sm={6}>
-
-                  <Row>
-                    <Col lg={12} sm={12}>
-                      <StatsCard statsClass="card card-stats  eqheight" statsText="Unique Visitors" statsValue={profile?profile.uniqueVisitors.toLocaleString():0}/>
-                    </Col>
-                  </Row>
-                  <Row>
-                    <Col lg={12} sm={12}>
-                      <StatsCard statsClass="card card-stats  eqheight" statsText="Notifications Shown" statsValue={campaignInfo ? campaignInfo.notificationCount : 0} />
-                    </Col>
-                  </Row>
-                </Col>
-              </Row>
-
-            </Col>
-
-            <Col md={6}>
-              <Row>
-                <Col lg={12}>
-                  <Card
-                    statsIcon="fa fa-history"
-                    id="chartHours"
-                    title="Website Traffic this week"
-                    category="24 Hours performance"
-                    stats="Updated 3 minutes ago"
-                    content={
-                      <div className="ct-chart">
-                        <LineChart data={chartData} options={chartOptions} height="250" redraw />
-                      </div>
-                    }
-                  />
-                </Col>
-              </Row>
-            </Col>
-          </Row> */}
         </div>
       </div>
     );

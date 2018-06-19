@@ -17,7 +17,7 @@ const Header = ({ openCloseDropdown, dropdownStyle, logout, renderHelp }) => {
             </h5>
           </div>
 
-          <div className="" style={{maxHeight: '100px'}}>
+          <div className="dropnavbars">
             <a href="javascript:void(0);" className="dropdown-item notify-item">
               <button type="button" className="btn btn-block btn-info waves-effect waves-light w-lg"> <span>Click to talk</span> </button>
             </a>
