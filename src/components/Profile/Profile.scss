@@ -9,17 +9,22 @@
 }
 
 button {
-  margin: 0% 2% !important;
+  margin: 0 2% !important;
 }
 
 .btn.btn-block.btn-info.waves-light.waves-effect.upgrade1 {
   &:hover {
-      background-color: #398DB7;
+    background-color: #398DB7;
   }
 }
 
+.profile-user-box.card-box.bgcolor {
+      background-color: rgba(9, 128, 255, 0.152);
+    }
+
+
 .btn.btn-block.btn-info.waves-light.waves-effect.billing1 {
   &:hover {
-      background-color: #398DB7;
+    background-color: #398DB7;
   }
 }

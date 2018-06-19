@@ -6,7 +6,6 @@ import {
   Row,
   Col,
   FormGroup,
-  ControlLabel,
   FormControl
 } from 'react-bootstrap';
 import { ToastContainer } from 'react-toastify';
@@ -36,7 +35,7 @@ class Profile extends Component {
       selectedCountry: '',
       selectedState: '',
       selectedCity: ''
-      
+
     };
     props.fetchProfile();
   }
@@ -169,154 +168,127 @@ class Profile extends Component {
 
 
   render() {
-    const isDisabled = this.state.profileState === 'edit'
-      ? true
-      : false;
+    // const isDisabled = this.state.profileState === 'edit'
+    //   ? true
+    //   : false;
     const profile = this.state;
     console.log(this.state.selectedCountry);
 
     return (<div className="content fill ">
       <Grid fluid="fluid">
-        <Row>
-          <Col sm={12}>
-            <div className="profile-user-box card-box bg-custom" >
-              <Row>
-                <Col sm={6}>
-                  <span className="pull-left mr-3"><img src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" alt="User profile" className="thumb-lg rounded-circle" /></span>
-
-                  <div className=" media-body text-white">
-                    <h4 className="mt-1 mb-1 font-18">Username</h4>
-                    <p className="text-light mb-0">Country</p>
-                  </div>
-                </Col>
-                <Col sm={6}>
-                  <div className="text-right">
-                    <button type="button" className="btn btn-success waves-effect" onClick={(e) => this.handleEditState(e, this.state.profileState)}>
-                      <i className="mdi mdi-account-settings-variant mr-1"></i> Edit Profile
-                    </button>
-                  </div>
-                </Col>
-              </Row>
-            </div>
-          </Col>
-        </Row>
-        <Row>
-          <Col md={4}>
-            <div className="card-box">
-              <h4 className="header-title mt-0 m-b-20">Personal Information</h4>
-              <div className="panel-body">
-                <hr />
-                <div className="text-left">
-                  <form>
-                    <Row>
-                      <Col md={12}>
-                        <span className="text-muted font-13 p"><strong>First Name :</strong> </span>
-                        <FormGroup>
-                          <FormControl type="text" value={profile.firstName} placeholder="" disabled={isDisabled} id="firstName" onChange={(e) => this.handleStateChange(e)} />
-                        </FormGroup>
-                      </Col>
-                    </Row>
-                    <Row>
-                      <Col md={12}>
-                        <span className="text-muted font-13 p"><strong>Last Name :</strong> </span>
-                        <FormGroup>
-                          <FormControl type="text" value={profile.lastName} placeholder="" disabled={isDisabled} id="lastName" onChange={(e) => this.handleStateChange(e)} />
-                        </FormGroup>
-                      </Col>
-                    </Row>
-                    <Row>
-                      <Col md={12}>
-                        <span className="text-muted font-13 p"><strong>Phone :</strong> </span>
-                        <FormGroup>
-                          <FormControl type="text" value={profile.phoneNumber} placeholder="" disabled={isDisabled} id="phoneNumber" onChange={(e) => this.handleStateChange(e)} />
-                        </FormGroup>
-                      </Col>
-                    </Row>
-                    <Row>
-                      <Col md={12}>
-                        <span className="text-muted font-13 p"><strong>Email :</strong> </span>
-                        <FormGroup>
-                          <FormControl type="text" value={profile.email} placeholder="" disabled={isDisabled} id="email" onChange={(e) => this.handleStateChange(e)} />
-                        </FormGroup>
-                      </Col>
-                    </Row>
-                    <Row>
-                      <Col md={12}>
-                        <span className="text-muted font-13 p"><strong>Address :</strong> </span>
-                        <FormGroup>
-                          <FormControl type="text" value={profile.address} placeholder="" disabled={isDisabled} id="address" onChange={(e) => this.handleStateChange(e)} />
-                        </FormGroup>
-                      </Col>
-                    </Row>
-                    <Row>
-                      <Col md={12}>
-                        <span className="text-muted font-13 p"><strong>Country :</strong> </span>
-                        <FormGroup controlId="formControlsSelect">
-                          <FormControl componentClass="select" placeholder="select" disabled={isDisabled} onChange={(e) => {this.setState({selectedCountry: e.target.value});}} >
-                            <option value="select"></option>
-                            {this.getCountryRows()}
-                          </FormControl>
-                        </FormGroup>      
-                      </Col>
-                    </Row>
-                    <Row>
-                      <Col md={12}>
-                        <span className="text-muted font-13 p"><strong>States :</strong> </span>
-                        <FormGroup controlId="formControlsSelect">
-                          <FormControl componentClass="select" placeholder="select" disabled={isDisabled}  onChange={(e) => {this.setState({selectedState: e.target.value});}}>
-                            <option value="select"></option>
-                            {this.getStateRows()}
-                          </FormControl>
-                        </FormGroup>      
-                      </Col>
-                    </Row>
-                    <Row>
-                      <Col md={12}>
-                        <span className="text-muted font-13 p"><strong>City :</strong> </span>
-                        <FormGroup controlId="formControlsSelect">
-                          <FormControl componentClass="select" placeholder="select" disabled={isDisabled} onChange={(e) => this.handleStateChange(e)} />
-                          <option value="select"> </option>
-                          {this.getCityRows()}
-                        </FormGroup>
-                      </Col>
-                    </Row>
-                    <Row>
-                      <Col md={12}>
-                        <span className="text-muted font-13 p"><strong>Company :</strong> </span>
-                        <FormGroup>
-                          <FormControl type="text" value={profile.companyName} placeholder="" disabled={isDisabled} id="companyName" onChange={(e) => this.handleStateChange(e)} />
-                        </FormGroup>
-                      </Col>
-                    </Row>
-                  </form>
-                </div>
-              </div>
-            </div>
-          </Col>
-          <Col md={8}>
+        <Col sm={12}>
+          <div className="profile-user-box card-box" >
             <Row>
-              <Col sm={4}>
-                <div className="card-box tilebox-one">
-                  <i className="icon-badge float-right text-muted"></i>
-                  <h6 className="text-muted text-uppercase mt-0">Plan Type :</h6>
-                  <form>
-                    <FormGroup className="planUp" controlId="formControlsSelect">
-                      <ControlLabel>Plan</ControlLabel>{this.plansList()}
-                    </FormGroup>
-                  </form>
+              <Col sm={2}>
+                <span className="pull-left mr-3"><img src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" alt="User profile" className="thumb-lg rounded-circle" /></span>
+                <div className=" media-body text-white">
+                  <h4 className="mt-1 mb-1 font-18">Username</h4>
+                  <p className="text-light mb-0">Country</p>
                 </div>
               </Col>
-              <Col sm={4}>
+              <Col sm={8}>
+                <div className="card-box tilebox-one text-center  ">
+                  <h6 className="text-muted text-uppercase mt-0">Plan Type </h6><h3> {this.props.profile?this.props.profile.plan.name:null}</h3>
+                </div>
               </Col>
-              <Col sm={4}>
-                <div className="mt-3 ">
+              <Col md={2}>
+                <div className="">
                   <button type="button"   onClick={() => browserHistory.push('/upgrade')} className="btn btn-block btn-info waves-light waves-effect upgrade1">Upgrade</button>
                   <div> <br /></div>
                   <button type="button"   onClick={() => browserHistory.push('/billing-details')} className="btn btn-block btn-info waves-light waves-effect billing1">Billing</button>
                 </div>
               </Col>
             </Row>
-
+          </div>
+        </Col>
+        <Row>
+          <Col md={12}>
+            <h4 className="header-title m-b-20">Personal Information</h4>
+            <div className="panel-body">
+              <hr />
+              <div className="text-left">
+                <form>
+                  <Row>
+                    <Col md={6}>
+                      <span className="text-muted font-13 p mt-5"><strong>First Name :</strong> </span>
+                      <FormGroup>
+                        <FormControl type="text" value={profile.firstName} placeholder=""   id="firstName" onChange={(e) => this.handleStateChange(e)} />
+                      </FormGroup>
+                    </Col>
+                    <Col md={6}>
+                      <span className="text-muted font-13 p"><strong>Last Name :</strong> </span>
+                      <FormGroup>
+                        <FormControl type="text" value={profile.lastName} placeholder=""   id="lastName" onChange={(e) => this.handleStateChange(e)} />
+                      </FormGroup>
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col md={6}>
+                      <span className="text-muted font-13 p"><strong>Phone :</strong> </span>
+                      <FormGroup>
+                        <FormControl type="text" value={profile.phoneNumber} placeholder=""   id="phoneNumber" onChange={(e) => this.handleStateChange(e)} />
+                      </FormGroup>
+                    </Col>
+                    <Col md={6}>
+                      <span className="text-muted font-13 p"><strong>Email :</strong> </span>
+                      <FormGroup>
+                        <FormControl type="text" value={profile.email} placeholder=""   id="email" onChange={(e) => this.handleStateChange(e)} />
+                      </FormGroup>
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col md={6}>
+                      <span className="text-muted font-13 p"><strong>Address :</strong> </span>
+                      <FormGroup>
+                        <FormControl type="text" value={profile.address} placeholder=""   id="address" onChange={(e) => this.handleStateChange(e)} />
+                      </FormGroup>
+                    </Col>
+                    <Col md={6}>
+                      <span className="text-muted font-13 p"><strong>Country :</strong> </span>
+                      <FormGroup controlId="formControlsSelect">
+                        <FormControl componentClass="select" placeholder="select"   onChange={(e) => {this.setState({selectedCountry: e.target.value});}} >
+                          {this.getCountryRows()}
+                        </FormControl>
+                      </FormGroup>
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col md={6}>
+                      <span className="text-muted font-13 p"><strong>States :</strong> </span>
+                      <FormGroup controlId="formControlsSelect">
+                        <FormControl componentClass="select" placeholder="select"    onChange={(e) => {this.setState({selectedState: e.target.value});}}>
+                          <option value="select"></option>
+                          {this.getStateRows()}
+                        </FormControl>
+                      </FormGroup>
+                    </Col>
+                    <Col md={6}>
+                      <span className="text-muted font-13 p"><strong>City :</strong> </span>
+                      <FormGroup controlId="formControlsSelect">
+                        <FormControl componentClass="select" placeholder="select"   onChange={(e) => this.handleStateChange(e)} />
+                        <option value="select"> </option>
+                        {this.getCityRows()}
+                      </FormGroup>
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col md={6}>
+                      <span className="text-muted font-13 p"><strong>Company :</strong> </span>
+                      <FormGroup>
+                        <FormControl type="text" value={profile.companyName} placeholder=""   id="companyName" onChange={(e) => this.handleStateChange(e)} />
+                      </FormGroup>
+                    </Col>
+                  </Row>
+                  <Col md={12}>
+                    <div className="text-right">
+                      <button type="button" className="btn btn-success waves-effect" onClick={(e) => this.handleEditState(e, this.state.profileState)}>
+                        <i className="mdi mdi-account-settings-variant mr-1"></i> Save Profile
+                      </button>
+                    </div>
+                  </Col>
+                </form>
+              </div>
+            </div>
           </Col>
         </Row>
       </Grid>
