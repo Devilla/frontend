@@ -2,25 +2,25 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 import { Row, Col } from 'react-bootstrap';
-import moment from 'moment';
+import Moment from 'moment';
+import { extendMoment } from 'moment-range';
 import Circle from 'react-circle';
-//import { Scrollbars } from 'react-custom-scrollbars';
 import { fetchCampaignInfo, successCampaign } from 'ducks/campaign';
 import './Dashboard.scss';
-//import StatsCard from './Stats';
-//import Website from './Website';
 import Card from './Card';
 import ReactChartJs from 'react-chartjs';
 
 
 var LineChart = ReactChartJs.Line;
+let moment = extendMoment(Moment);
 
 class Dashboard extends Component {
   constructor() {
     super();
     this.state = {
       render: false,
-      arrs: []
+      arrs: [],
+      pastdays: []
     };
     this.handleRouteChange = this.handleRouteChange.bind(this);
   }
@@ -58,8 +58,8 @@ class Dashboard extends Component {
       };
       this.props.campaignInfo.uniqueUsers.map(user => {
         user.aggregations.users.buckets.map(bucket => {
-          dataContent['label'] = moment(bucket.key_as_string).format('LL');
-          dataContent['data'][moment(bucket.key_as_string).day()] = bucket.visitors.sum_other_doc_count;
+          dataContent['label'] = Moment(bucket.key_as_string).format('LL');
+          dataContent['data'][Moment(bucket.key_as_string).day()] = bucket.visitors.sum_other_doc_count;
         });
         dataSet.push(dataContent);
       });
@@ -80,9 +80,11 @@ class Dashboard extends Component {
 
   render() {
     const { campaignInfo,profile } = this.props;
+    let currentDate =  new Date().format('DD');
+    let 
 
     var chartData = {
-      labels: moment.weekdays(),
+      labels: Moment.months(),
       datasets: this.getDataset()
     };
 
@@ -274,16 +276,16 @@ class Dashboard extends Component {
                     <div className=" pull-right">
                       <select className="form-control">
                         <option  key={1} disabled>
-                      --select days--
+                           --select days--
                         </option>
-                        <option key={7} value="7" >
-                       7 days
+                        <option key={7} value={'7'}>
+                            7 days
                         </option>
-                        <option key={14} value="14" >
-                       14 days
+                        <option key={14} value={'14'} >
+                            14 days
                         </option>
-                        <option key={28} value="28" >
-                       28 days
+                        <option key={28} value={'28'} >
+                            28 days
                         </option>
                       </select>
                     </div>
