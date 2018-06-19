@@ -80,8 +80,7 @@ class Dashboard extends Component {
 
   render() {
     const { campaignInfo,profile } = this.props;
-    let currentDate =  new Date().format('DD');
-    let 
+    let start = moment('2011-04-15', 'YYYY-MM-DD');
 
     var chartData = {
       labels: Moment.months(),
