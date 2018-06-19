@@ -21,19 +21,38 @@ a[disabled] {
 
 div.button-list {
   & .btn-pink {
-    background-color: #ff679b;
-    border: 1px solid #ff679b;
+    background-color: #097fff;
+    border: 1px solid #097fff;
   &:hover {
-    background-color: #ff4e8a;
-    border-color: #ff4e8a;
+    background-color: blue;
+    border-color: blue;
   }
   &:active {
-    background-color: #ff4e8a;
-    border-color: #ff4e8a;
+    background-color: blue;
+    border-color: blue;
   }
   &:focus {
-    background-color: #ff4e8a;
-    border-color: #ff4e8a;
+    background-color: blue;
+    border-color: blue;
   }
   }
 }
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px 16px;
+    z-index: 1;
+}
+
+.dropdown:hover{ .dropdown-content {
+    display: block;
+}}

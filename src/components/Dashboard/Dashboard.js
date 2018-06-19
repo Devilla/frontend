@@ -148,21 +148,21 @@ class Dashboard extends Component {
                     <div className="card-box mb-0 widget-chart-two">
                       <div className="float-right">
                         <Circle
-                          animate={true} 
-                          responsive={false} 
+                          animate={true}
+                          responsive={false}
                           size={100}
                           lineWidth={24}
                           progress={campaignInfo? campaignInfo.websiteLive.length : []}//to edit
-                          progressColor="#0acf97"  
-                          bgColor="whitesmoke" 
+                          progressColor="#0acf97"
+                          bgColor="whitesmoke"
                           textColor="#FFFFFF"
-                          textStyle={{ 
-                            font: 'bold 5rem Helvetica, Arial, sans-serif' 
+                          textStyle={{
+                            font: 'bold 5rem Helvetica, Arial, sans-serif'
                           }}
-                          percentSpacing={10} 
-                          roundedStroke={true} 
-                          showPercentage={true} 
-                          showPercentageSymbol={false} 
+                          percentSpacing={10}
+                          roundedStroke={true}
+                          showPercentage={true}
+                          showPercentageSymbol={false}
                         />
                       </div>
                       <div className="widget-chart-two-content">
@@ -176,13 +176,13 @@ class Dashboard extends Component {
                     <div className="card-box mb-0 widget-chart-two">
                       <div className="float-right">
                         <Circle
-                          animate={true} 
-                          responsive={false} 
+                          animate={true}
+                          responsive={false}
                           size={100}
                           lineWidth={24}
                           progress={profile? Number(profile.uniqueVisitors) :0 } //to edit
-                          progressColor="#f9bc0b"  
-                          bgColor="whitesmoke" 
+                          progressColor="#f9bc0b"
+                          bgColor="whitesmoke"
                           textColor="#FFFFFF"
                           textStyle={{
                             font: 'bold 5rem Helvetica, Arial, sans-serif'

@@ -161,7 +161,7 @@ class DisplayPage extends Component{
   render(){
     const { error, displayUrl } = this.state;
     return (
-      <div className="content display-page">
+      <div className="">
         <Grid fluid>
           <div className="tabscontent">
             <Row>

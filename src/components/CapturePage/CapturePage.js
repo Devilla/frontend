@@ -143,7 +143,7 @@ class CapturePage extends Component{
   render(){
     const { error, lead } = this.state;
     return (
-      <div className="content">
+      <div className="">
         <Grid fluid>
           <div className="tabscontent">
             <Row>

@@ -9,7 +9,7 @@ const RightView = ({
 }) => {
   return (
     <div className="col-md-6 pl-5">
-      <ul className="text-muted text-left list-unstyled m-t-50">
+      <ul className="text-muted text-left list-unstyled">
         <li>
           <label className="text-muted">
             Initial delay in starting first notification
