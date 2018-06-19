@@ -153,16 +153,12 @@ class CapturePage extends Component{
             </Row>
             <Row>
               <Col md={12}>
-                <p>Enter URL of page you are capturing conversions on. </p>
-                <small>This page must have:<br/>
-                  <i className="fas fa-angle-right"></i> An email form field<br/>
-                  <i className="fas fa-angle-right"></i> Your Pixel installed (if not, Go to Install Pixel)</small>
-                <p>&nbsp;</p>
+                <label className="text-muted">Enter URL of page you are capturing conversions on. </label>
               </Col>
             </Row>
             <Row>
               <Col md={12}>
-                <div className="input-group">
+                <div className="input-group col-md-12">
                   <input type="text"
                     className="form-control txtpageurl"
                     placeholder="Path URL  (For eg. /mypage, /register, /products, /design/front etc."
@@ -172,27 +168,15 @@ class CapturePage extends Component{
                     onBlur={this.handleWebsiteAuth.bind(this)}
                     onKeyUp={(e) => e.keyCode === 13?this.addPageUrl():null}
                   />
-                  <span className="input-group-btn"
+                  <span className="input-group-btn col-md-6"
                     id="urladd">
-                    <a className="btn btn-raised btn-primary blue"
-                      href="#" onClick={this.addPageUrl}>Add</a>
+                    <span className="btn btn-raised btn-primary blue pl-5 pr-5"
+                      onClick={this.addPageUrl}>Add</span>
                   </span>
                 </div>
                 <HelpBlock>
                   <p className="website-error">{error}</p>
                 </HelpBlock>
-              </Col>
-            </Row>
-            <Row>
-              <Col md={12}>
-                <div className="status">
-                  <ul>
-                    <li><span className="green"></span> Active</li>
-                    <li><span className="blue"></span> Last seen over 24 hrs ago</li>
-                    <li><span className="yellow"></span> Has Never Been Tracked</li>
-                    <li><span className="red"></span> Invalid URL</li>
-                  </ul>
-                </div>
               </Col>
             </Row>
             <Row>
@@ -208,7 +192,7 @@ class CapturePage extends Component{
             </Row>
             <Row>
               <div className="text-center">
-                <Col md={12}>
+                <Col md={12} className="text-muted">
                   <p>&nbsp;</p> <p>&nbsp;</p>
                 Having problems with Auto Lead Capture in your current setup? &nbsp;&nbsp; <a
                     href="#" className="btn blue btn-sm">Use Webhook Integration</a>

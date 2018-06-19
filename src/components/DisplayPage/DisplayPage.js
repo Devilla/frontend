@@ -4,7 +4,6 @@ import {
   Row,
   Col,
   Table,
-  Button,
   HelpBlock
 } from 'react-bootstrap';
 import { browserHistory } from 'react-router';
@@ -161,7 +160,7 @@ class DisplayPage extends Component{
   render(){
     const { error, displayUrl } = this.state;
     return (
-      <div className="">
+      <div>
         <Grid fluid>
           <div className="tabscontent">
             <Row>
@@ -171,52 +170,30 @@ class DisplayPage extends Component{
             </Row>
             <Row>
               <Col md={12}>
-                <p>Enter URL of page you display notifications on. </p>
-                <small>This page must have:<br/>
-                  <i className="fas fa-angle-right"></i> Your Pixel installed (if not, Go to Install Pixel)</small>
-                <p>&nbsp;</p>
+                <label className="text-muted">Enter URL of page you display notifications on. </label>
               </Col>
             </Row>
             <Row>
               <Col md={12}>
-                <div>
-                  <div className="input-group">
-                    <input
-                      type="text"
-                      className="form-control txtpageurl"
-                      placeholder="Path URL  (For eg. /mypage, /register, /products, /design/front etc."
-                      aria-describedby="urladd"
-                      value={displayUrl.url}
-                      onChange={this.handlePageUrl}
-                      onBlur={this.handleWebsiteAuth.bind(this)}
-                      onKeyUp={(e) => e.keyCode === 13?this.addPageUrl():null}/>
-                    <span className="input-group-btn" id="urladd">
-                      <Button
-                        className="btn btn-raised btn-primary blue"
-                        href="javascript:;"
-                        onClick={this.addPageUrl}
-                        type="submit"
-                      >
-                      Add
-                      </Button>
-                    </span>
-                  </div>
-                  <HelpBlock>
-                    <p className="website-error">{error}</p>
-                  </HelpBlock>
+                <div className="input-group col-md-12">
+                  <input type="text"
+                    className="form-control txtpageurl"
+                    placeholder="Path URL  (For eg. /mypage, /register, /products, /design/front etc."
+                    aria-describedby="urladd"
+                    value={displayUrl.url}
+                    onChange={this.handlePageUrl}
+                    onBlur={this.handleWebsiteAuth.bind(this)}
+                    onKeyUp={(e) => e.keyCode === 13?this.addPageUrl():null}
+                  />
+                  <span className="input-group-btn col-md-6"
+                    id="urladd">
+                    <span className="btn btn-raised btn-primary blue pl-5 pr-5"
+                      onClick={this.addPageUrl}>Add</span>
+                  </span>
                 </div>
-              </Col>
-            </Row>
-            <Row>
-              <Col md={12}>
-                <div className="status">
-                  <ul>
-                    <li><span className="green"></span> Active</li>
-                    <li><span className="blue"></span> Last seen over 24 hrs ago</li>
-                    <li><span className="yellow"></span> Has Never Been Tracked</li>
-                    <li><span className="red"></span> Invalid URL</li>
-                  </ul>
-                </div>
+                <HelpBlock>
+                  <p className="website-error">{error}</p>
+                </HelpBlock>
               </Col>
             </Row>
             <Row>

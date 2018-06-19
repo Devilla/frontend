@@ -2,7 +2,7 @@ import React from 'react';
 
 const NotificationDesign = ({
   contentText,
-  visitorText = ' ' +visitorText+ ' ',
+  visitorText = visitorText,
   notificationPanelStyle,
   notification,
   totaltext='2,002 ',
@@ -123,8 +123,8 @@ const NotificationDesign = ({
                                 <div className="FPqR2fwXqJeA2fwX7MM9_0">
                                   <span className="FPqR1Jr6qJeA1Jr67MM9_0">
                                     <span >431 </span>
-                                  </span><span>
-                                    {visitorText}</span></div><span>
+                                  </span><span>&nbsp;&nbsp;
+                                    {visitorText}&nbsp;&nbsp;</span></div><span>
                                 are viewing this site</span>
                               </div>
                               <div className="FPqR14UVqJeA14UV7MM9_0">
@@ -174,7 +174,7 @@ const NotificationDesign = ({
                                   fontWeight: notificationStyle.fontWeight
                                 }}>
                                   <span>{totaltext}
-                                    {visitorText}
+                                    &nbsp;&nbsp;{visitorText}&nbsp;&nbsp;
                                   </span>
                                 </span>
                                 <span>{pretext}{contentText}

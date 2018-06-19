@@ -11,7 +11,6 @@ import {
 import CardHeader from 'components/Template/card-with-header';
 import Button from 'components/Template/customButton';
 
-//import { Integrations1 } from 'img';
 
 const Campaign = ({
   handleNextButton,

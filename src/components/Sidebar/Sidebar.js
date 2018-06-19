@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import { Influence } from 'img';
-import {Col, ProgressBar } from 'react-bootstrap';
+import { Col, ProgressBar } from 'react-bootstrap';
 import appRoutes from 'routes/app';
 import './Sidebar.scss';
-//import 'containers/DashboardContainer/asset/css/style.scss';
 
 class Sidebar extends Component {
   constructor(props) {
@@ -48,7 +47,7 @@ class Sidebar extends Component {
                   type="button"
                   className="btn btn-pink waves-effect  ml-4 p-2  pt-0 pb-0 mb-4 w-lg "
                 >
-                  <i className="fi-plus " style={{ fontSize: '15px' }} />&nbsp;{' '}
+                  <i className="fi-plus "/>&nbsp;{' '}
                   <span className="h5">New</span>{' '}
                 </button>
               </Link>
