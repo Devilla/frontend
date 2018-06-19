@@ -16,9 +16,6 @@ class Sidebar extends Component {
       uniqueVisitorsQoutaLeft:29130
     };
   }
-  
-  componentWillReceiveProps(){
-  }
 
   activeRoute(routeName) {
     return this.props.location.pathname.indexOf(routeName) > -1 ? 'active' : '';
