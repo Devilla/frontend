@@ -44,7 +44,6 @@ class NewCampaignContainer extends Component {
     this.setActiveState = this.setActiveState.bind(this);
     this.handlePixelCopy = this.handlePixelCopy.bind(this);
     this.verifyPixelStatus = this.verifyPixelStatus.bind(this);
-
   }
 
   handleCampaignNameChange(evt) {

@@ -11,3 +11,15 @@
 button {
   margin: 0% 2% !important;
 }
+
+.btn.btn-block.btn-info.waves-light.waves-effect.upgrade1 {
+  &:hover {
+      background-color: #398DB7;
+  }
+}
+
+.btn.btn-block.btn-info.waves-light.waves-effect.billing1 {
+  &:hover {
+      background-color: #398DB7;
+  }
+}

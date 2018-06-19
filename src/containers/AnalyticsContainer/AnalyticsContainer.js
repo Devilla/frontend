@@ -8,8 +8,8 @@ import { fetchElastic } from 'ducks/elastic';
 import { fetchCampaignInfo, successCampaign } from 'ducks/campaign';
 import { Tooltip, OverlayTrigger } from 'react-bootstrap';
 import { Analytics, AnalyticsProfile } from 'components';
-import './AnalyticsContainer.scss';
 import '../DashboardContainer/asset/scss/style.scss';
+import './AnalyticsContainer.scss';
 
 const LineChart = ReactChartJs.Line;
 
@@ -91,13 +91,14 @@ class AnalyticsContainer extends Component {
   renderProfileList() {
     if(this.state.usersList.length)
       return this.state.usersList.map((user, index) => {
-        return <tr key={index}>;
+        return <tr className="table-active" key={index}>
+          <td>{index + 1}</td>
           <td className="img"><img src={user.profile_pic?user.profile_pic:'https://www.totaldenturecare.com.au/wp-content/uploads/2017/06/default-user-image-female.png'} /></td>
-          <td className="name">{user.username}</td>
-          <td className="email">{user.email}</td>
-          <td className="location">{user.city}</td>
-          <td className="country">{user.country}</td>
-          <td className="lastseen">{moment(user.timestamp).startOf('day').fromNow()}</td>
+          <td>{user.username}</td>
+          <td>{user.email}</td>
+          <td>{user.city}</td>
+          <td>{user.country}</td>
+          <td>{moment(user.timestamp).startOf('day').fromNow()}</td>
           <td>
             <OverlayTrigger
               overlay={
@@ -203,7 +204,7 @@ class AnalyticsContainer extends Component {
 
   render() {
     return (
-      <div>
+      <div className="analytics-container">
         {!this.state.usersList.length ?
           <Analytics  renderList={this.renderList} />
           :

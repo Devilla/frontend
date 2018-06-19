@@ -71,13 +71,14 @@ class WebsitePricing extends Component {
   }
 
   renderPriceList() {
-    let planList = this.state.servicebotPlans.filter(plan => this.state.planPeriod === 12 ? plan.interval==='year': plan.interval==='month');
-    planList = planList.sort(function(a, b) {
-      return b.id - a.id;
-    });
+ 
+    let planList =this.state.servicebotPlans.filter(plan =>
+      (this.state.planPeriod == 12 ? plan.interval=='year': plan.interval=='month') &&
+      (plan.references.service_template_properties[0].name !== 'coupon')
+    );
     return planList.map(plan => {
       return <div className="col-md-3 pl-3 pr-0">
-        <div className="pricing pricing-1  pr-0 pl-0">
+        <div className="pricing pricing-1  pr-0 pl-0"  style={{minHeight:'700px'}}>
           <div className={`pricing__head ${this.stellarFeel(plan.name) }  boxed boxed--border boxed--lg`}>
             <h3>{this.filterPlanName(plan.name)}</h3>
             <span className="h1">
@@ -156,7 +157,7 @@ class WebsitePricing extends Component {
 
         <section className="text-center">
           <div className="container">
-            <div className="row text-center">
+            <div className="row justify-content-center">
               <div className="col-md-1 mr-0 text-left " id="leftmg"><div><strong onClick={this.handleMonthChange} className="h5 type--bold">Monthly</strong></div></div>
               <div className="col-md-1 col-sm-1 my-auto text-center pl-2">
                 <Switch

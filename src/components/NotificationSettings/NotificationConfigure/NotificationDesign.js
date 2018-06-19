@@ -122,7 +122,7 @@ const NotificationDesign = ({
                               }}>
                                 <div className="FPqR2fwXqJeA2fwX7MM9_0">
                                   <span className="FPqR1Jr6qJeA1Jr67MM9_0">
-                                    <span >431</span>
+                                    <span >431 </span>
                                   </span><span>
                                     {visitorText}</span></div><span>
                                 are viewing this site</span>

@@ -3,12 +3,12 @@ import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 import { Row, Col } from 'react-bootstrap';
 import moment from 'moment';
-
-import { Scrollbars } from 'react-custom-scrollbars';
+import Circle from 'react-circle';
+//import { Scrollbars } from 'react-custom-scrollbars';
 import { fetchCampaignInfo, successCampaign } from 'ducks/campaign';
 import './Dashboard.scss';
-import StatsCard from './Stats';
-import Website from './Website';
+//import StatsCard from './Stats';
+//import Website from './Website';
 import Card from './Card';
 import ReactChartJs from 'react-chartjs';
 
@@ -79,7 +79,7 @@ class Dashboard extends Component {
   }
 
   render() {
-    const { campaignInfo, profile } = this.props;
+    const { campaignInfo,profile } = this.props;
 
     var chartData = {
       labels: moment.weekdays(),
@@ -95,7 +95,7 @@ class Dashboard extends Component {
       scaleShowGridLines: true,
 
       //String - Colour of the grid lines
-      scaleGridLineColor: 'rgba(0,0,0,.05)',
+      scaleGridLineColor: 'rgba(100,0,0,.1)',
 
       //Number - Width of the grid lines
       scaleGridLineWidth: 1,
@@ -137,7 +137,163 @@ class Dashboard extends Component {
     return (
       <div className="content">
         <div className="container-fluid">
+
           <Row>
+            <Col md={12}>
+              <div className="card-box">
+                <h4 className="header-title mb-4">Account Usage Overview</h4>
+                <hr/>
+                <Row>
+                  <div className="col-sm-6 col-lg-6 col-xl-3">
+                    <div className="card-box mb-0 widget-chart-two">
+                      <div className="float-right">
+                        <Circle
+                          animate={true}
+                          responsive={false}
+                          size={100}
+                          lineWidth={24}
+                          progress={campaignInfo? campaignInfo.websiteLive.length : []}//to edit
+                          progressColor="#0acf97"
+                          bgColor="whitesmoke"
+                          textColor="#FFFFFF"
+                          textStyle={{
+                            font: 'bold 5rem Helvetica, Arial, sans-serif'
+                          }}
+                          percentSpacing={10}
+                          roundedStroke={true}
+                          showPercentage={true}
+                          showPercentageSymbol={false}
+                        />
+                      </div>
+                      <div className="widget-chart-two-content">
+                        <span className="text-muted mb-0 mt-2">Active Campaigns</span>
+                        <h3 className="">{campaignInfo? campaignInfo.websiteLive.length : []}</h3>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="col-sm-6 col-lg-6 col-xl-3">
+                    <div className="card-box mb-0 widget-chart-two">
+                      <div className="float-right">
+                        <Circle
+                          animate={true}
+                          responsive={false}
+                          size={100}
+                          lineWidth={24}
+                          progress={profile? Number(profile.uniqueVisitors) :0 } //to edit
+                          progressColor="#f9bc0b"
+                          bgColor="whitesmoke"
+                          textColor="#FFFFFF"
+                          textStyle={{
+                            font: 'bold 5rem Helvetica, Arial, sans-serif'
+                          }}
+                          percentSpacing={10}
+                          roundedStroke={true}
+                          showPercentage={true}
+                          showPercentageSymbol={false}
+                        />
+                      </div>
+                      <div className="widget-chart-two-content">
+                        <span className="text-muted mb-0 mt-2">Unique Visitors</span>
+                        <h3 className="">{profile?profile.uniqueVisitors.toLocaleString():0}</h3>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="col-sm-6 col-lg-6 col-xl-3">
+                    <div className="card-box mb-0 widget-chart-two">
+                      <div className="float-right">
+                        <Circle
+                          animate={true}
+                          responsive={false}
+                          size={100}
+                          lineWidth={24}
+                          progress={campaignInfo ? campaignInfo.notificationCount : 0} //to edit
+                          progressColor="#f1556c"
+                          bgColor="whitesmoke"
+                          textColor="#FFFFFF"
+                          textStyle={{
+                            font: 'bold 5rem Helvetica, Arial, sans-serif'
+                          }}
+                          percentSpacing={10}
+                          roundedStroke={true}
+                          showPercentage={true}
+                          showPercentageSymbol={false}
+                        />
+                      </div>
+                      <div className="widget-chart-two-content">
+                        <span className="text-muted mb-0 mt-2">Notifications Served</span>
+                        <h3 className="">{campaignInfo ? campaignInfo.notificationCount : 0}</h3>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="col-sm-6 col-lg-6 col-xl-3">
+                    <div className="card-box mb-0 widget-chart-two">
+                      <div className="float-right">
+                        <Circle
+                          animate={true}
+                          responsive={false}
+                          size={100}
+                          lineWidth={24}
+                          progress={campaignInfo ? campaignInfo.uniqueUsers.length : []} //to edit
+                          progressColor="#2d7bf4"
+                          bgColor="whitesmoke"
+                          textColor="#FFFFFF"
+                          textStyle={{
+                            font: 'bold 5rem Helvetica, Arial, sans-serif'
+                          }}
+                          percentSpacing={10}
+                          roundedStroke={true}
+                          showPercentage={true}
+                          showPercentageSymbol={false}
+                        />
+                      </div>
+                      <div className="widget-chart-two-content">
+                        <span className="text-muted mb-0 mt-2">Total Signups</span>
+                        <h3 className="">{campaignInfo ? campaignInfo.uniqueUsers.length : []}</h3>
+                      </div>
+                    </div>
+                  </div>
+                </Row>
+                {/* <Row className="pl-2">
+                  <div className="btn btn-info ml-4 " onClick={() => { browserHistory.push('/campaigns'); }}>Campaign Insights</div>
+                </Row> */}
+              </div>
+            </Col>
+          </Row>
+
+
+
+          <Row>
+            <Col md={12}>
+              <div className="card-box">
+                <h4 className="header-title">Website traffic this week</h4>
+                <hr/>
+                <Col md={12}>
+                  <Card
+                    statsIcon="fa fa-history"
+                    id="chartHours"
+                    stats="Updated 3 minutes ago"
+
+                    content={
+                      <div className="ct-chart">
+                        <LineChart data={chartData} options={chartOptions} height="250" redraw />
+                      </div>
+                    }
+                  />
+                </Col>
+              </div>
+            </Col>
+          </Row>
+
+
+
+
+
+
+
+          {/* <Row>
             <Col md={6}>
               <Row>
                 <Col lg={6} sm={6}>
@@ -189,7 +345,7 @@ class Dashboard extends Component {
                 </Col>
               </Row>
             </Col>
-          </Row>
+          </Row> */}
         </div>
       </div>
     );
