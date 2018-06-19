@@ -8,12 +8,21 @@ class Sidebar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      width: window.innerWidth
+      width: window.innerWidth,
+      dropValue: {display: 'none'}
     };
+    this.openDropdown = this.openDropdown.bind(this);
   }
 
   activeRoute(routeName) {
     return this.props.location.pathname.indexOf(routeName) > -1 ? 'active' : '';
+  }
+
+  openDropdown() {
+    if(this.state.dropValue.display == 'none')
+      this.setState({dropValue: {display:'block'}});
+    else
+      this.setState({dropValue: {display:'none'}});
   }
 
   render() {
@@ -65,8 +74,8 @@ class Sidebar extends Component {
               }
               <li className="menu-title">More</li>
               <li>
-                <a href ="#dashboard"><i className="fi-location-2"></i> <span> Beta Features </span> <span className="menu-arrow"></span></a>
-                <ul className="nav-second-level" aria-expanded="false">
+                <a onClick={this.openDropdown}><i className="fi-location-2"></i> <span> Beta Features </span> <span className="menu-arrow"></span></a>
+                <ul className="nav-second-level" aria-expanded="false" style={this.state.dropValue}>
                   <li><a href="#dashboard">Live Stream</a></li>
                 </ul>
               </li>
