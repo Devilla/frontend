@@ -54,14 +54,14 @@ class Sidebar extends Component {
               {appRoutes.map((prop, key) => {
                 if (!prop.redirect)
                   return (
-                    <li className={prop.upgrade ? 'active newbtn' : this.activeRoute(prop.path)} key={key}>
+                    <li className={prop.upgrade ? ' newbtn' : this.activeRoute(prop.path)} key={key}>
                       {prop.name === 'Help' ?
-                        <Link onClick={this.renderHelp} className={disableButton ? 'disabled-link' : 'nav-link'} disabled={disableButton} activeClassName="active">
+                        <Link onClick={this.renderHelp} className={disableButton ? 'disabled-link' : 'nav-link mt-0 mb-0'} disabled={disableButton} activeClassName="active">
                           <i className={prop.icon}></i>
                           <span>{prop.upgrade}{prop.name}</span>
                         </Link>
                         :
-                        <Link to={prop.path} className={prop.upgrade && disableButton ? 'new disabled-link' : disableButton ? 'disabled-link' : prop.upgrade ? 'new nav-link' : 'nav-link'} disabled={disableButton} activeClassName="active">
+                        <Link to={prop.path} className={prop.upgrade && disableButton ? 'new disabled-link mt-0 mb-0' : disableButton ? 'disabled-link mt-0 mb-0' : prop.upgrade ? 'new nav-link mt-0 mb-0' : 'nav-link mt-0 mb-0'} disabled={disableButton} activeClassName="">
                           {
                             prop.upgrade ? '' : <i className={prop.icon}></i>
                           }

@@ -20,7 +20,7 @@ class Dashboard extends Component {
     this.state = {
       render: false,
       arrs: [],
-      pastdays: []
+      daysClicked: ''
     };
     this.handleRouteChange = this.handleRouteChange.bind(this);
   }
@@ -78,12 +78,74 @@ class Dashboard extends Component {
     }
   }
 
+  getdays = () => {
+    let start, end , range1, acc  ;
+    switch(this.state.daysClicked)  {
+      case '7' :
+        start  = moment().subtract(7,'d').format('YYYY-MM-DD');
+        end    = new Date();
+        range1 = moment.range(start, end);
+        acc = Array.from(range1.by('day', { step: 1 }));
+        acc = acc.map(m => m.format('DD MMM'));
+        break;
+      
+      
+      case '14' :
+        start  = moment().subtract(14,'d').format('YYYY-MM-DD');
+        end    = new Date();
+        range1 = moment.range(start, end);
+        acc = Array.from(range1.by('day', { step: 2 }));
+        acc = acc.map(m => m.format('DD MMM'));
+        break;
+
+      case '28' :
+        start  = moment().subtract(28,'d').format('YYYY-MM-DD');
+        end    = new Date();
+        range1 = moment.range(start, end);
+        acc = Array.from(range1.by('day', { step: 4 }));
+        acc = acc.map(m => m.format('DD MMM'));
+        break;
+      
+      case 'Today' :
+        start  = moment().startOf('day').format('YYYY-MM-DD HH:mm:ss');
+        end    = moment().endOf('day').format('YYYY-MM-DD HH:mm:ss');
+    
+        range1 = moment.range(start, end);
+        acc = Array.from(range1.by('hour', {   step:4}));
+        acc.length =6;
+        acc = acc.map(m => m.format('HH:mm A'));
+        break;
+        
+      case 'Yesterday' :
+        start  = moment().subtract(1,'d').startOf('day').format('YYYY-MM-DD HH:mm:ss');
+        end    = moment().subtract(1,'d').endOf('day').format('YYYY-MM-DD HH:mm:ss');
+     
+        range1 = moment.range(start, end);
+        acc = Array.from(range1.by('hour', {   step:4}));
+        acc.length =6;
+        acc = acc.map(m => m.format('HH:mm A'));
+        break;
+
+
+      default : 
+        start  = moment().startOf('day').format('YYYY-MM-DD HH:mm:ss');
+        end    = moment().endOf('day').format('YYYY-MM-DD HH:mm:ss');
+  
+        range1 = moment.range(start, end);
+        acc = Array.from(range1.by('hour', {   step:4}));
+        acc.length =6;
+        acc = acc.map(m => m.format('HH:mm A'));
+        break;
+    }
+    return acc;
+  }
+
   render() {
     const { campaignInfo,profile } = this.props;
-    let start = moment('2011-04-15', 'YYYY-MM-DD');
-
+    let datafetch = this.getdays();
+ 
     var chartData = {
-      labels: Moment.months(),
+      labels:   datafetch,
       datasets: this.getDataset()
     };
 
@@ -166,7 +228,7 @@ class Dashboard extends Component {
                           showPercentageSymbol={false}
                         />
                       </div>
-                      <div className="widget-chart-two-content">
+                      <div className="widget-chart-two-content dash">
                         <span className="text-muted mb-0 mt-2">Active Campaigns</span>
                         <h3 className="">{campaignInfo? campaignInfo.websiteLive.length : []}</h3>
                       </div>
@@ -194,7 +256,7 @@ class Dashboard extends Component {
                           showPercentageSymbol={false}
                         />
                       </div>
-                      <div className="widget-chart-two-content">
+                      <div className="widget-chart-two-content dash" >
                         <span className="text-muted mb-0 mt-2">Unique Visitors</span>
                         <h3 className="">{profile?profile.uniqueVisitors.toLocaleString():0}</h3>
                       </div>
@@ -222,8 +284,8 @@ class Dashboard extends Component {
                           showPercentageSymbol={false}
                         />
                       </div>
-                      <div className="widget-chart-two-content">
-                        <span className="text-muted mb-0 mt-2">Notifications Served</span>
+                      <div className="widget-chart-two-content dash">
+                        <span className="text-muted mb-0 mt-2">Notifications</span>
                         <h3 className="">{campaignInfo ? campaignInfo.notificationCount : 0}</h3>
                       </div>
                     </div>
@@ -250,7 +312,7 @@ class Dashboard extends Component {
                           showPercentageSymbol={false}
                         />
                       </div>
-                      <div className="widget-chart-two-content">
+                      <div className="widget-chart-two-content dash">
                         <span className="text-muted mb-0 mt-2">Total Signups</span>
                         <h3 className="">{campaignInfo ? campaignInfo.uniqueUsers.length : []}</h3>
                       </div>
@@ -273,9 +335,12 @@ class Dashboard extends Component {
                   </Col>
                   <Col md={4}>
                     <div className=" pull-right">
-                      <select className="form-control">
-                        <option  key={1} disabled>
-                           --select days--
+                      <select className="form-control text-muted" onChange={(e) =>  this.setState({daysClicked:e.target.value})}>
+                        <option key={'today'+1} value={'Today'} >
+                            Today
+                        </option>
+                        <option key={'yesterday'+1} value={'Yesterday'} >
+                            Yesterday
                         </option>
                         <option key={7} value={'7'}>
                             7 days
