@@ -256,33 +256,57 @@ class Dashboard extends Component {
                     </div>
                   </div>
                 </Row>
-                {/* <Row className="pl-2">
-                  <div className="btn btn-info ml-4 " onClick={() => { browserHistory.push('/campaigns'); }}>Campaign Insights</div>
-                </Row> */}
               </div>
             </Col>
           </Row>
 
          
-
+          
           <Row>
             <Col md={12}>
               <div className="card-box">
-                <h4 className="header-title">Website traffic this week</h4>
                 <hr/>
-                <Col md={12}>
-                  <Card
-                    statsIcon="fa fa-history"
-                    id="chartHours"
-                    stats="Updated 3 minutes ago"
+                <Row>
+                  <Col md={8}>
+                    <h4 className="header-title mt-2 ">Website traffic this week</h4>
+                  </Col>
+                  <Col md={4}>
+                    <div className=" pull-right">
+                      <select className="form-control">
+                        <option  key={1} disabled>
+                      --select days--
+                        </option>
+                        <option key={7} value="7" >
+                       7 days
+                        </option>
+                        <option key={14} value="14" >
+                       14 days
+                        </option>
+                        <option key={28} value="28" >
+                       28 days
+                        </option>
+                      </select>
+                    </div>
+                    <div className="clearfix"></div>
+                  </Col>
+                </Row>
+                
+                <hr/>
+                <Row>
+                  <Col md={12}>
+                    <Card
+                      statsIcon="fa fa-history"
+                      id="chartHours"
+                      stats="Updated 3 minutes ago"
                   
-                    content={
-                      <div className="ct-chart">
-                        <LineChart data={chartData} options={chartOptions} height="250" redraw />
-                      </div>
-                    }
-                  />
-                </Col>
+                      content={
+                        <div className="ct-chart">
+                          <LineChart data={chartData} options={chartOptions} height="250" redraw />
+                        </div>
+                      }
+                    />
+                  </Col>
+                </Row>
               </div>
             </Col>
           </Row>
