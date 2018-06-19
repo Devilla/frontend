@@ -36,7 +36,7 @@ class Sidebar extends Component {
           >
             <Link to="/dashboard" className="logo ">
               <span>
-                <img src={Influence} alt="influence-img" height="35" />
+                <img src={Influence} className="ml-2" alt="influence-img" height="40" />
               </span>
             </Link>
           </div>

@@ -98,4 +98,4 @@ export { default as Avatar10 } from './avatar-10.jpg'
 
 
 //logo
-export { default as Influence } from './influence.png';
+export { default as Influence } from './newlogo-6.png';
