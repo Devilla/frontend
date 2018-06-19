@@ -11,7 +11,6 @@ import {
 import CardHeader from 'components/Template/card-with-header';
 import Button from 'components/Template/customButton';
 
-import { Integrations1 } from 'img';
 
 const Campaign = ({
   handleNextButton,
@@ -82,9 +81,6 @@ const Campaign = ({
                 <div className="clearfix"></div>
               </form>
             }/>
-          </Col>
-          <Col md ={6}>
-            <img alt="background" src={Integrations1} />
           </Col>
         </Row>
       </Grid>

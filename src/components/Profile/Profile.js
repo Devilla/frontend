@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import {connect} from 'react-redux';
-import {browserHistory} from 'react-router';
+import { connect}  from 'react-redux';
+import { browserHistory } from 'react-router';
 import {
   Grid,
   Row,
@@ -131,7 +131,6 @@ class Profile extends Component {
     fetch('https://raw.githubusercontent.com/sagarshirbhate/Country-State-City-Database/master/Contries.json')
       .then(res => res.json())
       .then(res => this.setState({countryList : res.Countries}));
-
   }
 
   getCountryRows = () => {
@@ -156,14 +155,7 @@ class Profile extends Component {
 
 
   getCityRows = () => {
-    let countryList = this.state.countryList.filter((states) => states.States.StateName === this.state.selectedState);
-    return countryList.map((states,index) => {
-      return states.States[index].Cities.map((cities, i) => {
-        return <option key={i}  value={cities.Cities[i]}>
-          {cities.Cities[i]}
-        </option>;
-      });
-    });
+    
   }
 
 
@@ -172,7 +164,7 @@ class Profile extends Component {
     //   ? true
     //   : false;
     const profile = this.state;
-    console.log(this.state.selectedCountry);
+
 
     return (<div className="content fill ">
       <Grid fluid="fluid">

@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import { Influence } from 'img';
-import {Col, ProgressBar } from 'react-bootstrap';
+import { Col, ProgressBar } from 'react-bootstrap';
 import appRoutes from 'routes/app';
 import './Sidebar.scss';
-//import 'containers/DashboardContainer/asset/css/style.scss';
 
 class Sidebar extends Component {
   constructor(props) {
@@ -37,7 +36,7 @@ class Sidebar extends Component {
           >
             <Link to="/dashboard" className="logo ">
               <span>
-                <img src={Influence} alt="influence-img" height="35" />
+                <img src={Influence} className="ml-2" alt="influence-img" height="40" />
               </span>
             </Link>
           </div>
@@ -49,7 +48,7 @@ class Sidebar extends Component {
                   type="button"
                   className="btn btn-pink waves-effect  ml-4 p-2  pt-0 pb-0 mb-4 w-lg "
                 >
-                  <i className="fi-plus " style={{ fontSize: '15px' }} />&nbsp;{' '}
+                  <i className="fi-plus "/>&nbsp;{' '}
                   <span className="h5">New</span>{' '}
                 </button>
               </Link>
@@ -59,14 +58,14 @@ class Sidebar extends Component {
               {appRoutes.map((prop, key) => {
                 if (!prop.redirect)
                   return (
-                    <li className={prop.upgrade ? 'active newbtn' : this.activeRoute(prop.path)} key={key}>
+                    <li className={prop.upgrade ? ' newbtn' : this.activeRoute(prop.path)} key={key}>
                       {prop.name === 'Help' ?
-                        <Link onClick={this.renderHelp} className={disableButton ? 'disabled-link' : 'nav-link'} disabled={disableButton} activeClassName="active">
+                        <Link onClick={this.renderHelp} className={disableButton ? 'disabled-link' : 'nav-link mt-0 mb-0'} disabled={disableButton} activeClassName="active">
                           <i className={prop.icon}></i>
                           <span>{prop.upgrade}{prop.name}</span>
                         </Link>
                         :
-                        <Link to={prop.path} className={prop.upgrade && disableButton ? 'new disabled-link' : disableButton ? 'disabled-link' : prop.upgrade ? 'new nav-link' : 'nav-link'} disabled={disableButton} activeClassName="active">
+                        <Link to={prop.path} className={prop.upgrade && disableButton ? 'new disabled-link mt-0 mb-0' : disableButton ? 'disabled-link mt-0 mb-0' : prop.upgrade ? 'new nav-link mt-0 mb-0' : 'nav-link mt-0 mb-0'} disabled={disableButton} activeClassName="">
                           {
                             prop.upgrade ? '' : <i className={prop.icon}></i>
                           }
@@ -78,7 +77,7 @@ class Sidebar extends Component {
                 return null;
               })}
               <hr />
-              <div className="custombottom ml-2">
+              <div className="custombottom ml-2 mb-5">
                 <hr/>
                 <div className="ml-3 pb-3">
                   <i className='pb-2 fi-cloud'></i>

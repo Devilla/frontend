@@ -20,7 +20,7 @@
 
 .custombottom{
   position: relative;
-  margin-top: 210px;
+  margin-top: 180px;
 }
 
 .textColor{
@@ -48,6 +48,9 @@ div.button-list {
   }
 }
 
+.fi-plus { 
+  font-size: '15px' !important;
+}
 .dropdown {
     position: relative;
     display: inline-block;
@@ -66,3 +69,22 @@ div.button-list {
 .dropdown:hover{ .dropdown-content {
     display: block;
 }}
+
+a.nav-link {
+    &:hover:not(:focus) {
+      background-color: rgba(245, 245, 245, 0.816);
+      border-top-right-radius: 50px;
+      border-bottom-right-radius: 50px;
+      color: #097fff !important;
+    }
+
+    &:focus {
+      background-color: rgba(9, 128, 255, 0.152);
+      border-top-right-radius: 50px;
+      border-bottom-right-radius: 50px;
+      font-weight: 700;
+      color: #097fff !important;
+    }
+ 
+}
+
