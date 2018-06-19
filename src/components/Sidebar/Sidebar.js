@@ -10,10 +10,14 @@ class Sidebar extends Component {
     super(props);
     this.state = {
       width: window.innerWidth,
+      quotaPercentage:0,
       uniqueVisitors:20000,
       uniqueVisitorQouta:30000,
       uniqueVisitorsQoutaLeft:29130
     };
+  }
+  
+  componentWillReceiveProps(){
   }
 
   activeRoute(routeName) {
@@ -21,7 +25,9 @@ class Sidebar extends Component {
   }
 
   render() {
-    var { disableButton, quotaPercentage=Math.round(100*this.state.uniqueVisitors/this.state.uniqueVisitorQouta) } = this.props;
+    const { disableButton, profile } = this.props;
+    let quotaPercentage = profile?Math.round(100*profile.uniqueVisitors/profile.uniqueVisitorQouta):0;
+
     return (
       <div className="left side-menu">
         <div>
