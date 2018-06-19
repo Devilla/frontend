@@ -25,8 +25,12 @@ const InstallPixel = ({ elastic, setActiveState, campaign, verifyPixelStatus, ha
         <br/>
         </p>
       </div>
-      <button type="button" style={elastic==undefined?{backgroundColor:'#02c0ce'}:elastic.error?{backgroundColor:'#f12c0b'}:{backgroundColor:'#e68f1f'}} className="btn btn-custom  waves-light waves-effect number" onClick={() => verifyPixelStatus()}>Verify Pixel Status</button>
-      <button type="button" className="btn btn-custom  waves-light waves-effect number" onClick={handlePixelCopy}>Copy to Clipboard</button>
+      <button type="button" style={elastic==undefined?{backgroundColor:'#02c0ce'}:elastic.error?{backgroundColor:'#f12c0b'}:{backgroundColor:'#e68f1f'}} className="btn btn-custom  waves-light waves-effect number" onClick={() => verifyPixelStatus()}>Verify Pixel</button>
+      <button type="button" className="btn btn-custom  waves-light waves-effect number" onClick={handlePixelCopy}>Copy</button>
+      <div className="m-t-0 float-right align-install-btn">
+        <button type="button" className="btn btn-custom  waves-light waves-effect number pl-4 pr-4" onClick={() => browserHistory.push('/campaigns')}>Previous</button>
+        <button type="button" className="btn btn-custom  waves-light waves-effect number ml-2 pl-4 pr-4" onClick={() => setActiveState(2)}>Next </button>
+      </div>
       <p className="m-t-30">
         <br/>
         <hr />
@@ -35,14 +39,9 @@ const InstallPixel = ({ elastic, setActiveState, campaign, verifyPixelStatus, ha
         <br/>
       </p>
       <p className="text-muted text-left">Wait For Your Pixel To Go LIVE. Check By Clicking On The Button " Verify Pixel Status
-        ". If You're Facing Any Problems With It, Please Contact Our Support By
+        ". If Youre Facing Any Problems With It, Please Contact Our Support By
       <a href="#">Clicking Here.</a>
       </p>
-
-      <div className="m-t-50 float-right align-install-btn">
-        <button type="button" className="btn btn-custom  waves-light waves-effect number " onClick={() => browserHistory.push('/campaigns')}>Previous</button>
-        <button type="button" className="btn btn-custom  waves-light waves-effect number ml-2 pl-4 pr-4" onClick={() => setActiveState(2)}>Next </button>
-      </div>
       <div className="clearfix"></div>
     </div>
   );

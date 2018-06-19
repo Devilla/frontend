@@ -13,42 +13,9 @@ const LeftView = ({
 
     <div className="col-md-6 border-right">
       <ul className="text-muted text-left list-unstyled ">
-        <li>
-          <div className="checkbox checkbox-pink">
-            <input id="checkbox6b1" type="checkbox" checked={hideNotification} onChange={(e) => handleStateChange('hideNotification', e)} />
-            <label htmlFor="checkbox6b1" className="text-muted">
-              Hide notifications on mobile
-            </label>
-          </div>
-        </li>
-        <li>
-          <div className="checkbox checkbox-pink">
-            <input id="checkbox6b2" type="checkbox" checked={loopNotification} onChange={(e) => handleStateChange('loopNotification', e)} />
-            <label htmlFor="checkbox6b2" className="text-muted">
-              Loop notifications
-            </label>
-          </div>
-        </li>
-        <li>
-          <div className="checkbox checkbox-pink">
-            <input id="checkbox6b3" type="checkbox" checked={delayNotification} onChange={(e) => handleStateChange('delayNotification', e)} />
-            <label htmlFor="checkbox6b3" className="text-muted">
-              Randomize delay between notifications
-            </label>
-          </div>
-        </li>
-        <li>
-          <div className="checkbox checkbox-pink">
-            <input id="checkbox6b4" type="checkbox" checked={closeNotification} onChange={(e) => handleStateChange('closeNotification', e)} />
-            <label htmlFor="checkbox6b4" className="text-muted">
-              Allow users to close notifications
-            </label>
-          </div>
-        </li>
-        <br/>
         <li className="m-t-5">
           <label className="text-muted">
-            Select Popup Notification Animation
+          Select Popup Notification Animation
           </label>
           <select className="custom-select  muted-text" value={popupAnimationIn} onChange={(e) => handleStateChange('popupAnimationIn', e.target.value)}>
             <option value="Fade in Up">Fade in Up</option>
@@ -63,7 +30,7 @@ const LeftView = ({
         </li>
         <li className="mt-4">
           <label className="text-muted">
-            Select Popout Notification Animation
+          Select Popout Notification Animation
           </label>
           <select className="custom-select  muted-text" value={popupAnimationOut} onChange={(e) => handleStateChange('popupAnimationOut', e.target.value)}>
             <option value="Fade out Up">Fade out Up</option>
@@ -76,6 +43,42 @@ const LeftView = ({
             <option value="Bounce out Bottom">Bounce out Bottom</option>
           </select>
         </li>
+
+
+        <li>
+          <div className="ml-2 mt-5 pt-5 checkbox checkbox-pink">
+            <input id="checkbox6b1" type="checkbox" checked={hideNotification} onChange={(e) => handleStateChange('hideNotification', e)} />
+            <label htmlFor="checkbox6b1" className="text-muted">
+              Hide notifications on mobile
+            </label>
+          </div>
+        </li>
+        <li>
+          <div className="ml-2 checkbox checkbox-pink">
+            <input id="checkbox6b2" type="checkbox" checked={loopNotification} onChange={(e) => handleStateChange('loopNotification', e)} />
+            <label htmlFor="checkbox6b2" className="text-muted">
+              Loop notifications
+            </label>
+          </div>
+        </li>
+        <li>
+          <div className="ml-2 checkbox checkbox-pink">
+            <input id="checkbox6b3" type="checkbox" checked={delayNotification} onChange={(e) => handleStateChange('delayNotification', e)} />
+            <label htmlFor="checkbox6b3" className="text-muted">
+              Randomize delay between notifications
+            </label>
+          </div>
+        </li>
+        <li>
+          <div className="ml-2 checkbox checkbox-pink">
+            <input id="checkbox6b4" type="checkbox" checked={closeNotification} onChange={(e) => handleStateChange('closeNotification', e)} />
+            <label htmlFor="checkbox6b4" className="text-muted">
+              Allow users to close notifications
+            </label>
+          </div>
+        </li>
+        <br/>
+
       </ul>
     </div>
   );

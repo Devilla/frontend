@@ -3,7 +3,7 @@ import React from 'react';
 const Analytics = ({ renderList }) => {
   return (
     <div className="card-box">
-      <h4 className="m-t-0 header-title">Analytics</h4>
+      <h4 className="m-t-0 header-title"><a href="/dashboard"><i className="icon-arrow-left mr-3"></i></a>Analytics</h4>
       <table className="table table-striped">
         <thead>
           <tr>

@@ -29,7 +29,8 @@ const CampaignSettings = ({
   return (
     <div className="col-md-12 tab-notification-container">
       <div className="card-box tab-notification-box">
-        <div className=" ml-3 mt-1 new-campaign-header">
+        <div className=" mt-1 new-campaign-header">
+          <a href="/campaigns" className="mr-3"><i className="icon-arrow-left"></i></a>
           <i className="fi-layers mr-2"></i>
           <h4 className=" header-title">{campaign
             ? campaign.websiteUrl
@@ -84,6 +85,7 @@ const CampaignSettings = ({
 
           <div className={`tab-pane ${activeClass == 2?'show active':''}`} id="profile1">
             <NotificationSettings
+              clearConfiguration={clearConfiguration}
               campaign={campaign}
               configuration={configuration}
               configurations={configurations}
@@ -93,7 +95,6 @@ const CampaignSettings = ({
               fetchConfiguration={fetchConfiguration}
               fetchCampaignConfiguration={fetchCampaignConfiguration}
               updateConfiguration={updateConfiguration}
-              clearConfiguration={clearConfiguration}
               createSuccess={createSuccess}
               setActiveState={setActiveState}
             />
