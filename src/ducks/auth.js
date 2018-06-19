@@ -10,6 +10,8 @@ export const FETCH_USER_SUCCESS = action('FETCH_USER_SUCCESS');
 export const FETCH_ROLES_SUCCESS = action('FETCH_ROLES_SUCCESS');
 export const UPDATE = action('UPDATE');
 export const FORGOT_PASSWORD = action('FORGOT_PASSWORD');
+export const FORGOT_PASSWORD_ERROR = action('FORGOT_PASSWORD_ERROR');
+export const CLEAR_FORGOT_PASSWORD_ERROR = action('CLEAR_FORGOT_PASSWORD_ERROR');
 export const SOCIAL_LOGIN = action('SOCIAL_LOGIN');
 export const VERIFY_USER = action('VERIFY_USER');
 export const VALIDATE_COUPON = action('VALIDATE_COUPON');
@@ -23,6 +25,8 @@ export const fetchUserSuccess = (user) => ({ type: FETCH_USER_SUCCESS, user });
 export const updateUser = (user) => ({ type: UPDATE, user });
 export const fetchRolesSuccess = (roles) => ({ type: FETCH_ROLES_SUCCESS, roles });
 export const forgotPassword = (data) => ({ type: FORGOT_PASSWORD, data });
+export const forgotPasswordError = (error) => ({ type: FORGOT_PASSWORD_ERROR, error });
+export const clearForgotPasswordError = () => ({ type: CLEAR_FORGOT_PASSWORD_ERROR });
 export const socialLogin = (url) => ({ type: SOCIAL_LOGIN, url });
 export const verifyUser = (code) => ({ type: VERIFY_USER, code });
 export const validateCoupon = (coupon) => ({ type: VALIDATE_COUPON, coupon });
@@ -37,7 +41,8 @@ const initialState = fromJS({
   user: {},
   roles: List([]),
   coupon: '',
-  couponError: ''
+  couponError: '',
+  forgetError: ''
 });
 
 const auth = (state = initialState, action) => {
@@ -54,6 +59,10 @@ const auth = (state = initialState, action) => {
       return state.set('couponError', action.error);
     case CLEAR_COUPON_ERROR:
       return state.set('coupon', '').set('couponError', '');
+    case FORGOT_PASSWORD_ERROR:
+      return state.set('forgetError', action.error);
+    case CLEAR_FORGOT_PASSWORD_ERROR:
+      return state.set('forgetError', '');
     default:
       return state;
   }
