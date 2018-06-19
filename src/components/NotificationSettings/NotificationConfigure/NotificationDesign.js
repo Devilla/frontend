@@ -104,7 +104,7 @@ const NotificationDesign = ({
                           display: 'none'
                         }}>
                         <div id="FPqR3dGiqJeA3dGi7MM9_0">
-                          <div className="FPqR2B_4qJeA2B_47MM9_0 rounded FPqRD2zVqJeAD2zV7MM9_0" style={{
+                          <div className="FPqR2B_4qJeA2B_47MM9_0 FPqRD2zVqJeAD2zV7MM9_0" style={{
                             borderRadius: notificationStyle.borderRadius,
                             backgroundColor: notificationStyle.backgroundColor,
                             border: `${notificationStyle.borderWidth} ${notificationStyle.borderStyle} ${notificationStyle.borderColor}`
