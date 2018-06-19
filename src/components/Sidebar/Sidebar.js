@@ -95,7 +95,7 @@ class Sidebar extends Component {
                       type="button"
                       className="btn btn-outline-primary btn-rounded waves-light waves-effect"
                     >
-                      <i className="fi-cloud-upload"></i>
+                      <i className="fi-arrow-up"></i>
                   &nbsp;{' '}
                       <span className="p">Upgrade</span>{' '}
                     </button></Link>
