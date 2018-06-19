@@ -206,6 +206,7 @@ class Dashboard extends Component {
               <div className="card-box">
                 <h4 className="header-title mb-4">Account Usage Overview</h4>
                 <hr/>
+
                 <Row>
                   <div className="col-sm-6 col-lg-6 col-xl-3">
                     <div className="card-box mb-0 widget-chart-two">
@@ -322,9 +323,6 @@ class Dashboard extends Component {
               </div>
             </Col>
           </Row>
-
-         
-          
           <Row>
             <Col md={12}>
               <div className="card-box">
@@ -356,7 +354,7 @@ class Dashboard extends Component {
                     <div className="clearfix"></div>
                   </Col>
                 </Row>
-                
+
                 <hr/>
                 <Row>
                   <Col md={12}>
@@ -364,7 +362,7 @@ class Dashboard extends Component {
                       statsIcon="fa fa-history"
                       id="chartHours"
                       stats="Updated 3 minutes ago"
-                  
+
                       content={
                         <div className="ct-chart">
                           <LineChart data={chartData} options={chartOptions} height="250" redraw />
@@ -376,66 +374,6 @@ class Dashboard extends Component {
               </div>
             </Col>
           </Row>
-
-
- 
-
-
-                        
-
-          {/* <Row>
-            <Col md={6}>
-              <Row>
-                <Col lg={6} sm={6}>
-                  <Row>
-                    <Col lg={12}>
-                      <Card title="Active Campaigns" category="" content={<div className="table-full-width" > <Scrollbars style={{
-                        height: 150
-                      }}>
-                        <table className="table">
-                          <Website data={campaignInfo ? campaignInfo.websiteLive : []} handleRouteChange={this.handleRouteChange} render={campaignInfo ? true : false} />
-                        </table>
-                      </Scrollbars>
-                      </div>} />
-                    </Col>
-                  </Row>
-                </Col>
-                <Col lg={6} sm={6}>
-
-                  <Row>
-                    <Col lg={12} sm={12}>
-                      <StatsCard statsClass="card card-stats  eqheight" statsText="Unique Visitors" statsValue={profile?profile.uniqueVisitors.toLocaleString():0}/>
-                    </Col>
-                  </Row>
-                  <Row>
-                    <Col lg={12} sm={12}>
-                      <StatsCard statsClass="card card-stats  eqheight" statsText="Notifications Shown" statsValue={campaignInfo ? campaignInfo.notificationCount : 0} />
-                    </Col>
-                  </Row>
-                </Col>
-              </Row>
-
-            </Col>
-
-            <Col md={6}>
-              <Row>
-                <Col lg={12}>
-                  <Card
-                    statsIcon="fa fa-history"
-                    id="chartHours"
-                    title="Website Traffic this week"
-                    category="24 Hours performance"
-                    stats="Updated 3 minutes ago"
-                    content={
-                      <div className="ct-chart">
-                        <LineChart data={chartData} options={chartOptions} height="250" redraw />
-                      </div>
-                    }
-                  />
-                </Col>
-              </Row>
-            </Col>
-          </Row> */}
         </div>
       </div>
     );
