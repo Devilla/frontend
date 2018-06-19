@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
-import { Row, Col } from 'react-bootstrap';
+import { Row, Col} from 'react-bootstrap';
 import moment from 'moment';
 import Circle from 'react-circle';
 //import { Scrollbars } from 'react-custom-scrollbars';
@@ -143,6 +143,7 @@ class Dashboard extends Component {
               <div className="card-box">
                 <h4 className="header-title mb-4">Account Usage Overview</h4>
                 <hr/>
+
                 <Row>
                   <div className="col-sm-6 col-lg-6 col-xl-3">
                     <div className="card-box mb-0 widget-chart-two">
@@ -262,9 +263,6 @@ class Dashboard extends Component {
               </div>
             </Col>
           </Row>
-
-
-
           <Row>
             <Col md={12}>
               <div className="card-box">
@@ -286,11 +284,6 @@ class Dashboard extends Component {
               </div>
             </Col>
           </Row>
-
-
-
-
-
 
 
           {/* <Row>
