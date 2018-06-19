@@ -8,7 +8,7 @@ const Header = ({ openCloseDropdown, dropdownStyle, logout, renderHelp }) => {
     <ul className="list-unstyled topbar-right-menu float-right mb-0 nav-custom-header">
       <li className="dropdown notification-list">
         <a className="nav-link dropdown-toggle arrow-none" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-          <i className="fi-bell noti-icon"></i>
+          <i className="fi-bell" style={{fontSize:'25px'}}></i>
         </a>
         <div className="dropdown-menu dropdown-menu-right dropdown-menu-animated dropdown-lg">
           <div className="dropdown-item noti-title">
@@ -35,7 +35,7 @@ const Header = ({ openCloseDropdown, dropdownStyle, logout, renderHelp }) => {
           onClick={openCloseDropdown}
         >
           <img src={Avatar1} alt="user" className="rounded-circle" />
-          <span className="ml-1">Username
+          <span className="ml-1">
             <i className="mdi mdi-chevron-down"></i>
           </span>
         </a>
@@ -53,7 +53,7 @@ const Header = ({ openCloseDropdown, dropdownStyle, logout, renderHelp }) => {
             <i className="fi-help"></i>
             <span>Support</span>
           </a>
-
+          
           <a href="javascript:void(0);" className="dropdown-item notify-item" onClick={logout} >
             <i className="fi-power"></i>
             <span>Logout</span>

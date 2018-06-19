@@ -42,7 +42,7 @@ class Sidebar extends Component {
           </div>
 
           <div id="sidebar-menu">
-            <div className="button-list">
+            <div className="button-list ml-2 pl-2">
               <Link to="/new">
                 <button
                   type="button"
@@ -87,16 +87,19 @@ class Sidebar extends Component {
                   <ProgressBar className="text-center">
                     <ProgressBar striped active bsStyle={quotaPercentage<60?'info':quotaPercentage<90?'warning':'danger'} now={quotaPercentage} key={1} />
                   </ProgressBar>
-                  <p className="textColor" textColor>{quotaPercentage} % consumed.</p>
-
-                  <Link to='/Upgrade'><button
-                    type="button"
-                    className="btn btn-outline-primary btn-rounded waves-light waves-effect"
-                  >
-                    <i className="fi-arrow-up "></i>
+                  <div className="ml-4 ">
+                    <p className=" textColor" textColor>{quotaPercentage} % consumed.</p>
+                  </div>
+                  <div className="ml-3">
+                    <Link to='/Upgrade'><button
+                      type="button"
+                      className="btn btn-outline-primary btn-rounded waves-light waves-effect"
+                    >
+                      <i className="fi-cloud-upload"></i>
                   &nbsp;{' '}
-                    <span className="p text-center">Upgrade</span>{' '}
-                  </button></Link>
+                      <span className="p">Upgrade</span>{' '}
+                    </button></Link>
+                  </div>
                   <hr/>
                 </Col>
               </div>

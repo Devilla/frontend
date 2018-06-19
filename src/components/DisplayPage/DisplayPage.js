@@ -7,8 +7,8 @@ import {
   Button,
   HelpBlock
 } from 'react-bootstrap';
-import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
+import { connect } from 'react-redux';
 import CardTable from 'components/Template/card-with-page-table';
 import { pagethArray } from 'components/Template/data';
 import { fetchDisplayUrl, createPageUrl, clearPageUrl, removePageUrl } from 'ducks/pageurl';
@@ -55,7 +55,6 @@ class DisplayPage extends Component{
   fetchPathUrls(rule) {
     this.props.fetchDisplayUrl('display', rule._id);
   }
-
 
   handleNextState() {
     if(!this.props.displayUrls.length)
