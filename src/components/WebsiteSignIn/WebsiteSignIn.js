@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
-import { validateEmail, validatePassword, login, PASSWORD_MAX_LENGTH } from '../../services/FormUtils';
-import { store } from '../../index.js';
-import { loginSuccess } from '../../ducks/auth';
+import { connect } from 'react-redux';
+import { validateEmail, validatePassword, login, PASSWORD_MAX_LENGTH } from 'services/FormUtils';
+import { loginSuccess } from 'ducks/auth';
+import { load, loaded } from 'ducks/loading';
 import { browserHistory } from 'react-router';
 import { base } from 'services/api';
 import { toast } from 'react-toastify';
@@ -40,14 +41,16 @@ class WebsiteSignIn extends Component {
 
     if (!this.refs.email.value || !this.refs.password.value)
       this.setState({ error: 'All fields are required' });
-
+    this.props.load();
     // TODO: Redirect to dashboard on successfull login.
     login(this.refs.email.value, this.refs.password.value).then(res => {
-      store.dispatch(loginSuccess(res));
+      this.props.loginSuccess(res);
       this.setState({ error: '' });
       toast.info('Successfull', toastConfig);
+      this.props.loaded();
       browserHistory.push('/dashboard');
     }).catch(err => {
+      this.props.loaded();
       this.setState({ error: err });
     });
   };
@@ -198,4 +201,10 @@ class WebsiteSignIn extends Component {
   }
 }
 
-export default WebsiteSignIn;
+const mapDispatchToProps = {
+  loginSuccess,
+  load,
+  loaded
+};
+
+export default connect(null, mapDispatchToProps)(WebsiteSignIn);

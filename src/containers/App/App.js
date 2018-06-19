@@ -58,8 +58,12 @@ class App extends Component {
 
 }
 
+const mapStateToProps = state => ({
+  loading: state.getIn(['loading', 'state'])
+});
+
 const mapDispatchToProps = {
   checkTokenExists
 };
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

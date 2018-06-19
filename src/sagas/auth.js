@@ -116,7 +116,7 @@ export function* forgotPassword(action) {
     yield put(load());
     const res = yield call(api.POST, 'auth/forgot-password', action.data);
     if(res.error)
-      yield toast.error(res.message, toastConfig);
+      yield put(actions.forgotPasswordError(res.message));
     else {
       yield toast.info('Reset link sent.', toastConfig);
       yield browserHistory.push('/login');

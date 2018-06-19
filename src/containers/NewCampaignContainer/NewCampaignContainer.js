@@ -40,7 +40,6 @@ class NewCampaignContainer extends Component {
     this.handleWebsiteChange = this.handleWebsiteChange.bind(this);
     this.handleCampaignAuth = this.handleCampaignAuth.bind(this);
     this.handleWebsiteAuth = this.handleWebsiteAuth.bind(this);
-    this.handleNextButton = this.handleNextButton.bind(this);
     this.setActiveState = this.setActiveState.bind(this);
     this.handlePixelCopy = this.handlePixelCopy.bind(this);
     this.verifyPixelStatus = this.verifyPixelStatus.bind(this);

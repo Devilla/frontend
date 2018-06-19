@@ -5,6 +5,7 @@ import {validateEmail, validatePassword, register, PASSWORD_MAX_LENGTH} from 'se
 import { Animated } from'react-animated-css';
 import { Alert, HelpBlock } from 'react-bootstrap';
 import { store } from 'index.js';
+import { load, loaded } from 'ducks/loading';
 import { loginSuccess } from 'ducks/auth';
 import { browserHistory } from 'react-router';
 import { toast } from 'react-toastify';
@@ -84,13 +85,16 @@ class WebsiteSignUp extends Component {
     if(password !== confirmPassword)
       return this.setState({errorConfirmPassword: 'Password doesnot match'});
 
+    store.dispatch(load());
     // TODO: Show 'Check email for further instructions.' message on success
     register(email, password).then(res => {
       toast.info('Successfull', toastConfig);
       store.dispatch(loginSuccess(res));
+      store.dispatch(loaded());
       browserHistory.push('/getting-started');
       this.setState({isRegistered: true, error: ''});
     }).catch(err => {
+      store.dispatch(loaded());
       this.setState({error: err});
     });
   };

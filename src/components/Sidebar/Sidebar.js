@@ -12,7 +12,7 @@ class Sidebar extends Component {
       width: window.innerWidth,
       uniqueVisitors:20000,
       uniqueVisitorQouta:30000,
-      uniqueVisitorsQoutaLeft:29130,
+      uniqueVisitorsQoutaLeft:29130
     };
   }
 
