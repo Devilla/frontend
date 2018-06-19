@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import { Influence } from 'img';
+import {Col, ProgressBar } from 'react-bootstrap';
 import appRoutes from 'routes/app';
 import './Sidebar.scss';
 //import 'containers/DashboardContainer/asset/css/style.scss';
@@ -9,7 +10,10 @@ class Sidebar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      width: window.innerWidth
+      width: window.innerWidth,
+      uniqueVisitors:20000,
+      uniqueVisitorQouta:30000,
+      uniqueVisitorsQoutaLeft:29130,
     };
   }
 
@@ -18,7 +22,7 @@ class Sidebar extends Component {
   }
 
   render() {
-    const { disableButton } = this.props;
+    var { disableButton, quotaPercentage=Math.round(100*this.state.uniqueVisitors/this.state.uniqueVisitorQouta) } = this.props;
     return (
       <div className="left side-menu">
         <div>
@@ -38,7 +42,7 @@ class Sidebar extends Component {
           </div>
 
           <div id="sidebar-menu">
-            <div className="button-list">
+            <div className="button-list ml-2 pl-2">
               <Link to="/new">
                 <button
                   type="button"
@@ -72,18 +76,33 @@ class Sidebar extends Component {
                   );
                 return null;
               })}
-              <li className="menu-title">More</li>
-              <li>
-                <a href="#dashboard">
-                  <i className="fi-location-2" /> <span> Beta Features </span>{' '}
-                  <span className="menu-arrow" />
-                </a>
-                <ul className="nav-second-level" aria-expanded="false">
-                  <li>
-                    <a href="#dashboard">Live Stream</a>
-                  </li>
-                </ul>
-              </li>
+              <hr />
+              <div className="custombottom ml-2">
+                <hr/>
+                <div className="ml-3 pb-3">
+                  <i className='pb-2 fi-cloud'></i>
+                  <span className="ml-2 textColor">Plan Usage</span>
+                </div>
+                <Col md={12}>
+                  <ProgressBar className="text-center">
+                    <ProgressBar striped active bsStyle={quotaPercentage<60?'info':quotaPercentage<90?'warning':'danger'} now={quotaPercentage} key={1} />
+                  </ProgressBar>
+                  <div className="ml-4 ">
+                    <p className=" textColor" textColor>{quotaPercentage} % consumed.</p>
+                  </div>
+                  <div className="ml-3">
+                    <Link to='/Upgrade'><button
+                      type="button"
+                      className="btn btn-outline-primary btn-rounded waves-light waves-effect"
+                    >
+                      <i className="fi-arrow-up"></i>
+                  &nbsp;{' '}
+                      <span className="p">Upgrade</span>{' '}
+                    </button></Link>
+                  </div>
+                  <hr/>
+                </Col>
+              </div>
             </ul>
           </div>
           <div className="clearfix" />
