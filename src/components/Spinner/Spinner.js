@@ -2,7 +2,7 @@ import React from 'react';
 import './Spinner.css';
 
 const Spinner = ({ loading }) =>
-  <div className="loader" style={{ display: loading ? 'flex' : 'none', width: '100%' }}>
+  <div className="customer-loader" style={{ display: loading ? 'flex' : 'none', width: '100%' }}>
     <svg className="lds-spinner" width="200px"  height="200px"  viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" style={{background: 'none'}}><g transform="rotate(0 50 50)">
       <rect x="47" y="24" rx="9.4" ry="4.8" width="6" height="12" fill={'#5428FF'}>
         <animate attributeName="opacity" values="1;0"  dur="1s" begin="-0.9166666666666666s" repeatCount="indefinite"></animate>
