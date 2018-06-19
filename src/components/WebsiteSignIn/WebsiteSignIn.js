@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
-import { validateEmail, validatePassword, login, PASSWORD_MAX_LENGTH } from '../../services/FormUtils';
-// import { store } from 'index.js';
+import { validateEmail, validatePassword, login, PASSWORD_MAX_LENGTH } from 'services/FormUtils';
 import { loginSuccess } from 'ducks/auth';
 import { load, loaded } from 'ducks/loading';
 import { browserHistory } from 'react-router';
