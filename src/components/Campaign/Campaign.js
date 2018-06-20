@@ -9,7 +9,6 @@ import {
   HelpBlock
 } from 'react-bootstrap';
 import CardHeader from 'components/Template/card-with-header';
-import Button from 'components/Template/customButton';
 
 
 const Campaign = ({
@@ -69,15 +68,17 @@ const Campaign = ({
                     </FormGroup>
                   </div>
                 </Row>
-                <Button
+
+                <button type="submit" className="btn btn-custom  waves-light waves-effect number ml-2 pl-4 pr-4" disabled={isDisabled}>Next Create Your Campaign </button>
+                {/*}<Button
                   bsStyle="info"
                   pullRight
                   fill
                   type="submit"
-                  disabled={isDisabled}
+
                 >
                   Next >
-                </Button>
+                </Button>*/}
                 <div className="clearfix"></div>
               </form>
             }/>

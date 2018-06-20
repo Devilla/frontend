@@ -53,7 +53,7 @@ const InstallPixel = ({ elastic, setActiveState, campaign, verifyPixelStatus, ha
       <a href="#">Clicking Here.</a>
       </p>
       <div className="float-right mr-0 pr-2">
-        <button type="button" className="btn btn-custom  waves-light waves-effect number  pl-3 pr-3" onClick={() => setActiveState(2)}> Next </button>
+        <button type="button" className="btn btn-custom waves-light waves-effect number  pl-3 pr-3" onClick={() => setActiveState(2)}> Next<i className="icon-arrow-right pl-2"></i> </button>
       </div>
       <div className="clearfix"></div>
     </div>
