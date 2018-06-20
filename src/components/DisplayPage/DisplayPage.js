@@ -14,6 +14,7 @@ import { fetchDisplayUrl, createPageUrl, clearPageUrl, removePageUrl } from 'duc
 import { validatePath } from 'components/Common/function';
 import Popup from 'react-popup';
 
+
 import './DisplayPage.scss';
 
 class DisplayPage extends Component{
@@ -208,10 +209,10 @@ class DisplayPage extends Component{
               </Col>
             </Row>
             <div className="float-left">
-              <button type="button" className="btn btn-custom  waves-light waves-effect number " onClick={this.handleBackState}><i className="icon-arrow-left pr-2"></i>Back</button>
+              <button type="button" className="btn btn-custom waves-light waves-effect number " onClick={this.handleBackState}><i className="icon-arrow-left pr-2"></i>Back</button>
             </div>
             <div className="float-right">
-              <button type="button" className="btn btn-custom  waves-light waves-effect number ml-2 pl-4 pr-4" onClick={this.handleNextState}>Next<i className="icon-arrow-right pl-2"></i> </button>
+              <button type="button" className="btn btn-custom waves-light waves-effect number ml-2 pl-4 pr-4" onClick={this.handleNextState}>Next<i className="icon-arrow-right pl-2"></i> </button>
             </div>
             <div className="clearfix"></div>
           </div>

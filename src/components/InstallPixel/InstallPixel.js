@@ -14,7 +14,7 @@ const InstallPixel = ({ elastic, setActiveState, campaign, verifyPixelStatus, ha
       <p className="text-muted text-left">Please copy your unique script & paste it in the Header of your Website. Add this
         To every page where you want To track, measure And show notifications.</p>
       <div className="bgcolor text-monospace border-dark">
-        <p className="m-l-30">script src="https://cdninfluence.nyc3.digitaloceanspaces.com/influence-analytics.js">
+        <p className="m-l-30 p-3">script src="https://cdninfluence.nyc3.digitaloceanspaces.com/influence-analytics.js">
           /script
         <br/> script
         <br/> new Influence(
@@ -25,8 +25,8 @@ const InstallPixel = ({ elastic, setActiveState, campaign, verifyPixelStatus, ha
         </p>
       </div>
       <div className="float-left custom-width  align-install-btn">
+        <button type="button" className="btn btn-custom waves-light waves-effect number pl-2 pr-2" onClick={handlePixelCopy}>Copy</button>
         <button type="button" style={elastic==undefined?{backgroundColor:'#097fff'}:elastic.error?{backgroundColor:'#f12c0b'}:{backgroundColor:'#e68f1f'}} className="btn btn-custom  waves-light waves-effect number" onClick={() => verifyPixelStatus()}>Verify Pixel</button>
-        <button type="button" className="btn btn-custom waves-light waves-effect number" onClick={handlePixelCopy}>Copy this !</button>
       </div>
       <p className="m-t-30">
         <br/>
