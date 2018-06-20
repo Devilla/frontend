@@ -16,7 +16,7 @@ const RightView = ({
           </label>
           <input
             type="number"
-            className="form-control  col-md-3"
+            className="form-control custom-select col-md-3"
             placeholder="Enter Seconds..."
             value={initialDelay}
             onChange={(e) => handleStateChange('initialDelay', e.target.value)}
@@ -28,7 +28,7 @@ const RightView = ({
           </label>
           <input
             type="number"
-            className="form-control  col-md-3"
+            className="form-control custom-select   col-md-3"
             placeholder="Enter Seconds..."
             value={displayTime}
             onChange={(e) => handleStateChange('displayTime', e.target.value)}
@@ -40,7 +40,7 @@ const RightView = ({
           </label>
           <input
             type="number"
-            className="form-control  col-md-3"
+            className="form-control custom-select col-md-3"
             placeholder="Enter Seconds..."
             value={delayBetween}
             onChange={(e) => handleStateChange('delayBetween', e.target.value)}
@@ -50,7 +50,7 @@ const RightView = ({
           <label className="text-muted">
             Select Position for Popup Notification
           </label>
-          <select className="custom-select  muted-text" value={displayPosition} onChange={(e) => handleStateChange('displayPosition', e.target.value)}>
+          <select className="form-control muted-text" value={displayPosition} onChange={(e) => handleStateChange('displayPosition', e.target.value)}>
             <option value="Bottom left">Bottom Left</option>
             <option value="Bottom Right">Bottom Right</option>
             <option value="Bottom Center">Bottom Center</option>

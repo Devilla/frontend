@@ -110,9 +110,11 @@ class Rules extends Component{
             {...this.state}
           />
         </div>
-        <div className="m-t-50 float-right align-install-btn">
-          <button type="button" className="btn btn-custom  waves-light waves-effect number " onClick={this.handleBackState}>Previous</button>
-          <button type="button" className="btn btn-custom  waves-light waves-effect number ml-2 pl-4 pr-4" onClick={this.saveRules}>Next </button>
+        <div className="float-left">
+          <button type="button" className="btn btn-color  waves-light waves-effect number " onClick={this.handleBackState}>Previous</button>
+        </div>
+        <div className="float-right">
+          <button type="button" className="btn btn-color  waves-light waves-effect number ml-2 pl-4 pr-4" onClick={this.saveRules}>Next </button>
         </div>
         <div className="clearfix"></div>
       </div>
