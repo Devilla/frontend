@@ -433,87 +433,134 @@ export class NotificationDesignSetting extends Component {
                 }
               </div>
 
+
               <div className={`tab-pane ${activeClass == 3 ? 'show active' : ''}`} id="paypal">
-                <Row>
-                  <Col md={7} style={{'paddingRight': 0}}>
-                    <span className="mt-5 text-muted h6">Display the last conversion</span>
-                  </Col>
-                  <Col md={3} style={{'padding': 0, width: '10%'}}>
-                    <FormGroup>
-                      <FormControl
-                        type="number"
-                        min="0"
+                {notification.notificationName === 'Live Visitor Count'  &&
+                  <Row className="mb-3">
+                    <Col md={9} style={{padding: '8px 15px', width: '45%'}}>
+                      <span className="mt-5 text-muted h6"> Hide 'Live Viewer' if viewers less than</span>
+                    </Col>
+                    <Col md={3} style={{'padding': 0, width: '10%'}}>
+                      <FormGroup>
+                        <FormControl
+                          type="number"
+                          min="0"
+                          value={notificationPanelStyle.liveVisitorCount}
+                          onChange={(e) => this.handleLiveVistorCount(e)}
+                          bsSize="sm"
+                        />
+                      </FormGroup>
+                    </Col>
+                  </Row>
+                }
+                {notification.notificationName === 'Bulk Activity'  &&
+                  <Row className="mb-3">
+                    <Col md={7} style={{padding: '8px 15px', width: '45%'}}>
+                      <span className="mt-5 text-muted h6"> Display bulk data from last</span>
+                    </Col>
+                    <Col md={2} style={{'padding': 0, width: '10%'}}>
+                      <FormGroup>
+                        <FormControl
+                          type="number"
+                          min="0"
+                          value={notificationPanelStyle.bulkData}
+                          onChange={(e) => this.handleStateChangeDay(e)}
+                          bsSize="sm"
+                        />
+                      </FormGroup>
+                    </Col>
+                    <Col md={3}>
+                      <FormControl componentClass="select" bsSize="small" value={notificationPanelStyle.selectDurationData} onChange={this.handleDurationChange}>
+                        <option value="hours">hours</option>
+                        <option value="days">days</option>
+                      </FormControl>
+                    </Col>
+                  </Row>
+                }
+                {notification.notificationName === 'Recent Activity' &&
+                  <div>
+                    <Row>
+                      <Col md={4} style={{padding: '8px 15px'}}>
+                        <span className="mt-5 text-muted h6">Display the last</span>
+                      </Col>
+                      <Col md={3} style={{'padding': 0, width: '10%'}}>
+                        <FormGroup>
+                          <FormControl
+                            type="number"
+                            min="0"
+                            onChange={(e) => this.handleStateChangeNumber(e)}
+                            bsSize="sm"
+                            value={notificationPanelStyle.recentNumber}
+                          />
+                        </FormGroup>
+                      </Col>
+                      <Col md={4} style={{padding: '10px 15px'}}>
+                        <span className="mt-5 text-muted h6">conversions</span>
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col md={7} style={{padding: '8px 15px', width: '50%'}}>
+                        <span className="mt-5 text-muted h6">Display conversions from last</span>
+                      </Col>
+                      <Col md={2} style={{ padding: 0, width: '10%' }}>
+                        <FormGroup>
+                          <FormControl
+                            type="number"
+                            min="0"
+                            value={notificationPanelStyle.recentConv}
+                            onChange={(e) => this.handleStateChangeConv(e)}
+                            bsSize="sm"
+                          />
+                        </FormGroup>
+                      </Col>
+                      <Col md={3}>
+                        <FormControl componentClass="select" bsSize="small" value={notificationPanelStyle.selectLastDisplayConversation} onChange={this.handleLastDisplayDurationChange}>
+                          <option value="hours">hours</option>
+                          <option value="days">days</option>
+                        </FormControl>
+                      </Col>
+                    </Row>
+                    <Row className="mb-3">
+                      <Col md={10}>
+                        <span className="mt-5 text-muted h6">Hide anonymous conversions
+                        </span>
+                      </Col>
+                      <Col md={2}>
+                        <Switch
+                          circleStyles={{
+                            onColor: '#097fff',
+                            offColor: 'gray',
+                            diameter: 18
+                          }}
+                          switchStyles={{
+                            width: 50
+                          }}
 
-                        onChange={(e) => this.handleStateChangeNumber(e)}
-                        bsSize="sm"
-                        value={notificationPanelStyle.recentNumber}
-
-                      />
-                    </FormGroup>
-                  </Col>
-
-                </Row>
-                <Row>
-                  <Col md={7} style={{'paddingRight': 0, width: '50%'}}>
-                    <span className="mt-5 text-muted h6">Display conversation from last</span>
-                  </Col>
-                  <Col md={2} style={{ padding: 0, width: '10%' }}>
-                    <FormGroup>
-                      <FormControl
-                        type="number"
-                        min="0"
-                        value={notificationPanelStyle.recentConv}
-                        onChange={(e) => this.handleStateChangeConv(e)}
-                        bsSize="sm"
-                      />
-                    </FormGroup>
-                  </Col>
-                  <Col md={3}>
-                    <FormControl componentClass="select" bsSize="small" value={notificationPanelStyle.selectLastDisplayConversation} onChange={this.handleLastDisplayDurationChange}>
-                      <option value="hours">hours</option>
-                      <option value="days">days</option>
-                    </FormControl>
-                  </Col>
-                </Row>
-                <Row className="mb-3">
-                  <Col md={10}>
-                    <span className="mt-5 text-muted h6">Hide anonymous conversions
-                    </span>
-                  </Col>
-                  <Col md={2}>
-                    <Switch
-                      circleStyles={{
-                        onColor: '#097fff',
-                        offColor: 'gray',
-                        diameter: 18
-                      }}
-                      switchStyles={{
-                        width: 50
-                      }}
-
-                      cssClass="alignsame"
-                      value={notificationPanelStyle.hideAnonymousConversion}
-                      onChange={(e) => this.handleAnonymousConversionsChange(e)}
-                    />
-                  </Col>
-                </Row>
-                <Row className="mb-3">
-                  <Col md={10}>
-                    <span className="mt-5 text-muted h6">Only display notifications from user's country</span>
-                  </Col>
-                  <Col md={2}>
-                    <Switch circleStyles={{
-                      onColor: '#097fff',
-                      offColor: 'gray',
-                      diameter: 18
-                    }} switchStyles={{
-                      width: 50
-                    }} cssClass="alignsame"
-                    value={notificationPanelStyle.onlyDisplayNotification}
-                    onChange={(e) => this.handleOnlyDisplayNotification(e)}
-                    />
-                  </Col>
-                </Row>
+                          cssClass="alignsame"
+                          value={notificationPanelStyle.hideAnonymousConversion}
+                          onChange={(e) => this.handleAnonymousConversionsChange(e)}
+                        />
+                      </Col>
+                    </Row>
+                    <Row className="mb-3">
+                      <Col md={10}>
+                        <span className="mt-5 text-muted h6">Only display notifications from user's country</span>
+                      </Col>
+                      <Col md={2}>
+                        <Switch circleStyles={{
+                          onColor: '#097fff',
+                          offColor: 'gray',
+                          diameter: 18
+                        }} switchStyles={{
+                          width: 50
+                        }} cssClass="alignsame"
+                        value={notificationPanelStyle.onlyDisplayNotification}
+                        onChange={(e) => this.handleOnlyDisplayNotification(e)}
+                        />
+                      </Col>
+                    </Row>
+                  </div>
+                }
                 <Row className="mb-3">
                   <Col md={10}>
                     <span className="mt-5 text-muted h6">Notifications Clickable</span>

@@ -52,7 +52,7 @@ const LeftView = ({
         <br/>
         <li className="m-t-5">
           <label className="text-muted">
-            Select Popup Notification Animation
+            Select Pop-in Animation
           </label>
           <select className="custom-select  muted-text" value={popupAnimationIn} onChange={(e) => { handleStateChange('popupAnimationIn', e.target.value); handleAnimation(e.target.value); }}>
             <option value="fadeInUp">Fade in Up</option>
@@ -67,7 +67,7 @@ const LeftView = ({
         </li>
         <li className="mt-4">
           <label className="text-muted">
-            Select Popout Notification Animation
+            Select Pop-out Animation
           </label>
           <select className="custom-select  muted-text" value={popupAnimationOut} onChange={(e) => { handleStateChange('popupAnimationOut', e.target.value); handleAnimation(e.target.value);}}>
             <option value="fadeOutUp">Fade out Up</option>
