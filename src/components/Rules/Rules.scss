@@ -1,0 +1,17 @@
+li{
+div {
+.checkbox{.checkbox-info{ input[type="checkbox"]:checked + label {
+  &::before {
+    background-color: #097fff;
+    border-color: #097fff;
+  }
+  &::after {
+    border-color: #ffffff;
+  }
+}}}
+}}
+.btn-color{
+  color:white;
+  background-color: #097fff;
+  border-color: #ffffff;
+}
