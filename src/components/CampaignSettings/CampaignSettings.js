@@ -53,7 +53,7 @@ const CampaignSettings = ({
             <a data-toggle="tab" aria-expanded="true" className={`nav-link ${activeClass == 2?'active pb-3 pt-3':'pb-3 pt-3'}`} onClick={() => setActiveState(2)}>
               <i className="fi-mail mr-2"></i>Notifications
             </a>
-          </li>
+          </li><li className="arrow-right"></li>
           <li className="nav-item waves-effect text-center">
             <a data-toggle="tab" aria-expanded="false" className={`nav-link ${activeClass == 3?'active pb-3 pt-3':'pb-3 pt-3'}`} onClick={() => setActiveState(3)}>
               <i className="fi-cog mr-2"></i> Settings

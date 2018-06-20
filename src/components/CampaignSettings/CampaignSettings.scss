@@ -11,15 +11,25 @@
       }
     }
   }
-  .nav.nav-pills {
-    > li > a.active {
-      color:#ffffff;
-      font-family: "Rubik", sans-serif;
+  a{
+    &.nav-link.active.pb-3.pt-3 {
+      &:hover {
+        color: #fff !important;
+      }
     }
-    .nav-item.show .nav-link, .nav-link.active {
-      background: #097fff;
-    }
+  
   }
+ 
+  
+//   .nav.nav-pills {
+//     > li > a.active {
+//       color:#ffffff;
+//       font-family: "Rubik", sans-serif;
+//     }
+//     .nav-item.show .nav-link, .nav-link.active {
+//       background: #097fff;
+//     }
+//   }
 
   .new-campaign-header {
 
