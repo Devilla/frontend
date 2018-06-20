@@ -5,14 +5,14 @@ const RightView = ({
   initialDelay,
   displayTime,
   delayBetween,
-  displayPosition,
+  displayPosition
 }) => {
   return (
     <div className="col-md-6 pl-5">
       <ul className="text-muted text-left list-unstyled">
         <li>
           <label className="text-muted">
-            Initial delay in starting first notification
+            Initial delay in starting first notification(seconds)
           </label>
           <input
             type="number"
@@ -24,7 +24,7 @@ const RightView = ({
         </li>
         <li className="mt-4">
           <label className="text-muted">
-              Display time for each notification
+              Display time for each notification(seconds)
           </label>
           <input
             type="number"
@@ -36,7 +36,7 @@ const RightView = ({
         </li>
         <li className="mt-4 pt-2">
           <label className="text-muted">
-            Delay between subsequent notifications
+            Delay between subsequent notifications(seconds)
           </label>
           <input
             type="number"

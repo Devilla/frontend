@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
+import Popup from 'react-popup';
 
 import { checkTokenExists } from 'ducks/auth';
 import { Spinner, Header, Sidebar } from 'components';
@@ -16,7 +17,7 @@ import './animate.min.scss';
 import 'react-select/dist/react-select.css';
 import 'react-popup/style.css';
 import './DashboardContainer.scss';
-import Popup from 'react-popup';
+import './animate.min.scss';
 
 
 class DashboardContainer extends Component {
