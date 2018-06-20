@@ -15,7 +15,7 @@ const appRoutes = [
   // { name: 'Help', icon: 'pe-7s-call' },
   // { redirect: true }
   { path: '/dashboard', name: 'Home', icon: 'fi-air-play', component: Dashboard },
-  { path: '/dashboard', name: 'Campaigns', icon: 'fi-layers', component: Notification },
+  { path: '/campaigns', name: 'Campaigns', icon: 'fi-layers', component: Notification },
   { path: '/analytics', name: 'Analytics', icon: 'fi-bar-graph-2', component: Analytics },
   { path: '/integration', name: 'Integrations', icon: 'fi-command', component: Dashboard },
   // { name: "Help", icon: "fi-speech-bubble" },

@@ -80,30 +80,18 @@ class Sidebar extends Component {
                   );
                 return null;
               })
-              })}
+              }
               <div className="custombottom ml-2 mb-5">
                 <hr/>
-                <div className="ml-3 pb-3">
-                  <i className='pb-2 fi-cloud'></i>
-                  <span className="ml-2 textColor">Plan Usage</span>
-                </div>
-                <Col md={12}>
+                
+                <Col md={12} className="pt-4">
                   <ProgressBar className="text-center">
                     <ProgressBar striped active bsStyle={this.state.quotaPercentage<60?'info':this.state.quotaPercentage<90?'warning':'danger'} now={this.state.quotaPercentage} key={1} />
                   </ProgressBar>
                   <div className="ml-4 ">
                     <p className=" textColor" textColor>{this.state.quotaPercentage} % consumed.</p>
                   </div>
-                  <div className="ml-3">
-                    <Link to='/Upgrade'><button
-                      type="button"
-                      className="btn btn-outline-primary btn-rounded waves-light waves-effect"
-                    >
-                      <i className="fi-arrow-up"></i>
-                  &nbsp;{' '}
-                      <span className="p">Upgrade</span>{' '}
-                    </button></Link>
-                  </div>
+            
                   <hr/>
                 </Col>
               </div>
