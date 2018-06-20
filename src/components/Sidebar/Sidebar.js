@@ -74,7 +74,7 @@ class Sidebar extends Component {
                               prop.upgrade ? '' : <i className={prop.icon}></i>
                             }
                         
-                            <span>{prop.name}</span> 
+                            <Link to={prop.path}><span>{prop.name}</span> </Link>
                           </Link>)
                       }
                     </li>
