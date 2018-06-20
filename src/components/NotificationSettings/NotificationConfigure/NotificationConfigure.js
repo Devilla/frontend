@@ -7,15 +7,18 @@ import Switch from 'react-flexible-switch';
 import './NotificationConfigure.scss';
 
 const NotificationConfigure = ({
+  toggleTextBox,
   notification,
   activity,
   contentText,
   visitorText,
+  notificationUrl,
   setDefaultPanel,
   handleActivityChange,
   handleContentChange,
   notificationPanelStyle,
   handleNotificationStyleChange,
+  handleClickableNotification,
   saveConfiguration,
   backConfiguration
 }) => {
@@ -37,12 +40,15 @@ const NotificationConfigure = ({
                 </Col>
                 <Col md={6}>
                   <NotificationDesignSetting
+                    toggleTextBox={toggleTextBox}
                     contentText={contentText}
                     visitorText={visitorText}
+                    notificationUrl={notificationUrl}
                     notification={notification}
                     notificationPanelStyle={notificationPanelStyle}
                     onConfigChange={handleNotificationStyleChange}
                     handleContentChange={handleContentChange}
+                    handleClickableNotification={handleClickableNotification}
                   />
                 </Col>
 

@@ -19,7 +19,8 @@ export class NotificationDesignSetting extends Component {
       isBgColorSwatchOpen: false,
       isTextColorSwatchOpen: false,
       isLinkColorSwatchOpen: false,
-      activeClass: 1
+      activeClass: 1,
+      toggleTextBox: false
     };
     Object.assign(this.state, props.notificationPanelStyle);
   }
@@ -204,7 +205,16 @@ export class NotificationDesignSetting extends Component {
 
   render() {
     const { activeClass } = this.state;
-    const { notificationPanelStyle, handleContentChange, contentText, visitorText, notification } = this.props;
+    const {
+      notificationPanelStyle,
+      handleContentChange,
+      contentText,
+      visitorText,
+      notification,
+      notificationUrl,
+      toggleTextBox,
+      handleClickableNotification
+    } = this.props;
     const styles = reactCSS({
       'default': {
         colorSwatch: {
@@ -403,7 +413,7 @@ export class NotificationDesignSetting extends Component {
               </div>
 
               <div className={`tab-pane ${activeClass == 3 ? 'show active' : ''}`} id="paypal">
-                <Row className="mb-3">
+                <Row>
                   <Col md={7} style={{'paddingRight': 0}}>
                     <span className="mt-5 text-muted h6">Display the last conversion</span>
                   </Col>
@@ -422,7 +432,7 @@ export class NotificationDesignSetting extends Component {
                   </Col>
 
                 </Row>
-                <Row className="mb-3">
+                <Row>
                   <Col md={7} style={{'paddingRight': 0, width: '50%'}}>
                     <span className="mt-5 text-muted h6">Display conversation from last</span>
                   </Col>
@@ -444,7 +454,7 @@ export class NotificationDesignSetting extends Component {
                     </FormControl>
                   </Col>
                 </Row>
-                <Row className="mb-4">
+                <Row className="mb-3">
                   <Col md={10}>
                     <span className="mt-5 text-muted h6">Hide anonymous conversions
                     </span>
@@ -466,7 +476,7 @@ export class NotificationDesignSetting extends Component {
                     />
                   </Col>
                 </Row>
-                <Row>
+                <Row className="mb-3">
                   <Col md={10}>
                     <span className="mt-5 text-muted h6">Only display notifications from user's country</span>
                   </Col>
@@ -480,6 +490,35 @@ export class NotificationDesignSetting extends Component {
                     }} cssClass="alignsame"
                     value={notificationPanelStyle.onlyDisplayNotification}
                     onChange={(e) => this.handleOnlyDisplayNotification(e)}
+                    />
+                  </Col>
+                </Row>
+                <Row className="mb-3">
+                  <Col md={10}>
+                    <span className="mt-5 text-muted h6">Notifications Clickable</span>
+                  </Col>
+                  <Col md={2}>
+                    <Switch circleStyles={{
+                      onColor: '#097fff',
+                      offColor: 'gray',
+                      diameter: 18
+                    }} switchStyles={{
+                      width: 50
+                    }} cssClass="alignsame"
+                    value={toggleTextBox}
+                    onChange={handleClickableNotification}
+                    />
+                  </Col>
+                </Row>
+                <Row style={toggleTextBox?{ display:'block', marginBottom: '-9%' }:{ display:'none', marginBottom: '-9%' }}>
+                  <Col md={12}>
+                    <FormControl
+                      type="text"
+                      maxLength="10"
+                      value={notificationUrl}
+                      placeholder="Enter URL"
+                      id="notificationUrl"
+                      onChange={(e) => handleContentChange(e.target.id, e.target.value)}
                     />
                   </Col>
                 </Row>
