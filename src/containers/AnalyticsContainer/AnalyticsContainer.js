@@ -193,7 +193,7 @@ class AnalyticsContainer extends Component {
           <td className="text-center">-</td>
           <td className="text-center">
             {
-              userDetails?((userDetails.length / visitor)   * 100).toFixed(2):0
+              userDetails && userDetails.length ?((userDetails.length / visitor)   * 100).toFixed(2):0
             } %</td>
           <td className="text-center"><a href="javascript:;" onClick={() => this.showGraph(website.websiteUrl, uniqueUsers)}>Graph</a></td>
         </tr>;
