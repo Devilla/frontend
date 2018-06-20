@@ -8,6 +8,7 @@ import './NotificationConfigure.scss';
 
 const NotificationConfigure = ({
   toggleTextBox,
+  toggleMap,
   notification,
   activity,
   contentText,
@@ -32,6 +33,7 @@ const NotificationConfigure = ({
               <div className="notification-configure-content">
                 <Col md={6}>
                   <NotificationDesign
+                    toggleMap={toggleMap}
                     contentText={contentText}
                     visitorText={visitorText}
                     notification={notification}
@@ -41,6 +43,7 @@ const NotificationConfigure = ({
                 <Col md={6}>
                   <NotificationDesignSetting
                     toggleTextBox={toggleTextBox}
+                    toggleMap={toggleMap}
                     contentText={contentText}
                     visitorText={visitorText}
                     notificationUrl={notificationUrl}

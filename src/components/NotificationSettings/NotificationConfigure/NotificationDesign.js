@@ -2,12 +2,10 @@ import React from 'react';
 
 const NotificationDesign = ({
   contentText,
-  visitorText = visitorText,
+  visitorText,
+  toggleMap,
   notificationPanelStyle,
   notification,
-  totaltext='2,002 ',
-  pretext='signed up for ',
-  posttext=' in the last 7 days'
 }) => {
   const {
     radius,
@@ -62,7 +60,7 @@ const NotificationDesign = ({
                             backgroundColor: notificationStyle.backgroundColor,
                             border: `${notificationStyle.borderWidth} ${notificationStyle.borderStyle} ${notificationStyle.borderColor}`
                           }}>
-                            <div className="FPqR1JYFqJeA1JYF7MM9_0"><img src="images/554cf2e92cb6bf677667d90c_Testimonial-10 - Copy.jpg" style={{ borderRadius: notificationStyle.borderRadius }} /></div>
+                            <div className="FPqR1JYFqJeA1JYF7MM9_0"><img src={toggleMap?'https://image.maps.cit.api.here.com/mia/1.6/mapview?app_id=jqBe50cRhOGMszLkt1Ab&app_code=uwZ-b66zb73TujBbVZ7iqQ&lat=28.6667&lon=77.2167&z=10&h=200&w=200':'images/554cf2e92cb6bf677667d90c_Testimonial-10 - Copy.jpg'} style={{ borderRadius: notificationStyle.borderRadius }} /></div>
                             <div className="FPqR2EbCqJeA2EbC7MM9_0">
                               <div className="FPqR2AUlqJeA2AUl7MM9_0" style={{
                                 color: notificationStyle.color,
@@ -173,12 +171,12 @@ const NotificationDesign = ({
                                   fontFamily: notificationStyle.fontFamily,
                                   fontWeight: notificationStyle.fontWeight
                                 }}>
-                                  <span>{totaltext}
+                                  <span>2,002
                                     &nbsp;&nbsp;{visitorText}&nbsp;&nbsp;
                                   </span>
                                 </span>
-                                <span>{pretext}{contentText}
-                                  {posttext}</span>
+                                <span>{`signed up for ${contentText} in the last 7 days`}
+                                </span>
                               </div>
                             </div>
                             <div className="FPqR29e1qJeA29e17MM9_0" style={{

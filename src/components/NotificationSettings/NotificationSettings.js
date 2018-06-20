@@ -67,7 +67,8 @@ class Notifications extends Component {
       notificationUrl: null,
       image: '',
       notifications: [],
-      toggleTextBox: false
+      toggleTextBox: false,
+      toggleMap: true
     };
     this.configure = this.configure.bind(this);
     this.handleActivityChange = this.handleActivityChange.bind(this);
@@ -122,7 +123,8 @@ class Notifications extends Component {
         notificationPanelStyle: config.panelStyle,
         contentText: config.contentText,
         visitorText: config.visitorText,
-        notificationUrl: config.notificationUrl
+        notificationUrl: config.notificationUrl,
+        toggleMap: config.toggleMap
       });
     }
   }
@@ -135,6 +137,7 @@ class Notifications extends Component {
       contentText: 'Company Name',
       visitorText: 'people',
       notificationUrl: null,
+      toggleMap: true,
       image: ''
     });
   }
@@ -189,6 +192,7 @@ class Notifications extends Component {
       contentText: this.state.contentText,
       visitorText: this.state.visitorText,
       notificationUrl: this.state.toggleTextBox && this.state.notificationUrl ?this.state.notificationUrl:null,
+      toggleMap: this.state.toggleMap,
       campaign: this.props.campaign._id
     };
     let configuration = this.props.configuration.size == 0 ? null : this.props.configuration.size ? this.props.configuration.toJS() : this.props.configuration;

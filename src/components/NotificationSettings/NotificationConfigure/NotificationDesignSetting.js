@@ -212,6 +212,7 @@ export class NotificationDesignSetting extends Component {
       visitorText,
       notification,
       notificationUrl,
+      toggleMap,
       toggleTextBox,
       handleClickableNotification
     } = this.props;
@@ -235,6 +236,7 @@ export class NotificationDesignSetting extends Component {
           backgroundColor: `rgb(${notificationPanelStyle.linkColor.r}, ${notificationPanelStyle.linkColor.g}, ${notificationPanelStyle.linkColor.b}, ${notificationPanelStyle.linkColor.a})`
         },
         swatch: {
+          margin: '5% 70%',
           padding: '0px',
           background: '#fff',
           borderRadius: '1px',
@@ -296,19 +298,10 @@ export class NotificationDesignSetting extends Component {
 
                   </Col>
                 </Row>
-                <Row className="mb-3">
+                <Row >
                   <Col md={12} className="text-muted h6">
                     <p className="h6">Border</p>
                     <Row>
-                      <Col md={6}>
-                        <div style={styles.swatch} onClick={this.showBorderSwatch}>
-                          <div style={{ ...styles.colorSwatch, ...styles.border }} />
-                        </div>
-                        {this.state.isBorderColorSwatchOpen ? <div style={styles.popover}>
-                          <div style={styles.cover} onClick={this.hideBorderSwatch} />
-                          <ChromePicker color={notificationPanelStyle.borderColor} onChange={this.handleBorderColorChange} />
-                        </div> : null}
-                      </Col>
                       <Col md={6}>
                         <div className='slider alignment'>
                           <Slider
@@ -320,10 +313,19 @@ export class NotificationDesignSetting extends Component {
                           />
                         </div>
                       </Col>
+                      <Col md={6} className="mt-2">
+                        <div style={styles.swatch} onClick={this.showBorderSwatch}>
+                          <div style={{ ...styles.colorSwatch, ...styles.border }} />
+                        </div>
+                        {this.state.isBorderColorSwatchOpen ? <div style={styles.popover}>
+                          <div style={styles.cover} onClick={this.hideBorderSwatch} />
+                          <ChromePicker color={notificationPanelStyle.borderColor} onChange={this.handleBorderColorChange} />
+                        </div> : null}
+                      </Col>
                     </Row>
                   </Col>
                 </Row>
-                <Row>
+                <Row >
                   <Col md={12} className="text-muted ">
                     <Row>
                       <Col md={6}>
@@ -341,6 +343,25 @@ export class NotificationDesignSetting extends Component {
                     </Row>
                   </Col>
                 </Row>
+                {notification.notificationName === 'Recent Activity' &&
+                  <Row style={{padding: '4% 0%'}}>
+                    <Col md={10}>
+                      <span className="mt-5 text-muted h6">Toggle Map Display</span>
+                    </Col>
+                    <Col md={2}>
+                      <Switch circleStyles={{
+                        onColor: '#097fff',
+                        offColor: 'gray',
+                        diameter: 18
+                      }} switchStyles={{
+                        width: 50
+                      }} cssClass="alignsame"
+                      value={toggleMap}
+                      onChange={(e) => handleContentChange('toggleMap', e)}
+                      />
+                    </Col>
+                  </Row>
+                }
               </div>
 
 
@@ -349,15 +370,6 @@ export class NotificationDesignSetting extends Component {
                   <Col md={12}>
                     <h4 className="text-muted h6">Text Setting</h4>
                     <Row>
-                      <Col md={4}>
-                        <div style={styles.swatch} onClick={this.showTextColorSwatch}>
-                          <div style={{ ...styles.colorSwatch, ...styles.textColor }} />
-                        </div>
-                        {this.state.isTextColorSwatchOpen ? <div style={styles.popover}>
-                          <div style={styles.cover} onClick={this.hideTextColorSwatch} />
-                          <ChromePicker color={notificationPanelStyle.color} onChange={this.handleTextColorChange} />
-                        </div> : null}
-                      </Col>
                       <Col md={4}>
                         <Button bsSize="small" block active={notificationPanelStyle.fontWeight == FONT_WEIGHT_BOLD} onClick={this.handleFontWeightChange}>
                           Bold
@@ -370,6 +382,15 @@ export class NotificationDesignSetting extends Component {
                           <option value="georgia">Georgia</option>
                           <option value='Roboto,helvetica,arial,sans-serif!important'>Default</option>
                         </FormControl>
+                      </Col>
+                      <Col md={3}>
+                        <div style={styles.swatch} onClick={this.showTextColorSwatch}>
+                          <div style={{ ...styles.colorSwatch, ...styles.textColor }} />
+                        </div>
+                        {this.state.isTextColorSwatchOpen ? <div style={styles.popover}>
+                          <div style={styles.cover} onClick={this.hideTextColorSwatch} />
+                          <ChromePicker color={notificationPanelStyle.color} onChange={this.handleTextColorChange} />
+                        </div> : null}
                       </Col>
                     </Row>
                   </Col>
