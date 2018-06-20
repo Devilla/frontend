@@ -11,6 +11,7 @@ import CardTable from 'components/Template/card-with-page-table';
 import { pagethArray } from 'components/Template/data';
 import { fetchLeadUrl, createPageUrl, clearPageUrl, removePageUrl } from 'ducks/pageurl';
 import { validatePath } from 'components/Common/function';
+import './CapturePage.scss';
 
 class CapturePage extends Component{
   constructor(){
@@ -199,9 +200,11 @@ class CapturePage extends Component{
                 </Col>
               </div>
             </Row>
-            <div className="m-t-50 float-right align-install-btn">
-              <button type="button" className="btn btn-custom  waves-light waves-effect number " onClick={this.handleBackState}>Previous</button>
-              <button type="button" className="btn btn-custom  waves-light waves-effect number ml-2 pl-4 pr-4" onClick={this.handleNextState}>Next </button>
+            <div className=" float-left ">
+              <button type="button" className="btn btn-custom waves-light waves-effect number" onClick={this.handleBackState}><i className="icon-arrow-left pr-2"></i>Back</button>
+            </div>
+            <div className=" float-right ">
+              <button type="button" className="btn btn-custom nav nav-pills waves-light waves-effect number ml-2 pl-4 pr-4" onClick={this.handleNextState}>Next<i className="icon-arrow-right pl-2"></i> </button>
             </div>
             <div className="clearfix"></div>
           </div>

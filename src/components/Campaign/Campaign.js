@@ -8,8 +8,7 @@ import {
   FormControl,
   HelpBlock
 } from 'react-bootstrap';
-import CardHeader from 'components/Template/card-with-header';
-import Button from 'components/Template/customButton';
+import './Campaign.scss';
 
 
 const Campaign = ({
@@ -28,11 +27,13 @@ const Campaign = ({
     <div className="content fill">
       <Grid fluid="fluid">
         <Row>
-          <Col md={6}>
-            <CardHeader title="Create Your Campaign"  content={
+          <Col md={12}>
+            <div className="card-box">
+              <h4 className="header-title"><a href="/dashboard"><i className="icon-arrow-left mr-3"></i></a>Create Your Campaign</h4>
+              <hr/>
               <form onSubmit={handleNextButton}>
                 <Row>
-                  <div className="col-md-12">
+                  <div className="col-md-6">
                     <FormGroup>
                       <ControlLabel className="text-muted h6">Name</ControlLabel>
                       <FormControl
@@ -50,7 +51,7 @@ const Campaign = ({
                       </HelpBlock>
                     </FormGroup>
                   </div>
-                  <div className="col-md-12">
+                  <div className="col-md-6">
                     <FormGroup>
                       <ControlLabel className="text-muted h6">Website URL</ControlLabel>
                       <FormControl
@@ -69,18 +70,20 @@ const Campaign = ({
                     </FormGroup>
                   </div>
                 </Row>
-                <Button
+
+                <button type="submit" className="btn btn-primary waves-light waves-effect number ml-2 pl-4 pr-4" disabled={isDisabled}> Create Your Campaign </button>
+                {/*}<Button
                   bsStyle="info"
                   pullRight
                   fill
                   type="submit"
-                  disabled={isDisabled}
+
                 >
                   Next >
-                </Button>
+                </Button>*/}
                 <div className="clearfix"></div>
               </form>
-            }/>
+            </div>
           </Col>
         </Row>
       </Grid>

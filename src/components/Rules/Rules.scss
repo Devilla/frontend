@@ -15,3 +15,11 @@ div {
   background-color: #097fff;
   border-color: #ffffff;
 }
+button {
+  &.btn.btn-color.waves-light.waves-effect.number.ml-2.pl-4.pr-4  {
+    border-radius: 5px;
+  }
+  &.btn.btn-color.waves-light.waves-effect.number {
+    border-radius: 5px;
+  }
+}

@@ -15,7 +15,7 @@ const LeftView = ({
       <ul className="text-muted text-left list-unstyled ">
         <li className="m-t-5">
           <label className="text-muted">
-          Select Popup Notification Animation
+          Select popup notification animation
           </label>
           <select className="form-control muted-text" value={popupAnimationIn} onChange={(e) => handleStateChange('popupAnimationIn', e.target.value)}>
             <option value="Fade in Up">Fade in Up</option>
@@ -30,7 +30,7 @@ const LeftView = ({
         </li>
         <li className="mt-4">
           <label className="text-muted">
-          Select Popout Notification Animation
+          Select popout notification animation
           </label>
           <select className="form-control muted-text" value={popupAnimationOut} onChange={(e) => handleStateChange('popupAnimationOut', e.target.value)}>
             <option value="Fade out Up">Fade out Up</option>
