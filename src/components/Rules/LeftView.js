@@ -10,12 +10,11 @@ const LeftView = ({
   popupAnimationOut
 }) => {
   return (
-
     <div className="col-md-6 border-right">
       <ul className="text-muted text-left list-unstyled ">
         <li>
           <div className="checkbox checkbox-pink">
-            <input id="checkbox6b1" type="checkbox" checked={hideNotification} onChange={(e) => handleStateChange('hideNotification', e)} />
+            <input id="checkbox6b1" type="checkbox" checked={hideNotification} onChange={(e) => handleStateChange('hideNotification', e.target.checked)} />
             <label htmlFor="checkbox6b1" className="text-muted">
               Hide notifications on mobile
             </label>
@@ -23,7 +22,7 @@ const LeftView = ({
         </li>
         <li>
           <div className="checkbox checkbox-pink">
-            <input id="checkbox6b2" type="checkbox" checked={loopNotification} onChange={(e) => handleStateChange('loopNotification', e)} />
+            <input id="checkbox6b2" type="checkbox" checked={loopNotification} onChange={(e) => handleStateChange('loopNotification', e.target.checked)} />
             <label htmlFor="checkbox6b2" className="text-muted">
               Loop notifications
             </label>
@@ -31,7 +30,7 @@ const LeftView = ({
         </li>
         <li>
           <div className="checkbox checkbox-pink">
-            <input id="checkbox6b3" type="checkbox" checked={delayNotification} onChange={(e) => handleStateChange('delayNotification', e)} />
+            <input id="checkbox6b3" type="checkbox" checked={delayNotification} onChange={(e) => handleStateChange('delayNotification', e.target.checked)} />
             <label htmlFor="checkbox6b3" className="text-muted">
               Randomize delay between notifications
             </label>
@@ -39,7 +38,7 @@ const LeftView = ({
         </li>
         <li>
           <div className="checkbox checkbox-pink">
-            <input id="checkbox6b4" type="checkbox" checked={closeNotification} onChange={(e) => handleStateChange('closeNotification', e)} />
+            <input id="checkbox6b4" type="checkbox" checked={closeNotification} onChange={(e) => handleStateChange('closeNotification', e.target.checked)} />
             <label htmlFor="checkbox6b4" className="text-muted">
               Allow users to close notifications
             </label>
