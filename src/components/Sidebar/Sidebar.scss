@@ -92,9 +92,12 @@ div {
   &#sidebar-menu {
       overflow-y: auto;
       height: 640px;
+    
   }
+
   &::-webkit-scrollbar {
     width: 5px;
+    
 }
  
 &::-webkit-scrollbar-track {
