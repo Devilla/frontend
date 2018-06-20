@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { Link ,browserHistory } from 'react-router';
+// import { Link ,browserHistory } from 'react-router';
 import { Influence } from 'img';
 import { Col, ProgressBar } from 'react-bootstrap';
-import { connect }  from  'react-redux';
+// import { connect }  from  'react-redux';
 import appRoutes from 'routes/app';
-import { fetchCampaign,successCampaign } from 'ducks/campaign';
+// import { fetchCampaign,successCampaign } from 'ducks/campaign';
 import './Sidebar.scss';
 
 class Sidebar extends Component {
@@ -22,27 +22,27 @@ class Sidebar extends Component {
   }
 
   
-  handleRouteChange(e, campaign) {
-    if (e.target.className === 'react-flexible-switch react-flexible-switch--active' ||
-      e.target.className === 'react-flexible-switch react-flexible-switch--inactive' ||
-      e.target.className === 'react-flexible-switch-circle' ||
-      e.target.className === 'ml-3 icon-trash'
-    )
-      return;
-    this.props.successCampaign(campaign);
-    browserHistory.push('/new');
-  }
+  // handleRouteChange(e, campaign) {
+  //   if (e.target.className === 'react-flexible-switch react-flexible-switch--active' ||
+  //     e.target.className === 'react-flexible-switch react-flexible-switch--inactive' ||
+  //     e.target.className === 'react-flexible-switch-circle' ||
+  //     e.target.className === 'ml-3 icon-trash'
+  //   )
+  //     return;
+  //   this.props.successCampaign(campaign);
+  //   browserHistory.push('/new');
+  // }
 
   activeRoute(routeName) {
     return this.props.location.pathname.indexOf(routeName) > -1 ? 'active' : '';
   }
 
-  openDropdown() {
-    if(this.state.dropValue.display == 'none')
-      this.setState({dropValue: {display:'block'}});
-    else
-      this.setState({dropValue: {display:'none'}});
-  }
+  // openDropdown() {
+  //   if(this.state.dropValue.display == 'none')
+  //     this.setState({dropValue: {display:'block'}});
+  //   else
+  //     this.setState({dropValue: {display:'none'}});
+  // }
 
   componentDidMount() {
     this.props.fetchCampaign();
@@ -96,8 +96,8 @@ class Sidebar extends Component {
                             prop.upgrade ? '' : <i className={prop.icon}></i>
                           }
                         
-                          {prop.name !== 'Campaigns' ? <span>{prop.name}</span> : (
-                            <span>
+                          <span>{prop.name}</span> 
+                          {/* <span>
                               <Link to='/campaigns' ><span > {prop.name}  </span></Link><span className="menu-arrow" onClick= {this.openDropdown}>  </span>
                             
                               <span style={this.state.dropValue} className='text-center mt-3 pt-2 pb-2 pr-5'>
@@ -112,8 +112,8 @@ class Sidebar extends Component {
                                 }
 
                               </span>
-                            </span>
-                          )
+                            </span> */}
+                          
                           } 
                         </Link>
                       }
@@ -157,15 +157,16 @@ class Sidebar extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  campaigns: state.getIn(['campaign', 'campaigns'])
-});
+// const mapStateToProps = state => ({
+//   campaigns: state.getIn(['campaign', 'campaigns'])
+// });
 
 
-const mapDispatchToProps = {
-  fetchCampaign,
-  successCampaign
-};
+// const mapDispatchToProps = {
+//   fetchCampaign,
+//   successCampaign
+// };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Sidebar);
+// export default connect(mapStateToProps, mapDispatchToProps)(Sidebar);
 
+export default Sidebar;
