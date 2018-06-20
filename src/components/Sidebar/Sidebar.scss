@@ -119,3 +119,13 @@ div {
   outline: 1px solid slategrey;
 }
 }
+
+button {
+  &.btn.btn-pink.waves-effect.ml-4.p-2.pt-0.pb-0.w-lg {
+    box-shadow: 0 6px 16px -6px black;
+    border-radius: 8px;
+  }
+  & i.fi-plus {
+    font-weight:  800;
+  }
+}
