@@ -380,7 +380,7 @@ export class NotificationDesignSetting extends Component {
                           <option value="arial">Arial</option>
                           <option value="monospace">Monospace</option>
                           <option value="georgia">Georgia</option>
-                          <option value='Roboto,helvetica,arial,sans-serif!important'>Default</option>
+                          <option value='Roboto,helvetica,arial,sans-serif'>Default</option>
                         </FormControl>
                       </Col>
                       <Col md={3}>

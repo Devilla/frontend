@@ -27,7 +27,7 @@ const NotificationConfigure = ({
     <div className="notification-configure">
       <Row>
         <Col md={12}>
-          <Card title="Recent User Activity"
+          <Card title={notification.notificationName}
             isDisabled={activity}
             content={
               <div className="notification-configure-content">

@@ -109,7 +109,6 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
 
   goLive() {
     let title, content, buttonText, path;
-    console.log(this.props.leads);
     if(!this.props.leads || !this.props.leads.length) {
       title = 'Alert';
       content = 'Add a capture page before going live.';

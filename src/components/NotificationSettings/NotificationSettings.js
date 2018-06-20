@@ -164,8 +164,6 @@ class Notifications extends Component {
   }
 
   handleClickableNotification() {
-    // this.props.handleContentChange('notificationUrl', null);
-    // if(!this.state.notificationUrl)
     this.setState({toggleTextBox: !this.state.toggleTextBox});
   }
 
