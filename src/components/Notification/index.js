@@ -61,8 +61,27 @@ class Notification extends Component {
   }
 
   deleteCampaign(index, campId) {
-    console.log(index, campId);
-    this.props.removeCampaign(index, campId);
+    let that = this;
+    Popup.create({
+      title: 'Delete Campaign',
+      buttons: {
+        left: [{
+          text: 'Cancel',
+          className: 'warning popup-notification-button',
+          action: function () {
+            Popup.close();
+          }
+        }],
+        right: [{
+          text: 'Confirm',
+          className: 'primary popup-notification-button',
+          action: function () {
+            that.props.removeCampaign(index, campId);
+            Popup.close();
+          }
+        }]
+      }
+    }, true);
   }
 
   // Map the notification data into table rows and return
