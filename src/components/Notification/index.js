@@ -105,7 +105,7 @@ class Notification extends Component {
                 <th>TRACK ID</th>
 
                 <th>CREATED</th>
-                <th>DELETE</th>
+                <th>TRASH</th>
               </tr>
             </thead>
             <tbody>

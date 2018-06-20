@@ -25,11 +25,13 @@ const InstallPixel = ({ elastic, setActiveState, campaign, verifyPixelStatus, ha
         <br/>
         </p>
       </div>
-      <button type="button" style={elastic==undefined?{backgroundColor:'#02c0ce'}:elastic.error?{backgroundColor:'#f12c0b'}:{backgroundColor:'#e68f1f'}} className="btn btn-custom  waves-light waves-effect number" onClick={() => verifyPixelStatus()}>Verify Pixel</button>
-      <button type="button" className="btn btn-custom  waves-light waves-effect number" onClick={handlePixelCopy}>Copy</button>
-      <div className="m-t-0 float-right align-install-btn">
-        <button type="button" className="btn btn-custom  waves-light waves-effect number pl-4 pr-4" onClick={() => browserHistory.push('/campaigns')}>Previous</button>
-        <button type="button" className="btn btn-custom  waves-light waves-effect number ml-2 pl-4 pr-4" onClick={() => setActiveState(2)}>Next </button>
+      <div className="float-left custom-width  align-install-btn">
+        <button type="button" style={elastic==undefined?{backgroundColor:'#097fff'}:elastic.error?{backgroundColor:'#f12c0b'}:{backgroundColor:'#e68f1f'}} className="btn btn-custom  waves-light waves-effect number" onClick={() => verifyPixelStatus()}>Verify Pixel</button>
+        <button type="button" className="btn btn-custom waves-light waves-effect number" onClick={handlePixelCopy}>Copy this !</button>
+      </div>
+      <div className="float-right mr-0 pr-2 align-install-btn">
+        <button type="button" className="btn btn-custom  waves-light waves-effect number pl-3 pr-3" onClick={() => browserHistory.push('/campaigns')}>Previous</button>
+        <button type="button" className="btn btn-custom  waves-light waves-effect number  pl-3 pr-3" onClick={() => setActiveState(2)}>Go Next </button>
       </div>
       <p className="m-t-30">
         <br/>
@@ -38,6 +40,22 @@ const InstallPixel = ({ elastic, setActiveState, campaign, verifyPixelStatus, ha
       <p className="m-t-30">
         <br/>
       </p>
+      <div className="radio radio-warning">
+        <input type="radio" name="radio" id="radio4" value="option4"/>
+        <label for="radio4">
+                Warning
+        </label>
+      </div>
+
+      <div className="radio radio-success">
+        <input type="radio" name="radio" id="radio4" value="option4"/>
+        <label for="radio4">
+                    Success
+        </label>
+      </div>
+
+
+
       <p className="text-muted text-left">Wait For Your Pixel To Go LIVE. Check By Clicking On The Button " Verify Pixel Status
         ". If Youre Facing Any Problems With It, Please Contact Our Support By
       <a href="#">Clicking Here.</a>

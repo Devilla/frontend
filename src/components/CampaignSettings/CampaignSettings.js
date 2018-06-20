@@ -29,7 +29,7 @@ const CampaignSettings = ({
   return (
     <div className="col-md-12 tab-notification-container">
       <div className="card-box tab-notification-box">
-        <div className=" mt-1 new-campaign-header">
+        <div className="ml-3 mt-1 new-campaign-header">
           <a href="/campaigns" className="mr-3"><i className="icon-arrow-left"></i></a>
           <i className="fi-layers mr-2"></i>
           <h4 className=" header-title">{campaign
@@ -43,7 +43,6 @@ const CampaignSettings = ({
 
         </div>
         <div className="clearfix"></div>
-
         <ul className="nav nav-pills navtab-bg nav-justified pull-in new-campaign-tab-pills">
           <li className="nav-item waves-effect text-center">
             <a data-toggle="tab" aria-expanded="false" className={`nav-link ${activeClass == 1?'active pb-3 pt-3':'pb-3 pt-3'}`} onClick={() => setActiveState(1)}>
