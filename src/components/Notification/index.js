@@ -68,7 +68,7 @@ class Notification extends Component {
   // Map the notification data into table rows and return
   getNotificationRows = () => {
     return this.props.campaigns ? this.props.campaigns.map((campaign, i) => (
-      <tr key={campaign._id} onClick={(e) => this.handleRouteChange(e, campaign)}>
+      <tr className="campaign-td" key={campaign._id} onClick={(e) => this.handleRouteChange(e, campaign)}>
         <th scope="row">{i + 1}</th>
         <td>{campaign.campaignName}</td>
         <td>{campaign.websiteUrl}</td>

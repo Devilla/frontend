@@ -6,6 +6,11 @@
 .manage-notification {
   .card-box {
     padding: 20px 15px;
+    .campaign-td {
+      td {
+        cursor: pointer;
+      }
+    }
   }
   .react-flexible-switch {
     background-color: white !important;

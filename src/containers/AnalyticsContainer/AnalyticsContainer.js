@@ -91,7 +91,7 @@ class AnalyticsContainer extends Component {
   renderProfileList() {
     if(this.state.usersList.length)
       return this.state.usersList.map((user, index) => {
-        return <tr className="table-active" key={index}>
+        return <tr className="table-active analytics-tr" key={index}>
           <td>{index + 1}</td>
           <td className="img"><img src={user.profile_pic?user.profile_pic:'https://www.totaldenturecare.com.au/wp-content/uploads/2017/06/default-user-image-female.png'} /></td>
           <td>{user.username}</td>
@@ -185,7 +185,7 @@ class AnalyticsContainer extends Component {
 
         const userDetails = website.signups?website.signups.userDetails:[];
         const uniqueUsers = website.uniqueUsers?website.uniqueUsers.aggregations.users.buckets:[];
-        return <tr className="table-active" key={index}>
+        return <tr className="table-active analytics-tr" key={index}>
           <th scope="row">{index + 1}</th>
           <td className="text-center">{website.websiteUrl}</td>
           <td className="text-center">{visitor}</td>
