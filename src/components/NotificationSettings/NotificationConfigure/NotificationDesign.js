@@ -69,7 +69,7 @@ const NotificationDesign = ({
                               }}>
                                 Username from City, Country
                               </div>
-                              <div className="FPqR13BWqJeA13BW7MM9_0">{contentText}</div>
+                              <div className="FPqR13BWqJeA13BW7MM9_0">Recently signed up for {contentText}</div>
                               <div className="FPqR2PlWqJeA2PlW7MM9_0">a minute ago</div>
                               <div className="FPqR3eNuqJeA3eNu7MM9_0">
                                 <i>
