@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
+import { Link ,browserHistory } from 'react-router';
 import { Influence } from 'img';
 import { Col, ProgressBar } from 'react-bootstrap';
 import { connect }  from  'react-redux';
 import appRoutes from 'routes/app';
-import { fetchCampaign } from 'ducks/campaign';
+import { fetchCampaign,successCampaign } from 'ducks/campaign';
 import './Sidebar.scss';
 
 class Sidebar extends Component {
@@ -19,6 +19,18 @@ class Sidebar extends Component {
   }
   componentWillReceiveProps(){
     this.state.quotaPercentage=this.props.profile?Math.round(100*this.props.profile.uniqueVisitors/this.props.profile.uniqueVisitorQouta):null;
+  }
+
+  
+  handleRouteChange(e, campaign) {
+    if (e.target.className === 'react-flexible-switch react-flexible-switch--active' ||
+      e.target.className === 'react-flexible-switch react-flexible-switch--inactive' ||
+      e.target.className === 'react-flexible-switch-circle' ||
+      e.target.className === 'ml-3 icon-trash'
+    )
+      return;
+    this.props.successCampaign(campaign);
+    browserHistory.push('/new');
   }
 
   activeRoute(routeName) {
@@ -74,23 +86,26 @@ class Sidebar extends Component {
                   return (
                     <li className={prop.upgrade ? ' newbtn' : this.activeRoute(prop.path)} key={key}>
                       {prop.name === 'Help' ?
-                        <Link onClick={this.renderHelp} className={disableButton ? 'disabled-link' : 'nav-link mt-0 mb-0'} disabled={disableButton} activeClassName="active">
+                        <Link onClick={this.renderHelp} className={disableButton ? 'disabled-link' : 'nav-link mt-0 mb-0 pr-0'} disabled={disableButton} activeClassName="active">
                           <i className={prop.icon}></i>
                           <span>{prop.upgrade}{prop.name}</span>
                         </Link>
                         :
-                        <Link to={prop.path} className={prop.upgrade && disableButton ? 'new disabled-link mt-0 mb-0' : disableButton ? 'disabled-link mt-0 mb-0' : prop.upgrade ? 'new nav-link mt-0 mb-0' : 'nav-link mt-0 mb-0'} disabled={disableButton} activeClassName="">
+                        <Link to={prop.path} className={prop.upgrade && disableButton ? 'new disabled-link mt-0 mb-0 pr-0' : disableButton ? 'disabled-link mt-0 mb-0 pr-0' : prop.upgrade ? 'new nav-link mt-0 mb-0 pr-0' : 'nav-link mt-0 mb-0 pr-0'} disabled={disableButton} activeClassName="">
                           {
                             prop.upgrade ? '' : <i className={prop.icon}></i>
                           }
                         
                           {prop.name !== 'Campaigns' ? <span>{prop.name}</span> : (
                             <span>
-                              <span onClick= {this.openDropdown}> {prop.name}  <span className="menu-arrow"></span>  </span>
+                              <Link to='/campaigns' ><span > {prop.name}  </span></Link><span className="menu-arrow" onClick= {this.openDropdown}>  </span>
                             
-                              <span style={this.state.dropValue} className='text-center mt-3'>
+                              <span style={this.state.dropValue} className='text-center mt-3 pt-2 pb-2 pr-5'>
                                 { this.props.campaigns ? this.props.campaigns.map((campaign) => (
-                                  <span className='text-muted'><i className="fi-tag"></i>&nbsp;&nbsp;{ campaign.campaignName } </span>
+                                  <span>
+                                    <span className="gap-fill"></span>
+                                    <Link to='/new'><div className='text-muted text-left pl-3' onClick={(e) => this.handleRouteChange(e, campaign)} ><i className="fi-tag"></i>&nbsp;&nbsp;{ campaign.campaignName } </div></Link>
+                                  </span>
                                 )) : (
                                   ''
                                 )
@@ -148,7 +163,8 @@ const mapStateToProps = state => ({
 
 
 const mapDispatchToProps = {
-  fetchCampaign
+  fetchCampaign,
+  successCampaign
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Sidebar);

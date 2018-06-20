@@ -31,7 +31,7 @@ const CampaignSettings = ({
       <div className="card-box tab-notification-box">
         <div className="ml-3 mt-1 new-campaign-header">
           <a href="/campaigns" className="mr-3"><i className="icon-arrow-left"></i></a>
-          <i className="fi-layers mr-2"></i>
+          <i className="fi-layers mr-2 mt-1"></i>
           <h4 className=" header-title">{campaign
             ? campaign.websiteUrl
             : 'http://localhost:3000'} {' - '}</h4><p className="textTransform  header-title">{campaign
