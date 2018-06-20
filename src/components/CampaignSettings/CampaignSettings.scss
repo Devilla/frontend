@@ -5,15 +5,30 @@
     padding: 20px 5px !important;
     .new-campaign-header {
       display: flex;
-      justify-content: space-between;
       button {
         height: 35px;
         margin: 1% 3% !important;
       }
     }
   }
+  .nav.nav-pills {
+    > li > a.active {
+      color:#ffffff;
+      font-family: "Rubik", sans-serif;
+    }
+    .nav-item.show .nav-link, .nav-link.active {
+      background: #097fff;
+    }
+  }
+
   .new-campaign-header {
-    padding: 0% 2%;
+
+    position:  relative;
+    padding-bottom:  5px;
+    font-weight: bold !important;
+  }
+  .textTransform{
+      text-transform: capitalize!important;
   }
   .new-campaign-tab-pills {
     background: #f4f6f8;
@@ -22,7 +37,14 @@
   }
   .tab-content {
     .align-install-btn {
-      width: 25%;
+      width: 18.7%;
     }
   }
+}
+
+.btn.btn-custom.goliveRight{
+      position: absolute;
+      right: 0;
+      bottom: 5px;
+
 }

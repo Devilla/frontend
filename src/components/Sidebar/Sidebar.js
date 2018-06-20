@@ -12,12 +12,13 @@ class Sidebar extends Component {
     super(props);
     this.state = {
       width: window.innerWidth,
-      uniqueVisitors:20000,
-      uniqueVisitorQouta:30000,
-      uniqueVisitorsQoutaLeft:29130,
+      quotaPercentage:0,
       dropValue: {display: 'none'}
     };
     this.openDropdown = this.openDropdown.bind(this);
+  }
+  componentWillReceiveProps(){
+    this.state.quotaPercentage=this.props.profile?Math.round(100*this.props.profile.uniqueVisitors/this.props.profile.uniqueVisitorQouta):null;
   }
 
   activeRoute(routeName) {
@@ -36,8 +37,7 @@ class Sidebar extends Component {
   }
 
   render() {
-    //const { campaignInfo } = this.props;
-    var { disableButton, quotaPercentage=Math.round(100*this.state.uniqueVisitors/this.state.uniqueVisitorQouta) } = this.props;
+    const { disableButton} = this.props;
     return (
       <div className="left side-menu">
         <div>
@@ -114,10 +114,10 @@ class Sidebar extends Component {
                 </div>
                 <Col md={12}>
                   <ProgressBar className="text-center">
-                    <ProgressBar striped active bsStyle={quotaPercentage<60?'info':quotaPercentage<90?'warning':'danger'} now={quotaPercentage} key={1} />
+                    <ProgressBar striped active bsStyle={this.state.quotaPercentage<60?'info':this.state.quotaPercentage<90?'warning':'danger'} now={this.state.quotaPercentage} key={1} />
                   </ProgressBar>
                   <div className="ml-4 ">
-                    <p className=" textColor" textColor>{quotaPercentage} % consumed.</p>
+                    <p className=" textColor" textColor>{this.state.quotaPercentage} % consumed.</p>
                   </div>
                   <div className="ml-3">
                     <Link to='/Upgrade'><button
