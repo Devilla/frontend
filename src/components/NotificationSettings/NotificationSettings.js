@@ -217,7 +217,7 @@ class Notifications extends Component {
 
   render() {
 
-    const { configurations, createSuccess } = this.props;
+    const { configurations, createSuccess, campaign } = this.props;
     return (
       <div className="notification-settings">
         <div>
@@ -225,6 +225,7 @@ class Notifications extends Component {
           {!this.state.notification
             ?
             <NotificationList
+              campaignUrl={campaign.websiteUrl}
               notificationList={this.state.notifications}
               handleActivityChange={this.handleActivityChange}
               configure={this.configure}

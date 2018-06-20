@@ -1,7 +1,7 @@
 import React from 'react';
 import { Avatar2, Avatar3, Avatar4 } from 'img';
 
-const NotificationList = ({ notificationList, configure, handleActivityChange }) => {
+const NotificationList = ({ notificationList, configure, handleActivityChange, campaignUrl }) => {
   const renderNotifications = () => {
     return notificationList.map(notification =>
       <div key={notification._id} className="col-md-4">
@@ -32,11 +32,11 @@ const NotificationList = ({ notificationList, configure, handleActivityChange })
               </div>
 
               <div className=" m-t-30">
-                <h4 className="m-b-5">Group Activity</h4>
+                <h4 className="m-b-5">{notification.notificationName}</h4>
                 <p className="text-muted notification-list-content">Show the total visitors over a period of time
                   <span> | </span>
                   <span>
-                    <a href="#" className="text-pink">websitename.com</a>
+                    <a className="text-pink">{campaignUrl}</a>
                   </span>
                 </p>
               </div>
