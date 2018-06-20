@@ -67,7 +67,7 @@ function* update(action) {
 function* remove(action) {
   try {
     yield put(load());
-    const res = yield call(api.DELETE, 'campaign/${action.campaignId}');
+    const res = yield call(api.DELETE, `campaign/${action.campaignId}`);
     if(res.error)
       console.log(res.error);
     else
