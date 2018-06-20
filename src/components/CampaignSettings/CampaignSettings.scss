@@ -11,18 +11,35 @@
       }
     }
   }
-  .nav.nav-pills {
+  a{
+  &.nav-link.active.pb-3.pt-3 {
+    &:hover {
+      color: #fff !important;
+    }
+  }
+
+}
+a{
+  &.nav-link.active.pb-3.pt-3 {
+    &:hover {
+      color: #fff !important;
+    }
+  }
+
+}
+.btn.btn-custom{
+  background: #097fff;
+}
+.nav.nav-pills {
     > li > a.active {
-      color:#ffffff;
       font-family: "Rubik", sans-serif;
     }
-    .nav-item.show .nav-link, .nav-link.active {
+    .nav-item.show.nav-link, .nav-link.active {
       background: #097fff;
     }
   }
 
   .new-campaign-header {
-
     position:  relative;
     padding-bottom:  5px;
     font-weight: bold !important;
