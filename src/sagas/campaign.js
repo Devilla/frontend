@@ -48,7 +48,7 @@ function* create(action) {
 function* update(action) {
   try {
     yield put(load());
-    const res = yield call(api.PUT, 'campaign/${action.campaign.id}', action.campaign);
+    const res = yield call(api.PUT, `campaign/${action.campaign.id}`, action.campaign);
     if(res.error)
       console.log(res.error);
     else {

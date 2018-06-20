@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Col, Glyphicon } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 import { Card } from './Card';
 import NotificationDesign from './NotificationDesign';
 import { NotificationDesignSetting } from './NotificationDesignSetting';
@@ -72,17 +72,14 @@ const NotificationConfigure = ({
 
       <div className="m-t-50 pull-right">
         <span className="btn btn-info mr-3" onClick={backConfiguration}>
-          <Glyphicon glyph="chevron-left" />
           Back
         </span>
 
-        <span className="btn btn-info mr-3" >
-          <Glyphicon glyph="align-justify" onClick={setDefaultPanel} />
+        <span className="btn btn-info mr-3" onClick={setDefaultPanel} >
           Set Default
         </span>
 
         <span className="btn btn-info mr-3" onClick={saveConfiguration}>
-          <Glyphicon glyph="save" />
           Save
         </span>
       </div>
