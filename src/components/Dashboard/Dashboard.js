@@ -24,11 +24,9 @@ class Dashboard extends Component {
     };
     this.handleRouteChange = this.handleRouteChange.bind(this);
   }
-
   componentWillMount() {
     this.props.fetchCampaignInfo();
   }
-
   createLegend(json) {
     var legend = [];
     for (var i = 0; i < json['names'].length; i++) {
@@ -90,8 +88,8 @@ class Dashboard extends Component {
         acc = Array.from(range1.by('day', { step: 1 }));
         acc = acc.map(m => m.format('DD MMM'));
         break;
-
-
+      
+      
       case '14' :
         start  = moment().subtract(14,'d').format('YYYY-MM-DD');
         end    = new Date();
@@ -107,21 +105,21 @@ class Dashboard extends Component {
         acc = Array.from(range1.by('day', { step: 4 }));
         acc = acc.map(m => m.format('DD MMM'));
         break;
-
+      
       case 'Today' :
         start  = moment().startOf('day').format('YYYY-MM-DD HH:mm:ss');
         end    = moment().endOf('day').format('YYYY-MM-DD HH:mm:ss');
-
+    
         range1 = moment.range(start, end);
         acc = Array.from(range1.by('hour', {   step:4}));
         acc.length =6;
         acc = acc.map(m => m.format('HH:mm A'));
         break;
-
+        
       case 'Yesterday' :
         start  = moment().subtract(1,'d').startOf('day').format('YYYY-MM-DD HH:mm:ss');
         end    = moment().subtract(1,'d').endOf('day').format('YYYY-MM-DD HH:mm:ss');
-
+     
         range1 = moment.range(start, end);
         acc = Array.from(range1.by('hour', {   step:4}));
         acc.length =6;
@@ -129,10 +127,10 @@ class Dashboard extends Component {
         break;
 
 
-      default :
+      default : 
         start  = moment().startOf('day').format('YYYY-MM-DD HH:mm:ss');
         end    = moment().endOf('day').format('YYYY-MM-DD HH:mm:ss');
-
+  
         range1 = moment.range(start, end);
         acc = Array.from(range1.by('hour', {   step:4}));
         acc.length =6;
@@ -143,10 +141,11 @@ class Dashboard extends Component {
   }
 
   render() {
-    const { campaignInfo, profile } = this.props;
-
+    const { campaignInfo,profile } = this.props;
+    let datafetch = this.getdays();
+ 
     var chartData = {
-      labels: this.getdays(),
+      labels:   datafetch,
       datasets: this.getDataset()
     };
 
@@ -197,14 +196,6 @@ class Dashboard extends Component {
       //Boolean - Whether to horizontally center the label and point dot inside the grid
       offsetGridLines: false
     };
-
-    var userSignUps = 0;
-
-    if(campaignInfo)
-      campaignInfo.websiteLive.map(website => {
-        let users = website.signups.response.aggregations.users;
-        userSignUps = userSignUps + users.sum_other_doc_count + users.buckets.length;
-      });
 
     return (
       <div className="content">
@@ -309,7 +300,7 @@ class Dashboard extends Component {
                           responsive={false}
                           size={100}
                           lineWidth={24}
-                          progress={userSignUps} //to edit
+                          progress={campaignInfo ? campaignInfo.uniqueUsers.length : []} //to edit
                           progressColor="#2d7bf4"
                           bgColor="whitesmoke"
                           textColor="#FFFFFF"
@@ -324,7 +315,7 @@ class Dashboard extends Component {
                       </div>
                       <div className="widget-chart-two-content dash">
                         <span className="text-muted mb-0 mt-2">Total Signups</span>
-                        <h3 className="">{userSignUps}</h3>
+                        <h3 className="">{campaignInfo ? campaignInfo.uniqueUsers.length : []}</h3>
                       </div>
                     </div>
                   </div>
