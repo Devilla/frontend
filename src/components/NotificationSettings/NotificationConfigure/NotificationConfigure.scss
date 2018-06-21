@@ -7,6 +7,14 @@
     margin: 40px 20px;
   }
 
+div{
+  span{
+    &.btn.btn-primary.mr-3 {
+      border-radius: 5px;
+    }
+  }
+} 
+
 #FPqR2DbIqJeA2DbI7MM9_0 div {
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;

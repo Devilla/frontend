@@ -82,7 +82,7 @@ const PricePage = ({
             <div key={index} className="col-md-3 col-sm-6">
               <div className="pricingTable">
                 <div className="price_card text-center">
-                  <div className="pricing-header bg-custom">
+                  <div className="pricing-header bg-primary">
                     <span className="price">${plan.interval === 'year' ? plan.amount / 1200 : plan.amount / 100}</span>
                     <span className="name">{filterPlanName(plan.name)}</span>
                   </div>

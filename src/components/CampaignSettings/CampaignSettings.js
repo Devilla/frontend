@@ -17,7 +17,7 @@ const CampaignSettings = (props) => {
             : 'http://localhost:3000'}
           </p>
 
-          <button type="button" className="btn btn-custom goliveRight waves-light waves-effect number" onClick={props.goLive}>Go Live</button>
+          <button type="button" className="btn btn-outline-primary goliveRight waves-light waves-effect number" onClick={props.goLive}><i className="fi-location"></i>&nbsp;Go Live</button>
 
         </div>
         <div className="clearfix"></div>

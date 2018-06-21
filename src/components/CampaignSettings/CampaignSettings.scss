@@ -55,11 +55,14 @@
       width: 18.7%;
     }
   }
-}
 
-.btn.btn-custom.goliveRight{
+  button {
+    &.goliveRight{
       position: absolute;
       right: 0;
       bottom: 5px;
-
+    }
+  }
 }
+
+

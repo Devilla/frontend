@@ -71,15 +71,15 @@ const NotificationConfigure = ({
       </Row>
 
       <div className="m-t-50 pull-right">
-        <span className="btn btn-info mr-3" onClick={backConfiguration}>
+        <span className="btn btn-primary mr-3" onClick={backConfiguration}>
           Back
         </span>
 
-        <span className="btn btn-info mr-3" onClick={setDefaultPanel} >
+        <span className="btn btn-primary mr-3" onClick={setDefaultPanel} >
           Set Default
         </span>
 
-        <span className="btn btn-info mr-3" onClick={saveConfiguration}>
+        <span className="btn btn-primary mr-3" onClick={saveConfiguration}>
           Save
         </span>
       </div>

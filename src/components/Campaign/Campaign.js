@@ -23,7 +23,7 @@ const Campaign = ({
   isDisabled
 }) => {
   return (
-    <div className="content fill">
+    <div className="content fill campaign-container">
       <Grid>
         <Row>
           <Col md={12}>

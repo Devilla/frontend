@@ -6,6 +6,7 @@ import {
 } from 'react-bootstrap';
 import { Animated } from 'react-animated-css';
 import PricePage from 'components/PricePage';
+import './PlanList.scss';
 
 const PlanList = ({ plan, handleCheckChange, makePayment }) => {
   return (
@@ -28,7 +29,7 @@ const PlanList = ({ plan, handleCheckChange, makePayment }) => {
                 </Row>
                 <Row className="float-right">
                   <div className="m-t-50 ">
-                    <span type="button" className="btn btn-custom  waves-light waves-effect number ml-2 pl-4 pr-4" onClick={() => makePayment()}>Proceed </span>
+                    <span type="button" className="btn btn-primary  waves-light waves-effect number ml-2 pl-4 pr-4" onClick={() => makePayment()}>Proceed </span>
                   </div>
                 </Row>
               </div>

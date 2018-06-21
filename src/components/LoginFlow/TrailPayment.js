@@ -12,6 +12,7 @@ import { Elements } from 'react-stripe-elements';
 import PaymentPage from './PaymentPage';
 import PricePage from 'components/PricePage';
 import CouponPage from './CouponPage';
+import './TrailPayment.scss';
 
 const TrailPayment = ({
   user,
@@ -29,7 +30,7 @@ const TrailPayment = ({
   submitCoupon,
   couponProceed
 }) => {
-  return (<div>
+  return (<div className="authpage-container">
     <div className="authpage section innerpage">
       <div className="container">
         <div className="flow-wrapper">

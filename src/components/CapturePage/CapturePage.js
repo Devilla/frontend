@@ -63,8 +63,10 @@ class CapturePage extends Component{
 
 
   addPageUrl() {
-    if(this.state.lead.url == '' || !validatePath(this.state.lead.url))
+    if(this.state.lead.url == '')
       return this.setState({error: 'Please enter a valid path'});
+    if(this.state.lead.url[0]!=='/')
+      this.state.lead.url='/'+this.state.lead.url;
     let lead = this.state.lead;
     lead['rule'] = this.props.rules._id;
     this.props.createPageUrl(lead);
@@ -159,7 +161,7 @@ class CapturePage extends Component{
                 <div className="ml-5 pl-4 input-group col-md-8">
                   <label className="pt-2 pl-1 pr-3 text-muted">google.com/</label>
                   <input type="text"
-                    className="form-control txtpageurl"
+                    className="form-control"
                     placeholder="eg. /mypage, /register, /products"
                     aria-describedby="urladd"
                     value={lead.url}
@@ -169,19 +171,14 @@ class CapturePage extends Component{
                   />
                   <span className="input-group-btn col-md-2"
                     id="urladd">
-                    <span className="btn btn-raised btn-primary blue pl-5 pr-5"
+                    <span className="btn btn-custom nav nav-pills waves-light waves-effect number pl-5 pr-5"
                       onClick={this.addPageUrl}>Add</span>
                   </span>
                 </div>
               </Col>
             </Row>
-            <Row>
-              <Col md={2}></Col>
-              <Col md={10}>
-                <label className="ml-5 pl-3 pt-1 text-muted">(This page must have an email capture formfield to capture email)</label>
-              </Col>
-            </Row>
-            <Row>
+          
+            <Row className="pt-2">
               <HelpBlock className="text-center">
                 <p className="website-error">{error}</p>
               </HelpBlock>
@@ -197,7 +194,7 @@ class CapturePage extends Component{
                 />
               </Col>
             </Row>
-            <Row>
+            <Row className="pb-2">
               <div className="float-Left">
                 <Col md={12} className="text-muted">
                 Having problems with Auto Lead Capture in your current setup? &nbsp;&nbsp; <a

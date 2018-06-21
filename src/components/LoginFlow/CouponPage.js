@@ -6,6 +6,7 @@ import {
   FormControl,
   HelpBlock
 } from 'react-bootstrap';
+import './CouponPage.scss';
 
 const CouponPage = ({
   error,

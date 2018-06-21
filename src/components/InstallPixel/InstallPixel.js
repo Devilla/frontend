@@ -20,11 +20,11 @@ const InstallPixel = ({ elastic, setActiveState, campaign, verifyPixelStatus, ha
         <br/>
         </p>
       </div>
-      <div className="float-left custom-width  align-install-btn">
-        <button type="button" className="btn btn-custom waves-light waves-effect number pl-2 pr-2" onClick={handlePixelCopy}>Copy</button>
+      <div className="float-left custom-width align-install-btn">
+        <button type="button" className="btn btn-custom waves-light waves-effect number" onClick={handlePixelCopy}>Copy</button>
         <button type="button" style={elastic==undefined?{backgroundColor:'#097fff'}:elastic.error?{backgroundColor:'#f12c0b'}:{backgroundColor:'#e68f1f'}} className="btn btn-custom  waves-light waves-effect number" onClick={() => verifyPixelStatus()}>Verify Pixel</button>
       </div>
-      <p className="m-t-30">
+      <p className="m-t-30 pb-5">
         <br/>
       </p>
       <hr />
@@ -33,22 +33,22 @@ const InstallPixel = ({ elastic, setActiveState, campaign, verifyPixelStatus, ha
       </p>
 
       {/* The radio buttons for warning, success */}
-      <div className="radio radio-warning ">
+      <span className="radio radio-warning ml-2 pr-4">
         <input type="radio" name="radio8" id="radio8" value="option8" checked/>
         <label for="radio8">
           Unverified
         </label>
-      </div>
+      </span>
 
       {/* The radio buttons for success */}      
-      <div className="radio radio-success">
+      <span className="radio radio-success">
         <input type="radio" name="radio9" id="radio9" value="option9" checked/>
         <label for="radio9">
            Verified
         </label>
-      </div>
+      </span>
 
-      <p className="text-muted text-left">Wait For Your Pixel To Go LIVE. Check By Clicking On The Button " Verify Pixel Status
+      <p className="text-muted text-left pt-3">Wait For Your Pixel To Go LIVE. Check By Clicking On The Button " Verify Pixel Status
         ". If Youre Facing Any Problems With It, Please Contact Our Support By
       <a href="#">Clicking Here.</a>
       </p>
