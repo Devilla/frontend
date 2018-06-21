@@ -10,7 +10,7 @@ export default class AffiliateRegister extends Component {
         <section>
           <div className="container">
             <div className="row justify-content-around">
-              <h2 class="align-center">Become a Influence Affiliate</h2>
+              <h2 class="align-center">Become an Influence Affiliate</h2>
               <div className="col-md-6">
                 <form className="row">
                   <div className="mt-3 col-md-12">

@@ -152,7 +152,7 @@ class WebsitePolicy extends Component {
               <div className="col-md-12">
                 <div className="boxed boxed--border boxed--lg lead">
 
-                  <p>Influence is committed to protecting your privacy. This Privacy Policy explains how your personal information is collected, used, and disclosed by Influence .By using the service, you agree that the information collected through the use of our service or an
+                  <p>Influence is committed to protecting your privacy. This Privacy Policy explains how your personal information is collected, used, and disclosed by Influence. By using the service, you agree that the information collected through the use of our service or an
                     integrated service will be processed or used in accordance with the privacy policy and these terms and may be processed in a country
            where it was collected. </p>
                   <p> For the purposes of EU data protection laws ("Data Protection Law"), Influence is data controller (i.e., the company who is responsible  for, and controls the processing of, your personal data). For information about how we collect and use information collected from
