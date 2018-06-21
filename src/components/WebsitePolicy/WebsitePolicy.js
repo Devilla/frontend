@@ -1,9 +1,95 @@
 import React, { Component } from 'react';
+import './WebsitePolicy.scss';
+import Popup from 'react-popup';
+import {
+  Col,
+  FormGroup,
+  FormControl
+} from 'react-bootstrap';
+import 'react-popup/style.css';
 
 class WebsitePolicy extends Component {
+
   componentDidMount() {
     window.scrollTo(0, 0);
+    fetch('https://raw.githubusercontent.com/sagarshirbhate/Country-State-City-Database/master/Contries.json')
+      .then(res => res.json())
+      .then(res => this.setState({countryList : res.Countries}));
   }
+
+ 
+
+  getCountryRows = () => {
+    return  this.state.countryList.map((data,i)=> (
+      <option key={i}  value={data.CountryName}>
+        {data.CountryName}
+      </option>
+    ));
+  }
+
+
+  
+  renderGDPRform = () => {
+    Popup.create({
+      title: 'Own Your Personal Data',
+      content: <div className="popupcontainer row ">
+        <FormGroup className="m-auto">
+          <Col >
+            <span className="text-muted font-13 p lead">What country do you live in ? </span>
+            <FormGroup controlId="formControlsSelect">
+              <FormControl className="lead" componentClass="select" placeholder="select"   onChange={(e) => {this.setState({selectedCountry: e.target.value});}} >
+                {this.getCountryRows()}
+              </FormControl>
+            </FormGroup>
+          </Col>
+        </FormGroup>
+      </div>,
+      buttons: {
+        left: [{
+          text: 'Cancel',
+          className: 'danger',
+          action: function () {
+            Popup.close();
+          }
+        }],
+        right: [ {
+          text: 'Save',
+          className: 'success',
+          action: function () {
+            Popup.create({
+              title: 'Own Your Personal Data',
+              content: <div className="popupcontainer row ">
+                <FormGroup className="m-auto">
+                  <Col >
+                    <div className="text-muted font-13 p lead">We need to verify your identity before you can access your personal information.</div>
+                  </Col>
+                </FormGroup>
+              </div>,
+              buttons: {
+                left: [{
+                  text: 'Use my Email',
+                  className: 'danger',
+                  action: function () {
+                  //action to write
+                  }
+                }],
+                right: [{
+                  text: 'Use my Phone',
+                  className: 'success',
+                  action: function () {
+                    //action to write
+                    Popup.close();
+                  }
+                }]
+              }
+            });
+            Popup.close();
+          }
+        }]
+      }
+    });
+  }
+
   render() {
     return (
       <div className="main-container">
@@ -21,7 +107,7 @@ class WebsitePolicy extends Component {
           <div className="container">
             <div className="row">
               <div className="col-md-12">
-                <div className="boxed boxed--border boxed--lg text-muted">
+                <div className="boxed boxed--border boxed--lg lead">
 
                   <p>Influence is committed to protecting your privacy. This Privacy Policy explains how your personal information is collected, used, and disclosed by Influence .By using the service, you agree that the information collected through the use of our service or an
                     integrated service will be processed or used in accordance with the privacy policy and these terms and may be processed in a country
@@ -58,7 +144,7 @@ class WebsitePolicy extends Component {
                   <p> The Customer may upload data to our Service or we may obtain such data, which may include personal information or data about our Customers’ end users like name and e-mail of the end user when the end user sign up in our customer’s website.  Customer Data (end user’s data) is controlled by our Customers, and any Customer Data that we maintain or process we consider to be strictly private.  We collect and process Customer Data completely on behalf of our Customers, and in accordance with our agreements with the Customers.  We do not mention or disclose Customer Data except as authorized by our Customers and as provided for in our agreements with our Customers.</p>
                   <br /><br />
                   <h3><b>Users control over information</b></h3>
-                  <p>>Profile Data Sharing <br />You may choose not to share information through the Service, in which case Influence may not be able to provide services to you.
+                  <p>Profile Data Sharing <br />You may choose not to share information through the Service, in which case Influence may not be able to provide services to you.
              You may update your account information and preferences at any time inside your account </p>
                   <p>Control communication preferences<br />You can stop receiving promotional email communications from us by clicking on the
              unsubscribe link.  We make every effort to promptly process all unsubscribe requests.  You may not opt out of service-related communications (account verification, transactional communications). You can also contact our Support Desk via email at request to be removed from our mailing list.</p>
@@ -90,7 +176,7 @@ class WebsitePolicy extends Component {
                     type="button"
                     name="schedule"
                     className="btn btn--primary col-md-12 ml-0"
-                    onClick={this.b1StepHandler} >Own Your Personal Data
+                    onClick={this.renderGDPRform} >Own Your Personal Data
                   </button>
                 </div>
               </div>
