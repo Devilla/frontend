@@ -64,7 +64,7 @@ class Notifications extends Component {
       notificationPanelStyle: notificationPanelStyleDefault,
       contentText: 'Company Name ',
       visitorText: 'people',
-      notificationUrl: null,
+      notificationUrl: '',
       image: '',
       notifications: [],
       toggleTextBox: false,
@@ -136,7 +136,7 @@ class Notifications extends Component {
       notificationPanelStyle: notificationPanelStyleDefault,
       contentText: 'Company Name',
       visitorText: 'people',
-      notificationUrl: null,
+      notificationUrl: '',
       toggleMap: true,
       image: ''
     });
@@ -246,7 +246,7 @@ class Notifications extends Component {
           }
         </div>
         {!this.state.notification &&
-          <div>
+          <div className="pt-4">
             <div className="float-left">
               <button type="button" className="btn btn-custom  waves-light waves-effect number " onClick={this.handleBackState}><i className="icon-arrow-left pr-2"></i> Back</button>
             </div>

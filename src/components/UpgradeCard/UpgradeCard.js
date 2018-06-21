@@ -39,7 +39,7 @@ class UpgradeCard extends Component {
   handleSelect(key) {
     this.setState({ key });
   }
-  
+
   setActiveState(val) {
     this.setState({activeClass: val});
   }
@@ -58,7 +58,7 @@ class UpgradeCard extends Component {
     const { updatePaymentMethod, plan, user } = this.props;
     const { currentState, activeClass } = this.state;
     return (<div className="content fill ">
-      <Grid fluid="fluid">
+      <Grid fluid={true}>
         <Row >
           <Col md={12}>
             <CardHeader title={currentState==='upgrade'?'Upgrade Payment Method' : 'Make Payment'}
@@ -69,7 +69,7 @@ class UpgradeCard extends Component {
                       <div className="col-md-12">
                         <div className="card-box">
                           <h4 className="header-title m-t-0 m-b-30">Pay with</h4>
-                       
+
                           <ul className="nav nav-pills navtab-bg nav-justified pull-in new-campaign-tab-pills">
                             <li className="nav-item waves-effect">
                               <a data-toggle="tab" aria-expanded="false" className={`nav-link ${activeClass == 1?'active':''}`} onClick={() => this.setActiveState(1)}>
@@ -136,11 +136,11 @@ class UpgradeCard extends Component {
                                   </FormGroup>
                                 </div>
                               </Row>
-                              <Row class='upgrade-card-buttons'>
+                              <Row className='upgrade-card-buttons'>
                                 <div className='col-md-4 pull-left'>
-                                  <Button type='button' icon='chevron-left' bsStyle='info' fill='fill' onClick={() => browserHistory.push(currentState === 'upgrade' ? '/billing-details' : '/profile')}>&nbsp;&nbsp;Back&nbsp;&nbsp;</Button>
+                                  <Button type='button' icon='chevron-left' bsStyle='info' fill={true} onClick={() => browserHistory.push(currentState === 'upgrade' ? '/billing-details' : '/profile')}>&nbsp;&nbsp;Back&nbsp;&nbsp;</Button>
                                 </div>
-                               
+
                               </Row>
                             </div>
 
@@ -163,11 +163,10 @@ class UpgradeCard extends Component {
                                   </FormGroup>
                                 </div>
                               </Row>
-                              <Row class='upgrade-card-buttons'>
+                              <Row className='upgrade-card-buttons'>
                                 <div className='col-md-4 pull-left'>
-                                  <Button type='button' icon='chevron-left' bsStyle='info' fill='fill' onClick={() => browserHistory.push(currentState === 'upgrade' ? '/billing-details' : '/profile')}>&nbsp;&nbsp;Back&nbsp;&nbsp;</Button>
+                                  <Button type='button' icon='chevron-left' bsStyle='info' fill={true} onClick={() => browserHistory.push(currentState === 'upgrade' ? '/billing-details' : '/profile')}>&nbsp;&nbsp;Back&nbsp;&nbsp;</Button>
                                 </div>
-                               
                               </Row>
                             </div>
                             <div className={`tab-pane ${activeClass == 4?'show active':''}`} id="bitcoin">
@@ -189,11 +188,11 @@ class UpgradeCard extends Component {
                                   </FormGroup>
                                 </div>
                               </Row>
-                              <Row class='upgrade-card-buttons'>
+                              <Row className='upgrade-card-buttons'>
                                 <div className='col-md-4 pull-left'>
-                                  <Button type='button' icon='chevron-left' bsStyle='info' fill='fill' onClick={() => browserHistory.push(currentState === 'upgrade' ? '/billing-details' : '/profile')}>&nbsp;&nbsp;Back&nbsp;&nbsp;</Button>
+                                  <Button type='button' icon='chevron-left' bsStyle='info' fill={true} onClick={() => browserHistory.push(currentState === 'upgrade' ? '/billing-details' : '/profile')}>&nbsp;&nbsp;Back&nbsp;&nbsp;</Button>
                                 </div>
-                              
+
                               </Row>
                             </div>
                             <div className={`tab-pane ${activeClass == 5?'show active':''}`} id="savedcards">

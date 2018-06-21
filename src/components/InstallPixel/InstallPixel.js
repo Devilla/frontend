@@ -30,8 +30,8 @@ const InstallPixel = ({ elastic, setActiveState, campaign, verifyPixelStatus, ha
       </div>
       <p className="m-t-30">
         <br/>
-        <hr />
       </p>
+      <hr />
       <p className="m-t-30">
         <br/>
       </p>

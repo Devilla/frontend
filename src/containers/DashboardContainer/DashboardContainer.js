@@ -111,7 +111,7 @@ class DashboardContainer extends Component {
       content: <div className="help-container">
         <FormGroup>
           <Row className="help-form-fields">
-            <Radio name="radioGroup" inline="inline">
+            <Radio name="radioGroup" inline={true}>
               I need help setting up my team
             </Radio>
           </Row>

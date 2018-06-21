@@ -84,11 +84,11 @@ class Sidebar extends Component {
                 <hr/>
                 
                 <Col md={12} className="pt-4">
-                  <ProgressBar className="text-center">
+                  <div className="text-center">
                     <ProgressBar striped active bsStyle={quotaPercentage<60?'info':quotaPercentage<90?'warning':'danger'} now={quotaPercentage} key={1} />
-                  </ProgressBar>
+                  </div>
                   <div className="ml-4 ">
-                    <p className=" textColor" textColor>{quotaPercentage} % consumed.</p>
+                    <p className="textColor">{quotaPercentage} % consumed.</p>
                   </div>
             
                   <hr/>

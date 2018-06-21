@@ -12,7 +12,6 @@ import { ToastContainer } from 'react-toastify';
 import { fetchProfile, updateProfile } from 'ducks/profile';
 import './Profile.scss';
 
-
 class Profile extends Component {
 
   constructor(props) {
@@ -27,42 +26,19 @@ class Profile extends Component {
       city: '',
       country: '',
       address: '',
-      address2: '',
       phoneNumber: '',
       companyName: '',
       profileState: 'edit',
-      countryList: [],
-      selectedCountry: '',
-      selectedState: '',
-      selectedCity: ''
-
+      countryList: []
     };
     props.fetchProfile();
-  }
-
-  plansList() {
-    const planList = this.props.planList;
-    const profile = this.props.profile
-      ? this.props.profile
-      : this.state;
-    return (<FormControl componentClass="select" placeholder="select" value={profile
-      ? profile.plan
-      : null} disabled={true}>
-      <option value="select">Select Plan</option>
-      {
-        planList
-          ? planList.map((plan, i) => {
-            return <option key={i} value={plan._id}>{plan.planName}</option>;
-          })
-          : null
-      }
-    </FormControl>);
   }
 
   componentWillMount() {
     if (this.props.profile)
       this.setProfile(this.props.profile);
   }
+
   componentWillReceiveProps(nextProps) {
     if (this.props.profile != nextProps.profile)
       this.setProfile(nextProps.profile);
@@ -77,13 +53,12 @@ class Profile extends Component {
       city: profile.city,
       country: profile.country,
       address: profile.address,
-      address2: profile.address2,
       phoneNumber: profile.phoneNumber,
       companyName: profile.companyName
     });
   }
 
-  updateProfile(e) {
+  updateProfile = (e) => {
     e.preventDefault();
     const {
       firstName,
@@ -92,7 +67,6 @@ class Profile extends Component {
       city,
       country,
       address,
-      address2,
       phoneNumber,
       companyName
     } = this.state;
@@ -104,12 +78,10 @@ class Profile extends Component {
       city: city,
       country: country,
       address: address,
-      address2: address2,
       phoneNumber: phoneNumber,
       companyName: companyName
     };
-    this.props.updateProfile(profile);
-    return;
+    return this.props.updateProfile(profile);
   }
 
   handleStateChange(e) {
@@ -118,14 +90,14 @@ class Profile extends Component {
     });
   }
 
-  handleEditState(e, value) {
-    if (value == 'save') {
-      this.setState({ profileState: 'edit' });
-      this.updateProfile(e);
-    } else {
-      this.setState({ profileState: 'save' });
-    }
-  }
+  // handleEditState(e, value) {
+  //   if (value == 'save') {
+  //     this.setState({ profileState: 'edit' });
+  //     this.updateProfile(e);
+  //   } else {
+  //     this.setState({ profileState: 'save' });
+  //   }
+  // }
 
   componentDidMount() {
     fetch('https://raw.githubusercontent.com/sagarshirbhate/Country-State-City-Database/master/Contries.json')
@@ -143,7 +115,7 @@ class Profile extends Component {
 
 
   getStateRows = () => {
-    let countryList = this.state.countryList.filter(country => country.CountryName === this.state.selectedCountry);
+    let countryList = this.state.countryList.filter(country => country.CountryName === this.state.country);
     return countryList.map(country => {
       return country.States.map((state, i) => {
         return <option key={i}  value={state.StateName}>
@@ -155,19 +127,23 @@ class Profile extends Component {
 
 
   getCityRows = () => {
-    
+    let countryList = this.state.countryList.filter(country => country.CountryName === this.state.country);
+    let stateList = countryList.length?countryList[0].States.filter(state => state.StateName === this.state.states):[];
+    return stateList.map(state => {
+      return state.Cities.map((city, i) => {
+        return <option key={i}  value={city}>
+          {city}
+        </option>;
+      });
+    });
   }
 
 
   render() {
-    // const isDisabled = this.state.profileState === 'edit'
-    //   ? true
-    //   : false;
     const profile = this.state;
 
-
-    return (<div className="content fill ">
-      <Grid fluid="fluid">
+    return (<div className="content fill profile-container">
+      <Grid fluid={true}>
         <Col sm={12}>
           <div className="profile-user-box card-box" >
             <Row>
@@ -185,9 +161,9 @@ class Profile extends Component {
               </Col>
               <Col md={2}>
                 <div className="">
-                  <button type="button"   onClick={() => browserHistory.push('/upgrade')} className="btn btn-block btn-info waves-light waves-effect upgrade1">Upgrade</button>
+                  <button type="button" onClick={() => browserHistory.push('/upgrade')} className="btn btn-block btn-info waves-light waves-effect upgrade1">Upgrade</button>
                   <div> <br /></div>
-                  <button type="button"   onClick={() => browserHistory.push('/billing-details')} className="btn btn-block btn-info waves-light waves-effect billing1">Billing</button>
+                  <button type="button" onClick={() => browserHistory.push('/billing-details')} className="btn btn-block btn-info waves-light waves-effect billing1">Billing</button>
                 </div>
               </Col>
             </Row>
@@ -204,13 +180,13 @@ class Profile extends Component {
                     <Col md={6}>
                       <span className="text-muted font-13 p mt-5"><strong>First Name :</strong> </span>
                       <FormGroup>
-                        <FormControl type="text" value={profile.firstName} placeholder=""   id="firstName" onChange={(e) => this.handleStateChange(e)} />
+                        <FormControl type="text" value={profile.firstName} autoComplete='given-name' placeholder="First Name" id="firstName" onChange={(e) => this.handleStateChange(e)} />
                       </FormGroup>
                     </Col>
                     <Col md={6}>
                       <span className="text-muted font-13 p"><strong>Last Name :</strong> </span>
                       <FormGroup>
-                        <FormControl type="text" value={profile.lastName} placeholder=""   id="lastName" onChange={(e) => this.handleStateChange(e)} />
+                        <FormControl type="text" value={profile.lastName} autoComplete='family-name' placeholder="Last Name" id="lastName" onChange={(e) => this.handleStateChange(e)} />
                       </FormGroup>
                     </Col>
                   </Row>
@@ -218,13 +194,13 @@ class Profile extends Component {
                     <Col md={6}>
                       <span className="text-muted font-13 p"><strong>Phone :</strong> </span>
                       <FormGroup>
-                        <FormControl type="text" value={profile.phoneNumber} placeholder=""   id="phoneNumber" onChange={(e) => this.handleStateChange(e)} />
+                        <FormControl type="text" value={profile.phoneNumber} autoComplete='tel-national' placeholder="Phone Number" id="phoneNumber" onChange={(e) => this.handleStateChange(e)} />
                       </FormGroup>
                     </Col>
                     <Col md={6}>
                       <span className="text-muted font-13 p"><strong>Email :</strong> </span>
                       <FormGroup>
-                        <FormControl type="text" value={profile.email} placeholder=""   id="email" onChange={(e) => this.handleStateChange(e)} />
+                        <FormControl type="text" value={profile.email} autoComplete='email' placeholder="Email Address" id="email" onChange={(e) => this.handleStateChange(e)} />
                       </FormGroup>
                     </Col>
                   </Row>
@@ -232,13 +208,14 @@ class Profile extends Component {
                     <Col md={6}>
                       <span className="text-muted font-13 p"><strong>Address :</strong> </span>
                       <FormGroup>
-                        <FormControl type="text" value={profile.address} placeholder=""   id="address" onChange={(e) => this.handleStateChange(e)} />
+                        <FormControl type="text" value={profile.address} autoComplete='address-line2' placeholder="Billing Address" id="address" onChange={(e) => this.handleStateChange(e)} />
                       </FormGroup>
                     </Col>
                     <Col md={6}>
                       <span className="text-muted font-13 p"><strong>Country :</strong> </span>
                       <FormGroup controlId="formControlsSelect">
-                        <FormControl componentClass="select" placeholder="select"   onChange={(e) => {this.setState({selectedCountry: e.target.value});}} >
+                        <FormControl componentClass="select" autoComplete='country-name' placeholder="Country Name" value={profile.country} onChange={(e) => this.setState({country: e.target.value})} >
+                          <option value={null}>Select Country</option>
                           {this.getCountryRows()}
                         </FormControl>
                       </FormGroup>
@@ -248,8 +225,8 @@ class Profile extends Component {
                     <Col md={6}>
                       <span className="text-muted font-13 p"><strong>States :</strong> </span>
                       <FormGroup controlId="formControlsSelect">
-                        <FormControl componentClass="select" placeholder="select"    onChange={(e) => {this.setState({selectedState: e.target.value});}}>
-                          <option value="select"></option>
+                        <FormControl componentClass="select" placeholder="States" autoComplete='address-level1' value={profile.states} onChange={(e) => this.setState({states: e.target.value})}>
+                          <option value={null}>Select State</option>
                           {this.getStateRows()}
                         </FormControl>
                       </FormGroup>
@@ -257,9 +234,10 @@ class Profile extends Component {
                     <Col md={6}>
                       <span className="text-muted font-13 p"><strong>City :</strong> </span>
                       <FormGroup controlId="formControlsSelect">
-                        <FormControl componentClass="select" placeholder="select"   onChange={(e) => this.handleStateChange(e)} />
-                        <option value="select"> </option>
-                        {this.getCityRows()}
+                        <FormControl componentClass="select" autoComplete='address-level2' placeholder="City" value={profile.city} onChange={(e) => this.setState({city: e.target.value})}>
+                          <option value={null}>Select City</option>
+                          {this.getCityRows()}
+                        </FormControl>
                       </FormGroup>
                     </Col>
                   </Row>
@@ -267,13 +245,13 @@ class Profile extends Component {
                     <Col md={6}>
                       <span className="text-muted font-13 p"><strong>Company :</strong> </span>
                       <FormGroup>
-                        <FormControl type="text" value={profile.companyName} placeholder=""   id="companyName" onChange={(e) => this.handleStateChange(e)} />
+                        <FormControl type="text" value={profile.companyName} autoComplete='organization' placeholder="Company Name" id="companyName" onChange={(e) => this.handleStateChange(e)} />
                       </FormGroup>
                     </Col>
                   </Row>
                   <Col md={12}>
                     <div className="text-right">
-                      <button type="button" className="btn btn-success waves-effect" onClick={(e) => this.handleEditState(e, this.state.profileState)}>
+                      <button type="button" className="btn btn-success waves-effect" onClick={this.updateProfile}>
                         <i className="mdi mdi-account-settings-variant mr-1"></i> Save Profile
                       </button>
                     </div>
@@ -291,8 +269,7 @@ class Profile extends Component {
 
 const mapStateToProps = state => ({
   profile: state.getIn(['profile', 'profile']),
-  user: state.getIn(['auth', 'user']),
-  planList: state.getIn(['plan', 'plan'])
+  user: state.getIn(['auth', 'user'])
 });
 
 const mapDispatchToProps = {

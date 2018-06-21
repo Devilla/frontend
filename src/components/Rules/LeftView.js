@@ -31,7 +31,16 @@ const LeftView = ({
             <option value="bounceInUp">Bounce in Up </option>
             <option value="bounceInRight">Bounce in Right</option>
             <option value="bounceInLeft">Bounce in Left</option>
-            <option value="bounceInBottom">Bounce in Bottom</option>
+            <option value="bounceInDown">Bounce in Down</option>
+            <option value="slideInUp">Slide in Up</option>
+            <option value="slideInDown">Slide in Down</option>
+            <option value="slideInLeft">Slide in Left</option>
+            <option value="slideInRight">Slide in Right</option>
+            <option value="zoomIn">Zoom in</option>
+            <option value="zoomInUp">Zoom in Up</option>
+            <option value="zoomInDown">Zoom in Down</option>
+            <option value="zoomInLeft">Zoom in Left</option>
+            <option value="zoomInRight">Zoom in Right</option>
           </select>
         </li>
         <li className="mt-4">
@@ -46,7 +55,16 @@ const LeftView = ({
             <option value="bounceOutUp">Bounce out Up </option>
             <option value="bounceOutRight">Bounce out Right</option>
             <option value="bounceOutLeft">Bounce out Left</option>
-            <option value="bounceOutBottom">Bounce out Bottom</option>
+            <option value="bounceOutDown">Bounce out Down</option>
+            <option value="slideOutUp">Slide out Up</option>
+            <option value="slideOutDown">Slide out Down</option>
+            <option value="slideOutLeft">Slide out Left</option>
+            <option value="slideOutRight">Slide out Right</option>
+            <option value="zoomOut">Zoom out</option>
+            <option value="zoomOutUp">Zoom out Up</option>
+            <option value="zoomOutDown">Zoom out Down</option>
+            <option value="zoomOutLeft">Zoom out Left</option>
+            <option value="zoomOutRight">Zoom out Right</option>
           </select>
         </li>
 

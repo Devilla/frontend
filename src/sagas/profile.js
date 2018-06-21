@@ -51,7 +51,7 @@ function* update(action) {
   try {
     yield put(load());
     delete action.profile['_id'];
-    const res = yield call(api.PUT, 'profile/${action.profile.id}', action.profile);
+    const res = yield call(api.PUT, `profile/${action.profile.id}`, action.profile);
     if (res.error)
       console.log(res.error);
     yield put(loaded());
@@ -72,7 +72,7 @@ export function* watchCreate() {
 }
 
 export function* watchUpdate() {
-  yield takeLatest(actions.UPDATE, update);
+  yield takeLatest(actions.UPDATE_PROFILE, update);
 }
 
 export default function* rootSaga() {

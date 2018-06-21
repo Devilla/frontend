@@ -18,7 +18,6 @@ const Campaign = ({
   campaignname,
   errorName,
   handleWebsiteChange,
-  handleWebsiteAuth,
   website,
   errorWebsiteUrl,
   isDisabled
@@ -60,7 +59,6 @@ const Campaign = ({
                         placeholder="http://"
                         id="website"
                         onChange={handleWebsiteChange}
-                        onBlur={handleWebsiteAuth}
                         value={website}
                         required={true}
                       />

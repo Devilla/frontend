@@ -104,8 +104,8 @@ class Notification extends Component {
         <td><a href="javascript:;"><i className="ml-3 icon-trash" onClick={() => this.deleteCampaign(i, campaign._id)}></i></a></td>
       </tr>
     ))
-      :
-      <div></div>;
+    :
+    <tr></tr>;
   }
 
   render() {
