@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Col, Glyphicon } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 import { Card } from './Card';
 import NotificationDesign from './NotificationDesign';
 import { NotificationDesignSetting } from './NotificationDesignSetting';
@@ -7,15 +7,19 @@ import Switch from 'react-flexible-switch';
 import './NotificationConfigure.scss';
 
 const NotificationConfigure = ({
+  toggleTextBox,
+  toggleMap,
   notification,
   activity,
   contentText,
   visitorText,
+  notificationUrl,
   setDefaultPanel,
   handleActivityChange,
   handleContentChange,
   notificationPanelStyle,
   handleNotificationStyleChange,
+  handleClickableNotification,
   saveConfiguration,
   backConfiguration
 }) => {
@@ -23,12 +27,13 @@ const NotificationConfigure = ({
     <div className="notification-configure">
       <Row>
         <Col md={12}>
-          <Card title="Recent User Activity"
+          <Card title={notification.notificationName}
             isDisabled={activity}
             content={
               <div className="notification-configure-content">
                 <Col md={6}>
                   <NotificationDesign
+                    toggleMap={toggleMap}
                     contentText={contentText}
                     visitorText={visitorText}
                     notification={notification}
@@ -37,12 +42,16 @@ const NotificationConfigure = ({
                 </Col>
                 <Col md={6}>
                   <NotificationDesignSetting
+                    toggleTextBox={toggleTextBox}
+                    toggleMap={toggleMap}
                     contentText={contentText}
                     visitorText={visitorText}
+                    notificationUrl={notificationUrl}
                     notification={notification}
                     notificationPanelStyle={notificationPanelStyle}
                     onConfigChange={handleNotificationStyleChange}
                     handleContentChange={handleContentChange}
+                    handleClickableNotification={handleClickableNotification}
                   />
                 </Col>
 
@@ -63,17 +72,14 @@ const NotificationConfigure = ({
 
       <div className="m-t-50 pull-right">
         <span className="btn btn-info mr-3" onClick={backConfiguration}>
-          <Glyphicon glyph="chevron-left" />
           Back
         </span>
 
-        <span className="btn btn-info mr-3" >
-          <Glyphicon glyph="align-justify" onClick={setDefaultPanel} />
+        <span className="btn btn-info mr-3" onClick={setDefaultPanel} >
           Set Default
         </span>
 
         <span className="btn btn-info mr-3" onClick={saveConfiguration}>
-          <Glyphicon glyph="save" />
           Save
         </span>
       </div>

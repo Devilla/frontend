@@ -11,8 +11,6 @@ import Popup from 'react-popup';
 import { fetchCampaign, updateCampaign, successCampaign, removeCampaign } from 'ducks/campaign';
 import './Notification.scss';
 
-const notificationFields = ['S.No', 'Campaign', 'Domain', 'Status', 'Tracking ID', 'Log', 'Created', 'Delete'];
-
 class Notification extends Component {
   constructor() {
     super();
@@ -63,13 +61,33 @@ class Notification extends Component {
   }
 
   deleteCampaign(index, campId) {
-    this.props.removeCampaign(index, campId);
+    let that = this;
+    Popup.create({
+      title: 'Delete Campaign',
+      buttons: {
+        left: [{
+          text: 'Cancel',
+          className: 'warning popup-notification-button',
+          action: function () {
+            Popup.close();
+          }
+        }],
+        right: [{
+          text: 'Confirm',
+          className: 'primary popup-notification-button',
+          action: function () {
+            that.props.removeCampaign(index, campId);
+            Popup.close();
+          }
+        }]
+      }
+    }, true);
   }
 
   // Map the notification data into table rows and return
   getNotificationRows = () => {
     return this.props.campaigns ? this.props.campaigns.map((campaign, i) => (
-      <tr key={campaign._id} onClick={(e) => this.handleRouteChange(e, campaign)}>
+      <tr className="campaign-td" key={campaign._id} onClick={(e) => this.handleRouteChange(e, campaign)}>
         <th scope="row">{i + 1}</th>
         <td>{campaign.campaignName}</td>
         <td>{campaign.websiteUrl}</td>
@@ -83,7 +101,7 @@ class Notification extends Component {
         </td>
         <td>{campaign.trackingId}</td>
         <td>{moment(campaign.createdAt).format('MM/DD/YYYY')}</td>
-        <td><a href=""><i className="ml-3 icon-trash" onClick={() => this.deleteCampaign(i, campaign._id)}></i></a></td>
+        <td><a href="javascript:;"><i className="ml-3 icon-trash" onClick={() => this.deleteCampaign(i, campaign._id)}></i></a></td>
       </tr>
     ))
       :

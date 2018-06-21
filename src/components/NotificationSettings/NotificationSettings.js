@@ -64,8 +64,11 @@ class Notifications extends Component {
       notificationPanelStyle: notificationPanelStyleDefault,
       contentText: 'Company Name ',
       visitorText: 'people',
+      notificationUrl: null,
       image: '',
       notifications: [],
+      toggleTextBox: false,
+      toggleMap: true
     };
     this.configure = this.configure.bind(this);
     this.handleActivityChange = this.handleActivityChange.bind(this);
@@ -77,6 +80,7 @@ class Notifications extends Component {
     this.handleNextState = this.handleNextState.bind(this);
     this.handleBackState = this.handleBackState.bind(this);
     this.backConfiguration = this.backConfiguration.bind(this);
+    this.handleClickableNotification = this.handleClickableNotification.bind(this);
   }
 
   componentWillMount() {
@@ -118,7 +122,9 @@ class Notifications extends Component {
         activity: config.activity,
         notificationPanelStyle: config.panelStyle,
         contentText: config.contentText,
-        visitorText: config.visitorText
+        visitorText: config.visitorText,
+        notificationUrl: config.notificationUrl,
+        toggleMap: config.toggleMap
       });
     }
   }
@@ -130,6 +136,8 @@ class Notifications extends Component {
       notificationPanelStyle: notificationPanelStyleDefault,
       contentText: 'Company Name',
       visitorText: 'people',
+      notificationUrl: null,
+      toggleMap: true,
       image: ''
     });
   }
@@ -155,6 +163,10 @@ class Notifications extends Component {
     this.setState({ [target]: content });
   }
 
+  handleClickableNotification() {
+    this.setState({toggleTextBox: !this.state.toggleTextBox});
+  }
+
   handleNextState() {
     this.setState({notification: ''});
     this.props.setActiveState(3);
@@ -177,6 +189,8 @@ class Notifications extends Component {
       panelStyle: this.state.notificationPanelStyle,
       contentText: this.state.contentText,
       visitorText: this.state.visitorText,
+      notificationUrl: this.state.toggleTextBox && this.state.notificationUrl ?this.state.notificationUrl:null,
+      toggleMap: this.state.toggleMap,
       campaign: this.props.campaign._id
     };
     let configuration = this.props.configuration.size == 0 ? null : this.props.configuration.size ? this.props.configuration.toJS() : this.props.configuration;
@@ -201,7 +215,7 @@ class Notifications extends Component {
 
   render() {
 
-    const { configurations, createSuccess } = this.props;
+    const { configurations, createSuccess, campaign } = this.props;
     return (
       <div className="notification-settings">
         <div>
@@ -209,6 +223,7 @@ class Notifications extends Component {
           {!this.state.notification
             ?
             <NotificationList
+              campaignUrl={campaign.websiteUrl}
               notificationList={this.state.notifications}
               handleActivityChange={this.handleActivityChange}
               configure={this.configure}
@@ -218,17 +233,14 @@ class Notifications extends Component {
             :
             <Row>
               <NotificationConfigure
-                notification={this.state.notification}
-                activity={this.state.activity}
-                contentText={this.state.contentText}
-                visitorText={this.state.visitorText}
-                notificationPanelStyle={this.state.notificationPanelStyle}
                 handleContentChange={this.handleContentChange}
                 setDefaultPanel={this.setDefaultPanel}
                 handleActivityChange={this.handleActivityChange}
                 handleNotificationStyleChange={this.handleNotificationStyleChange}
+                handleClickableNotification={this.handleClickableNotification}
                 saveConfiguration={this.saveConfiguration}
                 backConfiguration={this.backConfiguration}
+                {...this.state}
               />
             </Row>
           }

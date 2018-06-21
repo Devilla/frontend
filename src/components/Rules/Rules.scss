@@ -23,3 +23,7 @@ button {
     border-radius: 5px;
   }
 }
+.notification-view{
+  z-index: 100000000;
+  position: fixed;
+}

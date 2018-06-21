@@ -6,6 +6,11 @@
 .manage-notification {
   .card-box {
     padding: 20px 15px;
+    .campaign-td {
+      td {
+        cursor: pointer;
+      }
+    }
   }
   .react-flexible-switch {
     background-color: white !important;
@@ -30,4 +35,8 @@
 
 .mm-popup__btn--popup-notification-button {
   margin: 0 0% !important;
+}
+
+.mm-popup__box__header__title {
+  text-align: center !important;
 }

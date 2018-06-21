@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import LeftView from './LeftView';
 import RightView from './RightView';
+import './Rules.scss';
 
 class Rules extends Component{
   constructor(){
@@ -19,14 +20,18 @@ class Rules extends Component{
       recentConv:5,
       displayTime: 120,
       delayBetween: 120,
-      displayPosition: 'bottom',
+      displayPosition: 'Bottom Left',
       popupAnimationIn:'fadeInUp',
-      popupAnimationOut:'fadeOutDown'
+      popupAnimationOut:'fadeOutDown',
+      sampleDisplay: false,
+      animation: 'fadeIn'
     };
     this.handleStateChange = this.handleStateChange.bind(this);
     this.saveRules = this.saveRules.bind(this);
+    this.showNotification = this.showNotification.bind(this);
     this.handleNextState = this.handleNextState.bind(this);
     this.handleBackState = this.handleBackState.bind(this);
+    this.handleAnimation = this.handleAnimation.bind(this);
   }
 
   componentDidMount() {
@@ -94,6 +99,14 @@ class Rules extends Component{
     this.props.setActiveState(2);
   }
 
+  showNotification() {
+    this.setState({sampleDisplay: !this.state.sampleDisplay});
+  }
+
+  handleAnimation(value) {
+    this.setState({animation: value});
+  }
+
   render() {
     return (
       <div>
@@ -102,6 +115,7 @@ class Rules extends Component{
         </div>
         <div className="row m-t-30 m-b-30">
           <LeftView
+            handleAnimation={this.handleAnimation}
             handleStateChange={this.handleStateChange}
             {...this.state}
           />

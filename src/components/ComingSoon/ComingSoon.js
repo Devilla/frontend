@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { browserHistory } from 'react-router';
 import {Integrations1} from 'img';
-import './ComingSoon.css';
+import './ComingSoon.scss';
 
 class ComingSoon extends Component {
 
@@ -16,7 +16,7 @@ class ComingSoon extends Component {
 
   render() {
     return (
-      <div>
+      <div className="coming-soon">
         <div className="content-wrap">
           <div>
             <div><img src={Integrations1}/></div>

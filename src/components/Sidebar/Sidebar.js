@@ -15,9 +15,6 @@ class Sidebar extends Component {
     };
   
   }
-  componentWillReceiveProps(){
-    this.state.quotaPercentage=this.props.profile?Math.round(100*this.props.profile.uniqueVisitors/this.props.profile.uniqueVisitorQouta):null;
-  }
 
 
 
@@ -27,7 +24,9 @@ class Sidebar extends Component {
 
 
   render() {
-    const { disableButton} = this.props;
+    const { disableButton, profile } = this.props;
+    let quotaPercentage = profile?Math.round(100*profile.uniqueVisitors/profile.uniqueVisitorQouta):0;
+
     return (
       <div className="left side-menu">
         <div>
@@ -86,10 +85,10 @@ class Sidebar extends Component {
                 
                 <Col md={12} className="pt-4">
                   <ProgressBar className="text-center">
-                    <ProgressBar striped active bsStyle={this.state.quotaPercentage<60?'info':this.state.quotaPercentage<90?'warning':'danger'} now={this.state.quotaPercentage} key={1} />
+                    <ProgressBar striped active bsStyle={quotaPercentage<60?'info':quotaPercentage<90?'warning':'danger'} now={quotaPercentage} key={1} />
                   </ProgressBar>
                   <div className="ml-4 ">
-                    <p className=" textColor" textColor>{this.state.quotaPercentage} % consumed.</p>
+                    <p className=" textColor" textColor>{quotaPercentage} % consumed.</p>
                   </div>
             
                   <hr/>

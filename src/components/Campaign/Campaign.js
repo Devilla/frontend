@@ -25,7 +25,7 @@ const Campaign = ({
 }) => {
   return (
     <div className="content fill">
-      <Grid fluid="fluid">
+      <Grid>
         <Row>
           <Col md={12}>
             <div className="card-box">

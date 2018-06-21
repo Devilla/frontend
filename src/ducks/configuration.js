@@ -68,7 +68,8 @@ const initialConfig = {
     liveVisitorCount: 0
   },
   visitorText: '',
-  contentText: ''
+  contentText: '',
+  notificationUrl: ''
 };
 
 const initialState = fromJS({

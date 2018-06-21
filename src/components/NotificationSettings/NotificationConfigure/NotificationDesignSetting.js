@@ -19,7 +19,8 @@ export class NotificationDesignSetting extends Component {
       isBgColorSwatchOpen: false,
       isTextColorSwatchOpen: false,
       isLinkColorSwatchOpen: false,
-      activeClass: 1
+      activeClass: 1,
+      toggleTextBox: false
     };
     Object.assign(this.state, props.notificationPanelStyle);
   }
@@ -204,7 +205,17 @@ export class NotificationDesignSetting extends Component {
 
   render() {
     const { activeClass } = this.state;
-    const { notificationPanelStyle, handleContentChange, contentText, visitorText, notification } = this.props;
+    const {
+      notificationPanelStyle,
+      handleContentChange,
+      contentText,
+      visitorText,
+      notification,
+      notificationUrl,
+      toggleMap,
+      toggleTextBox,
+      handleClickableNotification
+    } = this.props;
     const styles = reactCSS({
       'default': {
         colorSwatch: {
@@ -225,6 +236,7 @@ export class NotificationDesignSetting extends Component {
           backgroundColor: `rgb(${notificationPanelStyle.linkColor.r}, ${notificationPanelStyle.linkColor.g}, ${notificationPanelStyle.linkColor.b}, ${notificationPanelStyle.linkColor.a})`
         },
         swatch: {
+          margin: '5% 70%',
           padding: '0px',
           background: '#fff',
           borderRadius: '1px',
@@ -286,19 +298,10 @@ export class NotificationDesignSetting extends Component {
 
                   </Col>
                 </Row>
-                <Row className="mb-3">
+                <Row >
                   <Col md={12} className="text-muted h6">
                     <p className="h6">Border</p>
                     <Row>
-                      <Col md={6}>
-                        <div style={styles.swatch} onClick={this.showBorderSwatch}>
-                          <div style={{ ...styles.colorSwatch, ...styles.border }} />
-                        </div>
-                        {this.state.isBorderColorSwatchOpen ? <div style={styles.popover}>
-                          <div style={styles.cover} onClick={this.hideBorderSwatch} />
-                          <ChromePicker color={notificationPanelStyle.borderColor} onChange={this.handleBorderColorChange} />
-                        </div> : null}
-                      </Col>
                       <Col md={6}>
                         <div className='slider alignment'>
                           <Slider
@@ -310,10 +313,19 @@ export class NotificationDesignSetting extends Component {
                           />
                         </div>
                       </Col>
+                      <Col md={6} className="mt-2">
+                        <div style={styles.swatch} onClick={this.showBorderSwatch}>
+                          <div style={{ ...styles.colorSwatch, ...styles.border }} />
+                        </div>
+                        {this.state.isBorderColorSwatchOpen ? <div style={styles.popover}>
+                          <div style={styles.cover} onClick={this.hideBorderSwatch} />
+                          <ChromePicker color={notificationPanelStyle.borderColor} onChange={this.handleBorderColorChange} />
+                        </div> : null}
+                      </Col>
                     </Row>
                   </Col>
                 </Row>
-                <Row>
+                <Row >
                   <Col md={12} className="text-muted ">
                     <Row>
                       <Col md={6}>
@@ -331,23 +343,33 @@ export class NotificationDesignSetting extends Component {
                     </Row>
                   </Col>
                 </Row>
+                {notification.notificationName === 'Recent Activity' &&
+                  <Row style={{padding: '4% 0%'}}>
+                    <Col md={10}>
+                      <span className="mt-5 text-muted h6">Display map icon only</span>
+                    </Col>
+                    <Col md={2}>
+                      <Switch circleStyles={{
+                        onColor: '#097fff',
+                        offColor: 'gray',
+                        diameter: 18
+                      }} switchStyles={{
+                        width: 50
+                      }} cssClass="alignsame"
+                      value={toggleMap}
+                      onChange={(e) => handleContentChange('toggleMap', e)}
+                      />
+                    </Col>
+                  </Row>
+                }
               </div>
 
 
               <div className={`tab-pane ${activeClass == 2 ? 'show active' : ''}`} id="debit">
                 <Row className="mb-3">
                   <Col md={12}>
-                    <h4 className="text-muted h6">Text Setting</h4>
+                    <h4 className="text-muted h6">Text Style</h4>
                     <Row>
-                      <Col md={4}>
-                        <div style={styles.swatch} onClick={this.showTextColorSwatch}>
-                          <div style={{ ...styles.colorSwatch, ...styles.textColor }} />
-                        </div>
-                        {this.state.isTextColorSwatchOpen ? <div style={styles.popover}>
-                          <div style={styles.cover} onClick={this.hideTextColorSwatch} />
-                          <ChromePicker color={notificationPanelStyle.color} onChange={this.handleTextColorChange} />
-                        </div> : null}
-                      </Col>
                       <Col md={4}>
                         <Button bsSize="small" block active={notificationPanelStyle.fontWeight == FONT_WEIGHT_BOLD} onClick={this.handleFontWeightChange}>
                           Bold
@@ -358,22 +380,31 @@ export class NotificationDesignSetting extends Component {
                           <option value="arial">Arial</option>
                           <option value="monospace">Monospace</option>
                           <option value="georgia">Georgia</option>
-                          <option value='Roboto,helvetica,arial,sans-serif!important'>Default</option>
+                          <option value='Roboto,helvetica,arial,sans-serif'>Default</option>
                         </FormControl>
+                      </Col>
+                      <Col md={3}>
+                        <div style={styles.swatch} onClick={this.showTextColorSwatch}>
+                          <div style={{ ...styles.colorSwatch, ...styles.textColor }} />
+                        </div>
+                        {this.state.isTextColorSwatchOpen ? <div style={styles.popover}>
+                          <div style={styles.cover} onClick={this.hideTextColorSwatch} />
+                          <ChromePicker color={notificationPanelStyle.color} onChange={this.handleTextColorChange} />
+                        </div> : null}
                       </Col>
                     </Row>
                   </Col>
                 </Row>
                 <Row className="mb-3">
                   <Col md={12}>
-                    <h4 className="text-muted h6">Content Setting</h4>
+                    <h4 className="text-muted h6">Brand Name</h4>
                     <Row>
                       <Col md={12}>
                         <FormControl
                           type="text"
-                          maxLength={notification.notificationName === 'Recent Activity' ? '35' : '15'}
+                          maxLength='15'
                           value={contentText}
-                          placeholder="Enter content for notification"
+                          placeholder="Enter brand name for notification"
                           id="contentText"
                           onChange={(e) => handleContentChange(e.target.id, e.target.value)}
                         />
@@ -384,14 +415,14 @@ export class NotificationDesignSetting extends Component {
                 {notification.notificationName !== 'Recent Activity' &&
                   <Row className="mb-3">
                     <Col md={12}>
-                      <h4 className="text-muted h6">Name Setting</h4>
+                      <h4 className="text-muted h6">Identity User As</h4>
                       <Row>
                         <Col md={12}>
                           <FormControl
                             type="text"
                             maxLength="10"
                             value={visitorText}
-                            placeholder="Enter content for notification"
+                            placeholder="Enter identity"
                             id="visitorText"
                             onChange={(e) => handleContentChange(e.target.id, e.target.value)}
                           />
@@ -402,73 +433,137 @@ export class NotificationDesignSetting extends Component {
                 }
               </div>
 
+
               <div className={`tab-pane ${activeClass == 3 ? 'show active' : ''}`} id="paypal">
+                {notification.notificationName === 'Live Visitor Count'  &&
+                  <Row className="mb-3">
+                    <Col md={9} style={{padding: '8px 15px', width: '45%'}}>
+                      <span className="mt-5 text-muted h6"> Hide 'Live Viewer' if viewers less than</span>
+                    </Col>
+                    <Col md={3} style={{'padding': 0, width: '10%'}}>
+                      <FormGroup>
+                        <FormControl
+                          type="number"
+                          min="0"
+                          value={notificationPanelStyle.liveVisitorCount}
+                          onChange={(e) => this.handleLiveVistorCount(e)}
+                          bsSize="sm"
+                        />
+                      </FormGroup>
+                    </Col>
+                  </Row>
+                }
+                {notification.notificationName === 'Bulk Activity'  &&
+                  <Row className="mb-3">
+                    <Col md={7} style={{padding: '8px 15px', width: '45%'}}>
+                      <span className="mt-5 text-muted h6"> Display bulk data from last</span>
+                    </Col>
+                    <Col md={2} style={{'padding': 0, width: '10%'}}>
+                      <FormGroup>
+                        <FormControl
+                          type="number"
+                          min="0"
+                          value={notificationPanelStyle.bulkData}
+                          onChange={(e) => this.handleStateChangeDay(e)}
+                          bsSize="sm"
+                        />
+                      </FormGroup>
+                    </Col>
+                    <Col md={3}>
+                      <FormControl componentClass="select" bsSize="small" value={notificationPanelStyle.selectDurationData} onChange={this.handleDurationChange}>
+                        <option value="hours">hours</option>
+                        <option value="days">days</option>
+                      </FormControl>
+                    </Col>
+                  </Row>
+                }
+                {notification.notificationName === 'Recent Activity' &&
+                  <div>
+                    <Row>
+                      <Col md={4} style={{padding: '8px 15px'}}>
+                        <span className="mt-5 text-muted h6">Display the last</span>
+                      </Col>
+                      <Col md={3} style={{'padding': 0, width: '10%'}}>
+                        <FormGroup>
+                          <FormControl
+                            type="number"
+                            min="0"
+                            onChange={(e) => this.handleStateChangeNumber(e)}
+                            bsSize="sm"
+                            value={notificationPanelStyle.recentNumber}
+                          />
+                        </FormGroup>
+                      </Col>
+                      <Col md={4} style={{padding: '10px 15px'}}>
+                        <span className="mt-5 text-muted h6">conversions</span>
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col md={7} style={{padding: '8px 15px', width: '50%'}}>
+                        <span className="mt-5 text-muted h6">Display conversions from last</span>
+                      </Col>
+                      <Col md={2} style={{ padding: 0, width: '10%' }}>
+                        <FormGroup>
+                          <FormControl
+                            type="number"
+                            min="0"
+                            value={notificationPanelStyle.recentConv}
+                            onChange={(e) => this.handleStateChangeConv(e)}
+                            bsSize="sm"
+                          />
+                        </FormGroup>
+                      </Col>
+                      <Col md={3}>
+                        <FormControl componentClass="select" bsSize="small" value={notificationPanelStyle.selectLastDisplayConversation} onChange={this.handleLastDisplayDurationChange}>
+                          <option value="hours">hours</option>
+                          <option value="days">days</option>
+                        </FormControl>
+                      </Col>
+                    </Row>
+                    <Row className="mb-3">
+                      <Col md={10}>
+                        <span className="mt-5 text-muted h6">Hide anonymous conversions
+                        </span>
+                      </Col>
+                      <Col md={2}>
+                        <Switch
+                          circleStyles={{
+                            onColor: '#097fff',
+                            offColor: 'gray',
+                            diameter: 18
+                          }}
+                          switchStyles={{
+                            width: 50
+                          }}
+
+                          cssClass="alignsame"
+                          value={notificationPanelStyle.hideAnonymousConversion}
+                          onChange={(e) => this.handleAnonymousConversionsChange(e)}
+                        />
+                      </Col>
+                    </Row>
+                    <Row className="mb-3">
+                      <Col md={10}>
+                        <span className="mt-5 text-muted h6">Only display notifications from user's country</span>
+                      </Col>
+                      <Col md={2}>
+                        <Switch circleStyles={{
+                          onColor: '#097fff',
+                          offColor: 'gray',
+                          diameter: 18
+                        }} switchStyles={{
+                          width: 50
+                        }} cssClass="alignsame"
+                        value={notificationPanelStyle.onlyDisplayNotification}
+                        onChange={(e) => this.handleOnlyDisplayNotification(e)}
+                        />
+                      </Col>
+                    </Row>
+                  </div>
+                }
                 <Row className="mb-3">
-                  <Col md={7} style={{'paddingRight': 0}}>
-                    <span className="mt-5 text-muted h6">Display the last conversion</span>
-                  </Col>
-                  <Col md={3} style={{'padding': 0, width: '10%'}}>
-                    <FormGroup>
-                      <FormControl
-                        type="number"
-                        min="0"
-
-                        onChange={(e) => this.handleStateChangeNumber(e)}
-                        bsSize="sm"
-                        value={notificationPanelStyle.recentNumber}
-
-                      />
-                    </FormGroup>
-                  </Col>
-
-                </Row>
-                <Row className="mb-3">
-                  <Col md={7} style={{'paddingRight': 0, width: '50%'}}>
-                    <span className="mt-5 text-muted h6">Display conversation from last</span>
-                  </Col>
-                  <Col md={2} style={{ padding: 0, width: '10%' }}>
-                    <FormGroup>
-                      <FormControl
-                        type="number"
-                        min="0"
-                        value={notificationPanelStyle.recentConv}
-                        onChange={(e) => this.handleStateChangeConv(e)}
-                        bsSize="sm"
-                      />
-                    </FormGroup>
-                  </Col>
-                  <Col md={3}>
-                    <FormControl componentClass="select" bsSize="small" value={notificationPanelStyle.selectLastDisplayConversation} onChange={this.handleLastDisplayDurationChange}>
-                      <option value="hours">hours</option>
-                      <option value="days">days</option>
-                    </FormControl>
-                  </Col>
-                </Row>
-                <Row className="mb-4">
                   <Col md={10}>
-                    <span className="mt-5 text-muted h6">Hide anonymous conversions
-                    </span>
-                  </Col>
-                  <Col md={2}>
-                    <Switch
-                      circleStyles={{
-                        onColor: '#097fff',
-                        offColor: 'gray',
-                        diameter: 18
-                      }}
-                      switchStyles={{
-                        width: 50
-                      }}
-
-                      cssClass="alignsame"
-                      value={notificationPanelStyle.hideAnonymousConversion}
-                      onChange={(e) => this.handleAnonymousConversionsChange(e)}
-                    />
-                  </Col>
-                </Row>
-                <Row>
-                  <Col md={10}>
-                    <span className="mt-5 text-muted h6">Only display notifications from user's country</span>
+                    <span className="mt-5 text-muted h6">Notifications Clickable</span>
                   </Col>
                   <Col md={2}>
                     <Switch circleStyles={{
@@ -478,8 +573,20 @@ export class NotificationDesignSetting extends Component {
                     }} switchStyles={{
                       width: 50
                     }} cssClass="alignsame"
-                    value={notificationPanelStyle.onlyDisplayNotification}
-                    onChange={(e) => this.handleOnlyDisplayNotification(e)}
+                    value={toggleTextBox}
+                    onChange={handleClickableNotification}
+                    />
+                  </Col>
+                </Row>
+                <Row style={toggleTextBox?{ display:'block', marginBottom: '-9%' }:{ display:'none', marginBottom: '-9%' }}>
+                  <Col md={12}>
+                    <FormControl
+                      type="text"
+                      maxLength="10"
+                      value={notificationUrl}
+                      placeholder="Enter URL"
+                      id="notificationUrl"
+                      onChange={(e) => handleContentChange(e.target.id, e.target.value)}
                     />
                   </Col>
                 </Row>

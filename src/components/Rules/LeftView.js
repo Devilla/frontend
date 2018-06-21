@@ -1,5 +1,7 @@
 import React from 'react';
+import NotificationView from './NotificationView';
 import './Rules.scss';
+
 const LeftView = ({
   hideNotification,
   loopNotification,
@@ -7,40 +9,44 @@ const LeftView = ({
   closeNotification,
   handleStateChange,
   popupAnimationIn,
-  popupAnimationOut
+  popupAnimationOut,
+  sampleDisplay,
+  displayPosition,
+  animation,
+  handleAnimation
 }) => {
   return (
-
     <div className="col-md-6 border-right">
       <ul className="text-muted text-left list-unstyled ">
+       
         <li className="m-t-5">
           <label className="text-muted">
-          Select popup notification animation
+            Select Pop-in Animation
           </label>
-          <select className="form-control muted-text" value={popupAnimationIn} onChange={(e) => handleStateChange('popupAnimationIn', e.target.value)}>
-            <option value="Fade in Up">Fade in Up</option>
-            <option value="Fade in Left">Fade in Left</option>
-            <option value="Fade in Bottom">Fade in Bottom</option>
-            <option value="Fade in Right">Fade in Right</option>
-            <option value="Bounce in Up">Bounce in Up </option>
-            <option value="Bounce in Right">Bounce in Right</option>
-            <option value="Bounce in Left">Bounce in Left</option>
-            <option value="Bounce in Bottom">Bounce in Bottom</option>
+          <select className="custom-select  muted-text" value={popupAnimationIn} onChange={(e) => { handleStateChange('popupAnimationIn', e.target.value); handleAnimation(e.target.value); }}>
+            <option value="fadeInUp">Fade in Up</option>
+            <option value="fadeInLeft">Fade in Left</option>
+            <option value="fadeInBottom">Fade in Bottom</option>
+            <option value="fadeInRight">Fade in Right</option>
+            <option value="bounceInUp">Bounce in Up </option>
+            <option value="bounceInRight">Bounce in Right</option>
+            <option value="bounceInLeft">Bounce in Left</option>
+            <option value="bounceInBottom">Bounce in Bottom</option>
           </select>
         </li>
         <li className="mt-4">
           <label className="text-muted">
-          Select popout notification animation
+            Select Pop-out Animation
           </label>
-          <select className="form-control muted-text" value={popupAnimationOut} onChange={(e) => handleStateChange('popupAnimationOut', e.target.value)}>
-            <option value="Fade out Up">Fade out Up</option>
-            <option value="Fade out Left">Fade out Left</option>
-            <option value="Fade out Bottom">Fade out Bottom</option>
-            <option value="Fade out Right">Fade out Right</option>
-            <option value="Bounce out Up">Bounce out Up </option>
-            <option value="Bounce out Right">Bounce out Right</option>
-            <option value="Bounce out Left">Bounce out Left</option>
-            <option value="Bounce out Bottom">Bounce out Bottom</option>
+          <select className="custom-select  muted-text" value={popupAnimationOut} onChange={(e) => { handleStateChange('popupAnimationOut', e.target.value); handleAnimation(e.target.value);}}>
+            <option value="fadeOutUp">Fade out Up</option>
+            <option value="fadeOutLeft">Fade out Left</option>
+            <option value="fadeOutBottom">Fade out Bottom</option>
+            <option value="fadeOutRight">Fade out Right</option>
+            <option value="bounceOutUp">Bounce out Up </option>
+            <option value="bounceOutRight">Bounce out Right</option>
+            <option value="bounceOutLeft">Bounce out Left</option>
+            <option value="bounceOutBottom">Bounce out Bottom</option>
           </select>
         </li>
 
@@ -79,6 +85,9 @@ const LeftView = ({
         </li>
         <br/>
       </ul>
+      <div>
+        <NotificationView animation={animation} display={sampleDisplay} position={displayPosition} />
+      </div>
     </div>
   );
 };
