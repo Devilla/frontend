@@ -160,10 +160,10 @@ class Profile extends Component {
                 </div>
               </Col>
               <Col md={2}>
-                <div className="">
-                  <button type="button" onClick={() => browserHistory.push('/upgrade')} className="btn btn-block btn-info waves-light waves-effect upgrade1">Upgrade</button>
+                <div className="profbtn">
+                  <button type="button" onClick={() => browserHistory.push('/upgrade')} className="btn btn-block btn-primary waves-light waves-effect upgrade1">Upgrade</button>
                   <div> <br /></div>
-                  <button type="button" onClick={() => browserHistory.push('/billing-details')} className="btn btn-block btn-info waves-light waves-effect billing1">Billing</button>
+                  <button type="button" onClick={() => browserHistory.push('/billing-details')} className="btn btn-block btn-primary waves-light waves-effect billing1">Billing</button>
                 </div>
               </Col>
             </Row>
@@ -224,7 +224,7 @@ class Profile extends Component {
                   <Row>
                     <Col md={6}>
                       <span className="text-muted font-13 p"><strong>States :</strong> </span>
-                      <FormGroup controlId="formControlsSelect">
+                      <FormGroup controlId="formfBillinControlsSelect">
                         <FormControl componentClass="select" placeholder="States" autoComplete='address-level1' value={profile.states} onChange={(e) => this.setState({states: e.target.value})}>
                           <option value={null}>Select State</option>
                           {this.getStateRows()}
@@ -251,7 +251,7 @@ class Profile extends Component {
                   </Row>
                   <Col md={12}>
                     <div className="text-right">
-                      <button type="button" className="btn btn-success waves-effect" onClick={this.updateProfile}>
+                      <button type="button" className="btn btn-primary waves-effect" onClick={this.updateProfile}>
                         <i className="mdi mdi-account-settings-variant mr-1"></i> Save Profile
                       </button>
                     </div>

@@ -74,7 +74,7 @@ class BillingDetails extends Component {
 
                       <Button
                         onClick={() => browserHistory.push('/Upgrade')}
-                        className="btn btn-success"
+                        className="btn btn-primary"
                         pullRight="pullRight" fill="fill"
                         type="button"
                         icon="cloud-upload"
@@ -85,7 +85,7 @@ class BillingDetails extends Component {
 
                       <Button
                         onClick={() => browserHistory.push('/card-details?type=upgrade')}
-                        className="btn btn-success"
+                        className="btn btn-primary"
                         pullRight={true}
                         fill={true}
                         type="button"
@@ -235,7 +235,7 @@ class BillingDetails extends Component {
                   </div>
                 </div>
               </div>
-              />
+              
             </Col>
           </Row>
         </Grid>

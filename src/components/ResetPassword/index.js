@@ -137,9 +137,10 @@ export default class forget extends Component{
             <div className="wrapper">
               <Animated className="leftwrap center" animationIn="fadeIn" animationOut="fadeOut" isVisible={true}>
                 <form onSubmit={this.handleSubmit.bind(this)} method="POST" data-name="Login Form"  className="loginfrm">
-                  <h3 className="dashed">Reset your password</h3>
+                  <h3 className="pt-5 dashed">Reset your password</h3>
                   <div className="section-divider-line"><hr/></div>
-                  <Row className="pt-4">
+                  <div className="pt-2"></div>
+                  <Row className="pt-4 mt-3">
                     <Col md={4}>
                       <div className="frmcntl">
                         <input className="field w-input"
@@ -166,7 +167,7 @@ export default class forget extends Component{
                           type="password" />
                       </div></Col><Col md={8}></Col>
                   </Row>
-                  <Row className="pt-4">
+                  <Row className="pt-4 pb-5">
                     <Col md={4}>
                       <div className="frmcntl">
                         <input className="button submit-button w-button"
@@ -176,7 +177,7 @@ export default class forget extends Component{
                       </div></Col><Col md={8}></Col>
                   </Row>
                 </form>
-                <div className="support">
+                <div className="pt-5 support">
                   <h4>Trouble logging in?</h4>
                   <a href="javascript:;">Talk to our Support</a>
                 </div>

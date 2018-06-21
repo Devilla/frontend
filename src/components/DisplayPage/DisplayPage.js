@@ -189,7 +189,7 @@ class DisplayPage extends Component{
                   />
                   <span className="input-group-btn col-md-2"
                     id="urladd">
-                    <span className="btn btn-raised btn-primary blue pl-5 pr-5"
+                    <span className="btn btn-custom nav nav-pills waves-light waves-effect number pl-5 pr-5"
                       onClick={this.addPageUrl}>Add</span>
                   </span>
                 </div>

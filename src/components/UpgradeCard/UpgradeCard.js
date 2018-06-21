@@ -68,8 +68,6 @@ class UpgradeCard extends Component {
                   <div className="panel-body">
                     <div className="col-md-12">
                       <div className="card-box">
-                        <h4 className="header-title m-t-0 m-b-30">Pay with</h4>
-
                         <ul className="nav nav-pills navtab-bg nav-justified pull-in new-campaign-tab-pills">
                           <li className="nav-item waves-effect">
                             <a data-toggle="tab" aria-expanded="false" className={`nav-link ${activeClass == 1?'active':''}`} onClick={() => this.setActiveState(1)}>
@@ -138,7 +136,7 @@ class UpgradeCard extends Component {
                             </Row>
                             <Row className='upgrade-card-buttons'>
                               <div className='col-md-4 pull-left'>
-                                <Button type='button' icon='chevron-left' bsStyle='info' fill={true} onClick={() => browserHistory.push(currentState === 'upgrade' ? '/billing-details' : '/profile')}>&nbsp;&nbsp;Back&nbsp;&nbsp;</Button>
+                                <Button type='button' icon='chevron-left' bsStyle='primary' fill={true} onClick={() => browserHistory.push(currentState === 'upgrade' ? '/billing-details' : '/profile')}>&nbsp;&nbsp;Back&nbsp;&nbsp;</Button>
                               </div>
 
                             </Row>
@@ -165,7 +163,7 @@ class UpgradeCard extends Component {
                             </Row>
                             <Row className='upgrade-card-buttons'>
                               <div className='col-md-4 pull-left'>
-                                <Button type='button' icon='chevron-left' bsStyle='info' fill={true} onClick={() => browserHistory.push(currentState === 'upgrade' ? '/billing-details' : '/profile')}>&nbsp;&nbsp;Back&nbsp;&nbsp;</Button>
+                                <Button type='button' icon='chevron-left' bsStyle='primary' fill={true} onClick={() => browserHistory.push(currentState === 'upgrade' ? '/billing-details' : '/profile')}>&nbsp;&nbsp;Back&nbsp;&nbsp;</Button>
                               </div>
                             </Row>
                           </div>
@@ -190,7 +188,7 @@ class UpgradeCard extends Component {
                             </Row>
                             <Row className='upgrade-card-buttons'>
                               <div className='col-md-4 pull-left'>
-                                <Button type='button' icon='chevron-left' bsStyle='info' fill={true} onClick={() => browserHistory.push(currentState === 'upgrade' ? '/billing-details' : '/profile')}>&nbsp;&nbsp;Back&nbsp;&nbsp;</Button>
+                                <Button type='button' icon='chevron-left' bsStyle='primary' fill={true} onClick={() => browserHistory.push(currentState === 'upgrade' ? '/billing-details' : '/profile')}>&nbsp;&nbsp;Back&nbsp;&nbsp;</Button>
                               </div>
 
                             </Row>
