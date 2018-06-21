@@ -64,7 +64,7 @@ class Notifications extends Component {
       notificationPanelStyle: notificationPanelStyleDefault,
       contentText: 'Company Name ',
       visitorText: 'people',
-      notificationUrl: null,
+      notificationUrl: '',
       image: '',
       notifications: [],
       toggleTextBox: false,
@@ -136,7 +136,7 @@ class Notifications extends Component {
       notificationPanelStyle: notificationPanelStyleDefault,
       contentText: 'Company Name',
       visitorText: 'people',
-      notificationUrl: null,
+      notificationUrl: '',
       toggleMap: true,
       image: ''
     });

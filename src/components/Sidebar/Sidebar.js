@@ -86,11 +86,11 @@ class Sidebar extends Component {
                   <span className="ml-2 textColor">Plan Usage</span>
                 </div>
                 <Col md={12}>
-                  <ProgressBar className="text-center">
+                  <div className="text-center">
                     <ProgressBar striped active bsStyle={quotaPercentage<60?'info':quotaPercentage<90?'warning':'danger'} now={quotaPercentage} key={1} />
-                  </ProgressBar>
+                  </div>
                   <div className="ml-4 ">
-                    <p className=" textColor" textColor>{quotaPercentage} % consumed.</p>
+                    <p className="textColor">{quotaPercentage} % consumed.</p>
                   </div>
                   <div className="ml-3">
                     <Link to='/Upgrade'><button

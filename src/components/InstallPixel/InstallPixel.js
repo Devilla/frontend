@@ -29,8 +29,8 @@ const InstallPixel = ({ elastic, setActiveState, campaign, verifyPixelStatus, ha
       <button type="button" className="btn btn-custom  waves-light waves-effect number" onClick={handlePixelCopy}>Copy to Clipboard</button>
       <p className="m-t-30">
         <br/>
-        <hr />
       </p>
+      <hr />
       <p className="m-t-30">
         <br/>
       </p>

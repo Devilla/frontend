@@ -11,7 +11,7 @@ import PricePage from 'components/PricePage';
 const PlanList = ({ plan, handleCheckChange, makePayment }) => {
   return (
     <div className="content fill upgrade-plan ml-5">
-      <Grid fluid="fluid" >
+      <Grid fluid={true} >
         <Row>
           <Col md={30}>
             <div className="text-center">

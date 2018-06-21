@@ -105,7 +105,7 @@ class Notification extends Component {
       </tr>
     ))
     :
-    <div></div>;
+    <tr></tr>;
   }
 
   render() {
@@ -127,7 +127,7 @@ class Notification extends Component {
             </tr>
             </thead>
             <tbody>
-            {this.getNotificationRows()}
+              {this.getNotificationRows()}
             </tbody>
           </table>
         </div>

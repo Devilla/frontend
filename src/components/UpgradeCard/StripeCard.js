@@ -100,12 +100,12 @@ class StripeCard extends Component {
             </label>
           </Col>
         </Row>
-        <Row class='upgrade-card-buttons'>
+        <Row className='upgrade-card-buttons'>
           <div className='col-md-4 pull-left'>
-            <Button type='button' icon='chevron-left' bsStyle='info' fill='fill' onClick={() => browserHistory.push(currentState === 'upgrade' ? '/billing-details' : '/profile')}>&nbsp;&nbsp;Back&nbsp;&nbsp;</Button>
+            <Button type='button' icon='chevron-left' bsStyle='info' fill={true} onClick={() => browserHistory.push(currentState === 'upgrade' ? '/billing-details' : '/profile')}>&nbsp;&nbsp;Back&nbsp;&nbsp;</Button>
           </div>
           <div className='col-md-6 pull-right mr-2'>
-            <Button type='submit' icon='usd' bsStyle='info' fill='fill' >{currentState === 'upgrade' ? 'Upgrade Card' : 'Make Payment'}</Button>
+            <Button type='submit' icon='usd' bsStyle='info' fill={true} >{currentState === 'upgrade' ? 'Upgrade Card' : 'Make Payment'}</Button>
           </div>
         </Row>
       </form>

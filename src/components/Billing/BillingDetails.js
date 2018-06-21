@@ -74,7 +74,7 @@ class BillingDetails extends Component {
                           onClick={() => browserHistory.push('/Profile')}
                           icon="chevron-left"
                           className="btn btn-info "
-                          fill="fill"
+                          fill={true}
                         >
                           Back To Profile
                         </Button>
@@ -84,7 +84,8 @@ class BillingDetails extends Component {
                         <Button
                           onClick={() => browserHistory.push('/Upgrade')}
                           className="btn btn-success"
-                          pullRight="pullRight" fill="fill"
+                          pullRight={true}
+                          fill={true}
                           type="button"
                           icon="cloud-upload"
                           disabled={false}
@@ -95,8 +96,8 @@ class BillingDetails extends Component {
                         <Button
                           onClick={() => browserHistory.push('/card-details?type=upgrade')}
                           className="btn btn-success"
-                          pullRight="pullRight"
-                          fill="fill"
+                          pullRight={true}
+                          fill={true}
                           type="button"
                           icon="usd"
                           disabled={false}
@@ -115,7 +116,7 @@ class BillingDetails extends Component {
                               <div className="panel-body">
                                 <hr />
                                 <div className="text-left">
-                                  <p className="text-muted font-13">
+                                  <div className="text-muted font-13">
                                     <strong>Plan Choosed : </strong>
                                     <span className="m-l-15">
                                       <FormGroup>
@@ -128,32 +129,32 @@ class BillingDetails extends Component {
                                         />
                                       </FormGroup>
                                     </span>
-                                  </p>
+                                  </div>
                                 </div>
                               </div>
                             </div>
                             <div className="text-left pl-3">
                               <p className="text-muted font-13">
                                 <strong>Last Paid : </strong>
-                                <span class="m-l-15">
+                                <span className="m-l-15">
                                   {planSelected.interval ? moment(planSelected.interval.updated_at).format('DD MMM YYYY') : '-'}
                                 </span>
                               </p>
                               <p className="text-muted font-13">
                                 <strong>Billing Cycle : </strong>
-                                <span class="m-l-15">
+                                <span className="m-l-15">
                                   {planSelected.interval ? (planSelected.interval.charAt(0).toUpperCase() + planSelected.interval.slice(1)) : '-'}
                                 </span>
                               </p>
                               <p className="text-muted font-13">
                                 <strong>Visitor Quota : </strong>
-                                <span class="m-l-15">
+                                <span className="m-l-15">
                                   {profile ? profile.uniqueVisitorQouta.toLocaleString() : '-'} Unique Visitors
                                 </span>
                               </p>
                               <p className="text-muted font-13">
                                 <strong>Visitor Quota Left : </strong>
-                                <span class="m-l-15">
+                                <span className="m-l-15">
                                   {profile ? profile.uniqueVisitorsQoutaLeft.toLocaleString() : '-'} Unique Visitors
                                 </span>
                               </p>
@@ -169,13 +170,13 @@ class BillingDetails extends Component {
                                 <div className="text-left">
                                   <p className="text-muted font-13">
                                     <strong>Next Payment Due Date : </strong>
-                                    <span class="m-l-15">
+                                    <span className="m-l-15">
                                       {planSelected.interval ? moment(planSelected.interval.updated_at).add(planSelected.interval_count, planSelected.interval).format('DD MMM YYYY') : '-'}
                                     </span>
                                   </p>
                                   <p className="text-muted font-13">
                                     <strong>Payment Method : </strong>
-                                    <span class="m-l-15">
+                                    <span className="m-l-15">
                                       {planSelected.interval ? 'Card' : '-'}
                                     </span>
                                   </p>
