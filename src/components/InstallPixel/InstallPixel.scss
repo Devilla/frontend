@@ -11,3 +11,9 @@ p {
       box-shadow: 0 6px 16px -6px black;
   }
 }
+
+div {
+  &.float-left.custom-width.align-install-btn > button {
+    width: 105px;
+  }
+}

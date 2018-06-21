@@ -6,7 +6,7 @@ const NotificationList = ({ notificationList, configure, handleActivityChange, c
     return notificationList.map(notification =>
       <div key={notification._id} className="col-md-4">
         <div className="card-box ribbon-box bx-shadow">
-          <div className="ribbon ribbon-success">
+          <div className="ribbon-two ribbon-two-success">
             <span>
               {
                 notification.notificationName === 'Bulk Activity' ?
