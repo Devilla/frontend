@@ -8,8 +8,8 @@ export default class Affiliate extends Component {
   render() {
     return (
       <div className="main-container">
-        <section className="text-center" style={{ paddingTop: '200px' }}>
-          <div className="container pos-vertical-center">
+        <section className="text-center" style={{ paddingTop: '100px' }}>
+          <div className="container ">
             <div className="row">
               <div className="col-md-8">
                 <h2>Influence Affiliate Program</h2>
@@ -21,7 +21,7 @@ export default class Affiliate extends Component {
           </div>
         </section>
 
-        <section className="imageblock switchable feature-large bg--secondary space--sm">
+        <section className="imageblock switchable feature-large bg--secondary">
           <div className="imageblock__content col-lg-6 col-md-4 pos-right">
             <div className="background-image-holder">
               <img alt="image" src="img/education-1.jpg" />

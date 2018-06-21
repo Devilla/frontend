@@ -178,12 +178,6 @@ class CapturePage extends Component{
               </Col>
             </Row>
             <Row>
-              <Col md={2}></Col>
-              <Col md={10}>
-                <label className="ml-5 pl-3 pt-1 text-muted">(This page must have an email capture formfield to capture email)</label>
-              </Col>
-            </Row>
-            <Row>
               <HelpBlock className="text-center">
                 <p className="website-error">{error}</p>
               </HelpBlock>
