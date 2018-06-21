@@ -206,7 +206,6 @@ class Dashboard extends Component {
         userSignUps = userSignUps + users.sum_other_doc_count + users.buckets.length;
       });
 
-    console.log(campaignInfo, '============campaign');
     return (
       <div className="content">
         <div className="container-fluid">

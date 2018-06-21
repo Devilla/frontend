@@ -31,21 +31,6 @@ class BillingDetails extends Component {
     // props.fetchInvoices();
   }
 
-  plansList() {
-    const { planSelected } = this.state;
-    if (planSelected) {
-      return (
-        <FormControl componentClass="select" placeholder="select" value={planSelected.name} disabled={true}>
-          <option value="select">{planSelected.name}</option>
-        </FormControl>
-      );
-    } else {
-      <FormControl componentClass="select" placeholder="select" disabled={true}>
-        <option value="select">No Plan Selected</option>
-      </FormControl>;
-    }
-  }
-
   componentWillReceiveProps(nextProps) {
     if (nextProps.profile) {
       const { profile } = nextProps;
@@ -77,7 +62,7 @@ class BillingDetails extends Component {
     const { profile } = this.props;
     return (
       <div className="content fill billing-details ml-1">
-        <Grid fluid="fluid">
+        <Grid fluid={true}>
           <Row className="inlineclr">
             <Col md={12}>
               <CardHeader title="Billing Details" className="text-center mt-3"
@@ -131,13 +116,14 @@ class BillingDetails extends Component {
                                 <hr />
                                 <div className="text-left">
                                   <p className="text-muted font-13">
-                                    <strong>Plan Choosed :</strong>
-                                    <span class="m-l-15">
+                                    <strong>Plan Choosed : </strong>
+                                    <span className="m-l-15">
                                       <FormGroup>
                                         <FormControl
                                           type="text"
                                           bsClass="form-control"
                                           id="campaignname"
+                                          value={profile?profile.plan.name:''}
                                           disabled
                                         />
                                       </FormGroup>
@@ -148,25 +134,25 @@ class BillingDetails extends Component {
                             </div>
                             <div className="text-left pl-3">
                               <p className="text-muted font-13">
-                                <strong>Last Paid :</strong>
+                                <strong>Last Paid : </strong>
                                 <span class="m-l-15">
                                   {planSelected.interval ? moment(planSelected.interval.updated_at).format('DD MMM YYYY') : '-'}
                                 </span>
                               </p>
                               <p className="text-muted font-13">
-                                <strong>Billing Cycle :</strong>
+                                <strong>Billing Cycle : </strong>
                                 <span class="m-l-15">
                                   {planSelected.interval ? (planSelected.interval.charAt(0).toUpperCase() + planSelected.interval.slice(1)) : '-'}
                                 </span>
                               </p>
                               <p className="text-muted font-13">
-                                <strong>Visitor Quota :</strong>
+                                <strong>Visitor Quota : </strong>
                                 <span class="m-l-15">
                                   {profile ? profile.uniqueVisitorQouta.toLocaleString() : '-'} Unique Visitors
                                 </span>
                               </p>
                               <p className="text-muted font-13">
-                                <strong>Visitor Quota Left :</strong>
+                                <strong>Visitor Quota Left : </strong>
                                 <span class="m-l-15">
                                   {profile ? profile.uniqueVisitorsQoutaLeft.toLocaleString() : '-'} Unique Visitors
                                 </span>
@@ -182,13 +168,13 @@ class BillingDetails extends Component {
                                 <hr />
                                 <div className="text-left">
                                   <p className="text-muted font-13">
-                                    <strong>Next Payment Due Date :</strong>
+                                    <strong>Next Payment Due Date : </strong>
                                     <span class="m-l-15">
                                       {planSelected.interval ? moment(planSelected.interval.updated_at).add(planSelected.interval_count, planSelected.interval).format('DD MMM YYYY') : '-'}
                                     </span>
                                   </p>
                                   <p className="text-muted font-13">
-                                    <strong>Payment Method :</strong>
+                                    <strong>Payment Method : </strong>
                                     <span class="m-l-15">
                                       {planSelected.interval ? 'Card' : '-'}
                                     </span>
