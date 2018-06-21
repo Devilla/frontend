@@ -17,7 +17,7 @@ import './animate.min.scss';
 import 'react-select/dist/react-select.css';
 import 'react-popup/style.css';
 import './DashboardContainer.scss';
-import './animate.min.scss';
+
 
 
 class DashboardContainer extends Component {

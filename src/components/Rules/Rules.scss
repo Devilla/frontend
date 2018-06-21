@@ -1,3 +1,28 @@
+li{
+div {
+.checkbox{.checkbox-info{ input[type="checkbox"]:checked + label {
+  &::before {
+    background-color: #097fff;
+    border-color: #097fff;
+  }
+  &::after {
+    border-color: #ffffff;
+  }
+}}}
+}}
+.btn-color{
+  color:white;
+  background-color: #097fff;
+  border-color: #ffffff;
+}
+button {
+  &.btn.btn-color.waves-light.waves-effect.number.ml-2.pl-4.pr-4  {
+    border-radius: 5px;
+  }
+  &.btn.btn-color.waves-light.waves-effect.number {
+    border-radius: 5px;
+  }
+}
 .notification-view{
   z-index: 100000000;
   position: fixed;

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Grid, Row, Col, Table, Glyphicon } from 'react-bootstrap';
-import Card from 'components/utils/card'
+import Card from 'components/utils/card';
 import Switch from 'react-flexible-switch';
 import { getCookie } from 'components/Common/function';
 import moment from 'moment';
@@ -9,14 +9,14 @@ import { browserHistory } from 'react-router';
 import Popup from 'react-popup';
 
 import { fetchCampaign, updateCampaign, successCampaign, removeCampaign } from 'ducks/campaign';
-import './Notification.scss'
+import './Notification.scss';
 
 class Notification extends Component {
   constructor() {
     super();
     this.state = {
       notifications: [],
-    }
+    };
   }
 
   componentDidMount() {
@@ -36,7 +36,7 @@ class Notification extends Component {
             text: 'Upgrade Plan',
             className: 'primary popup-notification-button',
             action: function () {
-              browserHistory.push('/upgrade')
+              browserHistory.push('/upgrade');
               Popup.close();
             }
           }]
@@ -112,10 +112,10 @@ class Notification extends Component {
     return (
       <div className="manage-notification">
         <div className="card-box">
-          <h4 className="m-t-0 header-title">Notifications</h4>
+          <h4 className="header-title"><a href="/dashboard"><i className="icon-arrow-left mr-3"></i></a>Notifications</h4>
           <table className="table table-striped">
             <thead>
-            <tr>
+              <tr>
                 <th>#</th>
                 <th>CAMPAIGN</th>
                 <th>DOMAIN</th>
@@ -123,8 +123,8 @@ class Notification extends Component {
                 <th>TRACK ID</th>
 
                 <th>CREATED</th>
-                <th>DELETE</th>
-            </tr>
+                <th>TRASH</th>
+              </tr>
             </thead>
             <tbody>
               {this.getNotificationRows()}

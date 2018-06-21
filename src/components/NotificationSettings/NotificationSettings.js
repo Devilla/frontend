@@ -246,10 +246,12 @@ class Notifications extends Component {
           }
         </div>
         {!this.state.notification &&
-          <div>
-            <div className="m-t-50 float-right notification-button-row">
-              <button type="button" className="btn btn-custom  waves-light waves-effect number " onClick={this.handleBackState}>Previous</button>
-              <button type="button" className="btn btn-custom  waves-light waves-effect number ml-2 pl-4 pr-4" onClick={this.handleNextState}>Next </button>
+          <div className="pt-4">
+            <div className="float-left">
+              <button type="button" className="btn btn-custom  waves-light waves-effect number " onClick={this.handleBackState}><i className="icon-arrow-left pr-2"></i> Back</button>
+            </div>
+            <div className="ml-2 float-right">
+              <button type="button" className="btn btn-custom  waves-light waves-effect number ml-2 pl-4 pr-4" onClick={this.handleNextState}>Next <i className="icon-arrow-right pl-2"></i> </button>
             </div>
             <div className="clearfix"></div>
           </div>

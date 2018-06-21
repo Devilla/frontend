@@ -1,5 +1,4 @@
 import React from 'react';
-import { browserHistory } from 'react-router';
 import {
   Grid,
   Row,
@@ -10,31 +9,32 @@ import PricePage from 'components/PricePage';
 
 const PlanList = ({ plan, handleCheckChange, makePayment }) => {
   return (
-    <div className="content fill upgrade-plan ml-5">
-      <Grid fluid={true} >
-        <Row>
-          <Col md={30}>
-            <div className="text-center">
-              <h3 className="m-b-30 m-t-20 ">Choose your perfect plan</h3>
-            </div>
-            <div className="mt--3">
-              <Row>
-                <Animated className="leftwrap center" animationIn="fadeIn" animationOut="fadeOut" isVisible={true}>
-                  <PricePage
-                    paymentPage={true}
-                    selectedPlan={plan}
-                    handleCheckChange={handleCheckChange}
-                  />
-                </Animated>
-              </Row>
-              <Row className="float-right">
-                <div className="m-t-50 ">
-                  <span type="button" className="btn btn-custom  waves-light waves-effect number ml-2 pl-4 pr-4" onClick={() => browserHistory.push('/profile')}>&nbsp;&nbsp;Back&nbsp;&nbsp;</span>
-                  <span type="button" className="btn btn-custom  waves-light waves-effect number ml-2 pl-4 pr-4" onClick={() => makePayment()}>Proceed </span>
-                </div>
-              </Row>
+    <div className="content fill upgrade-plan ">
+      <Grid fluid="fluid" >
+        <Row className="inlineclr">
+          <Col md={12}>
+            <div className="card-box pt-0 pl-0">
+              <h4 className="header-title text-left"><a href="/Profile"><i className="icon-arrow-left mr-3"></i></a>Upgrade your Plan</h4>
+              <hr/>
+              <div className="plans float-right mr-5">
+                <Row>
+                  <Animated className="leftwrap center text-center" animationIn="fadeIn" animationOut="fadeOut" isVisible={true}>
+                    <PricePage
+                      paymentPage={true}
+                      selectedPlan={plan}
+                      handleCheckChange={handleCheckChange}
+                    />
+                  </Animated>
+                </Row>
+                <Row className="float-right">
+                  <div className="m-t-50 ">
+                    <span type="button" className="btn btn-custom  waves-light waves-effect number ml-2 pl-4 pr-4" onClick={() => makePayment()}>Proceed </span>
+                  </div>
+                </Row>
+              </div>
             </div>
           </Col>
+
         </Row>
       </Grid>
       <div className="clearfix"></div>

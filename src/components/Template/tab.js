@@ -33,7 +33,7 @@ class Tabs extends Component {
                   ? this.props.campaign.campaignName
                   : 'http://localhost:3000'}
                 content={
-                  <Nav bsStyle="pills" className="tabmenu" justified activeKey={val} onSelect={k => this.handleSelect(k)}>
+                  <Nav className="tabmenu" justified activeKey={val} onSelect={k => this.handleSelect(k)}>
                     <NavItem className="pb-3 pt-3" eventKey={1} title="Install Pixel">
                       <i className="fas fa-cog"></i> Install Pixel
                     </NavItem>

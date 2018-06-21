@@ -2,3 +2,12 @@
   background-color: rgba(245, 245, 245, 0.816);
   color:#636769;
 }
+.custom-width{
+  width: 30% !important;
+}
+p {
+  &.m-l-30.p-3 {
+    padding-bottom: 5px;
+      box-shadow: 0 6px 16px -6px black;
+  }
+}

@@ -1,14 +1,15 @@
 import React from 'react';
 import  { InstallPixel, CapturePage, DisplayPage, Rules, NotificationSettings } from 'components';
-
+import { Link } from 'react-router';
 import './CampaignSettings.scss';
 
 const CampaignSettings = (props) => {
   return (
     <div className="col-md-12 tab-notification-container">
       <div className="card-box tab-notification-box">
-        <div className=" ml-3 mt-1 new-campaign-header">
-          <i className="fi-layers mr-2"></i>
+        <div className="ml-3 mt-1 new-campaign-header">
+          <Link to="/campaigns" className="mr-3"><i className="icon-arrow-left"></i></Link>
+          <i className="fi-layers mr-2 mt-1"></i>
           <h4 className=" header-title">{props.campaign
             ? props.campaign.websiteUrl
             : 'http://localhost:3000'} {' - '}</h4><p className="textTransform  header-title">{props.campaign
@@ -20,7 +21,6 @@ const CampaignSettings = (props) => {
 
         </div>
         <div className="clearfix"></div>
-
         <ul className="nav nav-pills navtab-bg nav-justified pull-in new-campaign-tab-pills">
           <li className="nav-item waves-effect text-center">
             <a data-toggle="tab" aria-expanded="false" className={`nav-link ${props.activeClass == 1?'active pb-3 pt-3':'pb-3 pt-3'}`} onClick={() => props.setActiveState(1)}>
@@ -31,7 +31,7 @@ const CampaignSettings = (props) => {
             <a data-toggle="tab" aria-expanded="true" className={`nav-link ${props.activeClass == 2?'active pb-3 pt-3':'pb-3 pt-3'}`} onClick={() => props.setActiveState(2)}>
               <i className="fi-mail mr-2"></i>Notifications
             </a>
-          </li>
+          </li><li className="arrow-right"></li>
           <li className="nav-item waves-effect text-center">
             <a data-toggle="tab" aria-expanded="false" className={`nav-link ${props.activeClass == 3?'active pb-3 pt-3':'pb-3 pt-3'}`} onClick={() => props.setActiveState(3)}>
               <i className="fi-cog mr-2"></i> Settings

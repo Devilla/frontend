@@ -1,0 +1,16 @@
+button {
+  &.btn.btn-custom.waves-light.waves-effect.number.ml-2.pl-4.pr-4 {
+    border-radius: 5px;
+  }
+  &.btn.btn-custom.waves-light.waves-effect.number {
+    border-radius: 5px;
+  }
+}
+
+.dot {
+    height: 25px;
+    width: 25px;
+    background-color:#0acf97;
+    border-radius: 50%;
+    display: inline-block;
+}
