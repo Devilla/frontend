@@ -12,6 +12,7 @@ import { Elements } from 'react-stripe-elements';
 import PaymentPage from './PaymentPage';
 import PricePage from 'components/PricePage';
 import CouponPage from './CouponPage';
+import './Common.scss';
 
 const TrailPayment = ({
   user,

@@ -1,4 +1,5 @@
-.topbar {
+.dashboard-container {
+  .topbar {
   z-index: 10000000;
   position: fixed;
   top: 0;
@@ -22,4 +23,11 @@
 }
 .mm-popup__box{
   z-index: 1000000000;
+}
+
+html {
+  height: 100%;
+  background-color: rgba(9, 128, 255, 0.152);
+}
+
 }

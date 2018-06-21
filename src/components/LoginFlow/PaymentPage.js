@@ -1,6 +1,7 @@
 import React from 'react';
 import { CardElement, injectStripe } from 'react-stripe-elements';
 import { HelpBlock } from 'react-bootstrap';
+import './Common.scss';
 
 const PaymentPage = ({
   stripe,
