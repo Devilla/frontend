@@ -12,7 +12,7 @@ class WebsitePolicy extends Component {
 
   componentDidMount() {
     window.scrollTo(0, 0);
-    fetch('https://raw.githubusercontent.com/sagarshirbhate/Country-State-City-Database/master/Contries.json')
+    fetch('https://gist.githubusercontent.com/keeguon/2310008/raw/bdc2ce1c1e3f28f9cab5b4393c7549f38361be4e/countries.json')
       .then(res => res.json())
       .then(res => this.setState({countryList : res.Countries}));
   }
@@ -21,13 +21,12 @@ class WebsitePolicy extends Component {
 
   getCountryRows = () => {
     return  this.state.countryList.map((data,i)=> (
-      <option key={i}  value={data.CountryName}>
-        {data.CountryName}
+      <option key={i}  value={data.name}>
+        {data.name}
       </option>
     ));
   }
-
-
+  
   
   renderGDPRform = () => {
     Popup.create({
@@ -66,18 +65,63 @@ class WebsitePolicy extends Component {
                 </FormGroup>
               </div>,
               buttons: {
-                left: [{
-                  text: 'Use my Email',
-                  className: 'danger',
-                  action: function () {
-                  //action to write
-                  }
-                }],
                 right: [{
-                  text: 'Use my Phone',
+                  text: 'Use my Email',
                   className: 'success',
                   action: function () {
-                    //action to write
+                    Popup.create({
+                      title: 'Own Your Personal Data',
+                      content: <div className="popupcontainer row ">
+                        <FormGroup className="m-auto">
+                          <Col >
+                            <div className="text-muted font-13 p lead">We need to verify your identity before you can access your personal information.</div>
+                          </Col>
+                          <Col className="mb-3">
+                            <input type="email"  placeholder="johndoe@example.com" className="mb-4"  id="email" />
+                          </Col>
+                        </FormGroup>
+                      </div>,
+                      buttons: {
+                        left: [{
+                          text: 'Verify Emal',
+                          className: 'danger',
+                          action: function () {
+                            Popup.create({
+                              title: 'Own Your Personal Data',
+                              content: <div className="popupcontainer row ">
+                                <FormGroup className="m-auto">
+                                  <Col >
+                                    <div className="text-muted font-13 p lead">We need to verify your identity before you can access your personal information.</div>
+                                  </Col>
+                                  <Col className="mb-3">
+                                    <input type="number"  placeholder="Enter code"  id="emailcode" />
+                                  </Col>
+                                </FormGroup>
+                              </div>,
+                              buttons: {
+                                left: [{
+                                  text: 'Cancel',
+                                  className: 'danger',
+                                  action: function () {
+                                    //cancel it 
+                                    Popup.close();
+                                  }
+                                }],
+                                right: [{
+                                  text: 'Verify',
+                                  className: 'success',
+                                  action: function () {
+                                    //verify
+                                    Popup.close();
+                                  }
+                                }],
+                              }
+                            });
+                            Popup.close();
+                          }
+                        }]
+                      }
+                    });
                     Popup.close();
                   }
                 }]

@@ -1,6 +1,6 @@
 import React from 'react';
 import  { InstallPixel, CapturePage, DisplayPage, Rules, NotificationSettings } from 'components';
-
+import { Link } from 'react-router';
 import './CampaignSettings.scss';
 
 const CampaignSettings = (props) => {
@@ -8,7 +8,7 @@ const CampaignSettings = (props) => {
     <div className="col-md-12 tab-notification-container">
       <div className="card-box tab-notification-box">
         <div className="ml-3 mt-1 new-campaign-header">
-          <a href="/campaigns" className="mr-3"><i className="icon-arrow-left"></i></a>
+          <Link to="/campaigns" className="mr-3"><i className="icon-arrow-left"></i></Link>
           <i className="fi-layers mr-2 mt-1"></i>
           <h4 className=" header-title">{props.campaign
             ? props.campaign.websiteUrl

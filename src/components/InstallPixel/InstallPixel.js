@@ -1,9 +1,5 @@
 import React from 'react';
-// import { connect } from 'react-redux';
 import './InstallPixel.scss';
-// import copy from 'copy-to-clipboard';
-// import { fetchElastic, clearElastic } from 'ducks/elastic';
-
 
 
 
@@ -35,19 +31,23 @@ const InstallPixel = ({ elastic, setActiveState, campaign, verifyPixelStatus, ha
       <p className="m-t-30">
         <br/>
       </p>
+
+      {/* The radio buttons for warning, success */}
       <div className="radio radio-warning ">
         <input type="radio" name="radio8" id="radio8" value="option8" checked/>
         <label for="radio8">
-                      Unverified
+          Unverified
         </label>
       </div>
 
+      {/* The radio buttons for success */}      
       <div className="radio radio-success">
         <input type="radio" name="radio9" id="radio9" value="option9" checked/>
         <label for="radio9">
-                          Verified
+           Verified
         </label>
       </div>
+
       <p className="text-muted text-left">Wait For Your Pixel To Go LIVE. Check By Clicking On The Button " Verify Pixel Status
         ". If Youre Facing Any Problems With It, Please Contact Our Support By
       <a href="#">Clicking Here.</a>
@@ -61,13 +61,3 @@ const InstallPixel = ({ elastic, setActiveState, campaign, verifyPixelStatus, ha
 };
 
 export default InstallPixel;
-// const mapStateToProps = state => ({
-//   elastic: state.getIn(['elastic', 'elastic'])
-// });
-//
-// const mapDispatchToProps = {
-//   fetchElastic,
-//   clearElastic
-// };
-//
-// export default connect(mapStateToProps, mapDispatchToProps)(InstallPixel);
