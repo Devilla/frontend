@@ -79,8 +79,11 @@ class DisplayPage extends Component{
   }
 
   addPageUrl() {
-    if(this.state.displayUrl.url == '' || !validatePath(this.state.displayUrl.url))
+    if(this.state.displayUrl.url == '')
       return this.setState({error: 'Please enter a valid path'});
+    if(this.state.displayUrl.url[0]!=='/')
+      this.state.displayUrl.url='/'+this.state.displayUrl.url;
+
     let displayUrl = this.state.displayUrl;
     displayUrl['rule'] = this.props.rules._id;
     this.props.createPageUrl(displayUrl);
@@ -195,7 +198,7 @@ class DisplayPage extends Component{
             <Row>
               <Col md={2}></Col>
               <Col md={10}>
-                <label className="ml-4 pl-5 pt-1 text-muted">(Enter URL where you want to show notifications) </label>
+                <label className="ml-4 pl-5 pt-1 label-url text-muted">(Enter URL where you want to show notifications) </label>
               </Col>
             </Row>
             <Row>
