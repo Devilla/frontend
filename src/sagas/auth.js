@@ -205,7 +205,7 @@ export function* watchFetchRoles() {
 }
 
 export function* watchUpdateUser() {
-  yield takeLatest(actions.UPDATE, updateUser);
+  yield takeLatest(actions.UPDATE_USER, updateUser);
 }
 
 export function* watchForgotPassword() {
