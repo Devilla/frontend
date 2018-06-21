@@ -201,16 +201,11 @@ class Dashboard extends Component {
     
     if(campaignInfo) {
       campaignInfo.websiteLive.map(website => {
-        
         let users = website.signups.userDetails?website.signups.userDetails.length:0;
-        
         userSignUps = userSignUps + users;
-        console.log(users,userSignUps,'=================');
-
       });
     }
 
-    console.log(userSignUps, campaignInfo,'=================');
     return (
       <div className="content">
         <div className="container-fluid">
