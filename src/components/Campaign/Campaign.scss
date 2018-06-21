@@ -1,5 +1,9 @@
-button {
-  &.btn.btn-primary.waves-light.waves-effect.number.ml-2.pl-4.pr-4 {
-    border-radius: 5px;
+
+
+.campaign-container {
+  button {
+    &.btn.btn-primary {
+      border-radius: 5px;
+    }
   }
 }
