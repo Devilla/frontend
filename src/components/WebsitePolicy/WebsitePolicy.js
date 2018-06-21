@@ -12,7 +12,7 @@ class WebsitePolicy extends Component {
 
   componentDidMount() {
     window.scrollTo(0, 0);
-    fetch('https://gist.githubusercontent.com/keeguon/2310008/raw/bdc2ce1c1e3f28f9cab5b4393c7549f38361be4e/countries.json')
+    fetch('https://raw.githubusercontent.com/sagarshirbhate/Country-State-City-Database/master/Contries.json')
       .then(res => res.json())
       .then(res => this.setState({countryList : res.Countries}));
   }
@@ -21,12 +21,11 @@ class WebsitePolicy extends Component {
 
   getCountryRows = () => {
     return  this.state.countryList.map((data,i)=> (
-      <option key={i}  value={data.name}>
-        {data.name}
+      <option key={i}  value={data.CountryName}>
+        {data.CountryName}
       </option>
     ));
   }
-  
   
   renderGDPRform = () => {
     Popup.create({
