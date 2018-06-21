@@ -146,9 +146,10 @@ class DisplayPage extends Component{
           {
             displayUrls.map((displayUrl, i) => {
               return <tr key={i}>
-                <td className="serial">{i+1}</td>
                 <td className="url">{displayUrl.url}</td>
-                <td className="status"><span style={{backgroundColor:this.renderColor(displayUrl.class)}}></span></td>
+                <td className="pl-4 status">
+                  <span className="dot"><i className="p-1 fi-check"></i></span>
+                </td>
                 <td><a href="javascript:;"><i className="ml-3 icon-trash" onClick={() => this.deleteDisplayUrl(displayUrl._id, i, displayUrl.type)}></i></a></td>
               </tr>;
             })
@@ -166,42 +167,47 @@ class DisplayPage extends Component{
           <div className="tabscontent">
             <Row>
               <Col md={12}>
-                <h4 className="lead text-center m-b-30 m-t-20">Details Of Your Notification Display Page</h4>
+                <h4 className="lead text-center m-b-30 m-t-20">Where do you want to show notifications?</h4>
               </Col>
             </Row>
             <Row>
-              <Col md={12}>
-                <label className="text-muted">Enter URL of page you display notifications on. </label>
-              </Col>
-            </Row>
-            <Row>
-              <Col md={12}>
-                <div className="input-group col-md-12">
+              <Col md={1}></Col>
+              <Col md={11}>
+                <div className="ml-5 pl-4 input-group col-md-8">
+                  <label className="pt-2 pl-1 pr-3 text-muted">google.com/</label>
                   <input type="text"
                     className="form-control txtpageurl"
-                    placeholder="Path URL  (For eg. /mypage, /register, /products, /design/front etc."
+                    placeholder="eg. /mypage, /register, /products"
                     aria-describedby="urladd"
                     value={displayUrl.url}
                     onChange={this.handlePageUrl}
                     onBlur={this.handleWebsiteAuth.bind(this)}
                     onKeyUp={(e) => e.keyCode === 13?this.addPageUrl():null}
                   />
-                  <span className="input-group-btn col-md-6"
+                  <span className="input-group-btn col-md-2"
                     id="urladd">
                     <span className="btn btn-raised btn-primary blue pl-5 pr-5"
                       onClick={this.addPageUrl}>Add</span>
                   </span>
                 </div>
-                <HelpBlock>
-                  <p className="website-error">{error}</p>
-                </HelpBlock>
               </Col>
+            </Row>
+            <Row>
+              <Col md={2}></Col>
+              <Col md={10}>
+                <label className="ml-4 pl-5 pt-1 text-muted">(Enter URL where you want to show notifications) </label>
+              </Col>
+            </Row>
+            <Row>
+              <HelpBlock>
+                <p className="website-error">{error}</p>
+              </HelpBlock>
             </Row>
             <Row>
               <Col md={12}>
                 <CardTable
                   content ={
-                    <div className="text-center centertbl">
+                    <div className="centertbl">
                       {this.renderLeads()}
                     </div>
                   }

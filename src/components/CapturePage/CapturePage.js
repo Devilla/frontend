@@ -129,9 +129,10 @@ class CapturePage extends Component{
           {
             leads.map((lead, i) => {
               return <tr key={i}>
-                <td className="serial">{i+1}</td>
                 <td className="url">{lead.url}</td>
-                <td className="status"><span style={{backgroundColor:this.renderColor(lead.class)}}></span></td>
+                <td className="ml-4 status">
+                  <span className="dot"><i className="p-1 fi-check"></i></span>
+                </td>
                 <td><a href="javascript:;"><i className="ml-3 icon-trash" onClick={() => this.deleteLead(lead._id, i, lead.type)}></i></a></td>
               </tr>;
             })
@@ -144,47 +145,52 @@ class CapturePage extends Component{
   render(){
     const { error, lead } = this.state;
     return (
-      <div className="">
+      <div>
         <Grid fluid>
           <div className="tabscontent">
             <Row>
               <Col md={12}>
-                <h4 className="lead text-center m-b-30 m-t-20">Details Of Your Lead Capturing Page</h4>
+                <h4 className="lead text-center m-b-30 m-t-20">Submit your conversion page</h4>
               </Col>
             </Row>
             <Row>
-              <Col md={12}>
-                <label className="text-muted">Enter URL of page you are capturing conversions on. </label>
-              </Col>
-            </Row>
-            <Row>
-              <Col md={12}>
-                <div className="input-group col-md-12">
+              <Col md={1}></Col>
+              <Col md={11}>
+                <div className="ml-5 pl-4 input-group col-md-8">
+                  <label className="pt-2 pl-1 pr-3 text-muted">google.com/</label>
                   <input type="text"
                     className="form-control txtpageurl"
-                    placeholder="Path URL  (For eg. /mypage, /register, /products, /design/front etc."
+                    placeholder="eg. /mypage, /register, /products"
                     aria-describedby="urladd"
                     value={lead.url}
                     onChange={this.handlePageUrl}
                     onBlur={this.handleWebsiteAuth.bind(this)}
                     onKeyUp={(e) => e.keyCode === 13?this.addPageUrl():null}
                   />
-                  <span className="input-group-btn col-md-6"
+                  <span className="input-group-btn col-md-2"
                     id="urladd">
                     <span className="btn btn-raised btn-primary blue pl-5 pr-5"
                       onClick={this.addPageUrl}>Add</span>
                   </span>
                 </div>
-                <HelpBlock>
-                  <p className="website-error">{error}</p>
-                </HelpBlock>
               </Col>
+            </Row>
+            <Row>
+              <Col md={2}></Col>
+              <Col md={10}>
+                <label className="ml-5 pl-3 pt-1 text-muted">(This page must have an email capture formfield to capture email)</label>
+              </Col>
+            </Row>
+            <Row>
+              <HelpBlock className="text-center">
+                <p className="website-error">{error}</p>
+              </HelpBlock>
             </Row>
             <Row>
               <Col md={12}>
                 <CardTable
                   content ={
-                    <div className="text-center centertbl">
+                    <div className="centertbl">
                       {this.renderLeads()}
                     </div>
                   }
@@ -192,9 +198,8 @@ class CapturePage extends Component{
               </Col>
             </Row>
             <Row>
-              <div className="text-center">
+              <div className="float-Left">
                 <Col md={12} className="text-muted">
-                  <p>&nbsp;</p> <p>&nbsp;</p>
                 Having problems with Auto Lead Capture in your current setup? &nbsp;&nbsp; <a
                     href="#" className="btn blue btn-sm">Use Webhook Integration</a>
                 </Col>
@@ -224,5 +229,4 @@ const mapDispatchToProps = {
   removePageUrl,
   clearPageUrl
 };
-
 export default connect(mapStateToProps, mapDispatchToProps)(CapturePage);
