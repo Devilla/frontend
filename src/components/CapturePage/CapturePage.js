@@ -161,7 +161,7 @@ class CapturePage extends Component{
                 <div className="ml-5 pl-4 input-group col-md-8">
                   <label className="pt-2 pl-1 pr-3 text-muted">google.com/</label>
                   <input type="text"
-                    className="form-control txtpageurl"
+                    className="form-control"
                     placeholder="eg. /mypage, /register, /products"
                     aria-describedby="urladd"
                     value={lead.url}
@@ -171,7 +171,7 @@ class CapturePage extends Component{
                   />
                   <span className="input-group-btn col-md-2"
                     id="urladd">
-                    <span className="btn btn-raised btn-primary blue pl-5 pr-5"
+                    <span className="btn btn-custom nav nav-pills waves-light waves-effect number pl-5 pr-5"
                       onClick={this.addPageUrl}>Add</span>
                   </span>
                 </div>
