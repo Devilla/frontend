@@ -195,13 +195,8 @@ class DisplayPage extends Component{
                 </div>
               </Col>
             </Row>
-            <Row>
-              <Col md={2}></Col>
-              <Col md={10}>
-                <label className="ml-4 pl-5 pt-1 label-url text-muted">(Enter URL where you want to show notifications) </label>
-              </Col>
-            </Row>
-            <Row>
+          
+            <Row className="pt-2">
               <HelpBlock>
                 <p className="website-error">{error}</p>
               </HelpBlock>

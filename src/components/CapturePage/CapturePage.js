@@ -177,13 +177,8 @@ class CapturePage extends Component{
                 </div>
               </Col>
             </Row>
-            <Row>
-              <Col md={2}></Col>
-              <Col md={10}>
-                <label className="ml-5 pl-3 pt-1 text-muted">(This page must have an email capture formfield to capture email)</label>
-              </Col>
-            </Row>
-            <Row>
+          
+            <Row className="pt-2">
               <HelpBlock className="text-center">
                 <p className="website-error">{error}</p>
               </HelpBlock>
@@ -199,7 +194,7 @@ class CapturePage extends Component{
                 />
               </Col>
             </Row>
-            <Row>
+            <Row className="pb-2">
               <div className="float-Left">
                 <Col md={12} className="text-muted">
                 Having problems with Auto Lead Capture in your current setup? &nbsp;&nbsp; <a
