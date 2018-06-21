@@ -10,7 +10,6 @@ import './Dashboard.scss';
 import Card from './Card';
 import ReactChartJs from 'react-chartjs';
 
-
 var LineChart = ReactChartJs.Line;
 let moment = extendMoment(Moment);
 
@@ -88,8 +87,8 @@ class Dashboard extends Component {
         acc = Array.from(range1.by('day', { step: 1 }));
         acc = acc.map(m => m.format('DD MMM'));
         break;
-      
-      
+
+
       case '14' :
         start  = moment().subtract(14,'d').format('YYYY-MM-DD');
         end    = new Date();
@@ -105,21 +104,21 @@ class Dashboard extends Component {
         acc = Array.from(range1.by('day', { step: 4 }));
         acc = acc.map(m => m.format('DD MMM'));
         break;
-      
+
       case 'Today' :
         start  = moment().startOf('day').format('YYYY-MM-DD HH:mm:ss');
         end    = moment().endOf('day').format('YYYY-MM-DD HH:mm:ss');
-    
+
         range1 = moment.range(start, end);
         acc = Array.from(range1.by('hour', {   step:4}));
         acc.length =6;
         acc = acc.map(m => m.format('HH:mm A'));
         break;
-        
+
       case 'Yesterday' :
         start  = moment().subtract(1,'d').startOf('day').format('YYYY-MM-DD HH:mm:ss');
         end    = moment().subtract(1,'d').endOf('day').format('YYYY-MM-DD HH:mm:ss');
-     
+
         range1 = moment.range(start, end);
         acc = Array.from(range1.by('hour', {   step:4}));
         acc.length =6;
@@ -127,10 +126,10 @@ class Dashboard extends Component {
         break;
 
 
-      default : 
+      default :
         start  = moment().startOf('day').format('YYYY-MM-DD HH:mm:ss');
         end    = moment().endOf('day').format('YYYY-MM-DD HH:mm:ss');
-  
+
         range1 = moment.range(start, end);
         acc = Array.from(range1.by('hour', {   step:4}));
         acc.length =6;
@@ -143,7 +142,7 @@ class Dashboard extends Component {
   render() {
     const { campaignInfo,profile } = this.props;
     let datafetch = this.getdays();
- 
+
     var chartData = {
       labels:   datafetch,
       datasets: this.getDataset()

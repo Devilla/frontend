@@ -159,7 +159,9 @@ class CapturePage extends Component{
               <Col md={1}></Col>
               <Col md={11}>
                 <div className="ml-5 pl-4 input-group col-md-8">
-                  <label className="pt-2 pl-1 pr-3 text-muted">google.com/</label>
+                  <label className="pt-2 pl-1 pr-3 text-muted">{this.props.campaign
+                    ? this.props.campaign.websiteUrl
+                    : 'http://localhost:3000'}/</label>
                   <input type="text"
                     className="form-control"
                     placeholder="eg. /mypage, /register, /products"
@@ -177,7 +179,7 @@ class CapturePage extends Component{
                 </div>
               </Col>
             </Row>
-          
+
             <Row className="pt-2">
               <HelpBlock className="text-center">
                 <p className="website-error">{error}</p>
