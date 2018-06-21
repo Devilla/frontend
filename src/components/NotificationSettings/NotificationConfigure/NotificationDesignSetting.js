@@ -582,7 +582,6 @@ export class NotificationDesignSetting extends Component {
                   <Col md={12}>
                     <FormControl
                       type="text"
-                      maxLength="10"
                       value={notificationUrl}
                       placeholder="Enter URL"
                       id="notificationUrl"

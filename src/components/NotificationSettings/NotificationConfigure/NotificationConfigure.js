@@ -28,6 +28,16 @@ const NotificationConfigure = ({
       <Row>
         <Col md={12}>
           <Card title={notification.notificationName}
+            status={ <div className="notificationSwitch">
+              <Switch
+                circleStyles={{ onColor: '#097fff', offColor: 'gray', diameter: 18 }}
+                switchStyles={{ width: 50 }}
+                cssClass="alignsame"
+                value={notification.activity}
+                onChange={(e) => e != notification.activity ? handleActivityChange(e, notification._id, notification.configurationId) : null}
+              />
+            </div>
+            }
             isDisabled={activity}
             content={
               <div className="notification-configure-content">
@@ -54,16 +64,6 @@ const NotificationConfigure = ({
                     handleClickableNotification={handleClickableNotification}
                   />
                 </Col>
-
-                <div className="notificationSwitch">
-                  <Switch
-                    circleStyles={{ onColor: '#097fff', offColor: 'gray', diameter: 18 }}
-                    switchStyles={{ width: 50 }}
-                    cssClass="alignsame"
-                    value={notification.activity}
-                    onChange={(e) => e != notification.activity ? handleActivityChange(e, notification._id, notification.configurationId) : null}
-                  />
-                </div>
               </div>
             }
           />
