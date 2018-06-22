@@ -4,7 +4,6 @@ import { browserHistory } from 'react-router';
 import { Row, Col } from 'react-bootstrap';
 import Moment from 'moment';
 import { extendMoment } from 'moment-range';
-// import Circle from 'react-circle';
 import { fetchCampaignInfo, successCampaign } from 'ducks/campaign';
 import './Dashboard.scss';
 import Card from './Card';
@@ -141,8 +140,8 @@ class Dashboard extends Component {
 
   render() {
     const { campaignInfo,profile } = this.props;
-    
- 
+
+
     var chartData = {
       labels:   this.getDays(),
       datasets: this.getDataset()
@@ -197,7 +196,7 @@ class Dashboard extends Component {
     };
 
     let userSignUps = 0;
-    
+
     if(campaignInfo) {
       campaignInfo.websiteLive.map(website => {
         let users = website.signups.userDetails?website.signups.userDetails.length:0;
@@ -218,16 +217,16 @@ class Dashboard extends Component {
                   <div className="col-sm-12 col-lg-6 col-xl-2 box pr-0">
                     <div>
                       <div className="text-center mt-4 mb-4">
-                        
+
                         <div className="col-md-12 h-50">
                           <div className=" widget-flat card-box  text-muted pr-4 pl-4 pb-5 pt-2 pos-vertical-center">
-                          
+
                             <p className="text-uppercase title m-b-5 font-13 font-600">Active Campaigns</p>
-                          
+
                             <h3 className="m-b-10 campaign">{campaignInfo? campaignInfo.websiteLive.length : []}</h3>
                           </div>
                         </div>
-                        
+
                       </div>
                     </div>
                   </div>
@@ -235,15 +234,15 @@ class Dashboard extends Component {
                   <div className="col-sm-12 col-lg-6 col-xl-2 box pr-0">
                     <div>
                       <div className="text-center mt-4 mb-4">
-                      
+
                         <div className="col-md-12 h-50">
                           <div className=" widget-flat card-box  text-muted pr-4 pl-4 pb-5 pt-2 pos-vertical-center">
-                          
+
                             <p className="text-uppercase title m-b-5 font-13 font-600">Unique Visitors</p>
-                         
+
                             <h3 className="m-b-10 profile">{profile? Number(profile.uniqueVisitors) :0 }</h3>
                           </div>
-                        
+
                         </div>
                       </div>
                     </div>
@@ -252,16 +251,16 @@ class Dashboard extends Component {
                   <div className="col-sm-12 col-lg-6 col-xl-2 box pr-0">
                     <div>
                       <div className="text-center mt-4 mb-4">
-                       
+
                         <div className="col-md-12 h-50">
                           <div className=" widget-flat card-box  text-muted pr-4 pl-4 pb-5 pt-2 pos-vertical-center">
-                          
+
                             <p className="text-uppercase title m-b-5 font-13 font-600">Total Notifications</p>
-                          
+
                             <h3 className="m-b-10 notify">{campaignInfo ? campaignInfo.notificationCount : 0}</h3>
                           </div>
                         </div>
-                       
+
                       </div>
                     </div>
                   </div>
@@ -269,15 +268,15 @@ class Dashboard extends Component {
                   <div className="col-sm-12 col-lg-6 col-xl-2 box pr-0">
                     <div>
                       <div className="text-center mt-4 mb-4">
-                      
+
                         <div className="col-md-12 h-50">
                           <div className="  widget-flat card-box  text-muted pr-4 pl-4 pb-5 pt-2 pos-vertical-center">
-                           
+
                             <p className="text-uppercase title m-b-5 font-13 font-600">Total Signups</p>
-                          
+
                             <h3 className="m-b-10 usersignup">{userSignUps}</h3>
                           </div>
-                     
+
                         </div>
                       </div>
                     </div>
