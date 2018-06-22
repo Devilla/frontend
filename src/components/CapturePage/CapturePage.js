@@ -179,7 +179,6 @@ class CapturePage extends Component{
                 </div>
               </Col>
             </Row>
-
             <Row className="pt-2">
               <HelpBlock className="text-center">
                 <p className="website-error">{error}</p>
