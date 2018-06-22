@@ -132,8 +132,8 @@ class Rules extends Component{
         </div>
         <div className="rules-buttons">
           <button type="button" className="btn btn-color waves-light waves-effect number " onClick={this.handleBackState}><i className="icon-arrow-left pr-2"></i>Back</button>
-          <button type="button" className="btn btn-outline-primary waves-light waves-effect number" onClick={this.showNotification}>{this.state.sampleDisplay?'Hide':'Show'} Notification </button>
-          <button type="button" className="btn btn-outline-primary waves-light waves-effect number" onClick={this.setDefaultRules}>Set Default</button>
+          <button type="button" className="btn btn-color btn-outline-primary waves-light waves-effect number" onClick={this.showNotification}>{this.state.sampleDisplay?'Hide':'Show'} Notification </button>
+          <button type="button" className="btn btn-color btn-outline-primary waves-light waves-effect number" onClick={this.setDefaultRules}>Set Default</button>
           <button type="button" className="btn btn-color waves-light waves-effect number ml-2 pl-4 pr-4" onClick={this.saveRules}>Next<i className="icon-arrow-right pl-2"></i> </button>
         </div>
         <div className="clearfix"></div>

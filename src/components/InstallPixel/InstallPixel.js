@@ -22,7 +22,7 @@ const InstallPixel = ({ elastic, setActiveState, campaign, verifyPixelStatus, ha
       </div>
       <div className="float-left custom-width align-install-btn">
         <button type="button" className="btn btn-custom waves-light waves-effect number" onClick={handlePixelCopy}>Copy</button>
-        <button type="button" style={elastic==undefined?{backgroundColor:'#097fff'}:elastic.error?{backgroundColor:'#f12c0b'}:{backgroundColor:'#e68f1f'}} className="btn btn-custom  waves-light waves-effect number" onClick={() => verifyPixelStatus()}>Verify Pixel</button>
+        <button type="button" style={elastic==undefined?{backgroundColor:'#097fff'}:elastic.error?{backgroundColor:'#f9bc0b'}:{backgroundColor:'#0acf97'}} className="btn btn-custom  waves-light waves-effect number" onClick={() => verifyPixelStatus()}>Verify Pixel</button>
       </div>
       <p className="m-t-30 pb-5">
         <br/>
