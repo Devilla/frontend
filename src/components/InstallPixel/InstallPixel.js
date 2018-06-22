@@ -1,4 +1,5 @@
 import React from 'react';
+import Circle from 'react-circle';
 import './InstallPixel.scss';
 
 
@@ -23,6 +24,23 @@ const InstallPixel = ({ elastic, setActiveState, campaign, verifyPixelStatus, ha
       <div className="float-left custom-width align-install-btn">
         <button type="button" className="btn btn-custom waves-light waves-effect number" onClick={handlePixelCopy}>Copy</button>
         <button type="button" style={elastic==undefined?{backgroundColor:'#097fff'}:elastic.error?{backgroundColor:'#f12c0b'}:{backgroundColor:'#e68f1f'}} className="btn btn-custom  waves-light waves-effect number" onClick={() => verifyPixelStatus()}>Verify Pixel</button>
+        <Circle
+          animate={true}
+          responsive={false}
+          size={20}
+          lineWidth={50}
+          progress={elastic?elastic.message._shards.successful-40:0}//to edit
+          progressColor="#0acf97"
+          bgColor="whitesmoke"
+          textColor="#FFFFFF"
+          textStyle={{
+            font: 'bold 5rem Helvetica, Arial, sans-serif'
+          }}
+          percentSpacing={10}
+          roundedStroke={true}
+          showPercentage={true}
+          showPercentageSymbol={false}
+        />
       </div>
       <p className="m-t-30 pb-5">
         <br/>
@@ -36,15 +54,15 @@ const InstallPixel = ({ elastic, setActiveState, campaign, verifyPixelStatus, ha
       <span className="radio radio-warning ml-2 pr-4">
         <input type="radio" name="radio8" id="radio8" value="option8" checked/>
         <label for="radio8">
-          Unverified
+          Verified
         </label>
       </span>
 
-      {/* The radio buttons for success */}      
+      {/* The radio buttons for success */}
       <span className="radio radio-success">
         <input type="radio" name="radio9" id="radio9" value="option9" checked/>
         <label for="radio9">
-           Verified
+             Unverified
         </label>
       </span>
 
