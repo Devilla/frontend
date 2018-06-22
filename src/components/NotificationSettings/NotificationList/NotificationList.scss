@@ -7,10 +7,10 @@
       }
 
       .toggle-checkbox {
-          margin-left: 37%;   
+          margin-left: 37%;
           margin-bottom: 10%;
       }
-      
+
       .tgl {
         display: none;
         box-sizing: border-box;
@@ -74,7 +74,7 @@
           left: 50%;
         }
       }
-      
+
       .tgl-light {
         + .tgl-btn {
           background: #f0f0f0;
@@ -91,7 +91,7 @@
           background: #9FD6AE;
         }
       }
-      
+
       .tgl-ios {
         + .tgl-btn {
           background: #fbfbfb;
@@ -177,7 +177,7 @@
           }
         }
       }
-      
+
       .tgl-flat {
         + .tgl-btn {
           padding: 2px;
@@ -200,7 +200,7 @@
           }
         }
       }
-      
+
       .tgl-flip {
         + .tgl-btn {
           padding: 2px;
