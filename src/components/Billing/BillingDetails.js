@@ -93,7 +93,7 @@ class BillingDetails extends Component {
                         icon="usd"
                         disabled={false}
                       >
-                          Upgrade Payment
+                          Payment Method
                       </Button>
                     </div>
                     <div className="clearfix"></div>
