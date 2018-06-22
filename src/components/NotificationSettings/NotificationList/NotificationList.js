@@ -1,8 +1,7 @@
 import React from 'react';
-import { Avatar2, Avatar3, Avatar4 } from 'img';
 import './NotificationList.scss';
 
-const NotificationList = ({ notificationList, configure, handleActivityChange, campaignUrl }) => {
+const NotificationList = ({ notificationList, configure, handleActivityChange}) => {
   const renderNotifications = () => {
     return notificationList.map(notification =>
       <div key={notification._id} className="col-md-4 notification-box">
@@ -21,24 +20,27 @@ const NotificationList = ({ notificationList, configure, handleActivityChange, c
             </span>
           </div>
           <div className="text-center card-box ">
-            <div className="member-card pt-2 pb-2">
-              <div className="thumb-lg member-thumb m-b-10 mx-auto">
-                <img src={notification.notificationName === 'Bulk Activity' ?
-                  Avatar2
-                  :
-                  notification.notificationName === 'Live Visitor Count' ?
-                    Avatar3
+            <div className="member-card">
+              <div>
+                <h4 className={
+                  notification.notificationName === 'Bulk Activity' ?
+                    'bulkColor'
                     :
-                    Avatar4} className="rounded-circle img-thumbnail" alt="profile-image" />
-              </div>
-
-              <div className=" m-t-30">
-                <h4 className="m-b-5">{notification.notificationName}</h4>
-                <p className="text-muted notification-list-content">Show the total visitors over a period of time
-                  <span> | </span>
-                  <span>
-                    <a className="text-pink">{campaignUrl}</a>
-                  </span>
+                    notification.notificationName === 'Live Visitor Count' ?
+                      'liveColor'
+                      :
+                      'recentColor'
+                }>{notification.notificationName}</h4>
+                <p className="text-muted notification-list-content">
+                  {
+                    notification.notificationName === 'Bulk Activity' ?
+                      'Visitors activity over time.'
+                      :
+                      notification.notificationName === 'Live Visitor Count' ?
+                        'Live visitors.'
+                        :
+                        'Recent visitors.'
+                  }
                 </p>
               </div>
 
@@ -48,9 +50,9 @@ const NotificationList = ({ notificationList, configure, handleActivityChange, c
                   id={notification._id}
                   type="checkbox"
                   checked={notification.activity}
-
+                  onChange={(e) => e.target.checked !=notification.activity?handleActivityChange(e.target.checked, notification._id, notification.configurationId):null}
                 />
-                <label className="tgl-btn"onChange={(e) => e.target.checked !=notification.activity?handleActivityChange(e.target.checked, notification._id, notification.configurationId):null} for={notification._id}></label>
+                <label className="tgl-btn" for={notification._id}></label>
               </div>
 
               <button
