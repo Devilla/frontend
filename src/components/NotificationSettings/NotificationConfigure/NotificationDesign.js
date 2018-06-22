@@ -69,7 +69,10 @@ const NotificationDesign = ({
                               }}>
                                 Username from City, Country
                               </div>
-                              <div className="FPqR13BWqJeA13BW7MM9_0">Recently signed up for {contentText}</div>
+                              <div className="FPqR13BWqJeA13BW7MM9_0" style={{
+                                fontFamily: notificationStyle.fontFamily,
+                                fontWeight: notificationStyle.fontWeight
+                              }}>Recently signed up for {contentText}</div>
                               <div className="FPqR2PlWqJeA2PlW7MM9_0">a minute ago</div>
                               <div className="FPqR3eNuqJeA3eNu7MM9_0">
                                 <i>
@@ -118,12 +121,19 @@ const NotificationDesign = ({
                                 fontFamily: notificationStyle.fontFamily,
                                 fontWeight: notificationStyle.fontWeight
                               }}>
-                                <div className="FPqR2fwXqJeA2fwX7MM9_0">
+                                <div className="FPqR2fwXqJeA2fwX7MM9_0" style={{
+                                  color: notificationStyle.color,
+                                  fontFamily: notificationStyle.fontFamily,
+                                  fontWeight: notificationStyle.fontWeight
+                                }}>
                                   <span className="FPqR1Jr6qJeA1Jr67MM9_0">
-                                    <span >431 </span>
-                                  </span><span>&nbsp;&nbsp;
-                                    {visitorText}&nbsp;&nbsp;</span></div><span>
-                                are viewing this site</span>
+                                    <span >431</span>
+                                  </span><span>
+                                    {` ${visitorText}`}</span>
+                                </div>
+                                <span>
+                                  are viewing this site
+                                </span>
                               </div>
                               <div className="FPqR14UVqJeA14UV7MM9_0">
                                 Verified by
@@ -168,14 +178,18 @@ const NotificationDesign = ({
                               }}>
                                 <span className="FPqRtoc3qJeAtoc37MM9_0" style={{
                                   color: notificationStyle.color,
-                                  fontFamily: notificationStyle.fontFamily,
-                                  fontWeight: notificationStyle.fontWeight
+                                  fontFamily: notificationStyle.fontFamily
                                 }}>
-                                  <span>2,002
-                                    &nbsp;&nbsp;{visitorText}&nbsp;&nbsp;
+                                  <span style={{
+                                    color: notificationStyle.color,
+                                    fontFamily: notificationStyle.fontFamily
+                                  }}>{`2,002 ${ visitorText} `}
                                   </span>
                                 </span>
-                                <span>{`signed up for ${contentText} in the last 7 days`}
+                                <span style={{
+                                  color: notificationStyle.color,
+                                  fontFamily: notificationStyle.fontFamily
+                                }}>{` signed up for ${contentText} in the last 7 days`}
                                 </span>
                               </div>
                             </div>

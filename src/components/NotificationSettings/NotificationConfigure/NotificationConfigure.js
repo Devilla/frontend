@@ -7,6 +7,7 @@ import Switch from 'react-flexible-switch';
 import './NotificationConfigure.scss';
 
 const NotificationConfigure = ({
+  profile,
   toggleTextBox,
   toggleMap,
   notification,
@@ -52,6 +53,7 @@ const NotificationConfigure = ({
                 </Col>
                 <Col md={6}>
                   <NotificationDesignSetting
+                    profile={profile}
                     toggleTextBox={toggleTextBox}
                     toggleMap={toggleMap}
                     contentText={contentText}
