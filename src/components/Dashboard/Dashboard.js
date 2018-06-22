@@ -77,7 +77,7 @@ class Dashboard extends Component {
     }
   }
 
-  getdays = () => {
+  getDays = () => {
     let start, end , range1, acc  ;
     switch(this.state.daysClicked)  {
       case '7' :
@@ -141,10 +141,9 @@ class Dashboard extends Component {
 
   render() {
     const { campaignInfo,profile } = this.props;
-    let datafetch = this.getdays();
-
+    
     var chartData = {
-      labels:   datafetch,
+      labels:   this.getDays(),
       datasets: this.getDataset()
     };
 
@@ -195,6 +194,15 @@ class Dashboard extends Component {
       //Boolean - Whether to horizontally center the label and point dot inside the grid
       offsetGridLines: false
     };
+
+    let userSignUps = 0;
+
+    if(campaignInfo) {
+      campaignInfo.websiteLive.map(website => {
+        let users = website.signups.userDetails?website.signups.userDetails.length:0;
+        userSignUps = userSignUps + users;
+      });
+    }
 
     return (
       <div className="content">
@@ -299,7 +307,7 @@ class Dashboard extends Component {
                           responsive={false}
                           size={100}
                           lineWidth={24}
-                          progress={campaignInfo ? campaignInfo.uniqueUsers.length : []} //to edit
+                          progress={userSignUps} //to edit
                           progressColor="#2d7bf4"
                           bgColor="whitesmoke"
                           textColor="#FFFFFF"
@@ -314,7 +322,7 @@ class Dashboard extends Component {
                       </div>
                       <div className="widget-chart-two-content dash">
                         <span className="text-muted mb-0 mt-2">Total Signups</span>
-                        <h3 className="">{campaignInfo ? campaignInfo.uniqueUsers.length : []}</h3>
+                        <h3 className="">{userSignUps}</h3>
                       </div>
                     </div>
                   </div>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 import {
   Grid,
   Row,
@@ -23,12 +24,12 @@ const Campaign = ({
   isDisabled
 }) => {
   return (
-    <div className="content fill">
+    <div className="content fill campaign-container">
       <Grid>
         <Row>
           <Col md={12}>
             <div className="card-box">
-              <h4 className="header-title"><a href="/dashboard"><i className="icon-arrow-left mr-3"></i></a>Create Your Campaign</h4>
+              <h4 className="header-title"><Link to="/dashboard"><i className="icon-arrow-left mr-3"></i></Link>Create Your Campaign</h4>
               <hr/>
               <form onSubmit={handleNextButton}>
                 <Row>

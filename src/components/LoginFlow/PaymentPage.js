@@ -1,7 +1,7 @@
 import React from 'react';
 import { CardElement, injectStripe } from 'react-stripe-elements';
 import { HelpBlock } from 'react-bootstrap';
-import './Common.scss';
+import './PaymentPage.scss';
 
 const PaymentPage = ({
   stripe,
@@ -52,7 +52,7 @@ const PaymentPage = ({
   }};
 
   return (
-    <div className="credit-form">
+    <div className="credit-form-container">
       <form onSubmit={(e) => submitForm(e)}>
         <CardElement
           style={style}
