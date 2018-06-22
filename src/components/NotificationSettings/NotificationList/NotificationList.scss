@@ -116,7 +116,7 @@
           }
         }
         &:checked + .tgl-btn {
-          background: #86d993;
+          background: #097fff;
           &:active {
             box-shadow: none;
             &:after {
@@ -125,7 +125,7 @@
           }
         }
       }
-      
+
       .tgl-skewed {
         + .tgl-btn {
           overflow: hidden;
@@ -165,7 +165,7 @@
           }
         }
         &:checked + .tgl-btn {
-          background: #86d993;
+          background: #097fff;
           &:before {
             left: -100%;
           }
