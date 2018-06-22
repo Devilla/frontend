@@ -53,16 +53,16 @@ const InstallPixel = ({ elastic, setActiveState, campaign, verifyPixelStatus, ha
       {/* The radio buttons for warning, success */}
       <span className="radio radio-warning ml-2 pr-4">
         <input type="radio" name="radio8" id="radio8" value="option8" checked/>
-        <label for="radio8">
-          Verified
+        <label htmlFor="radio8">
+          Unverified
         </label>
       </span>
 
       {/* The radio buttons for success */}
       <span className="radio radio-success">
         <input type="radio" name="radio9" id="radio9" value="option9" checked/>
-        <label for="radio9">
-             Unverified
+        <label htmlFor="radio9">
+           Verified
         </label>
       </span>
 
