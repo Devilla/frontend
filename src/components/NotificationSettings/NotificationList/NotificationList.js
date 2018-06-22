@@ -5,7 +5,7 @@ const NotificationList = ({ notificationList, configure, handleActivityChange}) 
   const renderNotifications = () => {
     return notificationList.map(notification =>
       <div key={notification._id} className="col-md-4 notification-box">
-        <div className="card-box ribbon-box bx-shadow">
+        <div className=" ribbon-box bx-shadow">
           <div className="ribbon-two ribbon-two-success">
             <span>
               {
@@ -19,7 +19,7 @@ const NotificationList = ({ notificationList, configure, handleActivityChange}) 
               }
             </span>
           </div>
-          <div className="text-center card-box ">
+          <div className="text-center card-box bx-shadow ">
             <div className="member-card">
               <div>
                 <h4 className={

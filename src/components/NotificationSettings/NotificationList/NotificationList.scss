@@ -268,4 +268,12 @@
           }
         }
       }
+    div {
+      &.text-center {
+        &.card-box {
+          background-color: #f8f8f8;
+        }
+      }
+    }
+    
 }
