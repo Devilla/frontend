@@ -62,7 +62,7 @@ class UpgradeCard extends Component {
         <Row >
           <Col md={12}>
             <div className="card-box pt-0 pl-0">
-              <h4 className="header-title text-left"><Link to="/Profile"><i className="icon-arrow-left mr-3"></i></Link>Upgrade your Plan</h4>
+              <h4 className="header-title text-left"><Link to="/billing-details"><i className="icon-arrow-left mr-3"></i></Link>Payment Method</h4>
               <hr/>
               <div className = "upgrade-card-container" >
                 <div className="panel panel-default">
