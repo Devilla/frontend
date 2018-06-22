@@ -92,12 +92,14 @@ class Notification extends Component {
         <td>{campaign.campaignName}</td>
         <td>{campaign.websiteUrl}</td>
         <td>
-          <Switch
+          {/* <Switch
             switchStyles={{ width: 40 }}
             value={campaign.isActive}
             onChange={(e) => this.handleActiveChange(e, campaign)}
             circleStyles={{ onColor: '#097fff', offColor: 'gray', diameter: 18 }}
-          />
+          /> */}
+          <input className="tgl tgl-ios" id="cb2" type="checkbox"/>
+          <label className="tgl-btn" for="cb2"></label>
         </td>
         <td>{campaign.trackingId}</td>
         <td>{moment(campaign.createdAt).format('MM/DD/YYYY')}</td>

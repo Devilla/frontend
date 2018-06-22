@@ -3,7 +3,6 @@ import { Row, Col } from 'react-bootstrap';
 import { Card } from './Card';
 import NotificationDesign from './NotificationDesign';
 import { NotificationDesignSetting } from './NotificationDesignSetting';
-import Switch from 'react-flexible-switch';
 import './NotificationConfigure.scss';
 
 const NotificationConfigure = ({
@@ -29,13 +28,9 @@ const NotificationConfigure = ({
         <Col md={12}>
           <Card title={notification.notificationName}
             status={ <div className="notificationSwitch">
-              <Switch
-                circleStyles={{ onColor: '#097fff', offColor: 'gray', diameter: 18 }}
-                switchStyles={{ width: 50 }}
-                cssClass="alignsame"
-                value={notification.activity}
-                onChange={(e) => e != notification.activity ? handleActivityChange(e, notification._id, notification.configurationId) : null}
-              />
+  
+              <input className="tgl tgl-ios" id="cb2" type="checkbox"  checked={notification.activity}/>
+              <label className="tgl-btn" for="cb2"  onChange={(e) => e != notification.activity ? handleActivityChange(e, notification._id, notification.configurationId) : null}></label>
             </div>
             }
             isDisabled={activity}

@@ -1,10 +1,11 @@
 import React from 'react';
 import { Avatar2, Avatar3, Avatar4 } from 'img';
+import './NotificationList.scss';
 
 const NotificationList = ({ notificationList, configure, handleActivityChange, campaignUrl }) => {
   const renderNotifications = () => {
     return notificationList.map(notification =>
-      <div key={notification._id} className="col-md-4">
+      <div key={notification._id} className="col-md-4 notification-box">
         <div className="card-box ribbon-box bx-shadow">
           <div className="ribbon-two ribbon-two-success">
             <span>
@@ -40,17 +41,16 @@ const NotificationList = ({ notificationList, configure, handleActivityChange, c
                   </span>
                 </p>
               </div>
-
-              <div className="checkbox checkbox-success checkbox-circle">
+            
+              <div className="toggle-checkbox">
                 <input
+                  className="tgl tgl-ios"
                   id={notification._id}
                   type="checkbox"
                   checked={notification.activity}
                   onChange={(e) => e.target.checked !=notification.activity?handleActivityChange(e.target.checked, notification._id, notification.configurationId):null}
                 />
-                <label htmlFor={notification._id}>
-                  Enable {notification.activity}
-                </label>
+                <label className="tgl-btn" for={notification._id}></label>
               </div>
 
               <button
