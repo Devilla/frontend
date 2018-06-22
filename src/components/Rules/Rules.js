@@ -3,29 +3,31 @@ import LeftView from './LeftView';
 import RightView from './RightView';
 import './Rules.scss';
 
+const initialRules = {
+  hideNotification: true,
+  loopNotification: true,
+  delayNotification: false,
+  closeNotification: false,
+  hideAnonymous: false,
+  displayNotifications: false,
+  initialDelay: 1,
+  bulkData:5,
+  liveVisitorCount:5,
+  recentNumber:5,
+  recentConv:5,
+  displayTime: 5,
+  delayBetween: 3,
+  displayPosition: 'Bottom Left',
+  popupAnimationIn:'fadeInUp',
+  popupAnimationOut:'fadeOutDown',
+  sampleDisplay: false,
+  animation: 'fadeIn'
+};
+
 class Rules extends Component{
   constructor(){
     super();
-    this.state = {
-      hideNotification: false,
-      loopNotification: false,
-      delayNotification: false,
-      closeNotification: false,
-      hideAnonymous: false,
-      displayNotifications: false,
-      initialDelay: 120,
-      bulkData:5,
-      liveVisitorCount:5,
-      recentNumber:5,
-      recentConv:5,
-      displayTime: 120,
-      delayBetween: 120,
-      displayPosition: 'Bottom Left',
-      popupAnimationIn:'fadeInUp',
-      popupAnimationOut:'fadeOutDown',
-      sampleDisplay: false,
-      animation: 'fadeIn'
-    };
+    this.state = initialRules;
     this.handleStateChange = this.handleStateChange.bind(this);
     this.saveRules = this.saveRules.bind(this);
     this.showNotification = this.showNotification.bind(this);
@@ -107,6 +109,10 @@ class Rules extends Component{
     this.setState({animation: value});
   }
 
+  setDefaultRules = () => {
+    this.setState(initialRules);
+  }
+
   render() {
     return (
       <div className="rules-container">
@@ -124,10 +130,10 @@ class Rules extends Component{
             {...this.state}
           />
         </div>
-        <div className="float-left">
+        <div className="rules-buttons">
           <button type="button" className="btn btn-color waves-light waves-effect number " onClick={this.handleBackState}><i className="icon-arrow-left pr-2"></i>Back</button>
-        </div>
-        <div className="float-right">
+          <button type="button" className="btn btn-outline-primary waves-light waves-effect number" onClick={this.showNotification}>{this.state.sampleDisplay?'Hide':'Show'} Notification </button>
+          <button type="button" className="btn btn-outline-primary waves-light waves-effect number" onClick={this.setDefaultRules}>Set Default</button>
           <button type="button" className="btn btn-color waves-light waves-effect number ml-2 pl-4 pr-4" onClick={this.saveRules}>Next<i className="icon-arrow-right pl-2"></i> </button>
         </div>
         <div className="clearfix"></div>
