@@ -561,19 +561,30 @@ export class NotificationDesignSetting extends Component {
                   <div>
                     <Row className="mb-3">
                       <Col md={10}>
+                        <span className="mt-5 text-muted h6">Hide anonymous conversions
+                        </span>
+                      </Col>
+                      <Col md={2}>
+                        <input className="tgl tgl-ios" id="cb2" type="checkbox"  checked={notificationPanelStyle.hideAnonymousConversion}/>
+                        <label className="tgl-btn" for="cb2"   onChange={(e) => this.handleAnonymousConversionsChange(e)}></label>
+                      </Col>
+                    </Row>
+                    <Row className="mb-3">
+                      <Col md={10}>
+                        <span className="mt-5 text-muted h6">Only display notifications from user's country</span>
+                      </Col>
+                      <Col md={2}>
+                        <input className="tgl tgl-ios" id="cb2" type="checkbox"  checked={notificationPanelStyle.onlyDisplayNotification}/>
+                        <label className="tgl-btn" for="cb2"   onChange={(e) => this.handleOnlyDisplayNotification(e)}></label>
+                      </Col>
+                    </Row>
+                    <Row className="mb-3">
+                      <Col md={10}>
                         <span className="mt-5 text-muted h6">Notifications Clickable</span>
                       </Col>
                       <Col md={2}>
-                        <Switch circleStyles={{
-                          onColor: '#097fff',
-                          offColor: 'gray',
-                          diameter: 18
-                        }} switchStyles={{
-                          width: 50
-                        }} cssClass="alignsame"
-                        value={toggleTextBox}
-                        onChange={handleClickableNotification}
-                        />
+                        <input className="tgl tgl-ios" id="cb2" type="checkbox"  checked={toggleTextBox}/>
+                        <label className="tgl-btn" for="cb2"  onChange={handleClickableNotification}></label>
                       </Col>
                     </Row>
                     <Row style={toggleTextBox?{ display:'block', marginBottom: '-9%' }:{ display:'none', marginBottom: '-9%' }}>
