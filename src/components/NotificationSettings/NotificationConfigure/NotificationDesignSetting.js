@@ -345,7 +345,6 @@ export class NotificationDesignSetting extends Component {
                   </Col>
                 </Row>
                 {notification.notificationName === 'Recent Activity' &&
-                  profile.plan.references.service_template_properties[0].data.value == 'premium' &&
                   <Row style={{padding: '4% 0%'}}>
                     <Col md={10}>
                       <span className="mt-5 text-muted h6">Display map icon only</span>
