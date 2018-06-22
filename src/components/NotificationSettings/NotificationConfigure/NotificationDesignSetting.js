@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { FormGroup, Row, Col, Button, FormControl } from 'react-bootstrap';
-// import Switch from 'react-flexible-switch';
 import Slider from 'react-rangeslider';
 import reactCSS from 'reactcss';
 import './NotificationConfigure.scss';
@@ -349,16 +348,6 @@ export class NotificationDesignSetting extends Component {
                       <span className="mt-5 text-muted h6">Display map icon only</span>
                     </Col>
                     <Col md={2}>
-                      {/* <Switch circleStyles={{
-                        onColor: '#097fff',
-                        offColor: 'gray',
-                        diameter: 18
-                      }} switchStyles={{
-                        width: 50
-                      }} cssClass="alignsame"
-                      value={toggleMap}
-                      onChange={(e) => handleContentChange('toggleMap', e)}
-                      /> */}
                       <input className="tgl tgl-ios" id="cb2" type="checkbox"  checked={toggleMap}/>
                       <label className="tgl-btn" for="cb2"   onChange={(e) => handleContentChange('toggleMap', e)}></label>
                     </Col>
@@ -528,20 +517,6 @@ export class NotificationDesignSetting extends Component {
                         </span>
                       </Col>
                       <Col md={2}>
-                        {/* <Switch
-                          circleStyles={{
-                            onColor: '#097fff',
-                            offColor: 'gray',
-                            diameter: 18
-                          }}
-                          switchStyles={{
-                            width: 50
-                          }}
-
-                          cssClass="alignsame"
-                          value={notificationPanelStyle.hideAnonymousConversion}
-                          onChange={(e) => this.handleAnonymousConversionsChange(e)}
-                        /> */}
                         <input className="tgl tgl-ios" id="cb2" type="checkbox"  checked={notificationPanelStyle.hideAnonymousConversion}/>
                         <label className="tgl-btn" for="cb2"   onChange={(e) => this.handleAnonymousConversionsChange(e)}></label>
                       </Col>
@@ -551,16 +526,6 @@ export class NotificationDesignSetting extends Component {
                         <span className="mt-5 text-muted h6">Only display notifications from user's country</span>
                       </Col>
                       <Col md={2}>
-                        {/* <Switch circleStyles={{
-                          onColor: '#097fff',
-                          offColor: 'gray',
-                          diameter: 18
-                        }} switchStyles={{
-                          width: 50
-                        }} cssClass="alignsame"
-                        value={notificationPanelStyle.onlyDisplayNotification}
-                        onChange={(e) => this.handleOnlyDisplayNotification(e)}
-                        /> */}
                         <input className="tgl tgl-ios" id="cb2" type="checkbox"  checked={notificationPanelStyle.onlyDisplayNotification}/>
                         <label className="tgl-btn" for="cb2"   onChange={(e) => this.handleOnlyDisplayNotification(e)}></label>
                       </Col>
@@ -572,16 +537,6 @@ export class NotificationDesignSetting extends Component {
                     <span className="mt-5 text-muted h6">Notifications Clickable</span>
                   </Col>
                   <Col md={2}>
-                    {/* <Switch circleStyles={{
-                      onColor: '#097fff',
-                      offColor: 'gray',
-                      diameter: 18
-                    }} switchStyles={{
-                      width: 50
-                    }} cssClass="alignsame"
-                    value={toggleTextBox}
-                    onChange={handleClickableNotification}
-                    /> */}
                     <input className="tgl tgl-ios" id="cb2" type="checkbox"  checked={toggleTextBox}/>
                     <label className="tgl-btn" for="cb2"  onChange={handleClickableNotification}></label>
                   </Col>

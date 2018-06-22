@@ -4,7 +4,6 @@ import { browserHistory } from 'react-router';
 import { Row, Col } from 'react-bootstrap';
 import Moment from 'moment';
 import { extendMoment } from 'moment-range';
-// import Circle from 'react-circle';
 import { fetchCampaignInfo, successCampaign } from 'ducks/campaign';
 import './Dashboard.scss';
 import Card from './Card';
