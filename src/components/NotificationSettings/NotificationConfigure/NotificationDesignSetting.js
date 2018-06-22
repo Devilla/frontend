@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { FormGroup, Row, Col, Button, FormControl } from 'react-bootstrap';
-// import Switch from 'react-flexible-switch';
 import Slider from 'react-rangeslider';
 import reactCSS from 'reactcss';
 import './NotificationConfigure.scss';
@@ -350,16 +349,6 @@ export class NotificationDesignSetting extends Component {
                       <span className="mt-5 text-muted h6">Display map icon only</span>
                     </Col>
                     <Col md={2}>
-                      {/* <Switch circleStyles={{
-                        onColor: '#097fff',
-                        offColor: 'gray',
-                        diameter: 18
-                      }} switchStyles={{
-                        width: 50
-                      }} cssClass="alignsame"
-                      value={toggleMap}
-                      onChange={(e) => handleContentChange('toggleMap', e)}
-                      /> */}
                       <input className="tgl tgl-ios" id="cb2" type="checkbox"  checked={toggleMap}/>
                       <label className="tgl-btn" for="cb2"   onChange={(e) => handleContentChange('toggleMap', e)}></label>
                     </Col>
@@ -582,7 +571,7 @@ export class NotificationDesignSetting extends Component {
                     </Row>
                     <Row className="mb-3">
                       <Col md={10}>
-                        <span className="mt-5 text-muted h6">Only display notifications from user's country</span>
+                        <span className="mt-5 text-muted h6">Only display notifications from users country</span>
                       </Col>
                       <Col md={2}>
                         <input className="tgl tgl-ios" id="cb2" type="checkbox"  checked={notificationPanelStyle.onlyDisplayNotification}/>
