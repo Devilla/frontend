@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
-import Switch from 'react-flexible-switch';
+import './WebsitePricing.scss';
 
 class WebsitePricing extends Component {
 
@@ -160,12 +160,14 @@ class WebsitePricing extends Component {
             <div className="row justify-content-center">
               <div className="col-md-1 mr-0 text-left " id="leftmg"><div><strong onClick={this.handleMonthChange} className="h5 type--bold">Monthly</strong></div></div>
               <div className="col-md-1 col-sm-1 my-auto text-center pl-2">
-                <Switch
+                {/* <Switch
                   circleStyles={{ onColor: 'green', offColor: 'blue', diameter: 18 }}
                   switchStyles={{ width: 40 }}
                   cssClass="alignCenter"
                   value={this.state.externalValue} onChange={this.handleSwitchChange}
-                />
+                /> */}
+                <input className="tgl tgl-ios" id="cb2" type="checkbox"  checked={this.state.externalValue}/>
+                <label className="tgl-btn" for="cb2"  onChange={this.handleSwitchChange}></label>
               </div>
               <div className="col-md-1 text-left my-auto pl-0 ml-0" ><strong onClick={this.handleYearChange} className="h5 type--bold">Yearly</strong></div>
             </div>
