@@ -52,9 +52,7 @@ function* update(action) {
     if(res.error)
       console.log(res.error);
     else {
-      let campaign = action.campaign;
-      campaign['_id'] = campaign.id;
-      yield put(actions.successCampaign(action.campaign));
+      yield put(actions.fetchCampaign(action.campaign));
     }
     yield put(loaded());
   } catch (error) {

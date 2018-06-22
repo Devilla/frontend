@@ -4,7 +4,7 @@
     color:#636769;
   }
   .custom-width{
-    width: 30% !important;
+    width: 50% !important;
   }
   p {
     &.m-l-30.p-3 {
@@ -12,10 +12,13 @@
         box-shadow: 0 6px 16px -6px black;
     }
   }
-  
+  .fa {
+    padding: 0% 7%;
+    font-size: 18px;
+  }
   div {
     &.float-left > button {
-      width: 105px;
+      width: 30%;
     }
   }
 }

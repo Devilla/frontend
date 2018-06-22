@@ -37,7 +37,8 @@ class NewCampaignContainer extends Component {
       status: {},
       errorName: '',
       errorWebsiteUrl: '',
-      activeClass: 1
+      activeClass: 1,
+      loaderActive: false
     };
     this.handleNextButton = this.handleNextButton.bind(this);
     this.handleCampaignNameChange = this.handleCampaignNameChange.bind(this);
@@ -86,6 +87,7 @@ class NewCampaignContainer extends Component {
   }
 
   verifyPixelStatus() {
+    this.setState({loaderActive: true});
     this.props.fetchElastic(`json.value.trackingId:${this.props.campaign.trackingId}`);
   }
 
@@ -105,6 +107,11 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
   componentWillUnmount() {
     this.props.clearCampaign();
     this.props.clearElastic();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if(nextProps.elastic)
+      this.setState({loaderActive: false});
   }
 
   goLive() {
@@ -148,6 +155,7 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
       <div>
         {this.props.campaign && Object.keys(this.props.campaign).length !== 0 && this.props.campaign.constructor === Object?
           <CampaignSettings
+            loaderActive={this.state.loaderActive}
             goLive={this.goLive}
             verifyPixelStatus={this.verifyPixelStatus}
             handlePixelCopy={this.handlePixelCopy}
