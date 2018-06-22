@@ -113,7 +113,7 @@ class BillingDetails extends Component {
                                     <FormGroup>
                                       <FormControl
                                         type="text"
-                                        bsClass="form-control"
+                                        bsClass="form-control mt-4"
                                         id="campaignname"
                                         value={profile?profile.plan.name:''}
                                         disabled
@@ -123,32 +123,6 @@ class BillingDetails extends Component {
                                 </div>
                               </div>
                             </div>
-                          </div>
-                          <div className="text-left pl-3">
-                            <p className="text-muted font-13">
-                              <strong>Last Paid : </strong>
-                              <span className="m-l-15">
-                                {planSelected.interval ? moment(planSelected.interval.updated_at).format('DD MMM YYYY') : '-'}
-                              </span>
-                            </p>
-                            <p className="text-muted font-13">
-                              <strong>Billing Cycle : </strong>
-                              <span className="m-l-15">
-                                {planSelected.interval ? (planSelected.interval.charAt(0).toUpperCase() + planSelected.interval.slice(1)) : '-'}
-                              </span>
-                            </p>
-                            <p className="text-muted font-13">
-                              <strong>Visitor Quota : </strong>
-                              <span className="m-l-15">
-                                {profile ? profile.uniqueVisitorQouta.toLocaleString() : '-'} Unique Visitors
-                              </span>
-                            </p>
-                            <p className="text-muted font-13">
-                              <strong>Visitor Quota Left : </strong>
-                              <span className="m-l-15">
-                                {profile ? profile.uniqueVisitorsQoutaLeft.toLocaleString() : '-'} Unique Visitors
-                              </span>
-                            </p>
                           </div>
                         </div>
                       </Col>
@@ -171,30 +145,28 @@ class BillingDetails extends Component {
                                     {planSelected.interval ? 'Card' : '-'}
                                   </span>
                                 </p>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </Col>
-
-
-                      <Col md={6}>
-                        <div className="panel panel-default">
-                          <div className="card-box">
-                            <h4 className="header-title mt-0 m-b-20">Payment Info </h4>
-                            <div className="panel-body">
-                              <hr />
-                              <div className="text-left">
                                 <p className="text-muted font-13">
-                                  <strong>Next Payment Due Date :</strong>
-                                  <span class="m-l-15">
-                                    {planSelected.interval ? moment(planSelected.interval.updated_at).add(planSelected.interval_count, planSelected.interval).format('DD MMM YYYY') : '-'}
+                                  <strong>Last Paid : </strong>
+                                  <span className="m-l-15">
+                                    {planSelected.interval ? moment(planSelected.interval.updated_at).format('DD MMM YYYY') : '-'}
                                   </span>
                                 </p>
                                 <p className="text-muted font-13">
-                                  <strong>Payment Method :</strong>
-                                  <span class="m-l-15">
-                                    {planSelected.interval ? 'Card' : '-'}
+                                  <strong>Billing Cycle : </strong>
+                                  <span className="m-l-15">
+                                    {planSelected.interval ? (planSelected.interval.charAt(0).toUpperCase() + planSelected.interval.slice(1)) : '-'}
+                                  </span>
+                                </p>
+                                <p className="text-muted font-13">
+                                  <strong>Visitor Quota : </strong>
+                                  <span className="m-l-15">
+                                    {profile ? profile.uniqueVisitorQouta.toLocaleString() : '-'} Unique Visitors
+                                  </span>
+                                </p>
+                                <p className="text-muted font-13">
+                                  <strong>Visitor Quota Left : </strong>
+                                  <span className="m-l-15">
+                                    {profile ? profile.uniqueVisitorsQoutaLeft.toLocaleString() : '-'} Unique Visitors
                                   </span>
                                 </p>
                               </div>
