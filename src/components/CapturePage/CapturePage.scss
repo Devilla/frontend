@@ -22,4 +22,29 @@ button {
       border-radius: 6px!important;
     }
   }
+  .status {
+    ul {
+      display: flex;
+      justify-content: space-evenly;
+      list-style: none;
+      li {
+        display: flex;
+        .status-name {
+          margin: 3px 10px;
+        }
+      }
+    }
+  }
+  .unverified {
+    background-color: #FFEB3B;
+  }
+  .primary {
+    background-color: #2196F3;
+  }
+  .danger {
+    background-color: #F44336;
+  }
+  .success {
+    background-color: #4CAF50;
+  }
 }

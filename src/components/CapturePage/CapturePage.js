@@ -81,7 +81,7 @@ class CapturePage extends Component{
   handlePageUrl(e) {
     const lead = {
       url: e.target.value,
-      status: 'undefined',
+      status: 'unverified',
       class: 'warning',
       type: 'lead'
     };
@@ -99,7 +99,7 @@ class CapturePage extends Component{
 
   renderColor(classname) {
     switch (classname) {
-      case 'warning':
+      case 'unverified':
         return '#FFEB3B';
       case 'primary':
         return '#2196F3';
@@ -133,7 +133,8 @@ class CapturePage extends Component{
               return <tr key={i}>
                 <td className="url">{lead.url}</td>
                 <td className="ml-4 status">
-                  <span className="dot"><i className="p-1 fi-check"></i></span>
+                  <span className="dot" style={{backgroundColor: this.renderColor(lead.status) }}>
+                  </span>
                 </td>
                 <td><a href="javascript:;"><i className="ml-3 icon-trash" onClick={() => this.deleteLead(lead._id, i, lead.type)}></i></a></td>
               </tr>;
@@ -169,19 +170,43 @@ class CapturePage extends Component{
                     onBlur={this.handleWebsiteAuth.bind(this)}
                     onKeyUp={(e) => e.keyCode === 13?this.addPageUrl():null}
                   />
-                  <span className="input-group-btn col-md-2"
-                    id="urladd">
-                    <span className="btn btn-custom nav nav-pills waves-light waves-effect number pl-5 pr-5"
-                      onClick={this.addPageUrl}>Add</span>
+                  <span className="input-group-btn col-md-2" id="urladd">
+                    <span className="btn btn-custom nav nav-pills waves-light waves-effect number pl-5 pr-5" onClick={this.addPageUrl}>
+                      Add
+                    </span>
                   </span>
                 </div>
               </Col>
             </Row>
-          
+
             <Row className="pt-2">
               <HelpBlock className="text-center">
                 <p className="website-error">{error}</p>
               </HelpBlock>
+            </Row>
+            <Row>
+              <Col md={12}>
+                <div className="status">
+                  <ul>
+                    <li>
+                      <span className="dot success"></span>
+                      <span className="status-name">Active</span>
+                    </li>
+                    <li>
+                      <span className="dot primary"></span>
+                      <span className="status-name">Last seen over 24 hrs ago</span>
+                    </li>
+                    <li>
+                      <span className="dot unverified"></span>
+                      <span className="status-name">Has Never Been Tracked</span>
+                    </li>
+                    <li>
+                      <span className="dot danger"></span>
+                      <span className="status-name">Invalid URL</span>
+                    </li>
+                  </ul>
+                </div>
+              </Col>
             </Row>
             <Row>
               <Col md={12}>
