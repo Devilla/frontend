@@ -206,6 +206,7 @@ export class NotificationDesignSetting extends Component {
   render() {
     const { activeClass } = this.state;
     const {
+      profile,
       notificationPanelStyle,
       handleContentChange,
       contentText,
@@ -344,6 +345,7 @@ export class NotificationDesignSetting extends Component {
                   </Col>
                 </Row>
                 {notification.notificationName === 'Recent Activity' &&
+                  profile.plan.references.service_template_properties[0].data.value == 'premium' &&
                   <Row style={{padding: '4% 0%'}}>
                     <Col md={10}>
                       <span className="mt-5 text-muted h6">Display map icon only</span>
@@ -520,31 +522,56 @@ export class NotificationDesignSetting extends Component {
                         </FormControl>
                       </Col>
                     </Row>
-                    <Row className="mb-3">
-                      <Col md={10}>
-                        <span className="mt-5 text-muted h6">Hide anonymous conversions
-                        </span>
-                      </Col>
-                      <Col md={2}>
-                        <Switch
-                          circleStyles={{
-                            onColor: '#097fff',
-                            offColor: 'gray',
-                            diameter: 18
-                          }}
-                          switchStyles={{
-                            width: 50
-                          }}
+                    {profile.plan.references.service_template_properties[0].data.value == 'premium' &&
+                      <div>
+                        <Row className="mb-3">
+                          <Col md={10}>
+                            <span className="mt-5 text-muted h6">Hide anonymous conversions
+                            </span>
+                          </Col>
+                          <Col md={2}>
+                            <Switch
+                              circleStyles={{
+                                onColor: '#097fff',
+                                offColor: 'gray',
+                                diameter: 18
+                              }}
+                              switchStyles={{
+                                width: 50
+                              }}
 
-                          cssClass="alignsame"
-                          value={notificationPanelStyle.hideAnonymousConversion}
-                          onChange={(e) => this.handleAnonymousConversionsChange(e)}
-                        />
-                      </Col>
-                    </Row>
+                              cssClass="alignsame"
+                              value={notificationPanelStyle.hideAnonymousConversion}
+                              onChange={(e) => this.handleAnonymousConversionsChange(e)}
+                            />
+                          </Col>
+                        </Row>
+                        <Row className="mb-3">
+                          <Col md={10}>
+                            <span className="mt-5 text-muted h6">Only display notifications from user's country</span>
+                          </Col>
+                          <Col md={2}>
+                            <Switch circleStyles={{
+                              onColor: '#097fff',
+                              offColor: 'gray',
+                              diameter: 18
+                            }} switchStyles={{
+                              width: 50
+                            }} cssClass="alignsame"
+                            value={notificationPanelStyle.onlyDisplayNotification}
+                            onChange={(e) => this.handleOnlyDisplayNotification(e)}
+                            />
+                          </Col>
+                        </Row>
+                      </div>
+                    }
+                  </div>
+                }
+                {profile.plan.references.service_template_properties[0].data.value == 'premium' &&
+                  <div>
                     <Row className="mb-3">
                       <Col md={10}>
-                        <span className="mt-5 text-muted h6">Only display notifications from user's country</span>
+                        <span className="mt-5 text-muted h6">Notifications Clickable</span>
                       </Col>
                       <Col md={2}>
                         <Switch circleStyles={{
@@ -554,41 +581,24 @@ export class NotificationDesignSetting extends Component {
                         }} switchStyles={{
                           width: 50
                         }} cssClass="alignsame"
-                        value={notificationPanelStyle.onlyDisplayNotification}
-                        onChange={(e) => this.handleOnlyDisplayNotification(e)}
+                        value={toggleTextBox}
+                        onChange={handleClickableNotification}
+                        />
+                      </Col>
+                    </Row>
+                    <Row style={toggleTextBox?{ display:'block', marginBottom: '-9%' }:{ display:'none', marginBottom: '-9%' }}>
+                      <Col md={12}>
+                        <FormControl
+                          type="text"
+                          value={notificationUrl}
+                          placeholder="Enter URL"
+                          id="notificationUrl"
+                          onChange={(e) => handleContentChange(e.target.id, e.target.value)}
                         />
                       </Col>
                     </Row>
                   </div>
                 }
-                <Row className="mb-3">
-                  <Col md={10}>
-                    <span className="mt-5 text-muted h6">Notifications Clickable</span>
-                  </Col>
-                  <Col md={2}>
-                    <Switch circleStyles={{
-                      onColor: '#097fff',
-                      offColor: 'gray',
-                      diameter: 18
-                    }} switchStyles={{
-                      width: 50
-                    }} cssClass="alignsame"
-                    value={toggleTextBox}
-                    onChange={handleClickableNotification}
-                    />
-                  </Col>
-                </Row>
-                <Row style={toggleTextBox?{ display:'block', marginBottom: '-9%' }:{ display:'none', marginBottom: '-9%' }}>
-                  <Col md={12}>
-                    <FormControl
-                      type="text"
-                      value={notificationUrl}
-                      placeholder="Enter URL"
-                      id="notificationUrl"
-                      onChange={(e) => handleContentChange(e.target.id, e.target.value)}
-                    />
-                  </Col>
-                </Row>
               </div>
             </div>
           </div>
