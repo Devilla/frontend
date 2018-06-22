@@ -571,7 +571,7 @@ export class NotificationDesignSetting extends Component {
                     </Row>
                     <Row className="mb-3">
                       <Col md={10}>
-                        <span className="mt-5 text-muted h6">Only display notifications from user's country</span>
+                        <span className="mt-5 text-muted h6">Only display notifications from users country</span>
                       </Col>
                       <Col md={2}>
                         <input className="tgl tgl-ios" id="cb2" type="checkbox"  checked={notificationPanelStyle.onlyDisplayNotification}/>

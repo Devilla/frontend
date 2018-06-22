@@ -217,16 +217,16 @@ class Dashboard extends Component {
                   <div className="col-sm-12 col-lg-6 col-xl-2 box pr-0">
                     <div>
                       <div className="text-center mt-4 mb-4">
-                        
+
                         <div className="col-md-12 h-50">
                           <div className=" widget-flat card-box  text-muted pr-4 pl-4 pb-5 pt-2 pos-vertical-center">
-                          
+
                             <p className="text-uppercase title m-b-5 font-13 font-600">Active Campaigns</p>
-                          
+
                             <h3 className="m-b-10 campaign">{campaignInfo? campaignInfo.websiteLive.length : []}</h3>
                           </div>
                         </div>
-                        
+
                       </div>
                     </div>
                   </div>
@@ -234,15 +234,15 @@ class Dashboard extends Component {
                   <div className="col-sm-12 col-lg-6 col-xl-2 box pr-0">
                     <div>
                       <div className="text-center mt-4 mb-4">
-                      
+
                         <div className="col-md-12 h-50">
                           <div className=" widget-flat card-box  text-muted pr-4 pl-4 pb-5 pt-2 pos-vertical-center">
-                          
+
                             <p className="text-uppercase title m-b-5 font-13 font-600">Unique Visitors</p>
-                         
+
                             <h3 className="m-b-10 profile">{profile? Number(profile.uniqueVisitors) :0 }</h3>
                           </div>
-                        
+
                         </div>
                       </div>
                     </div>
@@ -251,16 +251,16 @@ class Dashboard extends Component {
                   <div className="col-sm-12 col-lg-6 col-xl-2 box pr-0">
                     <div>
                       <div className="text-center mt-4 mb-4">
-                       
+
                         <div className="col-md-12 h-50">
                           <div className=" widget-flat card-box  text-muted pr-4 pl-4 pb-5 pt-2 pos-vertical-center">
-                          
+
                             <p className="text-uppercase title m-b-5 font-13 font-600">Total Notifications</p>
-                          
+
                             <h3 className="m-b-10 notify">{campaignInfo ? campaignInfo.notificationCount : 0}</h3>
                           </div>
                         </div>
-                       
+
                       </div>
                     </div>
                   </div>
@@ -268,15 +268,15 @@ class Dashboard extends Component {
                   <div className="col-sm-12 col-lg-6 col-xl-2 box pr-0">
                     <div>
                       <div className="text-center mt-4 mb-4">
-                      
+
                         <div className="col-md-12 h-50">
                           <div className="  widget-flat card-box  text-muted pr-4 pl-4 pb-5 pt-2 pos-vertical-center">
-                           
+
                             <p className="text-uppercase title m-b-5 font-13 font-600">Total Signups</p>
-                          
+
                             <h3 className="m-b-10 usersignup">{userSignUps}</h3>
                           </div>
-                     
+
                         </div>
                       </div>
                     </div>
