@@ -189,7 +189,7 @@ class AnalyticsContainer extends Component {
           <th scope="row">{index + 1}</th>
           <td className="text-center">{website.websiteUrl}</td>
           <td className="text-center">{visitor}</td>
-          <td className="text-center">{userDetails && userDetails.length} <a href="javascript:;" onClick={() => this.handleViewProfile(userDetails)}>&nbsp; Profiles</a></td>
+          <td className="text-center">{userDetails && userDetails.length} <a href="javascript:;" onClick={() => userDetails?this.handleViewProfile(userDetails):null}>&nbsp; Profiles</a></td>
           <td className="text-center">-</td>
           <td className="text-center">
             {
@@ -203,6 +203,7 @@ class AnalyticsContainer extends Component {
   }
 
   render() {
+    console.log(this.state.usersList,'============');
     return (
       <div className="analytics-container">
         {!this.state.usersList.length ?

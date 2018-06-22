@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router';
 import { Grid, Row, Col, Table, Glyphicon } from 'react-bootstrap';
 import Card from 'components/utils/card';
 import Switch from 'react-flexible-switch';
@@ -50,9 +51,8 @@ class Notification extends Component {
   }
 
   handleRouteChange(e, campaign) {
-    if (e.target.className === 'react-flexible-switch react-flexible-switch--active' ||
-      e.target.className === 'react-flexible-switch react-flexible-switch--inactive' ||
-      e.target.className === 'react-flexible-switch-circle' ||
+    if (e.target.className === 'tgl-btn' ||
+      e.target.className === 'tgl tgl-ios' ||
       e.target.className === 'ml-3 icon-trash'
     )
       return;
@@ -91,28 +91,24 @@ class Notification extends Component {
         <th scope="row">{i + 1}</th>
         <td>{campaign.campaignName}</td>
         <td>{campaign.websiteUrl}</td>
-        <td>
-          <Switch
-            switchStyles={{ width: 40 }}
-            value={campaign.isActive}
-            onChange={(e) => this.handleActiveChange(e, campaign)}
-            circleStyles={{ onColor: '#097fff', offColor: 'gray', diameter: 18 }}
-          />
+        <td className="switch">
+          <input className="tgl tgl-ios" id="cb2" type="checkbox" checked={campaign.isActive} />
+          <label className="tgl-btn" htmlFor="cb2" onClick={(e) => this.handleActiveChange(!campaign.isActive, campaign)}></label>
         </td>
         <td>{campaign.trackingId}</td>
         <td>{moment(campaign.createdAt).format('MM/DD/YYYY')}</td>
         <td><a href="javascript:;"><i className="ml-3 icon-trash" onClick={() => this.deleteCampaign(i, campaign._id)}></i></a></td>
       </tr>
     ))
-    :
-    <tr></tr>;
+      :
+      <tr></tr>;
   }
 
   render() {
     return (
       <div className="manage-notification">
         <div className="card-box">
-          <h4 className="header-title"><a href="/dashboard"><i className="icon-arrow-left mr-3"></i></a>Notifications</h4>
+          <h4 className="header-title"><Link to="/dashboard"><i className="icon-arrow-left mr-3"></i></Link>Notifications</h4>
           <table className="table table-striped">
             <thead>
               <tr>

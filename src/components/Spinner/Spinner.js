@@ -1,5 +1,5 @@
 import React from 'react';
-import './Spinner.css';
+import './Spinner.scss';
 
 const Spinner = ({ loading }) =>
   <div className="customer-loader" style={{ display: loading ? 'flex' : 'none', width: '100%' }}>

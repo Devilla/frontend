@@ -1,9 +1,7 @@
 import React from 'react';
 import './InstallPixel.scss';
 
-
-
-const InstallPixel = ({ elastic, setActiveState, campaign, verifyPixelStatus, handlePixelCopy }) => {
+const InstallPixel = ({ elastic, loaderActive, setActiveState, campaign, verifyPixelStatus, handlePixelCopy }) => {
   return (
     <div className="install-pixel">
       <h4 className="lead text-center m-b-30 m-t-20">Install Pixel to Your Website</h4>
@@ -22,7 +20,12 @@ const InstallPixel = ({ elastic, setActiveState, campaign, verifyPixelStatus, ha
       </div>
       <div className="float-left custom-width align-install-btn">
         <button type="button" className="btn btn-custom waves-light waves-effect number" onClick={handlePixelCopy}>Copy</button>
-        <button type="button" style={elastic==undefined?{backgroundColor:'#097fff'}:elastic.error?{backgroundColor:'#f9bc0b'}:{backgroundColor:'#0acf97'}} className="btn btn-custom  waves-light waves-effect number" onClick={() => verifyPixelStatus()}>Verify Pixel</button>
+        <button type="button" style={elastic==undefined?{backgroundColor:'#097fff'}:elastic.message.hits.total === 0?{backgroundColor:'#0acf97'}:{backgroundColor:'#f9bc0b'}} className="btn btn-custom  waves-light waves-effect number" onClick={() => verifyPixelStatus()}>
+          {loaderActive &&
+            <i className="fa fa-spinner fa-spin"></i>
+          }
+          Verify Pixel
+        </button>
       </div>
       <p className="m-t-30 pb-5">
         <br/>
@@ -36,7 +39,7 @@ const InstallPixel = ({ elastic, setActiveState, campaign, verifyPixelStatus, ha
       <span className="radio radio-warning ml-2 pr-4">
         <input type="radio" name="radio8" id="radio8" value="option8" checked/>
         <label htmlFor="radio8">
-          Unverified
+          Verified
         </label>
       </span>
 
@@ -44,7 +47,7 @@ const InstallPixel = ({ elastic, setActiveState, campaign, verifyPixelStatus, ha
       <span className="radio radio-success">
         <input type="radio" name="radio9" id="radio9" value="option9" checked/>
         <label htmlFor="radio9">
-           Verified
+             Unverified
         </label>
       </span>
 

@@ -4,7 +4,7 @@ import { browserHistory } from 'react-router';
 import Popup from 'react-popup';
 
 import { checkTokenExists } from 'ducks/auth';
-import { Spinner, Header, Sidebar } from 'components';
+import { Header, Sidebar } from 'components';
 import {
   Radio,
   Row,
@@ -175,12 +175,12 @@ class DashboardContainer extends Component {
   }
 
   render() {
-    const { loading, user } = this.props;
+    const {  user } = this.props;
     return (
       <div className="dashboard-container">
         <Popup />
         <div className="wrapper"  >
-          <Spinner loading={loading} />
+        
           {!this.state.render && <p>Please wait</p>}
           {this.state.render && <Sidebar {...this.props} disableButton={this.state.disableButton} onClick={this.closeDropdown} />}
           {this.state.render &&
@@ -218,7 +218,7 @@ class DashboardContainer extends Component {
 const mapStateToProps = state => ({
   profile: state.getIn(['profile', 'profile']),
   user: state.getIn(['auth', 'user']),
-  loading: state.getIn(['loading', 'state']),
+ 
 });
 
 const mapDispatchToProps = {

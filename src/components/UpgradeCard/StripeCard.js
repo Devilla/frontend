@@ -6,7 +6,7 @@ import { CardNumberElement,
   PostalCodeElement,
   injectStripe
 } from 'react-stripe-elements';
-import { Col, Row } from 'react-bootstrap';
+import { Col, Row, HelpBlock } from 'react-bootstrap';
 import Button from 'components/Template/customButton';
 
 const createOptions = (fontSize, padding) => {
@@ -36,11 +36,13 @@ class StripeCard extends Component {
 
   handleSubmit = (ev) => {
     ev.preventDefault();
-    const { stripe, currentState, updatePaymentMethod, makePayment, plan, user } = this.props;
+    const { stripe, currentState, updatePaymentMethod, makePayment, plan, user, handleError } = this.props;
     if (stripe) {
       stripe
         .createToken()
         .then((payload) => {
+          if(payload.error)
+            return handleError(payload.error.message);
           if (currentState == 'upgrade')
             updatePaymentMethod(payload.token);
           else {
@@ -61,7 +63,7 @@ class StripeCard extends Component {
   };
 
   render() {
-    const { currentState, fontSize } = this.props;
+    const { currentState, fontSize, error } = this.props;
     return (
       <form onSubmit={this.handleSubmit}>
         <Row>
@@ -99,13 +101,16 @@ class StripeCard extends Component {
               />
             </label>
           </Col>
+          <HelpBlock>
+            <p className="website-error">{error}</p>
+          </HelpBlock>
         </Row>
         <Row className='upgrade-card-buttons'>
           <div className='col-md-4 pull-left'>
             <Button type='button' icon='chevron-left' bsStyle='primary' fill={true} onClick={() => browserHistory.push(currentState === 'upgrade' ? '/billing-details' : '/profile')}>&nbsp;&nbsp;Back&nbsp;&nbsp;</Button>
           </div>
           <div className='col-md-6 pull-right mr-2'>
-            <Button type='submit' icon='usd' bsStyle='primary' fill={true} >{currentState === 'upgrade' ? 'Upgrade Card' : 'Make Payment'}</Button>
+            <Button type='submit' icon='usd' bsStyle='primary' fill={true} >{currentState === 'upgrade' ? 'Update Card' : 'Make Payment'}</Button>
           </div>
         </Row>
       </form>

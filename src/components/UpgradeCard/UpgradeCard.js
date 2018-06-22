@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { updatePaymentMethod, createPayment } from 'ducks/payment';
 import { updateProfile } from 'ducks/profile';
@@ -21,7 +22,8 @@ class UpgradeCard extends Component {
     this.state = {
       currentState: 'upgrade',
       key: 1,
-      activeClass: 1
+      activeClass: 1,
+      error: ''
     };
     this.handleSelect =  this.handleSelect.bind(this);
     this.makePayment = this.makePayment.bind(this);
@@ -53,15 +55,19 @@ class UpgradeCard extends Component {
     this.props.createPayment(data, profile, true);
   }
 
+  handleError = (error) => {
+    this.setState({error: error});
+  }
+
   render() {
     const { updatePaymentMethod, plan, user } = this.props;
-    const { currentState, activeClass } = this.state;
+    const { currentState, activeClass, error } = this.state;
     return (<div className="content fill ">
       <Grid fluid={true}>
         <Row >
           <Col md={12}>
             <div className="card-box pt-0 pl-0">
-              <h4 className="header-title text-left"><a href="/Profile"><i className="icon-arrow-left mr-3"></i></a>Upgrade your Plan</h4>
+              <h4 className="header-title text-left"><Link to="/billing-details"><i className="icon-arrow-left mr-3"></i></Link>Payment Method</h4>
               <hr/>
               <div className = "upgrade-card-container" >
                 <div className="panel panel-default">
@@ -107,6 +113,8 @@ class UpgradeCard extends Component {
                                 <StripeCard
                                   plan={plan}
                                   user={user}
+                                  error={error}
+                                  handleError={this.handleError}
                                   makePayment={this.makePayment}
                                   updatePaymentMethod={updatePaymentMethod}
                                   currentState={currentState}
