@@ -60,7 +60,7 @@ class Profile extends Component {
   }
 
   updateProfile = (e) => {
-    this.props.loading ? console.log(this.props.loading)
+    this.props.loading ? ''
       : this.setState({savedtext: 'Saved'});
 
     e.preventDefault();
