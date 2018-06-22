@@ -29,7 +29,8 @@ class Profile extends Component {
       phoneNumber: '',
       companyName: '',
       profileState: 'edit',
-      countryList: []
+      countryList: [],
+      savedtext: 'Save Profile'
     };
     props.fetchProfile();
   }
@@ -59,6 +60,9 @@ class Profile extends Component {
   }
 
   updateProfile = (e) => {
+    this.props.loading ? console.log(this.props.loading)
+      : this.setState({savedtext: 'Saved'});
+
     e.preventDefault();
     const {
       firstName,
@@ -140,7 +144,7 @@ class Profile extends Component {
 
 
   render() {
-    const profile = this.state;
+    const  profile    = this.state;
 
     return (<div className="content fill profile-container">
       <Grid fluid={true}>
@@ -250,9 +254,9 @@ class Profile extends Component {
                     </Col>
                   </Row>
                   <Col md={12}>
-                    <div className="text-right">
+                    <div className="text-right save">
                       <button type="button" className="btn btn-primary waves-effect" onClick={this.updateProfile}>
-                        <i className="mdi mdi-account-settings-variant mr-1"></i> Save Profile
+                        <i className="mdi mdi-account-settings-variant mr-1"></i> {this.state.savedtext}
                       </button>
                     </div>
                   </Col>
@@ -269,7 +273,8 @@ class Profile extends Component {
 
 const mapStateToProps = state => ({
   profile: state.getIn(['profile', 'profile']),
-  user: state.getIn(['auth', 'user'])
+  user: state.getIn(['auth', 'user']),
+  loading: state.getIn(['loading', 'state'])
 });
 
 const mapDispatchToProps = {
