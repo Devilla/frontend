@@ -71,15 +71,6 @@ const Campaign = ({
                 </Row>
 
                 <button type="submit" className="btn btn-primary waves-light waves-effect number ml-2 pl-4 pr-4" disabled={isDisabled}> Create Your Campaign </button>
-                {/*}<Button
-                  bsStyle="info"
-                  pullRight
-                  fill
-                  type="submit"
-
-                >
-                  Next >
-                </Button>*/}
                 <div className="clearfix"></div>
               </form>
             </div>

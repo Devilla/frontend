@@ -12,7 +12,7 @@ import './PlanList.scss';
 const PlanList = ({ plan, handleCheckChange, makePayment }) => {
   return (
     <div className="content fill upgrade-plan ">
-      <Grid fluid="fluid" >
+      <Grid fluid={true} >
         <Row className="inlineclr">
           <Col md={12}>
             <div className="card-box pt-0 pl-0">
