@@ -106,7 +106,7 @@ const LeftView = ({
             <label htmlFor="checkbox6b3" className="text-muted">
               Randomize delay between notifications{' '}
               <LinkWithTooltip tooltip="Default tooltip" href="#" id="tooltip-1">
-                you probably
+                 tooltip
               </LinkWithTooltip>{' '}
             </label>
           </div>
