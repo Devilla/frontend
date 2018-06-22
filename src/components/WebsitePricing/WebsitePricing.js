@@ -163,8 +163,8 @@ class WebsitePricing extends Component {
                 <input className="tgl tgl-ios" id="cb2" type="checkbox"  checked={this.state.externalValue}/>
                 <label className="tgl-btn" for="cb2"  onChange={this.handleSwitchChange}></label>
               </div>
+              <div className="text-left my-auto" ><strong onClick={this.handleYearChange} className="h5 type--bold">Yearly</strong></div> 
             </div>
-            <div className="text-left my-auto" ><strong onClick={this.handleYearChange} className="h5 type--bold">Yearly</strong></div>
           </div>
         </section>
 
