@@ -41,16 +41,15 @@ const NotificationList = ({ notificationList, configure, handleActivityChange, c
                   </span>
                 </p>
               </div>
-            
               <div className="toggle-checkbox">
                 <input
                   className="tgl tgl-ios"
                   id={notification._id}
                   type="checkbox"
                   checked={notification.activity}
-                  onChange={(e) => e.target.checked !=notification.activity?handleActivityChange(e.target.checked, notification._id, notification.configurationId):null}
+
                 />
-                <label className="tgl-btn" for={notification._id}></label>
+                <label className="tgl-btn"onChange={(e) => e.target.checked !=notification.activity?handleActivityChange(e.target.checked, notification._id, notification.configurationId):null} for={notification._id}></label>
               </div>
 
               <button

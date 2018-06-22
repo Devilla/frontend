@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 import {
   Grid,
   Row,
@@ -15,7 +16,7 @@ const PlanList = ({ plan, handleCheckChange, makePayment }) => {
         <Row className="inlineclr">
           <Col md={12}>
             <div className="card-box pt-0 pl-0">
-              <h4 className="header-title text-left"><a href="/Profile"><i className="icon-arrow-left mr-3"></i></a>Upgrade your Plan</h4>
+              <h4 className="header-title text-left"><Link to="/Profile"><i className="icon-arrow-left mr-3"></i></Link>Upgrade your Plan</h4>
               <hr/>
               <div className="plans float-right mr-5">
                 <Row>

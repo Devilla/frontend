@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { updatePaymentMethod, createPayment } from 'ducks/payment';
 import { updateProfile } from 'ducks/profile';
@@ -61,7 +62,7 @@ class UpgradeCard extends Component {
         <Row >
           <Col md={12}>
             <div className="card-box pt-0 pl-0">
-              <h4 className="header-title text-left"><a href="/Profile"><i className="icon-arrow-left mr-3"></i></a>Upgrade your Plan</h4>
+              <h4 className="header-title text-left"><Link to="/Profile"><i className="icon-arrow-left mr-3"></i></Link>Upgrade your Plan</h4>
               <hr/>
               <div className = "upgrade-card-container" >
                 <div className="panel panel-default">

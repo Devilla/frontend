@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router';
 import { Grid, Row, Col, Table, Glyphicon } from 'react-bootstrap';
 import Card from 'components/utils/card';
 import Switch from 'react-flexible-switch';
@@ -106,15 +107,15 @@ class Notification extends Component {
         <td><a href="javascript:;"><i className="ml-3 icon-trash" onClick={() => this.deleteCampaign(i, campaign._id)}></i></a></td>
       </tr>
     ))
-    :
-    <tr></tr>;
+      :
+      <tr></tr>;
   }
 
   render() {
     return (
       <div className="manage-notification">
         <div className="card-box">
-          <h4 className="header-title"><a href="/dashboard"><i className="icon-arrow-left mr-3"></i></a>Notifications</h4>
+          <h4 className="header-title"><Link to="/dashboard"><i className="icon-arrow-left mr-3"></i></Link>Notifications</h4>
           <table className="table table-striped">
             <thead>
               <tr>
