@@ -538,7 +538,7 @@ export class NotificationDesignSetting extends Component {
                         </Row>
                         <Row className="mb-3">
                           <Col md={10}>
-                            <span className="mt-5 text-muted h6">Only display notifications from user's country</span>
+                            <span className="mt-5 text-muted h6">Only display notifications from users country</span>
                           </Col>
                           <Col md={2}>
                             <Switch circleStyles={{
@@ -600,6 +600,24 @@ export class NotificationDesignSetting extends Component {
                     </Row>
                   </div>
                 }
+                <Row className="mb-3">
+                  <Col md={10}>
+                    <span className="mt-5 text-muted h6">Notifications Clickable</span>
+                  </Col>
+                  <input className="tgl tgl-ios" id="cb2" type="checkbox"  checked={toggleTextBox}/>
+                  <label className="tgl-btn" for="cb2"  onChange={handleClickableNotification}></label>
+                </Row>
+                <Row style={toggleTextBox?{ display:'block', marginBottom: '-9%' }:{ display:'none', marginBottom: '-9%' }}>
+                  <Col md={12}>
+                    <FormControl
+                      type="text"
+                      value={notificationUrl}
+                      placeholder="Enter URL"
+                      id="notificationUrl"
+                      onChange={(e) => handleContentChange(e.target.id, e.target.value)}
+                    />
+                  </Col>
+                </Row>
               </div>
             </div>
           </div>

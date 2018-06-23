@@ -30,11 +30,6 @@ const InstallPixel = ({ elastic, loaderActive, setActiveState, campaign, verifyP
       <p className="m-t-30 pb-5">
         <br/>
       </p>
-      <hr />
-      <p className="m-t-30">
-        <br/>
-      </p>
-
       {/* The radio buttons for warning, success */}
       <span className="radio radio-warning ml-2 pr-4">
         <input type="radio" name="radio8" id="radio8" value="option8" checked/>
@@ -50,10 +45,9 @@ const InstallPixel = ({ elastic, loaderActive, setActiveState, campaign, verifyP
            Verified
         </label>
       </span>
-
-      <p className="text-muted text-left pt-3">Wait For Your Pixel To Go LIVE. Check By Clicking On The Button " Verify Pixel Status
-        ". If Youre Facing Any Problems With It, Please Contact Our Support By
-      <a href="#">Clicking Here.</a>
+      <hr />
+      <p className="m-t-30">
+        <br/>
       </p>
       <div className="float-right mr-0 pr-2">
         <button type="button" className="btn btn-custom waves-light waves-effect number  pl-3 pr-3" onClick={() => setActiveState(2)}> Next<i className="icon-arrow-right pl-2"></i> </button>
