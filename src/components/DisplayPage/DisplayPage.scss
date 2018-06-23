@@ -15,10 +15,35 @@ button {
     display: inline-block;
 }
 
-.tab-notification-container
- {
-   .label-url
-  {
+.tab-notification-container {
+   .label-url {
       margin-left: 89px!important;
+  }
+  .status {
+    ul {
+      display: flex;
+      justify-content: space-between;
+      list-style: none;
+      li {
+        display: flex;
+        .status-name {
+          margin: 3px 10px;
+        }
+      }
+    }
+  }
+  .tabscontent {
+    .unverified {
+      background-color: #FFEB3B;
+    }
+    .primary {
+      background-color: #2196F3;
+    }
+    .danger {
+      background-color: #F44336;
+    }
+    .success {
+      background-color: #4CAF50;
+    }
   }
 }

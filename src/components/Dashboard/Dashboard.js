@@ -199,7 +199,7 @@ class Dashboard extends Component {
 
     if(campaignInfo) {
       campaignInfo.websiteLive.map(website => {
-        let users = website.signups.userDetails?website.signups.userDetails.length:0;
+        let users = website.signups && website.signups.userDetails?website.signups.userDetails.length:0;
         userSignUps = userSignUps + users;
       });
     }

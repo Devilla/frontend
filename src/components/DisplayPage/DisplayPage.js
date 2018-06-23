@@ -99,7 +99,7 @@ class DisplayPage extends Component{
   handlePageUrl(e) {
     const displayUrl = {
       url: e.target.value,
-      status: 'warning',
+      status: 'unverified',
       class: 'warning',
       type: 'display'
     };
@@ -117,7 +117,7 @@ class DisplayPage extends Component{
 
   renderColor(classname) {
     switch (classname) {
-      case 'warning':
+      case 'unverified':
         return '#FFEB3B';
       case 'primary':
         return '#2196F3';
@@ -151,7 +151,8 @@ class DisplayPage extends Component{
               return <tr key={i}>
                 <td className="url">{displayUrl.url}</td>
                 <td className="pl-4 status">
-                  <span className="dot"><i className="p-1 fi-check"></i></span>
+                  <span className="dot" style={{backgroundColor: this.renderColor(displayUrl.status) }}>
+                  </span>
                 </td>
                 <td><a href="javascript:;"><i className="ml-3 icon-trash" onClick={() => this.deleteDisplayUrl(displayUrl._id, i, displayUrl.type)}></i></a></td>
               </tr>;
@@ -202,6 +203,30 @@ class DisplayPage extends Component{
               <HelpBlock>
                 <p className="website-error">{error}</p>
               </HelpBlock>
+            </Row>
+            <Row>
+              <Col md={12}>
+                <div className="status">
+                  <ul>
+                    <li>
+                      <span className="dot success"></span>
+                      <span className="status-name">Active</span>
+                    </li>
+                    <li>
+                      <span className="dot primary"></span>
+                      <span className="status-name">Last seen over 24 hrs ago</span>
+                    </li>
+                    <li>
+                      <span className="dot unverified"></span>
+                      <span className="status-name">Has Never Been Tracked</span>
+                    </li>
+                    <li>
+                      <span className="dot danger"></span>
+                      <span className="status-name">Invalid URL</span>
+                    </li>
+                  </ul>
+                </div>
+              </Col>
             </Row>
             <Row>
               <Col md={12}>

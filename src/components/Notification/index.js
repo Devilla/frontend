@@ -51,9 +51,8 @@ class Notification extends Component {
   }
 
   handleRouteChange(e, campaign) {
-    if (e.target.className === 'react-flexible-switch react-flexible-switch--active' ||
-      e.target.className === 'react-flexible-switch react-flexible-switch--inactive' ||
-      e.target.className === 'react-flexible-switch-circle' ||
+    if (e.target.className === 'tgl-btn' ||
+      e.target.className === 'tgl tgl-ios' ||
       e.target.className === 'ml-3 icon-trash'
     )
       return;
@@ -93,8 +92,8 @@ class Notification extends Component {
         <td>{campaign.campaignName}</td>
         <td>{campaign.websiteUrl}</td>
         <td className="switch">
-          <input className="tgl tgl-ios" id="cb2" type="checkbox" checked/>
-          <label className="tgl-btn" for="cb2"></label>
+          <input className="tgl tgl-ios" id="cb2" type="checkbox" checked={campaign.isActive} />
+          <label className="tgl-btn" htmlFor="cb2" onClick={(e) => this.handleActiveChange(!campaign.isActive, campaign)}></label>
         </td>
         <td>{campaign.trackingId}</td>
         <td>{moment(campaign.createdAt).format('MM/DD/YYYY')}</td>
