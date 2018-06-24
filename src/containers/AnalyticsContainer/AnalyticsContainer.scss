@@ -1,25 +1,22 @@
 .analytics-container {
-  .analytics-tr {
-    cursor: pointer;
+
+  .table {
+    margin: 0% 3% !important;
   }
 
   .analytics-profile {
-    .analytics-header {
-      display: flex;
-      justify-content: space-between;
-      padding: 1% 0%;
-    }
-    td {
-      padding: 5px 10px !important;
-      vertical-align: inherit !important;
+    .card {
+      max-height: 700px;
     }
     .img {
-      width: 10%;
       img{
         width: 40px;
         height: 40px;
         border-radius: 50px;
       }
+    }
+    .backBtn {
+      margin: 15% 2%;
     }
   }
 

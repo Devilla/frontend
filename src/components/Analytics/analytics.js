@@ -1,28 +1,53 @@
 import React from 'react';
-import { Link }  from 'react-router';
+import { Grid, Row, Col, Table } from 'react-bootstrap';
+import Card from '../utils/card'
+import { thArray } from './data';
 
 const Analytics = ({ renderList }) => {
   return (
-    <div className="card-box">
-      <h4 className="m-t-0 header-title"><Link to="/dashboard"><i className="icon-arrow-left mr-3"></i></Link>Analytics</h4>
-      <table className="table table-striped">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th className="text-center">DOMAIN</th>
-            <th className="text-center">TOTAL VISITORS</th>
-            <th className="text-center">SIGNUPS</th>
-            <th className="text-center">LIVE STATS</th>
-            <th className="text-center">CONVERSION %</th>
-            <th className="text-center">Visualize</th>
-          </tr>
-        </thead>
-        <tbody>
-          {renderList()}
-        </tbody>
-      </table>
+    <div className="content fill">
+      <Grid fluid>
+        <Row>
+          <Col md={12}>
+            <Card
+              plain
+              title="Analytics"
+              category=""
+              ctTableFullWidth ctTableResponsive
+              content={
+                <div className="text-center centertbl">
+                <Table hover>
+                  <thead>
+                    <tr>
+                     {
+                      thArray.map((prop, key) => {
+                        return (
+                        <th  key={key}>{prop}</th>
+                        );
+                      })
+                      }
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {renderList()}
+                  </tbody>
+                </Table>
+                </div>
+              }
+            />
+          </Col>
+        </Row>
+        <Row>
+          <Col md={12}>
+            <p className="text-center">
+            Get one of our experts to do it all for you!
+            &nbsp;
+             <a href="javascript:;">Click here</a></p>
+          </Col>
+        </Row>
+      </Grid>
     </div>
   );
-};
+}
 
 export default Analytics;

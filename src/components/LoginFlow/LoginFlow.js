@@ -1,24 +1,23 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 import { ToastContainer } from 'react-toastify';
 
-import TrailPayment from './TrailPayment';
 import { updateUser, checkTokenExists, validateCoupon, clearCouponError } from 'ducks/auth';
-import { createProfile, updateProfile } from 'ducks/profile';
 import { createPayment } from 'ducks/payment';
+import TrailPayment from './TrailPayment';
 import './LoginFlow.scss';
-
-import { store } from 'index.js';
 
 class LoginFlow extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      flowStep: 0,
       username: '',
       plan:'',
-      stripeToken: {}
+      coupon: '',
+      couponError: '',
+      cardError: '',
+      nameError: ''
     };
 
     this.handleStateChange = this.handleStateChange.bind(this);
@@ -41,7 +40,7 @@ class LoginFlow extends Component {
       browserHistory.push('/dashboard');
   }
 
-  updateState(user, profile) {
+  updateState(user, profile, plan) {
     this.setState({
       username: user?user.username:'',
       plan: profile?profile.plan:''
@@ -52,7 +51,7 @@ class LoginFlow extends Component {
     const cookie = localStorage.getItem('authToken');
     const authToken = cookie?JSON.parse(cookie):null;
     if(authToken)
-      store.dispatch(checkTokenExists(authToken));
+      this.props.checkTokenExists(authToken);
     else
       return window.location.assign(window.location.origin+'/login');
   }
@@ -62,7 +61,9 @@ class LoginFlow extends Component {
   }
 
   handleStateChange(state, stateName) {
-    this.setState({[stateName]:state});
+    if(stateName === 'coupon')
+      this.props.clearCouponError();
+    this.setState({[stateName]:state, couponError: '', cardError: '', nameError: ''});
   }
 
   submitPayment(data) {
@@ -83,8 +84,8 @@ class LoginFlow extends Component {
     this.props.createPayment(data, profile, false);
   }
 
-  handleCheckChange(checked, value) {
-    this.setState({ plan: checked?value:null, couponError: '', cardError: '', nameError: '' });
+  handleCheckChange(checked, value, state) {
+    this.setState({ plan: checked?value:null, couponError: '', cardError: '', nameError: '' })
   }
 
 
@@ -112,7 +113,7 @@ class LoginFlow extends Component {
     const { plan } = this.state;
     const { user, couponDetails } = this.props;
     if(!plan)
-      return this.setState({cardError: 'Select a plan'});
+      return this.setState({cardError: "Select a plan"});
     const data = {
       amount: plan.amount,
       paymentProvider: null,
@@ -121,7 +122,7 @@ class LoginFlow extends Component {
       user: user._id,
       plan: plan
     };
-    return this.submitPayment(data);
+    return this.submitPayment(data)
   }
 
   render() {
@@ -161,9 +162,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
   updateUser,
-  createProfile,
-  updateProfile,
   createPayment,
+  checkTokenExists,
   validateCoupon,
   clearCouponError
 };

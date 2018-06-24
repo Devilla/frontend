@@ -1,18 +1,18 @@
-import { call, put, fork, takeLatest } from 'redux-saga/effects';
+import { call, put, select, fork, takeLatest } from 'redux-saga/effects';
 import * as api from 'services/api';
 import * as actions from 'ducks/campaign';
 import { load, loaded } from 'ducks/loading';
-import { toast } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 
 const toastConfig = {
   position: toast.POSITION.BOTTOM_LEFT,
   autoClose: 2000
 };
 
-function* fetch() {
+function* fetch(action) {
   try {
     yield put(load());
-    const res = yield call(api.GET, 'campaign');
+    const res = yield call(api.GET, `campaign`);
     if(res.error)
       console.log(res.error);
     else
@@ -28,12 +28,12 @@ function* fetch() {
 function* create(action) {
   try {
     yield put(load());
-    const res = yield call(api.POST, 'campaign', action.campaign);
+    const res = yield call(api.POST, `campaign`, action.campaign);
     if(res.error)
-      if(res.message == 'Invalid domain')
-        yield toast.error('This website url is Invalid.', toastConfig);
+      if(res.message == "Invalid domain")
+        yield toast.error("This website url is Invalid.", toastConfig);
       else
-        yield toast.error('This website is already configured with this account', toastConfig);
+        yield toast.error("This website is already configured with this account", toastConfig);
     else
       yield put(actions.successCampaign(res));
     yield put(loaded());
@@ -52,7 +52,9 @@ function* update(action) {
     if(res.error)
       console.log(res.error);
     else {
-      yield put(actions.fetchCampaign(action.campaign));
+      let campaign = action.campaign;
+      campaign["_id"] = campaign.id;
+      yield put(actions.successCampaign(action.campaign));
     }
     yield put(loaded());
   } catch (error) {
@@ -78,10 +80,10 @@ function* remove(action) {
   }
 }
 
-function* fetchCampaignsInfo() {
+function* fetchCampaignsInfo(action) {
   try {
     yield put(load());
-    const res = yield call(api.GET, 'campaign/user/info');
+    const res = yield call(api.GET, `campaign/user/info`);
     if(res.error)
       console.log(res.error);
     else

@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router';
 import { Grid, Row, Col, Table, Glyphicon } from 'react-bootstrap';
-import Card from 'components/utils/card';
+import Card from 'components/utils/card'
 import Switch from 'react-flexible-switch';
 import { getCookie } from 'components/Common/function';
 import moment from 'moment';
@@ -10,14 +9,16 @@ import { browserHistory } from 'react-router';
 import Popup from 'react-popup';
 
 import { fetchCampaign, updateCampaign, successCampaign, removeCampaign } from 'ducks/campaign';
-import './Notification.scss';
+import './Notification.scss'
+
+const notificationFields = [ 'S.No', 'Campaign', 'Domain', 'Status', 'Tracking ID', 'Log', 'Created', 'Delete' ];
 
 class Notification extends Component {
   constructor() {
     super();
     this.state = {
       notifications: [],
-    };
+    }
   }
 
   componentDidMount() {
@@ -25,7 +26,7 @@ class Notification extends Component {
   }
 
   handleActiveChange(active, campaign) {
-    if (active && this.props.profile.uniqueVisitorsQoutaLeft <= 0) {
+    if(active && this.props.profile.uniqueVisitorsQoutaLeft <= 0) {
       return Popup.create({
         title: 'Limit exceeded',
         content:
@@ -37,7 +38,7 @@ class Notification extends Component {
             text: 'Upgrade Plan',
             className: 'primary popup-notification-button',
             action: function () {
-              browserHistory.push('/upgrade');
+              browserHistory.push('/upgrade')
               Popup.close();
             }
           }]
@@ -51,9 +52,10 @@ class Notification extends Component {
   }
 
   handleRouteChange(e, campaign) {
-    if (e.target.className === 'tgl-btn' ||
-      e.target.className === 'tgl tgl-ios' ||
-      e.target.className === 'ml-3 icon-trash'
+    if(e.target.className == 'react-flexible-switch react-flexible-switch--active' ||
+      e.target.className == 'react-flexible-switch react-flexible-switch--inactive' ||
+      e.target.className == 'react-flexible-switch-circle' ||
+      e.target.className == 'glyphicon glyphicon-trash'
     )
       return;
     this.props.successCampaign(campaign);
@@ -61,72 +63,65 @@ class Notification extends Component {
   }
 
   deleteCampaign(index, campId) {
-    let that = this;
-    Popup.create({
-      title: 'Delete Campaign',
-      buttons: {
-        left: [{
-          text: 'Cancel',
-          className: 'warning popup-notification-button',
-          action: function () {
-            Popup.close();
-          }
-        }],
-        right: [{
-          text: 'Confirm',
-          className: 'primary popup-notification-button',
-          action: function () {
-            that.props.removeCampaign(index, campId);
-            Popup.close();
-          }
-        }]
-      }
-    }, true);
+    this.props.removeCampaign(index, campId);
   }
 
   // Map the notification data into table rows and return
   getNotificationRows = () => {
-    return this.props.campaigns ? this.props.campaigns.map((campaign, i) => (
-      <tr className="campaign-td" key={campaign._id} onClick={(e) => this.handleRouteChange(e, campaign)}>
-        <th scope="row">{i + 1}</th>
+    return this.props.campaigns?this.props.campaigns.map((campaign, i) => (
+      <tr key={campaign._id} onClick={(e) => this.handleRouteChange(e, campaign)}>
+        <td>{i + 1}</td>
         <td>{campaign.campaignName}</td>
-        <td>{campaign.websiteUrl}</td>
-        <td className="switch">
-          <input className="tgl tgl-ios" id="cb2" type="checkbox" defaultChecked={campaign.isActive} />
-          <label className="tgl-btn" htmlFor="cb2" onClick={(e) => this.handleActiveChange(!campaign.isActive, campaign)}></label>
+        <td><i className="fas fa-globe"></i> <a>{campaign.websiteUrl}</a></td>
+        <td >
+          <Switch switchStyles={{ width: 50 }}
+            value={campaign.isActive}
+            onChange={(e) => this.handleActiveChange(e, campaign)}
+            circleStyles={{ onColor: 'blue', offColor: 'gray', diameter: 18 }}
+          />
         </td>
         <td>{campaign.trackingId}</td>
+        <td>{campaign.log}</td>
         <td>{moment(campaign.createdAt).format('MM/DD/YYYY')}</td>
-        <td><a href="javascript:;"><i className="ml-3 icon-trash" onClick={() => this.deleteCampaign(i, campaign._id)}></i></a></td>
+        <td><Glyphicon glyph="trash" onClick={() => this.deleteCampaign(i, campaign._id)} /></td>
       </tr>
     ))
-      :
-      <tr></tr>;
+    :
+      <div></div>
   }
 
   render() {
     return (
-      <div className="manage-notification">
-        <div className="card-box">
-          <h4 className="header-title"><Link to="/dashboard"><i className="icon-arrow-left mr-3"></i></Link>Notifications</h4>
-          <table className="table table-striped">
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>CAMPAIGN</th>
-                <th>DOMAIN</th>
-                <th>STATUS</th>
-                <th>TRACK ID</th>
+      <div className="content manage-notification">
+        <Grid fluid>
 
-                <th>CREATED</th>
-                <th>TRASH</th>
-              </tr>
-            </thead>
-            <tbody>
-              {this.getNotificationRows()}
-            </tbody>
-          </table>
-        </div>
+          <Row>
+            <Col md={12}>
+              <Card
+                plain
+                title="Notifications"
+                category=""
+                ctTableFullWidth ctTableResponsive
+                content={
+                  <Table hover>
+                    <thead>
+                      <tr>
+                        {
+                          notificationFields.map((prop, key) => {
+                            return (
+                              <th key={key}>{prop}</th>
+                            );
+                          })
+                        }
+                      </tr>
+                    </thead>
+                    <tbody>{ this.getNotificationRows() }</tbody>
+                  </Table>
+                }
+              />
+            </Col>
+          </Row>
+        </Grid>
       </div>
     );
   }

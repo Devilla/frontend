@@ -1,4 +1,4 @@
-import { fromJS } from 'immutable';
+import { fromJS, Map } from 'immutable';
 
 const action = name => `/campaign/${name}`;
 
@@ -29,19 +29,19 @@ const initialState = fromJS({});
 const campaign = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_SUCCESS:
-      return state.set('campaigns', action.campaign);
+      return state.set("campaigns", action.campaign);
     case SUCCESS:
       console.log(action.campaign);
-      return state.set('campaign', action.campaign);
+      return state.set("campaign", action.campaign);
     case CLEAR_CAMPAIGN:
-      return state.set('campaign', {});
+      return state.set("campaign", {});
     case POP_CAMPAIGN:
-      return state.set('campaigns', state.get('campaigns').slice(0,action.index).concat(state.get('campaigns').slice(action.index+1)));
+      return state.set("campaigns", state.get('campaigns').slice(0,action.index).concat(state.get('campaigns').slice(action.index+1)));
     case FETCH_DASHBOARD_SUCCESS:
-      return state.set('campaignInfo', action.campaign);
+      return state.set("campaignInfo", action.campaign);
     default:
-      return state;
+      return state
   }
-};
+}
 
 export default campaign;

@@ -1,19 +1,19 @@
-import { call, put, fork, takeLatest } from 'redux-saga/effects';
+import { call, put, select, fork, takeLatest } from 'redux-saga/effects';
 import * as api from 'services/api';
 import * as actions from 'ducks/notification';
 import { load, loaded } from 'ducks/loading';
-import { toast } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 
 const toastConfig = {
   position: toast.POSITION.BOTTOM_LEFT,
   autoClose: 2000
 };
 
-function* fetch() {
+function* fetch(action) {
   try {
     yield put(load());
-    const res = yield call(api.GET, 'notificationtypes');
-    if (res.error)
+    const res = yield call(api.GET, `notificationtypes`);
+    if(res.error)
       console.log(res.error);
     else
       yield put(actions.successNotification(res));
@@ -28,8 +28,8 @@ function* fetch() {
 function* create(action) {
   try {
     yield put(load());
-    const res = yield call(api.POST, 'notificationtypes', action.notification);
-    if (res.error)
+    const res = yield call(api.POST, `notificationtypes`, action.notification);
+    if(res.error)
       console.log(res.error);
     else
       yield put(actions.createSuccess(res));
@@ -45,12 +45,12 @@ function* create(action) {
 function* update(action) {
   try {
     yield put(load());
-    const res = yield call(api.PUT, 'notificationtypes/${action.notification.id}');
-    if (res.error)
+    const res = yield call(api.PUT, `notificationtypes/${action.notification.id}`);
+    if(res.error)
       console.log(res.error);
     else {
       let notification = action.notification;
-      notification['_id'] = notification.id;
+      notification["_id"] = notification.id;
       yield put(actions.successNotification(action.notification));
     }
     yield put(loaded());

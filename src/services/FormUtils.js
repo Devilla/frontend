@@ -1,6 +1,6 @@
 // Common utitlity functions related to forms
 
-import { POST, storeToken } from './Request';
+import { POST, TOKEN_KEY, storeToken } from './Request';
 
 // TODO: Set correct login api url
 let LOGIN_API_URL;
@@ -10,15 +10,13 @@ let COMPANY_DETAILS_API_URL;
 if (process.env.NODE_ENV === 'production') {
   LOGIN_API_URL = `${process.env.REACT_APP_PRODUCTION_URL}auth/local`;
   REGISTER_API_URL = `${process.env.REACT_APP_PRODUCTION_URL}auth/local/register`;
-  COMPANY_DETAILS_API_URL = `${process.env.REACT_APP_PRODUCTION_URL}company-details`;
-} else if(process.env.NODE_ENV === 'staging') {
-  LOGIN_API_URL = `${process.env.REACT_APP_STAGING_URL}auth/local`;
-  REGISTER_API_URL = `${process.env.REACT_APP_STAGING_URL}auth/local/register`;
-  COMPANY_DETAILS_API_URL = `${process.env.REACT_APP_STAGING_URL}company-details`;
-} else {
+  COMPANY_DETAILS_API_URL = `${process.env.REACT_APP_PRODUCTION_URL}company-details`
+
+}
+else {
   LOGIN_API_URL = `${process.env.REACT_APP_DEVELOPMENT_URL}auth/local`;
   REGISTER_API_URL = `${process.env.REACT_APP_DEVELOPMENT_URL}auth/local/register`;
-  COMPANY_DETAILS_API_URL = `${process.env.REACT_APP_DEVELOPMENT_URL}company-details`;
+  COMPANY_DETAILS_API_URL = `${process.env.REACT_APP_DEVELOPMENT_URL}company-details`
 }
 
 
@@ -44,9 +42,7 @@ const validatePassword = pwd => typeof pwd === 'string' && pwd.match(PASSWORD_RE
 
 // Company Validation
 const validateCompanyName = name => typeof name === 'string' && name.trim().length > 0;
-/* eslint-disable */
-const WEBSITE_REGEXP = /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/;   // https://www.regextester.com/93652
-/* eslint-disable */
+const WEBSITE_REGEXP = /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/;   // https://www.regextester.com/93652
 const validateWebsite = url => typeof url === 'string' && url.match(WEBSITE_REGEXP) !== null;
 
 
@@ -93,10 +89,12 @@ const login = (identifier, password) => {
       // Try storing token in storage and throw error if failed
       if (!res.error && !storeToken(res['jwt'])) {
         throw 'failed to store token';
+        return;
       }
 
       if (res.statusCode && res.statusCode !== 200) {
         throw res.message;
+        return;
       }
 
       // resolve with the response
@@ -113,18 +111,20 @@ const register = (email, password) => {
     return POST(REGISTER_API_URL, {
       email,
       password,
-      username: email.match(/^(.+)@/)[1]
+      username:email.match(/^(.+)@/)[1]
     }, true).then(res => {
 
-      if (res.jwt) {
+      if(res.jwt) {
         if (!storeToken(res['jwt'])) {
           throw 'failed to store token';
+          return res;
         }
         return res;
       }
 
       if (res.statusCode !== 200) {
         throw res.message;
+        return;
       }
 
       return res;
@@ -168,6 +168,7 @@ const submitCompanyDetails = (companyName, website) => {
     }).then(res => {
       if (res.statusCode !== 200) {
         throw res.message;
+        return;
       }
 
       return res;
