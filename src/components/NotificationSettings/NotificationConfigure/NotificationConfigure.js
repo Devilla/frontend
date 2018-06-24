@@ -29,9 +29,14 @@ const NotificationConfigure = ({
         <Col md={12}>
           <Card title={notification.notificationName}
             status={ <div className="notificationSwitch">
-  
-              <input className="tgl tgl-ios" id="cb2" type="checkbox"  checked={notification.activity}/>
-              <label className="tgl-btn" for="cb2"  onChange={(e) => e != notification.activity ? handleActivityChange(e, notification._id, notification.configurationId) : null}></label>
+              <input
+                className="tgl tgl-ios"
+                id={notification.notificationName}
+                type="checkbox"
+                defaultChecked={notification.activity}
+                onChange={(e) => e.target.checked !=notification.activity? handleActivityChange(!notification.activity, notification._id, notification.configurationId):null}
+              />
+              <label className="tgl-btn" htmlFor={notification.notificationName}></label>
             </div>
             }
             isDisabled={activity}

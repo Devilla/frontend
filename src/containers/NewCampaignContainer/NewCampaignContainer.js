@@ -40,31 +40,22 @@ class NewCampaignContainer extends Component {
       activeClass: 1,
       loaderActive: false
     };
-    this.handleNextButton = this.handleNextButton.bind(this);
-    this.handleCampaignNameChange = this.handleCampaignNameChange.bind(this);
-    this.handleWebsiteChange = this.handleWebsiteChange.bind(this);
-    this.handleCampaignAuth = this.handleCampaignAuth.bind(this);
-    this.handleWebsiteAuth = this.handleWebsiteAuth.bind(this);
-    this.setActiveState = this.setActiveState.bind(this);
-    this.handlePixelCopy = this.handlePixelCopy.bind(this);
-    this.verifyPixelStatus = this.verifyPixelStatus.bind(this);
-    this.goLive = this.goLive.bind(this);
   }
 
-  handleCampaignNameChange(evt) {
+  handleCampaignNameChange = (evt) => {
     this.setState({campaignname: evt.target.value, errorName:'' });
   }
 
-  handleWebsiteChange(evt) {
+  handleWebsiteChange = (evt) => {
     this.setState({website: evt.target.value, errorWebsiteUrl: ''});
   }
 
-  handleCampaignAuth(evt) {
+  handleCampaignAuth = (evt) => {
     if (evt.target.value === '')
       this.setState({errorName: 'Enter campaign name'});
   }
 
-  handleWebsiteAuth(evt) {
+  handleWebsiteAuth = (evt) => {
     if(evt.target.value) {
       this.setState({errorWebsiteUrl: 'Enter website url'});
     } else if(!validatewebsite(evt.target.value)) {
@@ -72,7 +63,7 @@ class NewCampaignContainer extends Component {
     }
   }
 
-  handleNextButton(evt) {
+  handleNextButton = (evt) => {
     evt.preventDefault();
     const data = {
       campaignName: this.state.campaignname,
@@ -82,16 +73,16 @@ class NewCampaignContainer extends Component {
     return this.props.createCampaign(data);
   }
 
-  setActiveState(val) {
+  setActiveState = (val) => {
     this.setState({activeClass: val});
   }
 
-  verifyPixelStatus() {
+  verifyPixelStatus = () => {
     this.setState({loaderActive: true});
     this.props.fetchElastic(`json.value.trackingId:${this.props.campaign.trackingId}`);
   }
 
-  handlePixelCopy() {
+  handlePixelCopy = () => {
     const pixelCode = `<script src="https://cdninfluence.nyc3.digitaloceanspaces.com/influence-analytics.js"></script>
 <script>
 new Influence({
@@ -101,6 +92,7 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
     copy(pixelCode, {
       debug: true
     });
+
     return toast('Pixel copied', toastConfig);
   }
 
@@ -114,7 +106,7 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
       this.setState({loaderActive: false});
   }
 
-  goLive() {
+  goLive = () => {
     let title, content, buttonText, path;
     if(!this.props.leads || !this.props.leads.length) {
       title = 'Alert';

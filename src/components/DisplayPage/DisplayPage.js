@@ -17,7 +17,7 @@ import Popup from 'react-popup';
 
 import './DisplayPage.scss';
 
-class DisplayPage extends Component{
+class DisplayPage extends Component {
   constructor(){
     super();
     this.state= {
@@ -30,11 +30,6 @@ class DisplayPage extends Component{
         error: ''
       },
     };
-    this.handleNextState = this.handleNextState.bind(this);
-    this.handleBackState = this.handleBackState.bind(this);
-    this.addPageUrl = this.addPageUrl.bind(this);
-    this.handlePageUrl = this.handlePageUrl.bind(this);
-    this.deleteDisplayUrl = this.deleteDisplayUrl.bind(this);
   }
 
   componentWillUnmount() {
@@ -52,11 +47,11 @@ class DisplayPage extends Component{
       this.fetchPathUrls(nextProps.rules);
   }
 
-  fetchPathUrls(rule) {
+  fetchPathUrls = (rule) => {
     this.props.fetchDisplayUrl('display', rule._id);
   }
 
-  handleNextState() {
+  handleNextState = () => {
     if(!this.props.displayUrls.length)
       return this.setState({error: 'Add a display path'});
     Popup.create({
@@ -74,11 +69,11 @@ class DisplayPage extends Component{
     });
   }
 
-  handleBackState() {
+  handleBackState = () => {
     this.props.setActiveState(4);
   }
 
-  addPageUrl() {
+  addPageUrl = () => {
     if(this.state.displayUrl.url == '')
       return this.setState({error: 'Please enter a valid path'});
     if(this.state.displayUrl.url[0]!=='/')
@@ -96,7 +91,7 @@ class DisplayPage extends Component{
     }});
   }
 
-  handlePageUrl(e) {
+  handlePageUrl = (e) => {
     const displayUrl = {
       url: e.target.value,
       status: 'unverified',
@@ -106,12 +101,12 @@ class DisplayPage extends Component{
     this.setState({displayUrl: displayUrl, error: ''});
   }
 
-  handleWebsiteAuth(evt) {
+  handleWebsiteAuth = (evt) => {
     if (! validatePath(evt.target.value))
       return this.setState({error: 'Please enter a valid path'});
   }
 
-  deleteDisplayUrl(id, index, type) {
+  deleteDisplayUrl = (id, index, type) => {
     this.props.removePageUrl(id, index, type);
   }
 
@@ -130,7 +125,7 @@ class DisplayPage extends Component{
     }
   }
 
-  renderLeads() {
+  renderLeads = () => {
     var displayUrls = this.props.displayUrls?this.props.displayUrls.filter(lead => lead.type == 'display'):[];
     return (
       <Table>
@@ -149,7 +144,7 @@ class DisplayPage extends Component{
           {
             displayUrls.map((displayUrl, i) => {
               return <tr key={i}>
-                <td className="url">{displayUrl.url}</td>
+                <td className="display-url">{displayUrl.url}</td>
                 <td className="pl-4 status">
                   <span className="dot" style={{backgroundColor: this.renderColor(displayUrl.status) }}>
                   </span>

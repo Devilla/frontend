@@ -13,7 +13,7 @@ import { fetchLeadUrl, createPageUrl, clearPageUrl, removePageUrl } from 'ducks/
 import { validatePath } from 'components/Common/function';
 import './CapturePage.scss';
 
-class CapturePage extends Component{
+class CapturePage extends Component {
   constructor(){
     super();
     this.state= {
@@ -26,11 +26,6 @@ class CapturePage extends Component{
         error: ''
       }
     };
-    this.handleNextState = this.handleNextState.bind(this);
-    this.handleBackState = this.handleBackState.bind(this);
-    this.addPageUrl = this.addPageUrl.bind(this);
-    this.handlePageUrl = this.handlePageUrl.bind(this);
-    this.deleteLead = this.deleteLead.bind(this);
   }
 
   componentWillUnmount() {
@@ -47,22 +42,22 @@ class CapturePage extends Component{
       this.fetchPathUrls(nextProps.rules);
   }
 
-  fetchPathUrls(rule) {
+  fetchPathUrls = (rule) => {
     this.props.fetchLeadUrl('lead', rule._id);
   }
 
-  handleNextState() {
+  handleNextState = () => {
     if(!this.props.leads.length)
       return this.setState({error: 'Add a display path'});
     this.props.setActiveState(5);
   }
 
-  handleBackState() {
+  handleBackState = () => {
     this.props.setActiveState(3);
   }
 
 
-  addPageUrl() {
+  addPageUrl = () => {
     if(this.state.lead.url == '')
       return this.setState({error: 'Please enter a valid path'});
     if(this.state.lead.url[0]!=='/')
@@ -78,7 +73,7 @@ class CapturePage extends Component{
     }});
   }
 
-  handlePageUrl(e) {
+  handlePageUrl = (e) => {
     const lead = {
       url: e.target.value,
       status: 'unverified',
@@ -88,12 +83,12 @@ class CapturePage extends Component{
     this.setState({lead: lead, error: ''});
   }
 
-  handleWebsiteAuth(evt) {
+  handleWebsiteAuth = (evt) => {
     if (! validatePath(evt.target.value))
       return this.setState({error: 'Please enter a valid path'});
   }
 
-  deleteLead(id, index, type) {
+  deleteLead = (id, index, type) => {
     this.props.removePageUrl(id, index, type);
   }
 
@@ -112,7 +107,7 @@ class CapturePage extends Component{
     }
   }
 
-  renderLeads() {
+  renderLeads = () => {
     var leads = this.props.leads?this.props.leads.filter(lead => lead.type == 'lead'):[];
     return (
       <Table>
@@ -145,7 +140,7 @@ class CapturePage extends Component{
     );
   }
 
-  render(){
+  render() {
     const { error, lead } = this.state;
     return (
       <div>
