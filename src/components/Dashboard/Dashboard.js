@@ -306,7 +306,7 @@ class Dashboard extends Component {
                         <option key={'today'+1} value={'Today'} >
                             Today
                         </option>
-                        <option key={'yesterday'+1} value={'Yesterday'} >
+                        <option key={'yesterday'+1} value={'Yesterd ay'} >
                             Yesterday
                         </option>
                       </select>
