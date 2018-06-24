@@ -1,4 +1,4 @@
-import { fromJS } from 'immutable';
+import { fromJS, Map } from 'immutable';
 
 const action = name => `/configuration/${name}`;
 
@@ -68,8 +68,7 @@ const initialConfig = {
     liveVisitorCount: 0
   },
   visitorText: '',
-  contentText: '',
-  notificationUrl: ''
+  contentText: ''
 };
 
 const initialState = fromJS({
@@ -79,15 +78,15 @@ const initialState = fromJS({
 const configuration = (state = initialState, action) => {
   switch (action.type) {
     case SUCCESS:
-      return state.set('configurations', action.configuration);
+      return state.set("configurations", action.configuration);
     case CREATE_SUCCESS:
-      return state.set('configuration', action.configuration);
+      return state.set("configuration", action.configuration);
     case CLEAR:
-      return state.set('configuration', initialConfig);
+      return state.set("configuration", initialConfig);
 
     default:
-      return state;
+      return state
   }
-};
+}
 
 export default configuration;

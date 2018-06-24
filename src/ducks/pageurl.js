@@ -1,9 +1,7 @@
-import { fromJS, List } from 'immutable';
-
+import { fromJS, Map, List } from 'immutable';
 const action = name => `/pageurl/${name}`;
 
-export const FETCH_DISPLAY = action('FETCH_DISPLAY');
-export const FETCH_LEAD = action('FETCH_LEAD');
+export const FETCH = action('FETCH');
 export const FETCH_ONE = action('FETCH_ONE');
 export const CREATE = action('CREATE');
 export const REMOVE = action('REMOVE');
@@ -13,15 +11,14 @@ export const FETCH_SUCCESS = action('FETCH_SUCCESS');
 export const CLEAR_PAGE_URL = action('CLEAR_PAGE_URL');
 export const POP_PAGE_URL = action('POP_PAGE_URL');
 
-export const fetchDisplayUrl = (pageType, ruleId) => ({ type: FETCH_DISPLAY, pageType, ruleId });
-export const fetchLeadUrl = (pageType, ruleId) => ({ type: FETCH_LEAD, pageType, ruleId });
+export const fetchPageUrl = (pageType, ruleId) => ({ type: FETCH, pageType, ruleId });
 export const createPageUrl = (pageurl) => ({ type: CREATE, pageurl });
-export const removePageUrl = (id, index, urlType) => ({ type: REMOVE, id, index, urlType });
-export const updatePageUrl = (pageurl, urlType) => ({ type: UPDATE, pageurl, urlType });
-export const successPageUrl = (pageurl, urlType) => ({ type: CREATE_SUCCESS, pageurl, urlType });
-export const fetchSuccess = (pageurl, urlType) => ({ type: FETCH_SUCCESS, pageurl, urlType });
-export const clearPageUrl = (pageurl, urlType) => ({ type: CLEAR_PAGE_URL, pageurl, urlType });
-export const popPageUrl = (index, urlType) => ({ type: POP_PAGE_URL, index, urlType });
+export const removePageUrl = (id, index) => ({ type: REMOVE, id, index });
+export const updatePageUrl = (pageurl) => ({ type: UPDATE, pageurl });
+export const successPageUrl = (pageurl) => ({ type: CREATE_SUCCESS, pageurl });
+export const fetchSuccess = (pageurl) => ({ type: FETCH_SUCCESS, pageurl });
+export const clearPageUrl = (pageurl) => ({ type: CLEAR_PAGE_URL, pageurl });
+export const popPageUrl = (index) => ({ type: POP_PAGE_URL, index });
 
 const initialPageUrl = {
   url:'',
@@ -31,24 +28,22 @@ const initialPageUrl = {
 
 const initialState = fromJS({
   pageurls: List([]),
-  lead: List([]),
-  display: List([]),
   pageurl: initialPageUrl
 });
 
 const pageurl = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_SUCCESS:
-      return state.set(action.urlType, action.pageurl);
+      return state.set("pageurls", action.pageurl);
     case CREATE_SUCCESS:
-      return state.set(action.urlType, state.get(action.urlType).concat(action.pageurl));
+      return state.set('pageurls', state.get('pageurls').concat(action.pageurl));
     case POP_PAGE_URL:
-      return state.set(action.urlType, state.get(action.urlType).slice(0,action.index).concat(state.get(action.urlType).slice(action.index+1)));
+      return state.set("pageurls", state.get('pageurls').slice(0,action.index).concat(state.get('pageurls').slice(action.index+1)));
     case CLEAR_PAGE_URL:
-      return state.set(action.urlType, null);
+      return state.set("pageurls", null);
     default:
-      return state;
+      return state
   }
-};
+}
 
 export default pageurl;

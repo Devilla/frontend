@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react';
-import { Link } from 'react-router';
+import { Link } from "react-router";
 import { LogoInfluence } from 'img';
 
 class WebsiteHeader extends Component {
@@ -13,11 +13,11 @@ class WebsiteHeader extends Component {
             <div className="container">
               <div className="row">
                 <div className="col-3 col-md-2">
-                  <Link to="/"> <img className="logo logo-light" alt="logo" src={LogoInfluence} /> </Link>
+                  <Link to="/"> <img className="logo logo-light" alt="logo" src={ LogoInfluence } /> </Link>
                 </div>
                 <div className="col-9 col-md-10 text-right">
-                  <Link to="/" className="hamburger-toggle" data-toggle-class="#menu1;hidden-xs">
-                    <i className="icon icon--sm stack-interface stack-menu"></i> </Link>
+                  <Link to="/" className="hamburger-toggle" data-toggle-class="#menu1;hidden-xs"> 
+                   <i className="icon icon--sm stack-interface stack-menu"></i> </Link>
                 </div>
               </div>
             </div>
@@ -30,7 +30,7 @@ class WebsiteHeader extends Component {
               <div className="row">
                 <div className="col-lg-2 col-md-3 hidden-xs pl-0 pr-0">
                   <div className="bar__module">
-                    <Link to="/"> <img className="logo logo-light" alt="logo" src={LogoInfluence} /> </Link>
+                    <Link to="/"> <img className="logo logo-light" alt="logo" src={ LogoInfluence } /> </Link>
                   </div>
                 </div>
                 <div className="col-sm-0 pl-0 pr-0"></div>

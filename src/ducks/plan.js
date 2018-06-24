@@ -1,4 +1,4 @@
-import { fromJS} from 'immutable';
+import { fromJS, Map } from 'immutable';
 
 const action = name => `/plan/${name}`;
 
@@ -18,10 +18,10 @@ const plan = (state = initialState, action) => {
     //
     //   return state.set("plan", action.plan);
     case SUCCESS:
-      return state.set('plan', action.plan);
+      return state.set("plan", action.plan);
     default:
-      return state;
+      return state
   }
-};
+}
 
 export default plan;

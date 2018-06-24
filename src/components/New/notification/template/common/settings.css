@@ -1,0 +1,20 @@
+* {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* .notification {
+    padding: 0% 5%;
+} */
+
+.recent-settings .form-group input, .bulk-settings .form-group input {
+  border: 0;
+  box-shadow: 0 0 0 0;
+  border-bottom: 1px solid;
+  border-radius: 0;
+  height: 20px;
+}
+
+.recent-settings .row, .bulk-settings .row {
+      padding: 10px 0px;
+}

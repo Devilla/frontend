@@ -1,7 +1,6 @@
 import React from 'react';
 import { CardElement, injectStripe } from 'react-stripe-elements';
 import { HelpBlock } from 'react-bootstrap';
-import './PaymentPage.scss';
 
 const PaymentPage = ({
   stripe,
@@ -15,13 +14,13 @@ const PaymentPage = ({
   const submitForm = (event) => {
     event.preventDefault();
     if(!user.username)
-      return handleErrorChange('Enter user name', 'nameError');
+      return handleErrorChange("Enter user name", "nameError");
 
     if(!plan)
-      return handleErrorChange('Select a plan', 'cardError');
+      return handleErrorChange("Select a plan", "cardError");
 
     const options = {
-      name: user.username
+      name: user.username,
     };
 
     stripe.createToken(options).then((result) => {
@@ -34,11 +33,12 @@ const PaymentPage = ({
           paymentType: result.token.type,
           user: user._id,
           plan: plan,
+          coupon: {}
         };
         handleSubmit(data, result.token);
       }
     });
-  };
+  }
 
   const style = {base: {
     fontSize: '14px',
@@ -49,10 +49,10 @@ const PaymentPage = ({
     '::placeholder': {
       color: '#999999'
     }
-  }};
+  }}
 
   return (
-    <div className="credit-form-container">
+    <div className="credit-form">
       <form onSubmit={(e) => submitForm(e)}>
         <CardElement
           style={style}
@@ -61,7 +61,7 @@ const PaymentPage = ({
           <HelpBlock>
             <p className="error-text">{error}</p>
           </HelpBlock>
-        }
+         }
         <div className="frmcntl">
           <input className="btn btn-primary auth-payment-button"
             type="submit"
@@ -70,8 +70,7 @@ const PaymentPage = ({
         </div>
       </form>
     </div>
-  );
-};
-
+  )
+}
 
 export default injectStripe(PaymentPage);

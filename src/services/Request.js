@@ -50,7 +50,7 @@ const isAuthenticated = () => {
 // Check for Authentication (if noAuth is not set) and make Request using given method, url and body
 const _makeRequest = (method = 'GET', url, body, noAuth = false) => {
   // Check for token unless noAuth is true
-  return new Promise((resolve) => {
+  return new Promise((resolve, reject) => {
     if (noAuth === true)
       resolve();
     else

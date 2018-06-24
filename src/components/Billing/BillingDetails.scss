@@ -3,7 +3,8 @@
     padding: 2% 0%;
   }
   .billing-info-list{
-    min-height: 600px;
+    overflow-x: scroll;
+    height: 600px;
   }
   .payment-info {
     padding: 2%;
@@ -24,10 +25,4 @@
       }
     }
   }
-  Button {
-    &.btn.btn-primary {
-      border-radius: 5px;
-    }
-  }
 }
-

@@ -1,26 +1,29 @@
 import { fromJS } from 'immutable';
+import Popup from 'react-popup';
 
-const action = name => `/auth/${name}`;
+const action = name => `/profile/${name}`;
 
 export const FETCH = action('FETCH');
 export const CREATE = action('CREATE');
-export const UPDATE_PROFILE = action('UPDATE_PROFILE');
+export const UPDATE = action('UPDATE');
 export const SUCCESS = action('SUCCESS');
 
 export const fetchProfile = () => ({ type: FETCH });
-export const createProfile = profile => ({ type: CREATE, profile });
-export const updateProfile = profile => ({ type: UPDATE_PROFILE, profile });
-export const successProfile = profile => ({ type: SUCCESS, profile });
+export const createProfile = (profile) => ({ type: CREATE, profile });
+export const updateProfile = (profile) => ({ type: UPDATE, profile });
+export const successProfile = (profile) => ({ type: SUCCESS, profile });
 
 const initialState = fromJS({});
 
 const profile = (state = initialState, action) => {
   switch (action.type) {
+    // case FETCH:
+    //   return state.set("profile", action.profile);
     case SUCCESS:
-      return state.set('profile', action.profile);
+      return state.set("profile", action.profile);
     default:
-      return state;
+      return state
   }
-};
+}
 
 export default profile;

@@ -31,12 +31,9 @@ export { default as Activitynotifications2 } from './activitynotifications2.svg'
 export { default as Liveviewers2 } from './liveviewers2.svg';
 export { default as Gdpr }  from './gdpr.png';
 export { default as Integration } from './integration.png';
-export { default as Swivelscreen } from './screen-features.png';
-export { default as Sw1 }  from './Notification.png';
-export { default as Sw2 }  from './group activity.png';
-export { default as Sw3 }  from './live viewer2.png';
-export { default as Sw4 }  from './live viewer3.png';
-
+export { default as Swivelscreen } from './swivelscreen.png';
+export { default as Sw1 }  from './sw1.png';
+export { default as Sw2 }  from './sw2.png';
 export { default as Marvel } from './marvel.png';
 export { default as Lawsikho }  from './lawsikho.png';
 export { default as Stagephod } from './stagephod.png';
@@ -81,21 +78,7 @@ export { default as ContactAvatar4 } from './contactavatar7.png';
 export { default as ContactAvatar5 } from './contactavatar11.png';
 export { default as ContactAvatar6 } from './contactavatar15.png';
 
+
+
 // Signup Page
 export { default as SignUp } from './signuppage2.png';
-
-//Avatars
-export { default as Avatar1 } from './avatar-1.jpg'
-export { default as Avatar2 } from './avatar-2.jpg'
-export { default as Avatar3 } from './avatar-3.jpg'
-export { default as Avatar4 } from './avatar-4.jpg'
-export { default as Avatar5 } from './avatar-5.jpg'
-export { default as Avatar6 } from './avatar-6.jpg'
-export { default as Avatar7 } from './avatar-7.jpg'
-export { default as Avatar8 } from './avatar-8.jpg'
-export { default as Avatar9 } from './avatar-9.jpg'
-export { default as Avatar10 } from './avatar-10.jpg'
-
-
-//logo
-export { default as Influence } from './newlogo-6.png';

@@ -1,4 +1,4 @@
-import { fromJS } from 'immutable';
+import { fromJS, Map } from 'immutable';
 const action = name => `/rules/${name}`;
 
 export const FETCH = action('FETCH');
@@ -23,7 +23,7 @@ const initialRules = {
   delayNotification: false,
   closeNotification: false,
   initialDelay: 1,
-  displayTime: 5,
+  displayTime: 3,
   delayBetween: 3,
   displayPosition: 'bottom',
   popupAnimation:'fadeinout'
@@ -37,14 +37,14 @@ const initialState = fromJS({
 const rules = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_SUCCESS:
-      return state.set('rules', action.rules);
+      return state.set("rules", action.rules);
     case CREATE_SUCCESS:
-      return state.set('rule', action.rules);
+      return state.set("rule", action.rules);
     case CLEAR_RULES:
-      return state.set('rule', null);
+      return state.set("rule", null);
     default:
-      return state;
+      return state
   }
-};
+}
 
 export default rules;

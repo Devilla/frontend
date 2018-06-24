@@ -1,15 +1,30 @@
 import React from 'react';
-import { Router, Route } from 'react-router';
+import { Router, Route, browserHistory, IndexRedirect } from 'react-router';
+import { store } from './index.js';
+
 import {
+  About,
   ForgetPassword,
+  Home,
   Profile,
+  Billing,
   BillingDetails,
+  Payment,
+  HowItWorks,
   ResetPassword,
+  Sidebar,
+  StatsCard,
+  TermsPage,
   Dashboard,
   Notification,
+  Analytics,
+  New,
   LoginFlow,
+  SelectNotification,
+  Upgrade,
   Integration,
   Error,
+  ComingSoon,
   UpgradeCard,
   UpgradePlan,
   WebsiteHome,
@@ -34,25 +49,31 @@ import {
   App,
   DashboardContainer,
   ConnectPage,
-  AnalyticsContainer,
-  NewCampaignContainer
+  AnalyticsContainer
 } from 'containers';
 
-const MyRoutes = ({routerHistory}) => (
+
+
+
+
+const MyRoutes = ({routerHistory, store}) => (
 
   <Router history={routerHistory}>
 
     <Route component={DashboardContainer}>
       <Route path="/dashboard" component={Dashboard} />
-      <Route path="/new" component={NewCampaignContainer} />
+      <Route path="/new" component={New} />
       <Route path="/campaigns" component={Notification} />
       <Route path="/analytics" component={AnalyticsContainer} />
       <Route path="/integration" component={Integration} />
       <Route path="/support" component={Dashboard} />
+      <Route path="/notifications" component={SelectNotification} />
       <Route path="/upgrade" component={UpgradePlan} />
       <Route path="/profile" component={Profile} />
+      <Route path="/billing" component={Billing} />
       <Route path="/card-details" component={UpgradeCard} />
       <Route path="/billing-details" component={BillingDetails} />
+  	  <Route path="/payment" component={Payment} />
       <Route path="/getting-started" component={LoginFlow} />
     </Route>
     <Route exact path="/connect/:provider" component={ConnectPage} />
@@ -75,10 +96,9 @@ const MyRoutes = ({routerHistory}) => (
       <Route path="/affiliateregister" component={AffiliateRegister} />
       <Route path="/forget-password" component={ForgetPassword} />
       <Route path="/reset-password" component={ResetPassword} />
-
     </Route>
     <Route path="*" component={Error} />
   </Router>
-);
+)
 
 export default MyRoutes;
