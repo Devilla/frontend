@@ -1,2 +1,2 @@
-export const pagethArray = ["#","URL","Status","Delete"];
-export const pagetdArray = [{url:"/",status: "Active",class:"active"}]
+export const pagethArray = ['PATH', 'STATUS', 'TRASH'];
+export const pagetdArray = [{ url: '/', status: 'Active', class: 'active' }];

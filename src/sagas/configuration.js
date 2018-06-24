@@ -1,8 +1,8 @@
-import { call, put, select, fork, takeLatest } from 'redux-saga/effects';
+import { call, put, fork, takeLatest } from 'redux-saga/effects';
 import * as api from 'services/api';
 import * as actions from 'ducks/configuration';
 import { load, loaded } from 'ducks/loading';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 const toastConfig = {
   position: toast.POSITION.BOTTOM_LEFT,
@@ -43,7 +43,7 @@ function* fetchCampaignConfiguration(action) {
 function* create(action) {
   try {
     yield put(load());
-    const res = yield call(api.POST, `configuration`, action.configuration);
+    const res = yield call(api.POST, 'configuration', action.configuration);
     if(res.error)
       console.log(res.error);
     else

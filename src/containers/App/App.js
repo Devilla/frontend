@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { ToastContainer } from 'react-toastify';
 import { browserHistory } from 'react-router';
 import { connect } from 'react-redux';
-import { Spinner } from '../../components/index.js';
-import { WebsiteHeader, WebsiteFooter } from 'components';
-
 import { checkTokenExists } from 'ducks/auth';
-
-
+import { WebsiteHeader, WebsiteFooter } from 'components';
+import { Spinner } from '../../components/index.js';
+import { ToastContainer } from 'react-toastify';
+import Popup from 'react-popup';
+import 'react-popup/style.css';
 import './scss/stack-interface.scss';
 import './scss/socicon.css';
 import './scss/iconsmind.scss';
@@ -20,11 +18,11 @@ import './scss/flickity.scss';
 import './scss/font-sourcesanspro.scss';
 import './App.scss';
 
-
 class App extends Component {
   componentWillMount() {
+    document.body.style = 'background-color:white';
     this.checkLogin((err) => {
-      if(!err) {
+      if (!err) {
         browserHistory.push('/dashboard');
       }
     });
@@ -37,22 +35,23 @@ class App extends Component {
       : null;
     if (authToken) {
       this.props.checkTokenExists(authToken);
-      callback()
+      callback();
     } else {
-      callback("not logged in")
+      callback('not logged in');
     }
   }
 
-  render(){
+  render() {
     return (
       <div className="website-app">
         <div className="basic-gradient-light" data-smooth-scroll-offset="77">
-           <WebsiteHeader />
-           <Spinner loading={this.props.loading} />
-           <div className="content">
-             {this.props.children}
-           </div>
-           <WebsiteFooter />
+          <WebsiteHeader />
+          <Popup  />
+          <Spinner loading={this.props.loading} />
+          <div className="content">
+            {this.props.children}
+          </div>
+          <WebsiteFooter />
         </div>
         <ToastContainer hideProgressBar={true} />
       </div>
@@ -61,8 +60,12 @@ class App extends Component {
 
 }
 
+const mapStateToProps = state => ({
+  loading: state.getIn(['loading', 'state'])
+});
+
 const mapDispatchToProps = {
   checkTokenExists
 };
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

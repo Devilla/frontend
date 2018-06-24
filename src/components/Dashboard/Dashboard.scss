@@ -1,5 +1,56 @@
-.ct-chart {
-  canvas {
-    width: 100% !important;
+.dashboard-boxes {
+
+  .ct-chart {
+    canvas {
+      width: 100% !important;
+    }
   }
+  
+  .dashboard-content {
+    table {
+      width: 100%;
+      td {
+        padding: 5%;
+      }
+    }
+  }
+  p{
+    &.text-uppercase {
+      &.title {
+        min-height: 30px;
+        border-bottom: 1px solid #E8E8E8;
+        padding-bottom: 15px;
+      }
+    }
+  }
+
+
+
+  .widget-flat {
+    box-shadow: 0 6px 9px -6px black;
+    height: 115px;
+    background-color: #F8F8F8 !important;
+    border: none !important;
+    border: 1px solid #FBFCFC;
+  }
+
+  .account-stats {
+    display: flex;
+    justify-content: center;
+  }
+  .m-b-10 {
+    &.usersignup {
+      color: #02C0CE;
+    }
+    &.notify {
+      color: #F1556C;
+    }
+    &.campaign {
+      color: #0ACF97;
+    }
+    &.profile {
+      color: #F9BC0B;
+    }
+  }
+  
 }

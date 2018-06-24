@@ -6,9 +6,9 @@ import {
   FormControl,
   HelpBlock
 } from 'react-bootstrap';
+import './CouponPage.scss';
 
 const CouponPage = ({
-  coupon,
   error,
   handleStateChange,
   submitCoupon,
@@ -28,16 +28,18 @@ const CouponPage = ({
               />
             </FormGroup>
           </Col>
+          {error &&
           <HelpBlock>
             <p className="error-text">{error}</p>
           </HelpBlock>
+          }
         </Row>
-        <Row>
+        <Row style={{margin: '0% 30%'}}>
           <Col>
             <div className="frmcntl">
               <input className="btn btn-primary coupon-payment-button"
                 type="submit"
-                value={couponDetails?"Applied":"Apply Coupon"}
+                value={couponDetails?'Applied':'Apply Coupon'}
                 onClick={submitCoupon}
                 disabled={couponDetails?true:false}
               />
@@ -46,7 +48,7 @@ const CouponPage = ({
         </Row>
       </form>
     </div>
-  )
-}
+  );
+};
 
 export default CouponPage;

@@ -1,18 +1,18 @@
-import { call, put, select, fork, takeLatest } from 'redux-saga/effects';
+import { call, put, fork, takeLatest } from 'redux-saga/effects';
 import * as api from 'services/api';
 import * as actions from 'ducks/rules';
 import { load, loaded } from 'ducks/loading';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 const toastConfig = {
   position: toast.POSITION.BOTTOM_LEFT,
   autoClose: 2000
 };
 
-function* fetch(action) {
+function* fetch() {
   try {
     yield put(load());
-    const res = yield call(api.GET, `rules`);
+    const res = yield call(api.GET, 'rules');
     if(res.error)
       console.log(res.error);
     else
@@ -45,7 +45,7 @@ function* fetchOne(action) {
 function* create(action) {
   try {
     yield put(load());
-    const res = yield call(api.POST, `rules`, action.rules);
+    const res = yield call(api.POST, 'rules', action.rules);
     if(res.error)
       console.log(res.error);
     else {
@@ -70,7 +70,7 @@ function* update(action) {
       console.log(res.error);
     else {
       let rules = action.rules;
-      rules["_id"] = rules.id;
+      rules['_id'] = rules.id;
       yield put(actions.successRules(rules));
     }
     yield put(loaded());

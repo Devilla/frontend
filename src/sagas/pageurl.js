@@ -1,22 +1,38 @@
-import { call, put, select, fork, takeLatest } from 'redux-saga/effects';
+import { call, put, fork, takeLatest } from 'redux-saga/effects';
 import * as api from 'services/api';
 import * as actions from 'ducks/pageurl';
 import { load, loaded } from 'ducks/loading';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 const toastConfig = {
   position: toast.POSITION.BOTTOM_LEFT,
   autoClose: 2000
 };
 
-function* fetch(action) {
+function* fetchDisplay(action) {
   try {
     yield put(load());
-    const res = yield call(api.GET, `notificationpath/rules/${action.pageType}/${action.ruleId}`);
+    const res = yield call(api.GET, `notificationpath/rules/display/${action.ruleId}`);
     if(res.error)
       console.log(res.error);
     else
-      yield put(actions.fetchSuccess(res));
+      yield put(actions.fetchSuccess(res, 'display'));
+    yield put(loaded());
+  } catch (error) {
+    yield put(loaded());
+    console.log('Failed to fetch doc', error);
+    yield toast.error(error.message, toastConfig);
+  }
+}
+
+function* fetchLead(action) {
+  try {
+    yield put(load());
+    const res = yield call(api.GET, `notificationpath/rules/lead/${action.ruleId}`);
+    if(res.error)
+      console.log(res.error);
+    else
+      yield put(actions.fetchSuccess(res, 'lead'));
     yield put(loaded());
   } catch (error) {
     yield put(loaded());
@@ -45,11 +61,11 @@ function* fetchOne(action) {
 function* create(action) {
   try {
     yield put(load());
-    const res = yield call(api.POST, `notificationpath`, action.pageurl);
+    const res = yield call(api.POST, 'notificationpath', action.pageurl);
     if(res.error)
       console.log(res.error);
     else {
-      yield put(actions.successPageUrl(res));
+      yield put(actions.successPageUrl(res, action.pageurl.type));
     }
 
     yield put(loaded());
@@ -70,8 +86,8 @@ function* update(action) {
       console.log(res.error);
     else {
       let pageurl = action.pageurl;
-      pageurl["_id"] = pageurl.id;
-      yield put(actions.successPageUrl(pageurl));
+      pageurl['_id'] = pageurl.id;
+      yield put(actions.successPageUrl(pageurl, action.urlType));
     }
     yield put(loaded());
   } catch (error) {
@@ -88,7 +104,7 @@ function* remove(action) {
     if(res.error)
       console.log(res.error);
     else {
-      yield put(actions.popPageUrl(action.index));
+      yield put(actions.popPageUrl(action.index, action.urlType));
     }
     yield put(loaded());
   } catch (error) {
@@ -98,8 +114,12 @@ function* remove(action) {
   }
 }
 
-export function* watchFetch() {
-  yield takeLatest(actions.FETCH, fetch);
+export function* watchFetchDisplay() {
+  yield takeLatest(actions.FETCH_DISPLAY, fetchDisplay);
+}
+
+export function* watchFetchLead() {
+  yield takeLatest(actions.FETCH_LEAD, fetchLead);
 }
 
 export function* watchFetchOne() {
@@ -120,7 +140,8 @@ export function* watchRemove() {
 
 export default function* rootSaga() {
   yield [
-    fork(watchFetch),
+    fork(watchFetchDisplay),
+    fork(watchFetchLead),
     fork(watchFetchOne),
     fork(watchCreate),
     fork(watchUpdate),

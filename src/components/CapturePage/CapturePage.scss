@@ -1,0 +1,55 @@
+button {
+  &.btn.btn-custom.nav.nav-pills.waves-light.waves-effect.number.ml-2.pl-4.pr-4 {
+    border-radius: 5px;
+  }
+  &.btn.btn-custom.nav.nav-pills.waves-light.waves-effect.number{
+    border-radius: 5px;
+  }
+
+}
+.dot {
+    height: 23px;
+    width: 23px;
+    text-align: center;
+    background-color:#4fab00;
+    border-radius: 50%;
+    display: inline-block;
+    color:whitesmoke;
+}
+.tabscontent{
+  .centertbl {
+    .url {
+      width: 40%;
+    }
+  }
+  .input-group {
+    .form-control {
+      border-radius: 6px!important;
+    }
+  }
+  .status {
+    ul {
+      display: flex;
+      justify-content: space-evenly;
+      list-style: none;
+      li {
+        display: flex;
+        .status-name {
+          margin: 3px 10px;
+        }
+      }
+    }
+  }
+  .unverified {
+    background-color: #FFEB3B;
+  }
+  .primary {
+    background-color: #2196F3;
+  }
+  .danger {
+    background-color: #F44336;
+  }
+  .success {
+    background-color: #4CAF50;
+  }
+}

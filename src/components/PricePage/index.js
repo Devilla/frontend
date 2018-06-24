@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-
-import PaymentPrice from './PaymentPrice';
+import PricePage from './PricePage';
 
 class Price extends Component {
   constructor() {
@@ -15,6 +14,7 @@ class Price extends Component {
     this.handleMonthChange = this.handleMonthChange.bind(this);
     this.handleYearChange = this.handleYearChange.bind(this);
     this.handleSwitchChange = this.handleSwitchChange.bind(this);
+
   }
 
   componentWillMount() {
@@ -53,7 +53,7 @@ class Price extends Component {
     const { planList, selectedPlan, handleCheckChange, couponDetails } = this.props;
     return (
       <div style={{width:'100%'}}>
-        <PaymentPrice
+        <PricePage
           couponDetails={couponDetails}
           planPeriod={this.state.planPeriod}
           planList={this.state.servicebotPlans}

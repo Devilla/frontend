@@ -1,8 +1,8 @@
-import { call, put, select, fork, takeLatest } from 'redux-saga/effects';
+import { call, put, fork, takeLatest } from 'redux-saga/effects';
 import * as api from 'services/api';
 import * as actions from 'ducks/profile';
 import { load, loaded } from 'ducks/loading';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import { browserHistory } from 'react-router';
 
 const toastConfig = {
@@ -10,14 +10,13 @@ const toastConfig = {
   autoClose: 2000
 };
 
-const getUser = (state) => state.getIn(['auth', 'user']);
 
-function* fetch(action) {
+function* fetch() {
   try {
     yield put(load());
-    const res = yield call(api.GET, `profile`);
-    if(res.error) {
-      if(res.statusCode == 401) {
+    const res = yield call(api.GET, 'profile');
+    if (res.error) {
+      if (res.statusCode == 401) {
         localStorage.removeItem('authToken');
         browserHistory.push('/login');
       }
@@ -34,8 +33,8 @@ function* fetch(action) {
 function* create(action) {
   try {
     yield put(load());
-    const res = yield call(api.POST, `profile`, action.profile);
-    if(res.error) {
+    const res = yield call(api.POST, 'profile', action.profile);
+    if (res.error) {
       console.log(res.error);
     } else {
       yield put(actions.successProfile(res));
@@ -53,7 +52,7 @@ function* update(action) {
     yield put(load());
     delete action.profile['_id'];
     const res = yield call(api.PUT, `profile/${action.profile.id}`, action.profile);
-    if(res.error)
+    if (res.error)
       console.log(res.error);
     yield put(loaded());
   } catch (error) {
@@ -73,7 +72,7 @@ export function* watchCreate() {
 }
 
 export function* watchUpdate() {
-  yield takeLatest(actions.UPDATE, update);
+  yield takeLatest(actions.UPDATE_PROFILE, update);
 }
 
 export default function* rootSaga() {

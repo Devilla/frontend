@@ -2,14 +2,10 @@ import {
   call,
   put,
   fork,
-  select,
-  take,
   takeLatest,
-  race,
   all
 } from 'redux-saga/effects';
-import { ToastContainer, toast } from 'react-toastify';
-import { push } from 'react-router-redux';
+import { toast } from 'react-toastify';
 import { browserHistory } from 'react-router';
 import * as actions from 'ducks/auth';
 import { fetchProfile } from 'ducks/profile';
@@ -29,34 +25,50 @@ const toastConfig = {
 
 export const removeAuthToken = () => localStorage.removeItem('authToken');
 
-export function* isLoggedIn(action) {
+export function* isLoggedIn() {
+  try{
     yield all([
       put(actions.fetchUser()),
       put(fetchProfile()),
       put(fetchPlan()),
       put(fetchPayment()),
     ]);
+  }catch(error)
+  {
+    yield console.log(error);
+  }
 }
 
 export function* checkTokenExists(action) {
   const token = action.token;
-  if (token) {
-    if(moment().isAfter(moment(token.expiresOn)))
-      return yield call(logOut);
-    return yield call(isLoggedIn);
+  try{
+    if (token) {
+      if(moment().isAfter(moment(token.expiresOn)))
+        return yield call(logOut);
+      return yield call(isLoggedIn);
+    }
+
+    yield call(logOut);
+  }catch(error)
+  {
+    yield console.log(error);
   }
-  yield call(logOut);
+
 }
 
 export function* logOut() {
-  yield call(removeAuthToken);
-  yield call(browserHistory.push, '/login');
+  try{
+    yield call(removeAuthToken);
+    yield call(browserHistory.push, '/login');
+  }catch(error){
+    yield console.log(error);
+  }
 }
 
 export function* fetchUser() {
   try {
     yield put(load());
-    const res = yield call(api.GET, `user/me`);
+    const res = yield call(api.GET, 'user/me');
     if(!res.error)
       yield put(actions.fetchUserSuccess(res));
     yield put(loaded());
@@ -87,7 +99,7 @@ export function* updateUser(action) {
 export function* fetchRoles() {
   try {
     yield put(load());
-    const res = yield call(api.GET, `users-permissions/roles`);
+    const res = yield call(api.GET, 'users-permissions/roles');
     if(res.error)
       console.log(res.error);
     else
@@ -102,11 +114,11 @@ export function* fetchRoles() {
 export function* forgotPassword(action) {
   try {
     yield put(load());
-    const res = yield call(api.POST, `auth/forgot-password`, action.data);
+    const res = yield call(api.POST, 'auth/forgot-password', action.data);
     if(res.error)
-      yield toast.error(res.message, toastConfig);
+      yield put(actions.forgotPasswordError(res.message));
     else {
-      yield toast.info("Reset link sent.", toastConfig);
+      yield toast.info('Reset link sent.', toastConfig);
       yield browserHistory.push('/login');
     }
     yield put(loaded());
@@ -122,14 +134,14 @@ export function* socialLogin(action) {
     const res = yield call(api.GET, action.url);
     if(res.error) {
       if(res.message.length)
-        yield toast.error(res.message[0].messages[0].id == "Auth.form.error.email.taken"? "Email address already taken": "Email address already registered");
+        yield toast.error(res.message[0].messages[0].id == 'Auth.form.error.email.taken'? 'Email address already taken': 'Email address already registered');
       else
         yield toast.error(res.message.message);
       yield setTimeout(function() {
         browserHistory.push('/login');
       }, 2000);
     } else {
-      yield storeToken(res.jwt)
+      yield storeToken(res.jwt);
       yield browserHistory.push('/dashboard');
     }
     yield put(loaded());
@@ -153,7 +165,7 @@ export function* verifyUser(action) {
         browserHistory.push('/login');
       }, 2000);
     } else {
-      yield storeToken(res.jwt)
+      yield storeToken(res.jwt);
       yield browserHistory.push('/getting-started');
     }
     yield put(loaded());
@@ -169,7 +181,7 @@ export function* validateCoupon(action) {
     yield put(load());
     const res = yield call(api.GET, `coupon/validate/${action.coupon}`);
     if(res.error) {
-      yield put(actions.couponError("Coupon not valid"));
+      yield put(actions.couponError('Coupon not valid'));
     } else {
       yield put(actions.couponSuccess(res));
     }
@@ -193,7 +205,7 @@ export function* watchFetchRoles() {
 }
 
 export function* watchUpdateUser() {
-  yield takeLatest(actions.UPDATE, updateUser);
+  yield takeLatest(actions.UPDATE_USER, updateUser);
 }
 
 export function* watchForgotPassword() {

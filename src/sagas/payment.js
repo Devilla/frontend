@@ -13,13 +13,10 @@ const toastConfig = {
   autoClose: 2000
 };
 
-const getProfile = state => state.getIn(['profile', 'profile']);
-
-
-function* fetch(action) {
+function* fetch() {
   try {
     yield put(load());
-    const res = yield call(api.GET, `payment/user`);
+    const res = yield call(api.GET, 'payment/user');
     if(res.error)
       console.log(res.error);
     else
@@ -32,10 +29,10 @@ function* fetch(action) {
   }
 }
 
-function* fetchInvoices(action) {
+function* fetchInvoices() {
   try {
     yield put(load());
-    const res = yield call(api.GET, `payment/servicebot/invoice`);
+    const res = yield call(api.GET, 'payment/servicebot/invoice');
     if(res.error)
       console.log(res.error);
     else
@@ -51,7 +48,7 @@ function* fetchInvoices(action) {
 function* create(action) {
   try {
     yield put(load());
-    const res = yield call(api.POST, `payment`, action.payment);
+    const res = yield call(api.POST, 'payment', action.payment);
     if(res.error) {
       Popup.create({
         title: 'Payment failed',
@@ -59,7 +56,7 @@ function* create(action) {
           Payment failed due to {res.error}
         </div>,
         buttons: {}
-        }, true);
+      }, true);
     } else {
       yield put(actions.successPayment([res]));
       if(action.update) {
@@ -110,11 +107,11 @@ function* update(action) {
 function* updatePaymentMethod(action) {
   try {
     yield put(load());
-    const res = yield call(api.PUT, `payment/servicebot/card`, action.details);
+    const res = yield call(api.PUT, 'payment/servicebot/card', action.details);
     if(res.error)
       console.log(res.error);
     else
-      browserHistory.push('/billing-details')
+      browserHistory.push('/billing-details');
       // yield put(actions.successPayment(res));
     yield put(loaded());
   } catch (error) {
