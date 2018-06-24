@@ -19,8 +19,8 @@ const InstallPixel = ({ elastic, loaderActive, setActiveState, campaign, verifyP
         </p>
       </div>
       <div className="float-left custom-width align-install-btn">
-        <button type="button" className="btn btn-custom waves-light waves-effect number" onClick={handlePixelCopy}>Copy</button>
-        <button type="button" style={elastic==undefined?{backgroundColor:'#097fff'}:elastic.message.hits.total === 0?{backgroundColor:'#0acf97'}:{backgroundColor:'#f9bc0b'}} className="btn btn-custom  waves-light waves-effect number" onClick={() => verifyPixelStatus()}>
+        <button type="button" className="btn btn-custom waves-light waves-effect number" onClick={() => { this.buttonDOM.blur(); handlePixelCopy(); }} ref={(buttonDOM) => this.buttonDOM = buttonDOM}>Copy</button>
+        <button type="button" style={elastic==undefined?{backgroundColor:'#097fff'}:(elastic.error || (elastic.message.hits.total === 0))?{backgroundColor:'#f9bc0b'}:{backgroundColor:'#0acf97'}} className="btn btn-custom  waves-light waves-effect number" onClick={() => verifyPixelStatus()}>
           {loaderActive &&
             <i className="fa fa-spinner fa-spin"></i>
           }
@@ -30,14 +30,9 @@ const InstallPixel = ({ elastic, loaderActive, setActiveState, campaign, verifyP
       <p className="m-t-30 pb-5">
         <br/>
       </p>
-      <hr />
-      <p className="m-t-30">
-        <br/>
-      </p>
-
       {/* The radio buttons for warning, success */}
       <span className="radio radio-warning ml-2 pr-4">
-        <input type="radio" name="radio8" id="radio8" value="option8" checked/>
+        <input type="radio" name="radio8" id="radio8" value="option8" defaultChecked/>
         <label htmlFor="radio8">
           Unverified
         </label>
@@ -45,15 +40,14 @@ const InstallPixel = ({ elastic, loaderActive, setActiveState, campaign, verifyP
 
       {/* The radio buttons for success */}
       <span className="radio radio-success">
-        <input type="radio" name="radio9" id="radio9" value="option9" checked/>
+        <input type="radio" name="radio9" id="radio9" value="option9" defaultChecked/>
         <label htmlFor="radio9">
            Verified
         </label>
       </span>
-
-      <p className="text-muted text-left pt-3">Wait For Your Pixel To Go LIVE. Check By Clicking On The Button " Verify Pixel Status
-        ". If Youre Facing Any Problems With It, Please Contact Our Support By
-      <a href="#">Clicking Here.</a>
+      <hr />
+      <p className="m-t-30">
+        <br/>
       </p>
       <div className="float-right mr-0 pr-2">
         <button type="button" className="btn btn-custom waves-light waves-effect number  pl-3 pr-3" onClick={() => setActiveState(2)}> Next<i className="icon-arrow-right pl-2"></i> </button>

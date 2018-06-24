@@ -126,13 +126,11 @@ class Dashboard extends Component {
 
 
       default :
-        start  = moment().startOf('day').format('YYYY-MM-DD HH:mm:ss');
-        end    = moment().endOf('day').format('YYYY-MM-DD HH:mm:ss');
-
+        start  = moment().subtract(7,'d').format('YYYY-MM-DD');
+        end    = new Date();
         range1 = moment.range(start, end);
-        acc = Array.from(range1.by('hour', {   step:4}));
-        acc.length =6;
-        acc = acc.map(m => m.format('HH:mm A'));
+        acc = Array.from(range1.by('day', { step: 1 }));
+        acc = acc.map(m => m.format('DD MMM'));
         break;
     }
     return acc;
@@ -296,14 +294,8 @@ class Dashboard extends Component {
                   <Col md={4}>
                     <div className=" pull-right">
                       <select className="form-control text-muted" onChange={(e) =>  this.setState({daysClicked:e.target.value})}>
-                        <option key={'today'+1} value={'Today'} >
-                            Today
-                        </option>
-                        <option key={'yesterday'+1} value={'Yesterday'} >
-                            Yesterday
-                        </option>
                         <option key={7} value={'7'}>
-                            7 days
+                          7 days
                         </option>
                         <option key={14} value={'14'} >
                             14 days
@@ -311,12 +303,17 @@ class Dashboard extends Component {
                         <option key={28} value={'28'} >
                             28 days
                         </option>
+                        <option key={'today'+1} value={'Today'} >
+                            Today
+                        </option>
+                        <option key={'yesterday'+1} value={'Yesterday'} >
+                            Yesterday
+                        </option>
                       </select>
                     </div>
                     <div className="clearfix"></div>
                   </Col>
                 </Row>
-
                 <hr/>
                 <Row>
                   <Col md={12}>

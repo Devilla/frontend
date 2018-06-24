@@ -93,16 +93,6 @@ class Profile extends Component {
       [e.target.id]: e.target.value
     });
   }
-
-  // handleEditState(e, value) {
-  //   if (value == 'save') {
-  //     this.setState({ profileState: 'edit' });
-  //     this.updateProfile(e);
-  //   } else {
-  //     this.setState({ profileState: 'save' });
-  //   }
-  // }
-
   componentDidMount() {
     fetch('https://raw.githubusercontent.com/sagarshirbhate/Country-State-City-Database/master/Contries.json')
       .then(res => res.json())

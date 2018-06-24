@@ -33,6 +33,12 @@ button {
     }
   }
   .tabscontent {
+    .centertbl {
+      .display-url {
+        width: 40%;
+        word-break: break-all;
+      }
+    }
     .unverified {
       background-color: #FFEB3B;
     }

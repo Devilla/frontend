@@ -41,7 +41,7 @@ const LeftView = ({
           <select className="form-control muted-text" value={popupAnimationIn} onChange={(e) => { handleStateChange('popupAnimationIn', e.target.value); handleAnimation(e.target.value); }}>
             <option value="fadeInUp">Fade in Up</option>
             <option value="fadeInLeft">Fade in Left</option>
-            <option value="fadeInBottom">Fade in Bottom</option>
+            <option value="fadeInDown">Fade in Down</option>
             <option value="fadeInRight">Fade in Right</option>
             <option value="bounceInUp">Bounce in Up </option>
             <option value="bounceInRight">Bounce in Right</option>
@@ -65,7 +65,7 @@ const LeftView = ({
           <select className="form-control  muted-text" value={popupAnimationOut} onChange={(e) => { handleStateChange('popupAnimationOut', e.target.value); handleAnimation(e.target.value);}}>
             <option value="fadeOutUp">Fade out Up</option>
             <option value="fadeOutLeft">Fade out Left</option>
-            <option value="fadeOutBottom">Fade out Bottom</option>
+            <option value="fadeOutDown">Fade out Down</option>
             <option value="fadeOutRight">Fade out Right</option>
             <option value="bounceOutUp">Bounce out Up </option>
             <option value="bounceOutRight">Bounce out Right</option>
