@@ -236,7 +236,7 @@ class Notifications extends Component {
           }
         </div>
         {!this.state.notification &&
-          <div className="pt-4">
+          <div className="pt-5 mt-5">
             <div className="float-left">
               <button type="button" className="btn btn-custom  waves-light waves-effect number " onClick={this.handleBackState}><i className="icon-arrow-left pr-2"></i> Back</button>
             </div>

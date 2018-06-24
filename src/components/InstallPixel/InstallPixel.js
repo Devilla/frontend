@@ -34,7 +34,7 @@ const InstallPixel = ({ elastic, loaderActive, setActiveState, campaign, verifyP
       <span className="radio radio-warning ml-2 pr-4">
         <input type="radio" name="radio8" id="radio8" value="option8" defaultChecked/>
         <label htmlFor="radio8">
-          Verified
+          Unverified
         </label>
       </span>
 
@@ -42,7 +42,7 @@ const InstallPixel = ({ elastic, loaderActive, setActiveState, campaign, verifyP
       <span className="radio radio-success">
         <input type="radio" name="radio9" id="radio9" value="option9" defaultChecked/>
         <label htmlFor="radio9">
-             Unverified
+           Verified
         </label>
       </span>
       <hr />
