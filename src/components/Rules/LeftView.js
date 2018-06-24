@@ -1,7 +1,7 @@
 import React from 'react';
 import NotificationView from './NotificationView';
 import './Rules.scss';
-import { OverlayTrigger,Tooltip } from 'react-bootstrap';
+
 const LeftView = ({
   hideNotification,
   loopNotification,
@@ -15,20 +15,6 @@ const LeftView = ({
   animation,
   handleAnimation
 }) => {
-
-  function LinkWithTooltip ({ id, children, href, tooltip }) {
-    console.log(id + children + href + tooltip  +'---------------');
-    return (
-      <OverlayTrigger
-        overlay={<Tooltip id={id}>{tooltip}</Tooltip>}
-        placement="right"
-        delayShow={300}
-        delayHide={150}
-      >
-        <a href={href}>{children}</a>
-      </OverlayTrigger>
-    );
-  }
 
   return (
     <div className="col-md-6 border-right">
@@ -104,17 +90,7 @@ const LeftView = ({
           <div className="checkbox checkbox-info">
             <input id="checkbox6b3" type="checkbox" checked={delayNotification} onChange={(e) => handleStateChange('delayNotification', e.target.checked)} />
             <label htmlFor="checkbox6b3" className="text-muted">
-              <p>Randomize delay between
-                {' '}
-                <LinkWithTooltip
-                  tooltip={<span> This is a text </span> }
-                  href="#"
-                  id="tooltip-1"
-                >
-              notifications
-                </LinkWithTooltip>
-                
-              </p>
+               Randomize delay between  notifications
             </label>
           </div>
         </li>
