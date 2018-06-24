@@ -70,17 +70,6 @@ class Notifications extends Component {
       toggleTextBox: false,
       toggleMap: true
     };
-    this.configure = this.configure.bind(this);
-    this.handleActivityChange = this.handleActivityChange.bind(this);
-    this.handleNotificationStyleChange = this.handleNotificationStyleChange.bind(this);
-    this.handleContentChange = this.handleContentChange.bind(this);
-    this.saveConfiguration = this.saveConfiguration.bind(this);
-    this.setNewConfig = this.setNewConfig.bind(this);
-    this.setDefaultPanel = this.setDefaultPanel.bind(this);
-    this.handleNextState = this.handleNextState.bind(this);
-    this.handleBackState = this.handleBackState.bind(this);
-    this.backConfiguration = this.backConfiguration.bind(this);
-    this.handleClickableNotification = this.handleClickableNotification.bind(this);
   }
 
   componentWillMount() {
@@ -96,7 +85,7 @@ class Notifications extends Component {
       this.updateNotifications(nextProps.notifications, nextProps.configurations);
   }
 
-  updateNotifications(notifications, configurations) {
+  updateNotifications = (notifications, configurations) => {
     if (notifications) {
       let tempNotifications = notifications;
       tempNotifications.map(notif => {
@@ -116,7 +105,7 @@ class Notifications extends Component {
     }
   }
 
-  setNewConfig(config) {
+  setNewConfig = (config) => {
     if (config) {
       this.setState({
         activity: config.activity,
@@ -129,7 +118,7 @@ class Notifications extends Component {
     }
   }
 
-  setInitialState() {
+  setInitialState = () => {
     this.setState({
       notification: '',
       activity: true,
@@ -142,11 +131,11 @@ class Notifications extends Component {
     });
   }
 
-  setDefaultPanel() {
+  setDefaultPanel = () => {
     this.setState({ notificationPanelStyle: notificationPanelStyleDefault });
   }
 
-  handleActivityChange(activity, id, configId) {
+  handleActivityChange = (activity, id, configId) => {
     if (!id || typeof activity == 'object')
       return;
     this.setState({ activity: activity });
@@ -159,37 +148,37 @@ class Notifications extends Component {
     this.setState({ notificationPanelStyle: notificationStyle });
   };
 
-  handleContentChange(target, content) {
+  handleContentChange = (target, content) => {
     this.setState({ [target]: content });
   }
 
-  handleClickableNotification() {
+  handleClickableNotification = () => {
     this.setState({toggleTextBox: !this.state.toggleTextBox});
   }
 
-  handleNextState() {
+  handleNextState = () => {
     this.setState({notification: ''});
     this.props.setActiveState(3);
   }
 
-  handleBackState() {
+  handleBackState = () => {
     this.setState({notification: ''});
     this.props.setActiveState(1);
   }
 
-  configure(notification) {
+  configure = (notification) => {
     this.props.fetchCampaignConfiguration(this.props.campaign._id, notification._id);
     this.setState({ notification: notification });
   }
 
-  saveConfiguration(activity, id, configId) {
+  saveConfiguration = (activity, id, configId) => {
     const configure = {
       activity: activity != undefined && id ? activity : this.state.activity,
       notificationType: id ? id : this.state.notification._id,
       panelStyle: this.state.notificationPanelStyle,
       contentText: this.state.contentText,
       visitorText: this.state.visitorText,
-      notificationUrl: this.state.toggleTextBox && this.state.notificationUrl ?this.state.notificationUrl:null,
+      notificationUrl: this.state.toggleTextBox && this.state.notificationUrl ?this.state.notificationUrl:'',
       toggleMap: this.state.toggleMap,
       campaign: this.props.campaign._id
     };
@@ -202,7 +191,7 @@ class Notifications extends Component {
     }
   }
 
-  backConfiguration() {
+  backConfiguration = () => {
     this.props.clearConfiguration();
     this.setInitialState();
   }

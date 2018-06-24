@@ -51,7 +51,7 @@ const NotificationList = ({ notificationList, configure, handleActivityChange}) 
                   checked={notification.activity}
                   onChange={(e) => e.target.checked !=notification.activity?handleActivityChange(e.target.checked, notification._id, notification.configurationId):null}
                 />
-                <label className="tgl-btn" HtmlFor={notification._id}></label>
+                <label className="tgl-btn" htmlFor={notification._id}></label>
               </div>
 
               <button
