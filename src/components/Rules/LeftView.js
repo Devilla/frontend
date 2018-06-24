@@ -16,12 +16,12 @@ const LeftView = ({
   handleAnimation
 }) => {
 
-
-  function LinkWithTooltip({ id, children, href, tooltip }) {
+  function LinkWithTooltip ({ id, children, href, tooltip }) {
+    console.log(id + children + href + tooltip  +'---------------');
     return (
       <OverlayTrigger
         overlay={<Tooltip id={id}>{tooltip}</Tooltip>}
-        placement="top"
+        placement="right"
         delayShow={300}
         delayHide={150}
       >
@@ -104,10 +104,17 @@ const LeftView = ({
           <div className="checkbox checkbox-info">
             <input id="checkbox6b3" type="checkbox" checked={delayNotification} onChange={(e) => handleStateChange('delayNotification', e.target.checked)} />
             <label htmlFor="checkbox6b3" className="text-muted">
-              Randomize delay between notifications{' '}
-              <LinkWithTooltip tooltip="Default tooltip" href="#" id="tooltip-1">
-                 tooltip
-              </LinkWithTooltip>{' '}
+              <p>Randomize delay between
+                {' '}
+                <LinkWithTooltip
+                  tooltip={<span> This is a text </span> }
+                  href="#"
+                  id="tooltip-1"
+                >
+              notifications
+                </LinkWithTooltip>
+                
+              </p>
             </label>
           </div>
         </li>
