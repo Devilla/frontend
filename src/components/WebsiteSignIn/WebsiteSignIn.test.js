@@ -1,12 +1,12 @@
 import React from 'react';
-import {cofigure, shallow} from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
+import { shallow} from 'enzyme';
+import { expect } from 'jest';
+import WebsiteSignIn from './WebsiteSignIn';
 
-configure({adapter: new Adapter});
 
-describe('<WebsiteSignIn/>', () => {
+test('<WebsiteSignIn/>', () => {
   it('should render one <WebsiteSignIn /> elements if not authenticated',() => {
     const wrapper = shallow(<WebsiteSignIn/>);
-    expect(wrapper.find(WebsiteSignIn)).toHaveLength(1);
+    expect(wrapper.find(WebsiteSignIn)).to.have.length(1);
   });
 });
