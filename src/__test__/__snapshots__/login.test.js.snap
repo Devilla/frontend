@@ -1,0 +1,181 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`>>>H O M E --- Snapshot +++capturing Snapshot of Home 1`] = `
+<div
+  className="main-container"
+>
+  <section
+    className="switchable switchable--switch bg--secondary"
+  >
+    <div
+      className="container"
+    >
+      <div
+        className="row justify-content-center"
+      >
+        <div
+          className="col-sm-12 col-md-7 col-lg-5"
+        >
+          <div
+            className=""
+          >
+            <h2>
+              Welcome back!
+            </h2>
+            <p
+              className="lead"
+            >
+              <span>
+                Don't have an account yet? 
+                <a
+                  onClick={[Function]}
+                  style={Object {}}
+                >
+                  Sign up
+                </a>
+              </span>
+            </p>
+            <hr
+              className="short"
+            />
+            <form
+              className="loginfrm"
+              onSubmit={[Function]}
+            >
+              <div
+                className="row"
+              >
+                
+                <div
+                  className="col-9 "
+                >
+                  <input
+                    className="field w-input"
+                    name="email"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    placeholder="Email Address"
+                    type="email"
+                  />
+                  <span
+                    className="help-block"
+                  >
+                    <p
+                      className="website-error"
+                    >
+                      
+                    </p>
+                  </span>
+                </div>
+                <div
+                  className="col-9"
+                >
+                  <input
+                    className="field w-input "
+                    maxLength={20}
+                    name="password"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    placeholder="Password"
+                    type="password"
+                  />
+                  <span
+                    className="help-block"
+                  >
+                    <p
+                      className="website-error"
+                    >
+                      
+                    </p>
+                  </span>
+                </div>
+                <div
+                  className="col-9 frmcntl"
+                >
+                  <input
+                    className="button submit-button w-button btn btn--primary ml-0"
+                    disabled={true}
+                    style={
+                      Object {
+                        "cursor": "pointer",
+                      }
+                    }
+                    type="submit"
+                    value="Login"
+                  />
+                </div>
+                <div>
+                  <a
+                    onClick={[Function]}
+                    style={
+                      Object {
+                        "padding": "25px",
+                      }
+                    }
+                  >
+                    Forgot password?
+                  </a>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div
+          className="vristrue"
+        />
+        <div
+          className="col-md-4 col-lg-4"
+        >
+          <p>
+             
+            <br />
+          </p>
+          <div
+            className="mt--2"
+          >
+            <a
+              className="link "
+              href="undefinedconnect/facebook"
+            >
+              <a
+                className="btn btn--icon bg--facebook"
+                onClick={[Function]}
+                style={Object {}}
+              >
+                <span
+                  className="btn__text "
+                >
+                  <i
+                    className="socicon socicon-facebook"
+                  />
+                  Login with Facebook
+                </span>
+              </a>
+            </a>
+            <p />
+            <a
+              className="link"
+              href="undefinedconnect/google"
+            >
+              <a
+                className="btn btn--icon bg--googleplus"
+                onClick={[Function]}
+                style={Object {}}
+              >
+                <span
+                  className="btn__text"
+                >
+                  <i
+                    className="socicon socicon-google"
+                  />
+                  Login with Google
+                </span>
+              </a>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+`;

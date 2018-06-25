@@ -9,7 +9,7 @@ import { createProfile, updateProfile } from 'ducks/profile';
 import { createPayment } from 'ducks/payment';
 import './LoginFlow.scss';
 
-import { store } from 'index.js';
+import { store } from 'App.js';
 
 class LoginFlow extends Component {
   constructor(props) {
