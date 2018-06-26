@@ -74,7 +74,7 @@ class Notifications extends Component {
 
   componentWillMount() {
   //  this.props.fetchNotification();
-    this.props.fetchConfiguration(this.props.campaign._id);
+    //this.props.fetchConfiguration(this.props.campaign._id);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -212,7 +212,7 @@ class Notifications extends Component {
           {!this.state.notification
             ?
             <NotificationList
-              campaignUrl={campaign.websiteUrl}
+              //campaignUrl={campaign.websiteUrl}
               notificationList={this.state.notifications}
               handleActivityChange={this.handleActivityChange}
               configure={this.configure}
