@@ -73,7 +73,7 @@ class Notifications extends Component {
   }
 
   componentWillMount() {
-    this.props.fetchNotification();
+  //  this.props.fetchNotification();
     this.props.fetchConfiguration(this.props.campaign._id);
   }
 
