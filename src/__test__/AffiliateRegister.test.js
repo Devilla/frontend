@@ -1,4 +1,5 @@
 import React from 'react';
+import '../setupTests';
 import { shallow, mount } from 'enzyme';
 import renderer from 'react-test-renderer'
 import configureStore from 'redux-mock-store'
@@ -14,4 +15,18 @@ describe('>>> AffiliateRegister --- Snapshot',()=>{
         const renderedValue =  renderer.create(<AffiliateRegister store={store} />).toJSON()
         expect(renderedValue).toMatchSnapshot();
     });
+});
+
+describe('>>>AffiliateRegister --- Shallow Render REACT COMPONENTS',()=>{
+    let wrapper
+
+    beforeEach(()=>{
+        wrapper = shallow(<AffiliateRegister store={store}/>)
+
+    })
+
+    it('+++ render the AffiliateRegister component', () => {
+       expect(wrapper.length).toEqual(1)
+});
+
 });
