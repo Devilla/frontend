@@ -158,6 +158,7 @@ class WebsiteSignUp extends Component {
                         <div className='col-12'>
                           <input
                             name='email'
+                            id='email'
                             value={email}
                             onBlur={this.handleEmailBlur}
                             onChange={this.handleInputChange}
@@ -170,6 +171,7 @@ class WebsiteSignUp extends Component {
                         <div className='col-12'>
                           <input
                             name='password'
+                            id='password'
                             maxLength={PASSWORD_MAX_LENGTH}
                             onBlur={this.handlePasswordBlur}
                             onChange={this.handleInputChange}

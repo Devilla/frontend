@@ -27,39 +27,13 @@ describe('>>>H O M E --- Snapshot',()=>{
 
 describe('Email input', () => {
     let wrapper;
-    beforeEach ( () => {
-         wrapper = shallow(<WebsiteSignIn  store={store}/>);
-    })
+  beforeEach ( () => {
+       wrapper = shallow(<WebsiteSignIn store={store}/>);
+  })
 
-    // it('should respond to change event and change the state of the WebsiteSignIn Component', () => {
-    //  wrapper.find('input').at(0).simulate('change', {target: {name: 'email', value: 'blah@gmail.com'}});
-    //  expect(wrapper.state('email')).toEqual('blah@gmail.com');
-    // })
     it('+++ render the DUMB component', () => {
         expect(wrapper.length).toEqual(1)
     });
-    it('+++ contains input1', () => {
-        expect(wrapper.find('input').at(0)
-                .equals( <input name="email"
-                ref="email"
-                className="field w-input"
-                placeholder="Email Address"
-                type="email"
-                id="email"
-              />))
-                .toBe(true)
-    });
-//     it('+++ contains input2', () => {
-//         expect(wrapper.find('input').at(1)
-//                 .equals(<input type="text" placeholder="Input 2" ref="input2"></input>))
-//                 .toBe(true)
-// });
-
-    
-    // it('should respond to change event and change the state of the Login Component', () => {
-    //  wrapper.find('input#password').simulate('change', {target: {name: 'password', value: 'cats'}});
-    //  expect(wrapper.state('password')).toEqual('cats');
-    // })
 
 })
   

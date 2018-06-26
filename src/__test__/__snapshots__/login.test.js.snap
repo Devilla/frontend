@@ -50,8 +50,8 @@ exports[`>>>H O M E --- Snapshot +++capturing Snapshot of Home 1`] = `
                   className="col-9 "
                 >
                   <input
-                    className="field w-input"
-                    id="email"
+                    className="fieldname"
+                    id="emails"
                     name="email"
                     onBlur={[Function]}
                     onChange={[Function]}
@@ -97,6 +97,7 @@ exports[`>>>H O M E --- Snapshot +++capturing Snapshot of Home 1`] = `
                   <input
                     className="button submit-button w-button btn btn--primary ml-0"
                     disabled={true}
+                    id="subtract"
                     style={
                       Object {
                         "cursor": "pointer",

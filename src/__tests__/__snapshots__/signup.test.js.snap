@@ -83,6 +83,7 @@ exports[`>>>SignUp --- Snapshot +++capturing Snapshot of SignUp 1`] = `
                             className="col-12"
                           >
                             <input
+                              id="email"
                               name="email"
                               onBlur={[Function]}
                               onChange={[Function]}

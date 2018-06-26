@@ -123,12 +123,12 @@ class WebsiteSignIn extends Component {
                       <div className="col-9 ">
                         <input name="email"
                           ref="email"
-                          className="field w-input"
+                          className="fieldname"
                           onBlur={this.handleEmailBlur}
                           onChange={this.handleInputChange}
                           placeholder="Email Address"
                           type="email"
-                          id="email"
+                          id="emails"
                         />
                         <HelpBlock>
                           <p className="website-error">{errorEmail}</p>
@@ -154,6 +154,7 @@ class WebsiteSignIn extends Component {
 
                       <div className="col-9 frmcntl">
                         <input
+                          id="subtract"
                           className="button submit-button w-button btn btn--primary ml-0"
                           type="submit"
                           value="Login"
