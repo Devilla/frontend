@@ -10,7 +10,7 @@ import { Link } from 'react-router';
 class WebsiteFeature extends Component {
 
   componentDidMount() {
-    window.scrollTo(0, 0);
+    //window.scrollTo(0, 0);
   }
   render() {
 

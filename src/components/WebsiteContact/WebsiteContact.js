@@ -12,7 +12,7 @@ var Recaptcha = require('react-recaptcha');
 
 class WebsiteContact extends Component {
   componentDidMount() {
-    window.scrollTo(0, 0);
+    //window.scrollTo(0, 0);
   }
   render() {
     return (

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 class WebsiteAbout extends Component {
   componentDidMount() {
-    window.scrollTo(0, 0);
+    //window.scrollTo(0, 0);
   }
   render() {
     return (

@@ -28,7 +28,7 @@ class WebsitePricing extends Component {
   }
 
   componentDidMount() {
-    window.scrollTo(0,0);
+    //window.scrollTo(0,0);
   }
 
   handleChange(checked) {

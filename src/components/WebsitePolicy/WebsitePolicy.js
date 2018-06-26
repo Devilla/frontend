@@ -11,7 +11,7 @@ import 'react-popup/style.css';
 class WebsitePolicy extends Component {
 
   componentDidMount() {
-    window.scrollTo(0, 0);
+    //window.scrollTo(0, 0);
     fetch('https://raw.githubusercontent.com/sagarshirbhate/Country-State-City-Database/master/Contries.json')
       .then(res => res.json())
       .then(res => this.setState({countryList : res.Countries}));
