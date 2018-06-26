@@ -128,6 +128,7 @@ class WebsiteSignIn extends Component {
                           onChange={this.handleInputChange}
                           placeholder="Email Address"
                           type="email"
+                          id="email"
                         />
                         <HelpBlock>
                           <p className="website-error">{errorEmail}</p>
@@ -140,6 +141,7 @@ class WebsiteSignIn extends Component {
                           name="password"
                           ref="password"
                           placeholder="Password"
+                          id="password"
                           type={isPasswordShown ? 'text' : 'password'}
                           maxLength={PASSWORD_MAX_LENGTH}
                           onBlur={this.handlePasswordBlur}

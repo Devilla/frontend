@@ -51,6 +51,7 @@ exports[`>>>H O M E --- Snapshot +++capturing Snapshot of Home 1`] = `
                 >
                   <input
                     className="field w-input"
+                    id="email"
                     name="email"
                     onBlur={[Function]}
                     onChange={[Function]}
@@ -72,6 +73,7 @@ exports[`>>>H O M E --- Snapshot +++capturing Snapshot of Home 1`] = `
                 >
                   <input
                     className="field w-input "
+                    id="password"
                     maxLength={20}
                     name="password"
                     onBlur={[Function]}

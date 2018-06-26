@@ -1,5 +1,6 @@
 import React from 'react'
-import { shallow, mount } from 'enzyme';
+import { shallow } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-15';
 import renderer from 'react-test-renderer'
 // import ConnectedHome,{Home} from '../src/js/components/Home'
 import configureStore from 'redux-mock-store'
@@ -12,6 +13,7 @@ import { validateEmail, validatePassword, login, PASSWORD_MAX_LENGTH } from 'ser
 import { WebsiteSignIn } from 'components';
 import { store } from 'App';
 
+
 // Snapshot for Home React Component
 describe('>>>H O M E --- Snapshot',()=>{
     it('+++capturing Snapshot of Home', () => {
@@ -20,3 +22,29 @@ describe('>>>H O M E --- Snapshot',()=>{
     });
 
 });
+
+// within the Login components describe function
+
+describe('Email input', () => {
+  
+    it('should respond to change event and change the state of the WebsiteSignIn Component', () => {
+     
+     const wrapper = shallow(<WebsiteSignIn />);
+     wrapper.find('#email').simulate('change', {target: {name: 'email', value: 'blah@gmail.com'}});
+     
+    expect(wrapper.state('email')).toEqual('blah@gmail.com');
+    })
+   })
+   
+   describe('Password input', () => {
+    
+    it('should respond to change event and change the state of the Login Component', () => {
+     
+     const wrapper = shallow(<WebsiteSignIn />);
+     wrapper.find('#password').simulate('change', {target: {name: 'password', value: 'cats'}});
+     
+     expect(wrapper.state('password')).toEqual('cats');
+    })
+   })
+  
+  

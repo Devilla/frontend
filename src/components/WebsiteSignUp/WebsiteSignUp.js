@@ -40,7 +40,7 @@ class WebsiteSignUp extends Component {
   }
 
   componentWillMount() {
-    console.log(this.props.location.query.email, '=========location');
+    // console.log(this.props.location.query.email, '=========location');
     if(this.props.location && this.props.location.query.email)
       this.setState({email: this.props.location.query.email});
   }
@@ -113,7 +113,7 @@ class WebsiteSignUp extends Component {
     });
   }
   componentDidMount() {
-    window.scrollTo(0,0);
+    // window.scrollTo(0,0);
   }
 
   render() {
