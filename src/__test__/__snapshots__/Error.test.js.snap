@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`>>> Error --- Snapshot +++capturing Snapshot of Error 1`] = `
+<div
+  className="unknown-error"
+>
+  <div
+    className="content-wrap"
+  >
+    <div
+      className="shadow-overlay"
+    >
+      <div
+        className="error_head"
+      >
+        <h1>
+           Oops!
+        </h1>
+        <div
+          className="line"
+        >
+          <hr />
+        </div>
+      </div>
+      <div
+        className="error_body"
+      >
+        <h1>
+           Something went wrong. 
+        </h1>
+        <p>
+           Oooops! Looks like something went wrong at this location. 
+        </p>
+      </div>
+      <div
+        className="error_button"
+      >
+        <button
+          onClick={[Function]}
+          type="button"
+        >
+          Go Back
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;

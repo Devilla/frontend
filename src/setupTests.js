@@ -1,7 +1,7 @@
 import 'jest-enzyme';
 
 const Enzyme = require('enzyme');
-// this is where we reference the adapter package we installed  
+// this is where we reference the adapter package we installed
 // earlier
 const EnzymeAdapter = require('enzyme-adapter-react-16');
 
