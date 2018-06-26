@@ -1,4 +1,5 @@
 import React from 'react';
+import '../setupTests';
 import { shallow, mount } from 'enzyme';
 import renderer from 'react-test-renderer'
 import configureStore from 'redux-mock-store'
@@ -15,3 +16,20 @@ describe('>>> CapturePage --- Snapshot',()=>{
         expect(renderedValue).toMatchSnapshot();
     });
 });
+
+describe('check for in', ()=> {
+  let wrapper;
+  beforeEach ( () => {
+       wrapper = shallow(<CapturePage  store={store}/>);
+  })
+
+  it('+++ render the DUMB component', () => {
+    expect(wrapper.length).toEqual(1);
+  });
+
+  it('+++ contains Table', () => {
+    let wrapper = shallow(<CapturePage  store={store}/>);
+    expect(wrapper.find('.tabscontent').length).toBe(1);
+  });
+
+})

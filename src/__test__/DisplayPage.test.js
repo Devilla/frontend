@@ -1,4 +1,5 @@
 import React from 'react';
+import '../setupTests';
 import { shallow, mount } from 'enzyme';
 import renderer from 'react-test-renderer'
 import configureStore from 'redux-mock-store'
@@ -14,4 +15,21 @@ describe('>>> DisplayPage --- Snapshot',()=>{
         const renderedValue =  renderer.create(<DisplayPage store={store} />).toJSON()
         expect(renderedValue).toMatchSnapshot();
     });
+});
+
+describe('check for in', ()=> {
+  let wrapper;
+  beforeEach ( () => {
+       wrapper = shallow(<DisplayPage  store={store}/>);
+  })
+
+  it('+++ render the DUMB component', () => {
+    expect(wrapper.length).toEqual(1);
+  });
+
+  it('+++ contains website - error', () => {
+    let wrapper = shallow(<DisplayPage  store={store}/>);
+    expect(wrapper.find('.website-error').length).toBe(1);
+  });
+
 });
