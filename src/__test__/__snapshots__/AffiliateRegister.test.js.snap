@@ -47,6 +47,7 @@ exports[`>>> AffiliateRegister --- Snapshot +++capturing Snapshot of AffiliateRe
             >
               <button
                 className="btn btn--primary ml-0"
+                id="affiliatesubmit"
                 type="submit"
               >
                 BECOME AN AFFILIATE

@@ -20,7 +20,7 @@ export default class AffiliateRegister extends Component {
                     <input type="email" name="email" placeholder="you@something.com" className="ml-0 validate-required" />
                   </div>
                   <div className="mt-3 col-md-12">
-                    <button type="submit" className="btn btn--primary ml-0">BECOME AN AFFILIATE</button>
+                    <button  id="affiliatesubmit" type="submit" className="btn btn--primary ml-0">BECOME AN AFFILIATE</button>
                   </div>
                 </form>
               </div>

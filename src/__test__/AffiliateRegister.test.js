@@ -29,4 +29,19 @@ describe('>>>AffiliateRegister --- Shallow Render REACT COMPONENTS',()=>{
        expect(wrapper.length).toEqual(1)
 });
 
+it('+++ contains input1', () => {
+        expect(wrapper.find('input').at(0)
+                .equals(<input className="ml-0 validate-required"  type="text" placeholder="First / Last Name" name="name"></input>))
+                .toBe(true)
+});
+
+it('+++ contains input2', () => {
+        expect(wrapper.find('input').at(1)
+                .equals(<input className="ml-0 validate-required" type="email" placeholder="you@something.com" name="email"></input>))
+                .toBe(true)
+});
+
+it('+++ contains button with id="affiliatesubmit"', () => {
+        expect(wrapper.find('button#affiliatesubmit').type()).toEqual('button')
+});
 });
