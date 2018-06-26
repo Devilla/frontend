@@ -29,7 +29,9 @@ exports[`>>> BillingDetails --- Snapshot +++capturing Snapshot of BillingDetails
             </a>
             Billing Details
           </h4>
-          <hr />
+          <hr
+            className="short"
+          />
           <div
             className="Billing-container"
           >
