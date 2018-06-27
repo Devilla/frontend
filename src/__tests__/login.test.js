@@ -31,9 +31,28 @@ describe('Email input', () => {
        wrapper = shallow(<WebsiteSignIn store={store}/>);
   })
 
-    it('+++ render the DUMB component', () => {
-        expect(wrapper.length).toEqual(1)
-    });
 
+  it('+++ render the DUMB component', () => {
+    expect(wrapper.length).toEqual(1)
+    })
+
+  it('should respond to change event and change the state of the WebsiteSignIn Component', () => {
+    wrapper.find('#emails').simulate('change', {target: {name: 'email', value: 'blah@gmail.com'}});
+    expect(wrapper.state('email')).toEqual('blah@gmail.com');
+   })
+
+   it('should respond to changed  event and change the state of the SignUp Component', () => {
+    wrapper.find('#password').simulate('change', {target: {name: 'password', value: 'cats'}});
+    expect(wrapper.state('password')).toEqual('cats');
+   })
+
+
+   it('should stimulate the click event' ,() => {
+    wrapper.find('#submit').simulate('click');
+   })
+ 
+
+
+  
 })
   

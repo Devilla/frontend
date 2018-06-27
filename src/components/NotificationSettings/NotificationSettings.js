@@ -204,7 +204,7 @@ class Notifications extends Component {
 
   render() {
 
-    const { configurations, createSuccess, campaign, profile } = this.props;
+    const { configurations, createSuccess, profile } = this.props;
     return (
       <div className="notification-settings">
         <div>

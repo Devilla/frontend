@@ -105,6 +105,7 @@ exports[`>>>WebsiteSignUp --- Snapshot +++capturing Snapshot of WebsiteSignUp 1`
                             className="col-12"
                           >
                             <input
+                              id="password"
                               maxLength={20}
                               name="password"
                               onBlur={[Function]}

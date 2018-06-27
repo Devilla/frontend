@@ -97,7 +97,7 @@ exports[`>>>H O M E --- Snapshot +++capturing Snapshot of Home 1`] = `
                   <input
                     className="button submit-button w-button btn btn--primary ml-0"
                     disabled={true}
-                    id="subtract"
+                    id="submit"
                     style={
                       Object {
                         "cursor": "pointer",
