@@ -46,3 +46,4 @@ export { default as Rules } from './Rules/Rules';
 export { default as DisplayPage } from './DisplayPage/DisplayPage';
 export { default as CapturePage } from './CapturePage/CapturePage';
 export { default as InstallPixel } from './InstallPixel/InstallPixel';
+export { default as AddChannel } from './AddChannel/AddChannel';

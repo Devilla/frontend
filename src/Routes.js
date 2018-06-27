@@ -27,7 +27,8 @@ import {
   WebsiteCustStory,
   WebsiteFeature,
   Affiliate,
-  AffiliateRegister
+  AffiliateRegister,
+  AddChannel
 } from 'components';
 
 import {
@@ -75,6 +76,7 @@ const MyRoutes = ({routerHistory}) => (
       <Route path="/affiliateregister" component={AffiliateRegister} />
       <Route path="/forget-password" component={ForgetPassword} />
       <Route path="/reset-password" component={ResetPassword} />
+      <Route path="/addchannel" component={AddChannel} />
 
     </Route>
     <Route path="*" component={Error} />

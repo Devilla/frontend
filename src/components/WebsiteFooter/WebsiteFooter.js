@@ -16,7 +16,7 @@ class WebsiteFooter extends Component {
                   <li className="type--uppercase col-sm-4 col-md-3 h6"><Link className="footer-menu-link" to="/about"> About Us </Link> </li>
                   <li className="type--uppercase col-sm-4 col-md-3 h6"><Link className="footer-menu-link" to="/terms-and-condtions"> Terms &amp; Conditions </Link></li>
                   <li className="type--uppercase col-sm-4 col-md-3 h6"><Link className="footer-menu-link" to="/privacy-policy"> Privacy Policy </Link></li>
-                  {/* <li className="type--uppercase col-sm-4 col-md-3 h6"><Link className="footer-menu-link" to="/affiliatepage"> Affiliates </Link></li> */}
+                  <li className="type--uppercase col-sm-4 col-md-3 h6"><Link className="footer-menu-link" to="/addchannel"> POP UP </Link></li>
 
 
 
