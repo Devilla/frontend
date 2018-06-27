@@ -13,7 +13,7 @@ import { validateEmail, validatePassword, login, PASSWORD_MAX_LENGTH } from 'ser
 import { WebsiteSignIn } from 'components';
 import { store } from 'App';
 
-// 
+//
 // configure({ adapter: new Adapter() });
 
 // Snapshot for Home React Component

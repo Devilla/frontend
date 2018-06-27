@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`>>>WebsiteSignUp --- Snapshot +++capturing Snapshot of WebsiteSignUp 1`] = `
+exports[`>>>SignUp --- Snapshot +++capturing Snapshot of SignUp 1`] = `
 <div>
   <div
     className="authpage section innerpage"
