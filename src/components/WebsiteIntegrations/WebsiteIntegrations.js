@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-  Integrations1,
+  Illustration,
   NewRecentPurchases,
 
 } from 'img';
@@ -23,7 +23,7 @@ class WebsiteIntegrations extends Component {
                 </a>
                 <span className="block type--fine-print">or <a href="/">view the demos</a></span>
               </div>
-              <div className="col-md-5"> <img alt="Image" src={ Integrations1 } /> </div>
+              <div className="col-md-5"> <img alt="Image" src={ Illustration } /> </div>
             </div>
           </div>
         </section>
