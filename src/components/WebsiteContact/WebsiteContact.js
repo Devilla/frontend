@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-var Recaptcha = require('react-recaptcha');
 
 class WebsiteContact extends Component {
   constructor(){
@@ -97,11 +96,7 @@ class WebsiteContact extends Component {
                     <label>Message:</label>
                     <textarea rows="4" name="message" className="validate-required" onChange={this.handleMessageChange.bind(this)}></textarea>
                   </div>
-                  <div className="col-md-12 col-12">
-                    <div className="recaptcha">
-                      <Recaptcha sitekey="sdfsdfsdfdsfsd" />
-                    </div>
-                  </div>
+
                   <button type="submit" className="btn btn--primary type--uppercase">Send Enquiry</button>
                 </form>
               </div>
