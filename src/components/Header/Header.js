@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import { Avatar1 } from 'img';
+import { Smallpic } from 'img';
 import './Header.scss';
 import { connect } from 'react-redux';
 import {ProgressBar} from 'react-bootstrap';
@@ -10,7 +10,7 @@ class Header extends Component  {
     return (
       <div>
         {this.props.loading ? (
-          <ProgressBar bsStyle='info' now={ 100 } />)
+          <ProgressBar bsStyle='info' now={ 120 } />)
           :( <ProgressBar bsStyle='info' now={0} />)}
 
         <ul className="list-unstyled topbar-right-menu float-right mb-0 nav-custom-header">
@@ -42,7 +42,7 @@ class Header extends Component  {
               style={{cursor:'pointer'}}
               onClick={openCloseDropdown}
             >
-              <img src={Avatar1} alt="user" className="rounded-circle" />
+              <img src={Smallpic} alt="user" className="rounded-circle" />
               <span className="ml-1">
                 <i className="mdi mdi-chevron-down"></i>
               </span>
