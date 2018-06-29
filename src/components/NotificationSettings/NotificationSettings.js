@@ -139,7 +139,15 @@ class Notifications extends Component {
     if (!id || typeof activity == 'object')
       return;
     this.setState({ activity: activity });
-    this.saveConfiguration(activity, id, configId);
+    const configure = {
+      activity: activity != undefined && id ? activity : this.state.activity,
+      campaign: this.props.campaign._id
+    };
+    let configuration = this.props.configuration.size == 0 ? null : this.props.configuration.size ? this.props.configuration.toJS() : this.props.configuration;
+    if ((configuration && configuration._id) || configId) {
+      configure['id'] = configId ? configId : configuration._id;
+      return this.props.updateConfiguration(configure);
+    }
   }
 
   handleNotificationStyleChange = style => {
