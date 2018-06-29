@@ -38,7 +38,8 @@ class NewCampaignContainer extends Component {
       errorName: '',
       errorWebsiteUrl: '',
       activeClass: 1,
-      loaderActive: false
+      loaderActive: false,
+      notification: ''
     };
   }
 
@@ -74,6 +75,8 @@ class NewCampaignContainer extends Component {
   }
 
   setActiveState = (val) => {
+    if(val == 2)
+      this.setState({notification: ''});
     this.setState({activeClass: val});
   }
 
@@ -94,6 +97,14 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
     });
 
     return toast('Pixel copied', toastConfig);
+  }
+
+  setNotification = (notification) => {
+    this.setState({notification: notification});
+  }
+
+  clearNotification = () => {
+    this.setState({notification: ''});
   }
 
   componentWillUnmount() {
@@ -147,12 +158,15 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
       <div>
         {this.props.campaign && Object.keys(this.props.campaign).length !== 0 && this.props.campaign.constructor === Object?
           <CampaignSettings
+            notification={this.state.notification}
             loaderActive={this.state.loaderActive}
             goLive={this.goLive}
             verifyPixelStatus={this.verifyPixelStatus}
             handlePixelCopy={this.handlePixelCopy}
             activeClass={this.state.activeClass}
             setActiveState={this.setActiveState}
+            setNotification={this.setNotification}
+            clearNotification={this.clearNotification}
             {...this.props}
           />
           :
