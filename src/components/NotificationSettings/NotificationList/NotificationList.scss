@@ -1,20 +1,38 @@
 @import '../../SwitchPartialScss/toggle';
 
-.notification-box {
-  .bulkColor{
-    color:#d50000!important;
-  }
-  .liveColor{
-    color:#097fff!important;
-  }
-  .recentColor{
-    color:#097fff!important;
 
-  }
-   
-  .toggle-checkbox {
-    margin-left: 37%;   
-    margin-bottom: 10%;
-  }
+  .notification-box {
+    .bulkColor{
+      color:#d50000!important;
+    }
+    .liveColor{
+      color:#097fff!important;
+    }
+    .recentColor{
+      color:#097fff!important;
   
-}
+    }
+    .channelColor {
+      color:#d50000!important;
+
+    }
+     
+    .toggle-checkbox {
+      margin-left: 37%;   
+      margin-bottom: 10%;
+    }
+    
+  }
+
+    .addChannel {
+      margin: 0 auto;
+      padding-top: 50px !important; 
+      padding-left: 30px !important;
+    
+        & .notification-list-content {
+          min-height: 80px;
+        }
+    }
+    
+  
+
