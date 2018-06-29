@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { browserHistory } from 'react-router';
 import './ComingSoon.scss';
-import {Integration} from 'img';
 
 class ComingSoon extends Component {
 
@@ -22,7 +21,7 @@ class ComingSoon extends Component {
                 <div className="card-box p-5">
                   <h2 className="text-uppercase text-center pb-4">
                     <a href="index.html" className="text-success">
-                      <span><img src={Integration} alt="" height="26"/></span>
+                      <span><img src="assets/images/logo.png" alt="" height="26"/></span>
                     </a>
                   </h2>
                   <div className="text-center">
