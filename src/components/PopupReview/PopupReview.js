@@ -1,18 +1,11 @@
 import React , { Component } from 'react';
 import './PopupReview.scss';
 import { Row, Col } from 'react-bootstrap';
-// import { Link } from 'react-router';
 
 
 
 class PopupReview extends Component {
-  constructor() {
-    super();
-    this.state = {
-     
-    };
-  }
-
+  
   render() {
     return (
       <div>
@@ -24,10 +17,10 @@ class PopupReview extends Component {
             </div>
             <div className="content">
               <Row>
-                <Col md={6} sm={12}> 
-                
+                <Col md={6} sm={12}>
+
                 </Col>
-                <Col md={6} sm={12}> 
+                <Col md={6} sm={12}>
 
                 </Col>
               </Row>
