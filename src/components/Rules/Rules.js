@@ -102,7 +102,7 @@ class Rules extends Component{
   }
 
   showNotification() {
-    this.setState({sampleDisplay: !this.sampleDisplay});
+    this.setState({sampleDisplay: !this.state.sampleDisplay});
   }
 
   handleAnimation(value) {
