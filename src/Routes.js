@@ -28,7 +28,10 @@ import {
   WebsiteFeature,
   Affiliate,
   AffiliateRegister,
-  AddChannel
+  DashboardChannel,
+  PopupReview,
+  Oauthpage,
+  Oauthgenerate
 } from 'components';
 
 import {
@@ -39,6 +42,7 @@ import {
   NewCampaignContainer
 } from 'containers';
 
+
 const MyRoutes = ({routerHistory}) => (
 
   <Router history={routerHistory}>
@@ -47,6 +51,10 @@ const MyRoutes = ({routerHistory}) => (
       <Route path="/dashboard" component={Dashboard} />
       <Route path="/new" component={NewCampaignContainer} />
       <Route path="/campaigns" component={Notification} />
+      <Route path="/addchannel" component={DashboardChannel} />
+      <Route path="/oauthshow" component={Oauthpage} />
+      <Route path="/oauthgenerate" component={Oauthgenerate} />
+      <Route path="/popupreview" component={PopupReview} />
       <Route path="/analytics" component={AnalyticsContainer} />
       <Route path="/integration" component={Integration} />
       <Route path="/support" component={Dashboard} />
@@ -76,7 +84,6 @@ const MyRoutes = ({routerHistory}) => (
       <Route path="/affiliateregister" component={AffiliateRegister} />
       <Route path="/forget-password" component={ForgetPassword} />
       <Route path="/reset-password" component={ResetPassword} />
-      <Route path="/addchannel" component={AddChannel} />
 
     </Route>
     <Route path="*" component={Error} />

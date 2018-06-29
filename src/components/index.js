@@ -46,4 +46,9 @@ export { default as Rules } from './Rules/Rules';
 export { default as DisplayPage } from './DisplayPage/DisplayPage';
 export { default as CapturePage } from './CapturePage/CapturePage';
 export { default as InstallPixel } from './InstallPixel/InstallPixel';
-export { default as AddChannel } from './AddChannel/AddChannel';
+export { default as DashboardChannel } from './DashboardChannel/DashboardChannel';
+export { default as PopupReview } from './PopupReview/PopupReview';
+export { default as Oauthpage } from './Oauthpage/Oauthpage';
+export { default as Oauthgenerate } from './Oauthgenerate/Oauthgenerate';
+
+
