@@ -5,7 +5,7 @@ import './WebsiteHome.scss';
 
 import {
   Marvel,
-  Integration,
+  Illustration,
   Swivelscreen,
   Sw1,
   Sw2,
@@ -219,7 +219,7 @@ class WebsiteHome extends Component {
                 </Link>
               </div>
               <div className="col-md-6">
-                <img alt="Integration" src={Integration} />
+                <img alt="Integration" src={Illustration} />
               </div>
             </div>
           </div>

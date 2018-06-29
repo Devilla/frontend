@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Animated } from "react-animated-css";
+import { Animated } from 'react-animated-css';
 import { forgotPassword, clearForgotPasswordError } from 'ducks/auth';
 import { HelpBlock } from 'react-bootstrap';
 
@@ -18,7 +18,7 @@ class ForgetPassword extends Component {
       email: '',
       authEmail: false,
       emailError: ''
-    }
+    };
   }
 
   componentDidMount() {
@@ -46,11 +46,11 @@ class ForgetPassword extends Component {
     } else {
       evt.preventDefault();
       const data = {
-        "email": this.state.email
+        'email': this.state.email
       };
       this.props.forgotPassword(data);
       this.props.clearForgotPasswordError();
-      this.setState({email: '', emailError: ''})
+      this.setState({email: '', emailError: ''});
     }
   }
 

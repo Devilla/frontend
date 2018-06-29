@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { HelpBlock } from 'react-bootstrap';
 import './WebsitePolicy.scss';
 import Popup from 'react-popup';
 import {
@@ -10,6 +11,14 @@ import 'react-popup/style.css';
 
 class WebsitePolicy extends Component {
 
+  constructor() {
+    super();
+    this.state = {
+      selectedCountry: '',
+      countryList: [],
+      errorCountry: ''
+    };
+  }
   componentDidMount() {
     window.scrollTo(0, 0);
     fetch('https://raw.githubusercontent.com/sagarshirbhate/Country-State-City-Database/master/Contries.json')
@@ -26,8 +35,20 @@ class WebsitePolicy extends Component {
       </option>
     ));
   }
+
   
+  handleCountrySelect = (event) => {
+    (event.target.value ===  this.state.selectedCountry) ? (
+      this.setState({errorCountry:''})
+    ) : (
+      this.setState({errorCountry:'Please select your Country'})
+    );
+
+  } 
+
   renderGDPRform = () => {
+    const { errorCountry } = this.state;
+    let that =  this;
     Popup.create({
       title: 'Own Your Personal Data',
       content: <div className="popupcontainer row ">
@@ -35,10 +56,14 @@ class WebsitePolicy extends Component {
           <Col >
             <span className="text-muted font-13 p lead">What country do you live in ? </span>
             <FormGroup controlId="formControlsSelect">
-              <FormControl className="lead" componentClass="select" placeholder="select"   onChange={(e) => {this.setState({selectedCountry: e.target.value});}} >
+              <FormControl componentClass="select" autoComplete='country-name' placeholder="Country Name"  onChange={(e) => this.setState({country: e.target.value})} >
+                <option value={null}>Select Country</option>
                 {this.getCountryRows()}
               </FormControl>
             </FormGroup>
+            <HelpBlock>
+              <p className="website-error">{errorCountry}</p>
+            </HelpBlock>
           </Col>
         </FormGroup>
       </div>,
@@ -54,6 +79,7 @@ class WebsitePolicy extends Component {
           text: 'Save',
           className: 'success',
           action: function () {
+            that.handleCountrySelect; //hanldes the selected country 
             Popup.create({
               title: 'Own Your Personal Data',
               content: <div className="popupcontainer row ">
@@ -82,8 +108,15 @@ class WebsitePolicy extends Component {
                       </div>,
                       buttons: {
                         left: [{
-                          text: 'Verify Emal',
+                          text : 'Cancel',
                           className: 'danger',
+                          action: function() {
+                            Popup.close();
+                          }
+                        }],
+                        right: [{
+                          text: 'Verify Email',
+                          className: 'success',
                           action: function () {
                             Popup.create({
                               title: 'Own Your Personal Data',
@@ -127,13 +160,18 @@ class WebsitePolicy extends Component {
               }
             });
             Popup.close();
+          
           }
+    
+        
         }]
       }
     });
+ 
   }
 
   render() {
+  
     return (
       <div className="main-container">
         <section className="text-center bg--secondary">

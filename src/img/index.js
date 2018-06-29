@@ -31,6 +31,7 @@ export { default as Activitynotifications2 } from './activitynotifications2.svg'
 export { default as Liveviewers2 } from './liveviewers2.svg';
 export { default as Gdpr }  from './gdpr.png';
 export { default as Integration } from './integration.png';
+export { default as Illustration }  from  './illustration.png';
 export { default as Swivelscreen } from './screen-features.png';
 export { default as Sw1 }  from './Notification.png';
 export { default as Sw2 }  from './group activity.png';
