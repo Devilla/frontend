@@ -1,11 +1,11 @@
 import React , { Component } from 'react';
 import './Oauthgenerate.scss';
 import { Row,Col } from 'react-bootstrap';
-// import { Link } from 'react-router';
 import moment from 'moment';
 import {
   FormGroup,
-  FormControl
+  FormControl,
+  HelpBlock
 } from 'react-bootstrap';
 
 
@@ -14,10 +14,16 @@ class Oauthpage extends Component {
     super();
     this.state = {
       clientId: '65790-18281682901',
-      clientSecret: 'JSKSGDAGD6RHHUIGR'
+      clientSecret: 'JSKSGDAGD6RHHUIGR',
+      clientname: '',
+      errorname: ''
     };
   }
-  
+
+  handleClientNameChange = (evt) => {
+    this.setState({clientname: evt.target.value, errorname:'' });
+  }
+
   getClientInfoList = () => {
     return (
       <div className="clientinfolist">
@@ -56,11 +62,14 @@ class Oauthpage extends Component {
                     bsClass="form-control ml-3"
                     id="clientname"
                     placeholder="example: Ray-101, John doe"
-                    onChange={()=>{}}
+                    onChange={(e)=>{this.handleClientNameChange(e);}}
                     onBlur={()=>{}}
                     required={true}
                   />
                 </FormGroup>
+                <HelpBlock>
+                  <p className='website-error'>{this.state.errorname}</p>
+                </HelpBlock>
               </Col>
             </Row>
             <Row>
