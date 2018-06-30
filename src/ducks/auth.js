@@ -21,6 +21,9 @@ export const VALIDATE_COUPON = action('VALIDATE_COUPON');
 export const COUPON_SUCCESS = action('COUPON_SUCCESS');
 export const COUPON_ERROR = action('COUPON_ERROR');
 export const CLEAR_COUPON_ERROR = action('CLEAR_COUPON_ERROR');
+export const AFFILIATE_ERROR = action('AFFILIATE_ERROR');
+export const CLEAR_AFFILIATE_ERROR = action('CLEAR_AFFILIATE_ERROR');
+
 
 export const fetchUser = () => ({ type: FETCH });
 export const fetchRoles = () => ({ type: FETCHROLES });
@@ -72,10 +75,10 @@ const auth = (state = initialState, action) => {
       return state.set('forgetError', action.error);
     case CLEAR_FORGOT_PASSWORD_ERROR:
       return state.set('forgetError', '');
-      case AFFILIATE_ERROR:
-        return state.set('affiliateError', action.error);
-      case CLEAR_AFFILIATE_ERROR:
-        return state.set('affiliateError', '');
+    case AFFILIATE_ERROR:
+      return state.set('affiliateError', action.error);
+    case CLEAR_AFFILIATE_ERROR:
+      return state.set('affiliateError', '');
     default:
       return state;
   }

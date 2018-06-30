@@ -64,6 +64,7 @@ class AffiliateRegister extends Component {
         'email': this.state.email
       };
       this.props.affiliateSuccess(data);
+      this.props.clearAffiliateError();
       this.setState({name: '',email: '', emailError: ''});
     }
   }

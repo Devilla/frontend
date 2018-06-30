@@ -117,8 +117,8 @@ export function* affiliateSuccess(action) {
     const res = yield call(api.GET, 'user/sendmail/affiliate', action.data);
     if(res.error)
       yield put(actions.affiliateError(res.message));
-      else
-        yield toast.info('Reset link sent.', toastConfig);
+    else
+      yield toast.info('Reset link sent.', toastConfig);
     yield put(loaded());
   } catch (error) {
     yield put(loaded());
