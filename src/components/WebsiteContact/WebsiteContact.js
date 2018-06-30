@@ -1,17 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { validateEmail } from 'services/FormUtils';
-import { contactSuccess } from 'ducks/auth';
+import { contactUs } from 'ducks/auth';
 import './WebsiteContact.scss';
-
-
-
-function validate(password, authEmail) {
-  return {
-    password: password.length === 0,
-    authEmail: authEmail === false
-  };
-}
 
 class WebsiteContact extends Component {
   constructor(){
@@ -31,23 +22,13 @@ class WebsiteContact extends Component {
 
   handleSubmit = (evt) => {
     evt.preventDefault();
-    if (!this.canBeSubmitted()) {
-      return;
-    } else {
-      const data = {
-        'name': this.state.name,
-        'email': this.state.email,
-        'message': this.state.message
-      };
-      this.props.contactSuccess(data);
-      this.setState({name: '', email: '', message: '', emailError: ''});
-    }
-  }
-
-  canBeSubmitted() {
-    const errors = validate(this.state.email, this.state.authEmail);
-    const isDisabled = Object.keys(errors).some(x => errors[x]);
-    return !isDisabled;
+    const data = {
+      'name': this.state.name,
+      'email': this.state.email,
+      'message': this.state.message
+    };
+    this.props.contactUs(data);
+    this.setState({name: '', email: '', message: '', emailError: ''});
   }
 
   checkEmailBlur = (event) => {
@@ -105,7 +86,7 @@ class WebsiteContact extends Component {
                 <p className="lead"></p>
               </div>
               <div className="col-md-6">
-                <form onSubmit={this.handleSubmit} className="form-email row" method="POST" data-name="Contactus Form" >
+                <form className="form-email row" method="POST" data-name="Contactus Form" >
                   <div className="col-md-12">
                     <input type="text" name="name" placeholder="Name" className="validate-required" onChange={(e) => this.handleChange('name', e.target.value)}  />
                   </div>
@@ -115,7 +96,7 @@ class WebsiteContact extends Component {
                   <div className="col-md-12">
                     <textarea rows="4" name="message" placeholder="Leave us a message" className="validate-required" onChange={(e) => this.handleChange('message', e.target.value)}></textarea>
                   </div>
-                  <button type="submit" className="btn btn--primary type--uppercase">Send Enquiry</button>
+                  <button type="submit" className="btn btn--primary type--uppercase" onClick={this.handleSubmit}>Send Enquiry</button>
                 </form>
               </div>
             </div>
@@ -127,8 +108,12 @@ class WebsiteContact extends Component {
   }
 }
 
+const mapStateToProps = state => ({
+  error: state.getIn(['auth', 'contactError'])
+});
+
 const mapDispatchToProps = {
-  contactSuccess
+  contactUs
 };
 
 export default connect(null, mapDispatchToProps)(WebsiteContact);

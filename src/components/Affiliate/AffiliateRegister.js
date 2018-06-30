@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { validateEmail } from 'services/FormUtils';
 import { HelpBlock } from 'react-bootstrap';
-import { affiliateSuccess, clearAffiliateError } from 'ducks/auth';
+import { affiliate, clearAffiliateError } from 'ducks/auth';
 import { Popup } from 'react-popup';
 
 function validate(password, authEmail) {
@@ -40,8 +40,7 @@ class AffiliateRegister extends Component {
     });
   }
 
-
-  checkEmailBlur= (event) => {
+  checkEmailBlur = (event) => {
     const value = event.target.value;
     const isEmailValid = validateEmail(value);
     this.setState({ isEmailValid });
@@ -71,18 +70,17 @@ class AffiliateRegister extends Component {
   }
 
   handleSubmit(evt) {
+    evt.preventDefault();
     if (!this.canBeSubmitted()) {
-      evt.preventDefault();
       return;
     } else {
-      evt.preventDefault();
       const data = {
         'name': this.state.name,
         'email': this.state.email
       };
-      this.props.affiliateSuccess(data);
+      this.props.affiliate(data);
       this.props.clearAffiliateError();
-      this.setState({name: '',email: '', emailError: ''});
+      this.setState({name: '', email: '', emailError: ''});
     }
   }
   canBeSubmitted() {
@@ -93,7 +91,7 @@ class AffiliateRegister extends Component {
   }
 
   render() {
-    const { errorEmail,errorName,isEmailValid } = this.state;
+    const { errorEmail, errorName, isEmailValid } = this.state;
     const mousepoint = {
       cursor: 'pointer'
     };
@@ -153,11 +151,11 @@ class AffiliateRegister extends Component {
 }
 
 const mapStateToProps = state => ({
-  error: state.getIn(['auth', 'affiliateSuccess'])
+  error: state.getIn(['auth', 'affiliateError'])
 });
 
 const mapDispatchToProps = {
-  affiliateSuccess,
+  affiliate,
   clearAffiliateError
 };
 
