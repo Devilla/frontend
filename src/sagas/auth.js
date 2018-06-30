@@ -114,7 +114,7 @@ export function* fetchRoles() {
 export function* affiliateSuccess() {
   try {
     yield put(load());
-    const res = yield call(api.GET, 'user/sendmail/affiliate');
+    const res = yield call(api.GETAUTH, 'user/sendmail/affiliate?name=shanky&email=sh@ok.com');
     if(res.error)
       yield put(actions.affiliateError(res.message));
     else
@@ -129,7 +129,7 @@ export function* affiliateSuccess() {
 export function* demoSuccess() {
   try {
     yield put(load());
-    const res = yield call(api.GET, 'user/sendmail/demo');
+    const res = yield call(api.GETAUTH, 'user/sendmail/demo?firstname=shanky&lastname=rana&email=sh@ok.com');
     if(res.error)
       yield put(actions.demoError(res.message));
     else
@@ -144,7 +144,7 @@ export function* demoSuccess() {
 export function* contactSuccess() {
   try {
     yield put(load());
-    const res = yield call(api.GET, 'user/sendmail/contact');
+    const res = yield call(api.GETAUTH, 'user/sendmail/contact');
     if(res.error)
       yield put(actions.contactError(res.message));
 
