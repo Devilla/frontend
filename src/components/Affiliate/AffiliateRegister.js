@@ -16,8 +16,7 @@ function validate(password, authEmail) {
 const toastConfig = {
   position: toast.POSITION.BOTTOM_LEFT,
   autoClose: 2000,
-  className: 'toast-style',
- 
+  className: 'toast-style'
 };
 
 class AffiliateRegister extends Component {
@@ -136,7 +135,7 @@ class AffiliateRegister extends Component {
                         value="BECOME A AFFILIATE"
                         style={mousepoint}
                         disabled={!isEmailValid}
-                     
+
                       />
                     </div>
                     <ToastContainer  autoClose={8000} className="toaster"/>

@@ -129,7 +129,8 @@ export function* affiliate(action) {
 export function* demo(action) {
   try {
     yield put(load());
-    const res = yield call(api.GETAUTH, `user/sendmail/demo?firstname=${action.data.firstname}&lastname=${action.data.lastname}&email=${action.data.email}`);
+    const data = action.data;
+    const res = yield call(api.GETAUTH, `user/sendmail/demo?firstname=${data.firstname}&lastname=${data.lastname}&email=${data.email}&phonenumber=${data.phonenumber}&company=${data.company}&totalEmployee=${data.totalEmployee}&department=${data.department}`);
     if(res.error)
       yield put(actions.demoError(res.message));
     else

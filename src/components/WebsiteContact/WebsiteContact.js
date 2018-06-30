@@ -3,18 +3,15 @@ import { connect } from 'react-redux';
 
 import { contactUs } from 'ducks/auth';
 import { toast, ToastContainer } from 'react-toastify';
-
 import './WebsiteContact.scss';
-
-
-
 
 const toastConfig = {
   position: toast.POSITION.BOTTOM_LEFT,
   autoClose: 2000,
   className: 'toast-style',
- 
+
 };
+
 class WebsiteContact extends Component {
   constructor(){
     super();
@@ -31,9 +28,6 @@ class WebsiteContact extends Component {
     scrollElm.scrollTop = 0;
   }
 
-
-
-
   checkEmail(evt) {
     /* eslint-disable */
     var Emailexpr = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
@@ -47,20 +41,9 @@ class WebsiteContact extends Component {
     }
   }
 
-  handleNameChange = (event) => {
-    const { name, value } = event.target;
-    this.setState({ [name]: value });
+  handleStateChange = (target, value) => {
+    this.setState({[target]: value});
   }
-  handleEmailChange = (event) => {
-    const { name, value } = event.target;
-    this.setState({ [name]: value });
-  }
-
-  handleMessageChange = (event) => {
-    const { name, value } = event.target;
-    this.setState({ [name]: value });
-  }
-
 
   handleSubmit = (event) => {
     const data = {
@@ -104,13 +87,13 @@ class WebsiteContact extends Component {
               <div className="col-md-6">
                 <form className="form-email row" data-name="Contactus Form" >
                   <div className="col-md-12">
-                    <input type="text" name="name" placeholder="Name" className="validate-required" onChange={this.handleNameChange}  />
+                    <input type="text" name="name" placeholder="Name" className="validate-required" onChange={(e) => this.handleStateChange(e.target.name, e.target.value)}  />
                   </div>
                   <div className="col-md-12">
-                    <input type="email" name="email" placeholder="Email Address" className="validate-required validate-email" onBlur={this.checkEmailBlur} onChange={this.handleEmailChange} />
+                    <input type="email" name="email" placeholder="Email Address" className="validate-required validate-email" onBlur={this.checkEmailBlur} onChange={(e) => this.handleStateChange(e.target.name, e.target.value)} />
                   </div>
                   <div className="col-md-12">
-                    <textarea rows="4" name="message" placeholder="Leave us a message" className="validate-required" onChange={this.handleMessageChange}></textarea>
+                    <textarea rows="4" name="message" placeholder="Leave us a message" className="validate-required" onChange={(e) => this.handleStateChange(e.target.name, e.target.value)}></textarea>
                   </div>
 
                   <button type="submit" className="btn btn--primary type--uppercase" onClick={this.handleSubmit}>Send Enquiry</button>
