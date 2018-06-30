@@ -39,6 +39,7 @@ class NewCampaignContainer extends Component {
       errorWebsiteUrl: '',
       activeClass: 1,
       loaderActive: false,
+      sampleDisplay: false,
       notification: ''
     };
   }
@@ -75,6 +76,8 @@ class NewCampaignContainer extends Component {
   }
 
   setActiveState = (val) => {
+    if(this.state.sampleDisplay && val != 3)
+      this.setState({sampleDisplay: false});
     if(val == 2)
       this.setState({notification: ''});
     this.setState({activeClass: val});
@@ -99,6 +102,10 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
     return toast('Pixel copied', toastConfig);
   }
 
+  showNotification = () => {
+    this.setState({sampleDisplay: !this.state.sampleDisplay});
+  }
+  
   setNotification = (notification) => {
     this.setState({notification: notification});
   }
@@ -154,16 +161,19 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
   render() {
     const errors = validate(this.state.campaignname, this.state.website);
     const isDisabled = Object.keys(errors).some(x => errors[x]);
+    const { activeClass, loaderActive, notification, sampleDisplay } = this.state;
     return (
       <div>
         {this.props.campaign && Object.keys(this.props.campaign).length !== 0 && this.props.campaign.constructor === Object?
           <CampaignSettings
-            notification={this.state.notification}
-            loaderActive={this.state.loaderActive}
+            sampleDisplay={sampleDisplay}
+            loaderActive={loaderActive}
+            activeClass={activeClass}
+            notification={notification}
+            showNotification={this.showNotification}
             goLive={this.goLive}
             verifyPixelStatus={this.verifyPixelStatus}
             handlePixelCopy={this.handlePixelCopy}
-            activeClass={this.state.activeClass}
             setActiveState={this.setActiveState}
             setNotification={this.setNotification}
             clearNotification={this.clearNotification}

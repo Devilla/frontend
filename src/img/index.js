@@ -31,6 +31,7 @@ export { default as Activitynotifications2 } from './activitynotifications2.svg'
 export { default as Liveviewers2 } from './liveviewers2.svg';
 export { default as Gdpr }  from './gdpr.png';
 export { default as Integration } from './integration.png';
+export { default as Illustration }  from  './illustration.png';
 export { default as Swivelscreen } from './screen-features.png';
 export { default as Sw1 }  from './Notification.png';
 export { default as Sw2 }  from './group activity.png';
@@ -47,6 +48,21 @@ export { default as Tbars } from './3bars.png';
 export { default as Smallicon } from './smallicon.png';
 export { default as Ticon } from './3icon.png';
 export { default as Profile } from './profile.png';
+
+
+
+//Integration pic
+export { default as Facebook } from './fb.png';
+export { default as Zendesk } from './zendesk.png';
+export { default as Google } from './google.png';
+export { default as TrustPilot } from './trustpilot.png';
+export { default as FourSquare } from './foursquare.png';
+export { default as G2Crowd } from './G2crowd.png';
+export { default as TrustRadius } from './trustradius.jpg';
+export { default as Yelp } from './yelp.png';
+export { default as BingPlaces } from './bingplaces.png';
+export { default as Smallpic } from './smallprofile.png';
+
 
 
 

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { updatePaymentMethod, createPayment } from 'ducks/payment';
 import { updateProfile } from 'ducks/profile';
@@ -67,7 +66,7 @@ class UpgradeCard extends Component {
         <Row >
           <Col md={12}>
             <div className="card-box pt-0 pl-0">
-              <h4 className="header-title text-left"><Link to="/billing-details"><i className="icon-arrow-left mr-3"></i></Link>Payment Method</h4>
+              <h4 className="header-title text-left">Payment Method</h4>
               <hr/>
               <div className = "upgrade-card-container" >
                 <div className="panel panel-default">
@@ -81,22 +80,22 @@ class UpgradeCard extends Component {
                             </a>
                           </li>
                           <li className="nav-item waves-effect">
-                            <a data-toggle="tab" aria-expanded="true" className={`nav-link ${activeClass == 2?'active':''}`} onClick={() => this.setActiveState(2)}>
+                            <a data-toggle="tab" aria-expanded="true" className={`nav-link ${activeClass == 2?'active':''}`}>
                               <i className="fi-mail mr-2"></i>Debit Card
                             </a>
                           </li>
                           <li className="nav-item waves-effect">
-                            <a data-toggle="tab" aria-expanded="false" className={`nav-link ${activeClass == 3?'active':''}`} onClick={() => this.setActiveState(3)}>
+                            <a data-toggle="tab" aria-expanded="false" className={`nav-link ${activeClass == 3?'active':''}`}>
                               <i className="fi-layers mr-2"></i> Paypal
                             </a>
                           </li>
                           <li className="nav-item waves-effect">
-                            <a data-toggle="tab" aria-expanded="false" className={`nav-link ${activeClass == 4?'active':''}`} onClick={() => this.setActiveState(4)}>
+                            <a data-toggle="tab" aria-expanded="false" className={`nav-link ${activeClass == 4?'active':''}`}>
                               <i className="fi-layers mr-2"></i> Bitcoin
                             </a>
                           </li>
                           <li className="nav-item waves-effect">
-                            <a data-toggle="tab" aria-expanded="false" className={`nav-link ${activeClass == 5?'active':''}`} onClick={() => this.setActiveState(5)}>
+                            <a data-toggle="tab" aria-expanded="false" className={`nav-link ${activeClass == 5?'active':''}`}>
                               <i className="fi-layers mr-2"></i> Saved card
                             </a>
                           </li>

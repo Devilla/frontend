@@ -19,7 +19,6 @@ import 'react-popup/style.css';
 import './DashboardContainer.scss';
 
 
-
 class DashboardContainer extends Component {
   constructor(props) {
     super(props);
@@ -187,7 +186,7 @@ class DashboardContainer extends Component {
           <div>
             <div className="content-page" >
               <div className="topbar" >
-                <nav className="navbar-custom">
+                <nav className="navbar-custom pr-0">
                   <Header
                     username={user.username}
                     openCloseDropdown={this.openCloseDropdown}

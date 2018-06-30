@@ -10,7 +10,8 @@ import { Link } from 'react-router';
 class WebsiteFeature extends Component {
 
   componentDidMount() {
-    window.scrollTo(0, 0);
+    let scrollElm = document.scrollingElement;
+    scrollElm.scrollTop = 0;
   }
   render() {
 
@@ -107,32 +108,8 @@ class WebsiteFeature extends Component {
             </div>
 
           </div>
-
         </section>
-
-        <hr className="my-auto col-md-6" />
-        <section className="text-center ">
-          <div className="container mb-4">
-            <div className="row">
-              <div className="col-md-8 col-lg-6">
-                <div className="cta">
-                  <h2>Purchase Stack now and get lifetime free content updates</h2>
-                  <p className="lead">
-                                        Each purchase of Stack comes with six months free support — and a lifetime of free content and bug-fix updates.
-                  </p>
-                  <a className="btn btn--primary type--uppercase" href="https://themeforest.net/item/stack-multipurpose-html-with-page-builder/19337626?ref=medium_rare">
-                    <span className="btn__text">
-                                            Purchase on Envato
-                    </span>
-                    <span className="label">$18 USD</span>
-                  </a>
-                </div>
-              </div>
-            </div>
-
-          </div>
-
-        </section>
+        <hr className="my-auto col-md-6 text-right" />
 
       </div>
     );

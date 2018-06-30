@@ -111,6 +111,20 @@ export function* fetchRoles() {
   }
 }
 
+export function* affiliateSuccess(action) {
+  try {
+    yield put(load());
+    const res = yield call(api.GET, 'user/sendmail/affiliate', action.data);
+    if(res.error)
+      console.log(res.error);
+
+    yield put(loaded());
+  } catch (error) {
+    yield put(loaded());
+    yield console.log(error);
+  }
+}
+
 export function* forgotPassword(action) {
   try {
     yield put(load());
@@ -208,6 +222,10 @@ export function* watchUpdateUser() {
   yield takeLatest(actions.UPDATE_USER, updateUser);
 }
 
+export function* watchAffiliateSuccess() {
+  yield takeLatest(actions.AFFILIATE_SUCCESS, affiliateSuccess);
+}
+
 export function* watchForgotPassword() {
   yield takeLatest(actions.FORGOT_PASSWORD, forgotPassword);
 }
@@ -230,6 +248,7 @@ export default function* rootSaga() {
     fork(watchFetchUser),
     fork(watchUpdateUser),
     fork(watchFetchRoles),
+    fork(watchAffiliateSuccess),
     fork(watchForgotPassword),
     fork(watchSocialLogin),
     fork(watchVerifyUser),

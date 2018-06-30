@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router';
 import { Grid, Row, Col, Table, Glyphicon } from 'react-bootstrap';
 import Card from 'components/utils/card';
 import Switch from 'react-flexible-switch';
@@ -108,7 +107,6 @@ class Notification extends Component {
     return (
       <div className="manage-notification">
         <div className="card-box">
-          <h4 className="header-title"><Link to="/dashboard"><i className="icon-arrow-left mr-3"></i></Link>Notifications</h4>
           <table className="table table-striped">
             <thead>
               <tr>

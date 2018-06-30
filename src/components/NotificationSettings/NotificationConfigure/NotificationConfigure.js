@@ -42,49 +42,56 @@ const NotificationConfigure = ({
             isDisabled={activity}
             content={
               <div className="notification-configure-content">
-                <Col md={6}>
-                  <NotificationDesign
-                    toggleMap={toggleMap}
-                    contentText={contentText}
-                    visitorText={visitorText}
-                    notification={notification}
-                    notificationPanelStyle={notificationPanelStyle}
-                  />
-                </Col>
-                <Col md={6}>
-                  <NotificationDesignSetting
-                    profile={profile}
-                    toggleTextBox={toggleTextBox}
-                    toggleMap={toggleMap}
-                    contentText={contentText}
-                    visitorText={visitorText}
-                    notificationUrl={notificationUrl}
-                    notification={notification}
-                    notificationPanelStyle={notificationPanelStyle}
-                    onConfigChange={handleNotificationStyleChange}
-                    handleContentChange={handleContentChange}
-                    handleClickableNotification={handleClickableNotification}
-                  />
-                </Col>
+                <Row>
+                  <Col md={7}>
+                    <NotificationDesign
+                      toggleMap={toggleMap}
+                      contentText={contentText}
+                      visitorText={visitorText}
+                      notification={notification}
+                      notificationPanelStyle={notificationPanelStyle}
+                    />
+                  </Col>
+                  <Col md={5}>
+                    <NotificationDesignSetting
+                      profile={profile}
+                      toggleTextBox={toggleTextBox}
+                      toggleMap={toggleMap}
+                      contentText={contentText}
+                      visitorText={visitorText}
+                      notificationUrl={notificationUrl}
+                      notification={notification}
+                      notificationPanelStyle={notificationPanelStyle}
+                      onConfigChange={handleNotificationStyleChange}
+                      handleContentChange={handleContentChange}
+                      handleClickableNotification={handleClickableNotification}
+                    />
+                  </Col>
+                </Row>
               </div>
             }
           />
         </Col>
       </Row>
-
-      <div className="m-t-50 pull-right">
-        <span className="btn btn-primary mr-3" onClick={backConfiguration}>
+      <Row className="state-btn">
+        <Col md={4}>
+    
+          <span className="btn btn-primary mr-3" onClick={backConfiguration}>
           Back
-        </span>
-
-        <span className="btn btn-primary mr-3" onClick={setDefaultPanel} >
+          </span>
+        </Col>
+        <Col md={4}>
+          <span className="btn btn-primary mr-3" onClick={setDefaultPanel} >
           Set Default
-        </span>
-
-        <span className="btn btn-primary mr-3" onClick={saveConfiguration}>
+          </span>
+        </Col>
+        <Col md={4}>
+          <span className="btn btn-primary mr-3 " onClick={saveConfiguration}>
           Save
-        </span>
-      </div>
+          </span>
+        </Col>
+     
+      </Row>
     </div>
   );
 };

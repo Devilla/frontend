@@ -5,6 +5,9 @@ export default class Affiliate extends Component {
   constructor() {
     super();
   }
+  componentDidMount() {
+    window.scrollTo(0,0);
+  }
   render() {
     return (
       <div className="main-container">
@@ -72,11 +75,11 @@ export default class Affiliate extends Component {
                   <p className='lead' style={{ color: 'white' }}>
                                         Join us today to be a part of something exciting and start making money.
                   </p>
-                  <a className="btn btn--primary type--uppercase" href="/affiliateregister">
+                  <Link className="btn btn--primary type--uppercase" to="/affiliateregister">
                     <span className="btn__text">
-                                            BECOME A INFLUENCE AFFILIATE
+                      BECOME A INFLUENCE AFFILIATE
                     </span>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>

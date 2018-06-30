@@ -11,7 +11,8 @@ const initialState = {
   errorEmail: '',
   fm1 : true,
   fm2 : false,
-  fm3 : false
+  fm3 : false,
+
 };
 class WebsiteDemoPage extends  Component  {
 
@@ -23,8 +24,48 @@ class WebsiteDemoPage extends  Component  {
 
   }
 
+
+  handle_fnameChange(evt)
+  {
+    this.setState({'firstName'  : evt.target.value});
+  }
+  handle_lnameChange(evt)
+  {
+    this.setState({'lastName'  : evt.target.value});
+  }
+
+  handle_emailChange(evt)
+  {
+    this.setState({'email'  : evt.target.value});
+  }
+
+  handle_numberChange(evt)
+  {
+    this.setState({'Phone'  : evt.target.value});
+  }
+
+  handleCompanyChange(evt)
+  {
+    this.setState({'company'  : evt.target.value});
+    console.log(evt.target.value);
+  }
+
+  handleEmployeeChange(evt)
+  {
+    this.setState({'totalemp'  : evt.target.value});
+    console.log(evt.target.value);
+  }
+
+  handleDeptChange(evt)
+  {
+    this.setState({'dept'  : evt.target.value});
+    console.log(evt.target.value);
+  }
+
+
   componentDidMount(){
-    window.scrollTo(0, 0);
+    var scrollElm = document.scrollingElement;
+    scrollElm.scrollTop = 0;
   }
 
   componentWillUnmount() {
@@ -74,18 +115,18 @@ class WebsiteDemoPage extends  Component  {
                         </div>
                       </div>
                       <div className="col-md-8">
-                        <input type="text" name="First Name" placeholder="First Name" />
+                        <input type="text" name="firstname" placeholder="First Name" onChange={this.handle_fnameChange.bind(this)} />
 
                       </div>
                       <div className="col-md-8">
-                        <input type="text" name="Last Name" placeholder="Last Name" />
+                        <input type="text" name="lastname" placeholder="Last Name" onChange={this.handle_lnameChange.bind(this)} />
                       </div>
                       <div className="col-md-8">
-                        <input type="email" name="Email Address" placeholder="Email" />
+                        <input type="email" name="emailaddress" placeholder="Email" onChange={this.handle_emailChange.bind(this)} />
 
                       </div>
                       <div className="col-md-8">
-                        <input type="number" name="Phone Number" placeholder="Phone" />
+                        <input type="number" name="phonenumber" placeholder="Phone" onChange={this.handle_numberChange.bind(this)} />
                       </div>
                       <div className="col-md-8">
                         <button
@@ -113,10 +154,10 @@ class WebsiteDemoPage extends  Component  {
                         </div>
                       </div>
                       <div className="col-md-8">
-                        <input type="text" name="Company" placeholder="Company" />
+                        <input type="text" name="Company" onChange={this.handleCompanyChange.bind(this)} placeholder="Company" />
                       </div>
                       <div className="col-md-8">
-                        <select  style={{'color': '#A8A8A8','fontSize':'16px'}} className='employees required select' id='account[help_desk_size]' name='account[help_desk_size]' placeholder='Number of employees' type='select'>
+                        <select  style={{'color': '#A8A8A8','fontSize':'16px'}} className='employees required select' id='account[help_desk_size]' name='account[help_desk_size]' placeholder='Number of employees' type='select' onChange={this.handleEmployeeChange.bind(this)}>
                           <option value="" selected="">Number of employees</option>
                           <option value="5000+">5000+</option>
                           <option value="1000-4999">1000-4999</option>
@@ -129,7 +170,7 @@ class WebsiteDemoPage extends  Component  {
                         </select>
                       </div>
                       <div className="col-md-8">
-                        <select style={{'color': '#A8A8A8','fontSize': '16px'}} className='department required select' id='department' name='department' placeholder='Department' type='select'>
+                        <select style={{'color': '#A8A8A8','fontSize': '16px'}} className='department required select' id='department' name='department' placeholder='Department' type='select' onChange={this.handleDeptChange.bind(this)}>
                           <option value="" selected="">Department</option>
                           <option value="Customer Service">Customer Service</option>
                           <option value="Facilities">Facilities</option>
