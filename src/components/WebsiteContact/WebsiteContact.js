@@ -37,24 +37,20 @@ class WebsiteContact extends Component {
 
   handleNameChange = (event) => {
     const { name, value } = event.target;
-    console.log(name+value);
     this.setState({ [name]: value });
   }
   handleEmailChange = (event) => {
     const { name, value } = event.target;
-    console.log(name+value);
     this.setState({ [name]: value });
   }
 
   handleMessageChange = (event) => {
     const { name, value } = event.target;
-    console.log(name+value);
     this.setState({ [name]: value });
   }
 
 
   handleSubmit = (event) => {
-    event.preventDefault();
     const data = {
       'name': this.state.name,
       'email': this.state.email,
@@ -91,7 +87,7 @@ class WebsiteContact extends Component {
                 <p className="lead"></p>
               </div>
               <div className="col-md-6">
-                <form className="form-email row" method="POST" data-name="Contactus Form" >
+                <form className="form-email row" data-name="Contactus Form" >
                   <div className="col-md-12">
                     <input type="text" name="name" placeholder="Name" className="validate-required" onChange={this.handleNameChange}  />
                   </div>
