@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-
+import { connect } from 'react-redux';
+import { demoSuccess, clearDemoError } from 'ducks/auth';
 const initialState = {
   firstname : '',
   lastname : '',
@@ -14,6 +15,13 @@ const initialState = {
   fm3 : false,
 
 };
+
+function validate(password, authEmail) {
+  return {
+    password: password.length === 0,
+    authEmail: authEmail === false
+  };
+}
 class WebsiteDemoPage extends  Component  {
 
   constructor() {
@@ -87,9 +95,28 @@ class WebsiteDemoPage extends  Component  {
       }));
     }
 
-    nextStepHandler = () => {
-      //next functionlaity to be added
-      //handler for last button
+    nextStepHandler = (evt) => {
+      if (!this.canBeSubmitted()) {
+        evt.preventDefault();
+        return;
+      } else {
+        evt.preventDefault();
+        const data = {
+          'fistname': this.state.fistname,
+          'lastName': this.state.lastName,
+          'email': this.state.email
+        };
+        this.props.demoSuccess(data);
+        this.props.clearDemoError();
+        this.setState({fistname: '',lastName: '',email: '', emailError: ''});
+      }
+    }
+
+    canBeSubmitted() {
+      const errors = validate(this.state.email, this.state.password, this.state.authEmail);
+
+      const isDisabled = Object.keys(errors).some(x => errors[x]);
+      return !isDisabled;
     }
 
 
@@ -212,7 +239,7 @@ class WebsiteDemoPage extends  Component  {
                           type="button"
                           name="trialbtn"
                           className="btn btn--primary col-md-12 ml-0"
-                          onClick={this.nextStepHandler}>Start your trial
+                          onClick={this.nextStepHandler.bind(this)}>Start your trial
                         </button>
                       </div>
                     </div>) :(
@@ -228,5 +255,13 @@ class WebsiteDemoPage extends  Component  {
     }
 
 }
+const mapStateToProps = state => ({
+  error: state.getIn(['auth', 'demoSuccess'])
+});
 
-export default WebsiteDemoPage;
+const mapDispatchToProps = {
+  demoSuccess,
+  clearDemoError
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(WebsiteDemoPage);

@@ -111,10 +111,10 @@ export function* fetchRoles() {
   }
 }
 
-export function* affiliateSuccess(action) {
+export function* affiliateSuccess() {
   try {
     yield put(load());
-    const res = yield call(api.GET, 'user/sendmail/affiliate', action.data);
+    const res = yield call(api.GET, 'user/sendmail/affiliate');
     if(res.error)
       yield put(actions.affiliateError(res.message));
     else
@@ -126,10 +126,25 @@ export function* affiliateSuccess(action) {
   }
 }
 
-export function* contactSuccess(action) {
+export function* demoSuccess() {
   try {
     yield put(load());
-    const res = yield call(api.GET, 'user/sendmail/contact', action.data);
+    const res = yield call(api.GET, 'user/sendmail/demo');
+    if(res.error)
+      yield put(actions.demoError(res.message));
+    else
+      yield toast.info('Demo Request sent.', toastConfig);
+    yield put(loaded());
+  } catch (error) {
+    yield put(loaded());
+    yield console.log(error);
+  }
+}
+
+export function* contactSuccess() {
+  try {
+    yield put(load());
+    const res = yield call(api.GET, 'user/sendmail/contact');
     if(res.error)
       console.log(res.error);
 
