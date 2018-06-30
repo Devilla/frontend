@@ -38,7 +38,8 @@ class NewCampaignContainer extends Component {
       errorName: '',
       errorWebsiteUrl: '',
       activeClass: 1,
-      loaderActive: false
+      loaderActive: false,
+      sampleDisplay: false
     };
   }
 
@@ -74,6 +75,8 @@ class NewCampaignContainer extends Component {
   }
 
   setActiveState = (val) => {
+    if(this.state.sampleDisplay && val != 3)
+      this.setState({sampleDisplay: false});
     this.setState({activeClass: val});
   }
 
@@ -94,6 +97,10 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
     });
 
     return toast('Pixel copied', toastConfig);
+  }
+
+  showNotification = () => {
+    this.setState({sampleDisplay: !this.state.sampleDisplay});
   }
 
   componentWillUnmount() {
@@ -143,15 +150,18 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
   render() {
     const errors = validate(this.state.campaignname, this.state.website);
     const isDisabled = Object.keys(errors).some(x => errors[x]);
+    const { activeClass, loaderActive, sampleDisplay } = this.state;
     return (
       <div>
         {this.props.campaign && Object.keys(this.props.campaign).length !== 0 && this.props.campaign.constructor === Object?
           <CampaignSettings
-            loaderActive={this.state.loaderActive}
+            sampleDisplay={sampleDisplay}
+            loaderActive={loaderActive}
+            activeClass={activeClass}
+            showNotification={this.showNotification}
             goLive={this.goLive}
             verifyPixelStatus={this.verifyPixelStatus}
             handlePixelCopy={this.handlePixelCopy}
-            activeClass={this.state.activeClass}
             setActiveState={this.setActiveState}
             {...this.props}
           />

@@ -20,7 +20,7 @@ const initialRules = {
   displayPosition: 'Bottom Left',
   popupAnimationIn:'fadeInUp',
   popupAnimationOut:'fadeOutDown',
-  sampleDisplay: false,
+  // sampleDisplay: false,
   animation: 'fadeIn'
 };
 
@@ -30,7 +30,6 @@ class Rules extends Component{
     this.state = initialRules;
     this.handleStateChange = this.handleStateChange.bind(this);
     this.saveRules = this.saveRules.bind(this);
-    this.showNotification = this.showNotification.bind(this);
     this.handleNextState = this.handleNextState.bind(this);
     this.handleBackState = this.handleBackState.bind(this);
     this.handleAnimation = this.handleAnimation.bind(this);
@@ -90,6 +89,7 @@ class Rules extends Component{
 
 
   componentWillUnmount() {
+    this.setState({sampleDisplay: false});
     this.props.setActiveState(1);
   }
 
@@ -101,10 +101,6 @@ class Rules extends Component{
     this.props.setActiveState(2);
   }
 
-  showNotification() {
-    this.setState({sampleDisplay: !this.state.sampleDisplay});
-  }
-
   handleAnimation(value) {
     this.setState({animation: value});
   }
@@ -114,6 +110,7 @@ class Rules extends Component{
   }
 
   render() {
+    const { sampleDisplay, showNotification } = this.props;
     return (
       <div className="rules-container">
         <div className="text-center  m-t-20">
@@ -121,6 +118,7 @@ class Rules extends Component{
         </div>
         <div className="row m-t-30 m-b-30">
           <LeftView
+            sampleDisplay={sampleDisplay}
             handleAnimation={this.handleAnimation}
             handleStateChange={this.handleStateChange}
             {...this.state}
@@ -132,7 +130,7 @@ class Rules extends Component{
         </div>
         <div className="rules-buttons">
           <button type="button" className="btn btn-color waves-light waves-effect number " onClick={this.handleBackState}><i className="icon-arrow-left pr-2"></i>Back</button>
-          <button type="button" className="btn btn-color btn-outline-primary waves-light waves-effect number" onClick={this.showNotification}>{this.state.sampleDisplay?'Hide':'Show'} Notification </button>
+          <button type="button" className="btn btn-color btn-outline-primary waves-light waves-effect number" onClick={showNotification}> Notification </button>
           <button type="button" className="btn btn-color btn-outline-primary waves-light waves-effect number" onClick={this.setDefaultRules}>Set Default</button>
           <button type="button" className="btn btn-color waves-light waves-effect number ml-2 pl-4 pr-4" onClick={this.saveRules}>Next<i className="icon-arrow-right pl-2"></i> </button>
         </div>

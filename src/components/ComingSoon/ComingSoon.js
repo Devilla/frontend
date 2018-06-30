@@ -61,22 +61,22 @@ class ComingSoon extends Component {
                         <div className="digit"></div>
                         <div className="digit"></div>
                         <div className="digit"></div>
-                        <p className='note dash_title'>Days</p>
+                        <p className='note dash_title'></p>
                       </div>
                       <div className="clock-presenter hours_dash col-sm-3">
                         <div className="digit"></div>
                         <div className="digit"></div>
-                        <p className='note dash_title'>Hours</p>
+                        <p className='note dash_title'></p>
                       </div>
                       <div className="clock-presenter minutes_dash col-sm-3">
                         <div className="digit"></div>
                         <div className="digit"></div>
-                        <p className='note dash_title'>Minutes</p>
+                        <p className='note dash_title'></p>
                       </div>
                       <div className="clock-presenter seconds_dash col-sm-3">
                         <div className="digit"></div>
                         <div className="digit"></div>
-                        <p className='note dash_title'>Seconds</p>
+                        <p className='note dash_title'></p>
                       </div>
                     </div>
                   </div>
