@@ -33,12 +33,12 @@ export const updateUser = (user) => ({ type: UPDATE_USER, user });
 export const fetchRolesSuccess = (roles) => ({ type: FETCH_ROLES_SUCCESS, roles });
 
 export const affiliateSuccess = (data) => ({ type: AFFILIATE_SUCCESS, data });
-<<<<<<< HEAD
+
 export const affiliateError = (data) => ({ type: AFFILIATE_ERROR, data });
 export const clearAffiliateError = () => ({ type: CLEAR_AFFILIATE_ERROR });
-=======
+
 export const contactSuccess = (data) => ({ type: CONTACT_SUCCESS, data });
->>>>>>> 929dd45a36a38aed6828b88bb0b6e278aa826eb1
+
 
 export const forgotPassword = (data) => ({ type: FORGOT_PASSWORD, data });
 export const forgotPasswordError = (error) => ({ type: FORGOT_PASSWORD_ERROR, error });
