@@ -83,7 +83,7 @@ const NotificationDesign = ({
                                     </g>
                                   </svg>
                                 </i>
-                                <span>by</span>
+                                <span>by  </span>
                                 <span className="FPqR12wMqJeA12wM7MM9_0" style={{
                                   color: notificationStyle.linkColor,
                                   fontFamily: notificationStyle.linkFontFamily,
