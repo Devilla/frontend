@@ -203,7 +203,6 @@ class AnalyticsContainer extends Component {
   }
 
   render() {
-    console.log(this.state.usersList,'============');
     return (
       <div className="analytics-container">
         {!this.state.usersList.length ?
