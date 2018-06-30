@@ -82,7 +82,8 @@ class Profile extends Component {
     });
   }
 
-  updateProfile(e) {
+  updateProfile = (e) => {
+    this.setState({savedtext: 'Saved'});
     e.preventDefault();
     const {
       firstName,
@@ -96,7 +97,7 @@ class Profile extends Component {
       companyName
     } = this.state;
     let profile = {
-      id: this.props.profile._id,
+      id: this.props.profile? this.props.profile._idb : null,
       firstName: firstName,
       lastName: lastName,
       states: states,
@@ -135,150 +136,133 @@ class Profile extends Component {
     const username = this.props.user
       ? this.props.user.username
       : null;
-
-    return (<div className="content fill ">
-      <Grid fluid="fluid">
-        <Row className="inlineclr">
-          <Col md={12}>
-            <CardHeader title="Profile Page" content={<div className = "profile-container" > <Row>
-                <div className="col-md-4">
-                  <img className="profilePic" src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg"/>
-
-                  <FormGroup className="userName">
-                    <ControlLabel>Username</ControlLabel>
-                    <FormControl type="text" value={username} placeholder="Enter username" disabled={true} id="username"/>
-                  </FormGroup>
-                </div>
-
-                <div className="col-md-2">
-                  <FormGroup className="planUp" controlId="formControlsSelect">
-                    <ControlLabel>Plan</ControlLabel>{this.plansList()}
-                  </FormGroup>
-                </div>
-                <div className="col-md-2">
-                  <div className="profile-over-button">
-                    <Button
-                      onClick={() => browserHistory.push('/upgrade')}
-                      bsStyle="info"
-                      pullRight="pullRight"
-                      fill="fill"
-                      type="button"
-                      icon="cloud-upload"
-                      disabled={false}
-                    >
-                      Upgrade Plan
-                    </Button>
+      
+    return (
+      <div className="content fill profile-container">
+        <Grid fluid={true}>
+          <Col sm={12}>
+            <div className="profile-user-box card-box" >
+              <Row>
+                <Col sm={2}>
+                  <span className="pull-left mr-3"><img src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" alt="User profile" className="thumb-lg rounded-circle" /></span>
+                  <div className=" media-body text-white">
+                    <h4 className="mt-1 mb-1 font-18">Username</h4>
+                    <p className="text-light mb-0">Country</p>
                   </div>
-
-                  <div className="profile-over-button">
-                    <Button
-                      onClick={() => browserHistory.push('/billing-details')}
-                      bsStyle="info"
-                      pullRight="pullRight"
-                      fill="fill"
-                      type="button"
-                      icon="usd"
-                      disabled={false}
-                    >
-                      Billing
-                    </Button>
+                </Col>
+                <Col sm={8}>
+                  <div className="card-box tilebox-one text-center  ">
+                    <h6 className="text-muted text-uppercase mt-0">Plan Type </h6><h3> {this.props.profile?this.props.profile.plan.name:null}</h3>
                   </div>
-                </div>
+                </Col>
+                <Col md={2}>
+                  <div className="profbtn">
+                    <button type="button" onClick={() => browserHistory.push('/upgrade')} className="btn btn-block btn-primary waves-light waves-effect upgrade1">Upgrade</button>
+                    <div> <br /></div>
+                    <button type="button" onClick={() => browserHistory.push('/billing-details')} className="btn btn-block btn-primary waves-light waves-effect billing1">Billing</button>
+                  </div>
+                </Col>
               </Row>
-
-              <form>
-                <Row>
-                  <div className="col-md-1">
-                    First Name
-                  </div>
-                  <div className="col-md-3">
-                    <FormGroup>
-                      <FormControl type="text" value={profile.firstName} placeholder="" disabled={isDisabled} id="firstName" onChange={(e) => this.handleStateChange(e)}/>
-                    </FormGroup>
-                  </div>
-                  <div id="lastnm" className="col-md-1">
-                    Last Name
-                  </div>
-                  <div className="col-md-3">
-                    <FormGroup>
-                      <FormControl type="text" value={profile.lastName} placeholder="" disabled={isDisabled} id="lastName" onChange={(e) => this.handleStateChange(e)}/>
-                    </FormGroup>
-                  </div>
-                </Row>
-                <Row>
-                  <div className="col-md-1">
-                    Address
-                  </div>
-                  <div className="col-md-9">
-                    <FormGroup>
-                      <FormControl type="text" value={profile.address} placeholder="Enter Address" disabled={isDisabled} id="address" onChange={(e) => this.handleStateChange(e)}/>
-                    </FormGroup>
-                  </div>
-                </Row>
-                <Row>
-                  <div className="col-md-10">
-                    <FormGroup>
-
-                      <FormControl type="text" value={profile.address2} placeholder="" disabled={isDisabled} id="address2" onChange={(e) => this.handleStateChange(e)}/>
-                    </FormGroup>
-                  </div>
-
-                </Row>
-                <Row>
-                  <div className="col-md-2">
-                    <FormGroup controlId="formControlsSelect">
-                      <ControlLabel>Country</ControlLabel>
-                      <FormControl type="text" value={profile.country} placeholder="" disabled={isDisabled} id="country" onChange={(e) => this.handleStateChange(e)}/>
-                    </FormGroup>
-                  </div>
-                  <div className="col-md-2">
-                    <FormGroup controlId="formControlsSelect">
-                      <ControlLabel>State</ControlLabel>
-                      <FormControl type="text" value={profile.states} placeholder="" disabled={isDisabled} id="states" onChange={(e) => this.handleStateChange(e)}/>
-                    </FormGroup>
-                  </div>
-                  <div className="col-md-2">
-                    <FormGroup controlId="formControlsSelect">
-                      <ControlLabel>City</ControlLabel>
-                      <FormControl type="text" value={profile.city} placeholder="" disabled={isDisabled} id="city" onChange={(e) => this.handleStateChange(e)}/>
-                    </FormGroup>
-                  </div>
-                </Row>
-                <Row>
-                  <div className="col-md-2">
-                    <FormGroup>
-                      <ControlLabel>Phone Number</ControlLabel>
-                      <FormControl type="text" value={profile.phoneNumber} placeholder="Enter Phone Number" disabled={isDisabled} id="phoneNumber" onChange={(e) => this.handleStateChange(e)}/>
-                    </FormGroup>
-                  </div>
-                  <div className="col-md-2">
-                    <FormGroup>
-                      <ControlLabel>Company Name</ControlLabel>
-                      <FormControl type="text" value={profile.companyName} placeholder="Enter Company Name" disabled={isDisabled} id="companyName" onChange={(e) => this.handleStateChange(e)}/>
-                    </FormGroup>
-                  </div>
-                  <div className="col-md-2">
-                    <FormGroup>
-                      <ControlLabel>Email Address</ControlLabel>
-                      <FormControl type="text" value={profile.email} placeholder="Email Address" disabled={isDisabled} id="emailAddress" onChange={(e) => this.handleStateChange(e)}/>
-                    </FormGroup>
-                  </div>
-                </Row>
-                <Row>
-                  <div className="edit">
-                    <Button bsStyle="info" pullRight="pullRight" fill="fill" type="button" icon={this.state.profileState == 'edit'} onClick={(e) => this.handleEditState(e, this.state.profileState)}>
-                      {'Edit/Save'}
-                    </Button>
-                  </div>
-                </Row>
-                <div className="clearfix"></div>
-              </form>
-            </div>}/>
+            </div>
           </Col>
-        </Row>
-      </Grid>
-      <ToastContainer hideProgressBar={true}/>
-    </div>);
+          <Row>
+            <Col md={12}>
+              <h4 className="header-title m-b-20">Personal Information</h4>
+              <div className="panel-body">
+                <hr />
+                <div className="text-left">
+                  <form>
+                    <Row>
+                      <Col md={6}>
+                        <span className="text-muted font-13 p mt-5"><strong>First Name :</strong> </span>
+                        <FormGroup>
+                          <FormControl type="text" value={profile.firstName} autoComplete='given-name' placeholder="First Name" id="firstName" onChange={(e) => this.handleStateChange(e)} />
+                        </FormGroup>
+                      </Col>
+                      <Col md={6}>
+                        <span className="text-muted font-13 p"><strong>Last Name :</strong> </span>
+                        <FormGroup>
+                          <FormControl type="text" value={profile.lastName} autoComplete='family-name' placeholder="Last Name" id="lastName" onChange={(e) => this.handleStateChange(e)} />
+                        </FormGroup>
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col md={6}>
+                        <span className="text-muted font-13 p"><strong>Phone :</strong> </span>
+                        <FormGroup>
+                          <FormControl type="text" value={profile.phoneNumber} autoComplete='tel-national' placeholder="Phone Number" id="phoneNumber" onChange={(e) => this.handleStateChange(e)} />
+                        </FormGroup>
+                      </Col>
+                      <Col md={6}>
+                        <span className="text-muted font-13 p"><strong>Email :</strong> </span>
+                        <FormGroup>
+                          <FormControl type="text" value={profile.email} autoComplete='email' placeholder="Email Address" id="email" onChange={(e) => this.handleStateChange(e)} />
+                        </FormGroup>
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col md={6}>
+                        <span className="text-muted font-13 p"><strong>Address :</strong> </span>
+                        <FormGroup>
+                          <FormControl type="text" value={profile.address} autoComplete='address-line2' placeholder="Billing Address" id="address" onChange={(e) => this.handleStateChange(e)} />
+                        </FormGroup>
+                      </Col>
+                      <Col md={6}>
+                        <span className="text-muted font-13 p"><strong>Country :</strong> </span>
+                        <FormGroup controlId="formControlsSelect">
+                          <FormControl componentClass="select" autoComplete='country-name' placeholder="Country Name" value={profile.country} onChange={(e) => this.setState({country: e.target.value})} >
+                            <option value={null}>Select Country</option>
+                            {this.getCountryRows()}
+                          </FormControl>
+                        </FormGroup>
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col md={6}>
+                        <span className="text-muted font-13 p"><strong>States :</strong> </span>
+                        <FormGroup controlId="formfBillinControlsSelect">
+                          <FormControl componentClass="select" placeholder="States" autoComplete='address-level1' value={profile.states} onChange={(e) => this.setState({states: e.target.value})}>
+                            <option value={null}>Select State</option>
+                            {this.getStateRows()}
+                          </FormControl>
+                        </FormGroup>
+                      </Col>
+                      <Col md={6}>
+                        <span className="text-muted font-13 p"><strong>City :</strong> </span>
+                        <FormGroup controlId="formControlsSelect">
+                          <FormControl componentClass="select" autoComplete='address-level2' placeholder="City" value={profile.city} onChange={(e) => this.setState({city: e.target.value})}>
+                            <option value={null}>Select City</option>
+                            {this.getCityRows()}
+                          </FormControl>
+                        </FormGroup>
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col md={6}>
+                        <span className="text-muted font-13 p"><strong>Company :</strong> </span>
+                        <FormGroup>
+                          <FormControl type="text" value={profile.companyName} autoComplete='organization' placeholder="Company Name" id="companyName" onChange={(e) => this.handleStateChange(e)} />
+                        </FormGroup>
+                      </Col>
+                    </Row>
+                    <Col md={12}>
+                      <div className="text-right save">
+                        <button type="button" className="btn btn-primary waves-effect" onClick={this.updateProfile}>
+                          <i className="mdi mdi-account-settings-variant mr-1"></i>  {this.props.loading ? ( this.state.savedtext
+                          )
+                            : 'Save Profile'}
+
+                        </button>
+                      </div>
+                    </Col>
+                  </form>
+                </div>
+              </div>
+            </Col>
+          </Row>
+        </Grid>
+        <ToastContainer hideProgressBar={true} />
+      </div>);
   }
 }
 

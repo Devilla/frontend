@@ -87,7 +87,8 @@ class WebsiteSignIn extends Component {
     });
   };
   componentDidMount() {
-    window.scrollTo(0,0);
+    let scrollElm = document.scrollingElement;
+    scrollElm.scrollTop = 0;
   }
 
   render() {
@@ -98,6 +99,7 @@ class WebsiteSignIn extends Component {
     const { error, errorEmail, isPasswordShown, errorPassword, isEmailValid, isPwdValid } = this.state;
 
     return (
+
       <div className="main-container">
         <section className="switchable switchable--switch bg--secondary">
           <div className="container">
@@ -193,6 +195,7 @@ class WebsiteSignIn extends Component {
           </div>
         </section>
       </div>
+
     );
   }
 }

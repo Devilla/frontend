@@ -108,7 +108,8 @@ class WebsiteSignUp extends Component {
     });
   }
   componentDidMount() {
-    window.scrollTo(0,0);
+    let scrollElm = document.scrollingElement;
+    scrollElm.scrollTop = 0;
   }
 
   render() {
@@ -131,7 +132,7 @@ class WebsiteSignUp extends Component {
               <div className="row justify-content-between align-items-center">
                 <div className="col-md-6 col-lg-6 text-center">
                   <div className="switchable__text">
-                  
+
                     <h3>Your first step towards conversions, Signup here.</h3>
                     <span className=" type--fine-print">Already have an account?&nbsp;
                       <Link to="/login">Sign in</Link>
@@ -205,12 +206,12 @@ class WebsiteSignUp extends Component {
                           </span>
                         </div>
                         </div>
-                      
+
                      </form>
                     <hr className="short"/>
-                  
+
                    <p> <span className=" type--fine-print b">Or Signup using: &nbsp;
-                  
+
                     </span> </p>
                         <div className="">
                         <a href={`${base}connect/facebook`} className="link ">
@@ -226,43 +227,43 @@ class WebsiteSignUp extends Component {
                           <Link className="btn btn--icon bg--googleplus" to="">
                             <span className="btn__text">
                               <i className="socicon socicon-google"></i>
-                              Signup using Google 
+                              Signup using Google
                             </span>
                           </Link>
                           </a>
                         </div>
-                    
-            
+
+
                   </div>
                 </div>
                 <div className="col-md-8 col-lg-8 pr-0">
                   <img alt="Image" src={ SignUp } />
                 </div>
               </div>
-              
+
             </div>
           </section>
         </div>);
     return (
-    <div>
-      <div className="authpage section innerpage">
-        <div className="wrapper">
-          <Animated
-          className="leftwrap center"
 
-          animationIn="fadeIn"
-          animationOut="fadeOut"
-          isVisible={true}>
+      <div className='authpage section innerpage'>
+        <div className='wrapper'>
+          <Animated
+            className='leftwrap center'
+
+            animationIn='fadeIn'
+            animationOut='fadeOut'
+            isVisible={true}>
             <form
-            className="loginfrm"
-            onSubmit={this.handleSubmit}>
+              className='loginfrm'
+              onSubmit={this.handleSubmit}>
               {formContent}
             </form>
-            <div className="support"></div>
+            <div className='support'></div>
           </Animated>
         </div>
       </div>
-    </div>
+
     );
   }
 }

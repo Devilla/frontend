@@ -92,36 +92,25 @@ class Notification extends Component {
 
   render() {
     return (
-      <div className="content manage-notification">
-        <Grid fluid>
-
-          <Row>
-            <Col md={12}>
-              <Card
-                plain
-                title="Notifications"
-                category=""
-                ctTableFullWidth ctTableResponsive
-                content={
-                  <Table hover>
-                    <thead>
-                      <tr>
-                        {
-                          notificationFields.map((prop, key) => {
-                            return (
-                              <th key={key}>{prop}</th>
-                            );
-                          })
-                        }
-                      </tr>
-                    </thead>
-                    <tbody>{ this.getNotificationRows() }</tbody>
-                  </Table>
-                }
-              />
-            </Col>
-          </Row>
-        </Grid>
+      <div className="manage-notification">
+        <div className="card-box">
+          <table className="table table-striped">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>CAMPAIGN</th>
+                <th>DOMAIN</th>
+                <th>STATUS</th>
+                <th>TRACK ID</th>
+                <th>CREATED</th>
+                <th>TRASH</th>
+              </tr>
+            </thead>
+            <tbody>
+              {this.getNotificationRows()}
+            </tbody>
+          </table>
+        </div>
       </div>
     );
   }

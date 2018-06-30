@@ -13,44 +13,37 @@ import PricePage from 'components/PricePage';
 
 const PlanList = ({ plan, handleCheckChange, makePayment }) => {
   return (
-    <div className="content fill upgrade-plan">
-      <Grid fluid="fluid" >
-        <Row className="inlineclr">
-          <Col md={30}>
-            <CardHeader title="Upgrade Your current plan" content={
-              <div>
-                <div className="authpage section innerpage">
-                  <div className="container">
-                    <div className="flow-wrapper">
-                      <Animated className="leftwrap center" animationIn="fadeIn" animationOut="fadeOut" isVisible={true}>
-                        <div className="loginfrm" style={{width: '100%'}}>
-                          <h3 className="dashed">Confirm you account</h3>
-                          <div className="section-divider-line"></div>
-                          <div className="frmcntl upgrade-price-div">
-                            <PricePage
-                              paymentPage={true}
-                              selectedPlan={plan}
-                              handleCheckChange={handleCheckChange}
-                            />
-                          </div>
-                          <Row className="upgrade-button">
-                            <div className="col-md-2 pull-left">
-                              <Button type="button" icon="chevron-left" bsStyle="info" fill="fill" onClick={() => browserHistory.push("/profile")}>Back</Button>
-                            </div>
-                            <div className="col-md-2 pull-right">
-                              <Button type="submit" icon="chevron-right" icon_pull="right" bsStyle="info" fill="fill" onClick={() => makePayment()}>Proceed</Button>
-                            </div>
-                          </Row>
-                        </div>
-                      </Animated>
+    <div className="planlist-container">
+      <div className="content fill upgrade-plan ">
+        <Grid fluid={true} >
+          <Row className="inlineclr">
+            <Col md={12}>
+              <div className="card-box pt-0 pl-0">
+                <h4 className="header-title text-left">Upgrade your Plan</h4>
+                <hr/>
+                <div className="plans float-right">
+                  <Row>
+                    <Animated className="leftwrap center text-center" animationIn="fadeIn" animationOut="fadeOut" isVisible={true}>
+                      <PricePage
+                        paymentPage={true}
+                        selectedPlan={plan}
+                        handleCheckChange={handleCheckChange}
+                      />
+                    </Animated>
+                  </Row>
+                  <Row className="float-right">
+                    <div className="m-t-50 ">
+                      <span type="button" className="btn btn-primary  waves-light waves-effect number ml-2 pl-4 pr-4" onClick={() => makePayment()}>Proceed </span>
                     </div>
-                  </div>
+                  </Row>
                 </div>
               </div>
-            } />
-          </Col>
-        </Row>
-      </Grid>
+            </Col>
+
+          </Row>
+        </Grid>
+        <div className="clearfix"></div>
+      </div>
     </div>
   )
 }

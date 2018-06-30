@@ -1,11 +1,8 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import {Animated} from "react-animated-css";
-import $ from 'jquery';
-import {css} from 'glamor';
-import axios from 'axios';
-import Ionicon from 'react-ionicons';
-import {forgotPassword} from 'ducks/auth';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Animated } from 'react-animated-css';
+import { forgotPassword, clearForgotPasswordError } from 'ducks/auth';
+import { HelpBlock } from 'react-bootstrap';
 
 function validate(password, authEmail) {
   return {
@@ -19,8 +16,9 @@ class ForgetPassword extends Component {
     super();
     this.state = {
       email: '',
-      authEmail: false
-    }
+      authEmail: false,
+      emailError: ''
+    };
   }
 
   componentDidMount() {
@@ -55,10 +53,11 @@ class ForgetPassword extends Component {
     } else {
       evt.preventDefault();
       const data = {
-        "email": this.state.email
+        'email': this.state.email
       };
       this.props.forgotPassword(data);
-      this.setState({email: ''})
+      this.props.clearForgotPasswordError();
+      this.setState({email: '', emailError: ''});
     }
   }
 
@@ -84,7 +83,7 @@ class ForgetPassword extends Component {
                 <div className="section-divider-line"></div>
                 <div className="row">
                   <div className="frmcntl pb-2 col-md-7">
-                    <h3 className="pb-3">Enter your email address below and we'll send you a link to reset your password.</h3>
+                    <h3 className="pb-3">Enter your email address below and well send you a link to reset your password.</h3>
                     <div className=" col-md-12 frmcntl pb-4">
                       <input className="field w-input" id="email" name="email" value={this.state.email} onBlur={this.checkEmail.bind(this)} onChange={this.handleEmailChange.bind(this)} placeholder="Email Address" type="email"/>
                     </div>

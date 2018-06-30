@@ -1,0 +1,38 @@
+.notification-settings {
+  .notification-button-row  {
+      width: 20%;
+  }
+  .notification-list {
+  	.notification-list-content {
+      min-height: 80px;
+     
+  	}
+    .card-box {
+      margin-bottom: 0;
+    }
+  }
+  .notification-configure {
+    .header {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+  .notificationSwitch{
+      .react-flexible-switch {
+        z-index: 10000;
+        margin: 10%;
+      }
+  }
+
+  .notification-configure-content {
+    display: flex;
+    -ms-flex-wrap: wrap;
+    justify-content: space-between;
+    margin-right: -15px;
+    margin-left: -15px;
+    .card-box {
+      margin-bottom: 0px;
+    }
+  }
+
+}

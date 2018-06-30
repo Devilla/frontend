@@ -1,47 +1,16 @@
 import React, { Component } from 'react';
-import { Link } from "react-router";
+import { Link } from 'react-router';
 import Slider from 'react-slick';
-import  './WebsiteHome.scss';
+import './WebsiteHome.scss';
 
 import {
-  // HigherConversion,
-  // SaveAcquisitions,
-  // IncreaseVisitors,
-  // SocialInfluence,
-  // Device,
-  // AnalyticsInsights,
-  // EasiestSetup,
-  // ActivityNotifications,
-  // LiveViewers,
-  // CustomerProfiles,
-  // CustomerJourneys,
-  // CustomeRules,
-  // MobileReady,
-  // Inc42,
-  // Tnwg,
-  // Yourstory,
-  // HigherConversion2,
-  // Saveonacquisitions2,
-  // Visitortrust2,
-  // Startconverting,
-  // Socialinfluence2,
-  // D12, B24,
-  // Customerjourney5,
-  // Analyticsinsights10,
-  // Easiestsetup,
-  // Marvel,
-  // Activitynotifications2,
-  // Liveviewers2,
-  // Customerprofiles2,
-  // Customerjourney2,
-  // Customrules2,
-  // Mobileready2,
   Marvel,
-  Integration,
+  Illustration,
   Swivelscreen,
   Sw1,
   Sw2,
-  LogoInfluence,
+  Sw3,
+  Sw4,
   Lawsikho,
   Stagephod,
   Userc,
@@ -53,12 +22,11 @@ import {
 import { browserHistory } from 'react-router';
 
 class WebsiteHome extends Component {
-
   constructor() {
     super();
     this.state = {
       email: ''
-    }
+    };
   }
 
   render() {
@@ -71,40 +39,41 @@ class WebsiteHome extends Component {
       autoplay: true
     };
     return (
-      <div className="main-container">
-        <section className="cover text-center parallax" data-overlay="0">
-          <div className="container">
-            <div className="row pb-5">
-              <div className="col-md-10 col-lg-10 text-center">
-                <h1 className="pt-2">Increase your website conversions using social proof notifications <br /> </h1>
-                <p className="typed-text typed-text--cursor h3"> Use Influence and get <span className="type--bold" style={{ color: "#584EEF" }}>3x more business </span>right away &nbsp;</p>
+      <div className="websitehome-container">
+        <div className="main-container">
+          <section className="cover text-center parallax" data-overlay="0">
+            <div className="container">
+              <div className="row pb-5">
+                <div className="col-md-10 col-lg-10 text-center">
+                  <h1 className="pt-2">Increase your website conversions using social proof notifications <br /> </h1>
+                  <p className="typed-text typed-text--cursor h3"> Use Influence and get <span className="type--bold" style={{ color: '#584EEF' }}>3x more business </span>right away &nbsp;</p>
+                </div>
+              </div>
+              <br /> <br />
+              <div className="text-center pb-5">
+                <form className="form--horizontal row">
+                  <div className="col-md-3 mr-1 pr-0 ml-0 pl-0"></div>
+                  <div className="col-md-4 ml-0 pl-0 mr-0 pr-0"> <input type="text" name="email" placeholder="Enter your email" onChange={(e) => this.setState({ email: e.target.value })} /> </div>
+                  <div className="col-md-2 ml-0 pl-0 mr-0 pr-0"> <button type="submit" onClick={() => browserHistory.push(`/signup?email=${this.state.email}`)} className="btn btn--primary">Start Free Trial</button> </div>
+                </form>
               </div>
             </div>
-            <br /> <br />
-            <div className="text-center pb-5">
-              <form className="form--horizontal row">
-                <div className="col-md-3 mr-1 pr-0 ml-0 pl-0"></div>
-                <div className="col-md-4 ml-0 pl-0 mr-0 pr-0"> <input type="text" name="email" placeholder="Enter your email" onChange={(e) => this.setState({ email: e.target.value })} /> </div>
-                <div className="col-md-2 ml-0 pl-0 mr-0 pr-0"> <button type="submit" onClick={() => browserHistory.push(`/signup?email=${this.state.email}`)} className="btn btn--primary">Start Free Trial</button> </div>
-              </form>
-            </div>
-          </div>
-        </section>
-    
-        <p><br /></p><hr className="my-auto col-md-6" />
- 
-        <section className="col-md-12 pl-0 pt-3 pr-0 unpad--bottom " style={{ backgroundColor: "#00B7FF" }} >
-          <div className="container pt-5 pb-5">
-            <div className="row  ">
-            <div className="col-md-6 text-left pt-5 pb-5 ">
-                <h2 className="color--white "> Thousands of brands are using Influence to get more customers </h2>
-              </div>
-              <div className="col-md-6 text-left pt-5 pb-5  pl-3">
-                <img src={Marvel} alt="img" className="enterprise-logo"/>
+          </section>
+
+          <p><br /></p><hr className="my-auto col-md-6" />
+
+          <section className="col-md-12 pl-0 pt-3 pr-0 unpad--bottom " style={{ backgroundColor: '#00B7FF' }} >
+            <div className="container pt-5 pb-5">
+              <div className="row  ">
+                <div className="col-md-6 text-left pt-5 pb-5 ">
+                  <h2 className="color--white "> Thousands of brands are using Influence to get more customers </h2>
+                </div>
+                <div className="col-md-6 text-left pt-5 pb-5  pl-3">
+                  <img src={Marvel} alt="img" className="enterprise-logo" />
+                </div>
               </div>
             </div>
-          </div>
-      </section>
+          </section>
 
 
 
@@ -159,10 +128,10 @@ class WebsiteHome extends Component {
 
                     <Slider {...settings} className="im1">
                       <div>
-                        <img alt="Sw1" src={Sw1} />
+                        <img alt="Sw1" src={Sw3} />
                       </div>
                       <div>
-                        <img alt="Sw2" src={Sw2} />
+                        <img alt="Sw2" src={Sw4} />
                       </div>
                     </Slider>
 
@@ -197,10 +166,10 @@ class WebsiteHome extends Component {
                 </div>
               </div>
             </div>
-            </section>
- 
+          </section>
 
-          <section className="col-md-12 pl-0 pt-3 pr-0  " style={{ backgroundColor: "#f3f0ee" }} >
+
+          <section className="col-md-12 pl-0 pt-3 pr-0  " style={{ backgroundColor: '#f3f0ee' }} >
             <div className="container pt-5 pb-5">
 
               <Slider {...settings}>
@@ -251,12 +220,12 @@ class WebsiteHome extends Component {
                   </Link>
                 </div>
                 <div className="col-md-6">
-                  <img alt="Integration" src={Integration} />
+                  <img alt="Integration" src={Illustration} />
                 </div>
               </div>
             </div>
           </section>
-          <section className="imagebg " style={{ background: "#14BBFA" }}>
+          <section className="imagebg " style={{ background: '#14BBFA' }}>
             <div className="container pb-5 pt-5">
               <div className="row">
                 <div className="col-md-12">
@@ -276,9 +245,10 @@ class WebsiteHome extends Component {
               </div>
             </div>
           </section>
+        </div>
       </div>
-        );
-      }
-    }
-    
-    export default WebsiteHome;
+    );
+  }
+}
+
+export default WebsiteHome;

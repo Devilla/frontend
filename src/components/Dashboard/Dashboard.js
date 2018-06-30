@@ -136,15 +136,99 @@ class Dashboard extends Component {
     	offsetGridLines : false
     };
 
-    console.log(process.env.REACT_APP_STRIPE_KEY);
+    let userSignUps = 0;
 
-    return (<div className="content">
-      <Grid fluid="fluid">
+    if(campaignInfo) {
+      campaignInfo.websiteLive.map(website => {
+        let users = website.signups && website.signups.userDetails?website.signups.userDetails.length:0;
+        userSignUps = userSignUps + users;
+      });
+    }
 
-        <Row>
-          <Col md={6}>
-            <Row>
-              <Col lg={6} sm={6}>
+    return (
+      <div className="content">
+        <div className="container-fluid">
+          <Row className="dashboard-boxes">
+            <Col md={12}>
+              <div className="card-box pb-0 mb-0">
+                <h4 className="header-title mb-4">Account Usage Overview</h4>
+                <hr/>
+                <Row className="account-stats">
+                  <div className="col-sm-12 col-lg-6 col-xl-3 box ">
+                    <div>
+                      <div className="text-center mt-4 mb-4">
+
+                        <div className="col-md-12 h-50">
+                          <div className=" widget-flat card-box  text-muted pr-4 pl-4 pb-5 pt-2 pos-vertical-center">
+
+                            <p className="text-uppercase title m-b-5 font-13 font-600">Active Campaigns</p>
+
+                            <h3 className="m-b-10 campaign">{campaignInfo? campaignInfo.websiteLive.length : []}</h3>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="col-sm-12 col-lg-6 col-xl-3 box ">
+                    <div>
+                      <div className="text-center mt-4 mb-4">
+
+                        <div className="col-md-12 h-50">
+                          <div className=" widget-flat card-box  text-muted pr-4 pl-4 pb-5 pt-2 pos-vertical-center">
+
+                            <p className="text-uppercase title m-b-5 font-13 font-600">Unique Visitors</p>
+
+                            <h3 className="m-b-10 profile">{profile? Number(profile.uniqueVisitors) :0 }</h3>
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="col-sm-12 col-lg-6 col-xl-3 box ">
+                    <div>
+                      <div className="text-center mt-4 mb-4">
+
+                        <div className="col-md-12 h-50">
+                          <div className=" widget-flat card-box  text-muted pr-4 pl-4 pb-5 pt-2 pos-vertical-center">
+
+                            <p className="text-uppercase title m-b-5 font-13 font-600">Total Notifications</p>
+
+                            <h3 className="m-b-10 notify">{campaignInfo ? campaignInfo.notificationCount : 0}</h3>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="col-sm-12 col-lg-6 col-xl-3 box">
+                    <div>
+                      <div className="text-center mt-4 mb-4">
+
+                        <div className="col-md-12 h-50">
+                          <div className="  widget-flat card-box  text-muted pr-4 pl-4 pb-5 pt-2 pos-vertical-center">
+
+                            <p className="text-uppercase title m-b-5 font-13 font-600">Total Signups</p>
+
+                            <h3 className="m-b-10 usersignup">{userSignUps}</h3>
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </Row>
+              </div>
+            </Col>
+          </Row>
+          <Row>
+            <Col md={12}>
+              <div className="card-box">
+                <hr/>
                 <Row>
                   <Col lg={12}>
                     <Card title="Active Campaigns" category="" content={<div className = "table-full-width" > <Scrollbars style={{
@@ -156,13 +240,27 @@ class Dashboard extends Component {
                       </Scrollbars>
                     </div>}/>
                   </Col>
-                </Row>
-              </Col>
-              <Col lg={6} sm={6}>
-
-                <Row>
-                  <Col lg={12} sm={12}>
-                    <StatsCard statsClass="card card-stats  eqheight" statsText="Unique Visitors" statsValue={profile?profile.uniqueVisitors.toLocaleString():0}/>
+                  <Col md={4}>
+                    <div className=" pull-right">
+                      <select className="form-control text-muted" onChange={(e) =>  this.setState({daysClicked:e.target.value})}>
+                        <option key={7} value={'7'}>
+                          7 days
+                        </option>
+                        <option key={14} value={'14'} >
+                            14 days
+                        </option>
+                        <option key={28} value={'28'} >
+                            28 days
+                        </option>
+                        <option key={'today'+1} value={'Today'} >
+                            Today
+                        </option>
+                        <option key={'yesterday'+1} value={'Yesterd ay'} >
+                            Yesterday
+                        </option>
+                      </select>
+                    </div>
+                    <div className="clearfix"></div>
                   </Col>
                 </Row>
                 <Row>
@@ -170,11 +268,9 @@ class Dashboard extends Component {
                     <StatsCard statsClass="card card-stats  eqheight" statsText="Notifications Shown" statsValue={campaignInfo?campaignInfo.notificationCount:0}/>
                   </Col>
                 </Row>
-              </Col>
-            </Row>
-
-          </Col>
-
+              </div>
+            </Col>
+          </Row>
           <Col md={6}>
             <Row>
               <Col lg={12}>
@@ -193,9 +289,9 @@ class Dashboard extends Component {
               </Col>
             </Row>
           </Col>
-        </Row>
-      </Grid>
-    </div>);
+        </div>
+      </div>
+    );
   }
 }
 

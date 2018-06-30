@@ -8,7 +8,7 @@ export const load = () => ({ type: LOAD });
 export const loaded = () => ({ type: LOADED });
 
 const initialState = Map({
-    state: false,
+  state: false,
 });
 
 const loading = (state = initialState, action) => {

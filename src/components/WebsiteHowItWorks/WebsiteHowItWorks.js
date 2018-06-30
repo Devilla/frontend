@@ -14,6 +14,10 @@ import {
 
 class WebsiteHowItWorks extends Component {
 
+  componentDidMount() {
+    let scrollElm = document.scrollingElement;
+    scrollElm.scrollTop = 0;
+  }
   render() {
     const settings = {
       dots: true,

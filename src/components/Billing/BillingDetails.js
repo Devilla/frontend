@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import { browserHistory } from 'react-router';
+import moment from 'moment';
+import { fetchPayment, fetchInvoices } from 'ducks/payment' ;
 import {
   Grid,
   Row,
@@ -31,7 +34,6 @@ class BillingDetails extends Component {
       planSelected: {}
     };
     props.fetchPayment();
-    // props.fetchInvoices();
   }
 
   plansList() {
@@ -82,27 +84,40 @@ class BillingDetails extends Component {
       <div className="content fill billing-details">
         <Grid fluid="fluid">
           <Row className="inlineclr">
-            <Col md={30}>
-              <CardHeader title="Billing Details"
-                content={
-                  <div className="Billing-container">
-                    <Row>
-                      <div className="col-md-4 billing-buttons">
-                        <Button onClick={() => browserHistory.push('/Profile')} icon="chevron-left" bsStyle="info" fill="fill" >Back To Profile</Button>
-                      </div>
-                      <div className="col-md-8 billing-buttons">
-                        <div className="">
-                          <Button onClick={() => browserHistory.push('/Upgrade')} bsStyle="info" pullRight="pullRight" fill="fill" type="button" icon="cloud-upload" disabled={false}>Upgrade Plan
-                          </Button>
-                        </div>
-                        <div className="">
-                          <Button onClick={() => browserHistory.push('/card-details?type=upgrade')} bsStyle="info" pullRight="pullRight" fill="fill" type="button" icon="usd" disabled={false}> Upgrade Payment
-                          </Button>
-                        </div>
-                      </div>
-                    </Row>
-                    <div className="billing-info-list">
-                      <Row className="payment-info">
+            <Col md={12}>
+              <div className="card-box pt-0">
+                <hr/>
+                <div className="Billing-container">
+                  <Row>
+                    <div className="col-md-4 billing-buttons float-right">
+                      <Button
+                        onClick={() => browserHistory.push('/Upgrade')}
+                        className="btn btn-primary"
+                        pullRight="pullRight" fill="fill"
+                        type="button"
+                        icon="cloud-upload"
+                        disabled={false}
+                      >
+                            Upgrade Plan
+                      </Button>
+
+                      <Button
+                        onClick={() => browserHistory.push('/card-details?type=upgrade')}
+                        className="btn btn-primary"
+                        pullRight={true}
+                        fill={true}
+                        type="button"
+                        icon="usd"
+                        disabled={false}
+                      >
+                          Payment Method
+                      </Button>
+                    </div>
+                    <div className="clearfix"></div>
+                  </Row>
+                  <div className="billing-info-list">
+                    <Row className="payment-info">
+                      <Col md={6}>
                         <div className="panel panel-default">
                           <div className="panel-heading">Plan Details</div>
                           <div className="panel-body">
@@ -127,47 +142,49 @@ class BillingDetails extends Component {
                             </Row>
                           </div>
                         </div>
-                      </Row>
-                      <Row className="payment-info">
-                        <div className="panel panel-default">
-                          <div className="panel-heading">Payment Info</div>
-                          <div className="panel-body">
-                            <div className="col-md-4">
-                              Next Payment Due Date: {planSelected.interval?moment(planSelected.interval.updated_at).add(planSelected.interval_count, planSelected.interval).format('DD MMM YYYY'):"-"}
-                            </div>
-                            <div className="col-md-4">
-                              Payment Method: {planSelected.interval?'Card':'-'}
-                            </div>
-                            <div className="col-md-2">
-                            </div>
+                      </Col>
+                    </Row>
+                    <Row className="payment-info">
+                      <div className="panel panel-default">
+                        <div className="panel-heading">Payment Info</div>
+                        <div className="panel-body">
+                          <div className="col-md-4">
+                            Next Payment Due Date: {planSelected.interval?moment(planSelected.interval.updated_at).add(planSelected.interval_count, planSelected.interval).format('DD MMM YYYY'):"-"}
+                          </div>
+                          <div className="col-md-4">
+                            Payment Method: {planSelected.interval?'Card':'-'}
+                          </div>
+                          <div className="col-md-2">
                           </div>
                         </div>
-                      </Row>
-                      <Row className="payment-info">
-                        <div className="panel panel-default">
-                          <div className="panel-heading">Invoices</div>
-                          <div className="panel-body billing-list">
-                            <Table hover className="table-responsive">
-                              <thead>
-                                <tr>
-                                  {
-                                    billingHeader.map((prop, key) => {
-                                        return (
-                                        <th  key={key}>{prop}</th>
-                                        );
-                                    })
-                                  }
-                                </tr>
-                              </thead>
-                              <tbody>
-                                 {this.renderPaymentList()}
-                              </tbody>
-                            </Table>
-                          </div>
+                      </div>
+                    </Row>
+                    <Row className="payment-info">
+                      <div className="panel panel-default">
+                        <div className="panel-heading">Invoices</div>
+                        <div className="panel-body billing-list">
+                          <Table hover className="table-responsive">
+                            <thead>
+                              <tr>
+                                {
+                                  billingHeader.map((prop, key) => {
+                                      return (
+                                      <th  key={key}>{prop}</th>
+                                      );
+                                  })
+                                }
+                              </tr>
+                            </thead>
+                            <tbody>
+                               {this.renderPaymentList()}
+                            </tbody>
+                          </Table>
                         </div>
-                      </Row>
-                    </div>
-              </div>}/>
+                      </div>
+                    </Row>
+                  </div>
+                </div>
+              </div>  
             </Col>
           </Row>
         </Grid>

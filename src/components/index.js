@@ -53,3 +53,12 @@ export { default as UpgradePlan } from './UpgradePlan/UpgradePlan';
 
 export { default as Template } from './Template';
 export { default as VerificationPage } from './VerificationPage/VerificationPage';
+export { default as NotificationSettings } from './NotificationSettings/NotificationSettings';
+export { default as Rules } from './Rules/Rules';
+export { default as DisplayPage } from './DisplayPage/DisplayPage';
+export { default as CapturePage } from './CapturePage/CapturePage';
+export { default as InstallPixel } from './InstallPixel/InstallPixel';
+export { default as DashboardChannel } from './DashboardChannel/DashboardChannel';
+export { default as PopupReview } from './PopupReview/PopupReview';
+export { default as Oauthpage } from './Oauthpage/Oauthpage';
+export { default as Oauthgenerate } from './Oauthgenerate/Oauthgenerate';

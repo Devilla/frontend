@@ -14,8 +14,11 @@
   background: #dcdbdb;
   text-align: center;
   transition: all 0.3s ease 0s;
+  position: relative;
+  top: 0px;
   &:hover {
-    box-shadow: 0 8px 6px -6px #4f384d;
+    box-shadow: 0px 10px 16px -6px #4f384d;
+    animation: boxes 0.1s ease  1 forwards ;
   }
   .title {
     min-height: 60px;
@@ -93,7 +96,6 @@
     font-size: 14px;
     font-weight: 700;
     color: #4f384d;
-    text-transform: uppercase;
     border-left: 3px solid #4f384d;
     border-right: 3px solid #4f384d;
     position: relative;
@@ -109,39 +111,25 @@
       transition: all 0.3s ease 0s;
     }
   }
-  &:hover .pricingTable-signup {
-    color: #fe6d6d;
-    border-left-color: #fe6c6c;
-    border-right-color: #fe6c6c;
-  }
-  .pricingTable-signup-active {
-    display: inline-block;
-    padding: 5px 20px;
-    font-size: 14px;
-    font-weight: 700;
-    text-transform: uppercase;
-    position: relative;
-    transition: all 0.3s ease 0s;
-    color: #fe6d6d;
-    border: 3px solid #fe6c6c;
-  }
+ 
   .pricingTable-signup {
-    &:after {
-      top: auto;
-      left: auto;
-      bottom: 0;
-      right: 0;
-    }
+    min-width: 150px;
+    border-radius: 5px !important;
     &:hover {
-      &:before, &:after {
-        width: 100%;
+      color: #fff !important;
       }
     }
   }
-}
+
 
 @media only screen and (max-width: 990px) {
   .pricingTable {
     margin-bottom: 30px;
   }
+}
+
+
+@keyframes boxes{
+  0% { top: 0px;}
+  100% { top: 10px; }
 }

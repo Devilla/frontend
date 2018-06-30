@@ -42,7 +42,11 @@ import {
   WebsiteCustStory,
   WebsiteFeature,
   Affiliate,
-  AffiliateRegister
+  AffiliateRegister,
+  DashboardChannel,
+  PopupReview,
+  Oauthpage,
+  Oauthgenerate
 } from 'components';
 
 import {
@@ -53,10 +57,7 @@ import {
 } from 'containers';
 
 
-
-
-
-const MyRoutes = ({routerHistory, store}) => (
+const MyRoutes = ({routerHistory}) => (
 
   <Router history={routerHistory}>
 
@@ -64,6 +65,10 @@ const MyRoutes = ({routerHistory, store}) => (
       <Route path="/dashboard" component={Dashboard} />
       <Route path="/new" component={New} />
       <Route path="/campaigns" component={Notification} />
+      <Route path="/addchannel" component={DashboardChannel} />
+      <Route path="/oauthshow" component={Oauthpage} />
+      <Route path="/oauthgenerate" component={Oauthgenerate} />
+      <Route path="/popupreview" component={PopupReview} />
       <Route path="/analytics" component={AnalyticsContainer} />
       <Route path="/integration" component={Integration} />
       <Route path="/support" component={Dashboard} />
