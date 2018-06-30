@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './WebsiteContact.scss';
 
 class WebsiteContact extends Component {
   constructor(){
@@ -12,23 +13,13 @@ class WebsiteContact extends Component {
     };
   }
   componentDidMount() {
-    window.scrollTo(0, 0);
+    let scrollElm = document.scrollingElement;
+    scrollElm.scrollTop = 0;
   }
 
   handleSubmit(evt){
     evt.stopPropagation();
     evt.preventDefault();
-
-    console.log(this.refs.email,'+++++++++++++++++++++++');
-    // if (evt.target.value==''){
-    //   console.log(evt.target.value,'------------------------------------------');
-    //   this.setState({ error: 'All fields are required' });
-    //   return;
-    // }else{
-    //   this.state.name=evt.target.name;
-    //   this.state.email=evt.target.email;
-    //   this.state.message=evt.target.message;
-    // }
   }
 
   checkEmail(evt) {
@@ -44,35 +35,36 @@ class WebsiteContact extends Component {
     }
   }
   handleEmailChange(evt) {
-    console.log(evt.target.value,"==============EMAIL");
+   
     this.setState({email: evt.target.value, emailError: ''});
   }
   handleNameChange(evt) {
-    console.log(evt.target.value,"=========NAME");
+
     this.setState({name: evt.target.value});
   }
   handleMessageChange(evt) {
-    console.log(evt.target.value, "=============MESSAGE");
+
     this.setState({message: evt.target.value});
   }
 
   render() {
     return (
+      <div className="websitecontact-container">
       <div className="main-container">
         <section className="cover text-center bg--secondary">
           <div className="container">
             <div className="row">
               <div className="col-md-12">
-                <div> <span className="h2"><p>Contact us&nbsp;</p></span> </div>
-                <div> <span className="h3 typed-text typed-text--cursor color--primary"> We sit round the clock just for you!</span> </div>
+                <h2>Contact us</h2>
+                <div className="h3 typed-text typed-text--cursor color--primary"> We sit round the clock <span className="makeitbold">just for you</span> </div>
               </div>
             </div>
           </div>
         </section>
-        <section className="switchable bg--secondary">
+        <section className="switchable contact-content">
           <div className="container">
             <div className="row justify-content-between">
-              <div className="col-md-5">
+              <div className="col-md-6">
                 <p className="lead">
                   E:&nbsp;<a href="#">info@useinfluence.co</a>
                   <br />
@@ -82,19 +74,16 @@ class WebsiteContact extends Component {
                 </p>
                 <p className="lead"></p>
               </div>
-              <div className="col-md-6 col-12">
+              <div className="col-md-6">
                 <form onSubmit={this.handleSubmit.bind(this)} className="form-email row" data-recaptcha-theme="light" novalidate="true">
-                  <div className="col-md-6 col-12">
-                    <label>Your Name:</label>
-                    <input type="text" name="name" className="validate-required" onChange={this.handleNameChange.bind(this)}  />
+                  <div className="col-md-12">
+                    <input type="text" name="name" placeholder="Name" className="validate-required" onChange={this.handleNameChange.bind(this)}  />
                   </div>
-                  <div className="col-md-6 col-12">
-                    <label>Email Address:</label>
-                    <input type="email" name="email" className="validate-required validate-email" onBlur={this.checkEmail.bind(this)} onChange={this.handleEmailChange.bind(this)} />
+                  <div className="col-md-12">
+                    <input type="email" name="email" placeholder="Johndoe@example.com" className="validate-required validate-email" onBlur={this.checkEmail.bind(this)} onChange={this.handleEmailChange.bind(this)} />
                   </div>
-                  <div className="col-md-12 col-12">
-                    <label>Message:</label>
-                    <textarea rows="4" name="message" className="validate-required" onChange={this.handleMessageChange.bind(this)}></textarea>
+                  <div className="col-md-12">
+                    <textarea rows="4" name="message" placeholder="Leave us a message" className="validate-required" onChange={this.handleMessageChange.bind(this)}></textarea>
                   </div>
 
                   <button type="submit" className="btn btn--primary type--uppercase">Send Enquiry</button>
@@ -103,6 +92,7 @@ class WebsiteContact extends Component {
             </div>
           </div>
         </section>
+      </div>
       </div>
     );
   }

@@ -5,7 +5,8 @@ import './WebsiteCustStory.scss';
 class WebsiteCustStory extends Component {
 
   componentDidMount() {
-    window.scrollTo(0,0);
+    let scrollElm = document.scrollingElement;
+    scrollElm.scrollTop = 0;
   }
   render() {
 

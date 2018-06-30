@@ -1,8 +1,18 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { validateEmail } from 'services/FormUtils';
 import { HelpBlock } from 'react-bootstrap';
+import { affiliateSuccess } from 'ducks/auth';
 
-export default class AffiliateRegister extends Component {
+
+function validate(password, authEmail) {
+  return {
+    password: password.length === 0,
+    authEmail: authEmail === false
+  };
+}
+
+class AffiliateRegister extends Component {
   constructor() {
     super();
     this.state= {
@@ -24,7 +34,7 @@ export default class AffiliateRegister extends Component {
       this.setState({ errorEmail: 'Enter a valid Email id' });
   }
 
-  
+
   handleEmailChange = (event) => {
     const { name, value } = event.target;
     const isEmailValid = validateEmail(this.refs.email.value);
@@ -37,12 +47,32 @@ export default class AffiliateRegister extends Component {
       (isNaN(value)) ? this.setState({errorName: ''}) : this.setState({ errorName: 'Enter a valid Name' })
     );
   }
-  
+
   handleNameChange = (event) => {
     const { name, value } = event.target;
     this.setState({ [name]: value });
   }
 
+  handleSubmit(evt) {
+    if (!this.canBeSubmitted()) {
+      evt.preventDefault();
+      return;
+    } else {
+      evt.preventDefault();
+      const data = {
+        'name': this.state.name,
+        'email': this.state.email
+      };
+      this.props.affiliateSuccess(data);
+      this.setState({name: '',email: '', emailError: ''});
+    }
+  }
+  canBeSubmitted() {
+    const errors = validate(this.state.email, this.state.password, this.state.authEmail);
+
+    const isDisabled = Object.keys(errors).some(x => errors[x]);
+    return !isDisabled;
+  }
 
   render() {
     const { errorEmail,errorName,isEmailValid } = this.state;
@@ -56,14 +86,14 @@ export default class AffiliateRegister extends Component {
             <div className="row justify-content-around">
               <h2 class="align-center">Become an Influence Affiliate</h2>
               <div className="col-md-6">
-                <form className="row">
+                <form className="row" onSubmit={this.handleSubmit.bind(this)} method="POST" data-name="Affiliate Form">
                   <div className="mt-3 col-md-12">
-                    <input 
-                      type="text" 
-                      name="name" 
-                      placeholder="First / Last Name" 
-                      className="ml-0 validate-required"    
-                      onBlur={this.checkNameBlur} 
+                    <input
+                      type="text"
+                      name="name"
+                      placeholder="First / Last Name"
+                      className="ml-0 validate-required"
+                      onBlur={this.checkNameBlur}
                       onChange={this.handleNameChange}
                     />
                     <HelpBlock>
@@ -71,7 +101,7 @@ export default class AffiliateRegister extends Component {
                     </HelpBlock>
                   </div>
                   <div className="mt-3 col-md-12">
-                    <input 
+                    <input
                       name="email"
                       ref="email"
                       className="field w-input"
@@ -102,3 +132,13 @@ export default class AffiliateRegister extends Component {
     );
   }
 }
+
+const mapStateToProps = state => ({
+  error: state.getIn(['auth', 'affiliateSuccess'])
+});
+
+const mapDispatchToProps = {
+  affiliateSuccess
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(AffiliateRegister);
