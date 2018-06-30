@@ -339,6 +339,7 @@ export class NotificationDesignSetting extends Component {
                   </Col>
                 </Row>
                 {notification.notificationName === 'Recent Activity' &&
+                  profile.plan.references.service_template_properties[0].data.value == 'premium' &&
                   <Row style={{padding: '4% 0%'}}>
                     <Col md={10}>
                       <span className="mt-5 text-muted h6">Display map icon only</span>
@@ -387,23 +388,27 @@ export class NotificationDesignSetting extends Component {
                     </Row>
                   </Col>
                 </Row>
-                <Row className="mb-3">
-                  <Col md={12}>
-                    <h4 className="text-muted h6">Brand Name</h4>
-                    <Row>
-                      <Col md={12}>
-                        <FormControl
-                          type="text"
-                          maxLength='15'
-                          value={contentText}
-                          placeholder="Enter brand name for notification"
-                          id="contentText"
-                          onChange={(e) => handleContentChange(e.target.id, e.target.value)}
-                        />
-                      </Col>
-                    </Row>
-                  </Col>
-                </Row>
+                {((notification.notificationName !== 'Live Visitor Count') ||
+                  (notification.notificationName !== 'Live Visitor Count' &&
+                  profile.plan.references.service_template_properties[0].data.value == 'premium')) &&
+                  <Row className="mb-3">
+                    <Col md={12}>
+                      <h4 className="text-muted h6">Brand Name</h4>
+                      <Row>
+                        <Col md={12}>
+                          <FormControl
+                            type="text"
+                            maxLength='15'
+                            value={contentText}
+                            placeholder="Enter brand name for notification"
+                            id="contentText"
+                            onChange={(e) => handleContentChange(e.target.id, e.target.value)}
+                          />
+                        </Col>
+                      </Row>
+                    </Col>
+                  </Row>
+                }
                 {notification.notificationName !== 'Recent Activity' &&
                   <Row className="mb-3">
                     <Col md={12}>
