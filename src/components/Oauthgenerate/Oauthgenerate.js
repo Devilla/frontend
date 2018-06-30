@@ -4,8 +4,7 @@ import { Row,Col } from 'react-bootstrap';
 import moment from 'moment';
 import {
   FormGroup,
-  FormControl,
-  HelpBlock
+  FormControl
 } from 'react-bootstrap';
 
 
@@ -20,9 +19,7 @@ class Oauthpage extends Component {
     };
   }
 
-  handleClientNameChange = (evt) => {
-    this.setState({clientname: evt.target.value, errorname:'' });
-  }
+
 
   getClientInfoList = () => {
     return (
@@ -62,14 +59,9 @@ class Oauthpage extends Component {
                     bsClass="form-control ml-3"
                     id="clientname"
                     placeholder="example: Ray-101, John doe"
-                    onChange={(e)=>{this.handleClientNameChange(e);}}
-                    onBlur={()=>{}}
                     required={true}
                   />
                 </FormGroup>
-                <HelpBlock>
-                  <p className='website-error'>{this.state.errorname}</p>
-                </HelpBlock>
               </Col>
             </Row>
             <Row>

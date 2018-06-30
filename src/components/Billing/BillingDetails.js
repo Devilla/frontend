@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import { Link } from 'react-router';
 import { browserHistory } from 'react-router';
 import moment from 'moment';
 import { fetchPayment, fetchInvoices } from 'ducks/payment' ;
@@ -66,7 +65,6 @@ class BillingDetails extends Component {
           <Row className="inlineclr">
             <Col md={12}>
               <div className="card-box pt-0">
-                <h4 className="header-title"><Link to="/Profile"><i className="icon-arrow-left mr-3"></i></Link>Billing Details</h4>
                 <hr/>
                 <div className="Billing-container">
                   <Row>

@@ -113,7 +113,8 @@ class WebsiteSignUp extends Component {
     });
   }
   componentDidMount() {
-    window.scrollTo(0,0);
+    let scrollElm = document.scrollingElement;
+    scrollElm.scrollTop = 0;
   }
 
   render() {
@@ -245,25 +246,25 @@ class WebsiteSignUp extends Component {
           </section>
         </div>);
     return (
-      <div>
-        <div className='authpage section innerpage'>
-          <div className='wrapper'>
-            <Animated
-              className='leftwrap center'
 
-              animationIn='fadeIn'
-              animationOut='fadeOut'
-              isVisible={true}>
-              <form
-                className='loginfrm'
-                onSubmit={this.handleSubmit}>
-                {formContent}
-              </form>
-              <div className='support'></div>
-            </Animated>
-          </div>
+      <div className='authpage section innerpage'>
+        <div className='wrapper'>
+          <Animated
+            className='leftwrap center'
+
+            animationIn='fadeIn'
+            animationOut='fadeOut'
+            isVisible={true}>
+            <form
+              className='loginfrm'
+              onSubmit={this.handleSubmit}>
+              {formContent}
+            </form>
+            <div className='support'></div>
+          </Animated>
         </div>
       </div>
+  
     );
   }
 }

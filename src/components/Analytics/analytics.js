@@ -1,10 +1,8 @@
 import React from 'react';
-import { Link }  from 'react-router';
 
 const Analytics = ({ renderList }) => {
   return (
     <div className="card-box">
-      <h4 className="m-t-0 header-title"><Link to="/dashboard"><i className="icon-arrow-left mr-3"></i></Link>Analytics</h4>
       <table className="table table-striped">
         <thead>
           <tr>

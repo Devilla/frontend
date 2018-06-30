@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router';
 import {
   Grid,
   Row,
@@ -29,7 +28,7 @@ const Campaign = ({
         <Row>
           <Col md={12}>
             <div className="card-box">
-              <h4 className="header-title"><Link to="/dashboard"><i className="icon-arrow-left mr-3"></i></Link>Create Your Campaign</h4>
+              <h4 className="header-title">Create Your Campaign</h4>
               <hr/>
               <form onSubmit={handleNextButton}>
                 <Row>
