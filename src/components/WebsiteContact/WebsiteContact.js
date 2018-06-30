@@ -1,8 +1,20 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+
 import { contactUs } from 'ducks/auth';
+import { toast, ToastContainer } from 'react-toastify';
+
 import './WebsiteContact.scss';
 
+
+
+
+const toastConfig = {
+  position: toast.POSITION.BOTTOM_LEFT,
+  autoClose: 2000,
+  className: 'toast-style',
+ 
+};
 class WebsiteContact extends Component {
   constructor(){
     super();
@@ -58,6 +70,9 @@ class WebsiteContact extends Component {
     };
     this.props.contactUs(data);
     this.setState({name: '', email: '', message: '', emailError: ''});
+    if (! toast.isActive(this.toastId)) {
+      this.toastId = toast.info('Thankyou for your Response! ', toastConfig);
+    }
   }
   render() {
     return (
@@ -97,7 +112,9 @@ class WebsiteContact extends Component {
                   <div className="col-md-12">
                     <textarea rows="4" name="message" placeholder="Leave us a message" className="validate-required" onChange={this.handleMessageChange}></textarea>
                   </div>
+
                   <button type="submit" className="btn btn--primary type--uppercase" onClick={this.handleSubmit}>Send Enquiry</button>
+                  <ToastContainer  autoClose={8000}/>
                 </form>
               </div>
             </div>
