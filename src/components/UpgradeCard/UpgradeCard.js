@@ -3,9 +3,7 @@ import { connect } from 'react-redux';
 import { updatePaymentMethod, createPayment } from 'ducks/payment';
 import { updateProfile } from 'ducks/profile';
 import {
-  Grid,
   Row,
-  Col,
   FormGroup,
   FormControl,
 } from 'react-bootstrap';
@@ -61,165 +59,164 @@ class UpgradeCard extends Component {
   render() {
     const { updatePaymentMethod, plan, user } = this.props;
     const { currentState, activeClass, error } = this.state;
-    return (<div className="content fill ">
-      <Grid fluid={true}>
-        <Row >
-          <Col md={12} className="notification-container">
-            <div className="card-box">
-              <h4 className="ml-3 header-title">Payment Method</h4>
-              <div className = "upgrade-card-container" >
-                <div className="panel panel-default">
-                  <div className="panel-body">
-                    <div className="col-md-12">
-                      <div className="card-box">
-                        <ul className="nav nav-pills navtab-bg nav-justified pull-in new-campaign-tab-pills">
-                          <li className="nav-item waves-effect">
-                            <a data-toggle="tab" aria-expanded="false" className={`nav-link ${activeClass == 1?'active':''} pt-3 pb-3`} onClick={() => this.setActiveState(1)}>
-                              <i className="fi-layers mr-2"></i>Credit Card
-                            </a>
-                          </li>
-                          <li className="nav-item waves-effect">
-                            <a data-toggle="tab" aria-expanded="true" className={`nav-link ${activeClass == 2?'active':''}`}>
-                              <i className="fi-mail mr-2"></i>Debit Card
-                            </a>
-                          </li>
-                          <li className="nav-item waves-effect">
-                            <a data-toggle="tab" aria-expanded="false" className={`nav-link ${activeClass == 3?'active':''}`}>
-                              <i className="fi-layers mr-2"></i> Paypal
-                            </a>
-                          </li>
-                          <li className="nav-item waves-effect">
-                            <a data-toggle="tab" aria-expanded="false" className={`nav-link ${activeClass == 4?'active':''}`}>
-                              <i className="fi-layers mr-2"></i> Bitcoin
-                            </a>
-                          </li>
-                          <li className="nav-item waves-effect">
-                            <a data-toggle="tab" aria-expanded="false" className={`nav-link ${activeClass == 5?'active':''}`}>
-                              <i className="fi-layers mr-2"></i> Saved card
-                            </a>
-                          </li>
-                        </ul>
-                        <div className="tab-content">
-                          <div className={`tab-pane ${activeClass == 1?'show active':''}`} id="credit">
-                            <Row>
-                              <div className="col-md-12 tab-name mb-5 text-muted">
+    return (
+      <div className="col-md-12 tab-notification-container">
+        <div className="card-box">
+          <div className="ml-3 mt-1 new-campaign-header">
+
+            <h4 className="ml-3 header-title">Payment Method</h4>
+            <div className = "upgrade-card-container" >
+              <div className="panel panel-default">
+                <div className="panel-body">
+                  <div className="col-md-12">
+                    <div className="card-box">
+                      <ul className="nav nav-pills navtab-bg nav-justified pull-in new-campaign-tab-pills">
+                        <li className="nav-item waves-effect">
+                          <a data-toggle="tab" aria-expanded="false" className={`nav-link ${activeClass == 1?'active':''} pt-3 pb-3`} onClick={() => this.setActiveState(1)}>
+                            <i className="fi-layers mr-2"></i>Credit Card
+                          </a>
+                        </li>
+                        <li className="nav-item waves-effect">
+                          <a data-toggle="tab" aria-expanded="true" className={`nav-link ${activeClass == 2?'active':''}`}>
+                            <i className="fi-mail mr-2"></i>Debit Card
+                          </a>
+                        </li>
+                        <li className="nav-item waves-effect">
+                          <a data-toggle="tab" aria-expanded="false" className={`nav-link ${activeClass == 3?'active':''}`}>
+                            <i className="fi-layers mr-2"></i> Paypal
+                          </a>
+                        </li>
+                        <li className="nav-item waves-effect">
+                          <a data-toggle="tab" aria-expanded="false" className={`nav-link ${activeClass == 4?'active':''}`}>
+                            <i className="fi-layers mr-2"></i> Bitcoin
+                          </a>
+                        </li>
+                        <li className="nav-item waves-effect">
+                          <a data-toggle="tab" aria-expanded="false" className={`nav-link ${activeClass == 5?'active':''}`}>
+                            <i className="fi-layers mr-2"></i> Saved card
+                          </a>
+                        </li>
+                      </ul>
+                      <div className="tab-content">
+                        <div className={`tab-pane ${activeClass == 1?'show active':''}`} id="credit">
+                          <Row>
+                            <div className="col-md-12 tab-name mb-5 text-muted">
                                   Credit Card Details
-                              </div>
-                            </Row>
-                            <Row className="visa  credit-card-details">
-                              <Elements>
-                                <StripeCard
-                                  plan={plan}
-                                  user={user}
-                                  error={error}
-                                  handleError={this.handleError}
-                                  makePayment={this.makePayment}
-                                  updatePaymentMethod={updatePaymentMethod}
-                                  currentState={currentState}
-                                />
-                              </Elements>
-                            </Row>
-                          </div>
+                            </div>
+                          </Row>
+                          <Row className="visa  credit-card-details">
+                            <Elements>
+                              <StripeCard
+                                plan={plan}
+                                user={user}
+                                error={error}
+                                handleError={this.handleError}
+                                makePayment={this.makePayment}
+                                updatePaymentMethod={updatePaymentMethod}
+                                currentState={currentState}
+                              />
+                            </Elements>
+                          </Row>
+                        </div>
 
-                          <div className={`tab-pane ${activeClass == 2?'show active':''}`} id="debit">
-                            <Row className="visa">
-                              <div className="col-md-6 tab-name mb-5 text-muted">
+                        <div className={`tab-pane ${activeClass == 2?'show active':''}`} id="debit">
+                          <Row className="visa">
+                            <div className="col-md-6 tab-name mb-5 text-muted">
                                   Debit Card
-                              </div>
-                            </Row>
-                            <Row className="visa">
-                              <div className="col-md-4">
-                                <FormGroup>
-                                  <FormControl
-                                    type="text"
-                                    value=""
-                                    placeholder="4*** **** **** 2006"
-                                    id="VisaNumber"
-                                    onChange={(e) => this.handleStateChange(e)}
-                                  />
-                                </FormGroup>
-                              </div>
-                            </Row>
-                            <Row className='upgrade-card-buttons'>
-                              <div className='col-md-4 pull-left'>
-                                <Button type='button' icon='chevron-left' bsStyle='primary' fill={true} onClick={() => browserHistory.push(currentState === 'upgrade' ? '/billing-details' : '/profile')}>&nbsp;&nbsp;Back&nbsp;&nbsp;</Button>
-                              </div>
+                            </div>
+                          </Row>
+                          <Row className="visa">
+                            <div className="col-md-4">
+                              <FormGroup>
+                                <FormControl
+                                  type="text"
+                                  value=""
+                                  placeholder="4*** **** **** 2006"
+                                  id="VisaNumber"
+                                  onChange={(e) => this.handleStateChange(e)}
+                                />
+                              </FormGroup>
+                            </div>
+                          </Row>
+                          <Row className='upgrade-card-buttons'>
+                            <div className='col-md-4 pull-left'>
+                              <Button type='button' icon='chevron-left' bsStyle='primary' fill={true} onClick={() => browserHistory.push(currentState === 'upgrade' ? '/billing-details' : '/profile')}>&nbsp;&nbsp;Back&nbsp;&nbsp;</Button>
+                            </div>
 
-                            </Row>
-                          </div>
+                          </Row>
+                        </div>
 
-                          <div className={`tab-pane ${activeClass == 3?'show active':''}`} id="paypal">
-                            <Row className="visa">
-                              <div className="col-md-6 tab-name mb-5 text-muted">
+                        <div className={`tab-pane ${activeClass == 3?'show active':''}`} id="paypal">
+                          <Row className="visa">
+                            <div className="col-md-6 tab-name mb-5 text-muted">
                                   Paypal
-                              </div>
-                            </Row>
-                            <Row className="visa">
-                              <div className="col-md-4">
-                                <FormGroup>
-                                  <FormControl
-                                    type="text"
-                                    value=""
-                                    placeholder="4*** **** **** 2006"
-                                    id="VisaNumber"
-                                    onChange={(e) => this.handleStateChange(e)}
-                                  />
-                                </FormGroup>
-                              </div>
-                            </Row>
-                            <Row className='upgrade-card-buttons'>
-                              <div className='col-md-4 pull-left'>
-                                <Button type='button' icon='chevron-left' bsStyle='primary' fill={true} onClick={() => browserHistory.push(currentState === 'upgrade' ? '/billing-details' : '/profile')}>&nbsp;&nbsp;Back&nbsp;&nbsp;</Button>
-                              </div>
-                            </Row>
-                          </div>
-                          <div className={`tab-pane ${activeClass == 4?'show active':''}`} id="bitcoin">
-                            <Row className="visa">
-                              <div className="col-md-6 tab-name mb-5 text-muted">
+                            </div>
+                          </Row>
+                          <Row className="visa">
+                            <div className="col-md-4">
+                              <FormGroup>
+                                <FormControl
+                                  type="text"
+                                  value=""
+                                  placeholder="4*** **** **** 2006"
+                                  id="VisaNumber"
+                                  onChange={(e) => this.handleStateChange(e)}
+                                />
+                              </FormGroup>
+                            </div>
+                          </Row>
+                          <Row className='upgrade-card-buttons'>
+                            <div className='col-md-4 pull-left'>
+                              <Button type='button' icon='chevron-left' bsStyle='primary' fill={true} onClick={() => browserHistory.push(currentState === 'upgrade' ? '/billing-details' : '/profile')}>&nbsp;&nbsp;Back&nbsp;&nbsp;</Button>
+                            </div>
+                          </Row>
+                        </div>
+                        <div className={`tab-pane ${activeClass == 4?'show active':''}`} id="bitcoin">
+                          <Row className="visa">
+                            <div className="col-md-6 tab-name mb-5 text-muted">
                                   Bitcoin
-                              </div>
-                            </Row>
-                            <Row className="visa">
-                              <div className="col-md-4">
-                                <FormGroup>
-                                  <FormControl
-                                    type="text"
-                                    value=""
-                                    placeholder="4*** **** **** 2006"
-                                    id="VisaNumber"
-                                    onChange={(e) => this.handleStateChange(e)}
-                                  />
-                                </FormGroup>
-                              </div>
-                            </Row>
-                            <Row className='upgrade-card-buttons'>
-                              <div className='col-md-4 pull-left'>
-                                <Button type='button' icon='chevron-left' bsStyle='primary' fill={true} onClick={() => browserHistory.push(currentState === 'upgrade' ? '/billing-details' : '/profile')}>&nbsp;&nbsp;Back&nbsp;&nbsp;</Button>
-                              </div>
+                            </div>
+                          </Row>
+                          <Row className="visa">
+                            <div className="col-md-4">
+                              <FormGroup>
+                                <FormControl
+                                  type="text"
+                                  value=""
+                                  placeholder="4*** **** **** 2006"
+                                  id="VisaNumber"
+                                  onChange={(e) => this.handleStateChange(e)}
+                                />
+                              </FormGroup>
+                            </div>
+                          </Row>
+                          <Row className='upgrade-card-buttons'>
+                            <div className='col-md-4 pull-left'>
+                              <Button type='button' icon='chevron-left' bsStyle='primary' fill={true} onClick={() => browserHistory.push(currentState === 'upgrade' ? '/billing-details' : '/profile')}>&nbsp;&nbsp;Back&nbsp;&nbsp;</Button>
+                            </div>
 
-                            </Row>
-                          </div>
-                          <div className={`tab-pane ${activeClass == 5?'show active':''}`} id="savedcards">
-                            <Row className="visa">
-                              <div className="col-md-6 tab-name mb-5 text-muted">
+                          </Row>
+                        </div>
+                        <div className={`tab-pane ${activeClass == 5?'show active':''}`} id="savedcards">
+                          <Row className="visa">
+                            <div className="col-md-6 tab-name mb-5 text-muted">
                                   Saved Cards
-                              </div>
-                            </Row>
-                            <Row className="visa">
-                              <div className="col-md-4">
-                                <FormGroup>
-                                  <FormControl
-                                    type="text"
-                                    value=""
-                                    placeholder="4*** **** **** 2006"
-                                    id="VisaNumber"
-                                    onChange={(e) => this.handleStateChange(e)}
-                                    disabled
-                                  />
-                                </FormGroup>
-                              </div>
-                            </Row>
-                          </div>
+                            </div>
+                          </Row>
+                          <Row className="visa">
+                            <div className="col-md-4">
+                              <FormGroup>
+                                <FormControl
+                                  type="text"
+                                  value=""
+                                  placeholder="4*** **** **** 2006"
+                                  id="VisaNumber"
+                                  onChange={(e) => this.handleStateChange(e)}
+                                  disabled
+                                />
+                              </FormGroup>
+                            </div>
+                          </Row>
                         </div>
                       </div>
                     </div>
@@ -227,10 +224,9 @@ class UpgradeCard extends Component {
                 </div>
               </div>
             </div>
-          </Col>
-        </Row>
-      </Grid>
-    </div>);
+          </div>
+        </div>
+      </div>);
   }
 }
 
