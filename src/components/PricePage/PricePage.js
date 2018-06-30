@@ -48,8 +48,8 @@ const PricePage = ({
             <ul>
               <li>
                 <span className={!externalValue
-                  ? 'active btn btn-outline-success waves-light waves-effect mr-2'
-                  : 'btn btn-outline-info waves-light waves-effect mr-2'
+                  ? 'active btn btn-outline-success waves-light waves-effect mr-2 set-br'
+                  : 'btn btn-outline-info waves-light waves-effect mr-2 set-br'
                 } onClick={handleMonthChange}>Monthly</span>
               </li>
               <li className="mt-3" style={{ display: 'none' }}>
@@ -64,8 +64,8 @@ const PricePage = ({
               </li>
               <li>
                 <span className={externalValue
-                  ? 'active btn btn-outline-success waves-light waves-effect ml-2 '
-                  : 'btn btn-outline-info waves-light waves-effect ml-2 '
+                  ? 'active btn btn-outline-success waves-light waves-effect ml-2 set-br'
+                  : 'btn btn-outline-info waves-light waves-effect ml-2 set-br'
                 }
                 onClick={handleYearChange}
                 >

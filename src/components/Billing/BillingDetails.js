@@ -44,12 +44,12 @@ class BillingDetails extends Component {
         return moment(a.createdAt) < moment(b.createdAt) ? 1 : moment(a.createdAt) > moment(b.createdAt) ? -1 : 0;
       });
       return this.props.payments.map((payment, index) => {
-        return <tr className=" text-center text-muted font-13" key={index}>
-          <td className="name ">{moment(payment.createdAt).format('DD MMM YYYY')}</td>
-          <td className="email">${payment.payment_plan.amount / 100}</td>
+        return <tr className=" text-muted font-13" key={index}>
+          <td className="name pl-3">{moment(payment.createdAt).format('DD MMM YYYY')}</td>
+          <td className="email pl-4">${payment.payment_plan.amount / 100}</td>
           <td className="location">{payment.subscription_id}</td>
-          <td className="country">{payment.payment_plan.interval.charAt(0).toUpperCase() + payment.payment_plan.interval.slice(1)}</td>
-          <td className="lastseen"><i className="fi-download"></i></td>
+          <td className="country pl-4">{payment.payment_plan.interval.charAt(0).toUpperCase() + payment.payment_plan.interval.slice(1)}</td>
+          <td className="lastseen"><i className="fi-download pl-4"></i></td>
         </tr>;
       });
     } else
@@ -174,35 +174,35 @@ class BillingDetails extends Component {
                       </Col>
                     </Row>
 
-                    <Row className="payment-info">
-                      <div className="panel panel-default">
-                        <div className="card-box">
-                          <h4 className="header-title mt-0 m-b-20">Invoices </h4>
-                          <div className="panel-body billing-list">
-                            <Col md={12}>
-                              <div className="text-left ">
-                                <Table hover className="table-responsive">
-                                  <thead>
-                                    <tr>
-                                      {
-                                        billingHeader.map((prop, key) => {
-                                          return (
-                                            <th className=" h6" key={key}>{prop}</th>
-                                          );
-                                        })
-                                      }
-                                    </tr>
-                                  </thead>
-                                  <tbody>
-                                    {this.renderPaymentList()}
-                                  </tbody>
-                                </Table>
-                              </div>
-                            </Col>
+                    
+                    <div className="panel panel-default">
+                      <div className="card-box">
+                        <h4 className="header-title mt-0 m-b-20">Invoices </h4>
+                      
+                        <Col md={12}>
+                          <div className="text-left">
+                            <Table className="table-striped">
+                              <thead>
+                                <tr>
+                                  {
+                                    billingHeader.map((prop, key) => {
+                                      return (
+                                        <th className=" h6" key={key}>{prop}</th>
+                                      );
+                                    })
+                                  }
+                                </tr>
+                              </thead>
+                              <tbody>
+                                {this.renderPaymentList()}
+                              </tbody>
+                            </Table>
                           </div>
-                        </div>
+                        </Col>
+                       
                       </div>
-                    </Row>
+                    </div>
+                    
                   </div>
                 </div>
               </div>

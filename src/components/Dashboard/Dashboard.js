@@ -209,17 +209,16 @@ class Dashboard extends Component {
           <Row className="dashboard-boxes">
             <Col md={12}>
               <div className="card-box pb-0 mb-0">
-                <h4 className="header-title mb-4">Account Usage Overview</h4>
-                <hr/>
+               
                 <Row className="account-stats">
                   <div className="col-sm-12 col-lg-6 col-xl-3 box ">
                     <div>
                       <div className="text-center mt-4 mb-4">
 
                         <div className="col-md-12 h-50">
-                          <div className=" widget-flat card-box  text-muted pr-4 pl-4 pb-5 pt-2 pos-vertical-center">
+                          <div className=" widget-flat card-box  text-muted pr-4 pl-4 pb-5 pt-2 pos-vertical-center c1">
 
-                            <p className="text-uppercase title m-b-5 font-13 font-600">Active Campaigns</p>
+                            <p className="text-uppercase title m-b-5 fonttitle font-600">Active Campaigns</p>
 
                             <h3 className="m-b-10 campaign">{campaignInfo? campaignInfo.websiteLive.length : []}</h3>
                           </div>
@@ -234,9 +233,9 @@ class Dashboard extends Component {
                       <div className="text-center mt-4 mb-4">
 
                         <div className="col-md-12 h-50">
-                          <div className=" widget-flat card-box  text-muted pr-4 pl-4 pb-5 pt-2 pos-vertical-center">
+                          <div className=" widget-flat card-box  text-muted pr-4 pl-4 pb-5 pt-2 pos-vertical-center c2">
 
-                            <p className="text-uppercase title m-b-5 font-13 font-600">Unique Visitors</p>
+                            <p className="text-uppercase title m-b-5 fonttitle font-600">Unique Visitors</p>
 
                             <h3 className="m-b-10 profile">{profile? Number(profile.uniqueVisitors) :0 }</h3>
                           </div>
@@ -251,9 +250,9 @@ class Dashboard extends Component {
                       <div className="text-center mt-4 mb-4">
 
                         <div className="col-md-12 h-50">
-                          <div className=" widget-flat card-box  text-muted pr-4 pl-4 pb-5 pt-2 pos-vertical-center">
+                          <div className=" widget-flat card-box  text-muted pr-4 pl-4 pb-5 pt-2 pos-vertical-center c3">
 
-                            <p className="text-uppercase title m-b-5 font-13 font-600">Total Notifications</p>
+                            <p className="text-uppercase title m-b-5 fonttitle font-600">Total Notifications</p>
 
                             <h3 className="m-b-10 notify">{campaignInfo ? campaignInfo.notificationCount : 0}</h3>
                           </div>
@@ -268,9 +267,9 @@ class Dashboard extends Component {
                       <div className="text-center mt-4 mb-4">
 
                         <div className="col-md-12 h-50">
-                          <div className="  widget-flat card-box  text-muted pr-4 pl-4 pb-5 pt-2 pos-vertical-center">
+                          <div className="  widget-flat card-box  text-muted pr-4 pl-4 pb-5 pt-2 pos-vertical-center c4">
 
-                            <p className="text-uppercase title m-b-5 font-13 font-600">Total Signups</p>
+                            <p className="text-uppercase title m-b-5 fonttitle font-600">Total Signups</p>
 
                             <h3 className="m-b-10 usersignup">{userSignUps}</h3>
                           </div>
@@ -286,36 +285,8 @@ class Dashboard extends Component {
           <Row>
             <Col md={12}>
               <div className="card-box">
-                <hr/>
-                <Row>
-                  <Col md={8}>
-                    <h4 className="header-title mt-2 ">Website traffic this week</h4>
-                  </Col>
-                  <Col md={4}>
-                    <div className=" pull-right">
-                      <select className="form-control text-muted" onChange={(e) =>  this.setState({daysClicked:e.target.value})}>
-                        <option key={7} value={'7'}>
-                          7 days
-                        </option>
-                        <option key={14} value={'14'} >
-                            14 days
-                        </option>
-                        <option key={28} value={'28'} >
-                            28 days
-                        </option>
-                        <option key={'today'+1} value={'Today'} >
-                            Today
-                        </option>
-                        <option key={'yesterday'+1} value={'Yesterd ay'} >
-                            Yesterday
-                        </option>
-                      </select>
-                    </div>
-                    <div className="clearfix"></div>
-                  </Col>
-                </Row>
-                <hr/>
-                <Row>
+               
+                <Row className="mb-5">
                   <Col md={12}>
                     <Card
                       statsIcon="fa fa-history"
@@ -330,6 +301,27 @@ class Dashboard extends Component {
                     />
                   </Col>
                 </Row>
+                <div className=" pull-right">
+                  <select className="form-control text-muted" onChange={(e) =>  this.setState({daysClicked:e.target.value})}>
+                    <option key={7} value={'7'}>
+                          7 days
+                    </option>
+                    <option key={14} value={'14'} >
+                            14 days
+                    </option>
+                    <option key={28} value={'28'} >
+                            28 days
+                    </option>
+                    <option key={'today'+1} value={'Today'} >
+                            Today
+                    </option>
+                    <option key={'yesterday'+1} value={'Yesterd ay'} >
+                            Yesterday
+                    </option>
+                  </select>
+                </div>
+                <div className="clearfix"></div>
+
               </div>
             </Col>
           </Row>

@@ -29,7 +29,7 @@ class WebsiteCustStory extends Component {
                     <div className="pos-vertical-center col-md-5 col-lg-6 ">
                       <h2>The featured customer stories is being shown here</h2>
                       <p className="lead">
-                                                Meet Alexa , offers unique voice for inquiry of digital goods, Image will be shown in the background
+                         Meet Alexa , offers unique voice for inquiry of digital goods, Image will be shown in the background
                       </p>
                     </div>
                   </div>

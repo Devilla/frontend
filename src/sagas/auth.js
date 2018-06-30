@@ -111,12 +111,43 @@ export function* fetchRoles() {
   }
 }
 
-export function* affiliateSuccess(action) {
+export function* affiliate(action) {
   try {
     yield put(load());
-    const res = yield call(api.GET, 'user/sendmail/affiliate', action.data);
+    const res = yield call(api.GETAUTH, `user/sendmail/affiliate?name=${action.data.name}&email=${action.data.email}`);
     if(res.error)
-      console.log(res.error);
+      yield put(actions.affiliateError(res.message));
+    else
+      yield toast.info('Affiliate Request sent.', toastConfig);
+    yield put(loaded());
+  } catch (error) {
+    yield put(loaded());
+    yield console.log(error);
+  }
+}
+
+export function* demo(action) {
+  try {
+    yield put(load());
+    const data = action.data;
+    const res = yield call(api.GETAUTH, `user/sendmail/demo?firstname=${data.firstname}&lastname=${data.lastname}&email=${data.email}&phonenumber=${data.phonenumber}&company=${data.company}&totalEmployee=${data.totalEmployee}&department=${data.department}`);
+    if(res.error)
+      yield put(actions.demoError(res.message));
+    else
+      yield toast.info('Demo Request sent.', toastConfig);
+    yield put(loaded());
+  } catch (error) {
+    yield put(loaded());
+    yield console.log(error);
+  }
+}
+
+export function* contactUs(action) {
+  try {
+    yield put(load());
+    const res = yield call(api.GETAUTH, `user/sendmail/contactus?name=${action.data.name}&email=${action.data.email}&message=${action.data.message}`);
+    if(res.error)
+      yield put(actions.contactError(res.message));
 
     yield put(loaded());
   } catch (error) {
@@ -124,6 +155,7 @@ export function* affiliateSuccess(action) {
     yield console.log(error);
   }
 }
+
 
 export function* forgotPassword(action) {
   try {
@@ -222,8 +254,16 @@ export function* watchUpdateUser() {
   yield takeLatest(actions.UPDATE_USER, updateUser);
 }
 
-export function* watchAffiliateSuccess() {
-  yield takeLatest(actions.AFFILIATE_SUCCESS, affiliateSuccess);
+export function* watchAffiliate() {
+  yield takeLatest(actions.AFFILIATE, affiliate);
+}
+
+export function* watchContactUs() {
+  yield takeLatest(actions.CONTACT_US, contactUs);
+}
+
+export function* watchDemo() {
+  yield takeLatest(actions.DEMO, demo);
 }
 
 export function* watchForgotPassword() {
@@ -248,7 +288,9 @@ export default function* rootSaga() {
     fork(watchFetchUser),
     fork(watchUpdateUser),
     fork(watchFetchRoles),
-    fork(watchAffiliateSuccess),
+    fork(watchAffiliate),
+    fork(watchContactUs),
+    fork(watchDemo),
     fork(watchForgotPassword),
     fork(watchSocialLogin),
     fork(watchVerifyUser),
