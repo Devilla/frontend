@@ -1,5 +1,16 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
+import { contactUs } from 'ducks/auth';
+import { toast, ToastContainer } from 'react-toastify';
 import './WebsiteContact.scss';
+
+const toastConfig = {
+  position: toast.POSITION.BOTTOM_LEFT,
+  autoClose: 2000,
+  className: 'toast-style',
+
+};
 
 class WebsiteContact extends Component {
   constructor(){
@@ -17,11 +28,6 @@ class WebsiteContact extends Component {
     scrollElm.scrollTop = 0;
   }
 
-  handleSubmit(evt){
-    evt.stopPropagation();
-    evt.preventDefault();
-  }
-
   checkEmail(evt) {
     /* eslint-disable */
     var Emailexpr = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
@@ -34,19 +40,23 @@ class WebsiteContact extends Component {
       };
     }
   }
-  handleEmailChange(evt) {
-   
-    this.setState({email: evt.target.value, emailError: ''});
-  }
-  handleNameChange(evt) {
 
-    this.setState({name: evt.target.value});
-  }
-  handleMessageChange(evt) {
-
-    this.setState({message: evt.target.value});
+  handleStateChange = (target, value) => {
+    this.setState({[target]: value});
   }
 
+  handleSubmit = (event) => {
+    const data = {
+      'name': this.state.name,
+      'email': this.state.email,
+      'message': this.state.message
+    };
+    this.props.contactUs(data);
+    this.setState({name: '', email: '', message: '', emailError: ''});
+    if (! toast.isActive(this.toastId)) {
+      this.toastId = toast.info('Thankyou for your Response! ', toastConfig);
+    }
+  }
   render() {
     return (
       <div className="websitecontact-container">
@@ -75,18 +85,19 @@ class WebsiteContact extends Component {
                 <p className="lead"></p>
               </div>
               <div className="col-md-6">
-                <form onSubmit={this.handleSubmit.bind(this)} className="form-email row" data-recaptcha-theme="light" novalidate="true">
+                <form className="form-email row" data-name="Contactus Form" >
                   <div className="col-md-12">
-                    <input type="text" name="name" placeholder="Name" className="validate-required" onChange={this.handleNameChange.bind(this)}  />
+                    <input type="text" name="name" placeholder="Name" className="validate-required" onChange={(e) => this.handleStateChange(e.target.name, e.target.value)}  />
                   </div>
                   <div className="col-md-12">
-                    <input type="email" name="email" placeholder="Johndoe@example.com" className="validate-required validate-email" onBlur={this.checkEmail.bind(this)} onChange={this.handleEmailChange.bind(this)} />
+                    <input type="email" name="email" placeholder="Email Address" className="validate-required validate-email" onBlur={this.checkEmailBlur} onChange={(e) => this.handleStateChange(e.target.name, e.target.value)} />
                   </div>
                   <div className="col-md-12">
-                    <textarea rows="4" name="message" placeholder="Leave us a message" className="validate-required" onChange={this.handleMessageChange.bind(this)}></textarea>
+                    <textarea rows="4" name="message" placeholder="Leave us a message" className="validate-required" onChange={(e) => this.handleStateChange(e.target.name, e.target.value)}></textarea>
                   </div>
 
-                  <button type="submit" className="btn btn--primary type--uppercase">Send Enquiry</button>
+                  <button type="submit" className="btn btn--primary type--uppercase" onClick={this.handleSubmit}>Send Enquiry</button>
+                  <ToastContainer  autoClose={8000}/>
                 </form>
               </div>
             </div>
@@ -98,4 +109,12 @@ class WebsiteContact extends Component {
   }
 }
 
-export default WebsiteContact;
+const mapStateToProps = state => ({
+  error: state.getIn(['auth', 'contactError'])
+});
+
+const mapDispatchToProps = {
+  contactUs
+};
+
+export default connect(null, mapDispatchToProps)(WebsiteContact);

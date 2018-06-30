@@ -29,6 +29,15 @@ export const GET = (url) => {
     .then(res => res);
 };
 
+export const GETAUTH = (url) => {
+  return fetch(base + url, {
+    method: 'GET',
+    headers: {}
+  })
+    .then(res => res.json())
+    .then(res => res);
+};
+
 
 export const GETFILE = (url) => {
   const authToken = JSON.parse(localStorage.getItem('authToken'));

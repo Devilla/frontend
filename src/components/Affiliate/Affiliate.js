@@ -5,9 +5,11 @@ export default class Affiliate extends Component {
   constructor() {
     super();
   }
+  
   componentDidMount() {
     window.scrollTo(0,0);
   }
+
   render() {
     return (
       <div className="main-container">
