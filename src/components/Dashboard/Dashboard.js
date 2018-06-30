@@ -212,7 +212,7 @@ class Dashboard extends Component {
                 <h4 className="header-title mb-4">Account Usage Overview</h4>
                 <hr/>
                 <Row className="account-stats">
-                  <div className="col-sm-12 col-lg-6 col-xl-2 box pr-0">
+                  <div className="col-sm-12 col-lg-6 col-xl-3 box ">
                     <div>
                       <div className="text-center mt-4 mb-4">
 
@@ -229,7 +229,7 @@ class Dashboard extends Component {
                     </div>
                   </div>
 
-                  <div className="col-sm-12 col-lg-6 col-xl-2 box pr-0">
+                  <div className="col-sm-12 col-lg-6 col-xl-3 box ">
                     <div>
                       <div className="text-center mt-4 mb-4">
 
@@ -246,7 +246,7 @@ class Dashboard extends Component {
                     </div>
                   </div>
 
-                  <div className="col-sm-12 col-lg-6 col-xl-2 box pr-0">
+                  <div className="col-sm-12 col-lg-6 col-xl-3 box ">
                     <div>
                       <div className="text-center mt-4 mb-4">
 
@@ -263,7 +263,7 @@ class Dashboard extends Component {
                     </div>
                   </div>
 
-                  <div className="col-sm-12 col-lg-6 col-xl-2 box pr-0">
+                  <div className="col-sm-12 col-lg-6 col-xl-3 box">
                     <div>
                       <div className="text-center mt-4 mb-4">
 
