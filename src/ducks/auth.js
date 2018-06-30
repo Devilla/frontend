@@ -25,6 +25,10 @@ export const COUPON_ERROR = action('COUPON_ERROR');
 export const CLEAR_COUPON_ERROR = action('CLEAR_COUPON_ERROR');
 export const AFFILIATE_ERROR = action('AFFILIATE_ERROR');
 export const CLEAR_AFFILIATE_ERROR = action('CLEAR_AFFILIATE_ERROR');
+
+export const CONTACT_ERROR = action('CONTACT_ERROR');
+export const CLEAR_CONTACT_ERROR = action('CLEAR_CONTACT_ERROR');
+
 export const DEMO_ERROR = action('AFFILIATE_ERROR');
 export const CLEAR_DEMO_ERROR = action('CLEAR_AFFILIATE_ERROR');
 
@@ -36,11 +40,13 @@ export const updateUser = (user) => ({ type: UPDATE_USER, user });
 export const fetchRolesSuccess = (roles) => ({ type: FETCH_ROLES_SUCCESS, roles });
 
 export const affiliateSuccess = (data) => ({ type: AFFILIATE_SUCCESS, data});
-
 export const affiliateError = (data) => ({ type: AFFILIATE_ERROR, data });
 export const clearAffiliateError = () => ({ type: CLEAR_AFFILIATE_ERROR });
 
 export const contactSuccess = (data) => ({ type: CONTACT_SUCCESS, data});
+export const contactError = (data) => ({ type: CONTACT_ERROR, data });
+export const clearContactError = () => ({ type: CLEAR_CONTACT_ERROR });
+
 export const demoSuccess = (data) => ({ type: DEMO_SUCCESS, data});
 export const demoError = (data) => ({ type: DEMO_ERROR, data });
 export const clearDemoError = () => ({ type: CLEAR_DEMO_ERROR });
@@ -90,6 +96,10 @@ const auth = (state = initialState, action) => {
       return state.set('affiliateError', action.error);
     case CLEAR_AFFILIATE_ERROR:
       return state.set('affiliateError', '');
+    case CONTACT_ERROR:
+      return state.set('contactError', action.error);
+    case CLEAR_CONTACT_ERROR:
+      return state.set('contactError', '');
     case DEMO_ERROR:
       return state.set('demoError', action.error);
     case CLEAR_DEMO_ERROR:

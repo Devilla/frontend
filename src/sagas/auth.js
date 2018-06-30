@@ -146,7 +146,7 @@ export function* contactSuccess() {
     yield put(load());
     const res = yield call(api.GET, 'user/sendmail/contact');
     if(res.error)
-      console.log(res.error);
+      yield put(actions.contactError(res.message));
 
     yield put(loaded());
   } catch (error) {
@@ -261,6 +261,10 @@ export function* watchContactSuccess() {
   yield takeLatest(actions.CONTACT_SUCCESS, contactSuccess);
 }
 
+export function* watchDemoSuccess() {
+  yield takeLatest(actions.DEMO_SUCCESS, demoSuccess);
+}
+
 export function* watchForgotPassword() {
   yield takeLatest(actions.FORGOT_PASSWORD, forgotPassword);
 }
@@ -284,6 +288,8 @@ export default function* rootSaga() {
     fork(watchUpdateUser),
     fork(watchFetchRoles),
     fork(watchAffiliateSuccess),
+    fork(watchContactSuccess),
+    fork(watchDemoSuccess),
     fork(watchForgotPassword),
     fork(watchSocialLogin),
     fork(watchVerifyUser),
