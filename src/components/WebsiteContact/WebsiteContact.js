@@ -29,30 +29,28 @@ class WebsiteContact extends Component {
     scrollElm.scrollTop = 0;
   }
 
-  handleSubmit(evt) {
+  handleSubmit = (evt) => {
+    evt.preventDefault();
     if (!this.canBeSubmitted()) {
-      evt.preventDefault();
       return;
     } else {
-      evt.preventDefault();
       const data = {
         'name': this.state.name,
         'email': this.state.email,
         'message': this.state.message
       };
       this.props.contactSuccess(data);
-      this.setState({name: '',email: '', message: '', emailError: ''});
+      this.setState({name: '', email: '', message: '', emailError: ''});
     }
   }
 
   canBeSubmitted() {
     const errors = validate(this.state.email, this.state.authEmail);
-
     const isDisabled = Object.keys(errors).some(x => errors[x]);
     return !isDisabled;
   }
 
-  checkEmailBlur= (event) => {
+  checkEmailBlur = (event) => {
     const value = event.target.value;
     const isEmailValid = validateEmail(value);
     this.setState({ isEmailValid });
@@ -61,6 +59,7 @@ class WebsiteContact extends Component {
     else if (!isEmailValid)
       this.setState({ errorEmail: 'Enter a valid Email id' });
   }
+
   checkEmail(evt) {
     /* eslint-disable */
     var Emailexpr = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
@@ -73,17 +72,9 @@ class WebsiteContact extends Component {
       };
     }
   }
-  handleEmailChange(evt) {
 
-    this.setState({email: evt.target.value, emailError: ''});
-  }
-  handleNameChange(evt) {
-
-    this.setState({name: evt.target.value});
-  }
-  handleMessageChange(evt) {
-
-    this.setState({message: evt.target.value});
+  handleChange = (target, value) => {
+    this.setState({[target]: value});
   }
 
   render() {
@@ -114,17 +105,16 @@ class WebsiteContact extends Component {
                 <p className="lead"></p>
               </div>
               <div className="col-md-6">
-                <form onSubmit={this.handleSubmit.bind(this)} className="form-email row" method="POST" data-name="Contactus Form" >
+                <form onSubmit={this.handleSubmit} className="form-email row" method="POST" data-name="Contactus Form" >
                   <div className="col-md-12">
-                    <input type="text" name="name" placeholder="Name" className="validate-required" onChange={this.handleNameChange.bind(this)}  />
+                    <input type="text" name="name" placeholder="Name" className="validate-required" onChange={(e) => this.handleChange('name', e.target.value)}  />
                   </div>
                   <div className="col-md-12">
-                    <input type="email" name="email" placeholder="Johndoe@example.com" className="validate-required validate-email" onBlur={this.checkEmailBlur.bind(this)} onChange={this.handleEmailChange.bind(this)} />
+                    <input type="email" name="email" placeholder="Email Address" className="validate-required validate-email" onBlur={this.checkEmailBlur} onChange={(e) => this.handleChange('email', e.target.value)} />
                   </div>
                   <div className="col-md-12">
-                    <textarea rows="4" name="message" placeholder="Leave us a message" className="validate-required" onChange={this.handleMessageChange.bind(this)}></textarea>
+                    <textarea rows="4" name="message" placeholder="Leave us a message" className="validate-required" onChange={(e) => this.handleChange('message', e.target.value)}></textarea>
                   </div>
-
                   <button type="submit" className="btn btn--primary type--uppercase">Send Enquiry</button>
                 </form>
               </div>
@@ -137,12 +127,8 @@ class WebsiteContact extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  error: state.getIn(['auth', 'contactSuccess'])
-});
-
 const mapDispatchToProps = {
   contactSuccess
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(WebsiteContact);
+export default connect(null, mapDispatchToProps)(WebsiteContact);
