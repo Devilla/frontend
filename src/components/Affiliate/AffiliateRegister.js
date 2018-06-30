@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { validateEmail } from 'services/FormUtils';
 import { HelpBlock } from 'react-bootstrap';
 import { affiliateSuccess } from 'ducks/auth';
-
+import { Popup } from 'react-popup';
 
 function validate(password, authEmail) {
   return {
@@ -23,6 +23,23 @@ class AffiliateRegister extends Component {
       errorName: ''
     };
   }
+
+  showPopupHandler = () => {
+    Popup.create({
+      title: 'Own Your Personal Data',
+      content: 'Thank you for your Response',
+      buttons: {
+        left: [{
+          text: 'Cancel',
+          className: 'danger',
+          action: function () {
+            Popup.close();
+          }
+        }]
+      }
+    });
+  }
+
 
   checkEmailBlur= (event) => {
     const value = event.target.value;
@@ -86,7 +103,7 @@ class AffiliateRegister extends Component {
             <div className="row justify-content-around">
               <h2 class="align-center">Become an Influence Affiliate</h2>
               <div className="col-md-6">
-                <form className="row" onSubmit={this.handleSubmit.bind(this)} method="POST" data-name="Affiliate Form">
+                <form className="row" >
                   <div className="mt-3 col-md-12">
                     <input
                       type="text"
@@ -121,6 +138,7 @@ class AffiliateRegister extends Component {
                       value="BECOME A AFFILIATE"
                       style={mousepoint}
                       disabled={!isEmailValid}
+                      onClick={this.showPopupHandler}
                     />
                   </div>
                 </form>
