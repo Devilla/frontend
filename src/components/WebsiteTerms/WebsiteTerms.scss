@@ -1,12 +1,13 @@
-
 .website-app {
-
-div {
-    &.lead {
-        p , ul , li {
-            font-size: 20px;
+    .WebsiteTerms-container {
+        div {
+            &.lead {
+                p,
+                ul,
+                li {
+                    font-size: 20px;
+                }
+            }
         }
     }
-}
-
 }

@@ -64,7 +64,8 @@ class WebsiteDemoPage extends  Component  {
 
 
   componentDidMount(){
-    window.scrollTo(0, 0);
+    var scrollElm = document.scrollingElement;
+    scrollElm.scrollTop = 0;
   }
 
   componentWillUnmount() {

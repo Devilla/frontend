@@ -91,7 +91,7 @@ const PricePage = ({
                       <li><div dangerouslySetInnerHTML={{ __html: plan.details }} /></li>
                     </ul>
 
-                    <a className={selectedPlan.id === plan.id ? 'pricingTable-signup-active' : 'pricingTable-signup'} onClick={() => handleCheckChange(true, plan)}>
+                    <a className={selectedPlan.id === plan.id ? 'active btn btn-outline-success waves-light waves-effect mr-2 pricingTable-signup' : 'btn btn-outline-info waves-light waves-effect ml-2 pricingTable-signup'} onClick={() => handleCheckChange(true, plan)}>
                       Select
                     </a>
 
