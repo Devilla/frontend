@@ -144,7 +144,7 @@ export function* demo(action) {
 export function* contactUs(action) {
   try {
     yield put(load());
-    const res = yield call(api.GETAUTH, `user/sendmail/contact?name=${action.data.name}&email=${action.data.email}&message=${action.data.message}`);
+    const res = yield call(api.GETAUTH, `user/sendmail/contactus?name=${action.data.name}&email=${action.data.email}&message=${action.data.message}`);
     if(res.error)
       yield put(actions.contactError(res.message));
 

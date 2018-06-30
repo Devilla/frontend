@@ -30,15 +30,9 @@ export const GET = (url) => {
 };
 
 export const GETAUTH = (url) => {
-  //const authToken = JSON.parse(localStorage.getItem('authToken'));
-  //const token = authToken?authToken.token:null;
-  if(unAuthorizedUrl.indexOf(url.split('?')[0]) >= 0)
-    ;
-  else
-    ;
-
   return fetch(base + url, {
     method: 'GET',
+    headers: {}
   })
     .then(res => res.json())
     .then(res => res);
