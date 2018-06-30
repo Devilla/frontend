@@ -19,7 +19,6 @@ import 'react-popup/style.css';
 import './DashboardContainer.scss';
 
 
-
 class DashboardContainer extends Component {
   constructor(props) {
     super(props);
