@@ -94,7 +94,7 @@ const NotificationList = ({ notificationList, configure, handleActivityChange}) 
                 id={'channel+'}
                 type="checkbox"
                 checked={true} // need to chenge this too
-                //need to add on change event 
+                readOnly //need to add on change event
               />
               <label className="tgl-btn" htmlFor={'channel+'}></label>
             </div>

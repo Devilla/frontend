@@ -20,7 +20,6 @@ const initialRules = {
   displayPosition: 'Bottom Left',
   popupAnimationIn:'fadeInUp',
   popupAnimationOut:'fadeOutDown',
-  // sampleDisplay: false,
   animation: 'fadeIn'
 };
 

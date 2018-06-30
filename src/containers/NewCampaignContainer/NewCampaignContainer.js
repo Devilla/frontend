@@ -39,7 +39,8 @@ class NewCampaignContainer extends Component {
       errorWebsiteUrl: '',
       activeClass: 1,
       loaderActive: false,
-      sampleDisplay: false
+      sampleDisplay: false,
+      notification: ''
     };
   }
 
@@ -77,6 +78,8 @@ class NewCampaignContainer extends Component {
   setActiveState = (val) => {
     if(this.state.sampleDisplay && val != 3)
       this.setState({sampleDisplay: false});
+    if(val == 2)
+      this.setState({notification: ''});
     this.setState({activeClass: val});
   }
 
@@ -101,6 +104,14 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
 
   showNotification = () => {
     this.setState({sampleDisplay: !this.state.sampleDisplay});
+  }
+  
+  setNotification = (notification) => {
+    this.setState({notification: notification});
+  }
+
+  clearNotification = () => {
+    this.setState({notification: ''});
   }
 
   componentWillUnmount() {
@@ -150,7 +161,7 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
   render() {
     const errors = validate(this.state.campaignname, this.state.website);
     const isDisabled = Object.keys(errors).some(x => errors[x]);
-    const { activeClass, loaderActive, sampleDisplay } = this.state;
+    const { activeClass, loaderActive, notification, sampleDisplay } = this.state;
     return (
       <div>
         {this.props.campaign && Object.keys(this.props.campaign).length !== 0 && this.props.campaign.constructor === Object?
@@ -158,11 +169,14 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
             sampleDisplay={sampleDisplay}
             loaderActive={loaderActive}
             activeClass={activeClass}
+            notification={notification}
             showNotification={this.showNotification}
             goLive={this.goLive}
             verifyPixelStatus={this.verifyPixelStatus}
             handlePixelCopy={this.handlePixelCopy}
             setActiveState={this.setActiveState}
+            setNotification={this.setNotification}
+            clearNotification={this.clearNotification}
             {...this.props}
           />
           :
