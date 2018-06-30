@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { validateEmail } from 'services/FormUtils';
 import { HelpBlock } from 'react-bootstrap';
-import { affiliateSuccess } from 'ducks/auth';
+import { affiliateSuccess, clearAffiliateError } from 'ducks/auth';
 
 
 function validate(password, authEmail) {
@@ -138,7 +138,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
-  affiliateSuccess
+  affiliateSuccess,
+  clearAffiliateError
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AffiliateRegister);

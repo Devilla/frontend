@@ -29,6 +29,8 @@ export const updateUser = (user) => ({ type: UPDATE_USER, user });
 export const fetchRolesSuccess = (roles) => ({ type: FETCH_ROLES_SUCCESS, roles });
 
 export const affiliateSuccess = (data) => ({ type: AFFILIATE_SUCCESS, data });
+export const affiliateError = (data) => ({ type: AFFILIATE_ERROR, data });
+export const clearAffiliateError = () => ({ type: CLEAR_AFFILIATE_ERROR });
 
 export const forgotPassword = (data) => ({ type: FORGOT_PASSWORD, data });
 export const forgotPasswordError = (error) => ({ type: FORGOT_PASSWORD_ERROR, error });
@@ -48,7 +50,8 @@ const initialState = fromJS({
   roles: List([]),
   coupon: '',
   couponError: '',
-  forgetError: ''
+  forgetError: '',
+  affiliateError: ''
 });
 
 const auth = (state = initialState, action) => {
@@ -69,6 +72,10 @@ const auth = (state = initialState, action) => {
       return state.set('forgetError', action.error);
     case CLEAR_FORGOT_PASSWORD_ERROR:
       return state.set('forgetError', '');
+      case AFFILIATE_ERROR:
+        return state.set('affiliateError', action.error);
+      case CLEAR_AFFILIATE_ERROR:
+        return state.set('affiliateError', '');
     default:
       return state;
   }
