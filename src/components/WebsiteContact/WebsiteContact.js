@@ -1,5 +1,17 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { validateEmail } from 'services/FormUtils';
+import { contactSuccess } from 'ducks/auth';
 import './WebsiteContact.scss';
+
+
+
+function validate(password, authEmail) {
+  return {
+    password: password.length === 0,
+    authEmail: authEmail === false
+  };
+}
 
 class WebsiteContact extends Component {
   constructor(){
@@ -17,11 +29,38 @@ class WebsiteContact extends Component {
     scrollElm.scrollTop = 0;
   }
 
-  handleSubmit(evt){
-    evt.stopPropagation();
-    evt.preventDefault();
+  handleSubmit(evt) {
+    if (!this.canBeSubmitted()) {
+      evt.preventDefault();
+      return;
+    } else {
+      evt.preventDefault();
+      const data = {
+        'name': this.state.name,
+        'email': this.state.email,
+        'message': this.state.message
+      };
+      this.props.contactSuccess(data);
+      this.setState({name: '',email: '', message: '', emailError: ''});
+    }
   }
 
+  canBeSubmitted() {
+    const errors = validate(this.state.email, this.state.authEmail);
+
+    const isDisabled = Object.keys(errors).some(x => errors[x]);
+    return !isDisabled;
+  }
+
+  checkEmailBlur= (event) => {
+    const value = event.target.value;
+    const isEmailValid = validateEmail(value);
+    this.setState({ isEmailValid });
+    if (!value)
+      this.setState({ errorEmail: 'Email id required' });
+    else if (!isEmailValid)
+      this.setState({ errorEmail: 'Enter a valid Email id' });
+  }
   checkEmail(evt) {
     /* eslint-disable */
     var Emailexpr = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
@@ -35,7 +74,7 @@ class WebsiteContact extends Component {
     }
   }
   handleEmailChange(evt) {
-   
+
     this.setState({email: evt.target.value, emailError: ''});
   }
   handleNameChange(evt) {
@@ -75,12 +114,12 @@ class WebsiteContact extends Component {
                 <p className="lead"></p>
               </div>
               <div className="col-md-6">
-                <form onSubmit={this.handleSubmit.bind(this)} className="form-email row" data-recaptcha-theme="light" novalidate="true">
+                <form onSubmit={this.handleSubmit.bind(this)} className="form-email row" method="POST" data-name="Contactus Form" >
                   <div className="col-md-12">
                     <input type="text" name="name" placeholder="Name" className="validate-required" onChange={this.handleNameChange.bind(this)}  />
                   </div>
                   <div className="col-md-12">
-                    <input type="email" name="email" placeholder="Johndoe@example.com" className="validate-required validate-email" onBlur={this.checkEmail.bind(this)} onChange={this.handleEmailChange.bind(this)} />
+                    <input type="email" name="email" placeholder="Johndoe@example.com" className="validate-required validate-email" onBlur={this.checkEmailBlur.bind(this)} onChange={this.handleEmailChange.bind(this)} />
                   </div>
                   <div className="col-md-12">
                     <textarea rows="4" name="message" placeholder="Leave us a message" className="validate-required" onChange={this.handleMessageChange.bind(this)}></textarea>
@@ -98,4 +137,12 @@ class WebsiteContact extends Component {
   }
 }
 
-export default WebsiteContact;
+const mapStateToProps = state => ({
+  error: state.getIn(['auth', 'contactSuccess'])
+});
+
+const mapDispatchToProps = {
+  contactSuccess
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(WebsiteContact);

@@ -25,19 +25,6 @@ const Header = ({openCloseDropdown, dropdownStyle, logout, renderHelp, openProfi
             <a className="nav-link dropdown-toggle arrow-none" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
               <i className="fi-bell" style={{fontSize:'25px'}}></i>
             </a>
-            <div className="dropdown-menu dropdown-menu-right dropdown-menu-animated dropdown-lg">
-              <div className="dropdown-item noti-title">
-                <h5 className="m-0">
-                  <span className="float-right"></span>Get Help
-                </h5>
-              </div>
-
-              <div className="dropnavbars">
-                <a href="javascript:void(0);" className="dropdown-item notify-item">
-                  <button type="button" className="btn btn-block btn-info waves-effect waves-light w-lg"> <span>Click to talk</span> </button>
-                </a>
-              </div>
-            </div>
           </li>
           <li className="dropdown notification-list">
             <a

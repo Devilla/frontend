@@ -111,27 +111,27 @@ class DashboardContainer extends Component {
         <FormGroup>
           <Row className="help-form-fields">
             <Radio name="radioGroup" inline={true}>
-              I need help setting up my team
+              &nbsp;&nbsp;I need help setting up my Campaign
             </Radio>
           </Row>
           <Row className="help-form-fields">
             <Radio name="radioGroup" inline="inline">
-              I want to know how to use flock
+              &nbsp;&nbsp;I want to know how to use Influence
             </Radio>
           </Row>
           <Row className="help-form-fields">
             <Radio name="radioGroup" inline="inline">
-              Something is not working
+              &nbsp;Something is not working
             </Radio>
           </Row>
           <Row className="help-form-fields">
             <Radio name="radioGroup" inline="inline">
-              I have feedback / feature request
+              &nbsp;&nbsp;I have feedback / feature request
             </Radio>
           </Row>
           <Row className="help-form-fields">
             <Radio name="radioGroup" inline="inline">
-              I need help with something else
+              &nbsp;&nbsp;I need help with something else
             </Radio>
           </Row>
         </FormGroup>

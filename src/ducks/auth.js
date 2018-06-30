@@ -11,6 +11,8 @@ export const FETCH_ROLES_SUCCESS = action('FETCH_ROLES_SUCCESS');
 export const UPDATE_USER = action('UPDATE_USER');
 
 export const AFFILIATE_SUCCESS = action('AFFILIATE_SUCCESS');
+export const CONTACT_SUCCESS = action('CONTACT_SUCCESS');
+export const DEMO_SUCCESS = action('DEMO_SUCCESS');
 
 export const FORGOT_PASSWORD = action('FORGOT_PASSWORD');
 export const FORGOT_PASSWORD_ERROR = action('FORGOT_PASSWORD_ERROR');
@@ -21,6 +23,15 @@ export const VALIDATE_COUPON = action('VALIDATE_COUPON');
 export const COUPON_SUCCESS = action('COUPON_SUCCESS');
 export const COUPON_ERROR = action('COUPON_ERROR');
 export const CLEAR_COUPON_ERROR = action('CLEAR_COUPON_ERROR');
+export const AFFILIATE_ERROR = action('AFFILIATE_ERROR');
+export const CLEAR_AFFILIATE_ERROR = action('CLEAR_AFFILIATE_ERROR');
+
+export const CONTACT_ERROR = action('CONTACT_ERROR');
+export const CLEAR_CONTACT_ERROR = action('CLEAR_CONTACT_ERROR');
+
+export const DEMO_ERROR = action('AFFILIATE_ERROR');
+export const CLEAR_DEMO_ERROR = action('CLEAR_AFFILIATE_ERROR');
+
 
 export const fetchUser = () => ({ type: FETCH });
 export const fetchRoles = () => ({ type: FETCHROLES });
@@ -28,7 +39,18 @@ export const fetchUserSuccess = (user) => ({ type: FETCH_USER_SUCCESS, user });
 export const updateUser = (user) => ({ type: UPDATE_USER, user });
 export const fetchRolesSuccess = (roles) => ({ type: FETCH_ROLES_SUCCESS, roles });
 
-export const affiliateSuccess = (data) => ({ type: AFFILIATE_SUCCESS, data });
+export const affiliateSuccess = (data) => ({ type: AFFILIATE_SUCCESS, data});
+export const affiliateError = (data) => ({ type: AFFILIATE_ERROR, data });
+export const clearAffiliateError = () => ({ type: CLEAR_AFFILIATE_ERROR });
+
+export const contactSuccess = (data) => ({ type: CONTACT_SUCCESS, data});
+export const contactError = (data) => ({ type: CONTACT_ERROR, data });
+export const clearContactError = () => ({ type: CLEAR_CONTACT_ERROR });
+
+export const demoSuccess = (data) => ({ type: DEMO_SUCCESS, data});
+export const demoError = (data) => ({ type: DEMO_ERROR, data });
+export const clearDemoError = () => ({ type: CLEAR_DEMO_ERROR });
+
 
 export const forgotPassword = (data) => ({ type: FORGOT_PASSWORD, data });
 export const forgotPasswordError = (error) => ({ type: FORGOT_PASSWORD_ERROR, error });
@@ -48,7 +70,8 @@ const initialState = fromJS({
   roles: List([]),
   coupon: '',
   couponError: '',
-  forgetError: ''
+  forgetError: '',
+  affiliateError: ''
 });
 
 const auth = (state = initialState, action) => {
@@ -69,6 +92,18 @@ const auth = (state = initialState, action) => {
       return state.set('forgetError', action.error);
     case CLEAR_FORGOT_PASSWORD_ERROR:
       return state.set('forgetError', '');
+    case AFFILIATE_ERROR:
+      return state.set('affiliateError', action.error);
+    case CLEAR_AFFILIATE_ERROR:
+      return state.set('affiliateError', '');
+    case CONTACT_ERROR:
+      return state.set('contactError', action.error);
+    case CLEAR_CONTACT_ERROR:
+      return state.set('contactError', '');
+    case DEMO_ERROR:
+      return state.set('demoError', action.error);
+    case CLEAR_DEMO_ERROR:
+      return state.set('demoError', '');
     default:
       return state;
   }

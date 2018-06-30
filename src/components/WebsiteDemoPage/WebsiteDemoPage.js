@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-
+import { connect } from 'react-redux';
+import { demoSuccess, clearDemoError } from 'ducks/auth';
 const initialState = {
   firstname : '',
   lastname : '',
@@ -14,6 +15,13 @@ const initialState = {
   fm3 : false,
 
 };
+
+function validate(password, authEmail) {
+  return {
+    password: password.length === 0,
+    authEmail: authEmail === false
+  };
+}
 class WebsiteDemoPage extends  Component  {
 
   constructor() {
@@ -87,10 +95,31 @@ class WebsiteDemoPage extends  Component  {
       }));
     }
 
-    nextStepHandler = () => {
-      //next functionlaity to be added
-      //handler for last button
+    nextStepHandler = (evt) => {
+      if (!this.canBeSubmitted()) {
+        evt.preventDefault();
+        return;
+      } else {
+        evt.preventDefault();
+        const data = {
+          'fistname': this.state.fistname,
+          'lastName': this.state.lastName,
+          'email': this.state.email
+        };
+        this.props.demoSuccess(data);
+        this.props.clearDemoError();
+        this.setState({fistname: '',lastName: '',email: '', emailError: ''});
+      }
     }
+
+    canBeSubmitted() {
+      const errors = validate(this.state.email, this.state.password, this.state.authEmail);
+
+      const isDisabled = Object.keys(errors).some(x => errors[x]);
+      return !isDisabled;
+    }
+
+    
 
 
     render()  {
@@ -148,7 +177,7 @@ class WebsiteDemoPage extends  Component  {
                         <div>
                           <h1>Lets add your company details</h1>
                           <p className="lead">
-                                                    Tell us more about your use case so we can show you the very best of Influence.
+                            Tell us more about your use case so we can show you the very best of Influence.
                           </p>
                           <hr className="short" />
                         </div>
@@ -157,7 +186,7 @@ class WebsiteDemoPage extends  Component  {
                         <input type="text" name="Company" onChange={this.handleCompanyChange.bind(this)} placeholder="Company" />
                       </div>
                       <div className="col-md-8">
-                        <select  style={{'color': '#A8A8A8','fontSize':'16px'}} className='employees required select' id='account[help_desk_size]' name='account[help_desk_size]' placeholder='Number of employees' type='select' onChange={this.handleEmployeeChange.bind(this)}>
+                        <select  style={{'color': '#A8A8A8','fontSize':'18px'}} className='employees required select' placeholder='Number of employees' type='select' onChange={this.handleEmployeeChange.bind(this)}>
                           <option value="" selected="">Number of employees</option>
                           <option value="5000+">5000+</option>
                           <option value="1000-4999">1000-4999</option>
@@ -170,7 +199,7 @@ class WebsiteDemoPage extends  Component  {
                         </select>
                       </div>
                       <div className="col-md-8">
-                        <select style={{'color': '#A8A8A8','fontSize': '16px'}} className='department required select' id='department' name='department' placeholder='Department' type='select' onChange={this.handleDeptChange.bind(this)}>
+                        <select  className='department required select' id='department' name='department' placeholder='Department'  onChange={this.handleDeptChange.bind(this)}>
                           <option value="" selected="">Department</option>
                           <option value="Customer Service">Customer Service</option>
                           <option value="Facilities">Facilities</option>
@@ -212,7 +241,7 @@ class WebsiteDemoPage extends  Component  {
                           type="button"
                           name="trialbtn"
                           className="btn btn--primary col-md-12 ml-0"
-                          onClick={this.nextStepHandler}>Start your trial
+                          onClick={this.nextStepHandler.bind(this)}>Start your trial
                         </button>
                       </div>
                     </div>) :(
@@ -228,5 +257,13 @@ class WebsiteDemoPage extends  Component  {
     }
 
 }
+const mapStateToProps = state => ({
+  error: state.getIn(['auth', 'demoSuccess'])
+});
 
-export default WebsiteDemoPage;
+const mapDispatchToProps = {
+  demoSuccess,
+  clearDemoError
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(WebsiteDemoPage);

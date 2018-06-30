@@ -111,12 +111,42 @@ export function* fetchRoles() {
   }
 }
 
-export function* affiliateSuccess(action) {
+export function* affiliateSuccess() {
   try {
     yield put(load());
-    const res = yield call(api.GET, 'user/sendmail/affiliate', action.data);
+    const res = yield call(api.GET, 'user/sendmail/affiliate');
     if(res.error)
-      console.log(res.error);
+      yield put(actions.affiliateError(res.message));
+    else
+      yield toast.info('Affiliate Request sent.', toastConfig);
+    yield put(loaded());
+  } catch (error) {
+    yield put(loaded());
+    yield console.log(error);
+  }
+}
+
+export function* demoSuccess() {
+  try {
+    yield put(load());
+    const res = yield call(api.GET, 'user/sendmail/demo');
+    if(res.error)
+      yield put(actions.demoError(res.message));
+    else
+      yield toast.info('Demo Request sent.', toastConfig);
+    yield put(loaded());
+  } catch (error) {
+    yield put(loaded());
+    yield console.log(error);
+  }
+}
+
+export function* contactSuccess() {
+  try {
+    yield put(load());
+    const res = yield call(api.GET, 'user/sendmail/contact');
+    if(res.error)
+      yield put(actions.contactError(res.message));
 
     yield put(loaded());
   } catch (error) {
@@ -124,6 +154,7 @@ export function* affiliateSuccess(action) {
     yield console.log(error);
   }
 }
+
 
 export function* forgotPassword(action) {
   try {
@@ -226,6 +257,14 @@ export function* watchAffiliateSuccess() {
   yield takeLatest(actions.AFFILIATE_SUCCESS, affiliateSuccess);
 }
 
+export function* watchContactSuccess() {
+  yield takeLatest(actions.CONTACT_SUCCESS, contactSuccess);
+}
+
+export function* watchDemoSuccess() {
+  yield takeLatest(actions.DEMO_SUCCESS, demoSuccess);
+}
+
 export function* watchForgotPassword() {
   yield takeLatest(actions.FORGOT_PASSWORD, forgotPassword);
 }
@@ -249,6 +288,8 @@ export default function* rootSaga() {
     fork(watchUpdateUser),
     fork(watchFetchRoles),
     fork(watchAffiliateSuccess),
+    fork(watchContactSuccess),
+    fork(watchDemoSuccess),
     fork(watchForgotPassword),
     fork(watchSocialLogin),
     fork(watchVerifyUser),
