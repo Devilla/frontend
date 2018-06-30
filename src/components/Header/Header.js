@@ -1,18 +1,21 @@
-import React,{Component} from 'react';
+import React from 'react';
 import { Smallpic } from 'img';
 import './Header.scss';
 import { connect } from 'react-redux';
 import {ProgressBar} from 'react-bootstrap';
 
-class Header extends Component  {
-  render() {
-    const { openCloseDropdown, dropdownStyle, logout, renderHelp, openProfile } = this.props;
-    return (
-      <div>
-        {this.props.loading ? (
-          <ProgressBar bsStyle='info' now={ 120 } />)
-          :( <ProgressBar bsStyle='info' now={0} />)}
-
+const Header = ({openCloseDropdown, dropdownStyle, logout, renderHelp, openProfile, loading, children}) => {
+  return (
+    <div className="customer-header">
+      {loading ?
+        <ProgressBar bsStyle='info' now={ 120 } />
+        :
+        <ProgressBar bsStyle='info' now={0} />
+      }
+      <div className="nav-topbar-flex">
+        <div className="topbar-left">
+          <h4>{children.props.location.pathname.replace(/^\/+/g, '')}</h4>
+        </div>
         <ul className="list-unstyled topbar-right-menu float-right mb-0 nav-custom-header">
           <li className="dropdown notification-list">
             <a className="nav-link dropdown-toggle arrow-none" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
@@ -70,9 +73,9 @@ class Header extends Component  {
           </li>
         </ul>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 
 const mapStateToProps = state => ({

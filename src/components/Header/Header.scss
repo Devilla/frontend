@@ -1,12 +1,28 @@
-.nav-custom-header {
-  .nav-user{
-      line-height: 40px !important;
-      margin: 10% 0px 0px 0px;
+.customer-header {
+  .nav-topbar-flex {
+    display: flex;
+    justify-content: space-between;
+    .topbar-left {
+      h4 {
+        font-family: "Rubik", sans-serif;
+        padding: 10% 20%;
+        letter-spacing: 0.02em;
+        font-size: 15px;
+        font-weight: 500;
+        text-transform: uppercase;
+      }
+    }
   }
-}
+  .nav-custom-header {
+    .nav-user{
+        line-height: 40px !important;
+        margin: 10% 0px 0px 0px;
+    }
+  }
 
-a{
-  & i.fi-bell {
-    font-size:'55px';
+  a{
+    & i.fi-bell {
+      font-size:'55px';
+    }
   }
 }
