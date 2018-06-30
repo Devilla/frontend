@@ -22,8 +22,8 @@ const notificationPanelStyleDefault = { // TODO: Take style values from server
   blur: 0,
   color: {
     r: 0,
-    g: 0,
-    b: 0,
+    g: 149,
+    b: 247,
     a: 1
   },
   linkColor: {
