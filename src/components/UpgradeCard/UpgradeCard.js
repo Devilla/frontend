@@ -72,27 +72,27 @@ class UpgradeCard extends Component {
                     <div className="card-box">
                       <ul className="nav nav-pills navtab-bg nav-justified pull-in new-campaign-tab-pills">
                         <li className="nav-item waves-effect">
-                          <a data-toggle="tab" aria-expanded="false" className={`nav-link ${activeClass == 1?'active':''} pt-3 pb-3`} onClick={() => this.setActiveState(1)}>
+                          <a data-toggle="tab"  className={`nav-link ${activeClass == 1?'active':''} pt-3 pb-3`} onClick={() => this.setActiveState(1)}>
                             <i className="fi-layers mr-2"></i>Credit Card
                           </a>
                         </li>
                         <li className="nav-item waves-effect">
-                          <a data-toggle="tab" aria-expanded="true" className={`nav-link ${activeClass == 2?'active':''}`}>
+                          <a data-toggle="tab"  className={`nav-link ${activeClass == 2?'active':''}pt-3 pb-3`}>
                             <i className="fi-mail mr-2"></i>Debit Card
                           </a>
                         </li>
                         <li className="nav-item waves-effect">
-                          <a data-toggle="tab" aria-expanded="false" className={`nav-link ${activeClass == 3?'active':''}`}>
+                          <a data-toggle="tab"  className={`nav-link ${activeClass == 3?'active':''}pt-3 pb-3`}>
                             <i className="fi-layers mr-2"></i> Paypal
                           </a>
                         </li>
                         <li className="nav-item waves-effect">
-                          <a data-toggle="tab" aria-expanded="false" className={`nav-link ${activeClass == 4?'active':''}`}>
+                          <a data-toggle="tab"  className={`nav-link ${activeClass == 4?'active':''}pt-3 pb-3`}>
                             <i className="fi-layers mr-2"></i> Bitcoin
                           </a>
                         </li>
                         <li className="nav-item waves-effect">
-                          <a data-toggle="tab" aria-expanded="false" className={`nav-link ${activeClass == 5?'active':''}`}>
+                          <a data-toggle="tab" className={`nav-link ${activeClass == 5?'active':''}pt-3 pb-3`}>
                             <i className="fi-layers mr-2"></i> Saved card
                           </a>
                         </li>
