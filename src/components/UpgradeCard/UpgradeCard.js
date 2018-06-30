@@ -64,10 +64,9 @@ class UpgradeCard extends Component {
     return (<div className="content fill ">
       <Grid fluid={true}>
         <Row >
-          <Col md={12}>
-            <div className="card-box pt-0 pl-0">
-              <h4 className="header-title text-left">Payment Method</h4>
-              <hr/>
+          <Col md={12} className="notification-container">
+            <div className="card-box">
+              <h4 className="ml-3 header-title">Payment Method</h4>
               <div className = "upgrade-card-container" >
                 <div className="panel panel-default">
                   <div className="panel-body">
@@ -75,7 +74,7 @@ class UpgradeCard extends Component {
                       <div className="card-box">
                         <ul className="nav nav-pills navtab-bg nav-justified pull-in new-campaign-tab-pills">
                           <li className="nav-item waves-effect">
-                            <a data-toggle="tab" aria-expanded="false" className={`nav-link ${activeClass == 1?'active':''}`} onClick={() => this.setActiveState(1)}>
+                            <a data-toggle="tab" aria-expanded="false" className={`nav-link ${activeClass == 1?'active':''} pt-3 pb-3`} onClick={() => this.setActiveState(1)}>
                               <i className="fi-layers mr-2"></i>Credit Card
                             </a>
                           </li>

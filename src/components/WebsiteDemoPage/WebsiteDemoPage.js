@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { demoSuccess, clearDemoError } from 'ducks/auth';
+import { demo, clearDemoError } from 'ducks/auth';
 const initialState = {
   firstname : '',
   lastname : '',
@@ -106,7 +106,7 @@ class WebsiteDemoPage extends  Component  {
           'lastName': this.state.lastName,
           'email': this.state.email
         };
-        this.props.demoSuccess(data);
+        this.props.demo(data);
         this.props.clearDemoError();
         this.setState({fistname: '',lastName: '',email: '', emailError: ''});
       }
@@ -114,13 +114,9 @@ class WebsiteDemoPage extends  Component  {
 
     canBeSubmitted() {
       const errors = validate(this.state.email, this.state.password, this.state.authEmail);
-
       const isDisabled = Object.keys(errors).some(x => errors[x]);
       return !isDisabled;
     }
-
-    
-
 
     render()  {
       let { fm1, fm2 , fm3 }  = this.state;
@@ -257,12 +253,13 @@ class WebsiteDemoPage extends  Component  {
     }
 
 }
+
 const mapStateToProps = state => ({
-  error: state.getIn(['auth', 'demoSuccess'])
+  error: state.getIn(['auth', 'demoError'])
 });
 
 const mapDispatchToProps = {
-  demoSuccess,
+  demo,
   clearDemoError
 };
 

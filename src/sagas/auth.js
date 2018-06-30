@@ -111,10 +111,10 @@ export function* fetchRoles() {
   }
 }
 
-export function* affiliateSuccess() {
+export function* affiliate(action) {
   try {
     yield put(load());
-    const res = yield call(api.GET, 'user/sendmail/affiliate');
+    const res = yield call(api.GETAUTH, `user/sendmail/affiliate?name=${action.data.name}&email=${action.data.email}`);
     if(res.error)
       yield put(actions.affiliateError(res.message));
     else
@@ -126,10 +126,10 @@ export function* affiliateSuccess() {
   }
 }
 
-export function* demoSuccess() {
+export function* demo(action) {
   try {
     yield put(load());
-    const res = yield call(api.GET, 'user/sendmail/demo');
+    const res = yield call(api.GETAUTH, `user/sendmail/demo?firstname=${action.data.firstname}&lastname=${action.data.lastname}&email=${action.data.email}`);
     if(res.error)
       yield put(actions.demoError(res.message));
     else
@@ -141,10 +141,10 @@ export function* demoSuccess() {
   }
 }
 
-export function* contactSuccess() {
+export function* contactUs(action) {
   try {
     yield put(load());
-    const res = yield call(api.GET, 'user/sendmail/contact');
+    const res = yield call(api.GETAUTH, `user/sendmail/contactus?name=${action.data.name}&email=${action.data.email}&message=${action.data.message}`);
     if(res.error)
       yield put(actions.contactError(res.message));
 
@@ -253,16 +253,16 @@ export function* watchUpdateUser() {
   yield takeLatest(actions.UPDATE_USER, updateUser);
 }
 
-export function* watchAffiliateSuccess() {
-  yield takeLatest(actions.AFFILIATE_SUCCESS, affiliateSuccess);
+export function* watchAffiliate() {
+  yield takeLatest(actions.AFFILIATE, affiliate);
 }
 
-export function* watchContactSuccess() {
-  yield takeLatest(actions.CONTACT_SUCCESS, contactSuccess);
+export function* watchContactUs() {
+  yield takeLatest(actions.CONTACT_US, contactUs);
 }
 
-export function* watchDemoSuccess() {
-  yield takeLatest(actions.DEMO_SUCCESS, demoSuccess);
+export function* watchDemo() {
+  yield takeLatest(actions.DEMO, demo);
 }
 
 export function* watchForgotPassword() {
@@ -287,9 +287,9 @@ export default function* rootSaga() {
     fork(watchFetchUser),
     fork(watchUpdateUser),
     fork(watchFetchRoles),
-    fork(watchAffiliateSuccess),
-    fork(watchContactSuccess),
-    fork(watchDemoSuccess),
+    fork(watchAffiliate),
+    fork(watchContactUs),
+    fork(watchDemo),
     fork(watchForgotPassword),
     fork(watchSocialLogin),
     fork(watchVerifyUser),

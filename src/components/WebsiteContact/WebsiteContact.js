@@ -1,19 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { validateEmail } from 'services/FormUtils';
-import { contactSuccess } from 'ducks/auth';
+
+import { contactUs } from 'ducks/auth';
 import { toast, ToastContainer } from 'react-toastify';
 
 import './WebsiteContact.scss';
 
 
 
-function validate(password, authEmail) {
-  return {
-    password: password.length === 0,
-    authEmail: authEmail === false
-  };
-}
 
 const toastConfig = {
   position: toast.POSITION.BOTTOM_LEFT,
@@ -37,41 +31,9 @@ class WebsiteContact extends Component {
     scrollElm.scrollTop = 0;
   }
 
-  handleSubmit(evt) {
-    if (!this.canBeSubmitted()) {
-      evt.preventDefault();
-      return;
-    } else {
-      evt.preventDefault();
-      const data = {
-        'name': this.state.name,
-        'email': this.state.email,
-        'message': this.state.message
-      };
-      this.props.contactSuccess(data);
-      this.setState({name: '',email: '', message: '', emailError: ''});
-    }
-    if (! toast.isActive(this.toastId)) {
-      this.toastId = toast.info('Thanks for your Response!', toastConfig);
-    }
-  }
 
-  canBeSubmitted() {
-    const errors = validate(this.state.email, this.state.authEmail);
 
-    const isDisabled = Object.keys(errors).some(x => errors[x]);
-    return !isDisabled;
-  }
 
-  checkEmailBlur= (event) => {
-    const value = event.target.value;
-    const isEmailValid = validateEmail(value);
-    this.setState({ isEmailValid });
-    if (!value)
-      this.setState({ errorEmail: 'Email id required' });
-    else if (!isEmailValid)
-      this.setState({ errorEmail: 'Enter a valid Email id' });
-  }
   checkEmail(evt) {
     /* eslint-disable */
     var Emailexpr = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
@@ -84,19 +46,38 @@ class WebsiteContact extends Component {
       };
     }
   }
-  handleEmailChange(evt) {
 
-    this.setState({email: evt.target.value, emailError: ''});
+  handleNameChange = (event) => {
+    const { name, value } = event.target;
+    console.log(name+value);
+    this.setState({ [name]: value });
   }
-  handleNameChange(evt) {
-
-    this.setState({name: evt.target.value});
-  }
-  handleMessageChange(evt) {
-
-    this.setState({message: evt.target.value});
+  handleEmailChange = (event) => {
+    const { name, value } = event.target;
+    console.log(name+value);
+    this.setState({ [name]: value });
   }
 
+  handleMessageChange = (event) => {
+    const { name, value } = event.target;
+    console.log(name+value);
+    this.setState({ [name]: value });
+  }
+
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+    const data = {
+      'name': this.state.name,
+      'email': this.state.email,
+      'message': this.state.message
+    };
+    this.props.contactUs(data);
+    this.setState({name: '', email: '', message: '', emailError: ''});
+    if (! toast.isActive(this.toastId)) {
+      this.toastId = toast.info('Thankyou for your Response! ', toastConfig);
+    }
+  }
   render() {
     return (
       <div className="websitecontact-container">
@@ -125,18 +106,18 @@ class WebsiteContact extends Component {
                 <p className="lead"></p>
               </div>
               <div className="col-md-6">
-                <form onSubmit={this.handleSubmit.bind(this)} className="form-email row" method="POST" data-name="Contactus Form" >
+                <form className="form-email row" method="POST" data-name="Contactus Form" >
                   <div className="col-md-12">
-                    <input type="text" name="name" placeholder="Name" className="validate-required" onChange={this.handleNameChange.bind(this)}  />
+                    <input type="text" name="name" placeholder="Name" className="validate-required" onChange={this.handleNameChange}  />
                   </div>
                   <div className="col-md-12">
-                    <input type="email" name="email" placeholder="Johndoe@example.com" className="validate-required validate-email" onBlur={this.checkEmailBlur.bind(this)} onChange={this.handleEmailChange.bind(this)} />
+                    <input type="email" name="email" placeholder="Email Address" className="validate-required validate-email" onBlur={this.checkEmailBlur} onChange={this.handleEmailChange} />
                   </div>
                   <div className="col-md-12">
-                    <textarea rows="4" name="message" placeholder="Leave us a message" className="validate-required" onChange={this.handleMessageChange.bind(this)}></textarea>
+                    <textarea rows="4" name="message" placeholder="Leave us a message" className="validate-required" onChange={this.handleMessageChange}></textarea>
                   </div>
 
-                  <button type="submit" className="btn btn--primary type--uppercase">Send Enquiry</button>
+                  <button type="submit" className="btn btn--primary type--uppercase" onClick={this.handleSubmit}>Send Enquiry</button>
                   <ToastContainer  autoClose={8000}/>
                 </form>
               </div>
@@ -150,11 +131,11 @@ class WebsiteContact extends Component {
 }
 
 const mapStateToProps = state => ({
-  error: state.getIn(['auth', 'contactSuccess'])
+  error: state.getIn(['auth', 'contactError'])
 });
 
 const mapDispatchToProps = {
-  contactSuccess
+  contactUs
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(WebsiteContact);
+export default connect(null, mapDispatchToProps)(WebsiteContact);
