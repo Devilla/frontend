@@ -13,10 +13,6 @@ class WebsitePricing extends Component {
       planPeriod: 12,
       servicebotPlans: []
     };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleMonthChange = this.handleMonthChange.bind(this);
-    this.handleYearChange = this.handleYearChange.bind(this);
-    this.handleSwitchChange = this.handleSwitchChange.bind(this);
   }
 
   componentWillMount() {
@@ -32,19 +28,19 @@ class WebsitePricing extends Component {
     scrollElm.scrollTop = 0;
   }
 
-  handleChange(checked) {
+  handleChange = (checked) => {
     this.setState({checked});
   }
 
-  handleMonthChange() {
+  handleMonthChange = () => {
     this.setState({externalValue: false, planPeriod: 1});
   }
 
-  handleYearChange() {
+  handleYearChange = () => {
     this.setState({externalValue: true, planPeriod: 12});
   }
 
-  handleSwitchChange(value) {
+  handleSwitchChange = (value) => {
     if (value) {
       this.setState({externalValue: true, planPeriod: 12});
     } else {
@@ -52,7 +48,7 @@ class WebsitePricing extends Component {
     }
   }
 
-  filterPlanName=(planName)=> {
+  filterPlanName = (planName) => {
     let res='';
 
     switch(true) {
@@ -71,14 +67,14 @@ class WebsitePricing extends Component {
     return stellar;
   }
 
-  renderPriceList() {
+  renderPriceList = () => {
 
     let planList =this.state.servicebotPlans.filter(plan =>
       (this.state.planPeriod == 12 ? plan.interval=='year': plan.interval=='month') &&
       (plan.references.service_template_properties[0].name !== 'coupon')
     );
     return planList.map(plan => {
-      return <div className="col-md-3 pl-3 pr-0">
+      return <div key={plan.name} className="col-md-3 pl-3 pr-0">
         <div className="pricing pricing-1  pr-0 pl-0"  style={{minHeight:'700px'}}>
           <div className={`pricing__head ${this.stellarFeel(plan.name) }  boxed boxed--border boxed--lg`}>
             <h3>{this.filterPlanName(plan.name)}</h3>
@@ -162,12 +158,12 @@ class WebsitePricing extends Component {
               <div className="row justify-content-center">
                 <div className="col-md-1 mr-0 text-left " id="leftmg"><div><strong onClick={this.handleMonthChange} className="h5 type--bold">Monthly</strong></div></div>
                 <div className="col-md-1 col-sm-1 my-auto text-center pl-2">
-                  <input className="tgl tgl-ios" id="cb2" type="checkbox"  checked={this.state.externalValue}/>
-                  <label className="tgl-btn" for="cb2"  onChange={this.handleSwitchChange}></label>
+                  <input className="tgl tgl-ios" id="cb2" type="checkbox"  defaultChecked={this.state.externalValue}/>
+                  <label className="tgl-btn" htmlFor="cb2"  onClick={() => this.handleSwitchChange(!this.state.externalValue)}></label>
                 </div>
                 <div className="text-left my-auto" ><strong onClick={this.handleYearChange} className="h5 type--bold">Yearly</strong></div>
               </div>
-           
+
             </div>
           </section>
 
