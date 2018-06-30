@@ -6,13 +6,6 @@ import { affiliate, clearAffiliateError } from 'ducks/auth';
 import { toast,ToastContainer } from 'react-toastify';
 import './affiliateregister.scss';
 
-function validate(password, authEmail) {
-  return {
-    password: password.length === 0,
-    authEmail: authEmail === false
-  };
-}
-
 const toastConfig = {
   position: toast.POSITION.BOTTOM_LEFT,
   autoClose: 2000,
