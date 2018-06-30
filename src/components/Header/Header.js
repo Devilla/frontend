@@ -1,10 +1,14 @@
 import React from 'react';
 import { Smallpic } from 'img';
 import './Header.scss';
+import { Link } from 'react-router';
+import { browserHistory } from 'react-router';
+
 import { connect } from 'react-redux';
-import {ProgressBar} from 'react-bootstrap';
+import { ProgressBar } from 'react-bootstrap';
 
 const Header = ({openCloseDropdown, dropdownStyle, logout, renderHelp, openProfile, loading, children}) => {
+
   return (
     <div className="customer-header">
       {loading ?
@@ -14,7 +18,7 @@ const Header = ({openCloseDropdown, dropdownStyle, logout, renderHelp, openProfi
       }
       <div className="nav-topbar-flex">
         <div className="topbar-left">
-          <h4>{children.props.location.pathname.replace(/^\/+/g, '')}</h4>
+          <h4><Link onClick={() => browserHistory.goBack()}><i className="icon-arrow-left mr-3"></i></Link>{children.props.location.pathname == '/new'? 'Campaign Setting' :children.props.location.pathname.replace(/^\/+/g, '')}</h4>
         </div>
         <ul className="list-unstyled topbar-right-menu float-right mb-0 nav-custom-header">
           <li className="dropdown notification-list">
