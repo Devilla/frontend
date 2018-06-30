@@ -118,13 +118,28 @@ export function* affiliateSuccess(action) {
     if(res.error)
       yield put(actions.affiliateError(res.message));
     else
-      yield toast.info('Reset link sent.', toastConfig);
+      yield toast.info('Affiliate Request sent.', toastConfig);
     yield put(loaded());
   } catch (error) {
     yield put(loaded());
     yield console.log(error);
   }
 }
+
+export function* contactSuccess(action) {
+  try {
+    yield put(load());
+    const res = yield call(api.GET, 'user/sendmail/contact', action.data);
+    if(res.error)
+      console.log(res.error);
+
+    yield put(loaded());
+  } catch (error) {
+    yield put(loaded());
+    yield console.log(error);
+  }
+}
+
 
 export function* forgotPassword(action) {
   try {
@@ -225,6 +240,10 @@ export function* watchUpdateUser() {
 
 export function* watchAffiliateSuccess() {
   yield takeLatest(actions.AFFILIATE_SUCCESS, affiliateSuccess);
+}
+
+export function* watchContactSuccess() {
+  yield takeLatest(actions.CONTACT_SUCCESS, contactSuccess);
 }
 
 export function* watchForgotPassword() {
