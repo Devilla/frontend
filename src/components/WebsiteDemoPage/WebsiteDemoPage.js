@@ -119,6 +119,8 @@ class WebsiteDemoPage extends  Component  {
       return !isDisabled;
     }
 
+    
+
 
     render()  {
       let { fm1, fm2 , fm3 }  = this.state;
@@ -175,7 +177,7 @@ class WebsiteDemoPage extends  Component  {
                         <div>
                           <h1>Lets add your company details</h1>
                           <p className="lead">
-                                                    Tell us more about your use case so we can show you the very best of Influence.
+                            Tell us more about your use case so we can show you the very best of Influence.
                           </p>
                           <hr className="short" />
                         </div>
@@ -184,7 +186,7 @@ class WebsiteDemoPage extends  Component  {
                         <input type="text" name="Company" onChange={this.handleCompanyChange.bind(this)} placeholder="Company" />
                       </div>
                       <div className="col-md-8">
-                        <select  style={{'color': '#A8A8A8','fontSize':'16px'}} className='employees required select' id='account[help_desk_size]' name='account[help_desk_size]' placeholder='Number of employees' type='select' onChange={this.handleEmployeeChange.bind(this)}>
+                        <select  style={{'color': '#A8A8A8','fontSize':'18px'}} className='employees required select' placeholder='Number of employees' type='select' onChange={this.handleEmployeeChange.bind(this)}>
                           <option value="" selected="">Number of employees</option>
                           <option value="5000+">5000+</option>
                           <option value="1000-4999">1000-4999</option>
@@ -197,7 +199,7 @@ class WebsiteDemoPage extends  Component  {
                         </select>
                       </div>
                       <div className="col-md-8">
-                        <select style={{'color': '#A8A8A8','fontSize': '16px'}} className='department required select' id='department' name='department' placeholder='Department' type='select' onChange={this.handleDeptChange.bind(this)}>
+                        <select  className='department required select' id='department' name='department' placeholder='Department'  onChange={this.handleDeptChange.bind(this)}>
                           <option value="" selected="">Department</option>
                           <option value="Customer Service">Customer Service</option>
                           <option value="Facilities">Facilities</option>
