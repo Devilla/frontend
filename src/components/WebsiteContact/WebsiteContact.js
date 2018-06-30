@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { validateEmail } from 'services/FormUtils';
 import { contactUs } from 'ducks/auth';
 import './WebsiteContact.scss';
 
@@ -20,26 +19,8 @@ class WebsiteContact extends Component {
     scrollElm.scrollTop = 0;
   }
 
-  handleSubmit = (evt) => {
-    evt.preventDefault();
-    const data = {
-      'name': this.state.name,
-      'email': this.state.email,
-      'message': this.state.message
-    };
-    this.props.contactUs(data);
-    this.setState({name: '', email: '', message: '', emailError: ''});
-  }
 
-  checkEmailBlur = (event) => {
-    const value = event.target.value;
-    const isEmailValid = validateEmail(value);
-    this.setState({ isEmailValid });
-    if (!value)
-      this.setState({ errorEmail: 'Email id required' });
-    else if (!isEmailValid)
-      this.setState({ errorEmail: 'Enter a valid Email id' });
-  }
+
 
   checkEmail(evt) {
     /* eslint-disable */
@@ -54,10 +35,34 @@ class WebsiteContact extends Component {
     }
   }
 
-  handleChange = (target, value) => {
-    this.setState({[target]: value});
+  handleNameChange = (event) => {
+    const { name, value } = event.target;
+    console.log(name+value);
+    this.setState({ [name]: value });
+  }
+  handleEmailChange = (event) => {
+    const { name, value } = event.target;
+    console.log(name+value);
+    this.setState({ [name]: value });
   }
 
+  handleMessageChange = (event) => {
+    const { name, value } = event.target;
+    console.log(name+value);
+    this.setState({ [name]: value });
+  }
+
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+    const data = {
+      'name': this.state.name,
+      'email': this.state.email,
+      'message': this.state.message
+    };
+    this.props.contactUs(data);
+    this.setState({name: '', email: '', message: '', emailError: ''});
+  }
   render() {
     return (
       <div className="websitecontact-container">
@@ -88,13 +93,13 @@ class WebsiteContact extends Component {
               <div className="col-md-6">
                 <form className="form-email row" method="POST" data-name="Contactus Form" >
                   <div className="col-md-12">
-                    <input type="text" name="name" placeholder="Name" className="validate-required" onChange={(e) => this.handleChange('name', e.target.value)}  />
+                    <input type="text" name="name" placeholder="Name" className="validate-required" onChange={this.handleNameChange}  />
                   </div>
                   <div className="col-md-12">
-                    <input type="email" name="email" placeholder="Email Address" className="validate-required validate-email" onBlur={this.checkEmailBlur} onChange={(e) => this.handleChange('email', e.target.value)} />
+                    <input type="email" name="email" placeholder="Email Address" className="validate-required validate-email" onBlur={this.checkEmailBlur} onChange={this.handleEmailChange} />
                   </div>
                   <div className="col-md-12">
-                    <textarea rows="4" name="message" placeholder="Leave us a message" className="validate-required" onChange={(e) => this.handleChange('message', e.target.value)}></textarea>
+                    <textarea rows="4" name="message" placeholder="Leave us a message" className="validate-required" onChange={this.handleMessageChange}></textarea>
                   </div>
                   <button type="submit" className="btn btn--primary type--uppercase" onClick={this.handleSubmit}>Send Enquiry</button>
                 </form>
