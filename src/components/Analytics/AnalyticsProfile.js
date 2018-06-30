@@ -1,54 +1,29 @@
 import React from 'react';
-import { Grid, Row, Col, Table } from 'react-bootstrap';
-import Card from '../utils/card';
-import { profileHeader } from './data';
 
 const AnalyticsProfile = ({ handleProfileBack, renderProfileList }) => {
   return (
-    <div className="content analytics-profile">
-      <Grid fluid>
-        <Row>
-          <Col md={12}>
-            <Card
-              plain
-              title="Analytics"
-              category="View Profile"
-              ctTableFullWidth ctTableResponsive
-              rightContent={<div className="backBtn">
-                <a href="javascript:;" onClick={handleProfileBack}><i className="fas fa-chevron-left"></i> Back </a>
-              </div>}
-              content={
-                <div className="text-center centertbl">
-                  <Table hover>
-                    <thead>
-                      <tr>
-                        {
-                          profileHeader.map((prop, key) => {
-                            return (
-                              <th key={key}>{prop}</th>
-                            );
-                          })
-                        }
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {renderProfileList()}
-                    </tbody>
-                  </Table>
-                </div>
-              }
-            />
-          </Col>
-        </Row>
-        <Row>
-          <Col md={12}>
-            <p className="text-center">
-              Get one of our experts to do it all for you!
-              &nbsp;
-              <a href="javascript:;">Click here</a></p>
-          </Col>
-        </Row>
-      </Grid>
+    <div className="card-box analytics-profile">
+      <div className="analytics-header">
+        <h4 className="m-t-0 header-title">Analytics/View Profile</h4>
+        <button type="button" className="btn btn-custom  waves-light waves-effect number " onClick={handleProfileBack}>Back</button>
+      </div>
+      <table className="table table-striped">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th className="img">Photo</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Location</th>
+            <th>Country</th>
+            <th>Sign up on</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {renderProfileList()}
+        </tbody>
+      </table>
     </div>
   );
 };

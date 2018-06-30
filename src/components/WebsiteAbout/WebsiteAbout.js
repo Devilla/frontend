@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 
 class WebsiteAbout extends Component {
   componentDidMount() {
-    window.scrollTo(0, 0);
+    let scrollElm = document.scrollingElement;
+    scrollElm.scrollTop = 0;
   }
   render() {
     return (

@@ -1,9 +1,22 @@
-/* table, th, tr, td{
-    align:center;
-    text-align: center;
 
-} */
+
 .manage-notification {
+  .card-box {
+    padding: 20px 15px;
+    .campaign-td {
+      td {
+        cursor: pointer;
+      }
+    }
+  }
+  .react-flexible-switch {
+    background-color: white !important;
+    width: 35px !important;
+    .react-flexible-switch-circle{
+      width: 12px !important;
+      height: 12px !important;
+    }
+  }
   th:first-child, td:first-child {
     padding-left: 15px !important;
   }
@@ -20,3 +33,9 @@
 .mm-popup__btn--popup-notification-button {
   margin: 0 0% !important;
 }
+
+.mm-popup__box__header__title {
+  text-align: center !important;
+}
+
+

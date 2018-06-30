@@ -23,7 +23,7 @@ const initialRules = {
   delayNotification: false,
   closeNotification: false,
   initialDelay: 1,
-  displayTime: 3,
+  displayTime: 5,
   delayBetween: 3,
   displayPosition: 'bottom',
   popupAnimation:'fadeinout'

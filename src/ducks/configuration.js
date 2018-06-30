@@ -38,8 +38,8 @@ const initialConfig = {
     blur: 0,
     color: {
       r: 0,
-      g: 0,
-      b: 0,
+      g: 149,
+      b: 247,
       a: 1
     },
     linkColor: {
@@ -68,7 +68,8 @@ const initialConfig = {
     liveVisitorCount: 0
   },
   visitorText: '',
-  contentText: ''
+  contentText: '',
+  notificationUrl: ''
 };
 
 const initialState = fromJS({

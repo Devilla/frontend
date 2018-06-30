@@ -4,13 +4,13 @@ const action = name => `/auth/${name}`;
 
 export const FETCH = action('FETCH');
 export const CREATE = action('CREATE');
-export const UPDATE = action('UPDATE');
+export const UPDATE_PROFILE = action('UPDATE_PROFILE');
 export const SUCCESS = action('SUCCESS');
 
 export const fetchProfile = () => ({ type: FETCH });
-export const createProfile = (profile) => ({ type: CREATE, profile });
-export const updateProfile = (profile) => ({ type: UPDATE, profile });
-export const successProfile = (profile) => ({ type: SUCCESS, profile });
+export const createProfile = profile => ({ type: CREATE, profile });
+export const updateProfile = profile => ({ type: UPDATE_PROFILE, profile });
+export const successProfile = profile => ({ type: SUCCESS, profile });
 
 const initialState = fromJS({});
 

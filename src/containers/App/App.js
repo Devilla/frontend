@@ -5,7 +5,8 @@ import { checkTokenExists } from 'ducks/auth';
 import { WebsiteHeader, WebsiteFooter } from 'components';
 import { Spinner } from '../../components/index.js';
 import { ToastContainer } from 'react-toastify';
-
+import Popup from 'react-popup';
+import 'react-popup/style.css';
 import './scss/stack-interface.scss';
 import './scss/socicon.css';
 import './scss/iconsmind.scss';
@@ -19,6 +20,7 @@ import './App.scss';
 
 class App extends Component {
   componentWillMount() {
+    document.body.style = 'background-color:white';
     this.checkLogin((err) => {
       if (!err) {
         browserHistory.push('/dashboard');
@@ -44,6 +46,7 @@ class App extends Component {
       <div className="website-app">
         <div className="basic-gradient-light" data-smooth-scroll-offset="77">
           <WebsiteHeader />
+          <Popup  />
           <Spinner loading={this.props.loading} />
           <div className="content">
             {this.props.children}
@@ -57,8 +60,12 @@ class App extends Component {
 
 }
 
+const mapStateToProps = state => ({
+  loading: state.getIn(['loading', 'state'])
+});
+
 const mapDispatchToProps = {
   checkTokenExists
 };
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

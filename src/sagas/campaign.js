@@ -48,13 +48,11 @@ function* create(action) {
 function* update(action) {
   try {
     yield put(load());
-    const res = yield call(api.PUT, 'campaign/${action.campaign.id}', action.campaign);
+    const res = yield call(api.PUT, `campaign/${action.campaign.id}`, action.campaign);
     if(res.error)
       console.log(res.error);
     else {
-      let campaign = action.campaign;
-      campaign['_id'] = campaign.id;
-      yield put(actions.successCampaign(action.campaign));
+      yield put(actions.fetchCampaign(action.campaign));
     }
     yield put(loaded());
   } catch (error) {
@@ -67,7 +65,7 @@ function* update(action) {
 function* remove(action) {
   try {
     yield put(load());
-    const res = yield call(api.DELETE, 'campaign/${action.campaignId}');
+    const res = yield call(api.DELETE, `campaign/${action.campaignId}`);
     if(res.error)
       console.log(res.error);
     else

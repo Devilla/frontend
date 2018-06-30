@@ -55,8 +55,8 @@ const PricePage = ({
               <li className="mt-3" style={{ display: 'none' }}>
                 <Switch
                   circleStyles={{
-                    onColor: 'blue',
-                    offColor: 'blue',
+                    onColor: '#097fff',
+                    offColor: 'grey',
                     diameter: 18
                   }} switchStyles={{
                     width: 50
@@ -82,7 +82,7 @@ const PricePage = ({
             <div key={index} className="col-md-3 col-sm-6">
               <div className="pricingTable">
                 <div className="price_card text-center">
-                  <div className="pricing-header bg-custom">
+                  <div className="pricing-header bg-primary">
                     <span className="price">${plan.interval === 'year' ? plan.amount / 1200 : plan.amount / 100}</span>
                     <span className="name">{filterPlanName(plan.name)}</span>
                   </div>
@@ -91,7 +91,7 @@ const PricePage = ({
                       <li><div dangerouslySetInnerHTML={{ __html: plan.details }} /></li>
                     </ul>
 
-                    <a className={selectedPlan.id === plan.id ? 'pricingTable-signup-active' : 'pricingTable-signup'} onClick={() => handleCheckChange(true, plan)}>
+                    <a className={selectedPlan.id === plan.id ? 'active btn btn-outline-success waves-light waves-effect mr-2 pricingTable-signup' : 'btn btn-outline-info waves-light waves-effect ml-2 pricingTable-signup'} onClick={() => handleCheckChange(true, plan)}>
                       Select
                     </a>
 

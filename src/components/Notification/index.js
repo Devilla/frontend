@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Grid, Row, Col, Table, Glyphicon } from 'react-bootstrap';
-import Card from 'components/utils/card'
+import Card from 'components/utils/card';
 import Switch from 'react-flexible-switch';
 import { getCookie } from 'components/Common/function';
 import moment from 'moment';
@@ -9,18 +9,14 @@ import { browserHistory } from 'react-router';
 import Popup from 'react-popup';
 
 import { fetchCampaign, updateCampaign, successCampaign, removeCampaign } from 'ducks/campaign';
-import './Notification.scss'
-
-
-
-const notificationFields = ['S.No', 'Campaign', 'Domain', 'Status', 'Tracking ID', 'Log', 'Created', 'Delete'];
+import './Notification.scss';
 
 class Notification extends Component {
   constructor() {
     super();
     this.state = {
       notifications: [],
-    }
+    };
   }
 
   componentDidMount() {
@@ -40,7 +36,7 @@ class Notification extends Component {
             text: 'Upgrade Plan',
             className: 'primary popup-notification-button',
             action: function () {
-              browserHistory.push('/upgrade')
+              browserHistory.push('/upgrade');
               Popup.close();
             }
           }]
@@ -54,10 +50,9 @@ class Notification extends Component {
   }
 
   handleRouteChange(e, campaign) {
-    if (e.target.className === 'react-flexible-switch react-flexible-switch--active' ||
-      e.target.className === 'react-flexible-switch react-flexible-switch--inactive' ||
-      e.target.className === 'react-flexible-switch-circle' ||
-      e.target.className === 'glyphicon glyphicon-trash'
+    if (e.target.className === 'tgl-btn' ||
+      e.target.className === 'tgl tgl-ios' ||
+      e.target.className === 'ml-3 icon-trash'
     )
       return;
     this.props.successCampaign(campaign);
@@ -65,75 +60,71 @@ class Notification extends Component {
   }
 
   deleteCampaign(index, campId) {
-    this.props.removeCampaign(index, campId);
+    let that = this;
+    Popup.create({
+      title: 'Delete Campaign',
+      buttons: {
+        left: [{
+          text: 'Cancel',
+          className: 'warning popup-notification-button',
+          action: function () {
+            Popup.close();
+          }
+        }],
+        right: [{
+          text: 'Confirm',
+          className: 'primary popup-notification-button',
+          action: function () {
+            that.props.removeCampaign(index, campId);
+            Popup.close();
+          }
+        }]
+      }
+    }, true);
   }
 
-  colorTable(i) {
-      if(i%10 ===1) return 'text-center table-active'
-      if(i%2 ===0 ) return ' text-center '; 
-      if(i%3 ===0) return 'text-center table-info'; 
-      if(i%5 ===0)  return 'text-center table-success';
-      if(i%7 ===0 ) return 'text-center table-warning'; 
-    }
-  
   // Map the notification data into table rows and return
   getNotificationRows = () => {
     return this.props.campaigns ? this.props.campaigns.map((campaign, i) => (
-      <tr className={this.colorTable(i)} key={campaign._id} onClick={(e) => this.handleRouteChange(e, campaign)}>
-        <td>{i + 1}</td>
+      <tr className="campaign-td" key={campaign._id} onClick={(e) => this.handleRouteChange(e, campaign)}>
+        <th scope="row">{i + 1}</th>
         <td>{campaign.campaignName}</td>
-        <td> <a>{campaign.websiteUrl}</a></td>
-        <td >
-          <Switch
-            switchStyles={{ width: 40 }}
-            value={campaign.isActive}
-            onChange={(e) => this.handleActiveChange(e, campaign)}
-            circleStyles={{ onColor: 'blue', offColor: 'gray', diameter: 18 }}
-          />
+        <td>{campaign.websiteUrl}</td>
+        <td className="switch">
+          <input className="tgl tgl-ios" id="cb2" type="checkbox" defaultChecked={campaign.isActive} />
+          <label className="tgl-btn" htmlFor="cb2" onClick={(e) => this.handleActiveChange(!campaign.isActive, campaign)}></label>
         </td>
         <td>{campaign.trackingId}</td>
-        <td>{campaign.log || '---'}</td>
         <td>{moment(campaign.createdAt).format('MM/DD/YYYY')}</td>
-        <td><i className=" icon-trash" onClick={() => this.deleteCampaign(i, campaign._id)}></i></td>
+        <td><a href="javascript:;"><i className="ml-3 icon-trash" onClick={() => this.deleteCampaign(i, campaign._id)}></i></a></td>
       </tr>
     ))
       :
-      <div></div>
+      <tr></tr>;
   }
 
   render() {
     return (
-      <div className="content manage-notification">
-        <Grid fluid>
+      <div className="manage-notification">
+        <div className="card-box">
+          <table className="table table-striped">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>CAMPAIGN</th>
+                <th>DOMAIN</th>
+                <th>STATUS</th>
+                <th>TRACK ID</th>
 
-          <Row>
-            <Col md={12}>
-              <Card
-                plain
-                title="Notifications"
-                category=""
-                className="m-t-0 header-title"
-                ctTableFullWidth ctTableResponsive
-                content={
-                  <table hover className="table">
-                    <thead>
-                      <tr>
-                        {
-                          notificationFields.map((prop, key) => {
-                            return (
-                              <th className="text-center" key={key}>{prop === "Domain" ? <i className="icon-globe"></i> : ""}&nbsp;<span className="h6 text-muted">{prop}</span></th>
-                            );
-                          })
-                        }
-                      </tr>
-                    </thead>
-                    <tbody>{this.getNotificationRows()}</tbody>
-                  </table>
-                }
-              />
-            </Col>
-          </Row>
-        </Grid>
+                <th>CREATED</th>
+                <th>TRASH</th>
+              </tr>
+            </thead>
+            <tbody>
+              {this.getNotificationRows()}
+            </tbody>
+          </table>
+        </div>
       </div>
     );
   }

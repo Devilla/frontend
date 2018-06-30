@@ -4,7 +4,7 @@ import { Breadcrumb } from 'react-bootstrap';
 export class CommonCard extends Component{
   render(){
     return (
-      <div className="">
+      <div className="card card-plain">
         <div className="header">
           <Breadcrumb>
             <Breadcrumb.Item href="#"><i className="fas fa-globe"></i> {this.props.url}</Breadcrumb.Item>

@@ -1,0 +1,55 @@
+button {
+  &.btn.btn-custom.waves-light.waves-effect.number.ml-2.pl-4.pr-4 {
+    border-radius: 5px;
+  }
+  &.btn.btn-custom.waves-light.waves-effect.number {
+    border-radius: 5px;
+  }
+}
+
+.dot {
+    height: 25px;
+    width: 25px;
+    background-color:#0acf97;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.tab-notification-container {
+   .label-url {
+      margin-left: 89px!important;
+  }
+  .status {
+    ul {
+      display: flex;
+      justify-content: space-between;
+      list-style: none;
+      li {
+        display: flex;
+        .status-name {
+          margin: 3px 10px;
+        }
+      }
+    }
+  }
+  .tabscontent {
+    .centertbl {
+      .display-url {
+        width: 40%;
+        word-break: break-all;
+      }
+    }
+    .unverified {
+      background-color: #FFEB3B;
+    }
+    .primary {
+      background-color: #2196F3;
+    }
+    .danger {
+      background-color: #F44336;
+    }
+    .success {
+      background-color: #4CAF50;
+    }
+  }
+}

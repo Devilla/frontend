@@ -1,5 +1,40 @@
 .profile-container {
   display: grid;
+  #formControlsSelect {
+    color: #757575;
+  }
+
+  
+button {
+  border-radius: 5px;
+  &.upgrade1 {
+    &:hover {
+      background-color: #398DB7;
+    }
+  }
+}
+
+
+.profile-user-box {
+      background-color: rgba(9, 128, 255, 0.152);
+    }
+
+button {
+  &.billing1 {
+    &:hover {
+      background-color: #398DB7;
+    }
+    border-radius: 5px;
+  }
+}
+ 
+
+button {
+  &.btn.btn-primary.waves-effect {
+  border-radius: 8px;
+  }
+}
+
 }
 
 .profile-over-button {
@@ -9,5 +44,6 @@
 }
 
 button {
-  margin: 0% 2% !important;
+  margin: 0 2% !important;
 }
+

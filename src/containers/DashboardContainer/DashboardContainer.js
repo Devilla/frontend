@@ -1,8 +1,10 @@
-import { browserHistory } from 'react-router';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { browserHistory } from 'react-router';
+import Popup from 'react-popup';
+
 import { checkTokenExists } from 'ducks/auth';
-import { Spinner, Header, Sidebar } from 'components';
+import { Header, Sidebar } from 'components';
 import {
   Radio,
   Row,
@@ -15,7 +17,6 @@ import './animate.min.scss';
 import 'react-select/dist/react-select.css';
 import 'react-popup/style.css';
 import './DashboardContainer.scss';
-import Popup from 'react-popup';
 
 
 class DashboardContainer extends Component {
@@ -30,6 +31,7 @@ class DashboardContainer extends Component {
     this.logout = this.logout.bind(this);
     this.renderHelp = this.renderHelp.bind(this);
     this.settings = this.settings.bind(this);
+    this.openProfile = this.openProfile.bind(this);
     this.closeDropdown = this.closeDropdown.bind(this);
 
     this.checkLogin((err) => {
@@ -108,7 +110,7 @@ class DashboardContainer extends Component {
       content: <div className="help-container">
         <FormGroup>
           <Row className="help-form-fields">
-            <Radio name="radioGroup" inline="inline">
+            <Radio name="radioGroup" inline={true}>
               I need help setting up my team
             </Radio>
           </Row>
@@ -164,25 +166,34 @@ class DashboardContainer extends Component {
     browserHistory.push('/dashboard');
   }
 
+  openProfile() {
+    this.openCloseDropdown();
+    if(this.state.disableButton)
+      return;
+    browserHistory.push('/profile');
+  }
+
   render() {
-    const { loading } = this.props;
+    const {  user } = this.props;
     return (
       <div className="dashboard-container">
         <Popup />
-        <div className="wrapper" style={{ height: '100%', backgroundColor: '#f4f6f8' }} >
-          <Spinner loading={loading} />
+        <div className="wrapper"  >
+        
           {!this.state.render && <p>Please wait</p>}
           {this.state.render && <Sidebar {...this.props} disableButton={this.state.disableButton} onClick={this.closeDropdown} />}
           {this.state.render &&
           <div>
             <div className="content-page" >
               <div className="topbar" >
-                <nav className="navbar-custom">
+                <nav className="navbar-custom pr-0">
                   <Header
+                    username={user.username}
                     openCloseDropdown={this.openCloseDropdown}
                     logout={this.logout}
                     renderHelp={this.renderHelp}
                     settings={this.settings}
+                    openProfile={this.openProfile}
                     dropdownStyle={this.state.style}
                     {...this.props}
                   />
@@ -206,7 +217,7 @@ class DashboardContainer extends Component {
 const mapStateToProps = state => ({
   profile: state.getIn(['profile', 'profile']),
   user: state.getIn(['auth', 'user']),
-  loading: state.getIn(['loading', 'state']),
+ 
 });
 
 const mapDispatchToProps = {

@@ -12,7 +12,6 @@ import {
   Table
 } from 'react-bootstrap';
 
-import CardHeader from 'components/Template/card-with-header';
 import Button from 'components/Template/customButton';
 
 import './BillingDetails.scss';
@@ -29,21 +28,6 @@ class BillingDetails extends Component {
     };
     props.fetchPayment();
     // props.fetchInvoices();
-  }
-
-  plansList() {
-    const { planSelected } = this.state;
-    if (planSelected) {
-      return (
-        <FormControl componentClass="select" placeholder="select" value={planSelected.name} disabled={true}>
-          <option value="select">{planSelected.name}</option>
-        </FormControl>
-      );
-    } else {
-      <FormControl componentClass="select" placeholder="select" disabled={true}>
-        <option value="select">No Plan Selected</option>
-      </FormControl>;
-    }
   }
 
   componentWillReceiveProps(nextProps) {
@@ -77,162 +61,152 @@ class BillingDetails extends Component {
     const { profile } = this.props;
     return (
       <div className="content fill billing-details ml-1">
-        <Grid fluid="fluid">
+        <Grid fluid={true}>
           <Row className="inlineclr">
             <Col md={12}>
-              <CardHeader title="Billing Details" className="text-center mt-3"
-                content={
-                  <div className="Billing-container">
-                    <Row>
-                      <div className="col-md-8 billing-buttons">
-                        <Button
-                          onClick={() => browserHistory.push('/Profile')}
-                          icon="chevron-left"
-                          className="btn btn-info "
-                          fill="fill"
-                        >
-                          Back To Profile
-                        </Button>
-                      </div>
-                      <div className="col-md-4 billing-buttons float-right">
+              <div className="card-box pt-0">
+                <hr/>
+                <div className="Billing-container">
+                  <Row>
 
-                        <Button
-                          onClick={() => browserHistory.push('/Upgrade')}
-                          className="btn btn-success"
-                          pullRight="pullRight" fill="fill"
-                          type="button"
-                          icon="cloud-upload"
-                          disabled={false}
-                        >
+                    <div className="col-md-4 billing-buttons float-right">
+
+                      <Button
+                        onClick={() => browserHistory.push('/Upgrade')}
+                        className="btn btn-primary"
+                        pullRight="pullRight" fill="fill"
+                        type="button"
+                        icon="cloud-upload"
+                        disabled={false}
+                      >
                             Upgrade Plan
-                        </Button>
+                      </Button>
 
-                        <Button
-                          onClick={() => browserHistory.push('/card-details?type=upgrade')}
-                          className="btn btn-success"
-                          pullRight="pullRight"
-                          fill="fill"
-                          type="button"
-                          icon="usd"
-                          disabled={false}
-                        >
-                          Upgrade Payment
-                        </Button>
-                      </div>
-                      <div className="clearfix"></div>
-                    </Row>
-                    <div className="billing-info-list">
-                      <Row className="payment-info">
-                        <Col md={6}>
-                          <div className="panel panel-default">
-                            <div className="card-box">
-                              <h4 className="header-title mt-0 m-b-20">Plan details</h4>
-                              <div className="panel-body">
-                                <hr />
-                                <div className="text-left">
-                                  <p className="text-muted font-13">
-                                    <strong>Plan Choosed :</strong>
-                                    <span class="m-l-15">
-                                      <FormGroup>
-                                        <FormControl
-                                          type="text"
-                                          bsClass="form-control"
-                                          id="campaignname"
-                                          disabled
-                                        />
-                                      </FormGroup>
-                                    </span>
-                                  </p>
-                                </div>
-                              </div>
-                            </div>
-                            <div className="text-left pl-3">
-                              <p className="text-muted font-13">
-                                <strong>Last Paid :</strong>
-                                <span class="m-l-15">
-                                  {planSelected.interval ? moment(planSelected.interval.updated_at).format('DD MMM YYYY') : '-'}
-                                </span>
-                              </p>
-                              <p className="text-muted font-13">
-                                <strong>Billing Cycle :</strong>
-                                <span class="m-l-15">
-                                  {planSelected.interval ? (planSelected.interval.charAt(0).toUpperCase() + planSelected.interval.slice(1)) : '-'}
-                                </span>
-                              </p>
-                              <p className="text-muted font-13">
-                                <strong>Visitor Quota :</strong>
-                                <span class="m-l-15">
-                                  {profile ? profile.uniqueVisitorQouta.toLocaleString() : '-'} Unique Visitors
-                                </span>
-                              </p>
-                              <p className="text-muted font-13">
-                                <strong>Visitor Quota Left :</strong>
-                                <span class="m-l-15">
-                                  {profile ? profile.uniqueVisitorsQoutaLeft.toLocaleString() : '-'} Unique Visitors
-                                </span>
-                              </p>
-                            </div>
-                          </div>
-                        </Col>
-                        <Col md={6}>
-                          <div className="panel panel-default">
-                            <div className="card-box">
-                              <h4 className="header-title mt-0 m-b-20">Payment Info </h4>
-                              <div className="panel-body">
-                                <hr />
-                                <div className="text-left">
-                                  <p className="text-muted font-13">
-                                    <strong>Next Payment Due Date :</strong>
-                                    <span class="m-l-15">
-                                      {planSelected.interval ? moment(planSelected.interval.updated_at).add(planSelected.interval_count, planSelected.interval).format('DD MMM YYYY') : '-'}
-                                    </span>
-                                  </p>
-                                  <p className="text-muted font-13">
-                                    <strong>Payment Method :</strong>
-                                    <span class="m-l-15">
-                                      {planSelected.interval ? 'Card' : '-'}
-                                    </span>
-                                  </p>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </Col>
-                      </Row>
-
-                      <Row className="payment-info">
+                      <Button
+                        onClick={() => browserHistory.push('/card-details?type=upgrade')}
+                        className="btn btn-primary"
+                        pullRight={true}
+                        fill={true}
+                        type="button"
+                        icon="usd"
+                        disabled={false}
+                      >
+                          Payment Method
+                      </Button>
+                    </div>
+                    <div className="clearfix"></div>
+                  </Row>
+                  <div className="billing-info-list">
+                    <Row className="payment-info">
+                      <Col md={6}>
                         <div className="panel panel-default">
                           <div className="card-box">
-                            <h4 className="header-title mt-0 m-b-20">Invoices </h4>
-                            <div className="panel-body billing-list">
-                              <Col md={12}>
-                                <div className="text-left ">
-                                  <Table hover className="table-responsive">
-                                    <thead>
-                                      <tr>
-                                        {
-                                          billingHeader.map((prop, key) => {
-                                            return (
-                                              <th className=" h6" key={key}>{prop}</th>
-                                            );
-                                          })
-                                        }
-                                      </tr>
-                                    </thead>
-                                    <tbody>
-                                      {this.renderPaymentList()}
-                                    </tbody>
-                                  </Table>
+                            <h4 className="header-title mt-0 m-b-20">Plan details</h4>
+                            <div className="panel-body">
+                              <hr />
+                              <div className="text-left">
+                                <div className="text-muted font-13">
+                                  <strong>Plan Choosed : </strong>
+                                  <span className="m-l-15">
+                                    <FormGroup>
+                                      <FormControl
+                                        type="text"
+                                        bsClass="form-control mt-4"
+                                        id="campaignname"
+                                        value={profile?profile.plan.name:''}
+                                        disabled
+                                      />
+                                    </FormGroup>
+                                  </span>
                                 </div>
-                              </Col>
+                              </div>
                             </div>
                           </div>
                         </div>
-                      </Row>
-                    </div>
+                      </Col>
+                      <Col md={6}>
+                        <div className="panel panel-default">
+                          <div className="card-box">
+                            <h4 className="header-title mt-0 m-b-20">Payment Info </h4>
+                            <div className="panel-body">
+                              <hr />
+                              <div className="text-left">
+                                <p className="text-muted font-13">
+                                  <strong>Next Payment Due Date : </strong>
+                                  <span className="m-l-15">
+                                    {planSelected.interval ? moment(planSelected.interval.updated_at).add(planSelected.interval_count, planSelected.interval).format('DD MMM YYYY') : '-'}
+                                  </span>
+                                </p>
+                                <p className="text-muted font-13">
+                                  <strong>Payment Method : </strong>
+                                  <span className="m-l-15">
+                                    {planSelected.interval ? 'Card' : '-'}
+                                  </span>
+                                </p>
+                                <p className="text-muted font-13">
+                                  <strong>Last Paid : </strong>
+                                  <span className="m-l-15">
+                                    {planSelected.interval ? moment(planSelected.interval.updated_at).format('DD MMM YYYY') : '-'}
+                                  </span>
+                                </p>
+                                <p className="text-muted font-13">
+                                  <strong>Billing Cycle : </strong>
+                                  <span className="m-l-15">
+                                    {planSelected.interval ? (planSelected.interval.charAt(0).toUpperCase() + planSelected.interval.slice(1)) : '-'}
+                                  </span>
+                                </p>
+                                <p className="text-muted font-13">
+                                  <strong>Visitor Quota : </strong>
+                                  <span className="m-l-15">
+                                    {profile ? profile.uniqueVisitorQouta.toLocaleString() : '-'} Unique Visitors
+                                  </span>
+                                </p>
+                                <p className="text-muted font-13">
+                                  <strong>Visitor Quota Left : </strong>
+                                  <span className="m-l-15">
+                                    {profile ? profile.uniqueVisitorsQoutaLeft.toLocaleString() : '-'} Unique Visitors
+                                  </span>
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </Col>
+                    </Row>
+
+                    <Row className="payment-info">
+                      <div className="panel panel-default">
+                        <div className="card-box">
+                          <h4 className="header-title mt-0 m-b-20">Invoices </h4>
+                          <div className="panel-body billing-list">
+                            <Col md={12}>
+                              <div className="text-left ">
+                                <Table hover className="table-responsive">
+                                  <thead>
+                                    <tr>
+                                      {
+                                        billingHeader.map((prop, key) => {
+                                          return (
+                                            <th className=" h6" key={key}>{prop}</th>
+                                          );
+                                        })
+                                      }
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    {this.renderPaymentList()}
+                                  </tbody>
+                                </Table>
+                              </div>
+                            </Col>
+                          </div>
+                        </div>
+                      </div>
+                    </Row>
                   </div>
-                }
-              />
+                </div>
+              </div>
+
             </Col>
           </Row>
         </Grid>

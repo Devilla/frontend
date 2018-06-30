@@ -8,8 +8,8 @@ import { fetchElastic } from 'ducks/elastic';
 import { fetchCampaignInfo, successCampaign } from 'ducks/campaign';
 import { Tooltip, OverlayTrigger } from 'react-bootstrap';
 import { Analytics, AnalyticsProfile } from 'components';
-import './AnalyticsContainer.scss';
 import '../DashboardContainer/asset/scss/style.scss';
+import './AnalyticsContainer.scss';
 
 const LineChart = ReactChartJs.Line;
 
@@ -91,13 +91,14 @@ class AnalyticsContainer extends Component {
   renderProfileList() {
     if(this.state.usersList.length)
       return this.state.usersList.map((user, index) => {
-        return <tr key={index}>;
+        return <tr className="table-active analytics-tr" key={index}>
+          <td>{index + 1}</td>
           <td className="img"><img src={user.profile_pic?user.profile_pic:'https://www.totaldenturecare.com.au/wp-content/uploads/2017/06/default-user-image-female.png'} /></td>
-          <td className="name">{user.username}</td>
-          <td className="email">{user.email}</td>
-          <td className="location">{user.city}</td>
-          <td className="country">{user.country}</td>
-          <td className="lastseen">{moment(user.timestamp).startOf('day').fromNow()}</td>
+          <td>{user.username}</td>
+          <td>{user.email}</td>
+          <td>{user.city}</td>
+          <td>{user.country}</td>
+          <td>{moment(user.timestamp).startOf('day').fromNow()}</td>
           <td>
             <OverlayTrigger
               overlay={
@@ -184,21 +185,17 @@ class AnalyticsContainer extends Component {
 
         const userDetails = website.signups?website.signups.userDetails:[];
         const uniqueUsers = website.uniqueUsers?website.uniqueUsers.aggregations.users.buckets:[];
-        return <tr  className = { index % 2 === 0 ? 'text-center ' : 'text-center table-info '} key={index}>
-          <td className="website"> <a href={website.websiteUrl} target="_blank">{website.websiteUrl}</a></td>
-          <td className="vistor">{visitor}</td>
-          <td><a href="javascript:;" onClick={() => this.handleViewProfile(userDetails)} className="pname">
-            <b>{userDetails && userDetails.length} </b> <span>View Profile</span></a>
-          </td>
-          <td className="liveuser">-</td>
-          <td className="conversion">
+        return <tr className="table-active analytics-tr" key={index}>
+          <th scope="row">{index + 1}</th>
+          <td className="text-center">{website.websiteUrl}</td>
+          <td className="text-center">{visitor}</td>
+          <td className="text-center">{userDetails && userDetails.length} <a href="javascript:;" onClick={() => userDetails?this.handleViewProfile(userDetails):null}>&nbsp; Profiles</a></td>
+          <td className="text-center">-</td>
+          <td className="text-center">
             {
-              userDetails?((userDetails.length / visitor)   * 100).toFixed(2):0
-            } %
-          </td>
-          <td>
-            <a href="javascript:;" onClick={() => this.showGraph(website.websiteUrl, uniqueUsers)}><i className="fas fa-chart-area"></i> Show Graph</a>
-          </td>
+              userDetails && userDetails.length ?((userDetails.length / visitor)   * 100).toFixed(2):0
+            } %</td>
+          <td className="text-center"><a href="javascript:;" onClick={() => this.showGraph(website.websiteUrl, uniqueUsers)}>Graph</a></td>
         </tr>;
       });
     else

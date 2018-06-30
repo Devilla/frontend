@@ -74,7 +74,7 @@ File: Main Css File
 .nav-second-level li a, .nav-thrid-level li a {
   padding: 8px 20px 8px 10px;
   color: rgba(49, 58, 70, 0.7);
-  display: block;
+  display: none;
   position: relative;
 }
 
@@ -160,7 +160,7 @@ File: Main Css File
 .side-menu {
   width: 240px;
   z-index: 100000000;
-  background: #ffffff;
+  background: black;
   bottom: 0;
   left: 0;
   margin-top: 0;
@@ -3397,7 +3397,6 @@ code {
   -webkit-box-shadow: none;
   background-color: #f3f3f3;
   box-shadow: none;
-  margin-bottom: 18px;
   overflow: hidden;
   height: 0.7rem;
 }

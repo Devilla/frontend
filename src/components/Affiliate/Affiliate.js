@@ -5,11 +5,14 @@ export default class Affiliate extends Component {
   constructor() {
     super();
   }
+  componentDidMount() {
+    window.scrollTo(0,0);
+  }
   render() {
     return (
       <div className="main-container">
-        <section className="text-center" style={{ paddingTop: '200px' }}>
-          <div className="container pos-vertical-center">
+        <section className="text-center" style={{ paddingTop: '100px' }}>
+          <div className="container ">
             <div className="row">
               <div className="col-md-8">
                 <h2>Influence Affiliate Program</h2>
@@ -21,7 +24,7 @@ export default class Affiliate extends Component {
           </div>
         </section>
 
-        <section className="imageblock switchable feature-large bg--secondary space--sm">
+        <section className="imageblock switchable feature-large bg--secondary">
           <div className="imageblock__content col-lg-6 col-md-4 pos-right">
             <div className="background-image-holder">
               <img alt="image" src="img/education-1.jpg" />
@@ -72,11 +75,11 @@ export default class Affiliate extends Component {
                   <p className='lead' style={{ color: 'white' }}>
                                         Join us today to be a part of something exciting and start making money.
                   </p>
-                  <a className="btn btn--primary type--uppercase" href="/affiliateregister">
+                  <Link className="btn btn--primary type--uppercase" to="/affiliateregister">
                     <span className="btn__text">
-                                            BECOME A INFLUENCE AFFILIATE
+                      BECOME A INFLUENCE AFFILIATE
                     </span>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
