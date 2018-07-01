@@ -91,7 +91,7 @@ class Notification extends Component {
         <td>{campaign.campaignName}</td>
         <td>{campaign.websiteUrl}</td>
         <td className="switch">
-          <input className="tgl tgl-ios" id="cb2" type="checkbox" defaultChecked={campaign.isActive} />
+          <input className="tgl tgl-ios" id="cb2" type="checkbox" checked={campaign.isActive} />
           <label className="tgl-btn" htmlFor="cb2" onClick={(e) => this.handleActiveChange(!campaign.isActive, campaign)}></label>
         </td>
         <td>{campaign.trackingId}</td>
