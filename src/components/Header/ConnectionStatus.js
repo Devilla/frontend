@@ -7,6 +7,7 @@ export default class ConnectionStatus extends Component{
     return(
 
     // <!-- Please uncomment the lines below only one at a time to see the different connection status. -->
+    //Also change the brand color as background from ConnectionStatus.css file
 
       <div id="status-note" className="center-block loading">
         {/*Can’t connect to Influence. Please check your internet connection.*/}
