@@ -1,12 +1,116 @@
 .website-app {
-  .website-error {
-    padding: 10px 0px 0px 5px !important;
-    color: red;
+  .signup-container {
+    .website-error {
+      padding: 10px 0px 0px 5px !important;
+      color: red;
+    }
+    .alert-warning {
+      background-color: #f2dede;
+      border-color: #ebccd1;
+      color: #a94442;
+    }
+    .signuptitle {
+      font-size: 50px;
+    }
+    .pos-relative {
+      top: 250px;
+    }
+    .vristrue {
+      position: relative;
+      top: 285px;
+    }
+    input {
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
   }
-  .alert-warning {
-    background-color: #f2dede;
-    border-color: #ebccd1;
-    color: #a94442;
-  }
+}
 
+@media only screen and (max-width: 1200px) {
+  .signup-container {
+    .signuptitle{
+      font-size: 40px !important;
+
+    }
+    .sub-up-title , .terms-title{
+      font-size: 18px !important;
+  }
+  }
+}
+@media only screen and (max-width: 900px) {
+  .signup-container {
+      .socio-link {
+       .link-fb {
+          font-size: 13.6px;
+      }
+      .link-go {
+          font-size: 14px;
+      }
+      }
+   
+  }
+}
+@media only screen and (max-width: 770px) {
+  .signup-container { 
+    .pos-relative {
+     top:20px !important;
+    }
+  }
+}
+
+
+
+@media only screen and (max-width: 400px) {
+  .signup-container{
+    input {
+      max-width: 300px;
+    }
+    .socio-link {
+      margin : 50px 0 0 15px;
+      min-height: 160px;
+      border-top: 1px solid #c0c0c0;
+    }
+  }
+}
+@media only screen and (max-width: 375px) {
+  .signup-container {
+      .signuptitle {
+          font-size: 35px !important;
+      }
+      .sub-up-title,.terms-title {
+          font-size: 15px !important;
+      }
+  }
+}
+
+
+@media only screen and (max-width: 342px) {
+  .signup-container {
+      .socio-link {
+          margin-right:20px;
+       
+          .link-fb {
+              font-size: 13.7px;
+          }
+          .link-go {
+              font-size: 15px;
+          }
+      }
+    
+   
+  }
+}
+@media only screen and (max-width: 320px) {
+  .signup-container {
+      .socio-link {
+          margin-right:30px;
+          .link-fb {
+              font-size: 12.7px;
+          }
+          .link-go {
+              font-size: 14px;
+          }
+      }
+    
+   
+  }
 }
