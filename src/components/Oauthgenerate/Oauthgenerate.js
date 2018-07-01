@@ -1,6 +1,9 @@
 import React , { Component } from 'react';
 import './Oauthgenerate.scss';
 import { Row,Col } from 'react-bootstrap';
+import { validateEmail } from 'services/FormUtils';
+import { HelpBlock } from 'react-bootstrap';
+import {Link} from 'react-router';
 import moment from 'moment';
 import {
   FormGroup,
@@ -15,11 +18,50 @@ class Oauthpage extends Component {
       clientId: '65790-18281682901',
       clientSecret: 'JSKSGDAGD6RHHUIGR',
       clientname: '',
-      errorname: ''
+      errorname: '',
+      authorizedOrigin: '',
+      redirectURI: '',
+      errorName: '',
+      errorURI: '',
+      errorAuthorizedOrigin: ''
+
     };
   }
 
+  checkNameBlur = (event)=> {
+    const value = event.target.value;
+    (value === '')?  this.setState({ errorName: 'Enter your Name' }) : (
+      (isNaN(value)) ? this.setState({errorName: ''}) : this.setState({ errorName: 'Enter a valid Name' })
+    );
+  }
 
+  checkAuthorizedOrigin = (event)=> {
+    const value = event.target.value;
+    (value === '')?  this.setState({ errorAuthorizedOrigin: 'Enter Authorized Origins' }) : (
+      (isNaN(value)) ? this.setState({errorAuthorizedOrigin: ''}) : this.setState({ errorAuthorizedOrigin: 'Enter a valid Authorized Origin' })
+    );
+  }
+
+  checkURIBlur = (event)=> {
+    const value = event.target.value;
+    (value === '')?  this.setState({ errorURI: 'Enter Redirect URI' }) : (
+      (isNaN(value)) ? this.setState({errorURI: ''}) : this.setState({ errorURI: 'Enter a valid redirect URI' })
+    );
+  }
+
+  checkEmailBlur = (event) => {
+    const value = event.target.value;
+    const isEmailValid = validateEmail(value);
+    this.setState({ isEmailValid });
+    if (!value)
+      this.setState({ errorEmail: 'Email id required' });
+    else if (!isEmailValid)
+      this.setState({ errorEmail: 'Enter a valid Email id' });
+  }
+
+  handleStateChange = (target, value) => {
+    this.setState({[target]: value});
+  }
 
   getClientInfoList = () => {
     return (
@@ -34,16 +76,16 @@ class Oauthpage extends Component {
 
   render() {
     return (
-      
+
       <div className="oauthgen-container">
         <div className="content">
           <div className="card-box">
 
-            <span className="header-title h4"><i className="icon-arrow-left mr-3"></i>Client ID for Web application</span>
+            <span className="header-title h4"><Link to='/oauthshow'><i className="icon-arrow-left mr-3"></i></Link>Client ID for Web application</span>
             <button type="button" className="btn btn-outline-primary  waves-light waves-effect pl-1 float-right h6" onClick={()=>{}}><i className="ml-3 mdi mdi-delete"></i>&nbsp;DELETE</button>
             <button type="button" className="btn btn-outline-primary  waves-light waves-effect pl-1 float-right h6" onClick={()=>{}}><i className="ml-3 mdi mdi-lock-reset"></i>&nbsp;RESET SECRET</button>
-        
-            <span className="clearfix"></span>           
+
+            <span className="clearfix"></span>
             <hr/>
             <Row className="mb-4">
               <Col md={12}>
@@ -60,7 +102,14 @@ class Oauthpage extends Component {
                     id="clientname"
                     placeholder="example: Ray-101, John doe"
                     required={true}
+                    name="clientname"
+                    value={this.state.clientname}
+                    onBlur={this.checkNameBlur}
+                    onChange={(e) => this.handleStateChange(e.target.name, e.target.value)}
                   />
+                  <HelpBlock>
+                    <p className="website-error">{this.state.errorName}</p>
+                  </HelpBlock>
                 </FormGroup>
               </Col>
             </Row>
@@ -79,10 +128,16 @@ class Oauthpage extends Component {
                       bsClass="form-control ml-3"
                       id="URI"
                       placeholder="https://www.example.com"
-                      onChange={()=>{}}
                       onBlur={()=>{}}
                       required={true}
+                      name="authorizedOrigin"
+                      value={this.state.authorizedOrigin}
+                      onBlur={this.checkAuthorizedOrigin}
+                      onChange={(e) => this.handleStateChange(e.target.name, e.target.value)}
                     />
+                    <HelpBlock>
+                      <p className="website-error">{this.state.errorAuthorizedOrigin}</p>
+                    </HelpBlock>
                   </FormGroup>
                   <FormGroup>
                     <span className="text-muted ml-3 h6">Authorized redirect URIs</span>
@@ -92,15 +147,20 @@ class Oauthpage extends Component {
                       bsClass="form-control ml-3"
                       id="redirectURI"
                       placeholder="https://www.example.com/callback"
-                      onChange={()=>{}}
-                      onBlur={()=>{}}
                       required={true}
+                      name="redirectURI"
+                      value={this.state.redirectURI}
+                      onBlur={this.checkURIBlur}
+                      onChange={(e) => this.handleStateChange(e.target.name, e.target.value)}
                     />
+                    <HelpBlock>
+                      <p className="website-error">{this.state.errorURI}</p>
+                    </HelpBlock>
                   </FormGroup>
-                
+
                 </div>
               </Col>
-           
+
             </Row>
             <Row className="mt-3">
               <span type="button" className="btn btn-primary waves-effect saveClient">Save</span>
@@ -108,10 +168,10 @@ class Oauthpage extends Component {
           </div>
         </div>
       </div>
-      
+
     );
   }
 }
-  
-  
+
+
 export default Oauthpage;
