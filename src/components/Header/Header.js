@@ -3,7 +3,6 @@ import { Smallpic } from 'img';
 import './Header.scss';
 import { Link } from 'react-router';
 import { browserHistory } from 'react-router';
-import ConnectionStatus from './ConnectionStatus';
 
 import { connect } from 'react-redux';
 import { ProgressBar } from 'react-bootstrap';
@@ -21,7 +20,7 @@ const Header = ({openCloseDropdown, dropdownStyle, logout, renderHelp, openProfi
         <div className="topbar-left">
           <h4><Link onClick={() => browserHistory.goBack()}><i className="icon-arrow-left mr-3"></i></Link>{children.props.location.pathname == '/new'? 'Campaign Setting' :children.props.location.pathname.replace(/^\/+/g, '')}</h4>
         </div>
-        <ConnectionStatus />
+     
         <ul className="list-unstyled topbar-right-menu float-right mb-0 nav-custom-header">
           <li className="dropdown notification-list">
             <a className="nav-link dropdown-toggle arrow-none" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
