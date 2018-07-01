@@ -177,21 +177,21 @@ class WebsiteSignIn extends Component {
                 <p> <br /></p>
                 <div className="mt--2">
                   <a href={`${base}connect/facebook`} className="link ">
-                    <Link className="btn btn--icon bg--facebook" to="">
+                    <div className="btn btn--icon bg--facebook" to="">
                       <span className="btn__text ">
                         <i className="socicon socicon-facebook"></i>
                         Login with Facebook
                       </span>
-                    </Link>
+                    </div>
                   </a>
                   <p></p>
                   <a href={`${base}connect/google`} className="link">
-                    <Link className="btn btn--icon bg--googleplus" to="">
+                    <div className="btn btn--icon bg--googleplus" to="">
                       <span className="btn__text">
                         <i className="socicon socicon-google"></i>
                         Login with Google
                       </span>
-                    </Link>
+                    </div>
                   </a>
                 </div>
               </div>
