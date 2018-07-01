@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { validateEmail, validatePassword, login, PASSWORD_MAX_LENGTH } from 'services/FormUtils';
 import { loginSuccess } from 'ducks/auth';
 import { load, loaded } from 'ducks/loading';
+import { Animated } from'react-animated-css';
 import { browserHistory } from 'react-router';
 import { base } from 'services/api';
 import { toast } from 'react-toastify';
@@ -103,103 +104,110 @@ class WebsiteSignIn extends Component {
     const { error, errorEmail, isPasswordShown, errorPassword, isEmailValid, isPwdValid } = this.state;
 
     return (
+      <div className="signin-container">
+        <Animated
+          className='leftwrap center'
 
-      <div className="main-container">
-        <section className="switchable switchable--switch bg--secondary">
-          <div className="container">
-            <div className="row justify-content-center">
-              <div className="col-sm-12 col-md-7 col-lg-5">
-                <div className="">
-                  <h2>Welcome back!</h2>
-                  <p className="lead">
-                    <span>Don't have an account yet?&nbsp;
-                      <Link to="/signup">Sign up</Link>
-                    </span>
-                  </p>
-                  <hr className="short" />
+          animationIn='fadeIn'
+          animationOut='fadeOut'
+          isVisible={true}>
+          <div className="main-container">
+            <section className="bg--secondary">
+              <div className="container text-center">
+                <div className="row ">
+                  <div className="col-sm-12 col-md-7 col-lg-6">
+                    <div>
+                      <span className="signintitle">Welcome back!</span>
+                      <p className="lead">
+                        <span className="sub-in-title">Don't have an account yet?&nbsp;
+                          <Link to="/signup">Sign up</Link>
+                        </span>
+                      </p>
 
-                  <form onSubmit={this.handleSubmit} className="loginfrm" >
-                    <div className="row">
-                      {error &&
-                        <Alert bsStyle="warning" className="col-9">
+
+                      <form onSubmit={this.handleSubmit} >
+                        <div className="row justify-content-center">
+                          {error &&
+                        <Alert bsStyle="warning" className="col-md-9 col-sm-9">
                           <strong>{error}</strong>
                         </Alert>
-                      }
-                      <div className="col-9 ">
-                        <input name="email"
-                          ref="email"
-                          className="field w-input"
-                          onBlur={this.handleEmailBlur}
-                          onChange={this.handleInputChange}
-                          placeholder="Email Address"
-                          type="email"
-                        />
-                        <HelpBlock>
-                          <p className="website-error">{errorEmail}</p>
-                        </HelpBlock>
-                      </div>
-                      <div className="col-9">
-                        <input type="password"
-                          name="Password"
-                          className="field w-input "
-                          name="password"
-                          ref="password"
-                          placeholder="Password"
-                          type={isPasswordShown ? 'text' : 'password'}
-                          maxLength={PASSWORD_MAX_LENGTH}
-                          onBlur={this.handlePasswordBlur}
-                          onChange={this.handleInputChange}
-                        />
-                        <HelpBlock>
-                          <p className="website-error">{errorPassword}</p>
-                        </HelpBlock>
-                      </div>
+                          }
+                          <div className="col-md-9 col-sm-8 ">
+                            <input name="email"
+                              ref="email"
+                              className="field w-input"
+                              onBlur={this.handleEmailBlur}
+                              onChange={this.handleInputChange}
+                              placeholder="Email Address"
+                              type="email"
+                            />
+                            <HelpBlock>
+                              <p className="website-error">{errorEmail}</p>
+                            </HelpBlock>
+                          </div>
+                          <div className="col-md-9 col-sm-8">
+                            <input type="password"
+                              name="Password"
+                              className="field w-input "
+                              name="password"
+                              ref="password"
+                              placeholder="Password"
+                              type={isPasswordShown ? 'text' : 'password'}
+                              maxLength={PASSWORD_MAX_LENGTH}
+                              onBlur={this.handlePasswordBlur}
+                              onChange={this.handleInputChange}
+                            />
+                            <HelpBlock>
+                              <p className="website-error">{errorPassword}</p>
+                            </HelpBlock>
+                          </div>
 
-                      <div className="col-9 frmcntl">
-                        <input
-                          className="button submit-button w-button btn btn--primary ml-0"
-                          type="submit"
-                          value="Login"
-                          style={mousepoint}
-                          disabled={!isEmailValid || !isPwdValid}
-                        />
-                      </div>
-                      <div><Link to="/forget-password"  style={{padding: '25px'}}>Forgot password?</Link></div>
+                          <div className="col-md-9 col-sm-8 frmcntl">
+                            <input
+                              className="button submit-button w-button btn btn--primary ml-0"
+                              type="submit"
+                              value="Login"
+                              style={mousepoint}
+                              disabled={!isEmailValid || !isPwdValid}
+                            />
+                          </div>
+                          <div><Link to="/forget-password"  style={{padding: '25px'}}>Forgot password?</Link></div>
+                        </div>
+                      </form>
                     </div>
-                  </form>
-                </div>
-              </div>
+                  </div>
 
-              <div className="vristrue">
-              </div>
+                  <div className="vristrue ml-5">
+                  </div>
 
-              <div className="col-md-4 col-lg-4">
-                <p> <br /></p>
-                <div className="mt--2">
-                  <a href={`${base}connect/facebook`} className="link ">
-                    <Link className="btn btn--icon bg--facebook" to="">
-                      <span className="btn__text ">
-                        <i className="socicon socicon-facebook"></i>
+                  <div className="col-md-4 col-lg-4 socio-link">
+                    <p> <br /></p>
+                    <div className="mt--2">
+                      <a href={`${base}connect/facebook`} className="link-fb ">
+                        <div className="btn btn--icon bg--facebook" to="">
+                          <span className="btn__text ">
+                            <i className="socicon socicon-facebook"></i>
                         Login with Facebook
-                      </span>
-                    </Link>
-                  </a>
-                  <p></p>
-                  <a href={`${base}connect/google`} className="link">
-                    <Link className="btn btn--icon bg--googleplus" to="">
-                      <span className="btn__text">
-                        <i className="socicon socicon-google"></i>
+                          </span>
+                        </div>
+                      </a>
+                      <p></p>
+                      <a href={`${base}connect/google`} className="link">
+                        <div className="btn btn--icon bg--googleplus link-go" to="">
+                          <span className="btn__text">
+                            <i className="socicon socicon-google"></i>
                         Login with Google
-                      </span>
-                    </Link>
-                  </a>
+                          </span>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
+            </section>
           </div>
-        </section>
+        </Animated>
       </div>
-
     );
   }
 }
