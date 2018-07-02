@@ -29,6 +29,13 @@ class WebsiteHome extends Component {
     };
   }
 
+  
+  componentDidMount() {
+    let scrollElm = document.scrollingElement;
+    scrollElm.scrollTop = 0;
+  }
+
+
   render() {
     const settings = {
       dots: true,
@@ -41,20 +48,20 @@ class WebsiteHome extends Component {
     return (
       <div className="websitehome-container">
         <div className="main-container">
-          <section className="cover text-center parallax" data-overlay="0">
+          <section className="cover text-center parallax landing-home-section" data-overlay="0">
             <div className="container">
               <div className="row pb-5">
                 <div className="col-md-10 col-lg-10 text-center">
-                  <h1 className="pt-2">Increase your website conversions using social proof notifications <br /> </h1>
-                  <p className="typed-text typed-text--cursor h3"> Use Influence and get <span className="type--bold" style={{ color: '#584EEF' }}>3x more business </span>right away &nbsp;</p>
+                  <h1 className="pt-2 main-title">Increase your website conversions using social proof notifications <br /> </h1>
+                  <p className="typed-text typed-text--cursor h3 sub-title"> Use Influence and get <span className="type--bold" style={{ color: '#584EEF' }}>3x more business </span>right away &nbsp;</p>
                 </div>
               </div>
               <br /> <br />
-              <div className="text-center pb-5">
+              <div className="text-center pb-5 starttrial-form">
                 <form className="form--horizontal row">
                   <div className="col-md-3 mr-1 pr-0 ml-0 pl-0"></div>
                   <div className="col-md-4 ml-0 pl-0 mr-0 pr-0"> <input type="text" name="email" placeholder="Enter your email" onChange={(e) => this.setState({ email: e.target.value })} /> </div>
-                  <div className="col-md-2 ml-0 pl-0 mr-0 pr-0"> <button type="submit" onClick={() => browserHistory.push(`/signup?email=${this.state.email}`)} className="btn btn--primary">Start Free Trial</button> </div>
+                  <div className="col-md-2 ml-0 pl-0 mr-0 ml-0 pr-0 "> <button type="submit" onClick={() => browserHistory.push(`/signup?email=${this.state.email}`)} className="btn btn--primary freetrial-btn ml-0">Start Free Trial</button> </div>
                 </form>
               </div>
             </div>
@@ -66,7 +73,7 @@ class WebsiteHome extends Component {
             <div className="container pt-5 pb-5">
               <div className="row  ">
                 <div className="col-md-6 text-left pt-5 pb-5 ">
-                  <h2 className="color--white "> Thousands of brands are using Influence to get more customers </h2>
+                  <h2 className="color--white blue-strip-affiliate "> Thousands of brands are using Influence to get more customers </h2>
                 </div>
                 <div className="col-md-6 text-left pt-5 pb-5  pl-3">
                   <img src={Marvel} alt="img" className="enterprise-logo" />
@@ -90,7 +97,7 @@ class WebsiteHome extends Component {
             <div className="container ">
               <div className="row justify-content-around">
                 <div className="col-md-6 my-auto">
-                  <div className="switchable__text">
+                  <div className="features-text switchable__text">
                     <h3>Recent user activity</h3>
                     <p className="lead"> You can show your recent user activity to all your visitors and push to buy sign up more for your offerings </p> <Link to="/">Learn More »</Link>
                   </div>
@@ -117,7 +124,7 @@ class WebsiteHome extends Component {
             <div className="container">
               <div className="row justify-content-around">
                 <div className="col-md-6 my-auto">
-                  <div className="switchable__text">
+                  <div className="features-text switchable__text">
                     <h3>Live users activity</h3>
                     <p className="lead"> Show your visitors how many live people are seeing your offerings and influence them to buy from you <br /></p> <Link to="/">Learn More »</Link>
                   </div>
@@ -144,7 +151,7 @@ class WebsiteHome extends Component {
             <div className="container">
               <div className="row justify-content-around">
                 <div className="col-md-6 my-auto">
-                  <div className="switchable__text">
+                  <div className="features-text switchable__text">
                     <h3>Group activity</h3>
                     <p className="lead">Show overall number of people that have signed up on your website <br /></p> <Link to="/">Learn More »</Link>
                   </div>
@@ -176,9 +183,9 @@ class WebsiteHome extends Component {
                 <div>
                   <div className="row ">
                     <div className="col-md-4 text-left pt-5 pb-5  ">
-                      <img src={Carpathy} alt="img" />
+                      <img src={Carpathy} alt="img" className="slider-image"/>
                     </div>
-                    <div className="col-md-8 text-left pt-5 pb-5">
+                    <div className="col-md-8 text-left pt-5 pb-5 slider-text">
                       <p className="h3"> “We wanted a solution that could help us in increasing our conversions on our portal. We got an instant conversions boost after using Influence on our main portal ”  </p>
                       <p className="h5 lead"> – Carpathy, Akshat Lavania</p>
                     </div>
@@ -187,9 +194,9 @@ class WebsiteHome extends Component {
                 <div>
                   <div className="row ">
                     <div className="col-md-4 text-left pt-5 pb-5  ">
-                      <img src={Stagephod} alt="img" />
+                      <img src={Stagephod} alt="img" className="slider-image"/>
                     </div>
-                    <div className="col-md-8 text-left pt-5 pb-5">
+                    <div className="col-md-8 text-left pt-5 pb-5 slider-text">
                       <p className="h3"> “ We got an instant boost of 84% in our landing page conversions after using influence ”  </p>
                       <p className="h5 lead"> – Stagephod, Nikhilesh Tayal</p>
                     </div>
@@ -198,9 +205,9 @@ class WebsiteHome extends Component {
                 <div>
                   <div className="row ">
                     <div className="col-md-4 text-left pt-5 pb-5  ">
-                      <img src={Lawsikho} alt="img" />
+                      <img src={Lawsikho} alt="img"className="slider-image"/>
                     </div>
-                    <div className="col-md-8 text-left pt-5 pb-5">
+                    <div className="col-md-8 text-left pt-5 pb-5 slider-text">
                       <p className="h3"> “Great Tool. Gave us instant boost of 36% on our landing pages on an average ”  </p>
                       <p className="h5 lead"> – LawSikho, Abhyudya Aggarwal </p>
                     </div>
@@ -212,15 +219,15 @@ class WebsiteHome extends Component {
           <section className="switchable col-md-12 mb-5 mt-5">
             <div className="container">
               <div className="row justify-content-between align-items-center">
-                <div className="col-md-6 col-lg-5">
-                  <h2>Power up with Integrations</h2>
+                <div className="col-md-6 col-lg-5 integration-title">
+                  <h2 className="">Power up with Integrations</h2>
                   <p className="lead"> Get upto 3x more conversion with integrations into your favorite tools</p>
                   <Link className="btn btn--primary " to="/integrations">
                     <span className="btn__text col-md-7">Integration</span>
                   </Link>
                 </div>
                 <div className="col-md-6">
-                  <img alt="Integration" src={Illustration} />
+                  <img alt="Integration" src={Illustration}  className="integration-image"/>
                 </div>
               </div>
             </div>
