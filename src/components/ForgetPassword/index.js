@@ -73,13 +73,13 @@ class ForgetPassword extends Component {
                 <div className="row">
                   <div className="frmcntl pb-2 col-md-7">
                     <h3 className="pb-3">Enter your email address below and well send you a link to reset your password.</h3>
-                    <div className=" col-md-12 frmcntl pb-4">
+                    <div className="frmcntl pb-4">
                       <input className="field w-input" id="email" name="email" value={this.state.email} onBlur={this.checkEmail.bind(this)} onChange={this.handleEmailChange.bind(this)} placeholder="Email Address" type="email"/>
                       <HelpBlock>
                         <p className="website-error">{this.state.emailError || this.props.error}</p>
                       </HelpBlock>
                     </div>
-                    <div className="col-md-5 frmcntl pb-4">
+                    <div className="frmcntl pb-4">
                       <input className="btn btn-primary " type="submit" value="Send reset password email"/>
                     </div>
                   </div>

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { browserHistory } from 'react-router';
 import { CardNumberElement,
   CardExpiryElement,
   CardCVCElement,
@@ -106,9 +105,6 @@ class StripeCard extends Component {
           </HelpBlock>
         </Row>
         <Row className='upgrade-card-buttons'>
-          <div className='col-md-4 pull-left'>
-            <Button type='button' icon='chevron-left' bsStyle='primary' fill={true} onClick={() => browserHistory.push(currentState === 'upgrade' ? '/billing-details' : '/profile')}>&nbsp;&nbsp;Back&nbsp;&nbsp;</Button>
-          </div>
           <div className='col-md-6 pull-right mr-2'>
             <Button type='submit' icon='usd' bsStyle='primary' fill={true} >{currentState === 'upgrade' ? 'Update Card' : 'Make Payment'}</Button>
           </div>

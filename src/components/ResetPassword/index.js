@@ -6,6 +6,7 @@ import { css } from 'glamor';
 import {Row, Col} from 'react-bootstrap';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+
 function validate(newPassword,verifyPassword, authEmail) {
   return {
     newPassword: newPassword.length === 0,
@@ -27,12 +28,15 @@ export default class forget extends Component{
   componentDidMount(){
     window.scrollTo(0,0);
   }
+
   handlePasswordChange(evt){
     this.setState({newPassword:  evt.target.value});
   }
+
   handlePasswordverifyChange(evt){
     this.setState({verifyPassword:  evt.target.value});
   }
+
   handlePasswordAuth(evt){
     if(evt.target.value == ''){
       $('#'+evt.target.id).addClass('has-error');
@@ -49,6 +53,7 @@ export default class forget extends Component{
       $('#'+evt.target.id).removeClass('has-error');
     }
   }
+
   handlePasswordverifyAuth(evt){
     if(evt.target.value == ''){
       $('#'+evt.target.id).addClass('has-error');
@@ -69,59 +74,46 @@ export default class forget extends Component{
 
     }
   }
+
   handleSubmit(evt){
-    if (!this.canBeSubmitted()) {
-      evt.preventDefault();
-      return;
-    }else{
+    evt.preventDefault();
+    var token = document.location.href.split('token=')[1];
+    const data = {
+      'newPassword' :  this.state.newPassword,
+      'verifyPassword': this.state.verifyPassword,
+      'token': token
 
-      evt.preventDefault();
-      var token = document.location.href.split('token=')[1];
-      const data = {
-        'newPassword' :  this.state.newPassword,
-        'verifyPassword': this.state.verifyPassword,
-        'token': token
+    };
 
-      };
+    let urls;
+    if (process.env.NODE_ENV === 'production')
+      urls = `${process.env.REACT_APP_PRODUCTION_URL}auth/reset_password`;
+    else if(process.env.NODE_ENV === 'staging')
+      urls = `${process.env.REACT_APP_STAGING_URL}auth/reset_password`;
+    else
+      urls = `${process.env.REACT_APP_DEVELOPMENT_URL}auth/reset_password`;
 
-      let urls;
-      if (process.env.NODE_ENV === 'production')
-        urls = `${process.env.REACT_APP_PRODUCTION_URL}auth/reset_password`;
-      else if(process.env.NODE_ENV === 'staging')
-        urls = `${process.env.REACT_APP_STAGING_URL}auth/reset_password`;
-      else
-        urls = `${process.env.REACT_APP_DEVELOPMENT_URL}auth/reset_password`;
-
-      axios.post(urls ,data).then(function(response){
-        toast.info(response['data']['message'], {
-          position: toast.POSITION.BOTTOM_CENTER,
-          className: css({
-            background: response['data']['background'],
-            color: '#fff'
-          })
-        });
-      }) .catch(function (error) {
-        console.log(error);
-        toast.info('Something went wrong..', {
-          position: toast.POSITION.BOTTOM_CENTER
-        });
+    axios.post(urls ,data).then(function(response){
+      toast.info(response['data']['message'], {
+        position: toast.POSITION.BOTTOM_CENTER,
+        className: css({
+          background: response['data']['background'],
+          color: '#fff'
+        })
       });
-
-      this.setState({
-        newPassword:'',
-        verifyPassword: ''
+    }) .catch(function (error) {
+      console.log(error);
+      toast.info('Something went wrong..', {
+        position: toast.POSITION.BOTTOM_CENTER
       });
-    }
-  }
-  canBeSubmitted() {
-    const errors = validate(
-      this.state.newPassword,
-      this.state.verifyPassword,
-      this.state.authEmail);
+    });
 
-    const isDisabled = Object.keys(errors).some(x => errors[x]);
-    return !isDisabled;
+    this.setState({
+      newPassword:'',
+      verifyPassword: ''
+    });
   }
+
   render(){
     const errors = validate(
       this.state.newPassword,
