@@ -222,7 +222,7 @@ class WebsiteHome extends Component {
                 <div className="col-md-6 col-lg-5 integration-title">
                   <h2 className="">Power up with Integrations</h2>
                   <p className="lead"> Get upto 3x more conversion with integrations into your favorite tools</p>
-                  <Link className="btn btn--primary " to="/integrations">
+                  <Link className="btn btn--primary integration-btn" to="/integrations">
                     <span className="btn__text col-md-7">Integration</span>
                   </Link>
                 </div>
@@ -244,7 +244,7 @@ class WebsiteHome extends Component {
                     </div>
                     <div className="row ">
                       <div className="col-md-12 text-center pb-2">
-                        <Link className="btn btn--primary " to="/signup"> <span className="btn__text">Start my free trial<br /></span> </Link>
+                        <Link className="btn " to="/signup"> <span className="btn__text">Start my free trial<br /></span> </Link>
                       </div>
                     </div>
                   </div>

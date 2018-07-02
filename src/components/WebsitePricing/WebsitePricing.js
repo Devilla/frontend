@@ -128,7 +128,7 @@ class WebsitePricing extends Component {
             </li>
           </ul>
 
-          <Link className="btn btn--primary col-md-12 text-center" to="/signup" >
+          <Link className="btn btn--primary col-md-12 text-center  starttrial-btn" to="/signup" >
             <span className="btn__text">Start Free Trial</span>
           </Link>
         </div>
@@ -184,7 +184,7 @@ class WebsitePricing extends Component {
                   Looking for a Bigger Plan? &nbsp;
 
                     </span>
-                    <Link className="btn btn--primary " to="/contact"><span className="btn__text">Contact Us</span><br/></Link>
+                    <Link className="btn btn--primary contact-btn " to="/contact"><span className="btn__text">Contact Us</span><br/></Link>
                   </div>
                 </div>
               </div>

@@ -66,7 +66,7 @@ class WebsiteContact extends Component {
             <div className="row">
               <div className="col-md-12">
                 <h2>Contact us</h2>
-                <div className="h3 typed-text typed-text--cursor color--primary"> We sit round the clock <span className="makeitbold">just for you</span> </div>
+                <div className="h3 typed-text typed-text--cursor color--primary"> We sit round the clock <span className="makeitbold">&nbsp;just for you</span> </div>
               </div>
             </div>
           </div>
