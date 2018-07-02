@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import {Link} from 'react-router';
 import { Animated } from 'react-animated-css';
 import { forgotPassword, clearForgotPasswordError } from 'ducks/auth';
 import { HelpBlock } from 'react-bootstrap';
@@ -89,7 +90,7 @@ class ForgetPassword extends Component {
                 <div className="support col-md-7">
                   <div className="col-md-12">
                     <h4>Trouble logging in?</h4>
-                    <a href="#">Contact Support</a>
+                    <Link to="/contact">Contact Support</Link>
                   </div>
                 </div>
               </div>
