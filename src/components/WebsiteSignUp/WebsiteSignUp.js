@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
-// import { SignUp } from 'img';
 import {validateEmail, validatePassword, register, PASSWORD_MAX_LENGTH} from 'services/FormUtils';
 import { Animated } from'react-animated-css';
 import { Alert, HelpBlock } from 'react-bootstrap';
@@ -137,7 +136,7 @@ class WebsiteSignUp extends Component {
                     <div>
                       <p className="lead">
                         <span className="sub-up-title">Already have an account?&nbsp;
-                          <Link to="/signin">Sign in</Link>
+                          <Link to="/login">Sign in</Link>
                         </span>
                       </p>
 

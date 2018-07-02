@@ -117,7 +117,7 @@ class AffiliateRegister extends Component {
                         disabled={!isEmailValid}
                       />
                     </div>
-                    <ToastContainer  autoClose={8000} className="toaster"/>
+                    <ToastContainer  className="toaster"/>
                   </form>
                 </div>
               </div>
