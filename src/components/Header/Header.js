@@ -7,13 +7,14 @@ import ConnectionStatus from './ConnectionStatus';
 
 import { connect } from 'react-redux';
 import { ProgressBar } from 'react-bootstrap';
+import './Header.scss';
 
 const Header = ({openCloseDropdown, dropdownStyle, logout, renderHelp, openProfile, loading, children}) => {
 
   return (
     <div className="customer-header">
       {loading ?
-        <ProgressBar bsStyle='info' now={ 120 } />
+        <ProgressBar bsStyle='info' now={ 120 }/>
         :
         <ProgressBar bsStyle='info' now={0} />
       }
