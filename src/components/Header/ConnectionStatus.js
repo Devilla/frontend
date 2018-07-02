@@ -28,7 +28,7 @@ export default class ConnectionStatus extends Component{
     // <!-- Please uncomment the lines below only one at a time to see the different connection status. -->
     //Also change the brand color as background from ConnectionStatus.css file
 
-      <div id={window && this.state.connectionStatus=='Connected.'?'status-noteConnected':'status-noteDisconnected'} className="center-block loading">
+      <div id={window && this.state.connectionStatus=='Connected.'?'status-noteConnected' && 'status-note':'status-noteDisconnected'} className="center-block loading">
         {/*Reconecting in 10 seconds*/}
         {/*Reconecting...*/}
         {this.state.connectionStatus}

@@ -41,11 +41,13 @@
 
 #status-note, .settings .thumb-box .thumbs .link-action i {
     font-size: 12px;
+    display: none;
 }
 
 #status-note, #unread-count {
     color: #FFF;
     overflow: hidden;
+    display: none;
 }
 
 #status-note {
@@ -55,7 +57,7 @@
     display: none;
 }
 .center-block {
-  display: block;
+  /* display: block; */
     margin-right: auto;
     margin-left: auto;
 }
