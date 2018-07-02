@@ -65,11 +65,22 @@ const initialConfig = {
     recentConv: 5,
     hideAnonymousConversion: true,
     onlyDisplayNotification: false,
-    liveVisitorCount: 0
+    liveVisitorCount: 0,
   },
   visitorText: '',
   contentText: '',
-  notificationUrl: ''
+  notificationUrl: '',
+
+  // Oauth variables
+  clientId: '',
+  clientSecret: '',
+  clientname: '',
+  errorname: '',
+  authorizedOrigin: '',
+  redirectURI: '',
+  errorName: '',
+  errorURI: '',
+  errorAuthorizedOrigin: ''
 };
 
 const initialState = fromJS({
