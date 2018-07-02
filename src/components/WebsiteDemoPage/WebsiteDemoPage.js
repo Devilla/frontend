@@ -23,7 +23,7 @@ const initialState = {
   errorEmail: '',
   errorFirstName: '',
   errorLastName: '',
-  errorPhoneNumber: '',
+  errorPhoneNumber: ''
 
 };
 
