@@ -251,7 +251,7 @@ class Dashboard extends Component {
                         <div className="col-md-10 h-50">
                           <div className=" widget-flat card-box  text-muted pr-4 pl-4 pb-5 pt-2 pos-vertical-center c3">
 
-                            <p className="text-uppercase title m-b-5 fonttitle font-600">Notifications</p>
+                            <p className="text-uppercase title m-b-5 fonttitle font-600">Total Notifications</p>
 
                             <h3 className="m-b-10 notify">{campaignInfo ? campaignInfo.notificationCount : 0}</h3>
                           </div>
