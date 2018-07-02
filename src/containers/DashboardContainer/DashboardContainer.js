@@ -47,7 +47,7 @@ class DashboardContainer extends Component {
     document.body.style = 'background-color:#f4f6f8';
   }
 
-  componentWillUmount() {
+  componentWillUnmount() {
     document.body.style = 'background-color:white';
   }
 

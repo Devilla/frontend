@@ -126,10 +126,9 @@ class WebsiteHowItWorks extends Component {
               <div className="col-md-8 col-lg-6">
                 <h2>Set it up in 15 seconds ! </h2>
                 <p className="lead"> </p>
-                <Link className="btn btn--primary col-md-7" to="#customise-template">
+                <Link className="btn btn--primary col-md-7" to="/">
                   <span className="btn__text">Try Free </span>
                 </Link>
-
               </div>
               <div className="col-md-4">
                 <img alt="set up" src={Easiestsetup} />

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './Integration.css';
+import './Integration.scss';
 import { ComingSoon } from 'components';
 
 class Integration extends Component {

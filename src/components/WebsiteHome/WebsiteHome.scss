@@ -22,5 +22,76 @@
                 padding-left: 10PX;
             }
         }
+    
+    }
+}
+@media only screen and (max-width: 992px) {
+    .websitehome-container{
+        .freetrial-btn {
+            padding:  0 140px 0 30px !important;
+        }
+        .main-title {
+            font-size: 40px;
+            font-weight: 600;
+        }
+        .sub-title {
+            font-size: 18px !important;
+        }
+        .blue-strip-affiliate {
+            font-size: 40px;
+        }
+    }
+}
+@media only screen and (max-width: 768px) {
+    .websitehome-container{
+        .freetrial-btn {
+            padding:   0px 0px 0px 0px !important;
+        
+        }
+    }
+}
+@media only screen and (max-width: 590px) {
+    .websitehome-container{
+        .starttrial-form {
+            margin-left: 25px;
+        }
+        .integration-image {
+            max-height: 700px;
+        }
+        .slider-image{
+            max-height: 100px;
+            max-width: 240px;
+        }
+        .slider-text {
+            font-size: 14px;
+        }
+        .landing-home-section {
+            padding-bottom: 0px;
+        }
+        .main-title {
+            font-size: 30px;
+            font-weight: 600;
+        }
+        .sub-title {
+            font-size: 18px !important;
+        }
+    }
+}
+
+@media only screen and (max-width: 580px) {
+    .websitehome-container{
+        .blue-strip-affiliate {
+            padding:0 20px 0 20px;
+        }
+        .features-text {
+            padding: 0 20px 0  20px;
+            & > h3 {
+                text-align: center;
+                font-weight: 600;
+            }
+        }
+        .integration-title {
+            text-align: center;
+        }
     }
 }

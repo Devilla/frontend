@@ -78,7 +78,7 @@ class AffiliateRegister extends Component {
           <section>
             <div className="container">
               <div className="row justify-content-around">
-                <h2 class="align-center">Become an Influence Affiliate</h2>
+                <h2 className="align-center">Become an Influence Affiliate</h2>
                 <div className="col-md-6">
                   <form className="row" onSubmit={this.handleSubmit.bind(this)} method="POST" data-name="Affiliate Form">
                     <div className="mt-3 col-md-12">
@@ -117,7 +117,7 @@ class AffiliateRegister extends Component {
                         disabled={!isEmailValid}
                       />
                     </div>
-                    <ToastContainer  autoClose={8000} className="toaster"/>
+                    <ToastContainer  className="toaster"/>
                   </form>
                 </div>
               </div>
