@@ -85,14 +85,6 @@ class WebsiteDemoPage extends  Component  {
     }));
   }
 
-  // validateForm(){
-  //   if(!this.initialState.errorEmail && !this.state.errorFirstName && !this.state.errorLastName && !this.state.errorPhoneNumber)
-  //     return true;
-  //   else {
-  //     return false;
-  //   }
-  // }
-
   b2StepHandler = (e) => {
     e.preventDefault();
     const { firstname, lastname, email, phonenumber, company, totalEmployee, department } = this.state;
