@@ -205,7 +205,6 @@ class Dashboard extends Component {
     return (
       <div className="content">
         <div className="container-fluid">
-
           <Row className="dashboard-boxes">
             <Col md={12}>
               <div className="card-box pb-0 mb-0">
@@ -281,8 +280,6 @@ class Dashboard extends Component {
                 </Row>
               </div>
             </Col>
-          </Row>
-          <Row>
             <Col md={12}>
               <div className="card-box">
 
