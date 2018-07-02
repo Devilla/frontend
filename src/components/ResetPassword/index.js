@@ -5,7 +5,7 @@ import Ionicon from 'react-ionicons';
 import { css } from 'glamor';
 import {Row, Col} from 'react-bootstrap';
 import axios from 'axios';
-import { toast } from 'react-toastify';
+import { toast ,ToastContainer } from 'react-toastify';
 function validate(newPassword,verifyPassword, authEmail) {
   return {
     newPassword: newPassword.length === 0,
@@ -13,6 +13,13 @@ function validate(newPassword,verifyPassword, authEmail) {
     authEmail: authEmail===false
   };
 }
+
+const toastConfig = {
+  position: toast.POSITION.BOTTOM_LEFT,
+  autoClose: 2000,
+  className: 'toast-style'
+};
+
 
 export default class forget extends Component{
   constructor () {
@@ -36,14 +43,7 @@ export default class forget extends Component{
   handlePasswordAuth(evt){
     if(evt.target.value == ''){
       $('#'+evt.target.id).addClass('has-error');
-      toast('Enter your password', {
-        position: toast.POSITION.BOTTOM_LEFT,
-        className: css({
-          background: '#dd5258',
-          color: '#fff'
-        }),
-        autoClose: 2000
-      });
+      toast('Enter your password', toastConfig);
     }else
     {
       $('#'+evt.target.id).removeClass('has-error');
@@ -52,14 +52,7 @@ export default class forget extends Component{
   handlePasswordverifyAuth(evt){
     if(evt.target.value == ''){
       $('#'+evt.target.id).addClass('has-error');
-      toast('Enter password again to verify', {
-        position: toast.POSITION.BOTTOM_LEFT,
-        className: css({
-          background: '#dd5258',
-          color: '#fff'
-        }),
-        autoClose: 2000
-      });
+      toast('Enter password again to verify', toastConfig);
     }else
     {
       $('#'+evt.target.id).removeClass('has-error');
@@ -93,17 +86,15 @@ export default class forget extends Component{
         urls = `${process.env.REACT_APP_DEVELOPMENT_URL}auth/reset_password`;
 
       axios.post(urls ,data).then(function(response){
-        toast.info(response['data']['message'], {
-          position: toast.POSITION.BOTTOM_CENTER,
-          className: css({
-            background: response['data']['background'],
-            color: '#fff'
-          })
-        });
+        toast.info(response['data']['message'], toastConfig);
       }) .catch(function (error) {
         console.log(error);
         toast.info('Something went wrong..', {
-          position: toast.POSITION.BOTTOM_CENTER
+          position: toast.POSITION.LEFT,
+          className: css({
+            background: 'rgba(0, 0, 0, 0.5)',
+            color: '#fff'
+          })
         });
       });
 
@@ -140,7 +131,7 @@ export default class forget extends Component{
                   <h3 className="pt-5 dashed">Reset your password</h3>
                   <div className="section-divider-line"><hr/></div>
                   <div className="pt-2"></div>
-                  <Row className="pt-4 mt-3">
+                  <Row className="">
                     <Col md={4}>
                       <div className="frmcntl">
                         <input className="field w-input"
@@ -154,7 +145,7 @@ export default class forget extends Component{
                       </div>
                     </Col><Col md={8}></Col>
                   </Row >
-                  <Row className="pt-4">
+                  <Row className="pt-2">
                     <Col md={4}>
                       <div className="frmcntl">
                         <input className="field w-input"
@@ -170,12 +161,13 @@ export default class forget extends Component{
                   <Row className="pt-4 pb-5">
                     <Col md={4}>
                       <div className="frmcntl">
-                        <input className="button submit-button w-button"
+                        <input className="btn btn--primary color"
                           type="submit"
                           disabled={isDisabled}
                           value="Reset Password Now" />
                       </div></Col><Col md={8}></Col>
                   </Row>
+                  <ToastContainer />
                 </form>
                 <div className="pt-5 support">
                   <h4>Trouble logging in?</h4>

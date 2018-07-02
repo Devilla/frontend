@@ -3,14 +3,14 @@ import { connect } from 'react-redux';
 import { validateEmail } from 'services/FormUtils';
 import { HelpBlock } from 'react-bootstrap';
 import { affiliate, clearAffiliateError } from 'ducks/auth';
+import { toast,ToastContainer } from 'react-toastify';
+import './affiliateregister.scss';
 
-
-function validate(password, authEmail) {
-  return {
-    password: password.length === 0,
-    authEmail: authEmail === false
-  };
-}
+const toastConfig = {
+  position: toast.POSITION.BOTTOM_LEFT,
+  autoClose: 2000,
+  className: 'toast-style'
+};
 
 class AffiliateRegister extends Component {
   constructor() {
@@ -24,8 +24,6 @@ class AffiliateRegister extends Component {
     };
   }
 
-
-
   checkEmailBlur = (event) => {
     const value = event.target.value;
     const isEmailValid = validateEmail(value);
@@ -36,14 +34,13 @@ class AffiliateRegister extends Component {
       this.setState({ errorEmail: 'Enter a valid Email id' });
   }
 
-
   handleEmailChange = (event) => {
     const { name, value } = event.target;
     const isEmailValid = validateEmail(this.refs.email.value);
     this.setState({ [name]: value, isEmailValid, errorEmail: '' });
   };
 
-  checkNameBlur= (event)=> {
+  checkNameBlur = (event)=> {
     const value = event.target.value;
     (value === '')?  this.setState({ errorName: 'Enter your Name' }) : (
       (isNaN(value)) ? this.setState({errorName: ''}) : this.setState({ errorName: 'Enter a valid Name' })
@@ -57,23 +54,17 @@ class AffiliateRegister extends Component {
 
   handleSubmit(evt) {
     evt.preventDefault();
-    if (!this.canBeSubmitted()) {
-      return;
-    } else {
-      const data = {
-        'name': this.state.name,
-        'email': this.state.email
-      };
-      this.props.affiliate(data);
-      this.props.clearAffiliateError();
-      this.setState({name: '', email: '', emailError: ''});
-    }
-  }
-  canBeSubmitted() {
-    const errors = validate(this.state.email, this.state.password, this.state.authEmail);
+    const data = {
+      'name': this.state.name,
+      'email': this.state.email
+    };
+    this.props.affiliate(data);
+    this.props.clearAffiliateError();
+    this.setState({name: '', email: '', emailError: ''});
 
-    const isDisabled = Object.keys(errors).some(x => errors[x]);
-    return !isDisabled;
+    if (!toast.isActive(this.toastId)) {
+      this.toastId = toast.info('Thank you for Registering! 😀', toastConfig);
+    }
   }
 
   render() {
