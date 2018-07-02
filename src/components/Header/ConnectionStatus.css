@@ -3,7 +3,7 @@
     display: block;
 }
 
-#status-note {
+#status-noteConnected {
     top: 0;
     border-radius: 0 0 6px 6px;
     padding: 5px 15px;
@@ -12,6 +12,27 @@
     /* Change background color to brand color */
     /* background: #097fff; */
     background: #1fcc1f;
+    color: #FFF;
+    font-size: 12px;
+    overflow: hidden;
+    position: fixed;
+    line-height: 1.2;
+    z-index: 9999;
+    transform: translateX(50%);
+}
+
+#status-noteDisconnected {
+    top: 0;
+    border-radius: 0 0 6px 6px;
+    padding: 5px 15px;
+    right: 50%;
+
+    /* Change background color to brand color */
+    /* background: #097fff; */
+    background: #097fff;
+    color: #FFF;
+    font-size: 12px;
+    overflow: hidden;
     position: fixed;
     line-height: 1.2;
     z-index: 9999;
