@@ -15,10 +15,10 @@ export default class ConnectionStatus extends Component{
   componentWillMount(){
     if (window && window.navigator.onLine) {
       this.state.connectionStatus = 'Connected.';
-      // console.log('online','=====================');
+      console.log('online','=====================');
     } else {
       this.state.connectionStatus = 'Can’t connect to Influence. Please check your internet connection..';
-      // console.log('offline','=====================');
+      console.log('offline','=====================');
     }
   }
 

@@ -52,10 +52,10 @@
     transition: all .3s ease-in-out;
 }
 #status-note, .settings .thumb-box .thumbs .link-active {
-    /* display: none; */
+    display: none;
 }
 .center-block {
-  /* display: block; */
+  display: block;
     margin-right: auto;
     margin-left: auto;
 }
