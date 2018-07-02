@@ -205,17 +205,16 @@ class Dashboard extends Component {
     return (
       <div className="content">
         <div className="container-fluid">
-
           <Row className="dashboard-boxes">
             <Col md={12}>
               <div className="card-box pb-0 mb-0">
-               
+
                 <Row className="account-stats">
-                  <div className="col-sm-12 col-lg-6 col-xl-3 box ">
+                  <div className="col-sm-12 col-lg-6 col-xl-2 box pr-0">
                     <div>
                       <div className="text-center mt-4 mb-4">
 
-                        <div className="col-md-12 h-50">
+                        <div className="col-md-10 h-50">
                           <div className=" widget-flat card-box  text-muted pr-4 pl-4 pb-5 pt-2 pos-vertical-center c1">
 
                             <p className="text-uppercase title m-b-5 fonttitle font-600">Active Campaigns</p>
@@ -228,11 +227,11 @@ class Dashboard extends Component {
                     </div>
                   </div>
 
-                  <div className="col-sm-12 col-lg-6 col-xl-3 box ">
+                  <div className="col-sm-12 col-lg-6 col-xl-2 box pr-0 ">
                     <div>
                       <div className="text-center mt-4 mb-4">
 
-                        <div className="col-md-12 h-50">
+                        <div className="col-md-10 h-50">
                           <div className=" widget-flat card-box  text-muted pr-4 pl-4 pb-5 pt-2 pos-vertical-center c2">
 
                             <p className="text-uppercase title m-b-5 fonttitle font-600">Unique Visitors</p>
@@ -245,11 +244,11 @@ class Dashboard extends Component {
                     </div>
                   </div>
 
-                  <div className="col-sm-12 col-lg-6 col-xl-3 box ">
+                  <div className="col-sm-12 col-lg-6 col-xl-2 box pr-0">
                     <div>
                       <div className="text-center mt-4 mb-4">
 
-                        <div className="col-md-12 h-50">
+                        <div className="col-md-10 h-50">
                           <div className=" widget-flat card-box  text-muted pr-4 pl-4 pb-5 pt-2 pos-vertical-center c3">
 
                             <p className="text-uppercase title m-b-5 fonttitle font-600">Total Notifications</p>
@@ -262,11 +261,11 @@ class Dashboard extends Component {
                     </div>
                   </div>
 
-                  <div className="col-sm-12 col-lg-6 col-xl-3 box">
+                  <div className="col-sm-12 col-lg-6 col-xl-2 box pr-0">
                     <div>
                       <div className="text-center mt-4 mb-4">
 
-                        <div className="col-md-12 h-50">
+                        <div className="col-md-10 h-50">
                           <div className="  widget-flat card-box  text-muted pr-4 pl-4 pb-5 pt-2 pos-vertical-center c4">
 
                             <p className="text-uppercase title m-b-5 fonttitle font-600">Total Signups</p>
@@ -281,11 +280,9 @@ class Dashboard extends Component {
                 </Row>
               </div>
             </Col>
-          </Row>
-          <Row>
             <Col md={12}>
               <div className="card-box">
-               
+
                 <Row className="mb-5">
                   <Col md={12}>
                     <Card
