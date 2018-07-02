@@ -42,7 +42,7 @@ class WebsiteFooter extends Component {
                 <ul>
                   <li className="type--uppercase col-sm-4 col-md-2 h5"><Link to=""> <b>Resources</b> </Link></li>
                   <li className="type--uppercase col-sm-4 col-md-2 h6"><Link href="https://useinfluence.freshdesk.com/support/home"> FAQs </Link></li>
-                  <li className="type--uppercase col-sm-4 col-md-2 h6"><Link to="/Blog"> Blog </Link></li>
+                  <li className="type--uppercase col-sm-4 col-md-2 h6"><Link href="https://blog.useinfluence.co/"> Blog </Link></li>
                   <li className="type--uppercase col-sm-4 col-md-2 h6"><Link href="https://angel.co/influence-8/jobs"> Careers </Link> </li>
                   <li className="type--uppercase col-sm-4 col-md-2 h6"><Link to="/contact"> Contact Us </Link></li>
                 </ul>

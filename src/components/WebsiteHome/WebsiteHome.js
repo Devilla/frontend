@@ -28,6 +28,7 @@ class WebsiteHome extends Component {
       email: ''
     };
   }
+
   
   componentDidMount() {
     let scrollElm = document.scrollingElement;
