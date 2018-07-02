@@ -28,6 +28,12 @@ class WebsiteHome extends Component {
       email: ''
     };
   }
+  
+  componentDidMount() {
+    let scrollElm = document.scrollingElement;
+    scrollElm.scrollTop = 0;
+  }
+
 
   render() {
     const settings = {
