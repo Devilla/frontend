@@ -31,7 +31,6 @@ class WebsiteFooter extends Component {
                   <li className="type--uppercase col-sm-4 col-md-2 h6"><Link to="/signup"> Signup </Link></li>
                   <li className="type--uppercase col-sm-4 col-md-2 h6"><Link to="/login"> Login (Already a user?) </Link></li>
                   <li className="type--uppercase col-sm-4 col-md-2 h6"><Link to="/demopage"> SCHEDULE A DEMO </Link></li>
-                  <li className="type--uppercase col-sm-4 col-md-2 h6"><Link to="/customerStories">customer stories</Link></li>
                   <li className="type--uppercase col-sm-4 col-md-2 h6"><Link to="/featurepage">Features</Link></li>
                   <li className="type--uppercase col-sm-4 col-md-2 h6"> <Link to="/integrations">INTEGRATIONS</Link> </li>
 
@@ -63,10 +62,8 @@ class WebsiteFooter extends Component {
                 </div>
                 <div className="col-sm-6 text-right text-center-xs">
                   <ul className="social-list list-inline">
-                    <li><Link to="/"><i className="socicon socicon-google icon icon--xs"></i></Link></li>
-                    <li><Link to="/"><i className="socicon socicon-twitter icon icon--xs"></i></Link></li>
-                    <li><Link to="/"><i className="socicon socicon-facebook icon icon--xs"></i></Link></li>
-                    <li><Link to="/"><i className="socicon socicon-instagram icon icon--xs"></i></Link></li>
+                    <li><Link href="https://www.facebook.com/groups/215429202366620/" target="_blank"><i className="socicon socicon-facebook bg--facebook icon icon--xs"></i></Link></li>
+                  
                   </ul>
                 </div>
               </div>
