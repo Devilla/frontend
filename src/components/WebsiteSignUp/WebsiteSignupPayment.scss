@@ -2,22 +2,28 @@
 
     .vristrue {
         position: relative !important;
-        top:10px !important;
+        top:100px !important;
         
     }
     .paypal{
         max-width: 500px !important;
         height: 50px !important;
         position: relative;
-        top: -120px;
+        top: -40px;
         left: -20px;
         cursor: pointer;
     }
     .paytitle {
         font-size: 40px !important;
+        margin-bottom: 10px;
     }
     .give-center-align {
-        padding: 0 50px 0 50px !important;
+        min-height: 500px;
+        background: #fff;
+        padding: 40px 40px 40px 0px !important;
+    }
+    .socio-link , .card-link {
+      height: 400px;;
     }
 
     .sub-up-title {

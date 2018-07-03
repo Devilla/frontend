@@ -1,8 +1,22 @@
 .coupon-page {
-
+    position: relative;
+    left: 10px;
+    top: 50px;
     input {
         &.btn.btn-primary {
             border-radius: 5px;
         }
     }
+    #coupon {
+        width: 200px;
+    }
+    input::placeholder {
+        font-size: 0.8em !important;
+        color: rgb(141, 141, 141) !important;
+      }
+      .apply {
+          width: 160px !important;
+      }
+    
 }
+ 

@@ -155,7 +155,7 @@ class WebsiteSignupPrice extends Component {
             </div>
           </section>
 
-          <section className="text-center unpad--top">
+          <section className="text-center unpad--top pricerow">
             <div className="container">
               <div className="row">
                 {this.renderPriceList()}

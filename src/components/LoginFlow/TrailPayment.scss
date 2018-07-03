@@ -5,5 +5,20 @@
             border-radius: 5px;
         }
         
-    }    
-}
+    }
+    .line-or {
+        margin: 10px 0 0 10px;
+        position: relative;
+        left: 180px;
+        top: 25px;
+    }
+    input[type="text"]
+    {
+        // background: none !important;
+        &::placeholder {
+        font-size: 0.8em !important;
+        color: rgb(141, 141, 141) !important;
+
+      }
+    }
+}   
