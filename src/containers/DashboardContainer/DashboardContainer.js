@@ -186,7 +186,7 @@ class DashboardContainer extends Component {
           <div>
             <div className="content-page" >
               <div className="topbar" >
-                <nav className="navbar-custom pr-0">
+                <nav className="navbar-custom pl-0 pr-0">
                   <Header
                     username={user.username}
                     openCloseDropdown={this.openCloseDropdown}

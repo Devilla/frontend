@@ -69,7 +69,18 @@ const initialConfig = {
   },
   visitorText: '',
   contentText: '',
-  notificationUrl: ''
+  notificationUrl: '',
+
+  // Oauth variables
+  clientId: '',
+  clientSecret: '',
+  clientname: '',
+  errorname: '',
+  authorizedOrigin: '',
+  redirectURI: '',
+  errorName: '',
+  errorURI: '',
+  errorAuthorizedOrigin: ''
 };
 
 const initialState = fromJS({

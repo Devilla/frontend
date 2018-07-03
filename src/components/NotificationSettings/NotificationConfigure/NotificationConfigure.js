@@ -75,7 +75,7 @@ const NotificationConfigure = ({
       </Row>
       <Row className="state-btn">
         <Col md={4}>
-    
+
           <span className="btn btn-primary mr-3" onClick={backConfiguration}>
           Back
           </span>
@@ -90,7 +90,7 @@ const NotificationConfigure = ({
           Save
           </span>
         </Col>
-     
+
       </Row>
     </div>
   );

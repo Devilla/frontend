@@ -46,6 +46,7 @@ class WebsiteContact extends Component {
   }
 
   handleSubmit = (event) => {
+    event.preventDefault();
     const data = {
       'name': this.state.name,
       'email': this.state.email,
@@ -57,6 +58,7 @@ class WebsiteContact extends Component {
       this.toastId = toast.info('Thankyou for your Response! ', toastConfig);
     }
   }
+
   render() {
     return (
       <div className="websitecontact-container">

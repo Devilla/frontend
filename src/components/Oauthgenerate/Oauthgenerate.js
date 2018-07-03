@@ -157,10 +157,8 @@ class Oauthpage extends Component {
                       <p className="website-error">{this.state.errorURI}</p>
                     </HelpBlock>
                   </FormGroup>
-
                 </div>
               </Col>
-
             </Row>
             <Row className="mt-3">
               <span type="button" className="btn btn-primary waves-effect saveClient">Save</span>
