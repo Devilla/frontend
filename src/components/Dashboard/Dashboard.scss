@@ -64,10 +64,30 @@
   background: #ffffff !important;
   box-shadow: 0px 1px 2px #e8e8e8;
   border: 1px solid #e8e8e8 !important;
+  z-index: 999;
 
 }
+.cards {
+  padding: 5px !important;
+}
+.canvas-brdr {
 
+  padding: 40px;
 
+}
+.graph-card {
+
+  box-shadow: 0px 7px 16px -14px #999;
+  position: relative;
+  top: -80px;
+  border: 2px solid #e8e8e8;  
+  padding: 20px;
+  
+}
+.days {
+  position: relative;
+  top: -100px;
+}
 .fonttitle {
   color: #8c9392;
   font-size: 12px !important;

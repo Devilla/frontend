@@ -207,98 +207,98 @@ class Dashboard extends Component {
         <div className="container-fluid">
           <Row className="dashboard-boxes">
             <Col md={12}>
-              <div className="card-box pb-0 mb-0">
-
-                <Row className="account-stats">
-                  <div className="col-sm-12 col-lg-6 col-xl-2 box pr-0">
-                    <div>
-                      <div className="text-center mt-4 mb-4">
-
-                        <div className="col-md-10 h-50">
-                          <div className=" widget-flat card-box  text-muted pr-4 pl-4 pb-5 pt-2 pos-vertical-center c1">
-
-                            <p className="text-uppercase title m-b-5 fonttitle font-600">Active Campaigns</p>
-
-                            <h3 className="m-b-10 campaign">{campaignInfo? campaignInfo.websiteLive.length : []}</h3>
-                          </div>
-                        </div>
-
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="col-sm-12 col-lg-6 col-xl-2 box pr-0 ">
-                    <div>
-                      <div className="text-center mt-4 mb-4">
-
-                        <div className="col-md-10 h-50">
-                          <div className=" widget-flat card-box  text-muted pr-4 pl-4 pb-5 pt-2 pos-vertical-center c2">
-
-                            <p className="text-uppercase title m-b-5 fonttitle font-600">Unique Visitors</p>
-
-                            <h3 className="m-b-10 profile">{profile? Number(profile.uniqueVisitors) :0 }</h3>
-                          </div>
-
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="col-sm-12 col-lg-6 col-xl-2 box pr-0">
-                    <div>
-                      <div className="text-center mt-4 mb-4">
-
-                        <div className="col-md-10 h-50">
-                          <div className=" widget-flat card-box  text-muted pr-4 pl-4 pb-5 pt-2 pos-vertical-center c3">
-
-                            <p className="text-uppercase title m-b-5 fonttitle font-600">Total Notifications</p>
-
-                            <h3 className="m-b-10 notify">{campaignInfo ? campaignInfo.notificationCount : 0}</h3>
-                          </div>
-                        </div>
-
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="col-sm-12 col-lg-6 col-xl-2 box pr-0">
-                    <div>
-                      <div className="text-center mt-4 mb-4">
-
-                        <div className="col-md-10 h-50">
-                          <div className="  widget-flat card-box  text-muted pr-4 pl-4 pb-5 pt-2 pos-vertical-center c4">
-
-                            <p className="text-uppercase title m-b-5 fonttitle font-600">Total Signups</p>
-
-                            <h3 className="m-b-10 usersignup">{userSignUps}</h3>
-                          </div>
-
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </Row>
-              </div>
-            </Col>
-            <Col md={12}>
               <div className="card-box">
 
                 <Row className="mb-5">
                   <Col md={12}>
-                    <Card
-                      statsIcon="fa fa-history"
-                      id="chartHours"
-                      stats="Updated 3 minutes ago"
+                    <div className="card-box pb-0 mb-0 cardbox1">
 
-                      content={
-                        <div className="ct-chart">
-                          <LineChart data={chartData} options={chartOptions} height="250" redraw />
+                      <Row className="account-stats">
+                        <div className="col-sm-12 col-lg-6 col-xl-2 box pr-0 cards">
+                          <div>
+                            <div className="text-center mt-4 mb-4">
+
+                              <div className="col-md-10 h-50">
+                                <div className=" widget-flat card-box  text-muted pr-4 pl-4 pb-5 pt-2 pos-vertical-center c1">
+
+                                  <p className="text-uppercase title m-b-5 fonttitle font-600">Active Campaigns</p>
+
+                                  <h3 className="m-b-10 campaign">{campaignInfo? campaignInfo.websiteLive.length : []}</h3>
+                                </div>
+                              </div>
+
+                            </div>
+                          </div>
                         </div>
-                      }
-                    />
+
+                        <div className="col-sm-12 col-lg-6 col-xl-2 box pr-0 cards">
+                          <div>
+                            <div className="text-center mt-4 mb-4">
+
+                              <div className="col-md-10 h-50">
+                                <div className=" widget-flat card-box  text-muted pr-4 pl-4 pb-5 pt-2 pos-vertical-center c2">
+
+                                  <p className="text-uppercase title m-b-5 fonttitle font-600">Unique Visitors</p>
+
+                                  <h3 className="m-b-10 profile">{profile? Number(profile.uniqueVisitors) :0 }</h3>
+                                </div>
+
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="col-sm-12 col-lg-6 col-xl-2 box pr-0 cards">
+                          <div>
+                            <div className="text-center mt-4 mb-4">
+
+                              <div className="col-md-10 h-50">
+                                <div className=" widget-flat card-box  text-muted pr-4 pl-4 pb-5 pt-2 pos-vertical-center c3">
+
+                                  <p className="text-uppercase title m-b-5 fonttitle font-600">Total Notifications</p>
+
+                                  <h3 className="m-b-10 notify">{campaignInfo ? campaignInfo.notificationCount : 0}</h3>
+                                </div>
+                              </div>
+
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="col-sm-12 col-lg-6 col-xl-2 box pr-0 cards">
+                          <div>
+                            <div className="text-center mt-4 mb-4">
+
+                              <div className="col-md-10 h-50">
+                                <div className="  widget-flat card-box  text-muted pr-4 pl-4 pb-5 pt-2 pos-vertical-center c4">
+
+                                  <p className="text-uppercase title m-b-5 fonttitle font-600">Total Signups</p>
+
+                                  <h3 className="m-b-10 usersignup">{userSignUps}</h3>
+                                </div>
+
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </Row>
+                    </div>
+                    <div   className="graph-card">
+                      <Card
+                        statsIcon="fa fa-history"
+                        id="chartHours"
+                        stats="Updated 3 minutes ago"
+                      
+                        content={
+                          <div className="ct-chart canvas-brdr">
+                            <LineChart data={chartData} options={chartOptions} height="250" redraw />
+                          </div>
+                        }
+                      />
+                    </div>
                   </Col>
                 </Row>
-                <div className=" pull-right">
+                <div className=" pull-right days">
                   <select className="form-control text-muted" onChange={(e) =>  this.setState({daysClicked:e.target.value})}>
                     <option key={7} value={'7'}>
                           7 days
