@@ -1,3 +1,30 @@
+div #status-noteConnected {
+  -webkit-animation: seconds 1.0s forwards;
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-delay: 1.4s;
+  animation: seconds 1.0s forwards;
+  animation-delay: 1.4s;
+  position: fixed;
+}
+@-webkit-keyframes seconds {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    left: -9999px;
+  }
+}
+@keyframes seconds {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    left: -9999px;
+  }
+}
+
 #status-note.loading {
     margin-top: 0px;
     display: block;
