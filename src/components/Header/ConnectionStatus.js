@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import './ConnectionStatus.css';
+import './ConnectionStatus.scss';
 
 
 export default class ConnectionStatus extends Component{
@@ -11,21 +11,13 @@ export default class ConnectionStatus extends Component{
     };
   }
 
-  componentWillUnmount() {
-    this.setState({sampleDisplay: false});
-    this.props.setActiveState(1);
-  }
 
 
   componentWillMount(){
     if (window && window.navigator.onLine) {
       this.setState({connectionStatus: 'Connected.'});
-      //this.state.connectionStatus = 'Connected.';
-      console.log('online','=====================');
     } else {
-    //  this.state.connectionStatus = 'Can’t connect to Influence. Please check your internet connection..';
       this.setState({connectionStatus: 'Can’t connect to Influence. Please check your internet connection..'});
-      console.log('offline','=====================');
     }
   }
 
@@ -36,8 +28,6 @@ export default class ConnectionStatus extends Component{
     //Also change the brand color as background from ConnectionStatus.css file
 
       <div id={window && this.state.connectionStatus=='Connected.'?'status-noteConnected':'status-noteDisconnected'} className="center-block loading">
-        {/*Reconecting in 10 seconds*/}
-        {/*Reconecting...*/}
         {this.state.connectionStatus}
 
       </div>
