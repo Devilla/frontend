@@ -43,8 +43,8 @@ const TrailPayment = ({
               <Row>
                 <Col md={12}>
                   <FormGroup className="card-holder">
-                    <span className="lead h6">Pay with Stripe</span>
-                    <FormControl type="text" onChange={(e) => handleStateChange(e.target.value, e.target.id)} defaultValue={user.username} placeholder="Enter Card Holder's Name" id="username" key={user.username}/>
+                    <span className="lead stripe-title">Pay with Stripe</span>
+                    <FormControl type="text" onChange={(e) => handleStateChange(e.target.value, e.target.id)} defaultValue={user.username} placeholder="Enter card holder's name" id="username" key={user.username}/>
                     <HelpBlock>
                       <p className="error-text">{nameError}</p>
                     </HelpBlock>

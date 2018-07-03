@@ -20,7 +20,7 @@ const CouponPage = ({
             <input
               type="text"
               onChange={(e) => handleStateChange(e.target.value, e.target.id)}
-              placeholder="Enter Coupon Code"
+              placeholder="Enter coupon code"
               id="coupon"
             />
           </Col>
