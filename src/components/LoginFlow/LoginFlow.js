@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import { browserHistory } from 'react-router';
+// import { browserHistory } from 'react-router';
 import { ToastContainer } from 'react-toastify';
 
 import TrailPayment from './TrailPayment';
@@ -30,15 +30,15 @@ class LoginFlow extends Component {
   }
 
   componentWillMount() {
-    this.checkLogin();
-    this.updateState(this.props.user, this.props.profile, this.props.plan);
+    // this.checkLogin();
+    // this.updateState(this.props.user, this.props.profile, this.props.plan);
   }
 
-  componentWillReceiveProps(nextProps) {
-    if(this.props != nextProps)
-      this.updateState(nextProps.user, nextProps.profile, nextProps.plan);
-    if(nextProps.profile != this.props.profile)
-      browserHistory.push('/dashboard');
+  componentWillReceiveProps() {
+    // if(this.props != nextProps)
+    //   this.updateState(nextProps.user, nextProps.profile, nextProps.plan);
+    // if(nextProps.profile != this.props.profile)
+    //   browserHistory.push('/dashboard');
   }
 
   updateState(user, profile) {

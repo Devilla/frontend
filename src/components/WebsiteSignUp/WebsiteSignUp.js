@@ -9,6 +9,8 @@ import { loginSuccess } from 'ducks/auth';
 import { browserHistory } from 'react-router';
 import { toast } from 'react-toastify';
 import { base } from 'services/api';
+
+
 import  WebsiteSignupPrice from './WebsiteSignupPrice';
 import WebsiteSignupPayment from './WebsiteSignupPayment';
 
@@ -279,5 +281,5 @@ class WebsiteSignUp extends Component {
     );
   }
 }
-
 export default WebsiteSignUp;
+
