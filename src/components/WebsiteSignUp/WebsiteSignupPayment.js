@@ -1,6 +1,6 @@
 import React,{ Component } from 'react';
 import './WebsiteSignupPayment.scss';
-import { Paypal } from 'img';
+// import { Paypal } from 'img';
 import  LoginFlow from '../LoginFlow/LoginFlow';
 
 
@@ -31,8 +31,13 @@ class WebsiteSignupPayment extends Component  {
                 <div className="col-md-4 socio-link">
              
                   <div className="mt--2 ">
-                    <img alt="checkout-paypal"  src={Paypal}  className="paypal"/>
-                
+                    {/* <img alt="checkout-paypal"  src={Paypal}  className="paypal"/> */}
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                      <input type="hidden" name="cmd" value="_s-xclick" />
+                      <input type="hidden" name="hosted_button_id" value="H69GLU3UHJYK4" />
+                      <input type="image" src="http://www.useinfluence.co" border="0" name="submit" alt="PayPal – The safer, easier way to pay online!" />
+                      <img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" />
+                    </form>
                   
                   </div>
                 </div>
