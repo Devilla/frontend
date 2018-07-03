@@ -6,7 +6,6 @@ import { browserHistory } from 'react-router';
 
 import { connect } from 'react-redux';
 import { ProgressBar } from 'react-bootstrap';
-import './Header.scss';
 
 const Header = ({openCloseDropdown, dropdownStyle, logout, renderHelp, openProfile, loading, children}) => {
 
