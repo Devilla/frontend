@@ -40,9 +40,11 @@ div #status-noteConnected {
   #status-noteConnected {
     top: 0;
     border-radius: 0 0 6px 6px;
-    padding: 5px 75px;
-    right: 50%;
-    background: #097fff;
+    padding: 5px 20px;
+    right: 45%;
+    /* Change background color to brand color */
+    /* background: #097fff; */
+    background: #1fcc1f;
     color: #FFF;
     font-size: 12px;
     overflow: hidden;
@@ -91,8 +93,10 @@ div #status-noteConnected {
   
   .center-block {
     /* display: block; */
-    margin-right: auto;
-    margin-left: auto;
+  margin-left:  auto;
+  margin-right: auto;
+  min-width: 200px;
+  text-align: center;
   }
   
   *, :after, :before {
