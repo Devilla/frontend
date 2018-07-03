@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 import { HelpBlock } from 'react-bootstrap';
+import { validateEmail } from 'services/FormUtils';
 import { demo, clearDemoError } from 'ducks/auth';
+import './WebsiteDemoPage.scss';
 
 const initialState = {
   firstname : '',
@@ -16,6 +18,12 @@ const initialState = {
   fm1 : true,
   fm2 : false,
   fm3 : false,
+  name: '',
+  isEmailValid: false,
+  errorEmail: '',
+  errorFirstName: '',
+  errorLastName: '',
+  errorPhoneNumber: ''
 
 };
 
@@ -25,6 +33,35 @@ class WebsiteDemoPage extends  Component  {
     super();
     // this states are to be assigned to gather information
     this.state = initialState;
+  }
+  checkEmailBlur = (event) => {
+    const value = event.target.value;
+    const isEmailValid = validateEmail(value);
+    this.setState({ isEmailValid });
+    if (!value)
+      this.setState({ errorEmail: 'Email id required' });
+    else if (!isEmailValid)
+      this.setState({ errorEmail: 'Enter a valid Email id' });
+  }
+
+  checkPhoneNumberBlur= (event)=> {
+    const value = event.target.value;
+    (value === '')?  this.setState({ errorPhoneNumber: 'Enter your Name' }) : (
+      (isNaN(value)) ? this.setState({errorPhoneNumber: ''}) : this.setState({ errorPhoneNumber: 'Enter a valid Name' })
+    );
+  }
+
+  checkFirstNameBlur= (event)=> {
+    const value = event.target.value;
+    (value === '')?  this.setState({ errorFirstName: 'Enter your Name' }) : (
+      (isNaN(value)) ? this.setState({errorFirstName: ''}) : this.setState({ errorFirstName: 'Enter a valid Name' })
+    );
+  }
+  checkLastNameBlur= (event)=> {
+    const value = event.target.value;
+    (value === '')?  this.setState({ errorLastName: 'Enter your Name' }) : (
+      (isNaN(value)) ? this.setState({errorLastName: ''}) : this.setState({ errorLastName: 'Enter a valid Name' })
+    );
   }
 
   handleStateChange = (target, value) => {
@@ -73,6 +110,7 @@ class WebsiteDemoPage extends  Component  {
   }
 
   render()  {
+    const { errorEmail, errorFirstName, errorLastName, errorPhoneNumber } = this.state;
     let { fm1, fm2 , fm3, error }  = this.state;
     return (
       <div className="main-container">
@@ -96,32 +134,48 @@ class WebsiteDemoPage extends  Component  {
                         type="text"
                         name="firstname"
                         placeholder="First Name"
+                        onBlur={this.checkFirstNameBlur}
                         onChange={(e) => this.handleStateChange(e.target.name, e.target.value)}
                       />
+                      <HelpBlock>
+                        <p className="website-error">{errorFirstName}</p>
+                      </HelpBlock>
                     </div>
                     <div className="col-md-8">
                       <input
                         type="text"
                         name="lastname"
                         placeholder="Last Name"
+                        onBlur={this.checkLastNameBlur}
                         onChange={(e) => this.handleStateChange(e.target.name, e.target.value)}
                       />
+                      <HelpBlock>
+                        <p className="website-error">{errorLastName}</p>
+                      </HelpBlock>
                     </div>
                     <div className="col-md-8">
                       <input
                         type="email"
                         name="email"
                         placeholder="Email"
+                        onBlur={this.checkEmailBlur}
                         onChange={(e) => this.handleStateChange(e.target.name, e.target.value)}
                       />
+                      <HelpBlock>
+                        <p className="website-error">{errorEmail}</p>
+                      </HelpBlock>
                     </div>
                     <div className="col-md-8">
                       <input
                         type="number"
                         name="phonenumber"
                         placeholder="Phone Number"
+                        onBlur={this.checkPhoneNumberBlur}
                         onChange={(e) => this.handleStateChange(e.target.name, e.target.value)}
                       />
+                      <HelpBlock>
+                        <p className="website-error">{errorPhoneNumber}</p>
+                      </HelpBlock>
                     </div>
                     <div className="col-md-8">
                       <button

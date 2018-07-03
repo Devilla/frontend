@@ -53,7 +53,7 @@ class WebsiteHome extends Component {
               <div className="row pb-5">
                 <div className="col-md-10 col-lg-10 text-center">
                   <h1 className="pt-2 main-title">Increase your website conversions using social proof notifications <br /> </h1>
-                  <p className="typed-text typed-text--cursor h3 sub-title"> Use Influence and get <span className="type--bold" style={{ color: '#584EEF' }}>3x more business </span>right away &nbsp;</p>
+                  <p className="typed-text typed-text--cursor h3 sub-title"> Use Influence and get <span className="type--bold extrafocus">3x more business </span>right away &nbsp;</p>
                 </div>
               </div>
               <br /> <br />
@@ -222,7 +222,7 @@ class WebsiteHome extends Component {
                 <div className="col-md-6 col-lg-5 integration-title">
                   <h2 className="">Power up with Integrations</h2>
                   <p className="lead"> Get upto 3x more conversion with integrations into your favorite tools</p>
-                  <Link className="btn btn--primary " to="/integrations">
+                  <Link className="btn btn--primary integration-btn" to="/integrations">
                     <span className="btn__text col-md-7">Integration</span>
                   </Link>
                 </div>
@@ -244,7 +244,7 @@ class WebsiteHome extends Component {
                     </div>
                     <div className="row ">
                       <div className="col-md-12 text-center pb-2">
-                        <Link className="btn btn--primary " to="/signup"> <span className="btn__text">Start my free trial<br /></span> </Link>
+                        <Link className="btn " to="/signup"> <span className="btn__text">Start my free trial<br /></span> </Link>
                       </div>
                     </div>
                   </div>
