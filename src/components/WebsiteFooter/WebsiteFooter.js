@@ -9,9 +9,9 @@ class WebsiteFooter extends Component {
       <div className="websitefooter-container">
         <div className="main-container">
           <footer className="footer-6 pb-5">
-            <div className="container mt-1">
+            <div className="container mt-1 footer__upper">
               <div className="row">
-                <div className="menu-vertical col-md-3 col-sm-6 foots">
+                <div className="menu-vertical col-md-3 col-sm-6 foot1">
                   <ul className="bar__module">
                     <li className="type--uppercase col-sm-12 col-md-12 h5 foo-t1"><Link className="footer-menu-link" to=""> <b>Company</b></Link></li>
                     <li className="type--uppercase col-sm-12 col-md-12 h6"><Link className="footer-menu-link" to="/about"> About Us </Link> </li>
@@ -21,7 +21,7 @@ class WebsiteFooter extends Component {
                 </div>
                
 
-                <div className="menu-vertical col-md-3 col-sm-6 foots">
+                <div className="menu-vertical col-md-3 col-sm-6 foot2">
                   <ul className="bar__module">
                     <li className="type--uppercase col-sm-12 col-md-12 h5 foo-t2"><Link to=""> <b>Product</b> </Link></li>
                     <li className="type--uppercase col-sm-12 col-md-12 h6"><Link to="/how-it-works"> How It Works </Link></li>
@@ -35,7 +35,7 @@ class WebsiteFooter extends Component {
                 </div>
               
 
-                <div className="menu-vertical col-md-3 col-sm-6 foots">
+                <div className="menu-vertical col-md-3 col-sm-6 foot3">
                   <ul>
                     <li className="type--uppercase col-sm-12 col-md-12 h5 foo-t3"><Link to=""> <b>Resources</b> </Link></li>
                     <li className="type--uppercase col-sm-12 col-md-12 h6"><Link href="https://useinfluence.freshdesk.com/support/home"> FAQs </Link></li>
@@ -45,7 +45,7 @@ class WebsiteFooter extends Component {
                   </ul>
                 </div>
 
-                <div className="menu-vertical col-md-3  col-sm-6 text-center foots">
+                <div className="menu-vertical col-md-3  col-sm-6 text-center foot4">
                   <ul>
                     <Link to="/privacy-policy"> <img alt="GDPR" src={Gdpr} width="100px" height="100px" className="mr-3" /></Link>
                   </ul>
