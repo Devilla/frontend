@@ -2,4 +2,52 @@
     .signupbtn {
         background-color: #097fff !important;
     }
+
+  .hamburger-toggle {
+      display: none;
+  }
+  .small-bar {
+      display: none;
+  }
+  .mainlogo {
+      position : absolute;
+      left: 110px;
+  }
+}
+
+@media only screen and (max-width:767px) {
+    .websiteheader-container {
+        .mainlogo {
+            left: 40px;
+            top: 20px;
+         
+        }
+        .visible-xs {
+            display: block !important;
+            width: 100px !important;
+        }
+        .hamburger-toggle {
+            display: block;
+            font-size: 30px;
+            position: absolute;
+            right: 50px;
+            top: 35px;
+            z-index: 999;
+            cursor: pointer;
+            color: red !important;
+         
+        }
+        .small-bar {
+            display: block !important;
+            padding-top: 50px !important;
+            padding-bottom: 50px !important;
+        }
+
+        .hamburger-toggle:focus + nav {
+         display: block !important;
+        }
+
+        
+    }
+
 }
