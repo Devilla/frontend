@@ -10,18 +10,28 @@
       color: #a94442;
     }
     .signuptitle {
-      font-size: 50px;
+      font-size: 40px;
     }
     .pos-relative {
-      top: 250px;
+      top: 85px;
     }
     .vristrue {
       position: relative;
-      top: 285px;
+      top: 125px;
     }
     input {
       font-family: Verdana, Geneva, Tahoma, sans-serif;
     }
+    .sub-up-title, .terms-title {
+      font-size: 18px !important;
+    }
+    .signuprow {
+      position: relative;
+      top: -60px;
+      background: #fff;
+      padding: 20px;
+    }
+    
   }
 }
 

@@ -4,13 +4,12 @@ import {
   Row,
   Col,
   FormGroup,
-  ControlLabel,
   FormControl,
   HelpBlock
 } from 'react-bootstrap';
 import { Elements } from 'react-stripe-elements';
 import PaymentPage from './PaymentPage';
-import PricePage from 'components/PricePage';
+// import PricePage from 'components/PricePage';
 import CouponPage from './CouponPage';
 import './TrailPayment.scss';
 
@@ -20,11 +19,11 @@ const TrailPayment = ({
   couponError,
   cardError,
   nameError,
-  selectedPlan,
+  // selectedPlan,
   coupon,
   couponDetails,
   handleErrorChange,
-  handleCheckChange,
+  // handleCheckChange,
   handleStateChange,
   handleSubmit,
   submitCoupon,
@@ -36,45 +35,51 @@ const TrailPayment = ({
         <div className="flow-wrapper">
           <Animated className="leftwrap center" animationIn="fadeIn" animationOut="fadeOut" isVisible={true}>
             <div className="loginfrm">
-              <h3 className="dashed">Confirm you account</h3>
+              {/* <h3 className="dashed">Confirm you account</h3>
               <div className="section-divider-line"></div>
               <div className="frmcntl auth-price-list">
                 <PricePage couponDetails={couponDetails} paymentPage={true} selectedPlan={selectedPlan} handleCheckChange={handleCheckChange}/>
-              </div>
+              </div> */}
               <Row>
                 <Col md={12}>
                   <FormGroup className="card-holder">
-                    <ControlLabel>Card Holder's Name</ControlLabel>
-                    <FormControl type="text" onChange={(e) => handleStateChange(e.target.value, e.target.id)} defaultValue={user.username} placeholder="Enter Card Holder's Name" id="username" key={user.username}/>
+                    <span className="lead stripe-title">Pay with Stripe</span>
+                    <FormControl type="text" onChange={(e) => handleStateChange(e.target.value, e.target.id)} defaultValue={user.username} placeholder="Enter card holder's name" id="username" key={user.username}/>
                     <HelpBlock>
                       <p className="error-text">{nameError}</p>
                     </HelpBlock>
                   </FormGroup>
                 </Col>
               </Row>
-              <div className="auth-pages">
-                <div className="frmcntl auth-coupon-page">
-                  <CouponPage coupon={coupon} couponDetails={couponDetails} error={couponError} handleStateChange={handleStateChange} submitCoupon={submitCoupon}/>
-                </div>
+              <Row>
+              
+                <Col md={12}>
+                  {couponDetails?
+                    <div className="frmcntl coupon-proceed">
+                      <input className="btn btn-primary coupon-payment-button" type="submit" value="Proceed" onClick={couponProceed}/>
+                      <HelpBlock>
+                        <p className="error-text">{cardError}</p>
+                      </HelpBlock>
+                    </div>
+                    :
+                    <div className="frmcntl auth-card-details">
+                      <Elements >
+                        <PaymentPage user={user} plan={plan} error={cardError} handleErrorChange={handleErrorChange} handleSubmit={handleSubmit}/>
+                      </Elements>
+                    </div>
+                  }
+                </Col>
                 <div className="auth-divider">
-                  <div className="line-divider"></div>
-                  <h1>Or</h1>
+                  <div className="line-divider text-center"></div>
+                  <h3 className="lead line-or">Or</h3> 
                 </div>
-                {couponDetails?
-                  <div className="frmcntl coupon-proceed">
-                    <input className="btn btn-primary coupon-payment-button" type="submit" value="Proceed" onClick={couponProceed}/>
-                    <HelpBlock>
-                      <p className="error-text">{cardError}</p>
-                    </HelpBlock>
+                <Col md={12}>
+                  <div className="frmcntl auth-coupon-page">
+                    <CouponPage coupon={coupon} couponDetails={couponDetails} error={couponError} handleStateChange={handleStateChange} submitCoupon={submitCoupon}/>
                   </div>
-                  :
-                  <div className="frmcntl auth-card-details">
-                    <Elements >
-                      <PaymentPage user={user} plan={plan} error={cardError} handleErrorChange={handleErrorChange} handleSubmit={handleSubmit}/>
-                    </Elements>
-                  </div>
-                }
-              </div>
+                 
+                </Col>
+              </Row>
             </div>
           </Animated>
         </div>

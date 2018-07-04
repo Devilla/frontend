@@ -11,6 +11,9 @@ import { toast } from 'react-toastify';
 import { base } from 'services/api';
 
 
+import  WebsiteSignupPrice from './WebsiteSignupPrice';
+import WebsiteSignupPayment from './WebsiteSignupPayment';
+
 
 import './WebsiteSignUp.scss';
 
@@ -34,12 +37,15 @@ class WebsiteSignUp extends Component {
       errorPassword: '',
       errorEmail: '',
       errorConfirmPassword: '',
-      error: ''
+      error: '',
+      fm1: true,
+      fm2: false,
+      fm3: false
     };
+    this.handleCheckChange=  this.handleCheckChange.bind(this);
   }
 
   componentWillMount() {
-    console.log(this.props.location.query.email, '=========location');
     if(this.props.location && this.props.location.query.email)
       this.setState({email: this.props.location.query.email});
   }
@@ -103,12 +109,11 @@ class WebsiteSignUp extends Component {
       username: '',
       email: '',
       password: '',
-      confirmPassword: '',
       error: '',
-      errorUsername: '',
       errorEmail: '',
       errorPassword: '' ,
-      errorConfirmPassword: ''
+      errorConfirmPassword: '',
+
     });
   }
   componentDidMount() {
@@ -116,10 +121,29 @@ class WebsiteSignUp extends Component {
     scrollElm.scrollTop = 0;
   }
 
+  b1StepHandler = () => {
+    this.setState( prevState => ({
+      fm1: !prevState.fm1,
+      fm2: !prevState.fm2
+    }));
+  }
+  b2StepHandler = () => {
+    this.setState( prevState => ({
+      fm2: !prevState.fm2,
+      fm3: !prevState.fm3
+    }));
+  }
+
+  handleCheckChange() {
+  
+    //handle to check the change for the pricing button selection ; PASS IN EVENT 
+    this.b2StepHandler();
+
+  }
+
   render() {
-
-    const { email, isRegistered, error, errorUsername, errorEmail, isPasswordShown, errorPassword, errorConfirmPassword } = this.state;
-
+    const { email, isRegistered, error, errorEmail, isPasswordShown, errorPassword,fm1,fm2,fm3} = this.state;
+   
     // if registered show 'check mail' message else show the registration form
     const formContent = isRegistered
       ? (<Alert bsStyle='success'>
@@ -130,114 +154,108 @@ class WebsiteSignUp extends Component {
           <div className='main-container'>
             <section className='bg--secondary'>
               <div className='container text-center'>
-                <div className='row '>
-                  <div className='col-sm-12 col-md-7 col-lg-6 '>
-                    <span className="signuptitle">Your first step towards conversions.</span>
-                    <div>
-                      <p className="lead">
-                        <span className="sub-up-title">Already have an account?&nbsp;
-                          <Link to="/login">Sign in</Link>
-                        </span>
-                      </p>
+                {fm1 &&
+                <div>
+                  <h2 className="text-center btn" disabled  > STEP 1</h2>
+                  <p className="signuptitle"> &nbsp;&nbsp;Your first step towards conversions.</p>
+                
+                  <div className='row signuprow give-center-align'>
+                    <div className='col-sm-12 col-md-7 col-lg-6 '>
+                  
+                      <div>
+                        <p className="lead">
+                          <span className="sub-up-title">Already have an account?&nbsp;
+                            <Link to="/login">Sign in</Link>
+                          </span>
+                        </p>
 
-                      <form className="mt-0">
-                        <div className='row justify-content-center'>
-                          {error &&
+                        <form className="mt-0">
+                          <div className='row justify-content-center'>
+                            {error &&
                         <Alert bsStyle='warning'>
                           <strong>{error}</strong>
                         </Alert>
-                          }
-                          <div className='col-md-9 col-sm-8'>
-                            <input type='text'
-                              name='username'
-                              onChange={this.handleInputChange}
-                              onBlur={(e) => !e.target.value?this.setState({errorUsername: 'Username required'}):null}
-                              placeholder='Your Name' />
-                            <HelpBlock>
-                              <p className='website-error'>{errorUsername}</p>
-                            </HelpBlock>
+                            }
+                           
+                            <div className='col-md-9 col-sm-8'>
+                              <input
+                                name='email'
+                                value={email}
+                                onBlur={this.handleEmailBlur}
+                                onChange={this.handleInputChange}
+                                placeholder='Email Address'
+                                type='email' />
+                              <HelpBlock>
+                                <p className='website-error'>{errorEmail}</p>
+                              </HelpBlock>
+                            </div>
+                            <div className='col-md-9 col-sm-8'>
+                              <input
+                                name='password'
+                                maxLength={PASSWORD_MAX_LENGTH}
+                                onBlur={this.handlePasswordBlur}
+                                onChange={this.handleInputChange}
+                                type={isPasswordShown? 'text': 'password'}
+                                placeholder='Password'
+                              />
+                              <HelpBlock>
+                                <p className='website-error'>{errorPassword}</p>
+                              </HelpBlock>
+                            </div>
+                            <div className='frmcntl col-md-9 col-sm-8'>
+                              <input
+                                type='submit'
+                                className='button submit-button w-button btn btn--primary ml-0'
+                                value='Create Account'
+                                disabled={false}
+                                onClick={this.b1StepHandler}/>
+                            </div>
+                            <hr />
+                            <div className='col-9'>
+                              <span className='lead terms-title'>By signing up, you agree to the&nbsp;
+                                <Link to='/terms-and-condtions'>Terms of Service</Link>
+                              </span>
+                            </div>
                           </div>
-                          <div className='col-md-9 col-sm-8'>
-                            <input
-                              name='email'
-                              value={email}
-                              onBlur={this.handleEmailBlur}
-                              onChange={this.handleInputChange}
-                              placeholder='Email Address'
-                              type='email' />
-                            <HelpBlock>
-                              <p className='website-error'>{errorEmail}</p>
-                            </HelpBlock>
-                          </div>
-                          <div className='col-md-9 col-sm-8'>
-                            <input
-                              name='password'
-                              maxLength={PASSWORD_MAX_LENGTH}
-                              onBlur={this.handlePasswordBlur}
-                              onChange={this.handleInputChange}
-                              type={isPasswordShown? 'text': 'password'}
-                              placeholder='Password'
-                            />
-                            <HelpBlock>
-                              <p className='website-error'>{errorPassword}</p>
-                            </HelpBlock>
-                          </div>
-                          <div className='col-md-9 col-sm-8'>
-                            <input
-                              name='confirmPassword'
-                              maxLength={PASSWORD_MAX_LENGTH}
-                              onBlur={(e) => !e.target.value?this.setState({errorConfirmPassword: 'Confirm Password required'}):null}
-                              onChange={this.handleInputChange}
-                              type={isPasswordShown? 'text': 'password'}
-                              placeholder='Confirm Password' />
-                            <HelpBlock>
-                              <p className='website-error'>{errorConfirmPassword}</p>
-                            </HelpBlock>
-                          </div>
-                          <div className='frmcntl col-md-9 col-sm-8'>
-                            <input
-                              type='submit'
-                              className='button submit-button w-button btn btn--primary ml-0'
-                              value='Create Account'
-                              disabled={false}/>
-                          </div>
-                          <hr />
-                          <div className='col-9'>
-                            <span className='lead terms-title'>By signing up, you agree to the&nbsp;
-                              <Link to='/terms-and-condtions'>Terms of Service</Link>
+                        </form>
+                      </div>
+                    </div>
+
+                    <div className="vristrue ml-5">
+                    </div>
+
+                    <div className="col-md-4 socio-link">
+                      <p> <br /></p>
+                      <div className="pos-relative">
+                        <a href={`${base}connect/facebook`} className="link-fb ">
+                          <div className="btn btn--icon bg--facebook" to="">
+                            <span className="btn__text ">
+                              <i className="socicon socicon-facebook"></i>
+                          Signup with Facebook
                             </span>
                           </div>
-                        </div>
-                      </form>
-                    </div>
-                  </div>
-
-                  <div className="vristrue ml-5">
-                  </div>
-
-                  <div className="col-md-4 socio-link">
-                    <p> <br /></p>
-                    <div className="pos-relative">
-                      <a href={`${base}connect/facebook`} className="link-fb ">
-                        <div className="btn btn--icon bg--facebook" to="">
-                          <span className="btn__text ">
-                            <i className="socicon socicon-facebook"></i>
-                          Signup with Facebook
-                          </span>
-                        </div>
-                      </a>
-                      <p></p>
-                      <a href={`${base}connect/google`} className="link">
-                        <div className="btn btn--icon bg--googleplus link-go" to="">
-                          <span className="btn__text">
-                            <i className="socicon socicon-google"></i>
+                        </a>
+                        <p></p>
+                        <a href={`${base}connect/google`} className="link">
+                          <div className="btn btn--icon bg--googleplus link-go" to="">
+                            <span className="btn__text">
+                              <i className="socicon socicon-google"></i>
                           Signup with Google
-                          </span>
-                        </div>
-                      </a>
+                            </span>
+                          </div>
+                        </a>
+                      </div>
                     </div>
                   </div>
-                </div>
+                </div>}
+                {fm2 && 
+                  <WebsiteSignupPrice 
+                    handleCheckChange={this.handleCheckChange} 
+                  />
+                }
+                {fm3 && 
+                  <WebsiteSignupPayment />
+                }
               </div>
             </section>
           </div>
@@ -252,11 +270,9 @@ class WebsiteSignUp extends Component {
             animationIn='fadeIn'
             animationOut='fadeOut'
             isVisible={true}>
-            <form
-              className='loginfrm'
-              onSubmit={this.handleSubmit}>
-              {formContent}
-            </form>
+           
+            {formContent}
+       
             <div className='support'></div>
           </Animated>
         </div>
@@ -265,5 +281,5 @@ class WebsiteSignUp extends Component {
     );
   }
 }
-
 export default WebsiteSignUp;
+
