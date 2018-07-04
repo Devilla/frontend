@@ -12,11 +12,55 @@
   .mainlogo {
       position : absolute;
       left: 110px;
+      z-index: 999999999999;
   }
 }
 
+@media only screen and (max-width: 1198px) {
+    .websiteheader-container {
+        .loginbtn , .signupbtn {
+            width: 100px ;
+            height: 35px ;
+            font-size: 12px !important;
+        }
+        .mainlogo {
+            left: 60px;
+            top: 15px;
+        }
+    }
+}
+@media only screen and (max-width: 992px) {
+    .websiteheader-container {
+        .loginbtn , .signupbtn {
+            width: 100px ;
+            position: relative;
+            left: 170px;
+            height: 35px ;
+            font-size: 12px !important;
+        }
+        .nav-content {
+            position: relative;
+            left: 300px;
+            .nav-content-links {
+                position: absolute;
+                right: -130px;
+            }
+        }
+    }
+}
+
+
+
 @media only screen and (max-width:767px) {
     .websiteheader-container {
+        .nav-content {
+            position: relative;
+            left: 0px;
+            .nav-content-links {
+                position: absolute;
+                right: 0px;
+            }
+        }
         .mainlogo {
             left: 40px;
             top: 20px;
@@ -26,6 +70,17 @@
             display: block !important;
             width: 100px !important;
         }
+
+        .small-bar {
+            display: block !important;
+            padding-top: 50px !important;
+            padding-bottom: 50px !important;
+        }
+
+        .fa-close {
+            display: none !important; 
+        }
+
         .hamburger-toggle {
             display: block;
             font-size: 30px;
@@ -34,20 +89,59 @@
             top: 35px;
             z-index: 999;
             cursor: pointer;
-            color: red !important;
+            &:focus {
+                .fa-bars {
+                display: none !important;   
+                }
+                .fa-close {
+                    display: block !important;
+                }
+                
+                & + nav {
+                    display: block !important;
+
+            
+            }
+            
          
         }
-        .small-bar {
-            display: block !important;
-            padding-top: 50px !important;
-            padding-bottom: 50px !important;
+  
+    }
+
+    .cross {
+            width: 30px;
+            height: 30px;
+            border: none !important;
+            background-color: none !important;
+            position: relative;
+            left: -30px;
+            outline: none !important;
+            -webkit-outline : none !important;
+            box-shadow: none;
         }
 
-        .hamburger-toggle:focus + nav {
-         display: block !important;
-        }
 
+        //for navbar comtents
+        .menu-horizontal {
+            text-align: center !important;
+        }
+        .loginbtn ,.signupbtn{
+            width: 200px;
+            position: relative;
+            left: 28%;
+        }
+        
         
     }
 
+}
+
+@media only screen and (max-width:412px) {
+    .websiteheader-container{
+        .mainlogo{
+            width: 160px !important;
+            top: 30px !important;
+            position: absolute !important; 
+        }
+    }
 }

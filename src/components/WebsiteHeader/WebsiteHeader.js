@@ -18,12 +18,13 @@ class WebsiteHeader extends Component {
             </div>
             <div className="bar bar--sm small-bar">
             </div>
-            <div  className="hamburger-toggle">
+            <div  className="hamburger-toggle" tabIndex="0" >
               <i className="fa fa-bars"></i>
+              <button className="cross"><i className="fa fa-close"></i></button>
             </div>
             
           
-            <nav  className={'bar bar--sm bar-1 hidden-xs bar--transparent'}>
+            <nav  id="menu1" className='bar bar--sm bar-1 hidden-xs  bar--transparent'>
               <div className="container pr-0 pl-0">
 
                 <div className="row">
@@ -31,10 +32,10 @@ class WebsiteHeader extends Component {
              
                   </div>
                   <div className="col-sm-0 pl-0 pr-0"></div>
-                  <div className="col-lg-10 col-md-11 text-right pr-0 pl-0 text-left-xs text-left-sm">
+                  <div className="nav-content col-lg-10 col-md-11 text-right pr-0 pl-0 text-left-xs text-left-sm">
                     <div className="bar__module ">
-                      <ul className="menu-horizontal text-left">
-                        <li> <Link to="/how-it-works">How it works</Link> </li>
+                      <ul className="menu-horizontal text-left nav-content-links" tabIndex="1">
+                        <li > <Link to="/how-it-works">How it works</Link> </li>
                         <li> <Link to="/pricing">PRICING</Link> </li>
                         <li> <a href="https://blog.useinfluence.co/" target="_blank" >BLOG</a></li>
                       </ul>
