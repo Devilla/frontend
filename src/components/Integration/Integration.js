@@ -24,10 +24,10 @@ class Integration extends Component {
     };
   }
 
-  componentWillMount() {
-    window.scrollTo(0,0);
+  componentDidMount() {
+    let scrollElm = document.scrollingElement;
+    scrollElm.scrollTop = 0;
   }
-
 
   channelsList = () => {
     return (

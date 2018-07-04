@@ -7,12 +7,7 @@ import { browserHistory }  from 'react-router';
 
 
 class Oauthpage extends Component {
-  constructor() {
-    super();
-    this.state = {
 
-    };
-  }
 
   getOAuthRows = () => {
     let i =0;
