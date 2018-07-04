@@ -73,6 +73,9 @@ class WebsitePricing extends Component {
       (this.state.planPeriod == 12 ? plan.interval=='year': plan.interval=='month') &&
       (plan.references.service_template_properties[0].name !== 'coupon')
     );
+    planList = planList.sort(function (a, b) {
+      return b.id - a.id;
+    });
     return planList.map(plan => {
       return <div key={plan.name} className="col-md-3 pl-3 pr-0">
         <div className="pricing pricing-1  pr-0 pl-0"  style={{minHeight:'700px'}}>
