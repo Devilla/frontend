@@ -29,7 +29,7 @@ class WebsiteHome extends Component {
     };
   }
 
-  
+
   componentDidMount() {
     let scrollElm = document.scrollingElement;
     scrollElm.scrollTop = 0;
@@ -53,7 +53,7 @@ class WebsiteHome extends Component {
               <div className="row pb-5">
                 <div className="col-md-10 col-lg-10 text-center">
                   <h1 className="pt-2 main-title">Increase your website conversions using social proof notifications <br /> </h1>
-                  <p className="typed-text typed-text--cursor h3 sub-title"> Use Influence and get <span className="type--bold extrafocus">3x more business </span>right away &nbsp;</p>
+                  <p className="typed-text typed-text--cursor h3 sub-title"  data-toggle="tooltip" title="Hooray!"> Use Influence and get <span className="type--bold extrafocus">3x more business </span>right away &nbsp;</p>
                 </div>
               </div>
               <br /> <br />
