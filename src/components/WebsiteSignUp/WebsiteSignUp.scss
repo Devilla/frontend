@@ -12,6 +12,9 @@
     .signuptitle {
       font-size: 40px;
     }
+    .sub-up-title, .terms-title {
+      font-size: 16px !important;
+    }
     .pos-relative {
       top: 85px;
     }
@@ -21,6 +24,9 @@
     }
     input {
       font-family: Verdana, Geneva, Tahoma, sans-serif;
+      &::placeholder {
+        font-size: 14px !important;
+      }
     }
     .sub-up-title, .terms-title {
       font-size: 18px !important;
@@ -42,7 +48,7 @@
 
     }
     .sub-up-title , .terms-title{
-      font-size: 18px !important;
+      font-size: 16px !important;
   }
   }
 }

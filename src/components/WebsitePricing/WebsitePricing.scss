@@ -2,7 +2,25 @@
   .starttrial-btn ,.contact-btn{
     background-color: #097fff !important;
   }
-  
+  .visitors-content {
+    height: 80px !important;
+  }
+  .visitors-text {
+    font-weight: 100;
+    position: relative;
+    top: -20px;
+  }
+  .bx-shadow {
+    box-shadow: 0px 6px 10px -4px #999999 !important;
+  }
+  .conditional-pricestmt {
+    position: absolute;
+    right: 0%;
+    color: #999999;
+    font-weight: 500;
+    font-size: 13px;
+    padding: 10px 10px 10px 10px;
+  }
 
 .tgl {
   display: none;
@@ -102,10 +120,184 @@
     &:active {
       box-shadow: none;
       &:after {
-        margin-left: -.8em;
+        margin-left: .8em;
       }
     }
   }
 }
 
+}
+// @media only screen and (max-width: 1580px) {
+//   .websitepricing-container {
+//    .pricing-tab {
+//     margin-right: 20px !important;
+//    }
+//    .price-cards {
+//      position: relative;
+//      left: 100px;
+//      width: 1200px;
+//    }
+
+//   }
+// }
+// @media only screen and (max-width: 1366px) {
+//   .websitepricing-container {
+//    .pricing-tab {
+//     margin-right: 20px !important;
+//    }
+//    .price-cards {
+//      position: relative;
+//      left: 120px;
+//    }
+
+//   }
+// }
+
+@media only screen and ( max-width : 993px) {
+  .websitepricing-container {
+    #leftmg {
+      padding-right: 60px !important;
+    }
+    #rightmg {
+      padding-left: 15px !important;
+    }
+    .pricing-tab {
+      max-width: 500px !important;
+    
+       box-shadow:  0px 8px 16px -4px #999 ;
+    }
+    .price-cards {
+      position: relative !important;
+      left : 40px !important;
+    }
+  }
+}
+
+@media only screen and ( max-width: 768px) {
+  .websitepricing-container {
+    #leftmg {
+      padding-right: 0px !important;
+      position: absolute;
+      left: 130px;
+      width: 100px;
+    }
+    #rightmg {
+    position: relative;
+    left: 25px;
+    }
+    .price-cards {
+      position: relative;
+      left : 70px !important;
+      width: 400px !important;
+
+    }
+
+    .text-left.pl-5 {
+      margin: 0 auto;
+      width: 250px;
+      
+    }
+    .pricing-tab {
+      margin-bottom: 50px;
+    }
+  }
+}
+
+@media only screen and (max-width:  576px) {
+  .websitepricing-container {
+    .pricing-tab {
+      width: 400px !important;
+    }
+    .price-cards {
+      position: relative;
+      left : 60px !important;
+      
+    }
+    .togglebtn {
+      position: absolute;
+      left: 210px;
+      top: -2px;
+    }
+    #leftmg {
+      position: absolute;
+    }
+    #rightmg {
+      position: relative;
+      top: -30px;
+      left: 240px;
+    }
+    .switch {
+      position: absolute;
+      left: 30px;
+  
+    }
+    .text-left.pl-5 {
+      margin: 0 auto;
+      width: 250px;
+      
+    }
+  }
+}
+
+@media only screen and (max-width:  536px) {
+  .websitepricing-container {
+    .text-left.pl-5 {
+      margin: 0 auto;
+   
+    }
+    .pricing-tab {
+      width: 300px !important;
+    }
+    .price-cards {
+      margin: 0 auto;
+    }
+    .switch {
+      position: absolute;
+      left: 0px;
+  
+    }
+
+  }
+}
+@media only screen and (max-width:  428px) {
+  .websitepricing-container {
+    .text-left.pl-5 {
+      margin: 0 auto;
+   
+    }
+    .pricing-tab {
+      width: 280px !important;
+    }
+    .price-cards {
+      position: relative;
+      left : 40px !important;
+    }
+    .switch {
+      position: absolute;
+      left: -10px;
+  
+    }
+
+  }
+}
+@media only screen and (max-width:  377px) {
+  .websitepricing-container {
+    .text-left.pl-5 {
+      margin: 0 auto;
+   
+    }
+    .pricing-tab {
+      width: 290px !important;
+    }
+    .price-cards {
+      position: relative;
+      left : 20px !important;
+    }
+    .switch {
+      position: absolute;
+      left: -40px;
+  
+    }
+
+  }
 }

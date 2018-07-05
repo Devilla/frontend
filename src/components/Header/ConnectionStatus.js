@@ -10,9 +10,6 @@ export default class ConnectionStatus extends Component{
       connectionStatus:''
     };
   }
-
-
-
   componentWillMount(){
     if (window && window.navigator.onLine) {
       this.setState({connectionStatus: 'Connected.'});

@@ -1,20 +1,15 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import Slider from 'react-slick';
+import NotificationView from '../Rules/NotificationView';
 import './WebsiteHome.scss';
 
 import {
   Marvel,
   Illustration,
   Swivelscreen,
-  Sw1,
-  Sw2,
-  Sw3,
-  Sw4,
   Lawsikho,
   Stagephod,
-  Userc,
-  Userr,
   Carpathy
 
 
@@ -29,7 +24,7 @@ class WebsiteHome extends Component {
     };
   }
 
-  
+
   componentDidMount() {
     let scrollElm = document.scrollingElement;
     scrollElm.scrollTop = 0;
@@ -105,14 +100,8 @@ class WebsiteHome extends Component {
                 <div className="col-md-6 col-lg-6 col-12 text-center">
                   <div className="mainImg">
                     <img alt="Swivelscreen" src={Swivelscreen} />
-
                     <Slider {...settings} className="im1">
-                      <div>
-                        <img alt="Sw1" src={Userc} />
-                      </div>
-                      <div>
-                        <img alt="Sw2" src={Userr} />
-                      </div>
+                      <NotificationView animation='' display='block' position=''/>
                     </Slider>
 
                   </div>
@@ -134,12 +123,7 @@ class WebsiteHome extends Component {
                     <img alt="Swivelscreen" src={Swivelscreen} />
 
                     <Slider {...settings} className="im1">
-                      <div>
-                        <img alt="Sw1" src={Sw3} />
-                      </div>
-                      <div>
-                        <img alt="Sw2" src={Sw4} />
-                      </div>
+                      <NotificationView animation='' display='block' position=''/>
                     </Slider>
 
                   </div>
@@ -161,12 +145,7 @@ class WebsiteHome extends Component {
                     <img alt="Swivelscreen" src={Swivelscreen} />
 
                     <Slider {...settings} className="im1">
-                      <div>
-                        <img alt="Sw1" src={Sw1} />
-                      </div>
-                      <div>
-                        <img alt="Sw2" src={Sw2} />
-                      </div>
+                      <NotificationView animation='' display='block' position=''/>
                     </Slider>
 
                   </div>

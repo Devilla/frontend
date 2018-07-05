@@ -1,18 +1,14 @@
 import React , { Component } from 'react';
 import './Oauthpage.scss';
 import moment  from 'moment';
+import {Link} from 'react-router';
 import { browserHistory }  from 'react-router';
 
 
 
 class Oauthpage extends Component {
-  constructor() {
-    super();
-    this.state = {
-     
-    };
-  }
-  
+
+
   getOAuthRows = () => {
     let i =0;
     return (
@@ -29,15 +25,15 @@ class Oauthpage extends Component {
       </tr>
     );
   }
-  
+
 
   render() {
     return (
-      
+
       <div className="oauth-container">
         <div className="content">
           <div className="card-box">
-            <h4 className="header-title"><i className="icon-arrow-left mr-3"></i>OAuth 2.0 Client IDs</h4>
+            <h4 className="header-title"><Link to="/integration"><i className="icon-arrow-left mr-3"></i></Link>OAuth 2.0 Client IDs</h4>
             <hr/>
             <button type="button" className="credbtn btn btn-primary waves-effect mb-5" onClick={() => {browserHistory.push('/oauthgenerate');}} ><i className="fi-plus"></i>&nbsp;&nbsp;Create Credentials</button>
 
@@ -59,10 +55,10 @@ class Oauthpage extends Component {
           </div>
         </div>
       </div>
-      
+
     );
   }
 }
-  
-  
+
+
 export default Oauthpage;
