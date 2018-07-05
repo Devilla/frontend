@@ -81,9 +81,9 @@ class WebsitePricing extends Component {
     });
   
     return planList.map(plan => {
-      return <div key={plan.name} className="col-md-3 pl-3 pr-0">
-        <div className="pricing pricing-1  pr-0 pl-0"  style={{minHeight:'700px'}}>
-          <div className={`pricing__head ${this.stellarFeel(plan.name) }  boxed boxed--border boxed--lg`}>
+      return <div key={plan.name} className="col-md-3 pl-3 pr-0 cards">
+        <div className="pricing pricing-1  pr-0 pl-0 pricing-tab"  style={{minHeight:'700px'}}>
+          <div className={`pricing__head ${this.stellarFeel(plan.name) }  boxed boxed--border boxed--lg price-head`}>
             <h3>{this.filterPlanName(plan.name)}</h3>
             <span className="h1">
               <span className="pricing__dollar">$</span>
@@ -164,13 +164,13 @@ class WebsitePricing extends Component {
 
           <section className="text-center">
             <div className="container pos-relative">
-              <div className="row justify-content-center">
+              <div className="row justify-content-center switch">
                 <div className="col-md-1 mr-0 text-left " id="leftmg"><div><strong onClick={this.handleMonthChange} className="h5 type--bold">Monthly</strong></div></div>
-                <div className="col-md-1 col-sm-1 my-auto text-center pl-2">
+                <div className="col-md-1 col-sm-1 my-auto text-center pl-2 togglebtn">
                   <input className="tgl tgl-ios" id="cb2" type="checkbox"  defaultChecked={this.state.externalValue}/>
                   <label className="tgl-btn toggleId"  htmlFor="cb2"  onClick={() => this.handleSwitchChange(!this.state.externalValue)}></label>
                 </div>
-                <div className="text-left my-auto" ><strong onClick={this.handleYearChange} className="h5 type--bold">Yearly</strong></div>
+                <div className="text-left my-auto" id="rightmg" ><strong onClick={this.handleYearChange} className="h5 type--bold">Yearly</strong></div>
               </div>
               {this.state.externalValue === false ?  <p className= "conditional-pricestmt mt-4"><i>Get 2 Months FREE With Yearly *</i></p>: ''}
             </div>
@@ -184,7 +184,7 @@ class WebsitePricing extends Component {
             isVisible={true}>
             <section className="text-center unpad--top">
               <div className="container">
-                <div className="row">
+                <div className="row price-cards">
                   {this.renderPriceList()}
                 </div>
               </div>

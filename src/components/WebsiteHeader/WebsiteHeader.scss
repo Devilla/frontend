@@ -29,12 +29,13 @@
         }
     }
 }
+
 @media only screen and (max-width: 992px) {
     .websiteheader-container {
         .loginbtn , .signupbtn {
             width: 100px ;
             position: relative;
-            left: 170px;
+            left: -330px;
             height: 35px ;
             font-size: 12px !important;
         }
@@ -44,6 +45,7 @@
             .nav-content-links {
                 position: absolute;
                 right: -130px;
+                font-size: 15px;
             }
         }
     }
@@ -89,13 +91,20 @@
             top: 35px;
             z-index: 999;
             cursor: pointer;
-            &:focus {
+  
+    }
+    .customtoggleclass {    
                 .fa-bars {
                 display: none !important;   
                 }
-                .fa-close {
-                    display: block !important;
+                .cross {
+                    outline: none !important;
+                    .fa-close {
+                        outline: none !important;
+                        display: block !important;
+                    }
                 }
+               
                 
                 & + nav {
                     display: block !important;
@@ -103,9 +112,6 @@
             
             }
             
-         
-        }
-  
     }
 
     .cross {

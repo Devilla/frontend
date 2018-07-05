@@ -5,7 +5,12 @@ import { LogoInfluence } from 'img';
 import  './WebsiteHeader.scss';
 class WebsiteHeader extends Component {
 
-
+  togglemenu = () => {
+    document.getElementById('hello').classList.toggle('customtoggleclass');
+  }
+  close = () => {
+    document.getElementById('hello').classList.remove('customtoggleclass');
+  }
 
   render() {
    
@@ -18,8 +23,8 @@ class WebsiteHeader extends Component {
             </div>
             <div className="bar bar--sm small-bar">
             </div>
-            <div  className="hamburger-toggle" tabIndex="0" >
-              <i className="fa fa-bars"></i>
+            <div  id="hello" className="hamburger-toggle" tabIndex="0" onClick={this.togglemenu}  >
+              <i className="fa fa-bars" ></i>
               <button className="cross"><i className="fa fa-close"></i></button>
             </div>
             
@@ -32,17 +37,17 @@ class WebsiteHeader extends Component {
              
                   </div>
                   <div className="col-sm-0 pl-0 pr-0"></div>
-                  <div className="nav-content col-lg-10 col-md-11 text-right pr-0 pl-0 text-left-xs text-left-sm">
+                  <div className="nav-content col-lg-10 col-md-11 text-right pr-0 pl-0">
                     <div className="bar__module ">
                       <ul className="menu-horizontal text-left nav-content-links" tabIndex="1">
-                        <li > <Link to="/how-it-works">How it works</Link> </li>
-                        <li> <Link to="/pricing">PRICING</Link> </li>
-                        <li> <a href="https://blog.useinfluence.co/" target="_blank" >BLOG</a></li>
+                        <li onClick={this.close}> <Link to="/how-it-works">How it works</Link> </li>
+                        <li onClick={this.close}> <Link to="/pricing">PRICING</Link> </li>
+                        <li onClick={this.close}> <a href="https://blog.useinfluence.co/" target="_blank" >BLOG</a></li>
                       </ul>
                     </div>
                     <div className="bar__module ml-1">
-                      <Link className="btn btn--sm type--uppercase loginbtn" to="/login"> <span className="btn__text ">Login</span> </Link>
-                      <Link className="btn btn--sm btn--primary type--uppercase signupbtn" to="/signup"> <span className="btn__text ">sign up</span> </Link>
+                      <Link onClick={this.close} className="btn btn--sm type--uppercase loginbtn" to="/login"> <span className="btn__text ">Login</span> </Link>
+                      <Link onClick = {this.close} className="btn btn--sm btn--primary type--uppercase signupbtn" to="/signup"> <span className="btn__text ">sign up</span> </Link>
                     </div>
                   </div>
                 </div>
