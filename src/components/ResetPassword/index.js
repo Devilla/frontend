@@ -5,6 +5,7 @@ import Ionicon from 'react-ionicons';
 import { css } from 'glamor';
 import {Row, Col} from 'react-bootstrap';
 import axios from 'axios';
+import {Link} from 'react-router';
 import { toast ,ToastContainer } from 'react-toastify';
 function validate(newPassword,verifyPassword, authEmail) {
   return {
@@ -171,7 +172,7 @@ export default class forget extends Component{
                 </form>
                 <div className="pt-5 support">
                   <h4>Trouble logging in?</h4>
-                  <a href="javascript:;">Talk to our Support</a>
+                  <Link to="/contact"> Talk to our Support</Link>
                 </div>
               </Animated>
             </div>
