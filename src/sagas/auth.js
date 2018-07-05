@@ -157,6 +157,23 @@ export function* contactUs(action) {
 }
 
 
+export function* gdprform(action) {
+  try {
+    yield put(load());
+    const res = yield call(api.POST, 'auth/', action.data);
+    if(res.error)
+      yield put(actions.gdprformError(res.message));
+    else {
+      yield toast.info('Secret code sent.', toastConfig);
+    }
+    yield put(loaded());
+  } catch (error) {
+    yield put(loaded());
+    yield toast.error(error, toastConfig);
+  }
+}
+
+
 export function* forgotPassword(action) {
   try {
     yield put(load());
