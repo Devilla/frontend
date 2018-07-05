@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import './WebsitePricing.scss';
+import { Animated } from'react-animated-css';
+
 
 class WebsitePricing extends Component {
 
@@ -14,6 +16,7 @@ class WebsitePricing extends Component {
       servicebotPlans: []
     };
   }
+
 
   componentWillMount() {
     fetch('https://servicebot.useinfluence.co/api/v1/service-templates/public')
@@ -70,12 +73,13 @@ class WebsitePricing extends Component {
   renderPriceList = () => {
 
     let planList =this.state.servicebotPlans.filter(plan =>
-      (this.state.planPeriod == 12 ? plan.interval=='year': plan.interval=='month') &&
-      (plan.references.service_template_properties[0].name !== 'coupon')
+      (this.state.planPeriod === 12 ? plan.interval === 'year': plan.interval === 'month') &&
+      (plan.references.service_template_properties[0].name !== 'coupon') 
     );
     planList = planList.sort(function (a, b) {
       return b.id - a.id;
     });
+  
     return planList.map(plan => {
       return <div key={plan.name} className="col-md-3 pl-3 pr-0">
         <div className="pricing pricing-1  pr-0 pl-0"  style={{minHeight:'700px'}}>
@@ -83,16 +87,18 @@ class WebsitePricing extends Component {
             <h3>{this.filterPlanName(plan.name)}</h3>
             <span className="h1">
               <span className="pricing__dollar">$</span>
-              <span>{plan.interval === 'year' ? plan.amount/1200 : plan.amount/100}</span>
+              <span>{plan.interval === 'year' ? plan.amount/1000 : plan.amount/100}</span>
             </span>
+            {plan.interval === 'year' ?  <p className= {/\b(Advanced)\b/m.test(plan.name) ?' mt-0 mb-0' : 'type--fine-print mt-0 mb-0 '}><i> 2 Months FREE </i></p> :  ''}
           </div>
           <hr/>
-          <ul className="h6 ">
-            <li>
+          <ul className={/\b(Advanced)\b/m.test(plan.name) ? 'bx-shadow h6' :'h6'}>
+            <li className="visitors-content">
               <span className="bg--primary-1"></span>
               <span className="h3">
                 {plan.description}
               </span>
+              <p className=" mt-0 mb-0 visitors-text">Unique visitors</p>
             </li><hr/>
             <li className="text-left pl-5">
               <span className="checkmark bg--primary-1"></span>
@@ -157,7 +163,7 @@ class WebsitePricing extends Component {
           </section>
 
           <section className="text-center">
-            <div className="container">
+            <div className="container pos-relative">
               <div className="row justify-content-center">
                 <div className="col-md-1 mr-0 text-left " id="leftmg"><div><strong onClick={this.handleMonthChange} className="h5 type--bold">Monthly</strong></div></div>
                 <div className="col-md-1 col-sm-1 my-auto text-center pl-2">
@@ -166,17 +172,25 @@ class WebsitePricing extends Component {
                 </div>
                 <div className="text-left my-auto" ><strong onClick={this.handleYearChange} className="h5 type--bold">Yearly</strong></div>
               </div>
-
+              {this.state.externalValue === false ?  <p className= "conditional-pricestmt mt-4"><i>Get 2 Months FREE With Yearly *</i></p>: ''}
             </div>
           </section>
+       
+          <Animated
+            className='leftwrap center'
 
-          <section className="text-center unpad--top">
-            <div className="container">
-              <div className="row">
-                {this.renderPriceList()}
+            animationIn='fadeIn'
+            animationOut='fadeOut'
+            isVisible={true}>
+            <section className="text-center unpad--top">
+              <div className="container">
+                <div className="row">
+                  {this.renderPriceList()}
+                </div>
               </div>
-            </div>
-          </section><hr className="my-auto col-md-6" />
+            </section>
+          </Animated>
+          <hr className="my-auto col-md-6" />
           <section className="text-center pt-5 mt-4 mb-5">
             <div className="container ">
               <div className="row">
