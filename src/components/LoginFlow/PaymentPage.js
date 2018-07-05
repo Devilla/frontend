@@ -65,7 +65,7 @@ const PaymentPage = ({
         <div className="frmcntl">
           <input className="btn btn-primary auth-payment-button"
             type="submit"
-            value="Make Payment"
+            value="Start my FREE trial"
           />
         </div>
       </form>
