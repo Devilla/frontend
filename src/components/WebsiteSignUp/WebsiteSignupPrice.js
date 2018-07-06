@@ -127,7 +127,7 @@ class WebsiteSignupPrice extends Component {
 
           {/*should hand;e the access now according to respective item*/}
           <Link className="btn btn--primary col-md-12 text-center  starttrial-btn" to="/signup" >
-            <span className="btn__text" onClick={(e) => {this.props.handleCheckChange(e);}}>Start Free Trial</span>
+            <span className="btn__text"  onClick={() => {this.props.handleCheckChange(plan.name);}}>Start Free Trial</span>
           </Link>
         </div>
       </div>;
