@@ -67,7 +67,7 @@ const InstallPixel = ({
       </div>
       <div className="clearfix"></div>
       {displayWebhookIntegration &&
-        <Webhook/>
+        <Webhook campaign={campaign} />
       }
     </div>
   );

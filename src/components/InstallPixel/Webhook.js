@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Popup from 'react-popup';
+
+import { fetchWebhook, createWebhook, deleteWebhook, clearWebhook } from 'ducks/webhooks';
+import { updateCampaign } from 'ducks/campaign';
 
 class Webhook extends Component {
   constructor() {
@@ -10,28 +14,60 @@ class Webhook extends Component {
     };
   }
 
+  componentWillMount() {
+    this.props.fetchWebhook(this.props.campaign._id);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if(nextProps.campaign.webookId) {
+      this.setState({campaignWebhook: nextProps.campaign.webookId.name});
+    }
+  }
+
   clearHook = () => {
     this.setState({campaignWebhook: null});
   }
 
   selectWebhook = (e) => {
     this.setState({campaignWebhook: e.target.value});
+    this.props.updateCampaign({
+      id: this.props.campaign._id,
+      webookId: e.target.value
+    });
   }
 
   selectHookType = (target) => {
     this.setState({
-      selectHook: target,
-      campaignWebhook: null
+      selectHook: target
     });
   }
 
-  addWebhook(e) {
-    e.preventDefault();
+  saveWebhook = () => {
+    const { campaign } = this.props;
+    const { webhookName, selectHook } = this.state;
+    const webhook = {
+      name: webhookName,
+      type: selectHook,
+      trackingId: campaign.trackingId,
+      campaignId: campaign._id
+    };
+    this.props.createWebhook(webhook);
+  }
 
+  addWebhook = (e) => {
+    e.preventDefault();
+    const that = this;
     Popup.create({
       title: 'Add New Webhook',
       content: <div className="input-group mb-3">
-        <input type="text" className="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" />
+        <input
+          type="text"
+          className="form-control"
+          placeholder="Username"
+          aria-label="Webhook Name"
+          aria-describedby="basic-addon1"
+          onChange={(e) => that.setState({webhookName: e.target.value})}
+        />
       </div>,
       buttons: {
         left: [{
@@ -45,10 +81,17 @@ class Webhook extends Component {
           text: 'Save Webhook',
           className: 'primary save-webhook',
           action: function () {
+            that.saveWebhook();
             Popup.close();
           }
         }]
       }
+    });
+  }
+
+  renderWebhooks = () => {
+    return this.props.webhooks.map(webhook => {
+      return <option key={webhook._id} value={webhook._id}>{webhook.name}</option>;
     });
   }
 
@@ -63,7 +106,6 @@ class Webhook extends Component {
           <div className="card-body">
             <h5 className="card-title">Type of Webhook Integration</h5>
             <div className="webhooks-types">
-              <button className="btn btn-primary" onClick={() => this.selectHookType('Zapier')} >Zapier</button>
               <button className="btn btn-primary" onClick={() => this.selectHookType('Custom')} >Custom</button>
             </div>
           </div>
@@ -73,7 +115,7 @@ class Webhook extends Component {
               <div>
                 <div className="input-group mb-3">
                   <select className="custom-select" id="inputGroupSelect02" disabled>
-                    <option selected>{campaignWebhook}</option>
+                    <option>{this.props.campaign.webookId?this.props.campaign.webookId.name:null}</option>
                   </select>
                   <div className="input-group-append" onClick={this.clearHook}>
                     <label className="input-group-text" htmlFor="inputGroupSelect02">Select Different Webhook</label>
@@ -89,10 +131,8 @@ class Webhook extends Component {
               <div>
                 <div className="input-group mb-3">
                   <select className="custom-select" id="inputGroupSelect02" onChange={this.selectWebhook}>
-                    <option selected>Choose webhook...</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                    <option>Choose webhook...</option>
+                    {this.renderWebhooks()}
                   </select>
                   <div className="input-group-append" onClick={this.addWebhook}>
                     <label className="input-group-text" htmlFor="inputGroupSelect02">Add Webhook</label>
@@ -107,4 +147,16 @@ class Webhook extends Component {
   }
 }
 
-export default Webhook;
+const mapStateToProps = state => ({
+  webhooks: state.getIn(['webhooks', 'webhooks'])
+});
+
+const mapDispatchToProps = {
+  fetchWebhook,
+  createWebhook,
+  deleteWebhook,
+  updateCampaign,
+  clearWebhook
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Webhook);

@@ -1,4 +1,4 @@
-import { fromJS } from 'immutable';
+import { fromJS, Map } from 'immutable';
 const action = name => `/webhooks/${name}`;
 
 export const FETCH_WEBHOOK = action('FETCH_WEBHOOK');
@@ -20,7 +20,7 @@ export const fetchWebhookSuccess = (webhooks) => ({ type: FETCH_WEBHOOK_SUCCESS,
 export const clearWebhook = (webhooks) => ({ type: CLEAR_WEBHOOK, webhooks });
 
 const initialState = fromJS({
-  webhooks: {}
+  webhooks: Map({})
 });
 
 const webhooks = (state = initialState, action) => {
