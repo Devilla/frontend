@@ -76,7 +76,7 @@ const NotificationView = ({tab, display, position, animation, notificationPanelS
                       backgroundColor: notificationStyle.backgroundColor,
                       border: `${notificationStyle.borderWidth} ${notificationStyle.borderStyle} ${notificationStyle.borderColor}`
                     }}>
-                    <div className="FPqR1JYFqJeA1JYF7MM9_0"><img src="images/554cf2e92cb6bf677667d90c_Testimonial-10 - Copy.jpg" /></div>
+                    <div className="FPqR1JYFqJeA1JYF7MM9_0" ><img src="images/554cf2e92cb6bf677667d90c_Testimonial-10 - Copy.jpg" /></div>
                     <div className="FPqR2EbCqJeA2EbC7MM9_0">
                       <div className="FPqR2AUlqJeA2AUl7MM9_0" style ={{color: notificationStyle.color,
                         fontFamily: notificationStyle.fontFamily,
