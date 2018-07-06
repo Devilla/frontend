@@ -72,10 +72,12 @@ class WebsiteSignupPayment extends Component  {
                         <input type="hidden" name="cmd" value="_s-xclick" />
                         <input type="hidden" name="hosted_button_id" value="C8PZ3J2U8YEVJ" />
                         <table>
-                          <tr><td><input type="hidden" name="on0" value="Free 2 months with Yearly plans" />Free 2 months with Yearly plans</td></tr><tr><td><select name="os0">
-                            <option value="Monthly">Monthly : $58.00 USD - monthly</option>
-                            <option value="Yearly">Yearly : $580.00 USD - yearly</option>
-                          </select> </td></tr>
+                          <tbody>
+                            <tr><td><input type="hidden" name="on0" value="Free 2 months with Yearly plans" />Free 2 months with Yearly plans</td></tr><tr><td><select name="os0">
+                              <option value="Monthly">Monthly : $58.00 USD - monthly</option>
+                              <option value="Yearly">Yearly : $580.00 USD - yearly</option>
+                            </select> </td></tr>
+                          </tbody>
                         </table>
                         <input type="hidden" name="currency_code" value="USD" />
                         <input type="image" className="paypal" src={Paypal}  name="submit" alt="PayPal – The safer, easier way to pay online!" />
@@ -87,10 +89,12 @@ class WebsiteSignupPayment extends Component  {
                         <input type="hidden" name="cmd" value="_s-xclick" />
                         <input type="hidden" name="hosted_button_id" value="NP5H7NNVU9XXL" />
                         <table>
-                          <tr><td><input type="hidden" name="on0" value="Free 2 months with Yearly plans" />Free 2 months with Yearly plans</td></tr><tr><td><select name="os0">
-                            <option value="Monthly">Monthly : $87.00 USD - monthly</option>
-                            <option value="Yearly">Yearly : $870.00 USD - yearly</option>
-                          </select> </td></tr>
+                          <tbody>
+                            <tr><td><input type="hidden" name="on0" value="Free 2 months with Yearly plans" />Free 2 months with Yearly plans</td></tr><tr><td><select name="os0">
+                              <option value="Monthly">Monthly : $87.00 USD - monthly</option>
+                              <option value="Yearly">Yearly : $870.00 USD - yearly</option>
+                            </select> </td></tr>
+                          </tbody>
                         </table>
                         <input type="hidden" name="currency_code" value="USD" />
                         <input type="image" className="paypal" src={Paypal} name="submit" alt="PayPal – The safer, easier way to pay online!" />
