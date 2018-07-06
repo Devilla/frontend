@@ -1,8 +1,16 @@
+.websitefooter-container {
+    background-color:#fafafa !important;
+    .footer__lower {
+        background-color: #fff !important;
+    }
+}
+
 @media only screen and (max-width:574px) {
     .websitefooter-container {
         & .footer__upper {
             display: none;
         }
+        
     }
 }
 
