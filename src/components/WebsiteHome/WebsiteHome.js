@@ -146,7 +146,7 @@ class WebsiteHome extends Component {
                 <div className="col-md-6 my-auto">
                   <div className="features-text switchable__text">
                     <h3>Recent user activity</h3>
-                    <p className="lead"> You can show your recent user activity to all your visitors and push to buy sign up more for your offerings </p> <Link to="/signup">Try Now »</Link>
+                    <p className="lead"> You can show your recent user activity to all your visitors and push to buy sign up more for your offerings </p> <Link to="/signup">Start my FREE trial »</Link>
                   </div>
                 </div>
                 <div className="col-md-6 col-lg-6 col-12 text-center">
@@ -169,7 +169,7 @@ class WebsiteHome extends Component {
                 <div className="col-md-6 my-auto">
                   <div className="features-text switchable__text">
                     <h3>Live users activity</h3>
-                    <p className="lead"> Show your visitors how many live people are seeing your offerings and influence them to buy from you <br /></p> <Link to="/signup">Try Now »</Link>
+                    <p className="lead"> Show your visitors how many live people are seeing your offerings and influence them to buy from you <br /></p> <Link to="/signup">Strat my FREE trial »</Link>
                   </div>
                 </div>
                 <div className="col-md-6 col-lg-6 col-12 text-center">
@@ -191,7 +191,7 @@ class WebsiteHome extends Component {
                 <div className="col-md-6 my-auto">
                   <div className="features-text switchable__text">
                     <h3>Group activity</h3>
-                    <p className="lead">Show overall number of people that have signed up on your website <br /></p> <Link to="/signup">Try Now »</Link>
+                    <p className="lead">Show overall number of people that have signed up on your website <br /></p> <Link to="/signup">Start my FREE trial »</Link>
                   </div>
                 </div>
                 <div className="col-md-6 col-lg-6 col-12 text-center">
