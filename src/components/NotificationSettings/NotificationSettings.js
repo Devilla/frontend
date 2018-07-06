@@ -58,7 +58,6 @@ class Notifications extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      // notification: '',
       configuration: {},
       activity: true,
       notificationPanelStyle: notificationPanelStyleDefault,
