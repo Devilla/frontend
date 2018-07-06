@@ -40,7 +40,8 @@ class NewCampaignContainer extends Component {
       activeClass: 1,
       loaderActive: false,
       sampleDisplay: false,
-      notification: ''
+      notification: '',
+      displayWebhookIntegration: false
     };
   }
 
@@ -105,7 +106,7 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
   showNotification = () => {
     this.setState({sampleDisplay: !this.state.sampleDisplay});
   }
-  
+
   setNotification = (notification) => {
     this.setState({notification: notification});
   }
@@ -158,20 +159,26 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
     });
   }
 
+  toggleWebhook = () => {
+    this.setState({displayWebhookIntegration: !this.state.displayWebhookIntegration});
+  }
+
   render() {
     const errors = validate(this.state.campaignname, this.state.website);
     const isDisabled = Object.keys(errors).some(x => errors[x]);
-    const { activeClass, loaderActive, notification, sampleDisplay } = this.state;
+    const { activeClass, loaderActive, notification, sampleDisplay, displayWebhookIntegration } = this.state;
     return (
       <div>
         {this.props.campaign && Object.keys(this.props.campaign).length !== 0 && this.props.campaign.constructor === Object?
           <CampaignSettings
+            displayWebhookIntegration={displayWebhookIntegration}
             sampleDisplay={sampleDisplay}
             loaderActive={loaderActive}
             activeClass={activeClass}
             notification={notification}
             showNotification={this.showNotification}
             goLive={this.goLive}
+            toggleWebhook={this.toggleWebhook}
             verifyPixelStatus={this.verifyPixelStatus}
             handlePixelCopy={this.handlePixelCopy}
             setActiveState={this.setActiveState}

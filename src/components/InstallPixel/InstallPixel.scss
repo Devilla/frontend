@@ -20,5 +20,20 @@
     &.float-left > button {
       width: 30%;
     }
+    &.integration > button {
+      width: 100%;
+    }
   }
+  .webhooks-container {
+    padding: 5% 0%;
+    .webhooks-types {
+      a {
+        padding: .375rem 5%;
+        margin: 0% 2%;
+      }
+    }
+  }
+}
+.mm-popup__btn--save-webhook {
+  width: 100%
 }
