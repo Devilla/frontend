@@ -24,15 +24,15 @@ class Integration extends Component {
     };
   }
 
-  componentWillMount() {
-    window.scrollTo(0,0);
+  componentDidMount() {
+    let scrollElm = document.scrollingElement;
+    scrollElm.scrollTop = 0;
   }
-
 
   channelsList = () => {
     return (
       <div>
-        <Row className="justify-content-around mb-5">
+        <Row className="justify-content-center mb-5">
           <Col md={3}  className="bx-shadow">
             <div className="card-box tilebox-one">
               <img src={Facebook} className="logocompany" />
@@ -55,7 +55,7 @@ class Integration extends Component {
             </div>
           </Col>
         </Row>
-        <Row className="justify-content-around mb-5">
+        <Row className="justify-content-center mb-5">
           <Col md={3}  className="bx-shadow">
             <div className="card-box tilebox-one">
               <img src={TrustPilot} className="logocompany" />
@@ -78,7 +78,7 @@ class Integration extends Component {
             </div>
           </Col>
         </Row>
-        <Row className="justify-content-around mb-5">
+        <Row className="justify-content-center mb-5">
           <Col md={3}  className="bx-shadow">
             <div className="card-box tilebox-one">
               <img src={TrustRadius} className="logocompany" />

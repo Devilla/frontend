@@ -1,0 +1,21 @@
+@media only screen and (max-width:574px) {
+    .websitefooter-container {
+        & .footer__upper {
+            display: none;
+        }
+    }
+}
+
+@media only screen and (max-width: 766px) {
+    .websitefooter-container {
+        .foo-t1,
+        .foo-t2,
+        .foo-t3 {
+            font-weight: 900 !important;
+        }
+        .foot3,
+        .foot4 {
+            margin-top: 50px !important;
+        }
+    }
+}

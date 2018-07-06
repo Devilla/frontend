@@ -55,10 +55,11 @@ class Dashboard extends Component {
         data: [0, 0, 0, 0, 0, 0, 0]
       };
       this.props.campaignInfo.uniqueUsers.map(user => {
-        user.aggregations.users.buckets.map(bucket => {
+        console.log(user);
+        (user && user.aggregations) ? user.aggregations.users.buckets.map(bucket => {
           dataContent['label'] = Moment(bucket.key_as_string).format('LL');
           dataContent['data'][Moment(bucket.key_as_string).day()] = bucket.visitors.sum_other_doc_count;
-        });
+        }) : '';
         dataSet.push(dataContent);
       });
       return dataSet;

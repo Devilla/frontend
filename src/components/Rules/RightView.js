@@ -36,7 +36,7 @@ const RightView = ({
         </li>
         <li className="mt-4 pt-2">
           <label  className="text-muted">
-            Delay between subsequent notifications(seconds)  
+            Delay between subsequent notifications(seconds)
           </label>
           <input
             type="number"

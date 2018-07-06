@@ -60,6 +60,7 @@ class AffiliateRegister extends Component {
     };
     this.props.affiliate(data);
     this.props.clearAffiliateError();
+    this.props.affiliateError();
     this.setState({name: '', email: '', emailError: ''});
 
     if (!toast.isActive(this.toastId)) {
@@ -135,6 +136,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
   affiliate,
+  affiliateError: '',
   clearAffiliateError
 };
 
