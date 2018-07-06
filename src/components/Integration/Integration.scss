@@ -38,13 +38,28 @@
           margin-left: 20px !important;
         }
         .ontraport {
+          margin-left: -15px !important;
+        }
+        .cfunnel {
           margin-left: -10px !important;
+        }
+        .aweber {
+          margin-left: 10px !important;
+        }
+        .hubspot {
+          margin-left: 15px !important;
+        }
+        .sqspace {
+          margin-left: -10px !important;
+        }
+        .woo {
+          margin-left : -10px !important;
         }
         .bx-shadow {
           position: relative;
           box-shadow: 0px 8px 10px -5px rgba(0, 0, 0, 0.2) !important;
-          border-top-left-radius: 5px;
-          border-top-right-radius: 5px;
+          border-radius: 7px;
+          border-top: 0.1px solid #999;
           margin-right: 15px !important;
           background-color: #fff;
           div {

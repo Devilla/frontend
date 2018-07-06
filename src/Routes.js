@@ -67,7 +67,7 @@ const MyRoutes = ({routerHistory}) => (
     <Route component={App}>
       <Route path="/" component={WebsiteHome} />
       <Route path="/how-it-works" component={WebsiteHowItWorks} />
-      <Route path="/integrations" component={WebsiteIntegrations} />
+      <Route path="/integration" component={WebsiteIntegrations} />
       <Route path="/pricing" component={WebsitePricing} />
       <Route path="/about" component={WebsiteAbout} />
       <Route path="/login" component={WebsiteSignIn} />

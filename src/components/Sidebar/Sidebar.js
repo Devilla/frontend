@@ -56,7 +56,6 @@ class Sidebar extends Component {
                 </button>
               </Link>
             </div>
-
             <ul className="metismenu mt-5" id="side-menu">
               {appRoutes.map((prop, key) => {
                 if (!prop.redirect)

@@ -42,14 +42,14 @@ class Integrations extends Component {
           <Col md={3}  className="bx-shadow">
             <div className="card-box tilebox-one">
               <img src={Aweber} className="logocompany" />
-              <h4 className="text-muted text-uppercase mt-0 ml-2 i-title">Aweber</h4>
+              <h4 className="text-muted text-uppercase mt-0 ml-2 i-title aweber">Aweber</h4>
               <span className="text-muted " onClick={()=>{browserHistory.push('/oauthshow');}}>View Details&nbsp; <i className="fi-open"></i></span>
             </div>
           </Col>
           <Col md={3}  className="bx-shadow">
             <div className="card-box tilebox-one">
               <img src={Clickfunnels} className="logocompany" />
-              <h4 className="text-muted text-uppercase mt-0 ml-3 i-title">Clickfunnels</h4>
+              <h4 className="text-muted text-uppercase mt-0 ml-3 i-title click cfunnel">Clickfunnels</h4>
               <span className="text-muted ">View Details&nbsp; <i className="fi-open"></i></span>
             </div>
           </Col>
@@ -65,7 +65,7 @@ class Integrations extends Component {
           <Col md={3}  className="bx-shadow">
             <div className="card-box tilebox-one">
               <img src={Hubspot} className="logocompany" />
-              <h4 className="text-muted text-uppercase mt-0 ml-4 i-title">Hubspot</h4>
+              <h4 className="text-muted text-uppercase mt-0 ml-4 i-title hubspot">Hubspot</h4>
               <span className="text-muted ">View Details&nbsp; <i className="fi-open"></i></span>
             </div>
           </Col>
@@ -102,7 +102,7 @@ class Integrations extends Component {
           <Col md={3}  className="bx-shadow">
             <div className="card-box tilebox-one">
               <img src={Squarespace} className="logocompany" />
-              <h4 className="text-muted text-uppercase mt-0 i-title">Squarespace</h4>
+              <h4 className="text-muted text-uppercase mt-0 i-title sqspace">Squarespace</h4>
               <span className="text-muted">View Details&nbsp; <i className="fi-open"></i></span>
             </div>
           </Col>
