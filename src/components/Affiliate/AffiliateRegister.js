@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { validateEmail } from 'services/FormUtils';
 import { HelpBlock } from 'react-bootstrap';
-import { affiliate, clearAffiliateError } from 'ducks/auth';
+import { affiliate,affiliateError, clearAffiliateError } from 'ducks/auth';
 import { toast,ToastContainer } from 'react-toastify';
 import './affiliateregister.scss';
 
@@ -60,7 +60,7 @@ class AffiliateRegister extends Component {
     };
     this.props.affiliate(data);
     this.props.clearAffiliateError();
-    this.props.affiliateError();
+    this.props.affiliateError(data);
     this.setState({name: '', email: '', emailError: ''});
 
     if (!toast.isActive(this.toastId)) {
@@ -136,7 +136,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
   affiliate,
-  affiliateError: '',
+  affiliateError,
   clearAffiliateError
 };
 
