@@ -76,14 +76,15 @@ class WebsitePolicy extends Component {
           className: 'danger',
           action: function () {
             this.handleCountrySelect;
-            //Popup.close();
           }
         }],
         right: [ {
           text: 'Save',
           className: 'success',
           action: function () {
-            that.handleCountrySelect; //hanldes the selected country
+            that.handleCountrySelect;
+
+            //hanldes the selected country
             Popup.create({
               title: 'Own Your Personal Data',
               content: <div className="popupcontainer row ">

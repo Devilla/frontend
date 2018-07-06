@@ -10,7 +10,6 @@ export const FETCH_USER_SUCCESS = action('FETCH_USER_SUCCESS');
 export const FETCH_ROLES_SUCCESS = action('FETCH_ROLES_SUCCESS');
 export const UPDATE_USER = action('UPDATE_USER');
 
-
 export const GDPR_FORM = action('GDPR_FORM');
 export const GDPR_FORM_ERROR = action('GDPR_FORM_ERROR');
 
