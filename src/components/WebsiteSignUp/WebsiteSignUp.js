@@ -40,7 +40,8 @@ class WebsiteSignUp extends Component {
       error: '',
       fm1: true,
       fm2: false,
-      fm3: false
+      fm3: false,
+      planSelected: ''
     };
     this.handleCheckChange=  this.handleCheckChange.bind(this);
   }
@@ -127,22 +128,21 @@ class WebsiteSignUp extends Component {
       fm2: !prevState.fm2
     }));
   }
-  b2StepHandler = () => {
+  b2StepHandler = (planName) => {
     this.setState( prevState => ({
       fm2: !prevState.fm2,
-      fm3: !prevState.fm3
+      fm3: !prevState.fm3,
+      planSelected : planName
     }));
   }
 
-  handleCheckChange() {
-  
-    //handle to check the change for the pricing button selection ; PASS IN EVENT 
-    this.b2StepHandler();
+  handleCheckChange(planName) {
+    this.b2StepHandler(planName);
 
   }
 
   render() {
-    const { email, isRegistered, error, errorEmail, isPasswordShown, errorPassword,fm1,fm2,fm3} = this.state;
+    const { email, isRegistered, error, errorEmail, isPasswordShown, errorPassword,fm1,fm2,fm3 ,planSelected} = this.state;
    
     // if registered show 'check mail' message else show the registration form
     const formContent = isRegistered
@@ -254,7 +254,7 @@ class WebsiteSignUp extends Component {
                   />
                 }
                 {fm3 && 
-                  <WebsiteSignupPayment />
+                  <WebsiteSignupPayment planName={planSelected}/>
                 }
               </div>
             </section>
