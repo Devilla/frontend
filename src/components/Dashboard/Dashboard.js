@@ -55,7 +55,6 @@ class Dashboard extends Component {
         data: [0, 0, 0, 0, 0, 0, 0]
       };
       this.props.campaignInfo.uniqueUsers.map(user => {
-        console.log(user);
         (user && user.aggregations) ? user.aggregations.users.buckets.map(bucket => {
           dataContent['label'] = Moment(bucket.key_as_string).format('LL');
           dataContent['data'][Moment(bucket.key_as_string).day()] = bucket.visitors.sum_other_doc_count;
@@ -289,7 +288,7 @@ class Dashboard extends Component {
                         statsIcon="fa fa-history"
                         id="chartHours"
                         stats="Updated 3 minutes ago"
-                      
+
                         content={
                           <div className="ct-chart canvas-brdr">
                             <LineChart data={chartData} options={chartOptions} height="250" redraw />

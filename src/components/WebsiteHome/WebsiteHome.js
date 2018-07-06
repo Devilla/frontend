@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import Slider from 'react-slick';
-import NotificationView from '../Rules/NotificationView';
+import NotificationView from './NotificationView';
 import './WebsiteHome.scss';
 
 import {
@@ -17,12 +17,64 @@ import {
 import { browserHistory } from 'react-router';
 
 class WebsiteHome extends Component {
+
   constructor() {
     super();
     this.state = {
-      email: ''
+      email: '',
+      notificationPanelStyle :{ // TODO: Take style values from server
+        radius: 5,
+        borderWidth: 0,
+        borderColor: {
+          r: 200,
+          g: 200,
+          b: 200,
+          a: 0.80
+        },
+        shadow: {
+          r: 0,
+          g: 0,
+          b: 0,
+          color: 'lightgrey'
+        },
+        blur: 0,
+        color: {
+          r: 0,
+          g: 149,
+          b: 247,
+          a: 1
+        },
+        linkColor: {
+          r: 0,
+          g: 137,
+          b: 216,
+          a: 1
+        },
+        backgroundColor: {
+          r: 255,
+          g: 255,
+          b: 255,
+          a: 1
+        },
+        fontFamily: 'inherit',
+        fontWeight: 'normal',
+        linkFontFamily: 'inherit',
+        linkFontWeight: 'normal',
+        selectDurationData: 'hours',
+        selectLastDisplayConversation: 'hours',
+        bulkData: 5,
+        liveVisitorCount: 0,
+        recentNumber: 5,
+        recentConv: 5,
+        hideAnonymousConversion: true,
+        onlyDisplayNotification: false,
+        visitorText: ' people '
+      }
     };
+
+
   }
+
 
 
   componentDidMount() {
@@ -94,15 +146,17 @@ class WebsiteHome extends Component {
                 <div className="col-md-6 my-auto">
                   <div className="features-text switchable__text">
                     <h3>Recent user activity</h3>
-                    <p className="lead"> You can show your recent user activity to all your visitors and push to buy sign up more for your offerings </p> <Link to="/">Learn More »</Link>
+                    <p className="lead"> You can show your recent user activity to all your visitors and push to buy sign up more for your offerings </p> <Link to="/signup">Try Now »</Link>
                   </div>
                 </div>
                 <div className="col-md-6 col-lg-6 col-12 text-center">
                   <div className="mainImg">
                     <img alt="Swivelscreen" src={Swivelscreen} />
                     <Slider {...settings} className="im1">
-                      <NotificationView animation='' display='block' position=''/>
+                      <div><NotificationView tab='1' animation='' display='block' position='' notificationPanelStyle={this.state.notificationPanelStyle}/></div>
+                      <div><NotificationView tab='1.1' animation='' display='block' position='' notificationPanelStyle={this.state.notificationPanelStyle}/></div>
                     </Slider>
+
 
                   </div>
                 </div>
@@ -115,7 +169,7 @@ class WebsiteHome extends Component {
                 <div className="col-md-6 my-auto">
                   <div className="features-text switchable__text">
                     <h3>Live users activity</h3>
-                    <p className="lead"> Show your visitors how many live people are seeing your offerings and influence them to buy from you <br /></p> <Link to="/">Learn More »</Link>
+                    <p className="lead"> Show your visitors how many live people are seeing your offerings and influence them to buy from you <br /></p> <Link to="/signup">Try Now »</Link>
                   </div>
                 </div>
                 <div className="col-md-6 col-lg-6 col-12 text-center">
@@ -123,9 +177,9 @@ class WebsiteHome extends Component {
                     <img alt="Swivelscreen" src={Swivelscreen} />
 
                     <Slider {...settings} className="im1">
-                      <NotificationView animation='' display='block' position=''/>
+                      <div><NotificationView tab='2' animation='' display='block' position='' notificationPanelStyle={this.state.notificationPanelStyle}/></div>
+                      <div><NotificationView tab='2.1' animation='' display='block' position='' notificationPanelStyle={this.state.notificationPanelStyle}/></div>
                     </Slider>
-
                   </div>
                 </div>
               </div>
@@ -137,7 +191,7 @@ class WebsiteHome extends Component {
                 <div className="col-md-6 my-auto">
                   <div className="features-text switchable__text">
                     <h3>Group activity</h3>
-                    <p className="lead">Show overall number of people that have signed up on your website <br /></p> <Link to="/">Learn More »</Link>
+                    <p className="lead">Show overall number of people that have signed up on your website <br /></p> <Link to="/signup">Try Now »</Link>
                   </div>
                 </div>
                 <div className="col-md-6 col-lg-6 col-12 text-center">
@@ -145,7 +199,8 @@ class WebsiteHome extends Component {
                     <img alt="Swivelscreen" src={Swivelscreen} />
 
                     <Slider {...settings} className="im1">
-                      <NotificationView animation='' display='block' position=''/>
+                      <div><NotificationView tab='3' animation='' display='block' position='' notificationPanelStyle={this.state.notificationPanelStyle}/></div>
+                      <div><NotificationView tab='3.1' animation='' display='block' position='' notificationPanelStyle={this.state.notificationPanelStyle}/></div>
                     </Slider>
 
                   </div>
