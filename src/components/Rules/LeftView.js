@@ -21,7 +21,7 @@ const LeftView = ({
       <ul className="text-muted text-left list-unstyled ">
 
         <li className="m-t-5">
-          <label  className="text-muted">
+          <label className="text-muted">
             Select Pop-in Animation
           </label>
           <select className="form-control muted-text" value={popupAnimationIn} onChange={(e) => { handleStateChange('popupAnimationIn', e.target.value); handleAnimation(e.target.value); }}>
@@ -73,7 +73,7 @@ const LeftView = ({
         <li className="ml-1 mt-4">
           <div className="checkbox checkbox-info">
             <input id="checkbox6b1" type="checkbox" checked={hideNotification} onChange={(e) => handleStateChange('hideNotification', e.target.checked)} />
-            <label   htmlFor="checkbox6b1" className="text-muted">
+            <label htmlFor="checkbox6b1" className="text-muted">
               Hide notifications on mobile
             </label>
           </div>
@@ -82,22 +82,22 @@ const LeftView = ({
           <div className="checkbox checkbox-info">
             <input id="checkbox6b2" type="checkbox" checked={loopNotification} onChange={(e) => handleStateChange('loopNotification', e.target.checked)} />
             <label htmlFor="checkbox6b2" className="text-muted">
-              Loop notifications
+              Loop notifications    <i className="fa fa-info-circle" data-toggle="tooltip" title="Notification will run continously."> </i>
             </label>
           </div>
         </li>
         <li className="ml-1 mt-4">
           <div className="checkbox checkbox-info">
             <input id="checkbox6b3" type="checkbox" checked={delayNotification} onChange={(e) => handleStateChange('delayNotification', e.target.checked)} />
-            <label  htmlFor="checkbox6b3" className="text-muted">
-               Randomize delay between  notifications
+            <label htmlFor="checkbox6b3" className="text-muted">
+               Randomize delay between  notifications     <i className="fa fa-info-circle" data-toggle="tooltip" title="Delay time between subsequent notification'll not be constant."> </i>
             </label>
           </div>
         </li>
         <li className="ml-1 mt-4">
           <div className="checkbox checkbox-info">
             <input id="checkbox6b4" type="checkbox" checked={closeNotification} onChange={(e) => handleStateChange('closeNotification', e.target.checked)} />
-            <label  htmlFor="checkbox6b4" className="text-muted">
+            <label htmlFor="checkbox6b4" className="text-muted">
               Allow users to close notifications
             </label>
           </div>

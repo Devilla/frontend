@@ -13,16 +13,22 @@
              font-size: 16px !important;
 
           }
-     
-          .socio-link {
-              margin-top: 0px !important;
+          .vristrue {
+              margin-left: 50px;
+              position: relative;
+              top: 190px;
           }
+       
           input {
             font-family: Verdana, Geneva, Tahoma, sans-serif;
             &::placeholder {
                 font-size: 14px !important;
               }
         }
+        .loginfrm {
+            margin-top: 0px;
+        }
+  
     }
 
 }

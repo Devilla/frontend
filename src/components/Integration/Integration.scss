@@ -8,10 +8,10 @@
         }
         .logocompany {
           position: absolute;
-          top: 10%;
-          left: 37%;
+          top: 20%; 
+          left: 40%;
           min-width: 50px;
-          max-height: 50px;
+          max-height: 40px;
         }
         .channel-title {
           background-color: #8E8E8E;
@@ -31,14 +31,36 @@
           h4 {
             position: absolute;
             bottom: 100px;
-            left: 30%;
+            left: 35%;
           }
+        }
+        .demio {
+          margin-left: 20px !important;
+        }
+        .ontraport {
+          margin-left: -15px !important;
+        }
+        .cfunnel {
+          margin-left: -10px !important;
+        }
+        .aweber {
+          margin-left: 10px !important;
+        }
+        .hubspot {
+          margin-left: 15px !important;
+        }
+        .sqspace {
+          margin-left: -10px !important;
+        }
+        .woo {
+          margin-left : -10px !important;
         }
         .bx-shadow {
           position: relative;
           box-shadow: 0px 8px 10px -5px rgba(0, 0, 0, 0.2) !important;
-          border-top-left-radius: 5px;
-          border-top-right-radius: 5px;
+          border-radius: 7px;
+          border: 0.1px solid rgb(230, 229, 229);
+          margin-right: 15px !important;
           background-color: #fff;
           div {
             padding-left: 10px;
@@ -47,8 +69,9 @@
             span {
               position: absolute;
               bottom: 50px;
-              left: 30%;
+              left: 35%;
               border-radius: 5px;
+              cursor: pointer;
               & .fi-open {
                 font-size: 15px;
               }
@@ -74,6 +97,7 @@
         font-size: 14px !important;
         font-weight: 700 !important;
         margin-top: 25px !important;
+        margin: 0 auto !important;
         margin-bottom: 5px !important;
         color: #2C3B48 !important;
         text-transform: uppercase !important;

@@ -30,7 +30,7 @@ class WebsiteFooter extends Component {
                     <li className="type--uppercase col-sm-12 col-md-12 h6"><Link to="/login"> Login (Already a user?) </Link></li>
                     <li className="type--uppercase col-sm-12 col-md-12 h6"><Link to="/demopage"> SCHEDULE A DEMO </Link></li>
                     <li className="type--uppercase col-sm-12 col-md-12 h6"><Link to="/featurepage">Features</Link></li>
-                    <li className="type--uppercase col-sm-12 col-md-12 h6"> <Link to="/integrations">INTEGRATIONS</Link> </li>
+                    <li className="type--uppercase col-sm-12 col-md-12 h6"> <Link to="/integration">INTEGRATIONS</Link> </li>
                   </ul>
                 </div>
               

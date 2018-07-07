@@ -26,15 +26,7 @@ class WebsitePolicy extends Component {
     fetch('https://raw.githubusercontent.com/sagarshirbhate/Country-State-City-Database/master/Contries.json')
       .then(res => res.json())
       .then(res => this.setState({countryList : res.Countries}));
-    this.randomCodeGenerate();
-
   }
-
-  randomCodeGenerate = () =>{
-    this.state.random = Math.floor(Math.random()*(+999999 - +111111) + +111111);
-    console.log('Random Number Generated : ' + this.state.random,'==========================' );
-  }
-
 
 
   getCountryRows = () => {
@@ -84,14 +76,15 @@ class WebsitePolicy extends Component {
           className: 'danger',
           action: function () {
             this.handleCountrySelect;
-            //Popup.close();
           }
         }],
         right: [ {
           text: 'Save',
           className: 'success',
           action: function () {
-            that.handleCountrySelect; //hanldes the selected country
+            that.handleCountrySelect;
+
+            //hanldes the selected country
             Popup.create({
               title: 'Own Your Personal Data',
               content: <div className="popupcontainer row ">

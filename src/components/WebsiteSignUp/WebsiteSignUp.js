@@ -152,12 +152,12 @@ class WebsiteSignUp extends Component {
       : (
         <div className="signup-container">
           <div className='main-container'>
-            <section className='bg--secondary'>
+            <section className="bg">
               <div className='container text-center'>
                 {fm1 &&
                 <div>
                   <h2 className="text-center btn" disabled  > STEP 1</h2>
-                  <p className="signuptitle"> &nbsp;&nbsp;Your first step towards conversions.</p>
+                  <p className="signuptitle"> &nbsp;&nbsp;Start Conversions!</p>
                 
                   <div className='row signuprow give-center-align'>
                     <div className='col-sm-12 col-md-7 col-lg-6 '>

@@ -20,5 +20,28 @@
     &.float-left > button {
       width: 30%;
     }
+    &.integration > button {
+      width: 100%;
+    }
   }
+  .webhooks-container {
+    padding: 5% 0%;
+    .webhooks-types {
+      button {
+        margin: 0 2% 0 0 !important;
+      }
+    }
+    .custom-pointer {
+      cursor: pointer;
+    }
+    .form-control[readonly] {
+      background-color: white;
+    }
+    .mdi-content-copy:before {
+      font-size: large;
+    }
+  }
+}
+.mm-popup__btn--save-webhook {
+  width: 100%
 }

@@ -1,4 +1,5 @@
 .websiteheader-container {
+
     .signupbtn {
         background-color: #097fff !important;
     }
@@ -12,9 +13,19 @@
   .mainlogo {
       position : absolute;
       left: 110px;
-      z-index: 999999999999;
+      z-index: 99;
   }
 }
+
+.sticky {
+    position: fixed;
+    top: 0px;
+    box-shadow: 0px 10px 10px -12px #999;
+    z-index: 9999;
+    background: #fff;
+    width: 100%;
+}
+
 
 @media only screen and (max-width: 1198px) {
     .websiteheader-container {
@@ -29,32 +40,86 @@
         }
     }
 }
-
-@media only screen and (max-width: 992px) {
+@media only screen and (max-width: 1024px) {
     .websiteheader-container {
+       
+        .links {
+            margin: 0 0 3px 0 !important;
+            li { 
+                margin: 0px !important;
+                font-size: 14px;
+            }
+        }
+        .btns{
+            position: relative;
+            right: 20px;
+        }
         .loginbtn , .signupbtn {
             width: 100px ;
-            position: relative;
-            left: -330px;
             height: 35px ;
             font-size: 12px !important;
         }
-        .nav-content {
-            position: relative;
-            left: 300px;
-            .nav-content-links {
-                position: absolute;
-                right: -130px;
-                font-size: 15px;
-            }
+        .mainlogo {
+            left: 80px;
+            top: 15px;
+            width: 180px;
         }
     }
 }
+@media only screen and (max-width: 992px) {
+    .websiteheader-container {
 
+ 
+        .nav-content {
+            position: relative;
+            .links {
+                width: 400px !important;
+            }
+            .btns { 
+                position: absolute;
+                right: 100px;
+                top: 5px;
+            }
+            position: relative;
+            left: 150px;
+        }
+    }
+}
+@media only screen and (max-width: 990px) {
+    .websiteheader-container {
+
+        .links {
+           width: 300px !important;
+           margin-left: 90px !important;
+         li {
+            font-size: 13px !important;
+         }
+           
+    }
+    .mainlogo {
+        width:  150px !important;
+        position: absolute;
+        top: 22px;
+    }
+    
+}
+}
 
 
 @media only screen and (max-width:767px) {
     .websiteheader-container {
+        .links {
+            margin: 0 auto !important;
+            width: 200px;
+          
+        }
+        .btns { 
+            position: relative !important;
+            top: 10px !important;
+            left: 30%;
+            width: 200px;
+           
+        }
         .nav-content {
             position: relative;
             left: 0px;
@@ -87,10 +152,11 @@
             display: block;
             font-size: 30px;
             position: absolute;
-            right: 50px;
+            right: 20px;
             top: 35px;
             z-index: 999;
             cursor: pointer;
+            
   
     }
     .customtoggleclass {    
@@ -106,7 +172,7 @@
                 }
                
                 
-                & + nav {
+                & + div {
                     display: block !important;
 
             
@@ -133,8 +199,6 @@
         }
         .loginbtn ,.signupbtn{
             width: 200px;
-            position: relative;
-            left: 28%;
         }
         
         
@@ -148,6 +212,15 @@
             width: 160px !important;
             top: 30px !important;
             position: absolute !important; 
+        }
+        .btns { 
+            position: relative !important;
+            top: 10px !important;
+            left: 25%;
+           
+        }
+        .links {
+            width: 250px !important;
         }
     }
 }

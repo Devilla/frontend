@@ -3,18 +3,24 @@ import './Integration.scss';
 import { Row, Col } from 'react-bootstrap';
 import { browserHistory } from 'react-router';
 import {
-  Facebook,
-  Zendesk,
-  Google,
-  TrustPilot,
-  FourSquare,
-  G2Crowd,
-  TrustRadius,
-  Yelp,
-  BingPlaces } from 'img';
+  Aweber,
+  Clickfunnels,
+  Demio,
+  Hubspot,
+  Instapage,
+  Leadpages,
+  Mailmunch,
+  Ontraport,
+  Squarespace,
+  Thrivecart,
+  Unbounce,
+  Webflow,
+  Woocommerce,
+  Wordpress
+} from 'img';
 
 
-class Integration extends Component {
+class Integrations extends Component {
   constructor() {
     super();
     this.state = {
@@ -35,45 +41,22 @@ class Integration extends Component {
         <Row className="justify-content-center mb-5">
           <Col md={3}  className="bx-shadow">
             <div className="card-box tilebox-one">
-              <img src={Facebook} className="logocompany" />
-              <h4 className="text-muted text-uppercase mt-0 ml-2 i-title">Facebook</h4>
+              <img src={Aweber} className="logocompany" />
+              <h4 className="text-muted text-uppercase mt-0 ml-2 i-title aweber">Aweber</h4>
               <span className="text-muted " onClick={()=>{browserHistory.push('/oauthshow');}}>View Details&nbsp; <i className="fi-open"></i></span>
             </div>
           </Col>
           <Col md={3}  className="bx-shadow">
             <div className="card-box tilebox-one">
-              <img src={Zendesk} className="logocompany" />
-              <h4 className="text-muted text-uppercase mt-0 ml-3 i-title">Zendesk</h4>
+              <img src={Clickfunnels} className="logocompany" />
+              <h4 className="text-muted text-uppercase mt-0 ml-3 i-title click cfunnel">Clickfunnels</h4>
               <span className="text-muted ">View Details&nbsp; <i className="fi-open"></i></span>
             </div>
           </Col>
           <Col md={3}  className="bx-shadow">
             <div className="card-box tilebox-one">
-              <img src={Google} className="logocompany" />
-              <h4 className="text-muted text-uppercase mt-0 ml-3 i-title">Google</h4>
-              <span className="text-muted ">View Details&nbsp; <i className="fi-open"></i></span>
-            </div>
-          </Col>
-        </Row>
-        <Row className="justify-content-center mb-5">
-          <Col md={3}  className="bx-shadow">
-            <div className="card-box tilebox-one">
-              <img src={TrustPilot} className="logocompany" />
-              <h4 className="text-muted text-uppercase mt-0 ml-4 i-title">TrustPilot</h4>
-              <span className="text-muted ">View Details&nbsp; <i className="fi-open"></i></span>
-            </div>
-          </Col>
-          <Col md={3}  className="bx-shadow">
-            <div className="card-box tilebox-one">
-              <img src={FourSquare} className="logocompany" />
-              <h4 className="text-muted text-uppercase mt-0 i-title">FourSquare</h4>
-              <span className="text-muted ">View Details&nbsp; <i className="fi-open"></i></span>
-            </div>
-          </Col>
-          <Col md={3}  className="bx-shadow">
-            <div className="card-box tilebox-one">
-              <img src={G2Crowd} className="logocompany" />
-              <h4 className="text-muted text-uppercase mt-0 ml-3 i-title">G2Crowd</h4>
+              <img src={Demio} className="logocompany" />
+              <h4 className="text-muted text-uppercase mt-0 ml-3 i-title demio">Demio</h4>
               <span className="text-muted ">View Details&nbsp; <i className="fi-open"></i></span>
             </div>
           </Col>
@@ -81,26 +64,90 @@ class Integration extends Component {
         <Row className="justify-content-center mb-5">
           <Col md={3}  className="bx-shadow">
             <div className="card-box tilebox-one">
-              <img src={TrustRadius} className="logocompany" />
-              <h4 className="text-muted text-uppercase mt-0 i-title">TrustRadius</h4>
+              <img src={Hubspot} className="logocompany" />
+              <h4 className="text-muted text-uppercase mt-0 ml-4 i-title hubspot">Hubspot</h4>
               <span className="text-muted ">View Details&nbsp; <i className="fi-open"></i></span>
             </div>
           </Col>
           <Col md={3}  className="bx-shadow">
             <div className="card-box tilebox-one">
-              <img src={Yelp} className="logocompany" />
-              <h4 className="text-muted text-uppercase mt-0 ml-3 pl-3 i-title">Yelp</h4>
+              <img src={Instapage} className="logocompany" />
+              <h4 className="text-muted text-uppercase mt-0 i-title">Instapage</h4>
               <span className="text-muted ">View Details&nbsp; <i className="fi-open"></i></span>
             </div>
           </Col>
           <Col md={3}  className="bx-shadow">
             <div className="card-box tilebox-one">
-              <img src={BingPlaces} className="logocompany" />
-              <h4 className="text-muted text-uppercase mt-0 i-title">Bing Places</h4>
+              <img src={Leadpages} className="logocompany" />
+              <h4 className="text-muted text-uppercase mt-0 ml-3 i-title">Leadpages</h4>
+              <span className="text-muted ">View Details&nbsp; <i className="fi-open"></i></span>
+            </div>
+          </Col>
+        </Row>
+        <Row className="justify-content-center mb-5">
+          <Col md={3}  className="bx-shadow">
+            <div className="card-box tilebox-one">
+              <img src={Mailmunch} className="logocompany" />
+              <h4 className="text-muted text-uppercase mt-0 i-title">Mailmunch</h4>
+              <span className="text-muted ">View Details&nbsp; <i className="fi-open"></i></span>
+            </div>
+          </Col>
+          <Col md={3}  className="bx-shadow">
+            <div className="card-box tilebox-one">
+              <img src={Ontraport} className="logocompany" />
+              <h4 className="text-muted text-uppercase mt-0 ml-3 pl-3 i-title ontraport">Ontraport</h4>
+              <span className="text-muted ">View Details&nbsp; <i className="fi-open"></i></span>
+            </div>
+          </Col>
+          <Col md={3}  className="bx-shadow">
+            <div className="card-box tilebox-one">
+              <img src={Squarespace} className="logocompany" />
+              <h4 className="text-muted text-uppercase mt-0 i-title sqspace">Squarespace</h4>
               <span className="text-muted">View Details&nbsp; <i className="fi-open"></i></span>
             </div>
           </Col>
         </Row>
+        <Row className="justify-content-center mb-5">
+          <Col md={3}  className="bx-shadow">
+            <div className="card-box tilebox-one">
+              <img src={Thrivecart} className="logocompany" />
+              <h4 className="text-muted text-uppercase mt-0 i-title ">Thrivecart</h4>
+              <span className="text-muted">View Details&nbsp; <i className="fi-open"></i></span>
+            </div>
+          </Col>
+      
+          <Col md={3}  className="bx-shadow">
+            <div className="card-box tilebox-one">
+              <img src={Unbounce} className="logocompany" />
+              <h4 className="text-muted text-uppercase mt-0 i-title unbounce">Unbounce</h4>
+              <span className="text-muted">View Details&nbsp; <i className="fi-open"></i></span>
+            </div>
+          </Col>
+          <Col md={3}  className="bx-shadow">
+            <div className="card-box tilebox-one">
+              <img src={Webflow} className="logocompany" />
+              <h4 className="text-muted text-uppercase mt-0 i-title">Webflow</h4>
+              <span className="text-muted">View Details&nbsp; <i className="fi-open"></i></span>
+            </div>
+          </Col>
+        </Row>
+        <Row className="justify-content-center mb-5">          
+          <Col md={3}  className="bx-shadow">
+            <div className="card-box tilebox-one">
+              <img src={Woocommerce} className="logocompany" />
+              <h4 className="text-muted text-uppercase mt-0 i-title">Woocommerce</h4>
+              <span className="text-muted">View Details&nbsp; <i className="fi-open"></i></span>
+            </div>
+          </Col>
+          <Col md={3}  className="bx-shadow">
+            <div className="card-box tilebox-one">
+              <img src={Wordpress} className="logocompany" />
+              <h4 className="text-muted text-uppercase mt-0 i-title">Wordpress</h4>
+              <span className="text-muted">View Details&nbsp; <i className="fi-open"></i></span>
+            </div>
+          </Col>
+        </Row>
+       
       </div>
     );
   }
@@ -138,4 +185,4 @@ class Integration extends Component {
 }
 
 
-export default Integration;
+export default Integrations;
