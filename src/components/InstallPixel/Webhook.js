@@ -72,7 +72,7 @@ class Webhook extends Component {
         <input
           type="text"
           className="form-control"
-          placeholder="Username"
+          placeholder="Webhook Name"
           aria-label="Webhook Name"
           aria-describedby="basic-addon1"
           onChange={(e) => that.setState({webhookName: e.target.value})}

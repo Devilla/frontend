@@ -27,9 +27,8 @@
   .webhooks-container {
     padding: 5% 0%;
     .webhooks-types {
-      a {
-        padding: .375rem 5%;
-        margin: 0% 2%;
+      button {
+        margin: 0 2% 0 0 !important;
       }
     }
     .custom-pointer {
