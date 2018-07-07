@@ -137,7 +137,7 @@ class DashboardChannel extends Component {
             <div className="content">
              
               {this.channelsList()}
-              <button className="btn btn-primary waves-effect mb-5 float-right" onClick={() => {browserHistory.push('/popupreview');}} ><i className="fi-plus"></i>&nbsp;&nbsp;Proceed</button>
+              <button className="btn btn-primary waves-effect mb-5  mt-3 float-right proceedbtn" onClick={() => {browserHistory.push('/popupreview');}} ><i className="fi-plus"></i>&nbsp;&nbsp;Proceed</button>
               <div className="clearfix"></div>
             </div>
         

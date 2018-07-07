@@ -5,8 +5,20 @@ import { Row, Col } from 'react-bootstrap';
 
 
 class PopupReview extends Component {
-  
+  constructor() {
+    super();
+    this.state= {
+      activeClass: 1,
+    };
+  }
+
+
+  setActiveState = (val) => {
+    this.setState({activeClass: val});
+  }
+
   render() {
+    const { activeClass } = this.state;
     return (
       <div>
         <div className="review-container">
@@ -18,11 +30,40 @@ class PopupReview extends Component {
             <div className="content">
               <Row>
                 <Col md={6} sm={12}>
-
+                  <div className="card-box">
+                    {/**popup goes here*/}
+                  </div>
                 </Col>
                 <Col md={6} sm={12}>
+                  <div className="card-box">
+                    <ul className="nav nav-pills navtab-bg nav-justified pull-in new-campaign-tab-pills switch">
+                      <li className="nav-item waves-effect text-center">
+                        <a data-toggle="tab" aria-expanded="true" className={`nav-link ${activeClass == 1?'active pb-3 pt-3':'pb-3 pt-3'}`} onClick={() => this.setActiveState(1)}>
+                          <i className="fi-layers mr-2"></i>Your Channel
+                        </a>
+                      </li>
+                      <li className="nav-item waves-effect">
+                        <a data-toggle="tab" aria-expanded="true" className={`nav-link ${activeClass == 2?'active pb-3 pt-3':'pb-3 pt-3'}`} onClick={() => this.setActiveState(2)}>
+                          <i className="fi-mail mr-2"></i>Settings
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                  <div className="tab-content switch-data">
+                    <div className={`tab-pane ${activeClass == 1?'show active':''}`} id="Channels">
+                      <Row>
+
+                      </Row>
+                    </div>
+                    <div className={`tab-pane ${activeClass == 2?'show active':''}`} id="Settings">
+                      <Row>
+                 
+                      </Row>
+                    </div>
+                  </div>
 
                 </Col>
+
               </Row>
             </div>
           </div>
