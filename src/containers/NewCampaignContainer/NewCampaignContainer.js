@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import { browserHistory } from 'react-router';
 import copy from 'copy-to-clipboard';
 import Popup from 'react-popup';
@@ -197,7 +197,7 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
             {...this.state}
           />
         }
-        <ToastContainer hideProgressBar={true}/>
+        {/* <ToastContainer hideProgressBar={true}/> */}
       </div>
     );
   }

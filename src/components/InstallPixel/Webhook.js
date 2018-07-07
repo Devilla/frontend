@@ -1,9 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Popup from 'react-popup';
+import copy from 'copy-to-clipboard';
+import { toast } from 'react-toastify';
 
 import { fetchWebhook, createWebhook, deleteWebhook, clearWebhook } from 'ducks/webhooks';
 import { updateCampaign } from 'ducks/campaign';
+
+const toastConfig = {
+  position: toast.POSITION.BOTTOM_LEFT,
+  autoClose: 2000
+};
 
 class Webhook extends Component {
   constructor() {
@@ -19,7 +26,8 @@ class Webhook extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if(nextProps.campaign.webookId) {
+    console.log(nextProps, '================>nextProps');
+    if(nextProps.campaign && nextProps.campaign.webookId) {
       this.setState({campaignWebhook: nextProps.campaign.webookId.name});
     }
   }
@@ -32,7 +40,8 @@ class Webhook extends Component {
     this.setState({campaignWebhook: e.target.value});
     this.props.updateCampaign({
       id: this.props.campaign._id,
-      webookId: e.target.value
+      webookId: e.target.value,
+      singleCampaign: true
     });
   }
 
@@ -95,6 +104,13 @@ class Webhook extends Component {
     });
   }
 
+  copyEndpoint = (value) => {
+    copy(value, {
+      debug: true
+    });
+    return toast('Endpoint copied', toastConfig);
+  }
+
   render() {
     const { campaignWebhook, selectHook } = this.state;
     return (
@@ -118,7 +134,23 @@ class Webhook extends Component {
                     <option>{this.props.campaign.webookId?this.props.campaign.webookId.name:null}</option>
                   </select>
                   <div className="input-group-append" onClick={this.clearHook}>
-                    <label className="input-group-text" htmlFor="inputGroupSelect02">Select Different Webhook</label>
+                    <label className="input-group-text custom-pointer" htmlFor="inputGroupSelect02">Select Different Webhook</label>
+                  </div>
+                </div>
+                <div className="input-group mb-3">
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="Webhook Endpoint"
+                    aria-label="Webhook Endpoint"
+                    aria-describedby="basic-addon2"
+                    value={this.props.campaign.webookId?this.props.campaign.webookId.endpoint:null}
+                    readOnly
+                  />
+                  <div className="input-group-append">
+                    <button className="btn btn-outline-secondary" type="button" onClick={() => this.copyEndpoint(this.props.campaign.webookId?this.props.campaign.webookId.endpoint:null)}>
+                      <i className="mdi mdi-content-copy"></i>
+                    </button>
                   </div>
                 </div>
               </div>

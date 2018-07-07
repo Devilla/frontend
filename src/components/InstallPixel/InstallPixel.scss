@@ -32,6 +32,15 @@
         margin: 0% 2%;
       }
     }
+    .custom-pointer {
+      cursor: pointer;
+    }
+    .form-control[readonly] {
+      background-color: white;
+    }
+    .mdi-content-copy:before {
+      font-size: large;
+    }
   }
 }
 .mm-popup__btn--save-webhook {

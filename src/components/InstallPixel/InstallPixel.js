@@ -40,6 +40,7 @@ const InstallPixel = ({
       <p className="m-t-30 pb-5">
         <br/>
       </p>
+
       {/* The radio buttons for warning, success */}
       <span className="radio radio-warning ml-2 pr-4">
         <input type="radio" name="radio8" id="radio8" value="option8" defaultChecked/>
@@ -60,10 +61,25 @@ const InstallPixel = ({
         <br/>
       </p>
       <div className="float-left integration mr-0 pr-2">
-        <button type="button" className="btn btn-custom waves-light waves-effect number  pl-3 pr-3" onClick={toggleWebhook}> Webhook Integrations<i className={displayWebhookIntegration?'icon-arrow-up pl-2':'icon-arrow-down pl-2'}></i> </button>
+        <button
+          type="button"
+          className="btn btn-custom waves-light waves-effect number  pl-3 pr-3"
+          onClick={() => { this.toggleDOM.blur(); toggleWebhook(); }}
+          ref={(toggleDOM) => this.toggleDOM = toggleDOM}
+        >
+          Webhook Integrations
+          <i className={displayWebhookIntegration?'icon-arrow-up pl-2':'icon-arrow-down pl-2'}></i>
+        </button>
       </div>
       <div className="float-right mr-0 pr-2">
-        <button type="button" className="btn btn-custom waves-light waves-effect number  pl-3 pr-3" onClick={() => setActiveState(2)}> Next<i className="icon-arrow-right pl-2"></i> </button>
+        <button
+          type="button"
+          className="btn btn-custom waves-light waves-effect number  pl-3 pr-3"
+          onClick={() => setActiveState(2)}
+        >
+          Next
+          <i className="icon-arrow-right pl-2"></i>
+        </button>
       </div>
       <div className="clearfix"></div>
       {displayWebhookIntegration &&
