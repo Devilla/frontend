@@ -1,4 +1,4 @@
-.dashboard-container {
+.integration-container {
     .channel-container {
       padding-bottom: 100px;
       .channel {
@@ -8,8 +8,8 @@
         }
         .logocompany {
           position: absolute;
-          top: 20%; 
-          left: 40%;
+          top: 80px !important;
+          left: 120px !important;
           min-width: 50px;
           max-height: 40px;
         }
@@ -103,13 +103,14 @@
         text-transform: uppercase !important;
       }
     }
+    @keyframes box {
+      0% {
+        top: 0px;
+      }
+      100% {
+        top: 10px;
+      }
+    }
+  
   }
 
-  @keyframes box {
-    0% {
-      top: 0px;
-    }
-    100% {
-      top: 10px;
-    }
-  }
