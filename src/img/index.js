@@ -67,11 +67,22 @@ export { default as Webflow }  from  './webflow.png';
 export { default as Woocommerce }  from  './woocommerce.png';
 export { default as Wordpress } from './wordpress.png';
 
+//Channel review
+export { default as Facebook } from './fb.png';
+export { default as Zendesk } from './zendesk.png';
+export { default as Google } from './google.png';
+export { default as TrustPilot } from './trustpilot.png';
+export { default as FourSquare } from './foursquare.png';
+export { default as G2Crowd } from './G2crowd.png';
+export { default as TrustRadius } from './trustradius.jpg';
+export { default as Yelp } from './yelp.png';
+export { default as BingPlaces } from './bingplaces.png';
+export { default as Smallpic } from './smallprofile.png';
 
 
 
 
-
+//profile pic small at nav
 export { default as Smallpic } from './smallprofile.png';
 
 
