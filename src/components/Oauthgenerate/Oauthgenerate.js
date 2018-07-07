@@ -94,10 +94,11 @@ class Oauthpage extends Component {
             <Row>
               <Col md={6}>
                 <FormGroup>
-                  <span className="text-muted h6">Name</span>
+                  <span className=" h6">Name</span>
+                  <p className="text-muted "> Enter client's name.</p>
                   <FormControl
                     type="text"
-                    bsClass="form-control ml-3"
+                    bsClass="form-control"
                     id="clientname"
                     placeholder="example: Ray-101, John doe"
                     required={true}
@@ -115,8 +116,8 @@ class Oauthpage extends Component {
             <Row>
               <Col md={6}>
                 <div  className="inner">
-                  <FormGroup className="mb-5">
-                    <span className="text-muted  h6">Authorized javascript origins</span>
+                  <FormGroup >
+                    <span className="  h6">Authorized javascript origins</span>
                     <p className="text-muted "> For use with request from a web browser.</p>
                     <FormControl
                       type="text"
@@ -135,7 +136,7 @@ class Oauthpage extends Component {
                     </HelpBlock>
                   </FormGroup>
                   <FormGroup>
-                    <span className="text-muted h6">Authorized redirect URIs</span>
+                    <span className="h6">Authorized redirect URIs</span>
                     <p className="text-muted "> For use with request from a web server.</p>
                     <FormControl
                       type="text"
