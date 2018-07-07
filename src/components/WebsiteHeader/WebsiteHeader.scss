@@ -23,6 +23,7 @@
     box-shadow: 0px 10px 10px -12px #999;
     z-index: 9999;
     background: #fff;
+    width: 100%;
 }
 
 
@@ -101,6 +102,7 @@
             top: 35px;
             z-index: 999;
             cursor: pointer;
+            
   
     }
     .customtoggleclass {    
@@ -116,7 +118,7 @@
                 }
                
                 
-                & + nav {
+                & + div {
                     display: block !important;
 
             
