@@ -12,6 +12,7 @@ import loading from './loading';
 import configuration from './configuration';
 import elastic from './elastic';
 import pageurl from './pageurl';
+import webhooks from './webhooks';
 
 const reducer = combineReducers({
   profile,
@@ -25,6 +26,7 @@ const reducer = combineReducers({
   configuration,
   elastic,
   pageurl,
+  webhooks,
   router: routerReducer
 });
 
