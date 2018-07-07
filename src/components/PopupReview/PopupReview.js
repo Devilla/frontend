@@ -1,7 +1,8 @@
 import React , { Component } from 'react';
 import './PopupReview.scss';
 import { Row, Col } from 'react-bootstrap';
-
+import Popupsettings from './Popupsettings.js';
+import Channels from  './Channels.js';
 
 
 class PopupReview extends Component {
@@ -52,12 +53,16 @@ class PopupReview extends Component {
                   <div className="tab-content switch-data">
                     <div className={`tab-pane ${activeClass == 1?'show active':''}`} id="Channels">
                       <Row>
-
+                        <Col md={12}>
+                          <Channels />
+                        </Col>
                       </Row>
                     </div>
                     <div className={`tab-pane ${activeClass == 2?'show active':''}`} id="Settings">
                       <Row>
-                 
+                        <Col md={12}>
+                          <Popupsettings />
+                        </Col>
                       </Row>
                     </div>
                   </div>
