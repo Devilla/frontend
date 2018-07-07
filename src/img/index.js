@@ -81,11 +81,6 @@ export { default as Smallpic } from './smallprofile.png';
 
 
 
-
-//profile pic small at nav
-export { default as Smallpic } from './smallprofile.png';
-
-
 // How it works Page Image
 export { default as NewIntegrate } from './new-integrate.svg';
 export { default as NewInstall } from './new-install.svg';
