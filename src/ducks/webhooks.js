@@ -11,7 +11,7 @@ export const FETCH_WEBHOOK_SUCCESS = action('FETCH_WEBHOOK_SUCCESS');
 export const CLEAR_WEBHOOK = action('CLEAR_WEBHOOK');
 
 export const fetchWebhook = (campId) => ({ type: FETCH_WEBHOOK, campId });
-export const fetchOneWebhook = (webhookId) => ({ type: FETCH_WEBHOOK_ONE, webhookId });
+export const fetchOneWebhook = (webhook) => ({ type: FETCH_WEBHOOK_ONE, webhook });
 export const createWebhook = (webhooks) => ({ type: CREATE_WEBHOOK, webhooks });
 export const updateWebhook = (webhooks) => ({ type: UPDATE_WEBHOOK, webhooks });
 export const deleteWebhook = (webhooks) => ({ type: DELETE_WEBHOOK, webhooks });

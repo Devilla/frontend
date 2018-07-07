@@ -28,12 +28,11 @@ function* fetch(action) {
 function* fetchOne(action) {
   try {
     yield put(load());
-    const res = yield call(api.GET, `webhooks/${action.webhookId}`, );
+    const res = yield call(api.GET, `webhooks/${action.webhook}`, );
     if(res.error)
       console.log(res.error);
     else
       yield put(actions.successWebhook(res));
-
     yield put(loaded());
   } catch (error) {
     yield put(loaded());
@@ -48,10 +47,8 @@ function* create(action) {
     const res = yield call(api.POST, 'webhooks', action.webhooks);
     if(res.error)
       console.log(res.error);
-    else {
-      yield put(actions.successWebhook(res));
-    }
-
+    else
+      yield put(actions.fetchWebhook(res.campaign));
     yield put(loaded());
   } catch (error) {
     yield put(loaded());

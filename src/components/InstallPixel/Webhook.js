@@ -27,8 +27,8 @@ class Webhook extends Component {
 
   componentWillReceiveProps(nextProps) {
     console.log(nextProps, '================>nextProps');
-    if(nextProps.campaign && nextProps.campaign.webookId) {
-      this.setState({campaignWebhook: nextProps.campaign.webookId.name});
+    if(nextProps.campaign && nextProps.campaign.webook) {
+      this.setState({campaignWebhook: nextProps.campaign.webook.name});
     }
   }
 
@@ -40,7 +40,7 @@ class Webhook extends Component {
     this.setState({campaignWebhook: e.target.value});
     this.props.updateCampaign({
       id: this.props.campaign._id,
-      webookId: e.target.value,
+      webook: e.target.value,
       singleCampaign: true
     });
   }
@@ -58,7 +58,7 @@ class Webhook extends Component {
       name: webhookName,
       type: selectHook,
       trackingId: campaign.trackingId,
-      campaignId: campaign._id
+      campaign: campaign._id
     };
     this.props.createWebhook(webhook);
   }
@@ -131,7 +131,7 @@ class Webhook extends Component {
               <div>
                 <div className="input-group mb-3">
                   <select className="custom-select" id="inputGroupSelect02" disabled>
-                    <option>{this.props.campaign.webookId?this.props.campaign.webookId.name:null}</option>
+                    <option>{this.props.campaign.webook?this.props.campaign.webook.name:null}</option>
                   </select>
                   <div className="input-group-append" onClick={this.clearHook}>
                     <label className="input-group-text custom-pointer" htmlFor="inputGroupSelect02">Select Different Webhook</label>
@@ -144,11 +144,11 @@ class Webhook extends Component {
                     placeholder="Webhook Endpoint"
                     aria-label="Webhook Endpoint"
                     aria-describedby="basic-addon2"
-                    value={this.props.campaign.webookId?this.props.campaign.webookId.endpoint:null}
+                    value={this.props.campaign.webook?this.props.campaign.webook.endpoint:null}
                     readOnly
                   />
                   <div className="input-group-append">
-                    <button className="btn btn-outline-secondary" type="button" onClick={() => this.copyEndpoint(this.props.campaign.webookId?this.props.campaign.webookId.endpoint:null)}>
+                    <button className="btn btn-outline-secondary" type="button" onClick={() => this.copyEndpoint(this.props.campaign.webook?this.props.campaign.webook.endpoint:null)}>
                       <i className="mdi mdi-content-copy"></i>
                     </button>
                   </div>
