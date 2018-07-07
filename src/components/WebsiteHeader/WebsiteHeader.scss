@@ -1,5 +1,5 @@
 .websiteheader-container {
-    box-shadow: 0px 10px 10px -12px #999;
+
     .signupbtn {
         background-color: #097fff !important;
     }
@@ -13,9 +13,18 @@
   .mainlogo {
       position : absolute;
       left: 110px;
-      z-index: 999999999999;
+      z-index: 99;
   }
 }
+
+.sticky {
+    position: fixed;
+    top: 0px;
+    box-shadow: 0px 10px 10px -12px #999;
+    z-index: 9999;
+    background: #fff;
+}
+
 
 @media only screen and (max-width: 1198px) {
     .websiteheader-container {
