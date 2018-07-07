@@ -49,6 +49,7 @@ function* create(action) {
       console.log(res.error);
     else
       yield put(actions.fetchWebhook(res.campaign));
+    yield toast('Webhook Saved', toastConfig);
     yield put(loaded());
   } catch (error) {
     yield put(loaded());
