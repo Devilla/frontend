@@ -82,7 +82,7 @@ const LeftView = ({
           <div className="checkbox checkbox-info">
             <input id="checkbox6b2" type="checkbox" checked={loopNotification} onChange={(e) => handleStateChange('loopNotification', e.target.checked)} />
             <label htmlFor="checkbox6b2" className="text-muted">
-              Loop notifications
+              Loop notifications    <i className="fa fa-info-circle" data-toggle="tooltip" title="Notification will run continously."> </i>
             </label>
           </div>
         </li>
@@ -90,7 +90,7 @@ const LeftView = ({
           <div className="checkbox checkbox-info">
             <input id="checkbox6b3" type="checkbox" checked={delayNotification} onChange={(e) => handleStateChange('delayNotification', e.target.checked)} />
             <label htmlFor="checkbox6b3" className="text-muted">
-               Randomize delay between  notifications
+               Randomize delay between  notifications     <i className="fa fa-info-circle" data-toggle="tooltip" title="Delay time between subsequent notification'll not be constant."> </i>
             </label>
           </div>
         </li>

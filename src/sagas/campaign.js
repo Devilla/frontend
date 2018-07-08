@@ -4,9 +4,12 @@ import * as actions from 'ducks/campaign';
 import { load, loaded } from 'ducks/loading';
 import { toast } from 'react-toastify';
 
+
+
 const toastConfig = {
   position: toast.POSITION.BOTTOM_LEFT,
-  autoClose: 2000
+  autoClose: 2000,
+  className: 'toast-style'
 };
 
 function* fetch() {

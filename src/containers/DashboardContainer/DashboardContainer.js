@@ -18,7 +18,7 @@ import './animate.min.scss';
 import 'react-select/dist/react-select.css';
 import 'react-popup/style.css';
 import './DashboardContainer.scss';
-
+import './toast.scss';
 
 class DashboardContainer extends Component {
   constructor(props) {
@@ -187,7 +187,7 @@ class DashboardContainer extends Component {
           <div>
             <div className="content-page" >
               <div className="topbar" >
-                <nav className="navbar-custom pr-0">
+                <nav className="navbar-custom pl-0 pr-0">
                   <Header
                     username={user.username}
                     openCloseDropdown={this.openCloseDropdown}

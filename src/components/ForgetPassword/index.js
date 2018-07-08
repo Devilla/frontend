@@ -4,6 +4,7 @@ import {Link} from 'react-router';
 import { Animated } from 'react-animated-css';
 import { forgotPassword, clearForgotPasswordError } from 'ducks/auth';
 import { HelpBlock } from 'react-bootstrap';
+import './index.scss';
 
 function validate(password, authEmail) {
   return {
@@ -63,17 +64,17 @@ class ForgetPassword extends Component {
   }
 
   render() {
-    return (<div>
+    return (<div className="forgetpassword-container">
       <div className="authpage section innerpage">
         <div className="container">
           <div className="wrapper">
             <Animated className="center" animationIn="fadeIn" animationOut="fadeOut" isVisible={true}>
               <form onSubmit={this.handleSubmit.bind(this)} method="POST" data-name="Login Form" className="loginfrm">
-                <h3 className="dashed pb-5 pt-5 h2 text-left">Forgot your password</h3>
+                <h3 className="dashed pt-5 h2 text-center">Forgot your password</h3>
                 <div className="section-divider-line"></div>
-                <div className="row">
-                  <div className="frmcntl pb-2 col-md-7">
-                    <h3 className="pb-3">Enter your email address below and well send you a link to reset your password.</h3>
+                <div className="row justify-content-center">
+                  <div className="frmcntl pb-2 col-md-5">
+                    <h3 className="pb-3 lead">Enter your email address below and well send you a link to reset your password.</h3>
                     <div className="frmcntl pb-4">
                       <input className="field w-input" id="email" name="email" value={this.state.email} onBlur={this.checkEmail.bind(this)} onChange={this.handleEmailChange.bind(this)} placeholder="Email Address" type="email"/>
                       <HelpBlock>
@@ -86,14 +87,9 @@ class ForgetPassword extends Component {
                   </div>
                 </div>
               </form>
-              <div className="row pt-5">
-                <div className="support col-md-7">
-                  <div className="col-md-12">
-                    <h4>Trouble logging in?</h4>
-                    <Link to="/contact">Contact Support</Link>
-                  </div>
-                </div>
-              </div>
+              <span className="row pt-5 support ">
+                    <span className="h5 lead">Trouble logging in? <Link to="/contact">Contact Support</Link></span>
+              </span>
             </Animated>
           </div>
         </div>
