@@ -85,7 +85,7 @@ class PopupReview extends Component {
               <Row>
                 <Col md={6} sm={12}>
                   <div className="card-box">
-                    <div className="justify-content-center mb-2 ">
+                    <div className="justify-content-center mb-2 reviewpopup ">
                       <ReviewPopup tab='1' animation='' display='block' position='' notificationPanelStyle={this.state.notificationPanelStyle}/>
                     </div>
                   

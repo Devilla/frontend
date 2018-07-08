@@ -1,6 +1,6 @@
 import React , { Component } from 'react';
 import './DashboardChannel.scss';
-import { Row, Col } from 'react-bootstrap';
+import {  Col } from 'react-bootstrap';
 import { browserHistory } from 'react-router';
 import {
   Facebook,
@@ -51,16 +51,16 @@ class DashboardChannel extends Component {
 
   channelsList = () => {
     return this.channels.map((channelName,i)=> {
-      return (<div >
-        <Row>
-          <Col md={6}  className="bx-shadow">
-            <img src={this.channelfunc(i)} className="logocompany " />
-            <span className="text-muted text-uppercase mt-0  title">{channelName}</span>
-            <span className="text-muted btn btn-primary waves-effect  btns" onClick={()=>{browserHistory.push('/oauthshow');}}>Connect&nbsp; <i className="fi-open"></i></span>
+      return (
+      
+        <Col md={12}  className="bx-shadow">
+          <img src={this.channelfunc(i)} className="logocompany " />
+          <span className="text-muted text-uppercase mt-0  title">{channelName}</span>
+          <span className="text-muted btn btn-primary waves-effect  btns" onClick={()=>{browserHistory.push('/oauthshow');}}>Connect&nbsp; <i className="fi-open"></i></span>
          
-          </Col>  
-        </Row>
-      </div>);
+        </Col>  
+     
+      );
     });
   }
 
@@ -70,7 +70,7 @@ class DashboardChannel extends Component {
     return (
  
       <div className="dashchannel-container">
-        <button type="button" className="btn btn-info btn-lg addchannel" data-toggle="modal" data-target="#myModal"><i className="fi-plus"></i>&nbsp;Add Channels</button>
+        <button type="button" className="btn btn-info btn-lg addchannel" data-toggle="modal" data-target="#myModal" ><i className="fi-plus"></i>&nbsp;Add Channels</button>
         <div className="modal fade show-modal" id="myModal" role="dialog">
           <div className="modal-dialog">
             <div className="modal-content align-modal">
