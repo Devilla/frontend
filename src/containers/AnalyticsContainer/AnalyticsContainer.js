@@ -176,7 +176,7 @@ class AnalyticsContainer extends Component {
     if(this.props.campaignInfo && this.props.campaignInfo.websiteLive.length)
       return this.props.campaignInfo.websiteLive.map((website, index) => {
         let visitor = 0;
-        website.uniqueUsers?
+        website.uniqueUsers && website.uniqueUsers.aggregations ?
           website.uniqueUsers.aggregations.users.buckets.map(bucket => {
             visitor = visitor + bucket.visitors.sum_other_doc_count;
           })
@@ -184,7 +184,7 @@ class AnalyticsContainer extends Component {
           visitor = 0;
 
         const userDetails = website.signups?website.signups.userDetails:[];
-        const uniqueUsers = website.uniqueUsers?website.uniqueUsers.aggregations.users.buckets:[];
+        const uniqueUsers = website.uniqueUsers && website.uniqueUsers.aggregations ?website.uniqueUsers.aggregations.users.buckets:[];
         return <tr className="table-active analytics-tr" key={index}>
           <th scope="row">{index + 1}</th>
           <td className="text-center">{website.websiteUrl}</td>
@@ -203,7 +203,6 @@ class AnalyticsContainer extends Component {
   }
 
   render() {
-    console.log(this.state.usersList,'============');
     return (
       <div className="analytics-container">
         {!this.state.usersList.length ?

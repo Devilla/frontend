@@ -4,9 +4,12 @@ import * as actions from 'ducks/campaign';
 import { load, loaded } from 'ducks/loading';
 import { toast } from 'react-toastify';
 
+
+
 const toastConfig = {
   position: toast.POSITION.BOTTOM_LEFT,
-  autoClose: 2000
+  autoClose: 2000,
+  className: 'toast-style'
 };
 
 function* fetch() {
@@ -51,9 +54,11 @@ function* update(action) {
     const res = yield call(api.PUT, `campaign/${action.campaign.id}`, action.campaign);
     if(res.error)
       console.log(res.error);
-    else {
+    else if(action.campaign.singleCampaign)
+      yield put(actions.successCampaign(res));
+    else
       yield put(actions.fetchCampaign(action.campaign));
-    }
+
     yield put(loaded());
   } catch (error) {
     yield put(loaded());

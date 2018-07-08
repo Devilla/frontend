@@ -38,7 +38,7 @@ export { default as Profile } from './Profile/Profile';
 export { default as BillingDetails } from './Billing/BillingDetails';
 export { default as UpgradeCard } from './UpgradeCard/UpgradeCard';
 export { default as UpgradePlan } from './UpgradePlan/UpgradePlan';
-export { default as Integration } from './Integration/Integration';
+export { default as Integrations } from './Integration/Integration';
 export { default as Template } from './Template';
 export { default as VerificationPage } from './VerificationPage/VerificationPage';
 export { default as NotificationSettings } from './NotificationSettings/NotificationSettings';
@@ -46,9 +46,17 @@ export { default as Rules } from './Rules/Rules';
 export { default as DisplayPage } from './DisplayPage/DisplayPage';
 export { default as CapturePage } from './CapturePage/CapturePage';
 export { default as InstallPixel } from './InstallPixel/InstallPixel';
+<<<<<<< HEAD
 export { default as DashboardChannel } from './DashboardChannel/DashboardChannel';
 export { default as PopupReview } from './PopupReview/PopupReview';
 export { default as Oauthpage } from './Oauthpage/Oauthpage';
 export { default as Oauthgenerate } from './Oauthgenerate/Oauthgenerate';
+=======
+
+export { default as PopupReview } from './PopupReview/PopupReview';
+export { default as Oauthpage } from './Oauthpage/Oauthpage';
+export { default as Oauthgenerate } from './Oauthgenerate/Oauthgenerate';
+export { default as DashboardChannel  }  from './DashboardChannel/DashboardChannel';
+>>>>>>> 471d9ff4af1409519f2761273808b9d43a03c70f
 
 

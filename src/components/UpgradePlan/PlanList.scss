@@ -1,5 +1,11 @@
-span {
-    &.btn.btn-primary.waves-light.waves-effect.number.ml-2.pl-4.pr-4 {
-        border-radius: 5px;
+.planlist-container {
+    span {
+        &.btn.btn-primary.waves-light.waves-effect.number.ml-2.pl-4.pr-4 {
+            border-radius: 5px;
+        }
     }
+    .plans {
+        margin-right: 100px;
+    }
+
 }

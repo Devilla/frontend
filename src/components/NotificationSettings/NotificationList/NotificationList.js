@@ -94,7 +94,11 @@ const NotificationList = ({ notificationList, configure, handleActivityChange}) 
                 id={'channel+'}
                 type="checkbox"
                 checked={true} // need to chenge this too
+<<<<<<< HEAD
                 //need to add on change event 
+=======
+                readOnly //need to add on change event
+>>>>>>> 471d9ff4af1409519f2761273808b9d43a03c70f
               />
               <label className="tgl-btn" htmlFor={'channel+'}></label>
             </div>
@@ -102,7 +106,11 @@ const NotificationList = ({ notificationList, configure, handleActivityChange}) 
             <button
               type="button"
               className="btn btn-primary m-t-20 btn-rounded btn-bordered waves-effect w-md waves-light"
+<<<<<<< HEAD
               onClick={() => {browserHistory.push('/addchannel');}}
+=======
+              onClick={() => {browserHistory.push('/popupreview');}}
+>>>>>>> 471d9ff4af1409519f2761273808b9d43a03c70f
             >
                 Configure
             </button>

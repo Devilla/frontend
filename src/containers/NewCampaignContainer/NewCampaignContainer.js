@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import { browserHistory } from 'react-router';
 import copy from 'copy-to-clipboard';
 import Popup from 'react-popup';
@@ -17,7 +17,8 @@ import './NewCampaignContainer.scss';
 
 const toastConfig = {
   position: toast.POSITION.BOTTOM_LEFT,
-  autoClose: 2000
+  autoClose: 2000,
+  className: 'toast-style'
 };
 
 function validate(campaignname, website) {
@@ -38,7 +39,10 @@ class NewCampaignContainer extends Component {
       errorName: '',
       errorWebsiteUrl: '',
       activeClass: 1,
-      loaderActive: false
+      loaderActive: false,
+      sampleDisplay: false,
+      notification: '',
+      displayWebhookIntegration: false
     };
   }
 
@@ -74,6 +78,10 @@ class NewCampaignContainer extends Component {
   }
 
   setActiveState = (val) => {
+    if(this.state.sampleDisplay && val != 3)
+      this.setState({sampleDisplay: false});
+    if(val == 2)
+      this.setState({notification: ''});
     this.setState({activeClass: val});
   }
 
@@ -94,6 +102,18 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
     });
 
     return toast('Pixel copied', toastConfig);
+  }
+
+  showNotification = () => {
+    this.setState({sampleDisplay: !this.state.sampleDisplay});
+  }
+
+  setNotification = (notification) => {
+    this.setState({notification: notification});
+  }
+
+  clearNotification = () => {
+    this.setState({notification: ''});
   }
 
   componentWillUnmount() {
@@ -140,19 +160,31 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
     });
   }
 
+  toggleWebhook = () => {
+    this.setState({displayWebhookIntegration: !this.state.displayWebhookIntegration});
+  }
+
   render() {
     const errors = validate(this.state.campaignname, this.state.website);
     const isDisabled = Object.keys(errors).some(x => errors[x]);
+    const { activeClass, loaderActive, notification, sampleDisplay, displayWebhookIntegration } = this.state;
     return (
       <div>
         {this.props.campaign && Object.keys(this.props.campaign).length !== 0 && this.props.campaign.constructor === Object?
           <CampaignSettings
-            loaderActive={this.state.loaderActive}
+            displayWebhookIntegration={displayWebhookIntegration}
+            sampleDisplay={sampleDisplay}
+            loaderActive={loaderActive}
+            activeClass={activeClass}
+            notification={notification}
+            showNotification={this.showNotification}
             goLive={this.goLive}
+            toggleWebhook={this.toggleWebhook}
             verifyPixelStatus={this.verifyPixelStatus}
             handlePixelCopy={this.handlePixelCopy}
-            activeClass={this.state.activeClass}
             setActiveState={this.setActiveState}
+            setNotification={this.setNotification}
+            clearNotification={this.clearNotification}
             {...this.props}
           />
           :
@@ -166,7 +198,7 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
             {...this.state}
           />
         }
-        <ToastContainer hideProgressBar={true}/>
+        {/* <ToastContainer hideProgressBar={true}/> */}
       </div>
     );
   }

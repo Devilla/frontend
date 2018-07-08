@@ -38,8 +38,8 @@ const initialConfig = {
     blur: 0,
     color: {
       r: 0,
-      g: 0,
-      b: 0,
+      g: 149,
+      b: 247,
       a: 1
     },
     linkColor: {
@@ -69,7 +69,18 @@ const initialConfig = {
   },
   visitorText: '',
   contentText: '',
-  notificationUrl: ''
+  notificationUrl: '',
+
+  // Oauth variables
+  clientId: '',
+  clientSecret: '',
+  clientname: '',
+  errorname: '',
+  authorizedOrigin: '',
+  redirectURI: '',
+  errorName: '',
+  errorURI: '',
+  errorAuthorizedOrigin: ''
 };
 
 const initialState = fromJS({

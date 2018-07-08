@@ -22,8 +22,8 @@ const notificationPanelStyleDefault = { // TODO: Take style values from server
   blur: 0,
   color: {
     r: 0,
-    g: 0,
-    b: 0,
+    g: 149,
+    b: 247,
     a: 1
   },
   linkColor: {
@@ -58,7 +58,6 @@ class Notifications extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      notification: '',
       configuration: {},
       activity: true,
       notificationPanelStyle: notificationPanelStyleDefault,
@@ -119,8 +118,9 @@ class Notifications extends Component {
   }
 
   setInitialState = () => {
+    this.props.clearNotification();
     this.setState({
-      notification: '',
+      // notification: '',
       activity: true,
       notificationPanelStyle: notificationPanelStyleDefault,
       contentText: 'Company Name',
@@ -139,7 +139,15 @@ class Notifications extends Component {
     if (!id || typeof activity == 'object')
       return;
     this.setState({ activity: activity });
-    this.saveConfiguration(activity, id, configId);
+    const configure = {
+      activity: activity != undefined && id ? activity : this.state.activity,
+      campaign: this.props.campaign._id
+    };
+    let configuration = this.props.configuration.size == 0 ? null : this.props.configuration.size ? this.props.configuration.toJS() : this.props.configuration;
+    if ((configuration && configuration._id) || configId) {
+      configure['id'] = configId ? configId : configuration._id;
+      return this.props.updateConfiguration(configure);
+    }
   }
 
   handleNotificationStyleChange = style => {
@@ -157,24 +165,27 @@ class Notifications extends Component {
   }
 
   handleNextState = () => {
-    this.setState({notification: ''});
+    // this.setState({notification: ''});
+    this.props.clearNotification();
     this.props.setActiveState(3);
   }
 
   handleBackState = () => {
-    this.setState({notification: ''});
+    // this.setState({notification: ''});
+    this.props.clearNotification();
     this.props.setActiveState(1);
   }
 
   configure = (notification) => {
     this.props.fetchCampaignConfiguration(this.props.campaign._id, notification._id);
-    this.setState({ notification: notification });
+    this.props.setNotification(notification);
+    // this.setState({ notification: notification });
   }
 
   saveConfiguration = (activity, id, configId) => {
     const configure = {
       activity: activity != undefined && id ? activity : this.state.activity,
-      notificationType: id ? id : this.state.notification._id,
+      notificationType: id ? id : this.props.notification._id,
       panelStyle: this.state.notificationPanelStyle,
       contentText: this.state.contentText,
       visitorText: this.state.visitorText,
@@ -204,16 +215,16 @@ class Notifications extends Component {
 
   render() {
 
-    const { configurations, createSuccess, campaign, profile } = this.props;
+    const { notification, configurations, createSuccess, campaign, profile } = this.props;
     return (
       <div className="notification-settings">
         <div>
           <h4 className="lead text-center m-b-30 m-t-20">Notifications</h4>
-          {!this.state.notification
+          {!this.props.notification
             ?
             <NotificationList
               campaignUrl={campaign.websiteUrl}
-              notificationList={this.state.notifications}
+              notificationList={this.props.notifications}
               handleActivityChange={this.handleActivityChange}
               configure={this.configure}
               configurations={configurations}
@@ -222,6 +233,7 @@ class Notifications extends Component {
             :
             <Row>
               <NotificationConfigure
+                notification={notification}
                 profile={profile}
                 handleContentChange={this.handleContentChange}
                 setDefaultPanel={this.setDefaultPanel}
@@ -235,7 +247,7 @@ class Notifications extends Component {
             </Row>
           }
         </div>
-        {!this.state.notification &&
+        {!this.props.notification &&
           <div className="pt-5 mt-5">
             <div className="float-left">
               <button type="button" className="btn btn-custom  waves-light waves-effect number " onClick={this.handleBackState}><i className="icon-arrow-left pr-2"></i> Back</button>

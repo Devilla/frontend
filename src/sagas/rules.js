@@ -4,6 +4,7 @@ import * as actions from 'ducks/rules';
 import { load, loaded } from 'ducks/loading';
 import { toast } from 'react-toastify';
 
+
 const toastConfig = {
   position: toast.POSITION.BOTTOM_LEFT,
   autoClose: 2000

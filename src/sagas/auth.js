@@ -17,6 +17,7 @@ import { storeToken } from 'services/Request';
 import * as api from 'services/api';
 import moment from 'moment';
 
+
 const toastConfig = {
   position: toast.POSITION.BOTTOM_LEFT,
   autoClose: 2000,
@@ -110,6 +111,69 @@ export function* fetchRoles() {
     yield console.log(error);
   }
 }
+
+export function* affiliate(action) {
+  try {
+    yield put(load());
+    const res = yield call(api.GETAUTH, `user/sendmail/affiliate?name=${action.data.name}&email=${action.data.email}`);
+    if(res.error)
+      yield put(actions.affiliateError(res.message));
+    else
+      yield toast.info('Affiliate Request sent.', toastConfig);
+    yield put(loaded());
+  } catch (error) {
+    yield put(loaded());
+    yield console.log(error);
+  }
+}
+
+export function* demo(action) {
+  try {
+    yield put(load());
+    const data = action.data;
+    const res = yield call(api.GETAUTH, `user/sendmail/demo?firstname=${data.firstname}&lastname=${data.lastname}&email=${data.email}&phonenumber=${data.phonenumber}&company=${data.company}&totalEmployee=${data.totalEmployee}&department=${data.department}`);
+    if(res.error)
+      yield put(actions.demoError(res.message));
+    else
+      yield toast.info('Demo Request sent.', toastConfig);
+    yield put(loaded());
+  } catch (error) {
+    yield put(loaded());
+    yield console.log(error);
+  }
+}
+
+export function* contactUs(action) {
+  try {
+    yield put(load());
+    const res = yield call(api.GETAUTH, `user/sendmail/contactus?name=${action.data.name}&email=${action.data.email}&message=${action.data.message}`);
+    if(res.error)
+      yield put(actions.contactError(res.message));
+
+    yield put(loaded());
+  } catch (error) {
+    yield put(loaded());
+    yield console.log(error);
+  }
+}
+
+
+export function* gdprform(action) {
+  try {
+    yield put(load());
+    const res = yield call(api.POST, 'auth/', action.data);
+    if(res.error)
+      yield put(actions.gdprformError(res.message));
+    else {
+      yield toast.info('Secret code sent.', toastConfig);
+    }
+    yield put(loaded());
+  } catch (error) {
+    yield put(loaded());
+    yield toast.error(error, toastConfig);
+  }
+}
+
 
 export function* forgotPassword(action) {
   try {
@@ -208,6 +272,18 @@ export function* watchUpdateUser() {
   yield takeLatest(actions.UPDATE_USER, updateUser);
 }
 
+export function* watchAffiliate() {
+  yield takeLatest(actions.AFFILIATE, affiliate);
+}
+
+export function* watchContactUs() {
+  yield takeLatest(actions.CONTACT_US, contactUs);
+}
+
+export function* watchDemo() {
+  yield takeLatest(actions.DEMO, demo);
+}
+
 export function* watchForgotPassword() {
   yield takeLatest(actions.FORGOT_PASSWORD, forgotPassword);
 }
@@ -230,6 +306,9 @@ export default function* rootSaga() {
     fork(watchFetchUser),
     fork(watchUpdateUser),
     fork(watchFetchRoles),
+    fork(watchAffiliate),
+    fork(watchContactUs),
+    fork(watchDemo),
     fork(watchForgotPassword),
     fork(watchSocialLogin),
     fork(watchVerifyUser),

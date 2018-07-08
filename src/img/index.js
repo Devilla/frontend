@@ -63,6 +63,34 @@ export { default as BingPlaces } from './bingplaces.png';
 
 
 
+//Integration pic
+export { default as Aweber } from './Aweber.png';
+export { default as Clickfunnels }  from './clickfunnels.png';
+export { default as Demio }  from './demio.png';
+export { default as Hubspot } from './hubspot.png';
+export { default as Instapage }  from './instapage.png';
+export { default as Leadpages } from './leadpages.png';
+export { default as Mailmunch } from './mailmunch.png';
+export { default as Ontraport } from './ontraport.png';
+export { default as Squarespace } from './squarespace.png';
+export { default as Thrivecart } from './Thrivecart.png';
+export { default as Unbounce}  from './unbounce.png';
+export { default as Webflow }  from  './webflow.png';
+export { default as Woocommerce }  from  './woocommerce.png';
+export { default as Wordpress } from './wordpress.png';
+
+//Channel review
+export { default as Facebook } from './fb.png';
+export { default as Zendesk } from './zendesk.png';
+export { default as Google } from './google.png';
+export { default as TrustPilot } from './trustpilot.png';
+export { default as FourSquare } from './foursquare.png';
+export { default as G2Crowd } from './G2crowd.png';
+export { default as TrustRadius } from './trustradius.jpg';
+export { default as Yelp } from './yelp.png';
+export { default as BingPlaces } from './bingplaces.png';
+export { default as Smallpic } from './smallprofile.png';
+
 
 
 // How it works Page Image

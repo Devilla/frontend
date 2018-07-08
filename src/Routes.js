@@ -8,7 +8,7 @@ import {
   Dashboard,
   Notification,
   LoginFlow,
-  Integration,
+  Integrations,
   Error,
   UpgradeCard,
   UpgradePlan,
@@ -28,10 +28,17 @@ import {
   WebsiteFeature,
   Affiliate,
   AffiliateRegister,
+<<<<<<< HEAD
   DashboardChannel,
   PopupReview,
   Oauthpage,
   Oauthgenerate
+=======
+  PopupReview,
+  Oauthpage,
+  Oauthgenerate,
+  DashboardChannel
+>>>>>>> 471d9ff4af1409519f2761273808b9d43a03c70f
 } from 'components';
 
 import {
@@ -43,6 +50,10 @@ import {
 } from 'containers';
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 471d9ff4af1409519f2761273808b9d43a03c70f
 const MyRoutes = ({routerHistory}) => (
 
   <Router history={routerHistory}>
@@ -51,12 +62,18 @@ const MyRoutes = ({routerHistory}) => (
       <Route path="/dashboard" component={Dashboard} />
       <Route path="/new" component={NewCampaignContainer} />
       <Route path="/campaigns" component={Notification} />
+<<<<<<< HEAD
       <Route path="/addchannel" component={DashboardChannel} />
       <Route path="/oauthshow" component={Oauthpage} />
       <Route path="/oauthgenerate" component={Oauthgenerate} />
+=======
+      <Route path="/oauthshow" component={Oauthpage} />
+      <Route path="/oauthgenerate" component={Oauthgenerate} />
+      <Route path="/channels" component={DashboardChannel} />
+>>>>>>> 471d9ff4af1409519f2761273808b9d43a03c70f
       <Route path="/popupreview" component={PopupReview} />
       <Route path="/analytics" component={AnalyticsContainer} />
-      <Route path="/integration" component={Integration} />
+      <Route path="/integrations" component={Integrations} />
       <Route path="/support" component={Dashboard} />
       <Route path="/upgrade" component={UpgradePlan} />
       <Route path="/profile" component={Profile} />
@@ -69,7 +86,7 @@ const MyRoutes = ({routerHistory}) => (
     <Route component={App}>
       <Route path="/" component={WebsiteHome} />
       <Route path="/how-it-works" component={WebsiteHowItWorks} />
-      <Route path="/integrations" component={WebsiteIntegrations} />
+      <Route path="/integration" component={WebsiteIntegrations} />
       <Route path="/pricing" component={WebsitePricing} />
       <Route path="/about" component={WebsiteAbout} />
       <Route path="/login" component={WebsiteSignIn} />

@@ -9,6 +9,7 @@ import rules from './rules';
 import configuration from './configuration';
 import elastic from './elastic';
 import pageurl from './pageurl';
+import webhooks from './webhooks';
 
   export default function* rootSaga() {
     yield [
@@ -21,6 +22,7 @@ import pageurl from './pageurl';
       fork(rules),
       fork(configuration),
       fork(elastic),
-      fork(pageurl)
+      fork(pageurl),
+      fork(webhooks)
     ];
   }

@@ -215,14 +215,7 @@ class CapturePage extends Component {
                 />
               </Col>
             </Row>
-            <Row className="pb-2">
-              <div className="float-Left">
-                <Col md={12} className="text-muted">
-                Having problems with Auto Lead Capture in your current setup? &nbsp;&nbsp; <a
-                    href="#" className="btn blue btn-sm">Use Webhook Integration</a>
-                </Col>
-              </div>
-            </Row>
+          
             <div className=" float-left ">
               <button type="button" className="btn btn-custom waves-light waves-effect number" onClick={this.handleBackState}><i className="icon-arrow-left pr-2"></i>Back</button>
             </div>

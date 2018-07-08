@@ -1,7 +1,11 @@
 import React , { Component } from 'react';
 import './DashboardChannel.scss';
 import { Row, Col } from 'react-bootstrap';
+<<<<<<< HEAD
 import { Link,browserHistory } from 'react-router';
+=======
+import { browserHistory } from 'react-router';
+>>>>>>> 471d9ff4af1409519f2761273808b9d43a03c70f
 import { 
   Facebook,
   Zendesk,
@@ -23,6 +27,7 @@ class DashboardChannel extends Component {
       checked: false
     };
   }
+<<<<<<< HEAD
 
   componentWillMount() {
     window.scrollTo(0,0);
@@ -116,10 +121,53 @@ class DashboardChannel extends Component {
 
   
 
+=======
+  channelfunc = (index) => {
+    let res = {};
+    switch(true) {
+      case /0/.test(index) : res = Facebook; break;
+      case /1/.test(index) : res = Zendesk; break;
+      case /2/.test(index) : res = Google; break;
+      case /3/.test(index) : res = TrustPilot; break;
+      case /4/.test(index) : res = FourSquare; break;
+      case /5/.test(index) : res = G2Crowd; break;
+      case /6/.test(index) : res = TrustRadius; break;
+      case /7/.test(index) : res = Yelp; break;
+      case /8/.test(index) : res = BingPlaces; break;
+
+
+    }
+    return res;
+  }
+
+  componentWillMount() {
+    var scrollElm = document.scrollingElement;
+    scrollElm.scrollTop = 0;
+  }
+
+  channels = ['Facebook' , 'Zendesk','Google','TrustPilot','FourSquare','G32Crowd','TrustRadius','Yelp','BingPlaces'];
+
+  channelsList = () => {
+    return this.channels.map((channelName,i)=> {
+      return (<div >
+        <Row className="justify-content-center mb-2 ">
+          <Col md={6}  className="bx-shadow">
+            <img src={this.channelfunc(i)} className="logocompany " />
+            <span className="text-muted text-uppercase mt-0  title">{channelName}</span>
+            <span className="text-muted btn btn-primary waves-effect  btns" onClick={()=>{browserHistory.push('/oauthshow');}}>Connect&nbsp; <i className="fi-open"></i></span>
+         
+          </Col>  
+        </Row>
+      </div>);
+    });
+  }
+
+>>>>>>> 471d9ff4af1409519f2761273808b9d43a03c70f
 
   render() {
 
     return (
+<<<<<<< HEAD
       <div>
         <div className="channel-container" >
           <div className="channel">
@@ -144,6 +192,29 @@ class DashboardChannel extends Component {
           </div>
         </div>
       </div>
+=======
+ 
+      <div className="container">
+        <button type="button" className="btn btn-info btn-lg addchannel" data-toggle="modal" data-target="#myModal"><i className="fi-plus"></i>&nbsp;Add Channels</button>
+        <div className="modal fade show-modal" id="myModal" role="dialog">
+          <div className="modal-dialog">
+            <div className="modal-content">
+              <div className="modal-header">
+                <button type="button" className="close" data-dismiss="modal">&times;</button>
+                <h4 className="modal-title">Channels</h4>
+              </div>
+              <div className="modal-body">
+                {this.channelsList()}
+              </div>
+              <div className="modal-footer">
+                <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+        
+>>>>>>> 471d9ff4af1409519f2761273808b9d43a03c70f
     );
   }
 }

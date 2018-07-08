@@ -5,7 +5,7 @@
       width: 100% !important;
     }
   }
-  
+
   .dashboard-content {
     table {
       width: 100%;
@@ -17,13 +17,11 @@
   p{
     &.text-uppercase {
       &.title {
-        min-height: 30px;
         border-bottom: 1px solid #E8E8E8;
         padding-bottom: 15px;
       }
     }
   }
-
 
 
   .widget-flat {
@@ -40,17 +38,68 @@
   }
   .m-b-10 {
     &.usersignup {
-      color: #02C0CE;
+      color: #d6efff;
+      font-size: 30px;
+      font-weight: 100;
+      position: relative;
+      top: -5px;
     }
     &.notify {
-      color: #F1556C;
+      color:  #be48bc;
+      font-size: 30px;
+      font-weight: 100;
+      position: relative;
+      top: -5px;
     }
     &.campaign {
-      color: #0ACF97;
+      color:  #df5643;
+      font-size: 30px;
+      font-weight: 100;
+      position: relative;
+      top: -5px;
     }
     &.profile {
-      color: #F9BC0B;
+      color: #bcd331;
+      font-size: 30px;
+      font-weight: 100;
+      position: relative;
+      top: -5px;
     }
   }
+
+.c1,.c2,.c3,.c4 {
+
+  background: #ffffff !important;
+  box-shadow: 0px 1px 2px #e8e8e8;
+  border: 1px solid #e8e8e8 !important;
+  z-index: 999;
+
+}
+.cards {
+  padding: 5px !important;
+}
+.canvas-brdr {
+
+  padding: 40px;
+
+}
+.graph-card {
+
+  box-shadow: 0px 7px 16px -14px #999;
+  position: relative;
+  top: -120px;
+  border: 2px solid #e8e8e8;  
+  padding: 60px 60px 20px 60px;
   
+}
+.days {
+  position: relative;
+  top: -100px;
+}
+.fonttitle {
+  color: #8c9392;
+  font-size: 12px !important;
+  border-bottom: 1px solid #f7f7f7 !important;
+}
+
 }

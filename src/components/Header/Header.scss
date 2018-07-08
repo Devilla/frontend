@@ -1,12 +1,34 @@
-.nav-custom-header {
-  .nav-user{
-      line-height: 40px !important;
-      margin: 10% 0px 0px 0px;
+.customer-header {
+  .progress-bar{height: 3.5px;}
+  .nav-topbar-flex {
+    display: flex;
+    justify-content: space-between;
+    .topbar-left {
+      width: 50%;
+      h4 {
+        a {
+          color: #007bff;
+          cursor: pointer;
+        }
+        font-family: "Rubik", sans-serif;
+        padding: 3% 5%;
+        letter-spacing: 0.10em;
+        font-size: 15px;
+        font-weight: 500;
+        text-transform: uppercase;
+      }
+    }
   }
-}
+  .nav-custom-header {
+    .nav-user{
+        line-height: 40px !important;
+        margin: 10% 0px 0px 0px;
+    }
+  }
 
-a{
-  & i.fi-bell {
-    font-size:'55px';
+  a{
+    & i.fi-bell {
+      font-size:'55px';
+    }
   }
 }
