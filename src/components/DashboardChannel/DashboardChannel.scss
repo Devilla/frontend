@@ -1,4 +1,4 @@
-.container {
+.dashchannel-container {
 
       .addchannel {
         background: #097fff !important;
@@ -23,6 +23,14 @@
             background-color: rgb(247, 245, 245) !important;
           }
         }
+      }
+      .show-modal {
+       z-index: 999999999 !important;
+       overflow: scroll !important;
+      }
+      .align-modal {
+      width: 800px !important;
+      margin-right: 100px !important;
       }
    }
  
