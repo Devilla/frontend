@@ -128,3 +128,7 @@ export { default as Avatar10 } from './avatar-10.jpg'
 
 //logo
 export { default as Influence } from './newlogo-6.png';
+
+//popupreview
+export { default as Facebookpop }  from './facebook_1.png';
+export { default as Googlepop } from './google.png';
