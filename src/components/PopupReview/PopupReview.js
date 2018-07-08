@@ -3,13 +3,14 @@ import './PopupReview.scss';
 import { Row, Col } from 'react-bootstrap';
 import Popupsettings from './Popupsettings.js';
 import Channels from  './Channels.js';
+import DashboardChannel  from '../DashboardChannel/DashboardChannel';
 
 
 class PopupReview extends Component {
   constructor() {
     super();
     this.state= {
-      activeClass: 1,
+      activeClass: 1
     };
   }
 
@@ -24,20 +25,24 @@ class PopupReview extends Component {
       <div>
         <div className="review-container">
           <div className="review">
-            <div className="review-title mb-5">
-              <h1>Your Current Integrations</h1>
-              <h4>Identify & convert more of your visitors into customers</h4>
+            <div className="card-box review-title">
+              <h4 className="header-title text-left">Indentify and Convert Customers</h4>
+              <hr/>
+              <div className="pos">
+                <DashboardChannel />
+              </div>
             </div>
             <div className="content">
               <Row>
                 <Col md={6} sm={12}>
                   <div className="card-box">
                     {/**popup goes here*/}
+                  
                   </div>
                 </Col>
                 <Col md={6} sm={12}>
                   <div className="card-box">
-                    <ul className="nav nav-pills navtab-bg nav-justified pull-in new-campaign-tab-pills switch">
+                    <ul className="nav nav-tabs  switch">
                       <li className="nav-item waves-effect text-center">
                         <a data-toggle="tab" aria-expanded="true" className={`nav-link ${activeClass == 1?'active pb-3 pt-3':'pb-3 pt-3'}`} onClick={() => this.setActiveState(1)}>
                           <i className="fi-layers mr-2"></i>Your Channel

@@ -7,7 +7,7 @@ import { load, loaded } from 'ducks/loading';
 import { toast } from 'react-toastify';
 import { browserHistory } from 'react-router';
 import Popup from 'react-popup';
-import './toast.scss';
+
 
 
 const toastConfig = {

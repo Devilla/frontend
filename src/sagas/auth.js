@@ -16,7 +16,7 @@ import { storeToken } from 'services/Request';
 
 import * as api from 'services/api';
 import moment from 'moment';
-import './toast.scss';
+
 
 const toastConfig = {
   position: toast.POSITION.BOTTOM_LEFT,
