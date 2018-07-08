@@ -2,6 +2,7 @@ import React , { Component } from 'react';
 import './PopupReview.scss';
 import { Row, Col } from 'react-bootstrap';
 import Popupsettings from './Popupsettings.js';
+import ReviewPopup from './ReviewPopup';
 import Channels from  './Channels.js';
 import DashboardChannel  from '../DashboardChannel/DashboardChannel';
 
@@ -10,7 +11,55 @@ class PopupReview extends Component {
   constructor() {
     super();
     this.state= {
-      activeClass: 1
+      activeClass: 1,
+      notificationPanelStyle :{ // TODO: Take style values from server
+        radius: 5,
+        borderWidth: 0,
+        borderColor: {
+          r: 200,
+          g: 200,
+          b: 200,
+          a: 0.80
+        },
+        shadow: {
+          r: 0,
+          g: 0,
+          b: 0,
+          color: 'lightgrey'
+        },
+        blur: 0,
+        color: {
+          r: 0,
+          g: 149,
+          b: 247,
+          a: 1
+        },
+        linkColor: {
+          r: 0,
+          g: 137,
+          b: 216,
+          a: 1
+        },
+        backgroundColor: {
+          r: 255,
+          g: 255,
+          b: 255,
+          a: 1
+        },
+        fontFamily: 'inherit',
+        fontWeight: 'normal',
+        linkFontFamily: 'inherit',
+        linkFontWeight: 'normal',
+        selectDurationData: 'hours',
+        selectLastDisplayConversation: 'hours',
+        bulkData: 5,
+        liveVisitorCount: 0,
+        recentNumber: 5,
+        recentConv: 5,
+        hideAnonymousConversion: true,
+        onlyDisplayNotification: false,
+        visitorText: ' people '
+      }
     };
   }
 
@@ -36,7 +85,9 @@ class PopupReview extends Component {
               <Row>
                 <Col md={6} sm={12}>
                   <div className="card-box">
-                    {/**popup goes here*/}
+                    <div className="justify-content-center mb-2 ">
+                      <ReviewPopup tab='1' animation='' display='block' position='' notificationPanelStyle={this.state.notificationPanelStyle}/>
+                    </div>
                   
                   </div>
                 </Col>

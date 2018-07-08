@@ -2,7 +2,7 @@ import React , { Component } from 'react';
 import './DashboardChannel.scss';
 import { Row, Col } from 'react-bootstrap';
 import { browserHistory } from 'react-router';
-import { 
+import {
   Facebook,
   Zendesk,
   Google,
@@ -20,7 +20,8 @@ class DashboardChannel extends Component {
     this.state = {
       selectedChannels: [],
       channelContent: [],
-      checked: false
+      checked: false,
+ 
     };
   }
   channelfunc = (index) => {
@@ -51,7 +52,7 @@ class DashboardChannel extends Component {
   channelsList = () => {
     return this.channels.map((channelName,i)=> {
       return (<div >
-        <Row className="justify-content-center mb-2 ">
+        <Row>
           <Col md={6}  className="bx-shadow">
             <img src={this.channelfunc(i)} className="logocompany " />
             <span className="text-muted text-uppercase mt-0  title">{channelName}</span>
