@@ -1,9 +1,9 @@
 import React , { Component } from 'react';
 import './PopupReview.scss';
 import { Row, Col } from 'react-bootstrap';
-import Popupsettings from './Popupsettings.js';
 import ReviewPopup from './ReviewPopup';
 import Channels from  './Channels.js';
+import ReviewDesignSetting from './ReviewDesignSetting';
 import DashboardChannel  from '../DashboardChannel/DashboardChannel';
 
 
@@ -69,6 +69,7 @@ class PopupReview extends Component {
   }
 
   render() {
+    const { notificationPanelStyle }  = this.state;
     const { activeClass } = this.state;
     return (
       <div>
@@ -117,7 +118,7 @@ class PopupReview extends Component {
                     <div className={`tab-pane ${activeClass == 2?'show active':''}`} id="Settings">
                       <Row>
                         <Col md={12}>
-                          <Popupsettings />
+                          <ReviewDesignSetting notificationPanelStyle={notificationPanelStyle}/>
                         </Col>
                       </Row>
                     </div>
