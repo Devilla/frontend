@@ -77,6 +77,8 @@ const ReviewPopup = ({tab, display, position, animation, notificationPanelStyle}
                       backgroundColor: notificationStyle.backgroundColor,
                       border: `${notificationStyle.borderWidth} ${notificationStyle.borderStyle} ${notificationStyle.borderColor}`
                     }}>
+                    {/*CHANGE IMAGE FOR FACEBOOK ==> facebook_light_icon_56.jpg*/}
+
                     <div className="FPqR1JYFqJeA1JYF7MM9_0" ><img src="images/Google__G__Logo.svg.png" /></div>
                     <div className="FPqR2EbCqJeA2EbC7MM9_0">
                       <div className="FPqR2AUlqJeA2AUl7MM9_0" style ={{
@@ -88,6 +90,7 @@ const ReviewPopup = ({tab, display, position, animation, notificationPanelStyle}
                             rating={4.6}
                             starDimension="20px"
                             starRatedColor="gold"
+                            /*CHANGE COLOR TO blue*/
                             numberOfStars={5}
                             name='rating'
                           />
@@ -110,6 +113,8 @@ const ReviewPopup = ({tab, display, position, animation, notificationPanelStyle}
                       </div>
                       <div className="FPqR3eNuqJeA3eNu7MM9_0">
                         <span>reviewed us on Google</span>
+
+                        {/*CHANGE TEXT TO Facebook.*/}
                       </div>
                     </div>
                     <div className="FPqR1N_EqJeA1N_E7MM9_0" style={{display: 'none'}}>
