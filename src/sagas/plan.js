@@ -3,6 +3,8 @@ import * as api from 'services/api';
 import * as actions from 'ducks/plan';
 import { load, loaded } from 'ducks/loading';
 import { toast } from 'react-toastify';
+import './toast.scss';
+
 
 const toastConfig = {
   position: toast.POSITION.BOTTOM_LEFT,

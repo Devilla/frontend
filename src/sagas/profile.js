@@ -4,6 +4,8 @@ import * as actions from 'ducks/profile';
 import { load, loaded } from 'ducks/loading';
 import { toast } from 'react-toastify';
 import { browserHistory } from 'react-router';
+import './toast.scss';
+
 
 const toastConfig = {
   position: toast.POSITION.BOTTOM_LEFT,
