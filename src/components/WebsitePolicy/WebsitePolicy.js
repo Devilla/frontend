@@ -16,7 +16,8 @@ class WebsitePolicy extends Component {
     this.state = {
       selectedCountry: '',
       countryList: [],
-      errorCountry: ''
+      errorCountry: '',
+      random:0
     };
   }
   componentDidMount() {
@@ -27,7 +28,6 @@ class WebsitePolicy extends Component {
       .then(res => this.setState({countryList : res.Countries}));
   }
 
- 
 
   getCountryRows = () => {
     return  this.state.countryList.map((data,i)=> (
@@ -37,15 +37,14 @@ class WebsitePolicy extends Component {
     ));
   }
 
-  
+
   handleCountrySelect = (event) => {
     (event.target.value ===  this.state.selectedCountry) ? (
       this.setState({errorCountry:''})
     ) : (
       this.setState({errorCountry:'Please select your Country'})
     );
-
-  } 
+  }
 
   renderGDPRform = () => {
     const { errorCountry } = this.state;
@@ -58,13 +57,16 @@ class WebsitePolicy extends Component {
             <span className="text-muted font-13 p lead">What country do you live in ? </span>
             <FormGroup controlId="formControlsSelect">
               <FormControl componentClass="select" autoComplete='country-name' placeholder="Country Name"  onChange={(e) => this.setState({country: e.target.value})} >
-                <option value={null}>Select Country</option>
+                <option value={this.state.selectedCountry}
+                  onBlur={this.handleCountrySelect}
+                >Select Country</option>
                 {this.getCountryRows()}
+
               </FormControl>
+              <HelpBlock>
+                <p className="website-error">{errorCountry}</p>
+              </HelpBlock>
             </FormGroup>
-            <HelpBlock>
-              <p className="website-error">{errorCountry}</p>
-            </HelpBlock>
           </Col>
         </FormGroup>
       </div>,
@@ -73,14 +75,16 @@ class WebsitePolicy extends Component {
           text: 'Cancel',
           className: 'danger',
           action: function () {
-            Popup.close();
+            this.handleCountrySelect;
           }
         }],
         right: [ {
           text: 'Save',
           className: 'success',
           action: function () {
-            that.handleCountrySelect; //hanldes the selected country 
+            that.handleCountrySelect;
+
+            //hanldes the selected country
             Popup.create({
               title: 'Own Your Personal Data',
               content: <div className="popupcontainer row ">
@@ -136,7 +140,7 @@ class WebsitePolicy extends Component {
                                   text: 'Cancel',
                                   className: 'danger',
                                   action: function () {
-                                    //cancel it 
+                                    //cancel it
                                     Popup.close();
                                   }
                                 }],
@@ -161,18 +165,18 @@ class WebsitePolicy extends Component {
               }
             });
             Popup.close();
-          
+
           }
-    
-        
+
+
         }]
       }
     });
- 
+
   }
 
   render() {
-  
+
     return (
       <div className="websitepolicy-container">
         <div className="main-container">

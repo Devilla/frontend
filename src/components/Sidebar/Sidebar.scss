@@ -48,7 +48,7 @@ div.button-list {
   }
 }
 
-.fi-plus { 
+.fi-plus {
   font-size: '15px' !important;
 }
 .dropdown {
@@ -85,7 +85,7 @@ a.nav-link {
       font-weight: 700;
       color: #097fff !important;
     }
- 
+
 }
 span {
   &.menu-arrow {
@@ -99,7 +99,7 @@ div {
   &#sidebar-menu {
       overflow-y: auto;
       height: 640px;
-    
+
   }
 
   &::-webkit-scrollbar {
@@ -107,13 +107,13 @@ div {
     display: none;
 
 }
- 
+
 &::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
     box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-    
+
 }
- 
+
 &::-webkit-scrollbar-thumb {
   background-color: darkgrey;
   outline: 1px solid slategrey;

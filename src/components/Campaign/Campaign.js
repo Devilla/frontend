@@ -10,7 +10,6 @@ import {
 } from 'react-bootstrap';
 import './Campaign.scss';
 
-
 const Campaign = ({
   handleNextButton,
   handleCampaignNameChange,

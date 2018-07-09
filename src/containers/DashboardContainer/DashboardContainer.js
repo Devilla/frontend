@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 import Popup from 'react-popup';
+import { ToastContainer } from 'react-toastify';
 
 import { checkTokenExists } from 'ducks/auth';
 import { Header, Sidebar } from 'components';
@@ -17,7 +18,7 @@ import './animate.min.scss';
 import 'react-select/dist/react-select.css';
 import 'react-popup/style.css';
 import './DashboardContainer.scss';
-
+import './toast.scss';
 
 class DashboardContainer extends Component {
   constructor(props) {
@@ -179,14 +180,14 @@ class DashboardContainer extends Component {
       <div className="dashboard-container">
         <Popup />
         <div className="wrapper"  >
-        
+
           {!this.state.render && <p>Please wait</p>}
           {this.state.render && <Sidebar {...this.props} disableButton={this.state.disableButton} onClick={this.closeDropdown} />}
           {this.state.render &&
           <div>
             <div className="content-page" >
               <div className="topbar" >
-                <nav className="navbar-custom pr-0">
+                <nav className="navbar-custom pl-0 pr-0">
                   <Header
                     username={user.username}
                     openCloseDropdown={this.openCloseDropdown}
@@ -209,6 +210,7 @@ class DashboardContainer extends Component {
           </div>
           }
         </div>
+        <ToastContainer hideProgressBar={true} />
       </div>
     );
   }
@@ -217,7 +219,7 @@ class DashboardContainer extends Component {
 const mapStateToProps = state => ({
   profile: state.getIn(['profile', 'profile']),
   user: state.getIn(['auth', 'user']),
- 
+
 });
 
 const mapDispatchToProps = {

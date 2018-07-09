@@ -112,7 +112,7 @@ class WebsiteSignIn extends Component {
           animationOut='fadeOut'
           isVisible={true}>
           <div className="main-container">
-            <section className="bg--secondary">
+            <section className="bg">
               <div className="container text-center">
                 <div className="row ">
                   <div className="col-sm-12 col-md-7 col-lg-6">
@@ -125,7 +125,7 @@ class WebsiteSignIn extends Component {
                       </p>
 
 
-                      <form onSubmit={this.handleSubmit} >
+                      <form onSubmit={this.handleSubmit} className="loginfrm">
                         <div className="row justify-content-center">
                           {error &&
                         <Alert bsStyle="warning" className="col-md-9 col-sm-9">
@@ -177,7 +177,7 @@ class WebsiteSignIn extends Component {
                     </div>
                   </div>
 
-                  <div className="vristrue ml-5">
+                  <div className="vristrue ">
                   </div>
 
                   <div className="col-md-4 col-lg-4 socio-link">

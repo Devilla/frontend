@@ -1,20 +1,18 @@
-import React, { Component } from 'react';
-import './Integration.scss';
-import { ComingSoon } from 'components';
+import React , { Component } from 'react';
 
-class Integration extends Component {
 
-  constructor() {
-    super();
-  }
+
+class Integrations extends Component {
+
 
   render() {
+
     return (
-      <div className="content">
-        <ComingSoon />
+      <div>
       </div>
     );
   }
 }
 
-export default Integration;
+
+export default Integrations;

@@ -1,6 +1,6 @@
 import React from 'react';
 import './NotificationList.scss';
-// import { browserHistory } from 'react-router';
+import { browserHistory } from 'react-router';
 
 const NotificationList = ({ notificationList, configure, handleActivityChange}) => {
   const renderNotifications = () => {
@@ -49,8 +49,8 @@ const NotificationList = ({ notificationList, configure, handleActivityChange}) 
                   className="tgl tgl-ios"
                   id={notification._id}
                   type="checkbox"
-                  checked={notification.activity}
-                  onChange={(e) => e.target.checked !=notification.activity?handleActivityChange(e.target.checked, notification._id, notification.configurationId):null}
+                  defaultChecked={notification.activity}
+                  onChange={(e) => e.target.checked != notification.activity?handleActivityChange(e.target.checked, notification._id, notification.configurationId):null}
                 />
                 <label className="tgl-btn" htmlFor={notification._id}></label>
               </div>
@@ -74,7 +74,7 @@ const NotificationList = ({ notificationList, configure, handleActivityChange}) 
       <div className="row m-t-50 notification-list">
         {renderNotifications()}
       </div>
-      {/* <div className="col-md-4 notification-box addChannel">
+      <div className="col-md-4 notification-box addChannel">
         <div className=" ribbon-box bx-shadow">
           <div className="ribbon-two ribbon-two-success">
             <span>
@@ -102,13 +102,13 @@ const NotificationList = ({ notificationList, configure, handleActivityChange}) 
             <button
               type="button"
               className="btn btn-primary m-t-20 btn-rounded btn-bordered waves-effect w-md waves-light"
-              onClick={() => {browserHistory.push('/addchannel');}}
+              onClick={() => {browserHistory.push('/popupreview');}}
             >
                 Configure
             </button>
           </div>
         </div>
-      </div> */}
+      </div>
     </div>
   );
 };

@@ -17,6 +17,7 @@ import { storeToken } from 'services/Request';
 import * as api from 'services/api';
 import moment from 'moment';
 
+
 const toastConfig = {
   position: toast.POSITION.BOTTOM_LEFT,
   autoClose: 2000,
@@ -157,6 +158,23 @@ export function* contactUs(action) {
 }
 
 
+export function* gdprform(action) {
+  try {
+    yield put(load());
+    const res = yield call(api.POST, 'auth/', action.data);
+    if(res.error)
+      yield put(actions.gdprformError(res.message));
+    else {
+      yield toast.info('Secret code sent.', toastConfig);
+    }
+    yield put(loaded());
+  } catch (error) {
+    yield put(loaded());
+    yield toast.error(error, toastConfig);
+  }
+}
+
+
 export function* forgotPassword(action) {
   try {
     yield put(load());
@@ -188,7 +206,7 @@ export function* socialLogin(action) {
       }, 2000);
     } else {
       yield storeToken(res.jwt);
-      yield browserHistory.push('/dashboard');
+      yield browserHistory.push('/getting-started');
     }
     yield put(loaded());
   } catch (error) {

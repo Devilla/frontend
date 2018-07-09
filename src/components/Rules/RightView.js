@@ -35,7 +35,7 @@ const RightView = ({
           />
         </li>
         <li className="mt-4 pt-2">
-          <label className="text-muted">
+          <label  className="text-muted">
             Delay between subsequent notifications(seconds)
           </label>
           <input
@@ -47,7 +47,7 @@ const RightView = ({
           />
         </li>
         <li className="mt-4">
-          <label className="text-muted">
+          <label  data-toggle="tooltip" title="Hooray!" className="text-muted">
             Select position for popup notification
           </label>
           <select className="form-control muted-text" value={displayPosition} onChange={(e) => handleStateChange('displayPosition', e.target.value)}>
