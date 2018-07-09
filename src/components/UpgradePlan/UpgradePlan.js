@@ -22,7 +22,7 @@ export default class UpgradePlan extends Component {
   }
 
   componentDidMount() {
-    window.scrollTo(0, 0);
+   //window.scrollTo(0,0);
   }
 
   handleCheckChange(checked, value) {

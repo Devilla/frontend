@@ -1,12 +1,8 @@
 import React , { Component } from 'react';
 import './DashboardChannel.scss';
 import { Row, Col } from 'react-bootstrap';
-<<<<<<< HEAD
 import { Link,browserHistory } from 'react-router';
-=======
-import { browserHistory } from 'react-router';
->>>>>>> 471d9ff4af1409519f2761273808b9d43a03c70f
-import { 
+import {
   Facebook,
   Zendesk,
   Google,
@@ -32,7 +28,7 @@ class DashboardChannel extends Component {
   componentWillMount() {
     window.scrollTo(0,0);
   }
-  
+
 
   channelsList = () => {
     return (
@@ -44,7 +40,7 @@ class DashboardChannel extends Component {
               <h4 className="text-muted text-uppercase mt-0">Facebook</h4>
               <span className="text-muted btn btn-primary waves-effect" onClick={()=>{browserHistory.push('/oauthshow');}}>Connect&nbsp; <i className="fi-open"></i></span>
             </div>
-          </Col>   
+          </Col>
           <Col md={3}  className="bx-shadow">
             <div className="card-box tilebox-one">
               <img src={Zendesk} className="logocompany" />
@@ -54,23 +50,23 @@ class DashboardChannel extends Component {
           </Col>
           <Col md={3}  className="bx-shadow">
             <div className="card-box tilebox-one">
-              <img src={Google} className="logocompany" />               
+              <img src={Google} className="logocompany" />
               <h4 className="text-muted text-uppercase mt-0">Google</h4>
               <span className="text-muted btn btn-primary waves-effect">Connect&nbsp; <i className="fi-open"></i></span>
             </div>
           </Col>
         </Row>
-        <Row className="justify-content-around mb-5">  
+        <Row className="justify-content-around mb-5">
           <Col md={3}  className="bx-shadow">
             <div className="card-box tilebox-one">
-              <img src={TrustPilot} className="logocompany" />               
+              <img src={TrustPilot} className="logocompany" />
               <h4 className="text-muted text-uppercase mt-0">TrustPilot</h4>
               <span className="text-muted btn btn-primary waves-effect">Connect&nbsp; <i className="fi-open"></i></span>
             </div>
           </Col>
           <Col md={3}  className="bx-shadow">
             <div className="card-box tilebox-one">
-              <img src={FourSquare} className="logocompany" />               
+              <img src={FourSquare} className="logocompany" />
               <h4 className="text-muted text-uppercase mt-0">FourSquare</h4>
               <span className="text-muted btn btn-primary waves-effect">Connect&nbsp; <i className="fi-open"></i></span>
             </div>
@@ -81,26 +77,26 @@ class DashboardChannel extends Component {
               <h4 className="text-muted text-uppercase mt-0">G2Crowd</h4>
               <span className="text-muted btn btn-primary waves-effect">Connect&nbsp; <i className="fi-open"></i></span>
             </div>
-          </Col> 
+          </Col>
         </Row>
         <Row className="justify-content-around mb-5">
           <Col md={3}  className="bx-shadow">
             <div className="card-box tilebox-one">
-              <img src={TrustRadius} className="logocompany" />               
+              <img src={TrustRadius} className="logocompany" />
               <h4 className="text-muted text-uppercase mt-0">TrustRadius</h4>
               <span className="text-muted btn btn-primary waves-effect">Connect&nbsp; <i className="fi-open"></i></span>
             </div>
           </Col>
           <Col md={3}  className="bx-shadow">
             <div className="card-box tilebox-one">
-              <img src={Yelp} className="logocompany" />               
+              <img src={Yelp} className="logocompany" />
               <h4 className="text-muted text-uppercase mt-0">Yelp</h4>
               <span className="text-muted btn btn-primary waves-effect">Connect&nbsp; <i className="fi-open"></i></span>
             </div>
           </Col>
           <Col md={3}  className="bx-shadow">
             <div className="card-box tilebox-one">
-              <img src={BingPlaces} className="logocompany" />              
+              <img src={BingPlaces} className="logocompany" />
               <h4 className="text-muted text-uppercase mt-0">Bing Places</h4>
               <span className="text-muted btn btn-primary waves-effect">Connect&nbsp; <i className="fi-open"></i></span>
             </div>
@@ -119,7 +115,7 @@ class DashboardChannel extends Component {
     //more code to write for each redirection to the correspoding oauth server of the  respective partner site.
   }
 
-  
+
 
 =======
   channelfunc = (index) => {
@@ -155,8 +151,8 @@ class DashboardChannel extends Component {
             <img src={this.channelfunc(i)} className="logocompany " />
             <span className="text-muted text-uppercase mt-0  title">{channelName}</span>
             <span className="text-muted btn btn-primary waves-effect  btns" onClick={()=>{browserHistory.push('/oauthshow');}}>Connect&nbsp; <i className="fi-open"></i></span>
-         
-          </Col>  
+
+          </Col>
         </Row>
       </div>);
     });
@@ -182,18 +178,18 @@ class DashboardChannel extends Component {
               </div>
             </div>
             <div className="content">
-             
+
               {this.channelsList()}
               <button className="btn btn-primary waves-effect mb-5 float-right" onClick={() => {browserHistory.push('/popupreview');}} ><i className="fi-plus"></i>&nbsp;&nbsp;Proceed</button>
               <div className="clearfix"></div>
             </div>
-        
-            
+
+
           </div>
         </div>
       </div>
 =======
- 
+
       <div className="container">
         <button type="button" className="btn btn-info btn-lg addchannel" data-toggle="modal" data-target="#myModal"><i className="fi-plus"></i>&nbsp;Add Channels</button>
         <div className="modal fade show-modal" id="myModal" role="dialog">
@@ -213,7 +209,7 @@ class DashboardChannel extends Component {
           </div>
         </div>
       </div>
-        
+
 >>>>>>> 471d9ff4af1409519f2761273808b9d43a03c70f
     );
   }

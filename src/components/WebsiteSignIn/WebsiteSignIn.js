@@ -131,6 +131,7 @@ class WebsiteSignIn extends Component {
                         <Alert bsStyle="warning" className="col-md-9 col-sm-9">
                           <strong>{error}</strong>
                         </Alert>
+<<<<<<< HEAD
                           }
                           <div className="col-md-9 col-sm-8 ">
                             <input name="email"
@@ -174,6 +175,52 @@ class WebsiteSignIn extends Component {
                           <div><Link to="/forget-password"  style={{padding: '25px'}}>Forgot password?</Link></div>
                         </div>
                       </form>
+=======
+                      }
+                      <div className="col-9 ">
+                        <input name="email"
+                          ref="email"
+                          className="fieldname"
+                          onBlur={this.handleEmailBlur}
+                          onChange={this.handleInputChange}
+                          placeholder="Email Address"
+                          type="email"
+                          id="emails"
+                        />
+                        <HelpBlock>
+                          <p className="website-error">{errorEmail}</p>
+                        </HelpBlock>
+                      </div>
+                      <div className="col-9">
+                        <input type="password"
+                          name="Password"
+                          className="field w-input "
+                          name="password"
+                          ref="password"
+                          placeholder="Password"
+                          id="password"
+                          type={isPasswordShown ? 'text' : 'password'}
+                          maxLength={PASSWORD_MAX_LENGTH}
+                          onBlur={this.handlePasswordBlur}
+                          onChange={this.handleInputChange}
+                        />
+                        <HelpBlock>
+                          <p className="website-error">{errorPassword}</p>
+                        </HelpBlock>
+                      </div>
+
+                      <div className="col-9 frmcntl">
+                        <input
+                          id="submit"
+                          className="button submit-button w-button btn btn--primary ml-0"
+                          type="submit"
+                          value="Login"
+                          style={mousepoint}
+                          disabled={!isEmailValid || !isPwdValid}
+                        />
+                      </div>
+                      <div><Link to="/forget-password"  style={{padding: '25px'}}>Forgot password?</Link></div>
+>>>>>>> 98846548baadc9e3fcc39835aa126a7db2460c6c
                     </div>
                   </div>
 

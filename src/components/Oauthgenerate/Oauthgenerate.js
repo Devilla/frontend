@@ -1,12 +1,8 @@
 import React , { Component } from 'react';
 import './Oauthgenerate.scss';
 import { Row,Col } from 'react-bootstrap';
-<<<<<<< HEAD
-// import { Link } from 'react-router';
-=======
 import { validateEmail } from 'services/FormUtils';
 import { HelpBlock } from 'react-bootstrap';
->>>>>>> 471d9ff4af1409519f2761273808b9d43a03c70f
 import moment from 'moment';
 import {
   FormGroup,
@@ -19,12 +15,6 @@ class Oauthpage extends Component {
     super();
     this.state = {
       clientId: '65790-18281682901',
-<<<<<<< HEAD
-      clientSecret: 'JSKSGDAGD6RHHUIGR'
-    };
-  }
-  
-=======
       clientSecret: 'JSKSGDAGD6RHHUIGR',
       clientname: '',
       errorname: '',
@@ -71,8 +61,6 @@ class Oauthpage extends Component {
   handleStateChange = (target, value) => {
     this.setState({[target]: value});
   }
-
->>>>>>> 471d9ff4af1409519f2761273808b9d43a03c70f
   getClientInfoList = () => {
     return (
       <div className="clientinfolist">
@@ -86,28 +74,14 @@ class Oauthpage extends Component {
 
   render() {
     return (
-<<<<<<< HEAD
-      
-=======
-
->>>>>>> 471d9ff4af1409519f2761273808b9d43a03c70f
       <div className="oauthgen-container">
         <div className="content">
           <div className="card-box">
-
-<<<<<<< HEAD
-            <span className="header-title h4"><i className="icon-arrow-left mr-3"></i>Client ID for Web application</span>
-            <button type="button" className="btn btn-outline-primary  waves-light waves-effect pl-1 float-right h6" onClick={()=>{}}><i className="ml-3 mdi mdi-delete"></i>&nbsp;DELETE</button>
-            <button type="button" className="btn btn-outline-primary  waves-light waves-effect pl-1 float-right h6" onClick={()=>{}}><i className="ml-3 mdi mdi-lock-reset"></i>&nbsp;RESET SECRET</button>
-        
-            <span className="clearfix"></span>           
-=======
             <span className="header-title h4">Client ID for Web application</span>
             <button type="button" className="btn btn-outline-primary  waves-light waves-effect pl-1 float-right h6" onClick={()=>{}}><i className="ml-3 mdi mdi-delete"></i>&nbsp;DELETE</button>
             <button type="button" className="btn btn-outline-primary  waves-light waves-effect pl-1 float-right h6" onClick={()=>{}}><i className="ml-3 mdi mdi-lock-reset"></i>&nbsp;RESET SECRET</button>
 
             <span className="clearfix"></span>
->>>>>>> 471d9ff4af1409519f2761273808b9d43a03c70f
             <hr/>
             <Row className="mb-4">
               <Col md={12}>
@@ -117,20 +91,8 @@ class Oauthpage extends Component {
             <Row>
               <Col md={6}>
                 <FormGroup>
-<<<<<<< HEAD
-                  <span className="text-muted h6">Name</span>
-                  <FormControl
-                    type="text"
-                    bsClass="form-control ml-3"
-                    id="clientname"
-                    placeholder="example: Ray-101, John doe"
-                    onChange={()=>{}}
-                    onBlur={()=>{}}
-                    required={true}
-                  />
-=======
                   <span className=" h6">Name</span>
-                  <p className="text-muted "> Enter client's name.</p>
+                  <p className="text-muted "> Enter clients name.</p>
                   <FormControl
                     type="text"
                     bsClass="form-control"
@@ -145,49 +107,11 @@ class Oauthpage extends Component {
                   <HelpBlock>
                     <p className="website-error">{this.state.errorName}</p>
                   </HelpBlock>
->>>>>>> 471d9ff4af1409519f2761273808b9d43a03c70f
                 </FormGroup>
               </Col>
             </Row>
             <Row>
               <Col md={6}>
-<<<<<<< HEAD
-                <div className="outer">
-                  <p className="text-muted h6">Restrictons</p>
-                  <p className="text-muted ml-3">Enter Javascript origins, Redirect URIs or both</p>
-                </div>
-                <div  className="inner">
-                  <FormGroup className="mb-5">
-                    <span className="text-muted ml-3 h6">Authorized javascript origins</span>
-                    <p className="text-muted ml-3"> For use with request from a web browser.</p>
-                    <FormControl
-                      type="text"
-                      bsClass="form-control ml-3"
-                      id="URI"
-                      placeholder="https://www.example.com"
-                      onChange={()=>{}}
-                      onBlur={()=>{}}
-                      required={true}
-                    />
-                  </FormGroup>
-                  <FormGroup>
-                    <span className="text-muted ml-3 h6">Authorized redirect URIs</span>
-                    <p className="text-muted ml-3"> For use with request from a web server.</p>
-                    <FormControl
-                      type="text"
-                      bsClass="form-control ml-3"
-                      id="redirectURI"
-                      placeholder="https://www.example.com/callback"
-                      onChange={()=>{}}
-                      onBlur={()=>{}}
-                      required={true}
-                    />
-                  </FormGroup>
-                
-                </div>
-              </Col>
-           
-=======
                 <div  className="inner">
                   <FormGroup >
                     <span className="  h6">Authorized javascript origins</span>
@@ -228,7 +152,6 @@ class Oauthpage extends Component {
                   </FormGroup>
                 </div>
               </Col>
->>>>>>> 471d9ff4af1409519f2761273808b9d43a03c70f
             </Row>
             <Row className="mt-3">
               <span type="button" className="btn btn-primary waves-effect saveClient">Save</span>
@@ -236,20 +159,9 @@ class Oauthpage extends Component {
           </div>
         </div>
       </div>
-<<<<<<< HEAD
-      
-    );
-  }
-}
-  
-  
-export default Oauthpage;
-=======
 
     );
   }
 }
 
-
 export default Oauthpage;
->>>>>>> 471d9ff4af1409519f2761273808b9d43a03c70f

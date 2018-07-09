@@ -74,12 +74,12 @@ class WebsitePricing extends Component {
 
     let planList =this.state.servicebotPlans.filter(plan =>
       (this.state.planPeriod === 12 ? plan.interval === 'year': plan.interval === 'month') &&
-      (plan.references.service_template_properties[0].name !== 'coupon') 
+      (plan.references.service_template_properties[0].name !== 'coupon')
     );
     planList = planList.sort(function (a, b) {
       return b.id - a.id;
     });
-  
+
     return planList.map(plan => {
       return <div key={plan.name} className="col-md-3 pl-3 pr-0 cards">
         <div className="pricing pricing-1  pr-0 pl-0 pricing-tab"  style={{minHeight:'700px'}}>
@@ -175,7 +175,7 @@ class WebsitePricing extends Component {
               {this.state.externalValue === false ?  <p className= "conditional-pricestmt mt-4"><i>Get 2 Months FREE With Yearly *</i></p>: ''}
             </div>
           </section>
-       
+
           <Animated
             className='leftwrap center'
 

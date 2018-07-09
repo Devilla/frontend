@@ -1,0 +1,252 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`>>>SignUp --- Snapshot +++capturing Snapshot of SignUp 1`] = `
+<div>
+  <div
+    className="authpage section innerpage"
+  >
+    <div
+      className="wrapper"
+    >
+      <div
+        className="animated fadeIn leftwrap center"
+        style={
+          Object {
+            "animationDelay": "0ms",
+            "pointerEvents": "all",
+          }
+        }
+      >
+        <form
+          className="loginfrm"
+          onSubmit={[Function]}
+        >
+          <div
+            className="main-container"
+          >
+            <section
+              className="switchable bg--secondary"
+            >
+              <div
+                className="container"
+              >
+                <div
+                  className="row justify-content-between align-items-center"
+                >
+                  <div
+                    className="col-md-6 col-lg-6 text-center"
+                  >
+                    <div
+                      className="switchable__text"
+                    >
+                      <h3>
+                        Your first step towards conversions, Signup here.
+                      </h3>
+                      <span
+                        className=" type--fine-print"
+                      >
+                        Already have an account? 
+                        <a
+                          onClick={[Function]}
+                          style={Object {}}
+                        >
+                          Sign in
+                        </a>
+                      </span>
+                      
+                      <hr
+                        className="short"
+                      />
+                      <form>
+                        <div
+                          className="row"
+                        >
+                          <div
+                            className="col-12"
+                          >
+                            <input
+                              name="username"
+                              onBlur={[Function]}
+                              onChange={[Function]}
+                              placeholder="Your Name"
+                              type="text"
+                            />
+                            <span
+                              className="help-block"
+                            >
+                              <p
+                                className="website-error"
+                              />
+                            </span>
+                          </div>
+                          <div
+                            className="col-12"
+                          >
+                            <input
+                              id="email"
+                              name="email"
+                              onBlur={[Function]}
+                              onChange={[Function]}
+                              placeholder="Email Address"
+                              type="email"
+                              value=""
+                            />
+                            <span
+                              className="help-block"
+                            >
+                              <p
+                                className="website-error"
+                              >
+                                
+                              </p>
+                            </span>
+                          </div>
+                          <div
+                            className="col-12"
+                          >
+                            <input
+                              id="password"
+                              maxLength={20}
+                              name="password"
+                              onBlur={[Function]}
+                              onChange={[Function]}
+                              placeholder="Password"
+                              type="password"
+                            />
+                            <span
+                              className="help-block"
+                            >
+                              <p
+                                className="website-error"
+                              >
+                                
+                              </p>
+                            </span>
+                          </div>
+                          <div
+                            className="col-12"
+                          >
+                            <input
+                              maxLength={20}
+                              name="confirmPassword"
+                              onBlur={[Function]}
+                              onChange={[Function]}
+                              placeholder="Confirm Password"
+                              type="password"
+                            />
+                            <span
+                              className="help-block"
+                            >
+                              <p
+                                className="website-error"
+                              >
+                                
+                              </p>
+                            </span>
+                          </div>
+                          <div
+                            className="frmcntl col-12"
+                          >
+                            <input
+                              className="button submit-button w-button btn btn--primary ml-0"
+                              disabled={false}
+                              type="submit"
+                              value="Create Account"
+                            />
+                          </div>
+                          <hr />
+                          <div
+                            className="col-12"
+                          >
+                            <span
+                              className="type--fine-print"
+                            >
+                              By signing up, you agree to the 
+                              <a
+                                onClick={[Function]}
+                                style={Object {}}
+                              >
+                                Terms of Service
+                              </a>
+                            </span>
+                          </div>
+                        </div>
+                      </form>
+                      <hr
+                        className="short"
+                      />
+                      <p>
+                         
+                        <span
+                          className=" type--fine-print b"
+                        >
+                          Or Signup using:  
+                        </span>
+                         
+                      </p>
+                      <div
+                        className=""
+                      >
+                        <a
+                          className="link "
+                          href="undefinedconnect/facebook"
+                        >
+                          <a
+                            className="btn btn--icon bg--facebook"
+                            onClick={[Function]}
+                            style={Object {}}
+                          >
+                            <span
+                              className="btn__text "
+                            >
+                              <i
+                                className="socicon socicon-facebook"
+                              />
+                              Signup using Facebook
+                            </span>
+                          </a>
+                        </a>
+                        <p />
+                        <a
+                          className="link"
+                          href="undefinedconnect/google"
+                        >
+                          <a
+                            className="btn btn--icon bg--googleplus"
+                            onClick={[Function]}
+                            style={Object {}}
+                          >
+                            <span
+                              className="btn__text"
+                            >
+                              <i
+                                className="socicon socicon-google"
+                              />
+                              Signup using Google
+                            </span>
+                          </a>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    className="col-md-8 col-lg-8 pr-0"
+                  >
+                    <img
+                      alt="Image"
+                      src="signuppage2.png"
+                    />
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </form>
+        <div
+          className="support"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;

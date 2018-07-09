@@ -65,7 +65,8 @@ class BillingDetails extends Component {
           <Row className="inlineclr">
             <Col md={12}>
               <div className="card-box pt-0">
-                <hr/>
+                <h4 className="header-title"><Link to="/Profile"><i className="icon-arrow-left mr-3"></i></Link>Billing Details</h4>
+                <hr className="short"/>
                 <div className="Billing-container">
                   <Row>
 
@@ -174,11 +175,11 @@ class BillingDetails extends Component {
                       </Col>
                     </Row>
 
-                    
+
                     <div className="panel panel-default">
                       <div className="card-box">
                         <h4 className="header-title mt-0 m-b-20">Invoices </h4>
-                      
+
                         <Col md={12}>
                           <div className="text-left">
                             <Table className="table-striped">
@@ -199,10 +200,10 @@ class BillingDetails extends Component {
                             </Table>
                           </div>
                         </Col>
-                       
+
                       </div>
                     </div>
-                    
+
                   </div>
                 </div>
               </div>

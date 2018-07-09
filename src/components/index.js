@@ -24,7 +24,7 @@ export { default as PricePage } from './PricePage';
 export { default as Common } from './Common/function';
 export { default as ResetPassword } from './ResetPassword';
 export { default as Sidebar } from './Sidebar/Sidebar';
-export { default as StatsCard } from './StatsCard/StatsCard';
+export { default as StatsCard } from './StatsCard/StatsCard';'';
 export { default as Dashboard } from './Dashboard/Dashboard';
 export { default as Notification } from './Notification';
 export { default as Analytics } from './Analytics/analytics';
@@ -46,17 +46,9 @@ export { default as Rules } from './Rules/Rules';
 export { default as DisplayPage } from './DisplayPage/DisplayPage';
 export { default as CapturePage } from './CapturePage/CapturePage';
 export { default as InstallPixel } from './InstallPixel/InstallPixel';
-<<<<<<< HEAD
-export { default as DashboardChannel } from './DashboardChannel/DashboardChannel';
-export { default as PopupReview } from './PopupReview/PopupReview';
-export { default as Oauthpage } from './Oauthpage/Oauthpage';
-export { default as Oauthgenerate } from './Oauthgenerate/Oauthgenerate';
-=======
+
 
 export { default as PopupReview } from './PopupReview/PopupReview';
 export { default as Oauthpage } from './Oauthpage/Oauthpage';
 export { default as Oauthgenerate } from './Oauthgenerate/Oauthgenerate';
 export { default as DashboardChannel  }  from './DashboardChannel/DashboardChannel';
->>>>>>> 471d9ff4af1409519f2761273808b9d43a03c70f
-
-
