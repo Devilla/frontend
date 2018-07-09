@@ -20,9 +20,6 @@ class ConnectPage extends React.Component {
     return (
       <div>
         <Spinner loading={true}/>
-        <div className="token-container">
-          <h1>Retrieving your token and checking its validity</h1>
-        </div>
         <ToastContainer hideProgressBar={true} />
       </div>
     );

@@ -128,11 +128,11 @@ class WebsiteSignUp extends Component {
       : (
         <div className="signup-container">
           <div className='main-container'>
-            <section className='bg--secondary'>
+            <section className="bg">
               <div className='container text-center'>
                 <div className='row '>
                   <div className='col-sm-12 col-md-7 col-lg-6 '>
-                    <span className="signuptitle">Your first step towards conversions.</span>
+                    <span className="signuptitle">Start Conversions!</span>
                     <div>
                       <p className="lead">
                         <span className="sub-up-title">Already have an account?&nbsp;

@@ -7,96 +7,92 @@ div #status-noteConnected {
     animation-delay: 1.4s;
     position: fixed;
   }
-  
   @-webkit-keyframes seconds {
     0% {
       opacity: 1;
     }
-  
     100% {
       opacity: 0;
       left: -9999px;
     }
   }
-  
-  
   @keyframes seconds {
     0% {
       opacity: 1;
     }
-  
     100% {
       opacity: 0;
       left: -9999px;
     }
   }
   
-  
   #status-note.loading {
-    margin-top: 0px;
-    display: block;
+      margin-top: 0px;
+      display: block;
   }
   
   #status-noteConnected {
-    top: 0;
-    border-radius: 0 0 6px 6px;
-    padding: 5px 75px;
-    right: 50%;
-    background: #097fff;
-    color: #FFF;
-    font-size: 12px;
-    overflow: hidden;
-    position: fixed;
-    line-height: 1.2;
-    z-index: 9999;
-    transform: translateX(50%);
+      top: 0;
+      border-radius: 0 0 6px 6px;
+      padding: 5px 15px;
+      right: 45%;
+  
+      /* Change background color to brand color */
+      /* background: #097fff; */
+      background: #1fcc1f;
+      color: #FFF;
+      font-size: 12px;
+      overflow: hidden;
+      position: fixed;
+      line-height: 1.2;
+      z-index: 9999;
+      transform: translateX(50%);
   }
   
   #status-noteDisconnected {
-    top: 0;
-    border-radius: 0 0 6px 6px;
-    padding: 5px 15px;
-    right: 50%;
-    /* Change background color to brand color */
-    /* background: #097fff; */
-    background: #097fff;
-    color: #FFF;
-    font-size: 12px;
-    overflow: hidden;
-    position: fixed;
-    line-height: 1.2;
-    z-index: 9999;
-    transform: translateX(50%);
+      top: 0;
+      border-radius: 0 0 6px 6px;
+      padding: 5px 15px;
+      right: 50%;
+  
+      /* Change background color to brand color */
+      /* background: #097fff; */
+      background: #097fff;
+      color: #FFF;
+      font-size: 12px;
+      overflow: hidden;
+      position: fixed;
+      line-height: 1.2;
+      z-index: 9999;
+      transform: translateX(50%);
   }
   
   #status-note, .settings .thumb-box .thumbs .link-action i {
-    font-size: 12px;
-    display: none;
+      font-size: 12px;
+      display: none;
   }
   
   #status-note, #unread-count {
-    color: #FFF;
-    overflow: hidden;
-    display: none;
+      color: #FFF;
+      overflow: hidden;
+      display: none;
   }
   
   #status-note {
-    transition: all .3s ease-in-out;
-    display: none;
+      transition: all .3s ease-in-out;
   }
-  
-  .settings .thumb-box .thumbs .link-active {
-    display: none;
+  #status-note, .settings .thumb-box .thumbs .link-active {
+      display: none;
   }
-  
   .center-block {
     /* display: block; */
-    margin-right: auto;
-    margin-left: auto;
+      margin-right: auto;
+      margin-left: auto;
   }
   
   *, :after, :before {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
   }
+  

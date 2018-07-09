@@ -17,7 +17,8 @@ import './NewCampaignContainer.scss';
 
 const toastConfig = {
   position: toast.POSITION.BOTTOM_LEFT,
-  autoClose: 2000
+  autoClose: 2000,
+  className: 'toast-style'
 };
 
 function validate(campaignname, website) {
