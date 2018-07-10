@@ -1,6 +1,6 @@
 import React from 'react';
 import './NotificationList.scss';
-import { browserHistory } from 'react-router';
+
 
 const NotificationList = ({ notificationList, configure, handleActivityChange}) => {
   const renderNotifications = () => {
@@ -102,7 +102,6 @@ const NotificationList = ({ notificationList, configure, handleActivityChange}) 
             <button
               type="button"
               className="btn btn-primary m-t-20 btn-rounded btn-bordered waves-effect w-md waves-light"
-              onClick={() => {browserHistory.push('/popupreview');}}
             >
                 Configure
             </button>
