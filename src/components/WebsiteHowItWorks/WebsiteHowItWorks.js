@@ -8,7 +8,8 @@ import {
   NewAnalyze,
   Easiestsetup,
   Lawsikho,
-  Carpathy
+  Carpathy,
+  Stagephod
 } from 'img';
 import './WebsiteHowitWorks.scss';
 class WebsiteHowItWorks extends Component {
@@ -27,9 +28,9 @@ class WebsiteHowItWorks extends Component {
       autoplay: true,
     };
     return (
-      <div className="websitehowitworks-container">
+      <div className="websitehowitworks-container ">
         <div className="main-container">
-          <section className="cover text-center unpad--bottom bg--secondary">
+          <section className="cover text-center unpad--bottom ">
             <div className="container">
               <div className="row">
                 <div className="col-md-12">
@@ -40,37 +41,54 @@ class WebsiteHowItWorks extends Component {
               </div>
             </div>
           </section>
-          <section className="col-md-12 bg--secondary">
-            <Slider {...settings} className="pb-5">
-              <div>
-                <div className="row ">
-                  <div className="col-md-4 text-center pt-5 pb-5  ">
-                    <img src={Carpathy} alt="img" className="mr-0" />
-                  </div>
-                  <div className="col-md-8 text-left pt-5 pb-5  type--fine-print">
-                    <p className="h3"> “We wanted a solution that could help us in increasing our conversions on our portal. We got an instant conversions boost after using Influence on our main portal ”  </p>
-                    <p className="h5 lead"> – Carpathy, Akshat Lavania</p>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <div className="row ">
-                  <div className="col-md-4 text-center pt-5 pb-5  ">
-                    <img src={Lawsikho} alt="img" className="mr-0" />
-                  </div>
-                  <div className="col-md-8 text-left pt-5 pb-5 type--fine-print">
-                    <p className="h3"> “Great Tool. Gave us instant boost of 36% on our landing pages on an average ”  </p>
-                    <p className="h5 lead"> – LawSikho, Abhyudya Aggarwal </p>
+          
+
+
+          <section className="col-md-12 pl-0 pt-3 pr-0 slider-card  "  >
+            <div className="container pt-5 pb-5">
+
+              <Slider {...settings}>
+                <div>
+                  <div className="row ">
+                    <div className="col-md-4 text-left pt-5 pb-5  ">
+                      <img src={Carpathy} alt="img" className="slider-image"/>
+                    </div>
+                    <div className="col-md-8 text-left pt-5 pb-5 slider-text">
+                      <p className="h3 slider-title"> “We wanted a solution that could help us in increasing our conversions on our portal. We got an instant conversions boost after using Influence on our main portal ”  </p>
+                      <p className="h5 lead slider-author"> – Carpathy, Akshat Lavania</p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </Slider>
+                <div>
+                  <div className="row ">
+                    <div className="col-md-4 text-left pt-5 pb-5  ">
+                      <img src={Stagephod} alt="img" className="slider-image"/>
+                    </div>
+                    <div className="col-md-8 text-left pt-5 pb-5 slider-text">
+                      <p className="h3 slider-title"> “ We got an instant boost of 84% in our landing page conversions after using influence ”  </p>
+                      <p className="h5 lead slider-author"> – Stagephod, Nikhilesh Tayal</p>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <div className="row ">
+                    <div className="col-md-4 text-left pt-5 pb-5  ">
+                      <img src={Lawsikho} alt="img"className="slider-image"/>
+                    </div>
+                    <div className="col-md-8 text-left pt-5 pb-5 slider-text">
+                      <p className="h3 slider-title"> “Great Tool. Gave us instant boost of 36% on our landing pages on an average ”  </p>
+                      <p className="h5 lead slider-author"> – LawSikho, Abhyudya Aggarwal </p>
+                    </div>
+                  </div>
+                </div>
+              </Slider>
+            </div>
           </section>
           <section className="text-center">
             <div className="container">
               <div className="row">
                 <div className="col-md-10 col-lg-8">
-                  <h1>Up and running in minutes</h1>
+                  <h1 className="second-title">Up and running in minutes</h1>
                   <p className="lead"> Influence easily connects to your website - no coding required! </p>
                 </div>
               </div>
@@ -79,7 +97,7 @@ class WebsiteHowItWorks extends Component {
           <section>
             <div className="container">
               <div className="row">
-                <div className="col-md-6">
+                <div className="col-md-6 justify-content-center">
                   <div className="feature feature-5 boxed  boxed--border"> <img className="icon-n2" alt="Image" src={NewIntegrate} />
                     <div className="feature__body">
                       <h3>1. Install our Pixel</h3>

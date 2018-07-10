@@ -215,7 +215,7 @@ class WebsiteHome extends Component {
           </section>
 
 
-          <section className="col-md-12 pl-0 pt-3 pr-0 slider-card  " style={{ backgroundColor: '#f3f0ee' }} >
+          <section className="col-md-12 pl-0 pt-3 pr-0 slider-card  "  >
             <div className="container pt-5 pb-5">
 
               <Slider {...settings}>
