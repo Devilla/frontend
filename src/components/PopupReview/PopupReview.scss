@@ -30,18 +30,8 @@
   }
   .reviewpopup {
     position: relative;
-    top: 100px;
+    top: 200px;
     left: 50px;
-    &::before {
-      content: 'Product reviews on Channel';
-      position: relative;
-      top: -90px;
-      left: 15px;
-      font-weight: 600;
-      font-size: 16px;
-      color: #999;
-      text-decoration: underline;
-
-    }
+   
   }
 }
