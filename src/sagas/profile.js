@@ -57,6 +57,8 @@ function* update(action) {
     const res = yield call(api.PUT, `profile/${action.profile.id}`, action.profile);
     if (res.error)
       console.log(res.error);
+    else
+      yield put(actions.successProfile(res));
     yield put(loaded());
   } catch (error) {
     yield put(loaded());

@@ -67,12 +67,20 @@ class LoginFlow extends Component {
 
   submitPayment(data) {
     let profile = {
-      user: this.props.user._id,
       plan: data.plan,
       uniqueVisitorQouta: Number(data.plan.description),
       uniqueVisitors: 0,
       uniqueVisitorsQoutaLeft: Number(data.plan.description)
     };
+
+    const propsProfile = this.props.profile;
+
+    if(propsProfile) {
+      profile['id'] = propsProfile._id;
+      profile['route'] = true;
+    } else {
+      profile['user'] = this.props.user._id;
+    }
 
     if(this.state.username != this.props.user.username) {
       let userInfo = {};
@@ -80,7 +88,9 @@ class LoginFlow extends Component {
       userInfo['username'] = this.state.username;
       this.props.updateUser(userInfo);
     }
-    this.props.createPayment(data, profile, false);
+
+    const update = propsProfile?true:false;
+    this.props.createPayment(data, profile, update);
   }
 
   handleCheckChange(checked, value) {

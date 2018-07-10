@@ -113,7 +113,7 @@ class BillingDetails extends Component {
                                         type="text"
                                         bsClass="form-control mt-4"
                                         id="campaignname"
-                                        value={profile?profile.plan.name:''}
+                                        value={profile && profile.plan?profile.plan.name:''}
                                         disabled
                                       />
                                     </FormGroup>
@@ -174,11 +174,11 @@ class BillingDetails extends Component {
                       </Col>
                     </Row>
 
-                    
+
                     <div className="panel panel-default">
                       <div className="card-box">
                         <h4 className="header-title mt-0 m-b-20">Invoices </h4>
-                      
+
                         <Col md={12}>
                           <div className="text-left">
                             <Table className="table-striped">
@@ -199,10 +199,10 @@ class BillingDetails extends Component {
                             </Table>
                           </div>
                         </Col>
-                       
+
                       </div>
                     </div>
-                    
+
                   </div>
                 </div>
               </div>
