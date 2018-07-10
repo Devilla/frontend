@@ -215,7 +215,7 @@ class WebsiteHome extends Component {
           </section>
 
 
-          <section className="col-md-12 pl-0 pt-3 pr-0  " style={{ backgroundColor: '#f3f0ee' }} >
+          <section className="col-md-12 pl-0 pt-3 pr-0 slider-card  " style={{ backgroundColor: '#f3f0ee' }} >
             <div className="container pt-5 pb-5">
 
               <Slider {...settings}>
@@ -225,8 +225,8 @@ class WebsiteHome extends Component {
                       <img src={Carpathy} alt="img" className="slider-image"/>
                     </div>
                     <div className="col-md-8 text-left pt-5 pb-5 slider-text">
-                      <p className="h3"> “We wanted a solution that could help us in increasing our conversions on our portal. We got an instant conversions boost after using Influence on our main portal ”  </p>
-                      <p className="h5 lead"> – Carpathy, Akshat Lavania</p>
+                      <p className="h3 slider-title"> “We wanted a solution that could help us in increasing our conversions on our portal. We got an instant conversions boost after using Influence on our main portal ”  </p>
+                      <p className="h5 lead slider-author"> – Carpathy, Akshat Lavania</p>
                     </div>
                   </div>
                 </div>
@@ -236,8 +236,8 @@ class WebsiteHome extends Component {
                       <img src={Stagephod} alt="img" className="slider-image"/>
                     </div>
                     <div className="col-md-8 text-left pt-5 pb-5 slider-text">
-                      <p className="h3"> “ We got an instant boost of 84% in our landing page conversions after using influence ”  </p>
-                      <p className="h5 lead"> – Stagephod, Nikhilesh Tayal</p>
+                      <p className="h3 slider-title"> “ We got an instant boost of 84% in our landing page conversions after using influence ”  </p>
+                      <p className="h5 lead slider-author"> – Stagephod, Nikhilesh Tayal</p>
                     </div>
                   </div>
                 </div>
@@ -247,8 +247,8 @@ class WebsiteHome extends Component {
                       <img src={Lawsikho} alt="img"className="slider-image"/>
                     </div>
                     <div className="col-md-8 text-left pt-5 pb-5 slider-text">
-                      <p className="h3"> “Great Tool. Gave us instant boost of 36% on our landing pages on an average ”  </p>
-                      <p className="h5 lead"> – LawSikho, Abhyudya Aggarwal </p>
+                      <p className="h3 slider-title"> “Great Tool. Gave us instant boost of 36% on our landing pages on an average ”  </p>
+                      <p className="h5 lead slider-author"> – LawSikho, Abhyudya Aggarwal </p>
                     </div>
                   </div>
                 </div>
