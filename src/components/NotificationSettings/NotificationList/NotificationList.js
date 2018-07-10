@@ -49,8 +49,8 @@ const NotificationList = ({ notificationList, configure, handleActivityChange}) 
                   className="tgl tgl-ios"
                   id={notification._id}
                   type="checkbox"
-                  checked={notification.activity}
-                  onChange={(e) => e.target.checked !=notification.activity?handleActivityChange(e.target.checked, notification._id, notification.configurationId):null}
+                  defaultChecked={notification.activity}
+                  onChange={(e) => e.target.checked != notification.activity?handleActivityChange(e.target.checked, notification._id, notification.configurationId):null}
                 />
                 <label className="tgl-btn" htmlFor={notification._id}></label>
               </div>

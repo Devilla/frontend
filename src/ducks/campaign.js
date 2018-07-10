@@ -31,7 +31,6 @@ const campaign = (state = initialState, action) => {
     case FETCH_SUCCESS:
       return state.set('campaigns', action.campaign);
     case SUCCESS:
-      console.log(action.campaign);
       return state.set('campaign', action.campaign);
     case CLEAR_CAMPAIGN:
       return state.set('campaign', {});

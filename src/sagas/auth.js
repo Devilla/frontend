@@ -206,7 +206,7 @@ export function* socialLogin(action) {
       }, 2000);
     } else {
       yield storeToken(res.jwt);
-      yield browserHistory.push('/dashboard');
+      yield browserHistory.push('/getting-started');
     }
     yield put(loaded());
   } catch (error) {
