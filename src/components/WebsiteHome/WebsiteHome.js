@@ -12,7 +12,6 @@ import {
   Stagephod,
   Carpathy
 
-
 } from 'img';
 import { browserHistory } from 'react-router';
 

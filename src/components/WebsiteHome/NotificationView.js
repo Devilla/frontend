@@ -1,5 +1,5 @@
 import React from 'react';
-
+import './NotificationView.scss';
 const NotificationView = ({tab, display, position, animation, notificationPanelStyle}) => {
 
   const {
@@ -58,7 +58,7 @@ const NotificationView = ({tab, display, position, animation, notificationPanelS
   }
 
   return (
-    <div className={'notification-view animated ' + animation} style={notificationPosition}>
+    <div className={'notification-view notification-swivel animated ' + animation} style={notificationPosition}>
       <div id="FPqR2DbIqJeA2DbI7MM9_0" >
         <div style={tab == '1' || tab =='1.1'
           ? {}
