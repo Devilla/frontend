@@ -152,7 +152,7 @@ const NotificationView = ({tab, display, position, animation, notificationPanelS
                     </span><span>
                       people</span>
                   </div>
-                  <span>
+                  <span className="second-swivel">
                     are viewing this site
                   </span>
                 </div>
@@ -210,7 +210,7 @@ const NotificationView = ({tab, display, position, animation, notificationPanelS
                     }}>{'2,002 people '}
                     </span>
                   </span>
-                  <span style={{
+                  <span className="third-swivel" style={{
                     color: notificationStyle.color,
                     fontFamily: notificationStyle.fontFamily
                   }}>{' signed up for Influence in the last 7 days'}
