@@ -22,9 +22,11 @@ class Dashboard extends Component {
     };
     this.handleRouteChange = this.handleRouteChange.bind(this);
   }
+
   componentWillMount() {
     this.props.fetchCampaignInfo();
   }
+
   createLegend(json) {
     var legend = [];
     for (var i = 0; i < json['names'].length; i++) {
@@ -138,8 +140,6 @@ class Dashboard extends Component {
 
   render() {
     const { campaignInfo,profile } = this.props;
-
-
     var chartData = {
       labels:   this.getDays(),
       datasets: this.getDataset()

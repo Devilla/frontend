@@ -37,7 +37,7 @@ class LoginFlow extends Component {
   componentWillReceiveProps(nextProps) {
     if(this.props != nextProps)
       this.updateState(nextProps.user, nextProps.profile, nextProps.plan);
-    if(nextProps.profile != this.props.profile)
+    if(nextProps.profile != this.props.profile && nextProps.profile.plan)
       browserHistory.push('/dashboard');
   }
 
@@ -135,7 +135,7 @@ class LoginFlow extends Component {
           cardError={cardError}
           couponDetails={couponDetails}
           coupon={coupon}
-          selectedPlan={plan}
+          selectedPlan={plan?plan:''}
           user={user}
           profile={profile}
           plan={plan}
