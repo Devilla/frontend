@@ -8,8 +8,11 @@
   }
   p {
     &.m-l-30.p-3 {
-      padding-bottom: 5px;
-        box-shadow: 0 6px 16px -6px black;
+    padding-bottom: 5px;
+    box-shadow: 0 1px 3px -3px black;
+    background-color: #F8F8F8 !important;
+    border: none !important;
+    border: 1px solid rgb(225, 225, 225) !important;
     }
   }
   .fa {

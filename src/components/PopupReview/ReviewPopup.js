@@ -113,7 +113,7 @@ const ReviewPopup = ({tab, display, position, animation, notificationPanelStyle}
                           backgroundColor:notificationStyle.backgroundColor
                         }}>
                           <span className="FPqR1Jr6qJeA1Jr67MM9_0 headtext-pop">
-                            <span >250 &nbsp; marketers</span>
+                            <span>250 marketers</span>
                           </span>
                        
                         </div>
