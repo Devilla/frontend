@@ -29,7 +29,10 @@
             background-color: #097fff !important;
         }
         .parallax {
-            padding-top: 0px;
+            padding-top: 20px;
+        }
+        .mobile-view {
+           display: none;
         }
     }
 }
@@ -48,6 +51,27 @@
         .blue-strip-affiliate {
             font-size: 40px;
         }
+        .starttrial-form {
+            .mobile-view {
+                display: block;
+                list-style-type: circle  !important;
+                color: #858585;
+                width: 450px;
+                margin: 0 auto;
+                & li {
+                    position: relative;
+                    top: 30px;
+                    display: inline !important; 
+                    padding-left: 15px;
+                    font-weight: 700;
+                       &.bullet-inline::before{
+                        content: '•';
+                        margin-right: 5px;
+                       } 
+                }
+            }   
+        }
+       
     }
 }
 @media only screen and (max-width: 768px) {
@@ -58,10 +82,29 @@
         }
     }
 }
+@media only screen and (max-width: 733px) {
+    .websitehome-container{
+        .starttrial-form {
+            margin-left: 65px;
+        }
+    }
+}
+@media only screen and (max-width: 702px) {
+    .websitehome-container{
+        ul{
+            &.mobile-view {
+              position: relative !important;
+              top: -10px !important;
+              left: -20px !important
+            }
+        }
+       
+    }
+}
 @media only screen and (max-width: 590px) {
     .websitehome-container{
         .starttrial-form {
-            margin-left: 25px;
+            margin-left: 35px;
         }
         .integration-image {
             max-height: 700px;
@@ -105,5 +148,26 @@
         .integration-title {
             text-align: center;
         }
+       
+       
     }
+}
+
+@media only screen and (max-width: 482px ) {
+    .websitehome-container{
+        .starttrial-form {
+        
+            .mobile-view {
+                position: absolute;
+                left:-30px !important;
+                top: -45px !important;  
+                width: 250px;
+                & li {
+                    display: block !important; 
+                
+                }
+            }
+        }
+    }
+
 }

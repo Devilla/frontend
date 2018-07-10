@@ -108,7 +108,13 @@ class WebsiteHome extends Component {
                   <div className="col-md-3 mr-1 pr-0 ml-0 pl-0"></div>
                   <div className="col-md-4 ml-0 pl-0 mr-0 pr-0"> <input type="text" name="email" placeholder="Enter your email" onChange={(e) => this.setState({ email: e.target.value })} /> </div>
                   <div className="col-md-2 ml-0 pl-0 mr-0 ml-0 pr-0 "> <button type="submit" onClick={() => browserHistory.push(`/signup?email=${this.state.email}`)} className="btn btn--primary freetrial-btn ml-0">Start Free Trial</button> </div>
+
                 </form>
+                <ul className="mobile-view">
+                  <li>Free 7-day trial</li>
+                  <li className="bullet-inline">Easy setup</li>
+                  <li className="bullet-inline">Cancel any time</li>
+                </ul>
               </div>
             </div>
           </section>
