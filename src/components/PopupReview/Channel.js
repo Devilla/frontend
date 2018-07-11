@@ -1,5 +1,5 @@
-import React , {Component }  from 'react';
-import {Col }  from 'react-bootstrap';
+import React , { Component }  from 'react';
+import { Col }  from 'react-bootstrap';
 import  './Channel.scss'; 
 import {
   Facebook,
@@ -8,17 +8,11 @@ import {
 
 class Channel extends Component  {
 
-
-
-
   channelfunc = (index) => {
     let res = {};
     switch(true) {
       case /0/.test(index) : res = Facebook; break;
       case /1/.test(index) : res = Google; break;
-   
-
-
     }
     return res;
   }
@@ -33,21 +27,14 @@ class Channel extends Component  {
   channelsList = () => {
     return this.channels.map((channelName,i)=> {
       return (
-      
         <div  className="bx-shadow" key={i}>
           <img src={this.channelfunc(i)} className="logocompany " />
           <span className="text-muted text-uppercase mt-0  title">{channelName}</span>
           <span className="text-muted btn btn-primary waves-effect  btns" onClick={()=>this.props.showpopup(channelName)}>View Reviews&nbsp; <i className=" mdi mdi-arrow-down-drop-circle-outline"></i></span>
-         
         </div>  
-     
       );
     });
   }
-
-
-
-
 
 
   render() {

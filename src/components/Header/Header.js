@@ -1,5 +1,4 @@
 import React from 'react';
-// import { Smallpic } from 'img';
 import './Header.scss';
 import { Link } from 'react-router';
 import { browserHistory } from 'react-router';
