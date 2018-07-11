@@ -1,17 +1,22 @@
 import React , { Component }  from 'react' ;
 import StarRatings from 'react-star-ratings';
 import {
-  Googlepop
+  Googlepop,
+  Facebookpop,
 } from 'img';
+
+
+
+
 
 class PopupStyle extends Component { 
   render() {
-    const { notificationStyle }  = this.props;
+    const { notificationStyle ,popupName}  = this.props;
+    let img={};
+    popupName === 'Google' ? img = Googlepop : img= Facebookpop;
     return (
-      <div>
-        
-              
-        <div className="FPqR1JYFqJeA1JYF7MM9_0" ><img src={Googlepop} width='50px'/></div>
+      <div>   
+        <div className="FPqR1JYFqJeA1JYF7MM9_0" ><img src={img} width='50px'/></div>
         <div className="FPqR2EbCqJeA2EbC7MM9_0 content-pop">
           <div className="FPqR2AUlqJeA2AUl7MM9_0" style ={{
             color:notificationStyle.color,
@@ -21,7 +26,7 @@ class PopupStyle extends Component {
               <StarRatings
                 rating={4.6}
                 starDimension="20px"
-                starRatedColor="gold"
+                starRatedColor={popupName==='Google'?'gold':'#385c8e'}
                 numberOfStars={5}
                 starSpacing= "5px"
                 name='rating'
@@ -30,8 +35,6 @@ class PopupStyle extends Component {
                 fontFamily: notificationStyle.fontFamily,
                 fontWeight: notificationStyle.fontWeight}}> 4.6</span></div>
           </div>
-
-
           <div className="FPqR2PlWqJeA2PlW7MM9_0 "  style={{
             color: notificationStyle.linkColor,
             fontFamily: notificationStyle.linkFontFamily,
@@ -43,11 +46,6 @@ class PopupStyle extends Component {
             </span>
                        
           </div>
-          {/* <div className="FPqR3eNuqJeA3eNu7MM9_0 review-text">
-                          <span>reviewed us</span>
-
-                       
-                        </div> */}
           <div className="FPqR3eNuqJeA3eNu7MM9_0 verifier">
             <i>
               <svg width="7" height="13" viewBox="0 0 7 13" xmlns="http://www.w3.org/2000/svg">
@@ -65,8 +63,6 @@ class PopupStyle extends Component {
             }}><b>Influence</b></span>
           </div>
         </div>
-
-
       </div>
     );
   }
