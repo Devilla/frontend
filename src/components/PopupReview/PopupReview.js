@@ -6,60 +6,75 @@ import ReviewDesignSetting from './ReviewDesignSetting';
 import DashboardChannel  from '../DashboardChannel/DashboardChannel';
 import Channel from  './Channel';
 
+
+const notificationPanelStyleDefault = { // TODO: Take style values from server
+  radius: 5,
+  borderWidth: 0,
+  borderColor: {
+    r: 200,
+    g: 200,
+    b: 200,
+    a: 0.80
+  },
+  shadow: {
+    r: 0,
+    g: 0,
+    b: 0,
+    color: 'lightgrey'
+  },
+  blur: 0,
+  color: {
+    r: 0,
+    g: 149,
+    b: 247,
+    a: 1
+  },
+  linkColor: {
+    r: 0,
+    g: 137,
+    b: 216,
+    a: 1
+  },
+  backgroundColor: {
+    r: 255,
+    g: 255,
+    b: 255,
+    a: 1
+  },
+  fontFamily: 'inherit',
+  fontWeight: 'normal',
+  linkFontFamily: 'inherit',
+  linkFontWeight: 'normal',
+  selectDurationData: 'hours',
+  selectLastDisplayConversation: 'hours',
+  bulkData: 5,
+  liveVisitorCount: 0,
+  recentNumber: 5,
+  recentConv: 5,
+  hideAnonymousConversion: true,
+  onlyDisplayNotification: false,
+  visitorText: ' people '
+};
+
+
+
 class PopupReview extends Component {
   constructor() {
     super();
     this.state= {
       activeClass: 1,
       popupName: '',
-      notificationPanelStyle :{ // TODO: Take style values from server
-        radius: 5,
-        borderWidth: 0,
-        borderColor: {
-          r: 200,
-          g: 200,
-          b: 200,
-          a: 0.80
-        },
-        shadow: {
-          r: 0,
-          g: 0,
-          b: 0,
-          color: 'lightgrey'
-        },
-        blur: 0,
-        color: {
-          r: 0,
-          g: 149,
-          b: 247,
-          a: 1
-        },
-        linkColor: {
-          r: 0,
-          g: 137,
-          b: 216,
-          a: 1
-        },
-        backgroundColor: {
-          r: 255,
-          g: 255,
-          b: 255,
-          a: 1
-        },
-        fontFamily: 'inherit',
-        fontWeight: 'normal',
-        linkFontFamily: 'inherit',
-        linkFontWeight: 'normal',
-        selectDurationData: 'hours',
-        selectLastDisplayConversation: 'hours',
-        bulkData: 5,
-        liveVisitorCount: 0,
-        recentNumber: 5,
-        recentConv: 5,
-        hideAnonymousConversion: true,
-        onlyDisplayNotification: false,
-        visitorText: ' people '
-      }
+
+      configuration: {},
+      activity: true,
+      notificationPanelStyle: notificationPanelStyleDefault,
+      contentText: 'Company Name ',
+      visitorText: 'people',
+      notificationUrl: '',
+      image: '',
+      notifications: [],
+      toggleTextBox: false,
+      toggleMap: true
     };
   }
 
@@ -71,9 +86,20 @@ class PopupReview extends Component {
       this.setState({ popupName: channelName });
     }
 
+    handleNotificationStyleChange = style => {
+      const notificationStyle = Object.assign({}, this.state.notificationPanelStyle);
+      notificationStyle[style.prop] = style.value;
+      this.setState({ notificationPanelStyle: notificationStyle });
+    };
+
+    setDefaultPanel = () => {
+      this.setState({ notificationPanelStyle: notificationPanelStyleDefault });
+    }
+  
+
     render() {
-      const { notificationPanelStyle }  = this.state;
-      const { activeClass } = this.state;
+      const { notificationPanelStyle,activeClass,toggleMap,notificationUrl,toggleTextBox }  = this.state;
+  
       return (
         <div>
           <div className="review-container">
@@ -90,7 +116,15 @@ class PopupReview extends Component {
                   <Col md={6} sm={12}>
                     <div className="card-box">
                       <div className="justify-content-center mb-2 reviewpopup ">
-                        <ReviewPopup popupName={this.state.popupName} tab='1' animation='' display='block' position='' notificationPanelStyle={this.state.notificationPanelStyle}/>
+                        <ReviewPopup  
+                          tab='1' 
+                          animation='' 
+                          display='block' 
+                          position='' 
+                          notificationPanelStyle={notificationPanelStyle} 
+                          popupName={this.state.popupName}
+                          toggleMap={toggleMap}
+                        />
                       </div>
                   
                     </div>
@@ -121,7 +155,14 @@ class PopupReview extends Component {
                       <div className={`tab-pane ${activeClass == 2?'show active':''}`} id="Settings">
                         <Row>
                           <Col md={10}>
-                            <ReviewDesignSetting notificationPanelStyle={notificationPanelStyle}/>
+                            <ReviewDesignSetting 
+                              toggleTextBox={toggleTextBox}
+                              toggleMap={toggleMap}
+                              notificationUrl={notificationUrl}
+                              notificationPanelStyle={notificationPanelStyle}
+                              onConfigChange={this.handleNotificationStyleChange}
+                              setDefaultPanel={this.setDefaultPanel}
+                            />
                           </Col>
                         </Row>
                       </div>

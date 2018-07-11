@@ -1,9 +1,4 @@
 import React from 'react';
-// import StarRatings from 'react-star-ratings';
-import {
-// Facebookpop,
-// Googlepop
-} from 'img';
 import './ReviewPopup.scss';
 import PopupStyle from './PopupStyle';
 const ReviewPopup = ({tab, display, position, animation, notificationPanelStyle,popupName}) => {
@@ -24,11 +19,8 @@ const ReviewPopup = ({tab, display, position, animation, notificationPanelStyle,
   } = notificationPanelStyle;
 
 
-  // findPopupHander= () => {
-
-  // }
-
-
+  
+  
   const notificationStyle = {
     backgroundColor: `rgba(${backgroundColor.r}, ${backgroundColor.g}, ${backgroundColor.b}, ${backgroundColor.a})`,
     borderStyle: 'solid',
@@ -80,13 +72,11 @@ const ReviewPopup = ({tab, display, position, animation, notificationPanelStyle,
               <div style={{}}>
                 <div style={display?{display: 'block'}:{display: 'none'}}>
                   <div id="FPqR2fZIqJeA2fZI7MM9_0">
-                    <div className="FPqR3zjZqJeA3zjZ7MM9_0 FPqR2riIqJeA2riI7MM9_0 wrapper"  style={tab == '1'
-                      ?{}
-                      :{
-                        borderRadius: notificationStyle.borderRadius,
-                        backgroundColor: notificationStyle.backgroundColor,
-                        border: `${notificationStyle.borderWidth} ${notificationStyle.borderStyle} ${notificationStyle.borderColor}`
-                      }}>
+                    <div className="FPqR3zjZqJeA3zjZ7MM9_0 FPqR2riIqJeA2riI7MM9_0 wrapper"  style={{
+                      borderRadius: notificationStyle.borderRadius,
+                      backgroundColor: notificationStyle.backgroundColor,
+                      border: `${notificationStyle.borderWidth} ${notificationStyle.borderStyle} ${notificationStyle.borderColor}`
+                    }}>
 
                       <PopupStyle popupName={popupName} notificationStyle={notificationStyle}/>
 
