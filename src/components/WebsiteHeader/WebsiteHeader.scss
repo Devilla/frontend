@@ -15,6 +15,9 @@
       left: 110px;
       z-index: 99;
   }
+  .menu-horizontal:focus {
+      outline: none;
+  }
 }
 
 .sticky {
@@ -156,10 +159,17 @@
             top: 25px;
             z-index: 999;
             cursor: pointer;
+
+            &:focus {
+                outline: none;
+            }
             
   
     }
-    .customtoggleclass {    
+    .customtoggleclass {
+                &:focus {
+                    outline: none;
+                }    
                 .fa-bars {
                 display: none !important;   
                 }
