@@ -6,7 +6,7 @@ import {
 } from 'img';
 import './ReviewPopup.scss';
 import PopupStyle from './PopupStyle';
-const ReviewPopup = ({tab, display, position, animation, notificationPanelStyle}) => {
+const ReviewPopup = ({tab, display, position, animation, notificationPanelStyle,popupName}) => {
 
   const {
     radius,
@@ -88,7 +88,7 @@ const ReviewPopup = ({tab, display, position, animation, notificationPanelStyle}
                         border: `${notificationStyle.borderWidth} ${notificationStyle.borderStyle} ${notificationStyle.borderColor}`
                       }}>
 
-                      <PopupStyle notificationStyle={notificationStyle}/>
+                      <PopupStyle popupName={popupName} notificationStyle={notificationStyle}/>
 
 
                       <div className="FPqR1N_EqJeA1N_E7MM9_0" style={{display: 'none'}}>
