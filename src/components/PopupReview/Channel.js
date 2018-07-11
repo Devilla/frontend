@@ -3,14 +3,8 @@ import {Col }  from 'react-bootstrap';
 import  './Channel.scss'; 
 import {
   Facebook,
-  Zendesk,
   Google,
-  TrustPilot,
-  FourSquare,
-  G2Crowd,
-  TrustRadius,
-  Yelp,
-  BingPlaces } from 'img';
+} from 'img';
 
 class Channel extends Component  {
 
@@ -21,14 +15,8 @@ class Channel extends Component  {
     let res = {};
     switch(true) {
       case /0/.test(index) : res = Facebook; break;
-      case /1/.test(index) : res = Zendesk; break;
-      case /2/.test(index) : res = Google; break;
-      case /3/.test(index) : res = TrustPilot; break;
-      case /4/.test(index) : res = FourSquare; break;
-      case /5/.test(index) : res = G2Crowd; break;
-      case /6/.test(index) : res = TrustRadius; break;
-      case /7/.test(index) : res = Yelp; break;
-      case /8/.test(index) : res = BingPlaces; break;
+      case /1/.test(index) : res = Google; break;
+   
 
 
     }
@@ -40,7 +28,7 @@ class Channel extends Component  {
     scrollElm.scrollTop = 0;
   }
 
-  channels = ['Facebook' , 'Zendesk','Google','TrustPilot','FourSquare','G32Crowd','TrustRadius','Yelp','BingPlaces'];
+  channels = ['Facebook' , 'Google'];
 
   channelsList = () => {
     return this.channels.map((channelName,i)=> {
