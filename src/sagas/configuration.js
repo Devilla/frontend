@@ -27,6 +27,22 @@ function* fetch(action) {
   }
 }
 
+export function* review(action) {
+  try {
+    yield put(load());
+    const res = yield call(api.POST, '/integrations/:provider/callback', action.data);
+    if(res.error)
+      console.log(res.error);
+    else
+      yield put(actions.successConfiguration(res));
+    yield put(loaded());
+  } catch (error) {
+    yield put(loaded());
+    yield toast.error(error, toastConfig);
+  }
+}
+
+
 function* fetchCampaignConfiguration(action) {
   try {
     yield put(load());
@@ -82,6 +98,10 @@ export function* watchFetch() {
   yield takeLatest(actions.FETCH, fetch);
 }
 
+export function* watchReviewNotification() {
+  yield takeLatest(actions.REVIEW, review);
+}
+
 export function* watchFetchCampaignConfig() {
   yield takeLatest(actions.FETCH_CAMPAIGN_CONFIG, fetchCampaignConfiguration);
 }
@@ -99,6 +119,7 @@ export default function* rootSaga() {
     fork(watchFetch),
     fork(watchCreate),
     fork(watchUpdate),
-    fork(watchFetchCampaignConfig)
+    fork(watchFetchCampaignConfig),
+    fork(watchReviewNotification)
   ];
 }
