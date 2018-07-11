@@ -34,7 +34,7 @@ class Channel extends Component  {
     return this.channels.map((channelName,i)=> {
       return (
       
-        <div  className="bx-shadow">
+        <div  className="bx-shadow" key={i}>
           <img src={this.channelfunc(i)} className="logocompany " />
           <span className="text-muted text-uppercase mt-0  title">{channelName}</span>
           <span className="text-muted btn btn-primary waves-effect  btns" onClick={()=>this.props.showpopup(channelName)}>View Reviews&nbsp; <i className=" mdi mdi-arrow-down-drop-circle-outline"></i></span>
@@ -53,7 +53,7 @@ class Channel extends Component  {
   render() {
     return (
       <div  className="channel-container">
-        <span className="btn btn-primary waves-effect editchannel-btn "><i className="mdi mdi-grease-pencil "></i>&nbsp;Edit Channels</span>
+        <span className="btn btn-primary waves-effect editchannel-btn "><i className="mdi mdi-grease-pencil "></i>&nbsp;Edit &nbsp;</span>
         <Col md={12}>
           {this.channelsList()}
         </Col>
