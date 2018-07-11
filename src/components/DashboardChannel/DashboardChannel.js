@@ -53,7 +53,7 @@ class DashboardChannel extends Component {
     return this.channels.map((channelName,i)=> {
       return (
       
-        <Col md={12}  className="bx-shadow">
+        <Col md={12}  className="bx-shadow" key={i}>
           <img src={this.channelfunc(i)} className="logocompany " />
           <span className="text-muted text-uppercase mt-0  title">{channelName}</span>
           <span className="text-muted btn btn-primary waves-effect  btns" onClick={()=>{browserHistory.push('/oauthshow');}}>Connect&nbsp; <i className="fi-open"></i></span>
