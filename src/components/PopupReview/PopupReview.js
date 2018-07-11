@@ -64,7 +64,6 @@ class PopupReview extends Component {
     this.state= {
       activeClass: 1,
       popupName: '',
-
       configuration: {},
       activity: true,
       notificationPanelStyle: notificationPanelStyleDefault,
@@ -103,7 +102,6 @@ class PopupReview extends Component {
 
     render() {
       const { notificationPanelStyle,activeClass,toggleMap,notificationUrl,toggleTextBox, visitorText,contentText }  = this.state;
-  
       return (
         <div>
           <div className="review-container">
@@ -176,9 +174,7 @@ class PopupReview extends Component {
                         </Row>
                       </div>
                     </div>
-
                   </Col>
-
                 </Row>
               </div>
             </div>

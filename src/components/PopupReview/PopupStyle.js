@@ -6,9 +6,6 @@ import {
 } from 'img';
 
 
-
-
-
 class PopupStyle extends Component { 
   render() {
     const { notificationStyle ,popupName, contentText, visitorText}  = this.props;
