@@ -11,6 +11,7 @@ class PopupReview extends Component {
     super();
     this.state= {
       activeClass: 1,
+      popupName: '',
       notificationPanelStyle :{ // TODO: Take style values from server
         radius: 5,
         borderWidth: 0,
@@ -65,6 +66,11 @@ class PopupReview extends Component {
     setActiveState = (val) => {
       this.setState({ activeClass: val });
     }
+
+    showpopup = (channelName) => {
+      this.setState({ popupName: channelName });
+    }
+
     render() {
       const { notificationPanelStyle }  = this.state;
       const { activeClass } = this.state;
@@ -84,7 +90,7 @@ class PopupReview extends Component {
                   <Col md={6} sm={12}>
                     <div className="card-box">
                       <div className="justify-content-center mb-2 reviewpopup ">
-                        <ReviewPopup tab='1' animation='' display='block' position='' notificationPanelStyle={this.state.notificationPanelStyle}/>
+                        <ReviewPopup popupName={this.state.popupName} tab='1' animation='' display='block' position='' notificationPanelStyle={this.state.notificationPanelStyle}/>
                       </div>
                   
                     </div>
@@ -108,7 +114,7 @@ class PopupReview extends Component {
                       <div className={`tab-pane ${activeClass == 1?'show active':''}`} id="Channels">
                         <Row>
                           <Col md={12}>
-                            <Channel />
+                            <Channel showpopup={this.showpopup} />
                           </Col>
                         </Row>
                       </div>

@@ -49,7 +49,7 @@ class Channel extends Component  {
         <div  className="bx-shadow">
           <img src={this.channelfunc(i)} className="logocompany " />
           <span className="text-muted text-uppercase mt-0  title">{channelName}</span>
-          <span className="text-muted btn btn-primary waves-effect  btns" >View Reviews&nbsp; <i className=" mdi mdi-arrow-down-drop-circle-outline"></i></span>
+          <span className="text-muted btn btn-primary waves-effect  btns" onClick={()=>this.props.showpopup(channelName)}>View Reviews&nbsp; <i className=" mdi mdi-arrow-down-drop-circle-outline"></i></span>
          
         </div>  
      
