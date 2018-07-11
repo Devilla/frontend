@@ -70,7 +70,7 @@ class DashboardChannel extends Component {
     return (
  
       <div className="dashchannel-container">
-        <button type="button" className="btn btn-info btn-lg addchannel" data-toggle="modal" data-target="#myModal" ><i className="fi-plus"></i>&nbsp;Add Channels</button>
+        <button type="button" className="btn btn-info  addchannel" data-toggle="modal" data-target="#myModal" ><i className="fi-plus"></i>&nbsp;Add Channels</button>
         <div className="modal fade show-modal" id="myModal" role="dialog">
           <div className="modal-dialog">
             <div className="modal-content align-modal">
