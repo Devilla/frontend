@@ -68,8 +68,8 @@ class PopupReview extends Component {
       configuration: {},
       activity: true,
       notificationPanelStyle: notificationPanelStyleDefault,
-      contentText: 'Company Name ',
-      visitorText: 'people',
+      contentText: 'us',
+      visitorText: 'marketers',
       notificationUrl: '',
       image: '',
       notifications: [],
@@ -95,10 +95,14 @@ class PopupReview extends Component {
     setDefaultPanel = () => {
       this.setState({ notificationPanelStyle: notificationPanelStyleDefault });
     }
+
+    handleContentChange = (target, content) => {
+      this.setState({ [target]: content });
+    }
   
 
     render() {
-      const { notificationPanelStyle,activeClass,toggleMap,notificationUrl,toggleTextBox }  = this.state;
+      const { notificationPanelStyle,activeClass,toggleMap,notificationUrl,toggleTextBox, visitorText,contentText }  = this.state;
   
       return (
         <div>
@@ -124,6 +128,8 @@ class PopupReview extends Component {
                           notificationPanelStyle={notificationPanelStyle} 
                           popupName={this.state.popupName}
                           toggleMap={toggleMap}
+                          contentText={contentText}
+                          visitorText={visitorText}
                         />
                       </div>
                   
@@ -162,6 +168,9 @@ class PopupReview extends Component {
                               notificationPanelStyle={notificationPanelStyle}
                               onConfigChange={this.handleNotificationStyleChange}
                               setDefaultPanel={this.setDefaultPanel}
+                              contentText={contentText}
+                              visitorText={visitorText}
+                              handleContentChange={this.handleContentChange}
                             />
                           </Col>
                         </Row>

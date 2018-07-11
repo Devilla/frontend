@@ -11,7 +11,7 @@ import {
 
 class PopupStyle extends Component { 
   render() {
-    const { notificationStyle ,popupName}  = this.props;
+    const { notificationStyle ,popupName, contentText, visitorText}  = this.props;
     let img={};
     popupName === 'Google' ? img = Googlepop : img= Facebookpop;
     return (
@@ -42,7 +42,7 @@ class PopupStyle extends Component {
             backgroundColor:notificationStyle.backgroundColor
           }}>
             <span className="FPqR1Jr6qJeA1Jr67MM9_0 headtext-pop">
-              <span>250 marketers reviewed us</span>
+              <span>250 {visitorText} reviewed {contentText}</span>
             </span>
                        
           </div>

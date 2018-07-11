@@ -154,7 +154,7 @@ class ReviewDesignSetting extends Component {
     handleDurationChange = (e) => {
       const selectDurationData = `${e.target.value}`;
       this.setState({ selectDurationData });
-      // this.props.onConfigChange({ prop: 'selectDurationData', value: selectDurationData });
+      this.props.onConfigChange({ prop: 'selectDurationData', value: selectDurationData });
     };
 
     handleLastDisplayDurationChange = (e) => {
@@ -198,7 +198,8 @@ class ReviewDesignSetting extends Component {
 
     render() {
       const { activeClass } = this.state;
-      const { setDefaultPanel } =  this.props;
+      const { setDefaultPanel,handleContentChange , contentText,
+        visitorText } =  this.props;
       const {
         notificationPanelStyle
       } = this.props;
@@ -361,9 +362,10 @@ class ReviewDesignSetting extends Component {
                             <FormControl
                               type="text"
                               maxLength='15'
-                              value={''}
+                              value={contentText}
                               placeholder="Enter brand name for notification"
                               id="contentText"
+                              onChange={(e) => handleContentChange(e.target.id, e.target.value)}
                           
                             />
                           </Col>
@@ -380,10 +382,10 @@ class ReviewDesignSetting extends Component {
                             <FormControl
                               type="text"
                               maxLength="10"
-                              value={''}
+                              value={visitorText}
                               placeholder="Enter identity"
                               id="visitorText"
-                          
+                              onChange={(e) => handleContentChange(e.target.id, e.target.value)}
                             />
                           </Col>
                         </Row>

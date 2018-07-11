@@ -1,7 +1,9 @@
 import React from 'react';
 import './ReviewPopup.scss';
 import PopupStyle from './PopupStyle';
-const ReviewPopup = ({tab, display, position, animation, notificationPanelStyle,popupName}) => {
+const ReviewPopup = ({
+  tab, display, position, animation, notificationPanelStyle,popupName ,contentText,visitorText
+}) => {
 
   const {
     radius,
@@ -78,7 +80,12 @@ const ReviewPopup = ({tab, display, position, animation, notificationPanelStyle,
                       border: `${notificationStyle.borderWidth} ${notificationStyle.borderStyle} ${notificationStyle.borderColor}`
                     }}>
 
-                      <PopupStyle popupName={popupName} notificationStyle={notificationStyle}/>
+                      <PopupStyle 
+                        popupName={popupName} 
+                        notificationStyle={notificationStyle}
+                        contentText={contentText}
+                        visitorText={visitorText}
+                      />
 
 
                       <div className="FPqR1N_EqJeA1N_E7MM9_0" style={{display: 'none'}}>
