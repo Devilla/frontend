@@ -409,80 +409,9 @@ class ReviewDesignSetting extends Component {
                       </Col>
                     </Row>
                   }
-                  {
-                    <Row className="mb-3">
-                      <Col md={7} style={{padding: '8px 15px', width: '45%'}}>
-                        <span className="mt-5 text-muted h6"> Display bulk data from last</span>
-                      </Col>
-                      <Col md={2} style={{'padding': 0, width: '10%'}}>
-                        <FormGroup>
-                          <FormControl
-                            type="number"
-                            min="0"
-                            value={notificationPanelStyle.bulkData}
-                            /* onChange={(e) => this.handleStateChangeDay(e)} */
-                            bsSize="sm"
-                          />
-                        </FormGroup>
-                      </Col>
-                      <Col md={3}>
-                        <FormControl componentClass="select" bsSize="small" value={notificationPanelStyle.selectDurationData} 
-                          /* onChange={this.handleDurationChange} */
-                        >
-                          <option value="hours">hours</option>
-                          <option value="days">days</option>
-                        </FormControl>
-                      </Col>
-                    </Row>
-                  }
-                  {
-                    <div>
-                      <Row>
-                        <Col md={4} style={{padding: '8px 15px'}}>
-                          <span className="mt-5 text-muted h6">Display the last</span>
-                        </Col>
-                        <Col md={3} style={{'padding': 0, width: '10%'}}>
-                          <FormGroup>
-                            <FormControl
-                              type="number"
-                              min="0"
-                              /* onChange={(e) => this.handleStateChangeNumber(e)} */
-                              bsSize="sm"
-                              value={notificationPanelStyle.recentNumber}
-                            />
-                          </FormGroup>
-                        </Col>
-                        <Col md={4} style={{padding: '10px 15px'}}>
-                          <span className="mt-5 text-muted h6">conversions</span>
-                        </Col>
-                      </Row>
-                      <Row>
-                        <Col md={7} style={{padding: '8px 15px', width: '50%'}}>
-                          <span className="mt-5 text-muted h6">Display conversions from last</span>
-                        </Col>
-                        <Col md={2} style={{ padding: 0, width: '10%' }}>
-                          <FormGroup>
-                            <FormControl
-                              type="number"
-                              min="0"
-                              value={notificationPanelStyle.recentConv}
-                              /* onChange={(e) => this.handleStateChangeConv(e)} */
-                              bsSize="sm"
-                            />
-                          </FormGroup>
-                        </Col>
-                        <Col md={3}>
-                          <FormControl componentClass="select" bsSize="small" value={notificationPanelStyle.selectLastDisplayConversation}
-                            /* onChange={this.handleLastDisplayDurationChange} */
-                          >
-                            <option value="hours">hours</option>
-                            <option value="days">days</option>
-                          </FormControl>
-                        </Col>
-                      </Row>
-            
-                    </div>
-                  }
+             
+                
+                  
                   <Row className="mb-3">
                     <Col md={10}>
                       <span className="mt-5 text-muted h6">Notifications Clickable</span>
@@ -496,20 +425,44 @@ class ReviewDesignSetting extends Component {
                     />
                     <label className="tgl-btn" htmlFor="handleClickableNotification"></label>
                   </Row>
-                  <Row style={{ display:'block', marginBottom: '-9%' }}>
-                    <Col md={12}>
-                      <FormControl
-                        type="text"
-                        value={'notificationurl'}
-                        placeholder="Enter URL"
-                        id="notificationUrl"
-                      />
+                 
+                  <Row className="mb-3">
+                    <Col md={10}>
+                      <span className="mt-5 text-muted h6">Hide/Show Notification</span>
                     </Col>
+                    <input
+                      className="tgl tgl-ios"
+                      id="handleClickableNotification"
+                      type="checkbox"
+                      checked={true}
+                      readOnly
+                    />
+                    <label className="tgl-btn" htmlFor="handleClickableNotification"></label>
                   </Row>
+                 
                 </div>
               </div>
             </div>
           </Col>
+          <Row className="state-btn">
+            <Col md={4}>
+
+              <span className="btn btn-primary mr-0" >
+                 Back
+              </span>
+            </Col>
+            <Col md={4}>
+              <span className="btn btn-primary mr-3"  >
+                 Set Default
+              </span>
+            </Col>
+            <Col md={4}>
+              <span className="btn btn-primary mr-3 ">
+                Save
+              </span>
+            </Col>
+
+          </Row>
         </div>
       );
     }

@@ -1,8 +1,8 @@
 import React from 'react';
 import StarRatings from 'react-star-ratings';
 import {
-  Facebookpop,
-  // Googlepop
+  // Facebookpop,
+  Googlepop
 } from 'img';
 import './ReviewPopup.scss';
 const ReviewPopup = ({tab, display, position, animation, notificationPanelStyle}) => {
@@ -84,17 +84,17 @@ const ReviewPopup = ({tab, display, position, animation, notificationPanelStyle}
                       }}>
                       {/*CHANGE IMAGE FOR FACEBOOK ==> facebook_light_icon_56.jpg*/}
 
-                      <div className="FPqR1JYFqJeA1JYF7MM9_0" ><img src={Facebookpop} width='50px'/></div>
+                      <div className="FPqR1JYFqJeA1JYF7MM9_0" ><img src={Googlepop} width='50px'/></div>
                       <div className="FPqR2EbCqJeA2EbC7MM9_0 content-pop">
                         <div className="FPqR2AUlqJeA2AUl7MM9_0" style ={{
                           color:notificationStyle.color,
                           fontFamily: notificationStyle.fontFamily,
                           fontWeight: notificationStyle.fontWeight}}>
-                          <div>
+                          <div className="star">
                             <StarRatings
                               rating={4.6}
                               starDimension="20px"
-                              starRatedColor="#097fff"
+                              starRatedColor="gold"
                               /*CHANGE COLOR TO blue*/
                               numberOfStars={5}
                               starSpacing= "5px"
@@ -113,15 +113,15 @@ const ReviewPopup = ({tab, display, position, animation, notificationPanelStyle}
                           backgroundColor:notificationStyle.backgroundColor
                         }}>
                           <span className="FPqR1Jr6qJeA1Jr67MM9_0 headtext-pop">
-                            <span>250 marketers</span>
+                            <span>250 marketers reviewed us</span>
                           </span>
                        
                         </div>
-                        <div className="FPqR3eNuqJeA3eNu7MM9_0">
-                          <span>reviewed us on Facebook</span>
+                        {/* <div className="FPqR3eNuqJeA3eNu7MM9_0 review-text">
+                          <span>reviewed us</span>
 
-                          {/*CHANGE TEXT TO Facebook.*/}
-                        </div>
+                       
+                        </div> */}
                         <div className="FPqR3eNuqJeA3eNu7MM9_0 verifier">
                           <i>
                             <svg width="7" height="13" viewBox="0 0 7 13" xmlns="http://www.w3.org/2000/svg">
@@ -136,7 +136,7 @@ const ReviewPopup = ({tab, display, position, animation, notificationPanelStyle}
                             color: notificationStyle.linkColor,
                             fontFamily: notificationStyle.linkFontFamily,
                             fontWeight: notificationStyle.linkFontWeight
-                          }}>Influence</span>
+                          }}><b>Influence</b></span>
                         </div>
                       </div>
                       <div className="FPqR1N_EqJeA1N_E7MM9_0" style={{display: 'none'}}>

@@ -4,7 +4,7 @@ import { Row, Col } from 'react-bootstrap';
 import ReviewPopup from './ReviewPopup';
 import ReviewDesignSetting from './ReviewDesignSetting';
 import DashboardChannel  from '../DashboardChannel/DashboardChannel';
-
+import Channel from  './Channel';
 
 class PopupReview extends Component {
   constructor() {
@@ -108,7 +108,7 @@ class PopupReview extends Component {
                       <div className={`tab-pane ${activeClass == 1?'show active':''}`} id="Channels">
                         <Row>
                           <Col md={12}>
-                       
+                            <Channel />
                           </Col>
                         </Row>
                       </div>

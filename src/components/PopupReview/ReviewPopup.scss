@@ -23,10 +23,11 @@
       }
       .rating-num {
           position: absolute;   
-          right: 60px;
-          top: 4px;
-          font-size: 15px;
-          font-weight: 600;
+          right:20px;
+          top: 2px;
+          font-size: 21px;
+          font-weight: 800;
+          
 
         }
         .content-pop {
@@ -34,17 +35,29 @@
             top: 5px;
         }
         .headtext-pop {
-            background: #0980ff3a;
-            padding: 0px 2px 0px 2px;
+            background: #0980ff1c;
+            padding: 0px 5px 0px 5px;
             font-weight: bold;
+            font-size: 10px;
+            position: relative;
+            top: 5px;
         }
         .FPqR3eNuqJeA3eNu7MM9_0 {
            
             &.verifier {
-                float: right !important;
-                position: relative;
-                right: 22px;
-                top: -4px;
+             position: relative;
+             top: 5px;
+             left: 0px;
             }
+        }
+        .star {
+            position: relative;
+            top: -1px;
+         
+        }
+        .review-text {
+            font-size: 10px !important;
+            position: relative;
+            top: 5px;
         }
 }
