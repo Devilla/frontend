@@ -64,7 +64,7 @@ class Channel extends Component  {
 
   render() {
     return (
-      <div>
+      <div  className="channel-container">
         <span className="btn btn-primary waves-effect editchannel-btn "><i className="mdi mdi-grease-pencil "></i>&nbsp;Edit Channels</span>
         <Col md={12}>
           {this.channelsList()}
