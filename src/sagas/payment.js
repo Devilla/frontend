@@ -64,7 +64,7 @@ function* create(action) {
       yield put(actions.successPayment([res]));
       if(action.update) {
         yield put(updateProfile(action.profile));
-        yield browserHistory.push('billing-details');
+        yield browserHistory.push(action.profile.route?'dashboard':'billing-details');
       } else {
         yield put(createProfile(action.profile));
       }

@@ -39,7 +39,6 @@ const PricePage = ({
     return res;
   }
 
-
   return (
     <div style={{ width: '100%' }}>
       <div className="price">
