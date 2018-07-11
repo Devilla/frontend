@@ -7,7 +7,7 @@ import 'react-images-uploader/font.css';
 import { ChromePicker } from 'react-color';
 import  './ReviewDesignSetting.scss';
 const FONT_WEIGHT_BOLD = 'bold';
-// const FONT_WEIGHT_NORMAL = 'normal';
+const FONT_WEIGHT_NORMAL = 'normal';
 
 class ReviewDesignSetting extends Component {
   constructor(props) {
@@ -23,171 +23,173 @@ class ReviewDesignSetting extends Component {
     Object.assign(this.state, props.notificationPanelStyle);
   }
 
-  // notificationPanelStyleDefault(e) {
-  //   this.setState({ [e.target.id]: e.target.value });
-  // }
-
-  //   handleRadiusChange = (radius) => {
-  //     this.setState({ radius });
-  //     // this.props.onConfigChange({ prop: 'radius', value: radius });
-  //   }
-
-  //   handleStateChangeDay = (e) => {
-  //     this.setState({ [e.target.id]: e.target.value });
-  //     // this.props.onConfigChange({ prop: 'bulkData', value: e.target.value });
-  //   }
 
 
+  notificationPanelStyleDefault(e) {
+    this.setState({ [e.target.id]: e.target.value });
+  }
 
-  //   handleStateChangeNumber = (e) => {
-  //     this.setState({ [e.target.id]: e.target.value });
-  //     // this.props.onConfigChange({ prop: 'recentNumber', value: e.target.value });
-  //   }
+    handleRadiusChange = (radius) => {
+      this.setState({ radius });
+      this.props.onConfigChange({ prop: 'radius', value: radius });
+    }
 
-  //   handleStateChangeConv = (e) => {
-  //     this.setState({ [e.target.id]: e.target.value });
-  //     // this.props.onConfigChange({ prop: 'recentConv', value: e.target.value });
-  //   }
+    handleStateChangeDay = (e) => {
+      this.setState({ [e.target.id]: e.target.value });
+      this.props.onConfigChange({ prop: 'bulkData', value: e.target.value });
+    }
 
-  //   handleBorderWidthChange = (borderWidth) => {
-  //     this.setState({ borderWidth });
-  //     // this.props.onConfigChange({ prop: 'borderWidth', value: borderWidth });
-  //   };
 
-  //   handleBorderColorChange = (borderColor) => {
-  //     borderColor = borderColor.rgb;
-  //     this.setState({ borderColor });
-  //     // this.props.onConfigChange({ prop: 'borderColor', value: borderColor });
-  //   };
 
-  //   showBorderSwatch = () => {
-  //     this.setState({
-  //       isBorderColorSwatchOpen: true
-  //     });
-  //   };
+    handleStateChangeNumber = (e) => {
+      this.setState({ [e.target.id]: e.target.value });
+      this.props.onConfigChange({ prop: 'recentNumber', value: e.target.value });
+    }
 
-  //   hideBorderSwatch = () => {
-  //     this.setState({
-  //       isBorderColorSwatchOpen: false
-  //     });
-  //   };
+    handleStateChangeConv = (e) => {
+      this.setState({ [e.target.id]: e.target.value });
+      this.props.onConfigChange({ prop: 'recentConv', value: e.target.value });
+    }
 
-  //   handleShadowChange = (shadow) => {
-  //     this.setState({ shadow });
-  //     // this.props.onConfigChange({ prop: 'shadow', value: shadow });
-  //   };
+    handleBorderWidthChange = (borderWidth) => {
+      this.setState({ borderWidth });
+      this.props.onConfigChange({ prop: 'borderWidth', value: borderWidth });
+    };
 
-  //   handleBlurChange = (blur) => {
-  //     this.setState({ blur });
-  //     // this.props.onConfigChange({ prop: 'blur', value: blur });
-  //   };
+    handleBorderColorChange = (borderColor) => {
+      borderColor = borderColor.rgb;
+      this.setState({ borderColor });
+      this.props.onConfigChange({ prop: 'borderColor', value: borderColor });
+    };
 
-  //   handleBgColorChange = (backgroundColor) => {
-  //     backgroundColor = backgroundColor.rgb;
-  //     this.setState({ backgroundColor });
-  //     // this.props.onConfigChange({ prop: 'backgroundColor', value: backgroundColor });
-  //   };
+    showBorderSwatch = () => {
+      this.setState({
+        isBorderColorSwatchOpen: true
+      });
+    };
 
-  //   showBgSwatch = () => {
-  //     this.setState({
-  //       isBgColorSwatchOpen: true
-  //     });
-  //   };
+    hideBorderSwatch = () => {
+      this.setState({
+        isBorderColorSwatchOpen: false
+      });
+    };
 
-  //   hideBgSwatch = () => {
-  //     this.setState({
-  //       isBgColorSwatchOpen: false
-  //     });
-  //   };
+    handleShadowChange = (shadow) => {
+      this.setState({ shadow });
+      this.props.onConfigChange({ prop: 'shadow', value: shadow });
+    };
+
+    handleBlurChange = (blur) => {
+      this.setState({ blur });
+      this.props.onConfigChange({ prop: 'blur', value: blur });
+    };
+
+    handleBgColorChange = (backgroundColor) => {
+      backgroundColor = backgroundColor.rgb;
+      this.setState({ backgroundColor });
+      this.props.onConfigChange({ prop: 'backgroundColor', value: backgroundColor });
+    };
+
+    showBgSwatch = () => {
+      this.setState({
+        isBgColorSwatchOpen: true
+      });
+    };
+
+    hideBgSwatch = () => {
+      this.setState({
+        isBgColorSwatchOpen: false
+      });
+    };
 
     setActiveState = (val) => {
       this.setState({ activeClass: val });
     }
 
-  //   handleTextColorChange = (color) => {
-  //     color = color.rgb;
-  //     this.setState({ color });
-  //     // this.props.onConfigChange({ prop: 'color', value: color });
-  //   }
+    handleTextColorChange = (color) => {
+      color = color.rgb;
+      this.setState({ color });
+      this.props.onConfigChange({ prop: 'color', value: color });
+    }
 
-  //   handleTextLinkColorChange = (linkColor) => {
-  //     linkColor = linkColor.rgb;
-  //     this.setState({ linkColor });
-  //     // this.props.onConfigChange({ prop: 'linkColor', value: linkColor });
-  //   }
+    handleTextLinkColorChange = (linkColor) => {
+      linkColor = linkColor.rgb;
+      this.setState({ linkColor });
+      this.props.onConfigChange({ prop: 'linkColor', value: linkColor });
+    }
 
-  //   showTextColorSwatch = () => {
-  //     this.setState({ isTextColorSwatchOpen: true });
-  //   };
+    showTextColorSwatch = () => {
+      this.setState({ isTextColorSwatchOpen: true });
+    };
 
-  //   handleAnonymousConversionsChange = (e) => {
-  //     this.setState({ hideAnonymousConversion: e });
-  //     // this.props.onConfigChange({ prop: 'hideAnonymousConversion', value: e });
+    handleAnonymousConversionsChange = (e) => {
+      this.setState({ hideAnonymousConversion: e });
+      this.props.onConfigChange({ prop: 'hideAnonymousConversion', value: e });
 
-  //   };
+    };
 
-  //   handleOnlyDisplayNotification = (e) => {
-  //     this.setState({ onlyDisplayNotification: e });
-  //     // this.props.onConfigChange({ prop: 'onlyDisplayNotification', value: e });
-  //   };
+    handleOnlyDisplayNotification = (e) => {
+      this.setState({ onlyDisplayNotification: e });
+      this.props.onConfigChange({ prop: 'onlyDisplayNotification', value: e });
+    };
 
-  //   hideTextColorSwatch = () => {
-  //     this.setState({ isTextColorSwatchOpen: false });
-  //   };
+    hideTextColorSwatch = () => {
+      this.setState({ isTextColorSwatchOpen: false });
+    };
 
-  //   showLinkColorSwatch = () => {
-  //     this.setState({ isLinkColorSwatchOpen: true });
-  //   };
+    showLinkColorSwatch = () => {
+      this.setState({ isLinkColorSwatchOpen: true });
+    };
 
-  //   hideLinkColorSwatch = () => {
-  //     this.setState({ isLinkColorSwatchOpen: false });
-  //   };
+    hideLinkColorSwatch = () => {
+      this.setState({ isLinkColorSwatchOpen: false });
+    };
 
-  //   handleFontChange = (e) => {
-  //     const fontFamily = `${e.target.value}`;
-  //     this.setState({ fontFamily });
-  //     // this.props.onConfigChange({ prop: 'fontFamily', value: fontFamily });
-  //   };
+    handleFontChange = (e) => {
+      const fontFamily = `${e.target.value}`;
+      this.setState({ fontFamily });
+      this.props.onConfigChange({ prop: 'fontFamily', value: fontFamily });
+    };
 
-  //   handleDurationChange = (e) => {
-  //     const selectDurationData = `${e.target.value}`;
-  //     this.setState({ selectDurationData });
-  //     // this.props.onConfigChange({ prop: 'selectDurationData', value: selectDurationData });
-  //   };
+    handleDurationChange = (e) => {
+      const selectDurationData = `${e.target.value}`;
+      this.setState({ selectDurationData });
+      // this.props.onConfigChange({ prop: 'selectDurationData', value: selectDurationData });
+    };
 
-  //   handleLastDisplayDurationChange = (e) => {
-  //     const selectLastDisplayConversation = `${e.target.value}`;
-  //     this.setState({ selectLastDisplayConversation });
-  //     this.props.onConfigChange({ prop: 'selectLastDisplayConversation', value: selectLastDisplayConversation });
-  //   };
+    handleLastDisplayDurationChange = (e) => {
+      const selectLastDisplayConversation = `${e.target.value}`;
+      this.setState({ selectLastDisplayConversation });
+      this.props.onConfigChange({ prop: 'selectLastDisplayConversation', value: selectLastDisplayConversation });
+    };
 
-  //   handleLinkFontChange = (e) => {
-  //     const linkFontFamily = `${e.target.value}`;
-  //     this.setState({ linkFontFamily });
-  //     this.props.onConfigChange({ prop: 'linkFontFamily', value: linkFontFamily });
-  //   };
+    handleLinkFontChange = (e) => {
+      const linkFontFamily = `${e.target.value}`;
+      this.setState({ linkFontFamily });
+      this.props.onConfigChange({ prop: 'linkFontFamily', value: linkFontFamily });
+    };
 
-  //   handleFontWeightChange = () => {
-  //     // let fontWeight = this.props.notificationPanelStyle.fontWeight;
-  //     // if (fontWeight === FONT_WEIGHT_BOLD)
-  //     //   fontWeight = FONT_WEIGHT_NORMAL;
-  //     // else
-  //     //   fontWeight = FONT_WEIGHT_BOLD;
+    handleFontWeightChange = () => {
+      let fontWeight = this.props.notificationPanelStyle.fontWeight;
+      if (fontWeight === FONT_WEIGHT_BOLD)
+        fontWeight = FONT_WEIGHT_NORMAL;
+      else
+        fontWeight = FONT_WEIGHT_BOLD;
 
-  //     // this.setState({ fontWeight });
-  //     // this.props.onConfigChange({ prop: 'fontWeight', value: fontWeight });
-  //   }
+      this.setState({ fontWeight });
+      this.props.onConfigChange({ prop: 'fontWeight', value: fontWeight });
+    }
 
-  //   handleLinkFontWeightChange = () => {
-  //     // let linkFontWeight = this.props.notificationPanelStyle.linkFontWeight;
-  //     // if (linkFontWeight === FONT_WEIGHT_BOLD)
-  //     //   linkFontWeight = FONT_WEIGHT_NORMAL;
-  //     // else
-  //     //   linkFontWeight = FONT_WEIGHT_BOLD;
+    handleLinkFontWeightChange = () => {
+      let linkFontWeight = this.props.notificationPanelStyle.linkFontWeight;
+      if (linkFontWeight === FONT_WEIGHT_BOLD)
+        linkFontWeight = FONT_WEIGHT_NORMAL;
+      else
+        linkFontWeight = FONT_WEIGHT_BOLD;
 
-  //     // this.setState({ linkFontWeight });
-  //     // this.props.onConfigChange({ prop: 'linkFontWeight', value: linkFontWeight });
-  //   }
+      this.setState({ linkFontWeight });
+      this.props.onConfigChange({ prop: 'linkFontWeight', value: linkFontWeight });
+    }
 
     componentWillReceiveProps(nextProps) {
       if (nextProps != this.props)
@@ -196,6 +198,7 @@ class ReviewDesignSetting extends Component {
 
     render() {
       const { activeClass } = this.state;
+      const { setDefaultPanel } =  this.props;
       const {
         notificationPanelStyle
       } = this.props;
@@ -275,7 +278,7 @@ class ReviewDesignSetting extends Component {
                           min={0}
                           max={50}
                           value={notificationPanelStyle.radius}
-                    
+                          onChange={this.handleRadiusChange}
                         />
                       </div>
                     </Col>
@@ -291,7 +294,7 @@ class ReviewDesignSetting extends Component {
                               min={0}
                               max={10}
                               value={notificationPanelStyle.borderWidth}
-                            /* onChange={this.handleBorderWidthChange} */
+                              onChange={this.handleBorderWidthChange} 
                             />
                           </div>
                         </Col>
@@ -302,7 +305,7 @@ class ReviewDesignSetting extends Component {
                           {this.state.isBorderColorSwatchOpen ? <div style={styles.popover}>
                             <div style={styles.cover} onClick={this.hideBorderSwatch} />
                             <ChromePicker color={notificationPanelStyle.borderColor} 
-                              /* onChange={this.handleBorderColorChange}  */
+                              onChange={this.handleBorderColorChange}
                             />
                           </div> : null}
                         </Col>
@@ -320,14 +323,14 @@ class ReviewDesignSetting extends Component {
                       <Row>
                         <Col md={4}>
                           <Button bsSize="small" block active={notificationPanelStyle.fontWeight == FONT_WEIGHT_BOLD} 
-                            /* onClick={this.handleFontWeightChange} */
+                            onClick={this.handleFontWeightChange}
                           >
                             Bold
                           </Button>
                         </Col>
                         <Col md={4}>
                           <FormControl componentClass="select" bsSize="small" value={notificationPanelStyle.fontFamily} 
-                            /* onChange={this.handleFontChange} */
+                            onChange={this.handleFontChange} 
                           >
                             <option value="arial">Arial</option>
                             <option value="monospace">Monospace</option>
@@ -342,7 +345,7 @@ class ReviewDesignSetting extends Component {
                           {this.state.isTextColorSwatchOpen ? <div style={styles.popover}>
                             <div style={styles.cover} onClick={this.hideTextColorSwatch} />
                             <ChromePicker color={notificationPanelStyle.color} 
-                              /* onChange={this.handleTextColorChange}  */
+                              onChange={this.handleTextColorChange}  
                             />
                           </div> : null}
                         </Col>
@@ -402,7 +405,7 @@ class ReviewDesignSetting extends Component {
                             type="number"
                             min="0"
                             value={notificationPanelStyle.liveVisitorCount}
-                            /* onChange={(e) => this.handleLiveVistorCount(e)} */
+                            onChange={()=>{}}
                             bsSize="sm"
                           />
                         </FormGroup>
@@ -452,7 +455,7 @@ class ReviewDesignSetting extends Component {
               </span>
             </Col>
             <Col md={4}>
-              <span className="btn btn-primary setdefault "  >
+              <span className="btn btn-primary setdefault " onClick={()=>setDefaultPanel()}  >
                  Set Default
               </span>
             </Col>
