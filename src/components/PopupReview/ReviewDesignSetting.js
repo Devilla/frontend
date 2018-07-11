@@ -5,7 +5,7 @@ import reactCSS from 'reactcss';
 import 'react-images-uploader/styles.css';
 import 'react-images-uploader/font.css';
 import { ChromePicker } from 'react-color';
-
+import  './ReviewDesignSetting.scss';
 const FONT_WEIGHT_BOLD = 'bold';
 // const FONT_WEIGHT_NORMAL = 'normal';
 
@@ -242,10 +242,10 @@ class ReviewDesignSetting extends Component {
       });
       return (
 
-        <div className="setting" style={{ backgroundColor: 'white' }}>
+        <div className="reviewdesign-container setting" style={{ backgroundColor: 'white' }}>
 
           <Col md={12}>
-            <div className="card-box" style={{width:'474px'}}>
+            <div className="card-box inner-box" style={{width:'474px'}}>
               <ul className="nav nav-tabs">
                 <li className="nav-item waves-effect">
                   <a data-toggle="tab" aria-expanded="false" className={`nav-link ${activeClass == 1 ? 'active' : ''}`} onClick={() => this.setActiveState(1)}>
@@ -447,17 +447,17 @@ class ReviewDesignSetting extends Component {
           <Row className="state-btn">
             <Col md={4}>
 
-              <span className="btn btn-primary mr-0" >
+              <span className="btn btn-primary back" >
                  Back
               </span>
             </Col>
             <Col md={4}>
-              <span className="btn btn-primary mr-3"  >
+              <span className="btn btn-primary setdefault "  >
                  Set Default
               </span>
             </Col>
             <Col md={4}>
-              <span className="btn btn-primary mr-3 ">
+              <span className="btn btn-primary  save">
                 Save
               </span>
             </Col>

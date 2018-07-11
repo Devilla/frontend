@@ -1,0 +1,18 @@
+.reviewdesign-container  {
+    .inner-box {
+        height: 400px !important;
+    }
+    .state-btn  {
+        position: relative;
+        left: 70px !important;
+        .save { 
+          position: relative;
+          left: 38px; 
+        }
+    }
+    .back, .setdefault , .save {
+        border-radius: 5px !important;
+    }
+
+  
+}

@@ -89,8 +89,8 @@ class PopupReview extends Component {
                   
                     </div>
                   </Col>
-                  <Col md={6} sm={12}>
-                    <div className="card-box">
+                  <Col md={5} sm={12}>
+                    <div className="card-box mb-0 pb-0 mr-2">
                       <ul className="nav nav-tabs  switch">
                         <li className="nav-item waves-effect text-center">
                           <a data-toggle="tab" aria-expanded="true" className={`nav-link ${activeClass == 1?'active pb-3 pt-3':'pb-3 pt-3'}`} onClick={() => this.setActiveState(1)}>
@@ -114,7 +114,7 @@ class PopupReview extends Component {
                       </div>
                       <div className={`tab-pane ${activeClass == 2?'show active':''}`} id="Settings">
                         <Row>
-                          <Col md={12}>
+                          <Col md={10}>
                             <ReviewDesignSetting notificationPanelStyle={notificationPanelStyle}/>
                           </Col>
                         </Row>
