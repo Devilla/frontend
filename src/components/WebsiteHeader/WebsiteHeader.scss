@@ -234,3 +234,27 @@
         }
     }
 }
+@media only screen and (max-width:330px) {
+    .websiteheader-container{
+        .mainlogo{
+            width: 120px !important;
+            top: 23px !important;
+        }
+        .btns { 
+            position: relative !important;
+            top: 10px !important;
+            left: 20%;
+         
+            .loginbtn,.signupbtn {
+                width: 180px !important;
+            }
+           
+        }
+        .bar__module.links {
+            width: 240px !important;
+        }
+        .hamburger-toggle , .cross {
+            font-size: 26px !important;
+        }
+    }
+}
