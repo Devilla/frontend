@@ -155,16 +155,10 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
   }
 
   render() {
-    const { activeClass, loaderActive, notification, sampleDisplay, displayWebhookIntegration } = this.state;
     return (
       <div>
         {this.props.campaign && Object.keys(this.props.campaign).length !== 0 && this.props.campaign.constructor === Object?
           <CampaignSettings
-            displayWebhookIntegration={displayWebhookIntegration}
-            sampleDisplay={sampleDisplay}
-            loaderActive={loaderActive}
-            activeClass={activeClass}
-            notification={notification}
             showNotification={this.showNotification}
             goLive={this.goLive}
             toggleWebhook={this.toggleWebhook}
@@ -174,6 +168,7 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
             setNotification={this.setNotification}
             clearNotification={this.clearNotification}
             {...this.props}
+            {...this.state}
           />
           :
           <Campaign
