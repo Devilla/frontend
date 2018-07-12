@@ -82,7 +82,7 @@ class Dashboard extends Component {
     let start, end , range1, acc  ;
     switch(this.state.daysClicked)  {
       case '7' :
-        start  = moment().subtract(7,'d').format('YYYY-MM-DD');
+        start  = moment().subtract(6,'d').format('YYYY-MM-DD');
         end    = new Date();
         range1 = moment.range(start, end);
         acc = Array.from(range1.by('day', { step: 1 }));
@@ -128,7 +128,7 @@ class Dashboard extends Component {
 
 
       default :
-        start  = moment().subtract(7,'d').format('YYYY-MM-DD');
+        start  = moment().subtract(6,'d').format('YYYY-MM-DD');
         end    = new Date();
         range1 = moment.range(start, end);
         acc = Array.from(range1.by('day', { step: 1 }));
@@ -220,11 +220,9 @@ class Dashboard extends Component {
           <Row className="dashboard-boxes">
             <Col md={12}>
               <div className="card-box">
-
                 <Row className="mb-5">
                   <Col md={12}>
                     <div className="card-box pb-0 mb-0 cardbox1">
-
                       <Row className="account-stats">
                         {this.renderCardBox(
                           <div className=" widget-flat card-box  text-muted pr-4 pl-4 pb-5 pt-2 pos-vertical-center c2">
