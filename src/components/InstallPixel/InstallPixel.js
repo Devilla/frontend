@@ -18,7 +18,7 @@ const InstallPixel = ({
       <p className="text-muted text-left">Please copy your unique script & paste it in the Header of your Website. Add this
         To every page where you want To track, measure And show notifications.</p>
       <div className="bgcolor text-monospace border-dark">
-        <p className="m-l-30 p-3">script src="https://cdninfluence.nyc3.digitaloceanspaces.com/influence-analytics.js">
+        <p className="m-l-30 p-3">script src="https://storage.cloud.google.com/influence-197607.appspot.com/influence-analytics.js">
           /script
         <br/> script
         <br/> new Influence(
