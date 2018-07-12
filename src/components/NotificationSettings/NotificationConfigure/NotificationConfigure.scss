@@ -9,7 +9,7 @@
     .card-box.p-0{
       margin: 40px 20px;
     }
-  
+
   div{
     span{
       &.btn.btn-primary.mr-3 {
@@ -18,13 +18,13 @@
     }
   }
   .state-btn {
-    display: flex;
-    justify-content: space-between;
+    float: right;
     position: relative;
-    left: 30px;
+    left: -55px;
     bottom: -50px;
     span {
-      margin-left: 100px;
+      margin-left: 60px;
+      border-radius: 5px;
     }
   }
   .notification-configure-content{
