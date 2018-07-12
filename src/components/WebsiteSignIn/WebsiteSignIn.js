@@ -8,7 +8,7 @@ import { Animated } from'react-animated-css';
 import { browserHistory } from 'react-router';
 import { base } from 'services/api';
 import { toast } from 'react-toastify';
-import { Alert, HelpBlock } from 'react-bootstrap';
+import { Alert } from 'react-bootstrap';
 
 
 import './WebsiteSignIn.scss';
@@ -141,9 +141,11 @@ class WebsiteSignIn extends Component {
                               placeholder="Email Address"
                               type="email"
                             />
-                            <HelpBlock>
-                              <p className="website-error">{errorEmail}</p>
-                            </HelpBlock>
+                            {errorEmail !== '' &&
+                              <Alert bsStyle="warning">
+                                <strong>{errorEmail}</strong>
+                              </Alert>
+                            }
                           </div>
                           <div className="col-md-9 col-sm-8">
                             <input type="password"
@@ -157,9 +159,11 @@ class WebsiteSignIn extends Component {
                               onBlur={this.handlePasswordBlur}
                               onChange={this.handleInputChange}
                             />
-                            <HelpBlock>
-                              <p className="website-error">{errorPassword}</p>
-                            </HelpBlock>
+                            {errorPassword !== '' &&
+                              <Alert bsStyle="warning" >
+                                <strong>{errorPassword}</strong>
+                              </Alert>
+                            }
                           </div>
 
                           <div className="col-md-9 col-sm-8 frmcntl">

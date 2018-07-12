@@ -15,6 +15,9 @@
       left: 110px;
       z-index: 99;
   }
+  .menu-horizontal:focus {
+      outline: none;
+  }
 }
 
 .sticky {
@@ -141,7 +144,7 @@
         .small-bar {
             display: block !important;
             padding-top: 50px !important;
-            padding-bottom: 50px !important;
+            padding-bottom: 25px !important;
         }
 
         .fa-close {
@@ -153,13 +156,20 @@
             font-size: 30px;
             position: absolute;
             right: 20px;
-            top: 35px;
+            top: 25px;
             z-index: 999;
             cursor: pointer;
+
+            &:focus {
+                outline: none;
+            }
             
   
     }
-    .customtoggleclass {    
+    .customtoggleclass {
+                &:focus {
+                    outline: none;
+                }    
                 .fa-bars {
                 display: none !important;   
                 }
@@ -210,7 +220,7 @@
     .websiteheader-container{
         .mainlogo{
             width: 160px !important;
-            top: 30px !important;
+            top: 19px !important;
             position: absolute !important; 
         }
         .btns { 
@@ -221,6 +231,30 @@
         }
         .links {
             width: 250px !important;
+        }
+    }
+}
+@media only screen and (max-width:330px) {
+    .websiteheader-container{
+        .mainlogo{
+            width: 120px !important;
+            top: 23px !important;
+        }
+        .btns { 
+            position: relative !important;
+            top: 10px !important;
+            left: 20%;
+         
+            .loginbtn,.signupbtn {
+                width: 180px !important;
+            }
+           
+        }
+        .bar__module.links {
+            width: 240px !important;
+        }
+        .hamburger-toggle , .cross {
+            font-size: 26px !important;
         }
     }
 }
