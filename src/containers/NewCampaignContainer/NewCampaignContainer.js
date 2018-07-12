@@ -27,7 +27,7 @@ class NewCampaignContainer extends Component {
     this.state = {
       campaignname: '',
       website: '',
-      averageCustomer: 0,
+      averageCustomer: '',
       status: {},
       errorName: '',
       errorWebsiteUrl: '',
