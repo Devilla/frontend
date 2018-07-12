@@ -31,7 +31,8 @@ export function* review(action) {
   try {
     yield put(load());
     //const res = yield call(api.POST, 'integrations/google/callback', action.data);
-    const res = yield call(api.POST, 'connect/google/', action.data);
+    // const res = yield call(api.GET, 'connect/google/overide', action.data);
+    const res = yield call(api.GET, 'connect/facebook/overide', action.data);
     if(res.error)
       console.log(res.error);
     else
@@ -40,6 +41,23 @@ export function* review(action) {
   } catch (error) {
     yield put(loaded());
     yield toast.error(error, toastConfig);
+  }
+}
+
+export function* reviewRedirect(action) {
+  try {
+    yield put(load());
+    console.log(action.url,'Action Is here buddy!');
+    const res = yield call(api.GET, action.url);
+
+    if(res.error)
+      console.log(res.error);
+    else
+      yield put(actions.successConfiguration(res));
+    yield put(loaded());
+  } catch (error) {
+    yield put(loaded());
+    yield console.log(error);
   }
 }
 
@@ -99,8 +117,8 @@ export function* watchFetch() {
   yield takeLatest(actions.FETCH, fetch);
 }
 
-export function* watchReviewNotification() {
-  yield takeLatest(actions.REVIEW, review);
+export function* watchReviewRedirect() {
+  yield takeLatest(actions.REVIEW_REDIRECT, reviewRedirect);
 }
 
 export function* watchFetchCampaignConfig() {
@@ -121,6 +139,6 @@ export default function* rootSaga() {
     fork(watchCreate),
     fork(watchUpdate),
     fork(watchFetchCampaignConfig),
-    fork(watchReviewNotification)
+    fork(watchReviewRedirect)
   ];
 }

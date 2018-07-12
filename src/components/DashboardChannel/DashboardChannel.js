@@ -1,8 +1,8 @@
 import React , { Component } from 'react';
 import './DashboardChannel.scss';
 import {  Col } from 'react-bootstrap';
-// import { browserHistory } from 'react-router';
 import { connect } from 'react-redux';
+import { base } from 'services/api';
 import { review } from 'ducks/configuration';
 import {
   Facebook,
@@ -70,7 +70,8 @@ class DashboardChannel extends Component {
         <Col md={12}  className="bx-shadow" key={i}>
           <img src={this.channelfunc(i)} className="logocompany " />
           <span className="text-muted text-uppercase mt-0  title">{channelName}</span>
-          <span className="text-muted btn btn-primary waves-effect  btns" onClick={this.handleSubmit.bind(this)}>Connect&nbsp; <i className="fi-open"></i></span>
+          {/* <span className="text-muted btn btn-primary waves-effect  btns"><a href={`${base}connect/google/overide`}>Connect&nbsp; <i className="fi-open"></i></a></span>*/}
+          <span className="text-muted btn btn-primary waves-effect  btns"><a href={`${base}connect/facebook/overide`}>Connect&nbsp; <i className="fi-open"></i></a></span>
 
         </Col>
 
