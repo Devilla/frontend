@@ -1,7 +1,7 @@
 import React , { Component } from 'react';
 import './DashboardChannel.scss';
 import {  Col } from 'react-bootstrap';
-import { browserHistory } from 'react-router';
+// import { browserHistory } from 'react-router';
 import { connect } from 'react-redux';
 import { review } from 'ducks/configuration';
 import {
@@ -70,7 +70,7 @@ class DashboardChannel extends Component {
         <Col md={12}  className="bx-shadow" key={i}>
           <img src={this.channelfunc(i)} className="logocompany " />
           <span className="text-muted text-uppercase mt-0  title">{channelName}</span>
-          <span className="text-muted btn btn-primary waves-effect  btns" onClick={()=>{browserHistory.push('/oauthshow');}}>Connect&nbsp; <i className="fi-open"></i></span>
+          <span className="text-muted btn btn-primary waves-effect  btns" onClick={this.handleSubmit.bind(this)}>Connect&nbsp; <i className="fi-open"></i></span>
 
         </Col>
 
@@ -84,7 +84,7 @@ class DashboardChannel extends Component {
     return (
 
       <div className="dashchannel-container">
-        <button type="button" className="btn btn-info  addchannel" data-toggle="modal" data-target="#myModal" onClick={this.handleSubmit.bind(this)}><i className="fi-plus"></i>&nbsp;Add Channels</button>
+        <button type="button" className="btn btn-info  addchannel" data-toggle="modal" data-target="#myModal" ><i className="fi-plus"></i>&nbsp;Add Channels</button>
         <div className="modal fade show-modal" id="myModal" role="dialog">
           <div className="modal-dialog">
             <div className="modal-content align-modal">

@@ -30,7 +30,8 @@ function* fetch(action) {
 export function* review(action) {
   try {
     yield put(load());
-    const res = yield call(api.POST, '/integrations/:provider/callback', action.data);
+    //const res = yield call(api.POST, 'integrations/google/callback', action.data);
+    const res = yield call(api.POST, 'connect/google/', action.data);
     if(res.error)
       console.log(res.error);
     else
