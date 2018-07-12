@@ -62,7 +62,7 @@ class WebsiteHeader extends Component {
             <div className="mainlogo">
               <Link to="/"> <img className="logo " alt="logo" src={LogoInfluence} href="/"/> </Link>
             </div>
-            <div className="bar bar--sm small-bar">
+            <div className="bar bar--sm small-bar sm-bar">
             </div>
             <div  id="hello" className={'hamburger-toggle '+ toggleicon } tabIndex="0" onClick={this.togglemenu}  >
               <i className="fa fa-bars" ></i>

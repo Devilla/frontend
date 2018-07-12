@@ -236,43 +236,67 @@
 }
 @media only screen and (max-width:  428px) {
   .websitepricing-container {
-    .text-left.pl-5 {
-      margin: 0 auto;
-
-    }
     .pricing-tab {
       width: 280px !important;
     }
     .price-cards {
       position: relative;
       left : 40px !important;
+      width: 300px !important;
+
     }
     .switch {
       position: absolute;
       left: -10px;
-
+      font-size: 14px;
     }
 
   }
 }
 @media only screen and (max-width:  377px) {
   .websitepricing-container {
-    .text-left.pl-5 {
-      margin: 0 auto;
-
-    }
     .pricing-tab {
       width: 290px !important;
     }
     .price-cards {
       position: relative;
       left : 20px !important;
+      width: 230px !important;
+
     }
     .switch {
       position: absolute;
       left: -40px;
 
     }
+
+  }
+}
+@media only screen and (max-width:  360px) {
+  .websitepricing-container {
+    .pricing-tab {
+      width: 260px !important;
+    }
+    .price-cards {
+      width: 240px !important;
+
+    }
+    .switch {
+      position: absolute;
+      left: -55px;
+  
+    }
+
+  }
+}
+@media only screen and (max-width:  347px) {
+  .websitepricing-container {
+    .pricing-tab {
+      width: 240px !important;
+      position: relative;
+      left : 0px !important;
+    }
+
 
   }
 }
