@@ -60,6 +60,7 @@ class WebsiteContact extends Component {
   }
 
   render() {
+    const { name, email, message } = this.state;
     return (
       <div className="websitecontact-container">
       <div className="main-container">
@@ -89,13 +90,35 @@ class WebsiteContact extends Component {
               <div className="col-md-6">
                 <form className="form-email row" data-name="Contactus Form" >
                   <div className="col-md-12">
-                    <input type="text" name="name" placeholder="Name" className="validate-required" onChange={(e) => this.handleStateChange(e.target.name, e.target.value)}  />
+                    <input
+                      type="text"
+                      name="name"
+                      placeholder="Name"
+                      className="validate-required"
+                      value={name}
+                      onChange={(e) => this.handleStateChange(e.target.name, e.target.value)}
+                    />
                   </div>
                   <div className="col-md-12">
-                    <input type="email" name="email" placeholder="Email Address" className="validate-required validate-email" onBlur={this.checkEmailBlur} onChange={(e) => this.handleStateChange(e.target.name, e.target.value)} />
+                    <input
+                      type="email"
+                      name="email"
+                      placeholder="Email Address"
+                      value={email}
+                      className="validate-required validate-email"
+                      onBlur={this.checkEmailBlur} onChange={(e) => this.handleStateChange(e.target.name, e.target.value)}
+                    />
                   </div>
                   <div className="col-md-12">
-                    <textarea rows="4" name="message" placeholder="Leave us a message" className="validate-required" onChange={(e) => this.handleStateChange(e.target.name, e.target.value)}></textarea>
+                    <textarea
+                      rows="4"
+                      name="message"
+                      placeholder="Leave us a message"
+                      className="validate-required"
+                      value={message}
+                      onChange={(e) => this.handleStateChange(e.target.name, e.target.value)}
+                    >
+                    </textarea>
                   </div>
 
                   <button type="submit" className="btn btn--primary type--uppercase" onClick={this.handleSubmit}>Send Enquiry</button>
