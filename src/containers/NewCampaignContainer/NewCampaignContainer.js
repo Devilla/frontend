@@ -40,12 +40,13 @@ class NewCampaignContainer extends Component {
     };
   }
 
-  handleCampaignNameChange = (evt) => {
-    this.setState({campaignname: evt.target.value, errorName:'' });
-  }
-
-  handleWebsiteChange = (evt) => {
-    this.setState({website: evt.target.value, errorWebsiteUrl: ''});
+  handleCampaignStateChange = (evt) => {
+    this.setState({
+      [evt.target.id]: evt.target.value,
+      errorName: '',
+      errorWebsiteUrl: '',
+      errorAverageCustomer: ''
+    });
   }
 
   handleNextButton = (evt) => {
@@ -177,8 +178,7 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
           :
           <Campaign
             handleNextButton={this.handleNextButton}
-            handleCampaignNameChange={this.handleCampaignNameChange}
-            handleWebsiteChange={this.handleWebsiteChange}
+            handleCampaignStateChange={this.handleCampaignStateChange}
             {...this.state}
           />
         }

@@ -11,15 +11,14 @@ import {
 import './Campaign.scss';
 
 const Campaign = ({
-  handleNextButton,
-  handleCampaignNameChange,
   campaignname,
   averageCustomer,
-  errorAverageCustomer,
-  errorName,
-  handleWebsiteChange,
   website,
+  errorName,
+  errorAverageCustomer,
   errorWebsiteUrl,
+  handleNextButton,
+  handleCampaignStateChange
 }) => {
   return (
     <div className="content fill campaign-container">
@@ -39,7 +38,7 @@ const Campaign = ({
                         bsClass="form-control"
                         id="campaignname"
                         placeholder="example: Acme Co, Blog, Online Store"
-                        onChange={handleCampaignNameChange}
+                        onChange={handleCampaignStateChange}
                         value={campaignname}
                         required={true}
                       />
@@ -56,8 +55,8 @@ const Campaign = ({
                         bsClass="form-control"
                         placeholder="http://"
                         id="website"
-                        onChange={handleWebsiteChange}
-                        value={website}
+                        onChange={handleCampaignStateChange}
+                        defaultValue={website}
                         required={true}
                       />
                       <HelpBlock>
@@ -74,7 +73,8 @@ const Campaign = ({
                         type="text"
                         bsClass="form-control"
                         placeholder="Number of customer Signups per day"
-                        id="signups"
+                        id="averageCustomer"
+                        onChange={handleCampaignStateChange}
                         value={averageCustomer}
                         required={true}
                       />
