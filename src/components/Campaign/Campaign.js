@@ -13,13 +13,13 @@ import './Campaign.scss';
 const Campaign = ({
   handleNextButton,
   handleCampaignNameChange,
-  handleCampaignAuth,
   campaignname,
+  averageCustomer,
+  errorAverageCustomer,
   errorName,
   handleWebsiteChange,
   website,
   errorWebsiteUrl,
-  isDisabled
 }) => {
   return (
     <div className="content fill campaign-container">
@@ -40,7 +40,6 @@ const Campaign = ({
                         id="campaignname"
                         placeholder="example: Acme Co, Blog, Online Store"
                         onChange={handleCampaignNameChange}
-                        onBlur={handleCampaignAuth}
                         value={campaignname}
                         required={true}
                       />
@@ -67,8 +66,25 @@ const Campaign = ({
                     </FormGroup>
                   </div>
                 </Row>
-
-                <button type="submit" className="btn btn-primary waves-light waves-effect number ml-2 pl-4 pr-4" disabled={isDisabled}> Create Your Campaign </button>
+                <Row>
+                  <div className="col-md-6">
+                    <FormGroup>
+                      <ControlLabel className="text-muted h6">Average Customer Signups/Day</ControlLabel>
+                      <FormControl
+                        type="text"
+                        bsClass="form-control"
+                        placeholder="Number of customer Signups per day"
+                        id="signups"
+                        value={averageCustomer}
+                        required={true}
+                      />
+                      <HelpBlock>
+                        <p className="website-error">{errorAverageCustomer}</p>
+                      </HelpBlock>
+                    </FormGroup>
+                  </div>
+                </Row>
+                <button type="submit" className="btn btn-primary waves-light waves-effect number ml-2 pl-4 pr-4"> Create Your Campaign </button>
                 <div className="clearfix"></div>
               </form>
             </div>

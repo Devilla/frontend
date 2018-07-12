@@ -21,23 +21,17 @@ const toastConfig = {
   className: 'toast-style'
 };
 
-function validate(campaignname, website) {
-  // true means invalid, so our conditions got reversed
-  return {
-    name: campaignname.length === 0,
-    email: !validatewebsite(website)
-  };
-}
-
 class NewCampaignContainer extends Component {
   constructor() {
     super();
     this.state = {
       campaignname: '',
       website: '',
+      averageCustomer: 0,
       status: {},
       errorName: '',
       errorWebsiteUrl: '',
+      errorAverageCustomer: '',
       activeClass: 1,
       loaderActive: false,
       sampleDisplay: false,
@@ -54,21 +48,16 @@ class NewCampaignContainer extends Component {
     this.setState({website: evt.target.value, errorWebsiteUrl: ''});
   }
 
-  handleCampaignAuth = (evt) => {
-    if (evt.target.value === '')
-      this.setState({errorName: 'Enter campaign name'});
-  }
-
-  handleWebsiteAuth = (evt) => {
-    if(evt.target.value) {
-      this.setState({errorWebsiteUrl: 'Enter website url'});
-    } else if(!validatewebsite(evt.target.value)) {
-      this.setState({errorWebsiteUrl: 'Enter a valid website url'});
-    }
-  }
-
   handleNextButton = (evt) => {
     evt.preventDefault();
+    if(!this.state.campaignname)
+      return this.setState({errorName: 'Enter campaign name'});
+    else if(!this.state.website)
+      return this.setState({errorWebsiteUrl: 'Enter website url'});
+    else if(!validatewebsite(this.state.website))
+      return this.setState({errorWebsiteUrl: 'Enter a valid website url'});
+    else if(!this.state.averageCustomer)
+      return this.setState({errorAverageCustomer: 'Enter the numbers of signups per day'});
     const data = {
       campaignName: this.state.campaignname,
       websiteUrl: this.state.website,
@@ -165,8 +154,6 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
   }
 
   render() {
-    const errors = validate(this.state.campaignname, this.state.website);
-    const isDisabled = Object.keys(errors).some(x => errors[x]);
     const { activeClass, loaderActive, notification, sampleDisplay, displayWebhookIntegration } = this.state;
     return (
       <div>
@@ -189,16 +176,12 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
           />
           :
           <Campaign
-            isDisabled={isDisabled}
             handleNextButton={this.handleNextButton}
             handleCampaignNameChange={this.handleCampaignNameChange}
-            handleCampaignAuth={this.handleCampaignAuth}
             handleWebsiteChange={this.handleWebsiteChange}
-            handleWebsiteAuth={this.handleWebsiteAuth}
             {...this.state}
           />
         }
-        {/* <ToastContainer hideProgressBar={true}/> */}
       </div>
     );
   }
