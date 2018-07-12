@@ -70,7 +70,7 @@ const Campaign = ({
                     <FormGroup>
                       <ControlLabel className="text-muted h6">Average Customer Signups/Day</ControlLabel>
                       <FormControl
-                        type="text"
+                        type="number"
                         bsClass="form-control"
                         placeholder="Number of customer Signups per day"
                         id="averageCustomer"

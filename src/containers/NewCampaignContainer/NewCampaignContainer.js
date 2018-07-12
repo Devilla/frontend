@@ -62,6 +62,7 @@ class NewCampaignContainer extends Component {
     const data = {
       campaignName: this.state.campaignname,
       websiteUrl: this.state.website,
+      averageCustomer: this.state.averageCustomer,
       profile: this.props.profile._id
     };
     return this.props.createCampaign(data);
