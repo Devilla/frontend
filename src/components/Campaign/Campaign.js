@@ -68,11 +68,11 @@ const Campaign = ({
                 <Row>
                   <div className="col-md-6">
                     <FormGroup>
-                      <ControlLabel className="text-muted h6">Conversions per day</ControlLabel> &nbsp;<i className="fa fa-info-circle" data-toggle="tooltip" title="Fill in for better monitoring"> </i>
+                      <ControlLabel className="text-muted h6">Average Customer Signups/Day</ControlLabel>
                       <FormControl
                         type="number"
                         bsClass="form-control"
-                        placeholder="Number of customer Signups"
+                        placeholder="Number of customer Signups per day"
                         id="averageCustomer"
                         onChange={handleCampaignStateChange}
                         value={averageCustomer}

@@ -139,7 +139,7 @@ class Dashboard extends Component {
   }
 
   renderCardBox = (content) => {
-    return <div className="col-sm-12 col-lg-6 col-xl-3 box pr-0 cards">
+    return <div className="col-sm-12 col-lg-6 col-xl-2 box pr-0 cards">
       <div>
         <div className="text-center mt-4 mb-4">
           <div className="col-md-10 h-50 card-content-width">

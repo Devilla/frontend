@@ -254,7 +254,6 @@ class Notifications extends Component {
                 backConfiguration={this.backConfiguration}
                 showpopup={this.showpopup}
                 popupName={this.state.popupName}
-                campaign={this.props.campaign}
                 {...this.state}
               />
             </Row>
