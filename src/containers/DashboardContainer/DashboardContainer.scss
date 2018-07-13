@@ -4,7 +4,7 @@
   [data-css-1ar5iql] {
     z-index: 100000000;
   }
-  
+
   .topbar {
     margin-left: 16%;
     z-index: 10000000;
@@ -33,6 +33,24 @@
   .mm-popup__box{
     z-index: 1000000000;
   }
+  .mm-popup__btn--success {
+    background-color: #097fff;
+    border-color: #097fff;
+    color: #fff;
+    border-radius: 5px;
+    font-size: 14px;
+}
+.mm-popup__box__header {
+      padding: 15px 20px;
+      background: #999;
+      color: #fff;
+  }
+
+      .mm-popup__box__header__title {
+          font-size: 20px;
+          text-align: left;
+          font-weight: 600;
+}
 
   html {
     height: 100%;
