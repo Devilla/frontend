@@ -8,8 +8,6 @@ import { toast } from 'react-toastify';
 import { browserHistory } from 'react-router';
 import Popup from 'react-popup';
 
-
-
 const toastConfig = {
   position: toast.POSITION.BOTTOM_LEFT,
   autoClose: 2000,
@@ -27,7 +25,6 @@ function* fetch() {
     yield put(loaded());
   } catch (error) {
     yield put(loaded());
-    console.log('Failed to fetch doc', error);
     yield toast.error(error.message, toastConfig);
   }
 }
@@ -43,7 +40,6 @@ function* fetchInvoices() {
     yield put(loaded());
   } catch (error) {
     yield put(loaded());
-    console.log('Failed to fetch doc', error);
     yield toast.error(error.message, toastConfig);
   }
 }
@@ -101,7 +97,6 @@ function* update(action) {
     yield put(loaded());
   } catch (error) {
     yield put(loaded());
-    console.log('Failed to fetch doc', error);
     yield toast.error(error.message, toastConfig);
   }
 
@@ -119,7 +114,6 @@ function* updatePaymentMethod(action) {
     yield put(loaded());
   } catch (error) {
     yield put(loaded());
-    console.log('Failed to fetch doc', error);
     yield toast.error(error.message, toastConfig);
   }
 }

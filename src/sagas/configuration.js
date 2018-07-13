@@ -4,7 +4,6 @@ import * as actions from 'ducks/configuration';
 import { load, loaded } from 'ducks/loading';
 import { toast } from 'react-toastify';
 
-
 const toastConfig = {
   position: toast.POSITION.BOTTOM_LEFT,
   autoClose: 2000,
@@ -23,14 +22,12 @@ function* fetch(action) {
   } catch (error) {
     yield put(loaded());
     console.log('Failed to fetch doc', error);
-    // yield toast.error(error.message, toastConfig);
   }
 }
 
 export function* review(action) {
   try {
     yield put(load());
-    //const res = yield call(api.POST, 'integrations/google/callback', action.data);
     const res = yield call(api.POST, 'connect/google/', action.data);
     if(res.error)
       console.log(res.error);
@@ -70,7 +67,6 @@ function* create(action) {
     yield put(loaded());
   } catch (error) {
     yield put(loaded());
-    console.log('Failed to fetch doc', error);
     yield toast.error(error.message, toastConfig);
   }
 
@@ -89,10 +85,8 @@ function* update(action) {
     yield put(loaded());
   } catch (error) {
     yield put(loaded());
-    console.log('Failed to fetch doc', error);
     yield toast.error(error.message, toastConfig);
   }
-
 }
 
 export function* watchFetch() {
