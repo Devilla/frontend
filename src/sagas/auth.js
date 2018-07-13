@@ -27,41 +27,38 @@ const toastConfig = {
 export const removeAuthToken = () => localStorage.removeItem('authToken');
 
 export function* isLoggedIn() {
-  try{
+  try {
     yield all([
       put(actions.fetchUser()),
       put(fetchProfile()),
       put(fetchPlan()),
       put(fetchPayment()),
     ]);
-  }catch(error)
-  {
+  } catch(error) {
     yield console.log(error);
   }
 }
 
 export function* checkTokenExists(action) {
   const token = action.token;
-  try{
+  try {
     if (token) {
       if(moment().isAfter(moment(token.expiresOn)))
         return yield call(logOut);
       return yield call(isLoggedIn);
     }
-
     yield call(logOut);
-  }catch(error)
-  {
+  } catch(error) {
     yield console.log(error);
   }
 
 }
 
 export function* logOut() {
-  try{
+  try {
     yield call(removeAuthToken);
     yield call(browserHistory.push, '/login');
-  }catch(error){
+  } catch(error) {
     yield console.log(error);
   }
 }
@@ -164,9 +161,8 @@ export function* gdprform(action) {
     const res = yield call(api.POST, 'auth/', action.data);
     if(res.error)
       yield put(actions.gdprformError(res.message));
-    else {
+    else
       yield toast.info('Secret code sent.', toastConfig);
-    }
     yield put(loaded());
   } catch (error) {
     yield put(loaded());
@@ -244,11 +240,10 @@ export function* validateCoupon(action) {
   try {
     yield put(load());
     const res = yield call(api.GET, `coupon/validate/${action.coupon}`);
-    if(res.error) {
+    if(res.error)
       yield put(actions.couponError('Coupon not valid'));
-    } else {
+    else
       yield put(actions.couponSuccess(res));
-    }
     yield put(loaded());
   } catch (error) {
     yield put(loaded());
