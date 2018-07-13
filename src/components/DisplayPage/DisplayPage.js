@@ -14,7 +14,6 @@ import { fetchDisplayUrl, createPageUrl, clearPageUrl, removePageUrl } from 'duc
 import { validatePath } from 'components/Common/function';
 import Popup from 'react-popup';
 
-
 import './DisplayPage.scss';
 
 class DisplayPage extends Component {

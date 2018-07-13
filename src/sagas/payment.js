@@ -10,7 +10,8 @@ import Popup from 'react-popup';
 
 const toastConfig = {
   position: toast.POSITION.BOTTOM_LEFT,
-  autoClose: 2000
+  autoClose: 2000,
+  className: 'toast-style'
 };
 
 function* fetch() {
@@ -24,7 +25,6 @@ function* fetch() {
     yield put(loaded());
   } catch (error) {
     yield put(loaded());
-    console.log('Failed to fetch doc', error);
     yield toast.error(error.message, toastConfig);
   }
 }
@@ -40,7 +40,6 @@ function* fetchInvoices() {
     yield put(loaded());
   } catch (error) {
     yield put(loaded());
-    console.log('Failed to fetch doc', error);
     yield toast.error(error.message, toastConfig);
   }
 }
@@ -61,7 +60,7 @@ function* create(action) {
       yield put(actions.successPayment([res]));
       if(action.update) {
         yield put(updateProfile(action.profile));
-        yield browserHistory.push('billing-details');
+        yield browserHistory.push(action.profile.route?'dashboard':'billing-details');
       } else {
         yield put(createProfile(action.profile));
       }
@@ -98,7 +97,6 @@ function* update(action) {
     yield put(loaded());
   } catch (error) {
     yield put(loaded());
-    console.log('Failed to fetch doc', error);
     yield toast.error(error.message, toastConfig);
   }
 
@@ -116,7 +114,6 @@ function* updatePaymentMethod(action) {
     yield put(loaded());
   } catch (error) {
     yield put(loaded());
-    console.log('Failed to fetch doc', error);
     yield toast.error(error.message, toastConfig);
   }
 }

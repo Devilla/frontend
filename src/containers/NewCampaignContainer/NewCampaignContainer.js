@@ -17,16 +17,9 @@ import './NewCampaignContainer.scss';
 
 const toastConfig = {
   position: toast.POSITION.BOTTOM_LEFT,
-  autoClose: 2000
+  autoClose: 2000,
+  className: 'toast-style'
 };
-
-function validate(campaignname, website) {
-  // true means invalid, so our conditions got reversed
-  return {
-    name: campaignname.length === 0,
-    email: !validatewebsite(website)
-  };
-}
 
 class NewCampaignContainer extends Component {
   constructor() {
@@ -34,9 +27,11 @@ class NewCampaignContainer extends Component {
     this.state = {
       campaignname: '',
       website: '',
+      averageCustomer: '',
       status: {},
       errorName: '',
       errorWebsiteUrl: '',
+      errorAverageCustomer: '',
       activeClass: 1,
       loaderActive: false,
       sampleDisplay: false,
@@ -45,32 +40,29 @@ class NewCampaignContainer extends Component {
     };
   }
 
-  handleCampaignNameChange = (evt) => {
-    this.setState({campaignname: evt.target.value, errorName:'' });
-  }
-
-  handleWebsiteChange = (evt) => {
-    this.setState({website: evt.target.value, errorWebsiteUrl: ''});
-  }
-
-  handleCampaignAuth = (evt) => {
-    if (evt.target.value === '')
-      this.setState({errorName: 'Enter campaign name'});
-  }
-
-  handleWebsiteAuth = (evt) => {
-    if(evt.target.value) {
-      this.setState({errorWebsiteUrl: 'Enter website url'});
-    } else if(!validatewebsite(evt.target.value)) {
-      this.setState({errorWebsiteUrl: 'Enter a valid website url'});
-    }
+  handleCampaignStateChange = (evt) => {
+    this.setState({
+      [evt.target.id]: evt.target.value,
+      errorName: '',
+      errorWebsiteUrl: '',
+      errorAverageCustomer: ''
+    });
   }
 
   handleNextButton = (evt) => {
     evt.preventDefault();
+    if(!this.state.campaignname)
+      return this.setState({errorName: 'Enter campaign name'});
+    else if(!this.state.website)
+      return this.setState({errorWebsiteUrl: 'Enter website url'});
+    else if(!validatewebsite(this.state.website))
+      return this.setState({errorWebsiteUrl: 'Enter a valid website url'});
+    else if(!this.state.averageCustomer)
+      return this.setState({errorAverageCustomer: 'Enter the numbers of signups per day'});
     const data = {
       campaignName: this.state.campaignname,
       websiteUrl: this.state.website,
+      averageCustomer: this.state.averageCustomer,
       profile: this.props.profile._id
     };
     return this.props.createCampaign(data);
@@ -90,7 +82,7 @@ class NewCampaignContainer extends Component {
   }
 
   handlePixelCopy = () => {
-    const pixelCode = `<script src="https://cdninfluence.nyc3.digitaloceanspaces.com/influence-analytics.js"></script>
+    const pixelCode = `<script src="https://storage.cloud.google.com/influence-197607.appspot.com/influence-analytics.js"></script>
 <script>
 new Influence({
 trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX'}'
@@ -164,18 +156,10 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
   }
 
   render() {
-    const errors = validate(this.state.campaignname, this.state.website);
-    const isDisabled = Object.keys(errors).some(x => errors[x]);
-    const { activeClass, loaderActive, notification, sampleDisplay, displayWebhookIntegration } = this.state;
     return (
       <div>
         {this.props.campaign && Object.keys(this.props.campaign).length !== 0 && this.props.campaign.constructor === Object?
           <CampaignSettings
-            displayWebhookIntegration={displayWebhookIntegration}
-            sampleDisplay={sampleDisplay}
-            loaderActive={loaderActive}
-            activeClass={activeClass}
-            notification={notification}
             showNotification={this.showNotification}
             goLive={this.goLive}
             toggleWebhook={this.toggleWebhook}
@@ -185,19 +169,15 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
             setNotification={this.setNotification}
             clearNotification={this.clearNotification}
             {...this.props}
+            {...this.state}
           />
           :
           <Campaign
-            isDisabled={isDisabled}
             handleNextButton={this.handleNextButton}
-            handleCampaignNameChange={this.handleCampaignNameChange}
-            handleCampaignAuth={this.handleCampaignAuth}
-            handleWebsiteChange={this.handleWebsiteChange}
-            handleWebsiteAuth={this.handleWebsiteAuth}
+            handleCampaignStateChange={this.handleCampaignStateChange}
             {...this.state}
           />
         }
-        {/* <ToastContainer hideProgressBar={true}/> */}
       </div>
     );
   }

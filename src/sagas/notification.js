@@ -6,7 +6,8 @@ import { toast } from 'react-toastify';
 
 const toastConfig = {
   position: toast.POSITION.BOTTOM_LEFT,
-  autoClose: 2000
+  autoClose: 2000,
+  className: 'toast-style'
 };
 
 function* fetch() {
@@ -20,7 +21,6 @@ function* fetch() {
     yield put(loaded());
   } catch (error) {
     yield put(loaded());
-    console.log('Failed to fetch doc', error);
     yield toast.error(error.message, toastConfig);
   }
 }
@@ -36,7 +36,6 @@ function* create(action) {
     yield put(loaded());
   } catch (error) {
     yield put(loaded());
-    console.log('Failed to fetch doc', error);
     yield toast.error(error.message, toastConfig);
   }
 
@@ -56,7 +55,6 @@ function* update(action) {
     yield put(loaded());
   } catch (error) {
     yield put(loaded());
-    console.log('Failed to fetch doc', error);
     yield toast.error(error.message, toastConfig);
   }
 

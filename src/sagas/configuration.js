@@ -6,7 +6,8 @@ import { toast } from 'react-toastify';
 
 const toastConfig = {
   position: toast.POSITION.BOTTOM_LEFT,
-  autoClose: 2000
+  autoClose: 2000,
+  className: 'toast-style'
 };
 
 function* fetch(action) {
@@ -21,9 +22,24 @@ function* fetch(action) {
   } catch (error) {
     yield put(loaded());
     console.log('Failed to fetch doc', error);
-    // yield toast.error(error.message, toastConfig);
   }
 }
+
+export function* review(action) {
+  try {
+    yield put(load());
+    const res = yield call(api.POST, 'connect/google/', action.data);
+    if(res.error)
+      console.log(res.error);
+    else
+      yield put(actions.successConfiguration(res));
+    yield put(loaded());
+  } catch (error) {
+    yield put(loaded());
+    yield toast.error(error, toastConfig);
+  }
+}
+
 
 function* fetchCampaignConfiguration(action) {
   try {
@@ -51,7 +67,6 @@ function* create(action) {
     yield put(loaded());
   } catch (error) {
     yield put(loaded());
-    console.log('Failed to fetch doc', error);
     yield toast.error(error.message, toastConfig);
   }
 
@@ -70,14 +85,16 @@ function* update(action) {
     yield put(loaded());
   } catch (error) {
     yield put(loaded());
-    console.log('Failed to fetch doc', error);
     yield toast.error(error.message, toastConfig);
   }
-
 }
 
 export function* watchFetch() {
   yield takeLatest(actions.FETCH, fetch);
+}
+
+export function* watchReviewNotification() {
+  yield takeLatest(actions.REVIEW, review);
 }
 
 export function* watchFetchCampaignConfig() {
@@ -97,6 +114,7 @@ export default function* rootSaga() {
     fork(watchFetch),
     fork(watchCreate),
     fork(watchUpdate),
-    fork(watchFetchCampaignConfig)
+    fork(watchFetchCampaignConfig),
+    fork(watchReviewNotification)
   ];
 }

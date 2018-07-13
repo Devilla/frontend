@@ -167,7 +167,7 @@ class Integrations extends Component {
   render() {
 
     return (
-      <div>
+      <div className="integration-container">
         <div className="channel-container" >
           <div className="channel">
             <div className="content">

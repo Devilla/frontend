@@ -5,11 +5,32 @@ import { LogoInfluence } from 'img';
 import  './WebsiteHeader.scss';
 class WebsiteHeader extends Component {
 
+  constructor() {
+    super(); 
+    this.state= {
+      toggleicon: '',
+      togglebool :  true
+    };
+  }
   togglemenu = () => {
-    document.getElementById('hello').classList.toggle('customtoggleclass');
+    this.state.togglebool ? (
+      this.setState((prevState)=> ({
+        toggleicon: 'customtoggleclass',
+        togglebool:  !prevState.togglebool
+      }))
+    ): (
+      this.setState((prevState)=> ({
+        toggleicon: '',
+        togglebool:  !prevState.togglebool
+      }))
+    );
+  
   }
   close = () => {
-    document.getElementById('hello').classList.remove('customtoggleclass');
+    this.setState({
+      toggleicon: '',
+      togglebool:  false
+    });
   }
 
 
@@ -33,7 +54,7 @@ class WebsiteHeader extends Component {
   }
 
   render() {
-   
+    const { toggleicon } = this.state;
     return (
       <div className="websiteheader-container" ref={node => this.node = node}>
         <div className="nav-container">
@@ -41,9 +62,9 @@ class WebsiteHeader extends Component {
             <div className="mainlogo">
               <Link to="/"> <img className="logo " alt="logo" src={LogoInfluence} href="/"/> </Link>
             </div>
-            <div className="bar bar--sm small-bar">
+            <div className="bar bar--sm small-bar sm-bar">
             </div>
-            <div  id="hello" className="hamburger-toggle" tabIndex="0" onClick={this.togglemenu}  >
+            <div  id="hello" className={'hamburger-toggle '+ toggleicon } tabIndex="0" onClick={this.togglemenu}  >
               <i className="fa fa-bars" ></i>
               <button className="cross"><i className="fa fa-close"></i></button>
             </div>

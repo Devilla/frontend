@@ -10,17 +10,15 @@ import {
 } from 'react-bootstrap';
 import './Campaign.scss';
 
-
 const Campaign = ({
-  handleNextButton,
-  handleCampaignNameChange,
-  handleCampaignAuth,
   campaignname,
-  errorName,
-  handleWebsiteChange,
+  averageCustomer,
   website,
+  errorName,
+  errorAverageCustomer,
   errorWebsiteUrl,
-  isDisabled
+  handleNextButton,
+  handleCampaignStateChange
 }) => {
   return (
     <div className="content fill campaign-container">
@@ -40,8 +38,7 @@ const Campaign = ({
                         bsClass="form-control"
                         id="campaignname"
                         placeholder="example: Acme Co, Blog, Online Store"
-                        onChange={handleCampaignNameChange}
-                        onBlur={handleCampaignAuth}
+                        onChange={handleCampaignStateChange}
                         value={campaignname}
                         required={true}
                       />
@@ -58,8 +55,8 @@ const Campaign = ({
                         bsClass="form-control"
                         placeholder="http://"
                         id="website"
-                        onChange={handleWebsiteChange}
-                        value={website}
+                        onChange={handleCampaignStateChange}
+                        defaultValue={website}
                         required={true}
                       />
                       <HelpBlock>
@@ -68,8 +65,26 @@ const Campaign = ({
                     </FormGroup>
                   </div>
                 </Row>
-
-                <button type="submit" className="btn btn-primary waves-light waves-effect number ml-2 pl-4 pr-4" disabled={isDisabled}> Create Your Campaign </button>
+                <Row>
+                  <div className="col-md-6">
+                    <FormGroup>
+                      <ControlLabel className="text-muted h6">Average Customer Signups/Day</ControlLabel>
+                      <FormControl
+                        type="number"
+                        bsClass="form-control"
+                        placeholder="Number of customer Signups per day"
+                        id="averageCustomer"
+                        onChange={handleCampaignStateChange}
+                        value={averageCustomer}
+                        required={true}
+                      />
+                      <HelpBlock>
+                        <p className="website-error">{errorAverageCustomer}</p>
+                      </HelpBlock>
+                    </FormGroup>
+                  </div>
+                </Row>
+                <button type="submit" className="btn btn-primary waves-light waves-effect number ml-2 pl-4 pr-4"> Create Your Campaign </button>
                 <div className="clearfix"></div>
               </form>
             </div>

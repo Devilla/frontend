@@ -18,7 +18,7 @@ import './animate.min.scss';
 import 'react-select/dist/react-select.css';
 import 'react-popup/style.css';
 import './DashboardContainer.scss';
-
+import './toast.scss';
 
 class DashboardContainer extends Component {
   constructor(props) {
@@ -218,8 +218,7 @@ class DashboardContainer extends Component {
 
 const mapStateToProps = state => ({
   profile: state.getIn(['profile', 'profile']),
-  user: state.getIn(['auth', 'user']),
-
+  user: state.getIn(['auth', 'user'])
 });
 
 const mapDispatchToProps = {

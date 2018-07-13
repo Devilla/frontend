@@ -28,9 +28,9 @@ import {
   WebsiteFeature,
   Affiliate,
   AffiliateRegister,
-  PopupReview,
   Oauthpage,
-  Oauthgenerate
+  Oauthgenerate,
+  DashboardChannel
 } from 'components';
 
 import {
@@ -40,6 +40,7 @@ import {
   AnalyticsContainer,
   NewCampaignContainer
 } from 'containers';
+
 
 
 const MyRoutes = ({routerHistory}) => (
@@ -52,7 +53,7 @@ const MyRoutes = ({routerHistory}) => (
       <Route path="/campaigns" component={Notification} />
       <Route path="/oauthshow" component={Oauthpage} />
       <Route path="/oauthgenerate" component={Oauthgenerate} />
-      <Route path="/popupreview" component={PopupReview} />
+      <Route path="/channels" component={DashboardChannel} />
       <Route path="/analytics" component={AnalyticsContainer} />
       <Route path="/integrations" component={Integrations} />
       <Route path="/support" component={Dashboard} />

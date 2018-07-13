@@ -68,12 +68,18 @@ export { default as Webflow }  from  './webflow.png';
 export { default as Woocommerce }  from  './woocommerce.png';
 export { default as Wordpress } from './wordpress.png';
 
-
-
-
-
-
+//Channel review
+export { default as Facebook } from './fb.png';
+export { default as Zendesk } from './zendesk.png';
+export { default as Google } from './google.png';
+export { default as TrustPilot } from './trustpilot.png';
+export { default as FourSquare } from './foursquare.png';
+export { default as G2Crowd } from './G2crowd.png';
+export { default as TrustRadius } from './trustradius.jpg';
+export { default as Yelp } from './yelp.png';
+export { default as BingPlaces } from './bingplaces.png';
 export { default as Smallpic } from './smallprofile.png';
+
 
 
 // How it works Page Image
@@ -123,3 +129,7 @@ export { default as Avatar10 } from './avatar-10.jpg'
 
 //logo
 export { default as Influence } from './newlogo-6.png';
+
+//popupreview
+export { default as Facebookpop }  from './facebook_1.png';
+export { default as Googlepop } from './google.png';

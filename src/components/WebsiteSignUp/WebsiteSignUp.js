@@ -143,7 +143,7 @@ class WebsiteSignUp extends Component {
 
   render() {
     const { email, isRegistered, error, errorEmail, isPasswordShown, errorPassword,fm1,fm2,fm3 ,planSelected} = this.state;
-   
+
     // if registered show 'check mail' message else show the registration form
     const formContent = isRegistered
       ? (<Alert bsStyle='success'>
@@ -158,25 +158,24 @@ class WebsiteSignUp extends Component {
                 <div>
                   <h2 className="text-center btn" disabled  > STEP 1</h2>
                   <p className="signuptitle"> &nbsp;&nbsp;Start Conversions!</p>
-                
+
                   <div className='row signuprow give-center-align'>
                     <div className='col-sm-12 col-md-7 col-lg-6 '>
-                  
+
                       <div>
                         <p className="lead">
                           <span className="sub-up-title">Already have an account?&nbsp;
                             <Link to="/login">Sign in</Link>
                           </span>
                         </p>
-
                         <form className="mt-0">
                           <div className='row justify-content-center'>
                             {error &&
-                        <Alert bsStyle='warning'>
-                          <strong>{error}</strong>
-                        </Alert>
+                              <Alert bsStyle='warning'>
+                                <strong>{error}</strong>
+                              </Alert>
                             }
-                           
+
                             <div className='col-md-9 col-sm-8'>
                               <input
                                 name='email'
@@ -248,12 +247,12 @@ class WebsiteSignUp extends Component {
                     </div>
                   </div>
                 </div>}
-                {fm2 && 
-                  <WebsiteSignupPrice 
-                    handleCheckChange={this.handleCheckChange} 
+                {fm2 &&
+                  <WebsiteSignupPrice
+                    handleCheckChange={this.handleCheckChange}
                   />
                 }
-                {fm3 && 
+                {fm3 &&
                   <WebsiteSignupPayment planName={planSelected}/>
                 }
               </div>
@@ -270,16 +269,15 @@ class WebsiteSignUp extends Component {
             animationIn='fadeIn'
             animationOut='fadeOut'
             isVisible={true}>
-           
+
             {formContent}
-       
+
             <div className='support'></div>
           </Animated>
         </div>
       </div>
-  
+
     );
   }
 }
 export default WebsiteSignUp;
-

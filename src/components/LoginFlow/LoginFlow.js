@@ -1,12 +1,14 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-// import { browserHistory } from 'react-router';
+import { browserHistory } from 'react-router';
 import { ToastContainer } from 'react-toastify';
 
 import TrailPayment from './TrailPayment';
 import { updateUser, checkTokenExists, validateCoupon, clearCouponError } from 'ducks/auth';
 import { createProfile, updateProfile } from 'ducks/profile';
 import { createPayment } from 'ducks/payment';
+import { Spinner } from 'components';
+
 import './LoginFlow.scss';
 
 import { store } from 'index.js';
@@ -30,15 +32,15 @@ class LoginFlow extends Component {
   }
 
   componentWillMount() {
-    // this.checkLogin();
-    // this.updateState(this.props.user, this.props.profile, this.props.plan);
+    this.checkLogin();
+    this.updateState(this.props.user, this.props.profile, this.props.plan);
   }
 
-  componentWillReceiveProps() {
-    // if(this.props != nextProps)
-    //   this.updateState(nextProps.user, nextProps.profile, nextProps.plan);
-    // if(nextProps.profile != this.props.profile)
-    //   browserHistory.push('/dashboard');
+  componentWillReceiveProps(nextProps) {
+    if(this.props != nextProps)
+      this.updateState(nextProps.user, nextProps.profile, nextProps.plan);
+    if(nextProps.profile != this.props.profile && nextProps.profile.plan)
+      browserHistory.push('/dashboard');
   }
 
   updateState(user, profile) {
@@ -67,12 +69,20 @@ class LoginFlow extends Component {
 
   submitPayment(data) {
     let profile = {
-      user: this.props.user._id,
       plan: data.plan,
       uniqueVisitorQouta: Number(data.plan.description),
       uniqueVisitors: 0,
       uniqueVisitorsQoutaLeft: Number(data.plan.description)
     };
+
+    const propsProfile = this.props.profile;
+
+    if(propsProfile) {
+      profile['id'] = propsProfile._id;
+      profile['route'] = true;
+    } else {
+      profile['user'] = this.props.user._id;
+    }
 
     if(this.state.username != this.props.user.username) {
       let userInfo = {};
@@ -80,7 +90,9 @@ class LoginFlow extends Component {
       userInfo['username'] = this.state.username;
       this.props.updateUser(userInfo);
     }
-    this.props.createPayment(data, profile, false);
+
+    const update = propsProfile?true:false;
+    this.props.createPayment(data, profile, update);
   }
 
   handleCheckChange(checked, value) {
@@ -129,23 +141,27 @@ class LoginFlow extends Component {
     const { user, profile, couponDetails, couponRequestError } = this.props;
     return (
       <div className="content login-flow">
-        <TrailPayment
-          couponError={couponError || couponRequestError}
-          nameError={nameError}
-          cardError={cardError}
-          couponDetails={couponDetails}
-          coupon={coupon}
-          selectedPlan={plan}
-          user={user}
-          profile={profile}
-          plan={plan}
-          handleErrorChange={this.handleErrorChange}
-          handleCheckChange={this.handleCheckChange}
-          handleStateChange={this.handleStateChange}
-          handleSubmit={this.submitPayment}
-          submitCoupon={this.submitCoupon}
-          couponProceed={this.couponProceed}
-        />
+        {profile?
+          <TrailPayment
+            couponError={couponError || couponRequestError}
+            nameError={nameError}
+            cardError={cardError}
+            couponDetails={couponDetails}
+            coupon={coupon}
+            selectedPlan={plan?plan:''}
+            user={user}
+            profile={profile}
+            plan={plan}
+            handleErrorChange={this.handleErrorChange}
+            handleCheckChange={this.handleCheckChange}
+            handleStateChange={this.handleStateChange}
+            handleSubmit={this.submitPayment}
+            submitCoupon={this.submitCoupon}
+            couponProceed={this.couponProceed}
+          />
+          :
+          <Spinner loading={true} />
+        }
         <ToastContainer hideProgressBar={true} />
       </div>
     );

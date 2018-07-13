@@ -2,6 +2,7 @@ import { fromJS } from 'immutable';
 
 const action = name => `/configuration/${name}`;
 
+export const REVIEW = action('REVIEW');
 export const FETCH = action('FETCH');
 export const FETCH_CAMPAIGN_CONFIG = action('FETCH_CAMPAIGN_CONFIG');
 export const CREATE = action('CREATE');
@@ -10,6 +11,7 @@ export const SUCCESS = action('SUCCESS');
 export const CREATE_SUCCESS = action('CREATE_SUCCESS');
 export const CLEAR = action('CLEAR');
 
+export const review = (data) => ({ type: REVIEW, data });
 export const fetchConfiguration = (campId) => ({ type: FETCH, campId });
 export const fetchCampaignConfiguration = (campId , notifId) => ({ type: FETCH_CAMPAIGN_CONFIG, campId, notifId });
 export const createConfiguration = (configuration) => ({ type: CREATE, configuration });
@@ -70,7 +72,7 @@ const initialConfig = {
   visitorText: '',
   contentText: '',
   notificationUrl: '',
-
+  channel: {},
   // Oauth variables
   clientId: '',
   clientSecret: '',
