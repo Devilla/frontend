@@ -3,11 +3,11 @@ import { Animated } from 'react-animated-css';
 import $ from 'jquery';
 import { css } from 'glamor';
 import { Row, Col } from 'react-bootstrap';
-import axios from 'axios';
-import { toast , ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 import { connect } from 'react-redux';
 import { loginSuccess } from 'ducks/auth';
 import { load, loaded } from 'ducks/loading';
+import { base } from 'services/api';
 
 function validate(newPassword,verifyPassword, authEmail) {
   return {
@@ -68,41 +68,32 @@ class forget extends Component{
   }
 
   handleSubmit(evt){
+    evt.preventDefault();
     this.props.load();
     if (!this.canBeSubmitted()) {
-      evt.preventDefault();
       return;
     } else {
-      evt.preventDefault();
       var token = this.props.location.query.code;
-
       const data = {
         'password' :  this.state.newPassword,
         'passwordConfirmation': this.state.verifyPassword,
         'code': token
       };
 
-      let urls;
-      if (process.env.NODE_ENV === 'production')
-        urls = `${process.env.REACT_APP_PRODUCTION_URL}auth/reset-password`;
-      else if(process.env.NODE_ENV === 'staging')
-        urls = `${process.env.REACT_APP_STAGING_URL}auth/reset-password`;
-      else
-        urls = `${process.env.REACT_APP_DEVELOPMENT_URL}auth/reset-password`;
-      axios.post(urls ,data).then(function(response){
-        if(response.user)
-          this.props.loginSuccess(response);
-        else
-          toast.info(response['data']['message'], toastConfig);
-      }) .catch(function (error) {
-        console.log(error);
-        toast.info('Something went wrong..', {
-          position: toast.POSITION.LEFT,
-          className: css({
-            background: 'rgba(0, 0, 0, 0.5)',
-            color: '#fff'
-          })
-        });
+      fetch(base + 'auth/reset-password', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      })
+      .then(res => res.json())
+      .then(res => {
+        if(res.user)
+          this.props.loginSuccess(res);
+        else if(res.error)
+          toast.info(res.message, toastConfig);
       });
 
       this.setState({
@@ -177,7 +168,6 @@ class forget extends Component{
                           value="Reset Password Now" />
                       </div></Col><Col md={8}></Col>
                   </Row>
-                  <ToastContainer />
                 </form>
                 <div className="pt-5 support">
                   <h4>Trouble logging in?</h4>
