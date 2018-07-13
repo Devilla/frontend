@@ -1,11 +1,14 @@
-import React, {Component} from 'react';
-import {Animated} from 'react-animated-css';
+import React, { Component } from 'react';
+import { Animated } from 'react-animated-css';
 import $ from 'jquery';
-import Ionicon from 'react-ionicons';
 import { css } from 'glamor';
-import {Row, Col} from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 import axios from 'axios';
-import { toast ,ToastContainer } from 'react-toastify';
+import { toast , ToastContainer } from 'react-toastify';
+import { connect } from 'react-redux';
+import { loginSuccess } from 'ducks/auth';
+import { load, loaded } from 'ducks/loading';
+
 function validate(newPassword,verifyPassword, authEmail) {
   return {
     newPassword: newPassword.length === 0,
@@ -20,8 +23,7 @@ const toastConfig = {
   className: 'toast-style'
 };
 
-
-export default class forget extends Component{
+class forget extends Component{
   constructor () {
     super();
     this.state = {
@@ -29,17 +31,20 @@ export default class forget extends Component{
       verifyPassword: '',
       authEmail: false
     };
-
   }
+
   componentDidMount(){
     window.scrollTo(0,0);
   }
+
   handlePasswordChange(evt){
     this.setState({newPassword:  evt.target.value});
   }
+
   handlePasswordverifyChange(evt){
     this.setState({verifyPassword:  evt.target.value});
   }
+
   handlePasswordAuth(evt){
     if(evt.target.value == ''){
       $('#'+evt.target.id).addClass('has-error');
@@ -49,44 +54,46 @@ export default class forget extends Component{
       $('#'+evt.target.id).removeClass('has-error');
     }
   }
+
   handlePasswordverifyAuth(evt){
     if(evt.target.value == ''){
       $('#'+evt.target.id).addClass('has-error');
       toast('Enter password again to verify', toastConfig);
-    }else
-    {
+    } else {
       $('#'+evt.target.id).removeClass('has-error');
       this.setState({
         authEmail: true
       });
-
     }
   }
+
   handleSubmit(evt){
+    this.props.load();
     if (!this.canBeSubmitted()) {
       evt.preventDefault();
       return;
-    }else{
-
+    } else {
       evt.preventDefault();
-      var token = document.location.href.split('token=')[1];
-      const data = {
-        'newPassword' :  this.state.newPassword,
-        'verifyPassword': this.state.verifyPassword,
-        'token': token
+      var token = this.props.location.query.code;
 
+      const data = {
+        'password' :  this.state.newPassword,
+        'passwordConfirmation': this.state.verifyPassword,
+        'code': token
       };
 
       let urls;
       if (process.env.NODE_ENV === 'production')
-        urls = `${process.env.REACT_APP_PRODUCTION_URL}auth/reset_password`;
+        urls = `${process.env.REACT_APP_PRODUCTION_URL}auth/reset-password`;
       else if(process.env.NODE_ENV === 'staging')
-        urls = `${process.env.REACT_APP_STAGING_URL}auth/reset_password`;
+        urls = `${process.env.REACT_APP_STAGING_URL}auth/reset-password`;
       else
-        urls = `${process.env.REACT_APP_DEVELOPMENT_URL}auth/reset_password`;
-
+        urls = `${process.env.REACT_APP_DEVELOPMENT_URL}auth/reset-password`;
       axios.post(urls ,data).then(function(response){
-        toast.info(response['data']['message'], toastConfig);
+        if(response.user)
+          this.props.loginSuccess(response);
+        else
+          toast.info(response['data']['message'], toastConfig);
       }) .catch(function (error) {
         console.log(error);
         toast.info('Something went wrong..', {
@@ -103,7 +110,9 @@ export default class forget extends Component{
         verifyPassword: ''
       });
     }
+    this.props.loaded();
   }
+
   canBeSubmitted() {
     const errors = validate(
       this.state.newPassword,
@@ -113,6 +122,7 @@ export default class forget extends Component{
     const isDisabled = Object.keys(errors).some(x => errors[x]);
     return !isDisabled;
   }
+
   render(){
     const errors = validate(
       this.state.newPassword,
@@ -144,7 +154,7 @@ export default class forget extends Component{
                           type="password" />
                       </div>
                     </Col><Col md={8}></Col>
-                  </Row >
+                  </Row>
                   <Row className="pt-2">
                     <Col md={4}>
                       <div className="frmcntl">
@@ -181,3 +191,11 @@ export default class forget extends Component{
     );
   }
 }
+
+const mapDispatchToProps = {
+  loginSuccess,
+  load,
+  loaded
+};
+
+export default connect(null, mapDispatchToProps)(forget);
