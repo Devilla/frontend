@@ -1,21 +1,13 @@
 import React, { Component } from 'react';
 import { Animated } from 'react-animated-css';
-import $ from 'jquery';
-import { css } from 'glamor';
-import { Row, Col } from 'react-bootstrap';
+import { Row, Col, Alert } from 'react-bootstrap';
 import { toast } from 'react-toastify';
 import { connect } from 'react-redux';
 import { loginSuccess } from 'ducks/auth';
 import { load, loaded } from 'ducks/loading';
 import { base } from 'services/api';
-
-function validate(newPassword,verifyPassword, authEmail) {
-  return {
-    newPassword: newPassword.length === 0,
-    verifyPassword: verifyPassword.length === 0,
-    authEmail: authEmail===false
-  };
-}
+import { storeToken } from 'services/Request';
+import { browserHistory } from 'react-router';
 
 const toastConfig = {
   position: toast.POSITION.BOTTOM_LEFT,
@@ -27,9 +19,10 @@ class forget extends Component{
   constructor () {
     super();
     this.state = {
-      newPassword: '',
-      verifyPassword: '',
-      authEmail: false
+      password: '',
+      passwordConfirmation: '',
+      passwordError: '',
+      commonError: ''
     };
   }
 
@@ -37,47 +30,40 @@ class forget extends Component{
     window.scrollTo(0,0);
   }
 
-  handlePasswordChange(evt){
-    this.setState({newPassword:  evt.target.value});
+  handleStateChange = (evt) => {
+    this.setState({
+      [evt.target.id]: evt.target.value,
+      passwordError: '',
+      commonError: ''
+    });
   }
 
-  handlePasswordverifyChange(evt){
-    this.setState({verifyPassword:  evt.target.value});
+  handlePasswordAuth = (evt) => {
+    if(evt.target.value == '')
+      this.setState({passwordError: 'Enter your password'});
   }
 
-  handlePasswordAuth(evt){
-    if(evt.target.value == ''){
-      $('#'+evt.target.id).addClass('has-error');
-      toast('Enter your password', toastConfig);
-    }else
-    {
-      $('#'+evt.target.id).removeClass('has-error');
-    }
+  handlePasswordverifyAuth = (evt) => {
+    if(evt.target.value == '')
+      this.setState({commonError: 'Verification password required'});
   }
 
-  handlePasswordverifyAuth(evt){
-    if(evt.target.value == ''){
-      $('#'+evt.target.id).addClass('has-error');
-      toast('Enter password again to verify', toastConfig);
-    } else {
-      $('#'+evt.target.id).removeClass('has-error');
-      this.setState({
-        authEmail: true
-      });
-    }
-  }
-
-  handleSubmit(evt){
+  handleSubmit = (evt) => {
     evt.preventDefault();
     this.props.load();
-    if (!this.canBeSubmitted()) {
-      return;
+    const { password, passwordConfirmation } = this.state;
+    const code = this.props.location.query.code;
+    if (!password) {
+      return this.setState({passwordError: 'Enter new password'});
+    } else if(!passwordConfirmation) {
+      return this.setState({commonError: 'Enter verification password'});
+    } else if(!code) {
+      return this.setState({commonError: 'Invalid link'});
     } else {
-      var token = this.props.location.query.code;
       const data = {
-        'password' :  this.state.newPassword,
-        'passwordConfirmation': this.state.verifyPassword,
-        'code': token
+        'password' :  this.state.password,
+        'passwordConfirmation': this.state.passwordConfirmation,
+        'code': code
       };
 
       fetch(base + 'auth/reset-password', {
@@ -90,45 +76,31 @@ class forget extends Component{
       })
       .then(res => res.json())
       .then(res => {
-        if(res.user)
+        if(res.user && res.jwt) {
+          storeToken(res.jwt)
           this.props.loginSuccess(res);
-        else if(res.error)
+          browserHistory.push('/dashboard');
+        } else if(res.error)
           toast.info(res.message, toastConfig);
       });
 
       this.setState({
-        newPassword:'',
-        verifyPassword: ''
+        password:'',
+        passwordConfirmation: ''
       });
     }
     this.props.loaded();
   }
 
-  canBeSubmitted() {
-    const errors = validate(
-      this.state.newPassword,
-      this.state.verifyPassword,
-      this.state.authEmail);
-
-    const isDisabled = Object.keys(errors).some(x => errors[x]);
-    return !isDisabled;
-  }
-
   render(){
-    const errors = validate(
-      this.state.newPassword,
-      this.state.verifyPassword,
-      this.state.authEmail
-    );
-    const isDisabled = Object.keys(errors).some(x => errors[x]);
-    const verifyCallback = response => console.log(response);
+    const { password, passwordConfirmation, passwordError, commonError } = this.state;
     return(
       <div>
         <div className="authpage section innerpage">
           <div className="container">
             <div className="wrapper">
               <Animated className="leftwrap center" animationIn="fadeIn" animationOut="fadeOut" isVisible={true}>
-                <form onSubmit={this.handleSubmit.bind(this)} method="POST" data-name="Login Form"  className="loginfrm">
+                <form onSubmit={this.handleSubmit} method="POST" data-name="Login Form"  className="loginfrm">
                   <h3 className="pt-5 dashed">Reset your password</h3>
                   <div className="section-divider-line"><hr/></div>
                   <div className="pt-2"></div>
@@ -136,13 +108,18 @@ class forget extends Component{
                     <Col md={4}>
                       <div className="frmcntl">
                         <input className="field w-input"
-                          id="newPassword"
-                          name="newPassword"
+                          id="password"
+                          name="password"
                           placeholder="New Password"
-                          value={this.state.newPassword}
-                          onBlur={this.handlePasswordAuth.bind(this)}
-                          onChange = {this.handlePasswordChange.bind(this)}
+                          value={password}
+                          onBlur={this.handlePasswordAuth}
+                          onChange = {this.handleStateChange}
                           type="password" />
+                          {passwordError &&
+                            <Alert bsStyle="warning">
+                              <strong>{passwordError}</strong>
+                            </Alert>
+                          }
                       </div>
                     </Col><Col md={8}></Col>
                   </Row>
@@ -150,13 +127,18 @@ class forget extends Component{
                     <Col md={4}>
                       <div className="frmcntl">
                         <input className="field w-input"
-                          id="verifyPassword"
-                          name="verifyPassword"
+                          id="passwordConfirmation"
+                          name="passwordConfirmation"
                           placeholder="Verify New Password"
-                          value={this.state.verifyPassword}
-                          onBlur={this.handlePasswordverifyAuth.bind(this)}
-                          onChange = {this.handlePasswordverifyChange.bind(this)}
+                          value={passwordConfirmation}
+                          onBlur={this.handlePasswordverifyAuth}
+                          onChange = {this.handleStateChange}
                           type="password" />
+                          {commonError &&
+                            <Alert bsStyle="warning">
+                              <strong>{commonError}</strong>
+                            </Alert>
+                          }
                       </div></Col><Col md={8}></Col>
                   </Row>
                   <Row className="pt-4 pb-5">
@@ -164,7 +146,6 @@ class forget extends Component{
                       <div className="frmcntl">
                         <input className="btn btn--primary color"
                           type="submit"
-                          disabled={isDisabled}
                           value="Reset Password Now" />
                       </div></Col><Col md={8}></Col>
                   </Row>
