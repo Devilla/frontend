@@ -235,6 +235,7 @@ class Notifications extends Component {
               <NotificationConfigure
                 notification={notification}
                 profile={profile}
+
                 handleContentChange={this.handleContentChange}
                 setDefaultPanel={this.setDefaultPanel}
                 handleActivityChange={this.handleActivityChange}
@@ -242,6 +243,7 @@ class Notifications extends Component {
                 handleClickableNotification={this.handleClickableNotification}
                 saveConfiguration={this.saveConfiguration}
                 backConfiguration={this.backConfiguration}
+                campaign={this.props.campaign}
                 {...this.state}
               />
             </Row>

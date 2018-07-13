@@ -21,12 +21,14 @@ const NotificationConfigure = ({
   handleNotificationStyleChange,
   handleClickableNotification,
   saveConfiguration,
-  backConfiguration
+  backConfiguration,
+  // campaign
 }) => {
   return (
     <div className="notification-configure">
       <Row>
         <Col md={12}>
+          {/*campaign.trackingId*/}
           <Card title={notification.notificationName}
             status={ <div className="notificationSwitch">
               <input
