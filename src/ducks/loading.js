@@ -1,6 +1,6 @@
 import { Map } from 'immutable';
 
-const action = name => `zikher/modals/${name}`;
+const action = name => `/modals/${name}`;
 const LOAD = action('LOAD');
 const LOADED = action('LOADED');
 

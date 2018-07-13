@@ -218,8 +218,7 @@ class DashboardContainer extends Component {
 
 const mapStateToProps = state => ({
   profile: state.getIn(['profile', 'profile']),
-  user: state.getIn(['auth', 'user']),
-
+  user: state.getIn(['auth', 'user'])
 });
 
 const mapDispatchToProps = {

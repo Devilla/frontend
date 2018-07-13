@@ -4,7 +4,6 @@ import * as actions from 'ducks/rules';
 import { load, loaded } from 'ducks/loading';
 import { toast } from 'react-toastify';
 
-
 const toastConfig = {
   position: toast.POSITION.BOTTOM_LEFT,
   autoClose: 2000
@@ -21,7 +20,6 @@ function* fetch() {
     yield put(loaded());
   } catch (error) {
     yield put(loaded());
-    console.log('Failed to fetch doc', error);
     yield toast.error(error.message, toastConfig);
   }
 }
@@ -34,11 +32,9 @@ function* fetchOne(action) {
       console.log(res.error);
     else
       yield put(actions.successRules(res));
-
     yield put(loaded());
   } catch (error) {
     yield put(loaded());
-    console.log('Failed to fetch doc', error);
     yield toast.error(error.message, toastConfig);
   }
 }
@@ -49,14 +45,11 @@ function* create(action) {
     const res = yield call(api.POST, 'rules', action.rules);
     if(res.error)
       console.log(res.error);
-    else {
+    else
       yield put(actions.successRules(res));
-    }
-
     yield put(loaded());
   } catch (error) {
     yield put(loaded());
-    console.log('Failed to fetch doc', error);
     yield toast.error(error.message, toastConfig);
   }
 
@@ -77,7 +70,6 @@ function* update(action) {
     yield put(loaded());
   } catch (error) {
     yield put(loaded());
-    console.log('Failed to fetch doc', error);
     yield toast.error(error.message, toastConfig);
   }
 
