@@ -26,13 +26,13 @@ const NotificationConfigure = ({
   showpopupfield,
   showpopup,
   popupName,
-  // campaign
+  campaign
 }) => {
   return (
     <div className="notification-configure col-md-12">
       <Row>
         <Col md={12}>
-          {/*campaign.trackingId*/}
+          {console.log(campaign.trackingId)}
           <Card title={notification.notificationName}
             status={ <div className="notificationSwitch">
               <input
@@ -75,6 +75,7 @@ const NotificationConfigure = ({
                       onConfigChange={handleNotificationStyleChange}
                       handleContentChange={handleContentChange}
                       handleClickableNotification={handleClickableNotification}
+                      campaign={campaign}
                     />
 
                   </Col>
