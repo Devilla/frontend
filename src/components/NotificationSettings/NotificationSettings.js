@@ -60,21 +60,29 @@ class Notifications extends Component {
     this.state = {
       configuration: {},
       activity: true,
+      showpopupfield: false,
       notificationPanelStyle: notificationPanelStyleDefault,
-      contentText: 'Company Name ',
+      contentText: 'us',
       visitorText: 'people',
       notificationUrl: '',
       image: '',
       notifications: [],
       toggleTextBox: false,
-      toggleMap: true
+      toggleMap: true,
+      popupName: ''
     };
+  }
+
+  showpopup = (channelName) => {
+    this.setState({ popupName: channelName });
   }
 
   componentWillMount() {
     this.props.fetchNotification();
     this.props.fetchConfiguration(this.props.campaign._id);
+
   }
+
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.configuration != this.props.configuration) {
@@ -176,10 +184,12 @@ class Notifications extends Component {
     this.props.setActiveState(1);
   }
 
-  configure = (notification) => {
+  configure = (notification, showpopup) => {
     this.props.fetchCampaignConfiguration(this.props.campaign._id, notification._id);
     this.props.setNotification(notification);
     // this.setState({ notification: notification });
+    this.setState({ showpopupfield: !showpopup });
+
   }
 
   saveConfiguration = (activity, id, configId) => {
@@ -214,7 +224,6 @@ class Notifications extends Component {
   }
 
   render() {
-
     const { notification, configurations, createSuccess, campaign, profile } = this.props;
     return (
       <div className="notification-settings">
@@ -235,7 +244,7 @@ class Notifications extends Component {
               <NotificationConfigure
                 notification={notification}
                 profile={profile}
-
+                showpopupfield={this.state.showpopupfield}
                 handleContentChange={this.handleContentChange}
                 setDefaultPanel={this.setDefaultPanel}
                 handleActivityChange={this.handleActivityChange}
@@ -243,6 +252,8 @@ class Notifications extends Component {
                 handleClickableNotification={this.handleClickableNotification}
                 saveConfiguration={this.saveConfiguration}
                 backConfiguration={this.backConfiguration}
+                showpopup={this.showpopup}
+                popupName={this.state.popupName}
                 campaign={this.props.campaign}
                 {...this.state}
               />

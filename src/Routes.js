@@ -28,7 +28,6 @@ import {
   WebsiteFeature,
   Affiliate,
   AffiliateRegister,
-  PopupReview,
   Oauthpage,
   Oauthgenerate,
   DashboardChannel,
@@ -56,7 +55,6 @@ const MyRoutes = ({routerHistory}) => (
       <Route path="/oauthshow" component={Oauthpage} />
       <Route path="/oauthgenerate" component={Oauthgenerate} />
       <Route path="/channels" component={DashboardChannel} />
-      <Route path="/popupreview" component={PopupReview} />
       <Route path="/analytics" component={AnalyticsContainer} />
       <Route path="/integrations" component={Integrations} />
       <Route path="/support" component={Dashboard} />

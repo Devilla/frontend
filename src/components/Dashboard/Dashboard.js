@@ -82,7 +82,7 @@ class Dashboard extends Component {
     let start, end , range1, acc  ;
     switch(this.state.daysClicked)  {
       case '7' :
-        start  = moment().subtract(7,'d').format('YYYY-MM-DD');
+        start  = moment().subtract(6,'d').format('YYYY-MM-DD');
         end    = new Date();
         range1 = moment.range(start, end);
         acc = Array.from(range1.by('day', { step: 1 }));
@@ -128,7 +128,7 @@ class Dashboard extends Component {
 
 
       default :
-        start  = moment().subtract(7,'d').format('YYYY-MM-DD');
+        start  = moment().subtract(6,'d').format('YYYY-MM-DD');
         end    = new Date();
         range1 = moment.range(start, end);
         acc = Array.from(range1.by('day', { step: 1 }));
@@ -138,8 +138,20 @@ class Dashboard extends Component {
     return acc;
   }
 
+  renderCardBox = (content) => {
+    return <div className="col-sm-12 col-lg-6 col-xl-2 box pr-0 cards">
+      <div>
+        <div className="text-center mt-4 mb-4">
+          <div className="col-md-10 h-50 card-content-width">
+            {content}
+          </div>
+        </div>
+      </div>
+    </div>;
+  }
+
   render() {
-    const { campaignInfo,profile } = this.props;
+    const { campaignInfo, profile } = this.props;
     var chartData = {
       labels:   this.getDays(),
       datasets: this.getDataset()
@@ -208,87 +220,41 @@ class Dashboard extends Component {
           <Row className="dashboard-boxes">
             <Col md={12}>
               <div className="card-box">
-
                 <Row className="mb-5">
                   <Col md={12}>
                     <div className="card-box pb-0 mb-0 cardbox1">
-
                       <Row className="account-stats">
-                        <div className="col-sm-12 col-lg-6 col-xl-2 box pr-0 cards">
-                          <div>
-                            <div className="text-center mt-4 mb-4">
-
-                              <div className="col-md-10 h-50">
-                                <div className=" widget-flat card-box  text-muted pr-4 pl-4 pb-5 pt-2 pos-vertical-center c1">
-
-                                  <p className="text-uppercase title m-b-5 fonttitle font-600">Active Campaigns</p>
-
-                                  <h3 className="m-b-10 campaign">{campaignInfo? campaignInfo.websiteLive.length : []}</h3>
-                                </div>
-                              </div>
-
-                            </div>
+                        {this.renderCardBox(
+                          <div className=" widget-flat card-box  text-muted pr-4 pl-4 pb-5 pt-2 pos-vertical-center c2">
+                            <p className="text-uppercase title m-b-5 fonttitle font-600">Active Campaigns</p>
+                            <h3 className="m-b-10 campaign">{campaignInfo? campaignInfo.websiteLive.length : []}</h3>
                           </div>
-                        </div>
-
-                        <div className="col-sm-12 col-lg-6 col-xl-2 box pr-0 cards">
-                          <div>
-                            <div className="text-center mt-4 mb-4">
-
-                              <div className="col-md-10 h-50">
-                                <div className=" widget-flat card-box  text-muted pr-4 pl-4 pb-5 pt-2 pos-vertical-center c2">
-
-                                  <p className="text-uppercase title m-b-5 fonttitle font-600">Unique Visitors</p>
-
-                                  <h3 className="m-b-10 profile">{profile? Number(profile.uniqueVisitors) :0 }</h3>
-                                </div>
-
-                              </div>
-                            </div>
+                        )}
+                        {this.renderCardBox(
+                          <div className=" widget-flat card-box  text-muted pr-4 pl-4 pb-5 pt-2 pos-vertical-center c2">
+                            <p className="text-uppercase title m-b-5 fonttitle font-600">Unique Visitors</p>
+                            <h3 className="m-b-10 profile">{profile? Number(profile.uniqueVisitors) :0 }</h3>
                           </div>
-                        </div>
-
-                        <div className="col-sm-12 col-lg-6 col-xl-2 box pr-0 cards">
-                          <div>
-                            <div className="text-center mt-4 mb-4">
-
-                              <div className="col-md-10 h-50">
-                                <div className=" widget-flat card-box  text-muted pr-4 pl-4 pb-5 pt-2 pos-vertical-center c3">
-
-                                  <p className="text-uppercase title m-b-5 fonttitle font-600">Total Notifications</p>
-
-                                  <h3 className="m-b-10 notify">{campaignInfo ? campaignInfo.notificationCount : 0}</h3>
-                                </div>
-                              </div>
-
-                            </div>
+                        )}
+                        {this.renderCardBox(
+                          <div className=" widget-flat card-box  text-muted pr-4 pl-4 pb-5 pt-2 pos-vertical-center c2">
+                            <p className="text-uppercase title m-b-5 fonttitle font-600">Total Notifications</p>
+                            <h3 className="m-b-10 notify">{campaignInfo ? campaignInfo.notificationCount : 0}</h3>
                           </div>
-                        </div>
-
-                        <div className="col-sm-12 col-lg-6 col-xl-2 box pr-0 cards">
-                          <div>
-                            <div className="text-center mt-4 mb-4">
-
-                              <div className="col-md-10 h-50">
-                                <div className="  widget-flat card-box  text-muted pr-4 pl-4 pb-5 pt-2 pos-vertical-center c4">
-
-                                  <p className="text-uppercase title m-b-5 fonttitle font-600">Total Signups</p>
-
-                                  <h3 className="m-b-10 usersignup">{userSignUps}</h3>
-                                </div>
-
-                              </div>
-                            </div>
+                        )}
+                        {this.renderCardBox(
+                          <div className=" widget-flat card-box  text-muted pr-4 pl-4 pb-5 pt-2 pos-vertical-center c2">
+                            <p className="text-uppercase title m-b-5 fonttitle font-600">Total Signups</p>
+                            <h3 className="m-b-10 usersignup">{userSignUps}</h3>
                           </div>
-                        </div>
+                        )}
                       </Row>
                     </div>
-                    <div   className="graph-card">
+                    <div className="graph-card">
                       <Card
                         statsIcon="fa fa-history"
                         id="chartHours"
                         stats="Updated 3 minutes ago"
-
                         content={
                           <div className="ct-chart canvas-brdr">
                             <LineChart data={chartData} options={chartOptions} height="250" redraw />
@@ -301,24 +267,23 @@ class Dashboard extends Component {
                 <div className=" pull-right days">
                   <select className="form-control text-muted" onChange={(e) =>  this.setState({daysClicked:e.target.value})}>
                     <option key={7} value={'7'}>
-                          7 days
+                      7 days
                     </option>
-                    <option key={14} value={'14'} >
-                            14 days
+                    <option key={14} value={'14'}>
+                      14 days
                     </option>
-                    <option key={28} value={'28'} >
-                            28 days
+                    <option key={28} value={'28'}>
+                      28 days
                     </option>
-                    <option key={'today'+1} value={'Today'} >
-                            Today
+                    <option key={'today'+1} value={'Today'}>
+                      Today
                     </option>
-                    <option key={'yesterday'+1} value={'Yesterd ay'} >
-                            Yesterday
+                    <option key={'yesterday'+1} value={'Yesterd ay'}>
+                      Yesterday
                     </option>
                   </select>
                 </div>
                 <div className="clearfix"></div>
-
               </div>
             </Col>
           </Row>

@@ -1,6 +1,6 @@
 import React , { Component }  from 'react';
 import { Col }  from 'react-bootstrap';
-import  './Channel.scss'; 
+import  './Channel.scss';
 import {
   Facebook,
   Google,
@@ -31,7 +31,7 @@ class Channel extends Component  {
           <img src={this.channelfunc(i)} className="logocompany " />
           <span className="text-muted text-uppercase mt-0  title">{channelName}</span>
           <span className="text-muted btn btn-primary waves-effect  btns" onClick={()=>this.props.showpopup(channelName)}>View Reviews&nbsp; <i className=" mdi mdi-arrow-down-drop-circle-outline"></i></span>
-        </div>  
+        </div>
       );
     });
   }
@@ -44,7 +44,7 @@ class Channel extends Component  {
         <Col md={12}>
           {this.channelsList()}
         </Col>
-          
+
       </div>
     );
   }

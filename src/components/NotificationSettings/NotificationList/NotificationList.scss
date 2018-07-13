@@ -2,20 +2,26 @@
 
 
   .notification-box {
+    &.lastbox {
+      position: relative;
+      left: 33%;
+      top: 30px !important;
+    }
     .bulkColor{
-      color:#d50000!important;
+      color:#097fff!important;
     }
     .liveColor{
-      color:#097fff!important;
+      color:#d50000!important;
     }
     .recentColor{
       color:#097fff!important;
   
     }
-    .channelColor {
+    .reviewColor {
       color:#d50000!important;
 
     }
+
      
     .toggle-checkbox {
       margin-left: 37%;   

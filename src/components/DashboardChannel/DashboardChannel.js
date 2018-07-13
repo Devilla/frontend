@@ -58,8 +58,7 @@ class DashboardChannel extends Component {
     };
 
     this.props.review(data);
-    //this.props.clearForgotPasswordError();
-    //this.setState({email: '', emailError: ''});
+
   }
 
   channels = ['Facebook' , 'Zendesk','Google','TrustPilot','FourSquare','G32Crowd','TrustRadius','Yelp','BingPlaces'];

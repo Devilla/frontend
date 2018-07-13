@@ -115,7 +115,7 @@ class AnalyticsContainer extends Component {
       return [];
   }
 
-  getDataset(uniqueUsers) {
+  getDataset(uniqueUsers, avgCus) {
     if(uniqueUsers && uniqueUsers.length) {
       let dataSet = [];
       let dataContent = {
@@ -133,25 +133,35 @@ class AnalyticsContainer extends Component {
         dataContent['data'][moment(bucket.key_as_string).day()] = bucket.visitors.sum_other_doc_count;
       });
       dataSet.push(dataContent);
-      return dataSet;
-    } else {
-      return [{
-        label: '',
+      dataSet.push({
+        label: 'Average User Signups',
         fillColor: 'rgba(220,220,220,0.2)',
         strokeColor: 'rgba(220,220,220,1)',
         pointColor: 'rgba(220,220,220,1)',
         pointStrokeColor: '#fff',
         pointHighlightFill: '#fff',
         pointHighlightStroke: 'rgba(220,220,220,1)',
-        data: [0, 0, 0, 0, 0, 0, 0]
+        data: [avgCus, avgCus, avgCus, avgCus, avgCus, avgCus, avgCus]
+      });
+      return dataSet;
+    } else {
+      return [{
+        label: 'Average User Signups',
+        fillColor: 'rgba(220,220,220,0.2)',
+        strokeColor: 'rgba(220,220,220,1)',
+        pointColor: 'rgba(220,220,220,1)',
+        pointStrokeColor: '#fff',
+        pointHighlightFill: '#fff',
+        pointHighlightStroke: 'rgba(220,220,220,1)',
+        data: [avgCus, avgCus, avgCus, avgCus, avgCus, avgCus, avgCus]
       }];
     }
   }
 
-  showGraph(name, uniqueUsers) {
+  showGraph(name, averageCustomer, uniqueUsers) {
     const chartData = {
       labels: moment.weekdays(),
-      datasets: this.getDataset(uniqueUsers)
+      datasets: this.getDataset(uniqueUsers, averageCustomer)
     };
 
     Popup.create({
@@ -195,7 +205,7 @@ class AnalyticsContainer extends Component {
             {
               userDetails && userDetails.length ?((userDetails.length / visitor)   * 100).toFixed(2):0
             } %</td>
-          <td className="text-center"><a href="javascript:;" onClick={() => this.showGraph(website.websiteUrl, uniqueUsers)}>Graph</a></td>
+          <td className="text-center"><a href="javascript:;" onClick={() => this.showGraph(website.websiteUrl, website.averageCustomer, uniqueUsers)}>Graph</a></td>
         </tr>;
       });
     else
