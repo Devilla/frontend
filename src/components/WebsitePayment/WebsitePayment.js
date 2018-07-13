@@ -1,18 +1,21 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
-import './WebsiteSignupPrice.scss';
-import './WebsiteSignUp.scss';
+import { connect } from 'react-redux';
 
-class WebsiteSignupPrice extends Component {
+import WebsitePrice from './WebsitePrice';
+import WebsiteCheckout from './WebsiteCheckout';
+import './WebsitePrice.scss';
 
-  constructor() {
-    super();
+class WebsitePayment extends Component {
+  constructor(props) {
+    super(props);
     this.state = {
+      planSelected: '',
       checked: false,
       externalValue: true,
       country_code: 'USD',
       planPeriod: 12,
-      servicebotPlans: []
+      servicebotPlans: [],
+      coupon: ''
     };
   }
 
@@ -24,6 +27,10 @@ class WebsiteSignupPrice extends Component {
       });
   }
 
+  componentDidMount() {
+    let scrollElm = document.scrollingElement;
+    scrollElm.scrollTop = 0;
+  }
 
   handleChange = (checked) => {
     this.setState({checked});
@@ -65,11 +72,22 @@ class WebsiteSignupPrice extends Component {
   }
 
   renderPriceList = () => {
+    let planList;
+    console.log(this.state.coupon,'============coupon');
+    if(this.state.coupon) {
+      planList = this.state.servicebotPlans.filter(plan => plan.references.service_template_properties.length && plan.references.service_template_properties[0].data.value === this.state.coupon.code);
+    } else {
+      planList = this.state.servicebotPlans.filter(plan =>
+        (this.state.planPeriod == 12 ? plan.interval=='year': plan.interval=='month') &&
+        (plan.references.service_template_properties[0].name !== 'coupon')
+      );
+    }
 
-    let planList =this.state.servicebotPlans.filter(plan =>
-      (this.state.planPeriod == 12 ? plan.interval=='year': plan.interval=='month') &&
-      (plan.references.service_template_properties[0].name !== 'coupon')
-    );
+    // let planList = this.state.servicebotPlans.filter(plan =>
+    //   (this.state.planPeriod == 12 ? plan.interval=='year': plan.interval=='month') &&
+    //   (plan.references.service_template_properties[0].name !== 'coupon')
+    // );
+
     return planList.map(plan => {
       return <div key={plan.name} className="col-md-3 pl-3 pr-0">
         <div className="pricing pricing-1  pr-0 pl-0"  style={{minHeight:'700px'}}>
@@ -125,48 +143,50 @@ class WebsiteSignupPrice extends Component {
             </li>
           </ul>
 
-
           {/*should hand;e the access now according to respective item*/}
-          <Link className="btn btn--primary col-md-12 text-center  starttrial-btn" to="/signup" >
-            <span className="btn__text"  onClick={() => {this.props.handleCheckChange(plan.name);}}>Start Free Trial</span>
-          </Link>
+          <div className="btn btn--primary col-md-12 text-center  starttrial-btn" onClick={() => {this.handlePlanSelect(plan);}} >
+            <span className="btn__text">Start Free Trial</span>
+          </div>
         </div>
       </div>;
     });
   }
 
+  handlePlanSelect = (plan) => {
+    this.setState({selectedPlan: plan});
+  }
+
+  clearSelectedPlan = (coupon) => {
+    this.setState({ coupon: coupon, selectedPlan: ''});
+  }
+
   render() {
+    const { externalValue, selectedPlan, coupon } = this.state;
     return (
-      <div className="websitesignuppricing-container">
-        <div className="main-container">
-          <h2 className="text-center btn" disabled  > STEP 2</h2>
-          <p className="plantitle"> &nbsp;&nbsp;Choose Your Dream Plan.</p>
-          <section className="text-center no-brdr-top">
-            <div className="container">
-              <div className="row justify-content-center">
-
-                <div className="col-md-1 mr-0 text-left " id="leftmg"><div><strong onClick={this.handleMonthChange} className="h5 type--bold">Monthly</strong></div></div>
-                <div className="col-md-1 col-sm-1 my-auto text-center pl-2">
-                  <input className="tgl tgl-ios" id="cb2" type="checkbox"  defaultChecked={this.state.externalValue}/>
-                  <label className="tgl-btn toggleId"  htmlFor="cb2"  onClick={() => this.handleSwitchChange(!this.state.externalValue)}></label>
-                </div>
-                <div className="text-left my-auto" ><strong onClick={this.handleYearChange} className="h5 type--bold">Yearly</strong></div>
-              </div>
-
-            </div>
-          </section>
-
-          <section className="text-center unpad--top pricerow">
-            <div className="container">
-              <div className="row">
-                {this.renderPriceList()}
-              </div>
-            </div>
-          </section>
-        </div>
+      <div>
+        {!selectedPlan ?
+          <WebsitePrice
+            externalValue={externalValue}
+            handleMonthChange={this.handleMonthChange}
+            handleYearChange={this.handleYearChange}
+            handleSwitchChange={this.handleSwitchChange}
+            renderPriceList={this.renderPriceList}
+          />
+          :
+          <WebsiteCheckout
+            coupon={coupon}
+            clearSelectedPlan={this.clearSelectedPlan}
+            selectedPlan={selectedPlan}
+          />
+        }
       </div>
     );
   }
 }
 
-export default WebsiteSignupPrice;
+const mapStateToProps = state => ({
+  couponDetails: state.getIn(['auth', 'coupon'])
+});
+
+
+export default connect(mapStateToProps)(WebsitePayment);

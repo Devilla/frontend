@@ -9,8 +9,8 @@ import { toast } from 'react-toastify';
 import { browserHistory } from 'react-router';
 import * as actions from 'ducks/auth';
 import { fetchProfile } from 'ducks/profile';
-import { fetchPlan } from 'ducks/plan';
-import { fetchPayment } from 'ducks/payment';
+// import { fetchPlan } from 'ducks/plan';
+// import { fetchPayment } from 'ducks/payment';
 import { load, loaded } from 'ducks/loading';
 import { storeToken } from 'services/Request';
 
@@ -29,9 +29,9 @@ export function* isLoggedIn() {
   try {
     yield all([
       put(actions.fetchUser()),
-      put(fetchProfile()),
-      put(fetchPlan()),
-      put(fetchPayment()),
+      put(fetchProfile())
+      // put(fetchPlan()),
+      // put(fetchPayment()),
     ]);
   } catch(error) {
     yield console.log(error);

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
-import {validateEmail, validatePassword, register, PASSWORD_MAX_LENGTH} from 'services/FormUtils';
+import { validateEmail, validatePassword, register, PASSWORD_MAX_LENGTH } from 'services/FormUtils';
 import { Animated } from'react-animated-css';
 import { Alert, HelpBlock } from 'react-bootstrap';
 import { store } from 'index.js';
@@ -9,11 +9,6 @@ import { loginSuccess } from 'ducks/auth';
 import { browserHistory } from 'react-router';
 import { toast } from 'react-toastify';
 import { base } from 'services/api';
-
-
-import WebsiteSignupPrice from './WebsiteSignupPrice';
-import WebsiteSignupPayment from './WebsiteSignupPayment';
-
 
 import './WebsiteSignUp.scss';
 
@@ -37,13 +32,8 @@ class WebsiteSignUp extends Component {
       errorPassword: '',
       errorEmail: '',
       errorConfirmPassword: '',
-      error: '',
-      fm1: true,
-      fm2: false,
-      fm3: false,
-      planSelected: ''
+      error: ''
     };
-    this.handleCheckChange=  this.handleCheckChange.bind(this);
   }
 
   componentWillMount() {
@@ -86,31 +76,21 @@ class WebsiteSignUp extends Component {
     event.preventDefault();
     const {
       email,
-      password,
-      // confirmPassword,
-      // username
+      password
     } = this.state;
 
-    if(!email ||
-      !password
-      // !confirmPassword ||
-      // !username
-    )
+    if(!email || !password)
       return this.setState({error: 'All fields are required'});
-    // if(password !== confirmPassword)
-    //   return this.setState({errorConfirmPassword: 'Password doesnot match'});
 
     store.dispatch(load());
     // TODO: Show 'Check email for further instructions.' message on success
     register(email, password).then(res => {
-      console.log(res, '========');
       toast.info('Successfull', toastConfig);
       store.dispatch(loginSuccess(res));
       store.dispatch(loaded());
       browserHistory.push(res.user.path);
       this.setState({isRegistered: true, error: ''});
     }).catch(err => {
-      console.log(err, '===========err');
       store.dispatch(loaded());
       this.setState({error: err});
     });
@@ -124,36 +104,17 @@ class WebsiteSignUp extends Component {
       error: '',
       errorEmail: '',
       errorPassword: '' ,
-      errorConfirmPassword: '',
-
+      errorConfirmPassword: ''
     });
   }
+
   componentDidMount() {
     let scrollElm = document.scrollingElement;
     scrollElm.scrollTop = 0;
   }
 
-  b1StepHandler = () => {
-    this.setState( prevState => ({
-      fm1: !prevState.fm1,
-      fm2: !prevState.fm2
-    }));
-  }
-  b2StepHandler = (planName) => {
-    this.setState( prevState => ({
-      fm2: !prevState.fm2,
-      fm3: !prevState.fm3,
-      planSelected : planName
-    }));
-  }
-
-  handleCheckChange(planName) {
-    this.b2StepHandler(planName);
-
-  }
-
   render() {
-    const { email, isRegistered, error, errorEmail, isPasswordShown, errorPassword,fm1,fm2,fm3 ,planSelected} = this.state;
+    const { email, isRegistered, error, errorEmail, isPasswordShown, errorPassword } = this.state;
 
     // if registered show 'check mail' message else show the registration form
     const formContent = isRegistered
@@ -165,7 +126,6 @@ class WebsiteSignUp extends Component {
           <div className='main-container'>
             <section className="bg">
               <div className='container text-center'>
-                {fm1 &&
                 <div>
                   <h2 className="text-center btn" disabled  > STEP 1</h2>
                   <p className="signuptitle"> &nbsp;&nbsp;Start Conversions!</p>
@@ -219,7 +179,6 @@ class WebsiteSignUp extends Component {
                                 value='Create Account'
                                 disabled={false}
                                 onClick={this.handleSubmit}
-                                // onClick={this.b1StepHandler}
                               />
                             </div>
                             <hr />
@@ -259,38 +218,26 @@ class WebsiteSignUp extends Component {
                       </div>
                     </div>
                   </div>
-                </div>}
-                {fm2 &&
-                  <WebsiteSignupPrice
-                    handleCheckChange={this.handleCheckChange}
-                  />
-                }
-                {fm3 &&
-                  <WebsiteSignupPayment planName={planSelected}/>
-                }
+                </div>
               </div>
             </section>
           </div>
         </div>);
     return (
-
       <div className='authpage section innerpage'>
         <div className='wrapper'>
           <Animated
             className='leftwrap center'
-
             animationIn='fadeIn'
             animationOut='fadeOut'
             isVisible={true}>
-
             {formContent}
-
             <div className='support'></div>
           </Animated>
         </div>
       </div>
-
     );
   }
 }
+
 export default WebsiteSignUp;

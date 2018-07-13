@@ -27,34 +27,25 @@ class App extends Component {
   componentWillMount() {
     document.body.style = 'background-color:white';
     this.checkLogin();
-    //   (err) => {
-    //   if (!err) {
-    //     browserHistory.push('/dashboard');
-    //   }
-    // });
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log(nextProps.location.pathname, this.props.location.pathname);
     if(nextProps.location.pathname != this.props.location.pathname)
       this.checkLogin();
   }
 
   checkLogin() {
     const cookie = localStorage.getItem('authToken');
-    console.log('========================================================');
     const authToken = cookie
       ? JSON.parse(cookie)
       : null;
     if (authToken) {
       this.props.checkTokenExists(authToken);
       this.setState({loggedIn: true});
-      // callback();
     } else {
-      if(this.props.location.pathname == '/select-plan')
+      if(this.props.location.pathname == '/checkout')
         browserHistory.push('/login');
       this.setState({loggedIn: false});
-      // callback('not logged in');
     }
   }
 

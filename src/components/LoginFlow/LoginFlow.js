@@ -38,9 +38,11 @@ class LoginFlow extends Component {
 
   componentWillReceiveProps(nextProps) {
     if(this.props != nextProps)
-      this.updateState(nextProps.user, nextProps.profile, nextProps.plan);
+      this.updateState(nextProps.user, nextProps.profile, nextProps.plan, nextProps.coupon);
     if(nextProps.profile != this.props.profile && nextProps.profile.plan)
       browserHistory.push('/dashboard');
+    if(nextProps.couponDetails != this.props.couponDetails)
+      this.props.clearSelectedPlan(nextProps.couponDetails);
   }
 
   updateState(user, profile) {

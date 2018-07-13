@@ -84,7 +84,6 @@ const auth = (state = initialState, action) => {
     case LOGIN_SUCCESS:
       return state.set('user', action.res.user);
     case FETCH_USER_SUCCESS:
-      console.log(action.user, '===========users');
       return state.set('user', action.user);
     case FETCH_ROLES_SUCCESS:
       return state.set('roles', action.roles.roles);
