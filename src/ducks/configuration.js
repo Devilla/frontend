@@ -74,7 +74,7 @@ const initialConfig = {
   visitorText: '',
   contentText: '',
   notificationUrl: '',
-
+  channel: {},
   // Oauth variables
   clientId: '',
   clientSecret: '',

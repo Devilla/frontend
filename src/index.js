@@ -12,7 +12,6 @@ import thunk from 'redux-thunk';
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux';
 import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly';
 import createSagaMiddleware from 'redux-saga';
-import {  loadState, saveState } from './services/localStorage';
 import { StripeProvider } from 'react-stripe-elements';
 
 const sagaMiddleware = createSagaMiddleware();

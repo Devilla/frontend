@@ -1,25 +1,11 @@
 // Common utitlity functions related to forms
 
 import { POST, storeToken } from './Request';
+import { base } from 'services/api';
 
 // TODO: Set correct login api url
-let LOGIN_API_URL;
-let REGISTER_API_URL;
-let COMPANY_DETAILS_API_URL;
-
-if (process.env.NODE_ENV === 'production') {
-  LOGIN_API_URL = `${process.env.REACT_APP_PRODUCTION_URL}auth/local`;
-  REGISTER_API_URL = `${process.env.REACT_APP_PRODUCTION_URL}auth/local/register`;
-  COMPANY_DETAILS_API_URL = `${process.env.REACT_APP_PRODUCTION_URL}company-details`;
-} else if(process.env.NODE_ENV === 'staging') {
-  LOGIN_API_URL = `${process.env.REACT_APP_STAGING_URL}auth/local`;
-  REGISTER_API_URL = `${process.env.REACT_APP_STAGING_URL}auth/local/register`;
-  COMPANY_DETAILS_API_URL = `${process.env.REACT_APP_STAGING_URL}company-details`;
-} else {
-  LOGIN_API_URL = `${process.env.REACT_APP_DEVELOPMENT_URL}auth/local`;
-  REGISTER_API_URL = `${process.env.REACT_APP_DEVELOPMENT_URL}auth/local/register`;
-  COMPANY_DETAILS_API_URL = `${process.env.REACT_APP_DEVELOPMENT_URL}company-details`;
-}
+const LOGIN_API_URL = `${base}auth/local`;
+const REGISTER_API_URL = `${base}auth/local/register`;
 
 
 // Email regexp taken from http://emailregex.com/ (W3C standard)
@@ -83,7 +69,6 @@ const validateFields = (email, pwd) => {
 
 // Validate fields and login. returns json response received
 const login = (identifier, password) => {
-
   return validateFields(identifier, password).then(() => {
     // send request to server and return the response data
     return POST(LOGIN_API_URL, {
@@ -103,7 +88,6 @@ const login = (identifier, password) => {
       return res;
     });
   });
-
 };
 
 
@@ -126,55 +110,11 @@ const register = (email, password) => {
       if (res.statusCode !== 200) {
         throw res.message;
       }
-
+      
       return res;
     });
   });
 };
 
 
-// validate company details fields and submit. returns json response received
-const submitCompanyDetails = (companyName, website) => {
-  return new Promise((resolve, reject) => {
-    const errors = [];
-    // continue if fields are empty or are valid
-    if (companyName === '' || !validateCompanyName(companyName))
-      errors.push({
-        field: 'companyName',
-        msg: 'Please enter company name'
-      });
-
-    if (website === '' || !validateWebsite(website))
-      errors.push({
-        field: 'website',
-        msg: 'Please enter valid website url'
-      });
-
-    // if has errors reject with the errors
-    if (errors.length > 0) {
-      reject({
-        msg: 'Invalid Fields',
-        errors
-      });
-
-      return;
-    }
-
-    resolve();
-  }).then(() => {
-    return POST(COMPANY_DETAILS_API_URL, {
-      companyName,
-      website
-    }).then(res => {
-      if (res.statusCode !== 200) {
-        throw res.message;
-      }
-
-      return res;
-    });
-  });
-};
-
-
-
-export { LOGIN_API_URL, validateEmail, validatePassword, login, register, PASSWORD_MIN_LENGTH, PASSWORD_MAX_LENGTH, WEBSITE_REGEXP, validateWebsite, validateCompanyName, submitCompanyDetails };
+export { validateEmail, validatePassword, login, register, PASSWORD_MIN_LENGTH, PASSWORD_MAX_LENGTH, WEBSITE_REGEXP, validateWebsite, validateCompanyName };
