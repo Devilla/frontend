@@ -7,6 +7,8 @@ import TrailPayment from './TrailPayment';
 import { updateUser, checkTokenExists, validateCoupon, clearCouponError } from 'ducks/auth';
 import { createProfile, updateProfile } from 'ducks/profile';
 import { createPayment } from 'ducks/payment';
+import { Spinner } from 'components';
+
 import './LoginFlow.scss';
 
 import { store } from 'index.js';
@@ -139,23 +141,27 @@ class LoginFlow extends Component {
     const { user, profile, couponDetails, couponRequestError } = this.props;
     return (
       <div className="content login-flow">
-        <TrailPayment
-          couponError={couponError || couponRequestError}
-          nameError={nameError}
-          cardError={cardError}
-          couponDetails={couponDetails}
-          coupon={coupon}
-          selectedPlan={plan?plan:''}
-          user={user}
-          profile={profile}
-          plan={plan}
-          handleErrorChange={this.handleErrorChange}
-          handleCheckChange={this.handleCheckChange}
-          handleStateChange={this.handleStateChange}
-          handleSubmit={this.submitPayment}
-          submitCoupon={this.submitCoupon}
-          couponProceed={this.couponProceed}
-        />
+        {profile?
+          <TrailPayment
+            couponError={couponError || couponRequestError}
+            nameError={nameError}
+            cardError={cardError}
+            couponDetails={couponDetails}
+            coupon={coupon}
+            selectedPlan={plan?plan:''}
+            user={user}
+            profile={profile}
+            plan={plan}
+            handleErrorChange={this.handleErrorChange}
+            handleCheckChange={this.handleCheckChange}
+            handleStateChange={this.handleStateChange}
+            handleSubmit={this.submitPayment}
+            submitCoupon={this.submitCoupon}
+            couponProceed={this.couponProceed}
+          />
+          :
+          <Spinner loading={true} />
+        }
         <ToastContainer hideProgressBar={true} />
       </div>
     );
