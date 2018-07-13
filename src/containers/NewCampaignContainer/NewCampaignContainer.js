@@ -140,7 +140,7 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
       buttons: {
         right: [{
           text: buttonText,
-          className: 'success',
+          className: 'default',
           action: function () {
             if(path)
               browserHistory.push(path);
@@ -157,7 +157,7 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
 
   render() {
     return (
-      <div className="NewCampaignContainer">
+      <div>
         {this.props.campaign && Object.keys(this.props.campaign).length !== 0 && this.props.campaign.constructor === Object?
           <CampaignSettings
             showNotification={this.showNotification}

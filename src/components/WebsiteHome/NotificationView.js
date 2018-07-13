@@ -69,7 +69,7 @@ const NotificationView = ({tab, display, position, animation, notificationPanelS
             <div style={{}}>
               <div style={display?{display: 'block'}:{display: 'none'}}>
                 <div id="FPqR2fZIqJeA2fZI7MM9_0">
-                  <div className={tab == '1' ? 'FPqR3zjZqJeA3zjZ7MM9_0 FPqR2riIqJeA2riI7MM9_0 border': 'FPqR3zjZqJeA3zjZ7MM9_0 FPqR2riIqJeA2riI7MM9_0'} style={tab == '1'
+                  <div className="FPqR3zjZqJeA3zjZ7MM9_0 FPqR2riIqJeA2riI7MM9_0"  style={tab == '1'
                     ?{}
                     :{
                       borderRadius: notificationStyle.borderRadius,
@@ -126,7 +126,7 @@ const NotificationView = ({tab, display, position, animation, notificationPanelS
             display: 'none'
           }}>
           <div id="FPqR3dGiqJeA3dGi7MM9_0">
-            <div className={tab == '2' ? 'FPqR2B_4qJeA2B_47MM9_0 FPqRD2zVqJeAD2zV7MM9_0 border': 'FPqR2B_4qJeA2B_47MM9_0 FPqRD2zVqJeAD2zV7MM9_0'} style={tab == '2'
+            <div className="FPqR2B_4qJeA2B_47MM9_0 FPqRD2zVqJeAD2zV7MM9_0" style={tab == '2'
               ?{}
               :{
                 borderRadius: notificationStyle.borderRadius,
@@ -186,7 +186,7 @@ const NotificationView = ({tab, display, position, animation, notificationPanelS
             display: 'none'
           }}>
           <div id="FPqR2lriqJeA2lri7MM9_0">
-            <div className={tab == '3' ? 'FPqR1XogqJeA1Xog7MM9_0 FPqR27wVqJeA27wV7MM9_0 border' : 'FPqR1XogqJeA1Xog7MM9_0 FPqR27wVqJeA27wV7MM9_0 ' }  style={tab == '3'
+            <div className="FPqR1XogqJeA1Xog7MM9_0 FPqR27wVqJeA27wV7MM9_0" style={tab == '3'
               ?{}
               :{
                 borderRadius: notificationStyle.borderRadius,

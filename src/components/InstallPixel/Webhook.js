@@ -6,7 +6,6 @@ import { toast } from 'react-toastify';
 
 import { fetchWebhook, createWebhook, deleteWebhook, clearWebhook } from 'ducks/webhooks';
 import { updateCampaign } from 'ducks/campaign';
-import './Webhook.scss';
 
 const toastConfig = {
   position: toast.POSITION.BOTTOM_LEFT,
@@ -82,14 +81,14 @@ class Webhook extends Component {
       buttons: {
         left: [{
           text: 'Close',
-          className: 'default success',
+          className: 'default',
           action: function () {
             Popup.close();
           }
         }],
         right: [{
           text: 'Save Webhook',
-          className: 'primary save-webhook success',
+          className: 'primary save-webhook',
           action: function () {
             that.saveWebhook();
             Popup.close();

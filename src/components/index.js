@@ -50,4 +50,3 @@ export { default as InstallPixel } from './InstallPixel/InstallPixel';
 export { default as Oauthpage } from './Oauthpage/Oauthpage';
 export { default as Oauthgenerate } from './Oauthgenerate/Oauthgenerate';
 export { default as DashboardChannel  }  from './DashboardChannel/DashboardChannel';
-export { default as ReviewRedirect } from './ReviewRedirect/ReviewRedirect';

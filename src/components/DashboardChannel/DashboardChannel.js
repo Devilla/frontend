@@ -1,8 +1,8 @@
 import React , { Component } from 'react';
 import './DashboardChannel.scss';
 import {  Col } from 'react-bootstrap';
+// import { browserHistory } from 'react-router';
 import { connect } from 'react-redux';
-import { base } from 'services/api';
 import { review } from 'ducks/configuration';
 import {
   Facebook,
@@ -17,8 +17,8 @@ import {
 
 
 class DashboardChannel extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       selectedChannels: [],
       channelContent: [],
@@ -48,7 +48,6 @@ class DashboardChannel extends Component {
   componentWillMount() {
     var scrollElm = document.scrollingElement;
     scrollElm.scrollTop = 0;
-    console.log(this.props && this.props);
   }
 
   handleSubmit() {
@@ -58,7 +57,8 @@ class DashboardChannel extends Component {
     };
 
     this.props.review(data);
-
+    //this.props.clearForgotPasswordError();
+    //this.setState({email: '', emailError: ''});
   }
 
   channels = ['Facebook' , 'Zendesk','Google','TrustPilot','FourSquare','G32Crowd','TrustRadius','Yelp','BingPlaces'];
@@ -70,8 +70,7 @@ class DashboardChannel extends Component {
         <Col md={12}  className="bx-shadow" key={i}>
           <img src={this.channelfunc(i)} className="logocompany " />
           <span className="text-muted text-uppercase mt-0  title">{channelName}</span>
-          {/* <span className="text-muted btn btn-primary waves-effect  btns"><a href={`${base}connect/google/overide`}>Connect&nbsp; <i className="fi-open"></i></a></span>*/}
-          <span className="text-muted btn btn-primary waves-effect  btns"><a href={`${base}connect/facebook/overide`}>Connect&nbsp; <i className="fi-open"></i></a></span>
+          <span className="text-muted btn btn-primary waves-effect  btns" onClick={this.handleSubmit.bind(this)}>Connect&nbsp; <i className="fi-open"></i></span>
 
         </Col>
 
@@ -85,7 +84,7 @@ class DashboardChannel extends Component {
     return (
 
       <div className="dashchannel-container">
-        <button type="button" className="btn btn-info  addchannel" data-toggle="modal" data-target="#myModal" onClick={()=>{}} ><i className="fi-plus"></i>&nbsp;Add Channels</button>
+        <button type="button" className="btn btn-info  addchannel" data-toggle="modal" data-target="#myModal" ><i className="fi-plus"></i>&nbsp;Add Channels</button>
         <div className="modal fade show-modal" id="myModal" role="dialog">
           <div className="modal-dialog">
             <div className="modal-content align-modal">
