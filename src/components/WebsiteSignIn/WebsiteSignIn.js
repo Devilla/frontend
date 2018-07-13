@@ -49,7 +49,8 @@ class WebsiteSignIn extends Component {
       this.setState({ error: '' });
       toast.info('Successfull', toastConfig);
       this.props.loaded();
-      browserHistory.push('/dashboard');
+      browserHistory.push(res.user.path);
+      // browserHistory.push('/dashboard');
     }).catch(err => {
       this.props.loaded();
       this.setState({ error: err });

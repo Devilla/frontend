@@ -18,33 +18,55 @@ import './scss/font-sourcesanspro.scss';
 import './App.scss';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      loggedIn: false
+    };
+  }
   componentWillMount() {
     document.body.style = 'background-color:white';
-    this.checkLogin((err) => {
-      if (!err) {
-        browserHistory.push('/dashboard');
-      }
-    });
+    this.checkLogin();
+    //   (err) => {
+    //   if (!err) {
+    //     browserHistory.push('/dashboard');
+    //   }
+    // });
   }
 
-  checkLogin(callback) {
+  componentWillReceiveProps(nextProps) {
+    console.log(nextProps.location.pathname, this.props.location.pathname);
+    if(nextProps.location.pathname != this.props.location.pathname)
+      this.checkLogin();
+  }
+
+  checkLogin() {
     const cookie = localStorage.getItem('authToken');
+    console.log('========================================================');
     const authToken = cookie
       ? JSON.parse(cookie)
       : null;
     if (authToken) {
       this.props.checkTokenExists(authToken);
-      callback();
+      this.setState({loggedIn: true});
+      // callback();
     } else {
-      callback('not logged in');
+      if(this.props.location.pathname == '/select-plan')
+        browserHistory.push('/login');
+      this.setState({loggedIn: false});
+      // callback('not logged in');
     }
+  }
+
+  logout = () => {
+    localStorage.removeItem('authToken');
   }
 
   render() {
     return (
       <div className="website-app">
         <div className="basic-gradient-light" data-smooth-scroll-offset="77">
-          <WebsiteHeader />
+          <WebsiteHeader loggedIn={this.state.loggedIn} logout={this.logout} />
           <Popup  />
           <Spinner loading={this.props.loading} />
           <div className="content">

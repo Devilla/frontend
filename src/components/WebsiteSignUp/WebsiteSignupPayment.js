@@ -2,6 +2,7 @@ import React,{ Component } from 'react';
 import './WebsiteSignupPayment.scss';
 import { Paypal } from 'img';
 import  LoginFlow from '../LoginFlow/LoginFlow';
+import './WebsiteSignUp.scss';
 
 
 class WebsiteSignupPayment extends Component  {
@@ -31,7 +32,7 @@ class WebsiteSignupPayment extends Component  {
                 </div>
 
                 <div className="col-md-4 socio-link">
-             
+
                   <div className="mt--2 lead">
                     { /\b(Startups)\b/m.test(planName) ? (
                       <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" className="formss">

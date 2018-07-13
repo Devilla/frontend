@@ -17,7 +17,6 @@ import { storeToken } from 'services/Request';
 import * as api from 'services/api';
 import moment from 'moment';
 
-
 const toastConfig = {
   position: toast.POSITION.BOTTOM_LEFT,
   autoClose: 2000,
@@ -67,8 +66,10 @@ export function* fetchUser() {
   try {
     yield put(load());
     const res = yield call(api.GET, 'user/me');
-    if(!res.error)
+    if(!res.error) {
+      browserHistory.push(res.path);
       yield put(actions.fetchUserSuccess(res));
+    }
     yield put(loaded());
   } catch (error) {
     yield put(loaded());

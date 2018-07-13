@@ -11,7 +11,7 @@ import { toast } from 'react-toastify';
 import { base } from 'services/api';
 
 
-import  WebsiteSignupPrice from './WebsiteSignupPrice';
+import WebsiteSignupPrice from './WebsiteSignupPrice';
 import WebsiteSignupPayment from './WebsiteSignupPayment';
 
 
@@ -84,22 +84,33 @@ class WebsiteSignUp extends Component {
   handleSubmit = (event) => {
     event.stopPropagation();
     event.preventDefault();
-    const { email, password, confirmPassword, username } = this.state;
+    const {
+      email,
+      password,
+      // confirmPassword,
+      // username
+    } = this.state;
 
-    if(!email || !password || !confirmPassword || !username)
+    if(!email ||
+      !password
+      // !confirmPassword ||
+      // !username
+    )
       return this.setState({error: 'All fields are required'});
-    if(password !== confirmPassword)
-      return this.setState({errorConfirmPassword: 'Password doesnot match'});
+    // if(password !== confirmPassword)
+    //   return this.setState({errorConfirmPassword: 'Password doesnot match'});
 
     store.dispatch(load());
     // TODO: Show 'Check email for further instructions.' message on success
     register(email, password).then(res => {
+      console.log(res, '========');
       toast.info('Successfull', toastConfig);
       store.dispatch(loginSuccess(res));
       store.dispatch(loaded());
-      browserHistory.push('/getting-started');
+      browserHistory.push(res.user.path);
       this.setState({isRegistered: true, error: ''});
     }).catch(err => {
+      console.log(err, '===========err');
       store.dispatch(loaded());
       this.setState({error: err});
     });
@@ -207,7 +218,9 @@ class WebsiteSignUp extends Component {
                                 className='button submit-button w-button btn btn--primary ml-0'
                                 value='Create Account'
                                 disabled={false}
-                                onClick={this.b1StepHandler}/>
+                                onClick={this.handleSubmit}
+                                // onClick={this.b1StepHandler}
+                              />
                             </div>
                             <hr />
                             <div className='col-9'>
