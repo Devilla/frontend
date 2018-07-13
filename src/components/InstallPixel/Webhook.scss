@@ -1,0 +1,25 @@
+.webhooks-container {
+  .card-title {
+    font-weight: 400;
+    margin-top: 5px;
+    margin-bottom: 25px !important;
+    color: #999;
+  }
+
+  .card-text {
+    color: #999;
+  }
+  .input-group-text{
+    background-color: #097fff !important;
+    border-radius: 5px !important;
+    font-size: 14px !important;
+    color: #fff !important;
+  }
+
+  .webhooks-types {
+    & button {
+      width: 15%;
+      border-radius: 5px;
+    }
+  }
+}
