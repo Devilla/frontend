@@ -48,11 +48,11 @@ class WebsiteContact extends Component {
 
   checkEmailBlur = (event) => {
     const value = event.target.value;
-    const isEmailValid = this.checkEmail(event);
-    this.setState({ isEmailValid });
+    const isEmailValid = validateEmail(this.refs.email.value);
+    this.setState({ isEmailValid: isEmailValid});
     if (!value)
       this.setState({ errorEmail: 'Email id required' });
-    else if (!isEmailValid)
+    if (!isEmailValid)
       this.setState({ errorEmail: 'Enter a valid Email id' });
   }
 
@@ -72,6 +72,8 @@ class WebsiteContact extends Component {
   handleStateChange = (target, value) => {
     const isEmailValid = validateEmail(this.refs.email.value);
     this.setState({[target]: value ,isEmailValid});
+    if (isEmailValid)
+      this.setState({ errorEmail: '' });
   }
 
   handleSubmit = (event) => {
