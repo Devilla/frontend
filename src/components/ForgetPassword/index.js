@@ -95,7 +95,7 @@ class ForgetPassword extends Component {
                       </div>
                     }
                     <div className="frmcntl pb-4">
-                      <input className="btn btn-primary " type="submit" value={showemailbtn? 'Check E-mail' : 'Send reset password email'} onClick={showemailbtn ? () => usersemail : ''}/>
+                      <input className="btn btn-primary " type="submit" value={showemailbtn? 'Check E-mail' : 'Send reset password email'} onClick={showemailbtn ? () => window.open(`https://www.${usersemail}`) : ''}/>
                     </div>
                   </div>
                 </div>
