@@ -219,7 +219,8 @@ export class NotificationDesignSetting extends Component {
       toggleTextBox,
       handleClickableNotification,
       showpopupfield,
-      showpopup
+      showpopup,
+      campaign
     } = this.props;
     const styles = reactCSS({
       'default': {
@@ -267,7 +268,7 @@ export class NotificationDesignSetting extends Component {
       <div>
         {showpopupfield ?
           <div className="DashboardChannelcomponent">
-            <DashboardChannel />
+            <DashboardChannel campaign={campaign} />
           </div>
           : ' '}
 

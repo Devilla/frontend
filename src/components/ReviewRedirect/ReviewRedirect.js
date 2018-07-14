@@ -8,6 +8,8 @@ import './ReviewRedirect.scss';
 
 class ReviewRedirect extends React.Component {
   componentDidMount() {
+    // console.log(this.props.campaign.trackingId);
+
     const {
       params: { provider},
       location: { search},

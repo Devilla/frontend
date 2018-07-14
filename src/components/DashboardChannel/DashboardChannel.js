@@ -1,9 +1,7 @@
 import React , { Component } from 'react';
 import './DashboardChannel.scss';
 import {  Col } from 'react-bootstrap';
-import { connect } from 'react-redux';
 import { base } from 'services/api';
-import { review } from 'ducks/configuration';
 import {
   Facebook,
   Zendesk,
@@ -23,7 +21,7 @@ class DashboardChannel extends Component {
       selectedChannels: [],
       channelContent: [],
       checked: false,
-      email:''
+      email:'',
 
     };
   }
@@ -51,15 +49,6 @@ class DashboardChannel extends Component {
     console.log(this.props && this.props);
   }
 
-  handleSubmit() {
-
-    const data = {
-      'email': this.state.email,
-    };
-
-    this.props.review(data);
-
-  }
 
   channels = ['Facebook' , 'Zendesk','Google','TrustPilot','FourSquare','G32Crowd','TrustRadius','Yelp','BingPlaces'];
 
@@ -71,10 +60,8 @@ class DashboardChannel extends Component {
           <img src={this.channelfunc(i)} className="logocompany " />
           <span className="text-muted text-uppercase mt-0  title">{channelName}</span>
           {/* <span className="text-muted btn btn-primary waves-effect  btns"><a href={`${base}connect/google/overide`}>Connect&nbsp; <i className="fi-open"></i></a></span>*/}
-          <span className="text-muted btn btn-primary waves-effect  btns"><a href={`${base}connect/facebook/overide`}>Connect&nbsp; <i className="fi-open"></i></a></span>
-
+          <span className="text-muted btn btn-primary waves-effect  btns"><a style={{color:'white'}} href={`${base}connect/google/overide/${this.props.campaign.trackingId}`}>Connect&nbsp; <i className="fi-open"></i></a></span>
         </Col>
-
       );
     });
   }
@@ -108,12 +95,5 @@ class DashboardChannel extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  error: state.getIn(['configuration', 'review'])
-});
 
-const mapDispatchToProps = {
-  review
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(DashboardChannel);
+export default DashboardChannel;
