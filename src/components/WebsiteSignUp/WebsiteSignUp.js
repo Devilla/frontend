@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router';
 import {validateEmail, validatePassword, register, PASSWORD_MAX_LENGTH} from 'services/FormUtils';
 import { Animated } from'react-animated-css';
-import { Alert } from 'react-bootstrap';
+import { Alert, HelpBlock } from 'react-bootstrap';
 import { store } from 'index.js';
 import { load, loaded } from 'ducks/loading';
 import { loginSuccess } from 'ducks/auth';
@@ -153,10 +153,9 @@ class WebsiteSignUp extends Component {
                               onChange={this.handleInputChange}
                               onBlur={(e) => !e.target.value?this.setState({errorUsername: 'Username required'}):null}
                               placeholder='Your Name' />
-                            {errorUsername === 'Username required' && <Alert bsStyle='warning' >
-                              <strong>{errorUsername}</strong>
-                            </Alert>
-                            }
+                            <HelpBlock>
+                              <p className="website-error">{errorUsername}</p>
+                            </HelpBlock>
                           </div>
                           <div className='col-md-9 col-sm-8'>
                             <input
@@ -166,10 +165,9 @@ class WebsiteSignUp extends Component {
                               onChange={this.handleInputChange}
                               placeholder='Email Address'
                               type='email' />
-                            {errorEmail !== '' && <Alert bsStyle='warning' >
-                              <strong>{errorEmail}</strong>
-                            </Alert>
-                            }
+                            <HelpBlock>
+                              <p className="website-error">{errorEmail}</p>
+                            </HelpBlock>
                           </div>
                           <div className='col-md-9 col-sm-8'>
                             <input
@@ -180,10 +178,9 @@ class WebsiteSignUp extends Component {
                               type={isPasswordShown? 'text': 'password'}
                               placeholder='Password'
                             />
-                            {errorPassword !== '' && <Alert bsStyle='warning' >
-                              <strong>{errorPassword}</strong>
-                            </Alert>
-                            }
+                            <HelpBlock>
+                              <p className="website-error">{errorPassword}</p>
+                            </HelpBlock>
                           </div>
                           <div className='col-md-9 col-sm-8'>
                             <input
@@ -193,10 +190,9 @@ class WebsiteSignUp extends Component {
                               onChange={this.handleInputChange}
                               type={isPasswordShown? 'text': 'password'}
                               placeholder='Confirm Password' />
-                            {errorConfirmPassword !== '' && <Alert bsStyle='warning' >
-                              <strong>{errorConfirmPassword}</strong>
-                            </Alert>
-                            }
+                            <HelpBlock>
+                              <p className="website-error">{errorConfirmPassword}</p>
+                            </HelpBlock>
                           </div>
                           <div className='frmcntl col-md-9 col-sm-8'>
                             <input
@@ -265,7 +261,7 @@ class WebsiteSignUp extends Component {
           </Animated>
         </div>
       </div>
-  
+
     );
   }
 }
