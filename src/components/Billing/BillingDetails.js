@@ -69,7 +69,7 @@ class BillingDetails extends Component {
                 <div className="Billing-container">
                   <Row>
 
-                    <div className="col-md-4 billing-buttons float-right">
+                    <div className="col-md-12  billing-buttons">
 
                       <Button
                         onClick={() => browserHistory.push('/Upgrade')}

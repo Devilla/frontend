@@ -73,24 +73,24 @@
                 & li {
                     position: relative;
                     top: 30px;
-                    display: inline !important; 
+                    display: inline !important;
                     padding-left: 15px;
                     font-weight: 700;
                        &.bullet-inline::before{
                         content: '•';
                         margin-right: 5px;
-                       } 
+                       }
                 }
-            }   
+            }
         }
-       
+
     }
 }
 @media only screen and (max-width: 768px) {
     .websitehome-container{
         .freetrial-btn {
             padding:   0px 0px 0px 0px !important;
-            
+
         }
     }
 }
@@ -110,7 +110,7 @@
               left: -20px !important
             }
         }
-       
+
     }
 }
 @media only screen and (max-width: 590px) {
@@ -160,23 +160,23 @@
         .integration-title {
             text-align: center;
         }
-       
-       
+
+
     }
 }
 
 @media only screen and (max-width: 482px ) {
     .websitehome-container{
         .starttrial-form {
-        
+
             .mobile-view {
                 position: absolute;
                 left:-30px !important;
-                top: -45px !important;  
+                top: -45px !important;
                 width: 250px;
                 & li {
-                    display: block !important; 
-                
+                    display: block !important;
+
                 }
             }
         }

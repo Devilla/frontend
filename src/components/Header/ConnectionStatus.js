@@ -25,7 +25,7 @@ export default class ConnectionStatus extends Component{
     //Also change the brand color as background from ConnectionStatus.css file
 
       <div id={window && this.state.connectionStatus=='Connected.'?'status-noteConnected':'status-noteDisconnected'} className="center-block loading">
-        {this.state.connectionStatus}
+        // {this.state.connectionStatus}
 
       </div>
 

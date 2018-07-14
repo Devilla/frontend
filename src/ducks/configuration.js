@@ -3,6 +3,7 @@ import { fromJS } from 'immutable';
 const action = name => `/configuration/${name}`;
 
 export const REVIEW = action('REVIEW');
+export const REVIEW_REDIRECT = action('REVIEW_REDIRECT');
 export const FETCH = action('FETCH');
 export const FETCH_CAMPAIGN_CONFIG = action('FETCH_CAMPAIGN_CONFIG');
 export const CREATE = action('CREATE');
@@ -12,6 +13,7 @@ export const CREATE_SUCCESS = action('CREATE_SUCCESS');
 export const CLEAR = action('CLEAR');
 
 export const review = (data) => ({ type: REVIEW, data });
+export const reviewRedirect = (url) => ({ type: REVIEW_REDIRECT, url });
 export const fetchConfiguration = (campId) => ({ type: FETCH, campId });
 export const fetchCampaignConfiguration = (campId , notifId) => ({ type: FETCH_CAMPAIGN_CONFIG, campId, notifId });
 export const createConfiguration = (configuration) => ({ type: CREATE, configuration });
