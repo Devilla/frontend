@@ -8,7 +8,7 @@ import { Animated } from'react-animated-css';
 import { browserHistory } from 'react-router';
 import { base } from 'services/api';
 import { toast } from 'react-toastify';
-import { Alert } from 'react-bootstrap';
+import { Alert, HelpBlock } from 'react-bootstrap';
 
 
 import './WebsiteSignIn.scss';
@@ -91,6 +91,7 @@ class WebsiteSignIn extends Component {
       isPasswordShown: !this.state.isPasswordShown
     });
   };
+
   componentDidMount() {
     let scrollElm = document.scrollingElement;
     scrollElm.scrollTop = 0;
@@ -129,7 +130,7 @@ class WebsiteSignIn extends Component {
                         <div className="row justify-content-center">
                           {error &&
                         <Alert bsStyle="warning" className="col-md-9 col-sm-9">
-                          <strong>{error}</strong>
+                          <strong dangerouslySetInnerHTML={{__html: error}} />
                         </Alert>
                           }
                           <div className="col-md-9 col-sm-8 ">
@@ -141,11 +142,9 @@ class WebsiteSignIn extends Component {
                               placeholder="Email Address"
                               type="email"
                             />
-                            {errorEmail !== '' &&
-                              <Alert bsStyle="warning">
-                                <strong>{errorEmail}</strong>
-                              </Alert>
-                            }
+                            <HelpBlock>
+                              <p className="website-error">{errorEmail}</p>
+                            </HelpBlock>
                           </div>
                           <div className="col-md-9 col-sm-8">
                             <input type="password"
@@ -159,11 +158,9 @@ class WebsiteSignIn extends Component {
                               onBlur={this.handlePasswordBlur}
                               onChange={this.handleInputChange}
                             />
-                            {errorPassword !== '' &&
-                              <Alert bsStyle="warning" >
-                                <strong>{errorPassword}</strong>
-                              </Alert>
-                            }
+                            <HelpBlock>
+                              <p className="website-error">{errorPassword}</p>
+                            </HelpBlock>
                           </div>
 
                           <div className="col-md-9 col-sm-8 frmcntl">

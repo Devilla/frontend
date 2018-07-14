@@ -186,14 +186,14 @@ class DisplayPage extends Component {
                   />
                   <span className="input-group-btn col-md-2"
                     id="urladd">
-                    <span className="btn btn-custom nav nav-pills waves-light waves-effect number pl-5 pr-5"
+                    <span className="btn btn-custom nav nav-pills waves-light waves-effect addpath-btn pl-5 pr-5"
                       onClick={this.addPageUrl}>Add</span>
                   </span>
                 </div>
               </Col>
             </Row>
 
-            <Row className="pt-2">
+            <Row className="pt-2 path-error">
               <HelpBlock>
                 <p className="website-error">{error}</p>
               </HelpBlock>

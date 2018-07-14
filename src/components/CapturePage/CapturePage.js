@@ -128,7 +128,7 @@ class CapturePage extends Component {
               return <tr key={i}>
                 <td className="url">{lead.url}</td>
                 <td className="ml-4 status">
-                  <span className="dot" style={{backgroundColor: this.renderColor(lead.status) }}>
+                  <span className="dot ml-3" style={{backgroundColor: this.renderColor(lead.status) }}>
                   </span>
                 </td>
                 <td><a href="javascript:;"><i className="ml-3 icon-trash" onClick={() => this.deleteLead(lead._id, i, lead.type)}></i></a></td>
@@ -143,7 +143,7 @@ class CapturePage extends Component {
   render() {
     const { error, lead } = this.state;
     return (
-      <div>
+      <div className="CapturePage-container">
         <Grid fluid>
           <div className="tabscontent">
             <Row>
@@ -175,7 +175,7 @@ class CapturePage extends Component {
                 </div>
               </Col>
             </Row>
-            <Row className="pt-2">
+            <Row className="pt-2  path-error">
               <HelpBlock className="text-center">
                 <p className="website-error">{error}</p>
               </HelpBlock>
@@ -215,7 +215,7 @@ class CapturePage extends Component {
                 />
               </Col>
             </Row>
-          
+
             <div className=" float-left ">
               <button type="button" className="btn btn-custom waves-light waves-effect number" onClick={this.handleBackState}><i className="icon-arrow-left pr-2"></i>Back</button>
             </div>
