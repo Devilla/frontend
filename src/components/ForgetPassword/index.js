@@ -20,7 +20,8 @@ class ForgetPassword extends Component {
       email: '',
       authEmail: false,
       emailError: '',
-      showemailbtn: false
+      showemailbtn: false,
+      usersemail: ''
     };
   }
 
@@ -31,7 +32,9 @@ class ForgetPassword extends Component {
 
   handleEmailChange(evt) {
     this.props.clearForgotPasswordError();
+
     this.setState({email: evt.target.value, emailError: ''});
+
   }
 
   checkEmail(evt) {
@@ -52,9 +55,10 @@ class ForgetPassword extends Component {
       const data = {
         'email': this.state.email
       };
+      let useremail = this.state.email.split('@');
       this.props.forgotPassword(data);
       this.props.clearForgotPasswordError();
-      this.setState({email: '', emailError: '',showemailbtn:true});
+      this.setState({email: '', emailError: '',showemailbtn:true, usersemail:useremail[1] });
     }
   }
 
@@ -66,7 +70,7 @@ class ForgetPassword extends Component {
   }
 
   render() {
-    const { showemailbtn } = this.state;
+    const { showemailbtn ,usersemail} = this.state;
     return (<div className="forgetpassword-container">
       <div className="authpage section innerpage">
         <div className="container">
@@ -91,7 +95,7 @@ class ForgetPassword extends Component {
                       </div>
                     }
                     <div className="frmcntl pb-4">
-                      <input className="btn btn-primary " type="submit" value={showemailbtn? 'Check E-mail' : 'Send reset password email'}/>
+                      <input className="btn btn-primary " type="submit" value={showemailbtn? 'Check E-mail' : 'Send reset password email'} onClick={showemailbtn ? () => usersemail : ''}/>
                     </div>
                   </div>
                 </div>
