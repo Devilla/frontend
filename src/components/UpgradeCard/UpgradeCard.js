@@ -134,6 +134,7 @@ class UpgradeCard extends Component {
                                   placeholder="4*** **** **** 2006"
                                   id="VisaNumber"
                                   onChange={(e) => this.handleStateChange(e)}
+                                  disabled
                                 />
                               </FormGroup>
                             </div>
@@ -161,6 +162,7 @@ class UpgradeCard extends Component {
                                   placeholder="4*** **** **** 2006"
                                   id="VisaNumber"
                                   onChange={(e) => this.handleStateChange(e)}
+                                  disabled
                                 />
                               </FormGroup>
                             </div>
@@ -186,6 +188,7 @@ class UpgradeCard extends Component {
                                   placeholder="4*** **** **** 2006"
                                   id="VisaNumber"
                                   onChange={(e) => this.handleStateChange(e)}
+                                  disabled
                                 />
                               </FormGroup>
                             </div>
