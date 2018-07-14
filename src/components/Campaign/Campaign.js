@@ -84,7 +84,7 @@ const Campaign = ({
                     </FormGroup>
                   </div>
                 </Row>
-                <button type="submit" className="btn btn-primary waves-light waves-effect number ml-2 pl-4 pr-4"> Create Your Campaign </button>
+                <button type="submit" className="btn btn-primary waves-light waves-effect newcamp-btn ml-2 pl-4 pr-4"> Create Your Campaign </button>
                 <div className="clearfix"></div>
               </form>
             </div>
