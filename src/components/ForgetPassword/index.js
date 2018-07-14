@@ -24,7 +24,8 @@ class ForgetPassword extends Component {
   }
 
   componentDidMount() {
-    window.scrollTo(0, 0);
+    let scrollElm = document.scrollingElement;
+    scrollElm.scrollTop = 0;
   }
 
   handleEmailChange(evt) {
@@ -88,7 +89,7 @@ class ForgetPassword extends Component {
                 </div>
               </form>
               <span className="row pt-5 support ">
-                    <span className="h5 lead">Trouble logging in? <Link to="/contact">Contact Support</Link></span>
+                <span className="h5 lead">Trouble logging in? <Link to="/contact">Contact Support</Link></span>
               </span>
             </Animated>
           </div>
