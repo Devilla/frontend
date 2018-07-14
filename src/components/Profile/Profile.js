@@ -188,7 +188,7 @@ class Profile extends Component {
                       <Col md={6}>
                         <span className="text-muted font-13 p"><strong>Phone :</strong> </span>
                         <FormGroup>
-                          <FormControl type="text" value={profile.phoneNumber} autoComplete='tel-national' placeholder="Phone Number" id="phoneNumber" onChange={(e) => this.handleStateChange(e)} />
+                          <FormControl type="number" value={profile.phoneNumber} autoComplete='tel-national' placeholder="Phone Number" id="phoneNumber" onChange={(e) => this.handleStateChange(e)} />
                         </FormGroup>
                       </Col>
                       <Col md={6}>
