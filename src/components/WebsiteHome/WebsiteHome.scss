@@ -1,5 +1,6 @@
-.website-app {
+
     .websitehome-container {
+      margin-top: 50px !important;
         .mainImg {
             position: relative;
         }
@@ -47,7 +48,7 @@
         }
 
     }
-}
+
 @media only screen and (max-width: 992px) {
     .websitehome-container{
         .freetrial-btn {
