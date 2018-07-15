@@ -5,6 +5,10 @@
     }
   }
 
+  .capturebtn-back, .capturebtn-next {
+    border-radius: 5px !important;
+  }
+
   .path-error {
     max-width: 300px;
     margin: 0 auto !important;
