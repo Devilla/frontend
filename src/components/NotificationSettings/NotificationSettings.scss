@@ -5,7 +5,7 @@
   .notification-list {
   	.notification-list-content {
       min-height: 80px;
-     
+
   	}
     .card-box {
       margin-bottom: 0;
@@ -33,6 +33,9 @@
     .card-box {
       margin-bottom: 0px;
     }
+  }
+  .cardback-btn, .cardnext-btn {
+    border-radius: 5px !important;
   }
 
 }
