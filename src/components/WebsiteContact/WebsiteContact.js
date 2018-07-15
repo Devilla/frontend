@@ -157,7 +157,8 @@ class WebsiteContact extends Component {
                       placeholder="Leave us a message"
                       className="validate-required"
                       value={message}
-                      onBlur={this.checkMsgBlur}  onChange={(e) => this.handleStateChange(e.target.name, e.target.value)}
+                      onBlur={this.checkMsgBlur}
+                      onChange={(e) => this.handleStateChange(e.target.name, e.target.value)}
                     >
                     <HelpBlock>
                       <p className="website-error">{errorMsg}</p>
