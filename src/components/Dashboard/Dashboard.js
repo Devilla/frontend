@@ -11,6 +11,7 @@ import ReactChartJs from 'react-chartjs';
 import { GeoChart, Timeline }  from 'react-chartkick';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import { countryVisitors } from 'ducks/graph';
 
 var LineChart = ReactChartJs.Line;
 let moment = extendMoment(Moment);
@@ -31,6 +32,8 @@ class Dashboard extends Component {
   componentWillMount() {
     this.props.fetchCampaignInfo();
     this.props.fetchCampaign();
+    let response =  this.props.countryVisitors();
+    console.log(response,'<<<=====Dashboad Response====>>>>');
   }
 
   createLegend(json) {
@@ -356,7 +359,7 @@ class Dashboard extends Component {
                   id="chartHours"
                   content={
                     <div className="ct-chart canvas-brdr">
-                      <GeoChart data={[['United States', 44], ['Germany', 23], ['Brazil', 22]]}  width="400px" height="300px" />
+                      <GeoChart data={[['United States', 1], ['India', 12], ['Saudi Arabia', 1], ['France', 1], ['Ukraine', 1]]}  width="400px" height="300px" />
                     </div>
                   }
                 />
@@ -438,13 +441,15 @@ const mapStateToProps = state => ({
   profile: state.getIn(['profile', 'profile']),
   campaignInfo: state.getIn(['campaign', 'campaignInfo']),
   campaigns: state.getIn(['campaign', 'campaigns']),
+  graph: state.getIn(['graph', 'graph'])
 
 });
 
 const mapDispatchToProps = {
   successCampaign,
   fetchCampaignInfo,
-  fetchCampaign
+  fetchCampaign,
+  countryVisitors
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
