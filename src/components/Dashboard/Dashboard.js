@@ -8,7 +8,7 @@ import { fetchCampaignInfo, successCampaign , fetchCampaign } from 'ducks/campai
 import './Dashboard.scss';
 import Card from './Card';
 import ReactChartJs from 'react-chartjs';
-import { GeoChart, Timeline }  from 'react-chartkick';
+import { GeoChart }  from 'react-chartkick';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { countryVisitors } from 'ducks/graph';
@@ -385,14 +385,1139 @@ class Dashboard extends Component {
                   id="chartHours"
                   content={
                     <div className="ct-chart canvas-brdr">
-                      <Timeline data={[
-                        ['Sunday', '2017-03-03', '2017-04-03'],
-                        ['Monday', '2017-03-03', '2018-03-03'],
-                        ['Tuesday', '2017-03-03', '2018-03-03'],
-                        ['Friday', '2017-03-03', '2018-03-03'],
-                        ['Saturday', '2017-03-03', '2018-03-03']
-                      ]
-                      }  width="400px" height="300px" />
+                      <div width="400px" height="300px">
+                        <Row>
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+
+                        </Row>
+
+                        <Row>
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+
+                        </Row>
+
+                        <Row>
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+
+                        </Row>
+
+                        <Row>
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+
+                        </Row>
+                        <Row>
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+
+                        </Row>
+                        <Row>
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+
+                        </Row>
+                        <Row>
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+
+                        </Row>
+                        <Row>
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+
+                        </Row>
+
+                        <Row>
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+
+                        </Row>
+
+                        <Row>
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+
+                        </Row>
+                        <Row>
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+
+                        </Row>
+
+                        <Row>
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+
+                        </Row>
+
+                        <Row>
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+
+                        </Row>
+
+                        <Row>
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+
+                        </Row>
+                        <Row>
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+
+                        </Row>
+                        <Row>
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+
+                        </Row>
+                        <Row>
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+
+                        </Row>
+                        <Row>
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+
+                        </Row>
+
+                        <Row>
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+
+                        </Row>
+
+                        <Row>
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+
+                        </Row>
+
+                        <Row>
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+
+                        </Row>
+                        <Row>
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+
+                        </Row>
+                        <Row>
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+
+                        </Row>
+                        <Row>
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineData">
+
+                            </div>
+                          </Col>
+                        </Row>
+                        <Row>
+                          <Col>
+                            <div className="TImelineDat text-center">
+                              Mon
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineDat text-center">
+                              Tues
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineDat text-center">
+                              Wed
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineDat text-center">
+                              Thu
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineDat text-center">
+                              Fri
+                            </div>
+                          </Col>
+
+                          <Col>
+                            <div className="TImelineDat text-center">
+                              Sat
+                            </div>
+                          </Col>
+                          <Col>
+                            <div className="TImelineDat text-center">
+                                Sun
+                            </div>
+                          </Col>
+                        </Row>
+                      </div>
                     </div>
                   }
                 />
