@@ -149,7 +149,7 @@ class WebsitePricing extends Component {
     return (
       <div className="websitepricing-container">
         <div className="main-container">
-          <section className="text-center bg--secondary">
+          <section className="text-center bg--secondary pricing-title">
             <div className="container">
               <div className="row">
                 <div className="col-md-11 col-lg-10">

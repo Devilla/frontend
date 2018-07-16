@@ -15,7 +15,7 @@ class WebsiteIntegrations extends Component {
     return (
       <div className="websiteintegrations-container">
         <div className="main-container">
-          <section className="cover switchable text-center-xs bg--secondary switchable--switch">
+          <section className="cover switchable text-center-xs bg--secondary switchable--switch pt-5">
             <div className="container">
               <div className="row justify-content-between align-items-center">
                 <div className="col-md-6 col-lg-6 mt--3">
@@ -158,13 +158,13 @@ class WebsiteIntegrations extends Component {
               </div>
             </div>
           </section>
-          <section className="text-center imagebg" style={{ background: 'linear-gradient(to left, #b721ff,#21d4fd)'}} data-gradient-bg="#b721ff,#21d4fd,#21d4fd,#b721ff">
+          <section className="text-center imagebg" style={{background: 'rgb(20, 187, 250)'}}>
             <div className="container">
               <div className="row">
                 <div className="col-md-8 col-lg-6">
                   <div className="cta">
-                    <a className="btn btn--primary btn--lg type--uppercase" href="#purchase-template">Lets talk</a>
-                    <p className="lead"> Don't see your integration if you can help us understanding your requirements we can make it.</p>
+                    <p className="integration-text"> Don't see your integration if you can help us understanding your requirements we can make it</p>
+                    <a className="btn  btn--lg talk-btn" href="#purchase-template">Lets talk</a>
                   </div>
                 </div>
               </div>
