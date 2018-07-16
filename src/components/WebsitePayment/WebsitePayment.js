@@ -74,6 +74,10 @@ class WebsitePayment extends Component {
       );
     }
 
+    planList.sort(function(a, b) {
+      return b.amount - a.amount;
+    });
+
     return planList.map(plan => {
       return <div key={plan.name} className="col-md-3 pl-3 pr-0">
         <div className="pricing pricing-1  pr-0 pl-0"  style={{minHeight:'700px'}}>
@@ -81,7 +85,7 @@ class WebsitePayment extends Component {
             <h3>{this.filterPlanName(plan.name)}</h3>
             <span className="h1">
               <span className="pricing__dollar">$</span>
-              <span>{plan.interval === 'year' ? plan.amount/1200 : plan.amount/100}</span>
+              <span>{plan.interval === 'year' ? plan.amount/1000 : plan.amount/100}</span>
             </span>
           </div>
           <hr/>

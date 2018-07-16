@@ -92,7 +92,7 @@ class WebsiteSignUp extends Component {
       this.setState({isRegistered: true, error: ''});
     }).catch(err => {
       store.dispatch(loaded());
-      this.setState({error: err});
+      this.setState({error: err.msg || err});
     });
   };
 
@@ -141,13 +141,13 @@ class WebsiteSignUp extends Component {
                         </p>
                         <form className="mt-0">
                           <div className='row justify-content-center'>
-                            {error &&
-                              <Alert bsStyle='warning'>
-                                <strong>{error}</strong>
-                              </Alert>
-                            }
 
                             <div className='col-md-9 col-sm-8'>
+                              {error &&
+                                <Alert bsStyle='warning'>
+                                  <strong>{error}</strong>
+                                </Alert>
+                              }
                               <input
                                 name='email'
                                 value={email}

@@ -7,7 +7,7 @@ import { loginSuccess } from 'ducks/auth';
 import { load, loaded } from 'ducks/loading';
 import { base } from 'services/api';
 import { storeToken } from 'services/Request';
-import { browserHistory } from 'react-router';
+import { Link, browserHistory } from 'react-router';
 
 const toastConfig = {
   position: toast.POSITION.BOTTOM_LEFT,
