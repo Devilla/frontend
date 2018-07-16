@@ -11,7 +11,7 @@ import ReactChartJs from 'react-chartjs';
 import { GeoChart }  from 'react-chartkick';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import { countryVisitors } from 'ducks/graph';
+import { countryVisitors } from 'ducks/elastic';
 
 var LineChart = ReactChartJs.Line;
 let moment = extendMoment(Moment);
