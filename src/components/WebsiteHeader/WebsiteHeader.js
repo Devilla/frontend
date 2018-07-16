@@ -69,8 +69,6 @@ class WebsiteHeader extends Component {
               <button className="cross"><i className="fa fa-close"></i></button>
             </div>
 
-
-
             <div className='container pr-0 pl-0 bar bar--sm bar-1 hidden-xs  bar--transparent'>
 
               <div className="row">
@@ -78,26 +76,27 @@ class WebsiteHeader extends Component {
 
                 </div>
                 <div className="col-sm-0 pl-0 pr-0"></div>
-                <div className="nav-content col-lg-10 col-md-11 text-right pr-0 pl-0">
-                  <div className="bar__module links">
-                    <ul className="menu-horizontal text-left nav-content-links" tabIndex="1">
-                      <li onClick={this.close}> <Link to="/how-it-works" className={loggedIn?'disabled-link':''} >How it works</Link> </li>
-                      <li onClick={this.close}> <Link to="/pricing" className={loggedIn?'disabled-link':''} >PRICING</Link> </li>
-                      <li onClick={this.close}> <a href="https://blog.useinfluence.co/" target="_blank" className={loggedIn?'disabled-link':''} >BLOG</a></li>
-                    </ul>
-                  </div>
-                  {this.props.loggedIn?
-                    <div className="bar__module btns ">
-                      <Link onClick={() => { this.props.logout(); this.close(); }} className="btn btn--sm type--uppercase loginbtn" to="/dashboard"> <span className="btn__text ">Logout</span> </Link>
+                {!loggedIn ?
+                  <div className="nav-content col-lg-10 col-md-11 text-right pr-0 pl-0">
+                    <div className="bar__module links">
+                      <ul className="menu-horizontal text-left nav-content-links" tabIndex="1">
+                        <li onClick={this.close}> <Link to="/how-it-works">How it works</Link> </li>
+                        <li onClick={this.close}> <Link to="/pricing">PRICING</Link> </li>
+                        <li onClick={this.close}> <a href="https://blog.useinfluence.co/" target="_blank">BLOG</a></li>
+                      </ul>
                     </div>
-                    :
                     <div className="bar__module btns ">
                       <Link onClick={this.close} className="btn btn--sm type--uppercase loginbtn" to="/login"> <span className="btn__text ">Login</span> </Link>
                       <Link onClick = {this.close} className="btn btn--sm btn--primary type--uppercase signupbtn" to="/signup"> <span className="btn__text ">sign up</span> </Link>
                     </div>
-                  }
-
-                </div>
+                  </div>
+                  :
+                  <div className="nav-content col-lg-10 col-md-11 text-right pr-0 pl-0">
+                    <div className="bar__module btns ">
+                      <Link onClick={() => { this.props.logout(); this.close(); }} className="btn btn--sm type--uppercase loginbtn" to="/dashboard"> <span className="btn__text ">Logout</span> </Link>
+                    </div>
+                  </div>
+                }
               </div>
             </div>
 

@@ -24,6 +24,7 @@ class App extends Component {
       loggedIn: false
     };
   }
+
   componentWillMount() {
     document.body.style = 'background-color:white';
     this.checkLogin();
@@ -34,7 +35,7 @@ class App extends Component {
       this.checkLogin();
   }
 
-  checkLogin() {
+  checkLogin = () => {
     const cookie = localStorage.getItem('authToken');
     const authToken = cookie
       ? JSON.parse(cookie)
@@ -63,13 +64,12 @@ class App extends Component {
           <div className="content">
             {this.props.children}
           </div>
-          <WebsiteFooter />
+          <WebsiteFooter loggedIn={this.state.loggedIn} />
         </div>
         <ToastContainer hideProgressBar={true} />
       </div>
     );
   }
-
 }
 
 const mapStateToProps = state => ({
