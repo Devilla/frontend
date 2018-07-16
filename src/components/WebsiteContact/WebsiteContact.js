@@ -166,7 +166,7 @@ class WebsiteContact extends Component {
                     </textarea>
                   </div>
 
-                  <button type="submit" className="btn btn--primary type--uppercase"
+                  <button type="submit" className="btn btn--primary type--uppercase send-btn"
                     onClick={this.handleSubmit}
                     disabled={!isEmailValid} >Send Enquiry</button>
                   <ToastContainer  autoClose={8000}/>
