@@ -87,6 +87,7 @@ class WebsitePayment extends Component {
               <span className="pricing__dollar">$</span>
               <span>{plan.interval === 'year' ? plan.amount/1000 : plan.amount/100}</span>
             </span>
+            {plan.interval === 'year' ?  <p className= {/\b(Advanced)\b/m.test(plan.name) ?' mt-0 mb-0' : 'type--fine-print mt-0 mb-0 '}><i> 2 Months FREE </i></p> :  ''}
           </div>
           <hr/>
           <ul className="h6 ">

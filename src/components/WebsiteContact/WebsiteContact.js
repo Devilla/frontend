@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
+import { validateEmail } from 'services/FormUtils';
+import { Alert } from 'react-bootstrap';
 import { contactUs } from 'ducks/auth';
 import { toast, ToastContainer } from 'react-toastify';
 import './WebsiteContact.scss';
@@ -18,6 +19,7 @@ class WebsiteContact extends Component {
     this.state = {
       email: '',
       authEmail: false,
+      nameError: '',
       emailError: '',
       name:'',
       message:''
@@ -28,10 +30,11 @@ class WebsiteContact extends Component {
     scrollElm.scrollTop = 0;
   }
 
-  checkEmail(evt) {
+  checkEmail = (evt) => {
     /* eslint-disable */
     var Emailexpr = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
       /* eslint-disable */
+
     if (!Emailexpr.test(evt.target.value)) {
       this.setState({emailError: 'Enter a valid Email id'});
     } else {
@@ -42,7 +45,11 @@ class WebsiteContact extends Component {
   }
 
   handleStateChange = (target, value) => {
-    this.setState({[target]: value});
+    this.setState({
+      [target]: value,
+      nameError: '',
+      emailError: ''
+    });
   }
 
   handleSubmit = (event) => {
@@ -52,6 +59,10 @@ class WebsiteContact extends Component {
       'email': this.state.email,
       'message': this.state.message
     };
+    if(!data.name)
+      return this.setState({nameError: 'Enter a name'});
+    else if(!data.email || !validateEmail(data.email))
+      return this.setState({emailError: 'Enter a valid Email id'});
     this.props.contactUs(data);
     this.setState({name: '', email: '', message: '', emailError: ''});
     if (! toast.isActive(this.toastId)) {
@@ -60,7 +71,7 @@ class WebsiteContact extends Component {
   }
 
   render() {
-    const { name, email, message } = this.state;
+    const { name, email, message, emailError, nameError } = this.state;
     return (
       <div className="websitecontact-container">
       <div className="main-container">
@@ -98,6 +109,11 @@ class WebsiteContact extends Component {
                       value={name}
                       onChange={(e) => this.handleStateChange(e.target.name, e.target.value)}
                     />
+                    {nameError &&
+                      <Alert bsStyle='warning'>
+                        <strong>{nameError}</strong>
+                      </Alert>
+                    }
                   </div>
                   <div className="col-md-12">
                     <input
@@ -106,8 +122,14 @@ class WebsiteContact extends Component {
                       placeholder="Email Address"
                       value={email}
                       className="validate-required validate-email"
-                      onBlur={this.checkEmailBlur} onChange={(e) => this.handleStateChange(e.target.name, e.target.value)}
+                      // onBlur={() => this.checkEmailBlur()}
+                      onChange={(e) => this.handleStateChange(e.target.name, e.target.value)}
                     />
+                    {emailError &&
+                      <Alert bsStyle='warning'>
+                        <strong>{emailError}</strong>
+                      </Alert>
+                    }
                   </div>
                   <div className="col-md-12">
                     <textarea
