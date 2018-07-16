@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-
 import WebsitePrice from './WebsitePrice';
 import WebsiteCheckout from './WebsiteCheckout';
 import './WebsitePrice.scss';
@@ -10,9 +8,7 @@ class WebsitePayment extends Component {
     super(props);
     this.state = {
       planSelected: '',
-      checked: false,
       externalValue: true,
-      country_code: 'USD',
       planPeriod: 12,
       servicebotPlans: [],
       coupon: ''
@@ -30,10 +26,6 @@ class WebsitePayment extends Component {
   componentDidMount() {
     let scrollElm = document.scrollingElement;
     scrollElm.scrollTop = 0;
-  }
-
-  handleChange = (checked) => {
-    this.setState({checked});
   }
 
   handleMonthChange = () => {
@@ -73,7 +65,6 @@ class WebsitePayment extends Component {
 
   renderPriceList = () => {
     let planList;
-    console.log(this.state.coupon,'============coupon');
     if(this.state.coupon) {
       planList = this.state.servicebotPlans.filter(plan => plan.references.service_template_properties.length && plan.references.service_template_properties[0].data.value === this.state.coupon.code);
     } else {
@@ -82,11 +73,6 @@ class WebsitePayment extends Component {
         (plan.references.service_template_properties[0].name !== 'coupon')
       );
     }
-
-    // let planList = this.state.servicebotPlans.filter(plan =>
-    //   (this.state.planPeriod == 12 ? plan.interval=='year': plan.interval=='month') &&
-    //   (plan.references.service_template_properties[0].name !== 'coupon')
-    // );
 
     return planList.map(plan => {
       return <div key={plan.name} className="col-md-3 pl-3 pr-0">
@@ -157,7 +143,12 @@ class WebsitePayment extends Component {
   }
 
   clearSelectedPlan = (coupon) => {
-    this.setState({ coupon: coupon, selectedPlan: ''});
+    const selectedPlan = this.state.servicebotPlans.filter(plan => plan.references.service_template_properties.length && plan.references.service_template_properties[0].data.value === coupon.code);
+    this.setState({ coupon: coupon, selectedPlan: selectedPlan[0]});
+  }
+
+  clearCoupon = () => {
+    this.setState({coupon: ''});
   }
 
   render() {
@@ -175,6 +166,7 @@ class WebsitePayment extends Component {
           :
           <WebsiteCheckout
             coupon={coupon}
+            clearCoupon={this.clearCoupon}
             clearSelectedPlan={this.clearSelectedPlan}
             selectedPlan={selectedPlan}
           />
@@ -184,9 +176,4 @@ class WebsitePayment extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  couponDetails: state.getIn(['auth', 'coupon'])
-});
-
-
-export default connect(mapStateToProps)(WebsitePayment);
+export default WebsitePayment;

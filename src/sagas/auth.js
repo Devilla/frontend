@@ -9,8 +9,6 @@ import { toast } from 'react-toastify';
 import { browserHistory } from 'react-router';
 import * as actions from 'ducks/auth';
 import { fetchProfile } from 'ducks/profile';
-// import { fetchPlan } from 'ducks/plan';
-// import { fetchPayment } from 'ducks/payment';
 import { load, loaded } from 'ducks/loading';
 import { storeToken } from 'services/Request';
 
@@ -30,8 +28,6 @@ export function* isLoggedIn() {
     yield all([
       put(actions.fetchUser()),
       put(fetchProfile())
-      // put(fetchPlan()),
-      // put(fetchPayment()),
     ]);
   } catch(error) {
     yield console.log(error);
@@ -203,7 +199,7 @@ export function* socialLogin(action) {
       }, 2000);
     } else {
       yield storeToken(res.jwt);
-      yield browserHistory.push('/getting-started');
+      yield browserHistory.push(res.user.path);
     }
     yield put(loaded());
   } catch (error) {

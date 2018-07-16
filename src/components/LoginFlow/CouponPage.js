@@ -21,6 +21,7 @@ const CouponPage = ({
               type="text"
               onChange={(e) => handleStateChange(e.target.value, e.target.id)}
               placeholder="Enter coupon code"
+              defaultValue={couponDetails?couponDetails.code:''}
               id="coupon"
             />
           </Col>

@@ -34,18 +34,15 @@ class DashboardContainer extends Component {
     this.settings = this.settings.bind(this);
     this.openProfile = this.openProfile.bind(this);
     this.closeDropdown = this.closeDropdown.bind(this);
-
-    this.checkLogin((err) => {
-      if (err) {
-        browserHistory.push('/login');
-      } else {
-        this.checkUserDetails(this.props.profile);
-      }
-    });
   }
 
   componentWillMount() {
     document.body.style = 'background-color:#f4f6f8';
+    this.checkLogin((err) => {
+      if (err) {
+        browserHistory.push('/login');
+      }
+    });
   }
 
   componentWillUnmount() {
@@ -62,21 +59,6 @@ class DashboardContainer extends Component {
       callback();
     } else {
       callback('not logged in');
-    }
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (!nextProps.profile && nextProps.user.size != 0 && !this.state.disableButton)
-      this.checkUserDetails(nextProps.profile);
-    if (this.props.profile != nextProps.profile && nextProps.profile && nextProps.profile.plan)
-      this.setState({ disableButton: false });
-  }
-
-  checkUserDetails(profile) {
-    const user = this.props.user;
-    if (user && user.size !== 0 && (!profile || !profile.plan)) {
-      this.setState({ disableButton: true });
-      browserHistory.push('getting-started');
     }
   }
 

@@ -1,13 +1,10 @@
 .credit-form-container {
-
-
-    input {
-        &.btn.btn-primary{
-            border-radius: 5px;
-        }
+  input {
+    &.btn.btn-primary{
+      border-radius: 5px;
     }
-    .auth-payment-button {
-        margin-top: 10px !important;
-    }    
-        
+  }
+  .auth-payment-button {
+    margin-top: 10px !important;
+  }
 }
