@@ -37,6 +37,7 @@ export { default as Sw1 }  from './Notification.png';
 export { default as Sw2 }  from './group activity.png';
 export { default as Sw3 }  from './live viewer2.png';
 export { default as Sw4 }  from './live viewer3.png';
+export { default as Paypal } from  './paypal.png';
 
 export { default as Marvel } from './marvel.png';
 export { default as Lawsikho }  from './lawsikho.png';
