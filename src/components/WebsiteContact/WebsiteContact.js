@@ -33,10 +33,11 @@ class WebsiteContact extends Component {
     scrollElm.scrollTop = 0;
   }
 
-  checkEmail(evt) {
+  checkEmail = (evt) => {
     /* eslint-disable */
     var Emailexpr = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
       /* eslint-disable */
+
     if (!Emailexpr.test(evt.target.value)) {
       this.setState({errorEmail: 'Enter a valid Email id'});
     } else {
@@ -83,6 +84,10 @@ class WebsiteContact extends Component {
       'email': this.state.email,
       'message': this.state.message
     };
+    if(!data.name)
+      return this.setState({nameError: 'Enter a name'});
+    else if(!data.email || !validateEmail(data.email))
+      return this.setState({emailError: 'Enter a valid Email id'});
     this.props.contactUs(data);
     this.props.clearContactError();
     this.props.contactError(data);
@@ -144,11 +149,14 @@ class WebsiteContact extends Component {
                       placeholder="Email Address"
                       value={email}
                       className="validate-required validate-email"
-                      onBlur={this.checkEmailBlur} onChange={(e) => this.handleStateChange(e.target.name, e.target.value)}
+                      // onBlur={() => this.checkEmailBlur()}
+                      onChange={(e) => this.handleStateChange(e.target.name, e.target.value)}
                     />
-                    <HelpBlock>
-                      <p className="website-error">{errorEmail}</p>
-                    </HelpBlock>
+                    {emailError &&
+                      <Alert bsStyle='warning'>
+                        <strong>{emailError}</strong>
+                      </Alert>
+                    }
                   </div>
                   <div className="col-md-12">
                     <textarea

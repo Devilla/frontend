@@ -7,7 +7,7 @@ import { loginSuccess } from 'ducks/auth';
 import { load, loaded } from 'ducks/loading';
 import { base } from 'services/api';
 import { storeToken } from 'services/Request';
-import { browserHistory } from 'react-router';
+import { Link, browserHistory } from 'react-router';
 
 const toastConfig = {
   position: toast.POSITION.BOTTOM_LEFT,
@@ -152,7 +152,7 @@ class forget extends Component{
                 </form>
                 <div className="pt-5 support">
                   <h4>Trouble logging in?</h4>
-                  <a href="javascript:;">Talk to our Support</a>
+                  <Link to="/contact"> Talk to our Support</Link>
                 </div>
               </Animated>
             </div>

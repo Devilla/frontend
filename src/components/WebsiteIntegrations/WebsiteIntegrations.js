@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router';
 import {
   Illustration,
   NewRecentPurchases,
@@ -24,7 +25,7 @@ class WebsiteIntegrations extends Component {
                   <a className="btn btn--primary type--uppercase trynow-btn" href="/signup">
                     <span className="btn__text"> Try influence now</span>
                   </a>
-                  <span className="block type--fine-print">or <a href="/">view the demos</a></span>
+                  <span className="block type--fine-print">or <Link to="/demopage">view the demos</Link></span>
                 </div>
                 <div className="col-md-5"> <img alt="Image" src={ Illustration } /> </div>
               </div>
