@@ -28,12 +28,6 @@ class DashboardContainer extends Component {
       disableButton: false,
       style: {}
     };
-    this.openCloseDropdown = this.openCloseDropdown.bind(this);
-    this.logout = this.logout.bind(this);
-    this.renderHelp = this.renderHelp.bind(this);
-    this.settings = this.settings.bind(this);
-    this.openProfile = this.openProfile.bind(this);
-    this.closeDropdown = this.closeDropdown.bind(this);
   }
 
   componentWillMount() {
@@ -68,25 +62,25 @@ class DashboardContainer extends Component {
     }
   }
 
-  openCloseDropdown() {
+  openCloseDropdown = () => {
     if(Object.keys(this.state.style).length !== 0)
       this.setState({style: {}});
     else
       this.setState({style: {visibility: 'visible', opacity: 1}});
   }
 
-  closeDropdown() {
+  closeDropdown = () => {
     this.setState({style: {}});
   }
 
-  logout() {
+  logout = () => {
     document.body.style = 'background-color:white';
     this.openCloseDropdown();
     localStorage.removeItem('authToken');
     browserHistory.push('/');
   }
 
-  renderHelp() {
+  renderHelp = () => {
     this.openCloseDropdown();
     Popup.create({
       title: 'How can we help you today',
@@ -142,14 +136,14 @@ class DashboardContainer extends Component {
     }, true);
   }
 
-  settings() {
+  settings = () => {
     this.openCloseDropdown();
     if(this.state.disableButton)
       return;
     browserHistory.push('/dashboard');
   }
 
-  openProfile() {
+  openProfile = () => {
     this.openCloseDropdown();
     if(this.state.disableButton)
       return;
