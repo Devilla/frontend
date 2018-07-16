@@ -15,7 +15,7 @@ class WebsiteIntegrations extends Component {
     return (
       <div className="websiteintegrations-container">
         <div className="main-container">
-          <section className="cover switchable text-center-xs bg--secondary switchable--switch pt-5">
+          <section className="cover switchable text-center-xs bg--secondary switchable--switch pt-0">
             <div className="container">
               <div className="row justify-content-between align-items-center">
                 <div className="col-md-6 col-lg-6 mt--3">
