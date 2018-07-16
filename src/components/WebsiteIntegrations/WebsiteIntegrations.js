@@ -4,6 +4,7 @@ import {
   NewRecentPurchases,
 
 } from 'img';
+import './WebsiteIntegration.scss';
 
 class WebsiteIntegrations extends Component {
   componentDidMount() {
@@ -20,7 +21,7 @@ class WebsiteIntegrations extends Component {
                 <div className="col-md-6 col-lg-6 mt--3">
                   <h2>Influence integrations are meant to scale and work everywhere</h2>
                   <p className="lead"> Influence integrates with all your favorite platforms to make increasing conversions simple</p>
-                  <a className="btn btn--primary type--uppercase" href="/signup">
+                  <a className="btn btn--primary type--uppercase trynow-btn" href="/signup">
                     <span className="btn__text"> Try influence now</span>
                   </a>
                   <span className="block type--fine-print">or <a href="/">view the demos</a></span>
