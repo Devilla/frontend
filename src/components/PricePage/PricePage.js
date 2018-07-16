@@ -85,6 +85,7 @@ const PricePage = ({
                     <span className="price">${plan.interval === 'year' ? plan.amount / 1000 : plan.amount / 100}</span>
                     <span className="name">{filterPlanName(plan.name)}</span>
                   </div>
+                  {plan.interval === 'year' ?  <p className= {/\b(Advanced)\b/m.test(plan.name) ?' mt-0 mb-0' : 'type--fine-print mt-0 mb-0 '}><i> 2 Months FREE </i></p> :  ''}
                   <div className="pricing-content">
                     <ul className="price-features" style={{ minHeight: '150px' }}>
                       <li><div dangerouslySetInnerHTML={{ __html: plan.details }} /></li>
