@@ -18,45 +18,58 @@ import './scss/font-sourcesanspro.scss';
 import './App.scss';
 
 class App extends Component {
-  componentWillMount() {
-    document.body.style = 'background-color:white';
-    this.checkLogin((err) => {
-      if (!err) {
-        browserHistory.push('/dashboard');
-      }
-    });
+  constructor(props) {
+    super(props);
+    this.state = {
+      loggedIn: false
+    };
   }
 
-  checkLogin(callback) {
+  componentWillMount() {
+    document.body.style = 'background-color:white';
+    this.checkLogin();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if(nextProps.location.pathname != this.props.location.pathname)
+      this.checkLogin();
+  }
+
+  checkLogin = () => {
     const cookie = localStorage.getItem('authToken');
     const authToken = cookie
       ? JSON.parse(cookie)
       : null;
     if (authToken) {
       this.props.checkTokenExists(authToken);
-      callback();
+      this.setState({loggedIn: true});
     } else {
-      callback('not logged in');
+      if(this.props.location.pathname == '/checkout')
+        browserHistory.push('/login');
+      this.setState({loggedIn: false});
     }
+  }
+
+  logout = () => {
+    localStorage.removeItem('authToken');
   }
 
   render() {
     return (
       <div className="website-app">
         <div className="basic-gradient-light" data-smooth-scroll-offset="77">
-          <WebsiteHeader />
+          <WebsiteHeader loggedIn={this.state.loggedIn} logout={this.logout} />
           <Popup  />
           <Spinner loading={this.props.loading} />
           <div className="content">
             {this.props.children}
           </div>
-          <WebsiteFooter />
+          <WebsiteFooter loggedIn={this.state.loggedIn} />
         </div>
         <ToastContainer hideProgressBar={true} />
       </div>
     );
   }
-
 }
 
 const mapStateToProps = state => ({

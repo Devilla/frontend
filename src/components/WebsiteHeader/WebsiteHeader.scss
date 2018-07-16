@@ -5,48 +5,62 @@
   background: #fff;
   width: 100%;
 
-    .signupbtn {
-        background-color: #097fff !important;
-    }
+  .disabled-link {
+    pointer-events: none;
+  }
+  a[disabled] {
+    pointer-events: none;
+  }
+
+  .signupbtn {
+    background-color: #097fff !important;
+  }
 
   .hamburger-toggle {
-      display: none;
+    display: none;
   }
+
   .small-bar {
-      display: none;
+    display: none;
   }
+
   .mainlogo {
       position : absolute;
       left: 110px;
+      top: 10px;
       z-index: 99;
+      width: 200px;
+      height: 100px;
   }
   .menu-horizontal:focus {
-      outline: none;
+    outline: none;
   }
+
 }
 
 .sticky {
-    position: fixed;
-    top: 0px;
-    box-shadow: 0px 10px 10px -12px #999;
-    z-index: 9999;
-    background: #fff;
-    width: 100%;
+  position: fixed;
+  top: 0px;
+  box-shadow: 0px 10px 10px -12px #999;
+  z-index: 9999;
+  background: #fff;
+  width: 100%;
 }
 
 
+
 @media only screen and (max-width: 1198px) {
-    .websiteheader-container {
-        .loginbtn , .signupbtn {
-            width: 100px ;
-            height: 35px ;
-            font-size: 12px !important;
-        }
-        .mainlogo {
-            left: 60px;
-            top: 15px;
-        }
+  .websiteheader-container {
+    .loginbtn , .signupbtn {
+      width: 100px ;
+      height: 35px ;
+      font-size: 12px !important;
     }
+    .mainlogo {
+      left: 60px;
+      top: 15px;
+    }
+  }
 }
 @media only screen and (max-width: 1024px) {
     .websiteheader-container {

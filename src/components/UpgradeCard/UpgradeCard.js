@@ -141,7 +141,7 @@ class UpgradeCard extends Component {
                           </Row>
                           <Row className='upgrade-card-buttons'>
                             <div className='col-md-4 pull-left'>
-                              <Button type='button' icon='chevron-left' bsStyle='primary' fill={true} onClick={() => browserHistory.push(currentState === 'upgrade' ? '/billing-details' : '/profile')}>&nbsp;&nbsp;Back&nbsp;&nbsp;</Button>
+                              <Button type='button' icon='chevron-left' bsStyle='btn btn-primary backpay-btn' fill={true} onClick={() => browserHistory.push(currentState === 'upgrade' ? '/billing-details' : '/profile')}><i className="icon-arrow-left pr-2"></i>Back&nbsp;&nbsp;</Button>
                             </div>
 
                           </Row>
@@ -169,7 +169,7 @@ class UpgradeCard extends Component {
                           </Row>
                           <Row className='upgrade-card-buttons'>
                             <div className='col-md-4 pull-left'>
-                              <Button type='button' icon='chevron-left' bsStyle='primary' fill={true} onClick={() => browserHistory.push(currentState === 'upgrade' ? '/billing-details' : '/profile')}>&nbsp;&nbsp;Back&nbsp;&nbsp;</Button>
+                              <Button type='button' icon='chevron-left' bsStyle='btn btn-primary backpay-btn' fill={true} onClick={() => browserHistory.push(currentState === 'upgrade' ? '/billing-details' : '/profile')}><i className="icon-arrow-left pr-2"></i>Back&nbsp;&nbsp;</Button>
                             </div>
                           </Row>
                         </div>
@@ -195,7 +195,7 @@ class UpgradeCard extends Component {
                           </Row>
                           <Row className='upgrade-card-buttons'>
                             <div className='col-md-4 pull-left'>
-                              <Button type='button' icon='chevron-left' bsStyle='primary' fill={true} onClick={() => browserHistory.push(currentState === 'upgrade' ? '/billing-details' : '/profile')}>&nbsp;&nbsp;Back&nbsp;&nbsp;</Button>
+                              <Button type='button' icon='chevron-left' bsStyle='btn btn-primary backpay-btn' fill={true} onClick={() => browserHistory.push(currentState === 'upgrade' ? '/billing-details' : '/profile')}><i className="icon-arrow-left pr-2"></i>Back&nbsp;&nbsp;</Button>
                             </div>
 
                           </Row>

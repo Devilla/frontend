@@ -9,7 +9,7 @@ const REGISTER_API_URL = `${base}auth/local/register`;
 
 
 // Email regexp taken from http://emailregex.com/ (W3C standard)
-const EMAIL_REGEXP = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+const EMAIL_REGEXP = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 const INVALID_EMAIL_MSG = 'Please enter a valid Email ID';
 
 // Check if email follows valid syntax
@@ -110,7 +110,7 @@ const register = (email, password) => {
       if (res.statusCode !== 200) {
         throw res.message;
       }
-      
+
       return res;
     });
   });

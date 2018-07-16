@@ -29,8 +29,8 @@ const InstallPixel = ({
         </p>
       </div>
       <div className="float-left custom-width align-install-btn">
-        <button type="button" className="btn btn-custom waves-light waves-effect number" onClick={() => { this.buttonDOM.blur(); handlePixelCopy(); }} ref={(buttonDOM) => this.buttonDOM = buttonDOM}>Copy</button>
-        <button type="button" style={elastic==undefined?{backgroundColor:'#097fff'}:(elastic.error || (elastic.message.hits.total === 0))?{backgroundColor:'#f9bc0b'}:{backgroundColor:'#0acf97'}} className="btn btn-custom  waves-light waves-effect number" onClick={() => verifyPixelStatus()}>
+        <button type="button" className="btn btn-primary waves-effect copy-btn" onClick={() => { this.buttonDOM.blur(); handlePixelCopy(); }} ref={(buttonDOM) => this.buttonDOM = buttonDOM}>Copy</button>
+        <button type="button" style={elastic==undefined?{backgroundColor:'#097fff'}:(elastic.error || (elastic.message.hits.total === 0))?{backgroundColor:'#f9bc0b'}:{backgroundColor:'#0acf97'}} className="btn btn-primary waves-light waves-effect pixel-btn" onClick={() => verifyPixelStatus()}>
           {loaderActive &&
             <i className="fa fa-spinner fa-spin"></i>
           }
@@ -63,7 +63,7 @@ const InstallPixel = ({
       <div className="float-left integration mr-0 pr-2">
         <button
           type="button"
-          className="btn btn-custom waves-light waves-effect number  pl-3 pr-3"
+          className="btn btn-outline-primary waves-light waves-effect webhook-btn  pl-3 pr-3"
           onClick={() => { this.toggleDOM.blur(); toggleWebhook(); }}
           ref={(toggleDOM) => this.toggleDOM = toggleDOM}
         >
@@ -74,7 +74,7 @@ const InstallPixel = ({
       <div className="float-right mr-0 pr-2">
         <button
           type="button"
-          className="btn btn-custom waves-light waves-effect number  pl-3 pr-3"
+          className="btn btn-primary waves-light waves-effect pixelnext-btn  pl-3 pr-3"
           onClick={() => setActiveState(2)}
         >
           Next

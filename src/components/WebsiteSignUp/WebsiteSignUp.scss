@@ -10,17 +10,17 @@
       color: #a94442;
     }
     .signuptitle {
-      font-size: 50px;
+      font-size: 40px;
     }
     .sub-up-title, .terms-title {
       font-size: 16px !important;
     }
     .pos-relative {
-      top: 250px;
+      top: 85px;
     }
     .vristrue {
       position: relative;
-      top: 285px;
+      top: 125px;
     }
     input {
       font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -28,7 +28,18 @@
         font-size: 14px !important;
       }
     }
-
+    .sub-up-title, .terms-title {
+      font-size: 18px !important;
+    }
+    .signuprow {
+      position: relative;
+      top: -60px;
+      background: #fff;
+      padding: 20px;
+    }
+  }
+  .websitesignuppricing-container {
+    text-align: center;
   }
 }
 
@@ -53,11 +64,11 @@
           font-size: 14px;
       }
       }
-   
+
   }
 }
 @media only screen and (max-width: 770px) {
-  .signup-container { 
+  .signup-container {
     .pos-relative {
      top:20px !important;
     }
@@ -94,7 +105,7 @@
   .signup-container {
       .socio-link {
           margin-right:20px;
-       
+
           .link-fb {
               font-size: 13.7px;
           }
@@ -102,8 +113,8 @@
               font-size: 15px;
           }
       }
-    
-   
+
+
   }
 }
 @media only screen and (max-width: 320px) {
@@ -117,7 +128,7 @@
               font-size: 14px;
           }
       }
-    
-   
+
+
   }
 }

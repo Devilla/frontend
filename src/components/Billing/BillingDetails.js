@@ -106,7 +106,7 @@ class BillingDetails extends Component {
                               <hr />
                               <div className="text-left">
                                 <div className="text-muted font-13">
-                                  <strong>Plan Choosed : </strong>
+                                  <strong>Current Plan : </strong>
                                   <span className="m-l-15">
                                     <FormGroup>
                                       <FormControl

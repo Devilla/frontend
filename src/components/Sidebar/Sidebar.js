@@ -49,7 +49,7 @@ class Sidebar extends Component {
               <Link to="/new">
                 <button
                   type="button"
-                  className="btn btn-pink waves-effect  ml-4 p-2  pt-0 pb-0  w-lg "
+                  className="btn btn-primary waves-effect  addnew-btn  ml-4 p-2  pt-0 pb-0  w-lg "
                 >
                   <i className="fi-plus "/>&nbsp;{' '}
                   <span className="h6">New</span>{' '}

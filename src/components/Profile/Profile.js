@@ -22,7 +22,7 @@ class Profile extends Component {
       lastName: '',
       email: '',
       plan: '',
-      states: '',
+      state: '',
       city: '',
       country: '',
       address: '',
@@ -33,7 +33,6 @@ class Profile extends Component {
       countryList: [],
       savedtext: 'Save Profile'
     };
-    props.fetchProfile();
   }
 
   componentWillMount() {
@@ -46,12 +45,12 @@ class Profile extends Component {
       this.setProfile(nextProps.profile);
   }
 
-  setProfile(profile) {
+  setProfile = (profile) => {
     this.setState({
       firstName: profile.firstName,
       lastName: profile.lastName,
       plan: profile.plan,
-      states: profile.states,
+      state: profile.state,
       city: profile.city,
       country: profile.country,
       address: profile.address,
@@ -67,7 +66,7 @@ class Profile extends Component {
     const {
       firstName,
       lastName,
-      states,
+      state,
       city,
       country,
       address,
@@ -79,7 +78,7 @@ class Profile extends Component {
       id: this.props.profile? this.props.profile._id : null,
       firstName: firstName,
       lastName: lastName,
-      states: states,
+      state: state,
       city: city,
       country: country,
       address: address,
@@ -90,11 +89,12 @@ class Profile extends Component {
     return this.props.updateProfile(profile);
   }
 
-  handleStateChange(e) {
+  handleStateChange = (e) => {
     this.setState({
       [e.target.id]: e.target.value
     });
   }
+
   componentDidMount() {
     fetch('https://raw.githubusercontent.com/sagarshirbhate/Country-State-City-Database/master/Contries.json')
       .then(res => res.json())
@@ -122,7 +122,7 @@ class Profile extends Component {
 
   getCityRows = () => {
     let countryList = this.state.countryList.filter(country => country.CountryName === this.state.country);
-    let stateList = countryList.length?countryList[0].States.filter(state => state.StateName === this.state.states):[];
+    let stateList = countryList.length?countryList[0].States.filter(state => state.StateName === this.state.state):[];
     return stateList.map(state => {
       return state.Cities.map((city, i) => {
         return <option key={i}  value={city}>
@@ -219,7 +219,7 @@ class Profile extends Component {
                       <Col md={6}>
                         <span className="text-muted font-13 p"><strong>States :</strong> </span>
                         <FormGroup controlId="formfBillinControlsSelect">
-                          <FormControl componentClass="select" placeholder="States" autoComplete='address-level1' value={profile.states} onChange={(e) => this.setState({states: e.target.value})}>
+                          <FormControl componentClass="select" placeholder="States" autoComplete='address-level1' value={profile.state} onChange={(e) => this.setState({state: e.target.value})}>
                             <option value={null}>Select State</option>
                             {this.getStateRows()}
                           </FormControl>

@@ -121,25 +121,25 @@ class Webhook extends Component {
           <div className="card-header">
             Webhook Integrations
           </div>
-          <div className="card-body">
+          <div className="card-body pl-2">
             <h5 className="card-title">Type of Webhook Integration</h5>
             <div className="webhooks-types">
-              <button className="btn btn-primary" onClick={() => this.selectHookType('Custom')} >Custom</button>
+              <button className="btn btn-outline-primary" onClick={() => this.selectHookType('Custom')} >Custom</button>
             </div>
           </div>
           {selectHook && campaignWebhook &&
-            <div className="card-body">
+            <div className="card-body pl-2">
               <h5 className="card-title">Selected {selectHook} Webhook</h5>
-              <div>
-                <div className="input-group mb-3">
+              <div className="row">
+                <div className="input-group mb-3 col-md-8">
                   <select className="custom-select" id="inputGroupSelect02" disabled>
                     <option>{campaign.webhooks?campaign.webhooks.name:null}</option>
                   </select>
-                  <div className="input-group-append" onClick={this.clearHook}>
-                    <label className="input-group-text custom-pointer" htmlFor="inputGroupSelect02">Select Different Webhook</label>
+                  <div className="input-group-append col-md-4" onClick={this.clearHook}>
+                    <span className="btn btn-primary input-group-text custom-pointer" htmlFor="inputGroupSelect02">Choose Another</span>
                   </div>
                 </div>
-                <div className="input-group mb-3">
+                <div className="input-group mb-3 pl-3">
                   <input
                     type="text"
                     className="form-control"
@@ -150,7 +150,7 @@ class Webhook extends Component {
                     readOnly
                   />
                   <div className="input-group-append">
-                    <button className="btn btn-outline-secondary" type="button" onClick={() => this.copyEndpoint(campaign.webhooks?campaign.webhooks.endpoint:null)}>
+                    <button className="btn btn-outline-secondary copyicon-btn " type="button" onClick={() => this.copyEndpoint(campaign.webhooks?campaign.webhooks.endpoint:null)}>
                       <i className="mdi mdi-content-copy"></i>
                     </button>
                   </div>
@@ -159,17 +159,16 @@ class Webhook extends Component {
             </div>
           }
           { selectHook && !campaignWebhook &&
-            <div className="card-body">
-              <h5 className="card-title">{selectHook} Webhooks</h5>
+            <div className="card-body pl-2">
               <p className="card-text">With supporting webhook below you can capture client data.</p>
-              <div>
-                <div className="input-group mb-3">
+              <div className="row">
+                <div className="input-group mb-3 col-md-8">
                   <select className="custom-select" id="inputGroupSelect02" onChange={this.selectWebhook}>
                     <option>Choose webhook...</option>
                     {this.renderWebhooks()}
                   </select>
-                  <div className="input-group-append" onClick={this.addWebhook}>
-                    <label className="input-group-text" htmlFor="inputGroupSelect02">Add Webhook</label>
+                  <div className="input-group-append col-md-4" onClick={this.addWebhook}>
+                    <span className="btn btn-primary waves-effect input-group-text" htmlFor="inputGroupSelect02">Add Webhook</span>
                   </div>
                 </div>
               </div>

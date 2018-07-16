@@ -1,13 +1,7 @@
 
-  button {
-    &.btn.btn-custom.waves-light.waves-effect.number.ml-2.pl-4.pr-4 {
-      border-radius: 5px;
-    }
-
-    &.btn.btn-custom.waves-light.waves-effect.number {
-      border-radius: 5px;
-    }
-  }
+.displaybtn-back, .displaybtn-finish {
+  border-radius: 5px !important;
+}
 
   .addpath-btn {
     border-radius: 5px !important;

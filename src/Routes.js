@@ -19,6 +19,7 @@ import {
   WebsiteAbout,
   WebsiteSignIn,
   WebsiteSignUp,
+  WebsitePayment,
   WebsiteTerms,
   WebsitePolicy,
   WebsiteContact,
@@ -62,7 +63,6 @@ const MyRoutes = ({routerHistory}) => (
       <Route path="/profile" component={Profile} />
       <Route path="/card-details" component={UpgradeCard} />
       <Route path="/billing-details" component={BillingDetails} />
-      <Route path="/getting-started" component={LoginFlow} />
     </Route>
     <Route exact path="/connect/:provider" component={ConnectPage} />
     <Route exact path="/integrations/:provider/callback/" component={ReviewRedirect} />
@@ -75,6 +75,8 @@ const MyRoutes = ({routerHistory}) => (
       <Route path="/about" component={WebsiteAbout} />
       <Route path="/login" component={WebsiteSignIn} />
       <Route path="/signup" component={WebsiteSignUp} />
+      <Route path="/checkout" component={WebsitePayment} />
+      <Route path="/getting-started" component={LoginFlow} />
       <Route path="/terms-and-condtions" component={WebsiteTerms} />
       <Route path="/privacy-policy" component={WebsitePolicy} />
       <Route path="/contact" component={WebsiteContact} />
