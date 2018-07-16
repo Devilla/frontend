@@ -92,6 +92,7 @@ class WebsiteSignIn extends Component {
       isPasswordShown: !this.state.isPasswordShown
     });
   };
+
   componentDidMount() {
     let scrollElm = document.scrollingElement;
     scrollElm.scrollTop = 0;
@@ -130,7 +131,7 @@ class WebsiteSignIn extends Component {
                         <div className="row justify-content-center">
                           {error &&
                         <Alert bsStyle="warning" className="col-md-9 col-sm-9">
-                          <strong>{error}</strong>
+                          <strong dangerouslySetInnerHTML={{__html: error}} />
                         </Alert>
                           }
                           <div className="col-md-9 col-sm-8 ">

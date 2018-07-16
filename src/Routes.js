@@ -31,7 +31,8 @@ import {
   AffiliateRegister,
   Oauthpage,
   Oauthgenerate,
-  DashboardChannel
+  DashboardChannel,
+  ReviewRedirect,
 } from 'components';
 
 import {
@@ -64,6 +65,7 @@ const MyRoutes = ({routerHistory}) => (
       <Route path="/billing-details" component={BillingDetails} />
     </Route>
     <Route exact path="/connect/:provider" component={ConnectPage} />
+    <Route exact path="/integrations/:provider/callback/" component={ReviewRedirect} />
     <Route exact path="/verify/:code" component={VerificationPage} />
     <Route component={App}>
       <Route path="/" component={WebsiteHome} />

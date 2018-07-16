@@ -104,7 +104,7 @@ class DashboardContainer extends Component {
           </Row>
           <Row className="help-form-fields">
             <Radio name="radioGroup" inline="inline">
-              &nbsp;Something is not working
+              &nbsp;&nbsp;Something is not working
             </Radio>
           </Row>
           <Row className="help-form-fields">
@@ -126,14 +126,14 @@ class DashboardContainer extends Component {
       buttons: {
         left: [{
           text: 'Cancel',
-          className: 'warning',
+          className: 'success',
           action: function () {
             Popup.close();
           }
         }],
         right: [{
           text: 'Submit',
-          className: 'primary',
+          className: 'success',
           action: function () {
             Popup.close();
           }
