@@ -152,7 +152,7 @@ class forget extends Component{
                 </form>
                 <div className="pt-5 support">
                   <h4>Trouble logging in?</h4>
-                  <a href="javascript:;">Talk to our Support</a>
+                  <Link to="/contact"> Talk to our Support</Link>
                 </div>
               </Animated>
             </div>
