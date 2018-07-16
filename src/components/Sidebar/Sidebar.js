@@ -11,9 +11,9 @@ class Sidebar extends Component {
     this.state = {
       width: window.innerWidth,
       quotaPercentage:0,
-     
+
     };
-  
+
   }
 
 
@@ -49,14 +49,13 @@ class Sidebar extends Component {
               <Link to="/new">
                 <button
                   type="button"
-                  className="btn btn-pink waves-effect  ml-4 p-2  pt-0 pb-0  w-lg "
+                  className="btn btn-primary waves-effect  addnew-btn  ml-4 p-2  pt-0 pb-0  w-lg "
                 >
                   <i className="fi-plus "/>&nbsp;{' '}
                   <span className="h6">New</span>{' '}
                 </button>
               </Link>
             </div>
-            
             <ul className="metismenu mt-5" id="side-menu">
               {appRoutes.map((prop, key) => {
                 if (!prop.redirect)
@@ -82,7 +81,7 @@ class Sidebar extends Component {
               }
               <div className="custombottom ml-2 mb-5">
                 <hr/>
-                
+
                 <Col md={12} className="pt-4">
                   <div className="text-center">
                     <ProgressBar striped active bsStyle={quotaPercentage<60?'info':quotaPercentage<90?'warning':'danger'} now={quotaPercentage} key={1} />
@@ -90,11 +89,11 @@ class Sidebar extends Component {
                   <div className="ml-4 ">
                     <p className="textColor">{quotaPercentage} % consumed.</p>
                   </div>
-            
+
                   <hr/>
                 </Col>
               </div>
-             
+
             </ul>
           </div>
           <div className="clearfix" />

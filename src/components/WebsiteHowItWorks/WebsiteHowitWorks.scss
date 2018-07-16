@@ -1,0 +1,129 @@
+.websitehowitworks-container {
+    background-color: #fff !important;
+    .freebtn {
+        background-color: #097fff !important;
+    }
+    .slider-card {
+        padding-bottom: 15px;
+        background: #f3f0ee !important;
+        margin-bottom: 50px !important;
+    }
+    .slider-title {
+        font-size: 23px !important;
+        font-weight: 600 !important;
+    }
+    .slider-author {
+        font-size: 15px !important;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    .websitehowitworks-container {
+        span.typed-text {
+            position: relative;
+            top: -50px;
+        }
+        .feature__body {
+            & .lead {
+                font-size: 18px;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 993px) {
+    .websitehowitworks-container {
+        .typed-headline {
+            font-size: 14px !important;
+            & span.typed-text {
+                position: relative;
+                top: -50px;
+            }
+        }
+        .second-title {
+            font-size: 44px !important;
+        }
+        .feature {
+            & img {
+                position: relative;
+                left: 100px;
+            }
+        }
+        .feature__body {
+            font-size: 13px;
+            & .lead {
+                font-size: 13px;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .websitehowitworks-container {
+        .typed-headline {
+            h2{
+                font-size: 33px !important;
+                font-weight: 600 !important;
+            }
+         
+            & span.typed-text {
+                position: relative;
+                top: -30px;
+                font-weight: 600 !important;
+            }
+        }
+        .second-title {
+            font-size: 33px !important;
+            font-weight: 600 !important;
+            & + .lead {
+                font-size: 16px !important;
+            }
+        }
+        .feature {
+            & img {
+                position: relative;
+                left: 130px;
+                top: 0px;
+            }
+        }
+        .feature__body {
+            font-size: 16px;
+            position: relative;
+            left: -50px;
+            margin-top: 100px !important;
+            & .lead {
+                font-size: 16px;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 425px) {
+    .websitehowitworks-container {
+        .feature {
+            & img {
+                position: relative;
+                left: 130px;
+                top: 0px;
+            }
+        }
+        .feature__body {
+            margin-top: 10px !important;
+            & .lead {
+                font-size: 16px;
+            }
+        }
+    }
+}
+@media only screen and (max-width: 370px) {
+    .websitehowitworks-container {
+        .feature {
+            & img {
+                position: relative;
+                left: 100px;
+                top: 0px;
+            }
+        }
+  
+    }
+}

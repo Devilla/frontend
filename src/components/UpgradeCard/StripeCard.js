@@ -7,6 +7,7 @@ import { CardNumberElement,
 } from 'react-stripe-elements';
 import { Col, Row, HelpBlock } from 'react-bootstrap';
 import Button from 'components/Template/customButton';
+import './StripeCard.scss';
 
 const createOptions = (fontSize, padding) => {
   return {
@@ -64,52 +65,54 @@ class StripeCard extends Component {
   render() {
     const { currentState, fontSize, error } = this.props;
     return (
-      <form onSubmit={this.handleSubmit}>
-        <Row>
-          <Col md={12} className="mb-3 text-muted">
-            <label>
+      <div className="stripe-container">
+        <form onSubmit={this.handleSubmit}>
+          <Row>
+            <Col md={12} className="mb-3 text-muted">
+              <label>
               Card number
-              <CardNumberElement
-                {...createOptions(5)}
-              />
-            </label>
-          </Col>
-          <Col md={12} className="mb-3 text-muted">
-            <label>
+                <CardNumberElement
+                  {...createOptions(5)}
+                />
+              </label>
+            </Col>
+            <Col md={12} className="mb-3 text-muted">
+              <label>
               Expiration date
-              <CardExpiryElement
-                {...createOptions(fontSize)}
-              />
-            </label>
-          </Col>
-        </Row>
-        <Row>
-          <Col md={12} className="mb-3 text-muted">
-            <label>
+                <CardExpiryElement
+                  {...createOptions(fontSize)}
+                />
+              </label>
+            </Col>
+          </Row>
+          <Row>
+            <Col md={12} className="mb-3 text-muted">
+              <label>
               CVC
-              <CardCVCElement
-                {...createOptions(fontSize)}
-              />
-            </label>
-          </Col>
-          <Col md={12} className="mb-3 text-muted">
-            <label>
+                <CardCVCElement
+                  {...createOptions(fontSize)}
+                />
+              </label>
+            </Col>
+            <Col md={12} className="mb-3 text-muted">
+              <label>
               Postal code
-              <PostalCodeElement
-                {...createOptions(fontSize)}
-              />
-            </label>
-          </Col>
-          <HelpBlock>
-            <p className="website-error">{error}</p>
-          </HelpBlock>
-        </Row>
-        <Row className='upgrade-card-buttons'>
-          <div className='col-md-6 pull-right mr-2'>
-            <Button type='submit' icon='usd' bsStyle='primary' fill={true} >{currentState === 'upgrade' ? 'Update Card' : 'Make Payment'}</Button>
-          </div>
-        </Row>
-      </form>
+                <PostalCodeElement
+                  {...createOptions(fontSize)}
+                />
+              </label>
+            </Col>
+            <HelpBlock>
+              <p className="website-error">{error}</p>
+            </HelpBlock>
+          </Row>
+          <Row className='upgrade-card-buttons'>
+            <div className='col-md-6 pull-right mr-2'>
+              <Button type='submit' icon='usd' bsStyle='btn btn-primary cardpay-btn'  fill={true} >{currentState === 'upgrade' ? 'Update Card' : 'Make Payment'}</Button>
+            </div>
+          </Row>
+        </form>
+      </div>
     );
   }
 }

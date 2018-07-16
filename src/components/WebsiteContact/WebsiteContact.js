@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
-import { contactUs } from 'ducks/auth';
+import { validateEmail } from 'services/FormUtils';
+import { HelpBlock } from 'react-bootstrap';
+import { contactUs, clearContactError,contactError } from 'ducks/auth';
 import { toast, ToastContainer } from 'react-toastify';
 import './WebsiteContact.scss';
 
@@ -18,11 +19,15 @@ class WebsiteContact extends Component {
     this.state = {
       email: '',
       authEmail: false,
-      emailError: '',
+      errorEmail: '',
+      errorName: '',
+      errorMsg: '',
       name:'',
-      message:''
+      message:'',
+      isEmailValid: false
     };
   }
+
   componentDidMount() {
     let scrollElm = document.scrollingElement;
     scrollElm.scrollTop = 0;
@@ -33,7 +38,7 @@ class WebsiteContact extends Component {
     var Emailexpr = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
       /* eslint-disable */
     if (!Emailexpr.test(evt.target.value)) {
-      this.setState({emailError: 'Enter a valid Email id'});
+      this.setState({errorEmail: 'Enter a valid Email id'});
     } else {
       const data = {
         'email': this.state.email
@@ -41,8 +46,34 @@ class WebsiteContact extends Component {
     }
   }
 
+  checkEmailBlur = (event) => {
+    const value = event.target.value;
+    const isEmailValid = validateEmail(this.refs.email.value);
+    this.setState({ isEmailValid: isEmailValid});
+    if (!value)
+      this.setState({ errorEmail: 'Email id required' });
+    if (!isEmailValid)
+      this.setState({ errorEmail: 'Enter a valid Email id' });
+  }
+
+  checkNameBlur = (event)=> {
+    const value = event.target.value;
+    (value === '')?  this.setState({ errorName: 'Enter your Name' }) : (
+      (isNaN(value)) ? this.setState({errorName: ''}) : this.setState({ errorName: 'Enter a valid Name' })
+    );
+  }
+
+  checkMsgBlur = (event)=> {
+    const value = event.target.value;
+    (value === '')?  this.setState({ errorMsg: 'Input your query' }) : '' ;
+  }
+
+
   handleStateChange = (target, value) => {
-    this.setState({[target]: value});
+    const isEmailValid = validateEmail(this.refs.email.value);
+    this.setState({[target]: value ,isEmailValid});
+    if (isEmailValid)
+      this.setState({ errorEmail: '' });
   }
 
   handleSubmit = (event) => {
@@ -53,13 +84,17 @@ class WebsiteContact extends Component {
       'message': this.state.message
     };
     this.props.contactUs(data);
-    this.setState({name: '', email: '', message: '', emailError: ''});
+    this.props.clearContactError();
+    this.props.contactError(data);
+
+    this.setState({name: '', email: '', message: '', errorEmail: '',errorName:'',errorMsg:''});
     if (! toast.isActive(this.toastId)) {
       this.toastId = toast.info('Thankyou for your Response! ', toastConfig);
     }
   }
 
   render() {
+    const { name, email, message, errorEmail,errorName, errorMsg ,isEmailValid} = this.state;
     return (
       <div className="websitecontact-container">
       <div className="main-container">
@@ -68,7 +103,7 @@ class WebsiteContact extends Component {
             <div className="row">
               <div className="col-md-12">
                 <h2>Contact us</h2>
-                <div className="h3 typed-text typed-text--cursor color--primary"> We sit round the clock <span className="makeitbold">just for you</span> </div>
+                <div className="h3 typed-text typed-text--cursor color--primary"> We sit round the clock <span className="makeitbold">&nbsp;just for you</span> </div>
               </div>
             </div>
           </div>
@@ -89,16 +124,51 @@ class WebsiteContact extends Component {
               <div className="col-md-6">
                 <form className="form-email row" data-name="Contactus Form" >
                   <div className="col-md-12">
-                    <input type="text" name="name" placeholder="Name" className="validate-required" onChange={(e) => this.handleStateChange(e.target.name, e.target.value)}  />
+                    <input
+                      type="text"
+                      name="name"
+                      placeholder="Name"
+                      className="validate-required"
+                      value={name}
+                      onBlur={this.checkNameBlur} onChange={(e) => this.handleStateChange(e.target.name, e.target.value)}
+                    />
+                    <HelpBlock>
+                      <p className="website-error">{errorName}</p>
+                    </HelpBlock>
                   </div>
                   <div className="col-md-12">
-                    <input type="email" name="email" placeholder="Email Address" className="validate-required validate-email" onBlur={this.checkEmailBlur} onChange={(e) => this.handleStateChange(e.target.name, e.target.value)} />
+                    <input
+                      type="email"
+                      name="email"
+                      ref="email"
+                      placeholder="Email Address"
+                      value={email}
+                      className="validate-required validate-email"
+                      onBlur={this.checkEmailBlur} onChange={(e) => this.handleStateChange(e.target.name, e.target.value)}
+                    />
+                    <HelpBlock>
+                      <p className="website-error">{errorEmail}</p>
+                    </HelpBlock>
                   </div>
                   <div className="col-md-12">
-                    <textarea rows="4" name="message" placeholder="Leave us a message" className="validate-required" onChange={(e) => this.handleStateChange(e.target.name, e.target.value)}></textarea>
+                    <textarea
+                      rows="4"
+                      name="message"
+                      placeholder="Leave us a message"
+                      className="validate-required"
+                      value={message}
+                      onBlur={this.checkMsgBlur}
+                      onChange={(e) => this.handleStateChange(e.target.name, e.target.value)}
+                    >
+                    <HelpBlock>
+                      <p className="website-error">{errorMsg}</p>
+                    </HelpBlock>
+                    </textarea>
                   </div>
 
-                  <button type="submit" className="btn btn--primary type--uppercase" onClick={this.handleSubmit}>Send Enquiry</button>
+                  <button type="submit" className="btn btn--primary type--uppercase"
+                    onClick={this.handleSubmit}
+                    disabled={!isEmailValid} >Send Enquiry</button>
                   <ToastContainer  autoClose={8000}/>
                 </form>
               </div>
@@ -116,7 +186,9 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
-  contactUs
+  contactUs,
+  contactError,
+  clearContactError
 };
 
 export default connect(null, mapDispatchToProps)(WebsiteContact);

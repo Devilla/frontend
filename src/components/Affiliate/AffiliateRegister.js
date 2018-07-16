@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { validateEmail } from 'services/FormUtils';
 import { HelpBlock } from 'react-bootstrap';
-import { affiliate, clearAffiliateError } from 'ducks/auth';
+import { affiliate,affiliateError, clearAffiliateError } from 'ducks/auth';
 import { toast,ToastContainer } from 'react-toastify';
 import './affiliateregister.scss';
 
@@ -24,15 +24,7 @@ class AffiliateRegister extends Component {
     };
   }
 
-  checkEmailBlur = (event) => {
-    const value = event.target.value;
-    const isEmailValid = validateEmail(value);
-    this.setState({ isEmailValid });
-    if (!value)
-      this.setState({ errorEmail: 'Email id required' });
-    else if (!isEmailValid)
-      this.setState({ errorEmail: 'Enter a valid Email id' });
-  }
+
 
   handleEmailChange = (event) => {
     const { name, value } = event.target;
@@ -40,12 +32,6 @@ class AffiliateRegister extends Component {
     this.setState({ [name]: value, isEmailValid, errorEmail: '' });
   };
 
-  checkNameBlur = (event)=> {
-    const value = event.target.value;
-    (value === '')?  this.setState({ errorName: 'Enter your Name' }) : (
-      (isNaN(value)) ? this.setState({errorName: ''}) : this.setState({ errorName: 'Enter a valid Name' })
-    );
-  }
 
   handleNameChange = (event) => {
     const { name, value } = event.target;
@@ -60,6 +46,7 @@ class AffiliateRegister extends Component {
     };
     this.props.affiliate(data);
     this.props.clearAffiliateError();
+    this.props.affiliateError(data);
     this.setState({name: '', email: '', emailError: ''});
 
     if (!toast.isActive(this.toastId)) {
@@ -87,7 +74,6 @@ class AffiliateRegister extends Component {
                         name="name"
                         placeholder="First / Last Name"
                         className="ml-0 validate-required"
-                        onBlur={this.checkNameBlur}
                         onChange={this.handleNameChange}
                       />
                       <HelpBlock>
@@ -99,7 +85,6 @@ class AffiliateRegister extends Component {
                         name="email"
                         ref="email"
                         className="field w-input"
-                        onBlur={this.checkEmailBlur}
                         onChange={this.handleEmailChange}
                         placeholder="Johndoe@example.com"
                         type="email"
@@ -135,6 +120,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
   affiliate,
+  affiliateError,
   clearAffiliateError
 };
 

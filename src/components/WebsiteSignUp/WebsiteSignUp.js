@@ -128,11 +128,11 @@ class WebsiteSignUp extends Component {
       : (
         <div className="signup-container">
           <div className='main-container'>
-            <section className='bg--secondary'>
+            <section className="bg">
               <div className='container text-center'>
                 <div className='row '>
                   <div className='col-sm-12 col-md-7 col-lg-6 '>
-                    <span className="signuptitle">Your first step towards conversions.</span>
+                    <span className="signuptitle">Start Conversions!</span>
                     <div>
                       <p className="lead">
                         <span className="sub-up-title">Already have an account?&nbsp;
@@ -143,7 +143,7 @@ class WebsiteSignUp extends Component {
                       <form className="mt-0">
                         <div className='row justify-content-center'>
                           {error &&
-                        <Alert bsStyle='warning'>
+                        <Alert bsStyle='warning' className="col-md-9 col-sm-9">
                           <strong>{error}</strong>
                         </Alert>
                           }
@@ -154,7 +154,7 @@ class WebsiteSignUp extends Component {
                               onBlur={(e) => !e.target.value?this.setState({errorUsername: 'Username required'}):null}
                               placeholder='Your Name' />
                             <HelpBlock>
-                              <p className='website-error'>{errorUsername}</p>
+                              <p className="website-error">{errorUsername}</p>
                             </HelpBlock>
                           </div>
                           <div className='col-md-9 col-sm-8'>
@@ -166,7 +166,7 @@ class WebsiteSignUp extends Component {
                               placeholder='Email Address'
                               type='email' />
                             <HelpBlock>
-                              <p className='website-error'>{errorEmail}</p>
+                              <p className="website-error">{errorEmail}</p>
                             </HelpBlock>
                           </div>
                           <div className='col-md-9 col-sm-8'>
@@ -179,7 +179,7 @@ class WebsiteSignUp extends Component {
                               placeholder='Password'
                             />
                             <HelpBlock>
-                              <p className='website-error'>{errorPassword}</p>
+                              <p className="website-error">{errorPassword}</p>
                             </HelpBlock>
                           </div>
                           <div className='col-md-9 col-sm-8'>
@@ -191,7 +191,7 @@ class WebsiteSignUp extends Component {
                               type={isPasswordShown? 'text': 'password'}
                               placeholder='Confirm Password' />
                             <HelpBlock>
-                              <p className='website-error'>{errorConfirmPassword}</p>
+                              <p className="website-error">{errorConfirmPassword}</p>
                             </HelpBlock>
                           </div>
                           <div className='frmcntl col-md-9 col-sm-8'>
@@ -261,7 +261,7 @@ class WebsiteSignUp extends Component {
           </Animated>
         </div>
       </div>
-  
+
     );
   }
 }

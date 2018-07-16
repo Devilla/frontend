@@ -1,91 +1,108 @@
 .website-app {
-
-    .signin-container {
-        .website-error {
-            padding: 10px 0px 0px 5px !important;
-            color: rgb(228, 98, 98);
-        }
-        .signintitle {
-            font-size: 50px;
-          }
-
-     
-          .socio-link {
-              margin-top: 16px !important;
-          }
-          input {
-            font-family: Verdana, Geneva, Tahoma, sans-serif;
-          }
+  .signin-container {
+    .website-error {
+      padding: 10px 0px 0px 5px !important;
+      color: rgb(228, 98, 98);
+    }
+    .alert-warning {
+      background-color: #f2dede;
+      border-color: #ebccd1;
+      color: #a94442;
+    }
+    .signintitle {
+      font-size: 50px;
     }
 
+    .sub-in-title {
+      font-size: 16px !important;
+    }
+
+    .vristrue {
+      margin-left: 50px;
+      position: relative;
+      top: 190px;
+    }
+
+    input {
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      &::placeholder {
+        font-size: 14px !important;
+      }
+    }
+
+    .loginfrm {
+      margin-top: 0px;
+    }
+  }
 }
+
 @media only screen and (max-width: 575px) {
-    .signin-container {
-        input {
-            max-width: 275px;
-        }
+  .signin-container {
+    input {
+      max-width: 275px;
     }
+  }
 }
+
 @media only screen and (max-width: 428px) {
-    .signin-container {
-        .sub-in-title {
-            font-size: 18px !important;
-        }
+  .signin-container {
+    .sub-in-title {
+      font-size: 18px !important;
     }
+  }
 }
+
 @media only screen and (max-width: 375px) {
-    .signin-container {
-        .signintitle {
-            font-size: 40px !important;
-        }
-        .sub-in-title {
-            font-size: 15px !important;
-        }
+  .signin-container {
+    .signintitle {
+      font-size: 40px !important;
     }
+    .sub-in-title {
+      font-size: 15px !important;
+    }
+  }
 }
+
 @media only screen and (max-width: 360px) {
-    .signin-container {
-        .socio-link {
-         margin : 100px 0 0 15px;
-         min-height: 160px;
-         border-top: 1px solid #c0c0c0;
-         .link-fb {
-            font-size: 13.7px;
-        }
-        .link-go {
-            font-size: 15px;
-        }
-        }
-     
+  .signin-container {
+    .socio-link {
+      margin : 100px 0 0 15px;
+      min-height: 160px;
+      border-top: 1px solid #c0c0c0;
+      .link-fb {
+        font-size: 13.7px;
+      }
+      .link-go {
+        font-size: 15px;
+      }
     }
+  }
 }
+
 @media only screen and (max-width: 342px) {
-    .signin-container {
-        .socio-link {
-            margin-right:20px;
-            .link-fb {
-                font-size: 13.7px;
-            }
-            .link-go {
-                font-size: 15px;
-            }
-        }
-      
-     
+  .signin-container {
+    .socio-link {
+      margin-right:20px;
+      .link-fb {
+        font-size: 13.7px;
+      }
+      .link-go {
+        font-size: 15px;
+      }
     }
+  }
 }
+
 @media only screen and (max-width: 320px) {
-    .signin-container {
-        .socio-link {
-            margin-right:30px;
-            .link-fb {
-                font-size: 12.7px;
-            }
-            .link-go {
-                font-size: 14px;
-            }
-        }
-      
-     
+  .signin-container {
+    .socio-link {
+      margin-right:30px;
+      .link-fb {
+        font-size: 12.7px;
+      }
+      .link-go {
+        font-size: 14px;
+      }
     }
+  }
 }

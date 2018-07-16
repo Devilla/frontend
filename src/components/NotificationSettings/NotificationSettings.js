@@ -58,24 +58,31 @@ class Notifications extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      // notification: '',
       configuration: {},
       activity: true,
+      showpopupfield: false,
       notificationPanelStyle: notificationPanelStyleDefault,
-      contentText: 'Company Name ',
+      contentText: 'us',
       visitorText: 'people',
       notificationUrl: '',
       image: '',
       notifications: [],
       toggleTextBox: false,
-      toggleMap: true
+      toggleMap: true,
+      popupName: ''
     };
+  }
+
+  showpopup = (channelName) => {
+    this.setState({ popupName: channelName });
   }
 
   componentWillMount() {
     this.props.fetchNotification();
     this.props.fetchConfiguration(this.props.campaign._id);
+
   }
+
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.configuration != this.props.configuration) {
@@ -177,10 +184,12 @@ class Notifications extends Component {
     this.props.setActiveState(1);
   }
 
-  configure = (notification) => {
+  configure = (notification, showpopup) => {
     this.props.fetchCampaignConfiguration(this.props.campaign._id, notification._id);
     this.props.setNotification(notification);
     // this.setState({ notification: notification });
+    this.setState({ showpopupfield: !showpopup });
+
   }
 
   saveConfiguration = (activity, id, configId) => {
@@ -215,7 +224,6 @@ class Notifications extends Component {
   }
 
   render() {
-
     const { notification, configurations, createSuccess, campaign, profile } = this.props;
     return (
       <div className="notification-settings">
@@ -236,6 +244,7 @@ class Notifications extends Component {
               <NotificationConfigure
                 notification={notification}
                 profile={profile}
+                showpopupfield={this.state.showpopupfield}
                 handleContentChange={this.handleContentChange}
                 setDefaultPanel={this.setDefaultPanel}
                 handleActivityChange={this.handleActivityChange}
@@ -243,6 +252,9 @@ class Notifications extends Component {
                 handleClickableNotification={this.handleClickableNotification}
                 saveConfiguration={this.saveConfiguration}
                 backConfiguration={this.backConfiguration}
+                showpopup={this.showpopup}
+                popupName={this.state.popupName}
+                campaign={this.props.campaign}
                 {...this.state}
               />
             </Row>
@@ -251,10 +263,10 @@ class Notifications extends Component {
         {!this.props.notification &&
           <div className="pt-5 mt-5">
             <div className="float-left">
-              <button type="button" className="btn btn-custom  waves-light waves-effect number " onClick={this.handleBackState}><i className="icon-arrow-left pr-2"></i> Back</button>
+              <button type="button" className="btn btn-primary  waves-light waves-effect cardback-btn " onClick={this.handleBackState}><i className="icon-arrow-left pr-2"></i> Back</button>
             </div>
             <div className="ml-2 float-right">
-              <button type="button" className="btn btn-custom  waves-light waves-effect number ml-2 pl-4 pr-4" onClick={this.handleNextState}>Next <i className="icon-arrow-right pl-2"></i> </button>
+              <button type="button" className="btn btn-primary  waves-light waves-effect cardnext-btn ml-2 pl-4 pr-3" onClick={this.handleNextState}>Next <i className="icon-arrow-right pl-2"></i> </button>
             </div>
             <div className="clearfix"></div>
           </div>

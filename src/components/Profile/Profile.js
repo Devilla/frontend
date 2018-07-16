@@ -29,6 +29,7 @@ class Profile extends Component {
       phoneNumber: '',
       companyName: '',
       profileState: 'edit',
+      image: '',
       countryList: [],
       savedtext: 'Save Profile'
     };
@@ -55,7 +56,8 @@ class Profile extends Component {
       country: profile.country,
       address: profile.address,
       phoneNumber: profile.phoneNumber,
-      companyName: profile.companyName
+      companyName: profile.companyName,
+      image: profile.image
     });
   }
 
@@ -70,10 +72,11 @@ class Profile extends Component {
       country,
       address,
       phoneNumber,
-      companyName
+      companyName,
+      image
     } = this.state;
     let profile = {
-      id: this.props.profile? this.props.profile._idb : null,
+      id: this.props.profile? this.props.profile._id : null,
       firstName: firstName,
       lastName: lastName,
       states: states,
@@ -81,7 +84,8 @@ class Profile extends Component {
       country: country,
       address: address,
       phoneNumber: phoneNumber,
-      companyName: companyName
+      companyName: companyName,
+      image: image
     };
     return this.props.updateProfile(profile);
   }
@@ -105,7 +109,6 @@ class Profile extends Component {
     ));
   }
 
-
   getStateRows = () => {
     let countryList = this.state.countryList.filter(country => country.CountryName === this.state.country);
     return countryList.map(country => {
@@ -116,7 +119,6 @@ class Profile extends Component {
       });
     });
   }
-
 
   getCityRows = () => {
     let countryList = this.state.countryList.filter(country => country.CountryName === this.state.country);
@@ -130,10 +132,9 @@ class Profile extends Component {
     });
   }
 
-
   render() {
-    const  profile    = this.state;
-
+    const profile = this.state;
+    const { user } = this.props;
     return (
       <div className="content fill profile-container">
         <Grid fluid={true}>
@@ -141,7 +142,7 @@ class Profile extends Component {
             <div className="profile-user-box card-box" >
               <Row>
                 <Col sm={2}>
-                  <span className="pull-left mr-3"><img src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" alt="User profile" className="thumb-lg rounded-circle" /></span>
+                  <span className="pull-left mr-3"><img src={profile.image?profile.image:'https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg'} alt="User profile" className="thumb-lg rounded-circle" /></span>
                   <div className=" media-body text-white">
                     <h4 className="mt-1 mb-1 font-18">Username</h4>
                     <p className="text-light mb-0">Country</p>
@@ -187,13 +188,13 @@ class Profile extends Component {
                       <Col md={6}>
                         <span className="text-muted font-13 p"><strong>Phone :</strong> </span>
                         <FormGroup>
-                          <FormControl type="text" value={profile.phoneNumber} autoComplete='tel-national' placeholder="Phone Number" id="phoneNumber" onChange={(e) => this.handleStateChange(e)} />
+                          <FormControl type="number" value={profile.phoneNumber} autoComplete='tel-national' placeholder="Phone Number" id="phoneNumber" onChange={(e) => this.handleStateChange(e)} />
                         </FormGroup>
                       </Col>
                       <Col md={6}>
                         <span className="text-muted font-13 p"><strong>Email :</strong> </span>
                         <FormGroup>
-                          <FormControl type="text" value={profile.email} autoComplete='email' placeholder="Email Address" id="email" onChange={(e) => this.handleStateChange(e)} />
+                          <FormControl type="text" value={user.email} autoComplete='email' placeholder="Email Address" id="email" disabled />
                         </FormGroup>
                       </Col>
                     </Row>
@@ -248,7 +249,7 @@ class Profile extends Component {
                           <i className="mdi mdi-account-settings-variant mr-1"></i>  {this.props.loading ? ( this.state.savedtext
                           )
                             : 'Save Profile'}
-                          
+
                         </button>
                       </div>
                     </Col>

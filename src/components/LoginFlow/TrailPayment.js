@@ -36,7 +36,7 @@ const TrailPayment = ({
         <div className="flow-wrapper">
           <Animated className="leftwrap center" animationIn="fadeIn" animationOut="fadeOut" isVisible={true}>
             <div className="loginfrm">
-              <h3 className="dashed">Confirm you account</h3>
+              <h3 className="dashed">Confirm your account</h3>
               <div className="section-divider-line"></div>
               <div className="frmcntl auth-price-list">
                 <PricePage couponDetails={couponDetails} paymentPage={true} selectedPlan={selectedPlan} handleCheckChange={handleCheckChange}/>

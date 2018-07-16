@@ -1,170 +1,151 @@
-import React, {Component} from 'react';
-import {Animated} from 'react-animated-css';
-import $ from 'jquery';
-import Ionicon from 'react-ionicons';
-import { css } from 'glamor';
-import {Row, Col} from 'react-bootstrap';
-import axios from 'axios';
+import React, { Component } from 'react';
+import { Animated } from 'react-animated-css';
+import { Row, Col, Alert } from 'react-bootstrap';
 import { toast } from 'react-toastify';
+import { connect } from 'react-redux';
+import { loginSuccess } from 'ducks/auth';
+import { load, loaded } from 'ducks/loading';
+import { base } from 'services/api';
+import { storeToken } from 'services/Request';
+import { browserHistory } from 'react-router';
 
-function validate(newPassword,verifyPassword, authEmail) {
-  return {
-    newPassword: newPassword.length === 0,
-    verifyPassword: verifyPassword.length === 0,
-    authEmail: authEmail===false
-  };
-}
+const toastConfig = {
+  position: toast.POSITION.BOTTOM_LEFT,
+  autoClose: 2000,
+  className: 'toast-style'
+};
 
-export default class forget extends Component{
+class forget extends Component{
   constructor () {
     super();
     this.state = {
-      newPassword: '',
-      verifyPassword: '',
-      authEmail: false
+      password: '',
+      passwordConfirmation: '',
+      passwordError: '',
+      commonError: ''
     };
-
   }
+
   componentDidMount(){
     window.scrollTo(0,0);
   }
 
-  handlePasswordChange(evt){
-    this.setState({newPassword:  evt.target.value});
-  }
-
-  handlePasswordverifyChange(evt){
-    this.setState({verifyPassword:  evt.target.value});
-  }
-
-  handlePasswordAuth(evt){
-    if(evt.target.value == ''){
-      $('#'+evt.target.id).addClass('has-error');
-      toast('Enter your password', {
-        position: toast.POSITION.BOTTOM_LEFT,
-        className: css({
-          background: '#dd5258',
-          color: '#fff'
-        }),
-        autoClose: 2000
-      });
-    }else
-    {
-      $('#'+evt.target.id).removeClass('has-error');
-    }
-  }
-
-  handlePasswordverifyAuth(evt){
-    if(evt.target.value == ''){
-      $('#'+evt.target.id).addClass('has-error');
-      toast('Enter password again to verify', {
-        position: toast.POSITION.BOTTOM_LEFT,
-        className: css({
-          background: '#dd5258',
-          color: '#fff'
-        }),
-        autoClose: 2000
-      });
-    }else
-    {
-      $('#'+evt.target.id).removeClass('has-error');
-      this.setState({
-        authEmail: true
-      });
-
-    }
-  }
-
-  handleSubmit(evt){
-    evt.preventDefault();
-    var token = document.location.href.split('token=')[1];
-    const data = {
-      'newPassword' :  this.state.newPassword,
-      'verifyPassword': this.state.verifyPassword,
-      'token': token
-
-    };
-
-    let urls;
-    if (process.env.NODE_ENV === 'production')
-      urls = `${process.env.REACT_APP_PRODUCTION_URL}auth/reset_password`;
-    else if(process.env.NODE_ENV === 'staging')
-      urls = `${process.env.REACT_APP_STAGING_URL}auth/reset_password`;
-    else
-      urls = `${process.env.REACT_APP_DEVELOPMENT_URL}auth/reset_password`;
-
-    axios.post(urls ,data).then(function(response){
-      toast.info(response['data']['message'], {
-        position: toast.POSITION.BOTTOM_CENTER,
-        className: css({
-          background: response['data']['background'],
-          color: '#fff'
-        })
-      });
-    }) .catch(function (error) {
-      console.log(error);
-      toast.info('Something went wrong..', {
-        position: toast.POSITION.BOTTOM_CENTER
-      });
-    });
-
+  handleStateChange = (evt) => {
     this.setState({
-      newPassword:'',
-      verifyPassword: ''
+      [evt.target.id]: evt.target.value,
+      passwordError: '',
+      commonError: ''
     });
+  }
+
+  handlePasswordAuth = (evt) => {
+    if(evt.target.value == '')
+      this.setState({passwordError: 'Enter your password'});
+  }
+
+  handlePasswordverifyAuth = (evt) => {
+    if(evt.target.value == '')
+      this.setState({commonError: 'Verification password required'});
+  }
+
+  handleSubmit = (evt) => {
+    evt.preventDefault();
+    this.props.load();
+    const { password, passwordConfirmation } = this.state;
+    const code = this.props.location.query.code;
+    if (!password) {
+      return this.setState({passwordError: 'Enter new password'});
+    } else if(!passwordConfirmation) {
+      return this.setState({commonError: 'Enter verification password'});
+    } else if(!code) {
+      return this.setState({commonError: 'Invalid link'});
+    } else {
+      const data = {
+        'password' :  this.state.password,
+        'passwordConfirmation': this.state.passwordConfirmation,
+        'code': code
+      };
+
+      fetch(base + 'auth/reset-password', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      })
+      .then(res => res.json())
+      .then(res => {
+        if(res.user && res.jwt) {
+          storeToken(res.jwt)
+          this.props.loginSuccess(res);
+          browserHistory.push('/dashboard');
+        } else if(res.error)
+          toast.info(res.message, toastConfig);
+      });
+
+      this.setState({
+        password:'',
+        passwordConfirmation: ''
+      });
+    }
+    this.props.loaded();
   }
 
   render(){
-    const errors = validate(
-      this.state.newPassword,
-      this.state.verifyPassword,
-      this.state.authEmail
-    );
-    const isDisabled = Object.keys(errors).some(x => errors[x]);
-    const verifyCallback = response => console.log(response);
+    const { password, passwordConfirmation, passwordError, commonError } = this.state;
     return(
       <div>
         <div className="authpage section innerpage">
           <div className="container">
             <div className="wrapper">
               <Animated className="leftwrap center" animationIn="fadeIn" animationOut="fadeOut" isVisible={true}>
-                <form onSubmit={this.handleSubmit.bind(this)} method="POST" data-name="Login Form"  className="loginfrm">
+                <form onSubmit={this.handleSubmit} method="POST" data-name="Login Form"  className="loginfrm">
                   <h3 className="pt-5 dashed">Reset your password</h3>
                   <div className="section-divider-line"><hr/></div>
                   <div className="pt-2"></div>
-                  <Row className="pt-4 mt-3">
+                  <Row className="">
                     <Col md={4}>
                       <div className="frmcntl">
                         <input className="field w-input"
-                          id="newPassword"
-                          name="newPassword"
+                          id="password"
+                          name="password"
                           placeholder="New Password"
-                          value={this.state.newPassword}
-                          onBlur={this.handlePasswordAuth.bind(this)}
-                          onChange = {this.handlePasswordChange.bind(this)}
+                          value={password}
+                          onBlur={this.handlePasswordAuth}
+                          onChange = {this.handleStateChange}
                           type="password" />
+                          {passwordError &&
+                            <Alert bsStyle="warning">
+                              <strong>{passwordError}</strong>
+                            </Alert>
+                          }
                       </div>
                     </Col><Col md={8}></Col>
-                  </Row >
-                  <Row className="pt-4">
+                  </Row>
+                  <Row className="pt-2">
                     <Col md={4}>
                       <div className="frmcntl">
                         <input className="field w-input"
-                          id="verifyPassword"
-                          name="verifyPassword"
+                          id="passwordConfirmation"
+                          name="passwordConfirmation"
                           placeholder="Verify New Password"
-                          value={this.state.verifyPassword}
-                          onBlur={this.handlePasswordverifyAuth.bind(this)}
-                          onChange = {this.handlePasswordverifyChange.bind(this)}
+                          value={passwordConfirmation}
+                          onBlur={this.handlePasswordverifyAuth}
+                          onChange = {this.handleStateChange}
                           type="password" />
+                          {commonError &&
+                            <Alert bsStyle="warning">
+                              <strong>{commonError}</strong>
+                            </Alert>
+                          }
                       </div></Col><Col md={8}></Col>
                   </Row>
                   <Row className="pt-4 pb-5">
                     <Col md={4}>
                       <div className="frmcntl">
-                        <input className="button submit-button w-button"
+                        <input className="btn btn--primary color"
                           type="submit"
-                          disabled={isDisabled}
                           value="Reset Password Now" />
                       </div></Col><Col md={8}></Col>
                   </Row>
@@ -181,3 +162,11 @@ export default class forget extends Component{
     );
   }
 }
+
+const mapDispatchToProps = {
+  loginSuccess,
+  load,
+  loaded
+};
+
+export default connect(null, mapDispatchToProps)(forget);

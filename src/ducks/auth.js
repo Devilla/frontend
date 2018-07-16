@@ -10,10 +10,15 @@ export const FETCH_USER_SUCCESS = action('FETCH_USER_SUCCESS');
 export const FETCH_ROLES_SUCCESS = action('FETCH_ROLES_SUCCESS');
 export const UPDATE_USER = action('UPDATE_USER');
 
+export const GDPR_FORM = action('GDPR_FORM');
+export const GDPR_FORM_ERROR = action('GDPR_FORM_ERROR');
+
 export const FORGOT_PASSWORD = action('FORGOT_PASSWORD');
 export const FORGOT_PASSWORD_ERROR = action('FORGOT_PASSWORD_ERROR');
 export const CLEAR_FORGOT_PASSWORD_ERROR = action('CLEAR_FORGOT_PASSWORD_ERROR');
 export const SOCIAL_LOGIN = action('SOCIAL_LOGIN');
+
+
 export const VERIFY_USER = action('VERIFY_USER');
 export const VALIDATE_COUPON = action('VALIDATE_COUPON');
 export const COUPON_SUCCESS = action('COUPON_SUCCESS');
@@ -50,10 +55,15 @@ export const demo = (data) => ({ type: DEMO, data});
 export const demoError = (data) => ({ type: DEMO_ERROR, data });
 export const clearDemoError = () => ({ type: CLEAR_DEMO_ERROR });
 
+export const gdprform = (data) => ({ type: GDPR_FORM, data });
+export const gdprformError = (error) => ({ type: GDPR_FORM_ERROR, error });
+
 export const forgotPassword = (data) => ({ type: FORGOT_PASSWORD, data });
 export const forgotPasswordError = (error) => ({ type: FORGOT_PASSWORD_ERROR, error });
 export const clearForgotPasswordError = () => ({ type: CLEAR_FORGOT_PASSWORD_ERROR });
 export const socialLogin = (url) => ({ type: SOCIAL_LOGIN, url });
+
+
 export const verifyUser = (code) => ({ type: VERIFY_USER, code });
 export const validateCoupon = (coupon) => ({ type: VALIDATE_COUPON, coupon });
 export const couponSuccess = (coupon) => ({ type: COUPON_SUCCESS, coupon });
@@ -69,7 +79,8 @@ const initialState = fromJS({
   coupon: '',
   couponError: '',
   forgetError: '',
-  affiliateError: ''
+  affiliateError: '',
+  gdprformError:''
 });
 
 const auth = (state = initialState, action) => {
@@ -102,6 +113,9 @@ const auth = (state = initialState, action) => {
       return state.set('demoError', action.error);
     case CLEAR_DEMO_ERROR:
       return state.set('demoError', '');
+    case GDPR_FORM_ERROR:
+      return state.set('gdprformError', '');
+
     default:
       return state;
   }

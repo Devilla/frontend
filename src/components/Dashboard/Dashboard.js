@@ -4,10 +4,13 @@ import { browserHistory } from 'react-router';
 import { Row, Col } from 'react-bootstrap';
 import Moment from 'moment';
 import { extendMoment } from 'moment-range';
-import { fetchCampaignInfo, successCampaign } from 'ducks/campaign';
+import { fetchCampaignInfo, successCampaign , fetchCampaign } from 'ducks/campaign';
 import './Dashboard.scss';
 import Card from './Card';
 import ReactChartJs from 'react-chartjs';
+import { GeoChart, Timeline }  from 'react-chartkick';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
 var LineChart = ReactChartJs.Line;
 let moment = extendMoment(Moment);
@@ -18,13 +21,18 @@ class Dashboard extends Component {
     this.state = {
       render: false,
       arrs: [],
-      daysClicked: ''
+      daysClicked: '',
+      startDate:  moment(),
+      datePicker: ''
     };
     this.handleRouteChange = this.handleRouteChange.bind(this);
   }
+
   componentWillMount() {
     this.props.fetchCampaignInfo();
+    this.props.fetchCampaign();
   }
+
   createLegend(json) {
     var legend = [];
     for (var i = 0; i < json['names'].length; i++) {
@@ -55,10 +63,10 @@ class Dashboard extends Component {
         data: [0, 0, 0, 0, 0, 0, 0]
       };
       this.props.campaignInfo.uniqueUsers.map(user => {
-        user.aggregations.users.buckets.map(bucket => {
+        (user && user.aggregations) ? user.aggregations.users.buckets.map(bucket => {
           dataContent['label'] = Moment(bucket.key_as_string).format('LL');
           dataContent['data'][Moment(bucket.key_as_string).day()] = bucket.visitors.sum_other_doc_count;
-        });
+        }) : '';
         dataSet.push(dataContent);
       });
       return dataSet;
@@ -80,7 +88,7 @@ class Dashboard extends Component {
     let start, end , range1, acc  ;
     switch(this.state.daysClicked)  {
       case '7' :
-        start  = moment().subtract(7,'d').format('YYYY-MM-DD');
+        start  = moment().subtract(6,'d').format('YYYY-MM-DD');
         end    = new Date();
         range1 = moment.range(start, end);
         acc = Array.from(range1.by('day', { step: 1 }));
@@ -126,7 +134,7 @@ class Dashboard extends Component {
 
 
       default :
-        start  = moment().subtract(7,'d').format('YYYY-MM-DD');
+        start  = moment().subtract(6,'d').format('YYYY-MM-DD');
         end    = new Date();
         range1 = moment.range(start, end);
         acc = Array.from(range1.by('day', { step: 1 }));
@@ -136,9 +144,82 @@ class Dashboard extends Component {
     return acc;
   }
 
-  render() {
-    const { campaignInfo,profile } = this.props;
+  renderCardBox = (content) => {
+    return <div className="col-sm-12 col-lg-6 col-xl-3 box pr-0 cards">
+      <div>
+        <div className="text-center mt-4 mb-4">
+          <div className="col-md-10 h-50 card-content-width">
+            {content}
+          </div>
+        </div>
+      </div>
+    </div>;
+  }
 
+  getNotificationRows = () => {
+
+    return this.props.campaigns ? this.props.campaigns.map((campaign, i) => (
+      <tr className="campaign-td" key={campaign._id} onClick={(e) => this.handleRouteChange(e, campaign)}>
+        <th scope="row">{i + 1}</th>
+        <td>/{campaign.campaignName}</td>
+        <td>{campaign.websiteUrl}</td>
+        <td>{moment(campaign.createdAt).format('MM/DD/YYYY')}</td>
+      </tr>
+    ))
+      :
+      <tr></tr>;
+  }
+
+  handleChange = (date) => {
+    this.setState({
+      startDate : date
+    });
+  }
+
+  renderDayOption = (value) => {
+    return (
+      <select className="form-control text-muted" onChange={(e) =>  this.setState({daysClicked:e.target.value})}>
+        <option key={7} id={value} value={'7'} onClick={() => this.hide()}  >
+          7 days
+        </option>
+        <option key={14} id={value} value={'14'} onClick={() => this.hide()}  >
+          14 days
+        </option>
+        <option key={28} id={value} value={'28'}  onClick={() => this.hide()} >
+          28 days
+        </option>
+        <option key={'today'} id={value} value={'Today'}  onClick={() => this.hide()} >
+          Today
+        </option>
+        <option key={'yesterday'} id={value} value={'Yesterday'}  onClick={() => this.hide()} >
+          Yesterday
+        </option>
+        <option key={'datePicker'}  id={value} value={'custom'} onClick={(e) => this.displayCustomDate(e)} >
+          Custom
+        </option>
+      </select>
+    );
+  }
+
+
+
+
+  displayCustomDate = (event) => {
+    this.setState({
+      datePicker: event.target.id.toString()
+    });
+  }
+
+  hide = () => {
+    this.setState({
+      datePicker: ''
+    });
+  }
+
+
+
+  render() {
+    const { campaignInfo, profile } = this.props;
 
     var chartData = {
       labels:   this.getDays(),
@@ -205,125 +286,146 @@ class Dashboard extends Component {
     return (
       <div className="content">
         <div className="container-fluid">
-
           <Row className="dashboard-boxes">
             <Col md={12}>
-              <div className="card-box pb-0 mb-0">
-               
-                <Row className="account-stats">
-                  <div className="col-sm-12 col-lg-6 col-xl-3 box ">
-                    <div>
-                      <div className="text-center mt-4 mb-4">
-
-                        <div className="col-md-12 h-50">
-                          <div className=" widget-flat card-box  text-muted pr-4 pl-4 pb-5 pt-2 pos-vertical-center c1">
-
+              <div className="card-box">
+                <Row className="mb-5">
+                  <Col md={12}>
+                    <div className="card-box pb-0 mb-0 cardbox1">
+                      <Row className="account-stats">
+                        {this.renderCardBox(
+                          <div className=" widget-flat card-box  text-muted pr-4 pl-4 pb-5 pt-2 pos-vertical-center c2">
                             <p className="text-uppercase title m-b-5 fonttitle font-600">Active Campaigns</p>
-
                             <h3 className="m-b-10 campaign">{campaignInfo? campaignInfo.websiteLive.length : []}</h3>
                           </div>
-                        </div>
-
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="col-sm-12 col-lg-6 col-xl-3 box ">
-                    <div>
-                      <div className="text-center mt-4 mb-4">
-
-                        <div className="col-md-12 h-50">
+                        )}
+                        {this.renderCardBox(
                           <div className=" widget-flat card-box  text-muted pr-4 pl-4 pb-5 pt-2 pos-vertical-center c2">
-
                             <p className="text-uppercase title m-b-5 fonttitle font-600">Unique Visitors</p>
-
                             <h3 className="m-b-10 profile">{profile? Number(profile.uniqueVisitors) :0 }</h3>
                           </div>
-
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="col-sm-12 col-lg-6 col-xl-3 box ">
-                    <div>
-                      <div className="text-center mt-4 mb-4">
-
-                        <div className="col-md-12 h-50">
-                          <div className=" widget-flat card-box  text-muted pr-4 pl-4 pb-5 pt-2 pos-vertical-center c3">
-
+                        )}
+                        {this.renderCardBox(
+                          <div className=" widget-flat card-box  text-muted pr-4 pl-4 pb-5 pt-2 pos-vertical-center c2">
                             <p className="text-uppercase title m-b-5 fonttitle font-600">Total Notifications</p>
-
                             <h3 className="m-b-10 notify">{campaignInfo ? campaignInfo.notificationCount : 0}</h3>
                           </div>
-                        </div>
-
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="col-sm-12 col-lg-6 col-xl-3 box">
-                    <div>
-                      <div className="text-center mt-4 mb-4">
-
-                        <div className="col-md-12 h-50">
-                          <div className="  widget-flat card-box  text-muted pr-4 pl-4 pb-5 pt-2 pos-vertical-center c4">
-
+                        )}
+                        {this.renderCardBox(
+                          <div className=" widget-flat card-box  text-muted pr-4 pl-4 pb-5 pt-2 pos-vertical-center c2">
                             <p className="text-uppercase title m-b-5 fonttitle font-600">Total Signups</p>
-
                             <h3 className="m-b-10 usersignup">{userSignUps}</h3>
                           </div>
-
-                        </div>
-                      </div>
+                        )}
+                      </Row>
                     </div>
-                  </div>
+                    <div className="graph-card">
+                      <Card
+                        statsIcon="fa fa-history"
+                        id="chartHours"
+                        stats="Updated 3 minutes ago"
+                        content={
+                          <div className="ct-chart canvas-brdr">
+                            <LineChart data={chartData} options={chartOptions} height="250" redraw />
+                          </div>
+                        }
+                      />
+                    </div>
+                  </Col>
                 </Row>
+                <div className=" pull-right days">
+                  { this.state.datePicker == 'd1' ?
+                    <div className = "customPicker">
+                      <DatePicker
+                        selected={this.state.startDate}
+                        onChange={this.handleChange}
+                      />
+                    </div>
+                    : ' ' }
+                  {this.renderDayOption('d1')}
+                </div>
+                <div className="clearfix"></div>
               </div>
             </Col>
           </Row>
-          <Row>
-            <Col md={12}>
-              <div className="card-box">
-               
-                <Row className="mb-5">
-                  <Col md={12}>
-                    <Card
-                      statsIcon="fa fa-history"
-                      id="chartHours"
-                      stats="Updated 3 minutes ago"
-
-                      content={
-                        <div className="ct-chart">
-                          <LineChart data={chartData} options={chartOptions} height="250" redraw />
-                        </div>
-                      }
-                    />
-                  </Col>
-                </Row>
-                <div className=" pull-right">
-                  <select className="form-control text-muted" onChange={(e) =>  this.setState({daysClicked:e.target.value})}>
-                    <option key={7} value={'7'}>
-                          7 days
-                    </option>
-                    <option key={14} value={'14'} >
-                            14 days
-                    </option>
-                    <option key={28} value={'28'} >
-                            28 days
-                    </option>
-                    <option key={'today'+1} value={'Today'} >
-                            Today
-                    </option>
-                    <option key={'yesterday'+1} value={'Yesterd ay'} >
-                            Yesterday
-                    </option>
-                  </select>
-                </div>
-                <div className="clearfix"></div>
-
+          <Row className="new-graphs justify-content-around">
+            <Col md={5} className="g2">
+              <div className="new-card1">
+                <Card
+                  statsIcon="fa fa-history"
+                  id="chartHours"
+                  content={
+                    <div className="ct-chart canvas-brdr">
+                      <GeoChart data={[['United States', 44], ['Germany', 23], ['Brazil', 22]]}  width="400px" height="300px" />
+                    </div>
+                  }
+                />
               </div>
+              <hr className="border-hr"/>
+              <div className="pull-right col-md-4">
+                { this.state.datePicker === 'd2' ?
+                  <div className = "customPicker-sub">
+                    <DatePicker
+                      selected={this.state.startDate}
+                      onChange={this.handleChange}
+                    />
+                  </div>
+                  : ' ' }
+                {this.renderDayOption('d2')}
+              </div>
+              <div className="clearfix"></div>
             </Col>
+            <Col md={5} className="g3">
+              <div className="new-card2">
+                <Card
+                  statsIcon="fa fa-history"
+                  id="chartHours"
+                  content={
+                    <div className="ct-chart canvas-brdr">
+                      <Timeline data={[
+                        ['Sunday', '2017-03-03', '2017-04-03'],
+                        ['Monday', '2017-03-03', '2018-03-03'],
+                        ['Tuesday', '2017-03-03', '2018-03-03'],
+                        ['Friday', '2017-03-03', '2018-03-03'],
+                        ['Saturday', '2017-03-03', '2018-03-03']
+                      ]
+                      }  width="400px" height="300px" />
+                    </div>
+                  }
+                />
+              </div>
+              <hr className="border-hr"/>
+              <div className=" pull-right col-md-4" >
+                { this.state.datePicker === 'd3' ?
+                  <div className = "customPicker-sub">
+                    <DatePicker
+                      selected={this.state.startDate}
+                      onChange={this.handleChange}
+                    />
+                  </div>
+                  : ' ' }
+                {this.renderDayOption('d3')}
+              </div>
+              <div className="clearfix"></div>
+            </Col>
+          </Row>
+          <Row className="justify-content-around">
+            <div className="card-box new-card3 col-md-6 g4">
+              <table className="table table-striped">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>PAGE</th>
+                    <th>PAGE VIEWS</th>
+                    <th>PAGE VALUE</th>
+
+                  </tr>
+                </thead>
+                <tbody>
+                  {this.getNotificationRows()}
+                </tbody>
+              </table>
+            </div>
           </Row>
         </div>
       </div>
@@ -335,11 +437,14 @@ const mapStateToProps = state => ({
   elastic: state.getIn(['elastic', 'elastic']),
   profile: state.getIn(['profile', 'profile']),
   campaignInfo: state.getIn(['campaign', 'campaignInfo']),
+  campaigns: state.getIn(['campaign', 'campaigns']),
+
 });
 
 const mapDispatchToProps = {
   successCampaign,
-  fetchCampaignInfo
+  fetchCampaignInfo,
+  fetchCampaign
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

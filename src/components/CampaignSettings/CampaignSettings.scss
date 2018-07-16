@@ -12,7 +12,7 @@
     }
   }
   a{
-  &.nav-link.active.pb-3.pt-3 {
+  &.nav-link.active.pb-2.pt-2 {
     &:hover {
       color: #fff !important;
       border-top-right-radius: 0px !important;
@@ -20,6 +20,10 @@
     }
   }
 
+}
+.goliveRight {
+  position: relative;
+  top: -18px;
 }
 
 .btn.btn-custom{
@@ -32,9 +36,9 @@
     .nav-item.show.nav-link, .nav-link.active {
       background: #097fff;
     }
-  
+
   }
- 
+
 
 
   .new-campaign-header {
@@ -64,5 +68,3 @@
     }
   }
 }
-
-

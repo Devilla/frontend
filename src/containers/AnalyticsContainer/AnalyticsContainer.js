@@ -15,49 +15,20 @@ const LineChart = ReactChartJs.Line;
 
 const chartOptions = {
   responsive: true,
-
   maintainAspectRatio: false,
-
-  ///Boolean - Whether grid lines are shown across the chart
   scaleShowGridLines : true,
-
-  //String - Colour of the grid lines
   scaleGridLineColor : 'rgba(0,0,0,.05)',
-
-  //Number - Width of the grid lines
   scaleGridLineWidth : 1,
-
-  //Boolean - Whether to show horizontal lines (except X axis)
   scaleShowHorizontalLines: true,
-
-  //Boolean - Whether to show vertical lines (except Y axis)
   scaleShowVerticalLines: true,
-
-  //Boolean - Whether the line is curved between points
   bezierCurve : true,
-
-  //Number - Tension of the bezier curve between points
   bezierCurveTension : 0.4,
-
-  //Boolean - Whether to show a dot for each point
   pointDot : true,
-
-  //Number - Radius of each point dot in pixels
   pointDotRadius : 4,
-
-  //Number - Pixel width of point dot stroke
   pointDotStrokeWidth : 1,
-
-  //Number - amount extra to add to the radius to cater for hit detection outside the drawn point
   pointHitDetectionRadius : 20,
-
-  //Boolean - Whether to show a stroke for datasets
   datasetStroke : true,
-
-  //Number - Pixel width of dataset stroke
   datasetStrokeWidth : 2,
-
-  //Boolean - Whether to horizontally center the label and point dot inside the grid
   offsetGridLines : false
 };
 
@@ -68,11 +39,6 @@ class AnalyticsContainer extends Component {
     this.state = {
       usersList: []
     };
-    this.handleViewProfile = this.handleViewProfile.bind(this);
-    this.renderList = this.renderList.bind(this);
-    this.renderProfileList = this.renderProfileList.bind(this);
-    this.handleProfileBack = this.handleProfileBack.bind(this);
-    this.showGraph = this.showGraph.bind(this);
   }
 
   componentWillMount() {
@@ -80,15 +46,15 @@ class AnalyticsContainer extends Component {
       this.props.fetchCampaignInfo();
   }
 
-  handleProfileBack(){
+  handleProfileBack = () => {
     this.setState({usersList: []});
   }
 
-  handleViewProfile(list){
+  handleViewProfile = (list) => {
     this.setState({usersList: list});
   }
 
-  renderProfileList() {
+  renderProfileList = () => {
     if(this.state.usersList.length)
       return this.state.usersList.map((user, index) => {
         return <tr className="table-active analytics-tr" key={index}>
@@ -115,7 +81,7 @@ class AnalyticsContainer extends Component {
       return [];
   }
 
-  getDataset(uniqueUsers) {
+  getDataset = (uniqueUsers, avgCus) => {
     if(uniqueUsers && uniqueUsers.length) {
       let dataSet = [];
       let dataContent = {
@@ -133,25 +99,35 @@ class AnalyticsContainer extends Component {
         dataContent['data'][moment(bucket.key_as_string).day()] = bucket.visitors.sum_other_doc_count;
       });
       dataSet.push(dataContent);
-      return dataSet;
-    } else {
-      return [{
-        label: '',
+      dataSet.push({
+        label: 'Average User Signups',
         fillColor: 'rgba(220,220,220,0.2)',
         strokeColor: 'rgba(220,220,220,1)',
         pointColor: 'rgba(220,220,220,1)',
         pointStrokeColor: '#fff',
         pointHighlightFill: '#fff',
         pointHighlightStroke: 'rgba(220,220,220,1)',
-        data: [0, 0, 0, 0, 0, 0, 0]
+        data: [avgCus, avgCus, avgCus, avgCus, avgCus, avgCus, avgCus]
+      });
+      return dataSet;
+    } else {
+      return [{
+        label: 'Average User Signups',
+        fillColor: 'rgba(220,220,220,0.2)',
+        strokeColor: 'rgba(220,220,220,1)',
+        pointColor: 'rgba(220,220,220,1)',
+        pointStrokeColor: '#fff',
+        pointHighlightFill: '#fff',
+        pointHighlightStroke: 'rgba(220,220,220,1)',
+        data: [avgCus, avgCus, avgCus, avgCus, avgCus, avgCus, avgCus]
       }];
     }
   }
 
-  showGraph(name, uniqueUsers) {
+  showGraph = (name, averageCustomer, uniqueUsers) => {
     const chartData = {
       labels: moment.weekdays(),
-      datasets: this.getDataset(uniqueUsers)
+      datasets: this.getDataset(uniqueUsers, averageCustomer)
     };
 
     Popup.create({
@@ -172,11 +148,11 @@ class AnalyticsContainer extends Component {
     });
   }
 
-  renderList() {
+  renderList = () => {
     if(this.props.campaignInfo && this.props.campaignInfo.websiteLive.length)
       return this.props.campaignInfo.websiteLive.map((website, index) => {
         let visitor = 0;
-        website.uniqueUsers?
+        website.uniqueUsers && website.uniqueUsers.aggregations ?
           website.uniqueUsers.aggregations.users.buckets.map(bucket => {
             visitor = visitor + bucket.visitors.sum_other_doc_count;
           })
@@ -184,7 +160,7 @@ class AnalyticsContainer extends Component {
           visitor = 0;
 
         const userDetails = website.signups?website.signups.userDetails:[];
-        const uniqueUsers = website.uniqueUsers?website.uniqueUsers.aggregations.users.buckets:[];
+        const uniqueUsers = website.uniqueUsers && website.uniqueUsers.aggregations ?website.uniqueUsers.aggregations.users.buckets:[];
         return <tr className="table-active analytics-tr" key={index}>
           <th scope="row">{index + 1}</th>
           <td className="text-center">{website.websiteUrl}</td>
@@ -195,7 +171,7 @@ class AnalyticsContainer extends Component {
             {
               userDetails && userDetails.length ?((userDetails.length / visitor)   * 100).toFixed(2):0
             } %</td>
-          <td className="text-center"><a href="javascript:;" onClick={() => this.showGraph(website.websiteUrl, uniqueUsers)}>Graph</a></td>
+          <td className="text-center"><a href="javascript:;" onClick={() => this.showGraph(website.websiteUrl, website.averageCustomer, uniqueUsers)}>Graph</a></td>
         </tr>;
       });
     else

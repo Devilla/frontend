@@ -1,0 +1,30 @@
+.webhooks-container {
+  .card-title {
+    font-weight: 400;
+    margin-top: 5px;
+    margin-bottom: 25px !important;
+    color: #999;
+  }
+
+  .card-text {
+    color: #999;
+  }
+  .input-group-text{
+    border-radius: 5px !important;
+    font-size: 14px !important;
+    color: #fff !important;
+
+  }
+  .copyicon-btn{
+    border-top-right-radius: 5px !important;
+    border-bottom-right-radius: 5px !important;
+
+  }
+
+  .webhooks-types {
+    & button {
+      width: 18%;
+      border-radius: 5px;
+    }
+  }
+}

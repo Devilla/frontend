@@ -21,8 +21,6 @@ const initialState = fromJS({
 
 const notification = (state = initialState, action) => {
   switch (action.type) {
-    // case FETCH:
-    //   return state.set("notification", action.notification);
     case SUCCESS:
       return state.set('notifications', action.notification);
     case CREATE_SUCCESS:

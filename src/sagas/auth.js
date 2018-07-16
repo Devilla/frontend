@@ -17,6 +17,7 @@ import { storeToken } from 'services/Request';
 import * as api from 'services/api';
 import moment from 'moment';
 
+
 const toastConfig = {
   position: toast.POSITION.BOTTOM_LEFT,
   autoClose: 2000,
@@ -26,41 +27,38 @@ const toastConfig = {
 export const removeAuthToken = () => localStorage.removeItem('authToken');
 
 export function* isLoggedIn() {
-  try{
+  try {
     yield all([
       put(actions.fetchUser()),
       put(fetchProfile()),
       put(fetchPlan()),
       put(fetchPayment()),
     ]);
-  }catch(error)
-  {
+  } catch(error) {
     yield console.log(error);
   }
 }
 
 export function* checkTokenExists(action) {
   const token = action.token;
-  try{
+  try {
     if (token) {
       if(moment().isAfter(moment(token.expiresOn)))
         return yield call(logOut);
       return yield call(isLoggedIn);
     }
-
     yield call(logOut);
-  }catch(error)
-  {
+  } catch(error) {
     yield console.log(error);
   }
 
 }
 
 export function* logOut() {
-  try{
+  try {
     yield call(removeAuthToken);
     yield call(browserHistory.push, '/login');
-  }catch(error){
+  } catch(error) {
     yield console.log(error);
   }
 }
@@ -157,6 +155,22 @@ export function* contactUs(action) {
 }
 
 
+export function* gdprform(action) {
+  try {
+    yield put(load());
+    const res = yield call(api.POST, 'auth/', action.data);
+    if(res.error)
+      yield put(actions.gdprformError(res.message));
+    else
+      yield toast.info('Secret code sent.', toastConfig);
+    yield put(loaded());
+  } catch (error) {
+    yield put(loaded());
+    yield toast.error(error, toastConfig);
+  }
+}
+
+
 export function* forgotPassword(action) {
   try {
     yield put(load());
@@ -165,7 +179,6 @@ export function* forgotPassword(action) {
       yield put(actions.forgotPasswordError(res.message));
     else {
       yield toast.info('Reset link sent.', toastConfig);
-      yield browserHistory.push('/login');
     }
     yield put(loaded());
   } catch (error) {
@@ -188,7 +201,7 @@ export function* socialLogin(action) {
       }, 2000);
     } else {
       yield storeToken(res.jwt);
-      yield browserHistory.push('/dashboard');
+      yield browserHistory.push('/getting-started');
     }
     yield put(loaded());
   } catch (error) {
@@ -226,11 +239,10 @@ export function* validateCoupon(action) {
   try {
     yield put(load());
     const res = yield call(api.GET, `coupon/validate/${action.coupon}`);
-    if(res.error) {
+    if(res.error)
       yield put(actions.couponError('Coupon not valid'));
-    } else {
+    else
       yield put(actions.couponSuccess(res));
-    }
     yield put(loaded());
   } catch (error) {
     yield put(loaded());

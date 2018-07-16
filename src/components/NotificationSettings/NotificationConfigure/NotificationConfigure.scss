@@ -9,7 +9,7 @@
     .card-box.p-0{
       margin: 40px 20px;
     }
-  
+
   div{
     span{
       &.btn.btn-primary.mr-3 {
@@ -18,13 +18,13 @@
     }
   }
   .state-btn {
-    display: flex;
-    justify-content: space-between;
+    float: right;
     position: relative;
-    left: 30px;
+    left: -55px;
     bottom: -50px;
     span {
-      margin-left: 100px;
+      margin-left: 60px;
+      border-radius: 5px;
     }
   }
   .notification-configure-content{
@@ -247,7 +247,7 @@ img {
       position: relative;
       padding: 3px 5px;
       border-radius: 5px;
-      z-index: 10000000;
+      z-index: 1;
       font-size: 10px;
       line-height: 1em;
       color: #adbcc4;
