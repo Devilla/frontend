@@ -16,7 +16,7 @@ const WebsiteCheckout = ({ selectedPlan, clearSelectedPlan, coupon, couponDetail
         <section className="bg--secondary pt-0">
           <div className="container text-center">
             <div className="row give-center-align">
-              <div className=" col-md-7 card-link">
+              <div className=" col-md-12 card-link">
                 <div>
                   <LoginFlow
                     coupon={coupon}
@@ -26,8 +26,8 @@ const WebsiteCheckout = ({ selectedPlan, clearSelectedPlan, coupon, couponDetail
                   />
                 </div>
               </div>
-              <div className="vristrue ml-5">
-              </div>
+              {/* <div className="vristrue ml-5">
+              </div> */}
             </div>
           </div>
         </section>

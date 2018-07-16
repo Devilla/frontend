@@ -6,6 +6,7 @@ import { ToastContainer } from 'react-toastify';
 import TrailPayment from './TrailPayment';
 import { updateUser, checkTokenExists, validateCoupon, clearCouponError } from 'ducks/auth';
 import { createProfile, updateProfile } from 'ducks/profile';
+import { load, loaded } from 'ducks/loading';
 import { createPayment } from 'ducks/payment';
 import { Spinner } from 'components';
 
@@ -124,12 +125,14 @@ class LoginFlow extends Component {
 
   render() {
     const { couponError, nameError, cardError } = this.state;
-    const { user, profile, couponRequestError, selectedPlan } = this.props;
+    const { user, profile, couponRequestError, selectedPlan, load, loaded } = this.props;
     const couponDetails = this.props.couponDetails || this.props.coupon;
     return (
       <div className="content login-flow">
         {profile?
           <TrailPayment
+            load={load}
+            loaded={loaded}
             couponError={couponError || couponRequestError}
             nameError={nameError}
             cardError={cardError}
@@ -160,6 +163,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
+  load,
+  loaded,
   updateUser,
   createProfile,
   updateProfile,

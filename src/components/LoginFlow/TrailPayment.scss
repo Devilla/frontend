@@ -1,10 +1,26 @@
-
 .authpage-container {
+  .auth-divider {
+    display: flex;
+    justify-content: center;
+    .line-divider {
+      z-index: -1;
+      position: absolute;
+      height: 180px;
+      margin-top: -40%;
+      border-left: 1px solid #cccccc;
+    }
+    h1 {
+      background: white;
+      color: #cccccc;
+      margin: 0px 0px;
+      margin-top: -16%;
+    }
+  }
     input {
         &.btn.btn-primary {
             border-radius: 5px;
         }
-        
+
     }
     .line-or {
         margin: 10px 0 0 10px;
@@ -14,7 +30,6 @@
     }
     input[type="text"]
     {
-        // background: none !important;
         &::placeholder {
         font-size: 0.8em !important;
         color: rgb(141, 141, 141) !important;
@@ -27,4 +42,4 @@
     #username {
         margin-top: 20px;
     }
-}   
+}

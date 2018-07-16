@@ -15,8 +15,8 @@ const CouponPage = ({
   return (
     <div className="coupon-page">
       <form>
-        <Row>
-          <Col md={6}>
+        <Row className="coupon-row-padding">
+          <Col md={12}>
             <input
               type="text"
               onChange={(e) => handleStateChange(e.target.value, e.target.id)}
@@ -25,7 +25,9 @@ const CouponPage = ({
               id="coupon"
             />
           </Col>
-          <Col md={4}>
+        </Row>
+        <Row>
+          <Col md={12}>
             <input
               className="btn btn-primary apply"
               type="submit"
