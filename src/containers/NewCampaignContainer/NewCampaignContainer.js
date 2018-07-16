@@ -118,8 +118,15 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
   }
 
   goLive = () => {
+    this.verifyPixelStatus();
+    const elastic = this.props.elastic;
     let title, content, buttonText, path;
-    if(!this.props.leads || !this.props.leads.length) {
+    console.log(elastic);
+    if(elastic && (elastic.error || (elastic.message.hits.total === 0))) {
+      title = 'Alert';
+      content = 'Install Pixel before going live.';
+      buttonText = 'Close';
+    } else if(!this.props.leads || !this.props.leads.length) {
       title = 'Alert';
       content = 'Add a capture page before going live.';
       buttonText = 'Close';
