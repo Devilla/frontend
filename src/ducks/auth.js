@@ -9,9 +9,6 @@ export const CHECK_TOKEN_EXISTS = action('CHECK_TOKEN_EXISTS');
 export const FETCH_USER_SUCCESS = action('FETCH_USER_SUCCESS');
 export const FETCH_ROLES_SUCCESS = action('FETCH_ROLES_SUCCESS');
 export const UPDATE_USER = action('UPDATE_USER');
-export const GDPR_FORM = action('GDPR_FORM');
-export const GDPR_FORM_ERROR = action('GDPR_FORM_ERROR');
-
 
 export const FORGOT_PASSWORD = action('FORGOT_PASSWORD');
 export const FORGOT_PASSWORD_ERROR = action('FORGOT_PASSWORD_ERROR');
