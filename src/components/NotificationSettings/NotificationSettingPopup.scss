@@ -1,0 +1,35 @@
+.popuppage-container {
+    width: 300px !important;
+    margin: 0px !important;
+    position: absolute;
+    right: 0px;
+    top: 140px;
+
+    .modal-title {
+        font-family: sans-serif;
+        font-weight: 600;
+    }
+    .addpage,.addpagepopup-btn,.close-btn {
+        border-radius: 5px !important;
+    }
+    .close {
+        background: #097fff !important;
+        position: relative;
+        top: 10px !important;
+    }
+    .show-modal {
+        z-index: 999999999 !important;
+        overflow: scroll !important;
+        background: rgba(248, 247, 247, 0.7);
+       }
+       .align-modal {
+       width: 800px !important;
+       position: relative;
+       right: 100px;
+       }
+    .sub-text {
+        width: 300px !important;
+    }
+    
+    
+}
