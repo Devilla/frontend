@@ -4,7 +4,15 @@
     position: absolute;
     right: 0px;
     top: 140px;
-
+    .fa-info-circle {
+        position: relative;
+        top: 12px;
+        right: 15px;    
+        font-size: 15px;
+        &.capture {
+            right: -11px !important;
+        }
+    }
     .modal-title {
         font-family: sans-serif;
         font-weight: 600;
@@ -27,8 +35,48 @@
        position: relative;
        right: 100px;
        }
-    .sub-text {
-        width: 300px !important;
+
+    .info-text {
+     position: relative;
+        top: 25px;
+        border-radius: 5px; 
+        border: 1px solid #097fff;
+        height: 25px;
+        padding: 5px;
+        padding-right: 13px;
+        cursor: pointer;
+        color: #097fff;
+        &:hover {
+            background: #097fff;
+            color: #fff;
+        }
+    }
+
+    .capurl-text,.prourl-text {
+       margin-left: 13px !important;
+    }
+
+    .n-btn {
+        padding: 7px 50px !important;
+        border-radius: 5px !important;
+        margin-right: 10px;
+        margin-top: 20px;
+
+    }
+    .toggle-area {
+        margin-top: 30px;
+        .toggle-save button {
+            border-radius: 5px !important;
+        }
+        .toggle-settings button {
+            border-radius: 5px !important;
+        }
+
+    }
+    .toggle-btn {
+        position: relative;
+        top: 25px;
+        left: 50px;
     }
     
     

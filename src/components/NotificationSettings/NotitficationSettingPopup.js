@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './NotificationSettingPopup.scss';
-import { Row, Col } from 'react-bootstrap';
+import { Row,Col } from 'react-bootstrap';
 
 
 class NotificationSettingPopup  extends Component {
@@ -8,36 +8,69 @@ class NotificationSettingPopup  extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      displayField: false
+      displayField: false,
+      displaynotifbuttons : false,
+      externalValue:  false,
+      arrayForm : []
     };
     this.renderField =  this.renderField.bind(this);
+
   }
 
+  show = () => {
+    this.setState((prevState) => {
+      return { displaynotifbuttons : !prevState.displaynotifbuttons };
+    });
+  }
+
+  addpage = () => {
+    this.setState((prevState) => {
+      return {displayField : !prevState.displayField };
+    });
+  }
+
+  handleSwitchChange = () =>  {
+    //code to be written
+  }
 
   renderField()  {
-    <div>
-      <Row>
-        <Col md={6}>
-          <input type="text" placeholder="Campaign Name" />
-        </Col>
-        <Col md={6}>
-          <input type="text" placeholder="Product Name" />
-        </Col>
+    return (<div>
+      <Row className="justify-content-around">
+        <input type="text" placeholder="Campaign Name"  className="col-md-5 camp-text form-control"/> <i className="fa fa-info-circle" data-toggle="tooltip" title="Mention your Campaign name"> </i>
+        <input type="text" placeholder="Product Name" className="col-md-5 prod-text form-control" /> <i className="fa fa-info-circle" data-toggle="tooltip" title="Your Product name will be displayed on notifications"> </i>
       </Row>
-      <Row>
-        <Col md={12}>
-          <input type="text" placeholder="Page URL" />   
-        </Col>     
+      <Row className="pt-4 ">
+        <input type="text" placeholder="Product Page URL"  className="col-md-11 prourl-text form-control"/>
       </Row>
-      <Row>
-        <span className="sub-text">Choose Your Notification Type</span>
+      <Row className="pt-4 ">
+        <input type="text" placeholder="Capture Page URL"  className="col-md-11 capurl-text form-control"/><i className="fa fa-info-circle capture" data-toggle="tooltip" title="Your Product name will be displayed on notifications"> </i>
       </Row>
-      <Row>
-        <Col md={4}><span className="btn btn-outline-primary n-btn"> Recent</span></Col>
-        <Col md={4}><span className="btn btn-outline-primary n-btn"> Live</span></Col>
-        <Col md={4}><span className="btn btn-outline-primary n-btn"> Bulk</span></Col>
+      <Row className="justify-content-center">
+        <span className="btn btn-outline-primary n-btn"> <i className=" mdi mdi-account-multiple"></i>&nbsp;Recent</span>
+        <span className="btn btn-outline-primary n-btn"> <i className=" mdi mdi-adjust"></i>&nbsp;Live</span>
+        <span className="btn btn-outline-primary n-btn"> <i className="mdi mdi-fire"></i>&nbsp;Bulk</span>
+        <span className="info-text"  onClick={() => this.show()}>  <i className={this.state.displaynotifbuttons?'icon-arrow-up pl-2':'icon-arrow-down pl-2'}></i></span>
+        <div className="toggle-btn">
+          <input className="tgl tgl-ios" id="cb2" type="checkbox"  defaultChecked={this.state.externalValue}/>
+          <label className="tgl-btn toggleId"  htmlFor="cb2"  onClick={() => this.handleSwitchChange(!this.state.externalValue)}></label>
+        </div>
       </Row>
-    </div>;
+      <Row className="justify-content-center">
+        { this.state.displaynotifbuttons ? 
+          <Row className="toggle-area">
+     
+            <Col md={4} className="toggle-save">
+              <button  className="btn btn-primary ">Save </button>
+            </Col>
+            <Col md={4} className="toggle-settings">
+              <button className="btn btn-primary">Duplicate Settings</button>
+            </Col>
+
+          </Row>
+
+          : ' '}
+      </Row>
+    </div>);
   }
 
   
@@ -53,12 +86,12 @@ class NotificationSettingPopup  extends Component {
                 <h4 className="modal-title">Customize the Notification Display</h4>
               </div>
               <div className="modal-body">
-                <span className="btn btn-primary addpagepopup-btn"><i className="fi-plus"></i>Add Page</span>
-                {this.renderField()}
+                <span className="btn btn-primary addpagepopup-btn mb-4" onClick={()=> this.addpage()}><i className="fi-plus"></i> &nbsp;Add Page</span>
+                {this.state.displayField ? 
+                  this.renderField()
+                  : ' '}
               </div>
-              <div className="modal-footer">
-                <button type="button" className="btn btn-primary close-btn" data-dismiss="modal">Close</button>
-              </div>
+                  
             </div>
           </div>
         </div>

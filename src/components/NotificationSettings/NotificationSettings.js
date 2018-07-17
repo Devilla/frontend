@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Row } from 'react-bootstrap';
 import NotificationConfigure from './NotificationConfigure/NotificationConfigure';
 import NotificationList from './NotificationList/NotificationList';
-import NotificationSettingPopup from './NotitficationSettingPopup';
+
 import './NotificationSettings.scss';
 
 const notificationPanelStyleDefault = { // TODO: Take style values from server
@@ -230,8 +230,7 @@ class Notifications extends Component {
       <div className="notification-settings">
         <div>
           <h4 className="lead text-center m-b-30 m-t-20">Notifications</h4>
-          
-          <NotificationSettingPopup />
+        
 
           {!this.props.notification
             ?
