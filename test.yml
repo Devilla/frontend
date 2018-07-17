@@ -1,0 +1,17 @@
+config:
+  target: 'http://35.224.176.78/'
+  phases:
+    - duration: 60
+      arrivalRate: 10
+      rampTo: 50
+      name: "Warm up the application"
+    - duration: 600
+      arrivalRate: 50
+      name: "Sustained max load"
+  defaults:
+    headers:
+      x-my-service-auth: '987401838271002188298567'
+scenarios:
+  - flow:
+    - get:
+        url: "/login"

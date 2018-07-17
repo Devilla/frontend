@@ -22,7 +22,7 @@ const InstallPixel = ({
       </script>`}
         <br/> {'<script>'}
         <br/> {'new Influence({'}
-        <br/> trackingId: '${campaign?campaign.trackingId:'INF-XXXXXXX'}'
+        <br/> trackingId: '{campaign?campaign.trackingId:'INF-XXXXXXX'}'
         <br/> {'});'}
         <br/> {'</script>'}
         <br/>
