@@ -176,7 +176,6 @@ export function* forgotPassword(action) {
       yield put(actions.forgotPasswordError(res.message));
     else {
       yield toast.info('Reset link sent.', toastConfig);
-      yield browserHistory.push('/login');
     }
     yield put(loaded());
   } catch (error) {

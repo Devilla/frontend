@@ -1923,6 +1923,10 @@ chartist@^0.10.1:
   version "0.10.1"
   resolved "https://registry.yarnpkg.com/chartist/-/chartist-0.10.1.tgz#3dd513d531dfca6b78e777fe0500d9c7e6406931"
 
+chartkick@^2.3.6:
+  version "2.3.6"
+  resolved "https://registry.yarnpkg.com/chartkick/-/chartkick-2.3.6.tgz#a507c54da7d117e66c9a9c5309f7ecccc2d28b51"
+
 cheerio@^1.0.0-rc.2:
   version "1.0.0-rc.2"
   resolved "https://registry.yarnpkg.com/cheerio/-/cheerio-1.0.0-rc.2.tgz#4b9f53a81b27e4d5dac31c0ffd0cfa03cc6830db"
@@ -6801,6 +6805,10 @@ pluralize@^7.0.0:
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/pluralize/-/pluralize-7.0.0.tgz#298b89df8b93b0221dbf421ad2b1b1ea23fc6777"
 
+popper.js@^1.14.1:
+  version "1.14.3"
+  resolved "https://registry.yarnpkg.com/popper.js/-/popper.js-1.14.3.tgz#1438f98d046acf7b4d78cd502bf418ac64d4f095"
+
 portfinder@^1.0.9:
   version "1.0.13"
   resolved "https://registry.yarnpkg.com/portfinder/-/portfinder-1.0.13.tgz#bb32ecd87c27104ae6ee44b5a3ccbf0ebb1aede9"
@@ -7381,6 +7389,12 @@ react-chartjs@^1.2.0:
   dependencies:
     create-react-class "^15.6.2"
 
+react-chartkick@^0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/react-chartkick/-/react-chartkick-0.2.1.tgz#c52a1ecf5cad6464dbf6b7c3282884a9f0a752ad"
+  dependencies:
+    chartkick "^2.3.6"
+
 react-circle@^1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/react-circle/-/react-circle-1.0.3.tgz#447055b1c8cfb977ef17c62b9438e9dd3288de02"
@@ -7431,6 +7445,15 @@ react-custom-scrollbars@^4.2.1:
     dom-css "^2.0.0"
     prop-types "^15.5.10"
     raf "^3.1.0"
+
+react-datepicker@^1.5.0:
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/react-datepicker/-/react-datepicker-1.5.0.tgz#7eacd9609313189c84a21bb7421486054939a4b2"
+  dependencies:
+    classnames "^2.2.5"
+    prop-types "^15.6.0"
+    react-onclickoutside "^6.7.1"
+    react-popper "^0.9.1"
 
 react-deep-force-update@^2.1.1:
   version "2.1.1"
@@ -7594,6 +7617,10 @@ react-notification-system@^0.2.15:
     object-assign "^4.0.1"
     prop-types "^15.5.6"
 
+react-onclickoutside@^6.7.1:
+  version "6.7.1"
+  resolved "https://registry.yarnpkg.com/react-onclickoutside/-/react-onclickoutside-6.7.1.tgz#6a5b5b8b4eae6b776259712c89c8a2b36b17be93"
+
 react-overlays@^0.7.4:
   version "0.7.4"
   resolved "https://registry.yarnpkg.com/react-overlays/-/react-overlays-0.7.4.tgz#ef2ec652c3444ab8aa014262b18f662068e56d5c"
@@ -7603,6 +7630,13 @@ react-overlays@^0.7.4:
     prop-types "^15.5.10"
     prop-types-extra "^1.0.1"
     warning "^3.0.0"
+
+react-popper@^0.9.1:
+  version "0.9.5"
+  resolved "https://registry.yarnpkg.com/react-popper/-/react-popper-0.9.5.tgz#02a24ef3eec33af9e54e8358ab70eb0e331edd05"
+  dependencies:
+    popper.js "^1.14.1"
+    prop-types "^15.6.1"
 
 react-popup@^0.9.3:
   version "0.9.3"

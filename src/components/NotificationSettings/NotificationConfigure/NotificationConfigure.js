@@ -4,6 +4,7 @@ import { Card } from './Card';
 import NotificationDesign from './NotificationDesign';
 import { NotificationDesignSetting } from './NotificationDesignSetting';
 import './NotificationConfigure.scss';
+// import PopupReview from './PopupReview';
 
 const NotificationConfigure = ({
   profile,
@@ -25,13 +26,13 @@ const NotificationConfigure = ({
   showpopupfield,
   showpopup,
   popupName,
-
+  campaign
 }) => {
   return (
     <div className="notification-configure col-md-12">
       <Row>
         <Col md={12}>
-
+          {console.log(campaign.trackingId)}
           <Card title={notification.notificationName}
             status={ <div className="notificationSwitch">
               <input
@@ -74,6 +75,7 @@ const NotificationConfigure = ({
                       onConfigChange={handleNotificationStyleChange}
                       handleContentChange={handleContentChange}
                       handleClickableNotification={handleClickableNotification}
+                      campaign={campaign}
                     />
 
                   </Col>

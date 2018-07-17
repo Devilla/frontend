@@ -1,5 +1,5 @@
 // Home Page Image
-export { default as LogoInfluence } from './logo-influence.png';
+export { default as LogoInfluence } from './logo-influence-2.png';
 export { default as HigherConversion } from './new-convert-more-customers.svg';
 export { default as SaveAcquisitions } from './new-customer-acquisition-costs.svg';
 export { default as IncreaseVisitors } from './new-review-trust.svg';
@@ -48,7 +48,7 @@ export { default as Carpathy } from './carpathy.png';
 export { default as Tbars } from './3bars.png';
 export { default as Smallicon } from './smallicon.png';
 export { default as Ticon } from './3icon.png';
-export { default as Profile } from './profile.png';
+export { default as Profile } from './3profile.png';
 
 
 

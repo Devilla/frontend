@@ -19,17 +19,22 @@ class ForgetPassword extends Component {
     this.state = {
       email: '',
       authEmail: false,
-      emailError: ''
+      emailError: '',
+      showemailbtn: false,
+      usersemail: ''
     };
   }
 
   componentDidMount() {
-    window.scrollTo(0, 0);
+    let scrollElm = document.scrollingElement;
+    scrollElm.scrollTop = 0;
   }
 
   handleEmailChange(evt) {
     this.props.clearForgotPasswordError();
+
     this.setState({email: evt.target.value, emailError: ''});
+
   }
 
   checkEmail(evt) {
@@ -50,9 +55,10 @@ class ForgetPassword extends Component {
       const data = {
         'email': this.state.email
       };
+      let useremail = this.state.email.split('@');
       this.props.forgotPassword(data);
       this.props.clearForgotPasswordError();
-      this.setState({email: '', emailError: ''});
+      this.setState({email: '', emailError: '',showemailbtn:true, usersemail:useremail[1] });
     }
   }
 
@@ -64,6 +70,7 @@ class ForgetPassword extends Component {
   }
 
   render() {
+    const { showemailbtn ,usersemail} = this.state;
     return (<div className="forgetpassword-container">
       <div className="authpage section innerpage">
         <div className="container">
@@ -74,21 +81,27 @@ class ForgetPassword extends Component {
                 <div className="section-divider-line"></div>
                 <div className="row justify-content-center">
                   <div className="frmcntl pb-2 col-md-5">
-                    <h3 className="pb-3 lead">Enter your email address below and well send you a link to reset your password.</h3>
+                    { showemailbtn ?
+                      <h3 className="pb-3 lead ml-5">Reset link has been sent to your Email</h3>
+                      :
+                      <div>
+                        <h3 className="pb-3 lead">Enter your email address below and well send you a link to reset your password.</h3>
+                        <div className="frmcntl pb-4">
+                          <input className="field w-input" id="email" name="email" value={this.state.email} onBlur={this.checkEmail.bind(this)} onChange={this.handleEmailChange.bind(this)} placeholder="Email Address" type="email"/>
+                          <HelpBlock>
+                            <p className="website-error">{this.state.emailError || this.props.error}</p>
+                          </HelpBlock>
+                        </div>
+                      </div>
+                    }
                     <div className="frmcntl pb-4">
-                      <input className="field w-input" id="email" name="email" value={this.state.email} onBlur={this.checkEmail.bind(this)} onChange={this.handleEmailChange.bind(this)} placeholder="Email Address" type="email"/>
-                      <HelpBlock>
-                        <p className="website-error">{this.state.emailError || this.props.error}</p>
-                      </HelpBlock>
-                    </div>
-                    <div className="frmcntl pb-4">
-                      <input className="btn btn-primary " type="submit" value="Send reset password email"/>
+                      <input className="btn btn-primary " type="submit" value={showemailbtn? 'Check E-mail' : 'Send reset password email'} onClick={showemailbtn ? () => window.open(`https://www.${usersemail}`) : ''}/>
                     </div>
                   </div>
                 </div>
               </form>
               <span className="row pt-5 support ">
-                    <span className="h5 lead">Trouble logging in? <Link to="/contact">Contact Support</Link></span>
+                <span className="h5 lead">Trouble logging in? <Link to="/contact">Contact Support</Link></span>
               </span>
             </Animated>
           </div>
