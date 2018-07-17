@@ -219,7 +219,8 @@ export class NotificationDesignSetting extends Component {
       toggleTextBox,
       handleClickableNotification,
       showpopupfield,
-      showpopup
+      showpopup,
+      campaign
     } = this.props;
     const styles = reactCSS({
       'default': {
@@ -267,7 +268,7 @@ export class NotificationDesignSetting extends Component {
       <div>
         {showpopupfield ?
           <div className="DashboardChannelcomponent">
-            <DashboardChannel />
+            <DashboardChannel campaign={campaign} />
           </div>
           : ' '}
 
@@ -285,17 +286,17 @@ export class NotificationDesignSetting extends Component {
                     : ' '}
                   <li className="nav-item waves-effect">
                     <a data-toggle="tab" aria-expanded="false" className={`nav-link ${activeClass == 1 ? 'active' : ''}`} onClick={() => this.setActiveState(1)}>
-                      <i className="fi-layers mr-2"></i>Box
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i className="fi-layers mr-2"></i>Box&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     </a>
                   </li>
                   <li className="nav-item waves-effect">
                     <a data-toggle="tab" aria-expanded="true" className={`nav-link ${activeClass == 2 ? 'active' : ''}`} onClick={() => this.setActiveState(2)}>
-                      <i className="fi-mail mr-2"></i>Text
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i className="fi-mail mr-2"></i>Text&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     </a>
                   </li>
                   <li className="nav-item waves-effect">
                     <a data-toggle="tab" aria-expanded="false" className={`nav-link ${activeClass == 3 ? 'active' : ''}`} onClick={() => this.setActiveState(3)}>
-                      <i className="fi-layers mr-2"></i> Settings
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i className="fi-layers mr-2"></i>Settings&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     </a>
                   </li>
                 </ul>

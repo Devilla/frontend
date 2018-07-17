@@ -25,22 +25,6 @@ function* fetch(action) {
   }
 }
 
-export function* review(action) {
-  try {
-    yield put(load());
-    //const res = yield call(api.POST, 'integrations/google/callback', action.data);
-    // const res = yield call(api.GET, 'connect/google/overide', action.data);
-    const res = yield call(api.GET, 'connect/facebook/overide', action.data);
-    if(res.error)
-      console.log(res.error);
-    else
-      yield put(actions.successConfiguration(res));
-    yield put(loaded());
-  } catch (error) {
-    yield put(loaded());
-    yield toast.error(error, toastConfig);
-  }
-}
 
 export function* reviewRedirect(action) {
   try {

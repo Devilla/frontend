@@ -25,13 +25,17 @@
   }
 
   .mainlogo {
-    position : absolute;
-    left: 110px;
-    z-index: 99;
+      position : absolute;
+      left: 110px;
+      top: 10px;
+      z-index: 99;
+      width: 200px;
+      height: 100px;
   }
   .menu-horizontal:focus {
     outline: none;
   }
+
 }
 
 .sticky {
@@ -42,6 +46,7 @@
   background: #fff;
   width: 100%;
 }
+
 
 
 @media only screen and (max-width: 1198px) {

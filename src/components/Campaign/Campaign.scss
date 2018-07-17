@@ -1,9 +1,6 @@
-
-
 .campaign-container {
-  button {
-    &.btn.btn-primary {
-      border-radius: 5px;
-    }
+  .newcamp-btn {
+    border-radius: 5px !important;
+    margin-top: 30px !important;
   }
 }

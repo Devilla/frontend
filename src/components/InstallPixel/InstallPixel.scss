@@ -1,50 +1,64 @@
 .install-pixel {
-  .bgcolor{
+  .bgcolor {
     background-color: rgba(245, 245, 245, 0.816);
-    color:#636769;
+    color: #636769;
   }
-  .custom-width{
+
+  .copy-btn ,.pixel-btn, .webhook-btn ,.pixelnext-btn {
+    border-radius: 5px !important;
+  }
+  .custom-width {
     width: 50% !important;
   }
+
   p {
     &.m-l-30.p-3 {
-    padding-bottom: 5px;
-    box-shadow: 0 1px 3px -3px black;
-    background-color: #F8F8F8 !important;
-    border: none !important;
-    border: 1px solid rgb(225, 225, 225) !important;
+      padding-bottom: 5px;
+      box-shadow: 0 1px 3px -3px black;
+      background-color: #F8F8F8 !important;
+      border: none !important;
+      border: 1px solid rgb(225, 225, 225) !important;
     }
   }
+
   .fa {
-    padding: 0% 7%;
+    padding: 0 7%;
     font-size: 18px;
   }
+
   div {
     &.float-left > button {
       width: 30%;
     }
+
     &.integration > button {
       width: 100%;
     }
   }
+
   .webhooks-container {
-    padding: 5% 0%;
+    padding: 5% 0;
+
     .webhooks-types {
       button {
         margin: 0 2% 0 0 !important;
       }
     }
+
     .custom-pointer {
       cursor: pointer;
     }
+
     .form-control[readonly] {
       background-color: white;
     }
+
     .mdi-content-copy:before {
       font-size: large;
     }
   }
 }
+
 .mm-popup__btn--save-webhook {
-  width: 100%
+  width: 100%;
 }

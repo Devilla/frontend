@@ -186,14 +186,14 @@ class DisplayPage extends Component {
                   />
                   <span className="input-group-btn col-md-2"
                     id="urladd">
-                    <span className="btn btn-custom nav nav-pills waves-light waves-effect number pl-5 pr-5"
+                    <span className="btn btn-custom nav nav-pills waves-light waves-effect addpath-btn pl-5 pr-5"
                       onClick={this.addPageUrl}>Add</span>
                   </span>
                 </div>
               </Col>
             </Row>
 
-            <Row className="pt-2">
+            <Row className="pt-2 path-error">
               <HelpBlock>
                 <p className="website-error">{error}</p>
               </HelpBlock>
@@ -234,10 +234,10 @@ class DisplayPage extends Component {
               </Col>
             </Row>
             <div className="float-left">
-              <button type="button" className="btn btn-custom waves-light waves-effect number " onClick={this.handleBackState}><i className="icon-arrow-left pr-2"></i>Back</button>
+              <button type="button" className="btn btn-primary waves-effect number displaybtn-back" onClick={this.handleBackState}><i className="icon-arrow-left pr-2"></i>Back</button>
             </div>
             <div className="float-right">
-              <button type="button" className="btn btn-custom waves-light waves-effect number ml-2 pl-4 pr-4" onClick={this.handleNextState}>Finish<i className="icon-arrow-right pl-2"></i> </button>
+              <button type="button" className="btn btn-custom waves-light waves-effect number ml-2 pl-4 pr-4 displaybtn-finish" onClick={this.handleNextState}>Finish<i className="icon-arrow-right pl-2"></i> </button>
             </div>
             <div className="clearfix"></div>
           </div>

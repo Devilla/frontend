@@ -21,6 +21,16 @@
     font-size: 13px;
     padding: 10px 10px 10px 10px;
   }
+  .pricing-below{
+    padding-bottom: 0px !important;
+  }
+  .makeAlignConst {
+    margin-top: 0px !important;
+  }
+  .pricing-title {
+    padding-top: 100px;
+    padding-bottom: 120px;
+  }
 
 .tgl {
   display: none;
@@ -284,7 +294,7 @@
     .switch {
       position: absolute;
       left: -55px;
-  
+
     }
 
   }
