@@ -145,7 +145,12 @@
   color: #999;
 }
 .g3::before {
-  content: 'When do your Users visit ?';
+  content: 'When do Users visit ?';
+  font-size: 20px !important;
+  color: #999;
+}
+.g4::before {
+  content: 'Which pages Users visit ?';
   font-size: 20px !important;
   color: #999;
 }
