@@ -6,11 +6,13 @@ import {
   Table,
   HelpBlock
 } from 'react-bootstrap';
+import { browserHistory } from 'react-router';
 import { connect } from 'react-redux';
 import CardTable from 'components/Template/card-with-page-table';
 import { pagethArray } from 'components/Template/data';
 import { fetchDisplayUrl, createPageUrl, clearPageUrl, removePageUrl } from 'ducks/pageurl';
 import { validatePath } from 'components/Common/function';
+import Popup from 'react-popup';
 
 import './DisplayPage.scss';
 
@@ -51,18 +53,29 @@ class DisplayPage extends Component {
   handleNextState = () => {
     if(!this.props.displayUrls.length)
       return this.setState({error: 'Add a display path'});
-    this.props.setActiveState(5);
-      
+    Popup.create({
+      title: 'Campaign is Live',
+      buttons: {
+        right: [{
+          text: 'Finish',
+          className: 'default',
+          action: function () {
+            browserHistory.push('/dashboard');
+            Popup.close();
+          }
+        }]
+      }
+    });
   }
 
   handleBackState = () => {
-    this.props.setActiveState(3);
+    this.props.setActiveState(4);
   }
 
   addPageUrl = () => {
     if(this.state.displayUrl.url == '')
       return this.setState({error: 'Please enter a valid path'});
-    if(this.state.displayUrl.url[0]!=='/')
+    if(this.state.displayUrl.url==undefined || this.state.displayUrl.url[0]!=='/')
       this.state.displayUrl.url='/'+this.state.displayUrl.url;
 
     let displayUrl = this.state.displayUrl;
@@ -160,7 +173,7 @@ class DisplayPage extends Component {
               <Col md={11}>
                 <div className="ml-5 pl-4 input-group col-md-8">
                   <label className="pt-2 pl-1 pr-3 text-muted">{this.props.campaign
-                    ? 'http://'+this.props.campaign.websiteUrl
+                    ? this.props.campaign.websiteUrl
                     : 'http://localhost:3000'}/</label>
                   <input type="text"
                     className="form-control txtpageurl"
