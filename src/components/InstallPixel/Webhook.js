@@ -5,7 +5,6 @@ import { toast } from 'react-toastify';
 
 import { fetchWebhook, createWebhook, deleteWebhook, clearWebhook } from 'ducks/webhooks';
 import { updateCampaign } from 'ducks/campaign';
-// import  Webhookpopup   from './Webhookpopup';
 import './Webhook.scss';
 
 const toastConfig = {
@@ -120,8 +119,6 @@ class Webhook extends Component {
           <div className="card-body ">
             <h5 className="card-title">What type of Webhook would you like to use?</h5>
             <div className="webhooks-types">
-              <button className="btn btn-primary" onClick={() => this.selectHookType('Ilusion')} >IllusionSoft</button>
-              <button className="btn btn-primary" onClick={() => this.selectHookType('Funnel')} >ClickFunnels</button>
               <button className="btn btn-primary" onClick={() => this.selectHookType('Custom')} ><i className="fi-shuffle"></i>&nbsp;Custom Webhook</button>
             </div>
           </div>
