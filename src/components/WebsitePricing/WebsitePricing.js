@@ -82,7 +82,7 @@ class WebsitePricing extends Component {
 
     return planList.map(plan => {
       return <div key={plan.name} className="col-md-3 pl-3 pr-0 cards">
-        <div className="pricing pricing-1  pr-0 pl-0 pricing-tab"  style={ /\b(year)\b/m.test(plan.interval) ? {minHeight:'850px'} : {minHeight:'750px'}} >
+        <div className="pricing pricing-1  pr-0 pl-0 pricing-tab"  style={ /\b(year)\b/m.test(plan.interval) ? {minHeight:'820px'} : {minHeight:'720px'}} >
           <div className={`pricing__head ${this.stellarFeel(plan.name) }  boxed boxed--border boxed--lg price-head`}>
             <h3>{this.filterPlanName(plan.name)}</h3>
             <span className="h1">
@@ -126,10 +126,6 @@ class WebsitePricing extends Component {
             <li className="text-left pl-5">
               <span className="checkmark bg--primary-1"></span>
               <span className="h5 inline-block">Beta Features</span>
-            </li>
-            <li className="text-left pl-5">
-              <span className="checkmark bg--primary-1"></span>
-              <span className="h5 inline-block">White Label</span>
             </li>
             <li className="text-left pl-5">
               <span className=" bg--primary-1"></span>

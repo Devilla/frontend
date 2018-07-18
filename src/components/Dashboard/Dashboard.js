@@ -266,8 +266,8 @@ class Dashboard extends Component {
                         )}
                         {this.renderCardBox(
                           <div className=" widget-flat card-box  text-muted pr-4 pl-4 pb-5 pt-2 pos-vertical-center c2">
-                            <p className="text-uppercase title m-b-5 fonttitle font-600">Total Notifications</p>
-                            <h3 className="m-b-10 notify">{campaignInfo ? campaignInfo.notificationCount : 0}</h3>
+                            <p className="text-uppercase title m-b-5 fonttitle font-600">Conversion %</p>
+                            <h3 className="m-b-10 notify">{(profile && userSignUps/profile.uniqueVisitors)*100 ? (userSignUps/profile.uniqueVisitors)*100 : 0}</h3>
                           </div>
                         )}
                         {this.renderCardBox(
@@ -298,29 +298,29 @@ class Dashboard extends Component {
           </Row>
           <Row className="new-graphs justify-content-around">
             <Col md={12} className="g2">
-    
+
               <Card
                 statsIcon="fa fa-history"
                 id="chartHours"
                 content={
                   <div className=" canvas-brdr">
-                    <iframe src="http://35.202.85.190:5601/app/kibana#/visualize/edit/0d5b74d0-880d-11e8-929b-418c233f6851?embed=true&_g=(refreshInterval:(display:Off,pause:!f,value:0),time:(from:now-7d,mode:quick,to:now))&_a=(filters:!(),linked:!f,query:(language:lucene,query:''),uiState:(mapCenter:!(18.97902595325528,27.24609375),mapZoom:2),vis:(aggs:!((enabled:!t,id:'1',params:(customLabel:'Unique+Visitors',field:json.value.visitorId),schema:metric,type:cardinality),(enabled:!t,id:'2',params:(field:json.value.geo.country,missingBucket:!f,missingBucketLabel:Missing,order:desc,orderAgg:(enabled:!t,id:'2-orderAgg',params:(field:json.value.visitorId),schema:orderAgg,type:cardinality),orderBy:custom,otherBucket:!f,otherBucketLabel:Other,size:100),schema:segment,type:terms)),params:(addTooltip:!t,colorSchema:Blues,isDisplayWarning:!t,legendPosition:bottomright,mapCenter:!(0,0),mapZoom:2,outlineWeight:1,selectedJoinField:(description:'Country+name',name:name),selectedLayer:(attribution:'',created_at:'2017-04-26T17:12:15.978370',fields:!((description:'Two+letter+abbreviation',name:iso2),(description:'Country+name',name:name),(description:'Three+letter+abbreviation',name:iso3)),format:(type:geojson),id:5659313586569216,layerId:'elastic_maps_service.World+Countries',name:'World+Countries',tags:!(),url:'https:%2F%2Fvector.maps.elastic.co%2Fblob%2F5659313586569216%3Felastic_tile_service_tos%3Dagree%26my_app_version%3D6.2.4%26license%3D2d555df5-96c7-4a4f-8992-71f3cf979597',weight:1),showAllShapes:!t,wms:(baseLayersAreLoaded:(_c:!(),_d:!t,_h:0,_n:!f,_s:1,_v:!t),enabled:!f,options:(format:image%2Fpng,transparent:!t),selectedTmsLayer:(attribution:'',id:road_map,maxZoom:10,minZoom:0,subdomains:!(),url:'https:%2F%2Ftiles.maps.elastic.co%2Fv2%2Fdefault%2F%7Bz%7D%2F%7Bx%7D%2F%7By%7D.png%3Felastic_tile_service_tos%3Dagree%26my_app_name%3Dkibana%26my_app_version%3D6.2.4%26license%3D2d555df5-96c7-4a4f-8992-71f3cf979597'),tmsLayers:!((attribution:'',id:road_map,maxZoom:10,minZoom:0,subdomains:!(),url:'https:%2F%2Ftiles.maps.elastic.co%2Fv2%2Fdefault%2F%7Bz%7D%2F%7Bx%7D%2F%7By%7D.png%3Felastic_tile_service_tos%3Dagree%26my_app_name%3Dkibana%26my_app_version%3D6.2.4%26license%3D2d555df5-96c7-4a4f-8992-71f3cf979597')))),title:'Unique+Visitors+by+Country',type:region_map))" height="450" width="1000"></iframe>
+                    <iframe className="f1 col-md-12"  src="http://35.202.85.190:5601/app/kibana#/visualize/edit/0d5b74d0-880d-11e8-929b-418c233f6851?embed=true&_g=(refreshInterval:(display:Off,pause:!f,value:0),time:(from:now-7d,mode:quick,to:now))&_a=(filters:!(),linked:!f,query:(language:lucene,query:''),uiState:(mapCenter:!(18.97902595325528,27.24609375),mapZoom:2),vis:(aggs:!((enabled:!t,id:'1',params:(customLabel:'Unique+Visitors',field:json.value.visitorId),schema:metric,type:cardinality),(enabled:!t,id:'2',params:(field:json.value.geo.country,missingBucket:!f,missingBucketLabel:Missing,order:desc,orderAgg:(enabled:!t,id:'2-orderAgg',params:(field:json.value.visitorId),schema:orderAgg,type:cardinality),orderBy:custom,otherBucket:!f,otherBucketLabel:Other,size:100),schema:segment,type:terms)),params:(addTooltip:!t,colorSchema:Blues,isDisplayWarning:!t,legendPosition:bottomright,mapCenter:!(0,0),mapZoom:2,outlineWeight:1,selectedJoinField:(description:'Country+name',name:name),selectedLayer:(attribution:'',created_at:'2017-04-26T17:12:15.978370',fields:!((description:'Two+letter+abbreviation',name:iso2),(description:'Country+name',name:name),(description:'Three+letter+abbreviation',name:iso3)),format:(type:geojson),id:5659313586569216,layerId:'elastic_maps_service.World+Countries',name:'World+Countries',tags:!(),url:'https:%2F%2Fvector.maps.elastic.co%2Fblob%2F5659313586569216%3Felastic_tile_service_tos%3Dagree%26my_app_version%3D6.2.4%26license%3D2d555df5-96c7-4a4f-8992-71f3cf979597',weight:1),showAllShapes:!t,wms:(baseLayersAreLoaded:(_c:!(),_d:!t,_h:0,_n:!f,_s:1,_v:!t),enabled:!f,options:(format:image%2Fpng,transparent:!t),selectedTmsLayer:(attribution:'',id:road_map,maxZoom:10,minZoom:0,subdomains:!(),url:'https:%2F%2Ftiles.maps.elastic.co%2Fv2%2Fdefault%2F%7Bz%7D%2F%7Bx%7D%2F%7By%7D.png%3Felastic_tile_service_tos%3Dagree%26my_app_name%3Dkibana%26my_app_version%3D6.2.4%26license%3D2d555df5-96c7-4a4f-8992-71f3cf979597'),tmsLayers:!((attribution:'',id:road_map,maxZoom:10,minZoom:0,subdomains:!(),url:'https:%2F%2Ftiles.maps.elastic.co%2Fv2%2Fdefault%2F%7Bz%7D%2F%7Bx%7D%2F%7By%7D.png%3Felastic_tile_service_tos%3Dagree%26my_app_name%3Dkibana%26my_app_version%3D6.2.4%26license%3D2d555df5-96c7-4a4f-8992-71f3cf979597')))),title:'Unique+Visitors+by+Country',type:region_map))" height="400"></iframe>
                   </div>
                 }
               />
-            
+
               <hr className="border-hr"/>
               <div className="clearfix"></div>
             </Col>
           </Row>
           <Row>
-            <Col md={6} className="g3">
+            <Col md={12} className="g3">
               <Card
                 statsIcon="fa fa-history"
                 id="chartHours"
                 content={
                   <div className=" canvas-brdr">
-                    <iframe src="http://35.202.85.190:5601/app/kibana#/visualize/edit/644184c0-8929-11e8-929b-418c233f6851?embed=true&_g=(refreshInterval%3A(display%3AOff%2Cpause%3A!f%2Cvalue%3A0)%2Ctime%3A(from%3A'2018-07-16T18%3A30%3A00.000Z'%2Cmode%3Aabsolute%2Cto%3A'2018-07-22T18%3A05%3A10.903Z'))" height="500" width="600"></iframe>
+                    <iframe className="f2 col-md-12" src="http://35.202.85.190:5601/app/kibana#/visualize/edit/644184c0-8929-11e8-929b-418c233f6851?embed=true&_g=(refreshInterval%3A(display%3AOff%2Cpause%3A!f%2Cvalue%3A0)%2Ctime%3A(from%3Anow%2Fd%2Cmode%3Aquick%2Cto%3Anow%2Fd))"  height="400"></iframe>
                   </div>
                 }
               />

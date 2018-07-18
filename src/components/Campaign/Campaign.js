@@ -68,7 +68,7 @@ const Campaign = ({
                 <Row>
                   <div className="col-md-6">
                     <FormGroup>
-                      <ControlLabel className="text-muted h6">Conversions per day</ControlLabel> &nbsp;<i className="fa fa-info-circle" data-toggle="tooltip" title="Fill in for better monitoring"> </i>
+                      <ControlLabel className="text-muted h6">Conversions per day</ControlLabel> &nbsp;<i className="fa fa-info-circle" height="50px" width="50px" data-toggle="tooltip"  data-delay='{"show":"0", "hide":"100"}' title="Fill in for better monitoring"> </i>
                       <FormControl
                         type="number"
                         bsClass="form-control"

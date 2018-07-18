@@ -152,9 +152,9 @@ class WebsiteContact extends Component {
                       // onBlur={() => this.checkEmailBlur()}
                       onChange={(e) => this.handleStateChange(e.target.name, e.target.value)}
                     />
-                    {emailError &&
+                    {errorEmail &&
                       <Alert bsStyle='warning'>
-                        <strong>{emailError}</strong>
+                        <strong>{errorEmail}</strong>
                       </Alert>
                     }
                   </div>
