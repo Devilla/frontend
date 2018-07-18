@@ -8,7 +8,7 @@ import {
   Dashboard,
   Notification,
   LoginFlow,
-  Integrations,
+  ComingSoon,
   Error,
   UpgradeCard,
   UpgradePlan,
@@ -57,7 +57,7 @@ const MyRoutes = ({routerHistory}) => (
       <Route path="/oauthgenerate" component={Oauthgenerate} />
       <Route path="/channels" component={DashboardChannel} />
       <Route path="/analytics" component={AnalyticsContainer} />
-      <Route path="/integrations" component={Integrations} />
+      <Route path="/integrations" component={ComingSoon} />
       <Route path="/support" component={Dashboard} />
       <Route path="/upgrade" component={UpgradePlan} />
       <Route path="/profile" component={Profile} />
