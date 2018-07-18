@@ -145,7 +145,7 @@ class DisplayPage extends Component {
               return <tr key={i}>
                 <td className="display-url">{displayUrl.url}</td>
                 <td className="pl-4 status">
-                  <span className="dot" style={{backgroundColor: this.renderColor(displayUrl.status) }}>
+                  <span className="dot display" style={{backgroundColor: this.renderColor(displayUrl.status) }}>
                   </span>
                 </td>
                 <td><a href="javascript:;"><i className="ml-3 icon-trash" onClick={() => this.deleteDisplayUrl(displayUrl._id, i, displayUrl.type)}></i></a></td>
@@ -237,7 +237,7 @@ class DisplayPage extends Component {
               <button type="button" className="btn btn-primary waves-effect number displaybtn-back" onClick={this.handleBackState}><i className="icon-arrow-left pr-2"></i>Back</button>
             </div>
             <div className="float-right">
-              <button type="button" className="btn btn-custom waves-light waves-effect number ml-2 pl-4 pr-4 displaybtn-finish" onClick={this.handleNextState}>Finish<i className="icon-arrow-right pl-2"></i> </button>
+              <button type="button" className="btn btn-primary  waves-effect number ml-2 pl-4 pr-4 displaybtn-finish" onClick={this.handleNextState}>Next<i className="icon-arrow-right pl-2"></i> </button>
             </div>
             <div className="clearfix"></div>
           </div>

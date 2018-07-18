@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import Popup from 'react-popup';
 import copy from 'copy-to-clipboard';
 import { toast } from 'react-toastify';
 
 import { fetchWebhook, createWebhook, deleteWebhook, clearWebhook } from 'ducks/webhooks';
 import { updateCampaign } from 'ducks/campaign';
+// import  Webhookpopup   from './Webhookpopup';
 import './Webhook.scss';
 
 const toastConfig = {
@@ -19,7 +19,8 @@ class Webhook extends Component {
     super();
     this.state = {
       selectHook: null,
-      campaignWebhook: null
+      campaignWebhook: null,
+      webhookName: ''
     };
   }
 
@@ -64,33 +65,29 @@ class Webhook extends Component {
     this.setState({campaignWebhook: undefined});
   }
 
-  addWebhook = (e) => {
-    e.preventDefault();
+  popupContent = () => {
     return (
-      <div className="webhook-popup">
-        <button type="button" className="btn btn-info  addchannel" data-toggle="modal" data-target="#myModal" onClick={()=>{}} ><i className="fi-plus"></i>&nbsp;Add Channels</button>
-        <div className="modal fade show-modal" id="myModal" role="dialog">
-          <div className="modal-dialog">
-            <div className="modal-content align-modal">
-              <div className="modal-header">
-                <button type="button" className="close" data-dismiss="modal">&times;</button>
-                <h4 className="modal-title">Add new Webhook</h4>
+      <div className="modal fade show-modal" id="myModal" role="dialog">
+        <div className="modal-dialog">
+          <div className="modal-content align-modal">
+            <div className="modal-header">
+              <button type="button" className="close" data-dismiss="modal">&times;</button>
+              <h4 className="modal-title">Add new Webhook</h4>
+            </div>
+            <div className="modal-body">
+              <div className="input-group mb-3">
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="Webhook Name"
+                  aria-label="Webhook Name"
+                  aria-describedby="basic-addon1"
+                  onChange={(e) => this.setState({webhookName: e.target.value})}
+                />
               </div>
-              <div className="modal-body">
-                <div className="input-group mb-3">
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Webhook Name"
-                    aria-label="Webhook Name"
-                    aria-describedby="basic-addon1"
-                    onChange={(e) => this.setState({webhookName: e.target.value})}
-                  />
-                </div>
-              </div>
-              <div className="modal-footer">
-                <button type="button" className="btn btn-default" data-dismiss="modal" onClick={() => this.saveWebhook()}>save Webhook</button>
-              </div>
+            </div>
+            <div className="modal-footer">
+              <button type="button" className="btn btn-primary save-btn" data-dismiss="modal" onClick={() => this.saveWebhook()}>Save Webhook</button>
             </div>
           </div>
         </div>
@@ -168,8 +165,9 @@ class Webhook extends Component {
                     <option>Choose webhook...</option>
                     {this.renderWebhooks()}
                   </select>
-                  <div className="input-group-append col-md-4" onClick={this.addWebhook}>
-                    <span className="btn btn-primary waves-effect input-group-text" htmlFor="inputGroupSelect02">Add Webhook</span>
+                  <div className="input-group-append col-md-4">
+                    <button type="button" className="btn btn-primary  addchannel"  htmlFor="inputGroupSelect02" data-toggle="modal" data-target="#myModal" onClick={()=>{}} ><i className="fi-plus"></i>&nbsp;Add Channels</button>
+                    {this.popupContent()}
                   </div>
                 </div>
               </div>

@@ -5,13 +5,16 @@ import Webhook from './Webhook';
 const InstallPixel = ({
   elastic,
   loaderActive,
-  setActiveState,
   campaign,
   verifyPixelStatus,
   handlePixelCopy,
   toggleWebhook,
   displayWebhookIntegration
 }) => {
+
+
+
+
   return (
     <div className="install-pixel">
       <h4 className="lead text-center m-b-30 m-t-20">Install Pixel to Your Website</h4>
@@ -71,16 +74,7 @@ const InstallPixel = ({
           <i className={displayWebhookIntegration?'icon-arrow-up pl-2':'icon-arrow-down pl-2'}></i>
         </button>
       </div>
-      <div className="float-right mr-0 pr-2">
-        <button
-          type="button"
-          className="btn btn-primary waves-light waves-effect pixelnext-btn  pl-3 pr-3"
-          onClick={() => setActiveState(2)}
-        >
-          Next
-          <i className="icon-arrow-right pl-2"></i>
-        </button>
-      </div>
+    
       <div className="clearfix"></div>
       {displayWebhookIntegration &&
         <Webhook campaign={campaign} />

@@ -5,17 +5,7 @@ body {
   font-family: "Raleway, Source Sans Pro, Verdana, Helvetica", sans-serif;
 }
 
-.toast-style {
-  div[role=alert], div[role=info] {
-    padding: 25px 7px;
-    background-color: rgba(0, 0, 0, 0.7) !important;
-    color: #fff;
-    text-align: center;
-  }
-  button {
-    height: 4.2em;
-  }
-}
+
 
 .website-app {
   .alert-warning {
@@ -25,5 +15,17 @@ body {
   }
   .content {
     padding-top: 100px;
+  }
+  .toast-style {
+    padding: 17px 7px;
+    background-color: rgba(0, 0, 0, 0.9) !important;
+    color: #fff !important;
+    text-align: center !important;
+    height: 10px !important;
+    border-radius: 5px !important;
+    button {
+      height: 1.5em;
+      color: #fff;
+    }
   }
 }
