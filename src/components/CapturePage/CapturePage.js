@@ -48,12 +48,12 @@ class CapturePage extends Component {
 
   handleNextState = () => {
     if(!this.props.leads.length)
-      return this.setState({error: 'Add a display path'});
-    this.props.setActiveState(5);
+      return this.setState({error: 'Add a capture path'});
+    this.props.setActiveState(4);
   }
 
   handleBackState = () => {
-    this.props.setActiveState(3);
+    this.props.setActiveState(2);
   }
 
 
