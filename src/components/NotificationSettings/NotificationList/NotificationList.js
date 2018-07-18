@@ -24,7 +24,7 @@ const NotificationList = ({ notificationList, configure, handleActivityChange}) 
               }
             </span>
           </div>
-          <div className="text-center card-box bx-shadow ">
+          <div className="text-center card-box bx ">
           
             <div>
               <h4 className={
