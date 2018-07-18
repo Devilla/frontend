@@ -6,7 +6,17 @@ body {
 }
 
 
-
+.toast-style {
+  div[role=alert], div[role=info] {
+    padding: 0px 0px;
+    background-color: rgba(0, 0, 0, 0.7) !important;
+    color: #fff;
+    text-align: center;
+  }
+  button {
+    height: 4.2em;
+  }
+}
 .website-app {
   .alert-warning {
     background-color: #f2dede;
