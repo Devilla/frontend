@@ -92,13 +92,14 @@ class Notification extends Component {
       <tr className="campaign-td" key={campaign._id} onClick={(e) => this.handleRouteChange(e, campaign)}>
         <th scope="row">{i + 1}</th>
         <td>{campaign.campaignName}</td>
+        {console.log(campaign && campaign:null,'<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<')}
         <td>{campaign.websiteUrl}</td>
         <td className="switch">
           <input className="tgl tgl-ios" id="cb2" type="checkbox" checked={campaign.isActive}  readOnly/>
           <label className="tgl-btn" htmlFor="cb2" onClick={(e) => this.handleActiveChange(!campaign.isActive, campaign)}></label>
         </td>
         <td>{campaign.trackingId}</td>
-        <td>{moment(campaign.createdAt).format('MM/DD/YYYY')}</td>
+        <td>{moment(campaign.updatedAt).format('MM/DD/YYYY')}</td>
         <td><a href="javascript:;"><i className="ml-3 icon-trash" onClick={() => this.deleteCampaign(i,campaign)}></i></a></td>
       </tr>
     ))
@@ -119,7 +120,7 @@ class Notification extends Component {
                 <th>STATUS</th>
                 <th>TRACK ID</th>
 
-                <th>CREATED</th>
+                <th>CREATED/UPDATED</th>
                 <th>TRASH</th>
               </tr>
             </thead>
