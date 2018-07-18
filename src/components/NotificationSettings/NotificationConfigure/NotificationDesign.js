@@ -2,6 +2,7 @@ import React from 'react';
 import {
   Googlepop,
   Facebookpop,
+  FireIcon
 } from 'img';
 import StarRatings from 'react-star-ratings';
 import './NotificationDesign.scss';
@@ -178,7 +179,7 @@ const NotificationDesign = ({
                             backgroundColor: notificationStyle.backgroundColor,
                             border: `${notificationStyle.borderWidth} ${notificationStyle.borderStyle} ${notificationStyle.borderColor}`
                           }}>
-                            <div className="FPqR37xpqJeA37xp7MM9_0"><img src="https://useproof.s3.amazonaws.com/turbo1/flamelite.svg" style={{ borderRadius: notificationStyle.borderRadius }} /></div>
+                            <div className="FPqR37xpqJeA37xp7MM9_0"><img src={FireIcon} style={{ borderRadius: notificationStyle.borderRadius }} /></div>
                             <div className="FPqRqu5HqJeAqu5H7MM9_0">
                               <div style={{
                                 color: notificationStyle.color,

@@ -17,7 +17,7 @@ import Button from 'components/Template/customButton';
 import './BillingDetails.scss';
 
 const billingHeader = [
-  'Billing Date', 'Amount', 'Transaction Id', 'Interval', 'Download'
+  'Billing Date', 'Amount', 'Transaction Id', 'Interval', 'Download Invoice'
 ];
 
 class BillingDetails extends Component {
