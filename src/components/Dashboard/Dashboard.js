@@ -320,7 +320,7 @@ class Dashboard extends Component {
                 id="chartHours"
                 content={
                   <div className=" canvas-brdr">
-                    <iframe className="f2 col-md-12" src="http://35.202.85.190:5601/app/kibana#/visualize/edit/644184c0-8929-11e8-929b-418c233f6851?embed=true&_g=(refreshInterval%3A(display%3AOff%2Cpause%3A!f%2Cvalue%3A0)%2Ctime%3A(from%3A'2018-07-16T18%3A30%3A00.000Z'%2Cmode%3Aabsolute%2Cto%3A'2018-07-22T18%3A05%3A10.903Z'))" height="400"></iframe>
+                    <iframe className="f2 col-md-12" src="http://35.202.85.190:5601/app/kibana#/visualize/edit/644184c0-8929-11e8-929b-418c233f6851?embed=true&_g=(refreshInterval%3A(display%3AOff%2Cpause%3A!f%2Cvalue%3A0)%2Ctime%3A(from%3Anow%2Fd%2Cmode%3Aquick%2Cto%3Anow%2Fd))"  height="400"></iframe>
                   </div>
                 }
               />
