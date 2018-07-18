@@ -49,7 +49,9 @@
 .dropdown:hover{ .dropdown-content {
     display: block;
 }}
-
+.dashboard-container #sidebar-menu > ul > li > a.active {
+  color:  #5A616B !important;
+}
 a.nav-link {
     &:hover:not(:focus) {
       background-color: rgba(245, 245, 245, 0.816);
@@ -62,7 +64,9 @@ a.nav-link {
       color: #097fff !important;
     }
 
+
 }
+
 span {
   &.menu-arrow {
     &:focus:not(a.nav-link:focus){

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Row } from 'react-bootstrap';
 import NotificationConfigure from './NotificationConfigure/NotificationConfigure';
 import NotificationList from './NotificationList/NotificationList';
+
 import './NotificationSettings.scss';
 
 const notificationPanelStyleDefault = { // TODO: Take style values from server
@@ -229,6 +230,8 @@ class Notifications extends Component {
       <div className="notification-settings">
         <div>
           <h4 className="lead text-center m-b-30 m-t-20">Notifications</h4>
+        
+
           {!this.props.notification
             ?
             <NotificationList
@@ -261,7 +264,7 @@ class Notifications extends Component {
           }
         </div>
         {!this.props.notification &&
-          <div className="pt-5 mt-5">
+          <div className="notifsettinglast-btn">
             <div className="float-left">
               <button type="button" className="btn btn-primary  waves-light waves-effect cardback-btn " onClick={this.handleBackState}><i className="icon-arrow-left pr-2"></i> Back</button>
             </div>

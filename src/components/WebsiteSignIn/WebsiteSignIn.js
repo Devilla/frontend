@@ -115,11 +115,12 @@ class WebsiteSignIn extends Component {
           isVisible={true}>
           <div className="main-container">
             <section className="bg">
-              <div className="container text-center">
+              <div className="container text-center mt-5">
+                <span className="signintitle">Welcome back!</span>
                 <div className="row ">
                   <div className="col-sm-12 col-md-7 col-lg-6">
-                    <div>
-                      <span className="signintitle">Welcome back!</span>
+                    <div className="align">
+          
                       <p className="lead">
                         <span className="sub-in-title">Don't have an account yet?&nbsp;
                           <Link to="/signup">Sign up</Link>

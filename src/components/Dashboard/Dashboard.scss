@@ -145,10 +145,26 @@
   color: #999;
 }
 .g3::before {
-  content: 'When do your Users visit ?';
+  content: 'When do Users visit ?';
+  font-size: 20px !important;
+  color: #999;
+}
+.g4::before {
+  content: 'Which pages Users visit ?';
   font-size: 20px !important;
   color: #999;
 }
 .border-hr {
   margin-top: 10px;
+}
+.TImelineData{
+  height: 20px;
+  width: 50px;
+  border: 1px solid grey;
+  background-color:#097fff;
+
+}
+.TImelineDat{
+  height: 20px;
+  width: 50px;
 }
