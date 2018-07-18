@@ -21,7 +21,7 @@ const Header = ({openCloseDropdown, dropdownStyle, logout, renderHelp, openProfi
           <h4><Link onClick={() => browserHistory.goBack()}><i className="icon-arrow-left mr-3"></i></Link>{children.props.location.pathname == '/new'? 'Campaign Setting' :children.props.location.pathname.replace(/^\/+/g, '')}</h4>
         </div>
 
-        <ul className="list-unstyled topbar-right-menu float-right mb-0 nav-custom-header">
+        <ul className="list-unstyled topbar-right-menu float-right mb-0 nav-custom-header  rounded-circle">
           <li className="dropdown notification-list">
             <a
               className="nav-link dropdown-toggle nav-user"
@@ -32,7 +32,7 @@ const Header = ({openCloseDropdown, dropdownStyle, logout, renderHelp, openProfi
               style={{cursor:'pointer'}}
               onClick={openCloseDropdown}
             >
-              <i className=" mdi mdi-account-settings-variant rounded-circle"></i>
+              <i className=" mdi mdi-account-settings-variant"></i>
               <span className="ml-1">
               </span>
             </a>
