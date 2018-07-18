@@ -6,13 +6,11 @@ import {
   Table,
   HelpBlock
 } from 'react-bootstrap';
-import { browserHistory } from 'react-router';
 import { connect } from 'react-redux';
 import CardTable from 'components/Template/card-with-page-table';
 import { pagethArray } from 'components/Template/data';
 import { fetchDisplayUrl, createPageUrl, clearPageUrl, removePageUrl } from 'ducks/pageurl';
 import { validatePath } from 'components/Common/function';
-import Popup from 'react-popup';
 
 import './DisplayPage.scss';
 
@@ -53,23 +51,12 @@ class DisplayPage extends Component {
   handleNextState = () => {
     if(!this.props.displayUrls.length)
       return this.setState({error: 'Add a display path'});
-    Popup.create({
-      title: 'Campaign is Live',
-      buttons: {
-        right: [{
-          text: 'Finish',
-          className: 'default',
-          action: function () {
-            browserHistory.push('/dashboard');
-            Popup.close();
-          }
-        }]
-      }
-    });
+    this.props.setActiveState(5);
+      
   }
 
   handleBackState = () => {
-    this.props.setActiveState(4);
+    this.props.setActiveState(3);
   }
 
   addPageUrl = () => {
