@@ -7,7 +7,7 @@ const NotificationList = ({ notificationList, configure, handleActivityChange}) 
     return notificationList.map(notification =>
       <div key={notification._id}
         className={notification.notificationName === 'Review Notification' ? 'col-md-4 notification-box lastbox' : 'col-md-4 notification-box'}>
-        <div className=" ribbon-box bx-shadow">
+        <div className=" ribbon-box indi-card">
           <div className="ribbon-two ribbon-two-success">
             <span>
               {
@@ -24,7 +24,7 @@ const NotificationList = ({ notificationList, configure, handleActivityChange}) 
               }
             </span>
           </div>
-          <div className="text-center card-box bx-shadow ">
+          <div className="text-center card-box bx ">
           
             <div>
               <h4 className={
