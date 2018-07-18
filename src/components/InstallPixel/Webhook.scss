@@ -1,9 +1,10 @@
 .webhooks-container {
   .card-title {
-    font-weight: 400;
+    font-weight: 600;
     margin-top: 5px;
     margin-bottom: 25px !important;
     color: #999;
+    font-family: 'Roboto' !important;
   }
 
   .card-text {
@@ -23,8 +24,20 @@
 
   .webhooks-types {
     & button {
-      width: 18%;
+      width: 25%;
       border-radius: 5px;
+    }
+  }
+  .webhook-section {
+    border-radius: 5px !important;
+    padding: 0px !important;
+    border: 1px solid #cecdcd !important;
+    .card-header {   
+      border-left: 1px solid #cecdcd !important;
+      color: #097fff !important;
+      font-weight: 600 !important;
+      background: #EAF5FF;
+      
     }
   }
 }
