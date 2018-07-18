@@ -10,17 +10,19 @@
       color: #a94442;
     }
     .signintitle {
-      font-size: 50px;
+      font-size: 40px;
+  
+      margin: 0 auto;
     }
 
     .sub-in-title {
-      font-size: 16px !important;
+      font-size: 18px !important;
     }
 
     .vristrue {
-      margin-left: 50px;
+      margin-left: 8px;
       position: relative;
-      top: 190px;
+      top: 120px;
     }
 
     input {
@@ -33,13 +35,32 @@
     .loginfrm {
       margin-top: 0px;
     }
+    .align {
+      margin-top: 45px;
+    }
+    .socio-link {
+      position: relative;
+      top: -85px;
+    }
   }
 }
 
+@media only screen and (max-width: 750px) {
+  .signin-container {
+    .socio-link {
+      position: relative !important;
+      top: 100px  !important;
+    }
+  }
+}
 @media only screen and (max-width: 575px) {
   .signin-container {
     input {
       max-width: 275px;
+    }
+    .socio-link {
+      position: relative !important;
+      top: 0px  !important;
     }
   }
 }
@@ -49,6 +70,8 @@
     .sub-in-title {
       font-size: 18px !important;
     }
+
+
   }
 }
 
@@ -69,6 +92,7 @@
       margin : 100px 0 0 15px;
       min-height: 160px;
       border-top: 1px solid #c0c0c0;
+  
       .link-fb {
         font-size: 13.7px;
       }

@@ -1,5 +1,8 @@
 import React from 'react';
 import './NotificationView.scss';
+import  {
+  FireIcon
+} from 'img';
 const NotificationView = ({tab, display, position, animation, notificationPanelStyle}) => {
 
   const {
@@ -193,7 +196,7 @@ const NotificationView = ({tab, display, position, animation, notificationPanelS
                 backgroundColor: notificationStyle.backgroundColor,
                 border: `${notificationStyle.borderWidth} ${notificationStyle.borderStyle} ${notificationStyle.borderColor}`
               }}>
-              <div className="FPqR37xpqJeA37xp7MM9_0"><img src="https://useproof.s3.amazonaws.com/turbo1/flamelite.svg" style={{ borderRadius: notificationStyle.borderRadius }} /></div>
+              <div className="FPqR37xpqJeA37xp7MM9_0"><img src={FireIcon} style={{ borderRadius: notificationStyle.borderRadius }} /></div>
               <div className="FPqRqu5HqJeAqu5H7MM9_0">
                 <div style={{
                   color: notificationStyle.color,

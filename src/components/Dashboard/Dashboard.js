@@ -8,9 +8,8 @@ import { fetchCampaignInfo, successCampaign , fetchCampaign } from 'ducks/campai
 import './Dashboard.scss';
 import Card from './Card';
 import ReactChartJs from 'react-chartjs';
-import { GeoChart, Timeline }  from 'react-chartkick';
-import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import { countryVisitors } from 'ducks/elastic';
 
 var LineChart = ReactChartJs.Line;
 let moment = extendMoment(Moment);
@@ -31,6 +30,8 @@ class Dashboard extends Component {
   componentWillMount() {
     this.props.fetchCampaignInfo();
     this.props.fetchCampaign();
+    let response =  this.props.countryVisitors();
+    console.log(response);
   }
 
   createLegend(json) {
@@ -156,53 +157,11 @@ class Dashboard extends Component {
     </div>;
   }
 
-  getNotificationRows = () => {
-
-    return this.props.campaigns ? this.props.campaigns.map((campaign, i) => (
-      <tr className="campaign-td" key={campaign._id} onClick={(e) => this.handleRouteChange(e, campaign)}>
-        <th scope="row">{i + 1}</th>
-        <td>/{campaign.campaignName}</td>
-        <td>{campaign.websiteUrl}</td>
-        <td>{moment(campaign.createdAt).format('MM/DD/YYYY')}</td>
-      </tr>
-    ))
-      :
-      <tr></tr>;
-  }
-
   handleChange = (date) => {
     this.setState({
       startDate : date
     });
   }
-
-  renderDayOption = (value) => {
-    return (
-      <select className="form-control text-muted" onChange={(e) =>  this.setState({daysClicked:e.target.value})}>
-        <option key={7} id={value} value={'7'} onClick={() => this.hide()}  >
-          7 days
-        </option>
-        <option key={14} id={value} value={'14'} onClick={() => this.hide()}  >
-          14 days
-        </option>
-        <option key={28} id={value} value={'28'}  onClick={() => this.hide()} >
-          28 days
-        </option>
-        <option key={'today'} id={value} value={'Today'}  onClick={() => this.hide()} >
-          Today
-        </option>
-        <option key={'yesterday'} id={value} value={'Yesterday'}  onClick={() => this.hide()} >
-          Yesterday
-        </option>
-        <option key={'datePicker'}  id={value} value={'custom'} onClick={(e) => this.displayCustomDate(e)} >
-          Custom
-        </option>
-      </select>
-    );
-  }
-
-
-
 
   displayCustomDate = (event) => {
     this.setState({
@@ -333,99 +292,45 @@ class Dashboard extends Component {
                     </div>
                   </Col>
                 </Row>
-                <div className=" pull-right days">
-                  { this.state.datePicker == 'd1' ?
-                    <div className = "customPicker">
-                      <DatePicker
-                        selected={this.state.startDate}
-                        onChange={this.handleChange}
-                      />
-                    </div>
-                    : ' ' }
-                  {this.renderDayOption('d1')}
-                </div>
                 <div className="clearfix"></div>
               </div>
             </Col>
           </Row>
           <Row className="new-graphs justify-content-around">
-            <Col md={5} className="g2">
-              <div className="new-card1">
-                <Card
-                  statsIcon="fa fa-history"
-                  id="chartHours"
-                  content={
-                    <div className="ct-chart canvas-brdr">
-                      <GeoChart data={[['United States', 44], ['Germany', 23], ['Brazil', 22]]}  width="400px" height="300px" />
-                    </div>
-                  }
-                />
-              </div>
-              <hr className="border-hr"/>
-              <div className="pull-right col-md-4">
-                { this.state.datePicker === 'd2' ?
-                  <div className = "customPicker-sub">
-                    <DatePicker
-                      selected={this.state.startDate}
-                      onChange={this.handleChange}
-                    />
+            <Col md={12} className="g2">
+    
+              <Card
+                statsIcon="fa fa-history"
+                id="chartHours"
+                content={
+                  <div className=" canvas-brdr">
+                    <iframe src="http://35.202.85.190:5601/app/kibana#/visualize/edit/0d5b74d0-880d-11e8-929b-418c233f6851?embed=true&_g=(refreshInterval:(display:Off,pause:!f,value:0),time:(from:now-7d,mode:quick,to:now))&_a=(filters:!(),linked:!f,query:(language:lucene,query:''),uiState:(mapCenter:!(18.97902595325528,27.24609375),mapZoom:2),vis:(aggs:!((enabled:!t,id:'1',params:(customLabel:'Unique+Visitors',field:json.value.visitorId),schema:metric,type:cardinality),(enabled:!t,id:'2',params:(field:json.value.geo.country,missingBucket:!f,missingBucketLabel:Missing,order:desc,orderAgg:(enabled:!t,id:'2-orderAgg',params:(field:json.value.visitorId),schema:orderAgg,type:cardinality),orderBy:custom,otherBucket:!f,otherBucketLabel:Other,size:100),schema:segment,type:terms)),params:(addTooltip:!t,colorSchema:Blues,isDisplayWarning:!t,legendPosition:bottomright,mapCenter:!(0,0),mapZoom:2,outlineWeight:1,selectedJoinField:(description:'Country+name',name:name),selectedLayer:(attribution:'',created_at:'2017-04-26T17:12:15.978370',fields:!((description:'Two+letter+abbreviation',name:iso2),(description:'Country+name',name:name),(description:'Three+letter+abbreviation',name:iso3)),format:(type:geojson),id:5659313586569216,layerId:'elastic_maps_service.World+Countries',name:'World+Countries',tags:!(),url:'https:%2F%2Fvector.maps.elastic.co%2Fblob%2F5659313586569216%3Felastic_tile_service_tos%3Dagree%26my_app_version%3D6.2.4%26license%3D2d555df5-96c7-4a4f-8992-71f3cf979597',weight:1),showAllShapes:!t,wms:(baseLayersAreLoaded:(_c:!(),_d:!t,_h:0,_n:!f,_s:1,_v:!t),enabled:!f,options:(format:image%2Fpng,transparent:!t),selectedTmsLayer:(attribution:'',id:road_map,maxZoom:10,minZoom:0,subdomains:!(),url:'https:%2F%2Ftiles.maps.elastic.co%2Fv2%2Fdefault%2F%7Bz%7D%2F%7Bx%7D%2F%7By%7D.png%3Felastic_tile_service_tos%3Dagree%26my_app_name%3Dkibana%26my_app_version%3D6.2.4%26license%3D2d555df5-96c7-4a4f-8992-71f3cf979597'),tmsLayers:!((attribution:'',id:road_map,maxZoom:10,minZoom:0,subdomains:!(),url:'https:%2F%2Ftiles.maps.elastic.co%2Fv2%2Fdefault%2F%7Bz%7D%2F%7Bx%7D%2F%7By%7D.png%3Felastic_tile_service_tos%3Dagree%26my_app_name%3Dkibana%26my_app_version%3D6.2.4%26license%3D2d555df5-96c7-4a4f-8992-71f3cf979597')))),title:'Unique+Visitors+by+Country',type:region_map))" height="450" width="1000"></iframe>
                   </div>
-                  : ' ' }
-                {this.renderDayOption('d2')}
-              </div>
-              <div className="clearfix"></div>
-            </Col>
-            <Col md={5} className="g3">
-              <div className="new-card2">
-                <Card
-                  statsIcon="fa fa-history"
-                  id="chartHours"
-                  content={
-                    <div className="ct-chart canvas-brdr">
-                      <Timeline data={[
-                        ['Sunday', '2017-03-03', '2017-04-03'],
-                        ['Monday', '2017-03-03', '2018-03-03'],
-                        ['Tuesday', '2017-03-03', '2018-03-03'],
-                        ['Friday', '2017-03-03', '2018-03-03'],
-                        ['Saturday', '2017-03-03', '2018-03-03']
-                      ]
-                      }  width="400px" height="300px" />
-                    </div>
-                  }
-                />
-              </div>
+                }
+              />
+            
               <hr className="border-hr"/>
-              <div className=" pull-right col-md-4" >
-                { this.state.datePicker === 'd3' ?
-                  <div className = "customPicker-sub">
-                    <DatePicker
-                      selected={this.state.startDate}
-                      onChange={this.handleChange}
-                    />
-                  </div>
-                  : ' ' }
-                {this.renderDayOption('d3')}
-              </div>
               <div className="clearfix"></div>
             </Col>
           </Row>
-          <Row className="justify-content-around">
-            <div className="card-box new-card3 col-md-6 g4">
-              <table className="table table-striped">
-                <thead>
-                  <tr>
-                    <th>#</th>
-                    <th>PAGE</th>
-                    <th>PAGE VIEWS</th>
-                    <th>PAGE VALUE</th>
+          <Row>
+            <Col md={6} className="g3">
+              <Card
+                statsIcon="fa fa-history"
+                id="chartHours"
+                content={
+                  <div className=" canvas-brdr">
+                    <iframe src="http://35.202.85.190:5601/app/kibana#/visualize/edit/644184c0-8929-11e8-929b-418c233f6851?embed=true&_g=(refreshInterval%3A(display%3AOff%2Cpause%3A!f%2Cvalue%3A0)%2Ctime%3A(from%3A'2018-07-16T18%3A30%3A00.000Z'%2Cmode%3Aabsolute%2Cto%3A'2018-07-22T18%3A05%3A10.903Z'))" height="500" width="600"></iframe>
+                  </div>
+                }
+              />
 
-                  </tr>
-                </thead>
-                <tbody>
-                  {this.getNotificationRows()}
-                </tbody>
-              </table>
-            </div>
+              <hr className="border-hr"/>
+              <div className="clearfix"></div>
+            </Col>
+
+          </Row>
+          <Row className="justify-content-around">
           </Row>
         </div>
       </div>
@@ -438,13 +343,15 @@ const mapStateToProps = state => ({
   profile: state.getIn(['profile', 'profile']),
   campaignInfo: state.getIn(['campaign', 'campaignInfo']),
   campaigns: state.getIn(['campaign', 'campaigns']),
+  graph: state.getIn(['graph', 'graph'])
 
 });
 
 const mapDispatchToProps = {
   successCampaign,
   fetchCampaignInfo,
-  fetchCampaign
+  fetchCampaign,
+  countryVisitors
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

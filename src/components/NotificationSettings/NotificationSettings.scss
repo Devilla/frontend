@@ -3,10 +3,6 @@
       width: 20%;
   }
   .notification-list {
-  	.notification-list-content {
-      min-height: 80px;
-
-  	}
     .card-box {
       margin-bottom: 0;
     }
@@ -36,6 +32,9 @@
   }
   .cardback-btn, .cardnext-btn {
     border-radius: 5px !important;
+  }
+  .notifsettinglast-btn {
+  margin-top: 180px;
   }
 
 }
