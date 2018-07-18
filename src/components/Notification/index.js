@@ -62,7 +62,7 @@ class Notification extends Component {
   deleteCampaign(index, campId) {
     let that = this;
     Popup.create({
-      title: 'Delete Campaign',
+      title: 'Are you sure you want to delete this campaign?',
       buttons: {
         left: [{
           text: 'Cancel',
@@ -81,6 +81,8 @@ class Notification extends Component {
         }]
       }
     }, true);
+
+    browserHistory.push('/dashboard');
   }
 
   // Map the notification data into table rows and return
