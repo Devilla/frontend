@@ -46,6 +46,11 @@ class AnalyticsContainer extends Component {
       this.props.fetchCampaignInfo();
   }
 
+  componentDidUpdate(e) {
+    if (window.innerWidth < 993 && this.props.location.pathname !== e.location.pathname && document.documentElement.className.indexOf('nav-open') !== -1) {
+      document.documentElement.classList.toggle('nav-open');
+    }
+  }
   handleProfileBack = () => {
     this.setState({usersList: []});
   }
