@@ -36,14 +36,14 @@ class NotificationSettingPopup  extends Component {
   renderField()  {
     return (<div>
       <Row className="justify-content-around">
-        <input type="text" placeholder="Campaign Name"  className="col-md-5 camp-text form-control"/> <i className="fa fa-info-circle" data-toggle="tooltip" title="Mention your Campaign name"> </i>
-        <input type="text" placeholder="Product Name" className="col-md-5 prod-text form-control" /> <i className="fa fa-info-circle" data-toggle="tooltip" title="Your Product name will be displayed on notifications"> </i>
+        <input type="text" placeholder="Campaign Name"  className="col-md-5 camp-text form-control"/> <i className="fa fa-info-circle" data-toggle="tooltip"  data-delay='{"show":"0", "hide":"100"}' title="Mention your Campaign name"> </i>
+        <input type="text" placeholder="Product Name" className="col-md-5 prod-text form-control" /> <i className="fa fa-info-circle" data-toggle="tooltip" data-delay='{"show":"0", "hide":"100"}' title="Your Product name will be displayed on notifications"> </i>
       </Row>
       <Row className="pt-4 ">
         <input type="text" placeholder="Product Page URL"  className="col-md-11 prourl-text form-control"/>
       </Row>
       <Row className="pt-4 ">
-        <input type="text" placeholder="Capture Page URL"  className="col-md-11 capurl-text form-control"/><i className="fa fa-info-circle capture" data-toggle="tooltip" title="Your Product name will be displayed on notifications"> </i>
+        <input type="text" placeholder="Capture Page URL"  className="col-md-11 capurl-text form-control"/><i className="fa fa-info-circle capture" data-toggle="tooltip" data-delay='{"show":"0", "hide":"100"}' title="Your Product name will be displayed on notifications"> </i>
       </Row>
       <Row className="justify-content-center">
         <span className="btn btn-outline-primary n-btn"> <i className=" mdi mdi-account-multiple"></i>&nbsp;Recent</span>
@@ -56,9 +56,9 @@ class NotificationSettingPopup  extends Component {
         </div>
       </Row>
       <Row className="justify-content-center">
-        { this.state.displaynotifbuttons ? 
+        { this.state.displaynotifbuttons ?
           <Row className="toggle-area">
-     
+
             <Col md={4} className="toggle-save">
               <button  className="btn btn-primary ">Save </button>
             </Col>
@@ -73,7 +73,7 @@ class NotificationSettingPopup  extends Component {
     </div>);
   }
 
-  
+
   render() {
     return (
       <div className="popuppage-container">
@@ -87,17 +87,17 @@ class NotificationSettingPopup  extends Component {
               </div>
               <div className="modal-body">
                 <span className="btn btn-primary addpagepopup-btn mb-4" onClick={()=> this.addpage()}><i className="fi-plus"></i> &nbsp;Add Page</span>
-                {this.state.displayField ? 
+                {this.state.displayField ?
                   this.renderField()
                   : ' '}
               </div>
-                  
+
             </div>
           </div>
         </div>
       </div>
     );
-  } 
+  }
 }
 
 export default NotificationSettingPopup;

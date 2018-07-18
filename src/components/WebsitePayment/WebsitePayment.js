@@ -125,10 +125,6 @@ class WebsitePayment extends Component {
               <span className="h5 inline-block">Beta Features</span>
             </li>
             <li className="text-left pl-5">
-              <span className="checkmark bg--primary-1"></span>
-              <span className="h5 inline-block">White Label</span>
-            </li>
-            <li className="text-left pl-5">
               <span className=" bg--primary-1"></span>
               <span>&nbsp;</span>
             </li>

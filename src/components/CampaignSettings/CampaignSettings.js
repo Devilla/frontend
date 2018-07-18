@@ -22,27 +22,27 @@ const CampaignSettings = (props) => {
         <ul className="nav nav-pills navtab-bg nav-justified pull-in new-campaign-tab-pills">
           <li className="nav-item waves-effect text-center">
             <a data-toggle="tab" aria-expanded="true" className={`nav-link ${props.activeClass == 1?'active pb-2 pt-2':'pb-2 pt-2'}`} onClick={() => props.setActiveState(1)}>
-              <i className="fi-mail mr-2"></i>Notifications
+              1.&nbsp;&nbsp; <i className="fi-mail mr-2"></i>Notifications
             </a>
           </li><li className="arrow-right"></li>
           <li className="nav-item waves-effect text-center">
             <a data-toggle="tab" aria-expanded="false" className={`nav-link ${props.activeClass == 2?'active pb-2 pt-2':'pb-2 pt-2'}`} onClick={() => props.setActiveState(2)}>
-              <i className="fi-cog mr-2"></i> Settings
+              2.&nbsp;&nbsp;<i className="fi-cog mr-2"></i> Settings
             </a>
           </li>
           <li className="nav-item waves-effect text-center">
             <a data-toggle="tab" aria-expanded="false" className={`nav-link ${props.activeClass == 3?'active pb-2 pt-2':'pb-2 pt-2'}`} onClick={() => props.setActiveState(3)}>
-              <i className="fi-head mr-2"></i> Capture Leads
+             3.&nbsp;&nbsp;<i className="fi-head mr-2"></i> Capture Leads
             </a>
           </li>
           <li className="nav-item waves-effect">
             <a data-toggle="tab" aria-expanded="false" className={`nav-link ${props.activeClass == 4?'active pb-2 pt-2':'pb-2 pt-2'}`} onClick={() => props.setActiveState(4)}>
-              <i className="fi-monitor mr-2"></i> Display
+              4.&nbsp;&nbsp;<i className="fi-monitor mr-2"></i> Display
             </a>
           </li>
           <li className="nav-item waves-effect text-center">
             <a data-toggle="tab" aria-expanded="false" className={`nav-link ${props.activeClass == 5?'active pb-2 pt-2':'pb-2 pt-2'}`} onClick={() => props.setActiveState(5)}>
-              <i className="fi-download mr-2"></i> Install Pixel
+              5.&nbsp;&nbsp;<i className="fi-download mr-2"></i> Install Pixel
             </a>
           </li>
         </ul>

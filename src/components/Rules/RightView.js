@@ -47,7 +47,7 @@ const RightView = ({
           />
         </li>
         <li className="mt-4">
-          <label  data-toggle="tooltip" title="Hooray!" className="text-muted">
+          <label className="text-muted">
             Select position for popup notification
           </label>
           <select className="text-muted form-control muted-text" value={displayPosition} onChange={(e) => handleStateChange('displayPosition', e.target.value)}>

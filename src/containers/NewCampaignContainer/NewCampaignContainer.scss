@@ -1,3 +1,20 @@
-.mm-popup__btn--default {
-  width: 100%;
+
+.NewCampaignContainer {
+
+  .toast-style {
+    background-color: rgba(0, 0, 0, 0.9) !important;
+    color: #fff !important;
+    text-align: center !important;
+    height: 10px !important;
+    border-radius: 5px !important;
+    button {
+      height: 2.6em;
+      color: #fff;
+    }
+  }
+  
+  
+  .mm-popup__btn--default {
+    width: 100%;
+  }
 }
