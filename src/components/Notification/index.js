@@ -59,7 +59,7 @@ class Notification extends Component {
     browserHistory.push('/new');
   }
 
-  deleteCampaign(index, campId) {
+  deleteCampaign(index, campaign) {
     let that = this;
     Popup.create({
       title: 'Are you sure you want to delete this campaign?',
@@ -75,7 +75,8 @@ class Notification extends Component {
           text: 'Confirm',
           className: 'primary popup-notification-button',
           action: function () {
-            that.props.removeCampaign(index, campId);
+            that.props.removeCampaign(index, campaign._id);
+            this.props.updateCampaign(campaign);
             Popup.close();
           }
         }]
@@ -98,7 +99,7 @@ class Notification extends Component {
         </td>
         <td>{campaign.trackingId}</td>
         <td>{moment(campaign.createdAt).format('MM/DD/YYYY')}</td>
-        <td><a href="javascript:;"><i className="ml-3 icon-trash" onClick={() => this.deleteCampaign(i, campaign._id)}></i></a></td>
+        <td><a href="javascript:;"><i className="ml-3 icon-trash" onClick={() => this.deleteCampaign(i,campaign)}></i></a></td>
       </tr>
     ))
       :
