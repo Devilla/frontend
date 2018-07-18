@@ -266,8 +266,8 @@ class Dashboard extends Component {
                         )}
                         {this.renderCardBox(
                           <div className=" widget-flat card-box  text-muted pr-4 pl-4 pb-5 pt-2 pos-vertical-center c2">
-                            <p className="text-uppercase title m-b-5 fonttitle font-600">Total Notifications</p>
-                            <h3 className="m-b-10 notify">{campaignInfo ? campaignInfo.notificationCount : 0}</h3>
+                            <p className="text-uppercase title m-b-5 fonttitle font-600">Conversion %</p>
+                            <h3 className="m-b-10 notify">{(profile && userSignUps/profile.uniqueVisitors)*100 ? (userSignUps/profile.uniqueVisitors)*100 : 0}</h3>
                           </div>
                         )}
                         {this.renderCardBox(
@@ -298,7 +298,7 @@ class Dashboard extends Component {
           </Row>
           <Row className="new-graphs justify-content-around">
             <Col md={12} className="g2">
-    
+
               <Card
                 statsIcon="fa fa-history"
                 id="chartHours"
@@ -308,7 +308,7 @@ class Dashboard extends Component {
                   </div>
                 }
               />
-            
+
               <hr className="border-hr"/>
               <div className="clearfix"></div>
             </Col>
