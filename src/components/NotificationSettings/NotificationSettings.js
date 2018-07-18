@@ -176,14 +176,9 @@ class Notifications extends Component {
   handleNextState = () => {
     // this.setState({notification: ''});
     this.props.clearNotification();
-    this.props.setActiveState(3);
+    this.props.setActiveState(2);
   }
 
-  handleBackState = () => {
-    // this.setState({notification: ''});
-    this.props.clearNotification();
-    this.props.setActiveState(1);
-  }
 
   configure = (notification, showpopup) => {
     this.props.fetchCampaignConfiguration(this.props.campaign._id, notification._id);
@@ -265,9 +260,6 @@ class Notifications extends Component {
         </div>
         {!this.props.notification &&
           <div className="notifsettinglast-btn">
-            <div className="float-left">
-              <button type="button" className="btn btn-primary  waves-light waves-effect cardback-btn " onClick={this.handleBackState}><i className="icon-arrow-left pr-2"></i> Back</button>
-            </div>
             <div className="ml-2 float-right">
               <button type="button" className="btn btn-primary  waves-light waves-effect cardnext-btn ml-2 pl-4 pr-3" onClick={this.handleNextState}>Next <i className="icon-arrow-right pl-2"></i> </button>
             </div>

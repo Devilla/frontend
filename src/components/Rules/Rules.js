@@ -93,11 +93,11 @@ class Rules extends Component{
   }
 
   handleNextState() {
-    this.props.setActiveState(4);
+    this.props.setActiveState(3);
   }
 
   handleBackState() {
-    this.props.setActiveState(2);
+    this.props.setActiveState(1);
   }
 
   handleAnimation(value) {
