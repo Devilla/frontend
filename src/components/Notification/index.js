@@ -70,6 +70,7 @@ class Notification extends Component {
   deletepopupContent = () => {
     this.props.removeCampaign(this.state.index, this.state.campaign._id);
     this.props.updateCampaign(this.state.campaign);
+    browserHistory.push('/dashboard');
   }
 
   // Map the notification data into table rows and return

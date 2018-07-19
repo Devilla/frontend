@@ -26,6 +26,9 @@ class Dashboard extends Component {
     };
     this.handleRouteChange = this.handleRouteChange.bind(this);
   }
+  componentWillReceiveProps() {
+    this.props.fetchCampaignInfo();
+  }
 
   componentWillMount() {
     this.props.fetchCampaignInfo();
