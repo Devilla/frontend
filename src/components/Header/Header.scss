@@ -1,5 +1,10 @@
 .customer-header {
-  .progress-bar{height: 3.5px;}
+  .progress-bar{
+    height: 3.5px;
+    background: #2D7BF4 !important;
+    color: #2D7BF4 !important;
+  }
+
   .nav-topbar-flex {
     display: flex;
     justify-content: space-between;
