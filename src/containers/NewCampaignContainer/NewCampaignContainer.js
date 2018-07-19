@@ -168,7 +168,7 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
         {this.props.campaign && Object.keys(this.props.campaign).length !== 0 && this.props.campaign.constructor === Object?
           <CampaignSettings
             showNotification={this.showNotification}
-            goLive={this.goLive}
+            goLive={() => this.goLive()}
             toggleWebhook={this.toggleWebhook}
             verifyPixelStatus={this.verifyPixelStatus}
             handlePixelCopy={this.handlePixelCopy}

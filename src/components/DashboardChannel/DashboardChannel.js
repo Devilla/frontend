@@ -59,7 +59,6 @@ class DashboardChannel extends Component {
         <Col md={12}  className="bx-shadow" key={i}>
           <img src={this.channelfunc(i)} className="logocompany " />
           <span className="text-muted text-uppercase mt-0  title">{channelName}</span>
-          {/* <span className="text-muted btn btn-primary waves-effect  btns"><a href={`${base}connect/google/overide`}>Connect&nbsp; <i className="fi-open"></i></a></span>*/}
           <span className="text-muted btn btn-primary waves-effect  btns"><a style={{color:'white'}} href={`${base}connect/google/overide/${this.props.campaign.trackingId}`}>Connect&nbsp; <i className="fi-open"></i></a></span>
         </Col>
       );
