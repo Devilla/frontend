@@ -74,7 +74,8 @@ class BillingDetails extends Component {
                       <Button
                         onClick={() => browserHistory.push('/Upgrade')}
                         className="btn btn-primary"
-                        pullRight="pullRight" fill="fill"
+                        pullRight={true}
+                        fill={true}
                         type="button"
                         icon="cloud-upload"
                         disabled={false}

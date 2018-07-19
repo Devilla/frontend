@@ -108,7 +108,7 @@ class StripeCard extends Component {
           </Row>
           <Row className='upgrade-card-buttons'>
             <div className='col-md-6 pull-right mr-2'>
-              <Button type='submit' icon='usd' bsStyle='btn btn-primary cardpay-btn'  fill={true} >{currentState === 'upgrade' ? 'Update Card' : 'Make Payment'}</Button>
+              <Button type='submit' icon='usd' bsStyle='primary' className='cardpay-btn'  fill={true} >{currentState === 'upgrade' ? 'Update Card' : 'Make Payment'}</Button>
             </div>
           </Row>
         </form>
