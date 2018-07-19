@@ -256,25 +256,34 @@ class Dashboard extends Component {
                     <div className="card-box pb-0 mb-0 cardbox1">
                       <Row className="account-stats">
                         {this.renderCardBox(
-                          <div className=" widget-flat card-box  text-muted pr-4 pl-4 pb-5 pt-2 pos-vertical-center c2">
-                            <p className="text-uppercase title m-b-5 fonttitle font-600">Active Campaigns</p>
+                          <div className=" widget-flat card-box  text-muted pr-2 pl-2 pb-5 pt-2 pos-vertical-center c2">
+                            <p className="text-uppercase title m-b-5 fonttitle font-600">Total Visitors</p>
                             <h3 className="m-b-10 campaign">{campaignInfo? campaignInfo.websiteLive.length : []}</h3>
+          
+
                           </div>
                         )}
                         {this.renderCardBox(
-                          <div className=" widget-flat card-box  text-muted pr-4 pl-4 pb-5 pt-2 pos-vertical-center c2">
+                          <div className=" widget-flat card-box  text-muted pr-2 pl-2 pb-5 pt-2 pos-vertical-center c2">
+                            <p className="text-uppercase title m-b-5 fonttitle font-600">Active Campaigns</p>
+                            <h3 className="m-b-10 campaign">{campaignInfo? campaignInfo.websiteLive.length : []}</h3>
+
+                          </div>
+                        )}
+                        {this.renderCardBox(
+                          <div className=" widget-flat card-box  text-muted pr-2 pl-2 pb-5 pt-2 pos-vertical-center c2">
                             <p className="text-uppercase title m-b-5 fonttitle font-600">Unique Visitors</p>
                             <h3 className="m-b-10 profile">{profile? Number(profile.uniqueVisitors) :0 }</h3>
                           </div>
                         )}
                         {this.renderCardBox(
-                          <div className=" widget-flat card-box  text-muted pr-4 pl-4 pb-5 pt-2 pos-vertical-center c2">
+                          <div className=" widget-flat card-box  text-muted pr-2 pl-2 pb-5 pt-2 pos-vertical-center c2">
                             <p className="text-uppercase title m-b-5 fonttitle font-600">Conversion %</p>
                             <h3 className="m-b-10 notify">{(profile && userSignUps/profile.uniqueVisitors)*100 ? (userSignUps/profile.uniqueVisitors)*100 : 0}</h3>
                           </div>
                         )}
                         {this.renderCardBox(
-                          <div className=" widget-flat card-box  text-muted pr-4 pl-4 pb-5 pt-2 pos-vertical-center c2">
+                          <div className=" widget-flat card-box  text-muted pr-2 pl-2 pb-5 pt-2 pos-vertical-center c2">
                             <p className="text-uppercase title m-b-5 fonttitle font-600">Total Signups</p>
                             <h3 className="m-b-10 usersignup">{userSignUps}</h3>
                           </div>

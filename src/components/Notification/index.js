@@ -84,6 +84,7 @@ class Notification extends Component {
           <input className="tgl tgl-ios" id="cb2" type="checkbox" checked={campaign.isActive}  readOnly/>
           <label className="tgl-btn" htmlFor="cb2" onClick={(e) => this.handleActiveChange(!campaign.isActive, campaign)}></label>
         </td>
+        <td className='text-center'>7</td>
         <td>{campaign.trackingId}</td>
         <td>{moment(campaign.updatedAt).format('MM/DD/YYYY')}</td>
         <td><a href="javascript:;"><i className="ml-3 icon-trash" data-toggle="modal" data-target="#myModal"  onClick={(e) => this.deleteCampaign(i,campaign,e)}></i></a></td>
@@ -104,6 +105,7 @@ class Notification extends Component {
                 <th>CAMPAIGN</th>
                 <th>DOMAIN</th>
                 <th>STATUS</th>
+                <th className='text-center'>TOTAL VISITORS</th>
                 <th>TRACK ID</th>
 
                 <th>CREATED/UPDATED</th>
