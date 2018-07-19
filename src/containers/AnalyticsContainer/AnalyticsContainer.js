@@ -37,15 +37,19 @@ class AnalyticsContainer extends Component {
   constructor(){
     super();
     this.state = {
-      usersList: []
+      usersList: [],
+      count:0
     };
   }
-
-  componentWillMount() {
-    if(!this.props.campaignInfo)
-      this.props.fetchCampaignInfo();
+  componentWillReceiveProps() {
+    this.props.fetchCampaignInfo();
   }
 
+  componentDidUpdate(e) {
+    if (window.innerWidth < 993 && this.props.location.pathname !== e.location.pathname && document.documentElement.className.indexOf('nav-open') !== -1) {
+      document.documentElement.classList.toggle('nav-open');
+    }
+  }
   handleProfileBack = () => {
     this.setState({usersList: []});
   }

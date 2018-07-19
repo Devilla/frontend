@@ -62,18 +62,15 @@ class Notification extends Component {
   }
 
   deleteCampaign = (indexes, campaigns,e) => {
-
-    console.log(e+'==================>');
     this.setState( (prevState) => {
       return { deleteCampaign : !prevState.deleteCampaign, index: indexes, campaign : campaigns };
-
-    // browse rHistory.push('/dashboard');
-  });
-}
+    });
+  }
 
   deletepopupContent = () => {
     this.props.removeCampaign(this.state.index, this.state.campaign._id);
     this.props.updateCampaign(this.state.campaign);
+    browserHistory.push('/dashboard');
   }
 
   // Map the notification data into table rows and return
@@ -117,23 +114,23 @@ class Notification extends Component {
               {this.getNotificationRows()}
             </tbody>
           </table>
-              <div className="modal fade show-modal" id="myModal" role="dialog">
-                <div className="modal-dialog">
-                  <div className="modal-content align-modal">
-                    <div className="modal-header">
-                      <button type="button" className="close" data-dismiss="modal">&times;</button>
-                      <h4 className="modal-title">Are you sure you want to delete this campaign?</h4>
-                    </div>
-                    <div className="modal-body pb-5">
+          <div className="modal fade show-modal" id="myModal" role="dialog">
+            <div className="modal-dialog">
+              <div className="modal-content align-modal">
+                <div className="modal-header">
+                  <button type="button" className="close" data-dismiss="modal">&times;</button>
+                  <h4 className="modal-title">Are you sure you want to delete this campaign?</h4>
+                </div>
+                <div className="modal-body pb-5">
                         Alert ! These may delete all your customer activities .
-                    </div>
-                    <div className="modal-footer">
-                      <button type="button" className="float-left btn btn-primary close-btn" data-dismiss="modal">Close</button>
-                      <button type="button" className="btn btn-primary delete-btn" onClick={this.deletepopupContent} >Delete</button>
-                    </div>
-                  </div>
+                </div>
+                <div className="modal-footer">
+                  <button type="button" className="float-left btn btn-primary close-btn" data-dismiss="modal">Close</button>
+                  <button type="button" className="btn btn-primary delete-btn" data-dismiss="modal" onClick={this.deletepopupContent} >Delete</button>
                 </div>
               </div>
+            </div>
+          </div>
         </div>
       </div>
     );

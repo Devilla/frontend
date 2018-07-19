@@ -58,19 +58,21 @@ class CapturePage extends Component {
 
 
   addPageUrl = () => {
-    if(this.state.lead.url == '')
-      return this.setState({error: 'Please enter a valid path'});
+    if(this.state.lead.url == ''){
+      if(this.state.count<1)
+        this.state.lead.url='/';
+      else {
+        return this.setState({error: 'Please enter a valid path'});
+      }
+
+      this.state.count++;
+    }
+
     if(this.state.lead.url[0]!=='/')
       this.state.lead.url='/'+this.state.lead.url;
     let lead = this.state.lead;
     lead['rule'] = this.props.rules._id;
     this.props.createPageUrl(lead);
-    this.setState({lead: {
-      url: '',
-      status: '',
-      class: '',
-      type: ''
-    }});
   }
 
   handlePageUrl = (e) => {
@@ -156,7 +158,7 @@ class CapturePage extends Component {
               <Col md={11}>
                 <div className="ml-5 pl-4 input-group col-md-8">
                   <label className="pt-2 pl-1 pr-3 text-muted">{this.props.campaign
-                    ? this.props.campaign.websiteUrl
+                    ? 'http://'+this.props.campaign.websiteUrl
                     : 'http://localhost:3000'}/</label>
                   <input type="text"
                     className="form-control"

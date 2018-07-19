@@ -5,11 +5,6 @@
     padding: 20px 5px !important;
     .new-campaign-header {
       display: flex;
-      button {
-        height: 30px;
-        margin: 1% 3% !important;
-        border-radius: 5px !important;
-      }
     }
   }
   a{
@@ -58,14 +53,6 @@
   .tab-content {
     .align-install-btn {
       width: 18.7%;
-    }
-  }
-
-  button {
-    &.goliveRight{
-      position: absolute;
-      right: 0;
-      bottom: 5px;
     }
   }
 }

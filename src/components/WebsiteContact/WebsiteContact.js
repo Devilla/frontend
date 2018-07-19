@@ -85,9 +85,9 @@ class WebsiteContact extends Component {
       'message': this.state.message
     };
     if(!data.name)
-      return this.setState({nameError: 'Enter a name'});
+      return this.setState({errorName: 'Enter a name'});
     else if(!data.email || !validateEmail(data.email))
-      return this.setState({emailError: 'Enter a valid Email id'});
+      return this.setState({errorEmail: 'Enter a valid Email id'});
     this.props.contactUs(data);
     this.props.clearContactError();
     this.props.contactError(data);
@@ -152,11 +152,9 @@ class WebsiteContact extends Component {
                       // onBlur={() => this.checkEmailBlur()}
                       onChange={(e) => this.handleStateChange(e.target.name, e.target.value)}
                     />
-                    {errorEmail &&
-                      <Alert bsStyle='warning'>
-                        <strong>{errorEmail}</strong>
-                      </Alert>
-                    }
+                    <HelpBlock>
+                      <p className="website-error">{errorEmail}</p>
+                    </HelpBlock>
                   </div>
                   <div className="col-md-12">
                     <textarea
