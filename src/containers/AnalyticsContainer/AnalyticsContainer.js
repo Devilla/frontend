@@ -37,7 +37,8 @@ class AnalyticsContainer extends Component {
   constructor(){
     super();
     this.state = {
-      usersList: []
+      usersList: [],
+      count:0
     };
   }
 

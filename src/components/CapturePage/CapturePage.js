@@ -58,8 +58,16 @@ class CapturePage extends Component {
 
 
   addPageUrl = () => {
-    if(this.state.lead.url == '')
-      return this.setState({error: 'Please enter a valid path'});
+    if(this.state.displayUrl.url == ''){
+      if(this.state.count<1)
+        this.state.displayUrl.url='/';
+      else {
+        return this.setState({error: 'Please enter a valid path'});
+      }
+
+      this.state.count++;
+    }
+
     if(this.state.displayUrl.url==undefined || this.state.lead.url[0]!=='/')
       this.state.lead.url='/'+this.state.lead.url;
     let lead = this.state.lead;

@@ -28,6 +28,7 @@ class DisplayPage extends Component {
         type: '',
         error: ''
       },
+      count: 0,
     };
   }
 
@@ -73,21 +74,20 @@ class DisplayPage extends Component {
   }
 
   addPageUrl = () => {
-    if(this.state.displayUrl.url == '')
-      return this.setState({error: 'Please enter a valid path'});
-    if(this.state.displayUrl.url==undefined || this.state.displayUrl.url[0]!=='/')
+
+    if(this.state.displayUrl.url == ''){
+      if(this.state.count<1)
+        this.state.displayUrl.url='/';
+      else {
+        return this.setState({error: 'Please enter a valid path'});
+      }
+    }
+    if(this.state.displayUrl.url[0]!=='/')
       this.state.displayUrl.url='/'+this.state.displayUrl.url;
 
     let displayUrl = this.state.displayUrl;
     displayUrl['rule'] = this.props.rules._id;
     this.props.createPageUrl(displayUrl);
-    this.setState({displayUrl: {
-      url: '',
-      status: '',
-      class: '',
-      type: '',
-      checkUrl:false
-    }});
   }
 
   handlePageUrl = (e) => {
