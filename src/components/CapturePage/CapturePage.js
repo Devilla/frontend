@@ -68,7 +68,7 @@ class CapturePage extends Component {
       this.state.count++;
     }
 
-    if(this.state.displayUrl.url==undefined || this.state.lead.url[0]!=='/')
+    if(this.state.lead.url[0]!=='/')
       this.state.lead.url='/'+this.state.lead.url;
     let lead = this.state.lead;
     lead['rule'] = this.props.rules._id;
