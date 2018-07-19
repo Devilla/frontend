@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import copy from 'copy-to-clipboard';
 import { toast } from 'react-toastify';
-
 import { fetchWebhook, createWebhook, deleteWebhook, clearWebhook } from 'ducks/webhooks';
 import { updateCampaign } from 'ducks/campaign';
 import './Webhook.scss';
@@ -163,7 +162,7 @@ class Webhook extends Component {
                     {this.renderWebhooks()}
                   </select>
                   <div className="input-group-append col-md-4">
-                    <button type="button" className="btn btn-primary  addchannel"  htmlFor="inputGroupSelect02" data-toggle="modal" data-target="#myModal" onClick={()=>{}} ><i className="fi-plus"></i>&nbsp;Add Channels</button>
+                    <button type="button" className="btn btn-primary addchannel"  htmlFor="inputGroupSelect02" data-toggle="modal" data-target="#myModal" ><i className="fi-plus"></i>&nbsp;Add Channels</button>
                     {this.popupContent()}
                   </div>
                 </div>
