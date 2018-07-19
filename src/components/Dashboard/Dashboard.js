@@ -149,7 +149,7 @@ class Dashboard extends Component {
   }
 
   renderCardBox = (content) => {
-    return <div className="col-sm-12 col-lg-6 col-xl-3 box pr-0 cards">
+    return <div className="col-sm-12 col-lg-6 col-xl-2 box cards">
       <div>
         <div className="text-center mt-4 mb-4">
           <div className="col-md-10 h-50 card-content-width">
@@ -236,7 +236,8 @@ class Dashboard extends Component {
       offsetGridLines: false
     };
 
-    let userSignUps = 0;
+    let userSignUps = 6;
+    let totalVisitors =7;
 
     if(campaignInfo) {
       campaignInfo.websiteLive.map(website => {
@@ -255,37 +256,37 @@ class Dashboard extends Component {
                   <Col md={12}>
                     <div className="card-box pb-0 mb-0 cardbox1">
                       <Row className="account-stats">
+
                         {this.renderCardBox(
-                          <div className=" widget-flat card-box  text-muted pr-2 pl-2 pb-5 pt-2 pos-vertical-center c2">
+                          <div className=" widget-flat card-box  text-muted pb-5 pt-2 pos-vertical-center c2">
+                            <p className="text-uppercase title m-b-5 fonttitle font-600">Active Campaign</p>
+                            <h3 className="m-b-10 campaign">{campaignInfo? campaignInfo.websiteLive.length : []}</h3>
+
+                          </div>
+                        )}
+                        {this.renderCardBox(
+                          <div className=" widget-flat card-box  text-muted pb-5 pt-2 pos-vertical-center c2">
                             <p className="text-uppercase title m-b-5 fonttitle font-600">Total Visitors</p>
-                            <h3 className="m-b-10 campaign">{campaignInfo? campaignInfo.websiteLive.length : []}</h3>
-          
-
+                            <h3 className="m-b-10 campaign">{totalVisitors}</h3>
                           </div>
                         )}
                         {this.renderCardBox(
-                          <div className=" widget-flat card-box  text-muted pr-2 pl-2 pb-5 pt-2 pos-vertical-center c2">
-                            <p className="text-uppercase title m-b-5 fonttitle font-600">Active Campaigns</p>
-                            <h3 className="m-b-10 campaign">{campaignInfo? campaignInfo.websiteLive.length : []}</h3>
-
-                          </div>
-                        )}
-                        {this.renderCardBox(
-                          <div className=" widget-flat card-box  text-muted pr-2 pl-2 pb-5 pt-2 pos-vertical-center c2">
+                          <div className=" widget-flat card-box  text-muted pb-5 pt-2 pos-vertical-center c2">
                             <p className="text-uppercase title m-b-5 fonttitle font-600">Unique Visitors</p>
                             <h3 className="m-b-10 profile">{profile? Number(profile.uniqueVisitors) :0 }</h3>
                           </div>
                         )}
+
                         {this.renderCardBox(
-                          <div className=" widget-flat card-box  text-muted pr-2 pl-2 pb-5 pt-2 pos-vertical-center c2">
-                            <p className="text-uppercase title m-b-5 fonttitle font-600">Conversion %</p>
-                            <h3 className="m-b-10 notify">{(profile && userSignUps/profile.uniqueVisitors)*100 ? (userSignUps/profile.uniqueVisitors)*100 : 0}</h3>
+                          <div className=" widget-flat card-box  text-muted pb-5 pt-2 pos-vertical-center c2">
+                            <p className="text-uppercase title m-b-5 fonttitle font-600">Total &nbsp; Signups</p>
+                            <h3 className="m-b-10 usersignup">{userSignUps}</h3>
                           </div>
                         )}
                         {this.renderCardBox(
-                          <div className=" widget-flat card-box  text-muted pr-2 pl-2 pb-5 pt-2 pos-vertical-center c2">
-                            <p className="text-uppercase title m-b-5 fonttitle font-600">Total Signups</p>
-                            <h3 className="m-b-10 usersignup">{userSignUps}</h3>
+                          <div className=" widget-flat card-box  text-muted pb-5 pt-2 pos-vertical-center c2">
+                            <p className="text-uppercase title m-b-5 fonttitle font-600">Conversion &nbsp; %</p>
+                            <h3 className="m-b-10 notify">{(profile && userSignUps/totalVisitors)*100 ? Math.floor((userSignUps/totalVisitors)*100) : 0}</h3>
                           </div>
                         )}
                       </Row>
