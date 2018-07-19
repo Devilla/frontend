@@ -7,7 +7,7 @@ import moment from 'moment';
 import { browserHistory } from 'react-router';
 import Popup from 'react-popup';
 
-import { fetchCampaign, updateCampaign, successCampaign, removeCampaign } from 'ducks/campaign';
+import { fetchCampaign, fetchCampaignInfo, updateCampaign, successCampaign, removeCampaign } from 'ducks/campaign';
 import './Notification.scss';
 
 class Notification extends Component {
@@ -21,6 +21,9 @@ class Notification extends Component {
     };
   }
 
+  componentWillReceiveProps() {
+    this.props.fetchCampaignInfo();
+  }
   componentDidMount() {
     this.props.fetchCampaign();
   }
@@ -79,7 +82,6 @@ class Notification extends Component {
       <tr className="campaign-td" key={campaign._id} onClick={(e) => this.handleRouteChange(e, campaign)}>
         <th scope="row">{i + 1}</th>
         <td>{campaign.campaignName}</td>
-        {console.log(this.props.campaignInfo,'<<<<<<<<<<<<<<<Campaign>>>>>>>>>>>')}
         <td>{campaign.websiteUrl}</td>
         <td className="switch">
           <input className="tgl tgl-ios" id="cb2" type="checkbox" checked={campaign.isActive}  readOnly/>
@@ -145,6 +147,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
+  fetchCampaignInfo,
   fetchCampaign,
   updateCampaign,
   successCampaign,
