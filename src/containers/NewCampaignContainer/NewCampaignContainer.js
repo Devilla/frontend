@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { toast } from 'react-toastify';
 import { browserHistory } from 'react-router';
 import copy from 'copy-to-clipboard';
-import Popup from 'react-popup';
+// import Popup from 'react-popup';
 
 import { validatewebsite } from 'components/Common/function';
 import { createCampaign, clearCampaign } from 'ducks/campaign';
@@ -36,7 +36,11 @@ class NewCampaignContainer extends Component {
       loaderActive: false,
       sampleDisplay: false,
       notification: '',
-      displayWebhookIntegration: false
+      displayWebhookIntegration: false,
+      title: '',
+      content: '',
+      buttonText: '',
+      path: ''
     };
   }
 
@@ -118,44 +122,37 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
   }
 
   goLive = () => {
+
     this.verifyPixelStatus();
     const elastic = this.props.elastic;
-    let title, content, buttonText, path;
     console.log(elastic);
     if(elastic && (elastic.error || (elastic.message.hits.total === 0))) {
-      title = 'Alert';
-      content = 'Install Pixel before going live.';
-      buttonText = 'Close';
+      this.setState({
+        title : 'Alert',
+        content : 'Install Pixel before going live.',
+        buttonText :  'Close'
+      });
+    
     } else if(!this.props.leads || !this.props.leads.length) {
-      title = 'Alert';
-      content = 'Add a capture page before going live.';
-      buttonText = 'Close';
+      this.setState({
+        title : 'Alert',
+        content : 'Add a capture page before going live.',
+        buttonText :  'Close'
+      });
     } else if(!this.props.leads || !this.props.displayUrls.length) {
-      title = 'Alert';
-      content = 'Add a display page before going live.';
-      buttonText = 'Close';
+      this.setState({
+        title : 'Alert',
+        content : 'Add a display page before going live.',
+        buttonText :  'Close'
+      });
     } else {
-      title = 'Campaign is Live';
-      content = 'Campaign has be successfully created';
-      buttonText = 'Finish';
-      path = 'campaigns';
+      this.setState({
+        title : 'Campaign is Live',
+        content : 'Campaign has be successfully created',
+        buttonText :  'Finish',
+        path : 'campaigns'
+      });
     }
-
-    Popup.create({
-      title: title,
-      content: content,
-      buttons: {
-        right: [{
-          text: buttonText,
-          className: 'success',
-          action: function () {
-            if(path)
-              browserHistory.push(path);
-            Popup.close();
-          }
-        }]
-      }
-    });
   }
 
   toggleWebhook = () => {
@@ -163,12 +160,15 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
   }
 
   render() {
+    const { content, title, buttonText, path } = this.state;  
     return (
       <div className="NewCampaignContainer">
+        <button type="button" className="btn btn-outline-primary goliveRight waves-light waves-effect number" data-toggle="modal" data-target="#myModallive" onClick={this.goLive}><i className="fi-location"></i>&nbsp;Go Live</button>            
+
         {this.props.campaign && Object.keys(this.props.campaign).length !== 0 && this.props.campaign.constructor === Object?
           <CampaignSettings
             showNotification={this.showNotification}
-            goLive={() => this.goLive()}
+            goLive={this.goLive}
             toggleWebhook={this.toggleWebhook}
             verifyPixelStatus={this.verifyPixelStatus}
             handlePixelCopy={this.handlePixelCopy}
@@ -185,6 +185,21 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
             {...this.state}
           />
         }
+        <div className="modal fade show-modal" id="myModallive" role="dialog">
+          <div className="modal-dialog">
+            <div className="modal-content align-modal">
+              <div className="modal-header">
+                <h4 className="modal-title">{title}</h4>
+              </div>
+              <div className="modal-body">
+                {content}
+              </div>
+              <div className="modal-footer">
+                <button type="button" className="btn btn-primary close-btn" data-dismiss="modal" onClick={ path ? () => browserHistory.push(path):  ()=> {} }>{buttonText}</button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
