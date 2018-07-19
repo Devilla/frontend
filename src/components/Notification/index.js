@@ -79,6 +79,7 @@ class Notification extends Component {
       <tr className="campaign-td" key={campaign._id} onClick={(e) => this.handleRouteChange(e, campaign)}>
         <th scope="row">{i + 1}</th>
         <td>{campaign.campaignName}</td>
+        {console.log(this.props.campaignInfo,'<<<<<<<<<<<<<<<Campaign>>>>>>>>>>>')}
         <td>{campaign.websiteUrl}</td>
         <td className="switch">
           <input className="tgl tgl-ios" id="cb2" type="checkbox" checked={campaign.isActive}  readOnly/>
@@ -107,7 +108,6 @@ class Notification extends Component {
                 <th>STATUS</th>
                 <th className='text-center'>TOTAL VISITORS</th>
                 <th>TRACK ID</th>
-
                 <th>CREATED/UPDATED</th>
                 <th>TRASH</th>
               </tr>

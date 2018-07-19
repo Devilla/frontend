@@ -236,17 +236,26 @@ class Dashboard extends Component {
       offsetGridLines: false
     };
 
-    let userSignUps = 6;
-    let totalVisitors =7;
+    let userSignUps = 0;
+    let visitor = 0;
 
     if(campaignInfo) {
-      campaignInfo.websiteLive.map(website => {
+      campaignInfo.websiteLive.map((website) => {
+
+        website.uniqueUsers && website.uniqueUsers.aggregations &&
+          website.uniqueUsers.aggregations.users.buckets.map((bucket) => {
+            visitor = visitor + bucket.visitors.sum_other_doc_count;
+          });
+
         let users = website.signups && website.signups.userDetails?website.signups.userDetails.length:0;
         userSignUps = userSignUps + users;
+
+
       });
     }
 
     return (
+
       <div className="content">
         <div className="container-fluid">
           <Row className="dashboard-boxes">
@@ -267,7 +276,7 @@ class Dashboard extends Component {
                         {this.renderCardBox(
                           <div className=" widget-flat card-box  text-muted pb-5 pt-2 pos-vertical-center c2">
                             <p className="text-uppercase title m-b-5 fonttitle font-600">Total Visitors</p>
-                            <h3 className="m-b-10 campaign">{totalVisitors}</h3>
+                            <h3 className="m-b-10 campaign">{visitor}</h3>
                           </div>
                         )}
                         {this.renderCardBox(
@@ -286,7 +295,7 @@ class Dashboard extends Component {
                         {this.renderCardBox(
                           <div className=" widget-flat card-box  text-muted pb-5 pt-2 pos-vertical-center c2">
                             <p className="text-uppercase title m-b-5 fonttitle font-600">Conversion &nbsp; %</p>
-                            <h3 className="m-b-10 notify">{(profile && userSignUps/totalVisitors)*100 ? Math.floor((userSignUps/totalVisitors)*100) : 0}</h3>
+                            <h3 className="m-b-10 notify">{(profile && userSignUps/visitor)*100 ? Math.floor((userSignUps/visitor)*100) : 0}</h3>
                           </div>
                         )}
                       </Row>
