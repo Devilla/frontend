@@ -41,10 +41,8 @@ class AnalyticsContainer extends Component {
       count:0
     };
   }
-
-  componentWillMount() {
-    if(!this.props.campaignInfo)
-      this.props.fetchCampaignInfo();
+  componentWillReceiveProps() {
+    this.props.fetchCampaignInfo();
   }
 
   componentDidUpdate(e) {
