@@ -56,7 +56,7 @@ class DisplayPage extends Component {
   }
 
   handleBackState = () => {
-    this.props.setActiveState(4);
+    this.props.setActiveState(3);
   }
 
   addPageUrl = () => {
