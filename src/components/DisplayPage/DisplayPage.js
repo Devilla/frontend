@@ -6,13 +6,11 @@ import {
   Table,
   HelpBlock
 } from 'react-bootstrap';
-import { browserHistory } from 'react-router';
 import { connect } from 'react-redux';
 import CardTable from 'components/Template/card-with-page-table';
 import { pagethArray } from 'components/Template/data';
 import { fetchDisplayUrl, createPageUrl, clearPageUrl, removePageUrl } from 'ducks/pageurl';
 import { validatePath } from 'components/Common/function';
-import Popup from 'react-popup';
 
 import './DisplayPage.scss';
 
@@ -54,19 +52,7 @@ class DisplayPage extends Component {
   handleNextState = () => {
     if(!this.props.displayUrls.length)
       return this.setState({error: 'Add a display path'});
-    Popup.create({
-      title: 'Campaign is Live',
-      buttons: {
-        right: [{
-          text: 'Finish',
-          className: 'default',
-          action: function () {
-            browserHistory.push('/dashboard');
-            Popup.close();
-          }
-        }]
-      }
-    });
+    this.props.setActiveState(5);
   }
 
   handleBackState = () => {
@@ -237,7 +223,7 @@ class DisplayPage extends Component {
               <button type="button" className="btn btn-primary waves-effect number displaybtn-back" onClick={this.handleBackState}><i className="icon-arrow-left pr-2"></i>Back</button>
             </div>
             <div className="float-right">
-              <button type="button" className="btn btn-primary  waves-effect number ml-2 pl-4 pr-4 displaybtn-finish" onClick={this.handleNextState}>Next<i className="icon-arrow-right pl-2"></i> </button>
+              <button type="button" className="btn btn-primary  waves-effect number pl-4 pr-3 displaybtn-finish" onClick={this.handleNextState}>Next<i className="icon-arrow-right pl-2"></i> </button>
             </div>
             <div className="clearfix"></div>
           </div>
