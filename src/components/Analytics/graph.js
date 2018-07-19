@@ -53,10 +53,10 @@ class Graph extends Component {
     super();
   }
   componetDidMount() {
-    console.log(this.props.url)
+    console.log(this.props.url);
   }
   handleClosePopup() {
-    this.props.callbackFromParent(false)
+    this.props.callbackFromParent(false);
   }
   render() {
     const arrs = [
@@ -67,33 +67,33 @@ class Graph extends Component {
       }, {
         name: this.props.conversion
       }
-    ]
+    ];
 
     return (<div className="graph">
       {
         this.props.showGraph && <div className="chart">
-            <h3>{this.props.website}</h3>
-            <a href="javascript:;" onClick={this.handleClosePopup.bind(this)}>
-              <i className="far fa-times-circle"></i>
-            </a>
-            <LineChart width={600} height={300} data={data} margin={{
-                top: 5,
-                right: 30,
-                left: 20,
-                bottom: 5
-              }}>
-              <XAxis dataKey="name"/>
-              <YAxis/>
-              <CartesianGrid strokeDasharray="3 3"/>
-              <Tooltip/>
-              <Legend/>
-              <Line type="monotone" dataKey="click" stroke="#8884d8" activeDot={{
-                  r: 8
-                }}/>
-              <Line type="monotone" dataKey="visit" stroke="#82ca9d"/>
-              <Line type="monotone" dataKey="active" stroke="#fb404b"/>
-            </LineChart>
-          </div>
+          <h3>{this.props.website}</h3>
+          <a href="javascript:;" onClick={this.handleClosePopup.bind(this)}>
+            <i className="far fa-times-circle"></i>
+          </a>
+          <LineChart width={600} height={300} data={data} margin={{
+            top: 5,
+            right: 30,
+            left: 20,
+            bottom: 5
+          }}>
+            <XAxis dataKey="name"/>
+            <YAxis/>
+            <CartesianGrid strokeDasharray="3 3"/>
+            <Tooltip/>
+            <Legend/>
+            <Line type="monotone" dataKey="click" stroke="#8884d8" activeDot={{
+              r: 8
+            }}/>
+            <Line type="monotone" dataKey="visit" stroke="#82ca9d"/>
+            <Line type="monotone" dataKey="active" stroke="#fb404b"/>
+          </LineChart>
+        </div>
 
       }
       {this.props.showGraph && <div className="overlay"></div>}
