@@ -259,6 +259,7 @@ class Dashboard extends Component {
                           <div className=" widget-flat card-box  text-muted pr-4 pl-4 pb-5 pt-2 pos-vertical-center c2">
                             <p className="text-uppercase title m-b-5 fonttitle font-600">Active Campaigns</p>
                             <h3 className="m-b-10 campaign">{campaignInfo? campaignInfo.websiteLive.length : []}</h3>
+
                           </div>
                         )}
                         {this.renderCardBox(
