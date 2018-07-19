@@ -26,6 +26,7 @@ class DisplayPage extends Component {
         type: '',
         error: ''
       },
+      count: 0,
     };
   }
 
@@ -52,7 +53,6 @@ class DisplayPage extends Component {
     if(!this.props.displayUrls.length)
       return this.setState({error: 'Add a display path'});
     this.props.setActiveState(5);
-      
   }
 
   handleBackState = () => {
@@ -60,21 +60,20 @@ class DisplayPage extends Component {
   }
 
   addPageUrl = () => {
-    if(this.state.displayUrl.url == '')
-      return this.setState({error: 'Please enter a valid path'});
+
+    if(this.state.displayUrl.url == ''){
+      if(this.state.count<1)
+        this.state.displayUrl.url='/';
+      else {
+        return this.setState({error: 'Please enter a valid path'});
+      }
+    }
     if(this.state.displayUrl.url[0]!=='/')
       this.state.displayUrl.url='/'+this.state.displayUrl.url;
 
     let displayUrl = this.state.displayUrl;
     displayUrl['rule'] = this.props.rules._id;
     this.props.createPageUrl(displayUrl);
-    this.setState({displayUrl: {
-      url: '',
-      status: '',
-      class: '',
-      type: '',
-      checkUrl:false
-    }});
   }
 
   handlePageUrl = (e) => {
@@ -224,7 +223,7 @@ class DisplayPage extends Component {
               <button type="button" className="btn btn-primary waves-effect number displaybtn-back" onClick={this.handleBackState}><i className="icon-arrow-left pr-2"></i>Back</button>
             </div>
             <div className="float-right">
-              <button type="button" className="btn btn-primary  waves-effect number ml-2 pl-4 pr-4 displaybtn-finish" onClick={this.handleNextState}>Next<i className="icon-arrow-right pl-2"></i> </button>
+              <button type="button" className="btn btn-primary  waves-effect number pl-4 pr-3 displaybtn-finish" onClick={this.handleNextState}>Next<i className="icon-arrow-right pl-2"></i> </button>
             </div>
             <div className="clearfix"></div>
           </div>
