@@ -9,7 +9,6 @@ import './Dashboard.scss';
 import Card from './Card';
 import ReactChartJs from 'react-chartjs';
 import 'react-datepicker/dist/react-datepicker.css';
-import { countryVisitors } from 'ducks/elastic';
 
 var LineChart = ReactChartJs.Line;
 let moment = extendMoment(Moment);
@@ -372,8 +371,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = {
   successCampaign,
   fetchCampaignInfo,
-  fetchCampaign,
-  countryVisitors
+  fetchCampaign
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

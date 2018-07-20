@@ -26,10 +26,10 @@ class WebsiteTerms extends Component {
               <div className="row">
                 <div className="col-md-12">
                   <div className="boxed boxed--border boxed--lg lead">
-                 
+
                     <p>Please read these Terms & conditions of using the product carefully before using “ Influence“ operated by “ Target, Inc. “. The use of this service is on your acceptance and agreement of the following terms and conditions. These conditions apply to everyone (visitors, users and others who access or use the product)
                     By using the service you agree to bound by these terms. If you disagree with any part of the terms then you may not access the service.</p>
-                  
+
                     <h3>Accounts</h3>
                     <p>When you set up an account with us, you must provide information which is accurate, complete and recent at all times. Failing to do so constitutes a breach of terms and condition, which may result in immediate termination of the services which you have taken up from the company. You are responsible for safeguarding the username and password details for your account. You agree not to disclose your password to any third party entity. You must notify us if you feel your user access details have been hacked or you need help with regarding to your credentials.</p>
 
@@ -91,7 +91,7 @@ class WebsiteTerms extends Component {
           </section>
         </div>
       </div>
-                  
+
     );
   }
 }
