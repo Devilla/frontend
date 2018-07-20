@@ -263,7 +263,7 @@ class Dashboard extends Component {
                         {this.renderCardBox(
                           <div className=" widget-flat card-box  text-muted pr-4 pl-4 pb-5 pt-2 pos-vertical-center c2">
                             <p className="text-uppercase title m-b-5 fonttitle font-600">Conversion %</p>
-                            <h3 className="m-b-10 notify">{(profile && userSignUps/profile.uniqueVisitors)*100 ? (userSignUps/profile.uniqueVisitors)*100 : 0}</h3>
+                            <h3 className="m-b-10 notify">{profile && (userSignUps/profile.uniqueVisitors)*100 ? ((userSignUps/profile.uniqueVisitors)*100).toFixed(2) : 0}</h3>
                           </div>
                         )}
                         {this.renderCardBox(
