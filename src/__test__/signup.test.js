@@ -13,7 +13,6 @@ import { WebsiteSignUp } from 'components';
 import { store } from 'App';
 import { base } from 'services/api';
 
-
 // Snapshot for SignUp React Component
 describe('>>>SignUp --- Snapshot',()=>{
   it('+++capturing Snapshot of SignUp', () => {
