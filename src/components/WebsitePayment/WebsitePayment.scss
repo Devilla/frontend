@@ -1,0 +1,33 @@
+.website-payment-container {
+  .plan-details{
+    p {
+      margin: 0 !important;
+      font-size: unset;
+      padding: 0px 25px 0px 25px;
+    }
+  }
+  .websitepricing-container {
+      text-align: center;
+      .starttrial-btn {
+          background-color: #097fff !important;
+      }
+      .alignment {
+          padding: 0px;
+      }
+      .no-brdr-top {
+          border-top: none !important;
+          padding-top: 0px;
+          padding-bottom: 15px;
+      }
+      .plantitle{
+        font-size: 40px;
+      }
+      .pricerow {
+          background: #fff;
+          padding: 44px !important;
+      }
+      .plan-list-ul {
+        height: 460px;
+      }
+  }
+}
