@@ -1,4 +1,5 @@
 // import React from 'react';
+// import '../setupTests';
 // import { shallow, mount } from 'enzyme';
 // import renderer from 'react-test-renderer'
 // import configureStore from 'redux-mock-store'

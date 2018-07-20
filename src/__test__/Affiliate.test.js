@@ -42,16 +42,4 @@ describe('check for in', ()=> {
     expect(wrapper.find('.btn').length).toBe(1);
   });
 
-  /* False values to check whether failing or not*/
-
-    it('+++ contains website - error', () => {
-      let wrapper = shallow(<Affiliate  store={store}/>);
-      expect(wrapper.find('.container').length).toBe(2);
-    });
-
-    it('+++ contains website - error', () => {
-      let wrapper = shallow(<Affiliate  store={store}/>);
-      expect(wrapper.find('.block').length).toBe(4);
-    });
-
 })
