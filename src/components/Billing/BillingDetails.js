@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import { browserHistory } from 'react-router';
+import { browserHistory, Link } from 'react-router';
 import moment from 'moment';
 import { fetchPayment, fetchInvoices } from 'ducks/payment' ;
 import {
