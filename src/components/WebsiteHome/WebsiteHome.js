@@ -110,6 +110,9 @@ class WebsiteHome extends Component {
                   <div className="col-md-2 ml-0 pl-0 mr-0 ml-0 pr-0 "> <button type="submit" onClick={() => browserHistory.push(`/signup?email=${this.state.email}`)} className="btn btn--primary freetrial-btn ml-0">Start Free Trial</button> </div>
 
                 </form>
+                <div className="all-view typed-text typed-text--cursor">
+                  Serving customers from over <span>150+</span> countries&nbsp;&nbsp;
+                </div>
                 <ul className="mobile-view">
                   <li>Free 7-day trial</li>
                   <li className="bullet-inline">Easy setup</li>

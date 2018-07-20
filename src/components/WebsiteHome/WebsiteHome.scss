@@ -35,6 +35,20 @@
         .mobile-view {
            display: none;
         }
+        .all-view { 
+            color: #999;
+            top: 10px;
+            position: relative;
+            margin: 0 auto;
+            right: 100px;
+          
+            max-width: 400px;
+       
+            span {
+                font-size: 20px !important;
+                color: rgb(67, 67, 67);
+            }
+        }
         .slider-card {
             padding-bottom: 15px;
             background: #f3f0ee !important;
@@ -76,13 +90,17 @@
                     top: 30px;
                     display: inline !important;
                     padding-left: 15px;
-                    font-weight: 700;
+                    font-weight: 600;
                        &.bullet-inline::before{
                         content: '•';
                         margin-right: 5px;
                        }
                 }
             }
+        }
+        .all-view {
+            position: relative;
+            right: 5px;
         }
 
     }
@@ -93,12 +111,20 @@
             padding:   0px 0px 0px 0px !important;
 
         }
+        .all-view {
+            position: relative;
+            right: 5px;
+        }
     }
 }
 @media only screen and (max-width: 733px) {
     .websitehome-container{
         .starttrial-form {
             margin-left: 65px;
+        }
+        .all-view {
+            position: relative;
+            right: 5px;
         }
     }
 }
@@ -110,6 +136,10 @@
               top: -10px !important;
               left: -20px !important
             }
+        }
+        .all-view {
+            position: relative;
+            right: 5px;
         }
 
     }
@@ -143,6 +173,10 @@
             position: relative;
             top: -50px;
         }
+        .all-view {
+            position: relative;
+            right: 5px;
+        }
     }
 }
 
@@ -161,6 +195,10 @@
         .integration-title {
             text-align: center;
         }
+        .all-view {
+            position: relative;
+            right: 5px;
+        }
 
 
     }
@@ -173,12 +211,16 @@
             .mobile-view {
                 position: absolute;
                 left:-30px !important;
-                top: -45px !important;
+                top: -5px !important;
                 width: 250px;
                 & li {
                     display: block !important;
 
                 }
+            }
+            .all-view {
+                position: relative;
+                right: 5px;
             }
         }
     }
