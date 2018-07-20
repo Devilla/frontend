@@ -13,7 +13,6 @@ class Price extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleMonthChange = this.handleMonthChange.bind(this);
     this.handleYearChange = this.handleYearChange.bind(this);
-    this.handleSwitchChange = this.handleSwitchChange.bind(this);
 
   }
 
@@ -41,13 +40,7 @@ class Price extends Component {
     this.setState({externalValue: true, planPeriod: 12});
   }
 
-  handleSwitchChange(value) {
-    if (value) {
-      this.setState({externalValue: true, planPeriod: 12});
-    } else {
-      this.setState({externalValue: false, planPeriod: 1});
-    }
-  }
+
 
   render() {
     const { planList, selectedPlan, handleCheckChange, couponDetails } = this.props;
@@ -58,7 +51,6 @@ class Price extends Component {
           planPeriod={this.state.planPeriod}
           planList={this.state.servicebotPlans}
           handleMonthChange={this.handleMonthChange}
-          handleSwitchChange={this.handleSwitchChange}
           handleYearChange={this.handleYearChange}
           externalValue={this.state.externalValue}
           selectedPlan={selectedPlan}

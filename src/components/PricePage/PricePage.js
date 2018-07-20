@@ -1,12 +1,10 @@
 import React from 'react';
-import Switch from 'react-flexible-switch';
 import './PricePage.scss';
 
 const PricePage = ({
   planPeriod,
   planList,
   handleMonthChange,
-  handleSwitchChange,
   handleYearChange,
   externalValue,
   selectedPlan,
@@ -50,16 +48,6 @@ const PricePage = ({
                   : 'btn btn-outline-info waves-light waves-effect mr-2 set-br'
                 } onClick={handleMonthChange}>Monthly</span>
               </li>
-              <li className="mt-3" style={{ display: 'none' }}>
-                <Switch
-                  circleStyles={{
-                    onColor: '#097fff',
-                    offColor: 'grey',
-                    diameter: 18
-                  }} switchStyles={{
-                    width: 50
-                  }} value={externalValue} onChange={handleSwitchChange} />
-              </li>
               <li>
                 <span className={externalValue
                   ? 'active btn btn-outline-success waves-light waves-effect ml-2 set-br'
@@ -81,7 +69,7 @@ const PricePage = ({
               <div className="pricingTable">
                 <div className="price_card text-center">
                   <div className="pricing-header bg-primary">
-                    <span className="price">${plan.interval === 'year' ? plan.amount / 1000 : plan.amount / 100}</span>
+                    <span className="price">${plan.interval === 'year' ? plan.amount / 100 : plan.amount / 100}</span>
                     <span className="name">{filterPlanName(plan.name)}</span>
                   </div>
                   {plan.interval === 'year' ?  <p className= {/\b(Advanced)\b/m.test(plan.name) ?' mt-0 mb-0' : 'type--fine-print mt-0 mb-0 '}><i> 2 Months FREE </i></p> :  ''}
