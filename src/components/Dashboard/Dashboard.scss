@@ -1,4 +1,7 @@
 .dashboard-boxes {
+  .card-content-width {
+    max-width: 100% !important;
+  }
 
   .ct-chart {
     canvas {
@@ -9,12 +12,14 @@
   .dashboard-content {
     table {
       width: 100%;
+
       td {
         padding: 5%;
       }
     }
   }
-  p{
+
+  p {
     &.text-uppercase {
       &.title {
         border-bottom: 1px solid #E8E8E8;
@@ -22,7 +27,6 @@
       }
     }
   }
-
 
   .widget-flat {
     box-shadow: 0 6px 9px -6px black;
@@ -36,6 +40,7 @@
     display: flex;
     justify-content: center;
   }
+
   .m-b-10 {
     &.usersignup {
       color: #d6efff;
@@ -44,20 +49,23 @@
       position: relative;
       top: -5px;
     }
+
     &.notify {
-      color:  #be48bc;
+      color: #be48bc;
       font-size: 30px;
       font-weight: 100;
       position: relative;
       top: -5px;
     }
+
     &.campaign {
-      color:  #df5643;
+      color: #df5643;
       font-size: 30px;
       font-weight: 100;
       position: relative;
       top: -5px;
     }
+
     &.profile {
       color: #bcd331;
       font-size: 30px;
@@ -67,39 +75,96 @@
     }
   }
 
-.c1,.c2,.c3,.c4 {
+  .c1,
+  .c2,
+  .c3,
+  .c4 {
+    background: #ffffff !important;
+    box-shadow: 0 1px 2px #e8e8e8;
+    border: 1px solid #e8e8e8 !important;
+    z-index: 999;
+  }
 
-  background: #ffffff !important;
-  box-shadow: 0px 1px 2px #e8e8e8;
-  border: 1px solid #e8e8e8 !important;
-  z-index: 999;
+  .cards {
+    padding: 5px !important;
+  }
+
+  .canvas-brdr {
+    padding: 40px;
+  }
+
+  .graph-card {
+    box-shadow: 0 7px 16px -14px #999;
+    position: relative;
+    top: -120px;
+    border: 2px solid #e8e8e8;
+    padding: 60px 60px 20px;
+  }
+
+  .days {
+    position: relative;
+    top: -100px;
+  }
+
+  .customPicker {
+    position: absolute;
+    top: 5px;
+    right: 140px;
+  }
+
+  .fonttitle {
+    color: #8c9392;
+    font-size: 12px !important;
+    border-bottom: 1px solid #f7f7f7 !important;
+  }
+}
+
+.new-graphs {
+  position: relative !important;
+  top: -100px !important;
+}
+
+.new-card3 {
+  margin-top: 60px;
+}
+
+.customPicker-sub {
+  position: absolute !important;
+  top: 5px !important;
+  right: 140px !important;
+}
+.g2 , .g3 , .g4{
+  box-shadow: 0px 2px 7px -5px #999 !important;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.g2::before {
+  content: 'Where are your Users ?';
+  font-size: 20px !important;
+  color: #999;
+}
+.g3::before {
+  content: 'When do Users visit ?';
+  font-size: 20px !important;
+  color: #999;
+}
+.g4::before {
+  content: 'Which pages Users visit ?';
+  font-size: 20px !important;
+  color: #999;
+}
+.border-hr {
+  margin-top: 10px;
+}
+.TImelineData{
+  height: 20px;
+  width: 50px;
+  border: 1px solid grey;
+  background-color:#097fff;
 
 }
-.cards {
-  padding: 5px !important;
-}
-.canvas-brdr {
-
-  padding: 40px;
-
-}
-.graph-card {
-
-  box-shadow: 0px 7px 16px -14px #999;
-  position: relative;
-  top: -120px;
-  border: 2px solid #e8e8e8;  
-  padding: 60px 60px 20px 60px;
-  
-}
-.days {
-  position: relative;
-  top: -100px;
-}
-.fonttitle {
-  color: #8c9392;
-  font-size: 12px !important;
-  border-bottom: 1px solid #f7f7f7 !important;
-}
-
+.TImelineDat{
+  height: 20px;
+  width: 50px;
 }

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Grid, Row, Col, Table, Glyphicon } from 'react-bootstrap';
 import Card from 'components/utils/card';
 import Switch from 'react-flexible-switch';
 import { getCookie } from 'components/Common/function';
@@ -16,6 +15,9 @@ class Notification extends Component {
     super();
     this.state = {
       notifications: [],
+      index: '',
+      campaign: '',
+      hidepop:  false
     };
   }
 
@@ -59,28 +61,16 @@ class Notification extends Component {
     browserHistory.push('/new');
   }
 
-  deleteCampaign(index, campId) {
-    let that = this;
-    Popup.create({
-      title: 'Delete Campaign',
-      buttons: {
-        left: [{
-          text: 'Cancel',
-          className: 'warning popup-notification-button',
-          action: function () {
-            Popup.close();
-          }
-        }],
-        right: [{
-          text: 'Confirm',
-          className: 'primary popup-notification-button',
-          action: function () {
-            that.props.removeCampaign(index, campId);
-            Popup.close();
-          }
-        }]
-      }
-    }, true);
+  deleteCampaign = (indexes, campaigns,e) => {
+    this.setState( (prevState) => {
+      return { deleteCampaign : !prevState.deleteCampaign, index: indexes, campaign : campaigns };
+    });
+  }
+
+  deletepopupContent = () => {
+    this.props.removeCampaign(this.state.index, this.state.campaign._id);
+    this.props.updateCampaign(this.state.campaign);
+    browserHistory.push('/dashboard');
   }
 
   // Map the notification data into table rows and return
@@ -95,8 +85,8 @@ class Notification extends Component {
           <label className="tgl-btn" htmlFor="cb2" onClick={(e) => this.handleActiveChange(!campaign.isActive, campaign)}></label>
         </td>
         <td>{campaign.trackingId}</td>
-        <td>{moment(campaign.createdAt).format('MM/DD/YYYY')}</td>
-        <td><a href="javascript:;"><i className="ml-3 icon-trash" onClick={() => this.deleteCampaign(i, campaign._id)}></i></a></td>
+        <td>{moment(campaign.updatedAt).format('MM/DD/YYYY')}</td>
+        <td><a href="javascript:;"><i className="ml-3 icon-trash" data-toggle="modal" data-target="#myModal"  onClick={(e) => this.deleteCampaign(i,campaign,e)}></i></a></td>
       </tr>
     ))
       :
@@ -116,7 +106,7 @@ class Notification extends Component {
                 <th>STATUS</th>
                 <th>TRACK ID</th>
 
-                <th>CREATED</th>
+                <th>CREATED/UPDATED</th>
                 <th>TRASH</th>
               </tr>
             </thead>
@@ -124,6 +114,23 @@ class Notification extends Component {
               {this.getNotificationRows()}
             </tbody>
           </table>
+          <div className="modal fade show-modal" id="myModal" role="dialog">
+            <div className="modal-dialog">
+              <div className="modal-content align-modal">
+                <div className="modal-header">
+                  <button type="button" className="close" data-dismiss="modal">&times;</button>
+                  <h4 className="modal-title">Are you sure you want to delete this campaign?</h4>
+                </div>
+                <div className="modal-body pb-5">
+                        Alert ! These may delete all your customer activities .
+                </div>
+                <div className="modal-footer">
+                  <button type="button" className="float-left btn btn-primary close-btn" data-dismiss="modal">Close</button>
+                  <button type="button" className="btn btn-primary delete-btn" data-dismiss="modal" onClick={this.deletepopupContent} >Delete</button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     );

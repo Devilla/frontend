@@ -1,5 +1,4 @@
 import React from 'react';
-import { Smallpic } from 'img';
 import './Header.scss';
 import { Link } from 'react-router';
 import { browserHistory } from 'react-router';
@@ -12,22 +11,17 @@ const Header = ({openCloseDropdown, dropdownStyle, logout, renderHelp, openProfi
   return (
     <div className="customer-header">
       {loading ?
-        <ProgressBar bsStyle='info' now={ 120 }/>
+        <ProgressBar bsStyle='primary' now={ 120 }/>
         :
-        <ProgressBar bsStyle='info' now={0} />
+        <ProgressBar bsStyle='primary' now={0} />
       }
       <ConnectionStatus />
       <div className="nav-topbar-flex">
         <div className="topbar-left">
           <h4><Link onClick={() => browserHistory.goBack()}><i className="icon-arrow-left mr-3"></i></Link>{children.props.location.pathname == '/new'? 'Campaign Setting' :children.props.location.pathname.replace(/^\/+/g, '')}</h4>
         </div>
-     
-        <ul className="list-unstyled topbar-right-menu float-right mb-0 nav-custom-header">
-          <li className="dropdown notification-list">
-            <a className="nav-link dropdown-toggle arrow-none" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-              <i className="fi-bell" style={{fontSize:'25px'}}></i>
-            </a>
-          </li>
+
+        <ul className="list-unstyled topbar-right-menu float-right mb-0 nav-custom-header  rounded-circle">
           <li className="dropdown notification-list">
             <a
               className="nav-link dropdown-toggle nav-user"
@@ -38,14 +32,13 @@ const Header = ({openCloseDropdown, dropdownStyle, logout, renderHelp, openProfi
               style={{cursor:'pointer'}}
               onClick={openCloseDropdown}
             >
-              <img src={Smallpic} alt="user" className="rounded-circle" />
+              <i className=" mdi mdi-account-settings-variant"></i>
               <span className="ml-1">
-                <i className="mdi mdi-chevron-down"></i>
               </span>
             </a>
             <div className="dropdown-menu dropdown-menu-right dropdown-menu-animated profile-dropdown" style={dropdownStyle}>
               <div className="dropdown-item noti-title">
-                <h6 className="text-overflow m-0">Welcome !</h6>
+                <h6 className="text-overflow m-0"></h6>
               </div>
 
               <a href="javascript:void(0);" className="dropdown-item notify-item">

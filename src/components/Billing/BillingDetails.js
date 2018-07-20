@@ -17,7 +17,7 @@ import Button from 'components/Template/customButton';
 import './BillingDetails.scss';
 
 const billingHeader = [
-  'Billing Date', 'Amount', 'Transaction Id', 'Interval', 'Download'
+  'Billing Date', 'Amount', 'Transaction Id', 'Interval', 'Download Invoice'
 ];
 
 class BillingDetails extends Component {
@@ -70,12 +70,13 @@ class BillingDetails extends Component {
                 <div className="Billing-container">
                   <Row>
 
-                    <div className="col-md-4 billing-buttons float-right">
+                    <div className="col-md-12  billing-buttons">
 
                       <Button
                         onClick={() => browserHistory.push('/Upgrade')}
                         className="btn btn-primary"
-                        pullRight="pullRight" fill="fill"
+                        pullRight={true}
+                        fill={true}
                         type="button"
                         icon="cloud-upload"
                         disabled={false}
@@ -107,14 +108,14 @@ class BillingDetails extends Component {
                               <hr />
                               <div className="text-left">
                                 <div className="text-muted font-13">
-                                  <strong>Plan Choosed : </strong>
+                                  <strong>Current Plan : </strong>
                                   <span className="m-l-15">
                                     <FormGroup>
                                       <FormControl
                                         type="text"
                                         bsClass="form-control mt-4"
                                         id="campaignname"
-                                        value={profile?profile.plan.name:''}
+                                        value={profile && profile.plan?profile.plan.name:''}
                                         disabled
                                       />
                                     </FormGroup>

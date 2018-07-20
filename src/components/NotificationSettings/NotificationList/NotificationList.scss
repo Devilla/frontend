@@ -1,41 +1,59 @@
 
 
-<<<<<<< HEAD
-=======
 
->>>>>>> 471d9ff4af1409519f2761273808b9d43a03c70f
   .notification-box {
+    &.lastbox {
+      position: relative;
+      left: 33%;
+      top: 30px !important;
+    }
     .bulkColor{
-      color:#d50000!important;
+      color:#097fff!important;
     }
     .liveColor{
-      color:#097fff!important;
+      color:#d50000!important;
     }
     .recentColor{
       color:#097fff!important;
-  
+
     }
-    .channelColor {
+    .reviewColor {
       color:#d50000!important;
 
     }
-     
+
+
     .toggle-checkbox {
-      margin-left: 37%;   
-      margin-bottom: 10%;
+      width: 55px !important;
+      margin: 0 auto;
+      margin-bottom: 10% !important;
+      margin-top: 10% !important;
+
     }
-    
+
   }
 
     .addChannel {
       margin: 0 auto;
-      padding-top: 50px !important; 
+      padding-top: 50px !important;
       padding-left: 30px !important;
-    
-        & .notification-list-content {
-          min-height: 80px;
-        }
-    }
-    
-  
 
+
+    }
+    .ribbon-box.indi-card {
+      width: 280px !important;
+
+    }
+    .card-box.bx {
+      border-radius: 10px !important;
+      border: 1px solid #95c5f8;
+      box-shadow: 0px 4px 10px -4px #999;
+      background: rgb(252, 252, 252) !important;
+      &:hover {
+      box-shadow: 0px 5px 15px -4px #999;
+
+      }
+    }
+    .cards-notification {
+      margin-left: 20px !important;
+    }

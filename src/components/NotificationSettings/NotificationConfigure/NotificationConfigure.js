@@ -4,6 +4,7 @@ import { Card } from './Card';
 import NotificationDesign from './NotificationDesign';
 import { NotificationDesignSetting } from './NotificationDesignSetting';
 import './NotificationConfigure.scss';
+// import PopupReview from './PopupReview';
 
 const NotificationConfigure = ({
   profile,
@@ -21,12 +22,17 @@ const NotificationConfigure = ({
   handleNotificationStyleChange,
   handleClickableNotification,
   saveConfiguration,
-  backConfiguration
+  backConfiguration,
+  showpopupfield,
+  showpopup,
+  popupName,
+  campaign
 }) => {
   return (
-    <div className="notification-configure">
+    <div className="notification-configure col-md-12">
       <Row>
         <Col md={12}>
+          {console.log(campaign.trackingId)}
           <Card title={notification.notificationName}
             status={ <div className="notificationSwitch">
               <input
@@ -50,11 +56,15 @@ const NotificationConfigure = ({
                       visitorText={visitorText}
                       notification={notification}
                       notificationPanelStyle={notificationPanelStyle}
+                      popupName={popupName}
                     />
                   </Col>
                   <Col md={5}>
+
                     <NotificationDesignSetting
                       profile={profile}
+                      showpopup={showpopup}
+                      showpopupfield={showpopupfield}
                       toggleTextBox={toggleTextBox}
                       toggleMap={toggleMap}
                       contentText={contentText}
@@ -65,7 +75,9 @@ const NotificationConfigure = ({
                       onConfigChange={handleNotificationStyleChange}
                       handleContentChange={handleContentChange}
                       handleClickableNotification={handleClickableNotification}
+                      campaign={campaign}
                     />
+
                   </Col>
                 </Row>
               </div>
@@ -74,22 +86,21 @@ const NotificationConfigure = ({
         </Col>
       </Row>
       <Row className="state-btn">
-        <Col md={4}>
 
-          <span className="btn btn-primary mr-3" onClick={backConfiguration}>
+        <span className="btn btn-primary" onClick={backConfiguration}>
           Back
-          </span>
-        </Col>
-        <Col md={4}>
-          <span className="btn btn-primary mr-3" onClick={setDefaultPanel} >
+        </span>
+
+
+        <span className="btn btn-primary" onClick={setDefaultPanel} >
           Set Default
-          </span>
-        </Col>
-        <Col md={4}>
-          <span className="btn btn-primary mr-3 " onClick={saveConfiguration}>
+        </span>
+
+
+        <span className="btn btn-primary" onClick={saveConfiguration}>
           Save
-          </span>
-        </Col>
+        </span>
+
 
       </Row>
     </div>

@@ -6,7 +6,10 @@ import { ToastContainer } from 'react-toastify';
 import TrailPayment from './TrailPayment';
 import { updateUser, checkTokenExists, validateCoupon, clearCouponError } from 'ducks/auth';
 import { createProfile, updateProfile } from 'ducks/profile';
+import { load, loaded } from 'ducks/loading';
 import { createPayment } from 'ducks/payment';
+import { Spinner } from 'components';
+
 import './LoginFlow.scss';
 
 import { store } from 'App.js';
@@ -17,62 +20,64 @@ class LoginFlow extends Component {
     this.state = {
       flowStep: 0,
       username: '',
-      plan:'',
       stripeToken: {}
     };
-
-    this.handleStateChange = this.handleStateChange.bind(this);
-    this.handleCheckChange = this.handleCheckChange.bind(this);
-    this.handleErrorChange = this.handleErrorChange.bind(this);
-    this.submitPayment = this.submitPayment.bind(this);
-    this.submitCoupon = this.submitCoupon.bind(this);
-    this.couponProceed = this.couponProceed.bind(this);
   }
 
   componentWillMount() {
     this.checkLogin();
-    this.updateState(this.props.user, this.props.profile, this.props.plan);
+    this.updateState(this.props.user, this.props.selectedPlan);
   }
 
   componentWillReceiveProps(nextProps) {
     if(this.props != nextProps)
-      this.updateState(nextProps.user, nextProps.profile, nextProps.plan);
-    if(nextProps.profile != this.props.profile)
-      browserHistory.push('/dashboard');
+      this.updateState(nextProps.user, nextProps.selectedPlan);
+    if(nextProps.couponDetails != this.props.couponDetails)
+      this.props.clearSelectedPlan(nextProps.couponDetails);
   }
 
-  updateState(user, profile) {
+  updateState = (user, plan) => {
     this.setState({
       username: user?user.username:'',
-      plan: profile?profile.plan:''
+      plan: plan?plan:''
     });
   }
 
-  checkLogin() {
+  checkLogin = () => {
     const cookie = localStorage.getItem('authToken');
     const authToken = cookie?JSON.parse(cookie):null;
     if(authToken)
       store.dispatch(checkTokenExists(authToken));
     else
-      return window.location.assign(window.location.origin+'/login');
+      return browserHistory.push('/login');
   }
 
-  handleErrorChange(state, stateName) {
+  handleErrorChange = (state, stateName) => {
     this.setState({[stateName]:state});
   }
 
-  handleStateChange(state, stateName) {
+  handleStateChange = (state, stateName) => {
+    if(stateName === 'coupon' && this.props.coupon)
+      this.props.clearCoupon();
     this.setState({[stateName]:state});
   }
 
-  submitPayment(data) {
+  submitPayment = (data) => {
     let profile = {
-      user: this.props.user._id,
       plan: data.plan,
       uniqueVisitorQouta: Number(data.plan.description),
       uniqueVisitors: 0,
       uniqueVisitorsQoutaLeft: Number(data.plan.description)
     };
+
+    const propsProfile = this.props.profile;
+
+    if(propsProfile) {
+      profile['id'] = propsProfile._id;
+      profile['route'] = true;
+    } else {
+      profile['user'] = this.props.user._id;
+    }
 
     if(this.state.username != this.props.user.username) {
       let userInfo = {};
@@ -80,15 +85,12 @@ class LoginFlow extends Component {
       userInfo['username'] = this.state.username;
       this.props.updateUser(userInfo);
     }
-    this.props.createPayment(data, profile, false);
+
+    const update = propsProfile?true:false;
+    this.props.createPayment(data, profile, update);
   }
 
-  handleCheckChange(checked, value) {
-    this.setState({ plan: checked?value:null, couponError: '', cardError: '', nameError: '' });
-  }
-
-
-  submitCoupon(event) {
+  submitCoupon = (event) => {
     event.preventDefault();
     if(!this.state.coupon)
       return this.setState({couponError: 'Enter a valid coupon', cardError: '', nameError: ''});
@@ -98,7 +100,6 @@ class LoginFlow extends Component {
   componentWillUnmount() {
     this.setState({
       username: '',
-      plan:'',
       coupon: '',
       couponError: '',
       cardError: '',
@@ -107,45 +108,47 @@ class LoginFlow extends Component {
     this.props.clearCouponError();
   }
 
-  couponProceed(event) {
-    event.preventDefault();
-    const { plan } = this.state;
-    const { user, couponDetails } = this.props;
-    if(!plan)
+  couponProceed = () => {
+    const { user, couponDetails, selectedPlan } = this.props;
+    if(!this.props.selectedPlan)
       return this.setState({cardError: 'Select a plan'});
     const data = {
-      amount: plan.amount,
+      amount: selectedPlan.amount,
       paymentProvider: null,
       paymentType: null,
       coupon: couponDetails,
       user: user._id,
-      plan: plan
+      plan: selectedPlan
     };
     return this.submitPayment(data);
   }
 
   render() {
-    const { couponError, nameError, cardError, coupon, plan } = this.state;
-    const { user, profile, couponDetails, couponRequestError } = this.props;
+    const { couponError, nameError, cardError } = this.state;
+    const { user, profile, couponRequestError, selectedPlan, load, loaded } = this.props;
+    const couponDetails = this.props.couponDetails || this.props.coupon;
     return (
       <div className="content login-flow">
-        <TrailPayment
-          couponError={couponError || couponRequestError}
-          nameError={nameError}
-          cardError={cardError}
-          couponDetails={couponDetails}
-          coupon={coupon}
-          selectedPlan={plan}
-          user={user}
-          profile={profile}
-          plan={plan}
-          handleErrorChange={this.handleErrorChange}
-          handleCheckChange={this.handleCheckChange}
-          handleStateChange={this.handleStateChange}
-          handleSubmit={this.submitPayment}
-          submitCoupon={this.submitCoupon}
-          couponProceed={this.couponProceed}
-        />
+        {profile?
+          <TrailPayment
+            load={load}
+            loaded={loaded}
+            couponError={couponError || couponRequestError}
+            nameError={nameError}
+            cardError={cardError}
+            couponDetails={couponDetails}
+            user={user}
+            profile={profile}
+            plan={selectedPlan}
+            handleErrorChange={this.handleErrorChange}
+            handleStateChange={this.handleStateChange}
+            handleSubmit={this.submitPayment}
+            submitCoupon={this.submitCoupon}
+            couponProceed={this.couponProceed}
+          />
+          :
+          <Spinner loading={true} />
+        }
         <ToastContainer hideProgressBar={true} />
       </div>
     );
@@ -160,6 +163,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
+  load,
+  loaded,
   updateUser,
   createProfile,
   updateProfile,

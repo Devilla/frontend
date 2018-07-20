@@ -14,9 +14,6 @@ const initialState = fromJS({});
 
 const plan = (state = initialState, action) => {
   switch (action.type) {
-    // case FETCH:
-    //
-    //   return state.set("plan", action.plan);
     case SUCCESS:
       return state.set('plan', action.plan);
     default:

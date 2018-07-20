@@ -77,22 +77,22 @@ class UpgradeCard extends Component {
                           </a>
                         </li>
                         <li className="nav-item waves-effect">
-                          <a data-toggle="tab" aria-expanded="true" className={`nav-link ${activeClass == 2?'active pb-3 pt-3':'pb-3 pt-3'}`} onClick={() => this.setActiveState(2)}>
+                          <a data-toggle="tab" aria-expanded="true" className={`nav-link ${activeClass == 100?'active pb-3 pt-3':'pb-3 pt-3'}`} onClick={() => this.setActiveState(1)}>
                             <i className="fi-mail mr-2"></i>Debit Card
                           </a>
                         </li>
                         <li className="nav-item waves-effect">
-                          <a data-toggle="tab" aria-expanded="false" className={`nav-link ${activeClass == 3?'active pb-3 pt-3':'pb-3 pt-3'}`} onClick={() => this.setActiveState(3)}>
+                          <a data-toggle="tab" aria-expanded="false" className={`nav-link ${activeClass == 100?'active pb-3 pt-3':'pb-3 pt-3'}`} onClick={() => this.setActiveState(1)}>
                             <i className="fi-layers mr-2"></i> Paypal
                           </a>
                         </li>
                         <li className="nav-item waves-effect">
-                          <a data-toggle="tab" aria-expanded="false" className={`nav-link ${activeClass == 4?'active pb-3 pt-3':'pb-3 pt-3'}`} onClick={() => this.setActiveState(4)}>
+                          <a data-toggle="tab" aria-expanded="false" className={`nav-link ${activeClass == 100?'active pb-3 pt-3':'pb-3 pt-3'}`} onClick={() => this.setActiveState(1)}>
                             <i className="fi-layers mr-2"></i> Bitcoin
                           </a>
                         </li>
                         <li className="nav-item waves-effect">
-                          <a data-toggle="tab" aria-expanded="false" className={`nav-link ${activeClass == 5?'active pb-3 pt-3':'pb-3 pt-3'}`} onClick={() => this.setActiveState(5)}>
+                          <a data-toggle="tab" aria-expanded="false" className={`nav-link ${activeClass == 100?'active pb-3 pt-3':'pb-3 pt-3'}`} onClick={() => this.setActiveState(1)}>
                             <i className="fi-layers mr-2"></i> Saved card
                           </a>
                         </li>
@@ -134,13 +134,14 @@ class UpgradeCard extends Component {
                                   placeholder="4*** **** **** 2006"
                                   id="VisaNumber"
                                   onChange={(e) => this.handleStateChange(e)}
+                                  disabled
                                 />
                               </FormGroup>
                             </div>
                           </Row>
                           <Row className='upgrade-card-buttons'>
                             <div className='col-md-4 pull-left'>
-                              <Button type='button' icon='chevron-left' bsStyle='primary' fill={true} onClick={() => browserHistory.push(currentState === 'upgrade' ? '/billing-details' : '/profile')}>&nbsp;&nbsp;Back&nbsp;&nbsp;</Button>
+                              <Button type='button' icon='chevron-left' bsStyle='btn btn-primary backpay-btn' fill={true} onClick={() => browserHistory.push(currentState === 'upgrade' ? '/billing-details' : '/profile')}><i className="icon-arrow-left pr-2"></i>Back&nbsp;&nbsp;</Button>
                             </div>
 
                           </Row>
@@ -161,13 +162,14 @@ class UpgradeCard extends Component {
                                   placeholder="4*** **** **** 2006"
                                   id="VisaNumber"
                                   onChange={(e) => this.handleStateChange(e)}
+                                  disabled
                                 />
                               </FormGroup>
                             </div>
                           </Row>
                           <Row className='upgrade-card-buttons'>
                             <div className='col-md-4 pull-left'>
-                              <Button type='button' icon='chevron-left' bsStyle='primary' fill={true} onClick={() => browserHistory.push(currentState === 'upgrade' ? '/billing-details' : '/profile')}>&nbsp;&nbsp;Back&nbsp;&nbsp;</Button>
+                              <Button type='button' icon='chevron-left' bsStyle='btn btn-primary backpay-btn' fill={true} onClick={() => browserHistory.push(currentState === 'upgrade' ? '/billing-details' : '/profile')}><i className="icon-arrow-left pr-2"></i>Back&nbsp;&nbsp;</Button>
                             </div>
                           </Row>
                         </div>
@@ -186,13 +188,14 @@ class UpgradeCard extends Component {
                                   placeholder="4*** **** **** 2006"
                                   id="VisaNumber"
                                   onChange={(e) => this.handleStateChange(e)}
+                                  disabled
                                 />
                               </FormGroup>
                             </div>
                           </Row>
                           <Row className='upgrade-card-buttons'>
                             <div className='col-md-4 pull-left'>
-                              <Button type='button' icon='chevron-left' bsStyle='primary' fill={true} onClick={() => browserHistory.push(currentState === 'upgrade' ? '/billing-details' : '/profile')}>&nbsp;&nbsp;Back&nbsp;&nbsp;</Button>
+                              <Button type='button' icon='chevron-left' bsStyle='btn btn-primary backpay-btn' fill={true} onClick={() => browserHistory.push(currentState === 'upgrade' ? '/billing-details' : '/profile')}><i className="icon-arrow-left pr-2"></i>Back&nbsp;&nbsp;</Button>
                             </div>
 
                           </Row>

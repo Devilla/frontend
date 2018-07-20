@@ -1,52 +1,75 @@
-#urladd {
-  span {
-    border-radius: 5px;
+.CapturePage-container {
+  #urladd {
+    span {
+      border-radius: 5px;
+    }
   }
-}
 
-.dot {
-    height: 23px;
-    width: 23px;
+  .capturebtn-back, .capturebtn-next {
+    border-radius: 5px !important;
+  }
+
+  .path-error {
+    max-width: 300px;
+    margin: 0 auto !important;
+    position: relative;
+    left: 10px;
+  }
+
+  .dot {
+    height: 18px;
+    width: 18px;
     text-align: center;
-    background-color:#4fab00;
+    position: relative;
+    left: 0;
+    background-color: #4fab00;
     border-radius: 50%;
     display: inline-block;
-    color:whitesmoke;
-}
-.tabscontent{
-  .centertbl {
-    .url {
-      width: 40%;
-    }
+    color: whitesmoke;
   }
-  .input-group {
-    .form-control {
-      border-radius: 6px!important;
+
+  .tabscontent {
+    .centertbl {
+      .url {
+        width: 40%;
+      }
     }
-  }
-  .status {
-    ul {
-      display: flex;
-      justify-content: space-evenly;
-      list-style: none;
-      li {
+
+    .input-group {
+      .form-control {
+        border-radius: 6px!important;
+      }
+    }
+
+    .status {
+      ul {
         display: flex;
-        .status-name {
-          margin: 3px 10px;
+        list-style: none;
+
+        li {
+          display: flex;
+
+          .status-name {
+            margin: 3px 10px;
+          }
         }
       }
     }
-  }
-  .unverified {
-    background-color: #FFEB3B;
-  }
-  .primary {
-    background-color: #2196F3;
-  }
-  .danger {
-    background-color: #F44336;
-  }
-  .success {
-    background-color: #4CAF50;
+
+    .unverified {
+      background-color: #FFEB3B;
+    }
+
+    .primary {
+      background-color: #2196F3;
+    }
+
+    .danger {
+      background-color: #F44336;
+    }
+
+    .success {
+      background-color: #4CAF50;
+    }
   }
 }

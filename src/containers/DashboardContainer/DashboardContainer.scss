@@ -4,7 +4,19 @@
   [data-css-1ar5iql] {
     z-index: 100000000;
   }
-  
+
+  .toast-style {
+    background-color: rgba(0, 0, 0, 0.98) !important;
+    color: #fff !important;
+    text-align: center !important;
+    height: 10px !important;
+    border-radius: 5px !important;
+    button {
+      height: 2.6em;
+      color: #fff;
+    }
+  }
+
   .topbar {
     margin-left: 16%;
     z-index: 10000000;
@@ -12,6 +24,7 @@
     top: 0;
     left: 0;
     width: 84%;
+    height: 50px !important;
     background: #f4f6f8;
     .nav-custom-header {
           background: #f4f6f8;
@@ -20,7 +33,7 @@
 
   .dashboard-content {
     font-size: 14px;
-    margin-top: 5% !important;
+    margin-top: 0% !important;
     .css-1ar5iql, [data-css-1ar5iql] {
       z-index: 999999999;
     }
@@ -32,6 +45,24 @@
   .mm-popup__box{
     z-index: 1000000000;
   }
+  .mm-popup__btn--success {
+    background-color: #097fff;
+    border-color: #097fff;
+    color: #fff;
+    border-radius: 5px;
+    font-size: 14px;
+}
+.mm-popup__box__header {
+      padding: 15px 20px;
+      background: #999;
+      color: #fff;
+  }
+
+      .mm-popup__box__header__title {
+          font-size: 20px;
+          text-align: left;
+          font-weight: 600;
+}
 
   html {
     height: 100%;

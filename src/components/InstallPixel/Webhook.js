@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Popup from 'react-popup';
 import copy from 'copy-to-clipboard';
 import { toast } from 'react-toastify';
 
 import { fetchWebhook, createWebhook, deleteWebhook, clearWebhook } from 'ducks/webhooks';
 import { updateCampaign } from 'ducks/campaign';
+import './Webhook.scss';
 
 const toastConfig = {
   position: toast.POSITION.BOTTOM_LEFT,
@@ -18,7 +18,8 @@ class Webhook extends Component {
     super();
     this.state = {
       selectHook: null,
-      campaignWebhook: null
+      campaignWebhook: null,
+      webhookName: ''
     };
   }
 
@@ -63,39 +64,34 @@ class Webhook extends Component {
     this.setState({campaignWebhook: undefined});
   }
 
-  addWebhook = (e) => {
-    e.preventDefault();
-    const that = this;
-    Popup.create({
-      title: 'Add New Webhook',
-      content: <div className="input-group mb-3">
-        <input
-          type="text"
-          className="form-control"
-          placeholder="Webhook Name"
-          aria-label="Webhook Name"
-          aria-describedby="basic-addon1"
-          onChange={(e) => that.setState({webhookName: e.target.value})}
-        />
-      </div>,
-      buttons: {
-        left: [{
-          text: 'Close',
-          className: 'default',
-          action: function () {
-            Popup.close();
-          }
-        }],
-        right: [{
-          text: 'Save Webhook',
-          className: 'primary save-webhook',
-          action: function () {
-            that.saveWebhook();
-            Popup.close();
-          }
-        }]
-      }
-    });
+  popupContent = () => {
+    return (
+      <div className="modal fade show-modal" id="myModal" role="dialog">
+        <div className="modal-dialog">
+          <div className="modal-content align-modal">
+            <div className="modal-header">
+              <button type="button" className="close" data-dismiss="modal">&times;</button>
+              <h4 className="modal-title">Add new Webhook</h4>
+            </div>
+            <div className="modal-body">
+              <div className="input-group mb-3">
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="Webhook Name"
+                  aria-label="Webhook Name"
+                  aria-describedby="basic-addon1"
+                  onChange={(e) => this.setState({webhookName: e.target.value})}
+                />
+              </div>
+            </div>
+            <div className="modal-footer">
+              <button type="button" className="btn btn-primary save-btn" data-dismiss="modal" onClick={() => this.saveWebhook()}>Save Webhook</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
   }
 
   renderWebhooks = () => {
@@ -116,29 +112,29 @@ class Webhook extends Component {
     const { campaign } = this.props;
     return (
       <div className="webhooks-container">
-        <div className="card">
+        <div className="card webhook-section col-md-8">
           <div className="card-header">
             Webhook Integrations
           </div>
-          <div className="card-body">
-            <h5 className="card-title">Type of Webhook Integration</h5>
+          <div className="card-body ">
+            <h5 className="card-title">What type of Webhook would you like to use?</h5>
             <div className="webhooks-types">
-              <button className="btn btn-primary" onClick={() => this.selectHookType('Custom')} >Custom</button>
+              <button className="btn btn-primary" onClick={() => this.selectHookType('Custom')} ><i className="fi-shuffle"></i>&nbsp;Custom Webhook</button>
             </div>
           </div>
           {selectHook && campaignWebhook &&
             <div className="card-body">
               <h5 className="card-title">Selected {selectHook} Webhook</h5>
-              <div>
-                <div className="input-group mb-3">
+              <div className="row">
+                <div className="input-group mb-3 col-md-12">
                   <select className="custom-select" id="inputGroupSelect02" disabled>
                     <option>{campaign.webhooks?campaign.webhooks.name:null}</option>
                   </select>
-                  <div className="input-group-append" onClick={this.clearHook}>
-                    <label className="input-group-text custom-pointer" htmlFor="inputGroupSelect02">Select Different Webhook</label>
+                  <div className="input-group-append col-md-4" onClick={this.clearHook}>
+                    <span className="btn btn-primary input-group-text custom-pointer" htmlFor="inputGroupSelect02">Choose Another</span>
                   </div>
                 </div>
-                <div className="input-group mb-3">
+                <div className="input-group mb-3 pl-3 col-md-11">
                   <input
                     type="text"
                     className="form-control"
@@ -149,7 +145,7 @@ class Webhook extends Component {
                     readOnly
                   />
                   <div className="input-group-append">
-                    <button className="btn btn-outline-secondary" type="button" onClick={() => this.copyEndpoint(campaign.webhooks?campaign.webhooks.endpoint:null)}>
+                    <button className="btn btn-outline-secondary copyicon-btn " type="button" onClick={() => this.copyEndpoint(campaign.webhooks?campaign.webhooks.endpoint:null)}>
                       <i className="mdi mdi-content-copy"></i>
                     </button>
                   </div>
@@ -158,17 +154,17 @@ class Webhook extends Component {
             </div>
           }
           { selectHook && !campaignWebhook &&
-            <div className="card-body">
-              <h5 className="card-title">{selectHook} Webhooks</h5>
+            <div className="card-body ">
               <p className="card-text">With supporting webhook below you can capture client data.</p>
-              <div>
-                <div className="input-group mb-3">
+              <div className="row">
+                <div className="input-group mb-3 col-md-12">
                   <select className="custom-select" id="inputGroupSelect02" onChange={this.selectWebhook}>
                     <option>Choose webhook...</option>
                     {this.renderWebhooks()}
                   </select>
-                  <div className="input-group-append" onClick={this.addWebhook}>
-                    <label className="input-group-text" htmlFor="inputGroupSelect02">Add Webhook</label>
+                  <div className="input-group-append col-md-4">
+                    <button type="button" className="btn btn-primary  addchannel"  htmlFor="inputGroupSelect02" data-toggle="modal" data-target="#myModal" onClick={()=>{}} ><i className="fi-plus"></i>&nbsp;Add Channels</button>
+                    {this.popupContent()}
                   </div>
                 </div>
               </div>

@@ -24,15 +24,7 @@ class AffiliateRegister extends Component {
     };
   }
 
-  checkEmailBlur = (event) => {
-    const value = event.target.value;
-    const isEmailValid = validateEmail(value);
-    this.setState({ isEmailValid });
-    if (!value)
-      this.setState({ errorEmail: 'Email id required' });
-    else if (!isEmailValid)
-      this.setState({ errorEmail: 'Enter a valid Email id' });
-  }
+
 
   handleEmailChange = (event) => {
     const { name, value } = event.target;
@@ -40,12 +32,6 @@ class AffiliateRegister extends Component {
     this.setState({ [name]: value, isEmailValid, errorEmail: '' });
   };
 
-  checkNameBlur = (event)=> {
-    const value = event.target.value;
-    (value === '')?  this.setState({ errorName: 'Enter your Name' }) : (
-      (isNaN(value)) ? this.setState({errorName: ''}) : this.setState({ errorName: 'Enter a valid Name' })
-    );
-  }
 
   handleNameChange = (event) => {
     const { name, value } = event.target;
@@ -84,11 +70,11 @@ class AffiliateRegister extends Component {
                   <form className="row" onSubmit={this.handleSubmit.bind(this)} method="POST" data-name="Affiliate Form">
                     <div className="mt-3 col-md-12">
                       <input
+                      id="name"
                         type="text"
                         name="name"
                         placeholder="First / Last Name"
                         className="ml-0 validate-required"
-                        onBlur={this.checkNameBlur}
                         onChange={this.handleNameChange}
                       />
                       <HelpBlock>
@@ -100,7 +86,6 @@ class AffiliateRegister extends Component {
                         name="email"
                         ref="email"
                         className="field w-input"
-                        onBlur={this.checkEmailBlur}
                         onChange={this.handleEmailChange}
                         placeholder="Johndoe@example.com"
                         type="email"

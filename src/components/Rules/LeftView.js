@@ -18,13 +18,13 @@ const LeftView = ({
 
   return (
     <div className="col-md-6 border-right">
-      <ul className="text-muted text-left list-unstyled ">
+      <ul className=" text-left list-unstyled ">
 
         <li className="m-t-5">
           <label className="text-muted">
             Select Pop-in Animation
           </label>
-          <select className="form-control muted-text" value={popupAnimationIn} onChange={(e) => { handleStateChange('popupAnimationIn', e.target.value); handleAnimation(e.target.value); }}>
+          <select className=" text-muted form-control muted-text" value={popupAnimationIn} onChange={(e) => { handleStateChange('popupAnimationIn', e.target.value); handleAnimation(e.target.value); }}>
             <option value="fadeInUp">Fade in Up</option>
             <option value="fadeInLeft">Fade in Left</option>
             <option value="fadeInDown">Fade in Down</option>
@@ -48,7 +48,7 @@ const LeftView = ({
           <label className="text-muted">
             Select Pop-out Animation
           </label>
-          <select className="form-control  muted-text" value={popupAnimationOut} onChange={(e) => { handleStateChange('popupAnimationOut', e.target.value); handleAnimation(e.target.value);}}>
+          <select className="text-muted form-control  muted-text" value={popupAnimationOut} onChange={(e) => { handleStateChange('popupAnimationOut', e.target.value); handleAnimation(e.target.value);}}>
             <option value="fadeOutUp">Fade out Up</option>
             <option value="fadeOutLeft">Fade out Left</option>
             <option value="fadeOutDown">Fade out Down</option>
@@ -82,16 +82,16 @@ const LeftView = ({
           <div className="checkbox checkbox-info">
             <input id="checkbox6b2" type="checkbox" checked={loopNotification} onChange={(e) => handleStateChange('loopNotification', e.target.checked)} />
             <label htmlFor="checkbox6b2" className="text-muted">
-              Loop notifications    <i className="fa fa-info-circle" data-toggle="tooltip" title="Notification will run continously."> </i>
-            </label>
+              Loop notifications&nbsp; <i className="fa fa-info-circle" data-toggle="tooltip text-muted"  data-delay='{"show":"0", "hide":"0"}' title="Notification will run continously."> </i>
+            </label> 
           </div>
         </li>
         <li className="ml-1 mt-4">
           <div className="checkbox checkbox-info">
             <input id="checkbox6b3" type="checkbox" checked={delayNotification} onChange={(e) => handleStateChange('delayNotification', e.target.checked)} />
             <label htmlFor="checkbox6b3" className="text-muted">
-               Randomize delay between  notifications     <i className="fa fa-info-circle" data-toggle="tooltip" title="Delay time between subsequent notification'll not be constant."> </i>
-            </label>
+               Randomize delay between  notifications &nbsp; <i className="fa fa-info-circle text-muted" data-toggle="tooltip" data-delay='{"show":"0", "hide":"0"}' title="No constant delay time b/w notification." > </i>
+            </label> 
           </div>
         </li>
         <li className="ml-1 mt-4">

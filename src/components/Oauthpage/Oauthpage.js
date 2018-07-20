@@ -6,18 +6,6 @@ import { browserHistory }  from 'react-router';
 
 
 class Oauthpage extends Component {
-<<<<<<< HEAD
-  constructor() {
-    super();
-    this.state = {
-     
-    };
-  }
-  
-=======
-
-
->>>>>>> 471d9ff4af1409519f2761273808b9d43a03c70f
   getOAuthRows = () => {
     let i =0;
     return (
@@ -35,15 +23,6 @@ class Oauthpage extends Component {
     );
   }
 
-<<<<<<< HEAD
-  render() {
-    return (
-      
-      <div className="oauth-container">
-        <div className="content">
-          <div className="card-box">
-            <h4 className="header-title"><i className="icon-arrow-left mr-3"></i>OAuth 2.0 Client IDs</h4>
-=======
 
   render() {
     return (
@@ -52,7 +31,6 @@ class Oauthpage extends Component {
         <div className="content">
           <div className="card-box">
             <h4 className="header-title">OAuth 2.0 Client IDs</h4>
->>>>>>> 471d9ff4af1409519f2761273808b9d43a03c70f
             <hr/>
             <button type="button" className="credbtn btn btn-primary waves-effect mb-5" onClick={() => {browserHistory.push('/oauthgenerate');}} ><i className="fi-plus"></i>&nbsp;&nbsp;Create Credentials</button>
 
@@ -74,15 +52,6 @@ class Oauthpage extends Component {
           </div>
         </div>
       </div>
-<<<<<<< HEAD
-      
-    );
-  }
-}
-  
-  
-export default Oauthpage;
-=======
 
     );
   }
@@ -90,4 +59,3 @@ export default Oauthpage;
 
 
 export default Oauthpage;
->>>>>>> 471d9ff4af1409519f2761273808b9d43a03c70f

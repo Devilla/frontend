@@ -8,7 +8,7 @@ import {
   Dashboard,
   Notification,
   LoginFlow,
-  Integrations,
+  ComingSoon,
   Error,
   UpgradeCard,
   UpgradePlan,
@@ -19,6 +19,7 @@ import {
   WebsiteAbout,
   WebsiteSignIn,
   WebsiteSignUp,
+  WebsitePayment,
   WebsiteTerms,
   WebsitePolicy,
   WebsiteContact,
@@ -28,17 +29,10 @@ import {
   WebsiteFeature,
   Affiliate,
   AffiliateRegister,
-<<<<<<< HEAD
-  DashboardChannel,
-  PopupReview,
-  Oauthpage,
-  Oauthgenerate
-=======
-  PopupReview,
   Oauthpage,
   Oauthgenerate,
-  DashboardChannel
->>>>>>> 471d9ff4af1409519f2761273808b9d43a03c70f
+  DashboardChannel,
+  ReviewRedirect,
 } from 'components';
 
 import {
@@ -50,10 +44,7 @@ import {
 } from 'containers';
 
 
-<<<<<<< HEAD
-=======
 
->>>>>>> 471d9ff4af1409519f2761273808b9d43a03c70f
 const MyRoutes = ({routerHistory}) => (
 
   <Router history={routerHistory}>
@@ -62,35 +53,31 @@ const MyRoutes = ({routerHistory}) => (
       <Route path="/dashboard" component={Dashboard} />
       <Route path="/new" component={NewCampaignContainer} />
       <Route path="/campaigns" component={Notification} />
-<<<<<<< HEAD
-      <Route path="/addchannel" component={DashboardChannel} />
-      <Route path="/oauthshow" component={Oauthpage} />
-      <Route path="/oauthgenerate" component={Oauthgenerate} />
-=======
       <Route path="/oauthshow" component={Oauthpage} />
       <Route path="/oauthgenerate" component={Oauthgenerate} />
       <Route path="/channels" component={DashboardChannel} />
->>>>>>> 471d9ff4af1409519f2761273808b9d43a03c70f
-      <Route path="/popupreview" component={PopupReview} />
       <Route path="/analytics" component={AnalyticsContainer} />
-      <Route path="/integrations" component={Integrations} />
+      <Route path="/integrations" component={ComingSoon} />
       <Route path="/support" component={Dashboard} />
       <Route path="/upgrade" component={UpgradePlan} />
       <Route path="/profile" component={Profile} />
       <Route path="/card-details" component={UpgradeCard} />
       <Route path="/billing-details" component={BillingDetails} />
-      <Route path="/getting-started" component={LoginFlow} />
     </Route>
     <Route exact path="/connect/:provider" component={ConnectPage} />
+    <Route exact path="/integrations/:provider/callback/" component={ReviewRedirect} />
     <Route exact path="/verify/:code" component={VerificationPage} />
     <Route component={App}>
       <Route path="/" component={WebsiteHome} />
+      <Route path="/home" component={WebsiteHome} />
       <Route path="/how-it-works" component={WebsiteHowItWorks} />
       <Route path="/integration" component={WebsiteIntegrations} />
       <Route path="/pricing" component={WebsitePricing} />
       <Route path="/about" component={WebsiteAbout} />
       <Route path="/login" component={WebsiteSignIn} />
       <Route path="/signup" component={WebsiteSignUp} />
+      <Route path="/checkout" component={WebsitePayment} />
+      <Route path="/getting-started" component={LoginFlow} />
       <Route path="/terms-and-condtions" component={WebsiteTerms} />
       <Route path="/privacy-policy" component={WebsitePolicy} />
       <Route path="/contact" component={WebsiteContact} />

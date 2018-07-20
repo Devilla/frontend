@@ -1,51 +1,73 @@
 .websiteheader-container {
+  position: fixed;
+  top: 0px;
+  z-index: 9999;
+  background: #fff;
+  width: 100%;
 
-    .signupbtn {
-        background-color: #097fff !important;
-    }
+  .disabled-link {
+    pointer-events: none;
+  }
+  a[disabled] {
+    pointer-events: none;
+  }
+
+  .signupbtn {
+    background-color: #097fff !important;
+  }
 
   .hamburger-toggle {
-      display: none;
+    display: none;
   }
+
   .small-bar {
-      display: none;
+    display: none;
   }
+
   .mainlogo {
       position : absolute;
       left: 110px;
+      top: 15px;
       z-index: 99;
+      width: 170px;
+      height: 90px;
   }
+  .menu-horizontal:focus {
+    outline: none;
+  }
+
 }
 
 .sticky {
-    position: fixed;
-    top: 0px;
-    box-shadow: 0px 10px 10px -12px #999;
-    z-index: 9999;
-    background: #fff;
-    width: 100%;
+  position: fixed;
+  top: 0px;
+  box-shadow: 0px 10px 10px -12px #999;
+  z-index: 9999;
+  background: #fff;
+  width: 100%;
 }
+
 
 
 @media only screen and (max-width: 1198px) {
-    .websiteheader-container {
-        .loginbtn , .signupbtn {
-            width: 100px ;
-            height: 35px ;
-            font-size: 12px !important;
-        }
-        .mainlogo {
-            left: 60px;
-            top: 15px;
-        }
+  .websiteheader-container {
+    .loginbtn , .signupbtn {
+      width: 100px ;
+      height: 35px ;
+      font-size: 12px !important;
     }
+    .mainlogo {
+      left: 60px;
+      top: 15px;
+    }
+  }
 }
 @media only screen and (max-width: 1024px) {
     .websiteheader-container {
-       
+
         .links {
             margin: 0 0 3px 0 !important;
-            li { 
+            li {
                 margin: 0px !important;
                 font-size: 14px;
             }
@@ -69,13 +91,13 @@
 @media only screen and (max-width: 992px) {
     .websiteheader-container {
 
- 
+
         .nav-content {
             position: relative;
             .links {
                 width: 400px !important;
             }
-            .btns { 
+            .btns {
                 position: absolute;
                 right: 100px;
                 top: 5px;
@@ -94,14 +116,14 @@
          li {
             font-size: 13px !important;
          }
-           
+
     }
     .mainlogo {
         width:  150px !important;
         position: absolute;
         top: 22px;
     }
-    
+
 }
 }
 
@@ -111,14 +133,14 @@
         .links {
             margin: 0 auto !important;
             width: 200px;
-          
+
         }
-        .btns { 
+        .btns {
             position: relative !important;
             top: 10px !important;
             left: 30%;
             width: 200px;
-           
+
         }
         .nav-content {
             position: relative;
@@ -131,7 +153,7 @@
         .mainlogo {
             left: 40px;
             top: 20px;
-         
+
         }
         .visible-xs {
             display: block !important;
@@ -141,11 +163,11 @@
         .small-bar {
             display: block !important;
             padding-top: 50px !important;
-            padding-bottom: 50px !important;
+            padding-bottom: 25px !important;
         }
 
         .fa-close {
-            display: none !important; 
+            display: none !important;
         }
 
         .hamburger-toggle {
@@ -153,15 +175,22 @@
             font-size: 30px;
             position: absolute;
             right: 20px;
-            top: 35px;
+            top: 25px;
             z-index: 999;
             cursor: pointer;
-            
-  
+
+            &:focus {
+                outline: none;
+            }
+
+
     }
-    .customtoggleclass {    
+    .customtoggleclass {
+                &:focus {
+                    outline: none;
+                }
                 .fa-bars {
-                display: none !important;   
+                display: none !important;
                 }
                 .cross {
                     outline: none !important;
@@ -170,14 +199,14 @@
                         display: block !important;
                     }
                 }
-               
-                
+
+
                 & + div {
                     display: block !important;
 
-            
+
             }
-            
+
     }
 
     .cross {
@@ -200,8 +229,8 @@
         .loginbtn ,.signupbtn{
             width: 200px;
         }
-        
-        
+
+
     }
 
 }
@@ -210,17 +239,41 @@
     .websiteheader-container{
         .mainlogo{
             width: 160px !important;
-            top: 30px !important;
-            position: absolute !important; 
+            top: 19px !important;
+            position: absolute !important;
         }
-        .btns { 
+        .btns {
             position: relative !important;
             top: 10px !important;
             left: 25%;
-           
+
         }
         .links {
             width: 250px !important;
+        }
+    }
+}
+@media only screen and (max-width:330px) {
+    .websiteheader-container{
+        .mainlogo{
+            width: 120px !important;
+            top: 23px !important;
+        }
+        .btns {
+            position: relative !important;
+            top: 10px !important;
+            left: 20%;
+
+            .loginbtn,.signupbtn {
+                width: 180px !important;
+            }
+
+        }
+        .bar__module.links {
+            width: 240px !important;
+        }
+        .hamburger-toggle , .cross {
+            font-size: 26px !important;
         }
     }
 }

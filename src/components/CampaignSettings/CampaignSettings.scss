@@ -5,14 +5,10 @@
     padding: 20px 5px !important;
     .new-campaign-header {
       display: flex;
-      button {
-        height: 35px;
-        margin: 1% 3% !important;
-      }
     }
   }
   a{
-  &.nav-link.active.pb-3.pt-3 {
+  &.nav-link.active.pb-2.pt-2 {
     &:hover {
       color: #fff !important;
       border-top-right-radius: 0px !important;
@@ -20,6 +16,10 @@
     }
   }
 
+}
+.goliveRight {
+  position: relative;
+  top: -18px;
 }
 
 .btn.btn-custom{
@@ -32,9 +32,9 @@
     .nav-item.show.nav-link, .nav-link.active {
       background: #097fff;
     }
-  
+
   }
- 
+
 
 
   .new-campaign-header {
@@ -55,14 +55,4 @@
       width: 18.7%;
     }
   }
-
-  button {
-    &.goliveRight{
-      position: absolute;
-      right: 0;
-      bottom: 5px;
-    }
-  }
 }
-
-

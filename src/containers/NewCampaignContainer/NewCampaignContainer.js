@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { toast } from 'react-toastify';
 import { browserHistory } from 'react-router';
 import copy from 'copy-to-clipboard';
-import Popup from 'react-popup';
+// import Popup from 'react-popup';
 
 import { validatewebsite } from 'components/Common/function';
 import { createCampaign, clearCampaign } from 'ducks/campaign';
@@ -21,57 +21,52 @@ const toastConfig = {
   className: 'toast-style'
 };
 
-function validate(campaignname, website) {
-  // true means invalid, so our conditions got reversed
-  return {
-    name: campaignname.length === 0,
-    email: !validatewebsite(website)
-  };
-}
-
 class NewCampaignContainer extends Component {
   constructor() {
     super();
     this.state = {
       campaignname: '',
       website: '',
+      averageCustomer: '',
       status: {},
       errorName: '',
       errorWebsiteUrl: '',
+      errorAverageCustomer: '',
       activeClass: 1,
       loaderActive: false,
       sampleDisplay: false,
       notification: '',
-      displayWebhookIntegration: false
+      displayWebhookIntegration: false,
+      title: '',
+      content: '',
+      buttonText: '',
+      path: ''
     };
   }
 
-  handleCampaignNameChange = (evt) => {
-    this.setState({campaignname: evt.target.value, errorName:'' });
-  }
-
-  handleWebsiteChange = (evt) => {
-    this.setState({website: evt.target.value, errorWebsiteUrl: ''});
-  }
-
-  handleCampaignAuth = (evt) => {
-    if (evt.target.value === '')
-      this.setState({errorName: 'Enter campaign name'});
-  }
-
-  handleWebsiteAuth = (evt) => {
-    if(evt.target.value) {
-      this.setState({errorWebsiteUrl: 'Enter website url'});
-    } else if(!validatewebsite(evt.target.value)) {
-      this.setState({errorWebsiteUrl: 'Enter a valid website url'});
-    }
+  handleCampaignStateChange = (evt) => {
+    this.setState({
+      [evt.target.id]: evt.target.value,
+      errorName: '',
+      errorWebsiteUrl: '',
+      errorAverageCustomer: ''
+    });
   }
 
   handleNextButton = (evt) => {
     evt.preventDefault();
+    if(!this.state.campaignname)
+      return this.setState({errorName: 'Enter campaign name'});
+    else if(!this.state.website)
+      return this.setState({errorWebsiteUrl: 'Enter website url'});
+    else if(!validatewebsite(this.state.website))
+      return this.setState({errorWebsiteUrl: 'Enter a valid website url'});
+    else if(!this.state.averageCustomer)
+      return this.setState({errorAverageCustomer: 'Enter the numbers of signups per day'});
     const data = {
       campaignName: this.state.campaignname,
       websiteUrl: this.state.website,
+      averageCustomer: this.state.averageCustomer,
       profile: this.props.profile._id
     };
     return this.props.createCampaign(data);
@@ -91,7 +86,7 @@ class NewCampaignContainer extends Component {
   }
 
   handlePixelCopy = () => {
-    const pixelCode = `<script src="https://cdninfluence.nyc3.digitaloceanspaces.com/influence-analytics.js"></script>
+    const pixelCode = `<script src="https://storage.cloud.google.com/influence-197607.appspot.com/influence-analytics.js"></script>
 <script>
 new Influence({
 trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX'}'
@@ -127,37 +122,37 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
   }
 
   goLive = () => {
-    let title, content, buttonText, path;
-    if(!this.props.leads || !this.props.leads.length) {
-      title = 'Alert';
-      content = 'Add a capture page before going live.';
-      buttonText = 'Close';
-    } else if(!this.props.leads || !this.props.displayUrls.length) {
-      title = 'Alert';
-      content = 'Add a display page before going live.';
-      buttonText = 'Close';
-    } else {
-      title = 'Campaign is Live';
-      content = 'Campaign has be successfully created';
-      buttonText = 'Finish';
-      path = 'campaigns';
-    }
 
-    Popup.create({
-      title: title,
-      content: content,
-      buttons: {
-        right: [{
-          text: buttonText,
-          className: 'default',
-          action: function () {
-            if(path)
-              browserHistory.push(path);
-            Popup.close();
-          }
-        }]
-      }
-    });
+    this.verifyPixelStatus();
+    const elastic = this.props.elastic;
+    console.log(elastic);
+    if(elastic && (elastic.error || (elastic.message.hits.total === 0))) {
+      this.setState({
+        title : 'Alert',
+        content : 'Install Pixel before going live.',
+        buttonText :  'Close'
+      });
+    
+    } else if(!this.props.leads || !this.props.leads.length) {
+      this.setState({
+        title : 'Alert',
+        content : 'Add a capture page before going live.',
+        buttonText :  'Close'
+      });
+    } else if(!this.props.leads || !this.props.displayUrls.length) {
+      this.setState({
+        title : 'Alert',
+        content : 'Add a display page before going live.',
+        buttonText :  'Close'
+      });
+    } else {
+      this.setState({
+        title : 'Campaign is Live',
+        content : 'Campaign has be successfully created',
+        buttonText :  'Finish',
+        path : 'campaigns'
+      });
+    }
   }
 
   toggleWebhook = () => {
@@ -165,18 +160,13 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
   }
 
   render() {
-    const errors = validate(this.state.campaignname, this.state.website);
-    const isDisabled = Object.keys(errors).some(x => errors[x]);
-    const { activeClass, loaderActive, notification, sampleDisplay, displayWebhookIntegration } = this.state;
+    const { content, title, buttonText, path } = this.state;  
     return (
-      <div>
+      <div className="NewCampaignContainer">
+        <button type="button" className="btn btn-outline-primary goliveRight waves-light waves-effect number" data-toggle="modal" data-target="#myModallive" onClick={this.goLive}><i className="fi-location"></i>&nbsp;Go Live</button>            
+
         {this.props.campaign && Object.keys(this.props.campaign).length !== 0 && this.props.campaign.constructor === Object?
           <CampaignSettings
-            displayWebhookIntegration={displayWebhookIntegration}
-            sampleDisplay={sampleDisplay}
-            loaderActive={loaderActive}
-            activeClass={activeClass}
-            notification={notification}
             showNotification={this.showNotification}
             goLive={this.goLive}
             toggleWebhook={this.toggleWebhook}
@@ -186,19 +176,30 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
             setNotification={this.setNotification}
             clearNotification={this.clearNotification}
             {...this.props}
+            {...this.state}
           />
           :
           <Campaign
-            isDisabled={isDisabled}
             handleNextButton={this.handleNextButton}
-            handleCampaignNameChange={this.handleCampaignNameChange}
-            handleCampaignAuth={this.handleCampaignAuth}
-            handleWebsiteChange={this.handleWebsiteChange}
-            handleWebsiteAuth={this.handleWebsiteAuth}
+            handleCampaignStateChange={this.handleCampaignStateChange}
             {...this.state}
           />
         }
-        {/* <ToastContainer hideProgressBar={true}/> */}
+        <div className="modal fade show-modal" id="myModallive" role="dialog">
+          <div className="modal-dialog">
+            <div className="modal-content align-modal">
+              <div className="modal-header">
+                <h4 className="modal-title">{title}</h4>
+              </div>
+              <div className="modal-body">
+                {content}
+              </div>
+              <div className="modal-footer">
+                <button type="button" className="btn btn-primary close-btn" data-dismiss="modal" onClick={ path ? () => browserHistory.push(path):  ()=> {} }>{buttonText}</button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

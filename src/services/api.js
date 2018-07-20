@@ -6,9 +6,6 @@ export const base =
       : process.env.REACT_APP_DEVELOPMENT_URL; // eslint-disable-line
 
 const unAuthorizedUrl = ['plan', 'auth/forgot-password', 'auth/google/callback', 'auth/facebook/callback'];
-// const getToken = state => state.getIn(['auth', 'token']);//state.auth.token;
-
-// const base = `${base}`;
 
 export const GET = (url) => {
   const authToken = JSON.parse(localStorage.getItem('authToken'));
@@ -28,6 +25,7 @@ export const GET = (url) => {
     .then(res => res.json())
     .then(res => res);
 };
+
 
 export const GETAUTH = (url) => {
   return fetch(base + url, {
@@ -116,6 +114,21 @@ export const POSTFILE = (url, body) => {
       Authorization: `Bearer ${token}`,
     },
     body,
+  })
+    .then(res => res.json())
+    .then(res => res);
+};
+
+export const POSTELASTIC = (url, body) => {
+  const headers = {
+    'Content-Type':'application/json',
+    'kbn-xsrf': 'reporting'
+  };
+
+  return fetch(base + url, {
+    method: 'POST',
+    headers: headers,
+    body: body,
   })
     .then(res => res.json())
     .then(res => res);

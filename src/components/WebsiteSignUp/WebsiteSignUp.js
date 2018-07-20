@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
-import {validateEmail, validatePassword, register, PASSWORD_MAX_LENGTH} from 'services/FormUtils';
+import { validateEmail, validatePassword, register, PASSWORD_MAX_LENGTH } from 'services/FormUtils';
 import { Animated } from'react-animated-css';
 import { Alert, HelpBlock } from 'react-bootstrap';
 import { store } from 'App.js';
@@ -9,8 +9,6 @@ import { loginSuccess } from 'ducks/auth';
 import { browserHistory } from 'react-router';
 import { toast } from 'react-toastify';
 import { base } from 'services/api';
-
-
 
 import './WebsiteSignUp.scss';
 
@@ -39,7 +37,6 @@ class WebsiteSignUp extends Component {
   }
 
   componentWillMount() {
-    // console.log(this.props.location.query.email, '=========location');
     if(this.props.location && this.props.location.query.email)
       this.setState({email: this.props.location.query.email});
   }
@@ -77,12 +74,13 @@ class WebsiteSignUp extends Component {
   handleSubmit = (event) => {
     event.stopPropagation();
     event.preventDefault();
-    const { email, password, confirmPassword, username } = this.state;
+    const {
+      email,
+      password
+    } = this.state;
 
-    if(!email || !password || !confirmPassword || !username)
+    if(!email || !password)
       return this.setState({error: 'All fields are required'});
-    if(password !== confirmPassword)
-      return this.setState({errorConfirmPassword: 'Password doesnot match'});
 
     store.dispatch(load());
     // TODO: Show 'Check email for further instructions.' message on success
@@ -90,11 +88,11 @@ class WebsiteSignUp extends Component {
       toast.info('Successfull', toastConfig);
       store.dispatch(loginSuccess(res));
       store.dispatch(loaded());
-      browserHistory.push('/getting-started');
+      browserHistory.push(res.user.path);
       this.setState({isRegistered: true, error: ''});
     }).catch(err => {
       store.dispatch(loaded());
-      this.setState({error: err});
+      this.setState({error: err.msg || err});
     });
   };
 
@@ -103,22 +101,20 @@ class WebsiteSignUp extends Component {
       username: '',
       email: '',
       password: '',
-      confirmPassword: '',
       error: '',
-      errorUsername: '',
       errorEmail: '',
       errorPassword: '' ,
       errorConfirmPassword: ''
     });
   }
+
   componentDidMount() {
     let scrollElm = document.scrollingElement;
     scrollElm.scrollTop = 0;
   }
 
   render() {
-
-    const { email, isRegistered, error, errorUsername, errorEmail, isPasswordShown, errorPassword, errorConfirmPassword } = this.state;
+    const { email, isRegistered, error, errorEmail, isPasswordShown, errorPassword } = this.state;
 
     // if registered show 'check mail' message else show the registration form
     const formContent = isRegistered
@@ -130,170 +126,97 @@ class WebsiteSignUp extends Component {
           <div className='main-container'>
             <section className="bg">
               <div className='container text-center'>
-                <div className='row '>
-                  <div className='col-sm-12 col-md-7 col-lg-6 '>
-                    <span className="signuptitle">Start Conversions!</span>
-                    <div>
-                      <p className="lead">
-                        <span className="sub-up-title">Already have an account?&nbsp;
-                          <Link to="/login">Sign in</Link>
-                        </span>
-                      </p>
+                <div>
+                  <h2 className="text-center btn" disabled  > STEP 1</h2>
+                  <p className="signuptitle"> &nbsp;&nbsp;Start Conversions!</p>
 
-                      <form className="mt-0">
-                        <div className='row justify-content-center'>
-                          {error &&
-                        <Alert bsStyle='warning'>
-                          <strong>{error}</strong>
-                        </Alert>
-                          }
-                          <div className='col-md-9 col-sm-8'>
-                            <input type='text'
-                              name='username'
-                              onChange={this.handleInputChange}
-                              onBlur={(e) => !e.target.value?this.setState({errorUsername: 'Username required'}):null}
-                              placeholder='Your Name' />
-                            <HelpBlock>
-                              <p className='website-error'>{errorUsername}</p>
-                            </HelpBlock>
-                          </div>
-                          <div className='col-md-9 col-sm-8'>
-                            <input
-                              name='email'
-                              value={email}
-                              onBlur={this.handleEmailBlur}
-                              onChange={this.handleInputChange}
-                              placeholder='Email Address'
-                              type='email' />
-                            <HelpBlock>
-                              <p className='website-error'>{errorEmail}</p>
-                            </HelpBlock>
-                          </div>
-                          <div className='col-md-9 col-sm-8'>
-                            <input
-                              name='password'
-                              maxLength={PASSWORD_MAX_LENGTH}
-                              onBlur={this.handlePasswordBlur}
-                              onChange={this.handleInputChange}
-                              type={isPasswordShown? 'text': 'password'}
-                              placeholder='Password'
-                            />
-                            <HelpBlock>
-                              <p className='website-error'>{errorPassword}</p>
-                            </HelpBlock>
-                          </div>
-                          <div className='col-md-9 col-sm-8'>
-                            <input
-                              name='confirmPassword'
-                              maxLength={PASSWORD_MAX_LENGTH}
-                              onBlur={(e) => !e.target.value?this.setState({errorConfirmPassword: 'Confirm Password required'}):null}
-                              onChange={this.handleInputChange}
-                              type={isPasswordShown? 'text': 'password'}
-                              placeholder='Confirm Password' />
-                            <HelpBlock>
-                              <p className='website-error'>{errorConfirmPassword}</p>
-                            </HelpBlock>
-                          </div>
-                          <div className='frmcntl col-md-9 col-sm-8'>
-                            <input
-                              type='submit'
-                              className='button submit-button w-button btn btn--primary ml-0'
-                              value='Create Account'
-                              disabled={false}/>
-                          </div>
-                          <hr />
-                          <div className='col-9'>
-                            <span className='lead terms-title'>By signing up, you agree to the&nbsp;
-                              <Link to='/terms-and-condtions'>Terms of Service</Link>
-                            </span>
-                          </div>
-                        </div>
-<<<<<<< HEAD
-                      </form>
-                    </div>
-                  </div>
-=======
-                        <div className='col-12'>
-                          <input
-                            name='email'
-                            id='email'
-                            value={email}
-                            onBlur={this.handleEmailBlur}
-                            onChange={this.handleInputChange}
-                            placeholder='Email Address'
-                            type='email' />
-                          <HelpBlock>
-                            <p className='website-error'>{errorEmail}</p>
-                          </HelpBlock>
-                        </div>
-                        <div className='col-12'>
-                          <input
-                            name='password'
-                            id='password'
-                            maxLength={PASSWORD_MAX_LENGTH}
-                            onBlur={this.handlePasswordBlur}
-                            onChange={this.handleInputChange}
-                            type={isPasswordShown? 'text': 'password'}
-                            placeholder='Password'
-                          />
-                          <HelpBlock>
-                            <p className='website-error'>{errorPassword}</p>
-                          </HelpBlock>
-                        </div>
-                        <div className='col-12'>
-                          <input
-                            name='confirmPassword'
-                            maxLength={PASSWORD_MAX_LENGTH}
-                            onBlur={(e) => !e.target.value?this.setState({errorConfirmPassword: 'Confirm Password required'}):null}
-                            onChange={this.handleInputChange}
-                            type={isPasswordShown? 'text': 'password'}
-                            placeholder='Confirm Password' />
-                          <HelpBlock>
-                            <p className='website-error'>{errorConfirmPassword}</p>
-                          </HelpBlock>
-                        </div>
-                        <div className='frmcntl col-12'>
-                          <input
-                            type='submit'
-                            className='button submit-button w-button btn btn--primary ml-0'
-                            value='Create Account'
-                            disabled={false}/>
-                        </div>
-                        <hr />
-                        <div className='col-12'>
-                          <span className='type--fine-print'>By signing up, you agree to the&nbsp;
-                            <Link to='/terms-and-condtions'>Terms of Service</Link>
+                  <div className='row signuprow give-center-align'>
+                    <div className='col-sm-12 col-md-7 col-lg-6 '>
+
+                      <div>
+                        <p className="lead">
+                          <span className="sub-up-title">Already have an account?&nbsp;
+                            <Link to="/login">Sign in</Link>
                           </span>
-                        </div>
+                        </p>
+                        <form className="mt-0">
+                          <div className='row justify-content-center'>
+
+                            <div className='col-md-9 col-sm-8'>
+                              {error &&
+                                <Alert bsStyle='warning'>
+                                  <strong>{error}</strong>
+                                </Alert>
+                              }
+                              <input
+                                name='email'
+                                value={email}
+                                onBlur={this.handleEmailBlur}
+                                onChange={this.handleInputChange}
+                                placeholder='Email Address'
+                                type='email' />
+                              <HelpBlock>
+                                <p className='website-error'>{errorEmail}</p>
+                              </HelpBlock>
+                            </div>
+                            <div className='col-md-9 col-sm-8'>
+                              <input
+                                name='password'
+                                maxLength={PASSWORD_MAX_LENGTH}
+                                onBlur={this.handlePasswordBlur}
+                                onChange={this.handleInputChange}
+                                type={isPasswordShown? 'text': 'password'}
+                                placeholder='Password'
+                              />
+                              <HelpBlock>
+                                <p className='website-error'>{errorPassword}</p>
+                              </HelpBlock>
+                            </div>
+                            <div className='frmcntl col-md-9 col-sm-8'>
+                              <input
+                                type='submit'
+                                className='button submit-button w-button btn btn--primary ml-0'
+                                value='Create Account'
+                                disabled={false}
+                                onClick={this.handleSubmit}
+                              />
+                            </div>
+                            <hr />
+                            <div className='col-9'>
+                              <span className='lead terms-title'>By signing up, you agree to the&nbsp;
+                                <Link to='/terms-and-condtions'>Terms of Service</Link>
+                              </span>
+                            </div>
+                          </div>
+
+                        </form>
                       </div>
 
-                    </form>
-                    <hr className='short'/>
->>>>>>> 98846548baadc9e3fcc39835aa126a7db2460c6c
+                      <div className="vristrue ml-5">
+                      </div>
 
-                  <div className="vristrue ml-5">
-                  </div>
-
-                  <div className="col-md-4 socio-link">
-                    <p> <br /></p>
-                    <div className="pos-relative">
-                      <a href={`${base}connect/facebook`} className="link-fb ">
-                        <div className="btn btn--icon bg--facebook" to="">
-                          <span className="btn__text ">
-                            <i className="socicon socicon-facebook"></i>
+                      <div className="col-md-4 socio-link">
+                        <p> <br /></p>
+                        <div className="pos-relative">
+                          <a href={`${base}connect/facebook`} className="link-fb ">
+                            <div className="btn btn--icon bg--facebook" to="">
+                              <span className="btn__text ">
+                                <i className="socicon socicon-facebook"></i>
                           Signup with Facebook
-                          </span>
-                        </div>
-                      </a>
-                      <p></p>
-                      <a href={`${base}connect/google`} className="link">
-                        <div className="btn btn--icon bg--googleplus link-go" to="">
-                          <span className="btn__text">
-                            <i className="socicon socicon-google"></i>
+                              </span>
+                            </div>
+                          </a>
+                          <p></p>
+                          <a href={`${base}connect/google`} className="link">
+                            <div className="btn btn--icon bg--googleplus link-go" to="">
+                              <span className="btn__text">
+                                <i className="socicon socicon-google"></i>
                           Signup with Google
-                          </span>
+                              </span>
+                            </div>
+                          </a>
                         </div>
-                      </a>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -302,25 +225,18 @@ class WebsiteSignUp extends Component {
           </div>
         </div>);
     return (
-
       <div className='authpage section innerpage'>
         <div className='wrapper'>
           <Animated
             className='leftwrap center'
-
             animationIn='fadeIn'
             animationOut='fadeOut'
             isVisible={true}>
-            <form
-              className='loginfrm'
-              onSubmit={this.handleSubmit}>
-              {formContent}
-            </form>
+            {formContent}
             <div className='support'></div>
           </Animated>
         </div>
       </div>
-
     );
   }
 }

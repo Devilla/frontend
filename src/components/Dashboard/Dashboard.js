@@ -4,10 +4,11 @@ import { browserHistory } from 'react-router';
 import { Row, Col } from 'react-bootstrap';
 import Moment from 'moment';
 import { extendMoment } from 'moment-range';
-import { fetchCampaignInfo, successCampaign } from 'ducks/campaign';
+import { fetchCampaignInfo, successCampaign , fetchCampaign } from 'ducks/campaign';
 import './Dashboard.scss';
 import Card from './Card';
 import ReactChartJs from 'react-chartjs';
+import 'react-datepicker/dist/react-datepicker.css';
 
 var LineChart = ReactChartJs.Line;
 let moment = extendMoment(Moment);
@@ -16,15 +17,21 @@ class Dashboard extends Component {
   constructor() {
     super();
     this.state = {
+      userCount: 0,
       render: false,
       arrs: [],
-      daysClicked: ''
+      daysClicked: '',
+      startDate:  moment(),
+      datePicker: ''
     };
     this.handleRouteChange = this.handleRouteChange.bind(this);
   }
+
   componentWillMount() {
     this.props.fetchCampaignInfo();
+    this.props.fetchCampaign();
   }
+
   createLegend(json) {
     var legend = [];
     for (var i = 0; i < json['names'].length; i++) {
@@ -57,7 +64,7 @@ class Dashboard extends Component {
       this.props.campaignInfo.uniqueUsers.map(user => {
         (user && user.aggregations) ? user.aggregations.users.buckets.map(bucket => {
           dataContent['label'] = Moment(bucket.key_as_string).format('LL');
-          dataContent['data'][Moment(bucket.key_as_string).day()] = bucket.visitors.sum_other_doc_count;
+          dataContent['data'][Moment(bucket.key_as_string).day()] = bucket.visitors.sum_other_doc_count + bucket.visitors.buckets.length;
         }) : '';
         dataSet.push(dataContent);
       });
@@ -80,7 +87,7 @@ class Dashboard extends Component {
     let start, end , range1, acc  ;
     switch(this.state.daysClicked)  {
       case '7' :
-        start  = moment().subtract(7,'d').format('YYYY-MM-DD');
+        start  = moment().subtract(6,'d').format('YYYY-MM-DD');
         end    = new Date();
         range1 = moment.range(start, end);
         acc = Array.from(range1.by('day', { step: 1 }));
@@ -126,7 +133,7 @@ class Dashboard extends Component {
 
 
       default :
-        start  = moment().subtract(7,'d').format('YYYY-MM-DD');
+        start  = moment().subtract(6,'d').format('YYYY-MM-DD');
         end    = new Date();
         range1 = moment.range(start, end);
         acc = Array.from(range1.by('day', { step: 1 }));
@@ -136,10 +143,52 @@ class Dashboard extends Component {
     return acc;
   }
 
+  renderCardBox = (content) => {
+    return <div className="col-sm-12 col-lg-6 col-xl-3 box pr-0 cards">
+      <div>
+        <div className="text-center mt-4 mb-4">
+          <div className="col-md-10 h-50 card-content-width">
+            {content}
+          </div>
+        </div>
+      </div>
+    </div>;
+  }
+
+  handleChange = (date) => {
+    this.setState({
+      startDate : date
+    });
+  }
+
+  displayCustomDate = (event) => {
+    this.setState({
+      datePicker: event.target.id.toString()
+    });
+  }
+
+  hide = () => {
+    this.setState({
+      datePicker: ''
+    });
+  }
+
+  usersCount() {
+    let userCount = 0;
+    if(this.props.campaignInfo && this.props.campaignInfo.uniqueUsers.length) {
+      this.props.campaignInfo.uniqueUsers.map(user => {
+        (user && user.aggregations) ? user.aggregations.users.buckets.map(bucket => {
+          userCount = userCount + bucket.visitors.sum_other_doc_count + bucket.visitors.buckets.length;
+        }) : 0;
+      });
+      return userCount;
+    } else
+      return userCount;
+  }
+
   render() {
-    const { campaignInfo,profile } = this.props;
-
-
+    const { campaignInfo } = this.props;
+    const userCount = this.usersCount();
     var chartData = {
       labels:   this.getDays(),
       datasets: this.getDataset()
@@ -208,87 +257,42 @@ class Dashboard extends Component {
           <Row className="dashboard-boxes">
             <Col md={12}>
               <div className="card-box">
-
                 <Row className="mb-5">
                   <Col md={12}>
                     <div className="card-box pb-0 mb-0 cardbox1">
-
                       <Row className="account-stats">
-                        <div className="col-sm-12 col-lg-6 col-xl-2 box pr-0 cards">
-                          <div>
-                            <div className="text-center mt-4 mb-4">
+                        {this.renderCardBox(
+                          <div className=" widget-flat card-box  text-muted pr-4 pl-4 pb-5 pt-2 pos-vertical-center c2">
+                            <p className="text-uppercase title m-b-5 fonttitle font-600">Active Campaigns</p>
+                            <h3 className="m-b-10 campaign">{campaignInfo? campaignInfo.websiteLive.length : []}</h3>
 
-                              <div className="col-md-10 h-50">
-                                <div className=" widget-flat card-box  text-muted pr-4 pl-4 pb-5 pt-2 pos-vertical-center c1">
-
-                                  <p className="text-uppercase title m-b-5 fonttitle font-600">Active Campaigns</p>
-
-                                  <h3 className="m-b-10 campaign">{campaignInfo? campaignInfo.websiteLive.length : []}</h3>
-                                </div>
-                              </div>
-
-                            </div>
                           </div>
-                        </div>
-
-                        <div className="col-sm-12 col-lg-6 col-xl-2 box pr-0 cards">
-                          <div>
-                            <div className="text-center mt-4 mb-4">
-
-                              <div className="col-md-10 h-50">
-                                <div className=" widget-flat card-box  text-muted pr-4 pl-4 pb-5 pt-2 pos-vertical-center c2">
-
-                                  <p className="text-uppercase title m-b-5 fonttitle font-600">Unique Visitors</p>
-
-                                  <h3 className="m-b-10 profile">{profile? Number(profile.uniqueVisitors) :0 }</h3>
-                                </div>
-
-                              </div>
-                            </div>
+                        )}
+                        {this.renderCardBox(
+                          <div className=" widget-flat card-box  text-muted pr-4 pl-4 pb-5 pt-2 pos-vertical-center c2">
+                            <p className="text-uppercase title m-b-5 fonttitle font-600">Unique Visitors</p>
+                            <h3 className="m-b-10 profile">{userCount? Number(userCount) :0 }</h3>
                           </div>
-                        </div>
-
-                        <div className="col-sm-12 col-lg-6 col-xl-2 box pr-0 cards">
-                          <div>
-                            <div className="text-center mt-4 mb-4">
-
-                              <div className="col-md-10 h-50">
-                                <div className=" widget-flat card-box  text-muted pr-4 pl-4 pb-5 pt-2 pos-vertical-center c3">
-
-                                  <p className="text-uppercase title m-b-5 fonttitle font-600">Total Notifications</p>
-
-                                  <h3 className="m-b-10 notify">{campaignInfo ? campaignInfo.notificationCount : 0}</h3>
-                                </div>
-                              </div>
-
-                            </div>
+                        )}
+                        {this.renderCardBox(
+                          <div className=" widget-flat card-box  text-muted pr-4 pl-4 pb-5 pt-2 pos-vertical-center c2">
+                            <p className="text-uppercase title m-b-5 fonttitle font-600">Conversion %</p>
+                            <h3 className="m-b-10 notify">{userCount && (userSignUps/userCount)*100 ? ((userSignUps/userCount)*100).toFixed(2) : 0}</h3>
                           </div>
-                        </div>
-
-                        <div className="col-sm-12 col-lg-6 col-xl-2 box pr-0 cards">
-                          <div>
-                            <div className="text-center mt-4 mb-4">
-
-                              <div className="col-md-10 h-50">
-                                <div className="  widget-flat card-box  text-muted pr-4 pl-4 pb-5 pt-2 pos-vertical-center c4">
-
-                                  <p className="text-uppercase title m-b-5 fonttitle font-600">Total Signups</p>
-
-                                  <h3 className="m-b-10 usersignup">{userSignUps}</h3>
-                                </div>
-
-                              </div>
-                            </div>
+                        )}
+                        {this.renderCardBox(
+                          <div className=" widget-flat card-box  text-muted pr-4 pl-4 pb-5 pt-2 pos-vertical-center c2">
+                            <p className="text-uppercase title m-b-5 fonttitle font-600">Total Signups</p>
+                            <h3 className="m-b-10 usersignup">{userSignUps}</h3>
                           </div>
-                        </div>
+                        )}
                       </Row>
                     </div>
-                    <div   className="graph-card">
+                    <div className="graph-card">
                       <Card
                         statsIcon="fa fa-history"
                         id="chartHours"
                         stats="Updated 3 minutes ago"
-
                         content={
                           <div className="ct-chart canvas-brdr">
                             <LineChart data={chartData} options={chartOptions} height="250" redraw />
@@ -298,29 +302,11 @@ class Dashboard extends Component {
                     </div>
                   </Col>
                 </Row>
-                <div className=" pull-right days">
-                  <select className="form-control text-muted" onChange={(e) =>  this.setState({daysClicked:e.target.value})}>
-                    <option key={7} value={'7'}>
-                          7 days
-                    </option>
-                    <option key={14} value={'14'} >
-                            14 days
-                    </option>
-                    <option key={28} value={'28'} >
-                            28 days
-                    </option>
-                    <option key={'today'+1} value={'Today'} >
-                            Today
-                    </option>
-                    <option key={'yesterday'+1} value={'Yesterd ay'} >
-                            Yesterday
-                    </option>
-                  </select>
-                </div>
                 <div className="clearfix"></div>
-
               </div>
             </Col>
+          </Row>
+          <Row className="justify-content-around">
           </Row>
         </div>
       </div>
@@ -332,11 +318,15 @@ const mapStateToProps = state => ({
   elastic: state.getIn(['elastic', 'elastic']),
   profile: state.getIn(['profile', 'profile']),
   campaignInfo: state.getIn(['campaign', 'campaignInfo']),
+  campaigns: state.getIn(['campaign', 'campaigns']),
+  graph: state.getIn(['graph', 'graph'])
+
 });
 
 const mapDispatchToProps = {
   successCampaign,
-  fetchCampaignInfo
+  fetchCampaignInfo,
+  fetchCampaign
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

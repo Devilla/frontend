@@ -4,7 +4,6 @@ import * as actions from 'ducks/webhooks';
 import { load, loaded } from 'ducks/loading';
 import { toast } from 'react-toastify';
 
-
 const toastConfig = {
   position: toast.POSITION.BOTTOM_LEFT,
   autoClose: 2000,
@@ -22,7 +21,6 @@ function* fetch(action) {
     yield put(loaded());
   } catch (error) {
     yield put(loaded());
-    console.log('Failed to fetch doc', error);
     yield toast.error(error.message, toastConfig);
   }
 }
@@ -38,7 +36,6 @@ function* fetchOne(action) {
     yield put(loaded());
   } catch (error) {
     yield put(loaded());
-    console.log('Failed to fetch doc', error);
     yield toast.error(error.message, toastConfig);
   }
 }
@@ -55,7 +52,6 @@ function* create(action) {
     yield put(loaded());
   } catch (error) {
     yield put(loaded());
-    console.log('Failed to fetch doc', error);
     yield toast.error(error.message, toastConfig);
   }
 
@@ -76,7 +72,6 @@ function* update(action) {
     yield put(loaded());
   } catch (error) {
     yield put(loaded());
-    console.log('Failed to fetch doc', error);
     yield toast.error(error.message, toastConfig);
   }
 }
@@ -96,7 +91,6 @@ function* deleteWebhook(action) {
     yield put(loaded());
   } catch (error) {
     yield put(loaded());
-    console.log('Failed to fetch doc', error);
     yield toast.error(error.message, toastConfig);
   }
 }

@@ -5,7 +5,9 @@ const action = name => `/elastic/${name}`;
 export const FETCH = action('FETCH');
 export const FETCH_SUCCESS = action('FETCH_SUCCESS');
 export const CLEAR_ELASTIC = action('CLEAR_ELASTIC');
+export const COUNTRY_VISITORS = action('COUNTRY_VISITORS');
 
+export const countryVisitors = () => ({ type: COUNTRY_VISITORS });
 export const fetchElastic = (query) => ({ type: FETCH, query });
 export const fetchSuccess = (elastic) => ({ type: FETCH_SUCCESS, elastic });
 export const clearElastic = () => ({ type: CLEAR_ELASTIC });

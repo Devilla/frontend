@@ -7,6 +7,7 @@ export { default as WebsitePricing } from './WebsitePricing/WebsitePricing';
 export { default as WebsiteAbout } from './WebsiteAbout/WebsiteAbout';
 export { default as WebsiteSignIn } from './WebsiteSignIn/WebsiteSignIn';
 export { default as WebsiteSignUp } from './WebsiteSignUp/WebsiteSignUp';
+export { default as WebsitePayment } from './WebsitePayment/WebsitePayment';
 export { default as WebsiteContact } from './WebsiteContact/WebsiteContact';
 export { default as WebsiteTerms } from './WebsiteTerms/WebsiteTerms';
 export { default as WebsitePolicy } from './WebsitePolicy/WebsitePolicy';
@@ -47,8 +48,7 @@ export { default as DisplayPage } from './DisplayPage/DisplayPage';
 export { default as CapturePage } from './CapturePage/CapturePage';
 export { default as InstallPixel } from './InstallPixel/InstallPixel';
 
-
-export { default as PopupReview } from './PopupReview/PopupReview';
 export { default as Oauthpage } from './Oauthpage/Oauthpage';
 export { default as Oauthgenerate } from './Oauthgenerate/Oauthgenerate';
 export { default as DashboardChannel  }  from './DashboardChannel/DashboardChannel';
+export { default as ReviewRedirect } from './ReviewRedirect/ReviewRedirect';

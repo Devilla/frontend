@@ -4,6 +4,8 @@ import { HelpBlock } from 'react-bootstrap';
 import './PaymentPage.scss';
 
 const PaymentPage = ({
+  load,
+  loaded,
   stripe,
   user,
   plan,
@@ -14,6 +16,7 @@ const PaymentPage = ({
 
   const submitForm = (event) => {
     event.preventDefault();
+    load();
     if(!user.username)
       return handleErrorChange('Enter user name', 'nameError');
 
@@ -34,9 +37,11 @@ const PaymentPage = ({
           paymentType: result.token.type,
           user: user._id,
           plan: plan,
+          coupon: null
         };
         handleSubmit(data, result.token);
       }
+      loaded();
     });
   };
 
@@ -65,7 +70,7 @@ const PaymentPage = ({
         <div className="frmcntl">
           <input className="btn btn-primary auth-payment-button"
             type="submit"
-            value="Make Payment"
+            value="Start my FREE trial"
           />
         </div>
       </form>

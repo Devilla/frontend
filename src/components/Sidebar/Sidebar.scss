@@ -28,26 +28,6 @@
   font-size: 15px;
 }
 
-
-div.button-list {
-  & .btn-pink {
-    background-color: #097fff;
-    border: 1px solid #097fff;
-  &:hover {
-    background-color: blue;
-    border-color: blue;
-  }
-  &:active {
-    background-color: blue;
-    border-color: blue;
-  }
-  &:focus {
-    background-color: blue;
-    border-color: blue;
-  }
-  }
-}
-
 .fi-plus {
   font-size: '15px' !important;
 }
@@ -69,24 +49,24 @@ div.button-list {
 .dropdown:hover{ .dropdown-content {
     display: block;
 }}
-
+.dashboard-container #sidebar-menu > ul > li > a.active {
+  color:  #5A616B !important;
+}
 a.nav-link {
     &:hover:not(:focus) {
       background-color: rgba(245, 245, 245, 0.816);
-      // border-top-right-radius: 50px;
-      // border-bottom-right-radius: 50px;
       color: #097fff !important;
     }
 
     &:focus {
       background-color: rgba(9, 128, 255, 0.152);
-      // border-top-right-radius: 50px;
-      // border-bottom-right-radius: 50px;
       font-weight: 700;
       color: #097fff !important;
     }
 
+
 }
+
 span {
   &.menu-arrow {
     &:focus:not(a.nav-link:focus){
@@ -121,11 +101,14 @@ div {
 }
 
 button {
-  &.btn.btn-pink.waves-effect.ml-4.p-2.pt-0.pb-0.w-lg {
-    box-shadow: 0 6px 16px -6px black;
-    border-radius: 8px;
-  }
   & i.fi-plus {
-    font-weight:  800;
+    font-weight: bolder;
+    position: relative;
+    top: -2px;
   }
+}
+
+.addnew-btn {
+  box-shadow: 0 8px 15px -4px #999;
+  border-radius: 5px !important;
 }

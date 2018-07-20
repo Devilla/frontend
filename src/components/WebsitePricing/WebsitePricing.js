@@ -82,17 +82,17 @@ class WebsitePricing extends Component {
 
     return planList.map(plan => {
       return <div key={plan.name} className="col-md-3 pl-3 pr-0 cards">
-        <div className="pricing pricing-1  pr-0 pl-0 pricing-tab"  style={{minHeight:'700px'}}>
+        <div className="pricing pricing-1  pr-0 pl-0 pricing-tab"  style={ /\b(year)\b/m.test(plan.interval) ? {minHeight:'820px'} : {minHeight:'720px'}} >
           <div className={`pricing__head ${this.stellarFeel(plan.name) }  boxed boxed--border boxed--lg price-head`}>
             <h3>{this.filterPlanName(plan.name)}</h3>
             <span className="h1">
               <span className="pricing__dollar">$</span>
               <span>{plan.interval === 'year' ? plan.amount/1000 : plan.amount/100}</span>
             </span>
-            {plan.interval === 'year' ?  <p className= {/\b(Advanced)\b/m.test(plan.name) ?' mt-0 mb-0' : 'type--fine-print mt-0 mb-0 '}><i> 2 Months FREE </i></p> :  ''}
+            {plan.interval === 'year' ?  <p className= 'mt-0 mb-0'><i> 2 Months FREE </i></p> :  ''}
           </div>
-          <hr/>
-          <ul className={/\b(Advanced)\b/m.test(plan.name) ? 'bx-shadow h6' :'h6'}>
+          <hr  className = { /\b(year)\b/m.test(plan.interval) && /\b(Advanced)\b/m.test(plan.name) ? 'makeAlignConst' : '' }/>
+          <ul className='h6'>
             <li className="visitors-content">
               <span className="bg--primary-1"></span>
               <span className="h3">
@@ -128,10 +128,6 @@ class WebsitePricing extends Component {
               <span className="h5 inline-block">Beta Features</span>
             </li>
             <li className="text-left pl-5">
-              <span className="checkmark bg--primary-1"></span>
-              <span className="h5 inline-block">White Label</span>
-            </li>
-            <li className="text-left pl-5">
               <span className=" bg--primary-1"></span>
               <span>&nbsp;</span>
             </li>
@@ -149,7 +145,7 @@ class WebsitePricing extends Component {
     return (
       <div className="websitepricing-container">
         <div className="main-container">
-          <section className="text-center bg--secondary">
+          <section className="text-center bg--secondary pricing-title">
             <div className="container">
               <div className="row">
                 <div className="col-md-11 col-lg-10">

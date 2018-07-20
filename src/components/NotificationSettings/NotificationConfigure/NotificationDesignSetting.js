@@ -6,6 +6,9 @@ import './NotificationConfigure.scss';
 import 'react-images-uploader/styles.css';
 import 'react-images-uploader/font.css';
 import { ChromePicker } from 'react-color';
+import Channel from './Channel';
+import DashboardChannel from '../../DashboardChannel/DashboardChannel';
+import './NotificationDesignSetting.scss';
 
 const FONT_WEIGHT_BOLD = 'bold';
 const FONT_WEIGHT_NORMAL = 'normal';
@@ -19,7 +22,7 @@ export class NotificationDesignSetting extends Component {
       isTextColorSwatchOpen: false,
       isLinkColorSwatchOpen: false,
       activeClass: 1,
-      toggleTextBox: false
+      toggleTextBox: false,
     };
     Object.assign(this.state, props.notificationPanelStyle);
   }
@@ -27,6 +30,7 @@ export class NotificationDesignSetting extends Component {
   notificationPanelStyleDefault(e) {
     this.setState({ [e.target.id]: e.target.value });
   }
+
 
   handleRadiusChange = (radius) => {
     this.setState({ radius });
@@ -107,6 +111,7 @@ export class NotificationDesignSetting extends Component {
   setActiveState = (val) => {
     this.setState({ activeClass: val });
   }
+
 
   handleTextColorChange = (color) => {
     color = color.rgb;
@@ -199,7 +204,9 @@ export class NotificationDesignSetting extends Component {
   }
 
   render() {
-    const { activeClass } = this.state;
+
+    const { activeClass  } = this.state;
+
     const {
       profile,
       notificationPanelStyle,
@@ -210,7 +217,10 @@ export class NotificationDesignSetting extends Component {
       notificationUrl,
       toggleMap,
       toggleTextBox,
-      handleClickableNotification
+      handleClickableNotification,
+      showpopupfield,
+      showpopup,
+      campaign
     } = this.props;
     const styles = reactCSS({
       'default': {
@@ -253,336 +263,363 @@ export class NotificationDesignSetting extends Component {
         },
       },
     });
+
     return (
+      <div>
+        {showpopupfield ?
+          <div className="DashboardChannelcomponent">
+            <DashboardChannel campaign={campaign} />
+          </div>
+          : ' '}
 
-      <div className="setting" style={{ backgroundColor: 'white' }}>
+        <div className="setting" style={{ backgroundColor: 'white' }}>
+          <Row>
+            <Col md={12}>
+              <div className="card-box box2">
+                <ul className="nav nav-tabs">
+                  {showpopupfield ?
+                    <li className="nav-item waves-effect">
+                      <a data-toggle="tab" aria-expanded="false" className={`nav-link ${activeClass == 4 ? 'active' : ''}`} onClick={() => this.setActiveState(4)}>
+                        <i className="fi-layers mr-2"></i> Your Channels
+                      </a>
+                    </li>
+                    : ' '}
+                  <li className="nav-item waves-effect">
+                    <a data-toggle="tab" aria-expanded="false" className={`nav-link ${activeClass == 1 ? 'active' : ''}`} onClick={() => this.setActiveState(1)}>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i className="fi-layers mr-2"></i>Box&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </a>
+                  </li>
+                  <li className="nav-item waves-effect">
+                    <a data-toggle="tab" aria-expanded="true" className={`nav-link ${activeClass == 2 ? 'active' : ''}`} onClick={() => this.setActiveState(2)}>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i className="fi-mail mr-2"></i>Text&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </a>
+                  </li>
+                  <li className="nav-item waves-effect">
+                    <a data-toggle="tab" aria-expanded="false" className={`nav-link ${activeClass == 3 ? 'active' : ''}`} onClick={() => this.setActiveState(3)}>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i className="fi-layers mr-2"></i>Settings&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </a>
+                  </li>
+                </ul>
 
-        <Col md={12}>
-          <div className="card-box" style={{width:'474px'}}>
-            <ul className="nav nav-tabs">
-              <li className="nav-item waves-effect">
-                <a data-toggle="tab" aria-expanded="false" className={`nav-link ${activeClass == 1 ? 'active' : ''}`} onClick={() => this.setActiveState(1)}>
-                  <i className="fi-layers mr-2"></i>Box&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                </a>
-              </li>
-              <li className="nav-item waves-effect">
-                <a data-toggle="tab" aria-expanded="true" className={`nav-link ${activeClass == 2 ? 'active' : ''}`} onClick={() => this.setActiveState(2)}>
-                  <i className="fi-mail mr-2"></i>Text&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                </a>
-              </li>
-              <li className="nav-item waves-effect">
-                <a data-toggle="tab" aria-expanded="false" className={`nav-link ${activeClass == 3 ? 'active' : ''}`} onClick={() => this.setActiveState(3)}>
-                  <i className="fi-layers mr-2"></i> Settings&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                </a>
-              </li>
-            </ul>
-
-            <div className="tab-content">
-              <div className={`tab-pane ${activeClass == 1 ? 'show active' : ''}`} id="credit">
-                <Row>
-                  <Col md={12} className="text-muted">
-                    <p className="h6">Radius</p>
-                    <div className='slider'>
-                      <Slider
-                        tooltip={false}
-                        min={0}
-                        max={50}
-                        value={notificationPanelStyle.radius}
-                        onChange={this.handleRadiusChange}
-                      />
-                    </div>
-                  </Col>
-                </Row>
-                <Row >
-                  <Col md={12} className="text-muted h6">
-                    <p className="h6">Border</p>
+                <div className="tab-content">
+                  <div className={`tab-pane ${activeClass == 1 ? 'show active' : ''}`} id="credit">
                     <Row>
-                      <Col md={6}>
-                        <div className='slider alignment'>
+                      <Col md={12} className="text-muted">
+                        <p className="h6">Radius</p>
+                        <div className='slider'>
                           <Slider
                             tooltip={false}
                             min={0}
-                            max={10}
-                            value={notificationPanelStyle.borderWidth}
-                            onChange={this.handleBorderWidthChange}
+                            max={50}
+                            value={notificationPanelStyle.radius}
+                            onChange={this.handleRadiusChange}
                           />
                         </div>
                       </Col>
-                      <Col md={6} className="mt-2">
-                        <div style={styles.swatch} onClick={this.showBorderSwatch}>
-                          <div style={{ ...styles.colorSwatch, ...styles.border }} />
-                        </div>
-                        {this.state.isBorderColorSwatchOpen ? <div style={styles.popover}>
-                          <div style={styles.cover} onClick={this.hideBorderSwatch} />
-                          <ChromePicker color={notificationPanelStyle.borderColor} onChange={this.handleBorderColorChange} />
-                        </div> : null}
-                      </Col>
                     </Row>
-                  </Col>
-                </Row>
-                <Row >
-                  <Col md={12} className="text-muted ">
-                    <Row>
-                      <Col md={6}>
-                        <p className="h6">Background Color</p>
-                      </Col>
-                      <Col md={6}>
-                        <div style={styles.swatch} onClick={this.showBgSwatch}>
-                          <div style={{ ...styles.colorSwatch, ...styles.background }} />
-                        </div>
-                        {this.state.isBgColorSwatchOpen ? <div style={styles.popover}>
-                          <div style={styles.cover} onClick={this.hideBgSwatch} />
-                          <ChromePicker color={notificationPanelStyle.backgroundColor} onChange={this.handleBgColorChange} />
-                        </div> : null}
-                      </Col>
-                    </Row>
-                  </Col>
-                </Row>
-                {notification.notificationName === 'Recent Activity' &&
-                  profile.plan.references.service_template_properties[0].data.value == 'premium' &&
-                  <Row style={{padding: '4% 0%'}}>
-                    <Col md={10}>
-                      <span className="mt-5 text-muted h6">Display map icon only</span>
-                    </Col>
-                    <Col md={2}>
-                      <input
-                        className="tgl tgl-ios"
-                        id="cb2"
-                        type="checkbox"
-                        checked={toggleMap}
-                        readOnly
-                      />
-                      <label className="tgl-btn" htmlFor="cb2" onClick={() => handleContentChange('toggleMap', !toggleMap)}></label>
-                    </Col>
-                  </Row>
-                }
-              </div>
-
-              <div className={`tab-pane ${activeClass == 2 ? 'show active' : ''}`} id="debit">
-                <Row className="mb-3">
-                  <Col md={12}>
-                    <h4 className="text-muted h6">Text Style</h4>
-                    <Row>
-                      <Col md={4}>
-                        <Button bsSize="small" block active={notificationPanelStyle.fontWeight == FONT_WEIGHT_BOLD} onClick={this.handleFontWeightChange}>
-                          Bold
-                        </Button>
-                      </Col>
-                      <Col md={4}>
-                        <FormControl componentClass="select" bsSize="small" value={notificationPanelStyle.fontFamily} onChange={this.handleFontChange}>
-                          <option value="arial">Arial</option>
-                          <option value="monospace">Monospace</option>
-                          <option value="georgia">Georgia</option>
-                          <option value='Roboto,helvetica,arial,sans-serif'>Default</option>
-                        </FormControl>
-                      </Col>
-                      <Col md={3}>
-                        <div style={styles.swatch} onClick={this.showTextColorSwatch}>
-                          <div style={{ ...styles.colorSwatch, ...styles.textColor }} />
-                        </div>
-                        {this.state.isTextColorSwatchOpen ? <div style={styles.popover}>
-                          <div style={styles.cover} onClick={this.hideTextColorSwatch} />
-                          <ChromePicker color={notificationPanelStyle.color} onChange={this.handleTextColorChange} />
-                        </div> : null}
-                      </Col>
-                    </Row>
-                  </Col>
-                </Row>
-                {((notification.notificationName !== 'Live Visitor Count') ||
-                  (notification.notificationName !== 'Live Visitor Count' &&
-                  profile.plan.references.service_template_properties[0].data.value == 'premium')) &&
-                  <Row className="mb-3">
-                    <Col md={12}>
-                      <h4 className="text-muted h6">Brand Name</h4>
-                      <Row>
-                        <Col md={12}>
-                          <FormControl
-                            type="text"
-                            maxLength='15'
-                            value={contentText}
-                            placeholder="Enter brand name for notification"
-                            id="contentText"
-                            onChange={(e) => handleContentChange(e.target.id, e.target.value)}
-                          />
-                        </Col>
-                      </Row>
-                    </Col>
-                  </Row>
-                }
-                {notification.notificationName !== 'Recent Activity' &&
-                  <Row className="mb-3">
-                    <Col md={12}>
-                      <h4 className="text-muted h6">Identity User As</h4>
-                      <Row>
-                        <Col md={12}>
-                          <FormControl
-                            type="text"
-                            maxLength="10"
-                            value={visitorText}
-                            placeholder="Enter identity"
-                            id="visitorText"
-                            onChange={(e) => handleContentChange(e.target.id, e.target.value)}
-                          />
-                        </Col>
-                      </Row>
-                    </Col>
-                  </Row>
-                }
-              </div>
-
-
-              <div className={`tab-pane ${activeClass == 3 ? 'show active' : ''}`} id="paypal">
-                {notification.notificationName === 'Live Visitor Count'  &&
-                  <Row className="mb-3">
-                    <Col md={9} style={{padding: '8px 15px', width: '45%'}}>
-                      <span className="mt-5 text-muted h6"> Hide 'Live Viewer' if viewers less than</span>
-                    </Col>
-                    <Col md={3} style={{'padding': 0, width: '10%'}}>
-                      <FormGroup>
-                        <FormControl
-                          type="number"
-                          min="0"
-                          value={notificationPanelStyle.liveVisitorCount}
-                          onChange={(e) => this.handleLiveVistorCount(e)}
-                          bsSize="sm"
-                        />
-                      </FormGroup>
-                    </Col>
-                  </Row>
-                }
-                {notification.notificationName === 'Bulk Activity'  &&
-                  <Row className="mb-3">
-                    <Col md={7} style={{padding: '8px 15px', width: '45%'}}>
-                      <span className="mt-5 text-muted h6"> Display bulk data from last</span>
-                    </Col>
-                    <Col md={2} style={{'padding': 0, width: '10%'}}>
-                      <FormGroup>
-                        <FormControl
-                          type="number"
-                          min="0"
-                          value={notificationPanelStyle.bulkData}
-                          onChange={(e) => this.handleStateChangeDay(e)}
-                          bsSize="sm"
-                        />
-                      </FormGroup>
-                    </Col>
-                    <Col md={3}>
-                      <FormControl componentClass="select" bsSize="small" value={notificationPanelStyle.selectDurationData} onChange={this.handleDurationChange}>
-                        <option value="hours">hours</option>
-                        <option value="days">days</option>
-                      </FormControl>
-                    </Col>
-                  </Row>
-                }
-                {notification.notificationName === 'Recent Activity' &&
-                  <div>
-                    <Row>
-                      <Col md={4} style={{padding: '8px 15px'}}>
-                        <span className="mt-5 text-muted h6">Display the last</span>
-                      </Col>
-                      <Col md={3} style={{'padding': 0, width: '10%'}}>
-                        <FormGroup>
-                          <FormControl
-                            type="number"
-                            min="0"
-                            onChange={(e) => this.handleStateChangeNumber(e)}
-                            bsSize="sm"
-                            value={notificationPanelStyle.recentNumber}
-                          />
-                        </FormGroup>
-                      </Col>
-                      <Col md={4} style={{padding: '10px 15px'}}>
-                        <span className="mt-5 text-muted h6">conversions</span>
-                      </Col>
-                    </Row>
-                    <Row>
-                      <Col md={7} style={{padding: '8px 15px', width: '50%'}}>
-                        <span className="mt-5 text-muted h6">Display conversions from last</span>
-                      </Col>
-                      <Col md={2} style={{ padding: 0, width: '10%' }}>
-                        <FormGroup>
-                          <FormControl
-                            type="number"
-                            min="0"
-                            value={notificationPanelStyle.recentConv}
-                            onChange={(e) => this.handleStateChangeConv(e)}
-                            bsSize="sm"
-                          />
-                        </FormGroup>
-                      </Col>
-                      <Col md={3}>
-                        <FormControl componentClass="select" bsSize="small" value={notificationPanelStyle.selectLastDisplayConversation} onChange={this.handleLastDisplayDurationChange}>
-                          <option value="hours">hours</option>
-                          <option value="days">days</option>
-                        </FormControl>
-                      </Col>
-                    </Row>
-                    {profile.plan.references.service_template_properties[0].data.value == 'premium' &&
-                      <div>
-                        <Row className="mb-3">
-                          <Col md={10}>
-                            <span className="mt-5 text-muted h6">Hide anonymous conversions
-                            </span>
+                    <Row >
+                      <Col md={12} className="text-muted h6">
+                        <p className="h6">Border</p>
+                        <Row>
+                          <Col md={6}>
+                            <div className='slider alignment'>
+                              <Slider
+                                tooltip={false}
+                                min={0}
+                                max={10}
+                                value={notificationPanelStyle.borderWidth}
+                                onChange={this.handleBorderWidthChange}
+                              />
+                            </div>
                           </Col>
-                          <Col md={2}>
-                            <input
-                              className="tgl tgl-ios"
-                              id="hideAnonymousConversion"
-                              type="checkbox"
-                              checked={notificationPanelStyle.hideAnonymousConversion}
-                              readOnly
-                            />
-                            <label className="tgl-btn" htmlFor="anonymousConversionChange" onClick={() => this.handleAnonymousConversionsChange(!notificationPanelStyle.hideAnonymousConversion)}></label>
+                          <Col md={6} className="mt-2">
+                            <div style={styles.swatch} onClick={this.showBorderSwatch}>
+                              <div style={{ ...styles.colorSwatch, ...styles.border }} />
+                            </div>
+                            {this.state.isBorderColorSwatchOpen ? <div style={styles.popover}>
+                              <div style={styles.cover} onClick={this.hideBorderSwatch} />
+                              <ChromePicker color={notificationPanelStyle.borderColor} onChange={this.handleBorderColorChange} />
+                            </div> : null}
                           </Col>
                         </Row>
-                        <Row className="mb-3">
-                          <Col md={10}>
-                            <span className="mt-5 text-muted h6">Only display notifications from users country</span>
+                      </Col>
+                    </Row>
+                    <Row >
+                      <Col md={12} className="text-muted ">
+                        <Row>
+                          <Col md={6}>
+                            <p className="h6">Background Color</p>
                           </Col>
-                          <Col md={2}>
-                            <input
-                              className="tgl tgl-ios"
-                              id="handleOnlyDisplayNotification"
-                              type="checkbox"
-                              checked={notificationPanelStyle.onlyDisplayNotification}
-                              readOnly
-                            />
-                            <label className="tgl-btn" htmlFor="handleOnlyDisplayNotification" onClick={this.handleOnlyDisplayNotification(!notificationPanelStyle.onlyDisplayNotification)}></label>
+                          <Col md={6}>
+                            <div style={styles.swatch} onClick={this.showBgSwatch}>
+                              <div style={{ ...styles.colorSwatch, ...styles.background }} />
+                            </div>
+                            {this.state.isBgColorSwatchOpen ? <div style={styles.popover}>
+                              <div style={styles.cover} onClick={this.hideBgSwatch} />
+                              <ChromePicker color={notificationPanelStyle.backgroundColor} onChange={this.handleBgColorChange} />
+                            </div> : null}
                           </Col>
                         </Row>
-                      </div>
+                      </Col>
+                    </Row>
+                    {notification.notificationName === 'Recent Activity' &&
+                      profile.plan.references.service_template_properties[0].data.value == 'premium' &&
+                      <Row style={{padding: '4% 0%'}}>
+                        <Col md={10}>
+                          <span className="mt-5 text-muted h6">Display map icon only</span>
+                        </Col>
+                        <Col md={2}>
+                          <input
+                            className="tgl tgl-ios"
+                            id="cb2"
+                            type="checkbox"
+                            checked={toggleMap}
+                            readOnly
+                          />
+                          <label className="tgl-btn" htmlFor="cb2" onClick={() => handleContentChange('toggleMap', !toggleMap)}></label>
+                        </Col>
+                      </Row>
                     }
                   </div>
-                }
-                <Row className="mb-3">
-                  <Col md={10}>
-                    <span className="mt-5 text-muted h6">Notifications Clickable</span>
-                  </Col>
-                  <input
-                    className="tgl tgl-ios"
-                    id="handleClickableNotification"
-                    type="checkbox"
-                    checked={toggleTextBox}
-                    readOnly
-                  />
-                  <label className="tgl-btn" htmlFor="handleClickableNotification" onClick={handleClickableNotification}></label>
-                </Row>
-                <Row style={toggleTextBox?{ display:'block', marginBottom: '-9%' }:{ display:'none', marginBottom: '-9%' }}>
-                  <Col md={12}>
-                    <FormControl
-                      type="text"
-                      value={notificationUrl}
-                      placeholder="Enter URL"
-                      id="notificationUrl"
-                      onChange={(e) => handleContentChange(e.target.id, e.target.value)}
-                    />
-                  </Col>
-                </Row>
+
+                  <div className={`tab-pane ${activeClass == 2 ? 'show active' : ''}`} id="debit">
+                    <Row className="mb-3">
+                      <Col md={12}>
+                        <h4 className="text-muted h6">Text Style</h4>
+                        <Row>
+                          <Col md={4}>
+                            <Button bsSize="small" block active={notificationPanelStyle.fontWeight == FONT_WEIGHT_BOLD} onClick={this.handleFontWeightChange}>
+                              Bold
+                            </Button>
+                          </Col>
+                          <Col md={4}>
+                            <FormControl componentClass="select" bsSize="small" value={notificationPanelStyle.fontFamily} onChange={this.handleFontChange}>
+                              <option value="arial">Arial</option>
+                              <option value="monospace">Monospace</option>
+                              <option value="georgia">Georgia</option>
+                              <option value='Roboto,helvetica,arial,sans-serif'>Default</option>
+                            </FormControl>
+                          </Col>
+                          <Col md={3}>
+                            <div style={styles.swatch} onClick={this.showTextColorSwatch}>
+                              <div style={{ ...styles.colorSwatch, ...styles.textColor }} />
+                            </div>
+                            {this.state.isTextColorSwatchOpen ? <div style={styles.popover}>
+                              <div style={styles.cover} onClick={this.hideTextColorSwatch} />
+                              <ChromePicker color={notificationPanelStyle.color} onChange={this.handleTextColorChange} />
+                            </div> : null}
+                          </Col>
+                        </Row>
+                      </Col>
+                    </Row>
+                    {((notification.notificationName !== 'Live Visitor Count') ||
+                      (notification.notificationName !== 'Live Visitor Count' &&
+                      profile.plan.references.service_template_properties[0].data.value == 'premium')) &&
+                      <Row className="mb-3">
+                        <Col md={12}>
+                          <h4 className="text-muted h6">Brand Name</h4>
+                          <Row>
+                            <Col md={12}>
+                              <FormControl
+                                type="text"
+                                maxLength='15'
+                                value={contentText}
+                                placeholder="Enter brand name for notification"
+                                id="contentText"
+                                onChange={(e) => handleContentChange(e.target.id, e.target.value)}
+                              />
+                            </Col>
+                          </Row>
+                        </Col>
+                      </Row>
+                    }
+                    {notification.notificationName !== 'Recent Activity' &&
+                      <Row className="mb-3">
+                        <Col md={12}>
+                          <h4 className="text-muted h6">Identity User As</h4>
+                          <Row>
+                            <Col md={12}>
+                              <FormControl
+                                type="text"
+                                maxLength="10"
+                                value={visitorText}
+                                placeholder="Enter identity"
+                                id="visitorText"
+                                onChange={(e) => handleContentChange(e.target.id, e.target.value)}
+                              />
+                            </Col>
+                          </Row>
+                        </Col>
+                      </Row>
+                    }
+                  </div>
+
+
+                  <div className={`tab-pane ${activeClass == 3 ? 'show active' : ''}`} id="paypal">
+                    {notification.notificationName === 'Live Visitor Count'  &&
+                      <Row className="mb-3">
+                        <Col md={9} style={{padding: '8px 15px', width: '45%'}}>
+                          <span className="mt-5 text-muted h6"> Hide 'Live Viewer' if viewers less than</span>
+                        </Col>
+                        <Col md={3} style={{'padding': 0, width: '10%'}}>
+                          <FormGroup>
+                            <FormControl
+                              type="number"
+                              min="0"
+                              value={notificationPanelStyle.liveVisitorCount}
+                              onChange={(e) => this.handleLiveVistorCount(e)}
+                              bsSize="sm"
+                            />
+                          </FormGroup>
+                        </Col>
+                      </Row>
+                    }
+                    {notification.notificationName === 'Bulk Activity'  &&
+                      <Row className="mb-3">
+                        <Col md={7} style={{padding: '8px 15px', width: '45%'}}>
+                          <span className="mt-5 text-muted h6"> Display bulk data from last</span>
+                        </Col>
+                        <Col md={2} style={{'padding': 0, width: '10%'}}>
+                          <FormGroup>
+                            <FormControl
+                              type="number"
+                              min="0"
+                              value={notificationPanelStyle.bulkData}
+                              onChange={(e) => this.handleStateChangeDay(e)}
+                              bsSize="sm"
+                            />
+                          </FormGroup>
+                        </Col>
+                        <Col md={3}>
+                          <FormControl componentClass="select" bsSize="small" value={notificationPanelStyle.selectDurationData} onChange={this.handleDurationChange}>
+                            <option value="hours">hours</option>
+                            <option value="days">days</option>
+                          </FormControl>
+                        </Col>
+                      </Row>
+                    }
+                    {notification.notificationName === 'Recent Activity' &&
+                      <div>
+                        <Row>
+                          <Col md={4} style={{padding: '8px 15px'}}>
+                            <span className="mt-5 text-muted h6">Display the last</span>
+                          </Col>
+                          <Col md={3} style={{'padding': 0, width: '10%'}}>
+                            <FormGroup>
+                              <FormControl
+                                type="number"
+                                min="0"
+                                onChange={(e) => this.handleStateChangeNumber(e)}
+                                bsSize="sm"
+                                value={notificationPanelStyle.recentNumber}
+                              />
+                            </FormGroup>
+                          </Col>
+                          <Col md={4} style={{padding: '10px 15px'}}>
+                            <span className="mt-5 text-muted h6">conversions</span>
+                          </Col>
+                        </Row>
+                        <Row>
+                          <Col md={7} style={{padding: '8px 15px', width: '50%'}}>
+                            <span className="mt-5 text-muted h6">Display conversions from last</span>
+                          </Col>
+                          <Col md={2} style={{ padding: 0, width: '10%' }}>
+                            <FormGroup>
+                              <FormControl
+                                type="number"
+                                min="0"
+                                value={notificationPanelStyle.recentConv}
+                                onChange={(e) => this.handleStateChangeConv(e)}
+                                bsSize="sm"
+                              />
+                            </FormGroup>
+                          </Col>
+                          <Col md={3}>
+                            <FormControl componentClass="select" bsSize="small" value={notificationPanelStyle.selectLastDisplayConversation} onChange={this.handleLastDisplayDurationChange}>
+                              <option value="hours">hours</option>
+                              <option value="days">days</option>
+                            </FormControl>
+                          </Col>
+                        </Row>
+                        {profile.plan.references.service_template_properties[0].data.value == 'premium' &&
+                          <div>
+                            <Row className="mb-3">
+                              <Col md={10}>
+                                <span className="mt-5 text-muted h6">Hide anonymous conversions
+                                </span>
+                              </Col>
+                              <Col md={2}>
+                                <input
+                                  className="tgl tgl-ios"
+                                  id="hideAnonymousConversion"
+                                  type="checkbox"
+                                  checked={notificationPanelStyle.hideAnonymousConversion}
+                                  readOnly
+                                />
+                                <label className="tgl-btn" htmlFor="anonymousConversionChange" onClick={() => this.handleAnonymousConversionsChange(!notificationPanelStyle.hideAnonymousConversion)}></label>
+                              </Col>
+                            </Row>
+                            <Row className="mb-3">
+                              <Col md={10}>
+                                <span className="mt-5 text-muted h6">Only display notifications from users country</span>
+                              </Col>
+                              <Col md={2}>
+                                <input
+                                  className="tgl tgl-ios"
+                                  id="handleOnlyDisplayNotification"
+                                  type="checkbox"
+                                  checked={notificationPanelStyle.onlyDisplayNotification}
+                                  readOnly
+                                />
+                                <label className="tgl-btn" htmlFor="handleOnlyDisplayNotification" onClick={this.handleOnlyDisplayNotification(!notificationPanelStyle.onlyDisplayNotification)}></label>
+                              </Col>
+                            </Row>
+                          </div>
+                        }
+                      </div>
+                    }
+                    <Row className="mb-3">
+                      <Col md={10}>
+                        <span className="mt-5 text-muted h6">Notifications Clickable</span>
+                      </Col>
+                      <input
+                        className="tgl tgl-ios"
+                        id="handleClickableNotification"
+                        type="checkbox"
+                        checked={toggleTextBox}
+                        readOnly
+                      />
+                      <label className="tgl-btn" htmlFor="handleClickableNotification" onClick={handleClickableNotification}></label>
+                    </Row>
+                    <Row style={toggleTextBox?{ display:'block', marginBottom: '-9%' }:{ display:'none', marginBottom: '-9%' }}>
+                      <Col md={12}>
+                        <FormControl
+                          type="text"
+                          value={notificationUrl}
+                          placeholder="Enter URL"
+                          id="notificationUrl"
+                          onChange={(e) => handleContentChange(e.target.id, e.target.value)}
+                        />
+                      </Col>
+                    </Row>
+                  </div>
+
+                  <div className={`tab-pane ${activeClass == 4 ? 'show active' : ''}`} id="debit">
+
+                    <Col md={12}>
+                      <Channel showpopup={showpopup} />
+                    </Col>
+
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-        </Col>
+            </Col>
+          </Row>
+
+        </div>
+
       </div>
+
     );
   }
 }

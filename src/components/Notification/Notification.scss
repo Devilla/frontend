@@ -9,6 +9,14 @@
       }
     }
   }
+  .close-btn ,.delete-btn {
+    border-radius: 5px !important;
+  }
+  .close {
+    background: #097fff !important;
+    position: relative;
+    top: 10px !important;
+  }
   .react-flexible-switch {
     background-color: white !important;
     width: 35px !important;
@@ -23,6 +31,58 @@
   td {
     text-align: inherit !important;
   }
+  
+  .addchannel {
+    background: #097fff !important;
+    padding: 0px 10px ;
+    position: relative;
+    top: 10px;
+    color: #fff;
+    border-radius: 5px !important;
+  }
+  .logocompany {
+    min-width: 50px;
+    max-height: 50px;
+    padding-right: 20px;
+  }
+  .btns {
+    float: right;
+    position: relative;
+    top: 10px;
+    border-radius: 5px !important;
+  }
+
+
+  .bx-shadow {
+    padding: 10px;
+    background: #fff !important;
+    margin-bottom: 10px; 
+    
+    &:hover {
+      box-shadow: 0px 12px 16px -5px rgba(0, 0, 0, 0.2) !important;
+      animation: popbox 0.1s ease-in forwards;
+      background-color: rgb(255, 255, 255) !important;
+      .tilebox-one {
+        background-color: rgb(247, 245, 245) !important;
+      }
+    }
+  }
+  .show-modal {
+   z-index: 999999999 !important;
+   overflow: scroll !important;
+   background: rgba(248, 247, 247, 0.7);
+  }
+  .align-modal {
+  width: 800px !important;
+  position: relative;
+  right: 100px;
+  top: 130px; 
+  }
+  .modal-body {
+    color: #097fff !important;
+    font-size: 17px !important;
+  }
+
 }
 
 .popup-notification-div {

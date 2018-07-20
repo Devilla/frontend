@@ -48,29 +48,31 @@ class CapturePage extends Component {
 
   handleNextState = () => {
     if(!this.props.leads.length)
-      return this.setState({error: 'Add a display path'});
-    this.props.setActiveState(5);
+      return this.setState({error: 'Add a capture path'});
+    this.props.setActiveState(4);
   }
 
   handleBackState = () => {
-    this.props.setActiveState(3);
+    this.props.setActiveState(2);
   }
 
 
   addPageUrl = () => {
-    if(this.state.lead.url == '')
-      return this.setState({error: 'Please enter a valid path'});
+    if(this.state.lead.url == ''){
+      if(this.state.count<1)
+        this.state.lead.url='/';
+      else {
+        return this.setState({error: 'Please enter a valid path'});
+      }
+
+      this.state.count++;
+    }
+
     if(this.state.lead.url[0]!=='/')
       this.state.lead.url='/'+this.state.lead.url;
     let lead = this.state.lead;
     lead['rule'] = this.props.rules._id;
     this.props.createPageUrl(lead);
-    this.setState({lead: {
-      url: '',
-      status: '',
-      class: '',
-      type: ''
-    }});
   }
 
   handlePageUrl = (e) => {
@@ -128,7 +130,7 @@ class CapturePage extends Component {
               return <tr key={i}>
                 <td className="url">{lead.url}</td>
                 <td className="ml-4 status">
-                  <span className="dot" style={{backgroundColor: this.renderColor(lead.status) }}>
+                  <span className="dot ml-3" style={{backgroundColor: this.renderColor(lead.status) }}>
                   </span>
                 </td>
                 <td><a href="javascript:;"><i className="ml-3 icon-trash" onClick={() => this.deleteLead(lead._id, i, lead.type)}></i></a></td>
@@ -143,7 +145,7 @@ class CapturePage extends Component {
   render() {
     const { error, lead } = this.state;
     return (
-      <div>
+      <div className="CapturePage-container">
         <Grid fluid>
           <div className="tabscontent">
             <Row>
@@ -156,7 +158,7 @@ class CapturePage extends Component {
               <Col md={11}>
                 <div className="ml-5 pl-4 input-group col-md-8">
                   <label className="pt-2 pl-1 pr-3 text-muted">{this.props.campaign
-                    ? this.props.campaign.websiteUrl
+                    ? 'http://'+this.props.campaign.websiteUrl
                     : 'http://localhost:3000'}/</label>
                   <input type="text"
                     className="form-control"
@@ -175,7 +177,7 @@ class CapturePage extends Component {
                 </div>
               </Col>
             </Row>
-            <Row className="pt-2">
+            <Row className="pt-2  path-error">
               <HelpBlock className="text-center">
                 <p className="website-error">{error}</p>
               </HelpBlock>
@@ -215,12 +217,12 @@ class CapturePage extends Component {
                 />
               </Col>
             </Row>
-          
+
             <div className=" float-left ">
-              <button type="button" className="btn btn-custom waves-light waves-effect number" onClick={this.handleBackState}><i className="icon-arrow-left pr-2"></i>Back</button>
+              <button type="button" className="btn btn-primary  waves-effect  capturebtn-back" onClick={this.handleBackState}><i className="icon-arrow-left pr-2"></i>Back</button>
             </div>
             <div className=" float-right ">
-              <button type="button" className="btn btn-custom nav nav-pills waves-light waves-effect number ml-2 pl-4 pr-4" onClick={this.handleNextState}>Next<i className="icon-arrow-right pl-2"></i> </button>
+              <button type="button" className="btn btn-primary waves-effect ml-2 pl-4 pr-3 capturebtn-next" onClick={this.handleNextState}>Next<i className="icon-arrow-right pl-2"></i> </button>
             </div>
             <div className="clearfix"></div>
           </div>

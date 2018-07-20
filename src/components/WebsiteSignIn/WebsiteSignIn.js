@@ -49,7 +49,8 @@ class WebsiteSignIn extends Component {
       this.setState({ error: '' });
       toast.info('Successfull', toastConfig);
       this.props.loaded();
-      browserHistory.push('/dashboard');
+      browserHistory.push(res.user.path);
+      // browserHistory.push('/dashboard');
     }).catch(err => {
       this.props.loaded();
       this.setState({ error: err });
@@ -91,6 +92,7 @@ class WebsiteSignIn extends Component {
       isPasswordShown: !this.state.isPasswordShown
     });
   };
+
   componentDidMount() {
     let scrollElm = document.scrollingElement;
     scrollElm.scrollTop = 0;
@@ -113,25 +115,23 @@ class WebsiteSignIn extends Component {
           isVisible={true}>
           <div className="main-container">
             <section className="bg">
-              <div className="container text-center">
+              <div className="container text-center mt-5">
+                <span className="signintitle">Welcome back!</span>
                 <div className="row ">
                   <div className="col-sm-12 col-md-7 col-lg-6">
-                    <div>
-                      <span className="signintitle">Welcome back!</span>
+                    <div className="align">
+
                       <p className="lead">
                         <span className="sub-in-title">Don't have an account yet?&nbsp;
                           <Link to="/signup">Sign up</Link>
                         </span>
                       </p>
-
-
                       <form onSubmit={this.handleSubmit} className="loginfrm">
                         <div className="row justify-content-center">
                           {error &&
                         <Alert bsStyle="warning" className="col-md-9 col-sm-9">
-                          <strong>{error}</strong>
+                          <strong dangerouslySetInnerHTML={{__html: error}} />
                         </Alert>
-<<<<<<< HEAD
                           }
                           <div className="col-md-9 col-sm-8 ">
                             <input name="email"
@@ -162,7 +162,6 @@ class WebsiteSignIn extends Component {
                               <p className="website-error">{errorPassword}</p>
                             </HelpBlock>
                           </div>
-
                           <div className="col-md-9 col-sm-8 frmcntl">
                             <input
                               className="button submit-button w-button btn btn--primary ml-0"
@@ -175,58 +174,10 @@ class WebsiteSignIn extends Component {
                           <div><Link to="/forget-password"  style={{padding: '25px'}}>Forgot password?</Link></div>
                         </div>
                       </form>
-=======
-                      }
-                      <div className="col-9 ">
-                        <input name="email"
-                          ref="email"
-                          className="fieldname"
-                          onBlur={this.handleEmailBlur}
-                          onChange={this.handleInputChange}
-                          placeholder="Email Address"
-                          type="email"
-                          id="emails"
-                        />
-                        <HelpBlock>
-                          <p className="website-error">{errorEmail}</p>
-                        </HelpBlock>
-                      </div>
-                      <div className="col-9">
-                        <input type="password"
-                          name="Password"
-                          className="field w-input "
-                          name="password"
-                          ref="password"
-                          placeholder="Password"
-                          id="password"
-                          type={isPasswordShown ? 'text' : 'password'}
-                          maxLength={PASSWORD_MAX_LENGTH}
-                          onBlur={this.handlePasswordBlur}
-                          onChange={this.handleInputChange}
-                        />
-                        <HelpBlock>
-                          <p className="website-error">{errorPassword}</p>
-                        </HelpBlock>
-                      </div>
-
-                      <div className="col-9 frmcntl">
-                        <input
-                          id="submit"
-                          className="button submit-button w-button btn btn--primary ml-0"
-                          type="submit"
-                          value="Login"
-                          style={mousepoint}
-                          disabled={!isEmailValid || !isPwdValid}
-                        />
-                      </div>
-                      <div><Link to="/forget-password"  style={{padding: '25px'}}>Forgot password?</Link></div>
->>>>>>> 98846548baadc9e3fcc39835aa126a7db2460c6c
                     </div>
                   </div>
-
                   <div className="vristrue ">
                   </div>
-
                   <div className="col-md-4 col-lg-4 socio-link">
                     <p> <br /></p>
                     <div className="mt--2">
@@ -258,11 +209,9 @@ class WebsiteSignIn extends Component {
     );
   }
 }
-
 const mapDispatchToProps = {
   loginSuccess,
   load,
   loaded
 };
-
 export default connect(null, mapDispatchToProps)(WebsiteSignIn);

@@ -1,5 +1,5 @@
 // Home Page Image
-export { default as LogoInfluence } from './logo-influence.png';
+export { default as LogoInfluence } from './logo-influence-2.png';
 export { default as HigherConversion } from './new-convert-more-customers.svg';
 export { default as SaveAcquisitions } from './new-customer-acquisition-costs.svg';
 export { default as IncreaseVisitors } from './new-review-trust.svg';
@@ -37,6 +37,7 @@ export { default as Sw1 }  from './Notification.png';
 export { default as Sw2 }  from './group activity.png';
 export { default as Sw3 }  from './live viewer2.png';
 export { default as Sw4 }  from './live viewer3.png';
+export { default as Paypal } from  './paypal.png';
 
 export { default as Marvel } from './marvel.png';
 export { default as Lawsikho }  from './lawsikho.png';
@@ -47,7 +48,7 @@ export { default as Carpathy } from './carpathy.png';
 export { default as Tbars } from './3bars.png';
 export { default as Smallicon } from './smallicon.png';
 export { default as Ticon } from './3icon.png';
-export { default as Profile } from './profile.png';
+export { default as Profile } from './3profile.png';
 
 //Integration pic
 export { default as Aweber } from './Aweber.png';
@@ -125,3 +126,8 @@ export { default as Avatar10 } from './avatar-10.jpg';
 
 //logo
 export { default as Influence } from './newlogo-6.png';
+
+//popupreview
+export { default as Facebookpop }  from './facebook_1.png';
+export { default as Googlepop } from './google.png';
+export { default as FireIcon } from './fire.png';

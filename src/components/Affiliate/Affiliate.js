@@ -6,9 +6,6 @@ export default class Affiliate extends Component {
     super();
   }
   
-  componentDidMount() {
-    window.scrollTo(0,0);
-  }
 
   render() {
     return (
