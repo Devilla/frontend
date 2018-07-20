@@ -37,6 +37,7 @@ const PaymentPage = ({
           paymentType: result.token.type,
           user: user._id,
           plan: plan,
+          coupon: null
         };
         handleSubmit(data, result.token);
       }

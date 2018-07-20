@@ -176,8 +176,6 @@ class Dashboard extends Component {
     });
   }
 
-
-
   render() {
     const { campaignInfo, profile } = this.props;
 
