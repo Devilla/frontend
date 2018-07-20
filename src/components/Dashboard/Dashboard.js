@@ -9,7 +9,9 @@ import './Dashboard.scss';
 import Card from './Card';
 import ReactChartJs from 'react-chartjs';
 import 'react-datepicker/dist/react-datepicker.css';
-import { countryVisitors } from 'ducks/elastic';
+
+
+import {  countryVisitors  } from 'ducks/elastic';
 
 var LineChart = ReactChartJs.Line;
 let moment = extendMoment(Moment);

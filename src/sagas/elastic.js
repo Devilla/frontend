@@ -37,7 +37,10 @@ function* countryVisitors() {
 
     yield put(load());
     const res = yield call(api.POST, 'http://35.202.85.190:5601/elasticsearch/_msearch',headers,body,responseType);
+
+
     console.log(res,'Saga Response');
+
     yield put(loaded());
   } catch (error) {
     yield put(loaded());
@@ -50,12 +53,16 @@ export function* watchFetch() {
   yield takeLatest(actions.FETCH, fetch);
 }
 export function* watchCountryVisitors() {
+
   yield takeLatest(actions.COUNTRY_VISITORS, countryVisitors);
+
 }
 
 export default function* rootSaga() {
   yield [
     fork(watchFetch),
+
+    
     fork(watchCountryVisitors)
   ];
 }
