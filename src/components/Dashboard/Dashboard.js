@@ -9,7 +9,6 @@ import './Dashboard.scss';
 import Card from './Card';
 import ReactChartJs from 'react-chartjs';
 import 'react-datepicker/dist/react-datepicker.css';
-import { countryVisitors } from 'ducks/elastic';
 
 var LineChart = ReactChartJs.Line;
 let moment = extendMoment(Moment);
@@ -26,6 +25,7 @@ class Dashboard extends Component {
     };
     this.handleRouteChange = this.handleRouteChange.bind(this);
   }
+
   componentWillReceiveProps() {
     this.props.fetchCampaignInfo();
   }
@@ -33,8 +33,6 @@ class Dashboard extends Component {
   componentWillMount() {
     this.props.fetchCampaignInfo();
     this.props.fetchCampaign();
-    let response =  this.props.countryVisitors();
-    console.log(response);
   }
 
   createLegend(json) {
@@ -320,8 +318,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = {
   successCampaign,
   fetchCampaignInfo,
-  fetchCampaign,
-  countryVisitors
+  fetchCampaign
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
