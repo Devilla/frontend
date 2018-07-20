@@ -17,6 +17,7 @@ class Dashboard extends Component {
   constructor() {
     super();
     this.state = {
+      userCount: 0,
       render: false,
       arrs: [],
       daysClicked: '',
@@ -63,7 +64,7 @@ class Dashboard extends Component {
       this.props.campaignInfo.uniqueUsers.map(user => {
         (user && user.aggregations) ? user.aggregations.users.buckets.map(bucket => {
           dataContent['label'] = Moment(bucket.key_as_string).format('LL');
-          dataContent['data'][Moment(bucket.key_as_string).day()] = bucket.visitors.sum_other_doc_count;
+          dataContent['data'][Moment(bucket.key_as_string).day()] = bucket.visitors.sum_other_doc_count + bucket.visitors.buckets.length;
         }) : '';
         dataSet.push(dataContent);
       });
@@ -172,9 +173,22 @@ class Dashboard extends Component {
     });
   }
 
-  render() {
-    const { campaignInfo, profile } = this.props;
+  usersCount() {
+    let userCount = 0;
+    if(this.props.campaignInfo && this.props.campaignInfo.uniqueUsers.length) {
+      this.props.campaignInfo.uniqueUsers.map(user => {
+        (user && user.aggregations) ? user.aggregations.users.buckets.map(bucket => {
+          userCount = userCount + bucket.visitors.sum_other_doc_count + bucket.visitors.buckets.length;
+        }) : 0;
+      });
+      return userCount;
+    } else
+      return userCount;
+  }
 
+  render() {
+    const { campaignInfo } = this.props;
+    const userCount = this.usersCount();
     var chartData = {
       labels:   this.getDays(),
       datasets: this.getDataset()
@@ -257,13 +271,13 @@ class Dashboard extends Component {
                         {this.renderCardBox(
                           <div className=" widget-flat card-box  text-muted pr-4 pl-4 pb-5 pt-2 pos-vertical-center c2">
                             <p className="text-uppercase title m-b-5 fonttitle font-600">Unique Visitors</p>
-                            <h3 className="m-b-10 profile">{profile? Number(profile.uniqueVisitors) :0 }</h3>
+                            <h3 className="m-b-10 profile">{userCount? Number(userCount) :0 }</h3>
                           </div>
                         )}
                         {this.renderCardBox(
                           <div className=" widget-flat card-box  text-muted pr-4 pl-4 pb-5 pt-2 pos-vertical-center c2">
                             <p className="text-uppercase title m-b-5 fonttitle font-600">Conversion %</p>
-                            <h3 className="m-b-10 notify">{profile && (userSignUps/profile.uniqueVisitors)*100 ? ((userSignUps/profile.uniqueVisitors)*100).toFixed(2) : 0}</h3>
+                            <h3 className="m-b-10 notify">{userCount && (userSignUps/userCount)*100 ? ((userSignUps/userCount)*100).toFixed(2) : 0}</h3>
                           </div>
                         )}
                         {this.renderCardBox(
