@@ -38,7 +38,6 @@ const PricePage = ({
     }
     return res;
   }
-
   return (
     <div style={{ width: '100%' }}>
       <div className="price">
@@ -88,7 +87,7 @@ const PricePage = ({
                   {plan.interval === 'year' ?  <p className= {/\b(Advanced)\b/m.test(plan.name) ?' mt-0 mb-0' : 'type--fine-print mt-0 mb-0 '}><i> 2 Months FREE </i></p> :  ''}
                   <div className="pricing-content">
                     <ul className="price-features" style={{ minHeight: '150px' }}>
-                      <li><div dangerouslySetInnerHTML={{ __html: plan.details }} /></li>
+                      <li><div dangerouslySetInnerHTML={{ __html:  plan.details }} /></li>
                     </ul>
 
                     <a className={selectedPlan.id === plan.id ? 'active btn btn-outline-success waves-light waves-effect mr-2 pricingTable-signup' : 'btn btn-outline-info waves-light waves-effect ml-2 pricingTable-signup'} onClick={() => handleCheckChange(true, plan)}>

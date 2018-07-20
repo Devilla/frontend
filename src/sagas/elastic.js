@@ -62,7 +62,7 @@ export default function* rootSaga() {
   yield [
     fork(watchFetch),
 
-    
+
     fork(watchCountryVisitors)
   ];
 }

@@ -1,4 +1,30 @@
+.stripe-container {
+  .auth-divider {
+    display: flex;
+    justify-content: center;
+    margin-left: 40px !important;
+    .line-divider {
+      z-index: -1;
+      position: absolute;
+      height: 180px;
+      margin-top: -40%;
+      border-left: 1px solid #cccccc;
+    }
+    h1 {
+      background: white;
+      color: #cccccc;
+      margin: 0px 0px;
+      margin-top: -16%;
+      margin-right: 15px !important;  
+    }
+  }
+  .changeplan-btn {
+  border-radius: 5px !important;
 
+  }
+  
+}
 .cardpay-btn {
   border-radius: 5px !important;
 }
+
