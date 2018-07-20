@@ -54,4 +54,4 @@
     //  expect(wrapper.state('password')).toEqual('cats');
     // })
 
-})
+// })
