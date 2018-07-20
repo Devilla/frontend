@@ -108,11 +108,6 @@ class WebsiteSignUp extends Component {
     });
   }
 
-  componentDidMount() {
-    let scrollElm = document.scrollingElement;
-    scrollElm.scrollTop = 0;
-  }
-
   render() {
     const { email, isRegistered, error, errorEmail, isPasswordShown, errorPassword } = this.state;
 
@@ -149,6 +144,7 @@ class WebsiteSignUp extends Component {
                                 </Alert>
                               }
                               <input
+                              id="email"
                                 name='email'
                                 value={email}
                                 onBlur={this.handleEmailBlur}
@@ -161,6 +157,7 @@ class WebsiteSignUp extends Component {
                             </div>
                             <div className='col-md-9 col-sm-8'>
                               <input
+                              id='password'
                                 name='password'
                                 maxLength={PASSWORD_MAX_LENGTH}
                                 onBlur={this.handlePasswordBlur}
