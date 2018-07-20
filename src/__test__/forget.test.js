@@ -38,7 +38,6 @@ describe('check for in', ()=> {
     expect(wrapper.find('.unknown-error').length).toBe(0);
   });
 
-
   it('+++ contains unknown-error', () => {
     wrapper = shallow(<forget  store={store}/>);
     expect(wrapper.find('.args').length).toBe(0);
