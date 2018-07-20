@@ -27,7 +27,7 @@ describe('check for in', ()=> {
     expect(wrapper.length).toEqual(1);
   });
 
-  /*Empty values received */
+  /* Empty values received */
 
   it('+++ containsforgetpassword-container', () => {
     let wrapper = shallow(<ForgetPassword  store={store}/>);
