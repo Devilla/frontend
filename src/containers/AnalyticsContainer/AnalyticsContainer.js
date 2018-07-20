@@ -41,7 +41,7 @@ class AnalyticsContainer extends Component {
       count:0
     };
   }
-  componentWillReceiveProps() {
+  componentWillMount() {
     this.props.fetchCampaignInfo();
   }
 
@@ -50,6 +50,7 @@ class AnalyticsContainer extends Component {
       document.documentElement.classList.toggle('nav-open');
     }
   }
+
   handleProfileBack = () => {
     this.setState({usersList: []});
   }
@@ -158,7 +159,7 @@ class AnalyticsContainer extends Component {
         let visitor = 0;
         website.uniqueUsers && website.uniqueUsers.aggregations ?
           website.uniqueUsers.aggregations.users.buckets.map(bucket => {
-            visitor = visitor + bucket.visitors.sum_other_doc_count;
+            visitor = visitor + bucket.visitors.sum_other_doc_count + bucket.visitors.buckets.length;
           })
           :
           visitor = 0;
