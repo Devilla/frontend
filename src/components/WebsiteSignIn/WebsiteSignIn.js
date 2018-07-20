@@ -93,11 +93,6 @@ class WebsiteSignIn extends Component {
     });
   };
 
-  componentDidMount() {
-    let scrollElm = document.scrollingElement;
-    scrollElm.scrollTop = 0;
-  }
-
   render() {
     const mousepoint = {
       cursor: 'pointer'
@@ -122,7 +117,7 @@ class WebsiteSignIn extends Component {
                     <div className="align">
 
                       <p className="lead">
-                        <span className="sub-in-title">Don't have an account yet?&nbsp;
+                        <span className="sub-in-title">Dont have an account yet?&nbsp;
                           <Link to="/signup">Sign up</Link>
                         </span>
                       </p>
@@ -134,7 +129,9 @@ class WebsiteSignIn extends Component {
                         </Alert>
                           }
                           <div className="col-md-9 col-sm-8 ">
-                            <input name="email"
+                            <input
+                            id="email"
+                             name="email"
                               ref="email"
                               className="field w-input"
                               onBlur={this.handleEmailBlur}
@@ -147,7 +144,9 @@ class WebsiteSignIn extends Component {
                             </HelpBlock>
                           </div>
                           <div className="col-md-9 col-sm-8">
-                            <input type="password"
+                            <input
+                            id="password"
+                             type="password"
                               name="Password"
                               className="field w-input "
                               name="password"
