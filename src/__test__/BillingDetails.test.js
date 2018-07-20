@@ -43,4 +43,4 @@ describe('BillingDetails', ()=> {
     //  expect(wrapper.state('password')).toEqual('cats');
     // })
 
-})
+});
