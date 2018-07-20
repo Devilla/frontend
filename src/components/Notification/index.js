@@ -17,7 +17,11 @@ class Notification extends Component {
       notifications: [],
       index: '',
       campaign: '',
-      hidepop:  false
+      hidepop:  false,
+      modaltitle: 'Are you sure you want to delete this campaign?',
+      modalbody: 'Alert ! These may delete all your customer activities .',
+      modalfoot: 'Delete' ,
+      modalname: '1'
     };
   }
 
@@ -30,23 +34,12 @@ class Notification extends Component {
 
   handleActiveChange(active, campaign) {
     if (active && this.props.profile.uniqueVisitorsQoutaLeft <= 0) {
-      return Popup.create({
-        title: 'Limit exceeded',
-        content:
-          <div className="popup-notification-div">
-            <h6>Please, upgrade your plan to continue.</h6>
-          </div>,
-        buttons: {
-          right: [{
-            text: 'Upgrade Plan',
-            className: 'primary popup-notification-button',
-            action: function () {
-              browserHistory.push('/upgrade');
-              Popup.close();
-            }
-          }]
-        }
-      }, true);
+      this.setState({
+        modaltitle: 'Limit exceeded',
+        modalbody: 'Please upgarde your plan to continue',
+        modalfoot: 'Upgrade Plan',
+        modalname: '2'
+      })
     } else {
       campaign['isActive'] = active;
       delete campaign['_id'];
@@ -66,7 +59,11 @@ class Notification extends Component {
 
   deleteCampaign = (indexes, campaigns,e) => {
     this.setState( (prevState) => {
-      return { deleteCampaign : !prevState.deleteCampaign, index: indexes, campaign : campaigns };
+      return { 
+        deleteCampaign : !prevState.deleteCampaign, 
+        index: indexes, 
+        campaign : campaigns
+       };
     });
   }
 
@@ -85,12 +82,12 @@ class Notification extends Component {
         <td>{campaign.websiteUrl}</td>
         <td className="switch">
           <input className="tgl tgl-ios" id="cb2" type="checkbox" checked={campaign.isActive}  readOnly/>
-          <label className="tgl-btn" htmlFor="cb2" onClick={(e) => this.handleActiveChange(!campaign.isActive, campaign)}></label>
+          <label className="tgl-btn" htmlFor="cb2"  data-toggle="modal" data-target="#2"  onClick={(e) => this.handleActiveChange(!campaign.isActive, campaign)}></label>
         </td>
         <td className='text-center'>7</td>
         <td>{campaign.trackingId}</td>
         <td>{moment(campaign.updatedAt).format('MM/DD/YYYY')}</td>
-        <td><a href="javascript:;"><i className="ml-3 icon-trash" data-toggle="modal" data-target="#myModal"  onClick={(e) => this.deleteCampaign(i,campaign,e)}></i></a></td>
+        <td><a href="javascript:;"><i className="ml-3 icon-trash" data-toggle="modal" data-target="#1"  onClick={(e) => this.deleteCampaign(i,campaign,e)}></i></a></td>
       </tr>
     ))
       :
@@ -98,6 +95,7 @@ class Notification extends Component {
   }
 
   render() {
+    const { modalbody, modalfoot, modaltitle , modalname} = this.state;
     return (
       <div className="manage-notification">
         <div className="card-box">
@@ -118,19 +116,20 @@ class Notification extends Component {
               {this.getNotificationRows()}
             </tbody>
           </table>
-          <div className="modal fade show-modal" id="myModal" role="dialog">
+          <div className="modal fade show-modal" id={modalname} role="dialog">
             <div className="modal-dialog">
               <div className="modal-content align-modal">
                 <div className="modal-header">
                   <button type="button" className="close" data-dismiss="modal">&times;</button>
-                  <h4 className="modal-title">Are you sure you want to delete this campaign?</h4>
+                  <h4 className="modal-title">{modaltitle}</h4>
                 </div>
                 <div className="modal-body pb-5">
-                        Alert ! These may delete all your customer activities .
+                      {modalbody}
                 </div>
                 <div className="modal-footer">
                   <button type="button" className="float-left btn btn-primary close-btn" data-dismiss="modal">Close</button>
-                  <button type="button" className="btn btn-primary delete-btn" data-dismiss="modal" onClick={this.deletepopupContent} >Delete</button>
+                  <button type="button" className="btn btn-primary delete-btn" data-dismiss="modal" 
+                    onClick={modalfoot === 'Upgrade Plan' ? () => browserHistory.push('/upgrade') : this.deletepopupContent} >{modalfoot}</button>
                 </div>
               </div>
             </div>
