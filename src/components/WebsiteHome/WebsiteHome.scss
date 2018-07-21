@@ -39,13 +39,13 @@
             color: #999;
             top: 10px;
             position: relative;
-            margin: 0 auto;
-            right: 100px;
+            margin: 70px auto !important;
+            right:20px;
           
             max-width: 400px;
        
             span {
-                font-size: 20px !important;
+                // font-size: 20px !important;
                 color: rgb(67, 67, 67);
             }
         }
