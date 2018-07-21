@@ -9,7 +9,6 @@ import './Dashboard.scss';
 import Card from './Card';
 import ReactChartJs from 'react-chartjs';
 import 'react-datepicker/dist/react-datepicker.css';
-import { countryVisitors } from 'ducks/elastic';
 
 var LineChart = ReactChartJs.Line;
 let moment = extendMoment(Moment);
@@ -18,6 +17,7 @@ class Dashboard extends Component {
   constructor() {
     super();
     this.state = {
+      userCount: 0,
       render: false,
       arrs: [],
       daysClicked: '',
@@ -26,15 +26,10 @@ class Dashboard extends Component {
     };
     this.handleRouteChange = this.handleRouteChange.bind(this);
   }
-  componentWillReceiveProps() {
-    this.props.fetchCampaignInfo();
-  }
 
   componentWillMount() {
     this.props.fetchCampaignInfo();
     this.props.fetchCampaign();
-    let response =  this.props.countryVisitors();
-    console.log(response);
   }
 
   createLegend(json) {
@@ -69,7 +64,7 @@ class Dashboard extends Component {
       this.props.campaignInfo.uniqueUsers.map(user => {
         (user && user.aggregations) ? user.aggregations.users.buckets.map(bucket => {
           dataContent['label'] = Moment(bucket.key_as_string).format('LL');
-          dataContent['data'][Moment(bucket.key_as_string).day()] = bucket.visitors.sum_other_doc_count;
+          dataContent['data'][Moment(bucket.key_as_string).day()] = bucket.visitors.sum_other_doc_count + bucket.visitors.buckets.length;
         }) : '';
         dataSet.push(dataContent);
       });
@@ -178,11 +173,22 @@ class Dashboard extends Component {
     });
   }
 
-
+  usersCount() {
+    let userCount = 0;
+    if(this.props.campaignInfo && this.props.campaignInfo.uniqueUsers.length) {
+      this.props.campaignInfo.uniqueUsers.map(user => {
+        (user && user.aggregations) ? user.aggregations.users.buckets.map(bucket => {
+          userCount = userCount + bucket.visitors.sum_other_doc_count + bucket.visitors.buckets.length;
+        }) : 0;
+      });
+      return userCount;
+    } else
+      return userCount;
+  }
 
   render() {
-    const { campaignInfo, profile } = this.props;
-
+    const { campaignInfo } = this.props;
+    const userCount = this.usersCount();
     var chartData = {
       labels:   this.getDays(),
       datasets: this.getDataset()
@@ -281,8 +287,8 @@ class Dashboard extends Component {
                         )}
                         {this.renderCardBox(
                           <div className=" widget-flat card-box  text-muted pb-5 pt-2 pos-vertical-center c2" onClick={()=> browserHistory.push('/analytics')}>
-                            <p className="text-uppercase title m-b-5 fonttitle font-600 mincard-ht">Unique Visitors</p>
-                            <h3 className="m-b-10 profile">{profile? Number(profile.uniqueVisitors) :0 }</h3>
+                            <p className="text-uppercase title m-b-5 fonttitle font-600">Unique Visitors</p>
+                            <h3 className="m-b-10 profile">{userCount? Number(userCount) :0 }</h3>
                           </div>
                         )}
 
@@ -294,8 +300,8 @@ class Dashboard extends Component {
                         )}
                         {this.renderCardBox(
                           <div className=" widget-flat card-box  text-muted pb-5 pt-2 pos-vertical-center c2" onClick={()=> browserHistory.push('/analytics')}>
-                            <p className="text-uppercase title m-b-5 fonttitle font-600 mincard-ht">Conversion &nbsp; %</p>
-                            <h3 className="m-b-10 notify">{(profile && userSignUps/visitor)*100 ? Math.floor((userSignUps/visitor)*100) : 0}</h3>
+                            <p className="text-uppercase title m-b-5 fonttitle font-600">Conversion &nbsp; %</p>
+                            <h3 className="m-b-10 notify">{userCount && (userSignUps/userCount)*100 ? ((userSignUps/userCount)*100).toFixed(2) : 0}</h3>
                           </div>
                         )}
                       </Row>
@@ -338,8 +344,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = {
   successCampaign,
   fetchCampaignInfo,
-  fetchCampaign,
-  countryVisitors
+  fetchCampaign
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

@@ -26,8 +26,6 @@ const WebsiteCheckout = ({ selectedPlan, clearSelectedPlan, coupon, couponDetail
                   />
                 </div>
               </div>
-              {/* <div className="vristrue ml-5">
-              </div> */}
             </div>
           </div>
         </section>
