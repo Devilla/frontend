@@ -45,6 +45,7 @@
     "lodash": "^4.17.5",
     "moment": "^2.22.0",
     "moment-range": "^4.0.1",
+    "nightwatch": "^0.9.21",
     "node-sass-chokidar": "0.0.3",
     "object-assign": "4.1.1",
     "otp-client": "^0.0.1",
@@ -116,7 +117,7 @@
     "start:production": "npm run build && npm run start:prod",
     "start:prod": "NODE_ENV=production node server",
     "build": "node scripts/build.js",
-    "test": "jest"
+    "test": ""
   },
   "devDependencies": {
     "babel-core": "^6.26.0",

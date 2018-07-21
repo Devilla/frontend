@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="0"
+            failures="1"
+            tests="1">
+
+  <testsuite name="demo"
+    errors="0" failures="1" hostname="" id="" package="demo" skipped="0"
+    tests="1" time="6.544" timestamp="Sat, 21 Jul 2018 15:42:08 GMT">
+  
+    <testcase name="Demo test Google" classname="demo" time="6.544" assertions="4">
+
+    
+
+    
+
+      <failure message="Timed out while waiting for element &lt;button[name=btnG]&gt; to be visible for 1000 milliseconds.">    at Object.Demo test Google (/home/devilla/frontend/tests/demo.js:9:8)
+    at _combinedTickCallback (internal/process/next_tick.js:131:7)</failure>
+
+    
+    </testcase>
+  
+
+  
+
+  
+  </testsuite>
+</testsuites>
