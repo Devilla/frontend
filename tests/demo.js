@@ -1,16 +1,16 @@
 module.exports = {
-  'Demo test Google' : function (client) {
+  'login test Influence' : function (client) {
     client
-      .url('http://www.google.com')
+      .url('https://useinfluence.co/login')
       .waitForElementVisible('body', 1000)
-      .assert.title('Google')
-      .assert.visible('input[type=text]')
-      .setValue('input[type=text]', 'rembrandt van rijn')
-      .waitForElementVisible('button[name=btnG]', 1000)
-      .click('button[name=btnG]')
-      .pause(1000)
-      .assert.containsText('ol#rso li:first-child',
-        'Rembrandt - Wikipedia')
+      .assert.title('Influence: Increase Your Website Conversions Using Influence')
+      .assert.visible('input[type=email]')
+      .setValue('input[type=email]', 'devinair@gmail.com')
+      .assert.visible('input[type=password]')
+      .setValue('input[type=password]', '12345')
+      .waitForElementVisible('input[type=submit]', 10000)
+      .click('input[type=submit]')
+      .pause(10000)
       .end();
   }
 };
