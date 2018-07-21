@@ -27,7 +27,6 @@ class UpgradeCard extends Component {
   }
 
   componentWillMount() {
-    window.scrollTo(0, 0);
     if(this.props.location && this.props.location.query.type == 'upgrade')
       this.setState({currentState: 'upgrade'});
     else

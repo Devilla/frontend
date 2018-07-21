@@ -130,8 +130,8 @@ class WebsiteSignIn extends Component {
                           }
                           <div className="col-md-9 col-sm-8 ">
                             <input
-                            id="email"
-                             name="email"
+                              id="email"
+                              name="email"
                               ref="email"
                               className="field w-input"
                               onBlur={this.handleEmailBlur}
@@ -145,8 +145,8 @@ class WebsiteSignIn extends Component {
                           </div>
                           <div className="col-md-9 col-sm-8">
                             <input
-                            id="password"
-                             type="password"
+                              id="password"
+                              type="password"
                               name="Password"
                               className="field w-input "
                               name="password"

@@ -144,7 +144,7 @@ class WebsiteSignUp extends Component {
                                 </Alert>
                               }
                               <input
-                              id="email"
+                                id="email"
                                 name='email'
                                 value={email}
                                 onBlur={this.handleEmailBlur}
@@ -157,7 +157,7 @@ class WebsiteSignUp extends Component {
                             </div>
                             <div className='col-md-9 col-sm-8'>
                               <input
-                              id='password'
+                                id='password'
                                 name='password'
                                 maxLength={PASSWORD_MAX_LENGTH}
                                 onBlur={this.handlePasswordBlur}
