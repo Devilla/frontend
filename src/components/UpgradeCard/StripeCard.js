@@ -118,8 +118,8 @@ class StripeCard extends Component {
             {currentState !== 'upgrade' ?
               <div className="auth-divider">
                 <div className="line-divider"></div>
-                <h1>Or</h1>
-                <span className="btn btn-primary ml-2 changeplan-btn " onClick={() => this.props.goback(true)} >Choose Another Plan</span>
+                <h1 className="pt-1">Or</h1>
+                <span className="btn btn-primary ml-2 changeplan-btn mb-3" onClick={() => this.props.goback(true)} >Choose Another Plan</span>
               </div>
               : ' ' }
           </Row>

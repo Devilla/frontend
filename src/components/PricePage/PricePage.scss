@@ -21,10 +21,13 @@
 .pricingTable {
   padding: 0px 0 0;
   background: #dcdbdb;
+  border-radius: 40px !important;
   text-align: center;
   transition: all 0.3s ease 0s;
   position: relative;
+  left: 100;
   top: 0px;
+  width: 200px !important;
   cursor: pointer;
   &:hover {
     animation: boxes 0.1s ease  1 forwards ;
@@ -52,6 +55,8 @@
     padding: 60px 0 30px;
     z-index: 1;
     position: relative;
+    border-bottom-left-radius: 10px !important;
+    border-bottom-right-radius: 10px !important;
     background: rgb(245, 245, 245);
     ul {
       padding: 0;
@@ -68,8 +73,14 @@
     }
   }
 }
+
+.font-desc {
+  font-size: 13px !important;
+}
 .pricing-header {
-  padding-bottom: 20px !important;
+  padding-bottom: 10px !important;
+  border-top-left-radius: 10px !important;
+  border-top-right-radius: 10px !important;
 }
   .twomonths {
     background: rgb(245, 245, 245) !important;
@@ -81,6 +92,8 @@
 
 .makebx {
   box-shadow: 0px 6px 20px -6px rgba(5, 63, 252, 0.563) !important;
+  border-bottom-right-radius: 20px !important;
+  border-bottom-left-radius: 20px !important;
 }
 
 

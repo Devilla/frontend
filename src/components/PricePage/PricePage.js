@@ -48,12 +48,12 @@ const PricePage = ({
         <div className="pricingTable" onClick={handleMonthChange}>
           <div className="price_card text-center"  className={selectedPlan.id === plan.id ? 'makebx' : ''} onClick={() => handleCheckChange(true, plan)}>
             <div className="pricing-header bg-primary">
-              <span className="price">${plan.interval === 'month' ? plan.amount / 100 : '' }</span>
+              <span className="price pt-3">${plan.interval === 'month' ? plan.amount / 100 : '' }</span>
               <span className="name">{filterPlanName(plan.name)}</span>
             </div>
-            <div className="pricing-content pt-4">
+            <div className="pricing-content pt-4 pb-2">
               <ul className="price-features">
-                <li><div dangerouslySetInnerHTML={{ __html:  plan.details }} /></li>
+                <li><div className="font-desc" dangerouslySetInnerHTML={{ __html:  plan.details }} /></li>
               </ul>
 
             </div>
@@ -68,12 +68,12 @@ const PricePage = ({
         <div className="pricingTable"  onClick={handleYearChange}>
           <div className="price_card text-center"  className={selectedPlan.id === plan.id ? 'makebx' : ''} onClick={() => handleCheckChange(true, plan)}>
             <div className="pricing-header bg-primary">
-              <span className="price">${plan.interval === 'year' ? plan.amount / 100 :  ''}</span>
+              <span className="price pt-3">${plan.interval === 'year' ? plan.amount / 100 :  ''}</span>
               <span className="name">{filterPlanName(plan.name)}</span>
             </div>
-            <div className="pricing-content pt-4">
+            <div className="pricing-content pt-4 pb-2">
               <ul className="price-features">
-                <li><div dangerouslySetInnerHTML={{ __html:  plan.details }} /></li>
+                <li><div  className="font-desc" dangerouslySetInnerHTML={{ __html:  plan.details }} /></li>
               </ul>
 
         
@@ -87,7 +87,7 @@ const PricePage = ({
 
   return (
     <div style={{ width: '100%' }}>
-      <div className="price">
+      <div className="price pt-2">
         <div className="pricing-row w-row" style={{ width: '100%' }}>
           <div className="w-col">
             <span className={!externalValue
