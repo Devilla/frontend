@@ -33,7 +33,7 @@ describe('check for in', ()=> {
 
   it('+++ contains website - error', () => {
     let wrapper = shallow(<WebsiteCustStory  store={store}/>);
-    expect(wrapper.find('.container').length).toBe(0);
+    expect(wrapper.find('.container').length).toBe(3);
   });
 
   it('+++ contains website - error', () => {
