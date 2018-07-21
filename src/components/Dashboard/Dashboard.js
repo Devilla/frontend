@@ -273,33 +273,33 @@ class Dashboard extends Component {
                       <Row className="account-stats">
 
                         {this.renderCardBox(
-                          <div className=" widget-flat card-box  text-muted pb-5 pt-2 pos-vertical-center c2 card-1">
-                            <p className="text-uppercase title m-b-5 fonttitle font-600">Active Campaign</p>
+                          <div className=" widget-flat card-box  text-muted pb-5 pt-2 pos-vertical-center c2" onClick={()=> browserHistory.push('/analytics')}>
+                            <p className="text-uppercase title m-b-5 fonttitle font-600 mincard-ht">Active Campaign</p>
                             <h3 className="m-b-10 campaign">{campaignInfo? campaignInfo.websiteLive.length : []}</h3>
 
                           </div>
                         )}
                         {this.renderCardBox(
-                          <div className=" widget-flat card-box  text-muted pb-5 pt-2 pos-vertical-center c2">
+                          <div className=" widget-flat card-box  text-muted pb-5 pt-2 pos-vertical-center c2" onClick={()=> browserHistory.push('/analytics')}>
                             <p className="text-uppercase title m-b-5 fonttitle font-600">Total Visitors</p>
                             <h3 className="m-b-10 campaign">{totalUsers?totalUsers:0}</h3>
                           </div>
                         )}
                         {this.renderCardBox(
-                          <div className=" widget-flat card-box  text-muted pb-5 pt-2 pos-vertical-center c2">
+                          <div className=" widget-flat card-box  text-muted pb-5 pt-2 pos-vertical-center c2" onClick={()=> browserHistory.push('/analytics')}>
                             <p className="text-uppercase title m-b-5 fonttitle font-600">Unique Visitors</p>
                             <h3 className="m-b-10 profile">{userCount? Number(userCount) :0 }</h3>
                           </div>
                         )}
 
                         {this.renderCardBox(
-                          <div className=" widget-flat card-box  text-muted pb-5 pt-2 pos-vertical-center c2">
-                            <p className="text-uppercase title m-b-5 fonttitle font-600">Total &nbsp; Signups</p>
+                          <div className=" widget-flat card-box  text-muted pb-5 pt-2 pos-vertical-center c2" onClick={()=> browserHistory.push('/analytics')}>
+                            <p className="text-uppercase title m-b-5 fonttitle font-600 mincard-ht">Total &nbsp; Signups</p>
                             <h3 className="m-b-10 usersignup">{userSignUps}</h3>
                           </div>
                         )}
                         {this.renderCardBox(
-                          <div className=" widget-flat card-box  text-muted pb-5 pt-2 pos-vertical-center c2">
+                          <div className=" widget-flat card-box  text-muted pb-5 pt-2 pos-vertical-center c2" onClick={()=> browserHistory.push('/analytics')}>
                             <p className="text-uppercase title m-b-5 fonttitle font-600">Conversion &nbsp; %</p>
                             <h3 className="m-b-10 notify">{userCount && (userSignUps/userCount)*100 ? ((userSignUps/userCount)*100).toFixed(2) : 0}</h3>
                           </div>

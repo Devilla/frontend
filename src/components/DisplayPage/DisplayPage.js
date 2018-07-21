@@ -159,7 +159,7 @@ class DisplayPage extends Component {
               <Col md={11}>
                 <div className="ml-5 pl-4 input-group col-md-8">
                   <label className="pt-2 pl-1 pr-3 text-muted">{this.props.campaign
-                    ? this.props.campaign.websiteUrl
+                    ? 'http://'+this.props.campaign.websiteUrl
                     : 'http://localhost:3000'}/</label>
                   <input type="text"
                     className="form-control txtpageurl"
