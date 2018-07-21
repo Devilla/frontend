@@ -144,7 +144,7 @@ class Dashboard extends Component {
   }
 
   renderCardBox = (content) => {
-    return <div className="col-sm-12 col-lg-6 col-xl-3 box pr-0 cards">
+    return <div className="col-sm-12 col-lg-6 col-xl-2 box cards">
       <div>
         <div className="text-center mt-4 mb-4">
           <div className="col-md-10 h-50 card-content-width">
@@ -174,21 +174,22 @@ class Dashboard extends Component {
   }
 
   usersCount() {
-    let userCount = 0;
+    let userCount = 0, totalUsers = 0;
     if(this.props.campaignInfo && this.props.campaignInfo.uniqueUsers.length) {
       this.props.campaignInfo.uniqueUsers.map(user => {
         (user && user.aggregations) ? user.aggregations.users.buckets.map(bucket => {
           userCount = userCount + bucket.visitors.sum_other_doc_count + bucket.visitors.buckets.length;
         }) : 0;
+        (user && user.hits) ? totalUsers = totalUsers + user.hits.total : 0;
       });
-      return userCount;
+      return {userCount: userCount, totalUsers: totalUsers};
     } else
-      return userCount;
+      return {userCount: userCount, totalUsers: totalUsers};
   }
 
   render() {
     const { campaignInfo } = this.props;
-    const userCount = this.usersCount();
+    const { userCount, totalUsers } = this.usersCount();
     var chartData = {
       labels:   this.getDays(),
       datasets: this.getDataset()
@@ -243,15 +244,24 @@ class Dashboard extends Component {
     };
 
     let userSignUps = 0;
+    let visitor = 0;
 
     if(campaignInfo) {
-      campaignInfo.websiteLive.map(website => {
+      campaignInfo.websiteLive.map((website) => {
+
+        website.uniqueUsers && website.uniqueUsers.aggregations &&
+          website.uniqueUsers.aggregations.users.buckets.map((bucket) => {
+            visitor = visitor + bucket.visitors.sum_other_doc_count;
+          });
+
         let users = website.signups && website.signups.userDetails?website.signups.userDetails.length:0;
         userSignUps = userSignUps + users;
+
       });
     }
 
     return (
+
       <div className="content">
         <div className="container-fluid">
           <Row className="dashboard-boxes">
@@ -261,29 +271,37 @@ class Dashboard extends Component {
                   <Col md={12}>
                     <div className="card-box pb-0 mb-0 cardbox1">
                       <Row className="account-stats">
+
                         {this.renderCardBox(
-                          <div className=" widget-flat card-box  text-muted pr-4 pl-4 pb-5 pt-2 pos-vertical-center c2">
-                            <p className="text-uppercase title m-b-5 fonttitle font-600">Active Campaigns</p>
+                          <div className=" widget-flat card-box  text-muted pb-5 pt-2 pos-vertical-center c2" onClick={()=> browserHistory.push('/analytics')}>
+                            <p className="text-uppercase title m-b-5 fonttitle font-600 mincard-ht">Active Campaign</p>
                             <h3 className="m-b-10 campaign">{campaignInfo? campaignInfo.websiteLive.length : []}</h3>
 
                           </div>
                         )}
                         {this.renderCardBox(
-                          <div className=" widget-flat card-box  text-muted pr-4 pl-4 pb-5 pt-2 pos-vertical-center c2">
+                          <div className=" widget-flat card-box  text-muted pb-5 pt-2 pos-vertical-center c2" onClick={()=> browserHistory.push('/analytics')}>
+                            <p className="text-uppercase title m-b-5 fonttitle font-600">Total Visitors</p>
+                            <h3 className="m-b-10 campaign">{totalUsers?totalUsers:0}</h3>
+                          </div>
+                        )}
+                        {this.renderCardBox(
+                          <div className=" widget-flat card-box  text-muted pb-5 pt-2 pos-vertical-center c2" onClick={()=> browserHistory.push('/analytics')}>
                             <p className="text-uppercase title m-b-5 fonttitle font-600">Unique Visitors</p>
                             <h3 className="m-b-10 profile">{userCount? Number(userCount) :0 }</h3>
                           </div>
                         )}
+
                         {this.renderCardBox(
-                          <div className=" widget-flat card-box  text-muted pr-4 pl-4 pb-5 pt-2 pos-vertical-center c2">
-                            <p className="text-uppercase title m-b-5 fonttitle font-600">Conversion %</p>
-                            <h3 className="m-b-10 notify">{userCount && (userSignUps/userCount)*100 ? ((userSignUps/userCount)*100).toFixed(2) : 0}</h3>
+                          <div className=" widget-flat card-box  text-muted pb-5 pt-2 pos-vertical-center c2" onClick={()=> browserHistory.push('/analytics')}>
+                            <p className="text-uppercase title m-b-5 fonttitle font-600 mincard-ht">Total &nbsp; Signups</p>
+                            <h3 className="m-b-10 usersignup">{userSignUps}</h3>
                           </div>
                         )}
                         {this.renderCardBox(
-                          <div className=" widget-flat card-box  text-muted pr-4 pl-4 pb-5 pt-2 pos-vertical-center c2">
-                            <p className="text-uppercase title m-b-5 fonttitle font-600">Total Signups</p>
-                            <h3 className="m-b-10 usersignup">{userSignUps}</h3>
+                          <div className=" widget-flat card-box  text-muted pb-5 pt-2 pos-vertical-center c2" onClick={()=> browserHistory.push('/analytics')}>
+                            <p className="text-uppercase title m-b-5 fonttitle font-600">Conversion &nbsp; %</p>
+                            <h3 className="m-b-10 notify">{userCount && (userSignUps/userCount)*100 ? ((userSignUps/userCount)*100).toFixed(2) : 0}</h3>
                           </div>
                         )}
                       </Row>

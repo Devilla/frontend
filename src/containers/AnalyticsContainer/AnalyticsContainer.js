@@ -164,7 +164,7 @@ class AnalyticsContainer extends Component {
           :
           visitor = 0;
 
-        const userDetails = website.signups?website.signups.userDetails:[];
+        const userDetails = website.signups && website.signups.userDetails ?website.signups.userDetails:[];
         const uniqueUsers = website.uniqueUsers && website.uniqueUsers.aggregations ?website.uniqueUsers.aggregations.users.buckets:[];
         return <tr className="table-active analytics-tr" key={index}>
           <th scope="row">{index + 1}</th>
