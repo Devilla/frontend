@@ -267,34 +267,34 @@ class Dashboard extends Component {
                       <Row className="account-stats">
 
                         {this.renderCardBox(
-                          <div className=" widget-flat card-box  text-muted pb-5 pt-2 pos-vertical-center c2 card-1">
-                            <p className="text-uppercase title m-b-5 fonttitle font-600">Active Campaign</p>
+                          <div className=" widget-flat card-box  text-muted pb-5 pt-2 pos-vertical-center c2">
+                            <p className="text-uppercase title m-b-5 fonttitle font-600 mincard-ht">Active Campaign</p>
                             <h3 className="m-b-10 campaign">{campaignInfo? campaignInfo.websiteLive.length : []}</h3>
 
                           </div>
                         )}
                         {this.renderCardBox(
                           <div className=" widget-flat card-box  text-muted pb-5 pt-2 pos-vertical-center c2">
-                            <p className="text-uppercase title m-b-5 fonttitle font-600">Total Visitors</p>
+                            <p className="text-uppercase title m-b-5 fonttitle font-600 mincard-ht">Total Visitors</p>
                             <h3 className="m-b-10 campaign">{visitor}</h3>
                           </div>
                         )}
                         {this.renderCardBox(
                           <div className=" widget-flat card-box  text-muted pb-5 pt-2 pos-vertical-center c2">
-                            <p className="text-uppercase title m-b-5 fonttitle font-600">Unique Visitors</p>
+                            <p className="text-uppercase title m-b-5 fonttitle font-600 mincard-ht">Unique Visitors</p>
                             <h3 className="m-b-10 profile">{profile? Number(profile.uniqueVisitors) :0 }</h3>
                           </div>
                         )}
 
                         {this.renderCardBox(
                           <div className=" widget-flat card-box  text-muted pb-5 pt-2 pos-vertical-center c2">
-                            <p className="text-uppercase title m-b-5 fonttitle font-600">Total &nbsp; Signups</p>
+                            <p className="text-uppercase title m-b-5 fonttitle font-600 mincard-ht">Total &nbsp; Signups</p>
                             <h3 className="m-b-10 usersignup">{userSignUps}</h3>
                           </div>
                         )}
                         {this.renderCardBox(
                           <div className=" widget-flat card-box  text-muted pb-5 pt-2 pos-vertical-center c2">
-                            <p className="text-uppercase title m-b-5 fonttitle font-600">Conversion &nbsp; %</p>
+                            <p className="text-uppercase title m-b-5 fonttitle font-600 mincard-ht">Conversion &nbsp; %</p>
                             <h3 className="m-b-10 notify">{(profile && userSignUps/visitor)*100 ? Math.floor((userSignUps/visitor)*100) : 0}</h3>
                           </div>
                         )}
