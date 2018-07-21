@@ -105,11 +105,6 @@ class UpgradeCard extends Component {
                               <i className="fi-layers mr-2"></i> Bitcoin
                             </a>
                           </li>
-                          <li className="nav-item waves-effect">
-                            <a data-toggle="tab" aria-expanded="false" className={`nav-link ${activeClass == 100?'active pb-3 pt-3':'pb-3 pt-3'}`} onClick={() => this.setActiveState(1)}>
-                              <i className="fi-layers mr-2"></i> Saved card
-                            </a>
-                          </li>
                         </ul>
                         <div className="tab-content">
                           <div className={`tab-pane ${activeClass == 1?'show active':''}`} id="credit">
@@ -213,27 +208,6 @@ class UpgradeCard extends Component {
                                 <Button type='button' icon='chevron-left' bsStyle='primary' className='backpay-btn' fill={true} onClick={() => browserHistory.push(currentState === 'upgrade' ? '/billing-details' : '/profile')}><i className="icon-arrow-left pr-2"></i>Back&nbsp;&nbsp;</Button>
                               </div>
 
-                            </Row>
-                          </div>
-                          <div className={`tab-pane ${activeClass == 5?'show active':''}`} id="savedcards">
-                            <Row className="visa">
-                              <div className="col-md-6 tab-name mb-5 text-muted">
-                                    Saved Cards
-                              </div>
-                            </Row>
-                            <Row className="visa">
-                              <div className="col-md-4">
-                                <FormGroup>
-                                  <FormControl
-                                    type="text"
-                                    value=""
-                                    placeholder="4*** **** **** 2006"
-                                    id="VisaNumber"
-                                    onChange={(e) => this.handleStateChange(e)}
-                                    disabled
-                                  />
-                                </FormGroup>
-                              </div>
                             </Row>
                           </div>
                         </div>

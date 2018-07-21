@@ -115,12 +115,13 @@ class StripeCard extends Component {
               <Button type='submit' icon='usd' bsStyle='primary' className='cardpay-btn'  fill={true} >{currentState === 'upgrade' ? 'Update Card' : 'Make Payment'}</Button>
             </div>
          
-            <div className="auth-divider">
-              <div className="line-divider"></div>
-              <h1>Or</h1>
-              <span className="btn btn-primary ml-2 changeplan-btn " onClick={() => this.props.goback(true)} >Change Plan</span>
-            
-            </div>
+            {currentState !== 'upgrade' ?
+              <div className="auth-divider">
+                <div className="line-divider"></div>
+                <h1>Or</h1>
+                <span className="btn btn-primary ml-2 changeplan-btn " onClick={() => this.props.goback(true)} >Choose Another Plan</span>
+              </div>
+              : ' ' }
           </Row>
         </form>
       </div>
