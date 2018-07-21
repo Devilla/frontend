@@ -174,21 +174,22 @@ class Dashboard extends Component {
   }
 
   usersCount() {
-    let userCount = 0;
+    let userCount = 0, totalUsers = 0;
     if(this.props.campaignInfo && this.props.campaignInfo.uniqueUsers.length) {
       this.props.campaignInfo.uniqueUsers.map(user => {
         (user && user.aggregations) ? user.aggregations.users.buckets.map(bucket => {
           userCount = userCount + bucket.visitors.sum_other_doc_count + bucket.visitors.buckets.length;
         }) : 0;
+        (user && user.hits) ? totalUsers = totalUsers + user.hits.total : 0;
       });
-      return userCount;
+      return {userCount: userCount, totalUsers: totalUsers};
     } else
-      return userCount;
+      return {userCount: userCount, totalUsers: totalUsers};
   }
 
   render() {
     const { campaignInfo } = this.props;
-    const userCount = this.usersCount();
+    const { userCount, totalUsers } = this.usersCount();
     var chartData = {
       labels:   this.getDays(),
       datasets: this.getDataset()
@@ -282,7 +283,7 @@ class Dashboard extends Component {
                         {this.renderCardBox(
                           <div className=" widget-flat card-box  text-muted pb-5 pt-2 pos-vertical-center c2">
                             <p className="text-uppercase title m-b-5 fonttitle font-600">Total Visitors</p>
-                            <h3 className="m-b-10 campaign">{visitor}</h3>
+                            <h3 className="m-b-10 campaign">{totalUsers?totalUsers:0}</h3>
                           </div>
                         )}
                         {this.renderCardBox(
