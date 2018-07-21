@@ -20,10 +20,29 @@ describe("+++ test for the privacy policy component", () => {
     beforeEach ( () => {
          wrapper = shallow(<WebsitePolicy store={store}/>);
     })
-    
-    
+
+
     it('+++ render the DUMB component', () => {
       expect(wrapper.length).toEqual(1)
       })
-})
 
+      it('+++ contains website - error', () => {
+        let wrapper = shallow(<WebsitePolicy  store={store}/>);
+        expect(wrapper.find('.website-error').length).toBe(0);
+      });
+
+      it('+++ contains website - input', () => {
+        let wrapper = shallow(<WebsitePolicy  store={store}/>);
+        expect(wrapper.find('input').length).toBe(0);
+      });
+
+      it('+++ contains website - image', () => {
+        let wrapper = shallow(<WebsitePolicy  store={store}/>);
+        expect(wrapper.find('img').length).toBe(0);
+      });
+
+      it('+++ contains website - button', () => {
+        let wrapper = shallow(<WebsitePolicy  store={store}/>);
+        expect(wrapper.find('button').length).toBe(1);
+      });
+})
