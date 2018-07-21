@@ -17,10 +17,6 @@ class Channel extends Component  {
     return res;
   }
 
-  componentWillMount() {
-    var scrollElm = document.scrollingElement;
-    scrollElm.scrollTop = 0;
-  }
 
   channels = ['Facebook' , 'Google'];
 

@@ -10,10 +10,6 @@ import './WebsiteFeature.scss';
 
 class WebsiteFeature extends Component {
 
-  componentDidMount() {
-    let scrollElm = document.scrollingElement;
-    scrollElm.scrollTop = 0;
-  }
   render() {
 
     return (

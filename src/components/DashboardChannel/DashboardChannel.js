@@ -44,8 +44,6 @@ class DashboardChannel extends Component {
   }
 
   componentWillMount() {
-    var scrollElm = document.scrollingElement;
-    scrollElm.scrollTop = 0;
     console.log(this.props && this.props);
   }
 

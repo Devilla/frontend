@@ -45,3 +45,5 @@ describe('check for in', ()=> {
     let wrapper = shallow(<WebsiteCustStory  store={store}/>);
     expect(wrapper.find('textarea').length).toBe(0);
   });
+
+  });

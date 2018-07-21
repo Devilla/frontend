@@ -69,10 +69,6 @@ class WebsiteDemoPage extends  Component  {
     this.setState({[target]: value});
   }
 
-  componentDidMount(){
-    var scrollElm = document.scrollingElement;
-    scrollElm.scrollTop = 0;
-  }
 
   componentWillUnmount() {
     this.setState(initialState);
