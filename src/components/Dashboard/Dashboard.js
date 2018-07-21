@@ -254,9 +254,8 @@ class Dashboard extends Component {
             visitor = visitor + bucket.visitors.sum_other_doc_count;
           });
 
-        let users = website.signups && website.signups.userDetails?website.signups.userDetails.length:0;
+        let users = website.signups && website.signups.response && website.signups.response.aggregations?website.signups.response.aggregations.users.buckets.length:0;
         userSignUps = userSignUps + users;
-
 
       });
     }
