@@ -34,6 +34,7 @@ const createOptions = (fontSize, padding) => {
 
 class StripeCard extends Component {
 
+
   handleSubmit = (ev) => {
     ev.preventDefault();
     const { stripe, currentState, updatePaymentMethod, makePayment, plan, user, handleError } = this.props;
@@ -62,7 +63,10 @@ class StripeCard extends Component {
     }
   };
 
+
+
   render() {
+
     const { currentState, fontSize, error } = this.props;
     return (
       <div className="stripe-container">
@@ -107,9 +111,17 @@ class StripeCard extends Component {
             </HelpBlock>
           </Row>
           <Row className='upgrade-card-buttons'>
-            <div className='col-md-6 pull-right mr-2'>
+            <div className='col-md-4  mr-2'>
               <Button type='submit' icon='usd' bsStyle='primary' className='cardpay-btn'  fill={true} >{currentState === 'upgrade' ? 'Update Card' : 'Make Payment'}</Button>
             </div>
+         
+            {currentState !== 'upgrade' ?
+              <div className="auth-divider">
+                <div className="line-divider"></div>
+                <h1 className="pt-1">Or</h1>
+                <span className="btn btn-primary ml-2 changeplan-btn mb-3" onClick={() => this.props.goback(true)} >Choose Another Plan</span>
+              </div>
+              : ' ' }
           </Row>
         </form>
       </div>

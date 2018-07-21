@@ -33,7 +33,6 @@ function* countryVisitors() {
   try {
     yield put(load());
     const res = yield call(api.POSTELASTIC, 'elasticsearch/_msearch', body);
-    console.log(res, 'Saga Response');
     yield put(loaded());
   } catch (error) {
     yield put(loaded());
@@ -46,12 +45,16 @@ export function* watchFetch() {
   yield takeLatest(actions.FETCH, fetch);
 }
 export function* watchCountryVisitors() {
+
   yield takeLatest(actions.COUNTRY_VISITORS, countryVisitors);
+
 }
 
 export default function* rootSaga() {
   yield [
     fork(watchFetch),
+
+
     fork(watchCountryVisitors)
   ];
 }
