@@ -5,8 +5,8 @@
 
 # testing
 /coverage
-__tests__
-/reports/*
+_tests_
+/reports/XMLReports/*
 
 # production
 /build

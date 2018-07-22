@@ -15,7 +15,6 @@ module.exports = {
       .waitForElementVisible('input[type=submit]', 5000)
       .click('input[type=submit]')
       .pause(5000)
-      // .url('https://useinfluence.co/dashboard')
       .waitForElementVisible('body', 1000)
       .assert.title('Influence: Increase Your Website Conversions Using Influence')
       .waitForElementVisible('#sidebar-menu > div > a > button > span', 5000)
@@ -68,14 +67,15 @@ module.exports = {
       .waitForElementVisible('#settings2 > div > div > div > div:nth-child(2) > div.col-md-11 > div > input', 5000)
       .assert.visible('#settings2 > div > div > div > div:nth-child(2) > div.col-md-11 > div > input')
       .setValue('#settings2 > div > div > div > div:nth-child(2) > div.col-md-11 > div > input', '/login')
-      .waitForElementVisible( '#urladd > span', 5000)
-      .click('#urladd > span')
-      .waitForElementVisible( '#settings2 > div > div > div > div.float-right > button', 5000)
-      .click('#settings2 > div > div > div > div.float-right > button')
+      .click('#urladd')
+      .click('span')
+      .pause(5000)
+      .click('#side-menu > li:nth-child(3) > a')
+      .pause(5000)
+      .click('div > div.wrapper > div:nth-child(2) > div > div.content.dashboard-content > div > div > div > table > tbody > tr:nth-child(1) > td:nth-child(4) > a')
+      .pause(5000)
+      .click('#side-menu > li:nth-child(4) > a > span')
       .pause(5000)
       .end();
-  },
-  'Log out from Influence': function (browser) {
-    login(browser).closeLoginPage();
   }
 };
