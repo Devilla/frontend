@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="0"
+            failures="1"
+            tests="2">
+
+  <testsuite name="WebsiteSignup"
+    errors="0" failures="1" hostname="" id="" package="WebsiteSignup" skipped="1"
+    tests="2" time="27.83" timestamp="Sun, 22 Jul 2018 08:20:37 GMT">
+  
+    <testcase name="Go to Signup Influence" classname="WebsiteSignup" time="27.83" assertions="6">
+
+    
+
+    
+
+    
+
+    
+
+      <failure message="Timed out while waiting for element &lt;div &gt; div.basic-gradient-light &gt; div.content &gt; div &gt; div &gt; div &gt; section.text-center.unpad--top.pricerow &gt; div &gt; div &gt; div:nth-child(2) &gt; div &gt; div.btn.btn--primary.col-md-12.text-center.starttrial-btn&gt; to be present for 5000 milliseconds.">    at Object.Go to Signup Influence (/home/ray/Desktop/frontend/frontend/tests/WebsiteSignup.js:18:8)
+    at process._tickCallback (internal/process/next_tick.js:61:11)</failure>
+
+    
+    </testcase>
+  
+
+  
+
+  
+    
+    <testcase
+      name="Log out from Influence" classname="WebsiteSignup">
+      <skipped />
+    </testcase>
+    
+  
+  </testsuite>
+</testsuites>
