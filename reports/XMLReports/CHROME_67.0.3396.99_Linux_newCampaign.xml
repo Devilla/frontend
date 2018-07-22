@@ -5,9 +5,9 @@
 
   <testsuite name="newCampaign"
     errors="0" failures="0" hostname="" id="" package="newCampaign" skipped="0"
-    tests="1" time="69.05" timestamp="Sun, 22 Jul 2018 10:56:17 GMT">
+    tests="1" time="67.06" timestamp="Sun, 22 Jul 2018 11:04:40 GMT">
   
-    <testcase name="campaign test Influence" classname="newCampaign" time="69.05" assertions="32">
+    <testcase name="campaign test Influence" classname="newCampaign" time="67.06" assertions="32">
 
     
 
