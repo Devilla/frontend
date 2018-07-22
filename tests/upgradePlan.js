@@ -2,6 +2,7 @@ var login = require('../pages/loginAndInside');
 
 
 module.exports = {
+  '@tags': ['plan'],
   before: function (browser) {
     login(browser).openBrowser();
   },
@@ -23,6 +24,15 @@ module.exports = {
         this.assert.equal(result.value, "Monthly" || "Yearly");
       })
       .pause(5000)
-      .end()
+  },
+  'card should be clickable ': function (browser) {
+    browser
+      .verify.visible('.pricingTable')
+      .click('.pricingTable')
+      .assert.elementPresent(".makebx")
+      .pause(3000)
+      .end(() => {
+        console.log('The plan gets selected with the corresponding css')
+      });
   }
 };
