@@ -5,9 +5,9 @@
 
   <testsuite name="profile"
     errors="0" failures="0" hostname="" id="" package="profile" skipped="0"
-    tests="6" time="24.49" timestamp="Sun, 22 Jul 2018 10:52:07 GMT">
+    tests="6" time="29.99" timestamp="Sun, 22 Jul 2018 11:24:21 GMT">
   
-    <testcase name="Go to  login influence" classname="profile" time="9.969" assertions="5">
+    <testcase name="Go to  login influence" classname="profile" time="14.83" assertions="5">
 
     
 
@@ -20,12 +20,12 @@
     
     </testcase>
   
-    <testcase name="click on profile dropdown, if exists" classname="profile" time="2.323" assertions="1">
+    <testcase name="click on profile dropdown, if exists" classname="profile" time="2.490" assertions="1">
 
     
     </testcase>
   
-    <testcase name="fill profile details" classname="profile" time="5.442" assertions="9">
+    <testcase name="fill profile details" classname="profile" time="5.810" assertions="9">
 
     
 
@@ -46,15 +46,15 @@
     
     </testcase>
   
-    <testcase name="verify  profile details" classname="profile" time="1.270" assertions="0">
+    <testcase name="verify  profile details" classname="profile" time="1.315" assertions="0">
     </testcase>
   
-    <testcase name="Watch billing button , if exists" classname="profile" time="0.08800" assertions="1">
+    <testcase name="Watch billing button , if exists" classname="profile" time="0.03300" assertions="1">
 
     
     </testcase>
   
-    <testcase name="Log out from Influence" classname="profile" time="5.400" assertions="1">
+    <testcase name="Log out from Influence" classname="profile" time="5.518" assertions="1">
 
     
     </testcase>
