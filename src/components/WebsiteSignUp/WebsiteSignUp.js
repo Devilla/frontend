@@ -9,6 +9,7 @@ import { loginSuccess } from 'ducks/auth';
 import { browserHistory } from 'react-router';
 import { toast } from 'react-toastify';
 import { base } from 'services/api';
+import { Spinner } from 'components';
 
 import './WebsiteSignUp.scss';
 
@@ -129,7 +130,7 @@ class WebsiteSignUp extends Component {
                 <div>
                   <h2 className="text-center btn" disabled  > STEP 1</h2>
                   <p className="signuptitle"> &nbsp;&nbsp;Start Conversions!</p>
-
+                  <Spinner loading={this.props.loading} />
                   <div className='row signuprow give-center-align'>
                     <div className='col-sm-12 col-md-7 col-lg-6 '>
 
@@ -226,6 +227,7 @@ class WebsiteSignUp extends Component {
     return (
       <div className='authpage section innerpage'>
         <div className='wrapper'>
+          <Spinner loading={this.props.loading} />
           <Animated
             className='leftwrap center'
             animationIn='fadeIn'
