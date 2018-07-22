@@ -37,6 +37,15 @@ class BillingDetails extends Component {
       this.setState({ planSelected });
     }
   }
+  downloadInvoice(){
+
+    const createFile = require('create-file');
+
+    createFile('/', 'CreatedAt : 9 :30', function (err) {
+      // file either already exists or is now created (including non existing directories)
+      console.log(err);
+    });
+  }
 
   renderPaymentList() {
     if (this.props.payments) {
@@ -49,7 +58,7 @@ class BillingDetails extends Component {
           <td className="email pl-4">${payment.payment_plan.amount / 100}</td>
           <td className="location">{payment.subscription_id}</td>
           <td className="country pl-4">{payment.payment_plan.interval.charAt(0).toUpperCase() + payment.payment_plan.interval.slice(1)}</td>
-          <td className="lastseen"><i className="fi-download pl-4"></i></td>
+          <td className="lastseen"><i className="fi-download pl-4" onClick={this.downloadInvoice()}></i></td>
         </tr>;
       });
     } else
