@@ -5,9 +5,9 @@
 
   <testsuite name="profile"
     errors="0" failures="0" hostname="" id="" package="profile" skipped="0"
-    tests="6" time="27.82" timestamp="Sun, 22 Jul 2018 11:39:44 GMT">
+    tests="6" time="27.23" timestamp="Sun, 22 Jul 2018 12:37:16 GMT">
   
-    <testcase name="Go to  login influence" classname="profile" time="13.20" assertions="5">
+    <testcase name="Go to  login influence" classname="profile" time="12.42" assertions="5">
 
     
 
@@ -20,12 +20,12 @@
     
     </testcase>
   
-    <testcase name="click on profile dropdown, if exists" classname="profile" time="2.432" assertions="1">
+    <testcase name="click on profile dropdown, if exists" classname="profile" time="2.407" assertions="1">
 
     
     </testcase>
   
-    <testcase name="fill profile details" classname="profile" time="5.495" assertions="9">
+    <testcase name="fill profile details" classname="profile" time="5.782" assertions="9">
 
     
 
@@ -46,20 +46,34 @@
     
     </testcase>
   
-    <testcase name="verify  profile details" classname="profile" time="1.314" assertions="0">
+    <testcase name="verify  profile details" classname="profile" time="1.246" assertions="0">
     </testcase>
   
-    <testcase name="Watch billing button , if exists" classname="profile" time="0.05300" assertions="1">
+    <testcase name="Watch billing button , if exists" classname="profile" time="0.06400" assertions="1">
 
     
     </testcase>
   
-    <testcase name="Log out from Influence" classname="profile" time="5.332" assertions="1">
+    <testcase name="Log out from Influence" classname="profile" time="5.316" assertions="1">
 
     
     </testcase>
   
 
+  
+    <system-err>
+      ERROR: Unable to locate element: &#34;.pricingTable&#34; using: css selector
+    at Object.card should be clickable  (/home/ray/Desktop/frontend/frontend/tests/upgradePlan.js:30:8)
+    at Module.call (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/runner/module.js:62:34)
+    at /home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/runner/testcase.js:70:29
+    at _fulfilled (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/node_modules/q/q.js:834:54)
+    at /home/ray/Desktop/frontend/frontend/node_modules/nightwatch/node_modules/q/q.js:863:30
+    at Promise.promise.promiseDispatch (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/node_modules/q/q.js:796:13)
+    at /home/ray/Desktop/frontend/frontend/node_modules/nightwatch/node_modules/q/q.js:556:49
+    at runSingle (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/node_modules/q/q.js:137:13)
+    at flush (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/node_modules/q/q.js:125:13)
+    at process._tickCallback (internal/process/next_tick.js:61:11)
+    </system-err>
   
 
   

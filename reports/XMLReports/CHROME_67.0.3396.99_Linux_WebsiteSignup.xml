@@ -5,9 +5,9 @@
 
   <testsuite name="WebsiteSignup"
     errors="0" failures="1" hostname="" id="" package="WebsiteSignup" skipped="0"
-    tests="2" time="27.14" timestamp="Sun, 22 Jul 2018 11:38:23 GMT">
+    tests="2" time="68.55" timestamp="Sun, 22 Jul 2018 12:35:22 GMT">
   
-    <testcase name="Go to Signup Influence" classname="WebsiteSignup" time="18.03" assertions="9">
+    <testcase name="Go to Signup Influence" classname="WebsiteSignup" time="59.46" assertions="9">
 
     
 
@@ -28,13 +28,27 @@
     
     </testcase>
   
-    <testcase name="Log out from Influence" classname="WebsiteSignup" time="9.108" assertions="1">  <failure message="Timed out while waiting for element &lt;.rounded-circle&gt; to be present for 8000 milliseconds.">    at closeLoginPage (/home/ray/Desktop/frontend/frontend/pages/loginAndInside.js:44:8)
+    <testcase name="Log out from Influence" classname="WebsiteSignup" time="9.097" assertions="1">  <failure message="Timed out while waiting for element &lt;.rounded-circle&gt; to be present for 8000 milliseconds.">    at closeLoginPage (/home/ray/Desktop/frontend/frontend/pages/loginAndInside.js:44:8)
     at Object.Log out from Influence (/home/ray/Desktop/frontend/frontend/tests/WebsiteSignup.js:30:20)</failure>
 
     
     </testcase>
   
 
+  
+    <system-err>
+      ERROR: Unable to locate element: &#34;.pricingTable&#34; using: css selector
+    at Object.card should be clickable  (/home/ray/Desktop/frontend/frontend/tests/upgradePlan.js:30:8)
+    at Module.call (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/runner/module.js:62:34)
+    at /home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/runner/testcase.js:70:29
+    at _fulfilled (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/node_modules/q/q.js:834:54)
+    at /home/ray/Desktop/frontend/frontend/node_modules/nightwatch/node_modules/q/q.js:863:30
+    at Promise.promise.promiseDispatch (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/node_modules/q/q.js:796:13)
+    at /home/ray/Desktop/frontend/frontend/node_modules/nightwatch/node_modules/q/q.js:556:49
+    at runSingle (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/node_modules/q/q.js:137:13)
+    at flush (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/node_modules/q/q.js:125:13)
+    at process._tickCallback (internal/process/next_tick.js:61:11)
+    </system-err>
   
 
   

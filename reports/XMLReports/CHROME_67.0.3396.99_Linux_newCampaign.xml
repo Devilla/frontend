@@ -5,9 +5,9 @@
 
   <testsuite name="newCampaign"
     errors="0" failures="1" hostname="" id="" package="newCampaign" skipped="0"
-    tests="1" time="54.17" timestamp="Sun, 22 Jul 2018 11:38:50 GMT">
+    tests="1" time="46.17" timestamp="Sun, 22 Jul 2018 12:36:30 GMT">
   
-    <testcase name="campaign test Influence" classname="newCampaign" time="54.17" assertions="31">
+    <testcase name="campaign test Influence" classname="newCampaign" time="46.17" assertions="31">
 
     
 
@@ -74,6 +74,20 @@
     </testcase>
   
 
+  
+    <system-err>
+      ERROR: Unable to locate element: &#34;.pricingTable&#34; using: css selector
+    at Object.card should be clickable  (/home/ray/Desktop/frontend/frontend/tests/upgradePlan.js:30:8)
+    at Module.call (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/runner/module.js:62:34)
+    at /home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/runner/testcase.js:70:29
+    at _fulfilled (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/node_modules/q/q.js:834:54)
+    at /home/ray/Desktop/frontend/frontend/node_modules/nightwatch/node_modules/q/q.js:863:30
+    at Promise.promise.promiseDispatch (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/node_modules/q/q.js:796:13)
+    at /home/ray/Desktop/frontend/frontend/node_modules/nightwatch/node_modules/q/q.js:556:49
+    at runSingle (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/node_modules/q/q.js:137:13)
+    at flush (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/node_modules/q/q.js:125:13)
+    at process._tickCallback (internal/process/next_tick.js:61:11)
+    </system-err>
   
 
   
