@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <testsuites errors="0"
-            failures="1"
-            tests="2">
+            failures="0"
+            tests="1">
 
   <testsuite name="newCampaign"
-    errors="0" failures="1" hostname="" id="" package="newCampaign" skipped="1"
-    tests="2" time="49.06" timestamp="Sun, 22 Jul 2018 08:59:03 GMT">
+    errors="0" failures="0" hostname="" id="" package="newCampaign" skipped="0"
+    tests="1" time="69.05" timestamp="Sun, 22 Jul 2018 10:56:17 GMT">
   
-    <testcase name="campaign test Influence" classname="newCampaign" time="49.06" assertions="33">
+    <testcase name="campaign test Influence" classname="newCampaign" time="69.05" assertions="32">
 
     
 
@@ -70,9 +70,6 @@
     
 
     
-
-      <failure message="Timed out while waiting for element &lt;#urladd &gt; span&gt; to be visible for 5000 milliseconds.">    at Object.campaign test Influence (/home/devilla/frontend/tests/newCampaign.js:71:8)
-    at _combinedTickCallback (internal/process/next_tick.js:131:7)</failure>
 
     
     </testcase>
@@ -80,13 +77,6 @@
 
   
 
-  
-    
-    <testcase
-      name="Log out from Influence" classname="newCampaign">
-      <skipped />
-    </testcase>
-    
   
   </testsuite>
 </testsuites>

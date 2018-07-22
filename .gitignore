@@ -5,7 +5,7 @@
 
 # testing
 /coverage
-__tests__
+_tests_
 /reports/*
 
 # production
