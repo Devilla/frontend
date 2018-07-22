@@ -9,11 +9,7 @@ module.exports = {
       .waitForElementVisible('body', 1000)
       .assert.title('Influence: Increase Your Website Conversions Using Influence')
       .assert.visible('input[type=email]')
-<<<<<<< HEAD
       .setValue('input[type=email]', 'dexterlabs1' + Math.random() + '@gmail.com')
-=======
-      .setValue('input[type=email]', 'dexterlabs101@gmail.com')
->>>>>>> d0e141c448fc22fefd58ee42cdd88a0e94652823
       .assert.visible('input[type=password]')
       .setValue('input[type=password]', '12345')
       .waitForElementVisible('input[type=submit]', 5000)
