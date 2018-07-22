@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="0"
+            failures="0"
+            tests="1">
+
+  <testsuite name="newCampaign"
+    errors="0" failures="0" hostname="" id="" package="newCampaign" skipped="0"
+    tests="1" time="29.11" timestamp="Sun, 22 Jul 2018 07:53:46 GMT">
+  
+    <testcase name="campaign test Influence" classname="newCampaign" time="29.11" assertions="15">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    </testcase>
+  
+
+  
+
+  
+  </testsuite>
+</testsuites>
