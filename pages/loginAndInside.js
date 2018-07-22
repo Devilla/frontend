@@ -35,7 +35,7 @@ module.exports = function (browser) {
     browser
       .waitForElementVisible('.rounded-circle', 8000)
       .click('.mdi.mdi-account-settings-variant')
-      .click('.dropdown-item.notify-item> .fi-head')
+      .click('.dropdown-item.notify-item> .fi-head + span')
       .pause(2000)
     return browser;
   }
