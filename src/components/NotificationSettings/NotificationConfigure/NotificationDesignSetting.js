@@ -394,10 +394,10 @@ export class NotificationDesignSetting extends Component {
                           </Col>
                           <Col md={4}>
                             <FormControl componentClass="select" bsSize="small" value={notificationPanelStyle.fontFamily} onChange={this.handleFontChange}>
+                              <option value='Roboto,helvetica,arial,sans-serif'>Default</option>
                               <option value="arial">Arial</option>
                               <option value="monospace">Monospace</option>
                               <option value="georgia">Georgia</option>
-                              <option value='Roboto,helvetica,arial,sans-serif'>Default</option>
                             </FormControl>
                           </Col>
                           <Col md={3}>

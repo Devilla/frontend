@@ -2349,6 +2349,13 @@ create-error-class@^3.0.0:
   dependencies:
     capture-stack-trace "^1.0.0"
 
+create-file@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/create-file/-/create-file-1.0.1.tgz#8e449eebc3c61df2cd601b7fa0a421e2988fba3e"
+  dependencies:
+    is-existing-file "^1.0.0"
+    safe-write-file "^1.0.1"
+
 create-hash@^1.1.0, create-hash@^1.1.2:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/create-hash/-/create-hash-1.2.0.tgz#889078af11a63756bcfb59bd221996be3a9ef196"
@@ -5028,6 +5035,10 @@ is-equal-shallow@^0.1.3:
   resolved "https://registry.yarnpkg.com/is-equal-shallow/-/is-equal-shallow-0.1.3.tgz#2238098fc221de0bcfa5d9eac4c45d638aa1c534"
   dependencies:
     is-primitive "^2.0.0"
+
+is-existing-file@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/is-existing-file/-/is-existing-file-1.0.0.tgz#d5ac7d68d124565f9824c7d630bde153d0543ed4"
 
 is-extendable@^0.1.0, is-extendable@^0.1.1:
   version "0.1.1"
@@ -8627,6 +8638,12 @@ safe-regex@^1.1.0:
   resolved "https://registry.yarnpkg.com/safe-regex/-/safe-regex-1.1.0.tgz#40a3669f3b077d1e943d44629e157dd48023bf2e"
   dependencies:
     ret "~0.1.10"
+
+safe-write-file@^1.0.1:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/safe-write-file/-/safe-write-file-1.1.2.tgz#9056982c2ff259919337ca70e0f4deef915328da"
+  dependencies:
+    mkdirp "^0.5.0"
 
 "safer-buffer@>= 2.1.2 < 3", safer-buffer@^2.0.2:
   version "2.1.2"
