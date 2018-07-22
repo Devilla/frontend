@@ -34,7 +34,8 @@
           "args": [
             "disable-web-security",
             "ignore-certificate-errors",
-            "--test-type"
+            "--test-type",
+            "--no-sandbox"
           ]
         }
       }

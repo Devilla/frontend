@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <testsuites errors="0"
             failures="0"
-            tests="2">
+            tests="3">
 
   <testsuite name="WebsiteLogin"
     errors="0" failures="0" hostname="" id="" package="WebsiteLogin" skipped="0"
-    tests="2" time="30.92" timestamp="Sun, 22 Jul 2018 07:41:00 GMT">
+    tests="3" time="22.86" timestamp="Sun, 22 Jul 2018 08:58:22 GMT">
   
-    <testcase name="Go to  login influence" classname="WebsiteLogin" time="25.23" assertions="5">
+    <testcase name="Go to  login influence" classname="WebsiteLogin" time="16.10" assertions="5">
 
     
 
@@ -20,7 +20,14 @@
     
     </testcase>
   
-    <testcase name="Log out from Influence" classname="WebsiteLogin" time="5.690" assertions="1">
+    <testcase name="Click on new Button  " classname="WebsiteLogin" time="1.171" assertions="2">
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="Log out from Influence" classname="WebsiteLogin" time="5.590" assertions="1">
 
     
     </testcase>
