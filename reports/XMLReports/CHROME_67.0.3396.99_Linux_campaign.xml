@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="1"
+            failures="1"
+            tests="1">
+
+  <testsuite name="campaign"
+    errors="1" failures="1" hostname="" id="" package="campaign" skipped="0"
+    tests="1" time="2.603" timestamp="Sun, 22 Jul 2018 07:50:36 GMT">
+  
+    <testcase name="Click on new Button  " classname="campaign" time="2.603" assertions="1">  <failure message="Testing if element &lt;button[type=button]&gt; is visible. Element could not be located.">    at openNewBtn (/home/ray/Desktop/frontend/frontend/pages/campaign.js:5:15)
+    at Object.Click on new Button   (/home/ray/Desktop/frontend/frontend/tests/campaign.js:5:23)</failure>
+
+    
+    </testcase>
+  
+
+  
+    <system-err>
+      ERROR: Unable to locate element: &#34;button[type=button]&#34; using: css selector
+    at F.command (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/api/assertions/visible.js:42:21)
+    at F.module.exports.BaseAssertion._scheduleAssertion (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/assertion.js:87:17)
+    at F.module.exports.BaseAssertion._executeCommand (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/assertion.js:82:17)
+    at AssertionInstance.commandFn [as _commandFn] (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/assertion.js:180:21)
+    at AsyncTree.runCommand (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/queue.js:154:30)
+    at AsyncTree.runChildNode (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/queue.js:114:8)
+    at AsyncTree.walkDown (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/queue.js:80:10)
+    at AsyncTree.traverse (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/queue.js:73:8)
+    at Object.queueRunner [as run] (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/queue.js:216:18)
+    at Nightwatch.start (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/index.js:206:14)
+    </system-err>
+  
+
+  
+  </testsuite>
+</testsuites>
