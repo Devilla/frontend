@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <testsuites errors="0"
             failures="0"
-            tests="3">
+            tests="4">
 
   <testsuite name="profile"
     errors="0" failures="0" hostname="" id="" package="profile" skipped="0"
-    tests="3" time="19.32" timestamp="Sun, 22 Jul 2018 08:41:28 GMT">
+    tests="4" time="26.56" timestamp="Sun, 22 Jul 2018 09:03:20 GMT">
   
-    <testcase name="Go to  login influence" classname="profile" time="11.49" assertions="5">
+    <testcase name="Go to  login influence" classname="profile" time="12.54" assertions="5">
 
     
 
@@ -20,12 +20,33 @@
     
     </testcase>
   
-    <testcase name="click on profile dropdown, if exists" classname="profile" time="2.442" assertions="1">
+    <testcase name="click on profile dropdown, if exists" classname="profile" time="2.540" assertions="1">
 
     
     </testcase>
   
-    <testcase name="Log out from Influence" classname="profile" time="5.392" assertions="1">
+    <testcase name="fill profile details" classname="profile" time="6.137" assertions="9">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="Log out from Influence" classname="profile" time="5.343" assertions="1">
 
     
     </testcase>
