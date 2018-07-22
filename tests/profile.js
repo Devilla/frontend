@@ -23,7 +23,6 @@ module.exports = {
       .verify.visible('#companyName')
       .setValue('#firstName', 'Raju')
       .setValue('#lastName', 'Gautam')
-      .setValue('#phoneNumber', 2323232323)
       .setValue('#address', '151-A Baker Street')
       .setValue('#companyName', 'useinfluence')
       .assert.value("#email", "devinair@gmail.com")
@@ -37,11 +36,17 @@ module.exports = {
     browser
       .assert.value('#firstName', 'Raju')
       .assert.value('#lastName', 'Gautam')
-      .assert.value('#phoneNumber', 2323232323)
       .assert.value('#address', '151-A Baker Street')
       .assert.value('#companyName', 'useinfluence')
-      .assert.value("#email", "devinair@gmail.com")
       .pause(1000, () => console.log('User data verified...'));
+  },
+  'verify  profile details': function (browser) {
+    browser
+      .setValue('#firstName', '')
+      .setValue('#lastName', '')
+      .setValue('#address', '')
+      .setValue('#companyName', '')
+      .pause(1000, () => console.log('User data cleared ...'));
   },
   'Watch billing button , if exists': function (browser) {
     browser
