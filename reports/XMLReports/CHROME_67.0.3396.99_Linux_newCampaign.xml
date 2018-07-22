@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <testsuites errors="0"
             failures="1"
-            tests="2">
+            tests="1">
 
   <testsuite name="newCampaign"
-    errors="0" failures="1" hostname="" id="" package="newCampaign" skipped="1"
-    tests="2" time="48.88" timestamp="Sun, 22 Jul 2018 11:23:32 GMT">
+    errors="0" failures="1" hostname="" id="" package="newCampaign" skipped="0"
+    tests="1" time="54.17" timestamp="Sun, 22 Jul 2018 11:38:50 GMT">
   
-    <testcase name="campaign test Influence" classname="newCampaign" time="48.88" assertions="31">
+    <testcase name="campaign test Influence" classname="newCampaign" time="54.17" assertions="31">
 
     
 
@@ -67,7 +67,7 @@
 
     
 
-      <failure message="Timed out while waiting for element &lt;#settings2 &gt; div &gt; div &gt; div &gt; div:nth-child(2) &gt; div.col-md-11 &gt; div &gt; input&gt; to be visible for 5000 milliseconds.">    at Object.campaign test Influence (/home/ray/Desktop/frontend/frontend/tests/newCampaign.js:68:8)
+      <failure message="Timed out while waiting for element &lt;#settings2 &gt; div &gt; div &gt; div &gt; div:nth-child(2) &gt; div.col-md-11 &gt; div &gt; input&gt; to be visible for 5000 milliseconds.">    at Object.campaign test Influence (/home/ray/Desktop/frontend/frontend/tests/newCampaign.js:67:8)
     at process._tickCallback (internal/process/next_tick.js:61:11)</failure>
 
     
@@ -76,13 +76,6 @@
 
   
 
-  
-    
-    <testcase
-      name="Log out from Influence" classname="newCampaign">
-      <skipped />
-    </testcase>
-    
   
   </testsuite>
 </testsuites>
