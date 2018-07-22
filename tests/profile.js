@@ -28,7 +28,24 @@ module.exports = {
       .setValue('#companyName', 'useinfluence')
       .assert.value("#email", "devinair@gmail.com")
       .click('.text-right.save >  button')
-      .pause(5000);
+      .pause(1000, () => console.log('Saving user data...'))
+      .back()
+      .pause(3000)
+      .forward();
+  },
+  'verify  profile details': function (browser) {
+    browser
+      .assert.value('#firstName', 'Raju')
+      .assert.value('#lastName', 'Gautam')
+      .assert.value('#phoneNumber', 2323232323)
+      .assert.value('#address', '151-A Baker Street')
+      .assert.value('#companyName', 'useinfluence')
+      .assert.value("#email", "devinair@gmail.com")
+      .pause(1000, () => console.log('User data verified...'));
+  },
+  'Watch billing button , if exists': function (browser) {
+    browser
+      .verify.visible(".billing1");
   },
   'Log out from Influence': function (browser) {
     login(browser).closeLoginPage();

@@ -5,9 +5,9 @@
 
   <testsuite name="WebsiteLogin"
     errors="0" failures="0" hostname="" id="" package="WebsiteLogin" skipped="0"
-    tests="3" time="21.47" timestamp="Sun, 22 Jul 2018 09:01:36 GMT">
+    tests="3" time="22.31" timestamp="Sun, 22 Jul 2018 10:43:45 GMT">
   
-    <testcase name="Go to  login influence" classname="WebsiteLogin" time="13.79" assertions="5">
+    <testcase name="Go to  login influence" classname="WebsiteLogin" time="15.54" assertions="5">
 
     
 
@@ -20,14 +20,14 @@
     
     </testcase>
   
-    <testcase name="Click on new Button  " classname="WebsiteLogin" time="1.081" assertions="2">
+    <testcase name="Click on new Button  " classname="WebsiteLogin" time="1.149" assertions="2">
 
     
 
     
     </testcase>
   
-    <testcase name="Log out from Influence" classname="WebsiteLogin" time="6.599" assertions="1">
+    <testcase name="Log out from Influence" classname="WebsiteLogin" time="5.626" assertions="1">
 
     
     </testcase>

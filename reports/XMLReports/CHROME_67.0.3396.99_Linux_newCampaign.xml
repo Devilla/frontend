@@ -4,10 +4,10 @@
             tests="2">
 
   <testsuite name="newCampaign"
-    errors="0" failures="1" hostname="" id="" package="newCampaign" skipped="0"
-    tests="2" time="33.17" timestamp="Sun, 22 Jul 2018 09:02:47 GMT">
+    errors="0" failures="1" hostname="" id="" package="newCampaign" skipped="1"
+    tests="2" time="60.04" timestamp="Sun, 22 Jul 2018 10:44:24 GMT">
   
-    <testcase name="campaign test Influence" classname="newCampaign" time="24.20" assertions="15">
+    <testcase name="campaign test Influence" classname="newCampaign" time="60.04" assertions="31">
 
     
 
@@ -36,19 +36,53 @@
     
 
     
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+      <failure message="Timed out while waiting for element &lt;#settings2 &gt; div &gt; div &gt; div &gt; div:nth-child(2) &gt; div.col-md-11 &gt; div &gt; input&gt; to be visible for 5000 milliseconds.">    at Object.campaign test Influence (/home/ray/Desktop/frontend/frontend/tests/newCampaign.js:68:8)
+    at process._tickCallback (internal/process/next_tick.js:61:11)</failure>
 
     
     </testcase>
   
-    <testcase name="Log out from Influence" classname="newCampaign" time="8.965" assertions="1">  <failure message="Timed out while waiting for element &lt;.rounded-circle&gt; to be present for 8000 milliseconds.">    at closeLoginPage (/home/ray/Desktop/frontend/frontend/pages/loginAndInside.js:44:8)
-    at Object.Log out from Influence (/home/ray/Desktop/frontend/frontend/tests/newCampaign.js:39:20)</failure>
 
+  
+
+  
     
+    <testcase
+      name="Log out from Influence" classname="newCampaign">
+      <skipped />
     </testcase>
-  
-
-  
-
+    
   
   </testsuite>
 </testsuites>
