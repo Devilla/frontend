@@ -18,7 +18,7 @@ const Header = ({openCloseDropdown, dropdownStyle, logout, renderHelp, openProfi
       <ConnectionStatus />
       <div className="nav-topbar-flex">
         <div className="topbar-left">
-          <h4><Link onClick={() => browserHistory.goBack()}><i className="icon-arrow-left mr-3"></i></Link>{children.props.location.pathname == '/new'? 'Campaign Setting' :children.props.location.pathname.replace(/^\/+/g, '')}</h4>
+          <h4><Link onClick={() => browserHistory.goBack()}><i className="icon-arrow-left mr-3"></i></Link>{children && children.props.location.pathname == '/new'? 'Campaign Setting' :children && children.props.location.pathname.replace(/^\/+/g, '')}</h4>
         </div>
 
         <ul className="list-unstyled topbar-right-menu float-right mb-0 nav-custom-header  rounded-circle">

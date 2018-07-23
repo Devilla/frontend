@@ -44,7 +44,9 @@ class DashboardContainer extends Component {
   }
 
   checkLogin(callback) {
-    const cookie = localStorage.getItem('authToken');
+    if(window.localStorage!==null && window.localStorage!==undefined )
+    {
+    const cookie = window.localStorage.getItem('authToken');
     const authToken = cookie
       ? JSON.parse(cookie)
       : null;
@@ -54,6 +56,7 @@ class DashboardContainer extends Component {
     } else {
       callback('not logged in');
     }
+  }
   }
 
   componentDidUpdate(e) {
@@ -76,6 +79,7 @@ class DashboardContainer extends Component {
   logout = () => {
     document.body.style = 'background-color:white';
     this.openCloseDropdown();
+    if(localStorage!==null && localStorage!==undefined )
     localStorage.removeItem('authToken');
     browserHistory.push('/');
   }
@@ -151,7 +155,7 @@ class DashboardContainer extends Component {
   }
 
   render() {
-    const {  user } = this.props;
+    // const {  user } = this.props;
     return (
       <div className="dashboard-container">
         <Popup />
@@ -165,7 +169,7 @@ class DashboardContainer extends Component {
               <div className="topbar" >
                 <nav className="navbar-custom pl-0 pr-0">
                   <Header
-                    username={user.username}
+                    username={this.props.user.username}
                     openCloseDropdown={this.openCloseDropdown}
                     logout={this.logout}
                     renderHelp={this.renderHelp}
