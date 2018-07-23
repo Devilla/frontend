@@ -74,6 +74,12 @@ class DisplayPage extends Component {
     let displayUrl = this.state.displayUrl;
     displayUrl['rule'] = this.props.rules._id;
     this.props.createPageUrl(displayUrl);
+    this.setState({displayUrl: {
+      url: '',
+      status: '',
+      class: '',
+      type: ''
+    }});
   }
 
   handlePageUrl = (e) => {
