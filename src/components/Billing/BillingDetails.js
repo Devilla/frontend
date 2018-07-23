@@ -36,15 +36,6 @@ class BillingDetails extends Component {
       this.setState({ planSelected });
     }
   }
-  downloadInvoice(){
-
-    const createFile = require('create-file');
-
-    createFile('/', 'CreatedAt : 9 :30', function (err) {
-      // file either already exists or is now created (including non existing directories)
-      console.log(err);
-    });
-  }
 
   renderPaymentList() {
     if (this.props.invoices) {
