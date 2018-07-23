@@ -2,7 +2,13 @@
   .card-content-width {
     max-width: 100% !important;
   }
-
+  .campaign-dropdown {
+    display: flex !important;
+    justify-content: flex-end;
+    button {
+      position: absolute;
+    }
+  }
   .ct-chart {
     canvas {
       width: 100% !important;
