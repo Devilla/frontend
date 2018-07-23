@@ -25,7 +25,7 @@ export { default as PricePage } from './PricePage';
 export { default as Common } from './Common/function';
 export { default as ResetPassword } from './ResetPassword';
 export { default as Sidebar } from './Sidebar/Sidebar';
-export { default as StatsCard } from './StatsCard/StatsCard';
+export { default as StatsCard } from './StatsCard/StatsCard';'';
 export { default as Dashboard } from './Dashboard/Dashboard';
 export { default as Notification } from './Notification';
 export { default as Analytics } from './Analytics/analytics';

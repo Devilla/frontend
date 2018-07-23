@@ -25,7 +25,7 @@ class DashboardChannel extends Component {
 
     };
   }
-  
+
   channelfunc = (index) => {
     let res = {};
     switch(true) {
@@ -46,7 +46,6 @@ class DashboardChannel extends Component {
     var scrollElm = document.scrollingElement;
     scrollElm.scrollTop = 0;
   }
-
 
   channels = ['Facebook' , 'Zendesk','Google','TrustPilot','FourSquare','G32Crowd','TrustRadius','Yelp','BingPlaces'];
 

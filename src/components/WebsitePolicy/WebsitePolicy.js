@@ -21,8 +21,6 @@ class WebsitePolicy extends Component {
     };
   }
   componentDidMount() {
-    let scrollElm = document.scrollingElement;
-    scrollElm.scrollTop = 0;
     fetch('https://raw.githubusercontent.com/sagarshirbhate/Country-State-City-Database/master/Contries.json')
       .then(res => res.json())
       .then(res => this.setState({countryList : res.Countries}));

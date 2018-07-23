@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`>>>V E R I F I C A T I O N   --- Snapshot +++capturing Snapshot of VERIFICARION PAGE 1`] = `
+<div>
+  <div
+    className="customer-loader"
+    style={
+      Object {
+        "display": "flex",
+        "width": "100%",
+      }
+    }
+  >
+    <div
+      className="sk-wave"
+    >
+      <div
+        className="sk-rect sk-rect1"
+      />
+      <div
+        className="sk-rect sk-rect2"
+      />
+      <div
+        className="sk-rect sk-rect3"
+      />
+      <div
+        className="sk-rect sk-rect4"
+      />
+      <div
+        className="sk-rect sk-rect5"
+      />
+    </div>
+  </div>
+  <div
+    className="token-container"
+  >
+    <h1>
+      Verify your account
+    </h1>
+  </div>
+  <div />
+</div>
+`;

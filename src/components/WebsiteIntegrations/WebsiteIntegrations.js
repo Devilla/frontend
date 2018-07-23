@@ -8,10 +8,7 @@ import {
 import './WebsiteIntegration.scss';
 
 class WebsiteIntegrations extends Component {
-  componentDidMount() {
-    let scrollElm = document.scrollingElement;
-    scrollElm.scrollTop = 0;
-  }
+
   render() {
     return (
       <div className="websiteintegrations-container">

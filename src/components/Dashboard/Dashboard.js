@@ -297,11 +297,13 @@ class Dashboard extends Component {
             visitor = visitor + bucket.visitors.sum_other_doc_count;
           });
 
+
         let users = website.signups && website.signups.userDetails?website.signups.userDetails:[];
         users = users.filter(user => user.trackingId == website.trackingId);
         userSignUps = userSignUps + users.length;
         if(website.isActive)
           campaignActive = campaignActive + 1;
+
       });
     }
 
