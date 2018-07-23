@@ -7,6 +7,7 @@ export const CREATE = action('CREATE');
 export const UPDATE = action('UPDATE');
 export const SUCCESS = action('SUCCESS');
 export const FETCH_INVOICES = action('FETCH_INVOICES');
+export const DOWNLOAD_INVOICE = action('DOWNLOAD_INVOICE');
 export const SUCCESS_INVOICE = action('SUCCESS_INVOICE');
 export const UPDATE_PAYMENT_METHOD = action('UPDATE_PAYMENT_METHOD');
 
@@ -15,6 +16,7 @@ export const fetchInvoices = () => ({ type: FETCH_INVOICES });
 export const createPayment = (payment, profile, update) => ({ type: CREATE, payment, profile, update });
 export const updatePayment = (payment) => ({ type: UPDATE, payment });
 export const updatePaymentMethod = (details) => ({ type: UPDATE_PAYMENT_METHOD, details });
+export const downloadInvoice = (invoice_id) => ({ type: DOWNLOAD_INVOICE, invoice_id });
 export const successPayment = (payment) => ({ type: SUCCESS, payment });
 export const successInvoice = (invoices) => ({ type: SUCCESS_INVOICE, invoices });
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Row } from 'react-bootstrap';
-import NotificationConfigure from './NotificationConfigure/NotificationConfigure';
+import NotificationConfigure from 'components/NotificationConfigure/NotificationConfigure';
 import NotificationList from './NotificationList/NotificationList';
 
 import './NotificationSettings.scss';

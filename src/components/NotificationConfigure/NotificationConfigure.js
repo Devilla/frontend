@@ -1,10 +1,9 @@
 import React from 'react';
 import { Row, Col } from 'react-bootstrap';
 import { Card } from './Card';
-import NotificationDesign from './NotificationDesign';
-import { NotificationDesignSetting } from './NotificationDesignSetting';
+import NotificationDesign from './NotificationDesign/NotificationDesign';
+import { NotificationDesignSetting } from './NotificationDesignSetting/NotificationDesignSetting';
 import './NotificationConfigure.scss';
-// import PopupReview from './PopupReview';
 
 const NotificationConfigure = ({
   profile,
@@ -32,7 +31,6 @@ const NotificationConfigure = ({
     <div className="notification-configure col-md-12">
       <Row>
         <Col md={12}>
-          {console.log(campaign.trackingId)}
           <Card title={notification.notificationName}
             status={ <div className="notificationSwitch">
               <input
@@ -60,7 +58,6 @@ const NotificationConfigure = ({
                     />
                   </Col>
                   <Col md={5}>
-
                     <NotificationDesignSetting
                       profile={profile}
                       showpopup={showpopup}
@@ -77,7 +74,6 @@ const NotificationConfigure = ({
                       handleClickableNotification={handleClickableNotification}
                       campaign={campaign}
                     />
-
                   </Col>
                 </Row>
               </div>
@@ -91,16 +87,13 @@ const NotificationConfigure = ({
           Back
         </span>
 
-
         <span className="btn btn-primary" onClick={setDefaultPanel} >
           Set Default
         </span>
 
-
         <span className="btn btn-primary" onClick={saveConfiguration}>
           Save
         </span>
-
 
       </Row>
     </div>

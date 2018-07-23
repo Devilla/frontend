@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import { browserHistory, Link } from 'react-router';
 import moment from 'moment';
-import { fetchPayment, fetchInvoices } from 'ducks/payment' ;
+import { fetchPayment, fetchInvoices, downloadInvoice } from 'ducks/payment' ;
 import {
   Grid,
   Row,
@@ -13,11 +13,10 @@ import {
 } from 'react-bootstrap';
 
 import Button from 'components/Template/customButton';
-
 import './BillingDetails.scss';
 
 const billingHeader = [
-  'Billing Date', 'Amount', 'Transaction Id', 'Interval', 'Download Invoice'
+  'Billing Date', 'Amount', 'Transaction Id', 'Status', 'Download'
 ];
 
 class BillingDetails extends Component {
@@ -27,7 +26,7 @@ class BillingDetails extends Component {
       planSelected: {}
     };
     props.fetchPayment();
-    // props.fetchInvoices();
+    props.fetchInvoices();
   }
 
   componentWillReceiveProps(nextProps) {
@@ -39,21 +38,23 @@ class BillingDetails extends Component {
   }
 
   renderPaymentList() {
-    if (this.props.payments) {
-      this.props.payments.sort((a, b) => {
-        return moment(a.createdAt) < moment(b.createdAt) ? 1 : moment(a.createdAt) > moment(b.createdAt) ? -1 : 0;
+    if (this.props.invoices) {
+      this.props.invoices.sort((a, b) => {
+        return moment(a.created_at) < moment(b.created_at) ? 1 : moment(a.created_at) > moment(b.created_at) ? -1 : 0;
       });
-      return this.props.payments.map((payment, index) => {
+      return this.props.invoices.map((invoice, index) => {
         return <tr className=" text-muted font-13" key={index}>
-          <td className="name pl-3">{moment(payment.createdAt).format('DD MMM YYYY')}</td>
-          <td className="email pl-4">${payment.payment_plan.amount / 100}</td>
-          <td className="location">{payment.subscription_id}</td>
-          <td className="country pl-4">{payment.payment_plan.interval.charAt(0).toUpperCase() + payment.payment_plan.interval.slice(1)}</td>
-          <td className="lastseen"><i className="fi-download pl-4"></i></td>
+          <td className="name pl-3">{moment(invoice.created_at).format('DD MMM YYYY')}</td>
+          <td className="email pl-4">${invoice.amount_due / 100}</td>
+          <td className="location">{invoice.invoice_id}</td>
+          <td>{invoice.paid?'Paid':'Not Paid'}</td>
+          <td className="lastseen"><i className="fi-download pl-4" onClick={() => this.props.downloadInvoice(invoice.id)}></i></td>
         </tr>;
       });
     } else
-      return <tr>nothing</tr>;
+      return <tr>
+        <td>nothing</td>
+      </tr>;
   }
 
   render() {
@@ -81,7 +82,7 @@ class BillingDetails extends Component {
                         icon="cloud-upload"
                         disabled={false}
                       >
-                            Upgrade Plan
+                        Upgrade Plan
                       </Button>
 
                       <Button
@@ -93,7 +94,7 @@ class BillingDetails extends Component {
                         icon="usd"
                         disabled={false}
                       >
-                          Payment Method
+                        Payment Method
                       </Button>
                     </div>
                     <div className="clearfix"></div>
@@ -225,7 +226,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
   fetchPayment,
-  fetchInvoices
+  fetchInvoices,
+  downloadInvoice
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(BillingDetails);

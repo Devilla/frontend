@@ -32,7 +32,6 @@ class Channel extends Component  {
     });
   }
 
-
   render() {
     return (
       <div  className="channel-container">
@@ -40,7 +39,6 @@ class Channel extends Component  {
         <Col md={12}>
           {this.channelsList()}
         </Col>
-
       </div>
     );
   }
