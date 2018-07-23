@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <testsuites errors="0"
-            failures="1"
+            failures="0"
             tests="1">
 
   <testsuite name="newCampaign"
-    errors="0" failures="1" hostname="" id="" package="newCampaign" skipped="0"
-    tests="1" time="46.17" timestamp="Sun, 22 Jul 2018 12:36:30 GMT">
+    errors="0" failures="0" hostname="" id="" package="newCampaign" skipped="0"
+    tests="1" time="73.37" timestamp="Mon, 23 Jul 2018 05:25:37 GMT">
   
-    <testcase name="campaign test Influence" classname="newCampaign" time="46.17" assertions="31">
+    <testcase name="campaign test Influence" classname="newCampaign" time="73.37" assertions="32">
 
     
 
@@ -67,8 +67,9 @@
 
     
 
-      <failure message="Timed out while waiting for element &lt;#settings2 &gt; div &gt; div &gt; div &gt; div:nth-child(2) &gt; div.col-md-11 &gt; div &gt; input&gt; to be visible for 5000 milliseconds.">    at Object.campaign test Influence (/home/ray/Desktop/frontend/frontend/tests/newCampaign.js:67:8)
-    at process._tickCallback (internal/process/next_tick.js:61:11)</failure>
+    
+
+    
 
     
     </testcase>
@@ -77,7 +78,18 @@
   
     <system-err>
       ERROR: Unable to locate element: &#34;.pricingTable&#34; using: css selector
-    at Object.card should be clickable  (/home/ray/Desktop/frontend/frontend/tests/upgradePlan.js:30:8)
+    at F.command (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/api/assertions/visible.js:42:21)
+    at F.module.exports.BaseAssertion._scheduleAssertion (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/assertion.js:87:17)
+    at F.module.exports.BaseAssertion._executeCommand (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/assertion.js:82:17)
+    at AssertionInstance.commandFn [as _commandFn] (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/assertion.js:180:21)
+    at AsyncTree.runCommand (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/queue.js:154:30)
+    at AsyncTree.runChildNode (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/queue.js:114:8)
+    at AsyncTree.walkDown (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/queue.js:80:10)
+    at AsyncTree.traverse (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/queue.js:73:8)
+    at Object.queueRunner [as run] (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/queue.js:216:18)
+    at Nightwatch.start (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/index.js:206:14)
+ERROR: Unable to locate element: &#34;.pricingTable&#34; using: css selector
+    at Object.card should be clickable  (/home/ray/Desktop/frontend/frontend/tests/upgradePlan.js:31:8)
     at Module.call (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/runner/module.js:62:34)
     at /home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/runner/testcase.js:70:29
     at _fulfilled (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/node_modules/q/q.js:834:54)
