@@ -139,12 +139,12 @@ class AnalyticsContainer extends Component {
       title: `${name.charAt(0).toUpperCase() + name.substr(1)} Traffic`,
       content:
         <div className = "analytics-chart">
-          <LineChart data={chartData} options={chartOptions} height="250" redraw/>
+          <LineChart data={chartData} options={chartOptions} height="250" width="500" redraw/>
         </div>,
       buttons: {
         right: [{
           text: 'Close',
-          className: 'default',
+          className: 'danger',
           action: function () {
             Popup.close();
           }
