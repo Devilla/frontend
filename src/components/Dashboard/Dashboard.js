@@ -9,7 +9,6 @@ import './Dashboard.scss';
 import Card from './Card';
 import ReactChartJs from 'react-chartjs';
 import 'react-datepicker/dist/react-datepicker.css';
-import { countryVisitors } from 'ducks/elastic';
 
 var LineChart = ReactChartJs.Line;
 let moment = extendMoment(Moment);
@@ -18,23 +17,20 @@ class Dashboard extends Component {
   constructor() {
     super();
     this.state = {
+      userCount: 0,
       render: false,
       arrs: [],
       daysClicked: '',
       startDate:  moment(),
-      datePicker: ''
+      datePicker: '',
+      selectedCampaign: {}
     };
     this.handleRouteChange = this.handleRouteChange.bind(this);
-  }
-  componentWillReceiveProps() {
-    this.props.fetchCampaignInfo();
   }
 
   componentWillMount() {
     this.props.fetchCampaignInfo();
     this.props.fetchCampaign();
-    let response =  this.props.countryVisitors();
-    console.log(response);
   }
 
   createLegend(json) {
@@ -55,6 +51,13 @@ class Dashboard extends Component {
 
   getDataset() {
     if (this.props.campaignInfo && this.props.campaignInfo.uniqueUsers.length) {
+      let campaignDetails = this.props.campaignInfo.websiteLive.filter(campaign => {
+        if(this.state.selectedCampaign.id)
+          return campaign._id == this.state.selectedCampaign.id;
+        else
+          return campaign;
+      });
+
       let dataSet = [];
       let dataContent = {
         label: 'My First dataset',
@@ -66,13 +69,16 @@ class Dashboard extends Component {
         pointHighlightStroke: 'rgba(220,220,220,1)',
         data: [0, 0, 0, 0, 0, 0, 0]
       };
-      this.props.campaignInfo.uniqueUsers.map(user => {
+
+      campaignDetails.map(campaign => {
+        let user = campaign.uniqueUsers;
         (user && user.aggregations) ? user.aggregations.users.buckets.map(bucket => {
           dataContent['label'] = Moment(bucket.key_as_string).format('LL');
-          dataContent['data'][Moment(bucket.key_as_string).day()] = bucket.visitors.sum_other_doc_count;
+          dataContent['data'][Moment(bucket.key_as_string).day()] = bucket.visitors.sum_other_doc_count + bucket.visitors.buckets.length;
         }) : '';
         dataSet.push(dataContent);
       });
+
       return dataSet;
     } else {
       return [{
@@ -178,11 +184,48 @@ class Dashboard extends Component {
     });
   }
 
+  usersCount() {
+    let userCount = 0, totalUsers = 0;
+    if(this.props.campaignInfo && this.props.campaignInfo.uniqueUsers.length) {
+      let campaignDetails = this.props.campaignInfo.websiteLive.filter(campaign => {
+        if(this.state.selectedCampaign.id)
+          return campaign._id == this.state.selectedCampaign.id;
+        else
+          return campaign;
+      });
 
+      campaignDetails.map(campaign => {
+        let user = campaign.uniqueUsers;
+        (user && user.aggregations) ? user.aggregations.users.buckets.map(bucket => {
+          userCount = userCount + bucket.visitors.sum_other_doc_count + bucket.visitors.buckets.length;
+        }) : 0;
+        (user && user.hits) ? totalUsers = totalUsers + user.hits.total : 0;
+      });
+      return {userCount: userCount, totalUsers: totalUsers};
+    } else
+      return {userCount: userCount, totalUsers: totalUsers};
+  }
+
+  selectCampaign = (e) => {
+    this.setState({selectedCampaign: {
+      id: e.target.id,
+      campaignName: e.target.innerHTML
+    }});
+  }
+
+  renderCampaigns = () => {
+    let campaignInfo = this.props.campaignInfo;
+    if(campaignInfo) {
+      return campaignInfo.websiteLive.map(campaign => {
+        return <div key={campaign._id} className="dropdown-item" id={campaign._id} onClick={this.selectCampaign}>{campaign.campaignName}</div>;
+      });
+    }
+  }
 
   render() {
-    const { campaignInfo, profile } = this.props;
-
+    const { campaignInfo } = this.props;
+    const { selectedCampaign } = this.state;
+    const { userCount, totalUsers } = this.usersCount();
     var chartData = {
       labels:   this.getDays(),
       datasets: this.getDataset()
@@ -238,10 +281,17 @@ class Dashboard extends Component {
 
     let userSignUps = 0;
     let visitor = 0;
+    let campaignActive = 0;
 
     if(campaignInfo) {
-      campaignInfo.websiteLive.map((website) => {
+      let campaignDetails = campaignInfo.websiteLive.filter(campaign => {
+        if(selectedCampaign.id)
+          return campaign._id === selectedCampaign.id;
+        else
+          return campaign;
+      });
 
+      campaignDetails.map((website) => {
         website.uniqueUsers && website.uniqueUsers.aggregations &&
           website.uniqueUsers.aggregations.users.buckets.map((bucket) => {
             visitor = visitor + bucket.visitors.sum_other_doc_count;
@@ -249,8 +299,7 @@ class Dashboard extends Component {
 
         let users = website.signups && website.signups.userDetails?website.signups.userDetails.length:0;
         userSignUps = userSignUps + users;
-
-
+        campaignActive = campaignActive + 1;
       });
     }
 
@@ -263,26 +312,35 @@ class Dashboard extends Component {
               <div className="card-box">
                 <Row className="mb-5">
                   <Col md={12}>
+                    <div className="btn-group campaign-dropdown">
+                      <button className="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {selectedCampaign.campaignName?selectedCampaign.campaignName:'Campaigns'}
+                      </button>
+                      <div className="dropdown-menu">
+                        <div className="dropdown-item" id={null} onClick={this.selectCampaign}>All</div>
+                        {this.renderCampaigns()}
+                      </div>
+                    </div>
                     <div className="card-box pb-0 mb-0 cardbox1">
                       <Row className="account-stats">
 
                         {this.renderCardBox(
-                          <div className=" widget-flat card-box  text-muted pb-5 pt-2 pos-vertical-center c2" onClick={()=> browserHistory.push('/analytics')}>
+                          <div className=" widget-flat card-box  text-muted pb-5 pt-2 pos-vertical-center c2" onClick={()=> browserHistory.push('/campaigns')}>
                             <p className="text-uppercase title m-b-5 fonttitle font-600 mincard-ht">Active Campaign</p>
-                            <h3 className="m-b-10 campaign">{campaignInfo? campaignInfo.websiteLive.length : []}</h3>
+                            <h3 className="m-b-10 campaign">{campaignActive}</h3>
 
                           </div>
                         )}
                         {this.renderCardBox(
                           <div className=" widget-flat card-box  text-muted pb-5 pt-2 pos-vertical-center c2" onClick={()=> browserHistory.push('/analytics')}>
-                            <p className="text-uppercase title m-b-5 fonttitle font-600 mincard-ht">Total Visitors</p>
-                            <h3 className="m-b-10 campaign">{visitor}</h3>
+                            <p className="text-uppercase title m-b-5 fonttitle font-600">Total Visitors</p>
+                            <h3 className="m-b-10 campaign">{totalUsers?totalUsers:0}</h3>
                           </div>
                         )}
                         {this.renderCardBox(
                           <div className=" widget-flat card-box  text-muted pb-5 pt-2 pos-vertical-center c2" onClick={()=> browserHistory.push('/analytics')}>
-                            <p className="text-uppercase title m-b-5 fonttitle font-600 mincard-ht">Unique Visitors</p>
-                            <h3 className="m-b-10 profile">{profile? Number(profile.uniqueVisitors) :0 }</h3>
+                            <p className="text-uppercase title m-b-5 fonttitle font-600">Unique Visitors</p>
+                            <h3 className="m-b-10 profile">{userCount? Number(userCount) :0 }</h3>
                           </div>
                         )}
 
@@ -294,8 +352,8 @@ class Dashboard extends Component {
                         )}
                         {this.renderCardBox(
                           <div className=" widget-flat card-box  text-muted pb-5 pt-2 pos-vertical-center c2" onClick={()=> browserHistory.push('/analytics')}>
-                            <p className="text-uppercase title m-b-5 fonttitle font-600 mincard-ht">Conversion &nbsp; %</p>
-                            <h3 className="m-b-10 notify">{(profile && userSignUps/visitor)*100 ? Math.floor((userSignUps/visitor)*100) : 0}</h3>
+                            <p className="text-uppercase title m-b-5 fonttitle font-600">Conversion &nbsp; %</p>
+                            <h3 className="m-b-10 notify">{userCount && (userSignUps/userCount)*100 ? ((userSignUps/userCount)*100).toFixed(2) : 0}</h3>
                           </div>
                         )}
                       </Row>
@@ -318,40 +376,6 @@ class Dashboard extends Component {
               </div>
             </Col>
           </Row>
-          {/* <Row className="new-graphs justify-content-around">
-            <Col md={12} className="g2">
-
-              <Card
-                statsIcon="fa fa-history"
-                id="chartHours"
-                content={
-                  <div className=" canvas-brdr">
-                    <iframe className="f1 col-md-12"  src="http://35.202.85.190:5601/app/kibana#/visualize/edit/0d5b74d0-880d-11e8-929b-418c233f6851?embed=true&_g=(refreshInterval:(display:Off,pause:!f,value:0),time:(from:now-7d,mode:quick,to:now))&_a=(filters:!(),linked:!f,query:(language:lucene,query:''),uiState:(mapCenter:!(18.97902595325528,27.24609375),mapZoom:2),vis:(aggs:!((enabled:!t,id:'1',params:(customLabel:'Unique+Visitors',field:json.value.visitorId),schema:metric,type:cardinality),(enabled:!t,id:'2',params:(field:json.value.geo.country,missingBucket:!f,missingBucketLabel:Missing,order:desc,orderAgg:(enabled:!t,id:'2-orderAgg',params:(field:json.value.visitorId),schema:orderAgg,type:cardinality),orderBy:custom,otherBucket:!f,otherBucketLabel:Other,size:100),schema:segment,type:terms)),params:(addTooltip:!t,colorSchema:Blues,isDisplayWarning:!t,legendPosition:bottomright,mapCenter:!(0,0),mapZoom:2,outlineWeight:1,selectedJoinField:(description:'Country+name',name:name),selectedLayer:(attribution:'',created_at:'2017-04-26T17:12:15.978370',fields:!((description:'Two+letter+abbreviation',name:iso2),(description:'Country+name',name:name),(description:'Three+letter+abbreviation',name:iso3)),format:(type:geojson),id:5659313586569216,layerId:'elastic_maps_service.World+Countries',name:'World+Countries',tags:!(),url:'https:%2F%2Fvector.maps.elastic.co%2Fblob%2F5659313586569216%3Felastic_tile_service_tos%3Dagree%26my_app_version%3D6.2.4%26license%3D2d555df5-96c7-4a4f-8992-71f3cf979597',weight:1),showAllShapes:!t,wms:(baseLayersAreLoaded:(_c:!(),_d:!t,_h:0,_n:!f,_s:1,_v:!t),enabled:!f,options:(format:image%2Fpng,transparent:!t),selectedTmsLayer:(attribution:'',id:road_map,maxZoom:10,minZoom:0,subdomains:!(),url:'https:%2F%2Ftiles.maps.elastic.co%2Fv2%2Fdefault%2F%7Bz%7D%2F%7Bx%7D%2F%7By%7D.png%3Felastic_tile_service_tos%3Dagree%26my_app_name%3Dkibana%26my_app_version%3D6.2.4%26license%3D2d555df5-96c7-4a4f-8992-71f3cf979597'),tmsLayers:!((attribution:'',id:road_map,maxZoom:10,minZoom:0,subdomains:!(),url:'https:%2F%2Ftiles.maps.elastic.co%2Fv2%2Fdefault%2F%7Bz%7D%2F%7Bx%7D%2F%7By%7D.png%3Felastic_tile_service_tos%3Dagree%26my_app_name%3Dkibana%26my_app_version%3D6.2.4%26license%3D2d555df5-96c7-4a4f-8992-71f3cf979597')))),title:'Unique+Visitors+by+Country',type:region_map))" height="400"></iframe>
-                  </div>
-                }
-              />
-
-              <hr className="border-hr"/>
-              <div className="clearfix"></div>
-            </Col>
-          </Row>
-          <Row>
-            <Col md={12} className="g3">
-              <Card
-                statsIcon="fa fa-history"
-                id="chartHours"
-                content={
-                  <div className=" canvas-brdr">
-                    <iframe className="f2 col-md-12" src="http://35.202.85.190:5601/app/kibana#/visualize/edit/644184c0-8929-11e8-929b-418c233f6851?embed=true&_g=(refreshInterval%3A(display%3AOff%2Cpause%3A!f%2Cvalue%3A0)%2Ctime%3A(from%3Anow%2Fd%2Cmode%3Aquick%2Cto%3Anow%2Fd))"  height="400"></iframe>
-                  </div>
-                }
-              />
-
-              <hr className="border-hr"/>
-              <div className="clearfix"></div>
-            </Col>
-
-          </Row> */}
           <Row className="justify-content-around">
           </Row>
         </div>
@@ -372,8 +396,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = {
   successCampaign,
   fetchCampaignInfo,
-  fetchCampaign,
-  countryVisitors
+  fetchCampaign
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

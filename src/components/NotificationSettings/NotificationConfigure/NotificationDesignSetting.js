@@ -603,13 +603,11 @@ export class NotificationDesignSetting extends Component {
                       </Col>
                     </Row>
                   </div>
-
                   <div className={`tab-pane ${activeClass == 4 ? 'show active' : ''}`} id="debit">
 
                     <Col md={12}>
                       <Channel showpopup={showpopup} />
                     </Col>
-
                   </div>
                 </div>
               </div>

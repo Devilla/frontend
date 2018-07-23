@@ -61,7 +61,6 @@ class Oauthpage extends Component {
   handleStateChange = (target, value) => {
     this.setState({[target]: value});
   }
-
   getClientInfoList = () => {
     return (
       <div className="clientinfolist">
@@ -75,11 +74,9 @@ class Oauthpage extends Component {
 
   render() {
     return (
-
       <div className="oauthgen-container">
         <div className="content">
           <div className="card-box">
-
             <span className="header-title h4">Client ID for Web application</span>
             <button type="button" className="btn btn-outline-primary  waves-light waves-effect pl-1 float-right h6" onClick={()=>{}}><i className="ml-3 mdi mdi-delete"></i>&nbsp;DELETE</button>
             <button type="button" className="btn btn-outline-primary  waves-light waves-effect pl-1 float-right h6" onClick={()=>{}}><i className="ml-3 mdi mdi-lock-reset"></i>&nbsp;RESET SECRET</button>
@@ -95,7 +92,7 @@ class Oauthpage extends Component {
               <Col md={6}>
                 <FormGroup>
                   <span className=" h6">Name</span>
-                  <p className="text-muted "> Enter client's name.</p>
+                  <p className="text-muted "> Enter clients name.</p>
                   <FormControl
                     type="text"
                     bsClass="form-control"
@@ -166,6 +163,5 @@ class Oauthpage extends Component {
     );
   }
 }
-
 
 export default Oauthpage;

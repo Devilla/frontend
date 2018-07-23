@@ -14,10 +14,6 @@ import {
 import './WebsiteHowitWorks.scss';
 class WebsiteHowItWorks extends Component {
 
-  componentDidMount() {
-    let scrollElm = document.scrollingElement;
-    scrollElm.scrollTop = 0;
-  }
   render() {
     const settings = {
       dots: true,
@@ -41,7 +37,7 @@ class WebsiteHowItWorks extends Component {
               </div>
             </div>
           </section>
-          
+
 
 
           <section className="col-md-12 pl-0 pt-3 pr-0 slider-card  "  >

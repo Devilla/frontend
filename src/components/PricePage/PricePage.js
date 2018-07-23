@@ -14,7 +14,7 @@ const PricePage = ({
   yearOpaque
 }) => {
 
-  
+
   if(couponDetails) {
     planList = planList.filter(plan => plan.references.service_template_properties.length && plan.references.service_template_properties[0].data.value === couponDetails.code);
   } else {
@@ -44,7 +44,7 @@ const PricePage = ({
   function monthlyPriceHandler () {
 
     return planList.map((plan, index) =>
-      <div key={index} className="col-md-3 col-sm-6">      
+      <div key={index} className="col-md-3 col-sm-6">
         <div className="pricingTable" onClick={handleMonthChange}>
           <div className="price_card text-center"  className={selectedPlan.id === plan.id ? 'makebx' : ''} onClick={() => handleCheckChange(true, plan)}>
             <div className="pricing-header bg-primary">
@@ -61,7 +61,7 @@ const PricePage = ({
         </div>
       </div>);
   }
-  
+
   function yearlyPriceHandler () {
     return planList.map((plan, index) =>
       <div key={index} className="col-md-3 col-sm-6">
@@ -76,14 +76,14 @@ const PricePage = ({
                 <li><div  className="font-desc" dangerouslySetInnerHTML={{ __html:  plan.details }} /></li>
               </ul>
 
-        
+
 
             </div>
           </div>
         </div>
       </div>);
   }
-  
+
 
   return (
     <div style={{ width: '100%' }}>
@@ -98,11 +98,11 @@ const PricePage = ({
         </div>
       </div>
       <div className={'row'} style={monthOpaque}>
-      
-        { planList ? 
+
+        { planList ?
           monthlyPriceHandler()
-          : 
-          <div>No Plan to select from.</div> 
+          :
+          <div>No Plan to select from.</div>
         }
 
       </div>
@@ -122,10 +122,10 @@ const PricePage = ({
       </div>
       <div className={'row'} style={yearOpaque}>
       
-        { planList ? 
+        { planList ?
           yearlyPriceHandler()
-          : 
-          <div>No Plan to select from.</div> 
+          :
+          <div>No Plan to select from.</div>
         }
 
       </div>

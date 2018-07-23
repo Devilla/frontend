@@ -1,0 +1,153 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`>>>U P G R A D E  P L A N  --- Snapshot +++capturing Snapshot of upgrade plan 1`] = `
+<div
+  className="upgrade-plan-container"
+>
+  <div
+    className="planlist-container"
+  >
+    <div
+      className="content fill upgrade-plan "
+    >
+      <div
+        className="container-fluid"
+      >
+        <div
+          className="inlineclr row"
+        >
+          <div
+            className="col-md-12"
+          >
+            <div
+              className="card-box pt-0 pl-0"
+            >
+              <h4
+                className="header-title text-left"
+              >
+                Upgrade your Plan
+              </h4>
+              <hr />
+              <div
+                className="plans float-right"
+              >
+                <div
+                  className="row"
+                >
+                  <div
+                    className="animated fadeIn leftwrap center text-center"
+                    style={
+                      Object {
+                        "animationDelay": "0ms",
+                        "pointerEvents": "all",
+                      }
+                    }
+                  >
+                    <div
+                      style={
+                        Object {
+                          "width": "100%",
+                        }
+                      }
+                    >
+                      <div
+                        style={
+                          Object {
+                            "width": "100%",
+                          }
+                        }
+                      >
+                        <div
+                          className="price pt-2"
+                        >
+                          <div
+                            className="pricing-row w-row"
+                            style={
+                              Object {
+                                "width": "100%",
+                              }
+                            }
+                          >
+                            <div
+                              className="w-col"
+                            >
+                              <span
+                                className="btn btn-outline-info waves-light waves-effect mr-2 set-br"
+                                onClick={[Function]}
+                              >
+                                Monthly
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                        <div
+                          className="row"
+                          style={
+                            Object {
+                              "opacity": 1,
+                            }
+                          }
+                        />
+                        <div
+                          className="price"
+                        >
+                          <div
+                            className="pricing-row w-row"
+                            style={
+                              Object {
+                                "width": "100%",
+                              }
+                            }
+                          >
+                            <div
+                              className="w-col"
+                            >
+                              <span
+                                className="active btn btn-outline-success waves-light waves-effect ml-2 set-br"
+                                onClick={[Function]}
+                              >
+                                 Yearly 
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                        <div
+                          className="row"
+                          style={
+                            Object {
+                              "opacity": 0.5,
+                            }
+                          }
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  className="float-right row"
+                >
+                  <div
+                    className="m-t-50 "
+                  >
+                    <span
+                      className="btn btn-primary  waves-light waves-effect number ml-2 pl-4 pr-4"
+                      onClick={[Function]}
+                      type="button"
+                    >
+                      Proceed 
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="clearfix"
+      />
+    </div>
+  </div>
+  <div />
+</div>
+`;

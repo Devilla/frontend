@@ -73,6 +73,12 @@ class CapturePage extends Component {
     let lead = this.state.lead;
     lead['rule'] = this.props.rules._id;
     this.props.createPageUrl(lead);
+    this.setState({lead: {
+      url: '',
+      status: '',
+      class: '',
+      type: ''
+    }});
   }
 
   handlePageUrl = (e) => {
@@ -170,7 +176,7 @@ class CapturePage extends Component {
                     onKeyUp={(e) => e.keyCode === 13?this.addPageUrl():null}
                   />
                   <span className="input-group-btn col-md-2" id="urladd">
-                    <span className="btn btn-custom nav nav-pills waves-light waves-effect number pl-5 pr-5" onClick={this.addPageUrl}>
+                    <span className="btn btn-primary nav nav-pills waves-light waves-effect number pl-5 pr-5" onClick={this.addPageUrl}>
                       Add
                     </span>
                   </span>
