@@ -25,6 +25,7 @@ class DashboardChannel extends Component {
 
     };
   }
+  
   channelfunc = (index) => {
     let res = {};
     switch(true) {
@@ -37,8 +38,6 @@ class DashboardChannel extends Component {
       case /6/.test(index) : res = TrustRadius; break;
       case /7/.test(index) : res = Yelp; break;
       case /8/.test(index) : res = BingPlaces; break;
-
-
     }
     return res;
   }
@@ -46,7 +45,6 @@ class DashboardChannel extends Component {
   componentWillMount() {
     var scrollElm = document.scrollingElement;
     scrollElm.scrollTop = 0;
-    console.log(this.props && this.props);
   }
 
 
@@ -67,7 +65,6 @@ class DashboardChannel extends Component {
 
 
   render() {
-
     return (
 
       <div className="dashchannel-container">

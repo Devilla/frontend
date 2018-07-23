@@ -5,7 +5,6 @@ import './WebsiteFooter.scss';
 
 class WebsiteFooter extends Component {
   render() {
-    console.log(this.props, '=============');
     return (
       <div className="websitefooter-container">
         {!this.props.loggedIn &&

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import WebsitePrice from './WebsitePrice';
 import WebsiteCheckout from './WebsiteCheckout';
-import './WebsitePrice.scss';
+import './WebsitePayment.scss';
 
 class WebsitePayment extends Component {
   constructor(props) {
@@ -90,11 +90,11 @@ class WebsitePayment extends Component {
             {plan.interval === 'year' ?  <p className= {/\b(Advanced)\b/m.test(plan.name) ?' mt-0 mb-0' : 'type--fine-print mt-0 mb-0 '}><i> 2 Months FREE </i></p> :  ''}
           </div>
           <hr/>
-          <ul className="h6 ">
+          <ul className="h6 plan-list-ul">
             <li>
               <span className="bg--primary-1"></span>
               <span className="h3">
-                {plan.description}
+                <div className="plan-details" dangerouslySetInnerHTML={{ __html: plan.details }} />
               </span>
             </li><hr/>
             <li className="text-left pl-5">
@@ -155,7 +155,7 @@ class WebsitePayment extends Component {
   render() {
     const { externalValue, selectedPlan, coupon } = this.state;
     return (
-      <div>
+      <div className="website-payment-container">
         {!selectedPlan ?
           <WebsitePrice
             externalValue={externalValue}

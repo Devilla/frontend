@@ -8,7 +8,7 @@ import { Animated } from 'react-animated-css';
 import PricePage from 'components/PricePage';
 import './PlanList.scss';
 
-const PlanList = ({ plan, handleCheckChange, makePayment }) => {
+const PlanList = ({ plan, profile, handleCheckChange, makePayment }) => {
   return (
     <div className="planlist-container">
       <div className="content fill upgrade-plan ">
@@ -30,7 +30,7 @@ const PlanList = ({ plan, handleCheckChange, makePayment }) => {
                   </Row>
                   <Row className="float-right">
                     <div className="m-t-50 ">
-                      <span type="button" className="btn btn-primary  waves-light waves-effect number ml-2 pl-4 pr-4" onClick={() => {this.props.profile && this.props.profile.plan.name!==plan && makePayment();}}>Proceed </span>
+                      <span type="button" className="btn btn-primary  waves-light waves-effect number ml-2 pl-4 pr-4" onClick={() => {profile && profile.plan.name!==plan && makePayment();}}>Proceed </span>
                     </div>
                   </Row>
                 </div>

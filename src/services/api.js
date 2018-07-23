@@ -118,3 +118,18 @@ export const POSTFILE = (url, body) => {
     .then(res => res.json())
     .then(res => res);
 };
+
+export const POSTELASTIC = (url, body) => {
+  const headers = {
+    'Content-Type':'application/json',
+    'kbn-xsrf': 'reporting'
+  };
+
+  return fetch(base + url, {
+    method: 'POST',
+    headers: headers,
+    body: body,
+  })
+    .then(res => res.json())
+    .then(res => res);
+};
