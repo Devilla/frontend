@@ -7,6 +7,7 @@ import { load, loaded } from 'ducks/loading';
 import { toast } from 'react-toastify';
 import { browserHistory } from 'react-router';
 import Popup from 'react-popup';
+import { base } from 'services/api';
 
 const toastConfig = {
   position: toast.POSITION.BOTTOM_LEFT,
@@ -99,7 +100,20 @@ function* update(action) {
     yield put(loaded());
     yield toast.error(error.message, toastConfig);
   }
+}
 
+function* downloadInvoice(action) {
+  try {
+    yield put(load());
+    const res = yield call(api.GET, `payment/invoice/${action.invoice_id}`);
+    if(res.error)
+      console.log(res.error);
+    require('downloadjs')(base + res.path);
+    yield put(loaded());
+  } catch (error) {
+    yield put(loaded());
+    yield toast.error(error.message, toastConfig);
+  }
 }
 
 function* updatePaymentMethod(action) {
@@ -110,7 +124,6 @@ function* updatePaymentMethod(action) {
       console.log(res.error);
     else
       browserHistory.push('/billing-details');
-      // yield put(actions.successPayment(res));
     yield put(loaded());
   } catch (error) {
     yield put(loaded());
@@ -134,6 +147,10 @@ export function* watchUpdate() {
   yield takeLatest(actions.UPDATE, update);
 }
 
+export function* watchDownloadInvoice() {
+  yield takeLatest(actions.DOWNLOAD_INVOICE, downloadInvoice);
+}
+
 export function* watchUpdatePaymentMethod() {
   yield takeLatest(actions.UPDATE_PAYMENT_METHOD, updatePaymentMethod);
 }
@@ -144,6 +161,7 @@ export default function* rootSaga() {
     fork(watchCreate),
     fork(watchUpdate),
     fork(watchFetchInvoices),
-    fork(watchUpdatePaymentMethod)
+    fork(watchUpdatePaymentMethod),
+    fork(watchDownloadInvoice)
   ];
 }

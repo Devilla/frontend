@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import { browserHistory } from 'react-router';
 import moment from 'moment';
-import { fetchPayment, fetchInvoices } from 'ducks/payment' ;
+import { fetchPayment, fetchInvoices, downloadInvoice } from 'ducks/payment' ;
 import {
   Grid,
   Row,
@@ -13,11 +13,10 @@ import {
 } from 'react-bootstrap';
 
 import Button from 'components/Template/customButton';
-
 import './BillingDetails.scss';
 
 const billingHeader = [
-  'Billing Date', 'Amount', 'Transaction Id', 'Paid', 'Download'
+  'Billing Date', 'Amount', 'Transaction Id', 'Status', 'Download'
 ];
 
 class BillingDetails extends Component {
@@ -48,8 +47,8 @@ class BillingDetails extends Component {
           <td className="name pl-3">{moment(invoice.created_at).format('DD MMM YYYY')}</td>
           <td className="email pl-4">${invoice.amount_due / 100}</td>
           <td className="location">{invoice.invoice_id}</td>
-          <td>{invoice.paid?'Yes':'No'}</td>
-          <td className="lastseen"><i className="fi-download pl-4"></i></td>
+          <td>{invoice.paid?'Paid':'Not Paid'}</td>
+          <td className="lastseen"><i className="fi-download pl-4" onClick={() => this.props.downloadInvoice(invoice.id)}></i></td>
         </tr>;
       });
     } else
@@ -80,7 +79,7 @@ class BillingDetails extends Component {
                         icon="cloud-upload"
                         disabled={false}
                       >
-                            Upgrade Plan
+                        Upgrade Plan
                       </Button>
 
                       <Button
@@ -92,7 +91,7 @@ class BillingDetails extends Component {
                         icon="usd"
                         disabled={false}
                       >
-                          Payment Method
+                        Payment Method
                       </Button>
                     </div>
                     <div className="clearfix"></div>
@@ -224,7 +223,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
   fetchPayment,
-  fetchInvoices
+  fetchInvoices,
+  downloadInvoice
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(BillingDetails);
