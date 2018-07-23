@@ -257,8 +257,7 @@ class Dashboard extends Component {
 
         let users = website.signups && website.signups.userDetails?website.signups.userDetails.length:0;
         userSignUps = userSignUps + users;
-        if(website.isActive)
-          campaignActive = campaignActive + 1;
+        campaignActive = campaignActive + 1;
       });
     }
 

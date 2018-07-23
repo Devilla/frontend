@@ -36,10 +36,10 @@ class Notification extends Component {
     if (active && this.props.profile.uniqueVisitorsQoutaLeft <= 0) {
       this.setState({
         modaltitle: 'Limit exceeded',
-        modalbody: 'Please upgarde your plan to continue',
+        modalbody: 'Please upgrade your plan to continue',
         modalfoot: 'Upgrade Plan',
         modalname: '2'
-      })
+      });
     } else {
       campaign['isActive'] = active;
       delete campaign['_id'];
@@ -59,11 +59,11 @@ class Notification extends Component {
 
   deleteCampaign = (indexes, campaigns,e) => {
     this.setState( (prevState) => {
-      return { 
-        deleteCampaign : !prevState.deleteCampaign, 
-        index: indexes, 
+      return {
+        deleteCampaign : !prevState.deleteCampaign,
+        index: indexes,
         campaign : campaigns
-       };
+      };
     });
   }
 
@@ -124,11 +124,11 @@ class Notification extends Component {
                   <h4 className="modal-title">{modaltitle}</h4>
                 </div>
                 <div className="modal-body pb-5">
-                      {modalbody}
+                  {modalbody}
                 </div>
                 <div className="modal-footer">
                   <button type="button" className="float-left btn btn-primary close-btn" data-dismiss="modal">Close</button>
-                  <button type="button" className="btn btn-primary delete-btn" data-dismiss="modal" 
+                  <button type="button" className="btn btn-primary delete-btn" data-dismiss="modal"
                     onClick={modalfoot === 'Upgrade Plan' ? () => browserHistory.push('/upgrade') : this.deletepopupContent} >{modalfoot}</button>
                 </div>
               </div>

@@ -132,6 +132,46 @@ class Profile extends Component {
     });
   }
 
+  showPopupOne = () => {
+    return (
+      <div>
+        <Row className="givemeborder justify-content-around">
+          <Col md={6} className="pauseContent">
+            <button type="button" className="btn btn-primary waves-effect">
+              <i className="mdi mdi-account-minus mr-1"></i>Pause Account
+            </button>
+            <div className='content'>
+              <h3>Recommended:</h3>
+              <p>Indefinitely deactivates your account till you activate it again.</p><br/>
+              <p>You will be charged just $1.8 month to safeguard your data in our secure vaults</p>
+            </div>
+          </Col>
+          <Col md={6} className="deleteContent">
+            <button type="button" className="btn btn-primary waves-effect" >
+              <i className="mdi mdi-account-remove mr-1"></i>Delete Account
+            </button>
+            <div className='content'>
+              <h3>Warning: </h3>
+              <p>Deletes all your data & saved settings. This action is irreversible </p>
+            </div>
+          </Col>
+        </Row>
+        <Row className="justify-content-center mb-3">
+          <button type="button" className="btn btn-outline-primary waves-effect submitaccount">Submit </button>
+        </Row>
+        <Row className="justify-content-center mb-3 text-desc">An email containing one time code has been sent to your registered email.</Row>
+        <Row className="justify-content-center">
+          <Col md={4}>
+            <input type="number" placeholder="Enter Code here" className="inputcode"/>
+          </Col>
+          <Col>
+            <button type="button" className="btn btn-outline-primary waves-effect confirmaccount" data-dismiss="modal" data-toggle="modal" data-target="#feedbackmodal">Confirm Action </button>
+          </Col>
+        </Row>
+      </div>
+    );
+  }
+
   render() {
     const profile = this.state;
     const { user } = this.props;
@@ -251,9 +291,27 @@ class Profile extends Component {
                             : 'Save Profile'}
 
                         </button>
+                        <button type="button" className="btn btn-primary waves-effect" data-toggle="modal" data-target="#deletemodal">
+                          <i className="mdi mdi-settings mr-1"></i>More Options
+                        </button>
                       </div>
                     </Col>
                   </form>
+                  <div className="modal fade show-modal" id="deletemodal" role="dialog">
+                    <div className="modal-dialog">
+                      <div className="modal-content align-modal">
+                        <div className="modal-header">
+                          <button type="button" className="close" data-dismiss="modal">&times;</button>
+                          <h4 className   ="modal-title">Your Account</h4>
+                        </div>
+                        <div className="modal-body">
+                          {this.showPopupOne()}
+                        </div>
+                        <div className="modal-footer">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </Col>
