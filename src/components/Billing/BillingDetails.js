@@ -60,6 +60,7 @@ class BillingDetails extends Component {
   render() {
     const { planSelected } = this.state;
     const { profile } = this.props;
+    console.log(planSelected, '============');
     return (
       <div className="content fill billing-details ml-1">
         <Grid fluid={true}>
@@ -137,7 +138,7 @@ class BillingDetails extends Component {
                                 <p className="text-muted font-13">
                                   <strong>Next Payment Due Date : </strong>
                                   <span className="m-l-15">
-                                    {planSelected.interval ? moment(planSelected.interval.updated_at).add(planSelected.interval_count, planSelected.interval).format('DD MMM YYYY') : '-'}
+                                    {planSelected.created_at ? moment(planSelected.updated_at).add(planSelected.interval_count, planSelected.interval).format('DD MMM YYYY') : '-'}
                                   </span>
                                 </p>
                                 <p className="text-muted font-13">
@@ -149,7 +150,7 @@ class BillingDetails extends Component {
                                 <p className="text-muted font-13">
                                   <strong>Last Paid : </strong>
                                   <span className="m-l-15">
-                                    {planSelected.interval ? moment(planSelected.interval.updated_at).format('DD MMM YYYY') : '-'}
+                                    {planSelected.interval ? moment(planSelected.updated_at).format('DD MMM YYYY') : '-'}
                                   </span>
                                 </p>
                                 <p className="text-muted font-13">
