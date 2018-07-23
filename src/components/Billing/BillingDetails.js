@@ -17,7 +17,7 @@ import Button from 'components/Template/customButton';
 import './BillingDetails.scss';
 
 const billingHeader = [
-  'Billing Date', 'Amount', 'Transaction Id', 'Interval', 'Download Invoice'
+  'Billing Date', 'Amount', 'Transaction Id', 'Paid', 'Download'
 ];
 
 class BillingDetails extends Component {
@@ -27,7 +27,7 @@ class BillingDetails extends Component {
       planSelected: {}
     };
     props.fetchPayment();
-    // props.fetchInvoices();
+    props.fetchInvoices();
   }
 
   componentWillReceiveProps(nextProps) {
@@ -39,16 +39,16 @@ class BillingDetails extends Component {
   }
 
   renderPaymentList() {
-    if (this.props.payments) {
-      this.props.payments.sort((a, b) => {
-        return moment(a.createdAt) < moment(b.createdAt) ? 1 : moment(a.createdAt) > moment(b.createdAt) ? -1 : 0;
+    if (this.props.invoices) {
+      this.props.invoices.sort((a, b) => {
+        return moment(a.created_at) < moment(b.created_at) ? 1 : moment(a.created_at) > moment(b.created_at) ? -1 : 0;
       });
-      return this.props.payments.map((payment, index) => {
+      return this.props.invoices.map((invoice, index) => {
         return <tr className=" text-muted font-13" key={index}>
-          <td className="name pl-3">{moment(payment.createdAt).format('DD MMM YYYY')}</td>
-          <td className="email pl-4">${payment.payment_plan.amount / 100}</td>
-          <td className="location">{payment.subscription_id}</td>
-          <td className="country pl-4">{payment.payment_plan.interval.charAt(0).toUpperCase() + payment.payment_plan.interval.slice(1)}</td>
+          <td className="name pl-3">{moment(invoice.created_at).format('DD MMM YYYY')}</td>
+          <td className="email pl-4">${invoice.amount_due / 100}</td>
+          <td className="location">{invoice.invoice_id}</td>
+          <td>{invoice.paid?'Yes':'No'}</td>
           <td className="lastseen"><i className="fi-download pl-4"></i></td>
         </tr>;
       });
