@@ -1,0 +1,138 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`>>>T E R M S --- Snapshot +++capturing Snapshot of terms 1`] = `
+<div
+  className="install-pixel"
+>
+  <h4
+    className="lead text-center m-b-30 m-t-20"
+  >
+    Install Pixel to Your Website
+  </h4>
+  <p
+    className="text-muted text-left"
+  >
+    Please copy your unique script & paste it in the Header of your Website. Add this To every page where you want To track, measure And show notifications.
+  </p>
+  <div
+    className="bgcolor text-monospace border-dark"
+  >
+    <p
+      className="m-l-30 p-3"
+    >
+      &lt;script src="https://storage.cloud.google.com/influence-197607.appspot.com/influence-analytics.js"&gt;
+      &lt;/script&gt;
+      <br />
+       
+      &lt;script&gt;
+      <br />
+       
+      new Influence({
+      <br />
+       trackingId: '
+      INF-XXXXXXX
+      '
+      <br />
+       
+      });
+      <br />
+       
+      &lt;/script&gt;
+      <br />
+    </p>
+  </div>
+  <div
+    className="float-left custom-width align-install-btn"
+  >
+    <button
+      className="btn btn-primary waves-effect copy-btn"
+      onClick={[Function]}
+      type="button"
+    >
+      Copy
+    </button>
+    <button
+      className="btn btn-primary waves-light waves-effect pixel-btn"
+      onClick={[Function]}
+      style={
+        Object {
+          "backgroundColor": "#097fff",
+        }
+      }
+      type="button"
+    >
+      <div
+        className="animated fadeIn leftwrap center"
+        style={
+          Object {
+            "animationDelay": "0ms",
+            "pointerEvents": "all",
+          }
+        }
+      >
+        Verify Pixel
+      </div>
+    </button>
+  </div>
+  <p
+    className="m-t-30 pb-5"
+  >
+    <br />
+  </p>
+  <span
+    className="radio radio-warning ml-2 pr-4"
+  >
+    <input
+      defaultChecked={true}
+      id="radio8"
+      name="radio8"
+      type="radio"
+      value="option8"
+    />
+    <label
+      htmlFor="radio8"
+    >
+      Unverified
+    </label>
+  </span>
+  <span
+    className="radio radio-success"
+  >
+    <input
+      defaultChecked={true}
+      id="radio9"
+      name="radio9"
+      type="radio"
+      value="option9"
+    />
+    <label
+      htmlFor="radio9"
+    >
+      Verified
+    </label>
+  </span>
+  <hr />
+  <p
+    className="m-t-30"
+  >
+    <br />
+  </p>
+  <div
+    className="float-left integration mr-0 pr-2"
+  >
+    <button
+      className="btn btn-outline-primary waves-light waves-effect webhook-btn  pl-3 pr-3"
+      onClick={[Function]}
+      type="button"
+    >
+      Webhook Integrations
+      <i
+        className="icon-arrow-down pl-2"
+      />
+    </button>
+  </div>
+  <div
+    className="clearfix"
+  />
+</div>
+`;

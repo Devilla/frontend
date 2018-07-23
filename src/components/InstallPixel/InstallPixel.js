@@ -33,7 +33,7 @@ const InstallPixel = ({
         </p>
       </div>
       <div className="float-left custom-width align-install-btn">
-        <button type="button" className="btn btn-primary waves-effect copy-btn" onClick={() => { this.buttonDOM.blur(); handlePixelCopy(); }} ref={(buttonDOM) => this.buttonDOM = buttonDOM}>Copy</button>
+        <button type="button" className="btn btn-primary waves-effect copy-btn" onClick={() => { handlePixelCopy(); }}>Copy</button>
         {elastic!==undefined && elastic=='verified'}
         <button type="button" style={elastic==undefined?{backgroundColor:'#097fff'}:(elastic.error || (elastic.message.hits.total === 0))?{backgroundColor:'#f9bc0b'}:{backgroundColor:'#0acf97'}} className="btn btn-primary waves-light waves-effect pixel-btn" onClick={() => verifyPixelStatus()}>
           <Animated className="leftwrap center" animationIn="fadeIn" animationOut="fadeOut" isVisible={true}>
@@ -71,8 +71,7 @@ const InstallPixel = ({
         <button
           type="button"
           className="btn btn-outline-primary waves-light waves-effect webhook-btn  pl-3 pr-3"
-          onClick={() => { this.toggleDOM.blur(); toggleWebhook(); }}
-          ref={(toggleDOM) => this.toggleDOM = toggleDOM}
+          onClick={() => { toggleWebhook(); }}
         >
           Webhook Integrations
           <i className={displayWebhookIntegration?'icon-arrow-up pl-2':'icon-arrow-down pl-2'}></i>
