@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <testsuites errors="0"
             failures="0"
-            tests="4">
+            tests="7">
 
   <testsuite name="WebsiteLogin"
     errors="0" failures="0" hostname="" id="" package="WebsiteLogin" skipped="0"
-    tests="4" time="69.88" timestamp="Mon, 23 Jul 2018 05:47:36 GMT">
+    tests="7" time="64.47" timestamp="Mon, 23 Jul 2018 06:37:50 GMT">
   
-    <testcase name="Go to  login influence" classname="WebsiteLogin" time="46.79" assertions="5">
+    <testcase name="Go to  login influence" classname="WebsiteLogin" time="19.40" assertions="5">
 
     
 
@@ -20,21 +20,38 @@
     
     </testcase>
   
-    <testcase name="Click on new Button  " classname="WebsiteLogin" time="1.141" assertions="2">
+    <testcase name="Check if the session is on and close session " classname="WebsiteLogin" time="0.08000" assertions="0">
+    </testcase>
+  
+    <testcase name="open browser" classname="WebsiteLogin" time="11.86" assertions="1">
+
+    
+    </testcase>
+  
+    <testcase name="Go to  login influence again " classname="WebsiteLogin" time="2.688" assertions="4">
+
+    
+
+    
 
     
 
     
     </testcase>
   
-    <testcase name="Log out from Influence" classname="WebsiteLogin" time="6.822" assertions="1">
+    <testcase name="Click on new Button  " classname="WebsiteLogin" time="1.280" assertions="2">
+
+    
 
     
     </testcase>
   
-    <testcase name="Fill in wrong details" classname="WebsiteLogin" time="15.13" assertions="2">
+    <testcase name="Log out from Influence" classname="WebsiteLogin" time="5.408" assertions="1">
 
     
+    </testcase>
+  
+    <testcase name="Fill in wrong details" classname="WebsiteLogin" time="23.75" assertions="1">
 
     
     </testcase>
