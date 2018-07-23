@@ -110,7 +110,6 @@ function* updatePaymentMethod(action) {
       console.log(res.error);
     else
       browserHistory.push('/billing-details');
-      // yield put(actions.successPayment(res));
     yield put(loaded());
   } catch (error) {
     yield put(loaded());

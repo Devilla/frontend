@@ -10,17 +10,13 @@ class Sidebar extends Component {
     super(props);
     this.state = {
       width: window.innerWidth,
-      quotaPercentage:0,
-
+      quotaPercentage:0
     };
-
   }
 
-
-  activeRoute(routeName) {
+  activeRoute() {
     return 1;
   }
-
 
   render() {
     const { disableButton, profile } = this.props;
