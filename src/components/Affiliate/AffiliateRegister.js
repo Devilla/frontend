@@ -24,14 +24,11 @@ class AffiliateRegister extends Component {
     };
   }
 
-
-
   handleEmailChange = (event) => {
     const { name, value } = event.target;
     const isEmailValid = validateEmail(this.refs.email.value);
     this.setState({ [name]: value, isEmailValid, errorEmail: '' });
   };
-
 
   handleNameChange = (event) => {
     const { name, value } = event.target;
@@ -70,6 +67,7 @@ class AffiliateRegister extends Component {
                   <form className="row" onSubmit={this.handleSubmit.bind(this)} method="POST" data-name="Affiliate Form">
                     <div className="mt-3 col-md-12">
                       <input
+                        id="name"
                         type="text"
                         name="name"
                         placeholder="First / Last Name"

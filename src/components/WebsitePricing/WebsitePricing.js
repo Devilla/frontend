@@ -26,11 +26,6 @@ class WebsitePricing extends Component {
       });
   }
 
-  componentDidMount() {
-    let scrollElm = document.scrollingElement;
-    scrollElm.scrollTop = 0;
-  }
-
   handleChange = (checked) => {
     this.setState({checked});
   }

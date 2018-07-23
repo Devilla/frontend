@@ -21,9 +21,6 @@ export default class UpgradePlan extends Component {
     this.makePayment = this.makePayment.bind(this);
   }
 
-  componentDidMount() {
-    window.scrollTo(0, 0);
-  }
 
   handleCheckChange(checked, value) {
     this.setState({ plan: checked ? value : null });

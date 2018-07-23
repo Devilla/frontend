@@ -23,11 +23,6 @@ class WebsitePayment extends Component {
       });
   }
 
-  componentDidMount() {
-    let scrollElm = document.scrollingElement;
-    scrollElm.scrollTop = 0;
-  }
-
   handleMonthChange = () => {
     this.setState({externalValue: false, planPeriod: 1});
   }

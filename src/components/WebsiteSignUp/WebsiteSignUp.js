@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 import { validateEmail, validatePassword, register, PASSWORD_MAX_LENGTH } from 'services/FormUtils';
 import { Animated } from'react-animated-css';
 import { Alert, HelpBlock } from 'react-bootstrap';
-import { store } from 'index.js';
+import { store } from 'App.js';
 import { load, loaded } from 'ducks/loading';
 import { loginSuccess } from 'ducks/auth';
 import { browserHistory } from 'react-router';
@@ -109,11 +109,6 @@ class WebsiteSignUp extends Component {
     });
   }
 
-  componentDidMount() {
-    let scrollElm = document.scrollingElement;
-    scrollElm.scrollTop = 0;
-  }
-
   render() {
     const { email, isRegistered, error, errorEmail, isPasswordShown, errorPassword } = this.state;
 
@@ -150,6 +145,7 @@ class WebsiteSignUp extends Component {
                                 </Alert>
                               }
                               <input
+                                id="email"
                                 name='email'
                                 value={email}
                                 onBlur={this.handleEmailBlur}
@@ -162,6 +158,7 @@ class WebsiteSignUp extends Component {
                             </div>
                             <div className='col-md-9 col-sm-8'>
                               <input
+                                id='password'
                                 name='password'
                                 maxLength={PASSWORD_MAX_LENGTH}
                                 onBlur={this.handlePasswordBlur}
@@ -189,33 +186,34 @@ class WebsiteSignUp extends Component {
                               </span>
                             </div>
                           </div>
+
                         </form>
                       </div>
-                    </div>
 
-                    <div className="vristrue ml-5">
-                    </div>
+                      <div className="vristrue ml-5">
+                      </div>
 
-                    <div className="col-md-4 socio-link">
-                      <p> <br /></p>
-                      <div className="pos-relative">
-                        <a href={`${base}connect/facebook`} className="link-fb ">
-                          <div className="btn btn--icon bg--facebook" to="">
-                            <span className="btn__text ">
-                              <i className="socicon socicon-facebook"></i>
+                      <div className="col-md-4 socio-link">
+                        <p> <br /></p>
+                        <div className="pos-relative">
+                          <a href={`${base}connect/facebook`} className="link-fb ">
+                            <div className="btn btn--icon bg--facebook" to="">
+                              <span className="btn__text ">
+                                <i className="socicon socicon-facebook"></i>
                           Signup with Facebook
-                            </span>
-                          </div>
-                        </a>
-                        <p></p>
-                        <a href={`${base}connect/google`} className="link">
-                          <div className="btn btn--icon bg--googleplus link-go" to="">
-                            <span className="btn__text">
-                              <i className="socicon socicon-google"></i>
+                              </span>
+                            </div>
+                          </a>
+                          <p></p>
+                          <a href={`${base}connect/google`} className="link">
+                            <div className="btn btn--icon bg--googleplus link-go" to="">
+                              <span className="btn__text">
+                                <i className="socicon socicon-google"></i>
                           Signup with Google
-                            </span>
-                          </div>
-                        </a>
+                              </span>
+                            </div>
+                          </a>
+                        </div>
                       </div>
                     </div>
                   </div>

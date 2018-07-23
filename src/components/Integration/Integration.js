@@ -30,10 +30,6 @@ class Integrations extends Component {
     };
   }
 
-  componentDidMount() {
-    let scrollElm = document.scrollingElement;
-    scrollElm.scrollTop = 0;
-  }
 
   channelsList = () => {
     return (
@@ -115,7 +111,7 @@ class Integrations extends Component {
               <span className="text-muted">View Details&nbsp; <i className="fi-open"></i></span>
             </div>
           </Col>
-      
+
           <Col md={3}  className="bx-shadow">
             <div className="card-box tilebox-one">
               <img src={Unbounce} className="logocompany" />
@@ -131,7 +127,7 @@ class Integrations extends Component {
             </div>
           </Col>
         </Row>
-        <Row className="justify-content-center mb-5">          
+        <Row className="justify-content-center mb-5">
           <Col md={3}  className="bx-shadow">
             <div className="card-box tilebox-one">
               <img src={Woocommerce} className="logocompany" />
@@ -147,7 +143,7 @@ class Integrations extends Component {
             </div>
           </Col>
         </Row>
-       
+
       </div>
     );
   }

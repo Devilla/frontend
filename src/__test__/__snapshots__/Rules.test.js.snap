@@ -1,0 +1,588 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`>>>T E R M S --- Snapshot +++capturing Snapshot of terms 1`] = `
+<div
+  className="rules-container"
+>
+  <div
+    className="text-center  m-t-20"
+  >
+    <h4
+      className="lead m-l-100 m-b-30"
+    >
+      Settings
+    </h4>
+  </div>
+  <div
+    className="row m-t-30 m-b-30"
+  >
+    <div
+      className="col-md-6 border-right"
+    >
+      <ul
+        className=" text-left list-unstyled "
+      >
+        <li
+          className="m-t-5"
+        >
+          <label
+            className="text-muted"
+          >
+            Select Pop-in Animation
+          </label>
+          <select
+            className=" text-muted form-control muted-text"
+            onChange={[Function]}
+            value="fadeInUp"
+          >
+            <option
+              value="fadeInUp"
+            >
+              Fade in Up
+            </option>
+            <option
+              value="fadeInLeft"
+            >
+              Fade in Left
+            </option>
+            <option
+              value="fadeInDown"
+            >
+              Fade in Down
+            </option>
+            <option
+              value="fadeInRight"
+            >
+              Fade in Right
+            </option>
+            <option
+              value="bounceInUp"
+            >
+              Bounce in Up 
+            </option>
+            <option
+              value="bounceInRight"
+            >
+              Bounce in Right
+            </option>
+            <option
+              value="bounceInLeft"
+            >
+              Bounce in Left
+            </option>
+            <option
+              value="bounceInDown"
+            >
+              Bounce in Down
+            </option>
+            <option
+              value="slideInUp"
+            >
+              Slide in Up
+            </option>
+            <option
+              value="slideInDown"
+            >
+              Slide in Down
+            </option>
+            <option
+              value="slideInLeft"
+            >
+              Slide in Left
+            </option>
+            <option
+              value="slideInRight"
+            >
+              Slide in Right
+            </option>
+            <option
+              value="zoomIn"
+            >
+              Zoom in
+            </option>
+            <option
+              value="zoomInUp"
+            >
+              Zoom in Up
+            </option>
+            <option
+              value="zoomInDown"
+            >
+              Zoom in Down
+            </option>
+            <option
+              value="zoomInLeft"
+            >
+              Zoom in Left
+            </option>
+            <option
+              value="zoomInRight"
+            >
+              Zoom in Right
+            </option>
+          </select>
+        </li>
+        <li
+          className="mt-4"
+        >
+          <label
+            className="text-muted"
+          >
+            Select Pop-out Animation
+          </label>
+          <select
+            className="text-muted form-control  muted-text"
+            onChange={[Function]}
+            value="fadeOutDown"
+          >
+            <option
+              value="fadeOutUp"
+            >
+              Fade out Up
+            </option>
+            <option
+              value="fadeOutLeft"
+            >
+              Fade out Left
+            </option>
+            <option
+              value="fadeOutDown"
+            >
+              Fade out Down
+            </option>
+            <option
+              value="fadeOutRight"
+            >
+              Fade out Right
+            </option>
+            <option
+              value="bounceOutUp"
+            >
+              Bounce out Up 
+            </option>
+            <option
+              value="bounceOutRight"
+            >
+              Bounce out Right
+            </option>
+            <option
+              value="bounceOutLeft"
+            >
+              Bounce out Left
+            </option>
+            <option
+              value="bounceOutDown"
+            >
+              Bounce out Down
+            </option>
+            <option
+              value="slideOutUp"
+            >
+              Slide out Up
+            </option>
+            <option
+              value="slideOutDown"
+            >
+              Slide out Down
+            </option>
+            <option
+              value="slideOutLeft"
+            >
+              Slide out Left
+            </option>
+            <option
+              value="slideOutRight"
+            >
+              Slide out Right
+            </option>
+            <option
+              value="zoomOut"
+            >
+              Zoom out
+            </option>
+            <option
+              value="zoomOutUp"
+            >
+              Zoom out Up
+            </option>
+            <option
+              value="zoomOutDown"
+            >
+              Zoom out Down
+            </option>
+            <option
+              value="zoomOutLeft"
+            >
+              Zoom out Left
+            </option>
+            <option
+              value="zoomOutRight"
+            >
+              Zoom out Right
+            </option>
+          </select>
+        </li>
+        <li
+          className="ml-1 mt-4"
+        >
+          <div
+            className="checkbox checkbox-info"
+          >
+            <input
+              checked={true}
+              id="checkbox6b1"
+              onChange={[Function]}
+              type="checkbox"
+            />
+            <label
+              className="text-muted"
+              htmlFor="checkbox6b1"
+            >
+              Hide notifications on mobile
+            </label>
+          </div>
+        </li>
+        <li
+          className="ml-1 mt-4"
+        >
+          <div
+            className="checkbox checkbox-info"
+          >
+            <input
+              checked={true}
+              id="checkbox6b2"
+              onChange={[Function]}
+              type="checkbox"
+            />
+            <label
+              className="text-muted"
+              htmlFor="checkbox6b2"
+            >
+              Loop notifications  
+              <i
+                className="fa fa-info-circle"
+                data-delay="{\\"show\\":\\"0\\", \\"hide\\":\\"0\\"}"
+                data-toggle="tooltip text-muted"
+                title="Notification will run continously."
+              >
+                 
+              </i>
+            </label>
+          </div>
+        </li>
+        <li
+          className="ml-1 mt-4"
+        >
+          <div
+            className="checkbox checkbox-info"
+          >
+            <input
+              checked={false}
+              id="checkbox6b3"
+              onChange={[Function]}
+              type="checkbox"
+            />
+            <label
+              className="text-muted"
+              htmlFor="checkbox6b3"
+            >
+              Randomize delay between  notifications   
+              <i
+                className="fa fa-info-circle text-muted"
+                data-delay="{\\"show\\":\\"0\\", \\"hide\\":\\"0\\"}"
+                data-toggle="tooltip"
+                title="No constant delay time b/w notification."
+              >
+                 
+              </i>
+            </label>
+          </div>
+        </li>
+        <li
+          className="ml-1 mt-4"
+        >
+          <div
+            className="checkbox checkbox-info"
+          >
+            <input
+              checked={false}
+              id="checkbox6b4"
+              onChange={[Function]}
+              type="checkbox"
+            />
+            <label
+              className="text-muted"
+              htmlFor="checkbox6b4"
+            >
+              Allow users to close notifications
+            </label>
+          </div>
+        </li>
+        <br />
+      </ul>
+      <div>
+        <div
+          className="notification-view animated fadeIn"
+          style={
+            Object {
+              "bottom": "0px",
+              "left": "0px",
+            }
+          }
+        >
+          <div
+            id="FPqR2DbIqJeA2DbI7MM9_0"
+          >
+            <div
+              className=""
+              id="FPqR3tRBqJeA3tRB7MM9_0"
+            >
+              <div>
+                <div
+                  style={Object {}}
+                >
+                  <div
+                    style={
+                      Object {
+                        "display": "none",
+                      }
+                    }
+                  >
+                    <div
+                      id="FPqR2fZIqJeA2fZI7MM9_0"
+                    >
+                      <div
+                        className="FPqR3zjZqJeA3zjZ7MM9_0 FPqR2riIqJeA2riI7MM9_0"
+                      >
+                        <div
+                          className="FPqR1JYFqJeA1JYF7MM9_0"
+                        >
+                          <img
+                            src="images/554cf2e92cb6bf677667d90c_Testimonial-10 - Copy.jpg"
+                          />
+                        </div>
+                        <div
+                          className="FPqR2EbCqJeA2EbC7MM9_0"
+                        >
+                          <div
+                            className="FPqR2AUlqJeA2AUl7MM9_0"
+                          >
+                             Username from City, Country 
+                          </div>
+                          <div
+                            className="FPqR13BWqJeA13BW7MM9_0"
+                          >
+                            Recently signed up for Company
+                          </div>
+                          <div
+                            className="FPqR2PlWqJeA2PlW7MM9_0"
+                          >
+                            a minute ago
+                          </div>
+                          <div
+                            className="FPqR3eNuqJeA3eNu7MM9_0"
+                          >
+                            <i>
+                              <svg
+                                height="13"
+                                viewBox="0 0 7 13"
+                                width="7"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <g
+                                  fill="none"
+                                  fillRule="evenodd"
+                                >
+                                  <path
+                                    d="M4.127.496C4.51-.12 5.37.356 5.16 1.07L3.89 5.14H6.22c.483 0 .757.616.464 1.044l-4.338 6.34c-.407.595-1.244.082-1.01-.618L2.72 7.656H.778c-.47 0-.748-.59-.48-1.02L4.13.495z"
+                                    fill="#F6A623"
+                                  />
+                                  <path
+                                    d="M4.606.867L.778 7.007h2.807l-1.7 5.126 4.337-6.34H3.16"
+                                    fill="#FEF79E"
+                                  />
+                                </g>
+                              </svg>
+                            </i>
+                            <span>
+                              by
+                            </span>
+                            <span
+                              className="FPqR12wMqJeA12wM7MM9_0"
+                            >
+                              Influence
+                            </span>
+                          </div>
+                        </div>
+                        <div
+                          className="FPqR1N_EqJeA1N_E7MM9_0"
+                          style={
+                            Object {
+                              "display": "none",
+                            }
+                          }
+                        >
+                          <svg
+                            viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.597 17.954l-4.591-4.55-4.555 4.596-1.405-1.405 4.547-4.592-4.593-4.552 1.405-1.405 4.588 4.543 4.545-4.589 1.416 1.403-4.546 4.587 4.592 4.548-1.403 1.416z"
+                            />
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="col-md-6 pl-5"
+    >
+      <ul
+        className="text-muted text-left list-unstyled"
+      >
+        <li>
+          <label
+            className="text-muted"
+          >
+            Initial delay in starting first notification(seconds)
+          </label>
+          <input
+            className="form-control custom-select col-md-3 text-muted"
+            onChange={[Function]}
+            placeholder="Enter Seconds..."
+            type="number"
+            value={1}
+          />
+        </li>
+        <li
+          className="mt-4"
+        >
+          <label
+            className="text-muted"
+          >
+            Display time for each notification(seconds)
+          </label>
+          <input
+            className="form-control custom-select col-md-3 text-muted"
+            onChange={[Function]}
+            placeholder="Enter Seconds..."
+            type="number"
+            value={5}
+          />
+        </li>
+        <li
+          className="mt-4 pt-2"
+        >
+          <label
+            className="text-muted"
+          >
+            Delay between subsequent notifications(seconds)
+          </label>
+          <input
+            className="form-control custom-select col-md-3 text-muted"
+            onChange={[Function]}
+            placeholder="Enter Seconds..."
+            type="number"
+            value={3}
+          />
+        </li>
+        <li
+          className="mt-4"
+        >
+          <label
+            className="text-muted"
+          >
+            Select position for popup notification
+          </label>
+          <select
+            className="text-muted form-control muted-text"
+            onChange={[Function]}
+            value="Bottom Left"
+          >
+            <option
+              value="Bottom left"
+            >
+              Bottom Left
+            </option>
+            <option
+              value="Bottom Right"
+            >
+              Bottom Right
+            </option>
+            <option
+              value="Bottom Center"
+            >
+              Bottom Center
+            </option>
+            <option
+              value="Top Left"
+            >
+              Top Left
+            </option>
+            <option
+              value="Top Right"
+            >
+              Top Right
+            </option>
+            <option
+              value="Top Center"
+            >
+              Top Center
+            </option>
+          </select>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div
+    className="rules-buttons"
+  >
+    <button
+      className="btn btn-color waves-light waves-effect number "
+      onClick={[Function]}
+      type="button"
+    >
+      <i
+        className="icon-arrow-left pr-2"
+      />
+      Back
+    </button>
+    <button
+      className="btn btn-color btn-outline-primary waves-light waves-effect number"
+      type="button"
+    >
+      Show
+       Notification 
+    </button>
+    <button
+      className="btn btn-color btn-outline-primary waves-light waves-effect number"
+      onClick={[Function]}
+      type="button"
+    >
+      Set Default
+    </button>
+    <button
+      className="btn btn-color waves-light waves-effect number ml-2 pl-4 pr-3"
+      onClick={[Function]}
+      type="button"
+    >
+      Next
+      <i
+        className="icon-arrow-right pl-2"
+      />
+       
+    </button>
+  </div>
+  <div
+    className="clearfix"
+  />
+</div>
+`;
