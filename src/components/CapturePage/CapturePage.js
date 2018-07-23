@@ -73,6 +73,12 @@ class CapturePage extends Component {
     let lead = this.state.lead;
     lead['rule'] = this.props.rules._id;
     this.props.createPageUrl(lead);
+    this.setState({lead: {
+      url: '',
+      status: '',
+      class: '',
+      type: ''
+    }});
   }
 
   handlePageUrl = (e) => {
