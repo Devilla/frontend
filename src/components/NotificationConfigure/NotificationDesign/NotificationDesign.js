@@ -46,8 +46,7 @@ const NotificationDesign = ({
   };
 
   const notificationName = notification.notificationName;
-  let img={};
-  popupName === 'Google' ? img = Googlepop : img= Facebookpop;
+  let imgSrc = popupName === 'Google' ? Googlepop : Facebookpop;
 
   return (
     <div className="card-box p-0">
@@ -226,7 +225,7 @@ const NotificationDesign = ({
                               border: `${notificationStyle.borderWidth} ${notificationStyle.borderStyle} ${notificationStyle.borderColor}`
                             }}>
 
-                              <div className="FPqR1JYFqJeA1JYF7MM9_0" ><img src={img} width='50px'/></div>
+                              <div className="FPqR1JYFqJeA1JYF7MM9_0" ><img src={imgSrc} width='50px'/></div>
                               <div className="FPqR2EbCqJeA2EbC7MM9_0 content-pop">
                                 <div className="FPqR2AUlqJeA2AUl7MM9_0" style ={{
                                   color:notificationStyle.color,

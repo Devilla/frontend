@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import { FormGroup, Row, Col, Button, FormControl } from 'react-bootstrap';
 import Slider from 'react-rangeslider';
 import reactCSS from 'reactcss';
-import './NotificationConfigure.scss';
+// import './NotificationConfigure.scss';
 import 'react-images-uploader/styles.css';
 import 'react-images-uploader/font.css';
 import { ChromePicker } from 'react-color';
-import Channel from './Channel';
-import DashboardChannel from '../../DashboardChannel/DashboardChannel';
+import Channel from '../Channel/Channel';
+import DashboardChannel from 'components/DashboardChannel/DashboardChannel';
 import './NotificationDesignSetting.scss';
 
 const FONT_WEIGHT_BOLD = 'bold';
@@ -111,7 +111,6 @@ export class NotificationDesignSetting extends Component {
   setActiveState = (val) => {
     this.setState({ activeClass: val });
   }
-
 
   handleTextColorChange = (color) => {
     color = color.rgb;
