@@ -93,11 +93,6 @@ class WebsiteSignIn extends Component {
     });
   };
 
-  componentDidMount() {
-    let scrollElm = document.scrollingElement;
-    scrollElm.scrollTop = 0;
-  }
-
   render() {
     const mousepoint = {
       cursor: 'pointer'
@@ -120,14 +115,12 @@ class WebsiteSignIn extends Component {
                 <div className="row ">
                   <div className="col-sm-12 col-md-7 col-lg-6">
                     <div className="align">
-          
+
                       <p className="lead">
-                        <span className="sub-in-title">Don't have an account yet?&nbsp;
+                        <span className="sub-in-title">Dont have an account yet?&nbsp;
                           <Link to="/signup">Sign up</Link>
                         </span>
                       </p>
-
-
                       <form onSubmit={this.handleSubmit} className="loginfrm">
                         <div className="row justify-content-center">
                           {error &&
@@ -136,7 +129,9 @@ class WebsiteSignIn extends Component {
                         </Alert>
                           }
                           <div className="col-md-9 col-sm-8 ">
-                            <input name="email"
+                            <input
+                              id="email"
+                              name="email"
                               ref="email"
                               className="field w-input"
                               onBlur={this.handleEmailBlur}
@@ -149,7 +144,9 @@ class WebsiteSignIn extends Component {
                             </HelpBlock>
                           </div>
                           <div className="col-md-9 col-sm-8">
-                            <input type="password"
+                            <input
+                              id="password"
+                              type="password"
                               name="Password"
                               className="field w-input "
                               name="password"
@@ -164,7 +161,6 @@ class WebsiteSignIn extends Component {
                               <p className="website-error">{errorPassword}</p>
                             </HelpBlock>
                           </div>
-
                           <div className="col-md-9 col-sm-8 frmcntl">
                             <input
                               className="button submit-button w-button btn btn--primary ml-0"
@@ -179,10 +175,8 @@ class WebsiteSignIn extends Component {
                       </form>
                     </div>
                   </div>
-
                   <div className="vristrue ">
                   </div>
-
                   <div className="col-md-4 col-lg-4 socio-link">
                     <p> <br /></p>
                     <div className="mt--2">
@@ -214,11 +208,9 @@ class WebsiteSignIn extends Component {
     );
   }
 }
-
 const mapDispatchToProps = {
   loginSuccess,
   load,
   loaded
 };
-
 export default connect(null, mapDispatchToProps)(WebsiteSignIn);

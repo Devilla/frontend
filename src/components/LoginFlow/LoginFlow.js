@@ -12,7 +12,7 @@ import { Spinner } from 'components';
 
 import './LoginFlow.scss';
 
-import { store } from 'index.js';
+import { store } from 'App.js';
 
 class LoginFlow extends Component {
   constructor(props) {
