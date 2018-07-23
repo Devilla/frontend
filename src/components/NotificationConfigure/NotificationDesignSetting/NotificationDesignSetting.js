@@ -221,6 +221,7 @@ export class NotificationDesignSetting extends Component {
       showpopup,
       campaign
     } = this.props;
+    
     const styles = reactCSS({
       'default': {
         colorSwatch: {
@@ -262,6 +263,8 @@ export class NotificationDesignSetting extends Component {
         },
       },
     });
+
+    const planType = profile.plan.references.service_template_properties[1]?profile.plan.references.service_template_properties[1].data.value:'';
 
     return (
       <div>
@@ -362,7 +365,7 @@ export class NotificationDesignSetting extends Component {
                       </Col>
                     </Row>
                     {notification.notificationName === 'Recent Activity' &&
-                      profile.plan.references.service_template_properties[0].data.value == 'premium' &&
+                      planType === 'premium' &&
                       <Row style={{padding: '4% 0%'}}>
                         <Col md={10}>
                           <span className="mt-5 text-muted h6">Display map icon only</span>
@@ -413,7 +416,7 @@ export class NotificationDesignSetting extends Component {
                     </Row>
                     {((notification.notificationName !== 'Live Visitor Count') ||
                       (notification.notificationName !== 'Live Visitor Count' &&
-                      profile.plan.references.service_template_properties[0].data.value == 'premium')) &&
+                      planType === 'premium')) &&
                       <Row className="mb-3">
                         <Col md={12}>
                           <h4 className="text-muted h6">Brand Name</h4>
@@ -540,7 +543,7 @@ export class NotificationDesignSetting extends Component {
                             </FormControl>
                           </Col>
                         </Row>
-                        {profile.plan.references.service_template_properties[0].data.value == 'premium' &&
+                        {planType == 'premium' &&
                           <div>
                             <Row className="mb-3">
                               <Col md={10}>
@@ -570,37 +573,43 @@ export class NotificationDesignSetting extends Component {
                                   checked={notificationPanelStyle.onlyDisplayNotification}
                                   readOnly
                                 />
-                                <label className="tgl-btn" htmlFor="handleOnlyDisplayNotification" onClick={this.handleOnlyDisplayNotification(!notificationPanelStyle.onlyDisplayNotification)}></label>
+                                <label className="tgl-btn" htmlFor="handleOnlyDisplayNotification" onClick={() => this.handleOnlyDisplayNotification(!notificationPanelStyle.onlyDisplayNotification)}></label>
                               </Col>
                             </Row>
                           </div>
                         }
                       </div>
                     }
-                    <Row className="mb-3">
-                      <Col md={10}>
-                        <span className="mt-5 text-muted h6">Notifications Clickable</span>
-                      </Col>
-                      <input
-                        className="tgl tgl-ios"
-                        id="handleClickableNotification"
-                        type="checkbox"
-                        checked={toggleTextBox}
-                        readOnly
-                      />
-                      <label className="tgl-btn" htmlFor="handleClickableNotification" onClick={handleClickableNotification}></label>
-                    </Row>
-                    <Row style={toggleTextBox?{ display:'block', marginBottom: '-9%' }:{ display:'none', marginBottom: '-9%' }}>
-                      <Col md={12}>
-                        <FormControl
-                          type="text"
-                          value={notificationUrl}
-                          placeholder="Enter URL"
-                          id="notificationUrl"
-                          onChange={(e) => handleContentChange(e.target.id, e.target.value)}
-                        />
-                      </Col>
-                    </Row>
+                    {planType === 'premium' &&
+                      <div>
+                        <Row className="mb-3">
+                          <Col md={10}>
+                            <span className="mt-5 text-muted h6">Notifications Clickable</span>
+                          </Col>
+                          <Col md={2}>
+                            <input
+                              className="tgl tgl-ios"
+                              id="handleClickableNotification"
+                              type="checkbox"
+                              checked={toggleTextBox}
+                              readOnly
+                            />
+                            <label className="tgl-btn" htmlFor="handleClickableNotification" onClick={handleClickableNotification}></label>
+                          </Col>
+                        </Row>
+                        <Row style={toggleTextBox?{ display:'block', marginBottom: '-9%' }:{ display:'none', marginBottom: '-9%' }}>
+                          <Col md={12}>
+                            <FormControl
+                              type="text"
+                              value={notificationUrl}
+                              placeholder="Enter URL"
+                              id="notificationUrl"
+                              onChange={(e) => handleContentChange(e.target.id, e.target.value)}
+                            />
+                          </Col>
+                        </Row>
+                      </div>
+                    }
                   </div>
 
                   <div className={`tab-pane ${activeClass == 4 ? 'show active' : ''}`} id="debit">
