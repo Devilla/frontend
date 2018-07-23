@@ -34,6 +34,7 @@
     background-color: #F8F8F8 !important;
     border: none !important;
     border: 1px solid #FBFCFC;
+    cursor: pointer;
   }
 
   .account-stats {
@@ -127,7 +128,9 @@
 .new-card3 {
   margin-top: 60px;
 }
-
+.mincard-ht {
+  min-height: 55px !important;
+}
 .customPicker-sub {
   position: absolute !important;
   top: 5px !important;

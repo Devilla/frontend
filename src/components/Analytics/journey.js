@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Grid, Row, Col, Table} from 'react-bootstrap';
-import Cards from './template/card'
-import Card from '../utils/card'
+import Cards from './template/card';
+import Card from '../utils/card';
 import {journeyHeader, journeyData, chartdata} from './data';
 import {
   LineChart,
@@ -12,25 +12,25 @@ import {
   Tooltip,
   Legend
 } from 'recharts';
-import $ from 'jquery';
+
 
 class Journey extends Component {
   constructor() {
     super();
-    this.state = {}
+    this.state = {};
   }
   componentDidMount() {
-    console.log(this.props.data)
+    console.log(this.props.data);
   }
   handleBackBtn() {
     var data = {
-      "url": '',
-      "active": 2
-    }
-    this.props.callbackFromParent(data)
+      'url': '',
+      'active': 2
+    };
+    this.props.callbackFromParent(data);
   }
   render() {
-    var data = []
+    var data = [];
     for (var i = 0; i < journeyData.length; i++) {
       data.push(<tr key={i}>
 
@@ -84,19 +84,19 @@ class Journey extends Component {
                 <Row>
                   <Col xs={12}>
                     <LineChart width={680} height={260} data={chartdata} margin={{
-                        top: 5,
-                        right: 30,
-                        left: 20,
-                        bottom: 5
-                      }}>
+                      top: 5,
+                      right: 30,
+                      left: 20,
+                      bottom: 5
+                    }}>
                       <XAxis dataKey="name"/>
                       <YAxis/>
                       <CartesianGrid strokeDasharray="3 3"/>
                       <Tooltip/>
                       <Legend/>
                       <Line type="monotone" dataKey="click" stroke="#8884d8" activeDot={{
-                          r: 8
-                        }}/>
+                        r: 8
+                      }}/>
                       <Line type="monotone" dataKey="visit" stroke="#82ca9d"/>
                       <Line type="monotone" dataKey="active" stroke="#fb404b"/>
                     </LineChart>
@@ -109,19 +109,19 @@ class Journey extends Component {
         <Row>
           <Col md={12}>
             <Card title="Journey" category="" ctTableFullWidth="ctTableFullWidth" ctTableResponsive="ctTableResponsive" content={<div className = "text-center centertbl" > <Table hover="hover">
-                <thead>
-                  <tr>
-                    {
-                      journeyHeader.map((prop, key) => {
-                        return (<th key={key}>{prop}</th>);
-                      })
-                    }
-                  </tr>
-                </thead>
-                <tbody>
-                  {data}
-                </tbody>
-              </Table>
+              <thead>
+                <tr>
+                  {
+                    journeyHeader.map((prop, key) => {
+                      return (<th key={key}>{prop}</th>);
+                    })
+                  }
+                </tr>
+              </thead>
+              <tbody>
+                {data}
+              </tbody>
+            </Table>
             </div>}/>
           </Col>
         </Row>

@@ -6,14 +6,15 @@ class Price extends Component {
     super();
     this.state = {
       checked: false,
-      externalValue: true,
-      planPeriod: 12,
-      servicebotPlans: []
+      externalValue: false,
+      planPeriod: 1,
+      servicebotPlans: [],
+      style1: {opacity: 1},
+      style2: {opacity: 0.5}
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleMonthChange = this.handleMonthChange.bind(this);
     this.handleYearChange = this.handleYearChange.bind(this);
-    this.handleSwitchChange = this.handleSwitchChange.bind(this);
 
   }
 
@@ -30,20 +31,14 @@ class Price extends Component {
   }
 
   handleMonthChange() {
-    this.setState({externalValue: false, planPeriod: 1});
+    this.setState({externalValue: true, planPeriod: 1 ,style1: {opacity : 1}, style2: {opacity : 0.5}});
   }
 
   handleYearChange() {
-    this.setState({externalValue: true, planPeriod: 12});
+    this.setState({externalValue: false, planPeriod: 12,style1: {opacity : 0.5}, style2: {opacity : 1}});
   }
 
-  handleSwitchChange(value) {
-    if (value) {
-      this.setState({externalValue: true, planPeriod: 12});
-    } else {
-      this.setState({externalValue: false, planPeriod: 1});
-    }
-  }
+
 
   render() {
     const { planList, selectedPlan, handleCheckChange, couponDetails } = this.props;
@@ -54,10 +49,11 @@ class Price extends Component {
           planPeriod={this.state.planPeriod}
           planList={this.state.servicebotPlans}
           handleMonthChange={this.handleMonthChange}
-          handleSwitchChange={this.handleSwitchChange}
           handleYearChange={this.handleYearChange}
           externalValue={this.state.externalValue}
           selectedPlan={selectedPlan}
+          monthOpaque={this.state.style1}
+          yearOpaque={this.state.style2}
           handleCheckChange={handleCheckChange}
         />
       </div>
