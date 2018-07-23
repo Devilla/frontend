@@ -17,7 +17,7 @@ const chartOptions = {
   responsive: true,
   maintainAspectRatio: false,
   scaleShowGridLines : true,
-  scaleGridLineColor : 'rgba(0,0,0,.05)',
+  scaleGridLineColor : 'rgba(100,0,0,.1)',
   scaleGridLineWidth : 1,
   scaleShowHorizontalLines: true,
   scaleShowVerticalLines: true,
