@@ -245,6 +245,7 @@ class Dashboard extends Component {
 
     let userSignUps = 0;
     let visitor = 0;
+    let campaignActive = 0;
 
     if(campaignInfo) {
       campaignInfo.websiteLive.map((website) => {
@@ -256,7 +257,8 @@ class Dashboard extends Component {
 
         let users = website.signups && website.signups.userDetails?website.signups.userDetails.length:0;
         userSignUps = userSignUps + users;
-
+        if(website.isActive)
+          campaignActive = campaignActive + 1;
       });
     }
 
@@ -275,7 +277,7 @@ class Dashboard extends Component {
                         {this.renderCardBox(
                           <div className=" widget-flat card-box  text-muted pb-5 pt-2 pos-vertical-center c2" onClick={()=> browserHistory.push('/campaigns')}>
                             <p className="text-uppercase title m-b-5 fonttitle font-600 mincard-ht">Active Campaign</p>
-                            <h3 className="m-b-10 campaign">{campaignInfo? campaignInfo.websiteLive.length : []}</h3>
+                            <h3 className="m-b-10 campaign">{campaignActive}</h3>
 
                           </div>
                         )}
