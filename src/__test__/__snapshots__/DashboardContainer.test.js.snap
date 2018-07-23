@@ -219,7 +219,7 @@ exports[`>>> DashboardContainer --- Snapshot +++capturing Snapshot of DashboardC
                   aria-valuemax={100}
                   aria-valuemin={0}
                   aria-valuenow={0}
-                  className="progress-bar progress-bar-primary"
+                  className="progress-bar progress-bar-info"
                   role="progressbar"
                   style={
                     Object {

@@ -11,9 +11,9 @@ const Header = ({openCloseDropdown, dropdownStyle, logout, renderHelp, openProfi
   return (
     <div className="customer-header">
       {loading ?
-        <ProgressBar bsStyle='primary' now={ 120 }/>
+        <ProgressBar bsStyle='info' now={ 120 }/>
         :
-        <ProgressBar bsStyle='primary' now={0} />
+        <ProgressBar bsStyle='info' now={0} />
       }
       <ConnectionStatus />
       <div className="nav-topbar-flex">

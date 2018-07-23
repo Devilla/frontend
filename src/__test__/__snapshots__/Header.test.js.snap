@@ -11,7 +11,7 @@ exports[`>>> Header --- Snapshot +++capturing Snapshot of Header 1`] = `
       aria-valuemax={100}
       aria-valuemin={0}
       aria-valuenow={0}
-      className="progress-bar progress-bar-primary"
+      className="progress-bar progress-bar-info"
       role="progressbar"
       style={
         Object {
