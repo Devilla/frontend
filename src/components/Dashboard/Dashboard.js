@@ -333,13 +333,13 @@ class Dashboard extends Component {
                         )}
                         {this.renderCardBox(
                           <div className=" widget-flat card-box  text-muted pb-5 pt-2 pos-vertical-center c2" onClick={()=> browserHistory.push('/analytics')}>
-                            <p className="text-uppercase title m-b-5 fonttitle font-600">Total Visitors</p>
+                            <p className="text-uppercase title m-b-5 fonttitle font-600 mincard-ht">Total Visitors</p>
                             <h3 className="m-b-10 campaign">{totalUsers?totalUsers:0}</h3>
                           </div>
                         )}
                         {this.renderCardBox(
                           <div className=" widget-flat card-box  text-muted pb-5 pt-2 pos-vertical-center c2" onClick={()=> browserHistory.push('/analytics')}>
-                            <p className="text-uppercase title m-b-5 fonttitle font-600">Unique Visitors</p>
+                            <p className="text-uppercase title m-b-5 fonttitle font-600 mincard-ht">Unique Visitors</p>
                             <h3 className="m-b-10 profile">{userCount? Number(userCount) :0 }</h3>
                           </div>
                         )}
