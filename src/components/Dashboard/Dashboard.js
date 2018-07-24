@@ -370,8 +370,8 @@ class Dashboard extends Component {
                         }
                       />
                       <hr/>
-                      <div className=" pull-left ml-5">
-                        <select className="form-control text-muted" onChange={(e) =>  this.setState({daysClicked:e.target.value})}>
+                      <div className=" pull-left">
+                        <select className="form-control dates-select text-muted" onChange={(e) =>  this.setState({daysClicked:e.target.value})}>
                           <option key={'today'+1} value={'Today'} >
                               Today
                           </option>
@@ -379,18 +379,18 @@ class Dashboard extends Component {
                               Yesterday
                           </option>
                           <option key={7} value={'7'}>
-                              7 days
+                              Last 7 days
                           </option>
                           <option key={14} value={'14'} >
-                              14 days
+                              Last 14 days
                           </option>
                           <option key={28} value={'28'} >
-                              28 days
+                              Last 28 days
                           </option>
                         </select>
                       </div>
                       <div className="pull-right audience" onClick={()=>{browserHistory.push('/analytics');}}>
-                        Audience Overview &nbsp;<i className="fi-location"></i>
+                        Audience Overview &nbsp;<i className="icon-arrow-right mt-1 pt-1"></i>
                       </div>
                       <div className="clearfix"></div>
                     </div>
