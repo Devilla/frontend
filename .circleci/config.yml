@@ -8,11 +8,8 @@ jobs: # a collection of steps
     steps: # a collection of executable commands
       - checkout # special step to check out source code to working directory
       - run:
-          name: update-npm
-          command: 'sudo npm install -g npm@latest'
-      - run:
-          name: update-npm
-          command: 'sudo npm install -g nightwatch' 
+          name: update-node_modules
+          command: 'sudo npm install nightwatch'
       - restore_cache: # special step to restore the dependency cache
           key: dependency-cache-{{ checksum "package.json" }}
       - save_cache: # special step to save the dependency cache
@@ -20,8 +17,8 @@ jobs: # a collection of steps
           paths:
             - ./node_modules
       - run: # run frontend
-          name: test
-          command: npm run test
+          name: setup
+          command: npm run setup
       - store_artifacts: # special step to save test results as as artifact
           path: test-results.xml
           prefix: tests
