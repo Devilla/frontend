@@ -217,7 +217,7 @@ class Dashboard extends Component {
     let campaignInfo = this.props.campaignInfo;
     if(campaignInfo) {
       return campaignInfo.websiteLive.map(campaign => {
-        return <div key={campaign._id} className="dropdown-item" id={campaign._id} onClick={this.selectCampaign}>{campaign.campaignName}</div>;
+        return <div key={campaign._id} className="dropdown-item text-right" id={campaign._id} onClick={this.selectCampaign}>{campaign.campaignName}</div>;
       });
     }
   }
@@ -297,13 +297,9 @@ class Dashboard extends Component {
             visitor = visitor + bucket.visitors.sum_other_doc_count;
           });
 
-
-        let users = website.signups && website.signups.userDetails?website.signups.userDetails:[];
-        users = users.filter(user => user.trackingId == website.trackingId);
-        userSignUps = userSignUps + users.length;
-        if(website.isActive)
-          campaignActive = campaignActive + 1;
-
+        let users = website.signups && website.signups.userDetails?website.signups.userDetails.length:0;
+        userSignUps = userSignUps + users;
+        campaignActive = campaignActive + 1;
       });
     }
 
@@ -317,11 +313,11 @@ class Dashboard extends Component {
                 <Row className="mb-5">
                   <Col md={12}>
                     <div className="btn-group campaign-dropdown">
-                      <button className="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        {selectedCampaign.campaignName?selectedCampaign.campaignName:'Campaigns'}
+                      <button className="btn btn-primary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {selectedCampaign.campaignName?selectedCampaign.campaignName:'All Campaigns'}
                       </button>
                       <div className="dropdown-menu">
-                        <div className="dropdown-item" id={null} onClick={this.selectCampaign}>All</div>
+                        <div className="dropdown-item text-right" id={null} onClick={this.selectCampaign}>All Campaigns</div>
                         {this.renderCampaigns()}
                       </div>
                     </div>
@@ -337,13 +333,13 @@ class Dashboard extends Component {
                         )}
                         {this.renderCardBox(
                           <div className=" widget-flat card-box  text-muted pb-5 pt-2 pos-vertical-center c2" onClick={()=> browserHistory.push('/analytics')}>
-                            <p className="text-uppercase title m-b-5 fonttitle font-600">Total Visitors</p>
+                            <p className="text-uppercase title m-b-5 fonttitle font-600 mincard-ht">Total Visitors</p>
                             <h3 className="m-b-10 campaign">{totalUsers?totalUsers:0}</h3>
                           </div>
                         )}
                         {this.renderCardBox(
                           <div className=" widget-flat card-box  text-muted pb-5 pt-2 pos-vertical-center c2" onClick={()=> browserHistory.push('/analytics')}>
-                            <p className="text-uppercase title m-b-5 fonttitle font-600">Unique Visitors</p>
+                            <p className="text-uppercase title m-b-5 fonttitle font-600 mincard-ht">Unique Visitors</p>
                             <h3 className="m-b-10 profile">{userCount? Number(userCount) :0 }</h3>
                           </div>
                         )}
@@ -373,6 +369,30 @@ class Dashboard extends Component {
                           </div>
                         }
                       />
+                      <hr/>
+                      <div className=" pull-left ml-5">
+                        <select className="form-control text-muted" onChange={(e) =>  this.setState({daysClicked:e.target.value})}>
+                          <option key={'today'+1} value={'Today'} >
+                              Today
+                          </option>
+                          <option key={'yesterday'+1} value={'Yesterday'} >
+                              Yesterday
+                          </option>
+                          <option key={7} value={'7'}>
+                              7 days
+                          </option>
+                          <option key={14} value={'14'} >
+                              14 days
+                          </option>
+                          <option key={28} value={'28'} >
+                              28 days
+                          </option>
+                        </select>
+                      </div>
+                      <div className="pull-right audience" onClick={()=>{browserHistory.push('/analytics');}}>
+                        Audience Overview &nbsp;<i className="fi-location"></i>
+                      </div>
+                      <div className="clearfix"></div>
                     </div>
                   </Col>
                 </Row>

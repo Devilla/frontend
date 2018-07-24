@@ -1,7 +1,7 @@
 import React , { Component } from 'react';
 import './Integration.scss';
 import { Row, Col } from 'react-bootstrap';
-import { browserHistory } from 'react-router';
+
 import {
   Aweber,
   Clickfunnels,
@@ -26,53 +26,64 @@ class Integrations extends Component {
     this.state = {
       selectedChannels: [],
       channelContent: [],
-      checked: false
+      checked: false,
+      activePage: ''
     };
   }
-
+  renderIntegration =(value) => {
+    this.setState({
+      activePage: value
+    });
+  }
 
   channelsList = () => {
     return (
       <div>
         <Row className="justify-content-center mb-5">
-          <Col md={3}  className="bx-shadow">
+          <Col md={3}  className="box-shadow ribbon-box">
+            <div className="ribbon-two ribbon-two-danger"><span>Inactive</span></div>
             <div className="card-box tilebox-one">
               <img src={Aweber} className="logocompany" />
               <h4 className="text-muted text-uppercase mt-0 ml-2 i-title aweber">Aweber</h4>
-              <span className="text-muted " onClick={()=>{browserHistory.push('/oauthshow');}}>View Details&nbsp; <i className="fi-open"></i></span>
+              <span  className="text-muted"  onClick={() => this.renderIntegration(1)}>View Details&nbsp; <i className="fi-open"></i></span>
             </div>
           </Col>
-          <Col md={3}  className="bx-shadow">
+          <Col md={3}  className="box-shadow ribbon-box">
+            <div className="ribbon-two ribbon-two-danger"><span>Inactive</span></div>
             <div className="card-box tilebox-one">
               <img src={Clickfunnels} className="logocompany" />
               <h4 className="text-muted text-uppercase mt-0 ml-3 i-title click cfunnel">Clickfunnels</h4>
               <span className="text-muted ">View Details&nbsp; <i className="fi-open"></i></span>
             </div>
           </Col>
-          <Col md={3}  className="bx-shadow">
+          <Col md={3}  className="box-shadow ribbon-box">
+            <div className="ribbon-two ribbon-two-danger"><span>Inactive</span></div>
             <div className="card-box tilebox-one">
-              <img src={Demio} className="logocompany" />
+              <img src={Demio} className="logocompany demio" />
               <h4 className="text-muted text-uppercase mt-0 ml-3 i-title demio">Demio</h4>
               <span className="text-muted ">View Details&nbsp; <i className="fi-open"></i></span>
             </div>
           </Col>
         </Row>
         <Row className="justify-content-center mb-5">
-          <Col md={3}  className="bx-shadow">
+          <Col md={3}  className="box-shadow ribbon-box">
+            <div className="ribbon-two ribbon-two-danger"><span>Inactive</span></div>
             <div className="card-box tilebox-one">
               <img src={Hubspot} className="logocompany" />
               <h4 className="text-muted text-uppercase mt-0 ml-4 i-title hubspot">Hubspot</h4>
               <span className="text-muted ">View Details&nbsp; <i className="fi-open"></i></span>
             </div>
           </Col>
-          <Col md={3}  className="bx-shadow">
+          <Col md={3}  className="box-shadow ribbon-box">
+            <div className="ribbon-two ribbon-two-danger"><span>Inactive</span></div>
             <div className="card-box tilebox-one">
               <img src={Instapage} className="logocompany" />
               <h4 className="text-muted text-uppercase mt-0 i-title">Instapage</h4>
               <span className="text-muted ">View Details&nbsp; <i className="fi-open"></i></span>
             </div>
           </Col>
-          <Col md={3}  className="bx-shadow">
+          <Col md={3}  className="box-shadow ribbon-box">
+            <div className="ribbon-two ribbon-two-danger"><span>Inactive</span></div>
             <div className="card-box tilebox-one">
               <img src={Leadpages} className="logocompany" />
               <h4 className="text-muted text-uppercase mt-0 ml-3 i-title">Leadpages</h4>
@@ -81,21 +92,24 @@ class Integrations extends Component {
           </Col>
         </Row>
         <Row className="justify-content-center mb-5">
-          <Col md={3}  className="bx-shadow">
+          <Col md={3}  className="box-shadow ribbon-box">
+            <div className="ribbon-two ribbon-two-danger"><span>Inactive</span></div>
             <div className="card-box tilebox-one">
               <img src={Mailmunch} className="logocompany" />
               <h4 className="text-muted text-uppercase mt-0 i-title">Mailmunch</h4>
               <span className="text-muted ">View Details&nbsp; <i className="fi-open"></i></span>
             </div>
           </Col>
-          <Col md={3}  className="bx-shadow">
+          <Col md={3}  className="box-shadow ribbon-box">
+            <div className="ribbon-two ribbon-two-danger"><span>Inactive</span></div>
             <div className="card-box tilebox-one">
               <img src={Ontraport} className="logocompany" />
               <h4 className="text-muted text-uppercase mt-0 ml-3 pl-3 i-title ontraport">Ontraport</h4>
               <span className="text-muted ">View Details&nbsp; <i className="fi-open"></i></span>
             </div>
           </Col>
-          <Col md={3}  className="bx-shadow">
+          <Col md={3}  className="box-shadow ribbon-box">
+            <div className="ribbon-two ribbon-two-danger"><span>Inactive</span></div>
             <div className="card-box tilebox-one">
               <img src={Squarespace} className="logocompany" />
               <h4 className="text-muted text-uppercase mt-0 i-title sqspace">Squarespace</h4>
@@ -104,22 +118,24 @@ class Integrations extends Component {
           </Col>
         </Row>
         <Row className="justify-content-center mb-5">
-          <Col md={3}  className="bx-shadow">
+          <Col md={3}  className="box-shadow ribbon-box">
+            <div className="ribbon-two ribbon-two-danger"><span>Inactive</span></div>
             <div className="card-box tilebox-one">
               <img src={Thrivecart} className="logocompany" />
               <h4 className="text-muted text-uppercase mt-0 i-title ">Thrivecart</h4>
               <span className="text-muted">View Details&nbsp; <i className="fi-open"></i></span>
             </div>
           </Col>
-
-          <Col md={3}  className="bx-shadow">
+          <Col md={3}  className="box-shadow ribbon-box">
+            <div className="ribbon-two ribbon-two-danger"><span>Inactive</span></div>
             <div className="card-box tilebox-one">
               <img src={Unbounce} className="logocompany" />
               <h4 className="text-muted text-uppercase mt-0 i-title unbounce">Unbounce</h4>
               <span className="text-muted">View Details&nbsp; <i className="fi-open"></i></span>
             </div>
           </Col>
-          <Col md={3}  className="bx-shadow">
+          <Col md={3}  className="box-shadow ribbon-box">
+            <div className="ribbon-two ribbon-two-danger"><span>Inactive</span></div>
             <div className="card-box tilebox-one">
               <img src={Webflow} className="logocompany" />
               <h4 className="text-muted text-uppercase mt-0 i-title">Webflow</h4>
@@ -128,14 +144,16 @@ class Integrations extends Component {
           </Col>
         </Row>
         <Row className="justify-content-center mb-5">
-          <Col md={3}  className="bx-shadow">
+          <Col md={3}  className="box-shadow ribbon-box">
+            <div className="ribbon-two ribbon-two-danger"><span>Inactive</span></div>
             <div className="card-box tilebox-one">
               <img src={Woocommerce} className="logocompany" />
               <h4 className="text-muted text-uppercase mt-0 i-title">Woocommerce</h4>
               <span className="text-muted">View Details&nbsp; <i className="fi-open"></i></span>
             </div>
           </Col>
-          <Col md={3}  className="bx-shadow">
+          <Col md={3}  className="box-shadow ribbon-box">
+            <div className="ribbon-two ribbon-two-danger"><span>Inactive</span></div>
             <div className="card-box tilebox-one">
               <img src={Wordpress} className="logocompany" />
               <h4 className="text-muted text-uppercase mt-0 i-title">Wordpress</h4>
@@ -143,7 +161,6 @@ class Integrations extends Component {
             </div>
           </Col>
         </Row>
-
       </div>
     );
   }

@@ -162,13 +162,13 @@ class BillingDetails extends Component {
                                 <p className="text-muted font-13">
                                   <strong>Visitor Quota : </strong>
                                   <span className="m-l-15">
-                                    {profile ? profile.uniqueVisitorQouta.toLocaleString() : '-'} Unique Visitors
+                                    {profile ? (profile.uniqueVisitorQouta ? profile.uniqueVisitorQouta.toLocaleString() : '') : '-'} Unique Visitors
                                   </span>
                                 </p>
                                 <p className="text-muted font-13">
                                   <strong>Visitor Quota Left : </strong>
                                   <span className="m-l-15">
-                                    {profile ? profile.uniqueVisitorsQoutaLeft.toLocaleString() : '-'} Unique Visitors
+                                    {profile ? (profile.uniqueVisitorQoutaLeft ? profile.uniqueVisitorsQoutaLeft.toLocaleString() : '') : '-'} Unique Visitors
                                   </span>
                                 </p>
                               </div>
