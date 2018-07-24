@@ -19,6 +19,9 @@ jobs: # a collection of steps
       - run: # run frontend
           name: setup
           command: npm run setup
+      - run: # run frontend
+          name: dotenv-expand
+          command: 'sudo npm install -g dotenv dotenv-expand'
       - store_artifacts: # special step to save test results as as artifact
           path: test-results.xml
           prefix: tests
