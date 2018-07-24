@@ -1,0 +1,26 @@
+{
+  "name": "is-existing-file",
+  "version": "1.0.0",
+  "description": "Check if a certain path exists and is a file (i.e. not a folder)",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joakimbeng/is-existing-file.git"
+  },
+  "keywords": [
+    "file",
+    "exists"
+  ],
+  "author": "Joakim Carlstein <joakim@klei.se>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/joakimbeng/is-existing-file/issues"
+  },
+  "homepage": "https://github.com/joakimbeng/is-existing-file#readme",
+  "devDependencies": {
+    "tape": "^4.0.1"
+  }
+}

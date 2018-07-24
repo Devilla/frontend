@@ -1,0 +1,3 @@
+# eslint-plugin-duck
+
+TODO
