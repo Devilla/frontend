@@ -168,8 +168,7 @@ class AnalyticsContainer extends Component {
           :
           visitor = 0;
 
-        let userDetails = website.signups && website.signups.userDetails ?website.signups.userDetails:[];
-        userDetails = userDetails.filter(user => user.trackingId == website.trackingId);
+        const userDetails = website.signups && website.signups.userDetails ?website.signups.userDetails:[];
 
         const uniqueUsers = website.uniqueUsers && website.uniqueUsers.aggregations ?website.uniqueUsers.aggregations.users.buckets:[];
         return <tr className="table-active analytics-tr" key={index}>
