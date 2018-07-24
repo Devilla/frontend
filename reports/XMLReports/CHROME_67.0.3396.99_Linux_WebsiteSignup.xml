@@ -5,9 +5,9 @@
 
   <testsuite name="WebsiteSignup"
     errors="0" failures="1" hostname="" id="" package="WebsiteSignup" skipped="1"
-    tests="2" time="19.87" timestamp="Sun, 22 Jul 2018 11:04:20 GMT">
+    tests="2" time="23.11" timestamp="Tue, 24 Jul 2018 09:13:50 GMT">
   
-    <testcase name="Go to Signup Influence" classname="WebsiteSignup" time="19.87" assertions="6">
+    <testcase name="Go to Signup Influence" classname="WebsiteSignup" time="23.11" assertions="6">
 
     
 
@@ -24,6 +24,20 @@
     </testcase>
   
 
+  
+    <system-err>
+      ERROR: Unable to locate element: &#34;button[type=button]&#34; using: css selector
+    at F.command (/home/devilla/frontend/node_modules/nightwatch/lib/api/assertions/visible.js:42:21)
+    at F.module.exports.BaseAssertion._scheduleAssertion (/home/devilla/frontend/node_modules/nightwatch/lib/core/assertion.js:87:17)
+    at F.module.exports.BaseAssertion._executeCommand (/home/devilla/frontend/node_modules/nightwatch/lib/core/assertion.js:82:17)
+    at AssertionInstance.commandFn [as _commandFn] (/home/devilla/frontend/node_modules/nightwatch/lib/core/assertion.js:180:21)
+    at AsyncTree.runCommand (/home/devilla/frontend/node_modules/nightwatch/lib/core/queue.js:154:30)
+    at AsyncTree.runChildNode (/home/devilla/frontend/node_modules/nightwatch/lib/core/queue.js:114:8)
+    at AsyncTree.walkDown (/home/devilla/frontend/node_modules/nightwatch/lib/core/queue.js:80:10)
+    at AsyncTree.walkUp (/home/devilla/frontend/node_modules/nightwatch/lib/core/queue.js:97:8)
+    at AsyncTree.walkDown (/home/devilla/frontend/node_modules/nightwatch/lib/core/queue.js:90:12)
+    at AsyncTree.traverse (/home/devilla/frontend/node_modules/nightwatch/lib/core/queue.js:73:8)
+    </system-err>
   
 
   
