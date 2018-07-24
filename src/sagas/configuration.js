@@ -10,7 +10,7 @@ const toastConfig = {
   className: 'toast-style'
 };
 
-function* fetch(action) {
+export function* fetch(action) {
   try {
     yield put(load());
     const res = yield call(api.GET, `configuration/${action.campId}`);
@@ -59,7 +59,7 @@ export function* fetchCampaignConfiguration(action) {
   }
 }
 
-function* create(action) {
+export function* create(action) {
   try {
     yield put(load());
     const res = yield call(api.POST, 'configuration', action.configuration);
@@ -75,7 +75,7 @@ function* create(action) {
 
 }
 
-function* update(action) {
+export function* update(action) {
   try {
     yield put(load());
     const campId =  action.configuration.campaign;
@@ -118,7 +118,6 @@ export default function* rootSaga() {
     fork(watchCreate),
     fork(watchUpdate),
     fork(watchFetchCampaignConfig),
-    fork(fetchCampaignConfiguration),
     fork(watchReviewRedirect)
   ];
 }
