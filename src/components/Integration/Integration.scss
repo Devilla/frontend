@@ -11,7 +11,10 @@
           top: 60px !important;
           left: 120px !important;
           min-width: 50px;
-          max-height: 40px;
+          max-height: 40px; 
+          &.demio {
+            margin-left: 4px !important;
+          }
         }
         .channel-title {
           background-color: #8E8E8E;
@@ -24,8 +27,8 @@
           }
         }
         .content {
-          background-color: rgb(255, 253, 253);
           padding-top: 20px;
+          margin-left: 20px !important;
         }
         .tilebox-one {
           h4 {
@@ -55,20 +58,21 @@
         .woo {
           margin-left : -10px !important;
         }
-        .bx-shadow {
+        .box-shadow {
           position: relative;
-          box-shadow: 0px 8px 10px -5px rgba(0, 0, 0, 0.2) !important;
+          box-shadow: 0px 5px 10px -5px rgba(0, 0, 0, 0.2) !important;
           border-radius: 7px;
-          border: 0.1px solid rgb(230, 229, 229);
+          cursor: pointer;
+          border: 1px solid #95c5f8;
           margin-right: 15px !important;
           background-color: #fff;
-          div {
+          div.tilebox-one {
             padding-left: 10px;
             min-height: 200px;
             //button as span
             span {
               position: absolute;
-              bottom: 50px;
+              bottom: 50px; 
               left: 35%;
               border-radius: 5px;
               cursor: pointer;
