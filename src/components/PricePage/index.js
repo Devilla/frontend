@@ -6,7 +6,7 @@ class Price extends Component {
     super();
     this.state = {
       checked: false,
-      externalValue: false,
+      externalValue: true,
       planPeriod: 1,
       servicebotPlans: [],
       style1: {opacity: 1},
@@ -20,10 +20,10 @@ class Price extends Component {
 
   componentWillMount() {
     fetch('https://servicebot.useinfluence.co/api/v1/service-templates/public')
-    .then((res) => res.json())
-    .then((res) => {
-      this.setState({servicebotPlans: res});
-    });
+      .then((res) => res.json())
+      .then((res) => {
+        this.setState({servicebotPlans: res});
+      });
   }
 
   handleChange(checked) {

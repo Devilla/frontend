@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import moment  from 'moment';
 import Popup from 'react-popup';
 import ReactChartJs from 'react-chartjs';
+import { Animated } from 'react-animated-css';
 
 import { fetchElastic } from 'ducks/elastic';
 import { fetchCampaignInfo, successCampaign } from 'ducks/campaign';
@@ -130,6 +131,7 @@ class AnalyticsContainer extends Component {
   }
 
   showGraph = (name, averageCustomer, uniqueUsers) => {
+    
     const chartData = {
       labels: moment.weekdays(),
       datasets: this.getDataset(uniqueUsers, averageCustomer)
@@ -138,13 +140,15 @@ class AnalyticsContainer extends Component {
     Popup.create({
       title: `${name.charAt(0).toUpperCase() + name.substr(1)} Traffic`,
       content:
+      <Animated className="center" animationIn="fadeInDown" animationOut="fadeOutUp" isVisible={true}>
         <div className = "analytics-chart">
-          <LineChart data={chartData} options={chartOptions} height="250" redraw/>
-        </div>,
+          <LineChart data={chartData} options={chartOptions} height="250" width="500" redraw/>
+        </div>
+      </Animated>,
       buttons: {
         right: [{
           text: 'Close',
-          className: 'default',
+          className: 'danger',
           action: function () {
             Popup.close();
           }
@@ -164,8 +168,7 @@ class AnalyticsContainer extends Component {
           :
           visitor = 0;
 
-        let userDetails = website.signups && website.signups.userDetails ?website.signups.userDetails:[];
-        userDetails = userDetails.filter(user => user.trackingId == website.trackingId);
+        const userDetails = website.signups && website.signups.userDetails ?website.signups.userDetails:[];
 
         const uniqueUsers = website.uniqueUsers && website.uniqueUsers.aggregations ?website.uniqueUsers.aggregations.users.buckets:[];
         return <tr className="table-active analytics-tr" key={index}>
