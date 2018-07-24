@@ -123,7 +123,8 @@
     "start:production": "npm run build && npm run start:prod",
     "start:prod": "NODE_ENV=production node server",
     "build": "node scripts/build.js",
-    "test": "jest --env=jsdom"
+    "test": "jest --env=jsdom",
+    "setup": "npm start"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
