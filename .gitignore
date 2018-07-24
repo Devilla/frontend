@@ -4,9 +4,10 @@
 /node_modules
 
 # testing
+/reports
 /coverage
 _tests_
-/reports/*
+/reports/XMLReports/*
 
 # production
 /build

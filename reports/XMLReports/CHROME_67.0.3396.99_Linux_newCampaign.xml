@@ -5,9 +5,15 @@
 
   <testsuite name="newCampaign"
     errors="0" failures="0" hostname="" id="" package="newCampaign" skipped="0"
+<<<<<<< HEAD
     tests="1" time="68.10" timestamp="Tue, 24 Jul 2018 09:14:13 GMT">
   
     <testcase name="campaign test Influence" classname="newCampaign" time="68.10" assertions="32">
+=======
+    tests="1" time="73.37" timestamp="Mon, 23 Jul 2018 05:25:37 GMT">
+  
+    <testcase name="campaign test Influence" classname="newCampaign" time="73.37" assertions="32">
+>>>>>>> 71020c509c3490d8686093910aed57ffd57f4faa
 
     
 
@@ -77,6 +83,7 @@
 
   
     <system-err>
+<<<<<<< HEAD
       ERROR: Unable to locate element: &#34;button[type=button]&#34; using: css selector
     at F.command (/home/devilla/frontend/node_modules/nightwatch/lib/api/assertions/visible.js:42:21)
     at F.module.exports.BaseAssertion._scheduleAssertion (/home/devilla/frontend/node_modules/nightwatch/lib/core/assertion.js:87:17)
@@ -88,6 +95,30 @@
     at AsyncTree.walkUp (/home/devilla/frontend/node_modules/nightwatch/lib/core/queue.js:97:8)
     at AsyncTree.walkDown (/home/devilla/frontend/node_modules/nightwatch/lib/core/queue.js:90:12)
     at AsyncTree.traverse (/home/devilla/frontend/node_modules/nightwatch/lib/core/queue.js:73:8)
+=======
+      ERROR: Unable to locate element: &#34;.pricingTable&#34; using: css selector
+    at F.command (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/api/assertions/visible.js:42:21)
+    at F.module.exports.BaseAssertion._scheduleAssertion (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/assertion.js:87:17)
+    at F.module.exports.BaseAssertion._executeCommand (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/assertion.js:82:17)
+    at AssertionInstance.commandFn [as _commandFn] (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/assertion.js:180:21)
+    at AsyncTree.runCommand (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/queue.js:154:30)
+    at AsyncTree.runChildNode (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/queue.js:114:8)
+    at AsyncTree.walkDown (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/queue.js:80:10)
+    at AsyncTree.traverse (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/queue.js:73:8)
+    at Object.queueRunner [as run] (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/queue.js:216:18)
+    at Nightwatch.start (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/index.js:206:14)
+ERROR: Unable to locate element: &#34;.pricingTable&#34; using: css selector
+    at Object.card should be clickable  (/home/ray/Desktop/frontend/frontend/tests/upgradePlan.js:31:8)
+    at Module.call (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/runner/module.js:62:34)
+    at /home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/runner/testcase.js:70:29
+    at _fulfilled (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/node_modules/q/q.js:834:54)
+    at /home/ray/Desktop/frontend/frontend/node_modules/nightwatch/node_modules/q/q.js:863:30
+    at Promise.promise.promiseDispatch (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/node_modules/q/q.js:796:13)
+    at /home/ray/Desktop/frontend/frontend/node_modules/nightwatch/node_modules/q/q.js:556:49
+    at runSingle (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/node_modules/q/q.js:137:13)
+    at flush (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/node_modules/q/q.js:125:13)
+    at process._tickCallback (internal/process/next_tick.js:61:11)
+>>>>>>> 71020c509c3490d8686093910aed57ffd57f4faa
     </system-err>
   
 

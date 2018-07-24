@@ -4,7 +4,7 @@ module.exports = function (browser) {
     browser
       .windowMaximize()
       .url('https://useinfluence.co/home')
-      .waitForElementVisible('body', 1000);
+      .waitForElementVisible('body', 1000)
     return browser;
   };
 
@@ -18,18 +18,42 @@ module.exports = function (browser) {
       .setValue('input[type=password]', '12345')
       .waitForElementVisible('input[type=submit]', 10000)
       .click('input[type=submit]')
-      .pause(2000);
+      .pause(2000)
     return browser;
 
+  };
+  this.fillWrongDetails = function () {
+    browser
+      .url('https://useinfluence.co/login')
+      .waitForElementVisible('body', 3000)
+      .setValue('input[type=email]', 'devigmail.com')
+      .setValue('input[type=password]', '123')
+      .click('input[type=submit]')
+      .pause(2000)
+    return browser;
+  };
+
+  this.checkSession = function () {
+    browser
+      .session(function (result) {
+        console.log(result.value);
+      })
+      .session('delete', function (result) {
+        console.log(result.value);
+      })
+      .end(() => {
+        console.log('ending session for user.....')
+      })
+    return browser;
   };
 
   this.openNewBtn = function () {
     browser
-      .waitForElementVisible('body', 1400)
+      .waitForElementVisible('body', 3000)
       .verify.visible('button[type=button]')
       .pause(1000)
     return browser;
-  }
+  };
 
   this.clickProfile = function () {
     browser
@@ -38,7 +62,8 @@ module.exports = function (browser) {
       .click('.dropdown-item.notify-item> .fi-head + span')
       .pause(2000)
     return browser;
-  }
+  };
+
   this.closeLoginPage = function () {
     browser
       .waitForElementVisible('.rounded-circle', 8000)
@@ -47,7 +72,8 @@ module.exports = function (browser) {
       .pause(5000)
       .end(() => {
         console.log('logging use out from influence...');
-      });
+      })
+    return browser;
   };
 
   return this;
