@@ -1,5 +1,5 @@
 .customer-header {
-  .progress-bar{
+  .progress-bar {
     height: 3.5px;
     background: #2D7BF4 !important;
     color: #2D7BF4 !important;
@@ -8,8 +8,10 @@
   .nav-topbar-flex {
     display: flex;
     justify-content: space-between;
+
     .topbar-left {
       width: 50%;
+
       h4 {
         a {
           color: #007bff;
@@ -24,16 +26,17 @@
       }
     }
   }
+
   .nav-custom-header {
-    .nav-user{
-        line-height: 40px !important;
-        margin: 10% 0px 0px 0px;
+    .nav-user {
+      line-height: 40px !important;
+      margin: 10% 0 0;
     }
   }
 
-  a{
+  a {
     & i.fi-bell {
-      font-size:'55px';
+      font-size: '55px';
     }
   }
 
@@ -42,25 +45,32 @@
     z-index: 999;
     position: absolute;
     top: -10px;
-    right: 0px;
+    right: 0;
   }
 
   .topbar-left {
+    padding-left: 20px !important;
     & h4 {
-      padding: 0% 5%!important;
+      padding-top: 0 !important;
+      padding-bottom: 0 !important;
+      padding-left: 30px !important;
       font-size: 11px !important;
       position: relative;
       top: -1px;
+
+      & .icon-arrow-left {
+        padding: 10px !important;
+         &:hover {
+           background-color: #dbdada !important;
+         }
+      }
     }
   }
-  .rounded-circle { 
+
+  .rounded-circle {
     position: relative;
     top: -5px;
     right: 40px;
     font-size: 22px !important;
-  
   }
-
-
-
 }

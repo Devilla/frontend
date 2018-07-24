@@ -8,10 +8,10 @@ import './VerificationPage.scss';
 
 class VerificationPage extends React.Component {
   componentDidMount() {
-    const {
-      params: { code }
-    } = this.props;
-    this.props.verifyUser(code);
+    // const {
+    //   params: { code }
+    // } = this.props;
+    // this.props.verifyUser(code);
   }
 
   render() {
@@ -28,8 +28,8 @@ class VerificationPage extends React.Component {
 }
 
 VerificationPage.propTypes = {
-  location: PropTypes.object.isRequired,
-  match: PropTypes.object.isRequired,
+  location: PropTypes ? PropTypes.object.isRequired : null,
+  match: PropTypes ? PropTypes.object.isRequired :  null,
 };
 
 const mapDispatchToProps = {

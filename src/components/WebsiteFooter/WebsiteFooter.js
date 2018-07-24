@@ -5,7 +5,6 @@ import './WebsiteFooter.scss';
 
 class WebsiteFooter extends Component {
   render() {
-    console.log(this.props, '=============');
     return (
       <div className="websitefooter-container">
         {!this.props.loggedIn &&
@@ -13,7 +12,6 @@ class WebsiteFooter extends Component {
             <footer className="footer-6 pb-5">
               <div className="container mt-1 footer__upper">
                 <div className="row">
-
                   <div className="menu-vertical col-md-3 col-sm-6 foot2">
                     <ul className="bar__module">
                       <li className="type--uppercase col-sm-12 col-md-12 h5 foo-t2"><Link to=""> <b>Product</b> </Link></li>

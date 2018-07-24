@@ -8,6 +8,8 @@
 /coverage
 _tests_
 /reports/XMLReports/*
+__test__/__snapshots__
+__tests__/__snapshots__
 
 # production
 /build

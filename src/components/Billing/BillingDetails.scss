@@ -29,5 +29,10 @@
       border-radius: 5px;
     }
   }
+  .fi-download {
+    cursor: pointer;
+  }
+  .fi-download:before {
+    font-size: 15px;
+  }
 }
-

@@ -74,6 +74,12 @@ class DisplayPage extends Component {
     let displayUrl = this.state.displayUrl;
     displayUrl['rule'] = this.props.rules._id;
     this.props.createPageUrl(displayUrl);
+    this.setState({displayUrl: {
+      url: '',
+      status: '',
+      class: '',
+      type: ''
+    }});
   }
 
   handlePageUrl = (e) => {
@@ -172,7 +178,7 @@ class DisplayPage extends Component {
                   />
                   <span className="input-group-btn col-md-2"
                     id="urladd">
-                    <span className="btn btn-custom nav nav-pills waves-light waves-effect addpath-btn pl-5 pr-5"
+                    <span className="btn btn-primary nav nav-pills waves-light waves-effect addpath-btn pl-5 pr-5"
                       onClick={this.addPageUrl}>Add</span>
                   </span>
                 </div>

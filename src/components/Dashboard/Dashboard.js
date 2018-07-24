@@ -22,7 +22,8 @@ class Dashboard extends Component {
       arrs: [],
       daysClicked: '',
       startDate:  moment(),
-      datePicker: ''
+      datePicker: '',
+      selectedCampaign: {}
     };
     this.handleRouteChange = this.handleRouteChange.bind(this);
   }
@@ -50,6 +51,13 @@ class Dashboard extends Component {
 
   getDataset() {
     if (this.props.campaignInfo && this.props.campaignInfo.uniqueUsers.length) {
+      let campaignDetails = this.props.campaignInfo.websiteLive.filter(campaign => {
+        if(this.state.selectedCampaign.id)
+          return campaign._id == this.state.selectedCampaign.id;
+        else
+          return campaign;
+      });
+
       let dataSet = [];
       let dataContent = {
         label: 'My First dataset',
@@ -61,13 +69,16 @@ class Dashboard extends Component {
         pointHighlightStroke: 'rgba(220,220,220,1)',
         data: [0, 0, 0, 0, 0, 0, 0]
       };
-      this.props.campaignInfo.uniqueUsers.map(user => {
+
+      campaignDetails.map(campaign => {
+        let user = campaign.uniqueUsers;
         (user && user.aggregations) ? user.aggregations.users.buckets.map(bucket => {
           dataContent['label'] = Moment(bucket.key_as_string).format('LL');
           dataContent['data'][Moment(bucket.key_as_string).day()] = bucket.visitors.sum_other_doc_count + bucket.visitors.buckets.length;
         }) : '';
         dataSet.push(dataContent);
       });
+
       return dataSet;
     } else {
       return [{
@@ -176,7 +187,15 @@ class Dashboard extends Component {
   usersCount() {
     let userCount = 0, totalUsers = 0;
     if(this.props.campaignInfo && this.props.campaignInfo.uniqueUsers.length) {
-      this.props.campaignInfo.uniqueUsers.map(user => {
+      let campaignDetails = this.props.campaignInfo.websiteLive.filter(campaign => {
+        if(this.state.selectedCampaign.id)
+          return campaign._id == this.state.selectedCampaign.id;
+        else
+          return campaign;
+      });
+
+      campaignDetails.map(campaign => {
+        let user = campaign.uniqueUsers;
         (user && user.aggregations) ? user.aggregations.users.buckets.map(bucket => {
           userCount = userCount + bucket.visitors.sum_other_doc_count + bucket.visitors.buckets.length;
         }) : 0;
@@ -187,8 +206,25 @@ class Dashboard extends Component {
       return {userCount: userCount, totalUsers: totalUsers};
   }
 
+  selectCampaign = (e) => {
+    this.setState({selectedCampaign: {
+      id: e.target.id,
+      campaignName: e.target.innerHTML
+    }});
+  }
+
+  renderCampaigns = () => {
+    let campaignInfo = this.props.campaignInfo;
+    if(campaignInfo) {
+      return campaignInfo.websiteLive.map(campaign => {
+        return <div key={campaign._id} className="dropdown-item" id={campaign._id} onClick={this.selectCampaign}>{campaign.campaignName}</div>;
+      });
+    }
+  }
+
   render() {
     const { campaignInfo } = this.props;
+    const { selectedCampaign } = this.state;
     const { userCount, totalUsers } = this.usersCount();
     var chartData = {
       labels:   this.getDays(),
@@ -245,17 +281,28 @@ class Dashboard extends Component {
 
     let userSignUps = 0;
     let visitor = 0;
+    let campaignActive = 0;
 
     if(campaignInfo) {
-      campaignInfo.websiteLive.map((website) => {
+      let campaignDetails = campaignInfo.websiteLive.filter(campaign => {
+        if(selectedCampaign.id)
+          return campaign._id === selectedCampaign.id;
+        else
+          return campaign;
+      });
 
+      campaignDetails.map((website) => {
         website.uniqueUsers && website.uniqueUsers.aggregations &&
           website.uniqueUsers.aggregations.users.buckets.map((bucket) => {
             visitor = visitor + bucket.visitors.sum_other_doc_count;
           });
 
-        let users = website.signups && website.signups.userDetails?website.signups.userDetails.length:0;
-        userSignUps = userSignUps + users;
+
+        let users = website.signups && website.signups.userDetails?website.signups.userDetails:[];
+        users = users.filter(user => user.trackingId == website.trackingId);
+        userSignUps = userSignUps + users.length;
+        if(website.isActive)
+          campaignActive = campaignActive + 1;
 
       });
     }
@@ -269,13 +316,22 @@ class Dashboard extends Component {
               <div className="card-box">
                 <Row className="mb-5">
                   <Col md={12}>
+                    <div className="btn-group campaign-dropdown">
+                      <button className="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {selectedCampaign.campaignName?selectedCampaign.campaignName:'Campaigns'}
+                      </button>
+                      <div className="dropdown-menu">
+                        <div className="dropdown-item" id={null} onClick={this.selectCampaign}>All</div>
+                        {this.renderCampaigns()}
+                      </div>
+                    </div>
                     <div className="card-box pb-0 mb-0 cardbox1">
                       <Row className="account-stats">
 
                         {this.renderCardBox(
-                          <div className=" widget-flat card-box  text-muted pb-5 pt-2 pos-vertical-center c2" onClick={()=> browserHistory.push('/analytics')}>
+                          <div className=" widget-flat card-box  text-muted pb-5 pt-2 pos-vertical-center c2" onClick={()=> browserHistory.push('/campaigns')}>
                             <p className="text-uppercase title m-b-5 fonttitle font-600 mincard-ht">Active Campaign</p>
-                            <h3 className="m-b-10 campaign">{campaignInfo? campaignInfo.websiteLive.length : []}</h3>
+                            <h3 className="m-b-10 campaign">{campaignActive}</h3>
 
                           </div>
                         )}

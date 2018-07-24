@@ -31,7 +31,7 @@ const initialRules = {
 
 const initialState = fromJS({
   rules: [initialRules],
-  rule: initialState
+  rule: initialRules
 });
 
 const rules = (state = initialState, action) => {

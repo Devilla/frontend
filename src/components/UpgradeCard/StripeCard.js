@@ -56,7 +56,6 @@ class StripeCard extends Component {
             };
             makePayment(data);
           }
-          console.log('[token]', payload);
         });
     } else {
       console.log('Stripe.js has not loaded yet.');
@@ -114,7 +113,7 @@ class StripeCard extends Component {
             <div className='col-md-4  mr-2'>
               <Button type='submit' icon='usd' bsStyle='primary' className='cardpay-btn'  fill={true} >{currentState === 'upgrade' ? 'Update Card' : 'Make Payment'}</Button>
             </div>
-         
+
             {currentState !== 'upgrade' ?
               <div className="auth-divider">
                 <div className="line-divider"></div>

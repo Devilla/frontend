@@ -2,10 +2,6 @@ import React, { Component } from 'react';
 import './WebsiteTerms.scss';
 
 class WebsiteTerms extends Component {
-  componentDidMount() {
-    let scrollElm = document.scrollingElement;
-    scrollElm.scrollTop = 0;
-  }
 
   render() {
     return (
