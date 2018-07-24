@@ -14,8 +14,19 @@ class IntegrationContent extends Component {
         <Row>
           <Col md={12}>
             <h3 className="text-left ml-4 btn ">STEP 1 </h3>
+           
+          </Col>
+        </Row>
+        <Row>
+          <Col md={12}>
             <h3 className="text-left ml-4 btn ">STEP 2 </h3>
+           
+          </Col>
+        </Row>
+        <Row>
+          <Col md={12}>
             <h3 className="text-left ml-4 btn ">STEP 3 </h3>
+           
           </Col>
         </Row>
 
