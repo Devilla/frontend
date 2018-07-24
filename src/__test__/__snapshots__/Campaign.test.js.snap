@@ -38,11 +38,11 @@ exports[`>>> Campaign --- Snapshot +++capturing Snapshot of Campaign 1`] = `
                     Name
                   </label>
                   <input
-                    className="form-control"
                     id="campaignname"
                     placeholder="example: Acme Co, Blog, Online Store"
                     required={true}
                     type="text"
+                    value=""
                   />
                   <span
                     className="help-block"
@@ -65,7 +65,6 @@ exports[`>>> Campaign --- Snapshot +++capturing Snapshot of Campaign 1`] = `
                     Website URL
                   </label>
                   <input
-                    className="form-control"
                     id="website"
                     placeholder="http://"
                     required={true}
@@ -107,7 +106,6 @@ exports[`>>> Campaign --- Snapshot +++capturing Snapshot of Campaign 1`] = `
                      
                   </i>
                   <input
-                    className="form-control"
                     id="averageCustomer"
                     placeholder="Number of customer Signups"
                     required={true}

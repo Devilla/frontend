@@ -39,8 +39,13 @@ describe('check for in', ()=> {
 
   it('+++ contains FormControl', () => {
     let wrapper = shallow(<Campaign  store={store}/>);
-    expect(wrapper.find('FormControl').length).toBe(3);
+    expect(wrapper.find('input').length).toBe(3);
   });
+  it('should respond to change event and change the state of the Campaign Component', () => {
+   wrapper.find('input#campaignname').simulate('change', {target: {value: 'Influence'}});
+   expect(wrapper.find('input#campaignname').value).not.toEqual(null);
+  })
+
   it('+++ contains Form', () => {
     let wrapper = shallow(<Campaign  store={store}/>);
     expect(wrapper.find('form').length).toBe(1);

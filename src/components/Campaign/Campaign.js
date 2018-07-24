@@ -5,13 +5,16 @@ import {
   Col,
   FormGroup,
   ControlLabel,
-  FormControl,
   HelpBlock
 } from 'react-bootstrap';
 import './Campaign.scss';
 
+let state={
+  campaignname:'',
+  averageCustomer:'',
+  website:''
+};
 const Campaign = ({
-  campaignname,
   averageCustomer,
   website,
   errorName,
@@ -21,6 +24,8 @@ const Campaign = ({
   handleCampaignStateChange
 }) => {
   return (
+
+
     <div className="content fill campaign-container">
       <Grid>
         <Row>
@@ -33,13 +38,12 @@ const Campaign = ({
                   <div className="col-md-6">
                     <FormGroup>
                       <ControlLabel className="text-muted h6">Name</ControlLabel>
-                      <FormControl
+                      <input
                         type="text"
-                        bsClass="form-control"
                         id="campaignname"
                         placeholder="example: Acme Co, Blog, Online Store"
                         onChange={handleCampaignStateChange}
-                        value={campaignname}
+                        value={state.campaignname}
                         required={true}
                       />
                       <HelpBlock>
@@ -50,9 +54,8 @@ const Campaign = ({
                   <div className="col-md-6">
                     <FormGroup>
                       <ControlLabel className="text-muted h6">Website URL</ControlLabel>
-                      <FormControl
+                      <input
                         type="text"
-                        bsClass="form-control"
                         placeholder="http://"
                         id="website"
                         onChange={handleCampaignStateChange}
@@ -69,9 +72,8 @@ const Campaign = ({
                   <div className="col-md-6">
                     <FormGroup>
                       <ControlLabel className="text-muted h6">Conversions per day</ControlLabel> &nbsp;<i className="fa fa-info-circle" height="50px" width="50px" data-toggle="tooltip"  data-delay='{"show":"0", "hide":"100"}' title="Fill in for better monitoring"> </i>
-                      <FormControl
+                      <input
                         type="number"
-                        bsClass="form-control"
                         placeholder="Number of customer Signups"
                         id="averageCustomer"
                         onChange={handleCampaignStateChange}

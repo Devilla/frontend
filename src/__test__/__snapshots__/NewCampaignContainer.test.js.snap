@@ -55,7 +55,6 @@ exports[`>>> NewCampaignContainer --- Snapshot +++capturing Snapshot of NewCampa
                       Name
                     </label>
                     <input
-                      className="form-control"
                       id="campaignname"
                       onChange={[Function]}
                       placeholder="example: Acme Co, Blog, Online Store"
@@ -86,7 +85,6 @@ exports[`>>> NewCampaignContainer --- Snapshot +++capturing Snapshot of NewCampa
                       Website URL
                     </label>
                     <input
-                      className="form-control"
                       defaultValue=""
                       id="website"
                       onChange={[Function]}
@@ -132,7 +130,6 @@ exports[`>>> NewCampaignContainer --- Snapshot +++capturing Snapshot of NewCampa
                        
                     </i>
                     <input
-                      className="form-control"
                       id="averageCustomer"
                       onChange={[Function]}
                       placeholder="Number of customer Signups"
