@@ -91,7 +91,7 @@
             .tilebox-one {
               background-color: rgb(247, 245, 245) !important;
               span {
-                animation: viewbtn 0.1s ease-in-out forwards;
+                animation: viewbtn 0.2s cubic-bezier(0.42,0,0.58,1) forwards;
               }
             }
           }
@@ -126,16 +126,6 @@
         top: 90%;
         visibility: hidden;
         opacity: 0;
-      }
-      40% {
-        top: 85%;
-        visibility: visible;
-        opacity: 0.4;
-      }
-      80% {
-        top: 80%;
-        visibility: visible;
-        opacity: 0.8;
       }
       100% {
         top: 70%;
