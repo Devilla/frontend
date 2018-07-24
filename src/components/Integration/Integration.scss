@@ -73,8 +73,11 @@
             span {
               position: absolute;
               bottom: 50px; 
-              left: 35%;
+              left: 33%;
+              top: 70%;
               border-radius: 5px;
+              visibility: hidden;
+              opacity: 0;
               cursor: pointer;
               & .fi-open {
                 font-size: 15px;
@@ -87,6 +90,9 @@
             background-color: rgb(247, 245, 245) !important;
             .tilebox-one {
               background-color: rgb(247, 245, 245) !important;
+              span {
+                animation: viewbtn 0.1s ease-in-out forwards;
+              }
             }
           }
         }
@@ -113,6 +119,28 @@
       }
       100% {
         top: 2px;
+      }
+    }
+    @keyframes viewbtn {
+      0% {
+        top: 90%;
+        visibility: hidden;
+        opacity: 0;
+      }
+      40% {
+        top: 85%;
+        visibility: visible;
+        opacity: 0.4;
+      }
+      80% {
+        top: 80%;
+        visibility: visible;
+        opacity: 0.8;
+      }
+      100% {
+        top: 70%;
+        visibility: visible;
+        opacity: 1;
       }
     }
   
