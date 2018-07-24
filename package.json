@@ -123,7 +123,7 @@
     "start": "set PORT=3002 && node scripts/start.js",
     "start:production": "npm run build && npm run start:prod",
     "start:prod": "NODE_ENV=production node server",
-    "build": "node scripts/build.js",
+    "build": "node scripts/build.js"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
