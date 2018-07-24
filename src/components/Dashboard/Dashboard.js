@@ -369,6 +369,7 @@ class Dashboard extends Component {
                           </div>
                         }
                       />
+                      <hr/>
                       <div className=" pull-left ml-5">
                         <select className="form-control text-muted" onChange={(e) =>  this.setState({daysClicked:e.target.value})}>
                           <option key={'today'+1} value={'Today'} >
@@ -387,6 +388,9 @@ class Dashboard extends Component {
                               28 days
                           </option>
                         </select>
+                      </div>
+                      <div className="pull-right audience" onClick={()=>{browserHistory.push('/analytics');}}>
+                        Audience Overview &nbsp;<i className="fi-location"></i>
                       </div>
                       <div className="clearfix"></div>
                     </div>

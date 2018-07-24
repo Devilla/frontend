@@ -1,4 +1,14 @@
 .dashboard-boxes {
+  .audience {
+    font-size: 16px;
+    color: #097fff;
+    cursor: pointer;
+    padding: 6px 1% !important;
+    &:hover {
+      background: #0980ff2e;
+      border-radius: 5px !important;
+    }
+  }
   .card-content-width {
     max-width: 100% !important;
   }
