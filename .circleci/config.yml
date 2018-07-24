@@ -20,8 +20,8 @@ jobs: # a collection of steps
           paths:
             - ./node_modules
       - run: # run frontend
-          name: test
-          command: npm run test
+          name: setup
+          command: npm run setup
       - store_artifacts: # special step to save test results as as artifact
           path: test-results.xml
           prefix: tests
