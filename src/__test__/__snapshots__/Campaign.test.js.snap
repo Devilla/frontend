@@ -42,7 +42,6 @@ exports[`>>> Campaign --- Snapshot +++capturing Snapshot of Campaign 1`] = `
                     placeholder="example: Acme Co, Blog, Online Store"
                     required={true}
                     type="text"
-                    value=""
                   />
                   <span
                     className="help-block"

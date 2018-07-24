@@ -46,6 +46,15 @@ describe('check for in', ()=> {
    expect(wrapper.find('input#campaignname').value).not.toEqual(null);
   })
 
+  it('should respond to change event and change the state of the Campaign Component', () => {
+   wrapper.find('input#website').simulate('change', {target: {value: 'useinfluence.co'}});
+   expect(wrapper.find('input#website').value).not.toEqual(null);
+  })
+  //
+  // it('should respond to change event and change the state of the Campaign Component', () => {
+  //  wrapper.find('input#averageCustomer').simulate('change', {target: {value: 12})
+  //  expect(wrapper.find('input#averageCustomer').value).not.toEqual(null);
+  // })
   it('+++ contains Form', () => {
     let wrapper = shallow(<Campaign  store={store}/>);
     expect(wrapper.find('form').length).toBe(1);

@@ -5,16 +5,13 @@ import {
   Col,
   FormGroup,
   ControlLabel,
+  FormControl,
   HelpBlock
 } from 'react-bootstrap';
 import './Campaign.scss';
 
-let state={
-  campaignname:'',
-  averageCustomer:'',
-  website:''
-};
 const Campaign = ({
+  campaignname,
   averageCustomer,
   website,
   errorName,
@@ -24,8 +21,6 @@ const Campaign = ({
   handleCampaignStateChange
 }) => {
   return (
-
-
     <div className="content fill campaign-container">
       <Grid>
         <Row>
@@ -43,7 +38,7 @@ const Campaign = ({
                         id="campaignname"
                         placeholder="example: Acme Co, Blog, Online Store"
                         onChange={handleCampaignStateChange}
-                        value={state.campaignname}
+                        value={campaignname}
                         required={true}
                       />
                       <HelpBlock>
