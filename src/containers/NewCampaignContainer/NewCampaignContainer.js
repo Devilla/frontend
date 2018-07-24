@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { toast } from 'react-toastify';
 import { browserHistory } from 'react-router';
 import copy from 'copy-to-clipboard';
-// import Popup from 'react-popup';
 
 import { validatewebsite } from 'components/Common/function';
 import { createCampaign, clearCampaign } from 'ducks/campaign';
@@ -11,7 +10,6 @@ import { fetchElastic, clearElastic } from 'ducks/elastic';
 import { fetchOneRules, createRules, updateRules } from 'ducks/rules';
 import { fetchNotification } from 'ducks/notification';
 import { createConfiguration, fetchConfiguration, fetchCampaignConfiguration, clearConfiguration, updateConfiguration, createSuccess } from 'ducks/configuration';
-import { fetchLeadUrl, fetchDisplayUrl, createPageUrl, clearPageUrl, removePageUrl } from 'ducks/pageurl';
 import { CampaignSettings, Campaign } from 'components';
 import './NewCampaignContainer.scss';
 
@@ -42,6 +40,15 @@ class NewCampaignContainer extends Component {
       buttonText: '',
       path: ''
     };
+  }
+
+  componentWillMount() {
+    this.verifyPixelStatus(this.props.campaign);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if(nextProps.elastic)
+      this.setState({loaderActive: false});
   }
 
   handleCampaignStateChange = (evt) => {
@@ -111,24 +118,8 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
     this.setState({notification: ''});
   }
 
-  componentWillUnmount() {
-    this.props.clearCampaign();
-    this.props.clearElastic();
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if(nextProps.campaign)
-      this.verifyPixelStatus(nextProps.campaign);
-
-    if(nextProps.elastic)
-      this.setState({loaderActive: false});
-  }
-
   goLive = () => {
-
-    this.verifyPixelStatus();
     const elastic = this.props.elastic;
-    console.log(elastic);
     if(elastic && (elastic.error || (elastic.message.hits.total === 0))) {
       this.setState({
         title : 'Alert',
@@ -160,6 +151,11 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
 
   toggleWebhook = () => {
     this.setState({displayWebhookIntegration: !this.state.displayWebhookIntegration});
+  }
+
+  componentWillUnmount() {
+    this.props.clearCampaign();
+    this.props.clearElastic();
   }
 
   render() {
@@ -233,12 +229,7 @@ const mapDispatchToProps = {
   fetchCampaignConfiguration,
   updateConfiguration,
   clearConfiguration,
-  createSuccess,
-  fetchDisplayUrl,
-  fetchLeadUrl,
-  createPageUrl,
-  removePageUrl,
-  clearPageUrl
+  createSuccess
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewCampaignContainer);
