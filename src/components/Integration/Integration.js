@@ -230,7 +230,7 @@ class Integrations extends Component {
         </div>)
         : (
           <div className="pageContent">
-            <IntegrationContent renderState={this.state.activePage}/>
+            <IntegrationContent renderState={this.state.activePage} renderIntegration={this.renderIntegration}/>
           </div>
         )
     );
