@@ -1,27 +1,14 @@
 import React , { Component } from 'react';
 import './PopupReview.scss';
 import { Row, Col } from 'react-bootstrap';
-<<<<<<< HEAD
-// import { Link } from 'react-router';
-
-=======
 import Popupsettings from './Popupsettings.js';
 import Channels from  './Channels.js';
 import DashboardChannel  from '../DashboardChannel/DashboardChannel';
->>>>>>> 471d9ff4af1409519f2761273808b9d43a03c70f
 
 
 class PopupReview extends Component {
   constructor() {
     super();
-<<<<<<< HEAD
-    this.state = {
-     
-    };
-  }
-
-  render() {
-=======
     this.state= {
       activeClass: 1
     };
@@ -34,25 +21,10 @@ class PopupReview extends Component {
 
   render() {
     const { activeClass } = this.state;
->>>>>>> 471d9ff4af1409519f2761273808b9d43a03c70f
     return (
       <div>
         <div className="review-container">
           <div className="review">
-<<<<<<< HEAD
-            <div className="review-title mb-5">
-              <h1>Your Current Integrations</h1>
-              <h4>Identify & convert more of your visitors into customers</h4>
-            </div>
-            <div className="content">
-              <Row>
-                <Col md={6} sm={12}> 
-                
-                </Col>
-                <Col md={6} sm={12}> 
-
-                </Col>
-=======
             <div className="card-box review-title">
               <h4 className="header-title text-left">Indentify and Convert Customers</h4>
               <hr/>
@@ -65,7 +37,7 @@ class PopupReview extends Component {
                 <Col md={6} sm={12}>
                   <div className="card-box">
                     {/**popup goes here*/}
-                  
+
                   </div>
                 </Col>
                 <Col md={6} sm={12}>
@@ -99,10 +71,7 @@ class PopupReview extends Component {
                       </Row>
                     </div>
                   </div>
-
                 </Col>
-
->>>>>>> 471d9ff4af1409519f2761273808b9d43a03c70f
               </Row>
             </div>
           </div>
@@ -111,9 +80,3 @@ class PopupReview extends Component {
     );
   }
 }
-
-<<<<<<< HEAD
-export default PopupReview;
-=======
-export default PopupReview;
->>>>>>> 471d9ff4af1409519f2761273808b9d43a03c70f

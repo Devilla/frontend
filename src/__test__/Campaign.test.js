@@ -37,7 +37,7 @@ describe('check for in', ()=> {
     expect(wrapper.find('button').length).toBe(1);
   });
 
-  it('+++ contains FormControl', () => {
+  it('+++ contains input', () => {
     let wrapper = shallow(<Campaign  store={store}/>);
     expect(wrapper.find('input').length).toBe(3);
   });
