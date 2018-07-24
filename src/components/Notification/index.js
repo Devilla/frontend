@@ -26,9 +26,10 @@ class Notification extends Component {
     };
   }
 
-  componentWillReceiveProps() {
+  componentWillMount() {
     this.props.fetchCampaignInfo();
   }
+
   componentDidMount() {
     this.props.fetchCampaign();
   }
@@ -74,17 +75,11 @@ class Notification extends Component {
     browserHistory.push('/dashboard');
   }
 
-  
-  usersCount() {
+
+  usersCount(campaignId) {
     let totalUsers = 0;
     if(this.props.campaignInfo && this.props.campaignInfo.uniqueUsers.length) {
-      let campaignDetails = this.props.campaignInfo.websiteLive.filter(campaign => {
-        if(this.state.selectedCampaign.id)
-          return campaign._id == this.state.selectedCampaign.id;
-        else
-          return campaign;
-      });
-
+      let campaignDetails = this.props.campaignInfo.websiteLive.filter(campaign => campaign._id === campaignId);
       campaignDetails.map(campaign => {
         let user = campaign.uniqueUsers;
         (user && user.hits) ? totalUsers = totalUsers + user.hits.total : 0;
@@ -96,30 +91,31 @@ class Notification extends Component {
 
   // Map the notification data into table rows and return
   getNotificationRows = () => {
-    const { totalUsers } = this.usersCount();
 
-    return this.props.campaigns ? this.props.campaigns.map((campaign, i) => (
-      <tr className="campaign-td" key={campaign._id} onClick={(e) => this.handleRouteChange(e, campaign)}>
-        <th scope="row">{i + 1}</th>
-        <td>{campaign.campaignName}</td>
-        <td>{campaign.websiteUrl}</td>
-        <td className="switch">
-          <input className="tgl tgl-ios" id="cb2" type="checkbox" checked={campaign.isActive}  readOnly/>
-          <label className="tgl-btn" htmlFor="cb2"  data-toggle="modal" data-target="#2"  onClick={(e) => this.handleActiveChange(!campaign.isActive, campaign)}></label>
-        </td>
-        <td className='text-center'>{totalUsers?totalUsers:0}</td>
-        <td>{campaign.trackingId}</td>
-        <td>{moment(campaign.updatedAt).format('MM/DD/YYYY')}</td>
-        <td><a href="javascript:;"><i className="ml-3 icon-trash" data-toggle="modal" data-target="#1"  onClick={(e) => this.deleteCampaign(i,campaign,e)}></i></a></td>
-      </tr>
-    ))
+    return this.props.campaigns ? this.props.campaigns.map((campaign, i) => {
+      const { totalUsers } = this.usersCount(campaign._id);
+      return (
+        <tr className="campaign-td" key={campaign._id} onClick={(e) => this.handleRouteChange(e, campaign)}>
+          <th scope="row">{i + 1}</th>
+          <td>{campaign.campaignName}</td>
+          <td>{campaign.websiteUrl}</td>
+          <td className="switch">
+            <input className="tgl tgl-ios" id="cb2" type="checkbox" checked={campaign.isActive}  readOnly/>
+            <label className="tgl-btn" htmlFor="cb2"  data-toggle="modal" data-target="#2"  onClick={(e) => this.handleActiveChange(!campaign.isActive, campaign)}></label>
+          </td>
+          <td className='text-center'>{totalUsers}</td>
+          <td>{campaign.trackingId}</td>
+          <td>{moment(campaign.updatedAt).format('MM/DD/YYYY')}</td>
+          <td><a href="javascript:;"><i className="ml-3 icon-trash" data-toggle="modal" data-target="#1"  onClick={(e) => this.deleteCampaign(i,campaign,e)}></i></a></td>
+        </tr>
+      )
+    })
       :
       <tr></tr>;
   }
 
   render() {
     const { modalbody, modalfoot, modaltitle , modalname} = this.state;
-    const { totalUsers } = this.usersCount();
 
     return (
       <div className="manage-notification">

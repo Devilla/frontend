@@ -73,13 +73,20 @@ class Dashboard extends Component {
 
       campaignDetails.map(campaign => {
         let user = campaign.uniqueUsers;
-        (user && user.aggregations) ? user.aggregations.users.buckets.map(bucket => {
-          dataContent['label'] = Moment(bucket.key_as_string).format('LL');
-          dataContent['data'][Moment(bucket.key_as_string).day()] = bucket.visitors.sum_other_doc_count + bucket.visitors.buckets.length;
-        }) : '';
-        dataSet.push(dataContent);
-      });
+        let tempData = Object.assign({}, dataContent);
 
+        if(user && user.aggregations && user.aggregations.users.buckets.length) {
+          user.aggregations.users.buckets.map(bucket => {
+            tempData['label'] = campaign.campaignName;
+            tempData['data'][Moment(bucket.key_as_string).day()] = bucket.visitors.sum_other_doc_count + bucket.visitors.buckets.length;
+          });
+        } else {
+          tempData['label'] = campaign.campaignName;
+          tempData['data'] = [0, 0, 0, 0, 0, 0, 0];
+        }
+        dataSet.push(tempData);
+        tempData = Object.assign({}, {});
+      });
       return dataSet;
     } else {
       return [{
@@ -204,7 +211,7 @@ class Dashboard extends Component {
       });
     }
   }
-  
+
   handleChange = (date) => {
     this.setState({
       startDate : date
@@ -328,8 +335,9 @@ class Dashboard extends Component {
             visitor = visitor + bucket.visitors.sum_other_doc_count;
           });
 
-        let users = website.signups && website.signups.userDetails?website.signups.userDetails.length:0;
-        userSignUps = userSignUps + users;
+        let users = website.signups && website.signups.userDetails?website.signups.userDetails:[];
+        users = users.filter(user => user.trackingId == website.trackingId);
+        userSignUps = userSignUps + users.length;
         campaignActive = campaignActive + 1;
       });
     }
