@@ -18,6 +18,12 @@
     button {
       position: absolute;
     }
+    .dropdown-toggle {
+      width: 150px !important;
+    }
+    .dropdown-item {
+      cursor: pointer;
+    }
   }
   .ct-chart {
     canvas {

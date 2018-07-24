@@ -313,11 +313,11 @@ class Dashboard extends Component {
                 <Row className="mb-5">
                   <Col md={12}>
                     <div className="btn-group campaign-dropdown">
-                      <button className="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        {selectedCampaign.campaignName?selectedCampaign.campaignName:'Campaigns'}
+                      <button className="btn btn-primary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {selectedCampaign.campaignName?selectedCampaign.campaignName:'All Campaigns'}
                       </button>
                       <div className="dropdown-menu">
-                        <div className="dropdown-item" id={null} onClick={this.selectCampaign}>All</div>
+                        <div className="dropdown-item" id={null} onClick={this.selectCampaign}>All Campaigns</div>
                         {this.renderCampaigns()}
                       </div>
                     </div>
