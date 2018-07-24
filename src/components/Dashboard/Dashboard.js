@@ -401,23 +401,13 @@ class Dashboard extends Component {
                       />
                       <hr/>
                       <div className=" pull-left">
-                        <select className="form-control dates-select text-muted" onChange={(e) =>  this.setState({daysClicked:e.target.value})}>
-                          <option key={'today'+1} value={'Today'} >
-                              Today
-                          </option>
-                          <option key={'yesterday'+1} value={'Yesterday'} >
-                              Yesterday
-                          </option>
-                          <option key={7} value={'7'}>
-                              Last 7 days
-                          </option>
-                          <option key={14} value={'14'} >
-                              Last 14 days
-                          </option>
-                          <option key={28} value={'28'} >
-                              Last 28 days
-                          </option>
-                        </select>
+                        <div className = "customPicker-sub">
+                          <DatePicker
+                            selected={this.state.startDate}
+                            onChange={this.handleChange}
+                          />
+                        </div>
+                        {this.renderDayOption('d1')}
                       </div>
                       <div className="pull-right audience" onClick={()=>{browserHistory.push('/analytics');}}>
                         Audience Overview &nbsp;<i className="icon-arrow-right mt-1 pt-1"></i>
