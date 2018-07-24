@@ -8,6 +8,7 @@ import { fetchCampaignInfo, successCampaign , fetchCampaign } from 'ducks/campai
 import './Dashboard.scss';
 import Card from './Card';
 import ReactChartJs from 'react-chartjs';
+import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
 var LineChart = ReactChartJs.Line;
@@ -166,24 +167,6 @@ class Dashboard extends Component {
     </div>;
   }
 
-  handleChange = (date) => {
-    this.setState({
-      startDate : date
-    });
-  }
-
-  displayCustomDate = (event) => {
-    this.setState({
-      datePicker: event.target.id.toString()
-    });
-  }
-
-  hide = () => {
-    this.setState({
-      datePicker: ''
-    });
-  }
-
   usersCount() {
     let userCount = 0, totalUsers = 0;
     if(this.props.campaignInfo && this.props.campaignInfo.uniqueUsers.length) {
@@ -221,6 +204,54 @@ class Dashboard extends Component {
       });
     }
   }
+  
+  handleChange = (date) => {
+    this.setState({
+      startDate : date
+    });
+  }
+
+  renderDayOption = (value) => {
+    return (
+      <select className="form-control dates-select text-muted" onChange={(e) => this.displayCustomDate(e)}>
+        <option key={7}  value={'7'} onClick={() => this.hide()}  >
+          7 days
+        </option>
+        <option key={14} value={'14'} onClick={() => this.hide()}  >
+          14 days
+        </option>
+        <option key={28}  value={'28'}  onClick={() => this.hide()} >
+          28 days
+        </option>
+        <option key={'today'}  value={'Today'}  onClick={() => this.hide()} >
+          Today
+        </option>
+        <option key={'yesterday'}  value={'Yesterday'}  onClick={()=> this.hide()} >
+          Yesterday
+        </option>
+        <option key={'datePicker'} value={value} >
+          Custom
+        </option>
+      </select>
+    );
+  }
+
+
+
+
+  displayCustomDate = (event) => {
+    this.setState({
+      daysClicked:event.target.value,
+      datePicker: event.target.value.toString()
+    });
+  }
+
+  hide = () => {
+    this.setState({
+      datePicker: ''
+    });
+  }
+
 
   render() {
     const { campaignInfo } = this.props;
@@ -371,23 +402,15 @@ class Dashboard extends Component {
                       />
                       <hr/>
                       <div className=" pull-left">
-                        <select className="form-control dates-select text-muted" onChange={(e) =>  this.setState({daysClicked:e.target.value})}>
-                          <option key={'today'+1} value={'Today'} >
-                              Today
-                          </option>
-                          <option key={'yesterday'+1} value={'Yesterday'} >
-                              Yesterday
-                          </option>
-                          <option key={7} value={'7'}>
-                              Last 7 days
-                          </option>
-                          <option key={14} value={'14'} >
-                              Last 14 days
-                          </option>
-                          <option key={28} value={'28'} >
-                              Last 28 days
-                          </option>
-                        </select>
+                        { this.state.datePicker == 'd1' ?
+                          <div className = "customPicker">
+                            <DatePicker
+                              selected={this.state.startDate}
+                              onChange={this.handleChange}
+                            />
+                          </div>
+                          : ' ' }
+                        {this.renderDayOption('d1')}
                       </div>
                       <div className="pull-right audience" onClick={()=>{browserHistory.push('/analytics');}}>
                         Audience Overview &nbsp;<i className="icon-arrow-right mt-1 pt-1"></i>
