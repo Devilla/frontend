@@ -213,7 +213,7 @@ class Dashboard extends Component {
 
   renderDayOption = (value) => {
     return (
-      <select className="form-control text-muted" onChange={(e) =>  this.setState({daysClicked:e.target.value})}>
+      <select className="form-control dates-select text-muted" onChange={(e) =>  this.setState({daysClicked:e.target.value})}>
         <option key={7} id={value} value={'7'} onClick={() => this.hide()}  >
           7 days
         </option>
@@ -401,12 +401,14 @@ class Dashboard extends Component {
                       />
                       <hr/>
                       <div className=" pull-left">
-                        <div className = "customPicker-sub">
-                          <DatePicker
-                            selected={this.state.startDate}
-                            onChange={this.handleChange}
-                          />
-                        </div>
+                        { this.state.datePicker == 'd1' ?
+                          <div className = "customPicker">
+                            <DatePicker
+                              selected={this.state.startDate}
+                              onChange={this.handleChange}
+                            />
+                          </div>
+                          : ' ' }
                         {this.renderDayOption('d1')}
                       </div>
                       <div className="pull-right audience" onClick={()=>{browserHistory.push('/analytics');}}>
