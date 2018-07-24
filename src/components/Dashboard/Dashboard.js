@@ -369,6 +369,26 @@ class Dashboard extends Component {
                           </div>
                         }
                       />
+                      <div className=" pull-right">
+                        <select className="form-control text-muted" onChange={(e) =>  this.setState({daysClicked:e.target.value})}>
+                          <option key={'today'+1} value={'Today'} >
+                              Today
+                          </option>
+                          <option key={'yesterday'+1} value={'Yesterday'} >
+                              Yesterday
+                          </option>
+                          <option key={7} value={'7'}>
+                              7 days
+                          </option>
+                          <option key={14} value={'14'} >
+                              14 days
+                          </option>
+                          <option key={28} value={'28'} >
+                              28 days
+                          </option>
+                        </select>
+                      </div>
+                      <div className="clearfix"></div>
                     </div>
                   </Col>
                 </Row>
