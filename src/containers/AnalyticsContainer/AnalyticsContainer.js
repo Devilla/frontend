@@ -131,7 +131,7 @@ class AnalyticsContainer extends Component {
   }
 
   showGraph = (name, averageCustomer, uniqueUsers) => {
-    
+
     const chartData = {
       labels: moment.weekdays(),
       datasets: this.getDataset(uniqueUsers, averageCustomer)
@@ -168,8 +168,9 @@ class AnalyticsContainer extends Component {
           :
           visitor = 0;
 
-        const userDetails = website.signups && website.signups.userDetails ?website.signups.userDetails:[];
-
+        let userDetails = website.signups && website.signups.userDetails ?website.signups.userDetails:[];
+        userDetails = userDetails.filter(user => user.trackingId == website.trackingId);
+        
         const uniqueUsers = website.uniqueUsers && website.uniqueUsers.aggregations ?website.uniqueUsers.aggregations.users.buckets:[];
         return <tr className="table-active analytics-tr" key={index}>
           <th scope="row">{index + 1}</th>
