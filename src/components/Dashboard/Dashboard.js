@@ -369,7 +369,7 @@ class Dashboard extends Component {
                           </div>
                         }
                       />
-                      <div className=" pull-right">
+                      <div className=" pull-left ml-5">
                         <select className="form-control text-muted" onChange={(e) =>  this.setState({daysClicked:e.target.value})}>
                           <option key={'today'+1} value={'Today'} >
                               Today
