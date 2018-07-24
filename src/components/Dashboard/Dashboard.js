@@ -8,6 +8,7 @@ import { fetchCampaignInfo, successCampaign , fetchCampaign } from 'ducks/campai
 import './Dashboard.scss';
 import Card from './Card';
 import ReactChartJs from 'react-chartjs';
+import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
 var LineChart = ReactChartJs.Line;
@@ -164,24 +165,6 @@ class Dashboard extends Component {
         </div>
       </div>
     </div>;
-  }
-
-  handleChange = (date) => {
-    this.setState({
-      startDate : date
-    });
-  }
-
-  displayCustomDate = (event) => {
-    this.setState({
-      datePicker: event.target.id.toString()
-    });
-  }
-
-  hide = () => {
-    this.setState({
-      datePicker: ''
-    });
   }
 
   usersCount() {
