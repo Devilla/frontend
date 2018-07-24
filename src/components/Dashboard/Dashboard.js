@@ -73,7 +73,8 @@ class Dashboard extends Component {
 
       campaignDetails.map(campaign => {
         let user = campaign.uniqueUsers;
-        var tempData = Object.assign({},dataContent);
+        let tempData = Object.assign({}, dataContent);
+
         if(user && user.aggregations && user.aggregations.users.buckets.length) {
           user.aggregations.users.buckets.map(bucket => {
             tempData['label'] = campaign.campaignName;
@@ -84,6 +85,7 @@ class Dashboard extends Component {
           tempData['data'] = [0, 0, 0, 0, 0, 0, 0];
         }
         dataSet.push(tempData);
+        tempData = Object.assign({}, {});
       });
       return dataSet;
     } else {
