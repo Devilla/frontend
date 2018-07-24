@@ -27,8 +27,6 @@ jobs: # a collection of steps
           prefix: coverage
       - store_test_results: # special step to upload test results for display in Test Summary
           path: test-results.xml
-jobs: # a collection of steps
-  build: # runs not using Workflows must have a `build` job as entry point
 
     working_directory: ~/circleci-demo-java-spring # directory where steps will run
 
