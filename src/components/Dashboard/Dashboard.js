@@ -217,7 +217,7 @@ class Dashboard extends Component {
     let campaignInfo = this.props.campaignInfo;
     if(campaignInfo) {
       return campaignInfo.websiteLive.map(campaign => {
-        return <div key={campaign._id} className="dropdown-item" id={campaign._id} onClick={this.selectCampaign}>{campaign.campaignName}</div>;
+        return <div key={campaign._id} className="dropdown-item text-right" id={campaign._id} onClick={this.selectCampaign}>{campaign.campaignName}</div>;
       });
     }
   }
@@ -317,7 +317,7 @@ class Dashboard extends Component {
                         {selectedCampaign.campaignName?selectedCampaign.campaignName:'All Campaigns'}
                       </button>
                       <div className="dropdown-menu">
-                        <div className="dropdown-item" id={null} onClick={this.selectCampaign}>All Campaigns</div>
+                        <div className="dropdown-item text-right" id={null} onClick={this.selectCampaign}>All Campaigns</div>
                         {this.renderCampaigns()}
                       </div>
                     </div>
