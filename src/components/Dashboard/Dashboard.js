@@ -221,6 +221,53 @@ class Dashboard extends Component {
       });
     }
   }
+  
+  handleChange = (date) => {
+    this.setState({
+      startDate : date
+    });
+  }
+
+  renderDayOption = (value) => {
+    return (
+      <select className="form-control text-muted" onChange={(e) =>  this.setState({daysClicked:e.target.value})}>
+        <option key={7} id={value} value={'7'} onClick={() => this.hide()}  >
+          7 days
+        </option>
+        <option key={14} id={value} value={'14'} onClick={() => this.hide()}  >
+          14 days
+        </option>
+        <option key={28} id={value} value={'28'}  onClick={() => this.hide()} >
+          28 days
+        </option>
+        <option key={'today'} id={value} value={'Today'}  onClick={() => this.hide()} >
+          Today
+        </option>
+        <option key={'yesterday'} id={value} value={'Yesterday'}  onClick={() => this.hide()} >
+          Yesterday
+        </option>
+        <option key={'datePicker'}  id={value} value={'custom'} onClick={(e) => this.displayCustomDate(e)} >
+          Custom
+        </option>
+      </select>
+    );
+  }
+
+
+
+
+  displayCustomDate = (event) => {
+    this.setState({
+      datePicker: event.target.id.toString()
+    });
+  }
+
+  hide = () => {
+    this.setState({
+      datePicker: ''
+    });
+  }
+
 
   render() {
     const { campaignInfo } = this.props;
