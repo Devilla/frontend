@@ -7,13 +7,13 @@ export default class ConnectionStatus extends Component{
   constructor() {
     super();
     this.state = {
-      connectionStatus:'Can’t connect to Influence. Please check your internet connection..'
+      connectionStatus:null
     };
   }
 
 
   run = () => {
-    console.log('RUNNING.............');
+    console.log(window.navigator.onLine, 'RUNNING.............');
     if (window && window.navigator.onLine) {
       this.setState({connectionStatus: 'Connected.'});
     } else {
@@ -34,10 +34,10 @@ export default class ConnectionStatus extends Component{
       // <!-- Please uncomment the lines below only one at a time to see the different connection status. -->
       //Also change the brand color as background from ConnectionStatus.css file
       <div>
-        {this.state.connectionStatus!=='Connected.' &&
-        <div id={window && this.state.connectionStatus=='Connected.'?'status-noteConnected':'status-noteDisconnected'} className="center-block loading">
-          {this.state.connectionStatus}
-        </div>
+        {this.state.connectionStatus && this.state.connectionStatus!=='Connected.' &&
+          <div id={window && this.state.connectionStatus=='Connected.'?'status-noteConnected':'status-noteDisconnected'} className="center-block loading">
+            {this.state.connectionStatus}
+          </div>
         }
       </div>
     );
