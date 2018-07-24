@@ -31,12 +31,19 @@
           margin-left: 20px !important;
         }
         .tilebox-one {
+          background: #fcfcfc;
           h4 {
             position: absolute;
             bottom: 100px;
             left: 35%;
           }
+          .desc-page {
+            position: relative;
+            top: 130px;
+            left: 5px;
+          }
         }
+
         .demio {
           margin-left: 20px !important;
         }
@@ -65,7 +72,7 @@
           cursor: pointer;
           border: 1px solid #95c5f8;
           margin-right: 15px !important;
-          background-color: #fff;
+          background-color: #fcfcfc;
           div.tilebox-one {
             padding-left: 10px;
             min-height: 200px;
@@ -90,9 +97,13 @@
             background-color: rgb(247, 245, 245) !important;
             .tilebox-one {
               background-color: rgb(247, 245, 245) !important;
+              .desc-page {
+                display: none;
+              }
               span {
                 animation: viewbtn 0.2s cubic-bezier(0.42,0,0.58,1) forwards;
               }
+
             }
           }
         }

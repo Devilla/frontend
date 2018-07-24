@@ -1,6 +1,7 @@
 import React , { Component } from 'react';
 import './Integration.scss';
 import { Row, Col } from 'react-bootstrap';
+import IntegrationContent from './IntegrationContent';
 
 import {
   Aweber,
@@ -27,12 +28,17 @@ class Integrations extends Component {
       selectedChannels: [],
       channelContent: [],
       checked: false,
-      activePage: ''
+      activePage: 0
     };
   }
   renderIntegration =(value) => {
     this.setState({
       activePage: value
+    });
+  }
+  componentWillUnmount() {
+    this.setState({
+      activePage: 0
     });
   }
 
@@ -45,6 +51,8 @@ class Integrations extends Component {
             <div className="card-box tilebox-one">
               <img src={Aweber} className="logocompany" />
               <h4 className="text-muted text-uppercase mt-0 ml-2 i-title aweber">Aweber</h4>
+              <p className="text-center desc-page text-muted">Sync your conversation and import yourFAQs from Aweber</p>
+
               <span  className="text-muted"  onClick={() => this.renderIntegration(1)}>View Details&nbsp; <i className="fi-open"></i></span>
             </div>
           </Col>
@@ -53,6 +61,8 @@ class Integrations extends Component {
             <div className="card-box tilebox-one">
               <img src={Clickfunnels} className="logocompany" />
               <h4 className="text-muted text-uppercase mt-0 ml-3 i-title click cfunnel">Clickfunnels</h4>
+              <p className="text-center desc-page text-muted">Sync your conversation and import yourFAQs from Clickfunnels</p>
+
               <span className="text-muted ">View Details&nbsp; <i className="fi-open"></i></span>
             </div>
           </Col>
@@ -61,6 +71,8 @@ class Integrations extends Component {
             <div className="card-box tilebox-one">
               <img src={Demio} className="logocompany demio" />
               <h4 className="text-muted text-uppercase mt-0 ml-3 i-title demio">Demio</h4>
+              <p className="text-center desc-page text-muted">Sync your conversation and import yourFAQs from Demio</p>
+
               <span className="text-muted ">View Details&nbsp; <i className="fi-open"></i></span>
             </div>
           </Col>
@@ -71,6 +83,8 @@ class Integrations extends Component {
             <div className="card-box tilebox-one">
               <img src={Hubspot} className="logocompany" />
               <h4 className="text-muted text-uppercase mt-0 ml-4 i-title hubspot">Hubspot</h4>
+              <p className="text-center desc-page text-muted">Sync your conversation and import yourFAQs from Hubspot</p>
+
               <span className="text-muted ">View Details&nbsp; <i className="fi-open"></i></span>
             </div>
           </Col>
@@ -79,6 +93,8 @@ class Integrations extends Component {
             <div className="card-box tilebox-one">
               <img src={Instapage} className="logocompany" />
               <h4 className="text-muted text-uppercase mt-0 i-title">Instapage</h4>
+              <p className="text-center desc-page text-muted">Sync your conversation and import yourFAQs from Instapage</p>
+
               <span className="text-muted ">View Details&nbsp; <i className="fi-open"></i></span>
             </div>
           </Col>
@@ -87,6 +103,8 @@ class Integrations extends Component {
             <div className="card-box tilebox-one">
               <img src={Leadpages} className="logocompany" />
               <h4 className="text-muted text-uppercase mt-0 ml-3 i-title">Leadpages</h4>
+              <p className="text-center desc-page text-muted">Sync your conversation and import yourFAQs from Leadpages </p>
+
               <span className="text-muted ">View Details&nbsp; <i className="fi-open"></i></span>
             </div>
           </Col>
@@ -97,6 +115,8 @@ class Integrations extends Component {
             <div className="card-box tilebox-one">
               <img src={Mailmunch} className="logocompany" />
               <h4 className="text-muted text-uppercase mt-0 i-title">Mailmunch</h4>
+              <p className="text-center desc-page text-muted">Sync your conversation and import yourFAQs from Mailmunch </p>
+
               <span className="text-muted ">View Details&nbsp; <i className="fi-open"></i></span>
             </div>
           </Col>
@@ -105,6 +125,8 @@ class Integrations extends Component {
             <div className="card-box tilebox-one">
               <img src={Ontraport} className="logocompany" />
               <h4 className="text-muted text-uppercase mt-0 ml-3 pl-3 i-title ontraport">Ontraport</h4>
+              <p className="text-center desc-page text-muted">Sync your conversation and import yourFAQs from Ontraport</p>
+
               <span className="text-muted ">View Details&nbsp; <i className="fi-open"></i></span>
             </div>
           </Col>
@@ -113,6 +135,8 @@ class Integrations extends Component {
             <div className="card-box tilebox-one">
               <img src={Squarespace} className="logocompany" />
               <h4 className="text-muted text-uppercase mt-0 i-title sqspace">Squarespace</h4>
+              <p className="text-center desc-page text-muted">Sync your conversation and import yourFAQs from Squarespace</p>
+
               <span className="text-muted">View Details&nbsp; <i className="fi-open"></i></span>
             </div>
           </Col>
@@ -123,6 +147,8 @@ class Integrations extends Component {
             <div className="card-box tilebox-one">
               <img src={Thrivecart} className="logocompany" />
               <h4 className="text-muted text-uppercase mt-0 i-title ">Thrivecart</h4>
+              <p className="text-center desc-page text-muted">Sync your conversation and import yourFAQs from Thrivecart </p>
+
               <span className="text-muted">View Details&nbsp; <i className="fi-open"></i></span>
             </div>
           </Col>
@@ -131,6 +157,8 @@ class Integrations extends Component {
             <div className="card-box tilebox-one">
               <img src={Unbounce} className="logocompany" />
               <h4 className="text-muted text-uppercase mt-0 i-title unbounce">Unbounce</h4>
+              <p className="text-center desc-page text-muted">Sync your conversation and import yourFAQs from Unbounce</p>
+
               <span className="text-muted">View Details&nbsp; <i className="fi-open"></i></span>
             </div>
           </Col>
@@ -139,6 +167,8 @@ class Integrations extends Component {
             <div className="card-box tilebox-one">
               <img src={Webflow} className="logocompany" />
               <h4 className="text-muted text-uppercase mt-0 i-title">Webflow</h4>
+              <p className="text-center desc-page text-muted">Sync your conversation and import yourFAQs from Webflow</p>
+
               <span className="text-muted">View Details&nbsp; <i className="fi-open"></i></span>
             </div>
           </Col>
@@ -149,6 +179,8 @@ class Integrations extends Component {
             <div className="card-box tilebox-one">
               <img src={Woocommerce} className="logocompany" />
               <h4 className="text-muted text-uppercase mt-0 i-title">Woocommerce</h4>
+              <p className="text-center desc-page text-muted">Sync your conversation and import yourFAQs from Woocommerce</p>
+              
               <span className="text-muted">View Details&nbsp; <i className="fi-open"></i></span>
             </div>
           </Col>
@@ -157,6 +189,8 @@ class Integrations extends Component {
             <div className="card-box tilebox-one">
               <img src={Wordpress} className="logocompany" />
               <h4 className="text-muted text-uppercase mt-0 i-title">Wordpress</h4>
+              <p className="text-center desc-page text-muted">Sync your conversation and import yourFAQs from Wordpress</p>
+
               <span className="text-muted">View Details&nbsp; <i className="fi-open"></i></span>
             </div>
           </Col>
@@ -180,19 +214,25 @@ class Integrations extends Component {
   render() {
 
     return (
-      <div className="integration-container">
-        <div className="channel-container" >
-          <div className="channel">
-            <div className="content">
+      this.state.activePage === 0 ? (
+        <div className="integration-container">
+          <div className="channel-container" >
+            <div className="channel">
+              <div className="content">
 
-              {this.channelsList()}
+                {this.channelsList()}
+
+              </div>
+
 
             </div>
-
-
           </div>
-        </div>
-      </div>
+        </div>)
+        : (
+          <div className="pageContent">
+            <IntegrationContent />
+          </div>
+        )
     );
   }
 }
