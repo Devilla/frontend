@@ -213,23 +213,23 @@ class Dashboard extends Component {
 
   renderDayOption = (value) => {
     return (
-      <select className="form-control dates-select text-muted" onChange={(e) =>  this.setState({daysClicked:e.target.value})}>
-        <option key={7} id={value} value={'7'} onClick={() => this.hide()}  >
+      <select className="form-control dates-select text-muted" onChange={(e) => this.displayCustomDate(e)}>
+        <option key={7}  value={'7'} onClick={() => this.hide()}  >
           7 days
         </option>
-        <option key={14} id={value} value={'14'} onClick={() => this.hide()}  >
+        <option key={14} value={'14'} onClick={() => this.hide()}  >
           14 days
         </option>
-        <option key={28} id={value} value={'28'}  onClick={() => this.hide()} >
+        <option key={28}  value={'28'}  onClick={() => this.hide()} >
           28 days
         </option>
-        <option key={'today'} id={value} value={'Today'}  onClick={() => this.hide()} >
+        <option key={'today'}  value={'Today'}  onClick={() => this.hide()} >
           Today
         </option>
-        <option key={'yesterday'} id={value} value={'Yesterday'}  onClick={() => this.hide()} >
+        <option key={'yesterday'}  value={'Yesterday'}  onClick={()=> this.hide()} >
           Yesterday
         </option>
-        <option key={'datePicker'}  id={value} value={'custom'} onClick={(e) => this.displayCustomDate(e)} >
+        <option key={'datePicker'} value={value} >
           Custom
         </option>
       </select>
@@ -241,7 +241,8 @@ class Dashboard extends Component {
 
   displayCustomDate = (event) => {
     this.setState({
-      datePicker: event.target.id.toString()
+      daysClicked:event.target.value,
+      datePicker: event.target.value.toString()
     });
   }
 
