@@ -1,25 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<<<<<<< HEAD
 <testsuites errors="1"
             failures="1"
-            tests="3">
-
-  <testsuite name="WebsiteLogin"
-    errors="1" failures="1" hostname="" id="" package="WebsiteLogin" skipped="0"
-    tests="3" time="26.86" timestamp="Tue, 24 Jul 2018 09:13:23 GMT">
-  
-    <testcase name="Go to  login influence" classname="WebsiteLogin" time="17.54" assertions="5">
-=======
-<testsuites errors="0"
-            failures="0"
             tests="7">
 
   <testsuite name="WebsiteLogin"
-    errors="0" failures="0" hostname="" id="" package="WebsiteLogin" skipped="0"
-    tests="7" time="64.47" timestamp="Mon, 23 Jul 2018 06:37:50 GMT">
+    errors="1" failures="1" hostname="" id="" package="WebsiteLogin" skipped="0"
+    tests="7" time="74.13" timestamp="Tue, 24 Jul 2018 10:13:22 GMT">
   
-    <testcase name="Go to  login influence" classname="WebsiteLogin" time="19.40" assertions="5">
->>>>>>> 71020c509c3490d8686093910aed57ffd57f4faa
+    <testcase name="Go to  login influence" classname="WebsiteLogin" time="25.50" assertions="5">
 
     
 
@@ -32,47 +20,39 @@
     
     </testcase>
   
-<<<<<<< HEAD
-    <testcase name="Click on new Button  " classname="WebsiteLogin" time="1.107" assertions="2">
-=======
-    <testcase name="Check if the session is on and close session " classname="WebsiteLogin" time="0.08000" assertions="0">
+    <testcase name="Check if the session is on and close session " classname="WebsiteLogin" time="0.07800" assertions="0">
     </testcase>
   
-    <testcase name="open browser" classname="WebsiteLogin" time="11.86" assertions="1">
+    <testcase name="open browser" classname="WebsiteLogin" time="20.90" assertions="1">
 
     
     </testcase>
   
-    <testcase name="Go to  login influence again " classname="WebsiteLogin" time="2.688" assertions="4">
+    <testcase name="Go to  login influence again " classname="WebsiteLogin" time="2.674" assertions="4">
 
     
 
     
->>>>>>> 71020c509c3490d8686093910aed57ffd57f4faa
-
-      <failure message="Testing if element &lt;button[type=button]&gt; is visible. Element could not be located.">    at openNewBtn (/home/devilla/frontend/pages/loginAndInside.js:29:15)
-    at Object.Click on new Button   (/home/devilla/frontend/tests/WebsiteLogin.js:12:20)</failure>
-
-    
-    </testcase>
-  
-<<<<<<< HEAD
-    <testcase name="Log out from Influence" classname="WebsiteLogin" time="8.217" assertions="1">
-=======
-    <testcase name="Click on new Button  " classname="WebsiteLogin" time="1.280" assertions="2">
 
     
 
     
     </testcase>
   
-    <testcase name="Log out from Influence" classname="WebsiteLogin" time="5.408" assertions="1">
+    <testcase name="Click on new Button  " classname="WebsiteLogin" time="1.118" assertions="2">
+
+      <failure message="Testing if element &lt;button[type=button]&gt; is visible. Element could not be located.">    at openNewBtn (/home/devilla/frontend/pages/loginAndInside.js:53:15)
+    at Object.Click on new Button   (/home/devilla/frontend/tests/WebsiteLogin.js:21:20)</failure>
 
     
     </testcase>
   
-    <testcase name="Fill in wrong details" classname="WebsiteLogin" time="23.75" assertions="1">
->>>>>>> 71020c509c3490d8686093910aed57ffd57f4faa
+    <testcase name="Log out from Influence" classname="WebsiteLogin" time="5.296" assertions="1">
+
+    
+    </testcase>
+  
+    <testcase name="Fill in wrong details" classname="WebsiteLogin" time="18.56" assertions="1">
 
     
     </testcase>

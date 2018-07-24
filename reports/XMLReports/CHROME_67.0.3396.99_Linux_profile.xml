@@ -5,15 +5,9 @@
 
   <testsuite name="profile"
     errors="0" failures="0" hostname="" id="" package="profile" skipped="0"
-<<<<<<< HEAD
-    tests="6" time="28.61" timestamp="Tue, 24 Jul 2018 09:15:21 GMT">
+    tests="6" time="32.39" timestamp="Tue, 24 Jul 2018 10:16:14 GMT">
   
-    <testcase name="Go to  login influence" classname="profile" time="14.27" assertions="5">
-=======
-    tests="6" time="48.68" timestamp="Mon, 23 Jul 2018 05:26:51 GMT">
-  
-    <testcase name="Go to  login influence" classname="profile" time="32.52" assertions="5">
->>>>>>> 71020c509c3490d8686093910aed57ffd57f4faa
+    <testcase name="Go to  login influence" classname="profile" time="18.25" assertions="5">
 
     
 
@@ -26,20 +20,12 @@
     
     </testcase>
   
-<<<<<<< HEAD
-    <testcase name="click on profile dropdown, if exists" classname="profile" time="2.269" assertions="1">
-=======
-    <testcase name="click on profile dropdown, if exists" classname="profile" time="3.858" assertions="1">
->>>>>>> 71020c509c3490d8686093910aed57ffd57f4faa
+    <testcase name="click on profile dropdown, if exists" classname="profile" time="2.282" assertions="1">
 
     
     </testcase>
   
-<<<<<<< HEAD
-    <testcase name="fill profile details" classname="profile" time="5.468" assertions="9">
-=======
-    <testcase name="fill profile details" classname="profile" time="5.657" assertions="9">
->>>>>>> 71020c509c3490d8686093910aed57ffd57f4faa
+    <testcase name="fill profile details" classname="profile" time="5.262" assertions="9">
 
     
 
@@ -60,26 +46,15 @@
     
     </testcase>
   
-<<<<<<< HEAD
-    <testcase name="verify  profile details" classname="profile" time="1.236" assertions="0">
+    <testcase name="verify  profile details" classname="profile" time="1.212" assertions="0">
     </testcase>
   
-    <testcase name="Watch billing button , if exists" classname="profile" time="0.04500" assertions="1">
-=======
-    <testcase name="verify  profile details" classname="profile" time="1.239" assertions="0">
-    </testcase>
-  
-    <testcase name="Watch billing button , if exists" classname="profile" time="0.03800" assertions="1">
->>>>>>> 71020c509c3490d8686093910aed57ffd57f4faa
+    <testcase name="Watch billing button , if exists" classname="profile" time="0.07500" assertions="1">
 
     
     </testcase>
   
-<<<<<<< HEAD
-    <testcase name="Log out from Influence" classname="profile" time="5.319" assertions="1">
-=======
-    <testcase name="Log out from Influence" classname="profile" time="5.366" assertions="1">
->>>>>>> 71020c509c3490d8686093910aed57ffd57f4faa
+    <testcase name="Log out from Influence" classname="profile" time="5.311" assertions="1">
 
     
     </testcase>
@@ -87,7 +62,6 @@
 
   
     <system-err>
-<<<<<<< HEAD
       ERROR: Unable to locate element: &#34;button[type=button]&#34; using: css selector
     at F.command (/home/devilla/frontend/node_modules/nightwatch/lib/api/assertions/visible.js:42:21)
     at F.module.exports.BaseAssertion._scheduleAssertion (/home/devilla/frontend/node_modules/nightwatch/lib/core/assertion.js:87:17)
@@ -99,30 +73,6 @@
     at AsyncTree.walkUp (/home/devilla/frontend/node_modules/nightwatch/lib/core/queue.js:97:8)
     at AsyncTree.walkDown (/home/devilla/frontend/node_modules/nightwatch/lib/core/queue.js:90:12)
     at AsyncTree.traverse (/home/devilla/frontend/node_modules/nightwatch/lib/core/queue.js:73:8)
-=======
-      ERROR: Unable to locate element: &#34;.pricingTable&#34; using: css selector
-    at F.command (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/api/assertions/visible.js:42:21)
-    at F.module.exports.BaseAssertion._scheduleAssertion (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/assertion.js:87:17)
-    at F.module.exports.BaseAssertion._executeCommand (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/assertion.js:82:17)
-    at AssertionInstance.commandFn [as _commandFn] (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/assertion.js:180:21)
-    at AsyncTree.runCommand (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/queue.js:154:30)
-    at AsyncTree.runChildNode (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/queue.js:114:8)
-    at AsyncTree.walkDown (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/queue.js:80:10)
-    at AsyncTree.traverse (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/queue.js:73:8)
-    at Object.queueRunner [as run] (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/queue.js:216:18)
-    at Nightwatch.start (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/index.js:206:14)
-ERROR: Unable to locate element: &#34;.pricingTable&#34; using: css selector
-    at Object.card should be clickable  (/home/ray/Desktop/frontend/frontend/tests/upgradePlan.js:31:8)
-    at Module.call (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/runner/module.js:62:34)
-    at /home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/runner/testcase.js:70:29
-    at _fulfilled (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/node_modules/q/q.js:834:54)
-    at /home/ray/Desktop/frontend/frontend/node_modules/nightwatch/node_modules/q/q.js:863:30
-    at Promise.promise.promiseDispatch (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/node_modules/q/q.js:796:13)
-    at /home/ray/Desktop/frontend/frontend/node_modules/nightwatch/node_modules/q/q.js:556:49
-    at runSingle (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/node_modules/q/q.js:137:13)
-    at flush (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/node_modules/q/q.js:125:13)
-    at process._tickCallback (internal/process/next_tick.js:61:11)
->>>>>>> 71020c509c3490d8686093910aed57ffd57f4faa
     </system-err>
   
 
