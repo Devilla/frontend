@@ -56,11 +56,12 @@ exports[`>>> NewCampaignContainer --- Snapshot +++capturing Snapshot of NewCampa
                     </label>
                     <input
                       id="campaignname"
+                      name="campaignname"
                       onChange={[Function]}
                       placeholder="example: Acme Co, Blog, Online Store"
                       required={true}
                       type="text"
-                      value=""
+                      value="Influence"
                     />
                     <span
                       className="help-block"
@@ -87,6 +88,7 @@ exports[`>>> NewCampaignContainer --- Snapshot +++capturing Snapshot of NewCampa
                     <input
                       defaultValue=""
                       id="website"
+                      name="website"
                       onChange={[Function]}
                       placeholder="http://"
                       required={true}
@@ -131,6 +133,7 @@ exports[`>>> NewCampaignContainer --- Snapshot +++capturing Snapshot of NewCampa
                     </i>
                     <input
                       id="averageCustomer"
+                      name="averageCustomer"
                       onChange={[Function]}
                       placeholder="Number of customer Signups"
                       required={true}

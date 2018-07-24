@@ -132,7 +132,7 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
         content : 'Install Pixel before going live.',
         buttonText :  'Close'
       });
-    
+
     } else if(!this.props.leads || !this.props.leads.length) {
       this.setState({
         title : 'Alert',
@@ -160,10 +160,10 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
   }
 
   render() {
-    const { content, title, buttonText, path } = this.state;  
+    const { content, title, buttonText, path } = this.state;
     return (
       <div className="NewCampaignContainer">
-        <button type="button" className="btn btn-outline-primary goliveRight waves-light waves-effect number" data-toggle="modal" data-target="#myModallive" onClick={this.goLive}><i className="fi-location"></i>&nbsp;Go Live</button>            
+        <button type="button" className="btn btn-outline-primary goliveRight waves-light waves-effect number" data-toggle="modal" data-target="#myModallive" onClick={this.goLive}><i className="fi-location"></i>&nbsp;Go Live</button>
 
         {this.props.campaign && Object.keys(this.props.campaign).length !== 0 && this.props.campaign.constructor === Object?
           <CampaignSettings

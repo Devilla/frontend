@@ -36,6 +36,7 @@ const Campaign = ({
                       <input
                         type="text"
                         id="campaignname"
+                        name="campaignname"
                         placeholder="example: Acme Co, Blog, Online Store"
                         onChange={handleCampaignStateChange}
                         value={campaignname}
@@ -53,6 +54,7 @@ const Campaign = ({
                         type="text"
                         placeholder="http://"
                         id="website"
+                        name="website"
                         onChange={handleCampaignStateChange}
                         defaultValue={website}
                         required={true}
@@ -69,6 +71,7 @@ const Campaign = ({
                       <ControlLabel className="text-muted h6">Conversions per day</ControlLabel> &nbsp;<i className="fa fa-info-circle" height="50px" width="50px" data-toggle="tooltip"  data-delay='{"show":"0", "hide":"100"}' title="Fill in for better monitoring"> </i>
                       <input
                         type="number"
+                        name="averageCustomer"
                         placeholder="Number of customer Signups"
                         id="averageCustomer"
                         onChange={handleCampaignStateChange}

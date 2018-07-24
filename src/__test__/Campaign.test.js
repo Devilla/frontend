@@ -42,19 +42,15 @@ describe('check for in', ()=> {
     expect(wrapper.find('input').length).toBe(3);
   });
   it('should respond to change event and change the state of the Campaign Component', () => {
-   wrapper.find('input#campaignname').simulate('change', {target: {value: 'Influence'}});
-   expect(wrapper.find('input#campaignname').value).not.toEqual(null);
+   wrapper.find('input#campaignname').simulate('change', {target: {name: 'campaignname', value: 'Influence'}});
+   expect(wrapper.find('input#campaignname').value).toEqual('Influence');
   })
 
-  it('should respond to change event and change the state of the Campaign Component', () => {
-   wrapper.find('input#website').simulate('change', {target: {value: 'useinfluence.co'}});
-   expect(wrapper.find('input#website').value).not.toEqual(null);
-  })
-  //
-  // it('should respond to change event and change the state of the Campaign Component', () => {
-  //  wrapper.find('input#averageCustomer').simulate('change', {target: {value: 12})
-  //  expect(wrapper.find('input#averageCustomer').value).not.toEqual(null);
+  // it('should respond to change event and change the state of the WebsiteSignUp Component', () => {
+  //  wrapper.find('input#email').simulate('change', {target: {name: 'email', value: 'blah@gmail.com'}});
+  //  expect(wrapper.state('email')).toEqual('blah@gmail.com');
   // })
+
   it('+++ contains Form', () => {
     let wrapper = shallow(<Campaign  store={store}/>);
     expect(wrapper.find('form').length).toBe(1);
