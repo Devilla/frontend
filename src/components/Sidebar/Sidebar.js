@@ -18,7 +18,7 @@ class Sidebar extends Component {
 
 
   activeRoute(routeName) {
-    return 1;
+    return routeName;
   }
 
 

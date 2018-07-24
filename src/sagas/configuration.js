@@ -44,7 +44,7 @@ export function* reviewRedirect(action) {
 }
 
 
-function* fetchCampaignConfiguration(action) {
+export function* fetchCampaignConfiguration(action) {
   try {
     yield put(load());
     const res = yield call(api.GET, `configuration/campaign/${action.campId}/${action.notifId}`);
@@ -118,6 +118,7 @@ export default function* rootSaga() {
     fork(watchCreate),
     fork(watchUpdate),
     fork(watchFetchCampaignConfig),
+    fork(fetchCampaignConfiguration),
     fork(watchReviewRedirect)
   ];
 }

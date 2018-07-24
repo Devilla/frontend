@@ -46,17 +46,17 @@ class DashboardContainer extends Component {
   checkLogin(callback) {
     if(window.localStorage!==null && window.localStorage!==undefined )
     {
-    const cookie = window.localStorage.getItem('authToken');
-    const authToken = cookie
-      ? JSON.parse(cookie)
-      : null;
-    if (authToken) {
-      this.props.checkTokenExists(authToken);
-      callback();
-    } else {
-      callback('not logged in');
+      const cookie = window.localStorage.getItem('authToken');
+      const authToken = cookie
+        ? JSON.parse(cookie)
+        : null;
+      if (authToken) {
+        this.props.checkTokenExists(authToken);
+        callback();
+      } else {
+        callback('not logged in');
+      }
     }
-  }
   }
 
   componentDidUpdate(e) {
@@ -80,7 +80,7 @@ class DashboardContainer extends Component {
     document.body.style = 'background-color:white';
     this.openCloseDropdown();
     if(localStorage!==null && localStorage!==undefined )
-    localStorage.removeItem('authToken');
+      localStorage.removeItem('authToken');
     browserHistory.push('/');
   }
 
