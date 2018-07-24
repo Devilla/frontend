@@ -80,9 +80,9 @@ class NewCampaignContainer extends Component {
     this.setState({activeClass: val});
   }
 
-  verifyPixelStatus = () => {
+  verifyPixelStatus = (campaign) => {
     this.setState({loaderActive: true});
-    this.props.fetchElastic(`json.value.trackingId:${this.props.campaign.trackingId}`);
+    this.props.fetchElastic(`json.value.trackingId:${campaign?campaign.trackingId:this.props.campaign.trackingId}`);
   }
 
   handlePixelCopy = () => {
@@ -117,6 +117,9 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
   }
 
   componentWillReceiveProps(nextProps) {
+    if(nextProps.campaign)
+      this.verifyPixelStatus(nextProps.campaign);
+
     if(nextProps.elastic)
       this.setState({loaderActive: false});
   }
