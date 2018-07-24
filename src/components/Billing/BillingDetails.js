@@ -138,7 +138,7 @@ class BillingDetails extends Component {
                                 <p className="text-muted font-13">
                                   <strong>Next Payment Due Date : </strong>
                                   <span className="m-l-15">
-                                    {planSelected.created_at ? moment(planSelected.updated_at).add(planSelected.interval_count, planSelected.interval).format('DD MMM YYYY') : '-'}
+                                    {planSelected.interval ? moment(planSelected.interval.updated_at).add(planSelected.interval_count, planSelected.interval).format('DD MMM YYYY') : '-'}
                                   </span>
                                 </p>
                                 <p className="text-muted font-13">
@@ -150,7 +150,7 @@ class BillingDetails extends Component {
                                 <p className="text-muted font-13">
                                   <strong>Last Paid : </strong>
                                   <span className="m-l-15">
-                                    {planSelected.interval ? moment(planSelected.updated_at).format('DD MMM YYYY') : '-'}
+                                    {planSelected.interval ? moment(planSelected.interval.updated_at).format('DD MMM YYYY') : '-'}
                                   </span>
                                 </p>
                                 <p className="text-muted font-13">
@@ -162,13 +162,13 @@ class BillingDetails extends Component {
                                 <p className="text-muted font-13">
                                   <strong>Visitor Quota : </strong>
                                   <span className="m-l-15">
-                                    {profile ? profile.uniqueVisitorQouta.toLocaleString() : '-'} Unique Visitors
+                                    {profile ? (profile.uniqueVisitorQouta ? profile.uniqueVisitorQouta.toLocaleString() : '') : '-'} Unique Visitors
                                   </span>
                                 </p>
                                 <p className="text-muted font-13">
                                   <strong>Visitor Quota Left : </strong>
                                   <span className="m-l-15">
-                                    {profile ? profile.uniqueVisitorsQoutaLeft.toLocaleString() : '-'} Unique Visitors
+                                    {profile ? (profile.uniqueVisitorQoutaLeft ? profile.uniqueVisitorsQoutaLeft.toLocaleString() : '') : '-'} Unique Visitors
                                   </span>
                                 </p>
                               </div>
