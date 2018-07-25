@@ -130,6 +130,7 @@
     "babel-core": "^6.26.3",
     "babel-preset-react": "^6.24.1",
     "jest": "^23.1.0",
+    "jest-localstorage-mock": "^2.2.0",
     "node-sass": "^4.9.0",
     "sass-loader": "^7.0.3",
     "webpack": "^3.8.1"
@@ -139,13 +140,13 @@
       "src/**/*.{js,jsx,mjs}"
     ],
     "setupFiles": [
-      "<rootDir>/config/polyfills.js"
+      "<rootDir>/config/polyfills.js", "jest-localstorage-mock"
     ],
     "testMatch": [
       "<rootDir>/src/**/__tests__/**/*.{js,jsx,mjs}",
       "<rootDir>/src/**/?(*.)(spec|test).{js,jsx,mjs}"
     ],
-    "testEnvironment": "node",
+    "testEnvironment": "jsdom",
     "testURL": "http://localhost",
     "transform": {
       "^.+\\.(js|jsx|mjs)$": "<rootDir>/node_modules/babel-jest",
