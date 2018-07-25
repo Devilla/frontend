@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuites errors="0"
-            failures="0"
-            tests="6">
+<testsuites errors="13"
+            failures="1"
+            tests="7">
 
   <testsuite name="profile"
-    errors="0" failures="0" hostname="" id="" package="profile" skipped="0"
-    tests="6" time="26.15" timestamp="Wed, 25 Jul 2018 05:00:47 GMT">
+    errors="13" failures="1" hostname="" id="" package="profile" skipped="4"
+    tests="7" time="17.22" timestamp="Wed, 25 Jul 2018 06:28:44 GMT">
   
-    <testcase name="Go to  login influence" classname="profile" time="11.24" assertions="5">
+    <testcase name="Go to  login influence" classname="profile" time="14.53" assertions="5">
 
     
 
@@ -20,48 +20,223 @@
     
     </testcase>
   
-    <testcase name="click on profile dropdown, if exists" classname="profile" time="2.327" assertions="1">
+    <testcase name="click on profile dropdown, if exists" classname="profile" time="2.410" assertions="1">
 
     
     </testcase>
   
-    <testcase name="fill profile details" classname="profile" time="5.887" assertions="9">
+    <testcase name="fill profile details" classname="profile" time="0.2740" assertions="9">  <failure message="Testing if element &lt;#firstName&gt; is visible. Element could not be located.">    at Object.fill profile details (/home/ray/Desktop/frontend/frontend/tests/profile.js:16:15)
+    at process._tickCallback (internal/process/next_tick.js:61:11)</failure>
 
-    
+      <failure message="Testing if element &lt;#lastName&gt; is visible. Element could not be located.">    at Object.fill profile details (/home/ray/Desktop/frontend/frontend/tests/profile.js:17:15)
+    at process._tickCallback (internal/process/next_tick.js:61:11)</failure>
 
-    
+      <failure message="Testing if element &lt;#phoneNumber&gt; is visible. Element could not be located.">    at Object.fill profile details (/home/ray/Desktop/frontend/frontend/tests/profile.js:18:15)
+    at process._tickCallback (internal/process/next_tick.js:61:11)</failure>
 
-    
+      <failure message="Testing if element &lt;#email&gt; is visible. Element could not be located.">    at Object.fill profile details (/home/ray/Desktop/frontend/frontend/tests/profile.js:19:15)
+    at process._tickCallback (internal/process/next_tick.js:61:11)</failure>
 
-    
+      <failure message="Testing if element &lt;#address&gt; is visible. Element could not be located.">    at Object.fill profile details (/home/ray/Desktop/frontend/frontend/tests/profile.js:20:15)
+    at process._tickCallback (internal/process/next_tick.js:61:11)</failure>
 
-    
+      <failure message="Testing if element &lt;#formControlsSelect&gt; is visible. Element could not be located.">    at Object.fill profile details (/home/ray/Desktop/frontend/frontend/tests/profile.js:21:15)
+    at process._tickCallback (internal/process/next_tick.js:61:11)</failure>
 
-    
+      <failure message="Testing if element &lt;#formfBillinControlsSelect&gt; is visible. Element could not be located.">    at Object.fill profile details (/home/ray/Desktop/frontend/frontend/tests/profile.js:22:15)
+    at process._tickCallback (internal/process/next_tick.js:61:11)</failure>
 
-    
+      <failure message="Testing if element &lt;#companyName&gt; is visible. Element could not be located.">    at Object.fill profile details (/home/ray/Desktop/frontend/frontend/tests/profile.js:23:15)
+    at process._tickCallback (internal/process/next_tick.js:61:11)</failure>
 
-    
-
-    
-    </testcase>
-  
-    <testcase name="verify  profile details" classname="profile" time="1.220" assertions="0">
-    </testcase>
-  
-    <testcase name="Watch billing button , if exists" classname="profile" time="0.03800" assertions="1">
-
-    
-    </testcase>
-  
-    <testcase name="Log out from Influence" classname="profile" time="5.442" assertions="1">
+      <failure message="Testing if value of &lt;#email&gt; equals: &#34;devinair@gmail.com&#34;. Element or attribute could not be located.">    at Object.fill profile details (/home/ray/Desktop/frontend/frontend/tests/profile.js:28:15)
+    at process._tickCallback (internal/process/next_tick.js:61:11)</failure>
 
     
     </testcase>
   
 
   
+    <system-err>
+      ERROR: Unable to locate element: &#34;button[type=button]&#34; using: css selector
+    at F.command (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/api/assertions/visible.js:42:21)
+    at F.module.exports.BaseAssertion._scheduleAssertion (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/assertion.js:87:17)
+    at F.module.exports.BaseAssertion._executeCommand (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/assertion.js:82:17)
+    at AssertionInstance.commandFn [as _commandFn] (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/assertion.js:180:21)
+    at AsyncTree.runCommand (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/queue.js:154:30)
+    at AsyncTree.runChildNode (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/queue.js:114:8)
+    at AsyncTree.walkDown (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/queue.js:80:10)
+    at AsyncTree.walkUp (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/queue.js:97:8)
+    at AsyncTree.walkDown (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/queue.js:90:12)
+    at AsyncTree.traverse (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/queue.js:73:8)
+ERROR: Unable to locate element: &#34;#firstName&#34; using: css selector
+    at F.command (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/api/assertions/visible.js:42:21)
+    at F.module.exports.BaseAssertion._scheduleAssertion (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/assertion.js:87:17)
+    at F.module.exports.BaseAssertion._executeCommand (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/assertion.js:82:17)
+    at AssertionInstance.commandFn [as _commandFn] (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/assertion.js:180:21)
+    at AsyncTree.runCommand (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/queue.js:154:30)
+    at AsyncTree.runChildNode (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/queue.js:114:8)
+    at AsyncTree.walkDown (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/queue.js:80:10)
+    at AsyncTree.traverse (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/queue.js:73:8)
+    at Object.queueRunner [as run] (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/queue.js:216:18)
+    at Nightwatch.start (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/index.js:206:14)
+ERROR: Unable to locate element: &#34;#lastName&#34; using: css selector
+    at F.command (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/api/assertions/visible.js:42:21)
+    at F.module.exports.BaseAssertion._scheduleAssertion (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/assertion.js:87:17)
+    at F.module.exports.BaseAssertion._executeCommand (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/assertion.js:82:17)
+    at AssertionInstance.commandFn [as _commandFn] (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/assertion.js:180:21)
+    at AsyncTree.runCommand (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/queue.js:154:30)
+    at AsyncTree.runChildNode (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/queue.js:114:8)
+    at AsyncTree.walkDown (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/queue.js:80:10)
+    at AsyncTree.walkUp (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/queue.js:97:8)
+    at AsyncTree.walkDown (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/queue.js:90:12)
+    at AsyncTree.walkUp (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/queue.js:97:8)
+ERROR: Unable to locate element: &#34;#phoneNumber&#34; using: css selector
+    at F.command (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/api/assertions/visible.js:42:21)
+    at F.module.exports.BaseAssertion._scheduleAssertion (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/assertion.js:87:17)
+    at F.module.exports.BaseAssertion._executeCommand (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/assertion.js:82:17)
+    at AssertionInstance.commandFn [as _commandFn] (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/assertion.js:180:21)
+    at AsyncTree.runCommand (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/queue.js:154:30)
+    at AsyncTree.runChildNode (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/queue.js:114:8)
+    at AsyncTree.walkDown (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/queue.js:80:10)
+    at AsyncTree.walkUp (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/queue.js:97:8)
+    at AsyncTree.walkDown (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/queue.js:90:12)
+    at AsyncTree.walkUp (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/queue.js:97:8)
+ERROR: Unable to locate element: &#34;#email&#34; using: css selector
+    at F.command (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/api/assertions/visible.js:42:21)
+    at F.module.exports.BaseAssertion._scheduleAssertion (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/assertion.js:87:17)
+    at F.module.exports.BaseAssertion._executeCommand (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/assertion.js:82:17)
+    at AssertionInstance.commandFn [as _commandFn] (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/assertion.js:180:21)
+    at AsyncTree.runCommand (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/queue.js:154:30)
+    at AsyncTree.runChildNode (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/queue.js:114:8)
+    at AsyncTree.walkDown (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/queue.js:80:10)
+    at AsyncTree.walkUp (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/queue.js:97:8)
+    at AsyncTree.walkDown (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/queue.js:90:12)
+    at AsyncTree.walkUp (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/queue.js:97:8)
+ERROR: Unable to locate element: &#34;#address&#34; using: css selector
+    at F.command (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/api/assertions/visible.js:42:21)
+    at F.module.exports.BaseAssertion._scheduleAssertion (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/assertion.js:87:17)
+    at F.module.exports.BaseAssertion._executeCommand (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/assertion.js:82:17)
+    at AssertionInstance.commandFn [as _commandFn] (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/assertion.js:180:21)
+    at AsyncTree.runCommand (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/queue.js:154:30)
+    at AsyncTree.runChildNode (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/queue.js:114:8)
+    at AsyncTree.walkDown (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/queue.js:80:10)
+    at AsyncTree.walkUp (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/queue.js:97:8)
+    at AsyncTree.walkDown (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/queue.js:90:12)
+    at AsyncTree.walkUp (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/queue.js:97:8)
+ERROR: Unable to locate element: &#34;#formControlsSelect&#34; using: css selector
+    at F.command (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/api/assertions/visible.js:42:21)
+    at F.module.exports.BaseAssertion._scheduleAssertion (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/assertion.js:87:17)
+    at F.module.exports.BaseAssertion._executeCommand (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/assertion.js:82:17)
+    at AssertionInstance.commandFn [as _commandFn] (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/assertion.js:180:21)
+    at AsyncTree.runCommand (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/queue.js:154:30)
+    at AsyncTree.runChildNode (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/queue.js:114:8)
+    at AsyncTree.walkDown (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/queue.js:80:10)
+    at AsyncTree.walkUp (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/queue.js:97:8)
+    at AsyncTree.walkDown (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/queue.js:90:12)
+    at AsyncTree.walkUp (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/queue.js:97:8)
+ERROR: Unable to locate element: &#34;#formfBillinControlsSelect&#34; using: css selector
+    at F.command (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/api/assertions/visible.js:42:21)
+    at F.module.exports.BaseAssertion._scheduleAssertion (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/assertion.js:87:17)
+    at F.module.exports.BaseAssertion._executeCommand (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/assertion.js:82:17)
+    at AssertionInstance.commandFn [as _commandFn] (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/assertion.js:180:21)
+    at AsyncTree.runCommand (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/queue.js:154:30)
+    at AsyncTree.runChildNode (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/queue.js:114:8)
+    at AsyncTree.walkDown (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/queue.js:80:10)
+    at AsyncTree.walkUp (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/queue.js:97:8)
+    at AsyncTree.walkDown (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/queue.js:90:12)
+    at AsyncTree.walkUp (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/queue.js:97:8)
+ERROR: Unable to locate element: &#34;#companyName&#34; using: css selector
+    at F.command (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/api/assertions/visible.js:42:21)
+    at F.module.exports.BaseAssertion._scheduleAssertion (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/assertion.js:87:17)
+    at F.module.exports.BaseAssertion._executeCommand (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/assertion.js:82:17)
+    at AssertionInstance.commandFn [as _commandFn] (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/assertion.js:180:21)
+    at AsyncTree.runCommand (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/queue.js:154:30)
+    at AsyncTree.runChildNode (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/queue.js:114:8)
+    at AsyncTree.walkDown (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/queue.js:80:10)
+    at AsyncTree.walkUp (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/queue.js:97:8)
+    at AsyncTree.walkDown (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/queue.js:90:12)
+    at AsyncTree.walkUp (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/queue.js:97:8)
+ERROR: Unable to locate element: &#34;#firstName&#34; using: css selector
+    at Object.fill profile details (/home/ray/Desktop/frontend/frontend/tests/profile.js:24:8)
+    at Module.call (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/runner/module.js:62:34)
+    at /home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/runner/testcase.js:70:29
+    at _fulfilled (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/node_modules/q/q.js:834:54)
+    at /home/ray/Desktop/frontend/frontend/node_modules/nightwatch/node_modules/q/q.js:863:30
+    at Promise.promise.promiseDispatch (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/node_modules/q/q.js:796:13)
+    at /home/ray/Desktop/frontend/frontend/node_modules/nightwatch/node_modules/q/q.js:556:49
+    at runSingle (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/node_modules/q/q.js:137:13)
+    at flush (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/node_modules/q/q.js:125:13)
+    at process._tickCallback (internal/process/next_tick.js:61:11)
+ERROR: Unable to locate element: &#34;#lastName&#34; using: css selector
+    at Object.fill profile details (/home/ray/Desktop/frontend/frontend/tests/profile.js:25:8)
+    at Module.call (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/runner/module.js:62:34)
+    at /home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/runner/testcase.js:70:29
+    at _fulfilled (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/node_modules/q/q.js:834:54)
+    at /home/ray/Desktop/frontend/frontend/node_modules/nightwatch/node_modules/q/q.js:863:30
+    at Promise.promise.promiseDispatch (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/node_modules/q/q.js:796:13)
+    at /home/ray/Desktop/frontend/frontend/node_modules/nightwatch/node_modules/q/q.js:556:49
+    at runSingle (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/node_modules/q/q.js:137:13)
+    at flush (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/node_modules/q/q.js:125:13)
+    at process._tickCallback (internal/process/next_tick.js:61:11)
+ERROR: Unable to locate element: &#34;#address&#34; using: css selector
+    at Object.fill profile details (/home/ray/Desktop/frontend/frontend/tests/profile.js:26:8)
+    at Module.call (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/runner/module.js:62:34)
+    at /home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/runner/testcase.js:70:29
+    at _fulfilled (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/node_modules/q/q.js:834:54)
+    at /home/ray/Desktop/frontend/frontend/node_modules/nightwatch/node_modules/q/q.js:863:30
+    at Promise.promise.promiseDispatch (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/node_modules/q/q.js:796:13)
+    at /home/ray/Desktop/frontend/frontend/node_modules/nightwatch/node_modules/q/q.js:556:49
+    at runSingle (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/node_modules/q/q.js:137:13)
+    at flush (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/node_modules/q/q.js:125:13)
+    at process._tickCallback (internal/process/next_tick.js:61:11)
+ERROR: Unable to locate element: &#34;#companyName&#34; using: css selector
+    at Object.fill profile details (/home/ray/Desktop/frontend/frontend/tests/profile.js:27:8)
+    at Module.call (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/runner/module.js:62:34)
+    at /home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/runner/testcase.js:70:29
+    at _fulfilled (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/node_modules/q/q.js:834:54)
+    at /home/ray/Desktop/frontend/frontend/node_modules/nightwatch/node_modules/q/q.js:863:30
+    at Promise.promise.promiseDispatch (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/node_modules/q/q.js:796:13)
+    at /home/ray/Desktop/frontend/frontend/node_modules/nightwatch/node_modules/q/q.js:556:49
+    at runSingle (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/node_modules/q/q.js:137:13)
+    at flush (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/node_modules/q/q.js:125:13)
+    at process._tickCallback (internal/process/next_tick.js:61:11)
+ERROR: Unable to locate element: &#34;#email&#34; using: css selector
+    at F.command (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/api/assertions/value.js:47:21)
+    at F.module.exports.BaseAssertion._scheduleAssertion (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/assertion.js:87:17)
+    at F.module.exports.BaseAssertion._executeCommand (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/assertion.js:82:17)
+    at AssertionInstance.commandFn [as _commandFn] (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/assertion.js:180:21)
+    at AsyncTree.runCommand (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/queue.js:154:30)
+    at AsyncTree.runChildNode (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/queue.js:114:8)
+    at AsyncTree.walkDown (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/queue.js:80:10)
+    at AsyncTree.walkUp (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/queue.js:97:8)
+    at AsyncTree.walkDown (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/queue.js:90:12)
+    at AsyncTree.traverse (/home/ray/Desktop/frontend/frontend/node_modules/nightwatch/lib/core/queue.js:73:8)
+    </system-err>
+  
 
+  
+    
+    <testcase
+      name="verify  profile details" classname="profile">
+      <skipped />
+    </testcase>
+    
+    <testcase
+      name="clear profile details" classname="profile">
+      <skipped />
+    </testcase>
+    
+    <testcase
+      name="Watch billing button , if exists" classname="profile">
+      <skipped />
+    </testcase>
+    
+    <testcase
+      name="Log out from Influence" classname="profile">
+      <skipped />
+    </testcase>
+    
   
   </testsuite>
 </testsuites>

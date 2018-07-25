@@ -1,4 +1,3 @@
-var login = require('../pages/loginAndInside');
 
 
 module.exports = {
