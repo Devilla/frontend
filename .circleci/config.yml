@@ -19,6 +19,9 @@ jobs: # a collection of steps
           key: dependency-cache-{{ checksum "package.json" }}
           paths:
             - ./node_modules
+      - run:
+          name: add-nightwatch
+          command: 'sudo npm install -g nightwatch'
       - run: # run frontend
           name: test
           command: npm run test
