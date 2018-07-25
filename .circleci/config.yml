@@ -11,7 +11,8 @@ jobs: # a collection of steps
           name: install
           command: yarn install
       - restore_cache: # special step to restore the dependency cache
-          key:
+          name: Restore Yarn Package Cache
+          keys:
             - yarn-packages-{{ checksum "yarn.lock" }}
       - save_cache:
           name: Save Yarn Package Cache
