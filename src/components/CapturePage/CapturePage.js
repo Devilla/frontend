@@ -164,7 +164,7 @@ class CapturePage extends Component {
                 />
               </div>
               <div classname="col-md-3 pr-5 pl-5">
-                <span className="btn btn-primary  addsubdomain" onClick={this.addsubdomain()}>
+                <span className="btn btn-primary  addsubdomain" >
                  Add
                 </span>
               </div>
