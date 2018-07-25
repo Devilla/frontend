@@ -16,23 +16,23 @@ module.exports = {
     browser
       .verify.visible('.upgrade1')
       .click('.upgrade1')
-      .pause(1000)
+      .pause(1000);
   },
   'Month and year plan should get rendreded ': function (browser) {
     browser
-      .getText(".set-br", function (result) {
-        this.assert.equal(result.value, "Monthly" || "Yearly");
+      .getText('.set-br', function (result) {
+        this.assert.equal(result.value, 'Monthly' || 'Yearly');
       })
-      .pause(5000)
+      .pause(5000);
   },
   'card should be clickable ': function (browser) {
     browser
       .verify.visible('.pricingTable')
       .click('.pricingTable')
-      .assert.elementPresent(".makebx")
+      .assert.elementPresent('.makebx')
       .pause(3000)
       .end(() => {
-        console.log('The plan gets selected with the corresponding css')
+        console.log('The plan gets selected with the corresponding css');
       });
   }
 };
