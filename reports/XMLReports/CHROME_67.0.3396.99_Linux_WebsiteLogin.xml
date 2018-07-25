@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuites errors="1"
-            failures="1"
+<testsuites errors="0"
+            failures="0"
             tests="7">
 
   <testsuite name="WebsiteLogin"
-    errors="1" failures="1" hostname="" id="" package="WebsiteLogin" skipped="0"
-    tests="7" time="74.13" timestamp="Tue, 24 Jul 2018 10:13:22 GMT">
+    errors="0" failures="0" hostname="" id="" package="WebsiteLogin" skipped="0"
+    tests="7" time="50.25" timestamp="Wed, 25 Jul 2018 04:59:10 GMT">
   
-    <testcase name="Go to  login influence" classname="WebsiteLogin" time="25.50" assertions="5">
+    <testcase name="Go to  login influence" classname="WebsiteLogin" time="12.48" assertions="5">
 
     
 
@@ -20,58 +20,43 @@
     
     </testcase>
   
-    <testcase name="Check if the session is on and close session " classname="WebsiteLogin" time="0.07800" assertions="0">
+    <testcase name="Check if the session is on and close session " classname="WebsiteLogin" time="0.1210" assertions="0">
     </testcase>
   
-    <testcase name="open browser" classname="WebsiteLogin" time="20.90" assertions="1">
-
-    
-    </testcase>
-  
-    <testcase name="Go to  login influence again " classname="WebsiteLogin" time="2.674" assertions="4">
-
-    
-
-    
-
-    
+    <testcase name="open browser" classname="WebsiteLogin" time="14.58" assertions="1">
 
     
     </testcase>
   
-    <testcase name="Click on new Button  " classname="WebsiteLogin" time="1.118" assertions="2">
+    <testcase name="Go to  login influence again " classname="WebsiteLogin" time="2.599" assertions="4">
 
-      <failure message="Testing if element &lt;button[type=button]&gt; is visible. Element could not be located.">    at openNewBtn (/home/devilla/frontend/pages/loginAndInside.js:53:15)
-    at Object.Click on new Button   (/home/devilla/frontend/tests/WebsiteLogin.js:21:20)</failure>
+    
+
+    
+
+    
 
     
     </testcase>
   
-    <testcase name="Log out from Influence" classname="WebsiteLogin" time="5.296" assertions="1">
+    <testcase name="Click on new Button  " classname="WebsiteLogin" time="1.183" assertions="2">
+
+    
 
     
     </testcase>
   
-    <testcase name="Fill in wrong details" classname="WebsiteLogin" time="18.56" assertions="1">
+    <testcase name="Log out from Influence" classname="WebsiteLogin" time="5.443" assertions="1">
+
+    
+    </testcase>
+  
+    <testcase name="Fill in wrong details" classname="WebsiteLogin" time="13.84" assertions="1">
 
     
     </testcase>
   
 
-  
-    <system-err>
-      ERROR: Unable to locate element: &#34;button[type=button]&#34; using: css selector
-    at F.command (/home/devilla/frontend/node_modules/nightwatch/lib/api/assertions/visible.js:42:21)
-    at F.module.exports.BaseAssertion._scheduleAssertion (/home/devilla/frontend/node_modules/nightwatch/lib/core/assertion.js:87:17)
-    at F.module.exports.BaseAssertion._executeCommand (/home/devilla/frontend/node_modules/nightwatch/lib/core/assertion.js:82:17)
-    at AssertionInstance.commandFn [as _commandFn] (/home/devilla/frontend/node_modules/nightwatch/lib/core/assertion.js:180:21)
-    at AsyncTree.runCommand (/home/devilla/frontend/node_modules/nightwatch/lib/core/queue.js:154:30)
-    at AsyncTree.runChildNode (/home/devilla/frontend/node_modules/nightwatch/lib/core/queue.js:114:8)
-    at AsyncTree.walkDown (/home/devilla/frontend/node_modules/nightwatch/lib/core/queue.js:80:10)
-    at AsyncTree.walkUp (/home/devilla/frontend/node_modules/nightwatch/lib/core/queue.js:97:8)
-    at AsyncTree.walkDown (/home/devilla/frontend/node_modules/nightwatch/lib/core/queue.js:90:12)
-    at AsyncTree.traverse (/home/devilla/frontend/node_modules/nightwatch/lib/core/queue.js:73:8)
-    </system-err>
   
 
   

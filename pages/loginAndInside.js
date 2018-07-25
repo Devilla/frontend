@@ -26,8 +26,8 @@ module.exports = function (browser) {
     browser
       .url('https://useinfluence.co/login')
       .waitForElementVisible('body', 3000)
-      .setValue('input[type=email]', 'devigmail.com')
-      .setValue('input[type=password]', '123')
+      .setValue('input[type=email]', 'devinair@gmail.com')
+      .setValue('input[type=password]', '12345')
       .click('input[type=submit]')
       .pause(2000)
     return browser;

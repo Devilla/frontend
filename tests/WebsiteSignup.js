@@ -4,7 +4,6 @@ var login = require('../pages/loginAndInside');
 module.exports = {
   '@tags': ['signup'],
   'Go to Signup Influence': function (client) {
-    export const num = Math.random();
     client
       .url('https://useinfluence.co/signup')
       .waitForElementVisible('body', 1000)
