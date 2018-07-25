@@ -18,7 +18,7 @@ module.exports = {
       .assert.title('Influence: Increase Your Website Conversions Using Influence')
       .waitForElementVisible('#sidebar-menu > div > a > button > span', 5000)
       .click('#sidebar-menu > div > a > button > span')
-      .waitForElementVisible('#campaignname', 5000)
+      .waitForElementVisible('#campaignname', 10000)
       .assert.visible('#campaignname')
       .setValue('#campaignname', 'Logan')
       .waitForElementVisible('#website', 5000)
