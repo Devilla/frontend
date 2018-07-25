@@ -1,6 +1,7 @@
 import React , { Component } from 'react';
 import './PopupReview.scss';
 import { Row, Col } from 'react-bootstrap';
+
 import Popupsettings from './Popupsettings.js';
 import Channels from  './Channels.js';
 import DashboardChannel  from '../DashboardChannel/DashboardChannel';
@@ -37,7 +38,6 @@ class PopupReview extends Component {
                 <Col md={6} sm={12}>
                   <div className="card-box">
                     {/**popup goes here*/}
-
                   </div>
                 </Col>
                 <Col md={6} sm={12}>
@@ -71,6 +71,7 @@ class PopupReview extends Component {
                       </Row>
                     </div>
                   </div>
+
                 </Col>
               </Row>
             </div>
