@@ -1,20 +1,20 @@
 Arguments: 
-  /usr/bin/node /usr/local/bin/yarn add nightwatch
+  /usr/bin/node /usr/bin/yarn install
 
 PATH: 
-  /home/devilla/bin:/home/devilla/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+  /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/lib/jvm/java-8-oracle/bin:/usr/lib/jvm/java-8-oracle/db/bin:/usr/lib/jvm/java-8-oracle/jre/bin
 
 Yarn version: 
   1.7.0
 
 Node version: 
-  8.11.3
+  10.7.0
 
 Platform: 
   linux x64
 
 Trace: 
-  Error: EACCES: permission denied, unlink '/home/devilla/frontend/node_modules/.yarn-integrity'
+  Error: EACCES: permission denied, rmdir '/home/ray/Desktop/frontend/frontend/node_modules/.cache/babel-loader'
 
 npm manifest: 
   {
@@ -138,12 +138,11 @@ npm manifest:
       "yarn": "^1.7.0"
     },
     "scripts": {
-      "setup": "node nightwatch -e chrome",
+      "test": "node nightwatch -e chrome",
       "start": "set PORT=3002 && node scripts/start.js",
       "start:production": "npm run build && npm run start:prod",
       "start:prod": "NODE_ENV=production node server",
-      "build": "node scripts/build.js",
-      "test": "jest --env=jsdom"
+      "build": "node scripts/build.js"
     },
     "devDependencies": {
       "babel-core": "^6.26.3",

@@ -161,9 +161,8 @@ class DisplayPage extends Component {
               </Col>
             </Row>
             <Row>
-              <Col md={1}></Col>
-              <Col md={11}>
-                <div className="ml-5 pl-4 input-group col-md-8">
+              <Col md={8}>
+                <div className="ml-5 pl-4 input-group col-md-12">
                   <label className="pt-2 pl-1 pr-3 text-muted">{this.props.campaign
                     ? 'http://'+this.props.campaign.websiteUrl
                     : 'http://localhost:3000'}/</label>
@@ -176,12 +175,18 @@ class DisplayPage extends Component {
                     onBlur={this.handleWebsiteAuth.bind(this)}
                     onKeyUp={(e) => e.keyCode === 13?this.addPageUrl():null}
                   />
-                  <span className="input-group-btn col-md-2"
+                  <span className="input-group-btn col-md-3"
                     id="urladd">
                     <span className="btn btn-primary nav nav-pills waves-light waves-effect addpath-btn pl-5 pr-5"
                       onClick={this.addPageUrl}>Add</span>
                   </span>
                 </div>
+              </Col>
+              <Col md={4}>
+                <i className=" mdi mdi-plus-circle-outline"></i>
+                <span className="btn btn-primary  subdomain">
+                  Add SubDomain
+                </span>
               </Col>
             </Row>
 
