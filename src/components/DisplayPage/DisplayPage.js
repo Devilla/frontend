@@ -74,6 +74,12 @@ class DisplayPage extends Component {
     let displayUrl = this.state.displayUrl;
     displayUrl['rule'] = this.props.rules._id;
     this.props.createPageUrl(displayUrl);
+    this.setState({displayUrl: {
+      url: '',
+      status: '',
+      class: '',
+      type: ''
+    }});
   }
 
   handlePageUrl = (e) => {
@@ -159,7 +165,7 @@ class DisplayPage extends Component {
               <Col md={11}>
                 <div className="ml-5 pl-4 input-group col-md-8">
                   <label className="pt-2 pl-1 pr-3 text-muted">{this.props.campaign
-                    ? this.props.campaign.websiteUrl
+                    ? 'http://'+this.props.campaign.websiteUrl
                     : 'http://localhost:3000'}/</label>
                   <input type="text"
                     className="form-control txtpageurl"
@@ -172,7 +178,7 @@ class DisplayPage extends Component {
                   />
                   <span className="input-group-btn col-md-2"
                     id="urladd">
-                    <span className="btn btn-custom nav nav-pills waves-light waves-effect addpath-btn pl-5 pr-5"
+                    <span className="btn btn-primary nav nav-pills waves-light waves-effect addpath-btn pl-5 pr-5"
                       onClick={this.addPageUrl}>Add</span>
                   </span>
                 </div>

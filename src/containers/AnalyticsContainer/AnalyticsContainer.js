@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import moment  from 'moment';
 import Popup from 'react-popup';
 import ReactChartJs from 'react-chartjs';
+import { Animated } from 'react-animated-css';
 
 import { fetchElastic } from 'ducks/elastic';
 import { fetchCampaignInfo, successCampaign } from 'ducks/campaign';
@@ -17,7 +18,7 @@ const chartOptions = {
   responsive: true,
   maintainAspectRatio: false,
   scaleShowGridLines : true,
-  scaleGridLineColor : 'rgba(0,0,0,.05)',
+  scaleGridLineColor : 'rgba(100,0,0,.1)',
   scaleGridLineWidth : 1,
   scaleShowHorizontalLines: true,
   scaleShowVerticalLines: true,
@@ -41,7 +42,7 @@ class AnalyticsContainer extends Component {
       count:0
     };
   }
-  componentWillReceiveProps() {
+  componentWillMount() {
     this.props.fetchCampaignInfo();
   }
 
@@ -50,6 +51,7 @@ class AnalyticsContainer extends Component {
       document.documentElement.classList.toggle('nav-open');
     }
   }
+
   handleProfileBack = () => {
     this.setState({usersList: []});
   }
@@ -85,7 +87,7 @@ class AnalyticsContainer extends Component {
       return [];
   }
 
-  getDataset = (uniqueUsers, avgCus) => {
+  getDataset = (uniqueUsers, avgCus, campaignName) => {
     if(uniqueUsers && uniqueUsers.length) {
       let dataSet = [];
       let dataContent = {
@@ -99,8 +101,8 @@ class AnalyticsContainer extends Component {
         data: [0, 0, 0, 0, 0, 0, 0]
       };
       uniqueUsers.map(bucket => {
-        dataContent['label'] = moment(bucket.key_as_string).format('LL');
-        dataContent['data'][moment(bucket.key_as_string).day()] = bucket.visitors.sum_other_doc_count;
+        dataContent['label'] = `${campaignName}`;
+        dataContent['data'][moment(bucket.key_as_string).day()] = bucket.visitors.sum_other_doc_count + bucket.visitors.buckets.length;
       });
       dataSet.push(dataContent);
       dataSet.push({
@@ -128,22 +130,24 @@ class AnalyticsContainer extends Component {
     }
   }
 
-  showGraph = (name, averageCustomer, uniqueUsers) => {
+  showGraph = (name, averageCustomer, uniqueUsers, campaignName) => {
     const chartData = {
       labels: moment.weekdays(),
-      datasets: this.getDataset(uniqueUsers, averageCustomer)
+      datasets: this.getDataset(uniqueUsers, averageCustomer, campaignName)
     };
 
     Popup.create({
       title: `${name.charAt(0).toUpperCase() + name.substr(1)} Traffic`,
       content:
+      <Animated className="center" animationIn="fadeInDown" animationOut="fadeOutUp" isVisible={true}>
         <div className = "analytics-chart">
-          <LineChart data={chartData} options={chartOptions} height="250" redraw/>
-        </div>,
+          <LineChart data={chartData} options={chartOptions} height="250" width="500" redraw/>
+        </div>
+      </Animated>,
       buttons: {
         right: [{
           text: 'Close',
-          className: 'default',
+          className: 'danger',
           action: function () {
             Popup.close();
           }
@@ -158,12 +162,14 @@ class AnalyticsContainer extends Component {
         let visitor = 0;
         website.uniqueUsers && website.uniqueUsers.aggregations ?
           website.uniqueUsers.aggregations.users.buckets.map(bucket => {
-            visitor = visitor + bucket.visitors.sum_other_doc_count;
+            visitor = visitor + bucket.visitors.sum_other_doc_count + bucket.visitors.buckets.length;
           })
           :
           visitor = 0;
 
-        const userDetails = website.signups?website.signups.userDetails:[];
+        let userDetails = website.signups && website.signups.userDetails ?website.signups.userDetails:[];
+        userDetails = userDetails.filter(user => user.trackingId == website.trackingId);
+
         const uniqueUsers = website.uniqueUsers && website.uniqueUsers.aggregations ?website.uniqueUsers.aggregations.users.buckets:[];
         return <tr className="table-active analytics-tr" key={index}>
           <th scope="row">{index + 1}</th>
@@ -175,7 +181,7 @@ class AnalyticsContainer extends Component {
             {
               userDetails && userDetails.length ?((userDetails.length / visitor)   * 100).toFixed(2):0
             } %</td>
-          <td className="text-center"><a href="javascript:;" onClick={() => this.showGraph(website.websiteUrl, website.averageCustomer, uniqueUsers)}>Graph</a></td>
+          <td className="text-center"><a href="javascript:;" onClick={() => this.showGraph(website.websiteUrl, website.averageCustomer, uniqueUsers, website.campaignName)}>Graph</a></td>
         </tr>;
       });
     else

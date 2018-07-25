@@ -6,8 +6,6 @@ import { browserHistory }  from 'react-router';
 
 
 class Oauthpage extends Component {
-
-
   getOAuthRows = () => {
     let i =0;
     return (

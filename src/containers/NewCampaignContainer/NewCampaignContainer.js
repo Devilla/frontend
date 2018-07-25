@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { toast } from 'react-toastify';
 import { browserHistory } from 'react-router';
 import copy from 'copy-to-clipboard';
-// import Popup from 'react-popup';
 
 import { validatewebsite } from 'components/Common/function';
 import { createCampaign, clearCampaign } from 'ducks/campaign';
@@ -11,7 +10,6 @@ import { fetchElastic, clearElastic } from 'ducks/elastic';
 import { fetchOneRules, createRules, updateRules } from 'ducks/rules';
 import { fetchNotification } from 'ducks/notification';
 import { createConfiguration, fetchConfiguration, fetchCampaignConfiguration, clearConfiguration, updateConfiguration, createSuccess } from 'ducks/configuration';
-import { fetchLeadUrl, fetchDisplayUrl, createPageUrl, clearPageUrl, removePageUrl } from 'ducks/pageurl';
 import { CampaignSettings, Campaign } from 'components';
 import './NewCampaignContainer.scss';
 
@@ -42,6 +40,15 @@ class NewCampaignContainer extends Component {
       buttonText: '',
       path: ''
     };
+  }
+
+  componentWillMount() {
+    this.verifyPixelStatus(this.props.campaign);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if(nextProps.elastic)
+      this.setState({loaderActive: false});
   }
 
   handleCampaignStateChange = (evt) => {
@@ -80,9 +87,9 @@ class NewCampaignContainer extends Component {
     this.setState({activeClass: val});
   }
 
-  verifyPixelStatus = () => {
+  verifyPixelStatus = (campaign) => {
     this.setState({loaderActive: true});
-    this.props.fetchElastic(`json.value.trackingId:${this.props.campaign.trackingId}`);
+    this.props.fetchElastic(`json.value.trackingId:${campaign?campaign.trackingId:this.props.campaign.trackingId}`);
   }
 
   handlePixelCopy = () => {
@@ -111,28 +118,15 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
     this.setState({notification: ''});
   }
 
-  componentWillUnmount() {
-    this.props.clearCampaign();
-    this.props.clearElastic();
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if(nextProps.elastic)
-      this.setState({loaderActive: false});
-  }
-
   goLive = () => {
-
-    this.verifyPixelStatus();
     const elastic = this.props.elastic;
-    console.log(elastic);
     if(elastic && (elastic.error || (elastic.message.hits.total === 0))) {
       this.setState({
         title : 'Alert',
-        content : 'Install Pixel before going live.',
+        content : 'Please verify your pixel first.',
         buttonText :  'Close'
       });
-    
+
     } else if(!this.props.leads || !this.props.leads.length) {
       this.setState({
         title : 'Alert',
@@ -159,11 +153,16 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
     this.setState({displayWebhookIntegration: !this.state.displayWebhookIntegration});
   }
 
+  componentWillUnmount() {
+    this.props.clearCampaign();
+    this.props.clearElastic();
+  }
+
   render() {
-    const { content, title, buttonText, path } = this.state;  
+    const { content, title, buttonText, path } = this.state;
     return (
       <div className="NewCampaignContainer">
-        <button type="button" className="btn btn-outline-primary goliveRight waves-light waves-effect number" data-toggle="modal" data-target="#myModallive" onClick={this.goLive}><i className="fi-location"></i>&nbsp;Go Live</button>            
+        <button type="button" className="btn btn-outline-primary goliveRight waves-light waves-effect number" data-toggle="modal" data-target="#myModallive" onClick={this.goLive}><i className="fi-location"></i>&nbsp;Go Live</button>
 
         {this.props.campaign && Object.keys(this.props.campaign).length !== 0 && this.props.campaign.constructor === Object?
           <CampaignSettings
@@ -230,12 +229,7 @@ const mapDispatchToProps = {
   fetchCampaignConfiguration,
   updateConfiguration,
   clearConfiguration,
-  createSuccess,
-  fetchDisplayUrl,
-  fetchLeadUrl,
-  createPageUrl,
-  removePageUrl,
-  clearPageUrl
+  createSuccess
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewCampaignContainer);

@@ -2,10 +2,17 @@
 
 # dependencies
 /node_modules
+/lib
+/reports
 
 # testing
+/reports
 /coverage
-__tests__
+/_tests_
+/__test__
+/reports/XMLReports/*
+/src/__test__/__snapshots__
+/src/__tests__/__snapshots__
 
 # production
 /build
@@ -18,3 +25,5 @@ __tests__
 .env.production.local
 
 npm-debug.log*
+
+

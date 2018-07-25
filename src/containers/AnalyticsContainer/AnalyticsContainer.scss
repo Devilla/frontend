@@ -2,7 +2,6 @@
   .analytics-tr {
     cursor: pointer;
   }
-
   .analytics-profile {
     .analytics-header {
       display: flex;
@@ -15,14 +14,13 @@
     }
     .img {
       width: 10%;
-      img{
+      img {
         width: 40px;
         height: 40px;
         border-radius: 50px;
       }
     }
   }
-
 }
 
 .analytics-chart {
@@ -30,7 +28,33 @@
     padding: 3%;
   }
 }
+.mm-popup__btn--danger {
+  background-color: #097fff;
+  border-color: #097fff;
+  color: #fff;
+  border-radius: 5px !important;
+}
+
 .mm-popup__box {
-  width: 35%;
-  left: 45%;
+  width: 45%;
+  left: 42%;
+}
+.mm-popup__overlay {
+  z-index: 999999999 !important;
+  overflow: scroll !important;
+  background: rgba(248, 247, 247, 0.7) !important;
+}
+.mm-popup__box__header {
+  padding: 5px 20px !important;
+  background: #fff !important;
+  color: #000 !important;
+  .mm-popup__box__header__title {
+    font-size: 19px;
+    position: relative !important;
+    font-weight: 500;
+  }
+
+}
+.mm-popup__close {
+  background: none !important;
 }

@@ -47,20 +47,20 @@ export default class Affiliate extends Component {
           <div className="container">
             <div className="row">
               <div className="col-md-4">
-                <Link to="/" className="block">
+                <Link to="/home" className="block">
                   <div className="feature boxed boxed--border border--round left"><span className="h4 color--primary"><h4>Promoting made easy&nbsp;</h4></span> <img className="icon-n1" src="" />
                     <p class="align-center text-left">Promoting the products has never been easier. All you need to do from your end is let the world know about our amazing products and share a referral link with them. We will provide all the support you need, to be successful, from our end. </p></div>
                 </Link>
               </div>
               <div className="col-md-4">
-                <Link to="/" className="block">
+                <Link to="/home" className="block">
                   <div className="feature boxed boxed--border border--round"> <span className="h4 color--primary"><h4>Easy money</h4></span> <img className="icon-n1" src="" />
                     <p class="align-center text-left lead">Everytime you bring in a lead who is happy to sign a contract with us, we are twice as happy to share a part of the deal value with you. If the referral goes on to sign a long-term agreement with Freshworks, your reward also grows accordingly. </p></div>
 
                 </Link>
               </div>
               <div className="col-md-4">
-                <Link to="/" className="block">
+                <Link to="/home" className="block">
                   <div className="feature boxed boxed--border border--round"><span className="h4 color--primary"><h4>On-time Payment</h4></span>
                     <img className="icon-n1" src="" /><p class="align-center text-left lead">It cannot get sweeter than this. You just take care of spreading the word about  Freshworks and leave the rest to us. We will ensure you are paid on-time for your efforts and in your local currency, for your convenience.</p> </div>
                 </Link>

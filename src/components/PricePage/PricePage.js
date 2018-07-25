@@ -1,24 +1,25 @@
 import React from 'react';
-import Switch from 'react-flexible-switch';
 import './PricePage.scss';
 
 const PricePage = ({
   planPeriod,
   planList,
   handleMonthChange,
-  handleSwitchChange,
   handleYearChange,
-  externalValue,
   selectedPlan,
   handleCheckChange,
-  couponDetails
+  couponDetails,
+  externalValue,
+  monthOpaque,
+  yearOpaque
 }) => {
+
 
   if(couponDetails) {
     planList = planList.filter(plan => plan.references.service_template_properties.length && plan.references.service_template_properties[0].data.value === couponDetails.code);
   } else {
     planList = planList.filter(plan =>
-      (planPeriod == 12 ? plan.interval=='year': plan.interval=='month') &&
+      (planPeriod == 1 ? plan.interval=='month': plan.interval=='year') &&
       (plan.references.service_template_properties[0].name !== 'coupon')
     );
   }
@@ -39,70 +40,94 @@ const PricePage = ({
     return res;
   }
 
+
+  function monthlyPriceHandler () {
+
+    return planList.map((plan, index) =>
+      <div key={index} className="col-md-3 col-sm-6">
+        <div className="pricingTable" onClick={handleMonthChange}>
+          <div className="price_card text-center"  className={selectedPlan.id === plan.id ? 'makebx' : ''} onClick={() => handleCheckChange(true, plan)}>
+            <div className="pricing-header bg-primary">
+              <span className="price pt-3">${plan.interval === 'month' ? plan.amount / 100 : '' }</span>
+              <span className="name">{filterPlanName(plan.name)}</span>
+            </div>
+            <div className="pricing-content pt-4 pb-2">
+              <ul className="price-features">
+                <li><div className="font-desc" dangerouslySetInnerHTML={{ __html:  plan.details }} /></li>
+              </ul>
+
+            </div>
+          </div>
+        </div>
+      </div>);
+  }
+
+  function yearlyPriceHandler () {
+    return planList.map((plan, index) =>
+      <div key={index} className="col-md-3 col-sm-6">
+        <div className="pricingTable"  onClick={handleYearChange}>
+          <div className="price_card text-center"  className={selectedPlan.id === plan.id ? 'makebx' : ''} onClick={() => handleCheckChange(true, plan)}>
+            <div className="pricing-header bg-primary">
+              <span className="price pt-3">${plan.interval === 'year' ? plan.amount / 100 :  ''}</span>
+              <span className="name">{filterPlanName(plan.name)}</span>
+            </div>
+            <div className="pricing-content pt-4 pb-2">
+              <ul className="price-features">
+                <li><div  className="font-desc" dangerouslySetInnerHTML={{ __html:  plan.details }} /></li>
+              </ul>
+
+
+
+            </div>
+          </div>
+        </div>
+      </div>);
+  }
+
+
   return (
     <div style={{ width: '100%' }}>
-      <div className="price">
+      <div className="price pt-2">
         <div className="pricing-row w-row" style={{ width: '100%' }}>
           <div className="w-col">
-            <ul>
-              <li>
-                <span className={!externalValue
-                  ? 'active btn btn-outline-success waves-light waves-effect mr-2 set-br'
-                  : 'btn btn-outline-info waves-light waves-effect mr-2 set-br'
-                } onClick={handleMonthChange}>Monthly</span>
-              </li>
-              <li className="mt-3" style={{ display: 'none' }}>
-                <Switch
-                  circleStyles={{
-                    onColor: '#097fff',
-                    offColor: 'grey',
-                    diameter: 18
-                  }} switchStyles={{
-                    width: 50
-                  }} value={externalValue} onChange={handleSwitchChange} />
-              </li>
-              <li>
-                <span className={externalValue
-                  ? 'active btn btn-outline-success waves-light waves-effect ml-2 set-br'
-                  : 'btn btn-outline-info waves-light waves-effect ml-2 set-br'
-                }
-                onClick={handleYearChange}
-                >
-                  &nbsp;Yearly&nbsp;
-                </span>
-              </li>
-            </ul>
+            <span className={externalValue
+              ? 'active btn btn-outline-success waves-light waves-effect mr-2 set-br'
+              : 'btn btn-outline-info waves-light waves-effect mr-2 set-br'
+            } onClick={handleMonthChange}>Monthly</span>
           </div>
         </div>
       </div>
-      <div className="row">
-        {planList ?
-          planList.map((plan, index) =>
-            <div key={index} className="col-md-3 col-sm-6">
-              <div className="pricingTable">
-                <div className="price_card text-center">
-                  <div className="pricing-header bg-primary">
-                    <span className="price">${plan.interval === 'year' ? plan.amount / 1000 : plan.amount / 100}</span>
-                    <span className="name">{filterPlanName(plan.name)}</span>
-                  </div>
-                  {plan.interval === 'year' ?  <p className= {/\b(Advanced)\b/m.test(plan.name) ?' mt-0 mb-0' : 'type--fine-print mt-0 mb-0 '}><i> 2 Months FREE </i></p> :  ''}
-                  <div className="pricing-content">
-                    <ul className="price-features" style={{ minHeight: '150px' }}>
-                      <li><div dangerouslySetInnerHTML={{ __html: plan.details }} /></li>
-                    </ul>
+      <div className={'row'} style={monthOpaque}>
 
-                    <a className={selectedPlan.id === plan.id ? 'active btn btn-outline-success waves-light waves-effect mr-2 pricingTable-signup' : 'btn btn-outline-info waves-light waves-effect ml-2 pricingTable-signup'} onClick={() => handleCheckChange(true, plan)}>
-                      Select
-                    </a>
-
-                  </div>
-                </div>
-              </div>
-            </div>
-          )
+        { planList ?
+          monthlyPriceHandler()
           :
           <div>No Plan to select from.</div>
         }
+
+      </div>
+      <div className="price">
+        <div className="pricing-row w-row" style={{ width: '100%' }}>
+          <div className="w-col">
+            <span className={!externalValue
+              ? 'active btn btn-outline-success waves-light waves-effect ml-2 set-br'
+              : 'btn btn-outline-info waves-light waves-effect ml-2 set-br'
+            }
+            onClick={handleYearChange}
+            >
+                  &nbsp;Yearly&nbsp;
+            </span>
+          </div>
+        </div>
+      </div>
+      <div className={'row'} style={yearOpaque}>
+      
+        { planList ?
+          yearlyPriceHandler()
+          :
+          <div>No Plan to select from.</div>
+        }
+
       </div>
     </div>
   );

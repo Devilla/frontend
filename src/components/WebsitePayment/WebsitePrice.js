@@ -1,5 +1,4 @@
 import React from 'react';
-import './WebsitePrice.scss';
 
 const WebsitePrice = ({
   externalValue,

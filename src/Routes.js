@@ -8,7 +8,7 @@ import {
   Dashboard,
   Notification,
   LoginFlow,
-  ComingSoon,
+  Integrations,
   Error,
   UpgradeCard,
   UpgradePlan,
@@ -57,7 +57,7 @@ const MyRoutes = ({routerHistory}) => (
       <Route path="/oauthgenerate" component={Oauthgenerate} />
       <Route path="/channels" component={DashboardChannel} />
       <Route path="/analytics" component={AnalyticsContainer} />
-      <Route path="/integrations" component={ComingSoon} />
+      <Route path="/integrations" component={Integrations} />
       <Route path="/support" component={Dashboard} />
       <Route path="/upgrade" component={UpgradePlan} />
       <Route path="/profile" component={Profile} />
@@ -68,6 +68,7 @@ const MyRoutes = ({routerHistory}) => (
     <Route exact path="/integrations/:provider/callback/" component={ReviewRedirect} />
     <Route exact path="/verify/:code" component={VerificationPage} />
     <Route component={App}>
+      <Route path="/" component={WebsiteHome} />
       <Route path="/home" component={WebsiteHome} />
       <Route path="/how-it-works" component={WebsiteHowItWorks} />
       <Route path="/integration" component={WebsiteIntegrations} />

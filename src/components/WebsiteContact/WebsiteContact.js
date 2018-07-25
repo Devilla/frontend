@@ -28,11 +28,6 @@ class WebsiteContact extends Component {
     };
   }
 
-  componentDidMount() {
-    let scrollElm = document.scrollingElement;
-    scrollElm.scrollTop = 0;
-  }
-
   checkEmail = (evt) => {
     /* eslint-disable */
     var Emailexpr = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;

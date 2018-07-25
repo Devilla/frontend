@@ -26,10 +26,6 @@ class forget extends Component{
     };
   }
 
-  componentDidMount(){
-    window.scrollTo(0,0);
-  }
-
   handleStateChange = (evt) => {
     this.setState({
       [evt.target.id]: evt.target.value,

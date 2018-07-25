@@ -25,11 +25,6 @@ class ForgetPassword extends Component {
     };
   }
 
-  componentDidMount() {
-    let scrollElm = document.scrollingElement;
-    scrollElm.scrollTop = 0;
-  }
-
   handleEmailChange(evt) {
     this.props.clearForgotPasswordError();
 
