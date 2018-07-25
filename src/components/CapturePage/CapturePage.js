@@ -148,6 +148,36 @@ class CapturePage extends Component {
     );
   }
 
+  showModaCapture =() => {
+    return (
+      <div className="modal fade show-modal" id="mycaptureModal" role="dialog">
+        <div className="modal-dialog">
+          <div className="modal-content align-modal">
+            <div className="modal-header">
+              <h4 className="modal-title">Add SubDomain</h4>
+            </div>
+            <div className="modal-body row">
+              <div className="col-md-9">
+                <input type="text"
+                  className="form-control"
+                  placeholder="Add your subdomain"
+                />
+              </div>
+              <div classname="col-md-3 pr-5 pl-5">
+                <span className="btn btn-primary  addsubdomain" onClick={this.addsubdomain()}>
+                 Add
+                </span>
+              </div>
+            </div>
+            <div className="modal-footer">
+              <button type="button" className="btn btn-primary close-btn" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   render() {
     const { error, lead } = this.state;
     return (
@@ -182,12 +212,12 @@ class CapturePage extends Component {
                 </div>
               </Col>
               <Col md={4}>
-                <i className=" mdi mdi-plus-circle-outline"></i>
-                <span className="btn btn-primary  subdomain">
-                  Add SubDomain
+                <span className="btn btn-primary  subdomain" data-toggle="modal" data-target="#mycaptureModal">
+                  <i className=" mdi mdi-plus-circle-outline"></i>&nbsp;Add SubDomain
                 </span>
               </Col>
             </Row>
+            {this.showModaCapture()}
             <Row className="pt-2  path-error">
               <HelpBlock className="text-center">
                 <p className="website-error">{error}</p>

@@ -45,13 +45,19 @@
 
     .tabscontent {
       .mdi-plus-circle-outline {
-        font-size: 24px !important;
-        padding-left: 15px !important;
-        padding-right: 22px !important;
-        position: relative;
-        top: 5px;
+        font-size: 17px;
+        position: absolute;
+        top: 4px !important;
+        left: 12px !important;
       }
       .subdomain {
+        border-radius: 5px !important;
+        position: relative;
+        padding-left: 35px !important;
+        margin-left: 120px;
+      }
+      .addsubdomain {
+        width: 100px;
         border-radius: 5px !important;
       }
       .centertbl {

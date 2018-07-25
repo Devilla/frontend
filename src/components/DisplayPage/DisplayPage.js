@@ -27,6 +27,7 @@ class DisplayPage extends Component {
         error: ''
       },
       count: 0,
+      showField: false
     };
   }
 
@@ -149,6 +150,41 @@ class DisplayPage extends Component {
     );
   }
 
+displaySubdomain =() => {
+
+
+}
+
+  showModalDisplay= () => {
+    return (
+      <div className="modal fade show-modal" id="mydisplayModal" role="dialog">
+        <div className="modal-dialog">
+          <div className="modal-content align-modal">
+            <div className="modal-header">
+              <h4 className="modal-title">Add SubDomain</h4>
+            </div>
+            <div className="modal-body row">
+              <div className="col-md-9">
+                <input type="text"
+                  className="form-control"
+                  placeholder="Add your subdomain"
+                />
+              </div>
+              <div classname="col-md-3 pr-5 pl-5">
+                <span className="btn btn-primary  addsubdomain" onClick={this.displaySubdomain()}>
+                 Add
+                </span>
+              </div>
+            </div>
+            <div className="modal-footer">
+              <button type="button" className="btn btn-primary close-btn" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   render(){
     const { error, displayUrl } = this.state;
     return (
@@ -183,17 +219,18 @@ class DisplayPage extends Component {
                 </div>
               </Col>
               <Col md={4}>
-                <i className=" mdi mdi-plus-circle-outline"></i>
-                <span className="btn btn-primary  subdomain">
-                  Add SubDomain
+                <span className="btn btn-primary  subdomain" data-toggle="modal" data-target="#mydisplayModal">
+                  <i className=" mdi mdi-plus-circle-outline"></i>&nbsp;Add SubDomain
                 </span>
               </Col>
             </Row>
-
+            {this.showModalDisplay()}
             <Row className="pt-2 path-error">
               <HelpBlock>
                 <p className="website-error">{error}</p>
               </HelpBlock>
+            </Row>
+            <Row>
             </Row>
             <Row>
               <Col md={12}>
