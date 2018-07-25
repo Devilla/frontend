@@ -9,7 +9,7 @@ jobs:                    # a collection of steps
     steps:             # a collection of executable commands
       - checkout # special step to check out source code to working directory
       - run:
-          name: update-container-registery
+          name:  update-container-registery
           command: echo "deb http://http.debian.net/debian jessie-backports main" | sudo tee --append /etc/apt/sources.list
       - run:
           name: update-apt
@@ -18,14 +18,8 @@ jobs:                    # a collection of steps
           name: install-java
           command: sudo apt-get install -t jessie-backports openjdk-8-jdk
       - run:
-          name: configure
-          command: curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-      - run:
-          name: configure-repo
-          command: echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-      - run:
-          name: install yarn
-          command: sudo apt-get update && sudo apt-get install yarn
+          name:        update-npm
+          command:     'sudo npm install -g npm@latest'
       - restore_cache: # special step to restore the dependency cache
           key:         dependency-cache-{{ checksum "package.json" }}
       - save_cache:    # special step to save the dependency cache
@@ -34,10 +28,10 @@ jobs:                    # a collection of steps
             - ./node_modules
       - run:
           name:        add-nightwatch
-          command:     'sudo yarn global add nightwatch'
+          command:     'sudo npm install -g nightwatch'
       - run:           # run frontend
           name:        test
-          command:     yarn run test
+          command:     npm run test
       - store_artifacts: # special step to save test results as as artifact
           path:        test-results.xml
           prefix:      tests
