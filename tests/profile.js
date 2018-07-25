@@ -25,7 +25,7 @@ module.exports = {
       .setValue('#lastName', 'Gautam')
       .setValue('#address', '151-A Baker Street')
       .setValue('#companyName', 'useinfluence')
-      .assert.value("#email", "devinair@gmail.com")
+      .assert.value('#email', 'devinair@gmail.com')
       .click('.text-right.save >  button')
       .pause(1000, () => console.log('Saving user data...'))
       .back()
@@ -40,7 +40,7 @@ module.exports = {
       .assert.value('#companyName', 'useinfluence')
       .pause(1000, () => console.log('User data verified...'));
   },
-  'verify  profile details': function (browser) {
+  'clear profile details': function (browser) {
     browser
       .setValue('#firstName', '')
       .setValue('#lastName', '')
@@ -50,9 +50,9 @@ module.exports = {
   },
   'Watch billing button , if exists': function (browser) {
     browser
-      .verify.visible(".billing1");
+      .verify.visible('.billing1');
   },
   'Log out from Influence': function (browser) {
     login(browser).closeLoginPage();
   }
-}
+};

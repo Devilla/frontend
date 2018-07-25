@@ -73,7 +73,7 @@ class IntegrationContent extends Component {
       </div>
     );
   }
-  
+
   contentTwo = () => {
     return (
       <div>
@@ -942,7 +942,7 @@ class IntegrationContent extends Component {
             : '' }
           {renderState === 13 ?
             this.contentThirteen()
-            : '' }  
+            : '' }
           {renderState === 14 ?
             this.contentFourteen()
             : '' }

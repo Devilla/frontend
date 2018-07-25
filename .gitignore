@@ -6,9 +6,9 @@
 /reports
 
 # testing
-/reports
 /coverage
-_tests_
+/_tests_
+/__test__
 /reports/XMLReports/*
 /src/__test__/__snapshots__
 /src/__tests__/__snapshots__
@@ -24,5 +24,3 @@ _tests_
 .env.production.local
 
 npm-debug.log*
-
-
