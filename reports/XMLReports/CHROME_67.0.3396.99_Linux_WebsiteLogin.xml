@@ -5,9 +5,9 @@
 
   <testsuite name="WebsiteLogin"
     errors="0" failures="0" hostname="" id="" package="WebsiteLogin" skipped="0"
-    tests="7" time="89.58" timestamp="Wed, 25 Jul 2018 08:00:08 GMT">
+    tests="7" time="58.32" timestamp="Wed, 25 Jul 2018 11:15:04 GMT">
   
-    <testcase name="Go to  login influence" classname="WebsiteLogin" time="62.54" assertions="5">
+    <testcase name="Go to  login influence" classname="WebsiteLogin" time="21.26" assertions="5">
 
     
 
@@ -20,38 +20,38 @@
     
     </testcase>
   
-    <testcase name="Check if the session is on and close session " classname="WebsiteLogin" time="0.08700" assertions="0">
+    <testcase name="Check if the session is on and close session " classname="WebsiteLogin" time="0.09300" assertions="0">
     </testcase>
   
-    <testcase name="open browser" classname="WebsiteLogin" time="6.687" assertions="1">
-
-    
-    </testcase>
-  
-    <testcase name="Go to  login influence again " classname="WebsiteLogin" time="2.615" assertions="4">
-
-    
-
-    
-
-    
+    <testcase name="open browser" classname="WebsiteLogin" time="16.94" assertions="1">
 
     
     </testcase>
   
-    <testcase name="Click on new Button  " classname="WebsiteLogin" time="1.151" assertions="2">
+    <testcase name="Go to  login influence again " classname="WebsiteLogin" time="2.492" assertions="4">
+
+    
+
+    
 
     
 
     
     </testcase>
   
-    <testcase name="Log out from Influence" classname="WebsiteLogin" time="5.368" assertions="1">
+    <testcase name="Click on new Button  " classname="WebsiteLogin" time="1.065" assertions="2">
+
+    
 
     
     </testcase>
   
-    <testcase name="Fill in wrong details" classname="WebsiteLogin" time="11.14" assertions="1">
+    <testcase name="Log out from Influence" classname="WebsiteLogin" time="5.308" assertions="1">
+
+    
+    </testcase>
+  
+    <testcase name="Fill in wrong details" classname="WebsiteLogin" time="11.17" assertions="1">
 
     
     </testcase>

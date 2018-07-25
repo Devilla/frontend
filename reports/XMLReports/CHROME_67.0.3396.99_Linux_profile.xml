@@ -5,9 +5,9 @@
 
   <testsuite name="profile"
     errors="0" failures="1" hostname="" id="" package="profile" skipped="3"
-    tests="7" time="49.79" timestamp="Wed, 25 Jul 2018 08:02:28 GMT">
+    tests="7" time="32.47" timestamp="Wed, 25 Jul 2018 11:16:57 GMT">
   
-    <testcase name="Go to  login influence" classname="profile" time="42.24" assertions="5">
+    <testcase name="Go to  login influence" classname="profile" time="25.15" assertions="5">
 
     
 
@@ -20,12 +20,12 @@
     
     </testcase>
   
-    <testcase name="click on profile dropdown, if exists" classname="profile" time="2.433" assertions="1">
+    <testcase name="click on profile dropdown, if exists" classname="profile" time="2.249" assertions="1">
 
     
     </testcase>
   
-    <testcase name="fill profile details" classname="profile" time="5.006" assertions="9">
+    <testcase name="fill profile details" classname="profile" time="4.996" assertions="9">
 
     
 
@@ -46,7 +46,7 @@
     
     </testcase>
   
-    <testcase name="verify  profile details" classname="profile" time="0.1170" assertions="1">  <failure message="Testing if value of &lt;#firstName&gt; equals: &#34;Raju&#34;.">    at Object.verify  profile details (/home/ray/Desktop/frontend/frontend/tests/profile.js:37:15)
+    <testcase name="verify  profile details" classname="profile" time="0.07100" assertions="1">  <failure message="Testing if value of &lt;#firstName&gt; equals: &#34;Raju&#34;.">    at Object.verify  profile details (/home/ray/Desktop/frontend/frontend/tests/profile.js:37:15)
     at process._tickCallback (internal/process/next_tick.js:61:11)</failure>
 
     
