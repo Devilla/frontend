@@ -119,7 +119,7 @@
     "yarn": "^1.7.0"
   },
   "scripts": {
-    "test": "node nightwatch -e chrome --headless",
+    "test": "node nightwatch -e chrome",
     "start": "set PORT=3002 && node scripts/start.js",
     "start:production": "npm run build && npm run start:prod",
     "start:prod": "NODE_ENV=production node server",
