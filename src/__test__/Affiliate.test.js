@@ -1,11 +1,7 @@
 import React from 'react';
 import '../setupTests';
-import { shallow, mount } from 'enzyme';
+import { shallow } from 'enzyme';
 import renderer from 'react-test-renderer'
-import configureStore from 'redux-mock-store'
-import { Provider } from 'react-redux'
-import {createStore} from 'redux'
-import { load, loaded } from 'ducks/loading';
 import { Affiliate } from 'components';
 import { store } from 'App';
 

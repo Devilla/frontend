@@ -383,9 +383,154 @@ exports[`>>>T E R M S --- Snapshot +++capturing Snapshot of terms 1`] = `
                       
                     Save Profile
                   </button>
+                  <button
+                    className="btn btn-primary waves-effect"
+                    data-target="#deletemodal"
+                    data-toggle="modal"
+                    type="button"
+                  >
+                    <i
+                      className="mdi mdi-settings mr-1"
+                    />
+                    More Options
+                  </button>
                 </div>
               </div>
             </form>
+            <div
+              className="modal fade show-modal"
+              id="deletemodal"
+              role="dialog"
+            >
+              <div
+                className="modal-dialog"
+              >
+                <div
+                  className="modal-content align-modal"
+                >
+                  <div
+                    className="modal-header"
+                  >
+                    <button
+                      className="close"
+                      data-dismiss="modal"
+                      type="button"
+                    >
+                      ×
+                    </button>
+                    <h4
+                      className="modal-title"
+                    >
+                      Your Account
+                    </h4>
+                  </div>
+                  <div
+                    className="modal-body"
+                  >
+                    <div>
+                      <div
+                        className="givemeborder justify-content-around row"
+                      >
+                        <div
+                          className="pauseContent col-md-6"
+                        >
+                          <button
+                            className="btn btn-primary waves-effect"
+                            type="button"
+                          >
+                            <i
+                              className="mdi mdi-account-minus mr-1"
+                            />
+                            Pause Account
+                          </button>
+                          <div
+                            className="content"
+                          >
+                            <h3>
+                              Recommended:
+                            </h3>
+                            <p>
+                              Indefinitely deactivates your account till you activate it again.
+                            </p>
+                            <br />
+                            <p>
+                              You will be charged just $1.8 month to safeguard your data in our secure vaults
+                            </p>
+                          </div>
+                        </div>
+                        <div
+                          className="deleteContent col-md-6"
+                        >
+                          <button
+                            className="btn btn-primary waves-effect"
+                            type="button"
+                          >
+                            <i
+                              className="mdi mdi-account-remove mr-1"
+                            />
+                            Delete Account
+                          </button>
+                          <div
+                            className="content"
+                          >
+                            <h3>
+                              Warning: 
+                            </h3>
+                            <p>
+                              Deletes all your data & saved settings. This action is irreversible 
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        className="justify-content-center mb-3 row"
+                      >
+                        <button
+                          className="btn btn-outline-primary waves-effect submitaccount"
+                          type="button"
+                        >
+                          Submit 
+                        </button>
+                      </div>
+                      <div
+                        className="justify-content-center mb-3 text-desc row"
+                      >
+                        An email containing one time code has been sent to your registered email.
+                      </div>
+                      <div
+                        className="justify-content-center row"
+                      >
+                        <div
+                          className="col-md-4"
+                        >
+                          <input
+                            className="inputcode"
+                            placeholder="Enter Code here"
+                            type="number"
+                          />
+                        </div>
+                        <div
+                          className=""
+                        >
+                          <button
+                            className="btn btn-outline-primary waves-effect confirmaccount"
+                            data-dismiss="modal"
+                            data-target="#feedbackmodal"
+                            data-toggle="modal"
+                            type="button"
+                          >
+                            Confirm Action 
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    className="modal-footer"
+                  />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
