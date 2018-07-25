@@ -36,7 +36,6 @@
             "ignore-certificate-errors",
             "--test-type",
             "--no-sandbox"
-            "--headless"
           ]
         }
       }
