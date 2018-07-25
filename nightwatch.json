@@ -35,8 +35,7 @@
             "disable-web-security",
             "ignore-certificate-errors",
             "--test-type",
-            "--no-sandbox",
-            "--headless"
+            "--no-sandbox"
           ]
         }
       }
