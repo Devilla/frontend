@@ -2,11 +2,8 @@
 
 # dependencies
 /node_modules
-/lib
-/reports
 
 # testing
-/reports
 /coverage
 /_tests_
 /__test__
@@ -25,5 +22,3 @@
 .env.production.local
 
 npm-debug.log*
-
-
