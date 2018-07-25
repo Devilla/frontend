@@ -1,3 +1,4 @@
+import './newrelic';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Routes from './Routes';
@@ -12,7 +13,7 @@ const render = (Component) => {
     <App Component={Component} />,
     rootEl
   );
-}
+};
 
 render(Routes);
 
