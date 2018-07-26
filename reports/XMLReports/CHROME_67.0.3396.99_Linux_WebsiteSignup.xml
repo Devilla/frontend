@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="0"
+            failures="1"
+            tests="2">
+
+  <testsuite name="WebsiteSignup"
+    errors="0" failures="1" hostname="" id="" package="WebsiteSignup" skipped="0"
+    tests="2" time="25.03" timestamp="Wed, 25 Jul 2018 08:01:38 GMT">
+  
+    <testcase name="Go to Signup Influence" classname="WebsiteSignup" time="15.63" assertions="9">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="Log out from Influence" classname="WebsiteSignup" time="9.397" assertions="1">  <failure message="Timed out while waiting for element &lt;.rounded-circle&gt; to be present for 8000 milliseconds.">    at closeLoginPage (/home/ray/Desktop/frontend/frontend/pages/loginAndInside.js:69:8)
+    at Object.Log out from Influence (/home/ray/Desktop/frontend/frontend/tests/WebsiteSignup.js:30:20)</failure>
+
+    
+    </testcase>
+  
+
+  
+
+  
+  </testsuite>
+</testsuites>

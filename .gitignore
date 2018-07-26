@@ -2,16 +2,17 @@
 
 # dependencies
 /node_modules
+/lib
+/reports
 
 # testing
 /coverage
 /_tests_
 /__test__
 /reports/XMLReports/*
-__test__/__snapshots__
-__tests__/__snapshots__
+/src/__test__/__snapshots__
 /src/__tests__/__snapshots__
-reports
+
 # production
 /build
 

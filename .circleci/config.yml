@@ -9,14 +9,14 @@ jobs:                  # a collection of steps
     steps:             # a collection of executable commands
       - checkout # special step to check out source code to working directory
       - run:
-          name:        update-container-registery
-          command:     echo "deb http://http.debian.net/debian jessie-backports main" | sudo tee --append /etc/apt/sources.list
+          name:  update-container-registery
+          command: echo "deb http://http.debian.net/debian jessie-backports main" | sudo tee --append /etc/apt/sources.list
       - run:
-          name:        update-apt
-          command:     sudo apt-get update
+          name: update-apt
+          command: sudo apt-get update
       - run:
-          name:        install-java
-          command:     sudo apt-get install -t jessie-backports openjdk-8-jdk
+          name: install-java
+          command: sudo apt-get install -t jessie-backports openjdk-8-jdk
       - run:
           name:        update-npm
           command:     'sudo npm install -g npm@latest'
