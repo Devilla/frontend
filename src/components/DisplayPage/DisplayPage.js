@@ -36,7 +36,8 @@ class DisplayPage extends Component {
       },
       count: 0,
       showField: false,
-      openClose: false
+      openClose: false,
+      domainError: ''
     };
   }
 
@@ -195,13 +196,15 @@ class DisplayPage extends Component {
   }
 
   handleSubdomain = (e) => {
-    this.setState({newDomain: e.target.value});
+    this.setState({newDomain: e.target.value, domainError: ''});
   }
 
   submitSubdomain = () => {
-    const { addSubdomain, campaign } = this.props;
+    const { addSubdomain, campaign, validatewebsite } = this.props;
     if(!this.state.newDomain)
       return this.setState({domainError: 'Enter subdomain url'});
+    if(!validatewebsite(this.state.newDomain))
+      return this.setState({domainError: 'Domain not valid'});
     const newDomain = {
       domainUrl: this.state.newDomain,
       trackingId: campaign.trackingId,
@@ -236,7 +239,7 @@ class DisplayPage extends Component {
                   <p className="website-error">{domainError}</p>
                 </HelpBlock>
               </div>
-              <div className="col-md-3 pr-5 pl-5">
+              <div>
                 <span className="btn btn-primary  addsubdomain" onClick={this.submitSubdomain}>
                  Add
                 </span>

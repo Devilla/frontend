@@ -43,8 +43,9 @@ class NewCampaignContainer extends Component {
   }
 
   componentWillMount() {
-    this.verifyPixelStatus(this.props.campaign);
-    this.props.fetchSubdomain(this.props.campaign._id);
+    const { campaign } = this.props;
+    this.verifyPixelStatus(campaign);
+    this.props.fetchSubdomain(campaign?campaign._id:null);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -169,6 +170,7 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
 
         {this.props.campaign && Object.keys(this.props.campaign).length !== 0 && this.props.campaign.constructor === Object?
           <CampaignSettings
+            validatewebsite={validatewebsite}
             showNotification={this.showNotification}
             goLive={this.goLive}
             toggleWebhook={this.toggleWebhook}
