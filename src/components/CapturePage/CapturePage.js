@@ -26,6 +26,14 @@ class CapturePage extends Component {
         type: '',
         error: ''
       },
+      domain: {
+        url: '',
+        status: '',
+        class: '',
+        type: '',
+        error: '',
+        domain: ''
+      },
       openClose: false
     };
   }
@@ -58,8 +66,7 @@ class CapturePage extends Component {
     this.props.setActiveState(2);
   }
 
-
-  addPageUrl = (domainUrl) => {
+  addPageUrl = () => {
     if(this.state.lead.url == ''){
       if(this.state.count<1)
         this.state.lead.url='/';
@@ -71,11 +78,35 @@ class CapturePage extends Component {
 
     if(this.state.lead.url[0]!=='/')
       this.state.lead.url='/'+this.state.lead.url;
+
     let lead = this.state.lead;
     lead['rule'] = this.props.rules._id;
-    lead['domain'] = domainUrl?domainUrl:'';
     this.props.createPageUrl(lead);
     this.setState({lead: {
+      url: '',
+      status: '',
+      class: '',
+      type: ''
+    }});
+  }
+
+  addDomainUrl = (domainUrl) => {
+    if(this.state.domain.url == ''){
+      if(this.state.count<1)
+        this.state.domain.url='/';
+      else {
+        return this.setState({error: 'Please enter a valid path'});
+      }
+      this.state.count++;
+    }
+
+    if(this.state.domain.url[0]!=='/')
+      this.state.domain.url='/'+this.state.domain.url;
+    let domain = this.state.domain;
+    domain['rule'] = this.props.rules._id;
+    domain['domain'] = domainUrl;
+    this.props.createPageUrl(domain);
+    this.setState({domain: {
       url: '',
       status: '',
       class: '',
@@ -91,6 +122,16 @@ class CapturePage extends Component {
       type: 'lead'
     };
     this.setState({lead: lead, error: ''});
+  }
+
+  handleDomainUrl = (e) => {
+    const domain = {
+      url: e.target.value,
+      status: 'unverified',
+      class: 'warning',
+      type: 'lead'
+    };
+    this.setState({domain: domain, error: ''});
   }
 
   handleWebsiteAuth = (evt) => {
@@ -219,12 +260,13 @@ class CapturePage extends Component {
               className="form-control"
               placeholder="eg. /mypage, /register, /products"
               aria-describedby="urladd"
-              onChange={this.handlePageUrl}
+              value={this.state.domain.url}
+              onChange={this.handleDomainUrl}
               onBlur={this.handleWebsiteAuth.bind(this)}
               onKeyUp={(e) => e.keyCode === 13?this.addPageUrl():null}
             />
             <span className="input-group-btn col-md-3" id="urladd">
-              <span className="btn btn-primary nav nav-pills waves-light waves-effect number pl-5 pr-5" onClick={() => this.addPageUrl(domain.domainUrl)}>
+              <span className="btn btn-primary nav nav-pills waves-light waves-effect number pl-5 pr-5" onClick={() => this.addDomainUrl(domain.domainUrl)}>
                 Add
               </span>
             </span>

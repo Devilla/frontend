@@ -28,7 +28,7 @@ export const clearCampaign = () => ({ type: CLEAR_CAMPAIGN });
 export const fetchCampaignInfo = () => ({ type: FETCH_CAMPAIGN_INFO });
 export const fetchDashboardSuccess = (campaign) => ({ type: FETCH_DASHBOARD_SUCCESS, campaign });
 export const addSubdomain = (domain) => ({ type: ADD_SUB_DOMAIN, domain });
-export const fetchSubdomain = (domain) => ({ type: FETCH_SUB_DOMAIN, domain });
+export const fetchSubdomain = (campaignId) => ({ type: FETCH_SUB_DOMAIN, campaignId });
 export const subDomainSuccess = (domain) => ({ type: SUB_DOMAIN_SUCCESS, domain });
 export const clearSubDomain = () => ({ type: CLEAR_SUB_DOMAIN });
 
