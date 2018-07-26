@@ -66,6 +66,7 @@ module.exports = function (browser) {
 
   this.closeLoginPage = function () {
     browser
+      .waitForElementVisible('.rounded-circle', 18000)
       .click('.mdi.mdi-account-settings-variant')
       .click('.dropdown-item.notify-item> .fi-power')
       .pause(5000)
