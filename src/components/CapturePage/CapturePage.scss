@@ -1,4 +1,26 @@
 .CapturePage-container {
+  .url-field {
+    width: 30%;
+  }
+  .input-group {
+    padding-bottom: 2%;
+  }
+  .mdi-plus-circle-outline {
+    font-size: 17px;
+    position: absolute;
+    top: 4px !important;
+    left: 12px !important;
+  }
+  .subdomain {
+    border-radius: 5px !important;
+    position: relative;
+    padding-left: 35px !important;
+    // margin-left: 120px;
+  }
+  .addsubdomain {
+    width: 100px;
+    border-radius: 5px !important;
+  }
   #urladd {
     span {
       border-radius: 5px;

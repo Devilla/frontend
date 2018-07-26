@@ -26,7 +26,18 @@ class DisplayPage extends Component {
         type: '',
         error: ''
       },
+      domain: {
+        url: '',
+        status: '',
+        class: '',
+        type: '',
+        error: '',
+        domain: ''
+      },
       count: 0,
+      showField: false,
+      openClose: false,
+      domainError: ''
     };
   }
 
@@ -60,7 +71,6 @@ class DisplayPage extends Component {
   }
 
   addPageUrl = () => {
-
     if(this.state.displayUrl.url == ''){
       if(this.state.count<1)
         this.state.displayUrl.url='/';
@@ -68,6 +78,7 @@ class DisplayPage extends Component {
         return this.setState({error: 'Please enter a valid path'});
       }
     }
+
     if(this.state.displayUrl.url[0]!=='/')
       this.state.displayUrl.url='/'+this.state.displayUrl.url;
 
@@ -82,6 +93,31 @@ class DisplayPage extends Component {
     }});
   }
 
+  addDomainUrl = (domainUrl) => {
+    if(this.state.domain.url == ''){
+      if(this.state.count<1)
+        this.state.domain.url='/';
+      else {
+        return this.setState({error: 'Please enter a valid path'});
+      }
+      this.state.count++;
+    }
+
+    if(this.state.domain.url[0]!=='/')
+      this.state.domain.url='/'+this.state.domain.url;
+    let domain = this.state.domain;
+    domain['rule'] = this.props.rules._id;
+    domain['domain'] = domainUrl;
+    this.props.createPageUrl(domain);
+    this.setState({domain: {
+      url: '',
+      status: '',
+      class: '',
+      type: '',
+      domain: ''
+    }});
+  }
+
   handlePageUrl = (e) => {
     const displayUrl = {
       url: e.target.value,
@@ -90,6 +126,16 @@ class DisplayPage extends Component {
       type: 'display'
     };
     this.setState({displayUrl: displayUrl, error: ''});
+  }
+
+  handleDomainUrl = (e) => {
+    const domain = {
+      url: e.target.value,
+      status: 'unverified',
+      class: 'warning',
+      type: 'display'
+    };
+    this.setState({domain: domain, error: ''});
   }
 
   handleWebsiteAuth = (evt) => {
@@ -149,10 +195,99 @@ class DisplayPage extends Component {
     );
   }
 
+  handleSubdomain = (e) => {
+    this.setState({newDomain: e.target.value, domainError: ''});
+  }
+
+  submitSubdomain = () => {
+    const { addSubdomain, campaign, validatewebsite } = this.props;
+    if(!this.state.newDomain)
+      return this.setState({domainError: 'Enter subdomain url'});
+    if(!validatewebsite(this.state.newDomain))
+      return this.setState({domainError: 'Domain not valid'});
+    const newDomain = {
+      domainUrl: this.state.newDomain,
+      trackingId: campaign.trackingId,
+      campaign: campaign._id,
+      type: 'display'
+    };
+    addSubdomain(newDomain);
+    this.openCloseModal();
+  }
+
+  openCloseModal = () => {
+    this.setState({openClose: !this.state.openClose});
+  }
+
+  showModalDisplay= () => {
+    const { domainError, openClose } = this.state;
+    return (
+      <div className="modal fade show-modal" role="dialog" style={{ display: openClose?'block':'none', opacity: openClose?1:0 }}>
+        <div className="modal-dialog">
+          <div className="modal-content align-modal">
+            <div className="modal-header">
+              <h4 className="modal-title">Add SubDomain</h4>
+            </div>
+            <div className="modal-body row">
+              <div className="col-md-9">
+                <input type="text"
+                  className="form-control"
+                  placeholder="Add your subdomain"
+                  onChange={this.handleSubdomain}
+                />
+                <HelpBlock className="text-center">
+                  <p className="website-error">{domainError}</p>
+                </HelpBlock>
+              </div>
+              <div>
+                <span className="btn btn-primary  addsubdomain" onClick={this.submitSubdomain}>
+                 Add
+                </span>
+              </div>
+            </div>
+            <div className="modal-footer">
+              <button type="button" className="btn btn-primary close-btn" onClick={this.openCloseModal}>Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  renderSubDomain = () => {
+    if(this.props.subdomain && this.props.subdomain.length)
+      return this.props.subdomain.map(domain => {
+        return (
+          <div key={domain.domainUrl} className="pl-4 input-group col-md-12">
+            <label className="pt-2 pl-1 pr-3 text-muted url-field">{this.props.campaign
+              ? 'http://'+domain.domainUrl
+              : 'http://localhost:3000'}/</label>
+            <input type="text"
+              className="form-control"
+              placeholder="eg. /mypage, /register, /products"
+              aria-describedby="urladd"
+              value={this.state.domain.url}
+              onChange={this.handleDomainUrl}
+              onBlur={this.handleWebsiteAuth.bind(this)}
+              onKeyUp={(e) => e.keyCode === 13?this.addPageUrl():null}
+            />
+            <span className="input-group-btn col-md-3" id="urladd">
+              <span className="btn btn-primary nav nav-pills waves-light waves-effect addpath-btn pl-5 pr-5" onClick={() => this.addDomainUrl(domain.domainUrl)}>
+                Add
+              </span>
+            </span>
+          </div>
+        );
+      });
+    else
+      return <div/>;
+  }
+
+
   render(){
     const { error, displayUrl } = this.state;
     return (
-      <div>
+      <div className="display-container">
         <Grid fluid>
           <div className="tabscontent">
             <Row>
@@ -161,10 +296,9 @@ class DisplayPage extends Component {
               </Col>
             </Row>
             <Row>
-              <Col md={1}></Col>
-              <Col md={11}>
-                <div className="ml-5 pl-4 input-group col-md-8">
-                  <label className="pt-2 pl-1 pr-3 text-muted">{this.props.campaign
+              <Col md={10}>
+                <div className="pl-4 input-group col-md-12">
+                  <label className="pt-2 pl-1 pr-3 text-muted url-field">{this.props.campaign
                     ? 'http://'+this.props.campaign.websiteUrl
                     : 'http://localhost:3000'}/</label>
                   <input type="text"
@@ -176,19 +310,31 @@ class DisplayPage extends Component {
                     onBlur={this.handleWebsiteAuth.bind(this)}
                     onKeyUp={(e) => e.keyCode === 13?this.addPageUrl():null}
                   />
-                  <span className="input-group-btn col-md-2"
+                  <span className="input-group-btn col-md-3"
                     id="urladd">
                     <span className="btn btn-primary nav nav-pills waves-light waves-effect addpath-btn pl-5 pr-5"
                       onClick={this.addPageUrl}>Add</span>
                   </span>
                 </div>
               </Col>
+              <Col md={2}>
+                <span className="btn btn-primary  subdomain" data-toggle="modal" onClick={this.openCloseModal}>
+                  <i className=" mdi mdi-plus-circle-outline"></i>&nbsp;Add SubDomain
+                </span>
+              </Col>
             </Row>
-
+            <Row>
+              <Col md={10}>
+                {this.renderSubDomain()}
+              </Col>
+            </Row>
+            {this.showModalDisplay()}
             <Row className="pt-2 path-error">
               <HelpBlock>
                 <p className="website-error">{error}</p>
               </HelpBlock>
+            </Row>
+            <Row>
             </Row>
             <Row>
               <Col md={12}>
@@ -240,7 +386,8 @@ class DisplayPage extends Component {
 }
 
 const mapStateToProps = state => ({
-  displayUrls: state.getIn(['pageurl', 'display'])
+  displayUrls: state.getIn(['pageurl', 'display']),
+  subdomain: state.getIn(['campaign', 'subdomain'])
 });
 
 const mapDispatchToProps = {

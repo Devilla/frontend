@@ -17,8 +17,6 @@ module.exports = {
       .pause(2000)
       .waitForElementVisible('div > div.basic-gradient-light > div.content > div > div > div > section.text-center.unpad--top.pricerow > div > div > div:nth-child(2) > div > div.btn.btn--primary.col-md-12.text-center.starttrial-btn', 10000)
       .click('div > div.basic-gradient-light > div.content > div > div > div > section.text-center.unpad--top.pricerow > div > div > div:nth-child(2) > div > div.btn.btn--primary.col-md-12.text-center.starttrial-btn')
-      .pause(2000)
-      .waitForElementVisible('#coupon', 10000)
       .assert.visible('#coupon')
       .setValue('#coupon', 'FIRSTCOME')
       .waitForElementVisible('div > div.basic-gradient-light > div.content > div > div > div > section > div > div > div > div > div > div.authpage-container > div > div > div > div > div > div:nth-child(2) > div:nth-child(3) > div > div > form > div:nth-child(2) > div > input', 15000)

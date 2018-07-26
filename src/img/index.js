@@ -65,6 +65,7 @@ export { default as Unbounce}  from './unbounce.png';
 export { default as Webflow }  from  './webflow.png';
 export { default as Woocommerce }  from  './woocommerce.png';
 export { default as Wordpress } from './wordpress.png';
+export { default as Googletag } from './googletag.png';
 
 //Channel review
 export { default as Facebook } from './fb.png';
