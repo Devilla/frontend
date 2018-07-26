@@ -17,12 +17,3 @@ window.matchMedia = window.matchMedia || function() {
   };
 };
 
-/**
- * We do this to avoid test fail
- * @param msg
- */
-window.alert = (msg) => { console.log(msg); };
-window.scrollTo = () => { };
-
-
-

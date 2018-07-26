@@ -2,7 +2,6 @@ var login = require('../pages/loginAndInside');
 
 
 module.exports = {
-  '@tags': ['profile'],
   before: function (browser) {
     login(browser).openBrowser();
   },
@@ -22,13 +21,9 @@ module.exports = {
       .verify.visible('#formControlsSelect')
       .verify.visible('#formfBillinControlsSelect')
       .verify.visible('#companyName')
-      .clearValue('#firstName')
-      .setValue('#firstName', 'Dev')
-      .clearValue('#lastName')
-      .setValue('#lastName', 'Yadav')
-      .clearValue('#address')
+      .setValue('#firstName', 'Raju')
+      .setValue('#lastName', 'Gautam')
       .setValue('#address', '151-A Baker Street')
-      .clearValue('#companyName')
       .setValue('#companyName', 'useinfluence')
       .assert.value('#email', 'devinair@gmail.com')
       .click('.text-right.save >  button')
@@ -39,8 +34,8 @@ module.exports = {
   },
   'verify  profile details': function (browser) {
     browser
-      .assert.value('#firstName', 'Dev')
-      .assert.value('#lastName', 'Yadav')
+      .assert.value('#firstName', 'Raju')
+      .assert.value('#lastName', 'Gautam')
       .assert.value('#address', '151-A Baker Street')
       .assert.value('#companyName', 'useinfluence')
       .pause(1000, () => console.log('User data verified...'));
