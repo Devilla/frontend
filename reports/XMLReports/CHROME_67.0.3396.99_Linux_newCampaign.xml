@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <testsuites errors="0"
-            failures="0"
+            failures="1"
             tests="1">
 
   <testsuite name="newCampaign"
-    errors="0" failures="0" hostname="" id="" package="newCampaign" skipped="0"
-    tests="1" time="69.96" timestamp="Tue, 24 Jul 2018 10:15:04 GMT">
+    errors="0" failures="1" hostname="" id="" package="newCampaign" skipped="0"
+    tests="1" time="23.86" timestamp="Wed, 25 Jul 2018 11:16:33 GMT">
   
-    <testcase name="campaign test Influence" classname="newCampaign" time="69.96" assertions="32">
+    <testcase name="campaign test Influence" classname="newCampaign" time="23.86" assertions="9">
 
     
 
@@ -23,72 +23,13 @@
 
     
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
+      <failure message="Timed out while waiting for element &lt;#campaignname&gt; to be present for 10000 milliseconds.">    at Object.campaign test Influence (/home/ray/Desktop/frontend/frontend/tests/newCampaign.js:21:8)
+    at process._tickCallback (internal/process/next_tick.js:61:11)</failure>
 
     
     </testcase>
   
 
-  
-    <system-err>
-      ERROR: Unable to locate element: &#34;button[type=button]&#34; using: css selector
-    at F.command (/home/devilla/frontend/node_modules/nightwatch/lib/api/assertions/visible.js:42:21)
-    at F.module.exports.BaseAssertion._scheduleAssertion (/home/devilla/frontend/node_modules/nightwatch/lib/core/assertion.js:87:17)
-    at F.module.exports.BaseAssertion._executeCommand (/home/devilla/frontend/node_modules/nightwatch/lib/core/assertion.js:82:17)
-    at AssertionInstance.commandFn [as _commandFn] (/home/devilla/frontend/node_modules/nightwatch/lib/core/assertion.js:180:21)
-    at AsyncTree.runCommand (/home/devilla/frontend/node_modules/nightwatch/lib/core/queue.js:154:30)
-    at AsyncTree.runChildNode (/home/devilla/frontend/node_modules/nightwatch/lib/core/queue.js:114:8)
-    at AsyncTree.walkDown (/home/devilla/frontend/node_modules/nightwatch/lib/core/queue.js:80:10)
-    at AsyncTree.walkUp (/home/devilla/frontend/node_modules/nightwatch/lib/core/queue.js:97:8)
-    at AsyncTree.walkDown (/home/devilla/frontend/node_modules/nightwatch/lib/core/queue.js:90:12)
-    at AsyncTree.traverse (/home/devilla/frontend/node_modules/nightwatch/lib/core/queue.js:73:8)
-    </system-err>
   
 
   
