@@ -97,6 +97,38 @@ function* fetchCampaignsInfo() {
   }
 }
 
+function* fetchSubdomain() {
+  try {
+    yield put(load());
+    const res = yield call(api.GET, 'subdomain');
+    if(res.error)
+      console.log(res.error);
+    else
+      yield put(actions.subDomainSuccess(res));
+    yield put(loaded());
+  } catch (error) {
+    yield put(loaded());
+    console.log('Failed to fetch doc', error);
+    yield toast.error(error.message, toastConfig);
+  }
+}
+
+function* addSubdomain(action) {
+  try {
+    yield put(load());
+    const res = yield call(api.POST, 'subdomain', action.data);
+    if(res.error)
+      console.log(res.error);
+    else
+      yield put(actions.subDomainSuccess(res));
+    yield put(loaded());
+  } catch (error) {
+    yield put(loaded());
+    console.log('Failed to fetch doc', error);
+    yield toast.error(error.message, toastConfig);
+  }
+}
+
 export function* watchFetch() {
   yield takeLatest(actions.FETCH, fetch);
 }
@@ -117,12 +149,22 @@ export function* watchCampaignInfo() {
   yield takeLatest(actions.FETCH_CAMPAIGN_INFO, fetchCampaignsInfo);
 }
 
+export function* watchAddSubdomain() {
+  yield takeLatest(actions.ADD_SUB_DOMAIN, addSubdomain);
+}
+
+export function* watchFetchSubdomain() {
+  yield takeLatest(actions.FETCH_SUB_DOMAIN, fetchSubdomain);
+}
+
 export default function* rootSaga() {
   yield [
     fork(watchFetch),
     fork(watchCreate),
     fork(watchUpdate),
     fork(watchRemove),
-    fork(watchCampaignInfo)
+    fork(watchCampaignInfo),
+    fork(watchAddSubdomain),
+    fork(watchFetchSubdomain)
   ];
 }

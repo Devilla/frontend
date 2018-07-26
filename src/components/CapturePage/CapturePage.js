@@ -18,6 +18,7 @@ class CapturePage extends Component {
     super();
     this.state= {
       error: '',
+      domainError: '',
       lead: {
         url: '',
         status: '',
@@ -148,7 +149,18 @@ class CapturePage extends Component {
     );
   }
 
-  showModaCapture =() => {
+  handleSubdomain = (e) => {
+    this.setState({newDomain: e.target.value});
+  }
+
+  submitSubdomain = () => {
+    if(!this.state.newDomain)
+      return this.setState({domainError: 'Enter subdomain url'});
+    this.props.addSubdomain(this.state.newDomain);
+  }
+
+  showModaCapture = () => {
+    const { domainError } = this.state;
     return (
       <div className="modal fade show-modal" id="mycaptureModal" role="dialog">
         <div className="modal-dialog">
@@ -160,11 +172,15 @@ class CapturePage extends Component {
               <div className="col-md-9">
                 <input type="text"
                   className="form-control"
-                  placeholder="Add your subdomain"
+                  placeholder="Add your subdomain url"
+                  onChange={this.handleSubdomain}
                 />
+                <HelpBlock className="text-center">
+                  <p className="website-error">{domainError}</p>
+                </HelpBlock>
               </div>
-              <div classname="col-md-3 pr-5 pl-5">
-                <span className="btn btn-primary  addsubdomain" >
+              <div className="col-md-3 pr-5 pl-5">
+                <span className="btn btn-primary addsubdomain" onClick={this.submitSubdomain}>
                  Add
                 </span>
               </div>
