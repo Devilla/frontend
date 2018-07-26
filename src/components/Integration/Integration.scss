@@ -11,7 +11,7 @@
           top: 60px !important;
           left: 120px !important;
           min-width: 50px;
-          max-height: 40px; 
+          max-height: 40px;
           &.demio {
             margin-left: 4px !important;
           }
@@ -65,6 +65,10 @@
         .woo {
           margin-left : -10px !important;
         }
+        .googletag {
+          position: absolute;
+          left: 60px !important;
+        }
         .box-shadow {
           position: relative;
           box-shadow: 0px 5px 10px -5px rgba(0, 0, 0, 0.2) !important;
@@ -79,7 +83,7 @@
             //button as span
             span {
               position: absolute;
-              bottom: 50px; 
+              bottom: 50px;
               left: 33%;
               top: 70%;
               border-radius: 5px;
@@ -144,6 +148,5 @@
         opacity: 1;
       }
     }
-  
-  }
 
+  }
