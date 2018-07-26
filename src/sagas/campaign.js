@@ -116,11 +116,11 @@ function* fetchSubdomain() {
 function* addSubdomain(action) {
   try {
     yield put(load());
-    const res = yield call(api.POST, 'subdomain', action.data);
-    if(res.error)
-      console.log(res.error);
-    else
-      yield put(actions.subDomainSuccess(res));
+    // const res = yield call(api.POST, 'subdomain', action.data);
+    // if(res.error)
+    //   console.log(res.error);
+    // else
+    yield put(actions.subDomainSuccess([action.domain]));
     yield put(loaded());
   } catch (error) {
     yield put(loaded());

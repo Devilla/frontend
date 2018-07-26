@@ -27,7 +27,8 @@ class DisplayPage extends Component {
         error: ''
       },
       count: 0,
-      showField: false
+      showField: false,
+      openClose: false
     };
   }
 
@@ -150,14 +151,32 @@ class DisplayPage extends Component {
     );
   }
 
-displaySubdomain =() => {
+  handleSubdomain = (e) => {
+    this.setState({newDomain: e.target.value});
+  }
 
+  submitSubdomain = () => {
+    const { addSubdomain, campaign } = this.props;
+    if(!this.state.newDomain)
+      return this.setState({domainError: 'Enter subdomain url'});
+    const newDomain = {
+      domainUrl: this.state.newDomain,
+      trackingId: campaign.trackingId,
+      campaign: campaign._id,
+      type: 'display'
+    };
+    addSubdomain(newDomain);
+    this.openCloseModal();
+  }
 
-}
+  openCloseModal = () => {
+    this.setState({openClose: !this.state.openClose});
+  }
 
   showModalDisplay= () => {
+    const { domainError, openClose } = this.state;
     return (
-      <div className="modal fade show-modal" id="mydisplayModal" role="dialog">
+      <div className="modal fade show-modal" role="dialog" style={{ display: openClose?'block':'none', opacity: openClose?1:0 }}>
         <div className="modal-dialog">
           <div className="modal-content align-modal">
             <div className="modal-header">
@@ -168,16 +187,20 @@ displaySubdomain =() => {
                 <input type="text"
                   className="form-control"
                   placeholder="Add your subdomain"
+                  onChange={this.handleSubdomain}
                 />
+                <HelpBlock className="text-center">
+                  <p className="website-error">{domainError}</p>
+                </HelpBlock>
               </div>
-              <div classname="col-md-3 pr-5 pl-5">
-                <span className="btn btn-primary  addsubdomain" onClick={this.displaySubdomain()}>
+              <div className="col-md-3 pr-5 pl-5">
+                <span className="btn btn-primary  addsubdomain" onClick={this.submitSubdomain}>
                  Add
                 </span>
               </div>
             </div>
             <div className="modal-footer">
-              <button type="button" className="btn btn-primary close-btn" data-dismiss="modal">Close</button>
+              <button type="button" className="btn btn-primary close-btn" onClick={this.openCloseModal}>Close</button>
             </div>
           </div>
         </div>
@@ -185,10 +208,39 @@ displaySubdomain =() => {
     );
   }
 
+  renderSubDomain = () => {
+    if(this.props.subdomain && this.props.subdomain.length)
+      return this.props.subdomain.map(domain => {
+        return (
+          <div key={domain.domainUrl} className="pl-4 input-group col-md-12">
+            <label className="pt-2 pl-1 pr-3 text-muted url-field">{this.props.campaign
+              ? 'http://'+domain.domainUrl
+              : 'http://localhost:3000'}/</label>
+            <input type="text"
+              className="form-control"
+              placeholder="eg. /mypage, /register, /products"
+              aria-describedby="urladd"
+              onChange={this.handlePageUrl}
+              onBlur={this.handleWebsiteAuth.bind(this)}
+              onKeyUp={(e) => e.keyCode === 13?this.addPageUrl():null}
+            />
+            <span className="input-group-btn col-md-3" id="urladd">
+              <span className="btn btn-primary nav nav-pills waves-light waves-effect addpath-btn pl-5 pr-5" onClick={() => this.addPageUrl(domain.domainUrl)}>
+                Add
+              </span>
+            </span>
+          </div>
+        );
+      });
+    else
+      return <div/>;
+  }
+
+
   render(){
     const { error, displayUrl } = this.state;
     return (
-      <div>
+      <div className="display-container">
         <Grid fluid>
           <div className="tabscontent">
             <Row>
@@ -197,9 +249,9 @@ displaySubdomain =() => {
               </Col>
             </Row>
             <Row>
-              <Col md={8}>
-                <div className="ml-5 pl-4 input-group col-md-12">
-                  <label className="pt-2 pl-1 pr-3 text-muted">{this.props.campaign
+              <Col md={10}>
+                <div className="pl-4 input-group col-md-12">
+                  <label className="pt-2 pl-1 pr-3 text-muted url-field">{this.props.campaign
                     ? 'http://'+this.props.campaign.websiteUrl
                     : 'http://localhost:3000'}/</label>
                   <input type="text"
@@ -218,10 +270,15 @@ displaySubdomain =() => {
                   </span>
                 </div>
               </Col>
-              <Col md={4}>
-                <span className="btn btn-primary  subdomain" data-toggle="modal" data-target="#mydisplayModal">
+              <Col md={2}>
+                <span className="btn btn-primary  subdomain" data-toggle="modal" onClick={this.openCloseModal}>
                   <i className=" mdi mdi-plus-circle-outline"></i>&nbsp;Add SubDomain
                 </span>
+              </Col>
+            </Row>
+            <Row>
+              <Col md={10}>
+                {this.renderSubDomain()}
               </Col>
             </Row>
             {this.showModalDisplay()}
@@ -282,7 +339,8 @@ displaySubdomain =() => {
 }
 
 const mapStateToProps = state => ({
-  displayUrls: state.getIn(['pageurl', 'display'])
+  displayUrls: state.getIn(['pageurl', 'display']),
+  subdomain: state.getIn(['campaign', 'subdomain'])
 });
 
 const mapDispatchToProps = {

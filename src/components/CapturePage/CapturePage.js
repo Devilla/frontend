@@ -25,7 +25,8 @@ class CapturePage extends Component {
         class: '',
         type: '',
         error: ''
-      }
+      },
+      openClose: false
     };
   }
 
@@ -58,14 +59,13 @@ class CapturePage extends Component {
   }
 
 
-  addPageUrl = () => {
+  addPageUrl = (domainUrl) => {
     if(this.state.lead.url == ''){
       if(this.state.count<1)
         this.state.lead.url='/';
       else {
         return this.setState({error: 'Please enter a valid path'});
       }
-
       this.state.count++;
     }
 
@@ -73,6 +73,7 @@ class CapturePage extends Component {
       this.state.lead.url='/'+this.state.lead.url;
     let lead = this.state.lead;
     lead['rule'] = this.props.rules._id;
+    lead['domain'] = domainUrl?domainUrl:'';
     this.props.createPageUrl(lead);
     this.setState({lead: {
       url: '',
@@ -154,15 +155,27 @@ class CapturePage extends Component {
   }
 
   submitSubdomain = () => {
+    const { addSubdomain, campaign } = this.props;
     if(!this.state.newDomain)
       return this.setState({domainError: 'Enter subdomain url'});
-    this.props.addSubdomain(this.state.newDomain);
+    const newDomain = {
+      domainUrl: this.state.newDomain,
+      trackingId: campaign.trackingId,
+      campaign: campaign._id,
+      type: 'lead'
+    };
+    addSubdomain(newDomain);
+    this.openCloseModal();
+  }
+
+  openCloseModal = () => {
+    this.setState({openClose: !this.state.openClose});
   }
 
   showModaCapture = () => {
-    const { domainError } = this.state;
+    const { domainError, openClose } = this.state;
     return (
-      <div className="modal fade show-modal" id="mycaptureModal" role="dialog">
+      <div className="modal fade show-modal" role="dialog" style={{ display: openClose?'block':'none', opacity: openClose?1:0 }}>
         <div className="modal-dialog">
           <div className="modal-content align-modal">
             <div className="modal-header">
@@ -180,18 +193,46 @@ class CapturePage extends Component {
                 </HelpBlock>
               </div>
               <div className="col-md-3 pr-5 pl-5">
-                <span className="btn btn-primary addsubdomain" onClick={this.submitSubdomain}>
+                <span className="btn btn-primary addsubdomain" data-dismiss="modal" onClick={this.submitSubdomain}>
                  Add
                 </span>
               </div>
             </div>
             <div className="modal-footer">
-              <button type="button" className="btn btn-primary close-btn" data-dismiss="modal">Close</button>
+              <button type="button" className="btn btn-primary close-btn" data-dismiss="modal" onClick={this.openCloseModal}>Close</button>
             </div>
           </div>
         </div>
       </div>
     );
+  }
+
+  renderSubDomain = () => {
+    if(this.props.subdomain && this.props.subdomain.length)
+      return this.props.subdomain.map(domain => {
+        return (
+          <div key={domain.domainUrl} className="pl-4 input-group col-md-12">
+            <label className="pt-2 pl-1 pr-3 text-muted url-field">{this.props.campaign
+              ? 'http://'+domain.domainUrl
+              : 'http://localhost:3000'}/</label>
+            <input type="text"
+              className="form-control"
+              placeholder="eg. /mypage, /register, /products"
+              aria-describedby="urladd"
+              onChange={this.handlePageUrl}
+              onBlur={this.handleWebsiteAuth.bind(this)}
+              onKeyUp={(e) => e.keyCode === 13?this.addPageUrl():null}
+            />
+            <span className="input-group-btn col-md-3" id="urladd">
+              <span className="btn btn-primary nav nav-pills waves-light waves-effect number pl-5 pr-5" onClick={() => this.addPageUrl(domain.domainUrl)}>
+                Add
+              </span>
+            </span>
+          </div>
+        );
+      });
+    else
+      return <div/>;
   }
 
   render() {
@@ -206,9 +247,9 @@ class CapturePage extends Component {
               </Col>
             </Row>
             <Row>
-              <Col md={8}>
-                <div className="ml-5 pl-4 input-group col-md-12">
-                  <label className="pt-2 pl-1 pr-3 text-muted">{this.props.campaign
+              <Col md={10}>
+                <div className="pl-4 input-group col-md-12">
+                  <label className="pt-2 pl-1 pr-3 text-muted url-field">{this.props.campaign
                     ? 'http://'+this.props.campaign.websiteUrl
                     : 'http://localhost:3000'}/</label>
                   <input type="text"
@@ -227,10 +268,15 @@ class CapturePage extends Component {
                   </span>
                 </div>
               </Col>
-              <Col md={4}>
-                <span className="btn btn-primary  subdomain" data-toggle="modal" data-target="#mycaptureModal">
+              <Col md={2}>
+                <span className="btn btn-primary  subdomain" onClick={this.openCloseModal} >
                   <i className=" mdi mdi-plus-circle-outline"></i>&nbsp;Add SubDomain
                 </span>
+              </Col>
+            </Row>
+            <Row>
+              <Col md={10}>
+                {this.renderSubDomain()}
               </Col>
             </Row>
             {this.showModaCapture()}
@@ -290,7 +336,8 @@ class CapturePage extends Component {
 }
 
 const mapStateToProps = state => ({
-  leads: state.getIn(['pageurl', 'lead'])
+  leads: state.getIn(['pageurl', 'lead']),
+  subdomain: state.getIn(['campaign', 'subdomain'])
 });
 
 const mapDispatchToProps = {
