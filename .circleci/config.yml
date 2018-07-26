@@ -1,35 +1,48 @@
-version: 2 # use CircleCI 2.0
-jobs: # a collection of steps
-  build: # runs not using Workflows must have a `build` job as entry point
+version:               2 # use CircleCI 2.0
+jobs:                  # a collection of steps
+
+  build:               # runs not using Workflows must have a `build` job as entry point
     working_directory: ~/mern-starter # directory where steps will run
-    docker: # run the steps with Docker
-      - image: circleci/node:8 # ...with this image as the primary container; this is where all `steps` will run
+    docker:            # run the steps with Docker
+      - image:         circleci/node:8-browsers # ...with this image as the primary container; this is where all `steps` will run
        # and this image as the secondary service container
-    steps: # a collection of executable commands
+    steps:             # a collection of executable commands
       - checkout # special step to check out source code to working directory
       - run:
-          name: update-npm
-          command: 'sudo npm install -g npm@latest'
-      - run: # run frontend
-          name: install
-          command: npm install
+          name:  update-container-registery
+          command: echo "deb http://http.debian.net/debian jessie-backports main" | sudo tee --append /etc/apt/sources.list
+      - run:
+          name: update-apt
+          command: sudo apt-get update
+      - run:
+          name: install-java
+          command: sudo apt-get install -t jessie-backports openjdk-8-jdk
+      - run:
+          name:        update-npm
+          command:     'sudo npm install -g npm@latest'
       - restore_cache: # special step to restore the dependency cache
-          key: dependency-cache-{{ checksum "package.json" }}
-      - save_cache: # special step to save the dependency cache
-          key: dependency-cache-{{ checksum "package.json" }}
+          key:         dependency-cache-{{ checksum "package.json" }}
+      - save_cache:    # special step to save the dependency cache
+          key:         dependency-cache-{{ checksum "package.json" }}
           paths:
             - ./node_modules
       - run:
-          name: add-nightwatch
-          command: 'sudo npm install -g nightwatch'
-      - run: # run frontend
-          name: test
-          command: npm run test
+          name:        add-nightwatch
+          command:     'sudo npm install -g nightwatch'
+      - run:           # run frontend
+          name:        test
+          command:     npm run test
       - store_artifacts: # special step to save test results as as artifact
-          path: test-results.xml
-          prefix: tests
+          path:        test-results.xml
+          prefix:      tests
       - store_artifacts:
-          path: coverage
-          prefix: coverage
+          path:        coverage
+          prefix:      coverage
       - store_test_results: # special step to upload test results for display in Test Summary
-          path: test-results.xml
+          path:        test-results.xml
+
+workflows:
+  version:             2
+  build_and_test:
+    jobs:
+      - build
