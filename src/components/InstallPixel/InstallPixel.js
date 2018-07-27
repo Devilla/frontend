@@ -71,7 +71,7 @@ const InstallPixel = ({
         <br/>
       </p>
       <div className="row">
-        <div className="float-left integration mr-0 pr-2 col-md-4">
+        <div className="float-left integration mr-0 pr-2 col-md-3">
           <button
             type="button"
             className="btn btn-outline-primary waves-light waves-effect webhook-btn  pl-3 pr-3"
