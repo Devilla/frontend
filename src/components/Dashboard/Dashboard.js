@@ -84,7 +84,6 @@ class Dashboard extends Component {
             duck = Moment(bucket.key_as_string)._i;
             duck = duck.split('-')[2];
             duck = duck.split(1,2);
-            console.log(duck,'<<<<<Day>>>>>>>>>>>>');
           });
         } else {
           tempData['label'] = campaign.campaignName;
