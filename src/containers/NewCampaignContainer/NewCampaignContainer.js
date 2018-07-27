@@ -5,7 +5,7 @@ import { browserHistory } from 'react-router';
 import copy from 'copy-to-clipboard';
 
 import { validatewebsite } from 'components/Common/function';
-import { createCampaign, clearCampaign } from 'ducks/campaign';
+import { createCampaign, clearCampaign, addSubdomain, fetchSubdomain } from 'ducks/campaign';
 import { fetchElastic, clearElastic } from 'ducks/elastic';
 import { fetchOneRules, createRules, updateRules } from 'ducks/rules';
 import { fetchNotification } from 'ducks/notification';
@@ -43,7 +43,9 @@ class NewCampaignContainer extends Component {
   }
 
   componentWillMount() {
-    this.verifyPixelStatus(this.props.campaign);
+    const { campaign } = this.props;
+    this.verifyPixelStatus(campaign);
+    this.props.fetchSubdomain(campaign?campaign._id:null);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -168,6 +170,7 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
 
         {this.props.campaign && Object.keys(this.props.campaign).length !== 0 && this.props.campaign.constructor === Object?
           <CampaignSettings
+            validatewebsite={validatewebsite}
             showNotification={this.showNotification}
             goLive={this.goLive}
             toggleWebhook={this.toggleWebhook}
@@ -205,6 +208,7 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
     );
   }
 }
+
 const mapStateToProps = state => ({
   profile: state.getIn(['profile', 'profile']),
   campaign: state.getIn(['campaign', 'campaign']),
@@ -220,6 +224,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = {
   createCampaign,
   clearCampaign,
+  fetchSubdomain,
+  addSubdomain,
   fetchElastic,
   clearElastic,
   fetchOneRules,

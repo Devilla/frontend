@@ -893,6 +893,71 @@ class IntegrationContent extends Component {
       </div>
     );
   }
+  contentFifteen = () => {
+    return (
+      <div>
+        <Row>
+          <Col md={2}>
+            <span className="btn-step btn ">STEP 1</span>
+          </Col>
+          <Col md={6}>
+            <img src ='' />
+            <p>//image goes herer</p>
+          </Col>
+          <Col md={4}>
+            <h5 className="heading">Heading </h5>
+
+            <ul>
+              <li>//dummy </li>
+              <li>//dummy </li>
+              <li>//dummy </li>
+              <li>//dummy </li>
+              <li>//dummy </li>
+            </ul>
+          </Col>
+        </Row>
+        <Row>
+          <Col md={2}>
+            <span className="btn-step btn ">STEP 2</span>
+          </Col>
+          <Col md={6}>
+            <img src ='' />
+            <p>//image goes herer</p>
+          </Col>
+          <Col md={4}>
+            <h5 className="heading">Heading </h5>
+
+            <ul>
+              <li>//dummy </li>
+              <li>//dummy </li>
+              <li>//dummy </li>
+              <li>//dummy </li>
+              <li>//dummy </li>
+            </ul>
+          </Col>
+        </Row>
+        <Row>
+          <Col md={2}>
+            <span className="btn-step btn ">STEP 3</span>
+          </Col>
+          <Col md={6}>
+            <img src ='' />
+            <p>//image goes herer</p>
+          </Col>
+          <Col md={4}>
+            <h5 className="heading">Heading </h5>
+            <ul>
+              <li>//dummy </li>
+              <li>//dummy </li>
+              <li>//dummy </li>
+              <li>//dummy </li>
+              <li>//dummy </li>
+            </ul>
+          </Col>
+        </Row>
+      </div>
+    );
+  }
 
   render() {
     const { renderIntegration ,renderState}  = this.props;
@@ -945,6 +1010,9 @@ class IntegrationContent extends Component {
             : '' }
           {renderState === 14 ?
             this.contentFourteen()
+            : '' }
+          {renderState === 15 ?
+            this.contentFifteen()
             : '' }
         </div>
       </div>

@@ -17,7 +17,8 @@ import {
   Unbounce,
   Webflow,
   Woocommerce,
-  Wordpress
+  Wordpress,
+  Googletag
 } from 'img';
 
 
@@ -192,6 +193,16 @@ class Integrations extends Component {
               <p className="text-center desc-page text-muted">Sync your conversation and import yourFAQs from Wordpress</p>
 
               <span className="text-muted"  onClick={() => this.renderIntegration(14)}>View Details&nbsp; <i className="fi-open"></i></span>
+            </div>
+          </Col>
+          <Col md={3}  className="box-shadow ribbon-box">
+            <div className="ribbon-two ribbon-two-danger"><span>Inactive</span></div>
+            <div className="card-box tilebox-one">
+              <img src={Googletag} className="logocompany" />
+              <h4 className="text-muted text-uppercase mt-0 ml-2 i-title googletag">Google Tag Manager</h4>
+              <p className="text-center desc-page text-muted">Sync your conversation and import yourFAQs from Tag Manager</p>
+
+              <span  className="text-muted"  onClick={() => this.renderIntegration(15)}>View Details&nbsp; <i className="fi-open"></i></span>
             </div>
           </Col>
         </Row>

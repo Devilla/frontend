@@ -1,7 +1,7 @@
-version:                 2 # use CircleCI 2.0
-jobs:                    # a collection of steps
+version:               2 # use CircleCI 2.0
+jobs:                  # a collection of steps
 
-  build:                 # runs not using Workflows must have a `build` job as entry point
+  build:               # runs not using Workflows must have a `build` job as entry point
     working_directory: ~/mern-starter # directory where steps will run
     docker:            # run the steps with Docker
       - image:         circleci/node:8-browsers # ...with this image as the primary container; this is where all `steps` will run
@@ -42,7 +42,7 @@ jobs:                    # a collection of steps
           path:        test-results.xml
 
 workflows:
-  version:               2
+  version:             2
   build_and_test:
     jobs:
       - build
