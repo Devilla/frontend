@@ -1,5 +1,6 @@
 import React from 'react';
 import {Animated} from 'react-animated-css';
+// import { browserHistory } from 'react-router';
 import './InstallPixel.scss';
 import Webhook from './Webhook';
 
@@ -10,7 +11,9 @@ const InstallPixel = ({
   verifyPixelStatus,
   handlePixelCopy,
   toggleWebhook,
-  displayWebhookIntegration
+  displayWebhookIntegration,
+// toggleTag,
+// makeTagVisible
 }) => {
 
 
@@ -67,23 +70,33 @@ const InstallPixel = ({
       <p className="m-t-30">
         <br/>
       </p>
-      <div className="float-left integration mr-0 pr-2">
-        <button
-          type="button"
-          className="btn btn-outline-primary waves-light waves-effect webhook-btn  pl-3 pr-3"
-          onClick={() => { this.toggleDOM.blur(); toggleWebhook(); }}
-          ref={(toggleDOM) => this.toggleDOM = toggleDOM}
-        >
+      <div className="row">
+        <div className="float-left integration mr-0 pr-2 col-md-4">
+          <button
+            type="button"
+            className="btn btn-outline-primary waves-light waves-effect webhook-btn  pl-3 pr-3"
+            onClick={() => { this.toggleDOM.blur(); toggleWebhook(); }}
+            ref={(toggleDOM) => this.toggleDOM = toggleDOM}
+          >
           Webhook Integrations
-          <i className={displayWebhookIntegration?'icon-arrow-up pl-2':'icon-arrow-down pl-2'}></i>
-        </button>
-      </div>
+            <i className={displayWebhookIntegration?'icon-arrow-up pl-2':'icon-arrow-down pl-2'}></i>
+          </button>
+        </div>
+        <div className="clearfix"></div>
+        <div className="col-md-4">
+          <span className="btn btn-primary tagmanager "> Google Tag Manager</span>
+        </div>
+        <div className="col-md-4">
+          <span className="btn btn-primary tagmanager">Integrations</span>
+        </div>
 
-      <div className="clearfix"></div>
-      {displayWebhookIntegration &&
+        {displayWebhookIntegration &&
         <Webhook campaign={campaign} />
-      }
+        }
+      </div>
     </div>
+
+
   );
 };
 
