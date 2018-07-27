@@ -212,6 +212,7 @@ export class NotificationDesignSetting extends Component {
       handleContentChange,
       contentText,
       visitorText,
+      otherText,
       notification,
       notificationUrl,
       toggleMap,
@@ -428,6 +429,21 @@ export class NotificationDesignSetting extends Component {
                                 value={contentText}
                                 placeholder="Enter brand name for notification"
                                 id="contentText"
+                                onChange={(e) => handleContentChange(e.target.id, e.target.value)}
+                              />
+                            </Col>
+                          </Row>
+                        </Col>
+                        <Col md={12}>
+                          <h4 className="text-muted h6">Other Text</h4>
+                          <Row>
+                            <Col md={12}>
+                              <FormControl
+                                type="text"
+                                maxLength='15'
+                                value={otherText}
+                                placeholder="Enter Other Text for notification"
+                                id="otherText"
                                 onChange={(e) => handleContentChange(e.target.id, e.target.value)}
                               />
                             </Col>
