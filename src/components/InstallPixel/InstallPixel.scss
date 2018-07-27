@@ -60,19 +60,15 @@
       font-size: large;
     }
   }
-  .tagmanager {
-    // border-radius: 5px !important;
-    // position: relative;
-  }
-  .modal-tag {
-    // z-index: 100 !important;
-    // position:absolute;
-    // background: #fcfcfc;
-    // width: 30% !important;
-    // right: 100px !important;
 
+  .integrations, .tagmanager{
+    width: 170px !important;
+    border-radius: 5px !important;
   }
-
+  .integration-row {
+    position: relative;
+    left: 65px !important; 
+  }
 }
 
 .mm-popup__btn--save-webhook {

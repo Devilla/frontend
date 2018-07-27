@@ -46,9 +46,5 @@ describe('check for in', ()=> {
     expect(wrapper.find('form').length).toBe(1);
   });
 
-  // it('should respond to change event and change the state of the Campaign Component', () => {
-  // wrapper.find('input#campaignname').simulate('change', {target: {name: 'campaignname', value: 'Influence'}});
-  //   expect(wrapper.find('input#campaignname').value).toEqual('Influence');
-  // });
 
 });
