@@ -74,11 +74,17 @@ class Dashboard extends Component {
       campaignDetails.map(campaign => {
         let user = campaign.uniqueUsers;
         let tempData = Object.assign({}, dataContent);
-
+        delete tempData['data'];
+        tempData['data']=[0, 0, 0, 0, 0, 0, 0];
         if(user && user.aggregations && user.aggregations.users.buckets.length) {
           user.aggregations.users.buckets.map(bucket => {
             tempData['label'] = campaign.campaignName;
             tempData['data'][Moment(bucket.key_as_string).day()] = bucket.visitors.sum_other_doc_count + bucket.visitors.buckets.length;
+            var duck = '';
+            duck = Moment(bucket.key_as_string)._i;
+            duck = duck.split('-')[2];
+            duck = duck.split(1,2);
+            console.log(duck,'<<<<<Day>>>>>>>>>>>>');
           });
         } else {
           tempData['label'] = campaign.campaignName;
