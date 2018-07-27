@@ -81,6 +81,7 @@ class CapturePage extends Component {
 
     let lead = this.state.lead;
     lead['rule'] = this.props.rules._id;
+    lead['domain'] = this.props.campaign.websiteUrl;
     this.props.createPageUrl(lead);
     this.setState({lead: {
       url: '',

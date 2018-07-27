@@ -84,6 +84,7 @@ class DisplayPage extends Component {
 
     let displayUrl = this.state.displayUrl;
     displayUrl['rule'] = this.props.rules._id;
+    displayUrl['domain'] = this.props.campaign.websiteUrl;
     this.props.createPageUrl(displayUrl);
     this.setState({displayUrl: {
       url: '',
