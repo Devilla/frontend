@@ -127,9 +127,9 @@ class WebsiteSignUp extends Component {
                   <p className="signuptitle"> &nbsp;&nbsp;Start Conversions!</p>
                   <Spinner loading={this.props.loading} />
                   <div className='row signuprow give-center-align'>
-                    <div className='col-sm-12 col-md-7 col-lg-6 '>
+                    <div className='col-md-12  column-start'>
 
-                      <div>
+                      <div className="col-md-6">
                         <p className="lead">
                           <span className="sub-up-title">Already have an account?&nbsp;
                             <Link to="/login">Sign in</Link>
@@ -190,7 +190,7 @@ class WebsiteSignUp extends Component {
                         </form>
                       </div>
 
-                      <div className="vristrue ml-5">
+                      <div className="vristrue">
                       </div>
 
                       <div className="col-md-4 socio-link">
