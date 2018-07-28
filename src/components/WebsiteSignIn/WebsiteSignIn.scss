@@ -11,16 +11,20 @@
     }
     .signintitle {
       font-size: 40px;
-  
+
       margin: 0 auto;
     }
 
     .sub-in-title {
       font-size: 18px !important;
     }
-
+    .column-start {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
     .vristrue {
-      margin-left: 8px;
+      margin-left: 18px;
       position: relative;
       top: 120px;
     }
@@ -92,7 +96,7 @@
       margin : 100px 0 0 15px;
       min-height: 160px;
       border-top: 1px solid #c0c0c0;
-  
+
       .link-fb {
         font-size: 13.7px;
       }

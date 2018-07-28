@@ -2,7 +2,7 @@
 .NewCampaignContainer {
 
   .toast-style {
-    padding: 17px 7px;  
+    padding: 17px 7px;
     background-color: rgba(0, 0, 0, 0.98) !important;
     color: #fff !important;
     text-align: center !important;
@@ -13,29 +13,18 @@
       color: #fff;
     }
   }
-  
-  
+
+
   .mm-popup__btn--default {
     width: 100%;
   }
-  button {
-    &.goliveRight{
-      position: absolute;
-      right: 20px;
-      top: 45px;
-      padding-top: 3px;
-      padding-bottom: 2px;
-      height: 30px;
-      margin: 1% 3% !important;
-      border-radius: 5px !important;
-    }
-  }
+
 
   .close {
     position: relative;
     top: 10px !important;
     background: #097fff !important;
-  
+
   }
   .logocompany {
     min-width: 50px;
@@ -55,8 +44,8 @@
   .bx-shadow {
     padding: 10px;
     background: #fff !important;
-    margin-bottom: 10px; 
-    
+    margin-bottom: 10px;
+
     &:hover {
       box-shadow: 0px 12px 16px -5px rgba(0, 0, 0, 0.2) !important;
       animation: popbox 0.1s ease-in forwards;
@@ -75,7 +64,7 @@
   width: 500px !important;
   position: relative;
   right: 0px;
-  top: 130px; 
+  top: 130px;
   }
   .modal-body {
     color: #097fff !important;

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="0"
+            failures="1"
+            tests="2">
+
+  <testsuite name="newCampaign"
+    errors="0" failures="1" hostname="" id="" package="newCampaign" skipped="0"
+    tests="2" time="49.21" timestamp="Fri, 27 Jul 2018 08:57:29 GMT">
+  
+    <testcase name="Go to  login influence" classname="newCampaign" time="15.55" assertions="5">
+
+    
+
+    
+
+    
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="campaign test Influence" classname="newCampaign" time="33.66" assertions="21">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+      <failure message="Timed out while waiting for element &lt;.form-control&gt; to be visible for 10000 milliseconds.">    at Object.campaign test Influence (/home/ray/Desktop/frontendmain/frontend/tests/newCampaign.js:54:8)
+    at process._tickCallback (internal/process/next_tick.js:61:11)</failure>
+
+    
+    </testcase>
+  
+
+  
+
+  
+  </testsuite>
+</testsuites>

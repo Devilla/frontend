@@ -1,8 +1,10 @@
 import React from 'react';
 import  { InstallPixel, CapturePage, DisplayPage, Rules, NotificationSettings } from 'components';
+import { browserHistory } from 'react-router';
 import './CampaignSettings.scss';
 
 const CampaignSettings = (props) => {
+
   return (
     <div className="col-md-12 tab-notification-container">
       <div className="card-box tab-notification-box">
@@ -17,7 +19,26 @@ const CampaignSettings = (props) => {
 
 
         </div>
+        <div className="modal fade show-modal" id="myModallive" role="dialog">
+          <div className="modal-dialog">
+            <div className="modal-content align-modal">
+              <div className="modal-header">
+                <h4 className="modal-title">{props.title}</h4>
+              </div>
+              <div className="modal-body">
+                {props.content}
+              </div>
+              <div className="modal-footer">
+                <button type="button" className="btn btn-primary close-btn" data-dismiss="modal" onClick={ props.path ? () => browserHistory.push(props.path):  ()=> {} }>{props.buttonText}</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
         <div className="clearfix"></div>
+
+        <button type="button" className="btn btn-outline-primary goliveRight waves-light waves-effect number" data-toggle="modal" data-target="#myModallive" onClick={props.goLive}><i className="fi-location"></i>&nbsp;Go Live</button>
+
         <ul className="nav nav-pills navtab-bg nav-justified pull-in new-campaign-tab-pills">
           <li className="nav-item waves-effect text-center">
             <a data-toggle="tab" aria-expanded="true" className={`nav-link ${props.activeClass == 1?'active pb-2 pt-2':'pb-2 pt-2'}`} onClick={() => props.setActiveState(1)}>
