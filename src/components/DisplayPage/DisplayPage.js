@@ -276,6 +276,7 @@ class DisplayPage extends Component {
               <span className="btn btn-primary nav nav-pills waves-light waves-effect addpath-btn pl-5 pr-5" onClick={() => this.addDomainUrl(domain.domainUrl)}>
                 Add
               </span>
+              <i className=" icon-trash trash"></i>
             </span>
           </div>
         );
