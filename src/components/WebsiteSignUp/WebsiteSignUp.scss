@@ -18,6 +18,11 @@
     .pos-relative {
       top: 85px;
     }
+    .column-start {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+    }
     .vristrue {
       position: relative;
       top: 125px;

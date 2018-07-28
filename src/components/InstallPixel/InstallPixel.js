@@ -1,5 +1,7 @@
 import React from 'react';
 import {Animated} from 'react-animated-css';
+import { browserHistory } from 'react-router';
+import { Row, Col } from 'react-bootstrap';
 import './InstallPixel.scss';
 import Webhook from './Webhook';
 
@@ -10,7 +12,8 @@ const InstallPixel = ({
   verifyPixelStatus,
   handlePixelCopy,
   toggleWebhook,
-  displayWebhookIntegration
+  displayWebhookIntegration,
+
 }) => {
 
 
@@ -67,23 +70,36 @@ const InstallPixel = ({
       <p className="m-t-30">
         <br/>
       </p>
-      <div className="float-left integration mr-0 pr-2">
-        <button
-          type="button"
-          className="btn btn-outline-primary waves-light waves-effect webhook-btn  pl-3 pr-3"
-          onClick={() => { this.toggleDOM.blur(); toggleWebhook(); }}
-          ref={(toggleDOM) => this.toggleDOM = toggleDOM}
-        >
-          Webhook Integrations
-          <i className={displayWebhookIntegration?'icon-arrow-up pl-2':'icon-arrow-down pl-2'}></i>
-        </button>
+      <div className="row">
+        <h4 className="lead col-md-12 text-center m-b-30 m-t-20">UseInfluence Integrates Easily</h4>
       </div>
+      <Row className="integration-row">
+        <Col md={4} className=" mr-0 pr-2">
+          <button
+            type="button"
+            className="btn btn-outline-primary waves-light waves-effect webhook-btn  pl-3 pr-3"
+            onClick={() => { this.toggleDOM.blur(); toggleWebhook(); }}
+            ref={(toggleDOM) => this.toggleDOM = toggleDOM}
+          >
+          Webhook Integrations
+            <i className={displayWebhookIntegration?'icon-arrow-up pl-2':'icon-arrow-down pl-2'}></i>
+          </button>
+        </Col>
 
-      <div className="clearfix"></div>
-      {displayWebhookIntegration &&
+        <Col md={4}>
+          <span className="btn btn-outline-primary tagmanager "> Google Tag Manager</span>
+        </Col>
+        <Col md={4}>
+          <span className="btn btn-outline-primary integrations" onClick={() => browserHistory.push('/integrations')}>Integrations</span>
+        </Col>
+
+        {displayWebhookIntegration &&
         <Webhook campaign={campaign} />
-      }
+        }
+      </Row>
     </div>
+
+
   );
 };
 

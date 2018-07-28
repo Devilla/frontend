@@ -175,7 +175,7 @@ class WebsiteSignIn extends Component {
                       </form>
                     </div>
                   </div>
-                  <div className="vristrue ">
+                  <div className="vristrue ml-5">
                   </div>
                   <div className="col-md-4 col-lg-4 socio-link">
                     <p> <br /></p>
