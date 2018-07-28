@@ -26,14 +26,7 @@ class CapturePage extends Component {
         type: '',
         error: ''
       },
-      domain: {
-        url: '',
-        status: '',
-        class: '',
-        type: '',
-        error: '',
-        domain: ''
-      },
+      domain: [],
       openClose: false
     };
   }
@@ -91,28 +84,32 @@ class CapturePage extends Component {
     }});
   }
 
-  addDomainUrl = (domainUrl) => {
-    if(this.state.domain.url == ''){
+  addDomainUrl = (domainUrl, index) => {
+    console.log(this.state.domain, '==========');
+    if(this.state.domain[index].url == ''){
       if(this.state.count<1)
-        this.state.domain.url='/';
+        this.state.domain[index].url='/';
       else {
         return this.setState({error: 'Please enter a valid path'});
       }
       this.state.count++;
     }
 
-    if(this.state.domain.url[0]!=='/')
-      this.state.domain.url='/'+this.state.domain.url;
-    let domain = this.state.domain;
+    if(this.state.domain[index].url[0]!=='/')
+      this.state.domain[index].url='/'+this.state.domain[index].url;
+    let domain = this.state.domain[index];
     domain['rule'] = this.props.rules._id;
     domain['domain'] = domainUrl;
     this.props.createPageUrl(domain);
-    this.setState({domain: {
+    domain = {
       url: '',
       status: '',
       class: '',
-      type: ''
-    }});
+      type: '',
+      rule: '',
+      domain: ''
+    };
+    this.setState({domain});
   }
 
   handlePageUrl = (e) => {
@@ -125,14 +122,17 @@ class CapturePage extends Component {
     this.setState({lead: lead, error: ''});
   }
 
-  handleDomainUrl = (e) => {
-    const domain = {
+  handleDomainUrl = (e, index) => {
+    const domainValue = {
       url: e.target.value,
       status: 'unverified',
       class: 'warning',
       type: 'lead'
     };
-    this.setState({domain: domain, error: ''});
+    const domain = this.state.domain;
+    domain[index] = domainValue;
+
+    this.setState({domain, error: ''});
   }
 
   handleWebsiteAuth = (evt) => {
@@ -253,7 +253,7 @@ class CapturePage extends Component {
 
   renderSubDomain = () => {
     if(this.props.subdomain && this.props.subdomain.length)
-      return this.props.subdomain.map(domain => {
+      return this.props.subdomain.map((domain, index) => {
         return (
           <div key={domain.domainUrl} className="pl-4 input-group col-md-12">
             <label className="pt-2 pl-1 pr-3 text-muted url-field">{this.props.campaign
@@ -263,13 +263,13 @@ class CapturePage extends Component {
               className="form-control"
               placeholder="eg. /mypage, /register, /products"
               aria-describedby="urladd"
-              value={this.state.domain.url}
-              onChange={this.handleDomainUrl}
+              value={this.state.domain[index]?this.state.domain[index].url:''}
+              onChange={(e) => this.handleDomainUrl(e, index)}
               onBlur={this.handleWebsiteAuth.bind(this)}
               onKeyUp={(e) => e.keyCode === 13?this.addPageUrl():null}
             />
             <span className="input-group-btn col-md-3" id="urladd">
-              <span className="btn btn-primary nav nav-pills waves-light waves-effect number pl-5 pr-5" onClick={() => this.addDomainUrl(domain.domainUrl)}>
+              <span className="btn btn-primary nav nav-pills waves-light waves-effect number pl-5 pr-5" onClick={() => this.addDomainUrl(domain.domainUrl, index)}>
                 Add
               </span>
               <i className=" icon-trash trash"></i>

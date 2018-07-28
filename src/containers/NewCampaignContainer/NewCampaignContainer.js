@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 import copy from 'copy-to-clipboard';
 
 import { validatewebsite } from 'components/Common/function';
-import { createCampaign, clearCampaign, addSubdomain, fetchSubdomain } from 'ducks/campaign';
+import { createCampaign, clearCampaign, addSubdomain, fetchSubdomain, clearSubDomain } from 'ducks/campaign';
 import { fetchElastic, clearElastic } from 'ducks/elastic';
 import { fetchOneRules, createRules, updateRules } from 'ducks/rules';
 import { fetchNotification } from 'ducks/notification';
@@ -160,6 +160,7 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
   componentWillUnmount() {
     this.props.clearCampaign();
     this.props.clearElastic();
+    this.props.clearSubDomain();
   }
 
   render() {
@@ -211,6 +212,7 @@ const mapDispatchToProps = {
   clearCampaign,
   fetchSubdomain,
   addSubdomain,
+  clearSubDomain,
   fetchElastic,
   clearElastic,
   fetchOneRules,
