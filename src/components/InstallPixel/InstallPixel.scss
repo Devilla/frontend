@@ -60,6 +60,15 @@
       font-size: large;
     }
   }
+
+  .integrations, .tagmanager{
+    width: 170px !important;
+    border-radius: 5px !important;
+  }
+  .integration-row {
+    position: relative;
+    left: 65px !important; 
+  }
 }
 
 .mm-popup__btn--save-webhook {

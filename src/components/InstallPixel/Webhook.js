@@ -110,7 +110,7 @@ class Webhook extends Component {
     const { campaignWebhook, selectHook } = this.state;
     const { campaign } = this.props;
     return (
-      <div className="webhooks-container">
+      <div className="webhooks-container col-md-12">
         <div className="card webhook-section col-md-8">
           <div className="card-header">
             Webhook Integrations

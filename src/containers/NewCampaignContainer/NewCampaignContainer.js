@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { toast } from 'react-toastify';
-import { browserHistory } from 'react-router';
+
 import copy from 'copy-to-clipboard';
 
 import { validatewebsite } from 'components/Common/function';
@@ -164,10 +164,9 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
   }
 
   render() {
-    const { content, title, buttonText, path } = this.state;
+
     return (
       <div className="NewCampaignContainer">
-        <button type="button" className="btn btn-outline-primary goliveRight waves-light waves-effect number" data-toggle="modal" data-target="#myModallive" onClick={this.goLive}><i className="fi-location"></i>&nbsp;Go Live</button>
 
         {this.props.campaign && Object.keys(this.props.campaign).length !== 0 && this.props.campaign.constructor === Object?
           <CampaignSettings
@@ -190,21 +189,7 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
             {...this.state}
           />
         }
-        <div className="modal fade show-modal" id="myModallive" role="dialog">
-          <div className="modal-dialog">
-            <div className="modal-content align-modal">
-              <div className="modal-header">
-                <h4 className="modal-title">{title}</h4>
-              </div>
-              <div className="modal-body">
-                {content}
-              </div>
-              <div className="modal-footer">
-                <button type="button" className="btn btn-primary close-btn" data-dismiss="modal" onClick={ path ? () => browserHistory.push(path):  ()=> {} }>{buttonText}</button>
-              </div>
-            </div>
-          </div>
-        </div>
+
       </div>
     );
   }
