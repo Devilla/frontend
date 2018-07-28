@@ -213,6 +213,7 @@ export class NotificationDesignSetting extends Component {
       contentText,
       visitorText,
       otherText,
+      liveVisitorText,
       notification,
       notificationUrl,
       toggleMap,
@@ -469,6 +470,25 @@ export class NotificationDesignSetting extends Component {
                           </Row>
                         </Col>
                       </Row>
+                    }
+                    {notification.notificationName !== 'Bulk Activity' &&
+                          <Row>
+                            <Col md={12}>
+                              <h4 className="text-muted h6">Other Text</h4>
+                              <Row>
+                                <Col md={12}>
+                                  <FormControl
+                                    type="text"
+                                    maxLength="10"
+                                    value={liveVisitorText}
+                                    placeholder="Enter other text"
+                                    id="liveVisitorText"
+                                    onChange={(e) => handleContentChange(e.target.id, e.target.value)}
+                                  />
+                                </Col>
+                              </Row>
+                            </Col>
+                          </Row>
                     }
                   </div>
 

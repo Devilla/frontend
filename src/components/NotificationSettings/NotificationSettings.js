@@ -65,6 +65,7 @@ class Notifications extends Component {
       notificationPanelStyle: notificationPanelStyleDefault,
       contentText: 'us',
       visitorText: 'people',
+      otherText:'signed up for',
       notificationUrl: '',
       image: '',
       notifications: [],
