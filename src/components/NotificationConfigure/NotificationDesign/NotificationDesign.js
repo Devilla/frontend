@@ -11,6 +11,7 @@ const NotificationDesign = ({
   contentText,
   visitorText,
   liveVisitorText,
+  otherText,
   toggleMap,
   notificationPanelStyle,
   notification,
@@ -82,7 +83,7 @@ const NotificationDesign = ({
                               <div className="FPqR13BWqJeA13BW7MM9_0" style={{
                                 fontFamily: notificationStyle.fontFamily,
                                 fontWeight: notificationStyle.fontWeight
-                              }}>Recently signed up for {contentText}</div>
+                              }}>Recently {otherText} for {contentText}</div>
                               <div className="FPqR2PlWqJeA2PlW7MM9_0">a minute ago</div>
                               <div className="FPqR3eNuqJeA3eNu7MM9_0">
                                 <i>
@@ -199,7 +200,7 @@ const NotificationDesign = ({
                                 <span style={{
                                   color: notificationStyle.color,
                                   fontFamily: notificationStyle.fontFamily
-                                }}>{` signed up for ${contentText} in the last 7 days`}
+                                }}>{` ${otherText} for ${contentText} in the last 7 days`}
                                 </span>
                               </div>
                             </div>
