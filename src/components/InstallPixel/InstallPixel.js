@@ -67,9 +67,7 @@ const InstallPixel = ({
         </label>
       </span>
       <hr />
-      <p className="m-t-30">
-        <br/>
-      </p>
+      
       <div className="row">
         <h4 className="lead col-md-12 text-center m-b-30 m-t-20">UseInfluence Integrates Easily</h4>
       </div>
