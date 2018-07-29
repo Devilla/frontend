@@ -66,6 +66,8 @@ export { default as Webflow }  from  './webflow.png';
 export { default as Woocommerce }  from  './woocommerce.png';
 export { default as Wordpress } from './wordpress.png';
 export { default as Googletag } from './googletag.png';
+export { default as Zapier } from './zapier.png';
+
 
 //Channel review
 export { default as Facebook } from './fb.png';

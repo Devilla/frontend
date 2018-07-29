@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{ Component } from 'react';
 import { browserHistory } from 'react-router';
 import { AppContainer } from 'react-hot-loader';
 import { createStore, applyMiddleware } from 'redux';
@@ -22,13 +22,32 @@ const routerHistory = syncHistoryWithStore(browserHistory, store, {selectLocatio
 
 sagaMiddleware.run(rootSaga);
 
-const App = ({Component}) =>
-  <AppContainer errorReporter={Error}>
-    <Provider store={store}>
-      <StripeProvider apiKey={process.env.NODE_ENV === 'production' ? process.env.REACT_APP_STRIPE_KEY : process.env.REACT_APP_DEVELOPMENT_STRIPE_KEY}>
-        <Component routerHistory={routerHistory} />
-      </StripeProvider>
-    </Provider>
-  </AppContainer>;
+class App extends Component {
+  constructor() {
+    super();
+    this.state = {stripe: null};
+  }
+  componentDidMount() {
+    if (window.Stripe) {
+      process.env.NODE_ENV === 'production' ?  this.setState({stripe: window.Stripe(process.env.REACT_APP_STRIPE_KEY)}) : this.setState({stripe: window.Stripe(process.env.REACT_APP_DEVELOPMENT_STRIPE_KEY)});
+    } else {
+      document.querySelector('#stripe-js').addEventListener('load', () => {
+        process.env.NODE_ENV === 'production' ?  this.setState({stripe: window.Stripe(process.env.REACT_APP_STRIPE_KEY)}) : this.setState({stripe: window.Stripe(process.env.REACT_APP_DEVELOPMENT_STRIPE_KEY)});
+      });
+    }
+  }
+  render() {
+    return (
+      <AppContainer errorReporter={Error}>
+        <Provider store={store}>
+          <StripeProvider stripe={this.state.stripe} >
+            <this.props.Component routerHistory={routerHistory} />
+          </StripeProvider>
+        </Provider>
+      </AppContainer>
+    );
+  }
+
+}
 
 export default App;
