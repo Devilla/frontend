@@ -10,6 +10,7 @@ import './NotificationDesign.scss';
 const NotificationDesign = ({
   contentText,
   visitorText,
+  liveVisitorText,
   toggleMap,
   notificationPanelStyle,
   notification,
@@ -141,7 +142,7 @@ const NotificationDesign = ({
                                     {` ${visitorText}`}</span>
                                 </div>
                                 <span>
-                                  are viewing this site
+                                  {` ${liveVisitorText}`}
                                 </span>
                               </div>
                               <div className="FPqR14UVqJeA14UV7MM9_0">

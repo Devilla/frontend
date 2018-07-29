@@ -13,6 +13,8 @@ const NotificationConfigure = ({
   activity,
   contentText,
   visitorText,
+  otherText,
+  liveVisitorText,
   notificationUrl,
   setDefaultPanel,
   handleActivityChange,
@@ -66,6 +68,8 @@ const NotificationConfigure = ({
                       toggleMap={toggleMap}
                       contentText={contentText}
                       visitorText={visitorText}
+                      otherText={otherText}
+                      liveVisitorText={liveVisitorText}
                       notificationUrl={notificationUrl}
                       notification={notification}
                       notificationPanelStyle={notificationPanelStyle}

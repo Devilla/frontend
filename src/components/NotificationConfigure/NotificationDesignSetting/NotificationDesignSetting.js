@@ -483,7 +483,7 @@ export class NotificationDesignSetting extends Component {
                               maxLength='15'
                               value={liveVisitorText}
                               placeholder="Enter the Text for notification"
-                              id="otherText"
+                              id="liveVisitorText"
                               onChange={(e) => handleContentChange(e.target.id, e.target.value)}
                             />
                           </Col>
