@@ -64,12 +64,12 @@ class DisplayPage extends Component {
   }
 
   addPageUrl = () => {
-    if(this.state.displayUrl.url == ''){
+    if(this.state.displayUrl.url == '') {
       if(this.state.count<1)
         this.state.displayUrl.url='/';
-      else {
+      else
         return this.setState({error: 'Please enter a valid path'});
-      }
+
       this.state.count++;
     }
 
@@ -89,7 +89,6 @@ class DisplayPage extends Component {
   }
 
   addDomainUrl = (domainUrl, index) => {
-    console.log(this.state.domain, index);
     if(this.state.domain[index].url == ''){
       if(this.state.count<1)
         this.state.domain[index].url='/';
@@ -135,13 +134,7 @@ class DisplayPage extends Component {
     };
     const domain = this.state.domain;
     domain[index] = domainValue;
-    console.log(domain, '=====sad');
     this.setState({domain, error: ''});
-  }
-
-  handleWebsiteAuth = (evt) => {
-    if (! validatePath(evt.target.value))
-      return this.setState({error: 'Please enter a valid path'});
   }
 
   deleteDisplayUrl = (id, index, type) => {
@@ -270,7 +263,6 @@ class DisplayPage extends Component {
               aria-describedby="urladd"
               value={this.state.domain[index]?this.state.domain[index].url:''}
               onChange={(e) => this.handleDomainUrl(e, index)}
-              onBlur={this.handleWebsiteAuth.bind(this)}
               onKeyUp={(e) => e.keyCode === 13?this.addDomainUrl(domain.domainUrl, index):null}
             />
             <span className="input-group-btn col-md-3" id="urladd">
@@ -310,7 +302,6 @@ class DisplayPage extends Component {
                     aria-describedby="urladd"
                     value={displayUrl.url}
                     onChange={this.handlePageUrl}
-                    onBlur={this.handleWebsiteAuth.bind(this)}
                     onKeyUp={(e) => e.keyCode === 13?this.addPageUrl():null}
                   />
                   <span className="input-group-btn col-md-3"

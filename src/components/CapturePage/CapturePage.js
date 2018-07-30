@@ -134,11 +134,6 @@ class CapturePage extends Component {
     this.setState({domain, error: ''});
   }
 
-  handleWebsiteAuth = (evt) => {
-    if (! validatePath(evt.target.value))
-      return this.setState({error: 'Please enter a valid path'});
-  }
-
   deleteLead = (id, index, type) => {
     this.props.removePageUrl(id, index, type);
   }
@@ -265,7 +260,6 @@ class CapturePage extends Component {
               aria-describedby="urladd"
               value={this.state.domain[index]?this.state.domain[index].url:''}
               onChange={(e) => this.handleDomainUrl(e, index)}
-              onBlur={this.handleWebsiteAuth.bind(this)}
               onKeyUp={(e) => e.keyCode === 13?this.addDomainUrl(domain.domainUrl, index):null}
             />
             <span className="input-group-btn col-md-3" id="urladd">
@@ -304,7 +298,6 @@ class CapturePage extends Component {
                     aria-describedby="urladd"
                     value={lead.url}
                     onChange={this.handlePageUrl}
-                    onBlur={this.handleWebsiteAuth.bind(this)}
                     onKeyUp={(e) => e.keyCode === 13?this.addPageUrl():null}
                   />
                   <span className="input-group-btn col-md-3" id="urladd">
