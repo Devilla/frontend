@@ -152,7 +152,7 @@ export class NotificationDesignSetting extends Component {
   };
 
   handleFontChange = (e) => {
-    let fontFamily = `${e.target.value}`;
+    const fontFamily = `${e.target.value}`;
     this.setState({ fontFamily });
     this.props.onConfigChange({ prop: 'fontFamily', value: fontFamily });
   };
@@ -212,8 +212,8 @@ export class NotificationDesignSetting extends Component {
       handleContentChange,
       contentText,
       visitorText,
-      otherText,
       liveVisitorText,
+      otherText,
       notification,
       notificationUrl,
       toggleMap,
@@ -452,6 +452,7 @@ export class NotificationDesignSetting extends Component {
                         </Col>
                       </Row>
                     }
+
                     {notification.notificationName !== 'Recent Activity' &&
                       <Row className="mb-3">
                         <Col md={12}>
@@ -471,25 +472,26 @@ export class NotificationDesignSetting extends Component {
                         </Col>
                       </Row>
                     }
-                    {notification.notificationName !== 'Bulk Activity' &&
-                          <Row>
-                            <Col md={12}>
-                              <h4 className="text-muted h6">Other Text</h4>
-                              <Row>
-                                <Col md={12}>
-                                  <FormControl
-                                    type="text"
-                                    maxLength="10"
-                                    value={liveVisitorText}
-                                    placeholder="Enter other text"
-                                    id="liveVisitorText"
-                                    onChange={(e) => handleContentChange(e.target.id, e.target.value)}
-                                  />
-                                </Col>
-                              </Row>
-                            </Col>
-                          </Row>
+                    {notification.notificationName === 'Live Visitor Count' &&
+                    <Row className="mb-3">
+                      <Col md={12}>
+                        <h4 className="text-muted h6">Other Text</h4>
+                        <Row>
+                          <Col md={12}>
+                            <FormControl
+                              type="text"
+                              maxLength='15'
+                              value={liveVisitorText}
+                              placeholder="Enter the Text for notification"
+                              id="liveVisitorText"
+                              onChange={(e) => handleContentChange(e.target.id, e.target.value)}
+                            />
+                          </Col>
+                        </Row>
+                      </Col>
+                    </Row>
                     }
+
                   </div>
 
 
