@@ -152,7 +152,7 @@ export class NotificationDesignSetting extends Component {
   };
 
   handleFontChange = (e) => {
-    let fontFamily = `${e.target.value}`;
+    const fontFamily = `${e.target.value}`;
     this.setState({ fontFamily });
     this.props.onConfigChange({ prop: 'fontFamily', value: fontFamily });
   };
