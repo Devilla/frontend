@@ -71,6 +71,8 @@ const initialConfig = {
   },
   visitorText: '',
   contentText: '',
+  otherText: '',
+  liveVisitorText:'',
   notificationUrl: '',
   channel: {},
   // Oauth variables

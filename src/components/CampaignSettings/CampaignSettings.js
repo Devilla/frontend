@@ -5,14 +5,10 @@ import './CampaignSettings.scss';
 
 const CampaignSettings = (props) => {
 
-  function goBack () {
-    props.clearConfiguration();
-  }
   return (
     <div className="col-md-12 tab-notification-container">
       <div className="card-box tab-notification-box">
         <div className="ml-3 mt-1 new-campaign-header">
-          <i className="icon-arrow-left mr-1" onClick={goBack()}></i>
           <i className="fi-layers mr-2 mt-1"></i>
           <h4 className=" header-title">{props.campaign
             ? props.campaign.websiteUrl
