@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 import copy from 'copy-to-clipboard';
 
 import { validatewebsite } from 'components/Common/function';
-import { createCampaign, clearCampaign, addSubdomain, fetchSubdomain, clearSubDomain } from 'ducks/campaign';
+import { createCampaign, clearCampaign, addSubdomain, fetchSubdomain, clearSubDomain, removeSubDomain } from 'ducks/campaign';
 import { fetchElastic, clearElastic } from 'ducks/elastic';
 import { fetchOneRules, createRules, updateRules } from 'ducks/rules';
 import { fetchNotification } from 'ducks/notification';
@@ -97,7 +97,7 @@ class NewCampaignContainer extends Component {
   }
 
   handlePixelCopy = () => {
-    const pixelCode = `<script src="https://storage.cloud.google.com/influence-197607.appspot.com/influence-analytics.js"></script>
+    const pixelCode = `<script src="https://storage.googleapis.com/influence-197607.appspot.com/influence-analytics.js"></script>
 <script>
 new Influence({
 trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX'}'
@@ -161,6 +161,7 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
     this.props.clearCampaign();
     this.props.clearElastic();
     this.props.clearSubDomain();
+    this.props.removeSubDomain();
   }
 
   render() {
@@ -213,6 +214,7 @@ const mapDispatchToProps = {
   fetchSubdomain,
   addSubdomain,
   clearSubDomain,
+  removeSubDomain,
   fetchElastic,
   clearElastic,
   fetchOneRules,

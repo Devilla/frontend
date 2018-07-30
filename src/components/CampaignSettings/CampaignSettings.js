@@ -34,7 +34,7 @@ const CampaignSettings = (props) => {
             </div>
           </div>
         </div>
-        
+
         <div className="clearfix"></div>
 
         <button type="button" className="btn btn-outline-primary goliveRight waves-light waves-effect number" data-toggle="modal" data-target="#myModallive" onClick={props.goLive}><i className="fi-location"></i>&nbsp;Go Live</button>

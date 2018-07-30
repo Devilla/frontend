@@ -129,6 +129,22 @@ function* addSubdomain(action) {
   }
 }
 
+function* removeSubDomain(action) {
+  try {
+    yield put(load());
+    const res = yield call(api.DELETE, 'subdomain', action.id);
+    if(res.error)
+      console.log(res.error);
+    else
+      yield put(actions.subDomainSuccess(res));
+    yield put(loaded());
+  } catch (error) {
+    yield put(loaded());
+    console.log('Failed to fetch doc', error);
+    yield toast.error(error.message, toastConfig);
+  }
+}
+
 export function* watchFetch() {
   yield takeLatest(actions.FETCH, fetch);
 }
@@ -153,6 +169,10 @@ export function* watchAddSubdomain() {
   yield takeLatest(actions.ADD_SUB_DOMAIN, addSubdomain);
 }
 
+export function* watchRemoveSubdomain() {
+  yield takeLatest(actions.REMOVE_SUB_DOMAIN, removeSubDomain);
+}
+
 export function* watchFetchSubdomain() {
   yield takeLatest(actions.FETCH_SUB_DOMAIN, fetchSubdomain);
 }
@@ -165,6 +185,8 @@ export default function* rootSaga() {
     fork(watchRemove),
     fork(watchCampaignInfo),
     fork(watchAddSubdomain),
-    fork(watchFetchSubdomain)
+    fork(watchFetchSubdomain),
+    fork(watchRemoveSubdomain)
+
   ];
 }

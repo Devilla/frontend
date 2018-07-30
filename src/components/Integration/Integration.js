@@ -6,7 +6,6 @@ import IntegrationContent from './IntegrationContent';
 import {
   Aweber,
   Clickfunnels,
-  Demio,
   Hubspot,
   Instapage,
   Leadpages,
@@ -18,7 +17,8 @@ import {
   Webflow,
   Woocommerce,
   Wordpress,
-  Googletag
+  Googletag,
+  Zapier
 } from 'img';
 
 
@@ -50,29 +50,30 @@ class Integrations extends Component {
           <Col md={3}  className="box-shadow ribbon-box">
             <div className="ribbon-two ribbon-two-danger"><span>Inactive</span></div>
             <div className="card-box tilebox-one">
-              <img src={Aweber} className="logocompany" />
-              <h4 className="text-muted text-uppercase mt-0 ml-2 i-title aweber">Aweber</h4>
-              <p className="text-center desc-page text-muted">Sync your conversation and import yourFAQs from Aweber</p>
+              <img src={Wordpress} className="logocompany" />
+              <h4 className="text-muted text-uppercase mt-0 i-title">Wordpress</h4>
+              <p className="text-center desc-page text-muted">Sync your conversation and import yourFAQs from Wordpress</p>
 
-              <span  className="text-muted"  onClick={() => this.renderIntegration(1)}>View Details&nbsp; <i className="fi-open"></i></span>
+              <span className="text-muted"  onClick={() => this.renderIntegration(14)}>View Details&nbsp; <i className="fi-open"></i></span>
             </div>
           </Col>
           <Col md={3}  className="box-shadow ribbon-box">
             <div className="ribbon-two ribbon-two-danger"><span>Inactive</span></div>
             <div className="card-box tilebox-one">
-              <img src={Clickfunnels} className="logocompany" />
-              <h4 className="text-muted text-uppercase mt-0 ml-3 i-title click cfunnel">Clickfunnels</h4>
-              <p className="text-center desc-page text-muted">Sync your conversation and import yourFAQs from Clickfunnels</p>
+              <img src={Googletag} className="logocompany" />
+              <h4 className="text-muted text-uppercase mt-0 ml-2 i-title googletag">Google Tag Manager</h4>
+              <p className="text-center desc-page text-muted">Sync your conversation and import yourFAQs from Tag Manager</p>
 
-              <span className="text-muted "  onClick={() => this.renderIntegration(2)}>View Details&nbsp; <i className="fi-open"></i></span>
+              <span  className="text-muted"  onClick={() => this.renderIntegration(15)}>View Details&nbsp; <i className="fi-open"></i></span>
             </div>
           </Col>
+
           <Col md={3}  className="box-shadow ribbon-box">
             <div className="ribbon-two ribbon-two-danger"><span>Inactive</span></div>
             <div className="card-box tilebox-one">
-              <img src={Demio} className="logocompany demio" />
-              <h4 className="text-muted text-uppercase mt-0 ml-3 i-title demio">Demio</h4>
-              <p className="text-center desc-page text-muted">Sync your conversation and import yourFAQs from Demio</p>
+              <img src={Zapier} className="logocompany demio" />
+              <h4 className="text-muted text-uppercase mt-0 ml-3 i-title zapier">Zapier</h4>
+              <p className="text-center desc-page text-muted">Sync your conversation and import yourFAQs from Zapier</p>
 
               <span className="text-muted "  onClick={() => this.renderIntegration(3)}>View Details&nbsp; <i className="fi-open"></i></span>
             </div>
@@ -188,21 +189,21 @@ class Integrations extends Component {
           <Col md={3}  className="box-shadow ribbon-box">
             <div className="ribbon-two ribbon-two-danger"><span>Inactive</span></div>
             <div className="card-box tilebox-one">
-              <img src={Wordpress} className="logocompany" />
-              <h4 className="text-muted text-uppercase mt-0 i-title">Wordpress</h4>
-              <p className="text-center desc-page text-muted">Sync your conversation and import yourFAQs from Wordpress</p>
+              <img src={Aweber} className="logocompany" />
+              <h4 className="text-muted text-uppercase mt-0 ml-2 i-title aweber">Aweber</h4>
+              <p className="text-center desc-page text-muted">Sync your conversation and import yourFAQs from Aweber</p>
 
-              <span className="text-muted"  onClick={() => this.renderIntegration(14)}>View Details&nbsp; <i className="fi-open"></i></span>
+              <span  className="text-muted"  onClick={() => this.renderIntegration(1)}>View Details&nbsp; <i className="fi-open"></i></span>
             </div>
           </Col>
           <Col md={3}  className="box-shadow ribbon-box">
             <div className="ribbon-two ribbon-two-danger"><span>Inactive</span></div>
             <div className="card-box tilebox-one">
-              <img src={Googletag} className="logocompany" />
-              <h4 className="text-muted text-uppercase mt-0 ml-2 i-title googletag">Google Tag Manager</h4>
-              <p className="text-center desc-page text-muted">Sync your conversation and import yourFAQs from Tag Manager</p>
+              <img src={Clickfunnels} className="logocompany" />
+              <h4 className="text-muted text-uppercase mt-0 ml-3 i-title click cfunnel">Clickfunnels</h4>
+              <p className="text-center desc-page text-muted">Sync your conversation and import yourFAQs from Clickfunnels</p>
 
-              <span  className="text-muted"  onClick={() => this.renderIntegration(15)}>View Details&nbsp; <i className="fi-open"></i></span>
+              <span className="text-muted "  onClick={() => this.renderIntegration(2)}>View Details&nbsp; <i className="fi-open"></i></span>
             </div>
           </Col>
         </Row>

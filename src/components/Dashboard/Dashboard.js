@@ -78,8 +78,13 @@ class Dashboard extends Component {
         tempData['data']=[0, 0, 0, 0, 0, 0, 0];
         if(user && user.aggregations && user.aggregations.users.buckets.length) {
           user.aggregations.users.buckets.map(bucket => {
+            var dayDate = Moment(bucket.key_as_string)._i;
+            dayDate = dayDate.split('-')[2].split(0,2)[0];
+            dayDate = dayDate.split('T')[0];
             tempData['label'] = campaign.campaignName;
-            tempData['data'][Moment(bucket.key_as_string).day()] = bucket.visitors.sum_other_doc_count + bucket.visitors.buckets.length;
+            tempData['data'][dayDate-22] = bucket.visitors.sum_other_doc_count + bucket.visitors.buckets.length;
+
+            console.log(dayDate);
           });
         } else {
           tempData['label'] = campaign.campaignName;

@@ -15,7 +15,12 @@
     border-radius: 5px !important;
     position: relative;
     padding-left: 35px !important;
-    // margin-left: 120px;
+  }
+  .trash {
+    color: #097fff;
+    padding-left: 10px;
+    font-size: 15px !important;
+    cursor: pointer;
   }
   .addsubdomain {
     width: 100px;
