@@ -31,7 +31,7 @@ class DashboardContainer extends Component {
   }
 
   componentWillMount() {
-    document.body.style = 'background-color:#f4f6f8';
+    document.body.style = 'background-color:#fafafa';
     this.checkLogin((err) => {
       if (err) {
         browserHistory.push('/login');
