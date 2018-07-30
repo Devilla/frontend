@@ -1,0 +1,214 @@
+Arguments: 
+  /usr/local/bin/node /usr/local/bin/yarn install
+
+PATH: 
+  /home/devilla/bin:/home/devilla/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+
+Yarn version: 
+  1.7.0
+
+Node version: 
+  10.6.0
+
+Platform: 
+  linux x64
+
+Trace: 
+  Error: EACCES: permission denied, unlink '/home/devilla/frontend/node_modules/grpc/node_modules/boom/package.json'
+
+npm manifest: 
+  {
+    "name": "my-app",
+    "version": "0.1.0",
+    "private": true,
+    "homepage": "http://localhost:3000",
+    "dependencies": {
+      "autoprefixer": "7.1.6",
+      "axios": "^0.18.0",
+      "babel-eslint": "^7.2.3",
+      "babel-loader": "7.1.2",
+      "babel-preset-react-app": "^3.1.1",
+      "babel-runtime": "6.26.0",
+      "bcrypt": "^2.0.1",
+      "bcrypt-node": "^0.1.0",
+      "case-sensitive-paths-webpack-plugin": "2.1.1",
+      "chalk": "1.1.3",
+      "chart.js": "^1.1.1",
+      "chartist": "^0.10.1",
+      "copy-to-clipboard": "^3.0.8",
+      "create-file": "^1.0.1",
+      "create-react-app": "^1.3.3",
+      "crypto-js": "^3.1.9-1",
+      "css-loader": "0.28.7",
+      "dotenv": "4.0.0",
+      "dotenv-expand": "4.2.0",
+      "downloadjs": "^1.4.7",
+      "enzyme": "^3.3.0",
+      "enzyme-adapter-react-15": "^1.0.6",
+      "enzyme-adapter-react-16": "^1.1.1",
+      "eslint": "^4.10.0",
+      "eslint-config-react-app": "^2.1.0",
+      "eslint-loader": "1.9.0",
+      "eslint-plugin-babel": "^5.1.0",
+      "eslint-plugin-duck": "^0.5.6",
+      "eslint-plugin-flowtype": "2.39.1",
+      "eslint-plugin-import": "2.8.0",
+      "eslint-plugin-jsx-a11y": "5.1.1",
+      "eslint-plugin-react": "7.4.0",
+      "eslint-plugin-redux-saga": "^0.9.0",
+      "extract-text-webpack-plugin": "3.0.2",
+      "file-loader": "1.1.5",
+      "firebase": "^4.8.0",
+      "font-awesome": "^4.7.0",
+      "fs-extra": "3.0.1",
+      "google-maps-react": "^2.0.2",
+      "html-webpack-plugin": "2.29.0",
+      "immutable": "^3.8.2",
+      "jest-enzyme": "^6.0.2",
+      "jquery": "^3.3.1",
+      "lodash": "^4.17.5",
+      "moment": "^2.22.0",
+      "moment-range": "^4.0.1",
+      "nightwatch": "^0.9.21",
+      "node-sass-chokidar": "0.0.3",
+      "object-assign": "4.1.1",
+      "otp-client": "^0.0.1",
+      "postcss-flexbugs-fixes": "3.2.0",
+      "postcss-loader": "2.0.8",
+      "promise": "8.0.1",
+      "prop-types": "^15.6.0",
+      "raf": "3.4.0",
+      "react": "^16.3.2",
+      "react-addons-test-utils": "^15.6.2",
+      "react-animated-css": "^1.0.4",
+      "react-bootstrap": "^0.31.5",
+      "react-bootstrap-daterangepicker": "^4.1.0",
+      "react-chartist": "^0.13.0",
+      "react-chartjs": "^1.2.0",
+      "react-chartkick": "^0.2.1",
+      "react-circle": "^1.0.3",
+      "react-color": "^2.14.0",
+      "react-cookie": "^2.1.4",
+      "react-currency-conversion": "^1.0.5",
+      "react-custom-scrollbars": "^4.2.1",
+      "react-datepicker": "^1.5.0",
+      "react-dev-utils": "^5.0.1",
+      "react-dom": "^16.3.2",
+      "react-flexible-switch": "^1.2.1",
+      "react-grecaptcha": "^1.2.5",
+      "react-highlight": "^0.10.0",
+      "react-hot-loader": "^4.1.1",
+      "react-images-uploader": "^1.1.0",
+      "react-ionicons": "^2.1.6",
+      "react-maskedinput": "^4.0.1",
+      "react-notification-system": "^0.2.15",
+      "react-popup": "^0.9.3",
+      "react-progress-button": "^5.1.0",
+      "react-rangeslider": "^2.2.0",
+      "react-recaptcha": "^2.3.8",
+      "react-redux": "^5.0.7",
+      "react-router": "^3.2.0",
+      "react-router-redux": "^4.0.8",
+      "react-select": "^1.2.1",
+      "react-slick": "^0.18.1",
+      "react-slick-carousel": "^0.14.9",
+      "react-star-ratings": "^2.3.0",
+      "react-stepzilla": "^4.7.0",
+      "react-stripe-elements": "^1.6.0",
+      "react-test-renderer": "^16.4.1",
+      "react-text-loop": "^1.1.0",
+      "react-toastify": "^3.4.2",
+      "reactcss": "^1.2.3",
+      "recharts": "^1.0.0-beta.10",
+      "redux": "^3.7.2",
+      "redux-devtools-extension": "^2.13.2",
+      "redux-immutable": "^4.0.0",
+      "redux-mock-store": "^1.5.3",
+      "redux-saga": "^0.16.0",
+      "redux-thunk": "^2.2.0",
+      "resolve": "1.6.0",
+      "slick-carousel": "^1.8.1",
+      "style-loader": "0.19.0",
+      "sw-precache-webpack-plugin": "0.11.4",
+      "timelines-chart": "^2.6.4",
+      "url-loader": "0.6.2",
+      "webpack-dev-server": "2.9.4",
+      "webpack-manifest-plugin": "1.3.2",
+      "whatwg-fetch": "2.0.3",
+      "yarn": "^1.7.0"
+    },
+    "scripts": {
+      "test": "node nightwatch -e chrome",
+      "start": "set PORT=3002 && node scripts/start.js",
+      "start:production": "npm run build && npm run start:prod",
+      "start:prod": "NODE_ENV=production node server",
+      "build": "node scripts/build.js"
+    },
+    "devDependencies": {
+      "babel-core": "^6.26.3",
+      "babel-preset-react": "^6.24.1",
+      "jest": "^23.1.0",
+      "jest-localstorage-mock": "^2.2.0",
+      "node-sass": "^4.9.0",
+      "sass-loader": "^7.0.3",
+      "webpack": "^3.8.1"
+    },
+    "jest": {
+      "collectCoverageFrom": [
+        "src/**/*.{js,jsx,mjs}"
+      ],
+      "setupFiles": [
+        "<rootDir>/config/polyfills.js", "jest-localstorage-mock"
+      ],
+      "testMatch": [
+        "<rootDir>/src/**/__tests__/**/*.{js,jsx,mjs}",
+        "<rootDir>/src/**/?(*.)(spec|test).{js,jsx,mjs}"
+      ],
+      "testEnvironment": "jsdom",
+      "testURL": "http://localhost",
+      "transform": {
+        "^.+\\.(js|jsx|mjs)$": "<rootDir>/node_modules/babel-jest",
+        "^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
+        "^(?!.*\\.(js|jsx|mjs|css|json)$)": "<rootDir>/config/jest/fileTransform.js"
+      },
+      "transformIgnorePatterns": [
+        "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs)$"
+      ],
+      "moduleNameMapper": {
+        "^ducks(.*)$": "<rootDir>/src/ducks/$1",
+        "^services(.*)$": "<rootDir>/src/services/$1",
+        "^assests(.*)$": "<rootDir>/src/assests/$1",
+        "^components(.*)$": "<rootDir>/src/components/$1",
+        "^containers(.*)$": "<rootDir>/src/containers/$1",
+        "^sagas(.*)$": "<rootDir>/src/sagas/$1",
+        "^routes(.*)$": "<rootDir>/src/routes/$1",
+        "^index(.*)$": "<rootDir>/src/index.js",
+        "^img(.*)$": "<rootDir>/src/img/$1",
+        "^App(.*)$": "<rootDir>/src/App.js",
+        "^react-native$": "react-native-web"
+      },
+      "moduleFileExtensions": [
+        "web.js",
+        "js",
+        "json",
+        "web.jsx",
+        "jsx",
+        "node",
+        "mjs"
+      ]
+    },
+    "babel": {
+      "presets": [
+        "react-app"
+      ]
+    },
+    "eslintConfig": {
+      "extends": "react-app"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
