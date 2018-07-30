@@ -5,10 +5,14 @@ import './CampaignSettings.scss';
 
 const CampaignSettings = (props) => {
 
+  function goBack () {
+    props.clearConfiguration();
+  }
   return (
     <div className="col-md-12 tab-notification-container">
       <div className="card-box tab-notification-box">
         <div className="ml-3 mt-1 new-campaign-header">
+          <i className="icon-arrow-left mr-1" onClick={goBack()}></i>
           <i className="fi-layers mr-2 mt-1"></i>
           <h4 className=" header-title">{props.campaign
             ? props.campaign.websiteUrl
@@ -34,7 +38,7 @@ const CampaignSettings = (props) => {
             </div>
           </div>
         </div>
-        
+
         <div className="clearfix"></div>
 
         <button type="button" className="btn btn-outline-primary goliveRight waves-light waves-effect number" data-toggle="modal" data-target="#myModallive" onClick={props.goLive}><i className="fi-location"></i>&nbsp;Go Live</button>
