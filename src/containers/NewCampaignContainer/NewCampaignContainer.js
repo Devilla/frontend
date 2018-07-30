@@ -161,7 +161,6 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
     this.props.clearCampaign();
     this.props.clearElastic();
     this.props.clearSubDomain();
-    this.props.removeSubDomain();
   }
 
   render() {

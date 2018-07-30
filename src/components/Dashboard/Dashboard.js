@@ -83,8 +83,8 @@ class Dashboard extends Component {
             dayDate = dayDate.split('T')[0];
             tempData['label'] = campaign.campaignName;
             tempData['data'][dayDate-22] = bucket.visitors.sum_other_doc_count + bucket.visitors.buckets.length;
-            console.log(startDate,"START DATE MF")
-            console.log(dayDate,"DAY DATE MF");
+            console.log(this.state.startDate,'START DATE MF');
+            console.log(dayDate,'DAY DATE MF');
           });
         } else {
           tempData['label'] = campaign.campaignName;
