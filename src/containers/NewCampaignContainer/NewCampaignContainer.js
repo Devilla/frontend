@@ -97,7 +97,7 @@ class NewCampaignContainer extends Component {
   }
 
   handlePixelCopy = () => {
-    const pixelCode = `<script src="https://storage.cloud.google.com/influence-197607.appspot.com/influence-analytics.js"></script>
+    const pixelCode = `<script src="https://storage.googleapis.com/influence-197607.appspot.com/influence-analytics.js"></script>
 <script>
 new Influence({
 trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX'}'
