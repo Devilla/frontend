@@ -16,6 +16,7 @@ export const ADD_SUB_DOMAIN = action('ADD_SUB_DOMAIN');
 export const FETCH_SUB_DOMAIN = action('FETCH_SUB_DOMAIN');
 export const SUB_DOMAIN_SUCCESS = action('SUB_DOMAIN_SUCCESS');
 export const CLEAR_SUB_DOMAIN = action('CLEAR_SUB_DOMAIN');
+export const REMOVE_SUB_DOMAIN = action('REMOVE_SUB_DOMAIN');
 
 export const fetchCampaign = () => ({ type: FETCH });
 export const createCampaign = (campaign) => ({ type: CREATE, campaign });
@@ -31,6 +32,7 @@ export const addSubdomain = (domain) => ({ type: ADD_SUB_DOMAIN, domain });
 export const fetchSubdomain = (campaignId) => ({ type: FETCH_SUB_DOMAIN, campaignId });
 export const subDomainSuccess = (domain) => ({ type: SUB_DOMAIN_SUCCESS, domain });
 export const clearSubDomain = () => ({ type: CLEAR_SUB_DOMAIN });
+export const removeSubDomain = (id) => ({ type: REMOVE_SUB_DOMAIN,id });
 
 const initialState = fromJS({});
 
