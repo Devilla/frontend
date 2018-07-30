@@ -10,7 +10,6 @@ import { connect } from 'react-redux';
 import CardTable from 'components/Template/card-with-page-table';
 import { pagethArray } from 'components/Template/data';
 import { fetchDisplayUrl, createPageUrl, clearPageUrl, removePageUrl } from 'ducks/pageurl';
-import { validatePath } from 'components/Common/function';
 
 import './DisplayPage.scss';
 
