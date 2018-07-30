@@ -153,7 +153,8 @@ class CapturePage extends Component {
   }
 
   renderLeads = () => {
-    var leads = this.props.leads?this.props.leads.filter(lead => lead.type == 'lead'):[];
+    let leads = this.props.leads?this.props.leads.filter(lead => lead.type == 'lead'):[];
+    let { campaign } = this.props;
     return (
       <Table>
         <thead>
@@ -172,6 +173,7 @@ class CapturePage extends Component {
             leads.map((lead, i) => {
               return <tr key={i}>
                 <td className="url">{lead.url}</td>
+                <td>{lead.domain === campaign.websiteUrl?'Domain':'Sub Domain'}</td>
                 <td className="ml-4 status">
                   <span className="dot ml-3" style={{backgroundColor: this.renderColor(lead.status) }}>
                   </span>

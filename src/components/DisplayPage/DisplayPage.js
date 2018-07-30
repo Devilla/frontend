@@ -156,7 +156,8 @@ class DisplayPage extends Component {
   }
 
   renderLeads = () => {
-    var displayUrls = this.props.displayUrls?this.props.displayUrls.filter(lead => lead.type == 'display'):[];
+    let displayUrls = this.props.displayUrls?this.props.displayUrls.filter(lead => lead.type == 'display'):[];
+    let { campaign } = this.props;
     return (
       <Table>
         <thead>
@@ -175,6 +176,7 @@ class DisplayPage extends Component {
             displayUrls.map((displayUrl, i) => {
               return <tr key={i}>
                 <td className="display-url">{displayUrl.url}</td>
+                <td>{displayUrl.domain === campaign.websiteUrl?'Domain':'Sub Domain'}</td>
                 <td className="pl-4 status">
                   <span className="dot display" style={{backgroundColor: this.renderColor(displayUrl.status) }}>
                   </span>
