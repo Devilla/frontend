@@ -135,6 +135,8 @@ function* removeSubDomain(action) {
     const res = yield call(api.DELETE, `subdomain/${action.id}`);
     if(res.error)
       console.log(res.error);
+    else
+      yield put(actions.subDomainSuccess(res));
     yield put(loaded());
   } catch (error) {
     yield put(loaded());
