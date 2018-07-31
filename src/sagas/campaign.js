@@ -1,8 +1,11 @@
+import React from 'react';
 import { call, put, fork, takeLatest } from 'redux-saga/effects';
 import * as api from 'services/api';
 import * as actions from 'ducks/campaign';
 import { load, loaded } from 'ducks/loading';
 import { toast } from 'react-toastify';
+import Popup from 'react-popup';
+import { browserHistory } from 'react-router';
 
 const toastConfig = {
   position: toast.POSITION.BOTTOM_LEFT,
@@ -71,8 +74,26 @@ function* remove(action) {
     const res = yield call(api.DELETE, `campaign/${action.campaignId}`);
     if(res.error)
       console.log(res.error);
-    else
+    else {
       yield put(actions.popCampaign(action.index));
+      Popup.create({
+        title: 'Campaign Deleted',
+        content: <div style={{padding: '30px 15px', fontSize: 'medium'}}>
+          Your campaign has been successfully deleted.
+        </div>,
+        buttons: {
+          right: [{
+            text: 'Close',
+            key: '⌘+s',
+            className: 'btn btn-primary delete-btn',
+            action: function () {
+              browserHistory.push('/dashboard');
+              Popup.close();
+            }
+          }]
+        }
+      }, true);
+    }  
     yield put(loaded());
   } catch (error) {
     yield put(loaded());
