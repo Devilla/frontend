@@ -8,11 +8,13 @@ import { fetchCampaignInfo, successCampaign , fetchCampaign } from 'ducks/campai
 import './Dashboard.scss';
 import Card from './Card';
 import ReactChartJs from 'react-chartjs';
+import HeatMap from 'react-heatmap-grid';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
 var LineChart = ReactChartJs.Line;
 let moment = extendMoment(Moment);
+
 
 const color_list = [
   '#87CEFA',
@@ -43,6 +45,7 @@ class Dashboard extends Component {
     };
     this.handleRouteChange = this.handleRouteChange.bind(this);
   }
+
 
   componentWillMount() {
     this.props.fetchCampaignInfo();
@@ -296,6 +299,11 @@ class Dashboard extends Component {
 
 
   render() {
+    const xLabels = this.getDays();
+    const yLabels = ['Sun', 'Mon', 'Tue','Wed','Fri','Sat'];
+    const datas = new Array(yLabels.length)
+      .fill(0)
+      .map(() => new Array(xLabels.length).fill(0).map(() => Math.floor(Math.random() * 100)));
     const { campaignInfo } = this.props;
     const { selectedCampaign } = this.state;
     const { userCount, totalUsers } = this.usersCount();
@@ -478,7 +486,13 @@ class Dashboard extends Component {
             </Col>
           </Row>
           <Row>
-
+            <Col md={12}>
+              <HeatMap
+                xLabels={xLabels}
+                yLabels={yLabels}
+                data={datas}
+              />
+            </Col>
           </Row>
         </div>
       </div>
