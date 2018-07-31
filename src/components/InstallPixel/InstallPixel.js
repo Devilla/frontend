@@ -13,7 +13,7 @@ const InstallPixel = ({
   handlePixelCopy,
   toggleWebhook,
   displayWebhookIntegration,
-
+  handleTrackingIdCopy
 }) => {
 
 
@@ -36,7 +36,9 @@ const InstallPixel = ({
         </p>
       </div>
       <div className="float-left custom-width align-install-btn">
-        <button type="button" className="btn btn-primary waves-effect copy-btn" onClick={() => { this.buttonDOM.blur(); handlePixelCopy(); }} ref={(buttonDOM) => this.buttonDOM = buttonDOM}>Copy</button>
+        <button type="button" className="btn btn-primary waves-effect copy-btn" onClick={() => { this.buttonDOM.blur(); handlePixelCopy(); }} ref={(buttonDOM) => this.buttonDOM = buttonDOM}>Copy Pixel</button>
+        <button type="button" className="btn btn-primary waves-effect copy-btn" onClick={() => { this.trackingDOM.blur(); handleTrackingIdCopy(); }} ref={(trackingDOM) => this.trackingDOM = trackingDOM}>Copy Tracking Id</button>
+        {elastic!==undefined && elastic=='verified'}
         <button type="button" style={elastic==undefined?{backgroundColor:'#097fff'}:(elastic.error || (elastic.message.hits.total === 0))?{backgroundColor:'#f9bc0b'}:{backgroundColor:'#0acf97'}} className="btn btn-primary waves-light waves-effect pixel-btn" onClick={() => verifyPixelStatus()}>
           <Animated className="leftwrap center" animationIn="fadeIn" animationOut="fadeOut" isVisible={true}>
             {loaderActive &&

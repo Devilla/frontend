@@ -14,7 +14,7 @@ const toastConfig = {
 };
 
 class WebsiteContact extends Component {
-  constructor(){
+  constructor() {
     super();
     this.state = {
       email: '',

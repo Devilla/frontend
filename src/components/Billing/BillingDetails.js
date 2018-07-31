@@ -63,7 +63,7 @@ class BillingDetails extends Component {
   render() {
     const { planSelected } = this.state;
     const { profile } = this.props;
-    console.log(planSelected, '============');
+
     return (
       <div className="content fill billing-details ml-1">
         <Grid fluid={true}>
@@ -171,7 +171,7 @@ class BillingDetails extends Component {
                                 <p className="text-muted font-13">
                                   <strong>Visitor Quota Left : </strong>
                                   <span className="m-l-15">
-                                    {profile ? (profile.uniqueVisitorQoutaLeft ? profile.uniqueVisitorsQoutaLeft.toLocaleString() : '') : '-'} Unique Visitors
+                                    {profile ? (profile.uniqueVisitorsQoutaLeft ? profile.uniqueVisitorsQoutaLeft.toLocaleString() : '') : '-'} Unique Visitors
                                   </span>
                                 </p>
                               </div>

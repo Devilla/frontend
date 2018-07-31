@@ -11,7 +11,7 @@
     border: 2px solid #6f7ace !important;
   }
   .custom-width {
-    width: 50% !important;
+    width: 75% !important;
   }
 
   p {
@@ -31,7 +31,7 @@
 
   div {
     &.float-left > button {
-      width: 30%;
+      width: 20%;
     }
 
     &.integration > button {
@@ -67,7 +67,7 @@
   }
   .integration-row {
     position: relative;
-    left: 65px !important; 
+    left: 65px !important;
   }
 }
 

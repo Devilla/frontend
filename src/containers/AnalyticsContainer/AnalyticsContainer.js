@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import moment  from 'moment';
+import Moment from 'moment';
+import { extendMoment } from 'moment-range';
 import Popup from 'react-popup';
 import ReactChartJs from 'react-chartjs';
 import { Animated } from 'react-animated-css';
@@ -13,6 +14,7 @@ import '../DashboardContainer/asset/scss/style.scss';
 import './AnalyticsContainer.scss';
 
 const LineChart = ReactChartJs.Line;
+let moment = extendMoment(Moment);
 
 const chartOptions = {
   responsive: true,
@@ -70,7 +72,7 @@ class AnalyticsContainer extends Component {
           <td>{user.email}</td>
           <td>{user.city}</td>
           <td>{user.country}</td>
-          <td>{moment(user.timestamp).startOf('day').fromNow()}</td>
+          <td>{moment(user.timestamp).fromNow()}</td>
           <td>
             <OverlayTrigger
               overlay={
@@ -78,7 +80,7 @@ class AnalyticsContainer extends Component {
                   <span>Coming Soon</span>
                 </Tooltip>
               }>
-              <a>Journey Coming Soon</a>
+              <a>Coming Soon</a>
             </OverlayTrigger>
           </td>
         </tr>;
@@ -90,6 +92,7 @@ class AnalyticsContainer extends Component {
   getDataset = (uniqueUsers, avgCus, campaignName) => {
     if(uniqueUsers && uniqueUsers.length) {
       let dataSet = [];
+
       let dataContent = {
         label: '',
         fillColor: 'rgba(220,220,220,0.2)',
@@ -100,10 +103,15 @@ class AnalyticsContainer extends Component {
         pointHighlightStroke: 'rgba(220,220,220,1)',
         data: [0, 0, 0, 0, 0, 0, 0]
       };
+
       uniqueUsers.map(bucket => {
+        var dayDate = Moment(bucket.key_as_string)._i;
+        dayDate = dayDate.split('-')[2].split(0,2)[0];
+        dayDate = dayDate.split('T')[0];
         dataContent['label'] = `${campaignName}`;
-        dataContent['data'][moment(bucket.key_as_string).day()] = bucket.visitors.sum_other_doc_count + bucket.visitors.buckets.length;
+        dataContent['data'][dayDate-22] = bucket.visitors.sum_other_doc_count + bucket.visitors.buckets.length;
       });
+
       dataSet.push(dataContent);
       dataSet.push({
         label: 'Average User Signups',
@@ -115,6 +123,7 @@ class AnalyticsContainer extends Component {
         pointHighlightStroke: 'rgba(220,220,220,1)',
         data: [avgCus, avgCus, avgCus, avgCus, avgCus, avgCus, avgCus]
       });
+
       return dataSet;
     } else {
       return [{
