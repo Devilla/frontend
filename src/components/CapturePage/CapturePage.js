@@ -10,7 +10,6 @@ import { connect } from 'react-redux';
 import CardTable from 'components/Template/card-with-page-table';
 import { pagethArray } from 'components/Template/data';
 import { fetchLeadUrl, createPageUrl, clearPageUrl, removePageUrl } from 'ducks/pageurl';
-import { validatePath } from 'components/Common/function';
 import './CapturePage.scss';
 
 class CapturePage extends Component {
@@ -85,7 +84,6 @@ class CapturePage extends Component {
   }
 
   addDomainUrl = (domainUrl, index) => {
-    console.log(this.state.domain, '==========');
     if(this.state.domain[index].url == ''){
       if(this.state.count<1)
         this.state.domain[index].url='/';
@@ -135,11 +133,6 @@ class CapturePage extends Component {
     this.setState({domain, error: ''});
   }
 
-  handleWebsiteAuth = (evt) => {
-    if (! validatePath(evt.target.value))
-      return this.setState({error: 'Please enter a valid path'});
-  }
-
   deleteLead = (id, index, type) => {
     this.props.removePageUrl(id, index, type);
   }
@@ -160,7 +153,8 @@ class CapturePage extends Component {
   }
 
   renderLeads = () => {
-    var leads = this.props.leads?this.props.leads.filter(lead => lead.type == 'lead'):[];
+    let leads = this.props.leads?this.props.leads.filter(lead => lead.type == 'lead'):[];
+    let { campaign } = this.props;
     return (
       <Table>
         <thead>
@@ -179,6 +173,7 @@ class CapturePage extends Component {
             leads.map((lead, i) => {
               return <tr key={i}>
                 <td className="url">{lead.url}</td>
+                <td>{lead.domain === campaign.websiteUrl?'Domain':'Sub Domain'}</td>
                 <td className="ml-4 status">
                   <span className="dot ml-3" style={{backgroundColor: this.renderColor(lead.status) }}>
                   </span>
@@ -210,6 +205,7 @@ class CapturePage extends Component {
     };
     addSubdomain(newDomain);
     this.openCloseModal();
+    this.setState({newDomain:''});
   }
 
   openCloseModal = () => {
@@ -265,8 +261,7 @@ class CapturePage extends Component {
               aria-describedby="urladd"
               value={this.state.domain[index]?this.state.domain[index].url:''}
               onChange={(e) => this.handleDomainUrl(e, index)}
-              onBlur={this.handleWebsiteAuth.bind(this)}
-              onKeyUp={(e) => e.keyCode === 13?this.addPageUrl():null}
+              onKeyUp={(e) => e.keyCode === 13?this.addDomainUrl(domain.domainUrl, index):null}
             />
             <span className="input-group-btn col-md-3" id="urladd">
               <span className="btn btn-primary nav nav-pills waves-light waves-effect number pl-5 pr-5" onClick={() => this.addDomainUrl(domain.domainUrl, index)}>
@@ -304,7 +299,6 @@ class CapturePage extends Component {
                     aria-describedby="urladd"
                     value={lead.url}
                     onChange={this.handlePageUrl}
-                    onBlur={this.handleWebsiteAuth.bind(this)}
                     onKeyUp={(e) => e.keyCode === 13?this.addPageUrl():null}
                   />
                   <span className="input-group-btn col-md-3" id="urladd">

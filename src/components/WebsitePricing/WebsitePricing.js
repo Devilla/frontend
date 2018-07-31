@@ -112,7 +112,7 @@ class WebsitePricing extends Component {
 
             <li className="text-left pl-5">
               <span className="checkmark bg--primary-1"></span>
-              <span className="h5 inline-block">Elite Club</span>
+              <span className="h5 inline-block">All Notification Types</span>
             </li>
             <li className="text-left pl-5">
               <span className="checkmark bg--primary-1"></span>
