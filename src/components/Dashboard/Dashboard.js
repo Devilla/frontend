@@ -14,6 +14,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 var LineChart = ReactChartJs.Line;
 let moment = extendMoment(Moment);
 
+
 class Dashboard extends Component {
   constructor() {
     super();
@@ -62,9 +63,9 @@ class Dashboard extends Component {
       let dataSet = [];
       let dataContent = {
         label: 'My First dataset',
-        fillColor: 'rgba(220,220,220,0.2)',
+        fillColor: '#097fff7d',
         strokeColor: 'rgba(220,220,220,1)',
-        pointColor: 'rgba(220,220,220,1)',
+        pointColor: '#00aaee94',
         pointStrokeColor: '#fff',
         pointHighlightFill: '#fff',
         pointHighlightStroke: 'rgba(220,220,220,1)',
@@ -83,8 +84,8 @@ class Dashboard extends Component {
             dayDate = dayDate.split('T')[0];
             tempData['label'] = campaign.campaignName;
             tempData['data'][dayDate-22] = bucket.visitors.sum_other_doc_count + bucket.visitors.buckets.length;
-
-            console.log(dayDate);
+            console.log(this.state.startDate,'START DATE MF');
+            console.log(dayDate,'DAY DATE MF');
           });
         } else {
           tempData['label'] = campaign.campaignName;
@@ -437,7 +438,8 @@ class Dashboard extends Component {
               </div>
             </Col>
           </Row>
-          <Row className="justify-content-around">
+          <Row>
+
           </Row>
         </div>
       </div>
