@@ -67,7 +67,7 @@ const InstallPixel = ({
         </label>
       </span>
       <hr />
-      
+
       <div className="row">
         <h4 className="lead col-md-12 text-center m-b-30 m-t-20">UseInfluence Integrates Easily</h4>
       </div>
@@ -76,7 +76,7 @@ const InstallPixel = ({
           <button
             type="button"
             className="btn btn-outline-primary waves-light waves-effect webhook-btn  pl-3 pr-3"
-            onClick={() => { this.toggleDOM.blur(); toggleWebhook(); }}
+            onClick={() => { this.toggleDOM.blur(); toggleWebhook(); window.scrollTo(0,window.outerHeight);}}
             ref={(toggleDOM) => this.toggleDOM = toggleDOM}
           >
           Webhook Integrations
