@@ -14,6 +14,20 @@ import 'react-datepicker/dist/react-datepicker.css';
 var LineChart = ReactChartJs.Line;
 let moment = extendMoment(Moment);
 
+const color_list = [
+  '#87CEFA',
+  '#B0C4DE',
+  '#00FFFF',
+  '#ADD8E6',
+  '#FF00FF',
+  '#F0E68C',
+  '#FFFACD',
+  '#90EE90',
+  '#FAF0E6',
+  '#AFEEEE',
+  '#87CEEB',
+  '#F5F5F5'
+];
 
 class Dashboard extends Component {
   constructor() {
@@ -72,25 +86,28 @@ class Dashboard extends Component {
         data: [0, 0, 0, 0, 0, 0, 0]
       };
 
-      campaignDetails.map(campaign => {
+      campaignDetails.map((campaign, index) => {
         let user = campaign.uniqueUsers;
         let tempData = Object.assign({}, dataContent);
         delete tempData['data'];
+        delete tempData['fillColor'];
+        delete tempData['pointColor'];
         tempData['data']=[0, 0, 0, 0, 0, 0, 0];
         if(user && user.aggregations && user.aggregations.users.buckets.length) {
           user.aggregations.users.buckets.map(bucket => {
             var dayDate = Moment(bucket.key_as_string)._i;
             dayDate = dayDate.split('-')[2].split(0,2)[0];
             dayDate = dayDate.split('T')[0];
+
             tempData['label'] = campaign.campaignName;
             tempData['data'][dayDate-22] = bucket.visitors.sum_other_doc_count + bucket.visitors.buckets.length;
-            console.log(this.state.startDate,'START DATE MF');
-            console.log(dayDate,'DAY DATE MF');
           });
         } else {
           tempData['label'] = campaign.campaignName;
           tempData['data'] = [0, 0, 0, 0, 0, 0, 0];
         }
+        tempData['fillColor'] = color_list[index];
+        tempData['pointColor'] = color_list[index];
         dataSet.push(tempData);
         tempData = Object.assign({}, {});
       });
@@ -263,6 +280,19 @@ class Dashboard extends Component {
     });
   }
 
+  renderCampaignsIconList = (campaignList) => {
+    if(campaignList)
+      return campaignList.map(campaign => {
+        return <li className="list-inline-item">
+          <div className="icon-box" style={{background: campaign.pointColor}}></div>
+          <div>{campaign.label}</div>
+        </li>;
+      });
+    else
+      return <li/>;
+  }
+
+
   render() {
     const { campaignInfo } = this.props;
     const { selectedCampaign } = this.state;
@@ -271,7 +301,6 @@ class Dashboard extends Component {
       labels:   this.getDays(),
       datasets: this.getDataset()
     };
-
     var chartOptions = {
       responsive: true,
 
@@ -317,7 +346,9 @@ class Dashboard extends Component {
       datasetStrokeWidth: 2,
 
       //Boolean - Whether to horizontally center the label and point dot inside the grid
-      offsetGridLines: false
+      offsetGridLines: false,
+
+      legendTemplate: '<div>acv/<div>'
     };
 
     let userSignUps = 0;
@@ -352,7 +383,7 @@ class Dashboard extends Component {
           <Row className="dashboard-boxes">
             <Col md={12}>
               <div className="card-box">
-                <Row className="mb-5">
+                <Row>
                   <Col md={12}>
                     <div className="btn-group campaign-dropdown">
                       <button className="btn btn-primary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -404,6 +435,7 @@ class Dashboard extends Component {
                       <Card
                         statsIcon="fa fa-history"
                         id="chartHours"
+                        category="Unique Visitors Log"
                         stats="Updated 3 minutes ago"
                         content={
                           <div className="ct-chart canvas-brdr">
@@ -411,6 +443,15 @@ class Dashboard extends Component {
                           </div>
                         }
                       />
+                      <div className="d-inline-flex justify-content-center" style={{width:'100%'}}>
+                        <ul className="nav navbar-nav d-inline-flex">
+                          <li className="nav-item">
+                            <ul className="list-inline-mb-0">
+                              {this.renderCampaignsIconList(chartData.datasets)}
+                            </ul>
+                          </li>
+                        </ul>
+                      </div>
                       <hr/>
                       <div className=" pull-left">
                         { this.state.datePicker == 'd1' ?

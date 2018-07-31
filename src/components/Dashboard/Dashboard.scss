@@ -133,6 +133,32 @@
     top: -120px;
     border: 2px solid #e8e8e8;
     padding: 60px 60px 20px;
+
+    .category {
+      text-align: center;
+      font-weight: 600;
+      color: #8c9392;
+      font-size: large;
+      margin-bottom: -50px;
+      margin-top: 30px;
+    }
+
+    .d-inline-flex {
+      width: 100%;
+      .list-inline-mb-0 {
+        display: flex;
+        justify-content: space-around;
+        .list-inline-item {
+          display: flex;
+          .icon-box {
+            width: 15px;
+            height: 15px;
+            border-radius: 4px;
+            margin: 0px 5px;
+          }
+        }
+      }
+    }
   }
 
 
