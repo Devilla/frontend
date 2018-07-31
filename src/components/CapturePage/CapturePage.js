@@ -193,16 +193,19 @@ class CapturePage extends Component {
 
   submitSubdomain = () => {
     const { addSubdomain, campaign, validatewebsite } = this.props;
+
     if(!this.state.newDomain)
       return this.setState({domainError: 'Enter subdomain url'});
     if(!validatewebsite(this.state.newDomain))
       return this.setState({domainError: 'Domain not valid'});
+
     const newDomain = {
       domainUrl: this.state.newDomain,
       trackingId: campaign.trackingId,
       campaign: campaign._id,
       type: 'lead'
     };
+    
     addSubdomain(newDomain);
     this.openCloseModal();
     this.setState({newDomain:''});
@@ -248,11 +251,13 @@ class CapturePage extends Component {
   }
 
   renderSubDomain = () => {
-    if(this.props.subdomain && this.props.subdomain.length)
-      return this.props.subdomain.map((domain, index) => {
+    const { subdomain, campaign, removeSubDomain } = this.props;
+
+    if(subdomain && subdomain.length)
+      return subdomain.map((domain, index) => {
         return (
           <div key={domain.domainUrl} className="pl-4 input-group col-md-12">
-            <label className="pt-2 pl-1 pr-3 text-muted url-field">{this.props.campaign
+            <label className="pt-2 pl-1 pr-3 text-muted url-field">{campaign
               ? 'http://'+domain.domainUrl
               : 'http://localhost:3000'}/</label>
             <input type="text"
@@ -267,7 +272,7 @@ class CapturePage extends Component {
               <span className="btn btn-primary nav nav-pills waves-light waves-effect number pl-5 pr-5" onClick={() => this.addDomainUrl(domain.domainUrl, index)}>
                 Add
               </span>
-              <i className=" icon-trash trash" onClick={() => this.props.removeSubDomain(domain._id, index)}></i>
+              <i className=" icon-trash trash" onClick={() => removeSubDomain(domain._id, index)}></i>
             </span>
           </div>
         );
