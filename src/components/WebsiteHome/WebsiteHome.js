@@ -275,8 +275,6 @@ class WebsiteHome extends Component {
               </div>
             </div>
           </section>
-          <div style={{backgroundColor:'black'}}><NotificationView tab='4' animation='' display='block' position='' notificationPanelStyle={this.state.notificationPanelStyle}/></div>
-          <div style={{backgroundColor:'black'}}><NotificationView tab='5' animation='' display='block' position='' notificationPanelStyle={this.state.notificationPanelStyle}/></div>
           <section className="imagebg " style={{ background: '#14BBFA' }}>
             <div className="container pb-5 pt-5">
               <div className="row">
