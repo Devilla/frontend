@@ -70,7 +70,7 @@ class AnalyticsContainer extends Component {
           <td>{user.email}</td>
           <td>{user.city}</td>
           <td>{user.country}</td>
-          <td>{moment(user.timestamp).startOf('day').fromNow()}</td>
+          <td>{moment(user.timestamp).fromNow()}</td>
           <td>
             <OverlayTrigger
               overlay={
@@ -78,7 +78,7 @@ class AnalyticsContainer extends Component {
                   <span>Coming Soon</span>
                 </Tooltip>
               }>
-              <a>Journey Coming Soon</a>
+              <a>Coming Soon</a>
             </OverlayTrigger>
           </td>
         </tr>;
