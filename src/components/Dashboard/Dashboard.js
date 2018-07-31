@@ -250,9 +250,6 @@ class Dashboard extends Component {
     );
   }
 
-
-
-
   displayCustomDate = (event) => {
     this.setState({
       daysClicked:event.target.value,
@@ -265,7 +262,6 @@ class Dashboard extends Component {
       datePicker: ''
     });
   }
-
 
   render() {
     const { campaignInfo } = this.props;
@@ -339,7 +335,7 @@ class Dashboard extends Component {
       campaignDetails.map((website) => {
         website.uniqueUsers && website.uniqueUsers.aggregations &&
           website.uniqueUsers.aggregations.users.buckets.map((bucket) => {
-            visitor = visitor + bucket.visitors.sum_other_doc_count;
+            visitor = visitor + bucket.visitors.buckets.length + bucket.visitors.sum_other_doc_count;
           });
 
         let users = website.signups && website.signups.userDetails?website.signups.userDetails:[];
