@@ -110,6 +110,13 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
     return toast('Pixel copied', toastConfig);
   }
 
+  handleTrackingIdCopy = () => {
+    copy(this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX', {
+      debug: true
+    });
+    return toast('Tracking ID copied', toastConfig);
+  }
+
   showNotification = () => {
     this.setState({sampleDisplay: !this.state.sampleDisplay});
   }
@@ -176,6 +183,7 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
             toggleWebhook={this.toggleWebhook}
             verifyPixelStatus={this.verifyPixelStatus}
             handlePixelCopy={this.handlePixelCopy}
+            handleTrackingIdCopy={this.handleTrackingIdCopy}
             setActiveState={this.setActiveState}
             setNotification={this.setNotification}
             clearNotification={this.clearNotification}
