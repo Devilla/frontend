@@ -59,12 +59,12 @@ class Notification extends Component {
     browserHistory.push('/new');
   }
 
-  deleteCampaign = (indexes, campaigns,e) => {
+  deleteCampaign = (indexes, campaigns, e) => {
     this.setState( (prevState) => {
       return {
-        deleteCampaign : !prevState.deleteCampaign,
+        deleteCampaign: !prevState.deleteCampaign,
         index: indexes,
-        campaign : campaigns
+        campaign: campaigns
       };
     });
   }
@@ -72,7 +72,6 @@ class Notification extends Component {
   deletepopupContent = () => {
     this.props.removeCampaign(this.state.index, this.state.campaign._id);
     this.props.updateCampaign(this.state.campaign);
-    browserHistory.push('/dashboard');
   }
 
 
