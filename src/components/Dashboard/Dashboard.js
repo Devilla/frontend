@@ -93,6 +93,7 @@ class Dashboard extends Component {
         delete tempData['fillColor'];
         delete tempData['pointColor'];
         tempData['data']=[0, 0, 0, 0, 0, 0, 0];
+
         if(user && user.aggregations && user.aggregations.users.buckets.length) {
           user.aggregations.users.buckets.map(bucket => {
             var dayDate = Moment(bucket.key_as_string)._i;
@@ -106,6 +107,7 @@ class Dashboard extends Component {
           tempData['label'] = campaign.campaignName;
           tempData['data'] = [0, 0, 0, 0, 0, 0, 0];
         }
+
         tempData['fillColor'] = color_list[index];
         tempData['pointColor'] = color_list[index];
         dataSet.push(tempData);
@@ -283,9 +285,9 @@ class Dashboard extends Component {
   renderCampaignsIconList = (campaignList) => {
     if(campaignList)
       return campaignList.map(campaign => {
-        return <li className="list-inline-item">
+        return <li key={campaign.label} className="list-inline-item">
           <div className="icon-box" style={{background: campaign.pointColor}}></div>
-          <div>{campaign.label}</div>
+          <div className="campaign-list-label">{campaign.label}</div>
         </li>;
       });
     else
