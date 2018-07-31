@@ -132,15 +132,15 @@ function* addSubdomain(action) {
 function* removeSubDomain(action) {
   try {
     yield put(load());
-    const res = yield call(api.DELETE, 'subdomain', action.id);
+    const res = yield call(api.DELETE, `subdomain/${action.id}`);
     if(res.error)
       console.log(res.error);
     else
-      yield put(actions.subDomainSuccess(res));
+      yield put(actions.popSubDomain(action.index));
     yield put(loaded());
   } catch (error) {
     yield put(loaded());
-    console.log('Failed to fetch doc', error);
+    console.log('Failed to delete subdomain', error);
     yield toast.error(error.message, toastConfig);
   }
 }

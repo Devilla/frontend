@@ -1,4 +1,7 @@
 .customer-header {
+  .progress {
+    background: #fafafa !important;
+  }
   .progress-bar {
     height: 3.5px;
     background: #2D7BF4 !important;
@@ -25,6 +28,10 @@
         text-transform: uppercase;
       }
     }
+  }
+
+  .nav-link.dropdown-toggle.nav-user {
+    background: none !important;
   }
 
   .nav-custom-header {
