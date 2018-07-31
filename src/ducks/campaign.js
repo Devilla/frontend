@@ -17,6 +17,7 @@ export const FETCH_SUB_DOMAIN = action('FETCH_SUB_DOMAIN');
 export const SUB_DOMAIN_SUCCESS = action('SUB_DOMAIN_SUCCESS');
 export const CLEAR_SUB_DOMAIN = action('CLEAR_SUB_DOMAIN');
 export const REMOVE_SUB_DOMAIN = action('REMOVE_SUB_DOMAIN');
+export const POP_SUB_DOMAIN = action('POP_SUB_DOMAIN');
 
 export const fetchCampaign = () => ({ type: FETCH });
 export const createCampaign = (campaign) => ({ type: CREATE, campaign });
@@ -32,7 +33,8 @@ export const addSubdomain = (domain) => ({ type: ADD_SUB_DOMAIN, domain });
 export const fetchSubdomain = (campaignId) => ({ type: FETCH_SUB_DOMAIN, campaignId });
 export const subDomainSuccess = (domain) => ({ type: SUB_DOMAIN_SUCCESS, domain });
 export const clearSubDomain = () => ({ type: CLEAR_SUB_DOMAIN });
-export const removeSubDomain = (id) => ({ type: REMOVE_SUB_DOMAIN,id });
+export const removeSubDomain = (id, index) => ({ type: REMOVE_SUB_DOMAIN, id, index });
+export const popSubDomain = (index) => ({ type: POP_SUB_DOMAIN, index });
 
 const initialState = fromJS({});
 
@@ -50,6 +52,8 @@ const campaign = (state = initialState, action) => {
       return state.set('campaignInfo', action.campaign);
     case SUB_DOMAIN_SUCCESS:
       return state.set('subdomain', action.domain);
+    case POP_SUB_DOMAIN:
+      return state.set('subdomain', state.get('subdomain').slice(0,action.index).concat(state.get('subdomain').slice(action.index+1)));
     case CLEAR_SUB_DOMAIN:
       return state.set('subdomain', '');
     default:

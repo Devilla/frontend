@@ -136,7 +136,7 @@ function* removeSubDomain(action) {
     if(res.error)
       console.log(res.error);
     else
-      yield put(actions.subDomainSuccess(res));
+      yield put(actions.popSubDomain(action.index));
     yield put(loaded());
   } catch (error) {
     yield put(loaded());

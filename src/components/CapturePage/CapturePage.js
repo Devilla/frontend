@@ -267,7 +267,7 @@ class CapturePage extends Component {
               <span className="btn btn-primary nav nav-pills waves-light waves-effect number pl-5 pr-5" onClick={() => this.addDomainUrl(domain.domainUrl, index)}>
                 Add
               </span>
-              <i className=" icon-trash trash" onClick={()=>{this.props.removeSubDomain(domain._id);}}></i>
+              <i className=" icon-trash trash" onClick={() => this.props.removeSubDomain(domain._id, index)}></i>
             </span>
           </div>
         );
