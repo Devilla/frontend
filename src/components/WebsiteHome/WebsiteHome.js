@@ -3,7 +3,6 @@ import { Link } from 'react-router';
 import Slider from 'react-slick';
 import NotificationView from './NotificationView';
 import './WebsiteHome.scss';
-
 import {
   Marvel,
   Illustration,
