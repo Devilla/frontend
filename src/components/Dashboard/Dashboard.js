@@ -130,6 +130,18 @@ class Dashboard extends Component {
       }];
     }
   }
+  getHeatMapHours = () => {
+    let start, end , range1, acc  ;
+
+    start  = moment().startOf('day').format('YYYY-MM-DD HH:mm:ss');
+    end    = moment().endOf('day').format('YYYY-MM-DD HH:mm:ss');
+
+    range1 = moment.range(start, end);
+    acc = Array.from(range1.by('hour', {   step:2}));
+    acc.length =6;
+    acc = acc.map(m => m.format('HH A'));
+    return acc;
+  }
 
   getDays = () => {
     let start, end , range1, acc  ;
@@ -299,8 +311,8 @@ class Dashboard extends Component {
 
 
   render() {
-    const xLabels = this.getDays();
-    const yLabels = ['Sun', 'Mon', 'Tue','Wed','Fri','Sat'];
+    const yLabels = this.getHeatMapHours();
+    const xLabels = ['Sun', 'Mon', 'Tue','Wed','Fri','Sat'];
     const datas = new Array(yLabels.length)
       .fill(0)
       .map(() => new Array(xLabels.length).fill(0).map(() => Math.floor(Math.random() * 100)));
@@ -485,8 +497,8 @@ class Dashboard extends Component {
               </div>
             </Col>
           </Row>
-          <Row>
-            <Col md={12}>
+          <Row  className="justify-content-center text-muted">
+            <Col md={11}>
               <HeatMap
                 xLabels={xLabels}
                 yLabels={yLabels}
