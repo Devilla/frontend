@@ -16,6 +16,9 @@ import {
 import { browserHistory } from 'react-router';
 
 class WebsiteHome extends Component {
+  componentDidMount() {
+    window.scrollTo(0,0);
+  }
 
   constructor() {
     super();

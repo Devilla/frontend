@@ -36,6 +36,9 @@ class WebsiteSignUp extends Component {
       error: ''
     };
   }
+  componentDidMount() {
+    window.scrollTo(0,0);
+  }
 
   componentWillMount() {
     if(this.props.location && this.props.location.query.email)

@@ -9,6 +9,9 @@ import { Link } from 'react-router';
 import './WebsiteFeature.scss';
 
 class WebsiteFeature extends Component {
+  componentDidMount() {
+    window.scrollTo(0,0);
+  }
 
   render() {
 
