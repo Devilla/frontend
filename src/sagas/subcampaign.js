@@ -13,7 +13,7 @@ const toastConfig = {
 function* fetchSubCampaign(action) {
   try {
     yield put(load());
-    const res = yield call(api.GET, `subcampaign/campaign/${action.campId}`);
+    const res = yield call(api.GET, `subcampaign?campaign=${action.subCampId}`);
     if(res.error)
       console.log(res.error);
     else
