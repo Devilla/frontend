@@ -137,7 +137,7 @@ class Dashboard extends Component {
     end    = moment().endOf('day').format('YYYY-MM-DD HH:mm:ss');
 
     range1 = moment.range(start, end);
-    acc = Array.from(range1.by('hour', {   step:2}));
+    acc = Array.from(range1.by('hour', {   step:4}));
     acc.length =6;
     acc = acc.map(m => m.format('HH A'));
     return acc;

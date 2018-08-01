@@ -7,7 +7,7 @@
     .fa-info-circle {
         position: relative;
         top: 12px;
-        right: 15px;    
+        right: 15px;
         font-size: 15px;
         &.capture {
             right: -11px !important;
@@ -33,13 +33,13 @@
        .align-modal {
        width: 800px !important;
        position: relative;
-       right: 100px;
+       right: 100px !important;
        }
 
     .info-text {
      position: relative;
         top: 25px;
-        border-radius: 5px; 
+        border-radius: 5px;
         border: 1px solid #097fff;
         height: 25px;
         padding: 5px;
@@ -78,6 +78,6 @@
         top: 25px;
         left: 50px;
     }
-    
-    
+
+
 }
