@@ -72,7 +72,7 @@
   }
   .show-modal {
    z-index: 999999999 !important;
-   overflow: auto !important;
+   overflow: scroll;
    background: rgba(248, 247, 247, 0.7);
   }
   .align-modal {
