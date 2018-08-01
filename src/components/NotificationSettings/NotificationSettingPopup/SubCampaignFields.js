@@ -6,17 +6,19 @@ const SubCampaignFields = ({
   productName,
   productUrl,
   captureUrl,
+  isActive,
   errorName,
   errorProductUrl,
   errorProductName,
   errorCaptureUrl,
   selectedSubCampaign,
   displaynotifbuttons,
-  externalValue,
   handleStateChange,
   show,
-  handleSwitchChange,
-  submitSubCampaign
+  handleToggleChange,
+  submitSubCampaign,
+  duplicateSubCampaign,
+  // deleteSubCampaign
 }) => {
   return (
     <div className="sub-campaign-fields">
@@ -65,7 +67,7 @@ const SubCampaignFields = ({
         />
         <i className="fa fa-info-circle capture" data-toggle="tooltip" data-delay='{"show":"0", "hide":"100"}' title="Your Product name will be displayed on notifications"> </i>
       </Row>
-      <Row className="justify-content-center">
+      <Row className="toggle-btn-custom">
         {selectedSubCampaign &&
           <div>
             <span className="btn btn-outline-primary n-btn"> <i className=" mdi mdi-account-multiple"></i>&nbsp;Recent</span>
@@ -74,23 +76,24 @@ const SubCampaignFields = ({
           </div>
         }
 
-        <span className="info-text"  onClick={() => show()}>  <i className={displaynotifbuttons?'icon-arrow-up pl-2':'icon-arrow-down pl-2'}></i></span>
+        {show !== 'hidden' && <span className="info-text"  onClick={() => show()}>  <i className={displaynotifbuttons?'icon-arrow-up pl-2':'icon-arrow-down pl-2'}></i></span>}
         <div className="toggle-btn">
-          <input className="tgl tgl-ios" id="cb2" type="checkbox"  defaultChecked={externalValue}/>
-          <label className="tgl-btn toggleId"  htmlFor="cb2"  onClick={() => handleSwitchChange(!externalValue)}></label>
+          <input className="tgl tgl-ios" id="cb2" type="checkbox"  defaultChecked={isActive}/>
+          <label className="tgl-btn toggleId"  htmlFor="cb2"  onClick={() => handleToggleChange(!isActive)}></label>
         </div>
       </Row>
       <Row className="justify-content-center">
-        {displaynotifbuttons &&
+        {(displaynotifbuttons || show == 'hidden') &&
           <Row className="toggle-area">
-
-            <Col md={4} className="toggle-save">
+            <Col md={2} className="toggle-save">
               <button  className="btn btn-primary" onClick={submitSubCampaign}>Save </button>
             </Col>
-            <Col md={4} className="toggle-settings">
-              <button className="btn btn-primary">Duplicate Settings</button>
+            <Col md={4} className="toggle-save">
+              <button className="btn btn-primary" onClick={duplicateSubCampaign}>Duplicate Settings</button>
             </Col>
-
+            {/* <Col md={4} className="toggle-save">
+              <button className="btn btn-primary" onClick={() => deleteSubCampaign(selectedSubCampaign._id)}>Delete</button>
+            </Col> */}
           </Row>
         }
       </Row>

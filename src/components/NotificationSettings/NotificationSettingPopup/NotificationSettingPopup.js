@@ -16,6 +16,7 @@ class NotificationSettingPopup  extends Component {
       productName: '',
       productUrl: '',
       captureUrl: '',
+      isActive: true,
       errorName: '',
       errorProductName: '',
       errorProductUrl: '',
@@ -23,7 +24,6 @@ class NotificationSettingPopup  extends Component {
       selectedSubCampaign: '',
       displayField: false,
       displaynotifbuttons : false,
-      externalValue:  false,
       arrayForm : []
     };
   }
@@ -46,13 +46,15 @@ class NotificationSettingPopup  extends Component {
         name: '',
         productName: '',
         productUrl: '',
-        captureUrl: ''
+        captureUrl: '',
+        isActive: true
       };
     });
   }
 
-  handleSwitchChange = () =>  {
+  handleToggleChange = (value) =>  {
     //code to be written
+    this.setState({isActive: value});
   }
 
   handleStateChange = (e) => {
@@ -66,7 +68,7 @@ class NotificationSettingPopup  extends Component {
   }
 
   submitSubCampaign = () => {
-    const { name, productName, productUrl, captureUrl } = this.state;
+    const { name, productName, productUrl, captureUrl, isActive } = this.state;
     const { campaign, createSubCampaign } = this.props;
 
     if(!name)
@@ -84,7 +86,7 @@ class NotificationSettingPopup  extends Component {
       productUrl: productUrl,
       captureUrl: captureUrl,
       campaign: campaign._id,
-      isActive: true
+      isActive: isActive
     };
 
     createSubCampaign(subCampaign);
@@ -93,14 +95,46 @@ class NotificationSettingPopup  extends Component {
       productName: '',
       productUrl: '',
       captureUrl: '',
+      isActive: true,
       displaynotifbuttons: false,
       displayField: false,
-      externalValue: false
     });
   }
 
   updateSubCampaign = () => {
-    //coming soon
+    const { name, productName, productUrl, captureUrl, isActive, selectedSubCampaign } = this.state;
+
+    if(!name)
+      return this.setState({errorName: true});
+    else if(!productName)
+      return this.setState({errorProductName: true});
+    else if(!productUrl)
+      return this.setState({errorProductUrl: true});
+    else if(!captureUrl)
+      return this.setState({errorCaptureUrl: true});
+
+    const subCampaign = {
+      name: name,
+      productName: productName,
+      productUrl: productUrl,
+      captureUrl: captureUrl,
+      isActive: isActive,
+      id: selectedSubCampaign._id
+    };
+
+    this.props.updateSubCampaign(subCampaign);
+
+    return this.setState({
+      name: '',
+      productName: '',
+      productUrl: '',
+      captureUrl: '',
+      isActive: true,
+      displaynotifbuttons: false,
+      displayField: false,
+      selectedSubCampaign: ''
+    });
+
   }
 
   selectSubCampaign = (subCampaign) => {
@@ -112,7 +146,8 @@ class NotificationSettingPopup  extends Component {
         name: subCampaign.name,
         productName: subCampaign.productName,
         productUrl: subCampaign.productUrl,
-        captureUrl: subCampaign.captureUrl
+        captureUrl: subCampaign.captureUrl,
+        isActive: subCampaign.isActive
       };
     else
       value = {
@@ -120,14 +155,41 @@ class NotificationSettingPopup  extends Component {
         name: '',
         productName: '',
         productUrl: '',
-        captureUrl: ''
+        captureUrl: '',
+        isActive: true
       };
 
     this.setState(value);
   }
 
+  duplicateSubCampaign = () => {
+    const { selectedSubCampaign } = this.state;
+
+    const subCampaign = {
+      name: selectedSubCampaign.name,
+      productName: selectedSubCampaign.productName,
+      productUrl: selectedSubCampaign.productUrl,
+      captureUrl: selectedSubCampaign.captureUrl,
+      campaign: selectedSubCampaign.campaign,
+      isActive: false
+    };
+
+    this.props.createSubCampaign(subCampaign);
+    return this.setState({
+      name: '',
+      productName: '',
+      productUrl: '',
+      captureUrl: '',
+      isActive: true,
+      displaynotifbuttons: false,
+      displayField: false,
+      selectedSubCampaign: ''
+    });
+  }
+
+
   render() {
-    const { subcampaigns } = this.props;
+    const { subcampaigns, deleteSubCampaign } = this.props;
     return (
       <div className="popuppage-container">
         <button type="button" className="btn btn-outline-primary  addpage" data-toggle="modal" data-target="#myModal" onClick={()=>{}} ><i className="fi-plus"></i>&nbsp;Set Page Specifc Notifications</button>
@@ -143,8 +205,8 @@ class NotificationSettingPopup  extends Component {
                 {this.state.displayField ?
                   <SubCampaignFields
                     handleStateChange={this.handleStateChange}
-                    show={this.show}
-                    handleSwitchChange={this.handleSwitchChange}
+                    show="hidden"
+                    handleToggleChange={this.handleToggleChange}
                     submitSubCampaign={this.submitSubCampaign}
                     {...this.state}
                   />
@@ -152,8 +214,11 @@ class NotificationSettingPopup  extends Component {
                 <SubCampaignList
                   selectSubCampaign={this.selectSubCampaign}
                   handleStateChange={this.handleStateChange}
-                  handleSwitchChange={this.handleSwitchChange}
-                  updateSubCampaign={this.submitSubCampaign}
+                  handleToggleChange={this.handleToggleChange}
+                  show={this.show}
+                  updateSubCampaign={this.updateSubCampaign}
+                  duplicateSubCampaign={this.duplicateSubCampaign}
+                  deleteSubCampaign={deleteSubCampaign}
                   subcampaigns={subcampaigns}
                   {...this.state}
                 />

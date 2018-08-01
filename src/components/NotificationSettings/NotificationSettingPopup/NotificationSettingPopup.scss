@@ -38,11 +38,11 @@
 
     .info-text {
      position: relative;
-        top: 25px;
+        // top: 25px;
         border-radius: 5px;
         border: 1px solid #097fff;
-        height: 25px;
-        padding: 5px;
+        height: 35px;
+        padding: 8px;
         padding-right: 13px;
         cursor: pointer;
         color: #097fff;
@@ -60,11 +60,14 @@
         padding: 7px 50px !important;
         border-radius: 5px !important;
         margin-right: 10px;
-        margin-top: 20px;
+        // margin-top: 20px;
 
     }
     .toggle-area {
         margin-top: 30px;
+        justify-content: space-between;
+        display: flex;
+        width: 65%;
         .toggle-save button {
             border-radius: 5px !important;
         }
@@ -73,11 +76,16 @@
         }
 
     }
-    .toggle-btn {
+
+    .toggle-btn-custom {
+      padding: 15px 0px 0px 0px;
+      justify-content: space-around;
+      .toggle-btn {
+        top: 5px;
         position: relative;
-        top: 25px;
-        left: 50px;
+      }
     }
+
 
     .sub-campaign-fields {
       padding: 25px 0px;
@@ -108,4 +116,6 @@
         pointer: cursor;
       }
     }
+
+
 }
