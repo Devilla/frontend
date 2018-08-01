@@ -7,7 +7,7 @@ const SubCampaignList = (props) => {
     <div>
       {
         props.subcampaigns.map(subcampaign =>
-          <div key={subcampaign._id} className="card">
+          <div key={subcampaign._id} className="card" onClick={() => props.selectSubCampaign(props.selectedSubCampaign._id == subcampaign._id?null:subcampaign)}>
             <div className="card-header">
               <div className="header-body">
                 <div className="name-width">{subcampaign.name}</div>
@@ -16,10 +16,7 @@ const SubCampaignList = (props) => {
                   Status:
                   <div className="icon-box" style={{background: subcampaign.isActive?'lightgreen':'red'}}></div>
                 </div>
-                <i
-                  className={props.selectedSubCampaign._id == subcampaign._id?'icon-pointer-cursor icon-arrow-up pl-2':'icon-pointer-cursor icon-arrow-down pl-2'}
-                  onClick={() => props.selectSubCampaign(props.selectedSubCampaign._id == subcampaign._id?null:subcampaign)}
-                >
+                <i className={props.selectedSubCampaign._id == subcampaign._id?'icon-pointer-cursor icon-arrow-up pl-2':'icon-pointer-cursor icon-arrow-down pl-2'}>
                 </i>
               </div>
             </div>

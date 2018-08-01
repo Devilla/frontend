@@ -84,13 +84,15 @@ const SubCampaignFields = ({
       </Row>
       <Row className="justify-content-center">
         {(displaynotifbuttons || show == 'hidden') &&
-          <Row className="toggle-area">
+          <Row className="toggle-area" style={show == 'hidden'? { width: '100%', marginTop: '0px', justifyContent: 'flex-end' }: {}}>
             <Col md={2} className="toggle-save">
               <button  className="btn btn-primary" onClick={submitSubCampaign}>Save </button>
             </Col>
-            <Col md={4} className="toggle-save">
-              <button className="btn btn-primary" onClick={duplicateSubCampaign}>Duplicate Settings</button>
-            </Col>
+            {show !== 'hidden' &&
+              <Col md={4} className="toggle-save">
+                <button className="btn btn-primary" onClick={duplicateSubCampaign}>Duplicate Settings</button>
+              </Col>
+            }
             {/* <Col md={4} className="toggle-save">
               <button className="btn btn-primary" onClick={() => deleteSubCampaign(selectedSubCampaign._id)}>Delete</button>
             </Col> */}
