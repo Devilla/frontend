@@ -40,7 +40,7 @@ class WebsiteIntegrations extends Component {
             <div className="container">
               <div className="row">
                 <div className="col-md-12">
-                  <h1>Popular integrations</h1>
+                  <h2>Popular integrations</h2>
                 </div>
               </div>
             </div>
@@ -53,7 +53,7 @@ class WebsiteIntegrations extends Component {
 
 
                   <Row className="justify-content-center mb-5">
-                    <Col md={3}  className="box-shadow ribbon-box">
+                    <Col md={3}  className="box-shadow">
 
                       <div className="card-box tilebox-one">
                         <img src={Wordpress} className="logocompany" />
@@ -63,7 +63,7 @@ class WebsiteIntegrations extends Component {
                         <span className="text-muted"  >View Details&nbsp; <i className="fi-open"></i></span>
                       </div>
                     </Col>
-                    <Col md={3}  className="box-shadow ribbon-box">
+                    <Col md={3}  className="box-shadow">
 
                       <div className="card-box tilebox-one">
                         <img src={Googletag} className="logocompany" />
@@ -74,10 +74,10 @@ class WebsiteIntegrations extends Component {
                       </div>
                     </Col>
 
-                    <Col md={3}  className="box-shadow ribbon-box">
+                    <Col md={3}  className="box-shadow ">
 
                       <div className="card-box tilebox-one">
-                        <img src={Zapier} className="logocompany demio" />
+                        <img src={Zapier} className="logocompany zapier" />
                         <h4 className="text-muted text-uppercase mt-0 ml-3 i-title zapier">Zapier</h4>
                         <p className="text-center desc-page text-muted">Sync your conversation and import yourFAQs from Zapier</p>
 
@@ -93,7 +93,7 @@ class WebsiteIntegrations extends Component {
             <div className="container">
               <div className="row">
                 <div className="col-md-12">
-                  <h1>All integrations</h1>
+                  <h2>All integrations</h2>
                 </div>
                 <Integrations/>
               </div>
