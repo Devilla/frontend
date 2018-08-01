@@ -8,11 +8,13 @@ import { fetchCampaignInfo, successCampaign , fetchCampaign } from 'ducks/campai
 import './Dashboard.scss';
 import Card from './Card';
 import ReactChartJs from 'react-chartjs';
+import HeatMap from 'react-heatmap-grid';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
 var LineChart = ReactChartJs.Line;
 let moment = extendMoment(Moment);
+
 
 const color_list = [
   '#87CEFA',
@@ -43,6 +45,7 @@ class Dashboard extends Component {
     };
     this.handleRouteChange = this.handleRouteChange.bind(this);
   }
+
 
   componentWillMount() {
     this.props.fetchCampaignInfo();
@@ -126,6 +129,18 @@ class Dashboard extends Component {
         data: [0, 0, 0, 0, 0, 0, 0]
       }];
     }
+  }
+  getHeatMapHours = () => {
+    let start, end , range1, acc  ;
+
+    start  = moment().startOf('day').format('YYYY-MM-DD HH:mm:ss');
+    end    = moment().endOf('day').format('YYYY-MM-DD HH:mm:ss');
+
+    range1 = moment.range(start, end);
+    acc = Array.from(range1.by('hour', {   step:2}));
+    acc.length =6;
+    acc = acc.map(m => m.format('HH A'));
+    return acc;
   }
 
   getDays = () => {
@@ -296,6 +311,11 @@ class Dashboard extends Component {
 
 
   render() {
+    const yLabels = this.getHeatMapHours();
+    const xLabels = ['Sun', 'Mon', 'Tue','Wed','Fri','Sat'];
+    const datas = new Array(yLabels.length)
+      .fill(0)
+      .map(() => new Array(xLabels.length).fill(0).map(() => Math.floor(Math.random() * 100)));
     const { campaignInfo } = this.props;
     const { selectedCampaign } = this.state;
     const { userCount, totalUsers } = this.usersCount();
@@ -477,8 +497,14 @@ class Dashboard extends Component {
               </div>
             </Col>
           </Row>
-          <Row>
-
+          <Row  className="justify-content-center text-muted">
+            <Col md={11}>
+              <HeatMap
+                xLabels={xLabels}
+                yLabels={yLabels}
+                data={datas}
+              />
+            </Col>
           </Row>
         </div>
       </div>
