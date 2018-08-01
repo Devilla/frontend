@@ -10,6 +10,7 @@ import configuration from './configuration';
 import elastic from './elastic';
 import pageurl from './pageurl';
 import webhooks from './webhooks';
+import subcampaign from './subcampaign';
 
 export default function* rootSaga() {
   yield [
@@ -23,6 +24,7 @@ export default function* rootSaga() {
     fork(configuration),
     fork(elastic),
     fork(pageurl),
-    fork(webhooks)
+    fork(webhooks),
+    fork(subcampaign)
   ];
 }
