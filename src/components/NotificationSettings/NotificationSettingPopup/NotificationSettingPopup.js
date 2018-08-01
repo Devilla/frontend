@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import { fetchSubCampaign, fetchOneSubCampaign, createSubCampaign, updateSubCampaign, deleteSubCampaign, clearSubCampaign } from 'ducks/subcampaign';
 import SubCampaignFields from './SubCampaignFields';
+import SubCampaignList from './SubCampaignList';
 import './NotificationSettingPopup.scss';
 
 
@@ -19,6 +20,7 @@ class NotificationSettingPopup  extends Component {
       errorProductName: '',
       errorProductUrl: '',
       errorCaptureUrl: '',
+      selectedSubCampaign: '',
       displayField: false,
       displaynotifbuttons : false,
       externalValue:  false,
@@ -38,7 +40,14 @@ class NotificationSettingPopup  extends Component {
 
   addpage = () => {
     this.setState((prevState) => {
-      return {displayField : !prevState.displayField };
+      return {
+        displayField : !prevState.displayField,
+        selectedSubCampaign: '',
+        name: '',
+        productName: '',
+        productUrl: '',
+        captureUrl: ''
+      };
     });
   }
 
@@ -90,7 +99,35 @@ class NotificationSettingPopup  extends Component {
     });
   }
 
+  updateSubCampaign = () => {
+    //coming soon
+  }
+
+  selectSubCampaign = (subCampaign) => {
+    let value;
+    if(subCampaign)
+      value = {
+        displayField: false,
+        selectedSubCampaign: subCampaign,
+        name: subCampaign.name,
+        productName: subCampaign.productName,
+        productUrl: subCampaign.productUrl,
+        captureUrl: subCampaign.captureUrl
+      };
+    else
+      value = {
+        selectedSubCampaign: '',
+        name: '',
+        productName: '',
+        productUrl: '',
+        captureUrl: ''
+      };
+
+    this.setState(value);
+  }
+
   render() {
+    const { subcampaigns } = this.props;
     return (
       <div className="popuppage-container">
         <button type="button" className="btn btn-outline-primary  addpage" data-toggle="modal" data-target="#myModal" onClick={()=>{}} ><i className="fi-plus"></i>&nbsp;Set Page Specifc Notifications</button>
@@ -112,6 +149,14 @@ class NotificationSettingPopup  extends Component {
                     {...this.state}
                   />
                   : ' '}
+                <SubCampaignList
+                  selectSubCampaign={this.selectSubCampaign}
+                  handleStateChange={this.handleStateChange}
+                  handleSwitchChange={this.handleSwitchChange}
+                  updateSubCampaign={this.submitSubCampaign}
+                  subcampaigns={subcampaigns}
+                  {...this.state}
+                />
               </div>
 
             </div>

@@ -79,5 +79,33 @@
         left: 50px;
     }
 
+    .sub-campaign-fields {
+      padding: 25px 0px;
+    }
 
+    .card {
+      padding: 10px 0px;
+    }
+    .header-body {
+      display: flex;
+      justify-content: space-between;
+      .name-width {
+        width: 30%;
+      }
+      .url-width {
+        width: 30%;
+      }
+      .header-status {
+        display: flex;
+        .icon-box {
+          width: 15px;
+          height: 15px;
+          border-radius: 10px;
+          margin: 3px 8px;
+        }
+      }
+      .icon-pointer-cursor {
+        pointer: cursor;
+      }
+    }
 }

@@ -10,6 +10,7 @@ const SubCampaignFields = ({
   errorProductUrl,
   errorProductName,
   errorCaptureUrl,
+  selectedSubCampaign,
   displaynotifbuttons,
   externalValue,
   handleStateChange,
@@ -18,7 +19,7 @@ const SubCampaignFields = ({
   submitSubCampaign
 }) => {
   return (
-    <div>
+    <div className="sub-campaign-fields">
       <Row className="justify-content-around">
         <input
           type="text"
@@ -65,9 +66,14 @@ const SubCampaignFields = ({
         <i className="fa fa-info-circle capture" data-toggle="tooltip" data-delay='{"show":"0", "hide":"100"}' title="Your Product name will be displayed on notifications"> </i>
       </Row>
       <Row className="justify-content-center">
-        <span className="btn btn-outline-primary n-btn"> <i className=" mdi mdi-account-multiple"></i>&nbsp;Recent</span>
-        <span className="btn btn-outline-primary n-btn"> <i className=" mdi mdi-adjust"></i>&nbsp;Live</span>
-        <span className="btn btn-outline-primary n-btn"> <i className="mdi mdi-fire"></i>&nbsp;Bulk</span>
+        {selectedSubCampaign &&
+          <div>
+            <span className="btn btn-outline-primary n-btn"> <i className=" mdi mdi-account-multiple"></i>&nbsp;Recent</span>
+            <span className="btn btn-outline-primary n-btn"> <i className=" mdi mdi-adjust"></i>&nbsp;Live</span>
+            <span className="btn btn-outline-primary n-btn"> <i className="mdi mdi-fire"></i>&nbsp;Bulk</span>
+          </div>
+        }
+
         <span className="info-text"  onClick={() => show()}>  <i className={displaynotifbuttons?'icon-arrow-up pl-2':'icon-arrow-down pl-2'}></i></span>
         <div className="toggle-btn">
           <input className="tgl tgl-ios" id="cb2" type="checkbox"  defaultChecked={externalValue}/>
@@ -75,7 +81,7 @@ const SubCampaignFields = ({
         </div>
       </Row>
       <Row className="justify-content-center">
-        {displaynotifbuttons ?
+        {displaynotifbuttons &&
           <Row className="toggle-area">
 
             <Col md={4} className="toggle-save">
@@ -86,8 +92,7 @@ const SubCampaignFields = ({
             </Col>
 
           </Row>
-
-          : ' '}
+        }
       </Row>
     </div>
   );
