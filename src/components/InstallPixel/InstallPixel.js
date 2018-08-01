@@ -77,7 +77,7 @@ const InstallPixel = ({
           <button
             type="button"
             className="btn btn-outline-primary waves-light waves-effect webhook-btn  pl-3 pr-3"
-            onClick={() => { this.toggleDOM.blur(); toggleWebhook(); }}
+            onClick={() => { this.toggleDOM.blur(); toggleWebhook(); window.scrollTo(0,window.outerHeight);}}
             ref={(toggleDOM) => this.toggleDOM = toggleDOM}
           >
           Webhook Integrations

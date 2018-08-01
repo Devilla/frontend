@@ -28,6 +28,9 @@ class BillingDetails extends Component {
     props.fetchPayment();
     props.fetchInvoices();
   }
+  componentDidMount() {
+    window.scrollTo(0,0);
+  }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.profile) {

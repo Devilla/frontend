@@ -17,6 +17,10 @@ class WebsitePricing extends Component {
     };
   }
 
+  componentDidMount() {
+    window.scrollTo(0,0);
+  }
+
 
   componentWillMount() {
     fetch('https://servicebot.useinfluence.co/api/v1/service-templates/public')

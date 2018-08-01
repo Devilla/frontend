@@ -14,7 +14,9 @@ class WebsitePayment extends Component {
       coupon: ''
     };
   }
-
+  componentDidMount() {
+    window.scrollTo(0,0);
+  }
   componentWillMount() {
     fetch('https://servicebot.useinfluence.co/api/v1/service-templates/public')
       .then((res) => res.json())

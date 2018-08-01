@@ -183,6 +183,104 @@ const NotificationView = ({tab, display, position, animation, notificationPanelS
           </div>
         </div>
 
+        <div style={tab == '4' || tab =='4.1'
+          ? {}
+          : {
+            display: 'none'
+          }}>
+          <div id="FPqR3dGiqJeA3dGi7MM9_0">
+            <div className={tab == '4' ? 'FPqR2B_4qJeA2B_47MM9_0 FPqRD2zVqJeAD2zV7MM9_0 border': 'FPqR2B_4qJeA2B_47MM9_0 FPqRD2zVqJeAD2zV7MM9_0'} style={tab == '4'
+              ?{}
+              :{
+                borderRadius: notificationStyle.borderRadius,
+                backgroundColor: notificationStyle.backgroundColor,
+                border: `${notificationStyle.borderWidth} ${notificationStyle.borderStyle} ${notificationStyle.borderColor}`
+              }}>
+              <div id="FPqR3acHqJeA3acH7MM9_0">
+                <div className="FPqRH0WDqJeAH0WD7MM9_0" style={{display: 'block',position: 'absolute',left: 0,top: 0,width: '69px', height: '69px',padding: '1px'}}>
+                  <div className="FPqRh0ePqJeAh0eP7MM9_0"></div>
+                </div>
+                <div className="FPqR15RvqJeA15Rv7MM9_0" style={{
+                  color: notificationStyle.color,
+                  fontFamily: notificationStyle.fontFamily,
+                  fontWeight: notificationStyle.fontWeight
+                }}>
+                  <div className="FPqR2fwXqJeA2fwX7MM9_0" style={{
+                    color: notificationStyle.color,
+                    fontFamily: notificationStyle.fontFamily,
+                    fontWeight: notificationStyle.fontWeight
+                  }}>
+                    <span className="FPqR1Jr6qJeA1Jr67MM9_0">
+                      <span >250 </span>
+                    </span><span>
+                      people</span>
+                  </div>
+                  <span className="second-swivel">
+                    are viewing this site
+                  </span>
+                </div>
+              </div>
+              <div className="FPqR159fqJeA159f7MM9_0" style={{
+                display: 'none'
+              }}>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                  <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.597 17.954l-4.591-4.55-4.555 4.596-1.405-1.405 4.547-4.592-4.593-4.552 1.405-1.405 4.588 4.543 4.545-4.589 1.416 1.403-4.546 4.587 4.592 4.548-1.403 1.416z"></path>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div style={tab == '5' || tab =='5.1'
+          ? {}
+          : {
+            display: 'none'
+          }}>
+          <div id="FPqR3dGiqJeA3dGi7MM9_0">
+            <div className={tab == '5' ? 'FPqR2B_4qJeA2B_47MM9_0 FPqRD2zVqJeAD2zV7MM9_0 border': 'FPqR2B_4qJeA2B_47MM9_0 FPqRD2zVqJeAD2zV7MM9_0'} style={tab == '5'
+              ?{}
+              :{
+                borderRadius: notificationStyle.borderRadius,
+                backgroundColor: notificationStyle.backgroundColor,
+                border: `${notificationStyle.borderWidth} ${notificationStyle.borderStyle} ${notificationStyle.borderColor}`
+              }}>
+              <div id="FPqR3acHqJeA3acH7MM9_0">
+                <div className="FPqRH0WDqJeAH0WD7MM9_0" style={{display: 'block',padding: '1px'}}>
+                  <img src={FireIcon}/>
+                </div>
+                <div className="FPqR15RvqJeA15Rv7MM9_0" style={{
+                  color: notificationStyle.color,
+                  fontFamily: notificationStyle.fontFamily,
+                  fontWeight: notificationStyle.fontWeight
+                }}>
+                  <div className="FPqR2fwXqJeA2fwX7MM9_0" style={{
+                    color: notificationStyle.color,
+                    fontFamily: notificationStyle.fontFamily,
+                    fontWeight: notificationStyle.fontWeight
+                  }}>
+                    <span className="FPqR1Jr6qJeA1Jr67MM9_0">
+                      <span >250 </span>
+                    </span><span>
+                      people</span>
+                  </div>
+                  <span className="second-swivel">
+                    recently signed up
+                  </span>
+                </div>
+              </div>
+              <div className="FPqR159fqJeA159f7MM9_0" style={{
+                display: 'none'
+              }}>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                  <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.597 17.954l-4.591-4.55-4.555 4.596-1.405-1.405 4.547-4.592-4.593-4.552 1.405-1.405 4.588 4.543 4.545-4.589 1.416 1.403-4.546 4.587 4.592 4.548-1.403 1.416z"></path>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
         <div style={tab == '3' || tab =='3.1'
           ? {}
           : {

@@ -34,6 +34,9 @@ class WebsiteDemoPage extends  Component  {
     // this states are to be assigned to gather information
     this.state = initialState;
   }
+  componentDidMount() {
+    window.scrollTo(0,0);
+  }
   checkEmailBlur = (event) => {
     const value = event.target.value;
     const isEmailValid = validateEmail(value);

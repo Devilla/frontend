@@ -37,6 +37,9 @@ class Integrations extends Component {
       activePage: value
     });
   }
+  componentDidMount() {
+    window.scrollTo(0,0);
+  }
   componentWillUnmount() {
     this.setState({
       activePage: 0

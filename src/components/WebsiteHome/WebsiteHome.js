@@ -3,7 +3,6 @@ import { Link } from 'react-router';
 import Slider from 'react-slick';
 import NotificationView from './NotificationView';
 import './WebsiteHome.scss';
-
 import {
   Marvel,
   Illustration,
@@ -16,6 +15,9 @@ import {
 import { browserHistory } from 'react-router';
 
 class WebsiteHome extends Component {
+  componentDidMount() {
+    window.scrollTo(0,0);
+  }
 
   constructor() {
     super();
@@ -115,7 +117,7 @@ class WebsiteHome extends Component {
                 <div className="all-view typed-text typed-text--cursor">
                   Serving customers from over <span>150+</span> countries&nbsp;&nbsp;
                 </div>
-                
+
               </div>
             </div>
           </section>
