@@ -312,7 +312,7 @@ class Dashboard extends Component {
 
   render() {
     const yLabels = this.getHeatMapHours();
-    const xLabels = ['Sun', 'Mon', 'Tue','Wed','Fri','Sat'];
+    const xLabels = ['Sun', 'Mon', 'Tue','Wed','Thurs','Fri','Sat'];
     const datas = new Array(yLabels.length)
       .fill(0)
       .map(() => new Array(xLabels.length).fill(0).map(() => Math.floor(Math.random() * 100)));
