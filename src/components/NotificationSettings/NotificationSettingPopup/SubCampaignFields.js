@@ -18,6 +18,7 @@ const SubCampaignFields = ({
   handleToggleChange,
   submitSubCampaign,
   duplicateSubCampaign,
+  setNotification
   // deleteSubCampaign
 }) => {
   return (
@@ -70,9 +71,9 @@ const SubCampaignFields = ({
       <Row className="toggle-btn-custom">
         {selectedSubCampaign &&
           <div>
-            <span className="btn btn-outline-primary n-btn"> <i className=" mdi mdi-account-multiple"></i>&nbsp;Recent</span>
-            <span className="btn btn-outline-primary n-btn"> <i className=" mdi mdi-adjust"></i>&nbsp;Live</span>
-            <span className="btn btn-outline-primary n-btn"> <i className="mdi mdi-fire"></i>&nbsp;Bulk</span>
+            <span className="btn btn-outline-primary n-btn" onClick={() => setNotification(selectedSubCampaign.recent, 'Recent Activity')}> <i className=" mdi mdi-account-multiple"></i>&nbsp;Recent</span>
+            <span className="btn btn-outline-primary n-btn" onClick={() => setNotification(selectedSubCampaign.live, 'Bulk Activity')}> <i className=" mdi mdi-adjust"></i>&nbsp;Live</span>
+            <span className="btn btn-outline-primary n-btn" onClick={() => setNotification(selectedSubCampaign.bulk, 'Live Visitor Count')}> <i className="mdi mdi-fire"></i>&nbsp;Bulk</span>
           </div>
         }
 

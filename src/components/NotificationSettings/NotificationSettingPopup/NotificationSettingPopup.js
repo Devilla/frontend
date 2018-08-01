@@ -187,6 +187,10 @@ class NotificationSettingPopup  extends Component {
     });
   }
 
+  setNotification = (notification, name) => {
+    this.props.setNotification({notificationName: name});
+    this.props.setNewConfig(notification);
+  }
 
   render() {
     const { subcampaigns, deleteSubCampaign } = this.props;
@@ -220,6 +224,8 @@ class NotificationSettingPopup  extends Component {
                   duplicateSubCampaign={this.duplicateSubCampaign}
                   deleteSubCampaign={deleteSubCampaign}
                   subcampaigns={subcampaigns}
+                  setNotification={this.setNotification}
+                  // setNewConfig={setNewConfig}
                   {...this.state}
                 />
               </div>
