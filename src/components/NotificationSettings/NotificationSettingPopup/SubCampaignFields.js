@@ -73,7 +73,7 @@ const SubCampaignFields = ({
           <div>
             <span
               className="btn btn-outline-primary n-btn"
-              onClick={() => setNotification(selectedSubCampaign.recent, 'Recent Activity', 'recent')}>
+              onClick={() => setNotification(selectedSubCampaign.journey, 'Recent Activity', 'journey')}>
               <i className=" mdi mdi-account-multiple"></i>
               &nbsp;Recent
             </span>
@@ -85,7 +85,7 @@ const SubCampaignFields = ({
             </span>
             <span
               className="btn btn-outline-primary n-btn"
-              onClick={() => setNotification(selectedSubCampaign.bulk, 'Bulk Activity', 'bulk')}>
+              onClick={() => setNotification(selectedSubCampaign.identification, 'Bulk Activity', 'identification')}>
               <i className="mdi mdi-fire"></i>
               &nbsp;Bulk
             </span>
