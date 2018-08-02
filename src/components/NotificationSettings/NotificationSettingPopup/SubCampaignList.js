@@ -7,8 +7,8 @@ const SubCampaignList = (props) => {
     <div>
       {
         props.subcampaigns.map(subcampaign =>
-          <div key={subcampaign._id} className="card" onClick={() => props.selectSubCampaign(props.selectedSubCampaign._id == subcampaign._id?null:subcampaign)}>
-            <div className="card-header">
+          <div key={subcampaign._id} className="card">
+            <div className="card-header" onClick={() => props.selectSubCampaign(props.selectedSubCampaign._id == subcampaign._id?null:subcampaign)}>
               <div className="header-body">
                 <div className="name-width">{subcampaign.name}</div>
                 <div className="url-width">{subcampaign.productUrl}</div>

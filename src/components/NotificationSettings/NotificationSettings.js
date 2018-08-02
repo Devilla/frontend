@@ -121,6 +121,8 @@ class Notifications extends Component {
         notificationPanelStyle: config.panelStyle,
         contentText: config.contentText,
         visitorText: config.visitorText,
+        otherText: config.otherText,
+        liveVisitorText: config.liveVisitorText,
         notificationUrl: config.notificationUrl,
         toggleMap: config.toggleMap
       });
@@ -135,6 +137,8 @@ class Notifications extends Component {
       notificationPanelStyle: notificationPanelStyleDefault,
       contentText: 'Company Name',
       visitorText: 'people',
+      otherText: '',
+      liveVisitorText: '',
       notificationUrl: '',
       toggleMap: true,
       image: ''
@@ -196,6 +200,8 @@ class Notifications extends Component {
       panelStyle: this.state.notificationPanelStyle,
       contentText: this.state.contentText,
       visitorText: this.state.visitorText,
+      otherText: this.state.otherText,
+      liveVisitorText: this.state.liveVisitorText,
       notificationUrl: this.state.toggleTextBox && this.state.notificationUrl ?this.state.notificationUrl:'',
       toggleMap: this.state.toggleMap,
       campaign: this.props.campaign._id
