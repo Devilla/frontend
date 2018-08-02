@@ -104,12 +104,15 @@ class AnalyticsContainer extends Component {
         data: [0, 0, 0, 0, 0, 0, 0]
       };
 
+      let daysAgo = [];
+      for(var i = 7; i >= 0; i--) {
+        daysAgo[i] = moment().subtract(i, 'days').date();
+      }
+      daysAgo = daysAgo.reverse();
+
       uniqueUsers.map(bucket => {
-        var dayDate = Moment(bucket.key_as_string)._i;
-        dayDate = dayDate.split('-')[2].split(0,2)[0];
-        dayDate = dayDate.split('T')[0];
         dataContent['label'] = `${campaignName}`;
-        dataContent['data'][dayDate-22] = bucket.visitors.sum_other_doc_count + bucket.visitors.buckets.length;
+        dataContent['data'][daysAgo.indexOf(moment(bucket.key_as_string).date()-1)] = bucket.visitors.sum_other_doc_count + bucket.visitors.buckets.length;
       });
 
       dataSet.push(dataContent);
