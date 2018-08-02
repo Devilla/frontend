@@ -62,9 +62,8 @@ function* create(action) {
     const res = yield call(api.POST, 'notificationpath', action.pageurl);
     if(res.error)
       console.log(res.error);
-    else {
+    else
       yield put(actions.successPageUrl(res, action.pageurl.type));
-    }
 
     yield put(loaded());
   } catch (error) {

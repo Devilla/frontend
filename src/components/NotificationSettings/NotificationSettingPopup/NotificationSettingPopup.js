@@ -87,6 +87,8 @@ class NotificationSettingPopup  extends Component {
       productUrl: productUrl,
       captureUrl: captureUrl,
       campaign: campaign._id,
+      domain: campaign.websiteUrl,
+      rule: campaign.rule,
       isActive: isActive
     };
 
