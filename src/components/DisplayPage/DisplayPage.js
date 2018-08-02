@@ -23,7 +23,8 @@ class DisplayPage extends Component {
         status: '',
         class: '',
         type: '',
-        error: ''
+        error: '',
+        campaignName: ''
       },
       domain: [],
       count: 0,
@@ -79,12 +80,14 @@ class DisplayPage extends Component {
     let displayUrl = this.state.displayUrl;
     displayUrl['rule'] = this.props.rules._id;
     displayUrl['domain'] = this.props.campaign.websiteUrl;
+    displayUrl['campaignName'] = this.props.campaign.campaignName;
     this.props.createPageUrl(displayUrl);
     this.setState({displayUrl: {
       url: '',
       status: '',
       class: '',
-      type: ''
+      type: '',
+      campaignName: ''
     }});
   }
 
@@ -103,6 +106,7 @@ class DisplayPage extends Component {
     let domain = this.state.domain[index];
     domain['rule'] = this.props.rules._id;
     domain['domain'] = domainUrl;
+    domain['campaignName'] = this.props.campaign.campaignName;
     this.props.createPageUrl(domain);
     domain = {
       url: '',
@@ -110,7 +114,8 @@ class DisplayPage extends Component {
       class: '',
       type: '',
       rule: '',
-      domain: ''
+      domain: '',
+      campaignName: ''
     };
     this.setState({domain});
   }
@@ -209,7 +214,7 @@ class DisplayPage extends Component {
       campaign: campaign._id,
       type: 'display'
     };
-    
+
     addSubdomain(newDomain);
     this.openCloseModal();
     this.setState({newDomain:''});
