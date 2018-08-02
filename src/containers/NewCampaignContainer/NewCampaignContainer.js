@@ -6,6 +6,7 @@ import copy from 'copy-to-clipboard';
 
 import { validatewebsite } from 'components/Common/function';
 import { createCampaign, clearCampaign, addSubdomain, fetchSubdomain, clearSubDomain, removeSubDomain } from 'ducks/campaign';
+import { updateSubCampaign } from 'ducks/subcampaign';
 import { fetchElastic, clearElastic } from 'ducks/elastic';
 import { fetchOneRules, createRules, updateRules } from 'ducks/rules';
 import { fetchNotification } from 'ducks/notification';
@@ -233,7 +234,8 @@ const mapDispatchToProps = {
   fetchCampaignConfiguration,
   updateConfiguration,
   clearConfiguration,
-  createSuccess
+  createSuccess,
+  updateSubCampaign
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewCampaignContainer);

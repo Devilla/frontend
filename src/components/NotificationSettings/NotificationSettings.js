@@ -150,17 +150,29 @@ class Notifications extends Component {
   }
 
   handleActivityChange = (activity, id, configId) => {
-    if (!id || typeof activity == 'object')
-      return;
-    this.setState({ activity: activity });
-    const configure = {
-      activity: activity != undefined && id ? activity : this.state.activity,
-      campaign: this.props.campaign._id
-    };
-    let configuration = this.props.configuration.size == 0 ? null : this.props.configuration.size ? this.props.configuration.toJS() : this.props.configuration;
-    if ((configuration && configuration._id) || configId) {
-      configure['id'] = configId ? configId : configuration._id;
-      return this.props.updateConfiguration(configure);
+    let configure;
+    if(this.state.selectedSubCampaign) {
+      let subCampaign = this.state.selectedSubCampaign;
+      configure = subCampaign[this.props.notification.type];
+      configure['activity'] = activity;
+      subCampaign[this.props.notification.type] = configure;
+      subCampaign['id'] = subCampaign._id;
+      delete subCampaign['_id'];
+      return this.props.updateSubCampaign(subCampaign);
+    } else {
+      if (!id || typeof activity == 'object')
+        return;
+      this.setState({ activity: activity });
+      configure = {
+        activity: activity != undefined && id ? activity : this.state.activity,
+        campaign: this.props.campaign._id
+      };
+
+      let configuration = this.props.configuration.size == 0 ? null : this.props.configuration.size ? this.props.configuration.toJS() : this.props.configuration;
+      if ((configuration && configuration._id) || configId) {
+        configure['id'] = configId ? configId : configuration._id;
+        return this.props.updateConfiguration(configure);
+      }
     }
   }
 
@@ -179,6 +191,7 @@ class Notifications extends Component {
   }
 
   handleNextState = () => {
+    this.setState({selectedSubCampaign: ''});
     this.props.clearNotification();
     this.props.setActiveState(2);
   }
@@ -202,16 +215,28 @@ class Notifications extends Component {
       toggleMap: this.state.toggleMap,
       campaign: this.props.campaign._id
     };
-    let configuration = this.props.configuration.size == 0 ? null : this.props.configuration.size ? this.props.configuration.toJS() : this.props.configuration;
-    if ((configuration && configuration._id) || configId) {
-      configure['id'] = configId ? configId : configuration._id;
-      this.props.updateConfiguration(configure);
+
+    if(this.state.selectedSubCampaign && this.props.notification.type) {
+      delete configure['campaign'];
+      let subCampaign = this.state.selectedSubCampaign;
+      subCampaign[this.props.notification.type] = configure;
+      subCampaign['id'] = subCampaign._id;
+      delete subCampaign['_id'];
+      this.props.updateSubCampaign(subCampaign);
     } else {
-      this.props.createConfiguration(configure);
+      let configuration = this.props.configuration.size == 0 ? null : this.props.configuration.size ? this.props.configuration.toJS() : this.props.configuration;
+      if ((configuration && configuration._id) || configId) {
+        configure['id'] = configId ? configId : configuration._id;
+        this.props.updateConfiguration(configure);
+      } else {
+        this.props.createConfiguration(configure);
+      }
     }
+
   }
 
   backConfiguration = () => {
+    this.setState({selectedSubCampaign: ''});
     this.props.clearConfiguration();
     this.setInitialState();
   }

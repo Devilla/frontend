@@ -190,8 +190,8 @@ class NotificationSettingPopup  extends Component {
     });
   }
 
-  setNotification = (notification, name) => {
-    this.props.setNotification({notificationName: name});
+  setNotification = (notification, name, type) => {
+    this.props.setNotification({notificationName: name, type: type, activity: notification.activity });
     this.props.setNewConfig(notification);
   }
 
