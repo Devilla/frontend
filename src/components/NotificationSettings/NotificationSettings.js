@@ -72,7 +72,8 @@ class Notifications extends Component {
       notifications: [],
       toggleTextBox: false,
       toggleMap: true,
-      popupName: ''
+      popupName: '',
+      selectedSubCampaign: ''
     };
   }
 
@@ -84,7 +85,6 @@ class Notifications extends Component {
     this.props.fetchNotification();
     this.props.fetchConfiguration(this.props.campaign._id);
   }
-
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.configuration != this.props.configuration) {
@@ -179,18 +179,14 @@ class Notifications extends Component {
   }
 
   handleNextState = () => {
-    // this.setState({notification: ''});
     this.props.clearNotification();
     this.props.setActiveState(2);
   }
 
-
   configure = (notification, showpopup) => {
     this.props.fetchCampaignConfiguration(this.props.campaign._id, notification._id);
     this.props.setNotification(notification);
-    // this.setState({ notification: notification });
     this.setState({ showpopupfield: !showpopup });
-
   }
 
   saveConfiguration = (activity, id, configId) => {
@@ -237,9 +233,11 @@ class Notifications extends Component {
           {!this.props.notification
             ?
             <NotificationList
+              selectedSubCampaign={this.state.selectedSubCampaign}
               campaignUrl={campaign.websiteUrl}
               notificationList={this.props.notifications}
               handleActivityChange={this.handleActivityChange}
+              handleContentChange={this.handleContentChange}
               configure={this.configure}
               configurations={configurations}
               createSuccess={createSuccess}
