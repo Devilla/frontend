@@ -25,7 +25,9 @@ class DashboardChannel extends Component {
 
     };
   }
-
+  componentDidMount() {
+    window.scrollTo(0,0);
+  }
   channelfunc = (index) => {
     let res = {};
     switch(true) {

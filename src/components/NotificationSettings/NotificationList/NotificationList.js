@@ -1,5 +1,6 @@
 import React from 'react';
 import './NotificationList.scss';
+import NotificationSettingPopup from '../NotificationSettingPopup/NotificationSettingPopup';
 
 
 const NotificationList = ({ notificationList, configure, handleActivityChange}) => {
@@ -89,9 +90,12 @@ const NotificationList = ({ notificationList, configure, handleActivityChange}) 
   };
 
   return (
-    <div className="cards-notification">
-      <div className="row m-t-50 notification-list">
-        {renderNotifications()}
+    <div>
+      <NotificationSettingPopup />
+      <div className="cards-notification">
+        <div className="row m-t-50 notification-list">
+          {renderNotifications()}
+        </div>
       </div>
     </div>
   );

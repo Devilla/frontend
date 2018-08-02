@@ -1,13 +1,21 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router';
+import { Row, Col } from 'react-bootstrap';
+import Integrations  from './Integration';
 import {
-  Illustration,
-  NewRecentPurchases,
-
+  Wordpress,
+  Googletag,
+  Zapier,
+  Illustration
 } from 'img';
+
+import './Integration.scss';
 import './WebsiteIntegration.scss';
 
 class WebsiteIntegrations extends Component {
+  componentDidMount() {
+    window.scrollTo(0,0);
+  }
 
   render() {
     return (
@@ -32,36 +40,51 @@ class WebsiteIntegrations extends Component {
             <div className="container">
               <div className="row">
                 <div className="col-md-12">
-                  <h1>Popular integrations</h1>
+                  <h2>Popular integrations</h2>
                 </div>
               </div>
             </div>
           </section>
-          <section className="text-center">
+
+          <section>
             <div className="container">
               <div className="row">
-                <div className="col-md-4">
-                  <div className="feature feature-3 boxed boxed--lg boxed--border">
-                    <img className="icon-n" src={ NewRecentPurchases } />
-                    <h4>Mailer Integrations</h4>
-                    <p>Stack comes with integration for Mail Chimp and Campaign Monitor forms - ideal for modern marketing campaigns </p>
-                    <a href="#">Learn More</a>
-                  </div>
-                </div>
-                <div className="col-md-4">
-                  <div className="feature feature-3 boxed boxed--lg boxed--border">
-                    <img className="icon-n" src={ NewRecentPurchases } />
-                    <h4>Diverse Icons</h4>
-                    <p> Including the premium Icons Mind icon kit, Stack features a highly diverse set of icons suitable for all purposes. </p>
-                    <span className="label">New</span>
-                  </div>
-                </div>
-                <div className="col-md-4">
-                  <div className="feature feature-3 boxed boxed--lg boxed--border">
-                    <img className="icon-n" src={ NewRecentPurchases } />
-                    <h4>Modular Design</h4>
-                    <p> Combine blocks from a range of categories to build pages that are rich in visual style and interactivity </p>
-                  </div>
+                <div className="col-md-12">
+
+
+                  <Row className="justify-content-center mb-5">
+                    <Col md={3}  className="box-shadow">
+
+                      <div className="card-box tilebox-one">
+                        <img src={Wordpress} className="logocompany" />
+                        <h4 className="text-muted text-uppercase mt-0 i-title">Wordpress</h4>
+                        <p className="text-center desc-page text-muted">Sync your conversation and import yourFAQs from Wordpress</p>
+
+                        <span className="text-muted"  >View Details&nbsp; <i className="fi-open"></i></span>
+                      </div>
+                    </Col>
+                    <Col md={3}  className="box-shadow">
+
+                      <div className="card-box tilebox-one">
+                        <img src={Googletag} className="logocompany" />
+                        <h4 className="text-muted text-uppercase mt-0 ml-2 i-title googletag">Google Tag Manager</h4>
+                        <p className="text-center desc-page text-muted">Sync your conversation and import yourFAQs from Tag Manager</p>
+
+                        <span  className="text-muted" >View Details&nbsp; <i className="fi-open"></i></span>
+                      </div>
+                    </Col>
+
+                    <Col md={3}  className="box-shadow ">
+
+                      <div className="card-box tilebox-one">
+                        <img src={Zapier} className="logocompany zapier" />
+                        <h4 className="text-muted text-uppercase mt-0 ml-3 i-title zapier">Zapier</h4>
+                        <p className="text-center desc-page text-muted">Sync your conversation and import yourFAQs from Zapier</p>
+
+                        <span className="text-muted " >View Details&nbsp; <i className="fi-open"></i></span>
+                      </div>
+                    </Col>
+                  </Row>
                 </div>
               </div>
             </div>
@@ -70,92 +93,13 @@ class WebsiteIntegrations extends Component {
             <div className="container">
               <div className="row">
                 <div className="col-md-12">
-                  <h1>All integrations</h1>
+                  <h2>All integrations</h2>
                 </div>
+                <Integrations/>
               </div>
             </div>
           </section>
-          <section className="text-center">
-            <div className="container">
-              <div className="row">
-                <div className="col-md-4">
-                  <div className="feature feature-3 boxed boxed--lg boxed--border">
-                    <img className="icon-n" src={ NewRecentPurchases } />
-                    <h4>Mailer Integrations</h4>
-                    <p> Stack comes with integration for Mail Chimp and Campaign Monitor forms - ideal for modern marketing campaigns </p>
-                  </div>
-                </div>
-                <div className="col-md-4">
-                  <div className="feature feature-3 boxed boxed--lg boxed--border">
-                    <img className="icon-n" src={ NewRecentPurchases } />
-                    <h4>Diverse Icons</h4>
-                    <p> Including the premium Icons Mind icon kit, Stack features a highly diverse set of icons suitable for all purposes. </p>
-                  </div>
-                </div>
-                <div className="col-md-4">
-                  <div className="feature feature-3 boxed boxed--lg boxed--border">
-                    <img className="icon-n" src={ NewRecentPurchases } />
-                    <h4>Modular Design</h4>
-                    <p> Combine blocks from a range of categories to build pages that are rich in visual style and interactivity </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-          <section className="text-center">
-            <div className="container">
-              <div className="row">
-                <div className="col-md-4">
-                  <div className="feature feature-3 boxed boxed--lg boxed--border">
-                    <img className="icon-n" src={ NewRecentPurchases } />
-                    <h4>Mailer Integrations</h4>
-                    <p> Stack comes with integration for Mail Chimp and Campaign Monitor forms - ideal for modern marketing campaigns </p>
-                  </div>
-                </div>
-                <div className="col-md-4">
-                  <div className="feature feature-3 boxed boxed--lg boxed--border">
-                    <img className="icon-n" src={ NewRecentPurchases } />
-                    <h4>Diverse Icons</h4>
-                    <p> Including the premium Icons Mind icon kit, Stack features a highly diverse set of icons suitable for all purposes. </p>
-                  </div>
-                </div>
-                <div className="col-md-4">
-                  <div className="feature feature-3 boxed boxed--lg boxed--border">
-                    <img className="icon-n" src={ NewRecentPurchases } />
-                    <h4>Modular Design</h4>
-                    <p> Combine blocks from a range of categories to build pages that are rich in visual style and interactivity </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-          <section className="text-center">
-            <div className="container">
-              <div className="row">
-                <div className="col-md-4">
-                  <div className="feature feature-3 boxed boxed--lg boxed--border">
-                    <img className="icon-n" src={ NewRecentPurchases } />
-                    <h4>Mailer Integrations</h4>
-                    <p> Stack comes with integration for Mail Chimp and Campaign Monitor forms - ideal for modern marketing campaigns </p>
-                  </div>
-                </div>
-                <div className="col-md-4">
-                  <div className="feature feature-3 boxed boxed--lg boxed--border">
-                    <img className="icon-n" src={ NewRecentPurchases } />
-                    <h4>Diverse Icons</h4>
-                    <p> Including the premium Icons Mind icon kit, Stack features a highly diverse set of icons suitable for all purposes. </p>
-                  </div>
-                </div>
-                <div className="col-md-4">
-                  <div className="feature feature-3 boxed boxed--lg boxed--border">
-                    <img className="icon-n" src={ NewRecentPurchases } />
-                    <h4>Modular Design</h4>
-                    <p> Combine blocks from a range of categories to build pages that are rich in visual style and interactivity </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
+
           <section className="text-center imagebg" style={{background: 'rgb(20, 187, 250)'}}>
             <div className="container">
               <div className="row">

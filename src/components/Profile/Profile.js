@@ -99,6 +99,7 @@ class Profile extends Component {
     fetch('https://raw.githubusercontent.com/sagarshirbhate/Country-State-City-Database/master/Contries.json')
       .then(res => res.json())
       .then(res => this.setState({countryList : res.Countries}));
+    window.scrollTo(0,0);
   }
 
   getCountryRows = () => {
