@@ -83,7 +83,7 @@ const NotificationDesign = ({
                               <div className="FPqR13BWqJeA13BW7MM9_0" style={{
                                 fontFamily: notificationStyle.fontFamily,
                                 fontWeight: notificationStyle.fontWeight
-                              }}>Recently {otherText} for {contentText}</div>
+                              }}>Recently {otherText} {contentText}</div>
                               <div className="FPqR2PlWqJeA2PlW7MM9_0">a minute ago</div>
                               <div className="FPqR3eNuqJeA3eNu7MM9_0">
                                 <i>
@@ -200,7 +200,7 @@ const NotificationDesign = ({
                                 <span style={{
                                   color: notificationStyle.color,
                                   fontFamily: notificationStyle.fontFamily
-                                }}>{` ${otherText} for ${contentText} in the last 7 days`}
+                                }}>{` ${otherText} ${contentText} in the last 7 days`}
                                 </span>
                               </div>
                             </div>

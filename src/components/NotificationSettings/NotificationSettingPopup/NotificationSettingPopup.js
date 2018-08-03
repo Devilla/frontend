@@ -21,7 +21,9 @@ class NotificationSettingPopup  extends Component {
       errorProductName: '',
       errorProductUrl: '',
       errorCaptureUrl: '',
-      selectedSubCampaign: '',
+      errorCommon: '',
+      countProduct: 0,
+      countCapture: 0,
       displayField: false,
       displaynotifbuttons : false,
       arrayForm : []
@@ -39,10 +41,11 @@ class NotificationSettingPopup  extends Component {
   }
 
   addpage = () => {
+    this.props.handleContentChange('selectedSubCampaign', '');
     this.setState((prevState) => {
       return {
         displayField : !prevState.displayField,
-        selectedSubCampaign: '',
+        // selectedSubCampaign: '',
         name: '',
         productName: '',
         productUrl: '',
@@ -68,7 +71,8 @@ class NotificationSettingPopup  extends Component {
   }
 
   submitSubCampaign = () => {
-    const { name, productName, productUrl, captureUrl, isActive } = this.state;
+    const { name, productName, isActive } = this.state;
+    let { productUrl, captureUrl, countProduct, countCapture } = this.state;
     const { campaign, createSubCampaign } = this.props;
 
     if(!name)
@@ -80,12 +84,36 @@ class NotificationSettingPopup  extends Component {
     else if(!captureUrl)
       return this.setState({errorCaptureUrl: true});
 
+    if(productUrl == '') {
+      if(countProduct<1)
+        productUrl='/';
+      else
+        return this.setState({errorCommon: 'Please enter a valid product path'});
+      countProduct++;
+    }
+
+    if(captureUrl == '') {
+      if(countCapture<1)
+        captureUrl='/';
+      else
+        return this.setState({errorCommon: 'Please enter a valid product path'});
+      countCapture++;
+    }
+
+    if(productUrl[0]!=='/')
+      productUrl='/'+productUrl;
+
+    if(captureUrl[0]!=='/')
+      captureUrl='/'+captureUrl;
+
     const subCampaign = {
       name: name,
       productName: productName,
       productUrl: productUrl,
       captureUrl: captureUrl,
       campaign: campaign._id,
+      domain: campaign.websiteUrl,
+      rule: campaign.rule,
       isActive: isActive
     };
 
@@ -102,7 +130,9 @@ class NotificationSettingPopup  extends Component {
   }
 
   updateSubCampaign = () => {
-    const { name, productName, productUrl, captureUrl, isActive, selectedSubCampaign } = this.state;
+    const { name, productName, isActive } = this.state;
+    let { productUrl, captureUrl, countProduct, countCapture } = this.state;
+    const { selectedSubCampaign } = this.props;
 
     if(!name)
       return this.setState({errorName: true});
@@ -112,6 +142,28 @@ class NotificationSettingPopup  extends Component {
       return this.setState({errorProductUrl: true});
     else if(!captureUrl)
       return this.setState({errorCaptureUrl: true});
+
+    if(productUrl == '') {
+      if(countProduct<1)
+        productUrl='/';
+      else
+        return this.setState({errorCommon: 'Please enter a valid product path'});
+      countProduct++;
+    }
+
+    if(captureUrl == '') {
+      if(countCapture<1)
+        captureUrl='/';
+      else
+        return this.setState({errorCommon: 'Please enter a valid product path'});
+      countCapture++;
+    }
+
+    if(productUrl[0]!=='/')
+      productUrl='/'+productUrl;
+
+    if(captureUrl[0]!=='/')
+      captureUrl='/'+captureUrl;
 
     const subCampaign = {
       name: name,
@@ -123,7 +175,7 @@ class NotificationSettingPopup  extends Component {
     };
 
     this.props.updateSubCampaign(subCampaign);
-
+    this.props.handleContentChange('selectedSubCampaign', '');
     return this.setState({
       name: '',
       productName: '',
@@ -132,7 +184,6 @@ class NotificationSettingPopup  extends Component {
       isActive: true,
       displaynotifbuttons: false,
       displayField: false,
-      selectedSubCampaign: ''
     });
 
   }
@@ -142,7 +193,6 @@ class NotificationSettingPopup  extends Component {
     if(subCampaign)
       value = {
         displayField: false,
-        selectedSubCampaign: subCampaign,
         name: subCampaign.name,
         productName: subCampaign.productName,
         productUrl: subCampaign.productUrl,
@@ -151,7 +201,6 @@ class NotificationSettingPopup  extends Component {
       };
     else
       value = {
-        selectedSubCampaign: '',
         name: '',
         productName: '',
         productUrl: '',
@@ -159,11 +208,12 @@ class NotificationSettingPopup  extends Component {
         isActive: true
       };
 
+    this.props.handleContentChange('selectedSubCampaign', subCampaign);
     this.setState(value);
   }
 
   duplicateSubCampaign = () => {
-    const { selectedSubCampaign } = this.state;
+    const { selectedSubCampaign } = this.props;
 
     const subCampaign = {
       name: selectedSubCampaign.name,
@@ -175,6 +225,7 @@ class NotificationSettingPopup  extends Component {
     };
 
     this.props.createSubCampaign(subCampaign);
+    this.props.handleContentChange('selectedSubCampaign', '');
     return this.setState({
       name: '',
       productName: '',
@@ -183,17 +234,16 @@ class NotificationSettingPopup  extends Component {
       isActive: true,
       displaynotifbuttons: false,
       displayField: false,
-      selectedSubCampaign: ''
     });
   }
 
-  setNotification = (notification, name) => {
-    this.props.setNotification({notificationName: name});
+  setNotification = (notification, name, type) => {
+    this.props.setNotification({notificationName: name, type: type, activity: notification.activity });
     this.props.setNewConfig(notification);
   }
 
   render() {
-    const { subcampaigns, deleteSubCampaign } = this.props;
+    const { subcampaigns, deleteSubCampaign, selectedSubCampaign } = this.props;
     return (
       <div className="popuppage-container">
         <button type="button" className="btn btn-outline-primary  addpage" data-toggle="modal" data-target="#myModal" onClick={()=>{}} ><i className="fi-plus"></i>&nbsp;Set Page Specifc Notifications</button>
@@ -208,6 +258,7 @@ class NotificationSettingPopup  extends Component {
                 <span className="btn btn-primary addpagepopup-btn mb-4" onClick={()=> this.addpage()}><i className="fi-plus"></i> &nbsp;Add Page</span>
                 {this.state.displayField ?
                   <SubCampaignFields
+                    selectedSubCampaign={selectedSubCampaign}
                     handleStateChange={this.handleStateChange}
                     show="hidden"
                     handleToggleChange={this.handleToggleChange}
@@ -225,7 +276,7 @@ class NotificationSettingPopup  extends Component {
                   deleteSubCampaign={deleteSubCampaign}
                   subcampaigns={subcampaigns}
                   setNotification={this.setNotification}
-                  // setNewConfig={setNewConfig}
+                  selectedSubCampaign={selectedSubCampaign}
                   {...this.state}
                 />
               </div>

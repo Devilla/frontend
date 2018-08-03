@@ -48,16 +48,16 @@ const geooptions = {
 
 
 const color_list = [
-  '#87CEFA',
-  '#B0C4DE',
-  '#00FFFF',
-  '#ADD8E6',
-  '#FF00FF',
-  '#F0E68C',
-  '#FFFACD',
-  '#90EE90',
-  '#FAF0E6',
-  '#AFEEEE',
+  '#69d217',
+  '#69d2e7',
+  '#1fda65',
+  '#ffda65',
+  '#ff2765',
+  '#ffd041',
+  '#53bbf4',
+  '#ff6d74',
+  '#ff6e00',
+  '#ff0100',
   '#87CEEB',
   '#F5F5F5'
 ];

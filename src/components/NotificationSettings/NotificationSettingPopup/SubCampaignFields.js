@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Col } from 'react-bootstrap';
+import { Row, Col, HelpBlock } from 'react-bootstrap';
 
 const SubCampaignFields = ({
   name,
@@ -18,8 +18,8 @@ const SubCampaignFields = ({
   handleToggleChange,
   submitSubCampaign,
   duplicateSubCampaign,
-  setNotification
-  // deleteSubCampaign
+  setNotification,
+  errorCommon
 }) => {
   return (
     <div className="sub-campaign-fields">
@@ -67,13 +67,31 @@ const SubCampaignFields = ({
           style={errorCaptureUrl?{borderColor:'red'}:null}
         />
         <i className="fa fa-info-circle capture" data-toggle="tooltip" data-delay='{"show":"0", "hide":"100"}' title="Your Product name will be displayed on notifications"> </i>
+        <HelpBlock>
+          <p className="website-error">{errorCommon}</p>
+        </HelpBlock>
       </Row>
       <Row className="toggle-btn-custom">
         {selectedSubCampaign &&
           <div>
-            <span className="btn btn-outline-primary n-btn" onClick={() => setNotification(selectedSubCampaign.recent, 'Recent Activity')}> <i className=" mdi mdi-account-multiple"></i>&nbsp;Recent</span>
-            <span className="btn btn-outline-primary n-btn" onClick={() => setNotification(selectedSubCampaign.live, 'Bulk Activity')}> <i className=" mdi mdi-adjust"></i>&nbsp;Live</span>
-            <span className="btn btn-outline-primary n-btn" onClick={() => setNotification(selectedSubCampaign.bulk, 'Live Visitor Count')}> <i className="mdi mdi-fire"></i>&nbsp;Bulk</span>
+            <span
+              className="btn btn-outline-primary n-btn"
+              onClick={() => setNotification(selectedSubCampaign.journey, 'Recent Activity', 'journey')}>
+              <i className=" mdi mdi-account-multiple"></i>
+              &nbsp;Recent
+            </span>
+            <span
+              className="btn btn-outline-primary n-btn"
+              onClick={() => setNotification(selectedSubCampaign.live, 'Live Visitor Count', 'live')}>
+              <i className=" mdi mdi-adjust"></i>
+              &nbsp;Live
+            </span>
+            <span
+              className="btn btn-outline-primary n-btn"
+              onClick={() => setNotification(selectedSubCampaign.identification, 'Bulk Activity', 'identification')}>
+              <i className="mdi mdi-fire"></i>
+              &nbsp;Bulk
+            </span>
           </div>
         }
 
