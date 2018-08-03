@@ -13,7 +13,7 @@ const toastConfig = {
 function* fetchSubCampaign(action) {
   try {
     yield put(load());
-    const res = yield call(api.GET, `subcampaign/campaign/${action.campId}`);
+    const res = yield call(api.GET, `subcampaign?campaign=${action.subCampId}`);
     if(res.error)
       console.log(res.error);
     else
@@ -54,7 +54,6 @@ function* createSubCampaign(action) {
     yield put(loaded());
     yield toast.error(error.message, toastConfig);
   }
-
 }
 
 function* updateSubCampaign(action) {
@@ -64,11 +63,8 @@ function* updateSubCampaign(action) {
     const res = yield call(api.PUT, `subcampaign/${action.subcampaign.id}`, action.subcampaign);
     if(res.error)
       console.log(res.error);
-    else {
-      let subcampaign = action.subcampaign;
-      subcampaign['_id'] = subcampaign.id;
-      yield put(actions.successSubCampaign(subcampaign));
-    }
+    else
+      yield put(actions.fetchSubCampaignSuccess(res));
     yield put(loaded());
   } catch (error) {
     yield put(loaded());
@@ -79,15 +75,11 @@ function* updateSubCampaign(action) {
 function* deleteSubCampaign(action) {
   try {
     yield put(load());
-    delete action.subcampaign['_id'];
-    const res = yield call(api.DELETE, `subcampaign/${action.subcampaign.id}`);
+    const res = yield call(api.DELETE, `subcampaign/${action.id}`);
     if(res.error)
       console.log(res.error);
-    else {
-      let subcampaign = action.subcampaign;
-      subcampaign['_id'] = subcampaign.id;
-      yield put(actions.successSubCampaign(subcampaign));
-    }
+    else
+      yield put(actions.fetchSubCampaignSuccess(res));
     yield put(loaded());
   } catch (error) {
     yield put(loaded());

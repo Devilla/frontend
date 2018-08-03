@@ -8403,6 +8403,12 @@ react-flexible-switch@^1.2.1:
     classnames "^2.1.2"
     prop-types "^15.6.0"
 
+react-google-charts@^2.0.21:
+  version "2.0.21"
+  resolved "https://registry.yarnpkg.com/react-google-charts/-/react-google-charts-2.0.21.tgz#a7818dc39091431ed8b1163dd780d156803805b6"
+  dependencies:
+    react-load-script "^0.0.6"
+
 react-grecaptcha@^1.2.5:
   version "1.2.5"
   resolved "https://registry.yarnpkg.com/react-grecaptcha/-/react-grecaptcha-1.2.5.tgz#886e1df8bac7c1350b23b28b64a29a64f823e684"
@@ -8483,6 +8489,10 @@ react-is@^16.3.2, react-is@^16.4.1:
 react-lifecycles-compat@^3.0.4:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
+
+react-load-script@^0.0.6:
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/react-load-script/-/react-load-script-0.0.6.tgz#db6851236aaa25bb622677a2eb51dad4f8d2c258"
 
 react-maskedinput@^4.0.1:
   version "4.0.1"
