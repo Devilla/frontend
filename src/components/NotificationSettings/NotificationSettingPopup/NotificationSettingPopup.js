@@ -21,7 +21,9 @@ class NotificationSettingPopup  extends Component {
       errorProductName: '',
       errorProductUrl: '',
       errorCaptureUrl: '',
-      // selectedSubCampaign: '',
+      errorCommon: '',
+      countProduct: 0,
+      countCapture: 0,
       displayField: false,
       displaynotifbuttons : false,
       arrayForm : []
@@ -69,7 +71,8 @@ class NotificationSettingPopup  extends Component {
   }
 
   submitSubCampaign = () => {
-    const { name, productName, productUrl, captureUrl, isActive } = this.state;
+    const { name, productName, isActive } = this.state;
+    let { productUrl, captureUrl, countProduct, countCapture } = this.state;
     const { campaign, createSubCampaign } = this.props;
 
     if(!name)
@@ -80,6 +83,28 @@ class NotificationSettingPopup  extends Component {
       return this.setState({errorProductUrl: true});
     else if(!captureUrl)
       return this.setState({errorCaptureUrl: true});
+
+    if(productUrl == '') {
+      if(countProduct<1)
+        productUrl='/';
+      else
+        return this.setState({errorCommon: 'Please enter a valid product path'});
+      countProduct++;
+    }
+
+    if(captureUrl == '') {
+      if(countCapture<1)
+        captureUrl='/';
+      else
+        return this.setState({errorCommon: 'Please enter a valid product path'});
+      countCapture++;
+    }
+
+    if(productUrl[0]!=='/')
+      productUrl='/'+productUrl;
+
+    if(captureUrl[0]!=='/')
+      captureUrl='/'+captureUrl;
 
     const subCampaign = {
       name: name,
@@ -105,8 +130,10 @@ class NotificationSettingPopup  extends Component {
   }
 
   updateSubCampaign = () => {
-    const { name, productName, productUrl, captureUrl, isActive } = this.state;
+    const { name, productName, isActive } = this.state;
+    let { productUrl, captureUrl, countProduct, countCapture } = this.state;
     const { selectedSubCampaign } = this.props;
+
     if(!name)
       return this.setState({errorName: true});
     else if(!productName)
@@ -115,6 +142,28 @@ class NotificationSettingPopup  extends Component {
       return this.setState({errorProductUrl: true});
     else if(!captureUrl)
       return this.setState({errorCaptureUrl: true});
+
+    if(productUrl == '') {
+      if(countProduct<1)
+        productUrl='/';
+      else
+        return this.setState({errorCommon: 'Please enter a valid product path'});
+      countProduct++;
+    }
+
+    if(captureUrl == '') {
+      if(countCapture<1)
+        captureUrl='/';
+      else
+        return this.setState({errorCommon: 'Please enter a valid product path'});
+      countCapture++;
+    }
+
+    if(productUrl[0]!=='/')
+      productUrl='/'+productUrl;
+
+    if(captureUrl[0]!=='/')
+      captureUrl='/'+captureUrl;
 
     const subCampaign = {
       name: name,
@@ -135,7 +184,6 @@ class NotificationSettingPopup  extends Component {
       isActive: true,
       displaynotifbuttons: false,
       displayField: false,
-      // selectedSubCampaign: ''
     });
 
   }
@@ -145,7 +193,6 @@ class NotificationSettingPopup  extends Component {
     if(subCampaign)
       value = {
         displayField: false,
-        // selectedSubCampaign: subCampaign,
         name: subCampaign.name,
         productName: subCampaign.productName,
         productUrl: subCampaign.productUrl,
@@ -154,7 +201,6 @@ class NotificationSettingPopup  extends Component {
       };
     else
       value = {
-        // selectedSubCampaign: '',
         name: '',
         productName: '',
         productUrl: '',
@@ -188,7 +234,6 @@ class NotificationSettingPopup  extends Component {
       isActive: true,
       displaynotifbuttons: false,
       displayField: false,
-      // selectedSubCampaign: ''
     });
   }
 

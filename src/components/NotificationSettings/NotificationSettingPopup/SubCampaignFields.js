@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Col } from 'react-bootstrap';
+import { Row, Col, HelpBlock } from 'react-bootstrap';
 
 const SubCampaignFields = ({
   name,
@@ -18,8 +18,8 @@ const SubCampaignFields = ({
   handleToggleChange,
   submitSubCampaign,
   duplicateSubCampaign,
-  setNotification
-  // deleteSubCampaign
+  setNotification,
+  errorCommon
 }) => {
   return (
     <div className="sub-campaign-fields">
@@ -67,6 +67,9 @@ const SubCampaignFields = ({
           style={errorCaptureUrl?{borderColor:'red'}:null}
         />
         <i className="fa fa-info-circle capture" data-toggle="tooltip" data-delay='{"show":"0", "hide":"100"}' title="Your Product name will be displayed on notifications"> </i>
+        <HelpBlock>
+          <p className="website-error">{errorCommon}</p>
+        </HelpBlock>
       </Row>
       <Row className="toggle-btn-custom">
         {selectedSubCampaign &&
