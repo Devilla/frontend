@@ -67,8 +67,10 @@ export { default as Woocommerce }  from  './woocommerce.png';
 export { default as Wordpress } from './wordpress.png';
 export { default as Googletag } from './googletag.png';
 export { default as Zapier } from './zapier.png';
-
-
+export { default as Zapier1 } from './Zapier/zapier1.png';
+export { default as Zapier2 } from './Zapier/zapier2.png';
+export { default as Zapier3 } from './Zapier/zapier3.png';
+export { default as Zapier4 } from './Zapier/zapier4.png';
 //Channel review
 export { default as Facebook } from './fb.png';
 export { default as Zendesk } from './zendesk.png';
