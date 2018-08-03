@@ -10,6 +10,7 @@ import { fetchElastic } from 'ducks/elastic';
 import { fetchCampaignInfo, successCampaign } from 'ducks/campaign';
 import { Tooltip, OverlayTrigger } from 'react-bootstrap';
 import { Analytics, AnalyticsProfile } from 'components';
+// import {browserHistory} from 'react-router';
 import '../DashboardContainer/asset/scss/style.scss';
 import './AnalyticsContainer.scss';
 
@@ -187,7 +188,7 @@ class AnalyticsContainer extends Component {
           <th scope="row">{index + 1}</th>
           <td className="text-center">{website.websiteUrl}</td>
           <td className="text-center">{visitor}</td>
-          <td className="text-center">{userDetails && userDetails.length} <a href="javascript:;" onClick={() => userDetails?this.handleViewProfile(userDetails):null}>&nbsp; Profiles</a></td>
+          <td className="text-center">{userDetails && userDetails.length} <a onClick={() => /*browserHistory.push('analytics/profile') &&*/  userDetails?this.handleViewProfile(userDetails):null && <AnalyticsProfile handleProfileBack={this.handleProfileBack} renderProfileList={this.renderProfileList} />}>&nbsp; Profiles</a></td>
           <td className="text-center">-</td>
           <td className="text-center">
             {
