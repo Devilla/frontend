@@ -22,7 +22,8 @@ class Notification extends Component {
       modaltitle: 'Are you sure you want to delete this campaign?',
       modalbody: 'Alert ! These may delete all your customer activities .',
       modalfoot: 'Delete' ,
-      modalname: '1'
+      modalname: '1',
+      isActive:false
     };
   }
 
@@ -34,6 +35,10 @@ class Notification extends Component {
     this.props.fetchCampaign();
   }
 
+  handleSwitchChange(campaign)
+  {
+    this.state.isActive=!this.state.isActive;
+  }
   handleActiveChange(active, campaign) {
     if (active && this.props.profile.uniqueVisitorsQoutaLeft <= 0) {
       this.setState({
@@ -92,6 +97,7 @@ class Notification extends Component {
   getNotificationRows = () => {
 
     return this.props.campaigns ? this.props.campaigns.map((campaign, i) => {
+      this.state.isActive=campaign.isActive;
       const { totalUsers } = this.usersCount(campaign._id);
       return (
         <tr className="campaign-td" key={campaign._id} onClick={(e) => this.handleRouteChange(e, campaign)}>
@@ -99,15 +105,15 @@ class Notification extends Component {
           <td>{campaign.campaignName}</td>
           <td>{campaign.websiteUrl}</td>
           <td className="switch">
-            <input className="tgl tgl-ios" id="cb2" type="checkbox" checked={campaign.isActive}  readOnly/>
-            <label className="tgl-btn" htmlFor="cb2"  data-toggle="modal" data-target="#2"  onClick={(e) => this.handleActiveChange(!campaign.isActive, campaign)}></label>
+            <input className="tgl tgl-ios" id="cb2" type="checkbox" checked={this.state.isActive}  readOnly/>
+            <label className="tgl-btn" htmlFor="cb2"  data-toggle="modal" data-target="#2"  onClick={this.handleSwitchChange(campaign) /*(e) => this.handleActiveChange(!campaign.isActive, campaign)*/}></label>
           </td>
           <td className='text-center'>{totalUsers}</td>
           <td>{campaign.trackingId}</td>
           <td>{moment(campaign.updatedAt).format('MM/DD/YYYY')}</td>
           <td><a href="javascript:;"><i className="ml-3 icon-trash" data-toggle="modal" data-target="#1"  onClick={(e) => this.deleteCampaign(i,campaign,e)}></i></a></td>
         </tr>
-      )
+      );
     })
       :
       <tr></tr>;

@@ -14,7 +14,7 @@ export const fetchSubCampaign = (subCampId) => ({ type: FETCH_SUB_CAMPAIGN, subC
 export const fetchOneSubCampaign = (subcampaign) => ({ type: FETCH_SUB_CAMPAIGN_ONE, subcampaign });
 export const createSubCampaign = (subcampaign) => ({ type: CREATE_SUB_CAMPAIGN, subcampaign });
 export const updateSubCampaign = (subcampaign) => ({ type: UPDATE_SUB_CAMPAIGN, subcampaign });
-export const deleteSubCampaign = (subcampaign) => ({ type: DELETE_SUB_CAMPAIGN, subcampaign });
+export const deleteSubCampaign = (id) => ({ type: DELETE_SUB_CAMPAIGN, id });
 export const successSubCampaign = (subcampaign) => ({ type: CREATE_SUB_CAMPAIGN_SUCCESS, subcampaign });
 export const fetchSubCampaignSuccess = (subcampaign) => ({ type: FETCH_SUB_CAMPAIGN_SUCCESS, subcampaign });
 export const clearSubCampaign = (subcampaign) => ({ type: CLEAR_SUB_CAMPAIGN, subcampaign });
