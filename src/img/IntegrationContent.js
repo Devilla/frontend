@@ -1,7 +1,7 @@
 import React , { Component } from 'react';
 import './IntegrationContent.scss';
 import { Row, Col } from 'react-bootstrap';
-import {Zapier1,Zapier2,Zapier3,Zapier4} from 'img';
+
 
 class IntegrationContent extends Component {
   constructor(props) {
@@ -16,11 +16,19 @@ class IntegrationContent extends Component {
             <span className="btn-step btn ">STEP 1</span>
           </Col>
           <Col md={6}>
-            <img src ={Zapier1} />
-            <p></p>
+            <img src ='' />
+            <p>//image goes herer</p>
           </Col>
           <Col md={4}>
             <h5 className="heading">Click the "+ New" button in the top left of your screen to create a new notification. </h5>
+
+            <ul>
+              <li>//dummy </li>
+              <li>//dummy </li>
+              <li>//dummy </li>
+              <li>//dummy </li>
+              <li>//dummy </li>
+            </ul>
           </Col>
         </Row>
         <Row>
@@ -28,11 +36,19 @@ class IntegrationContent extends Component {
             <span className="btn-step btn ">STEP 2</span>
           </Col>
           <Col md={6}>
-            <img src ={Zapier2} height="200px" width="300px" />
-            <p></p>
+            <img src ='' />
+            <p>//image goes herer</p>
           </Col>
           <Col md={4}>
-            <h5 className="heading">Select Webhook Integration</h5>
+            <h5 className="heading">Heading </h5>
+
+            <ul>
+              <li>//dummy </li>
+              <li>//dummy </li>
+              <li>//dummy </li>
+              <li>//dummy </li>
+              <li>//dummy </li>
+            </ul>
           </Col>
         </Row>
         <Row>
@@ -40,23 +56,18 @@ class IntegrationContent extends Component {
             <span className="btn-step btn ">STEP 3</span>
           </Col>
           <Col md={6}>
-            <img src ={Zapier3}  height="200px" width="300px" />
-            <p></p>
+            <img src ='' />
+            <p>//image goes herer</p>
           </Col>
           <Col md={4}>
-            <h5 className="heading">Select Custom Webhook  </h5>
-          </Col>
-        </Row>
-        <Row>
-          <Col md={2}>
-            <span className="btn-step btn ">STEP 4</span>
-          </Col>
-          <Col md={6}>
-            <img src ={Zapier4}  height="200px" width="300px" />
-            <p></p>
-          </Col>
-          <Col md={4}>
-            <h5 className="heading">Add channel </h5>
+            <h5 className="heading">Heading </h5>
+            <ul>
+              <li>//dummy </li>
+              <li>//dummy </li>
+              <li>//dummy </li>
+              <li>//dummy </li>
+              <li>//dummy </li>
+            </ul>
           </Col>
         </Row>
       </div>
@@ -995,13 +1006,13 @@ class IntegrationContent extends Component {
             this.contentTwelve()
             : '' }
           {renderState === 13 ?
-            this.contentOne()
+            this.contentThirteen()
             : '' }
           {renderState === 14 ?
-            this.contentOne()
+            this.contentFourteen()
             : '' }
           {renderState === 15 ?
-            this.contentOne()
+            this.contentFifteen()
             : '' }
         </div>
       </div>
