@@ -1,7 +1,7 @@
 import React , { Component } from 'react';
 import './IntegrationContent.scss';
 import { Row, Col } from 'react-bootstrap';
-import {Zapier1,Zapier2,Zapier3,Zapier4} from 'img';
+import { Zapier1, Zapier2, Zapier3, Zapier4} from 'img';
 
 class IntegrationContent extends Component {
   constructor(props) {
@@ -78,11 +78,17 @@ class IntegrationContent extends Component {
             <h5 className="heading">Heading </h5>
 
             <ul>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
+              <li>
+                //dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
             </ul>
           </Col>
         </Row>
@@ -98,11 +104,16 @@ class IntegrationContent extends Component {
             <h5 className="heading">Heading </h5>
 
             <ul>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
             </ul>
           </Col>
         </Row>
@@ -118,11 +129,16 @@ class IntegrationContent extends Component {
             <h5 className="heading">Heading </h5>
 
             <ul>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
             </ul>
           </Col>
         </Row>
@@ -144,11 +160,16 @@ class IntegrationContent extends Component {
             <h5 className="heading">Heading </h5>
 
             <ul>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
             </ul>
           </Col>
         </Row>
@@ -164,11 +185,16 @@ class IntegrationContent extends Component {
             <h5 className="heading">Heading </h5>
 
             <ul>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
             </ul>
           </Col>
         </Row>
@@ -184,11 +210,16 @@ class IntegrationContent extends Component {
             <h5 className="heading">Heading </h5>
 
             <ul>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
             </ul>
           </Col>
         </Row>
@@ -211,11 +242,16 @@ class IntegrationContent extends Component {
             <h5 className="heading">Heading </h5>
 
             <ul>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
             </ul>
           </Col>
         </Row>
@@ -231,11 +267,16 @@ class IntegrationContent extends Component {
             <h5 className="heading">Heading </h5>
 
             <ul>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
             </ul>
           </Col>
         </Row>
@@ -251,11 +292,16 @@ class IntegrationContent extends Component {
             <h5 className="heading">Heading </h5>
 
             <ul>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
             </ul>
           </Col>
         </Row>
@@ -278,11 +324,16 @@ class IntegrationContent extends Component {
             <h5 className="heading">Heading </h5>
 
             <ul>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
             </ul>
           </Col>
         </Row>
@@ -298,11 +349,16 @@ class IntegrationContent extends Component {
             <h5 className="heading">Heading </h5>
 
             <ul>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
             </ul>
           </Col>
         </Row>
@@ -318,11 +374,16 @@ class IntegrationContent extends Component {
             <h5 className="heading">Heading </h5>
 
             <ul>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
             </ul>
           </Col>
         </Row>
@@ -344,11 +405,16 @@ class IntegrationContent extends Component {
             <h5 className="heading">Heading </h5>
 
             <ul>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
             </ul>
           </Col>
         </Row>
@@ -364,11 +430,16 @@ class IntegrationContent extends Component {
             <h5 className="heading">Heading </h5>
 
             <ul>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
             </ul>
           </Col>
         </Row>
@@ -384,11 +455,16 @@ class IntegrationContent extends Component {
             <h5 className="heading">Heading </h5>
 
             <ul>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
             </ul>
           </Col>
         </Row>
@@ -409,11 +485,16 @@ class IntegrationContent extends Component {
           </Col>
           <Col md={4}>
             <ul>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
             </ul>
           </Col>
         </Row>
@@ -427,11 +508,16 @@ class IntegrationContent extends Component {
           </Col>
           <Col md={4}>
             <ul>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
             </ul>
           </Col>
         </Row>
@@ -445,11 +531,16 @@ class IntegrationContent extends Component {
           </Col>
           <Col md={4}>
             <ul>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
             </ul>
           </Col>
         </Row>
@@ -470,11 +561,16 @@ class IntegrationContent extends Component {
           </Col>
           <Col md={4}>
             <ul>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
             </ul>
           </Col>
         </Row>
@@ -488,11 +584,16 @@ class IntegrationContent extends Component {
           </Col>
           <Col md={4}>
             <ul>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
             </ul>
           </Col>
         </Row>
@@ -506,11 +607,16 @@ class IntegrationContent extends Component {
           </Col>
           <Col md={4}>
             <ul>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
             </ul>
           </Col>
         </Row>
@@ -531,11 +637,16 @@ class IntegrationContent extends Component {
           </Col>
           <Col md={4}>
             <ul>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
             </ul>
           </Col>
         </Row>
@@ -549,11 +660,16 @@ class IntegrationContent extends Component {
           </Col>
           <Col md={4}>
             <ul>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
             </ul>
           </Col>
         </Row>
@@ -567,11 +683,16 @@ class IntegrationContent extends Component {
           </Col>
           <Col md={4}>
             <ul>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
             </ul>
           </Col>
         </Row>
@@ -591,11 +712,16 @@ class IntegrationContent extends Component {
           </Col>
           <Col md={4}>
             <ul>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
             </ul>
           </Col>
         </Row>
@@ -609,11 +735,16 @@ class IntegrationContent extends Component {
           </Col>
           <Col md={4}>
             <ul>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
             </ul>
           </Col>
         </Row>
@@ -627,11 +758,16 @@ class IntegrationContent extends Component {
           </Col>
           <Col md={4}>
             <ul>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
             </ul>
           </Col>
         </Row>
@@ -652,11 +788,16 @@ class IntegrationContent extends Component {
           </Col>
           <Col md={4}>
             <ul>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
             </ul>
           </Col>
         </Row>
@@ -670,11 +811,16 @@ class IntegrationContent extends Component {
           </Col>
           <Col md={4}>
             <ul>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
             </ul>
           </Col>
         </Row>
@@ -688,11 +834,16 @@ class IntegrationContent extends Component {
           </Col>
           <Col md={4}>
             <ul>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
             </ul>
           </Col>
         </Row>
@@ -713,11 +864,16 @@ class IntegrationContent extends Component {
           </Col>
           <Col md={4}>
             <ul>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
             </ul>
           </Col>
         </Row>
@@ -731,11 +887,16 @@ class IntegrationContent extends Component {
           </Col>
           <Col md={4}>
             <ul>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
             </ul>
           </Col>
         </Row>
@@ -749,11 +910,16 @@ class IntegrationContent extends Component {
           </Col>
           <Col md={4}>
             <ul>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
             </ul>
           </Col>
         </Row>
@@ -774,11 +940,16 @@ class IntegrationContent extends Component {
           </Col>
           <Col md={4}>
             <ul>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
             </ul>
           </Col>
         </Row>
@@ -792,11 +963,16 @@ class IntegrationContent extends Component {
           </Col>
           <Col md={4}>
             <ul>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
             </ul>
           </Col>
         </Row>
@@ -810,11 +986,16 @@ class IntegrationContent extends Component {
           </Col>
           <Col md={4}>
             <ul>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
             </ul>
           </Col>
         </Row>
@@ -835,11 +1016,16 @@ class IntegrationContent extends Component {
           </Col>
           <Col md={4}>
             <ul>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
             </ul>
           </Col>
         </Row>
@@ -853,11 +1039,16 @@ class IntegrationContent extends Component {
           </Col>
           <Col md={4}>
             <ul>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
             </ul>
           </Col>
         </Row>
@@ -871,11 +1062,16 @@ class IntegrationContent extends Component {
           </Col>
           <Col md={4}>
             <ul>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
             </ul>
           </Col>
         </Row>
@@ -897,11 +1093,16 @@ class IntegrationContent extends Component {
             <h5 className="heading">Heading </h5>
 
             <ul>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
             </ul>
           </Col>
         </Row>
@@ -917,11 +1118,16 @@ class IntegrationContent extends Component {
             <h5 className="heading">Heading </h5>
 
             <ul>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
             </ul>
           </Col>
         </Row>
@@ -936,11 +1142,16 @@ class IntegrationContent extends Component {
           <Col md={4}>
             <h5 className="heading">Heading </h5>
             <ul>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
-              <li>//dummy </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
+              <li>//dummy 
+              </li>
             </ul>
           </Col>
         </Row>
