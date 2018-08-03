@@ -55,9 +55,9 @@ class AnalyticsContainer extends Component {
     }
   }
 
-  handleProfileBack = () => {
+  /*handleProfileBack = () => {
     this.setState({usersList: []});
-  }
+  }*/
 
   handleViewProfile = (list) => {
     this.setState({usersList: list});
