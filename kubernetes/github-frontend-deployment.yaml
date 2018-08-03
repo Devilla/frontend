@@ -23,7 +23,7 @@ spec:
         - containerPort: 80
         env:
         - name: REACT_APP_PRODUCTION_URL
-          value: https://backend.useinfluence.co/
+          value: https://strapi.useinfluence.co/
         - name: REACT_APP_STRIPE_KEY
           valueFrom:
             secretKeyRef:
