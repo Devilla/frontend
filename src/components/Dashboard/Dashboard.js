@@ -97,14 +97,16 @@ class Dashboard extends Component {
         delete tempData['pointColor'];
         tempData['data']=[0, 0, 0, 0, 0, 0, 0];
 
+        let daysAgo = [];
+        for(var i = 7; i >= 0; i--) {
+          daysAgo[i] = moment().subtract(i, 'days').date();
+        }
+        daysAgo = daysAgo.reverse();
+
         if(user && user.aggregations && user.aggregations.users.buckets.length) {
           user.aggregations.users.buckets.map(bucket => {
-            var dayDate = Moment(bucket.key_as_string)._i;
-            dayDate = dayDate.split('-')[2].split(0,2)[0];
-            dayDate = dayDate.split('T')[0];
-
             tempData['label'] = campaign.campaignName;
-            tempData['data'][dayDate-22] = bucket.visitors.sum_other_doc_count + bucket.visitors.buckets.length;
+            tempData['data'][daysAgo.indexOf(moment(bucket.key_as_string).date()-1)] = bucket.visitors.sum_other_doc_count + bucket.visitors.buckets.length;
           });
         } else {
           tempData['label'] = campaign.campaignName;

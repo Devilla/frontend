@@ -13,6 +13,7 @@ import configuration from './configuration';
 import elastic from './elastic';
 import pageurl from './pageurl';
 import webhooks from './webhooks';
+import subcampaign from './subcampaign';
 
 const reducer = combineReducers({
   profile,
@@ -27,6 +28,7 @@ const reducer = combineReducers({
   elastic,
   pageurl,
   webhooks,
+  subcampaign,
   router: routerReducer
 });
 
