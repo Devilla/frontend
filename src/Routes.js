@@ -33,6 +33,7 @@ import {
   Oauthgenerate,
   DashboardChannel,
   ReviewRedirect,
+  AnalyticsProfile
 } from 'components';
 
 import {
@@ -57,6 +58,7 @@ const MyRoutes = ({routerHistory}) => (
       <Route path="/oauthgenerate" component={Oauthgenerate} />
       <Route path="/channels" component={DashboardChannel} />
       <Route path="/analytics" component={AnalyticsContainer} />
+      <Route path="/analytics/profile" component={AnalyticsProfile} />
       <Route path="/integrations" component={Integrations} />
       <Route path="/support" component={Dashboard} />
       <Route path="/upgrade" component={UpgradePlan} />
