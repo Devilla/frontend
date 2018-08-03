@@ -441,7 +441,7 @@ export class NotificationDesignSetting extends Component {
                             <Col md={12}>
                               <FormControl
                                 type="text"
-                                maxLength='15'
+                                maxLength='35'
                                 defaultValue={otherText}
                                 placeholder="Enter Other Text for notification"
                                 id="otherText"
@@ -480,7 +480,7 @@ export class NotificationDesignSetting extends Component {
                           <Col md={12}>
                             <FormControl
                               type="text"
-                              maxLength='15'
+                              maxLength='35'
                               defaultValue={liveVisitorText}
                               placeholder="Enter the Text for notification"
                               id="liveVisitorText"
