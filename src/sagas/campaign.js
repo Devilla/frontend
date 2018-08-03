@@ -93,7 +93,7 @@ function* remove(action) {
           }]
         }
       }, true);
-    }  
+    }
     yield put(loaded());
   } catch (error) {
     yield put(loaded());
