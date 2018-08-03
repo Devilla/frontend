@@ -1,12 +1,11 @@
 import React from 'react';
 
 
-const AnalyticsProfile = ({ handleProfileBack, renderProfileList }) => {
+const AnalyticsProfile = ({renderProfileList }) => {
   return (
     <div className="card-box analytics-profile">
       <div className="analytics-header">
         <h4 className="m-t-0 header-title">Analytics/View Profile</h4>
-        <button type="button" className="btn btn-primary  waves-light waves-effect number back-btn" style={{borderRadius:'5px'}} onClick={handleProfileBack}>Back</button>
       </div>
       <table className="table table-striped">
         <thead>
@@ -22,7 +21,7 @@ const AnalyticsProfile = ({ handleProfileBack, renderProfileList }) => {
           </tr>
         </thead>
         <tbody>
-          {renderProfileList()}
+          {renderProfileList}
         </tbody>
       </table>
     </div>
