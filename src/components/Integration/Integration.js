@@ -51,7 +51,7 @@ class Integrations extends Component {
       <div>
         <Row className="justify-content-center mb-5">
           <Col md={3}  className="box-shadow ribbon-box">
-            <div className="ribbon-two ribbon-two-danger"><span>Inactive</span></div>
+            <div className="ribbon-two ribbon-two-success"><span>Active</span></div>
             <div className="card-box tilebox-one">
               <img src={Wordpress} className="logocompany" />
               <h4 className="text-muted text-uppercase mt-0 i-title">Wordpress</h4>
@@ -61,7 +61,7 @@ class Integrations extends Component {
             </div>
           </Col>
           <Col md={3}  className="box-shadow ribbon-box">
-            <div className="ribbon-two ribbon-two-danger"><span>Inactive</span></div>
+            <div className="ribbon-two ribbon-two-success"><span>Active</span></div>
             <div className="card-box tilebox-one">
               <img src={Googletag} className="logocompany" />
               <h4 className="text-muted text-uppercase mt-0 ml-2 i-title googletag">Google Tag Manager</h4>
@@ -72,7 +72,7 @@ class Integrations extends Component {
           </Col>
 
           <Col md={3}  className="box-shadow ribbon-box">
-            <div className="ribbon-two ribbon-two-danger"><span>Inactive</span></div>
+            <div className="ribbon-two ribbon-two-success"><span>Active</span></div>
             <div className="card-box tilebox-one">
               <img src={Zapier} className="logocompany demio" />
               <h4 className="text-muted text-uppercase mt-0 ml-3 i-title zapier">Zapier</h4>
