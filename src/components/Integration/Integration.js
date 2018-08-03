@@ -78,7 +78,7 @@ class Integrations extends Component {
               <h4 className="text-muted text-uppercase mt-0 ml-3 i-title zapier">Zapier</h4>
               <p className="text-center desc-page text-muted">Sync your conversation and import yourFAQs from Zapier</p>
 
-              <span className="text-muted "  onClick={() => this.renderIntegration(3)}>View Details&nbsp; <i className="fi-open"></i></span>
+              <span><a href='https://useinfluence.freshdesk.com/support/solutions/articles/36000075182-integrate-with-zapier-'>View Details&nbsp; <i className="fi-open"></i></a></span>
             </div>
           </Col>
         </Row>
