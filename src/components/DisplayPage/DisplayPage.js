@@ -40,8 +40,6 @@ class DisplayPage extends Component {
   }
 
   componentDidMount() {
-    if(this.props.rules)
-      this.fetchPathUrls(this.props.rules);
     window.scrollTo(0,0);
   }
 
