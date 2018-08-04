@@ -30,7 +30,11 @@ class DisplayPage extends Component {
       count: 0,
       showField: false,
       openClose: false,
-      domainError: ''
+      domainError: '',
+      modaltitle: 'Are you sure you want to delete this campaign?',
+      modalbody: 'Alert ! These may delete all your customer activities .',
+      modalfoot: 'Delete' ,
+      modalname: '1',
     };
   }
 
@@ -144,6 +148,31 @@ class DisplayPage extends Component {
     this.props.removePageUrl(id, index, type);
   }
 
+  openCloseModal = () => {
+    this.setState({openClose: !this.state.openClose});
+  }
+
+  showDeletePopup = (displayUrl,i) =>{
+    <div className="modal fade show-modal" style={this.state.openClose?{ display: 'block', opacity: '1' }: { display: 'none', opacity: '0' }} role="dialog" id={this.state.modalname} role="dialog">
+      <div className="modal-dialog">
+        <div className="modal-content align-modal">
+          <div className="modal-header">
+            <button type="button" className="close" data-dismiss="modal">&times;</button>
+            <h4 className="modal-title">{this.state.modaltitle}</h4>
+          </div>
+          <div className="modal-body pb-5">
+            {this.state.modalbody}
+          </div>
+          <div className="modal-footer">
+            <button type="button" className="float-left btn btn-primary close-btn" data-dismiss="modal">Close</button>
+            <button type="button" className="btn btn-primary delete-btn" data-dismiss="modal"
+              onClick={() => this.deleteDisplayUrl(displayUrl._id, i, displayUrl.type)} >{this.state.modalfoot}</button>
+          </div>
+        </div>
+      </div>
+    </div>;
+  }
+
   renderColor(classname) {
     switch (classname) {
       case 'unverified':
@@ -185,7 +214,8 @@ class DisplayPage extends Component {
                   <span className="dot display" style={{backgroundColor: this.renderColor(displayUrl.status) }}>
                   </span>
                 </td>
-                <td><a href="javascript:;"><i className="ml-3 icon-trash" onClick={() => this.deleteDisplayUrl(displayUrl._id, i, displayUrl.type)}></i></a></td>
+                <td><a href="javascript:;"><i className="ml-3 icon-trash" onClick={this.openCloseModal}></i></a></td>
+                {this.showDeletePopup()}
               </tr>;
             })
           }

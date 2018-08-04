@@ -15,12 +15,12 @@ class Oauthpage extends Component {
     super();
 
     // Create a token generator with the default settings:
-    var id = require('rand-token');
-    // Generate a 16 character alpha-numeric token:
+    let id = require('rand-token');
+    // Generate a 10 character alpha-numeric token:
     id = id.generate(10);
 
     // Create a token generator with the default settings:
-    var secret = require('rand-token');
+    let secret = require('rand-token');
     // Generate a 16 character alpha-numeric token:
     secret = secret.generate(16);
 
