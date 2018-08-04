@@ -35,6 +35,7 @@ class DisplayPage extends Component {
       modalbody: 'Alert ! These may delete all your customer activities .',
       modalfoot: 'Delete' ,
       modalname: '1',
+      openClosePop:false
     };
   }
 
@@ -153,7 +154,7 @@ class DisplayPage extends Component {
   }
 
   showDeletePopup = (displayUrl,i) =>{
-    <div className="modal fade show-modal" style={this.state.openClose?{ display: 'block', opacity: '1' }: { display: 'none', opacity: '0' }} role="dialog" id={this.state.modalname} role="dialog">
+    <div className="modal fade show-modal" style={this.state.openClosePop?{ display: 'block', opacity: '1' }: { display: 'none', opacity: '0' }} role="dialog" id={this.state.modalname} role="dialog">
       <div className="modal-dialog">
         <div className="modal-content align-modal">
           <div className="modal-header">
@@ -214,7 +215,7 @@ class DisplayPage extends Component {
                   <span className="dot display" style={{backgroundColor: this.renderColor(displayUrl.status) }}>
                   </span>
                 </td>
-                <td><a href="javascript:;"><i className="ml-3 icon-trash" onClick={this.openCloseModal}></i></a></td>
+                <td><a href="javascript:;"><i className="ml-3 icon-trash" onClick={this.openClosePop}></i></a></td>
                 {this.showDeletePopup()}
               </tr>;
             })
@@ -248,8 +249,8 @@ class DisplayPage extends Component {
     this.setState({newDomain:''});
   }
 
-  openCloseModal = () => {
-    this.setState({openClose: !this.state.openClose});
+  openClosePop = () => {
+    this.setState({openClosePop: !this.state.openClosePop});
   }
 
   showModalDisplay= () => {
@@ -309,7 +310,7 @@ class DisplayPage extends Component {
               <span className="btn btn-primary nav nav-pills waves-light waves-effect addpath-btn pl-5 pr-5" onClick={() => this.addDomainUrl(domain.domainUrl, index)}>
                 Add
               </span>
-              <i className=" icon-trash trash" onClick={()=>{removeSubDomain(domain._id);}}></i>
+              <i className=" icon-trash trash ml-2" onClick={()=>{removeSubDomain(domain._id);}}></i>
             </span>
           </div>
         );

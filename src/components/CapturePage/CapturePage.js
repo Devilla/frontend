@@ -300,7 +300,7 @@ renderColor(classname) {
               <span className="btn btn-primary nav nav-pills waves-light waves-effect number pl-5 pr-5" onClick={() => this.addDomainUrl(domain.domainUrl, index)}>
                 Add
               </span>
-              <i className=" icon-trash trash" onClick={() => removeSubDomain(domain._id, index)}></i>
+              <i className=" icon-trash trash ml-2" onClick={() => removeSubDomain(domain._id, index)}></i>
             </span>
           </div>
         );
