@@ -51,5 +51,6 @@ export { default as NotificationConfigure } from './NotificationConfigure/Notifi
 
 export { default as Oauthpage } from './Oauthpage/Oauthpage';
 export { default as Oauthgenerate } from './Oauthgenerate/Oauthgenerate';
+export { default as AuthorizationDialog } from './Oauthgenerate/AuthorizationDialog';
 export { default as DashboardChannel  }  from './DashboardChannel/DashboardChannel';
 export { default as ReviewRedirect } from './ReviewRedirect/ReviewRedirect';

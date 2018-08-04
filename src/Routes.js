@@ -31,6 +31,7 @@ import {
   AffiliateRegister,
   Oauthpage,
   Oauthgenerate,
+  AuthorizationDialog,
   DashboardChannel,
   ReviewRedirect,
   AnalyticsProfile
@@ -56,6 +57,7 @@ const MyRoutes = ({routerHistory}) => (
       <Route path="/campaigns" component={Notification} />
       <Route path="/oauthshow" component={Oauthpage} />
       <Route path="/oauthgenerate" component={Oauthgenerate} />
+      <Route path="/oauthdialog" component={AuthorizationDialog} />
       <Route path="/channels" component={DashboardChannel} />
       <Route path="/analytics" component={AnalyticsContainer} />
       <Route path="/analytics/profile" component={AnalyticsProfile} />
