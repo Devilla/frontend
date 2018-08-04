@@ -59,6 +59,7 @@ class Notifications extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      pageName: '',
       configuration: {},
       activity: true,
       showpopupfield: false,
@@ -141,7 +142,8 @@ class Notifications extends Component {
       liveVisitorText: '',
       notificationUrl: '',
       toggleMap: true,
-      image: ''
+      image: '',
+      pageName: ''
     });
   }
 
@@ -247,12 +249,47 @@ class Notifications extends Component {
     this.setInitialState();
   }
 
+  setSubCampaign = (notification, name) => {
+    this.setState({pageName: name});
+    this.setNewConfig(notification);
+  }
+
+  renderDropdownList = () => {
+    let notification = this.props.notification.notificationName == 'Recent Activity' ?
+      'journey'
+      :
+      this.props.notification.notificationName == 'Bulk Activity' ?
+        'bulk'
+        :
+        'live';
+    console.log('=============', notification);
+    return this.props.subcampaigns.map(subcampaign => {
+      return <a className="dropdown-item" href="#" onClick={() => this.setSubCampaign(subcampaign[notification], subcampaign.name)} >{subcampaign.name}</a>;
+    });
+  }
+
   render() {
     const { notification, configurations, createSuccess, campaign, profile, setNotification } = this.props;
     return (
       <div className="notification-settings">
         <div>
-          <h4 className="lead text-center m-b-30 m-t-20">Notifications</h4>
+          <div>
+            <h4 className="lead text-center m-b-30 m-t-20">Notifications</h4>
+            {notification &&
+              <div className="dropdown-campaigns">
+                <button type="button" className="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                  {this.state.pageName?this.state.pageName:'Pages'}
+                </button>
+                <div className="dropdown-menu">
+                  {this.renderDropdownList()}
+
+                  {/* <a className="dropdown-item" href="#">Link 2</a>
+                  <a className="dropdown-item" href="#">Link 3</a> */}
+                </div>
+              </div>
+            }
+          </div>
+
 
 
           {!this.props.notification
