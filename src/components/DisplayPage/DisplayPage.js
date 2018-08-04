@@ -304,7 +304,7 @@ class DisplayPage extends Component {
               aria-describedby="urladd"
               value={this.state.domain[index]?this.state.domain[index].url:''}
               onChange={(e) => this.handleDomainUrl(e, index)}
-              onKeyUp={(e) => e.keyCode === 13?this.addDomainUrl(domain.domainUrl, index):null}
+              onKeyUp={(e) => e.keyCode === 13 && this.addDomainUrl(domain.domainUrl, index)}
             />
             <span className="input-group-btn col-md-3" id="urladd">
               <span className="btn btn-primary nav nav-pills waves-light waves-effect addpath-btn pl-5 pr-5" onClick={() => this.addDomainUrl(domain.domainUrl, index)}>
