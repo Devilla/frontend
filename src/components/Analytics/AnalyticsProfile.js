@@ -21,7 +21,7 @@ const AnalyticsProfile = ({renderProfileList }) => {
           </tr>
         </thead>
         <tbody>
-          {renderProfileList}
+          {renderProfileList()}
         </tbody>
       </table>
     </div>
