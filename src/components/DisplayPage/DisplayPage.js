@@ -343,7 +343,7 @@ class DisplayPage extends Component {
                     aria-describedby="urladd"
                     value={displayUrl.url}
                     onChange={this.handlePageUrl}
-                    onKeyUp={(e) => e.keyCode === 13?this.addPageUrl():null}
+                    onKeyDown={(e) => e.keyCode === 13?this.addPageUrl():null}
                   />
                   <span className="input-group-btn col-md-3"
                     id="urladd">
