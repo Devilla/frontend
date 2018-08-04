@@ -41,7 +41,7 @@ const CampaignSettings = (props) => {
 
         <ul className="nav nav-pills navtab-bg nav-justified pull-in new-campaign-tab-pills">
           <li className="nav-item waves-effect text-center">
-            <a data-toggle="tab" aria-expanded="true" className={`nav-link ${props.activeClass == 1?'active pb-2 pt-2':'pb-2 pt-2'}`} onClick={() => props.setActiveState(1)}>
+            <a data-toggle="tab" aria-expanded="true" className={`nav-link ${props.activeClass == 1?'active pb-2 pt-2':'pb-2 pt-2'}`} onClick={() => { props.setActiveState(1); props.clearNotification(); }}>
               1.&nbsp;&nbsp; <i className="fi-mail mr-2"></i>Notifications
             </a>
           </li><li className="arrow-right"></li>

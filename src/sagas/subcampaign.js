@@ -3,6 +3,7 @@ import * as api from 'services/api';
 import * as actions from 'ducks/subcampaign';
 import { load, loaded } from 'ducks/loading';
 import { toast } from 'react-toastify';
+import { fetchDisplayUrl, fetchLeadUrl } from 'ducks/pageurl';
 
 const toastConfig = {
   position: toast.POSITION.BOTTOM_LEFT,
@@ -46,8 +47,12 @@ function* createSubCampaign(action) {
     const res = yield call(api.POST, 'subcampaign', action.subcampaign);
     if(res.error)
       console.log(res.error);
-    else
+    else {
       yield put(actions.fetchSubCampaign(res.campaign));
+      yield put(fetchDisplayUrl('display', res.rule));
+      yield put(fetchLeadUrl('lead', res.rule));
+    }
+
     yield toast('SubCampaign Saved', toastConfig);
     yield put(loaded());
   } catch (error) {

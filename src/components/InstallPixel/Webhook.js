@@ -18,7 +18,8 @@ class Webhook extends Component {
     this.state = {
       selectHook: null,
       campaignWebhook: null,
-      webhookName: ''
+      webhookName: '',
+      openClose: false
     };
   }
 
@@ -52,7 +53,7 @@ class Webhook extends Component {
 
   saveWebhook = () => {
     const { campaign } = this.props;
-    const { webhookName, selectHook } = this.state;
+    const { webhookName, selectHook, openClose } = this.state;
     const webhook = {
       name: webhookName,
       type: selectHook,
@@ -60,16 +61,16 @@ class Webhook extends Component {
       campaign: campaign._id
     };
     this.props.createWebhook(webhook);
-    this.setState({campaignWebhook: undefined});
+    this.setState({campaignWebhook: undefined, openClose: !openClose});
   }
 
   popupContent = () => {
     return (
-      <div className="modal fade show-modal" id="myModal" role="dialog">
+      <div className="modal fade show-modal" style={this.state.openClose?{ display: 'block', opacity: '1' }: { display: 'none', opacity: '0' }} role="dialog">
         <div className="modal-dialog">
           <div className="modal-content align-modal">
             <div className="modal-header">
-              <button type="button" className="close" data-dismiss="modal">&times;</button>
+              <button type="button" className="close" onClick={this.openCloseModal}>&times;</button>
               <h4 className="modal-title">Add new Webhook</h4>
             </div>
             <div className="modal-body">
@@ -104,6 +105,10 @@ class Webhook extends Component {
       debug: true
     });
     return toast('Endpoint copied', toastConfig);
+  }
+
+  openCloseModal = () => {
+    this.setState({openClose: !this.state.openClose});
   }
 
   render() {
@@ -162,7 +167,7 @@ class Webhook extends Component {
                     {this.renderWebhooks()}
                   </select>
                   <div className="input-group-append col-md-4">
-                    <button type="button" className="btn btn-primary addchannel"  htmlFor="inputGroupSelect02" data-toggle="modal" data-target="#myModal" ><i className="fi-plus"></i>&nbsp;Add Channels</button>
+                    <button type="button" className="btn btn-primary addchannel"  htmlFor="inputGroupSelect02" onClick={this.openCloseModal} ><i className="fi-plus"></i>&nbsp;Add Channels</button>
                     {this.popupContent()}
                   </div>
                 </div>
