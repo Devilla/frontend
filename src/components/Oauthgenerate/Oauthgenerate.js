@@ -22,7 +22,7 @@ class Oauthpage extends Component {
     // Create a token generator with the default settings:
     var secret = require('rand-token');
     // Generate a 16 character alpha-numeric token:
-    secret = secret.generate(10);
+    secret = secret.generate(16);
 
     this.state = {
       clientId: id,
@@ -108,7 +108,7 @@ class Oauthpage extends Component {
                     type="text"
                     bsClass="form-control"
                     id="clientname"
-                    placeholder="example: Ray-101, John doe"
+                    placeholder="example: John doe"
                     required={true}
                     name="clientname"
                     value={this.state.clientname}
