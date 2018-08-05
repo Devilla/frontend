@@ -1,0 +1,152 @@
+.integration-container {
+    .channel-container {
+      padding-bottom: 100px;
+      .channel {
+        & .p.lead {
+          position: absolute;
+          top: 0px;
+        }
+        .logocompany {
+          position: absolute;
+          top: 60px !important;
+          left: 120px !important;
+          min-width: 50px;
+          max-height: 40px;
+          &.zapier {
+            margin-left: 4px !important;
+          }
+        }
+        .channel-title {
+          background-color: #8E8E8E;
+          padding-top: 20px;
+          padding-bottom: 20px;
+          & h1,
+          h4 {
+            text-align: center;
+            color: white !important;
+          }
+        }
+        .content {
+          padding-top: 20px;
+          margin-left: 20px !important;
+        }
+        .tilebox-one {
+          background: #fcfcfc;
+          h4 {
+            position: absolute;
+            bottom: 100px;
+            left: 35%;
+          }
+          .desc-page {
+            position: relative;
+            top: 130px;
+            left: 5px;
+          }
+        }
+
+        .zapier {
+          margin-left: 20px !important;
+        }
+        .ontraport {
+          margin-left: -15px !important;
+        }
+        .cfunnel {
+          margin-left: -10px !important;
+        }
+        .aweber {
+          margin-left: 10px !important;
+        }
+        .hubspot {
+          margin-left: 15px !important;
+        }
+        .sqspace {
+          margin-left: -10px !important;
+        }
+        .woo {
+          margin-left : -10px !important;
+        }
+        .googletag {
+          position: absolute;
+          left: 60px !important;
+        }
+        .box-shadow {
+          position: relative;
+          box-shadow: 0px 5px 10px -5px rgba(0, 0, 0, 0.2) !important;
+          border-radius: 7px;
+          cursor: pointer;
+          border: 1px solid #95c5f8;
+          margin-right: 15px !important;
+          background-color: #fcfcfc;
+          div.tilebox-one {
+            padding-left: 10px;
+            min-height: 200px;
+            //button as span
+            span {
+              position: absolute;
+              bottom: 50px;
+              left: 33%;
+              top: 70%;
+              border-radius: 5px;
+              visibility: hidden;
+              opacity: 0;
+              cursor: pointer;
+              & .fi-open {
+                font-size: 15px;
+              }
+            }
+          }
+          &:hover {
+            box-shadow: 0px 12px 16px -5px rgba(0, 0, 0, 0.2) !important;
+            animation: box 0.1s ease-in forwards;
+            background-color: rgb(247, 245, 245) !important;
+            .tilebox-one {
+              background-color: rgb(247, 245, 245) !important;
+              .desc-page {
+                display: none;
+              }
+              span {
+                animation: viewbtn 0.2s cubic-bezier(0.42,0,0.58,1) forwards;
+              }
+
+            }
+          }
+        }
+        button {
+          box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+          margin-left: 45px !important;
+          margin-top: 20px !important;
+          border-radius: 5px;
+        }
+      }
+      .i-title {
+        font-size: 14px !important;
+        font-weight: 700 !important;
+        margin-top: 25px !important;
+        margin: 0 auto !important;
+        margin-bottom: 5px !important;
+        color: #2C3B48 !important;
+        text-transform: uppercase !important;
+      }
+    }
+    @keyframes box {
+      0% {
+        top: 0px;
+      }
+      100% {
+        top: 2px;
+      }
+    }
+    @keyframes viewbtn {
+      0% {
+        top: 90%;
+        visibility: hidden;
+        opacity: 0;
+      }
+      100% {
+        top: 70%;
+        visibility: visible;
+        opacity: 1;
+      }
+    }
+
+  }

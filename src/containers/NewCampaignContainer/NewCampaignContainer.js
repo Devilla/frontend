@@ -6,6 +6,7 @@ import copy from 'copy-to-clipboard';
 
 import { validatewebsite } from 'components/Common/function';
 import { createCampaign, clearCampaign, addSubdomain, fetchSubdomain, clearSubDomain, removeSubDomain } from 'ducks/campaign';
+import { updateSubCampaign, fetchSubCampaign } from 'ducks/subcampaign';
 import { fetchElastic, clearElastic } from 'ducks/elastic';
 import { fetchOneRules, createRules, updateRules } from 'ducks/rules';
 import { fetchNotification } from 'ducks/notification';
@@ -46,6 +47,7 @@ class NewCampaignContainer extends Component {
     const { campaign } = this.props;
     this.verifyPixelStatus(campaign);
     this.props.fetchSubdomain(campaign?campaign._id:null);
+    this.props.fetchSubCampaign(campaign?campaign._id:null);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -212,7 +214,8 @@ const mapStateToProps = state => ({
   configurations: state.getIn(['configuration', 'configurations']),
   notifications: state.getIn(['notification', 'notifications']),
   displayUrls: state.getIn(['pageurl', 'display']),
-  leads: state.getIn(['pageurl', 'lead'])
+  leads: state.getIn(['pageurl', 'lead']),
+  subcampaigns: state.getIn(['subcampaign', 'subcampaigns']),
 });
 
 const mapDispatchToProps = {
@@ -233,7 +236,9 @@ const mapDispatchToProps = {
   fetchCampaignConfiguration,
   updateConfiguration,
   clearConfiguration,
-  createSuccess
+  createSuccess,
+  updateSubCampaign,
+  fetchSubCampaign
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewCampaignContainer);

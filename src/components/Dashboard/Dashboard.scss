@@ -1,14 +1,13 @@
 .dashboard-boxes {
-
   .dates-select {
     border: none !important;
     position: relative;
     top: 10px !important;
     cursor: pointer;
-    box-shadow: 0px 2px 3px -3px #999 !important;
+    box-shadow: 0 2px 3px -3px #999 !important;
     font-size: 16px !important;
-
   }
+
   .audience {
     font-size: 16px;
     color: #097fff;
@@ -16,32 +15,40 @@
     padding: 6px 1% !important;
     position: relative;
     top: 15px !important;
+
     &:hover {
       background: #0980ff2e;
       border-radius: 5px !important;
     }
   }
+
   .card-content-width {
     max-width: 100% !important;
   }
+
   .campaign-dropdown {
     display: flex !important;
     justify-content: flex-end;
+
     button {
       position: absolute;
     }
+
     .dropdown-toggle {
       width: 150px !important;
     }
+
     .dropdown-item {
       cursor: pointer;
     }
   }
+
   .ct-chart {
     canvas {
       width: 100% !important;
     }
   }
+
   .dashboard-content {
     table {
       width: 100%;
@@ -145,17 +152,21 @@
 
     .d-inline-flex {
       width: 100%;
+
       .list-inline-mb-0 {
         display: flex;
         justify-content: space-around;
+
         .list-inline-item {
           display: flex;
+
           .icon-box {
             width: 15px;
             height: 15px;
             border-radius: 4px;
-            margin: 0px 5px;
+            margin: 0 5px;
           }
+
           .campaign-list-label {
             color: #5f666f;
             font-size: 14px !important;
@@ -166,7 +177,6 @@
       }
     }
   }
-
 
   .customPicker {
     position: relative;
@@ -197,46 +207,56 @@
 .new-card3 {
   margin-top: 60px;
 }
+
 .mincard-ht {
   min-height: 55px !important;
 }
+
 .customPicker-sub {
   position: absolute !important;
   top: 5px !important;
   right: 140px !important;
 }
-.g2 , .g3 , .g4{
-  box-shadow: 0px 2px 7px -5px #999 !important;
-  padding-top: 20px;
-  padding-bottom: 20px;
-}
 
-.g2::before {
-  content: 'Where are your Users ?';
-  font-size: 20px !important;
-  color: #999;
-}
-.g3::before {
-  content: 'When do Users visit ?';
-  font-size: 20px !important;
-  color: #999;
-}
-.g4::before {
-  content: 'Which pages Users visit ?';
-  font-size: 20px !important;
-  color: #999;
-}
 .border-hr {
   margin-top: 10px;
 }
-.TImelineData{
+
+.TImelineData {
   height: 20px;
   width: 50px;
   border: 1px solid grey;
-  background-color:#097fff;
-
+  background-color: #097fff;
 }
-.TImelineDat{
+
+.TImelineDat {
   height: 20px;
   width: 50px;
+}
+
+.heatmap,
+.worldmap {
+  box-shadow: 0 1px 10px -3px #999;
+  padding: 40px 40px 20px 2px !important;
+}
+
+.worldmap::before {
+
+  content: 'Where are your Users ?';
+  position: relative;
+  top: -20px;
+  font-size: 20px !important;
+  color: #999;
+  padding-bottom: 10px !important;
+  margin: 15px;
+}
+
+.heatmap::before {
+  content: 'When do Users visit ?';
+  position: relative;
+  top: -20px;
+  font-size: 20px !important;
+  color: #999;
+  padding-bottom: 10px !important;
+  margin: 15px;
 }

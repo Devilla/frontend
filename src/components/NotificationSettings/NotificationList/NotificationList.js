@@ -3,7 +3,15 @@ import './NotificationList.scss';
 import NotificationSettingPopup from '../NotificationSettingPopup/NotificationSettingPopup';
 
 
-const NotificationList = ({ notificationList, configure, handleActivityChange}) => {
+const NotificationList = ({
+  notificationList,
+  configure,
+  handleActivityChange,
+  setNotification,
+  setNewConfig,
+  handleContentChange,
+  selectedSubCampaign
+}) => {
   const renderNotifications = () => {
     return notificationList.map(notification =>
       <div key={notification._id}
@@ -91,7 +99,12 @@ const NotificationList = ({ notificationList, configure, handleActivityChange}) 
 
   return (
     <div>
-      <NotificationSettingPopup />
+      <NotificationSettingPopup
+        handleContentChange={handleContentChange}
+        selectedSubCampaign={selectedSubCampaign}
+        setNotification={setNotification}
+        setNewConfig={setNewConfig}
+      />
       <div className="cards-notification">
         <div className="row m-t-50 notification-list">
           {renderNotifications()}

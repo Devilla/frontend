@@ -9,6 +9,7 @@ import './Dashboard.scss';
 import Card from './Card';
 import ReactChartJs from 'react-chartjs';
 import HeatMap from 'react-heatmap-grid';
+import { Chart } from 'react-google-charts';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
@@ -16,17 +17,47 @@ var LineChart = ReactChartJs.Line;
 let moment = extendMoment(Moment);
 
 
+const chartEvents = [
+  {
+    eventName: 'select',
+    callback(chartWrapper) {
+      console.log('Selected ', chartWrapper.getChart().getSelection());
+    }
+  }
+];
+
+//dummy data
+const geodata = [
+  ['Country', 'traffic'],
+  ['Germany', 100],
+  ['United States', 300],
+  ['Brazil', 400],
+  ['Canada', 500],
+  ['France', 600],
+  ['RU', 1000]
+];
+
+const geooptions = {
+  title: 'Country vs. traffic',
+  hAxis: { title: 'Country', viewWindow: { min: 0, max: 40 } },
+  vAxis: { title: 'traffic', viewWindow: { min: 0, max: 40 } },
+  colorAxis: {colors: ['#81d4fa',  '#329fff']},
+  defaultColor: '#f5f5f5'
+
+};
+
+
 const color_list = [
-  '#87CEFA',
-  '#B0C4DE',
-  '#00FFFF',
-  '#ADD8E6',
-  '#FF00FF',
-  '#F0E68C',
-  '#FFFACD',
-  '#90EE90',
-  '#FAF0E6',
-  '#AFEEEE',
+  '#69d217',
+  '#69d2e7',
+  '#1fda65',
+  '#ffda65',
+  '#ff2765',
+  '#ffd041',
+  '#53bbf4',
+  '#ff6d74',
+  '#ff6e00',
+  '#ff0100',
   '#87CEEB',
   '#F5F5F5'
 ];
@@ -139,8 +170,8 @@ class Dashboard extends Component {
     end    = moment().endOf('day').format('YYYY-MM-DD HH:mm:ss');
 
     range1 = moment.range(start, end);
-    acc = Array.from(range1.by('hour', {   step:4}));
-    acc.length =6;
+    acc = Array.from(range1.by('hour', {   step:2}));
+    acc.length =12;
     acc = acc.map(m => m.format('HH A'));
     return acc;
   }
@@ -499,12 +530,23 @@ class Dashboard extends Component {
               </div>
             </Col>
           </Row>
-          <Row  className="justify-content-center text-muted">
-            <Col md={11}>
+          <Row  className="justify-content-around text-muted mb-5">
+            <Col md={5} className="heatmap">
               <HeatMap
                 xLabels={xLabels}
                 yLabels={yLabels}
                 data={datas}
+              />
+            </Col>
+            <Col md={5} className="worldmap">
+              <Chart
+                chartType="GeoChart"
+                data={geodata}
+                options={geooptions}
+                graphID="GeoChart"
+                width="100%"
+                height="400px"
+                chartEvents={chartEvents}
               />
             </Col>
           </Row>

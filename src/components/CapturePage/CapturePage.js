@@ -23,7 +23,8 @@ class CapturePage extends Component {
         status: '',
         class: '',
         type: '',
-        error: ''
+        error: '',
+        campaignName: ''
       },
       domain: [],
       openClose: false
@@ -35,8 +36,6 @@ class CapturePage extends Component {
   }
 
   componentDidMount() {
-    if(this.props.rules)
-      this.fetchPathUrls(this.props.rules);
     window.scrollTo(0,0);
   }
 
@@ -75,12 +74,14 @@ class CapturePage extends Component {
     let lead = this.state.lead;
     lead['rule'] = this.props.rules._id;
     lead['domain'] = this.props.campaign.websiteUrl;
+    lead['campaignName'] = this.props.campaign.campaignName;
     this.props.createPageUrl(lead);
     this.setState({lead: {
       url: '',
       status: '',
       class: '',
-      type: ''
+      type: '',
+      campaignName: ''
     }});
   }
 
@@ -99,6 +100,7 @@ class CapturePage extends Component {
     let domain = this.state.domain[index];
     domain['rule'] = this.props.rules._id;
     domain['domain'] = domainUrl;
+    domain['campaignName'] = this.props.campaign.campaignName;
     this.props.createPageUrl(domain);
     domain = {
       url: '',
@@ -106,7 +108,8 @@ class CapturePage extends Component {
       class: '',
       type: '',
       rule: '',
-      domain: ''
+      domain: '',
+      campaignName: ''
     };
     this.setState({domain});
   }
@@ -175,6 +178,7 @@ class CapturePage extends Component {
               return <tr key={i}>
                 <td className="url">{lead.url}</td>
                 <td>{lead.domain === campaign.websiteUrl?'Domain':'Sub Domain'}</td>
+                <td>{lead.campaignName}</td>
                 <td className="ml-4 status">
                   <span className="dot ml-3" style={{backgroundColor: this.renderColor(lead.status) }}>
                   </span>
@@ -206,7 +210,7 @@ class CapturePage extends Component {
       campaign: campaign._id,
       type: 'lead'
     };
-    
+
     addSubdomain(newDomain);
     this.openCloseModal();
     this.setState({newDomain:''});
