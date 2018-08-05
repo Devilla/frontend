@@ -249,9 +249,11 @@ class Notifications extends Component {
     this.setInitialState();
   }
 
-  setSubCampaign = (notification, name) => {
-    this.setState({pageName: name});
-    this.setNewConfig(notification);
+  setSubCampaign = (subcampaign, notification, name, notificationName) => {
+    this.setState({pageName: name, selectedSubCampaign: subcampaign});
+    this.setNewConfig(subcampaign[notification]);
+    this.props.setNotification({notificationName: notificationName, type: notification, activity: subcampaign[notification].activity });
+
   }
 
   renderDropdownList = () => {
@@ -262,10 +264,14 @@ class Notifications extends Component {
         'bulk'
         :
         'live';
-    console.log('=============', notification);
     return this.props.subcampaigns.map(subcampaign => {
-      return <a className="dropdown-item" href="#" onClick={() => this.setSubCampaign(subcampaign[notification], subcampaign.name)} >{subcampaign.name}</a>;
+      return <a className="dropdown-item" href="#" onClick={() => this.setSubCampaign(subcampaign, notification, subcampaign.name, this.props.notification.notificationName)} >{subcampaign.name}</a>;
     });
+  }
+
+  clearSubCampaign = () => {
+    this.setState({pageName: '', selectedSubCampaign: ''});
+    this.setNewConfig(this.props.configuration);
   }
 
   render() {
@@ -281,6 +287,7 @@ class Notifications extends Component {
                   {this.state.pageName?this.state.pageName:'Pages'}
                 </button>
                 <div className="dropdown-menu">
+                  <a className="dropdown-item" href="#" onClick={() => this.clearSubCampaign()} >Default</a>
                   {this.renderDropdownList()}
 
                   {/* <a className="dropdown-item" href="#">Link 2</a>
