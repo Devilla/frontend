@@ -265,7 +265,7 @@ class Notifications extends Component {
         :
         'live';
     return this.props.subcampaigns.map(subcampaign => {
-      return <a className="dropdown-item" href="#" onClick={() => this.setSubCampaign(subcampaign, notification, subcampaign.name, this.props.notification.notificationName)} >{subcampaign.name}</a>;
+      return <a key={subcampaign._id} className="dropdown-item" href="#" onClick={() => this.setSubCampaign(subcampaign, notification, subcampaign.name, this.props.notification.notificationName)} >{subcampaign.name}</a>;
     });
   }
 

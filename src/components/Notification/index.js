@@ -95,7 +95,7 @@ class Notification extends Component {
       this.state.isActive=campaign.isActive;
       const { totalUsers } = this.usersCount(campaign._id);
       return (
-        <tr className="campaign-td" key={campaign._id} onClick={(e) => this.handleRouteChange(e, campaign)}>
+        <tr className="campaign-td" key={i} onClick={(e) => this.handleRouteChange(e, campaign)}>
           <th scope="row">{i + 1}</th>
           <td>{campaign.campaignName}</td>
           <td>{campaign.websiteUrl}</td>
