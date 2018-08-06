@@ -30,12 +30,7 @@ class DisplayPage extends Component {
       count: 0,
       showField: false,
       openClose: false,
-      domainError: '',
-      modaltitle: 'Are you sure you want to delete this campaign?',
-      modalbody: 'Alert ! These may delete all your customer activities .',
-      modalfoot: 'Delete' ,
-      modalname: '1',
-      openClosePop:false
+      domainError: ''
     };
   }
 
@@ -149,31 +144,6 @@ class DisplayPage extends Component {
     this.props.removePageUrl(id, index, type);
   }
 
-  openCloseModal = () => {
-    this.setState({openClose: !this.state.openClose});
-  }
-
-  showDeletePopup = (displayUrl,i) =>{
-    <div className="modal fade show-modal" style={this.state.openClosePop?{ display: 'block', opacity: '1' }: { display: 'none', opacity: '0' }} role="dialog" id={this.state.modalname} role="dialog">
-      <div className="modal-dialog">
-        <div className="modal-content align-modal">
-          <div className="modal-header">
-            <button type="button" className="close" data-dismiss="modal">&times;</button>
-            <h4 className="modal-title">{this.state.modaltitle}</h4>
-          </div>
-          <div className="modal-body pb-5">
-            {this.state.modalbody}
-          </div>
-          <div className="modal-footer">
-            <button type="button" className="float-left btn btn-primary close-btn" data-dismiss="modal">Close</button>
-            <button type="button" className="btn btn-primary delete-btn" data-dismiss="modal"
-              onClick={() => this.deleteDisplayUrl(displayUrl._id, i, displayUrl.type)} >{this.state.modalfoot}</button>
-          </div>
-        </div>
-      </div>
-    </div>;
-  }
-
   renderColor(classname) {
     switch (classname) {
       case 'unverified':
@@ -215,8 +185,7 @@ class DisplayPage extends Component {
                   <span className="dot display" style={{backgroundColor: this.renderColor(displayUrl.status) }}>
                   </span>
                 </td>
-                <td><a href="javascript:;"><i className="ml-3 icon-trash" onClick={this.openClosePop}></i></a></td>
-                {this.showDeletePopup()}
+                <td><a href="javascript:;"><i className="ml-3 icon-trash" onClick={() => this.deleteDisplayUrl(displayUrl._id, i, displayUrl.type)}></i></a></td>
               </tr>;
             })
           }
@@ -249,8 +218,8 @@ class DisplayPage extends Component {
     this.setState({newDomain:''});
   }
 
-  openClosePop = () => {
-    this.setState({openClosePop: !this.state.openClosePop});
+  openCloseModal = () => {
+    this.setState({openClose: !this.state.openClose});
   }
 
   showModalDisplay= () => {
@@ -304,13 +273,13 @@ class DisplayPage extends Component {
               aria-describedby="urladd"
               value={this.state.domain[index]?this.state.domain[index].url:''}
               onChange={(e) => this.handleDomainUrl(e, index)}
-              onKeyUp={(e) => e.keyCode === 13 && this.addDomainUrl(domain.domainUrl, index)}
+              onKeyUp={(e) => e.keyCode === 13?this.addDomainUrl(domain.domainUrl, index):null}
             />
             <span className="input-group-btn col-md-3" id="urladd">
               <span className="btn btn-primary nav nav-pills waves-light waves-effect addpath-btn pl-5 pr-5" onClick={() => this.addDomainUrl(domain.domainUrl, index)}>
                 Add
               </span>
-              <i className=" icon-trash trash ml-2" onClick={()=>{removeSubDomain(domain._id);}}></i>
+              <i className="ml-2 icon-trash trash" onClick={()=>{removeSubDomain(domain._id);}}></i>
             </span>
           </div>
         );
@@ -343,7 +312,7 @@ class DisplayPage extends Component {
                     aria-describedby="urladd"
                     value={displayUrl.url}
                     onChange={this.handlePageUrl}
-                    onKeyDown={(e) => e.keyCode === 13?this.addPageUrl():null}
+                    onKeyUp={(e) => e.keyCode === 13?this.addPageUrl():null}
                   />
                   <span className="input-group-btn col-md-3"
                     id="urladd">

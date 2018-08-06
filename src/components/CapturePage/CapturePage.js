@@ -24,11 +24,7 @@ class CapturePage extends Component {
         class: '',
         type: '',
         error: '',
-        campaignName: '',
-        modaltitle: 'Are you sure you want to delete this campaign?',
-        modalbody: 'Alert ! These may delete all your customer activities .',
-        modalfoot: 'Delete' ,
-        modalname: '1',
+        campaignName: ''
       },
       domain: [],
       openClose: false
@@ -145,40 +141,20 @@ class CapturePage extends Component {
     this.props.removePageUrl(id, index, type);
   }
 
-showDeletePopup = (lead,i) =>{
-  <div className="modal fade show-modal" id={this.state.modalname} role="dialog">
-    <div className="modal-dialog">
-      <div className="modal-content align-modal">
-        <div className="modal-header">
-          <button type="button" className="close" data-dismiss="modal">&times;</button>
-          <h4 className="modal-title">{this.state.modaltitle}</h4>
-        </div>
-        <div className="modal-body pb-5">
-          {this.state.modalbody}
-        </div>
-        <div className="modal-footer">
-          <button type="button" className="float-left btn btn-primary close-btn" data-dismiss="modal">Close</button>
-          <button type="button" className="btn btn-primary delete-btn" data-dismiss="modal"
-            onClick={() => this.deleteLead(lead._id, i, lead.type)} >{this.state.modalfoot}</button>
-        </div>
-      </div>
-    </div>
-  </div>;
-}
-renderColor(classname) {
-  switch (classname) {
-    case 'unverified':
-      return '#FFEB3B';
-    case 'primary':
-      return '#2196F3';
-    case 'danger':
-      return '#F44336';
-    case 'success':
-      return '#4CAF50';
-    default:
-      return '#ddd';
+  renderColor(classname) {
+    switch (classname) {
+      case 'unverified':
+        return '#FFEB3B';
+      case 'primary':
+        return '#2196F3';
+      case 'danger':
+        return '#F44336';
+      case 'success':
+        return '#4CAF50';
+      default:
+        return '#ddd';
+    }
   }
-}
 
   renderLeads = () => {
     let leads = this.props.leads?this.props.leads.filter(lead => lead.type == 'lead'):[];
@@ -206,7 +182,7 @@ renderColor(classname) {
                   <span className="dot ml-3" style={{backgroundColor: this.renderColor(lead.status) }}>
                   </span>
                 </td>
-                <td><a href="javascript:;"><i className="ml-3 icon-trash" onClick={() => this.showDeletePopup(lead,i)}></i></a></td>
+                <td><a href="javascript:;"><i className="ml-2 icon-trash" onClick={() => this.deleteLead(lead._id, i, lead.type)}></i></a></td>
               </tr>;
             })
           }
@@ -294,13 +270,13 @@ renderColor(classname) {
               aria-describedby="urladd"
               value={this.state.domain[index]?this.state.domain[index].url:''}
               onChange={(e) => this.handleDomainUrl(e, index)}
-              onKeyUp={(e) => e.keyCode === 13 && this.addDomainUrl(domain.domainUrl, index)}
+              onKeyUp={(e) => e.keyCode === 13?this.addDomainUrl(domain.domainUrl, index):null}
             />
             <span className="input-group-btn col-md-3" id="urladd">
               <span className="btn btn-primary nav nav-pills waves-light waves-effect number pl-5 pr-5" onClick={() => this.addDomainUrl(domain.domainUrl, index)}>
                 Add
               </span>
-              <i className=" icon-trash trash ml-2" onClick={() => removeSubDomain(domain._id, index)}></i>
+              <i className="ml-3 icon-trash trash" onClick={() => removeSubDomain(domain._id, index)}></i>
             </span>
           </div>
         );
