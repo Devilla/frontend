@@ -145,7 +145,7 @@ class Webhook extends Component {
                     placeholder="Webhook Endpoint"
                     aria-label="Webhook Endpoint"
                     aria-describedby="basic-addon2"
-                    value={campaign.webhooks?campaign.webhooks.endpoint:null}
+                    value={campaign.webhooks?campaign.webhooks.endpoint:''}
                     readOnly
                   />
                   <div className="input-group-append">
