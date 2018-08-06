@@ -235,6 +235,7 @@ class CapturePage extends Component {
                   className="form-control"
                   placeholder="Add your subdomain url"
                   onChange={this.handleSubdomain}
+                  onKeyUp={(e) => e.keyCode === 13?this.submitSubdomain():null}
                 />
                 <HelpBlock className="text-center">
                   <p className="website-error">{domainError}</p>
