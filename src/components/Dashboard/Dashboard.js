@@ -8,8 +8,8 @@ import { fetchCampaignInfo, successCampaign , fetchCampaign } from 'ducks/campai
 import './Dashboard.scss';
 import Card from './Card';
 import ReactChartJs from 'react-chartjs';
-import HeatMap from 'react-heatmap-grid';
-import { Chart } from 'react-google-charts';
+// import HeatMap from 'react-heatmap-grid';
+// import { Chart } from 'react-google-charts';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
@@ -17,34 +17,34 @@ var LineChart = ReactChartJs.Line;
 let moment = extendMoment(Moment);
 
 
-const chartEvents = [
-  {
-    eventName: 'select',
-    callback(chartWrapper) {
-      console.log('Selected ', chartWrapper.getChart().getSelection());
-    }
-  }
-];
+// const chartEvents = [
+//   {
+//     eventName: 'select',
+//     callback(chartWrapper) {
+//       console.log('Selected ', chartWrapper.getChart().getSelection());
+//     }
+//   }
+// ];
 
 //dummy data
-const geodata = [
-  ['Country', 'traffic'],
-  ['Germany', 100],
-  ['United States', 300],
-  ['Brazil', 400],
-  ['Canada', 500],
-  ['France', 600],
-  ['RU', 1000]
-];
-
-const geooptions = {
-  title: 'Country vs. traffic',
-  hAxis: { title: 'Country', viewWindow: { min: 0, max: 40 } },
-  vAxis: { title: 'traffic', viewWindow: { min: 0, max: 40 } },
-  colorAxis: {colors: ['#81d4fa',  '#329fff']},
-  defaultColor: '#f5f5f5'
-
-};
+// const geodata = [
+//   ['Country', 'traffic'],
+//   ['Germany', 100],
+//   ['United States', 300],
+//   ['Brazil', 400],
+//   ['Canada', 500],
+//   ['France', 600],
+//   ['RU', 1000]
+// ];
+//
+// const geooptions = {
+//   title: 'Country vs. traffic',
+//   hAxis: { title: 'Country', viewWindow: { min: 0, max: 40 } },
+//   vAxis: { title: 'traffic', viewWindow: { min: 0, max: 40 } },
+//   colorAxis: {colors: ['#81d4fa',  '#329fff']},
+//   defaultColor: '#f5f5f5'
+//
+// };
 
 
 const color_list = [
@@ -344,11 +344,11 @@ class Dashboard extends Component {
 
 
   render() {
-    const yLabels = this.getHeatMapHours();
-    const xLabels = ['Sun', 'Mon', 'Tue','Wed','Thurs','Fri','Sat'];
-    const datas = new Array(yLabels.length)
-      .fill(0)
-      .map(() => new Array(xLabels.length).fill(0).map(() => Math.floor(Math.random() * 100)));
+    // const yLabels = this.getHeatMapHours();
+    // const xLabels = ['Sun', 'Mon', 'Tue','Wed','Thurs','Fri','Sat'];
+    // const datas = new Array(yLabels.length)
+    //   .fill(0)
+    //   .map(() => new Array(xLabels.length).fill(0).map(() => Math.floor(Math.random() * 100)));
     const { campaignInfo } = this.props;
     const { selectedCampaign } = this.state;
     const { userCount, totalUsers } = this.usersCount();
@@ -530,7 +530,7 @@ class Dashboard extends Component {
               </div>
             </Col>
           </Row>
-          <Row  className="justify-content-around text-muted mb-5">
+          {/* <Row  className="justify-content-around text-muted mb-5">
             <Col md={5} className="heatmap">
               <HeatMap
                 xLabels={xLabels}
@@ -549,7 +549,7 @@ class Dashboard extends Component {
                 chartEvents={chartEvents}
               />
             </Col>
-          </Row>
+          </Row> */}
         </div>
       </div>
     );

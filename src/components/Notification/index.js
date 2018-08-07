@@ -35,11 +35,7 @@ class Notification extends Component {
     this.props.fetchCampaign();
   }
 
-  handleSwitchChange(campaign)
-  {
-    this.state.isActive=!this.state.isActive;
-  }
-  handleActiveChange(active, campaign) {
+  handleActiveChange(active, campaign, index) {
     if (active && this.props.profile.uniqueVisitorsQoutaLeft <= 0) {
       this.setState({
         modaltitle: 'Limit exceeded',
@@ -50,7 +46,7 @@ class Notification extends Component {
     } else {
       campaign['isActive'] = active;
       delete campaign['_id'];
-      this.props.updateCampaign(campaign);
+      this.props.updateCampaign(campaign, index);
     }
   }
 
@@ -95,18 +91,17 @@ class Notification extends Component {
 
   // Map the notification data into table rows and return
   getNotificationRows = () => {
-
     return this.props.campaigns ? this.props.campaigns.map((campaign, i) => {
       this.state.isActive=campaign.isActive;
       const { totalUsers } = this.usersCount(campaign._id);
       return (
-        <tr className="campaign-td" key={campaign._id} onClick={(e) => this.handleRouteChange(e, campaign)}>
+        <tr className="campaign-td" key={i} onClick={(e) => this.handleRouteChange(e, campaign)}>
           <th scope="row">{i + 1}</th>
           <td>{campaign.campaignName}</td>
           <td>{campaign.websiteUrl}</td>
           <td className="switch">
             <input className="tgl tgl-ios" id="cb2" type="checkbox" checked={this.state.isActive}  readOnly/>
-            <label className="tgl-btn" htmlFor="cb2"  data-toggle="modal" data-target="#2"  onClick={this.handleSwitchChange(campaign) /*(e) => this.handleActiveChange(!campaign.isActive, campaign)*/}></label>
+            <label className="tgl-btn" htmlFor="cb2"  data-toggle="modal" data-target="#2"  onClick={(e) => this.handleActiveChange(!campaign.isActive, campaign, i)}></label>
           </td>
           <td className='text-center'>{totalUsers}</td>
           <td>{campaign.trackingId}</td>
@@ -120,7 +115,7 @@ class Notification extends Component {
   }
 
   render() {
-    const { modalbody, modalfoot, modaltitle , modalname} = this.state;
+    const { modalbody, modalfoot, modaltitle , modalname } = this.state;
 
     return (
       <div className="manage-notification">

@@ -58,8 +58,7 @@ function* update(action) {
     else if(action.campaign.singleCampaign)
       yield put(actions.successCampaign(res));
     else
-      yield put(actions.fetchCampaign(action.campaign));
-
+      yield put(actions.successUpdate(res, action.index));
     yield put(loaded());
   } catch (error) {
     yield put(loaded());
