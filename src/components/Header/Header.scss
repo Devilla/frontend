@@ -87,27 +87,27 @@
 }
 
 @media only screen and (min-width: 100px) and (max-width: 768px) {
-  .customer-header {
-    // .nav-topbar-flex {
-    //   display: block;
-    // }
-    .topbar-left-hamburger {
-      display: block;
-      margin: 5px 15px;
-      .fa-bars, .fa-times {
-        font-size: xx-large;
+  .navbar-custom  {
+    .customer-header {
+      .topbar-left-hamburger {
+        display: block;
+        margin: 5px 15px;
+        .fa-bars, .fa-times {
+          font-size: xx-large;
+        }
       }
-    }
-    .topbar-right-menu {
-      display: flex;
-      top: 2px;
-      right: 10px;
-      .notification-list {
-        background: #f4f6f8;
-        .dropdown-menu-right {
-          top: 40px !important;
+      .topbar-right-menu {
+        display: flex;
+        top: 2px;
+        right: 10px;
+        .notification-list {
+          background: #f4f6f8;
+          .dropdown-menu.dropdown-menu-right {
+              top: 40px !important;
+            }
         }
       }
     }
   }
+
 }

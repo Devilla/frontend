@@ -2,7 +2,7 @@ import React from 'react';
 
 const Analytics = ({ renderList }) => {
   return (
-    <div className="card-box">
+    <div className="card-box table-responsive">
       <table className="table table-striped">
         <thead>
           <tr>

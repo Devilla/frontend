@@ -133,7 +133,12 @@
         }
       }
     }
+    .mm-popup {
+      .mm-popup__box {
+        width: 90% !important;
+        left: 5% !important;
+        top: 20%;
+      }
+    }
   }
-
-
 }
