@@ -61,9 +61,7 @@
 @media only screen and (max-width: 768px) and (min-width: 100px) {
   .cards-notification {
     .notification-list {
-      .m-t-50 {
-        margin-top: 80px;
-      }
+        margin-top: 80px !important;
       .notification-box {
         padding: 20px 20px;
         .ribbon-box.indi-card {
