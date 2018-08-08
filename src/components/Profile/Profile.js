@@ -284,7 +284,7 @@ class Profile extends Component {
                         </FormGroup>
                       </Col>
                     </Row>
-                    <Col md={12}>
+                    <Col md={12} className="profile-buttons">
                       <div className="text-right save">
                         <button type="button" className="btn btn-primary waves-effect" onClick={this.updateProfile}>
                           <i className="mdi mdi-account-settings-variant mr-1"></i>  {this.props.loading ? ( this.state.savedtext

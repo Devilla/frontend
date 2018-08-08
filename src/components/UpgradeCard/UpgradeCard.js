@@ -34,7 +34,7 @@ class UpgradeCard extends Component {
     else
       this.setState({currentState: 'payment'});
   }
-  
+
   componentWillUnmount() {
     this.setState({ goback: false });
 
@@ -70,12 +70,12 @@ class UpgradeCard extends Component {
     const { updatePaymentMethod, plan, user } = this.props;
     const { currentState, activeClass, error } = this.state;
     return (
-      this.state.goback ? 
+      this.state.goback ?
         <UpgradePlan />
         :
         <div className="col-md-12 tab-notification-container">
           <div className="card-box">
-            <div className="ml-3 mt-1 new-campaign-header">
+            <div className="ml-3 mt-1 new-campaign-header upgrade-card">
 
               <h4 className="ml-3 header-title">Payment Method</h4>
               <div className = "upgrade-card-container" >
