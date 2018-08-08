@@ -24,7 +24,7 @@ class Sidebar extends Component {
     const { disableButton, profile, openClose } = this.props;
     let quotaPercentage = profile?Math.round(100*profile.uniqueVisitors/profile.uniqueVisitorQouta):0;
     return (
-      <div className="left side-menu" style={!openClose?{width: '60px'}:{}}>
+      <div className="left side-menu" style={!openClose && mobile() ?{width: '60px'}:{}}>
         <div>
           <div className="user-box">
             <h5></h5>
