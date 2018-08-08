@@ -6,6 +6,7 @@ import { getCookie } from 'components/Common/function';
 import moment from 'moment';
 import { browserHistory } from 'react-router';
 import Popup from 'react-popup';
+import mobile from 'is-mobile';
 
 import { fetchCampaign, fetchCampaignInfo, updateCampaign, successCampaign, removeCampaign } from 'ducks/campaign';
 import './Notification.scss';
@@ -98,14 +99,14 @@ class Notification extends Component {
         <tr className="campaign-td" key={i} onClick={(e) => this.handleRouteChange(e, campaign)}>
           <th scope="row">{i + 1}</th>
           <td>{campaign.campaignName}</td>
-          <td>{campaign.websiteUrl}</td>
+          {!mobile() && <td>{campaign.websiteUrl}</td>}
           <td className="switch">
             <input className="tgl tgl-ios" id="cb2" type="checkbox" checked={this.state.isActive}  readOnly/>
             <label className="tgl-btn" htmlFor="cb2"  data-toggle="modal" data-target="#2"  onClick={(e) => this.handleActiveChange(!campaign.isActive, campaign, i)}></label>
           </td>
           <td className='text-center'>{totalUsers}</td>
-          <td>{campaign.trackingId}</td>
-          <td>{moment(campaign.updatedAt).format('MM/DD/YYYY')}</td>
+          {!mobile() && <td>{campaign.trackingId}</td>}
+          {!mobile() && <td>{moment(campaign.updatedAt).format('MM/DD/YYYY')}</td>}
           <td><a href="javascript:;"><i className="ml-3 icon-trash" data-toggle="modal" data-target="#1"  onClick={(e) => this.deleteCampaign(i,campaign,e)}></i></a></td>
         </tr>
       );
@@ -125,11 +126,11 @@ class Notification extends Component {
               <tr>
                 <th>#</th>
                 <th>CAMPAIGN</th>
-                <th>DOMAIN</th>
+                {!mobile() && <th>DOMAIN</th>}
                 <th>STATUS</th>
                 <th className='text-center'>TOTAL VISITORS</th>
-                <th>TRACK ID</th>
-                <th>CREATED/UPDATED</th>
+                {!mobile() && <th>TRACK ID</th>}
+                {!mobile() && <th>CREATED/UPDATED</th>}
                 <th>TRASH</th>
               </tr>
             </thead>
