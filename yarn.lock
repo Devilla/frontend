@@ -5361,6 +5361,10 @@ is-integer@^1.0.4:
   dependencies:
     is-finite "^1.0.0"
 
+is-mobile@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/is-mobile/-/is-mobile-1.0.0.tgz#bc15893f90a669d33e18f718ee2baf850bd68d7a"
+
 is-npm@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/is-npm/-/is-npm-1.0.0.tgz#f2fb63a65e4905b406c86072765a1a4dc793b9f4"

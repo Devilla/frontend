@@ -79,7 +79,6 @@ div {
   &#sidebar-menu {
       overflow-y: auto;
       height: 640px;
-
   }
 
   &::-webkit-scrollbar {
@@ -110,4 +109,17 @@ button {
 .addnew-btn {
   box-shadow: 0 8px 15px -4px #999;
   border-radius: 5px !important;
+}
+
+@media only screen and (max-width: 700px) and (min-width: 100px) {
+  &#sidebar-menu {
+    height: fit-content !important;
+    .addnew-small-btn {
+      margin: 0px -2px !important;
+      padding: 5px 8px !important;
+      .fi-plus {
+        left: 2px;
+      }
+    }
+  }
 }
