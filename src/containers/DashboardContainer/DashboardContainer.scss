@@ -118,12 +118,22 @@
 }
 
 @media only screen and (max-width: 768px) and (min-width: 100px) {
-  .content-page {
-    width: 90%;
-    margin-left: 15% !important;
-    .card-box {
-      padding: 20px 0px !important;
+  .dashboard-container {
+    .content-page {
+      width: 90%;
+      margin-left: 15% !important;
+      .card-box {
+        padding: 20px 0px !important;
+      }
+    }
+    .modal {
+      .modal-dialog {
+        .modal-content {
+          width: 100% !important;
+        }
+      }
     }
   }
+
 
 }
