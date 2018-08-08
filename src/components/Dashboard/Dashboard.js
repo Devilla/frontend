@@ -433,7 +433,7 @@ class Dashboard extends Component {
 
     return (
 
-      <div className="content">
+      <div className="content dashboard-inner-container">
         <div className="container-fluid">
           <Row className="dashboard-boxes">
             <Col md={12}>
