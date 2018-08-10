@@ -2,9 +2,10 @@ import React , { Component } from 'react';
 import { connect } from 'react-redux';
 import { Row, Col, FormGroup, HelpBlock, FormControl } from 'react-bootstrap';
 import moment from 'moment';
+import { browserHistory }  from 'react-router';
 
 import { validateEmail } from 'services/FormUtils';
-import { updateClientOauth } from 'ducks/oauth';
+import { updateClientOauth, deleteClientOauth } from 'ducks/oauth';
 import './Oauthgenerate.scss';
 
 class Oauthpage extends Component {
@@ -75,7 +76,39 @@ class Oauthpage extends Component {
   }
 
   handleStateChange = (target, value) => {
-    this.setState({[target]: value});
+    this.setState({
+      [target]: value,
+      errorName: '',
+      errorURI: '',
+      errorAuthorizedOrigin: ''
+    });
+  }
+
+  submitClientOauth = () => {
+    const { name, redirectUri, origin } = this.state;
+    let { oauth } = this.props;
+    /* eslint-disable */
+    var re = /^http(s)?:\/\/(www\.)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/;
+    /* eslint-disable */
+
+    if(!name)
+      return this.setState({errorName: 'Enter a valid name'});
+    else if(!origin || !re.test(origin))
+      return this.setState({errorAuthorizedOrigin: 'Enter a valid Authorized Origin'});
+    else if(!redirectUri || !re.test(redirectUri))
+      return this.setState({errorURI: 'Enter a valid Redirect URI'});
+
+    oauth['id'] = oauth._id;
+    oauth['name'] = name;
+    oauth['redirectUri'] = redirectUri;
+    oauth['origin'] = origin;
+    delete oauth['_id'];
+    this.props.updateClientOauth(oauth);
+  }
+
+  deleteClientOauth = (id) => {
+    this.props.deleteClientOauth(id);
+    browserHistory.push('oauthshow');
   }
 
   render() {
@@ -89,14 +122,14 @@ class Oauthpage extends Component {
       redirectUri,
       errorURI
     } = this.state;
-
+    const { oauth } = this.props;
     return (
       <div className="oauthgen-container">
         <div className="content">
           <div className="card-box">
             <span className="header-title h4">Client ID for Web application</span>
-            <button type="button" className="btn btn-outline-primary  waves-light waves-effect pl-1 float-right h6" onClick={()=>{}}><i className="ml-3 mdi mdi-delete"></i>&nbsp;DELETE</button>
-            <button type="button" className="btn btn-outline-primary  waves-light waves-effect pl-1 float-right h6" onClick={()=>{}}><i className="ml-3 mdi mdi-lock-reset"></i>&nbsp;RESET SECRET</button>
+            <button type="button" className="btn btn-outline-primary  waves-light waves-effect pl-1 float-right h6" onClick={()=> this.deleteClientOauth(oauth._id)}><i className="ml-3 mdi mdi-delete"></i>&nbsp;DELETE</button>
+            {/* <button type="button" className="btn btn-outline-primary  waves-light waves-effect pl-1 float-right h6" onClick={()=>{}}><i className="ml-3 mdi mdi-lock-reset"></i>&nbsp;RESET SECRET</button> */}
 
             <span className="clearfix"></span>
             <hr/>
@@ -105,7 +138,7 @@ class Oauthpage extends Component {
                 <div className="clientinfolist">
                   <span className="text h6"> Client ID </span><span className="data">{clientId}</span> <br/>
                   <span className="text h6"> Client Secret </span><span className="data">{secret}</span> <br/>
-                  <span className="text h6"> Creation Date </span><span className="data">{moment().format('DD-MM-YYYY HH:mm:ss')}</span>
+                  <span className="text h6"> Creation Date </span><span className="data">{moment(oauth.createdAt).format('DD-MM-YYYY')}</span>
                 </div>
               </Col>
             </Row>
@@ -117,13 +150,13 @@ class Oauthpage extends Component {
                   <FormControl
                     type="text"
                     bsClass="form-control"
-                    id="clientname"
+                    id="name"
                     placeholder="example: Ray-101, John doe"
                     required={true}
                     name="clientname"
-                    value={name}
+                    defaultValue={name}
                     onBlur={this.checkNameBlur}
-                    onChange={(e) => this.handleStateChange(e.target.name, e.target.value)}
+                    onChange={(e) => this.handleStateChange(e.target.id, e.target.value)}
                   />
                   <HelpBlock>
                     <p className="website-error">{errorName}</p>
@@ -140,14 +173,14 @@ class Oauthpage extends Component {
                     <FormControl
                       type="text"
                       bsClass="form-control "
-                      id="URI"
+                      id="origin"
                       placeholder="https://www.example.com"
                       onBlur={()=>{}}
                       required={true}
                       name="origin"
                       defaultValue={origin}
                       onBlur={this.checkAuthorizedOrigin}
-                      onChange={(e) => this.handleStateChange(e.target.name, e.target.value)}
+                      onChange={(e) => this.handleStateChange(e.target.id, e.target.value)}
                     />
                     <HelpBlock>
                       <p className="website-error">{errorAuthorizedOrigin}</p>
@@ -165,7 +198,7 @@ class Oauthpage extends Component {
                       name="redirectUri"
                       defaultValue={redirectUri}
                       onBlur={this.checkURIBlur}
-                      onChange={(e) => this.handleStateChange(e.target.name, e.target.value)}
+                      onChange={(e) => this.handleStateChange(e.target.id, e.target.value)}
                     />
                     <HelpBlock>
                       <p className="website-error">{errorURI}</p>
@@ -175,7 +208,7 @@ class Oauthpage extends Component {
               </Col>
             </Row>
             <Row className="mt-3">
-              <span type="button" className="btn btn-primary waves-effect saveClient">Save</span>
+              <span type="button" className="btn btn-primary waves-effect saveClient" onClick={this.submitClientOauth}>Save</span>
             </Row>
           </div>
         </div>
@@ -191,7 +224,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
-  updateClientOauth
+  updateClientOauth,
+  deleteClientOauth
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Oauthpage);

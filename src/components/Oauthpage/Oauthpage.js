@@ -23,7 +23,7 @@ class Oauthpage extends Component {
   getOAuthRows = () => {
     const { oauths, deleteClientOauth } = this.props;
     return oauths.map((oauth, index) =>
-      <tr className="auth-td" key={oauth._id} onClick={(e) => this.openGenerator(e, oauth)}>
+      <tr className="auth-td" key={index} onClick={(e) => this.openGenerator(e, oauth)}>
         <th scope="row">{index+1}</th>
         <td>{oauth.name}</td>
         <td>{moment(oauth.createdAt).format('DD/MM/YYYY')}</td>
@@ -31,7 +31,6 @@ class Oauthpage extends Component {
         <td>{oauth.clientId}</td>
         <td>
           <a href="javascript:;"><i className="ml-3 icon-trash" onClick={() => deleteClientOauth(oauth.id, index)}></i></a>
-          <a href="javascript:;"><i className="ml-1 fi-paper-stack " onClick={() => {}}></i></a>
         </td>
       </tr>
     );

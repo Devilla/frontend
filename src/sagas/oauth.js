@@ -47,8 +47,7 @@ function* update(action) {
     const res = yield call(api.PUT, `client/${action.client.id}`, action.client);
     if (res.error)
       console.log(res.error);
-    else
-      yield put(actions.successClientOauth(action.client));
+    yield toast.error('Client Configuration Saved', toastConfig);
     yield put(loaded());
   } catch (error) {
     yield put(loaded());

@@ -12,7 +12,7 @@ export const POP_CLIENT_OAUTH = action('POP_CLIENT_OAUTH');
 
 export const fetchClientOauth = () => ({ type: FETCH_CLIENT_OAUTH });
 export const createClientOauth = () => ({ type: CREATE_CLIENT_OAUTH });
-export const updateClientOauth = (oauth) => ({ type: UPDATE_CLIENT_OAUTH, oauth });
+export const updateClientOauth = (client) => ({ type: UPDATE_CLIENT_OAUTH, client });
 export const deleteClientOauth = (id, index) => ({ type: DELETE_CLIENT_OAUTH, id, index });
 export const successClientOauth = (oauth) => ({ type: SUCCESS_CLIENT_OAUTH, oauth });
 export const createClientOauthSuccess = (oauth) => ({ type: CREATE_CLIENT_OAUTH_SUCCESS, oauth });
