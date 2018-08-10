@@ -41,7 +41,8 @@ import {
   DashboardContainer,
   ConnectPage,
   AnalyticsContainer,
-  NewCampaignContainer
+  NewCampaignContainer,
+  OauthContainer
 } from 'containers';
 
 
@@ -66,6 +67,7 @@ const MyRoutes = ({routerHistory}) => (
       <Route path="/card-details" component={UpgradeCard} />
       <Route path="/billing-details" component={BillingDetails} />
     </Route>
+    <Route exact path="/oauth/:type" component={OauthContainer} />
     <Route exact path="/connect/:provider" component={ConnectPage} />
     <Route exact path="/integrations/:provider/callback/" component={ReviewRedirect} />
     <Route exact path="/verify/:code" component={VerificationPage} />
