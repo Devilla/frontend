@@ -23,16 +23,24 @@ class Oauthpage extends Component {
     };
   }
 
+  componentDidMount() {
+    if(this.props.oauth && this.props.oauth.size != 0)
+      this.setOauth(this.props.oauth);
+  }
+
   componentWillReceiveProps(nextProps) {
-    if(nextProps.oauth != this.props.oauth) {
-      this.setState({
-        clientId: nextProps.oauth.clientId,
-        secret: nextProps.oauth.secret,
-        name: nextProps.oauth.name,
-        origin: nextProps.oauth.origin,
-        redirectUri: nextProps.oauth.redirectUri
-      });
-    }
+    if(nextProps.oauth != this.props.oauth)
+      this.setOauth(nextProps.oauth);
+  }
+
+  setOauth = (oauth) => {
+    this.setState({
+      clientId: oauth.clientId,
+      secret: oauth.secret,
+      name: oauth.name,
+      origin: oauth.origin,
+      redirectUri: oauth.redirectUri
+    });
   }
 
   checkNameBlur = (event)=> {
@@ -71,7 +79,7 @@ class Oauthpage extends Component {
   }
 
   render() {
-    const { 
+    const {
       clientId,
       name,
       secret,
@@ -81,6 +89,7 @@ class Oauthpage extends Component {
       redirectUri,
       errorURI
     } = this.state;
+
     return (
       <div className="oauthgen-container">
         <div className="content">
@@ -136,7 +145,7 @@ class Oauthpage extends Component {
                       onBlur={()=>{}}
                       required={true}
                       name="origin"
-                      value={origin}
+                      defaultValue={origin}
                       onBlur={this.checkAuthorizedOrigin}
                       onChange={(e) => this.handleStateChange(e.target.name, e.target.value)}
                     />
@@ -154,7 +163,7 @@ class Oauthpage extends Component {
                       placeholder="https://www.example.com/callback"
                       required={true}
                       name="redirectUri"
-                      value={redirectUri}
+                      defaultValue={redirectUri}
                       onBlur={this.checkURIBlur}
                       onChange={(e) => this.handleStateChange(e.target.name, e.target.value)}
                     />

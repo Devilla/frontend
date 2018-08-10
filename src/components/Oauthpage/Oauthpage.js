@@ -4,7 +4,7 @@ import moment  from 'moment';
 import { browserHistory }  from 'react-router';
 import { connect } from 'react-redux';
 
-import { fetchClientOauth, createClientOauth } from 'ducks/oauth';
+import { fetchClientOauth, createClientOauth, successClientOauth } from 'ducks/oauth';
 
 
 class Oauthpage extends Component {
@@ -14,13 +14,14 @@ class Oauthpage extends Component {
   }
 
   openGenerator = (oauth) => {
-    console.log(oauth);
+    this.props.successClientOauth(oauth);
+    browserHistory.push('/oauthgenerate');
   }
 
   getOAuthRows = () => {
     let i =0;
     return this.props.oauths.map((oauth, index) =>
-      <tr className="auth-td" key={oauth._id} onClick={() => this.openGenerator(oauth._id)}>
+      <tr className="auth-td" key={oauth._id} onClick={() => this.openGenerator(oauth)}>
         <th scope="row">{index+1}</th>
         <td>{oauth.name}</td>
         <td>{moment(oauth.createdAt).format('DD/MM/YYYY')}</td>
@@ -85,7 +86,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
   fetchClientOauth,
-  createClientOauth
+  createClientOauth,
+  successClientOauth
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Oauthpage);
