@@ -83,7 +83,7 @@ const NotificationDesign = ({
                               <div className="FPqR13BWqJeA13BW7MM9_0" style={{
                                 fontFamily: notificationStyle.fontFamily,
                                 fontWeight: notificationStyle.fontWeight
-                              }}>Recently {otherText} {contentText}</div>
+                              }}>{otherText} {contentText}</div>
                               <div className="FPqR2PlWqJeA2PlW7MM9_0">a minute ago</div>
                               <div className="FPqR3eNuqJeA3eNu7MM9_0">
                                 <i>

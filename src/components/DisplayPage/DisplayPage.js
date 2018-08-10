@@ -181,6 +181,7 @@ class DisplayPage extends Component {
               return <tr key={i}>
                 <td className="display-url">{displayUrl.url}</td>
                 <td>{displayUrl.domain === campaign.websiteUrl?'Domain':'Sub Domain'}</td>
+                <td>{displayUrl.campaignName}</td>
                 <td className="pl-4 status">
                   <span className="dot display" style={{backgroundColor: this.renderColor(displayUrl.status) }}>
                   </span>
@@ -238,6 +239,7 @@ class DisplayPage extends Component {
                   className="form-control"
                   placeholder="Add your subdomain"
                   onChange={this.handleSubdomain}
+                  onKeyUp={(e) => e.keyCode === 13?this.submitSubdomain():null}
                 />
                 <HelpBlock className="text-center">
                   <p className="website-error">{domainError}</p>
