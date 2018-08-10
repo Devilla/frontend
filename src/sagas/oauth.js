@@ -44,20 +44,31 @@ function* create() {
 function* update(action) {
   try {
     yield put(load());
-    const res = yield call(api.PUT, 'client/${action.client.id}');
+    const res = yield call(api.PUT, `client/${action.client.id}`, action.client);
     if (res.error)
       console.log(res.error);
-    else {
-      let client = action.client;
-      client['_id'] = client.id;
+    else
       yield put(actions.successClientOauth(action.client));
-    }
     yield put(loaded());
   } catch (error) {
     yield put(loaded());
     yield toast.error(error.message, toastConfig);
   }
+}
 
+function* deleteClientOauth(action) {
+  try {
+    yield put(load());
+    const res = yield call(api.DELETE, `client/${action.id}`);
+    if (res.error)
+      console.log(res.error);
+    else
+      yield put(actions.popClientOauth(action.index));
+    yield put(loaded());
+  } catch (error) {
+    yield put(loaded());
+    yield toast.error(error.message, toastConfig);
+  }
 }
 
 export function* watchFetch() {
@@ -72,10 +83,15 @@ export function* watchUpdate() {
   yield takeLatest(actions.UPDATE_CLIENT_OAUTH, update);
 }
 
+export function* watchDelete() {
+  yield takeLatest(actions.DELETE_CLIENT_OAUTH, deleteClientOauth);
+}
+
 export default function* rootSaga() {
   yield [
     fork(watchFetch),
     fork(watchCreate),
-    fork(watchUpdate)
+    fork(watchUpdate),
+    fork(watchDelete)
   ];
 }

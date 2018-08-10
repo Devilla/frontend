@@ -44,7 +44,7 @@ function* create(action) {
 function* update(action) {
   try {
     yield put(load());
-    const res = yield call(api.PUT, 'notificationtypes/${action.notification.id}');
+    const res = yield call(api.PUT, `notificationtypes/${action.notification.id}`);
     if (res.error)
       console.log(res.error);
     else {
