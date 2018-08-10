@@ -40,21 +40,78 @@ function* countryVisitors() {
   }
 }
 
+function* mapGraph() {
+  /* eslint-disable */
+  // let data = JSON.stringify({"index":["filebeat-*"],"ignore_unavailable":true,"preference":1533925542195});
+  // let secondData = JSON.stringify({"size":0,"_source":{"excludes":[]},"aggs":{"2":{"terms":{"field":"json.value.geo.country","size":100,"order":{"_term":"asc"}}}},"stored_fields":["*"],"script_fields":{},"docvalue_fields":["@timestamp"],"query":{"bool":{"must":[{"terms": { "json.value.trackingId":  "action.trackingIds" }},{"range":{"@timestamp":{"gte":1514745000000,"lte":1546280999999,"format":"epoch_millis"}}}],"filter":[],"should":[],"must_not":[]}}});
+  // const body = data+'\n'+secondData+'\n';
+
+  let body = JSON.stringify({
+  	"size":0,
+  	"_source":{
+  	  "excludes":[]
+  	},
+  	"aggs":{
+  	  "2":{
+  	    "terms":{
+  	      "field":"json.value.geo.country",
+  	      "size":100,
+  	      "order":{
+  	        "_term":"asc"
+  	      }
+  	    }
+  	  }
+  	},
+  	"stored_fields":["*"],
+  	"script_fields":{},
+  	"docvalue_fields":["@timestamp"],
+  	"query":{
+      "bool":{
+        "must":[{
+          "match_all":{}
+        },{
+          "range":{
+            "@timestamp":{
+              "gte":1514745000000,
+              "lte":1546280999999,
+              "format":"epoch_millis"
+            }
+          }
+        }],
+        "filter":[],
+        "should":[],
+        "must_not":[]
+      }
+    }
+  });
+  /* eslint-enable */
+  try {
+    yield put(load());
+    const res = yield call(api.POSTELASTIC, 'filebeat-*/_search', body);
+    yield put(actions.mapSuccess(res));
+    yield put(loaded());
+  } catch (error) {
+    yield put(loaded());
+    yield toast.error(error.message, toastConfig);
+  }
+}
 
 export function* watchFetch() {
   yield takeLatest(actions.FETCH, fetch);
 }
+
 export function* watchCountryVisitors() {
-
   yield takeLatest(actions.COUNTRY_VISITORS, countryVisitors);
+}
 
+export function* watchMapGraph() {
+  yield takeLatest(actions.MAP_GRAPH, mapGraph);
 }
 
 export default function* rootSaga() {
   yield [
     fork(watchFetch),
-
-
+    fork(watchMapGraph),
     fork(watchCountryVisitors)
   ];
 }

@@ -199,6 +199,19 @@
   }
 }
 
+.dashboard-content {
+  .heat-graph {
+    margin-top: -80px;
+  }
+  .heatmap {
+    font-weight: 300;
+    font-size: 11px;
+    div {
+      padding: .2px 0px .2px 0px;
+    }
+  }
+}
+
 .new-graphs {
   position: relative !important;
   top: -100px !important;
@@ -236,16 +249,18 @@
 
 .heatmap,
 .worldmap {
+  z-index: 1;
+  flex: 0 0 48% !important;
   box-shadow: 0 1px 10px -3px #999;
   padding: 40px 40px 20px 2px !important;
 }
 
 .worldmap::before {
-
+  font-weight: 300;
+  font-size: 20px !important;
   content: 'Where are your Users ?';
   position: relative;
   top: -20px;
-  font-size: 20px !important;
   color: #999;
   padding-bottom: 10px !important;
   margin: 15px;
