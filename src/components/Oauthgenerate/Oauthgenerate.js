@@ -1,30 +1,38 @@
 import React , { Component } from 'react';
-import './Oauthgenerate.scss';
-import { Row,Col } from 'react-bootstrap';
-import { validateEmail } from 'services/FormUtils';
-import { HelpBlock } from 'react-bootstrap';
+import { connect } from 'react-redux';
+import { Row, Col, FormGroup, HelpBlock, FormControl } from 'react-bootstrap';
 import moment from 'moment';
-import {
-  FormGroup,
-  FormControl
-} from 'react-bootstrap';
 
+import { validateEmail } from 'services/FormUtils';
+import { updateClientOauth } from 'ducks/oauth';
+import './Oauthgenerate.scss';
 
 class Oauthpage extends Component {
   constructor() {
     super();
     this.state = {
-      clientId: '65790-18281682901',
-      clientSecret: 'JSKSGDAGD6RHHUIGR',
+      clientId: '',
+      secret: '',
       clientname: '',
       errorname: '',
-      authorizedOrigin: '',
-      redirectURI: '',
+      origin: '',
+      redirectUri: '',
       errorName: '',
       errorURI: '',
       errorAuthorizedOrigin: ''
-
     };
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if(nextProps.oauth != this.props.oauth) {
+      this.setState({
+        clientId: nextProps.oauth.clientId,
+        secret: nextProps.oauth.secret,
+        name: nextProps.oauth.name,
+        origin: nextProps.oauth.origin,
+        redirectUri: nextProps.oauth.redirectUri
+      });
+    }
   }
 
   checkNameBlur = (event)=> {
@@ -61,18 +69,18 @@ class Oauthpage extends Component {
   handleStateChange = (target, value) => {
     this.setState({[target]: value});
   }
-  getClientInfoList = () => {
-    return (
-      <div className="clientinfolist">
-        <span className="text h6"> Client ID </span><span className="data">{this.state.clientId}</span> <br/>
-        <span className="text h6"> Client Secret </span><span className="data">{this.state.clientSecret}</span> <br/>
-        <span className="text h6"> Creation Date </span><span className="data">{moment().format('DD-MM-YYYY HH:mm:ss')}</span>
-      </div>
-    );
-  }
-
 
   render() {
+    const { 
+      clientId,
+      name,
+      secret,
+      errorName,
+      origin,
+      errorAuthorizedOrigin,
+      redirectUri,
+      errorURI
+    } = this.state;
     return (
       <div className="oauthgen-container">
         <div className="content">
@@ -85,7 +93,11 @@ class Oauthpage extends Component {
             <hr/>
             <Row className="mb-4">
               <Col md={12}>
-                {this.getClientInfoList()}
+                <div className="clientinfolist">
+                  <span className="text h6"> Client ID </span><span className="data">{clientId}</span> <br/>
+                  <span className="text h6"> Client Secret </span><span className="data">{secret}</span> <br/>
+                  <span className="text h6"> Creation Date </span><span className="data">{moment().format('DD-MM-YYYY HH:mm:ss')}</span>
+                </div>
               </Col>
             </Row>
             <Row>
@@ -100,12 +112,12 @@ class Oauthpage extends Component {
                     placeholder="example: Ray-101, John doe"
                     required={true}
                     name="clientname"
-                    value={this.state.clientname}
+                    value={name}
                     onBlur={this.checkNameBlur}
                     onChange={(e) => this.handleStateChange(e.target.name, e.target.value)}
                   />
                   <HelpBlock>
-                    <p className="website-error">{this.state.errorName}</p>
+                    <p className="website-error">{errorName}</p>
                   </HelpBlock>
                 </FormGroup>
               </Col>
@@ -123,13 +135,13 @@ class Oauthpage extends Component {
                       placeholder="https://www.example.com"
                       onBlur={()=>{}}
                       required={true}
-                      name="authorizedOrigin"
-                      value={this.state.authorizedOrigin}
+                      name="origin"
+                      value={origin}
                       onBlur={this.checkAuthorizedOrigin}
                       onChange={(e) => this.handleStateChange(e.target.name, e.target.value)}
                     />
                     <HelpBlock>
-                      <p className="website-error">{this.state.errorAuthorizedOrigin}</p>
+                      <p className="website-error">{errorAuthorizedOrigin}</p>
                     </HelpBlock>
                   </FormGroup>
                   <FormGroup>
@@ -138,16 +150,16 @@ class Oauthpage extends Component {
                     <FormControl
                       type="text"
                       bsClass="form-control"
-                      id="redirectURI"
+                      id="redirectUri"
                       placeholder="https://www.example.com/callback"
                       required={true}
-                      name="redirectURI"
-                      value={this.state.redirectURI}
+                      name="redirectUri"
+                      value={redirectUri}
                       onBlur={this.checkURIBlur}
                       onChange={(e) => this.handleStateChange(e.target.name, e.target.value)}
                     />
                     <HelpBlock>
-                      <p className="website-error">{this.state.errorURI}</p>
+                      <p className="website-error">{errorURI}</p>
                     </HelpBlock>
                   </FormGroup>
                 </div>
@@ -164,4 +176,13 @@ class Oauthpage extends Component {
   }
 }
 
-export default Oauthpage;
+const mapStateToProps = state => ({
+  loading: state.getIn(['loading', 'state']),
+  oauth: state.getIn(['oauth', 'oauth'])
+});
+
+const mapDispatchToProps = {
+  updateClientOauth
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Oauthpage);

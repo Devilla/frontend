@@ -21,9 +21,9 @@ const initialState = fromJS({
 
 const oauth = (state = initialState, action) => {
   switch (action.type) {
-    case SUCCESS_CLIENT_OAUTH:
-      return state.set('oauths', action.oauth);
     case CREATE_CLIENT_OAUTH_SUCCESS:
+      return state.set('oauths', action.oauth);
+    case SUCCESS_CLIENT_OAUTH:
       return state.set('oauth', action.oauth);
 
     default:
