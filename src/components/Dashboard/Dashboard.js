@@ -17,7 +17,6 @@ import 'react-datepicker/dist/react-datepicker.css';
 var LineChart = ReactChartJs.Line;
 let moment = extendMoment(Moment);
 
-
 const chartEvents = [
   {
     eventName: 'select',
@@ -34,7 +33,6 @@ const geooptions = {
   colorAxis: {colors: ['#81d4fa',  '#329fff']},
   defaultColor: '#f5f5f5'
 };
-
 
 const color_list = [
   '#69d217',
@@ -78,11 +76,6 @@ class Dashboard extends Component {
       const trackingIds = nextProps.campaigns.map(campaign => campaign.trackingId);
       this.props.mapGraph(trackingIds);
       this.props.heatMapGraph(trackingIds);
-    }
-    if(this.props.map != nextProps.map) {
-      let mapArray = [['Country', 'traffic']];
-      nextProps.map.message.aggregations.body.buckets.map(country => mapArray.push(Object.values(country)));
-      this.setState({mapArray});
     }
   }
 
@@ -353,9 +346,9 @@ class Dashboard extends Component {
     const datas = new Array(yLabels.length)
       .fill(0)
       .map(() => new Array(xLabels.length).fill(0).map(() => Math.floor(Math.random() * 100)));
-    // console.log(datas, '=============datas');
-    const { campaignInfo, heatmap } = this.props;
-    const { selectedCampaign, mapArray } = this.state;
+
+    const { campaignInfo, heatmap, map } = this.props;
+    const { selectedCampaign } = this.state;
     const { userCount, totalUsers } = this.usersCount();
 
     var chartData = {
@@ -436,7 +429,7 @@ class Dashboard extends Component {
         campaignActive = campaignActive + 1;
       });
     }
-    console.log(heatmap, '================heatmap');
+
     return (
 
       <div className="content dashboard-inner-container">
@@ -548,11 +541,11 @@ class Dashboard extends Component {
             <Col className="worldmap">
               <Chart
                 chartType="GeoChart"
-                data={mapArray}
+                data={map?map.message:[]}
                 options={geooptions}
                 graphID="GeoChart"
                 width="100%"
-                height="400px"
+                height="500px"
                 chartEvents={chartEvents}
               />
             </Col>
