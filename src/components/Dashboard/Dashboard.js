@@ -27,17 +27,6 @@ const chartEvents = [
   }
 ];
 
-// dummy data
-const geodata = [
-  ['Country', 'traffic'],
-  ['Germany', 100],
-  ['United States', 300],
-  ['Brazil', 400],
-  ['Canada', 500],
-  ['France', 600],
-  ['RU', 1000]
-];
-
 const geooptions = {
   title: 'Country vs. traffic',
   hAxis: { title: 'Country', viewWindow: { min: 0, max: 40 } },
@@ -72,7 +61,8 @@ class Dashboard extends Component {
       daysClicked: '',
       startDate:  moment(),
       datePicker: '',
-      selectedCampaign: {}
+      selectedCampaign: {},
+      mapArray: []
     };
     this.handleRouteChange = this.handleRouteChange.bind(this);
   }
@@ -83,12 +73,19 @@ class Dashboard extends Component {
     this.props.fetchCampaign();
   }
 
-  // componentWillReceiveProps(nextProps) {
-  // if(this.props.campaigns != nextProps.campaigns) {
-  //   const trackingIds = nextProps.campaigns.map(campaign => campaign.trackingId);
-  // this.props.mapGraph(trackingIds);
-  // }
-  // }
+  componentWillReceiveProps(nextProps) {
+    if(this.props.campaigns != nextProps.campaigns) {
+      const trackingIds = nextProps.campaigns.map(campaign => campaign.trackingId);
+      this.props.mapGraph(trackingIds);
+    }
+    if(this.props.map != nextProps.map) {
+      let mapArray = [['Country', 'traffic']];
+      nextProps.map.message.aggregations.body.buckets.map(country => {
+        mapArray.push(Object.values(country));
+      });
+      this.setState({mapArray});
+    }
+  }
 
   createLegend(json) {
     var legend = [];
@@ -359,7 +356,7 @@ class Dashboard extends Component {
       .map(() => new Array(xLabels.length).fill(0).map(() => Math.floor(Math.random() * 100)));
 
     const { campaignInfo } = this.props;
-    const { selectedCampaign } = this.state;
+    const { selectedCampaign, mapArray } = this.state;
     const { userCount, totalUsers } = this.usersCount();
 
     var chartData = {
@@ -552,7 +549,7 @@ class Dashboard extends Component {
             <Col className="worldmap">
               <Chart
                 chartType="GeoChart"
-                data={geodata}
+                data={mapArray}
                 options={geooptions}
                 graphID="GeoChart"
                 width="100%"
