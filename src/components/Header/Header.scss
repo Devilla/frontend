@@ -47,6 +47,10 @@
     }
   }
 
+  .topbar-left-hamburger {
+    display: none;
+  }
+
   .topbar-right-menu {
     height: 20px !important;
     z-index: 999;
@@ -80,4 +84,30 @@
     right: 40px;
     font-size: 22px !important;
   }
+}
+
+@media only screen and (min-width: 100px) and (max-width: 768px) {
+  .navbar-custom  {
+    .customer-header {
+      .topbar-left-hamburger {
+        display: block;
+        margin: 5px 15px;
+        .fa-bars, .fa-times {
+          font-size: xx-large;
+        }
+      }
+      .topbar-right-menu {
+        display: flex;
+        top: 2px;
+        right: 10px;
+        .notification-list {
+          background: #f4f6f8;
+          .dropdown-menu.dropdown-menu-right {
+              top: 40px !important;
+            }
+        }
+      }
+    }
+  }
+
 }

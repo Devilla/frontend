@@ -5,47 +5,34 @@ import { Row, Col } from 'react-bootstrap';
 import Moment from 'moment';
 import { extendMoment } from 'moment-range';
 import { fetchCampaignInfo, successCampaign , fetchCampaign } from 'ducks/campaign';
+import { mapGraph, heatMapGraph } from 'ducks/elastic';
 import './Dashboard.scss';
 import Card from './Card';
 import ReactChartJs from 'react-chartjs';
-// import HeatMap from 'react-heatmap-grid';
-// import { Chart } from 'react-google-charts';
+import HeatMap from 'react-heatmap-grid';
+import { Chart } from 'react-google-charts';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
 var LineChart = ReactChartJs.Line;
 let moment = extendMoment(Moment);
 
+const chartEvents = [
+  {
+    eventName: 'select',
+    callback(chartWrapper) {
+      console.log('Selected ', chartWrapper.getChart().getSelection());
+    }
+  }
+];
 
-// const chartEvents = [
-//   {
-//     eventName: 'select',
-//     callback(chartWrapper) {
-//       console.log('Selected ', chartWrapper.getChart().getSelection());
-//     }
-//   }
-// ];
-
-//dummy data
-// const geodata = [
-//   ['Country', 'traffic'],
-//   ['Germany', 100],
-//   ['United States', 300],
-//   ['Brazil', 400],
-//   ['Canada', 500],
-//   ['France', 600],
-//   ['RU', 1000]
-// ];
-//
-// const geooptions = {
-//   title: 'Country vs. traffic',
-//   hAxis: { title: 'Country', viewWindow: { min: 0, max: 40 } },
-//   vAxis: { title: 'traffic', viewWindow: { min: 0, max: 40 } },
-//   colorAxis: {colors: ['#81d4fa',  '#329fff']},
-//   defaultColor: '#f5f5f5'
-//
-// };
-
+const geooptions = {
+  title: 'Country vs. traffic',
+  hAxis: { title: 'Country', viewWindow: { min: 0, max: 40 } },
+  vAxis: { title: 'traffic', viewWindow: { min: 0, max: 40 } },
+  colorAxis: {colors: ['#81d4fa',  '#329fff']},
+  defaultColor: '#f5f5f5'
+};
 
 const color_list = [
   '#69d217',
@@ -72,7 +59,8 @@ class Dashboard extends Component {
       daysClicked: '',
       startDate:  moment(),
       datePicker: '',
-      selectedCampaign: {}
+      selectedCampaign: {},
+      mapArray: []
     };
     this.handleRouteChange = this.handleRouteChange.bind(this);
   }
@@ -81,6 +69,14 @@ class Dashboard extends Component {
   componentWillMount() {
     this.props.fetchCampaignInfo();
     this.props.fetchCampaign();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if(this.props.campaigns != nextProps.campaigns) {
+      const trackingIds = nextProps.campaigns.map(campaign => campaign.trackingId);
+      this.props.mapGraph(trackingIds);
+      this.props.heatMapGraph(trackingIds);
+    }
   }
 
   createLegend(json) {
@@ -163,6 +159,7 @@ class Dashboard extends Component {
       }];
     }
   }
+
   getHeatMapHours = () => {
     let start, end , range1, acc  ;
 
@@ -170,8 +167,8 @@ class Dashboard extends Component {
     end    = moment().endOf('day').format('YYYY-MM-DD HH:mm:ss');
 
     range1 = moment.range(start, end);
-    acc = Array.from(range1.by('hour', {   step:2}));
-    acc.length =12;
+    acc = Array.from(range1.by('hour', { step: 1 }));
+    acc.length = 24;
     acc = acc.map(m => m.format('HH A'));
     return acc;
   }
@@ -344,14 +341,16 @@ class Dashboard extends Component {
 
 
   render() {
-    // const yLabels = this.getHeatMapHours();
-    // const xLabels = ['Sun', 'Mon', 'Tue','Wed','Thurs','Fri','Sat'];
-    // const datas = new Array(yLabels.length)
-    //   .fill(0)
-    //   .map(() => new Array(xLabels.length).fill(0).map(() => Math.floor(Math.random() * 100)));
-    const { campaignInfo } = this.props;
+    const yLabels = this.getHeatMapHours();
+    const xLabels = this.getDays();
+    const datas = new Array(yLabels.length)
+      .fill(0)
+      .map(() => new Array(xLabels.length).fill(0).map(() => Math.floor(Math.random() * 100)));
+
+    const { campaignInfo, heatmap, map } = this.props;
     const { selectedCampaign } = this.state;
     const { userCount, totalUsers } = this.usersCount();
+
     var chartData = {
       labels:   this.getDays(),
       datasets: this.getDataset()
@@ -433,7 +432,7 @@ class Dashboard extends Component {
 
     return (
 
-      <div className="content">
+      <div className="content dashboard-inner-container">
         <div className="container-fluid">
           <Row className="dashboard-boxes">
             <Col md={12}>
@@ -530,26 +529,27 @@ class Dashboard extends Component {
               </div>
             </Col>
           </Row>
-          {/* <Row  className="justify-content-around text-muted mb-5">
+          <Row  className="justify-content-around text-muted mb-5 heat-graph">
             <Col md={5} className="heatmap">
               <HeatMap
                 xLabels={xLabels}
                 yLabels={yLabels}
-                data={datas}
+                data={heatmap != undefined?heatmap.message:datas}
+                height={16}
               />
             </Col>
-            <Col md={5} className="worldmap">
+            <Col className="worldmap">
               <Chart
                 chartType="GeoChart"
-                data={geodata}
+                data={map?map.message:[]}
                 options={geooptions}
                 graphID="GeoChart"
                 width="100%"
-                height="400px"
+                height="500px"
                 chartEvents={chartEvents}
               />
             </Col>
-          </Row> */}
+          </Row>
         </div>
       </div>
     );
@@ -561,14 +561,17 @@ const mapStateToProps = state => ({
   profile: state.getIn(['profile', 'profile']),
   campaignInfo: state.getIn(['campaign', 'campaignInfo']),
   campaigns: state.getIn(['campaign', 'campaigns']),
-  graph: state.getIn(['graph', 'graph'])
-
+  graph: state.getIn(['graph', 'graph']),
+  map: state.getIn(['elastic', 'map']),
+  heatmap: state.getIn(['elastic', 'heatmap'])
 });
 
 const mapDispatchToProps = {
   successCampaign,
   fetchCampaignInfo,
-  fetchCampaign
+  fetchCampaign,
+  mapGraph,
+  heatMapGraph
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

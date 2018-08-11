@@ -100,3 +100,57 @@
       }
     }
   }
+
+  @media only screen and (max-width: 768px) and (min-width: 100px) {
+    .display-container {
+      .container-fluid {
+        padding-right: 0px;
+        padding-left: 0px;
+        .tabscontent {
+          .row {
+            text-align: center;
+            .col-md-10 {
+              padding-right: 0px;
+              padding-left: 0px;
+              .input-group {
+                label {
+                  width: 100%;
+                }
+                #urladd {
+                  padding: 10px 0px;
+                }
+              }
+            }
+            .col-md-2 {
+              padding: 20px 0px;
+            }
+            .col-md-12 {
+              .status {
+                ul {
+                  padding: 0px;
+                  display: block;
+                  li {
+                    padding: 20px 0px;
+                    display: block;
+                    .dot {
+                      margin: 0px 50%;
+                    }
+                    .status-name {
+                      float: left;
+                      clear: left;
+                      width: 100%;
+                    }
+                  }
+                }
+              }
+              .card-plain {
+                .content {
+                  padding-bottom: 50px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }

@@ -53,3 +53,5 @@ export { default as Oauthpage } from './Oauthpage/Oauthpage';
 export { default as Oauthgenerate } from './Oauthgenerate/Oauthgenerate';
 export { default as DashboardChannel  }  from './DashboardChannel/DashboardChannel';
 export { default as ReviewRedirect } from './ReviewRedirect/ReviewRedirect';
+export { default as OauthLogin } from './OauthLogin/OauthLogin';
+export { default as OauthAuthorization } from './OauthAuthorization/OauthAuthorization';

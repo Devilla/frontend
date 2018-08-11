@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router';
 import { Influence } from 'img';
 import { Col, ProgressBar } from 'react-bootstrap';
+import mobile from 'is-mobile';
+
 import appRoutes from 'routes/app';
 import './Sidebar.scss';
 
@@ -19,11 +21,10 @@ class Sidebar extends Component {
   }
 
   render() {
-    const { disableButton, profile } = this.props;
+    const { disableButton, profile, openClose } = this.props;
     let quotaPercentage = profile?Math.round(100*profile.uniqueVisitors/profile.uniqueVisitorQouta):0;
-
     return (
-      <div className="left side-menu">
+      <div className="left side-menu" style={!openClose && mobile() ?{width: '60px'}:{}}>
         <div>
           <div className="user-box">
             <h5></h5>
@@ -42,13 +43,24 @@ class Sidebar extends Component {
           <div id="sidebar-menu">
             <div className="button-list ml-2 pl-2">
               <Link to="/new">
-                <button
-                  type="button"
-                  className="btn btn-primary waves-effect  addnew-btn  ml-4 p-2  pt-0 pb-0  w-lg "
-                >
-                  <i className="fi-plus "/>&nbsp;{' '}
-                  <span className="h6">New</span>{' '}
-                </button>
+                {!openClose && mobile()?
+                  <button
+                    type="button"
+                    className="btn btn-primary waves-effect addnew-small-btn addnew-btn  p-2  pt-0 pb-0"
+                  >
+                    <i className="fi-plus "/>&nbsp;{' '}
+                    {/* <span className="h6">New</span>{' '} */}
+                  </button>
+                  :
+                  <button
+                    type="button"
+                    className="btn btn-primary waves-effect  addnew-btn  ml-4 p-2  pt-0 pb-0  w-lg "
+                  >
+                    <i className="fi-plus "/>&nbsp;{' '}
+                    <span className="h6">New</span>{' '}
+                  </button>
+                }
+
               </Link>
             </div>
             <ul className="metismenu mt-5" id="side-menu">
@@ -59,14 +71,28 @@ class Sidebar extends Component {
                       {prop.name === 'Help' ?
                         <Link onClick={this.renderHelp} className={disableButton ? 'disabled-link' : 'nav-link'} disabled={disableButton} activeClassName="active">
                           <i className={prop.icon}></i>
-                          <span>{prop.upgrade}{prop.name}</span>
+                          {openClose && mobile() ?
+                            <span>{prop.upgrade}{prop.name}</span>
+                            :
+                            !mobile() ?
+                              <span>{prop.upgrade}{prop.name}</span>
+                              :
+                              null
+                          }
                         </Link>
                         :
                         <Link to={prop.path} className={prop.upgrade && disableButton ? 'new disabled-link' : disableButton ? 'disabled-link' : prop.upgrade ? 'new nav-link' : 'nav-link'} disabled={disableButton} activeClassName="active">
                           {
                             prop.upgrade ? '' : <i className={prop.icon}></i>
                           }
-                          <span>{prop.upgrade}{prop.name}</span>
+                          {openClose && mobile() ?
+                            <span>{prop.upgrade}{prop.name}</span>
+                            :
+                            !mobile() ?
+                              <span>{prop.upgrade}{prop.name}</span>
+                              :
+                              null
+                          }
                         </Link>
                       }
                     </li>
@@ -74,18 +100,37 @@ class Sidebar extends Component {
                 return null;
               })
               }
-              <div className="custombottom ml-2 mb-5">
-                <hr/>
-                <Col md={12} className="pt-4">
-                  <div className="text-center">
-                    <ProgressBar striped active bsStyle={quotaPercentage<60?'info':quotaPercentage<90?'warning':'danger'} now={quotaPercentage} key={1} />
-                  </div>
-                  <div className="ml-4 ">
-                    <p className="textColor">{quotaPercentage} % consumed.</p>
-                  </div>
+              {mobile() && openClose ?
+                <div className="custombottom ml-2 mb-5">
                   <hr/>
-                </Col>
-              </div>
+                  <Col md={12} className="pt-4">
+                    <div className="text-center">
+                      <ProgressBar striped active bsStyle={quotaPercentage<60?'info':quotaPercentage<90?'warning':'danger'} now={quotaPercentage} key={1} />
+                    </div>
+                    <div className="ml-4 ">
+                      <p className="textColor">{quotaPercentage} % consumed.</p>
+                    </div>
+                    <hr/>
+                  </Col>
+                </div>
+                :
+                !mobile()?
+                  <div className="custombottom ml-2 mb-5">
+                    <hr/>
+                    <Col md={12} className="pt-4">
+                      <div className="text-center">
+                        <ProgressBar striped active bsStyle={quotaPercentage<60?'info':quotaPercentage<90?'warning':'danger'} now={quotaPercentage} key={1} />
+                      </div>
+                      <div className="ml-4 ">
+                        <p className="textColor">{quotaPercentage} % consumed.</p>
+                      </div>
+                      <hr/>
+                    </Col>
+                  </div>
+                  :
+                  null
+              }
+
             </ul>
           </div>
           <div className="clearfix" />

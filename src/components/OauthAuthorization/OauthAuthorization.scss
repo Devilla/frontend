@@ -1,0 +1,197 @@
+// .website-app {
+  .signin-container {
+    .oauth-authorize {
+      text-align: center;
+      width: 40%;
+      margin: 0 auto;
+      border: 1px solid whitesmoke;
+      border-radius: 6px;
+      background: white;
+      box-shadow: 3px 3px 10px lightgrey;
+
+      .authorize-row {
+        width: 100%;
+        margin: 0 auto;
+        margin-left: 0px !important;
+        margin-right: 0px !important;
+        img {
+          width: 40%;
+          margin: 0 auto;
+          height: 0%;
+          padding: 30px 0px 0px 0px;
+        }
+      }
+      .authorize-column {
+        padding: 10px 10px;
+        margin: 0 auto;
+        width: 100%;
+        h3 {
+          margin: 2%;
+        }
+        hr {
+          margin: 0;
+        }
+        .link-authorize {
+          padding: 20px 0px 10px 0px;
+          a {
+            width: 100%;
+            .btn--icon {
+              background: #00CF26;
+              .btn__text {
+                color: white;
+              }
+            }
+          }
+        }
+        .authorize-bottom-labels {
+          font-size: 14px;
+          p {
+            margin: 0;
+          }
+          .authorize-label {
+            font-weight: 700;
+          }
+          .authorize-content {
+            color: darkgray;
+            font-size: 14px;
+          }
+        }
+      }
+      .authorize-info {
+        display: flex;
+        padding: 0px 5%;
+        text-align: initial;
+        img {
+          margin: 0;
+          padding: 0;
+          width: 10%;
+        }
+        .fa-angle-down {
+          margin: 1%;
+          font-size: 30px;
+          cursor: pointer;
+        }
+        .authorize-details {
+          padding: 5px 25px;
+          width: 100%;
+          p {
+            margin: 0;
+          }
+          .authorize-label {
+            font-weight: 700;
+          }
+          .authorize-content {
+            color: darkgray;
+            font-size: 14px;
+          }
+        }
+      }
+      .authorizefrm {
+        margin-top: 0px;
+      }
+      .btn--icon {
+        padding-left: 15% !important;
+      }
+      // .align {
+      //   margin-top: 45px;
+      // }
+      .social-link {
+        position: relative;
+        padding-bottom: 40px;
+      }
+    }
+
+    input {
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      &::placeholder {
+        font-size: 14px !important;
+      }
+    }
+  }
+// }
+
+@media only screen and (max-width: 750px) {
+  .signin-container {
+    .socio-link {
+      position: relative !important;
+      top: 100px  !important;
+    }
+  }
+}
+@media only screen and (max-width: 575px) {
+  .signin-container {
+    input {
+      max-width: 275px;
+    }
+    .socio-link {
+      position: relative !important;
+      top: 0px  !important;
+    }
+  }
+}
+
+@media only screen and (max-width: 428px) {
+  .signin-container {
+    .sub-in-title {
+      font-size: 18px !important;
+    }
+
+
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .signin-container {
+    .signintitle {
+      font-size: 40px !important;
+    }
+    .sub-in-title {
+      font-size: 15px !important;
+    }
+  }
+}
+
+@media only screen and (max-width: 360px) {
+  .signin-container {
+    .socio-link {
+      margin : 100px 0 0 15px;
+      min-height: 160px;
+      border-top: 1px solid #c0c0c0;
+
+      .link-fb {
+        font-size: 13.7px;
+      }
+      .link-go {
+        font-size: 15px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 342px) {
+  .signin-container {
+    .socio-link {
+      margin-right:20px;
+      .link-fb {
+        font-size: 13.7px;
+      }
+      .link-go {
+        font-size: 15px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  .signin-container {
+    .socio-link {
+      margin-right:30px;
+      .link-fb {
+        font-size: 12.7px;
+      }
+      .link-go {
+        font-size: 14px;
+      }
+    }
+  }
+}
