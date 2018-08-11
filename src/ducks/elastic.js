@@ -8,6 +8,8 @@ export const CLEAR_ELASTIC = action('CLEAR_ELASTIC');
 export const COUNTRY_VISITORS = action('COUNTRY_VISITORS');
 export const MAP_GRAPH = action('MAP_GRAPH');
 export const MAP_SUCCESS = action('MAP_SUCCESS');
+export const HEAT_MAP_GRAPH = action('HEAT_MAP_GRAPH');
+export const HEAT_MAP_SUCCESS = action('HEAT_MAP_SUCCESS');
 
 export const countryVisitors = () => ({ type: COUNTRY_VISITORS });
 export const fetchElastic = (query) => ({ type: FETCH, query });
@@ -15,6 +17,8 @@ export const fetchSuccess = (elastic) => ({ type: FETCH_SUCCESS, elastic });
 export const clearElastic = () => ({ type: CLEAR_ELASTIC });
 export const mapGraph = (trackingIds) => ({ type: MAP_GRAPH, trackingIds });
 export const mapSuccess = (mapData) => ({ type: MAP_SUCCESS, mapData });
+export const heatMapGraph = (trackingIds) => ({ type: HEAT_MAP_GRAPH, trackingIds });
+export const heatMapSuccess = (heatMapData) => ({ type: HEAT_MAP_SUCCESS, heatMapData });
 
 const initialState = fromJS({});
 
@@ -26,6 +30,8 @@ const elastic = (state = initialState, action) => {
       return state.set('elastic', undefined);
     case MAP_SUCCESS:
       return state.set('map', action.mapData);
+    case HEAT_MAP_SUCCESS:
+      return state.set('heatmap', action.heatMapData);
     default:
       return state;
   }

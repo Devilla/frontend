@@ -5,7 +5,7 @@ import { Row, Col } from 'react-bootstrap';
 import Moment from 'moment';
 import { extendMoment } from 'moment-range';
 import { fetchCampaignInfo, successCampaign , fetchCampaign } from 'ducks/campaign';
-import { mapGraph } from 'ducks/elastic';
+import { mapGraph, heatMapGraph } from 'ducks/elastic';
 import './Dashboard.scss';
 import Card from './Card';
 import ReactChartJs from 'react-chartjs';
@@ -77,12 +77,11 @@ class Dashboard extends Component {
     if(this.props.campaigns != nextProps.campaigns) {
       const trackingIds = nextProps.campaigns.map(campaign => campaign.trackingId);
       this.props.mapGraph(trackingIds);
+      this.props.heatMapGraph(trackingIds);
     }
     if(this.props.map != nextProps.map) {
       let mapArray = [['Country', 'traffic']];
-      nextProps.map.message.aggregations.body.buckets.map(country => {
-        mapArray.push(Object.values(country));
-      });
+      nextProps.map.message.aggregations.body.buckets.map(country => mapArray.push(Object.values(country)));
       this.setState({mapArray});
     }
   }
@@ -354,8 +353,8 @@ class Dashboard extends Component {
     const datas = new Array(yLabels.length)
       .fill(0)
       .map(() => new Array(xLabels.length).fill(0).map(() => Math.floor(Math.random() * 100)));
-
-    const { campaignInfo } = this.props;
+    // console.log(datas, '=============datas');
+    const { campaignInfo, heatmap } = this.props;
     const { selectedCampaign, mapArray } = this.state;
     const { userCount, totalUsers } = this.usersCount();
 
@@ -437,7 +436,7 @@ class Dashboard extends Component {
         campaignActive = campaignActive + 1;
       });
     }
-
+    console.log(heatmap, '================heatmap');
     return (
 
       <div className="content dashboard-inner-container">
@@ -542,7 +541,7 @@ class Dashboard extends Component {
               <HeatMap
                 xLabels={xLabels}
                 yLabels={yLabels}
-                data={datas}
+                data={heatmap != undefined?heatmap.message:datas}
                 height={16}
               />
             </Col>
@@ -570,15 +569,16 @@ const mapStateToProps = state => ({
   campaignInfo: state.getIn(['campaign', 'campaignInfo']),
   campaigns: state.getIn(['campaign', 'campaigns']),
   graph: state.getIn(['graph', 'graph']),
-  map: state.getIn(['elastic', 'map'])
-
+  map: state.getIn(['elastic', 'map']),
+  heatmap: state.getIn(['elastic', 'heatmap'])
 });
 
 const mapDispatchToProps = {
   successCampaign,
   fetchCampaignInfo,
   fetchCampaign,
-  mapGraph
+  mapGraph,
+  heatMapGraph
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

@@ -52,6 +52,18 @@ function* mapGraph(action) {
   }
 }
 
+function* heatMapGraph(action) {
+  try {
+    yield put(load());
+    const res = yield call(api.POST, 'elasticsearch/heatmap', action.trackingIds);
+    yield put(actions.heatMapSuccess(res));
+    yield put(loaded());
+  } catch (error) {
+    yield put(loaded());
+    yield toast.error(error.message, toastConfig);
+  }
+}
+
 export function* watchFetch() {
   yield takeLatest(actions.FETCH, fetch);
 }
@@ -64,10 +76,15 @@ export function* watchMapGraph() {
   yield takeLatest(actions.MAP_GRAPH, mapGraph);
 }
 
+export function* watchHeatMapGraph() {
+  yield takeLatest(actions.HEAT_MAP_GRAPH, heatMapGraph);
+}
+
 export default function* rootSaga() {
   yield [
     fork(watchFetch),
     fork(watchMapGraph),
-    fork(watchCountryVisitors)
+    fork(watchCountryVisitors),
+    fork(watchHeatMapGraph)
   ];
 }
