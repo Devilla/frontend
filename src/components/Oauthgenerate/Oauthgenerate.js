@@ -12,16 +12,6 @@ class Oauthpage extends Component {
   constructor() {
     super();
 
-    // Create a token generator with the default settings:
-    let id = require('rand-token');
-    // Generate a 10 character alpha-numeric token:
-    id = id.generate(10);
-
-    // Create a token generator with the default settings:
-    let secret = require('rand-token');
-    // Generate a 16 character alpha-numeric token:
-    secret = secret.generate(16);
-
     this.state = {
       clientId: '',
       secret: '',
