@@ -95,6 +95,9 @@ export { default as Customerjourney2 } from './customerjourney2.svg';
 export { default as Customrules2 } from './customrules2.svg';
 export { default as Mobileready2 } from './mobileready2.svg';
 
+export { default as Close } from './close.svg';
+
+
 
 //Notifications Page Image
 export { default as GroupActivity } from './group activity card 9.png';

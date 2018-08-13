@@ -10,6 +10,7 @@ import { connect } from 'react-redux';
 import CardTable from 'components/Template/card-with-page-table';
 import { pagethArray } from 'components/Template/data';
 import { fetchLeadUrl, createPageUrl, clearPageUrl, removePageUrl } from 'ducks/pageurl';
+import {Close} from 'img';
 import './CapturePage.scss';
 
 class CapturePage extends Component {
@@ -228,7 +229,9 @@ class CapturePage extends Component {
           <div className="modal-content align-modal">
             <div className="modal-header">
               <h4 className="modal-title">Add SubDomain</h4>
-              <div data-dismiss="modal" onClick={this.openCloseModal}><i className="close pl-2 pt-1 pb-2 pr-2">X</i></div>
+              <div data-dismiss="modal" onClick={this.openCloseModal}><div>
+                <span><img src={Close}/></span>
+              </div></div>
             </div>
             <div className="modal-body row">
               <div className="col-md-9">

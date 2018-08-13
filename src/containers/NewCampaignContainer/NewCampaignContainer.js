@@ -154,7 +154,7 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
     } else {
       this.setState({
         title : 'Campaign is Live',
-        content : 'Campaign has be successfully created',
+        content : 'Campaign has been successfully created',
         buttonText :  'Finish',
         path : 'campaigns'
       });

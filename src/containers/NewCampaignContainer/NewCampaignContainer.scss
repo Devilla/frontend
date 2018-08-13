@@ -19,7 +19,6 @@
     width: 100%;
   }
 
-
   .close {
     position: relative;
     top: 10px !important;
@@ -58,7 +57,7 @@
   .show-modal {
    z-index: 999999999 !important;
    overflow: scroll !important;
-   background: #1011138a;
+   background: #101113d1;
   }
   .align-modal {
   // margin-top: 140px;
@@ -70,8 +69,25 @@
   top: 140px;
   }
   .modal-body {
+    padding: 20px;
     color: #097fff !important;
     font-size: 17px !important;
+  }
+  .modal-header {
+    font-weight: bolder;
+    height: 45px;
+    padding: 10px;
+    background-color: #097fff;
+    color: #ffffff;
+
+    div {
+      div{
+        padding: 5px;
+      }
+       div:hover {
+        background-color: grey;
+      }
+    }
   }
 }
 
@@ -80,7 +96,7 @@
     .tab-notification-container {
       .tab-notification-box {
         .tab-content {
-          padding: 1rem !important
+          padding: 1rem
         }
       }
     }
