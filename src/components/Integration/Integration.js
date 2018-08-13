@@ -228,7 +228,7 @@ class Integrations extends Component {
 
     return (
       this.state.activePage === 0 ? (
-        <div className="integration-container">
+        <div className="transition-item integration-container">
           <div className="channel-container" >
             <div className="channel">
               <div className="content">
@@ -242,7 +242,7 @@ class Integrations extends Component {
           </div>
         </div>)
         : (
-          <div className="pageContent">
+          <div className="transition-item pageContent">
             <IntegrationContent renderState={this.state.activePage} renderIntegration={this.renderIntegration}/>
           </div>
         )

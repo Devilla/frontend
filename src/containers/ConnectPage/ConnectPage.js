@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { socialLogin } from 'ducks/auth';
-import { Spinner } from 'components';
+import Loading from 'react-loading-animation';
 import { ToastContainer } from 'react-toastify';
+
+import { socialLogin } from 'ducks/auth';
 import './ConnectPage.scss';
 
 class ConnectPage extends React.Component {
@@ -19,7 +20,7 @@ class ConnectPage extends React.Component {
   render() {
     return (
       <div>
-        <Spinner loading={true}/>
+        <Loading strokeWidth="2" style={{height: '700px', width: '10%'}} isLoading={true} />
         <ToastContainer hideProgressBar={true} />
       </div>
     );
@@ -35,4 +36,4 @@ const mapDispatchToProps = {
   socialLogin
 };
 
-export default connect(null, mapDispatchToProps)(ConnectPage);
+export default connect(null, mapDispatchToProps, null, { withRef: true })(ConnectPage);

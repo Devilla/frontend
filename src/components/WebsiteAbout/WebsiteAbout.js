@@ -7,7 +7,7 @@ class WebsiteAbout extends Component {
 
   render() {
     return (
-      <div className="main-container">
+      <div className="transition-item main-container websiteabout-container">
         <section className="text-center bg--secondary">
           <div className="container">
             <div className="row">

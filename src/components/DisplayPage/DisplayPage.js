@@ -404,4 +404,4 @@ const mapDispatchToProps = {
   clearPageUrl
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(DisplayPage);
+export default connect(mapStateToProps, mapDispatchToProps, null, { withRef: true })(DisplayPage);

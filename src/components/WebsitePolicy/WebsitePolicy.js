@@ -178,7 +178,7 @@ class WebsitePolicy extends Component {
   render() {
 
     return (
-      <div className="websitepolicy-container">
+      <div className="transition-item websitepolicy-container">
         <div className="main-container">
           <section className="text-center bg--secondary">
             <div className="container">

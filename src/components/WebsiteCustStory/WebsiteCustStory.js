@@ -13,7 +13,7 @@ class WebsiteCustStory extends Component {
 
     return (
 
-      <section className="bar bar-3 bar--sm bg--secondary">
+      <section className="transition-item website-cust-story bar bar-3 bar--sm bg--secondary">
         <div className="container">
           <div className="main-container">
             <div className="container ">

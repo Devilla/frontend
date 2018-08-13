@@ -308,4 +308,4 @@ const mapDispatchToProps = {
   clearSubCampaign
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(NotificationSettingPopup);
+export default connect(mapStateToProps, mapDispatchToProps, null, { withRef: true })(NotificationSettingPopup);

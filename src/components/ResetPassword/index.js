@@ -92,7 +92,7 @@ class forget extends Component{
     const { password, passwordConfirmation, passwordError, commonError } = this.state;
     return(
       <div>
-        <div className="authpage section innerpage">
+        <div className="transition-item authpage section innerpage">
           <div className="container">
             <div className="wrapper">
               <Animated className="leftwrap center" animationIn="fadeIn" animationOut="fadeOut" isVisible={true}>
@@ -165,4 +165,4 @@ const mapDispatchToProps = {
   loaded
 };
 
-export default connect(null, mapDispatchToProps)(forget);
+export default connect(null, mapDispatchToProps, null, { withRef: true })(forget);

@@ -5,6 +5,7 @@ import { extendMoment } from 'moment-range';
 import Popup from 'react-popup';
 import ReactChartJs from 'react-chartjs';
 import { Animated } from 'react-animated-css';
+import Loading from 'react-loading-animation';
 
 import { fetchElastic } from 'ducks/elastic';
 import { fetchCampaignInfo, successCampaign } from 'ducks/campaign';
@@ -202,13 +203,15 @@ class AnalyticsContainer extends Component {
 
   render() {
     return (
-      <div className="analytics-container">
-        {!this.state.usersList.length ?
-          <Analytics  renderList={this.renderList} />
-          :
-          <AnalyticsProfile renderProfileList={this.renderProfileList} />
-        }
-      </div>
+      <Loading className="transition-item analytics-transition-container" isLoading={!this.props.campaignInfo}>
+        <div className="analytics-container">
+          {!this.state.usersList.length ?
+            <Analytics  renderList={this.renderList} />
+            :
+            <AnalyticsProfile handleProfileBack={this.handleProfileBack} renderProfileList={this.renderProfileList} />
+          }
+        </div>
+      </Loading>
     );
   }
 }
@@ -223,4 +226,4 @@ const mapDispatchToProps = {
   fetchCampaignInfo
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(AnalyticsContainer);
+export default connect(mapStateToProps, mapDispatchToProps, null, { withRef: true })(AnalyticsContainer);

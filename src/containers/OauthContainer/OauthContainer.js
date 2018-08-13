@@ -57,7 +57,7 @@ class OauthContainer extends Component {
   render() {
     console.log(this.props);
     return (
-      <div className="website-app" style={{backgroundColor: 'whitesmoke'}}>
+      <div className="transition-item oauth-transition-container website-app" style={{backgroundColor: 'whitesmoke'}}>
         <div className="basic-gradient-light" data-smooth-scroll-offset="77">
           <Popup  />
           <Spinner loading={this.props.loading} />
@@ -83,4 +83,4 @@ const mapDispatchToProps = {
   checkTokenExists
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(OauthContainer);
+export default connect(mapStateToProps, mapDispatchToProps, null, { withRef: true })(OauthContainer);

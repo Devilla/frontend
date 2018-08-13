@@ -398,4 +398,4 @@ const mapDispatchToProps = {
   removePageUrl,
   clearPageUrl
 };
-export default connect(mapStateToProps, mapDispatchToProps)(CapturePage);
+export default connect(mapStateToProps, mapDispatchToProps, null, { withRef: true })(CapturePage);
