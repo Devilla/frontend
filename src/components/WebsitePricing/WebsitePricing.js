@@ -142,7 +142,7 @@ class WebsitePricing extends Component {
 
   render() {
     return (
-      <div className="websitepricing-container">
+      <div className="transition-item websitepricing-container">
         <div className="main-container">
           <section className="text-center bg--secondary pricing-title">
             <div className="container">

@@ -57,7 +57,7 @@ class AffiliateRegister extends Component {
       cursor: 'pointer'
     };
     return (
-      <div className="affiliateregister-container">
+      <div className="transition-item affiliateregister-container">
         <div className="main-container">
           <section>
             <div className="container">
@@ -122,4 +122,4 @@ const mapDispatchToProps = {
   clearAffiliateError
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(AffiliateRegister);
+export default connect(mapStateToProps, mapDispatchToProps, null, { withRef: true })(AffiliateRegister);

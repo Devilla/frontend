@@ -227,7 +227,7 @@ class WebsiteSignUp extends Component {
           </div>
         </div>);
     return (
-      <div className='authpage section innerpage'>
+      <div className='transition-item authpage section innerpage'>
         <div className='wrapper'>
           <Spinner loading={this.props.loading} />
           <Animated

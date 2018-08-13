@@ -91,7 +91,7 @@ class WebsiteHome extends Component {
       autoplay: true
     };
     return (
-      <div className="websitehome-container">
+      <div className="transition-item websitehome-container">
         <div className="main-container">
           <section className="cover text-center parallax landing-home-section" data-overlay="0">
             <div className="container">

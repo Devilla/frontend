@@ -14,9 +14,11 @@ class WebsitePayment extends Component {
       coupon: ''
     };
   }
+
   componentDidMount() {
     window.scrollTo(0,0);
   }
+
   componentWillMount() {
     fetch('https://servicebot.useinfluence.co/api/v1/service-templates/public')
       .then((res) => res.json())
@@ -152,7 +154,7 @@ class WebsitePayment extends Component {
   render() {
     const { externalValue, selectedPlan, coupon } = this.state;
     return (
-      <div className="website-payment-container">
+      <div className="transition-item website-payment-container">
         {!selectedPlan ?
           <WebsitePrice
             externalValue={externalValue}

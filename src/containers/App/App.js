@@ -7,6 +7,7 @@ import { WebsiteHeader, WebsiteFooter } from 'components';
 import { ToastContainer } from 'react-toastify';
 import Popup from 'react-popup';
 import Loading from 'react-loading-animation';
+import PageTransition from 'react-router-page-transition';
 
 import 'react-popup/style.css';
 import './scss/stack-interface.scss';
@@ -64,18 +65,22 @@ class App extends Component {
 
   render() {
     return (
+
       <div className="website-app">
         <div className="basic-gradient-light" data-smooth-scroll-offset="77">
           <WebsiteHeader loggedIn={this.state.loggedIn} logout={this.logout} />
           <Popup  />
           <Loading strokeWidth="2" style={{height: '700px', width: '10%'}} isLoading={this.props.loading} />
-          <div className="content">
-            {this.props.children}
+          <div style={{height: '750px'}}>
+            <PageTransition className="content">
+              {this.props.children}
+            </PageTransition>
           </div>
           <WebsiteFooter loggedIn={this.state.loggedIn} />
         </div>
         <ToastContainer hideProgressBar={true} />
       </div>
+
     );
   }
 }
@@ -90,4 +95,4 @@ const mapDispatchToProps = {
   loaded
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps, null, { withRef: true })(App);

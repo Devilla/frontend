@@ -12,7 +12,7 @@ export default class Affiliate extends Component {
 
   render() {
     return (
-      <div className="main-container">
+      <div className="transition-item main-container">
         <section className="text-center" style={{ paddingTop: '100px' }}>
           <div className="container ">
             <div className="row">

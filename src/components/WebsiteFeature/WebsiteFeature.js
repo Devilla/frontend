@@ -16,7 +16,7 @@ class WebsiteFeature extends Component {
   render() {
 
     return (
-      <div className="WebsiteFeature-container">
+      <div className="transition-item WebsiteFeature-container">
         <div className="main-container" >
           <section className="cover text-center mt-5 mb-5  " data-overlay="0">
             <div className="container  mt-4 mb-5 pb-0 pt-0">

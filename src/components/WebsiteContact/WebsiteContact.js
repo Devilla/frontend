@@ -100,7 +100,7 @@ class WebsiteContact extends Component {
   render() {
     const { name, email, message, errorEmail,errorName, errorMsg ,isEmailValid} = this.state;
     return (
-      <div className="websitecontact-container">
+      <div className="transition-item websitecontact-container">
       <div className="main-container">
         <section className="cover text-center bg--secondary">
           <div className="container">
@@ -196,4 +196,4 @@ const mapDispatchToProps = {
   clearContactError
 };
 
-export default connect(null, mapDispatchToProps)(WebsiteContact);
+export default connect(null, mapDispatchToProps, null, { withRef: true })(WebsiteContact);
