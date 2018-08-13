@@ -3,11 +3,12 @@ import { Link } from 'react-router';
 import { validateEmail, validatePassword, register, PASSWORD_MAX_LENGTH } from 'services/FormUtils';
 import { Animated } from'react-animated-css';
 import { Alert, HelpBlock } from 'react-bootstrap';
+import { browserHistory } from 'react-router';
+import { toast } from 'react-toastify';
+
 import { store } from 'App.js';
 import { load, loaded } from 'ducks/loading';
 import { loginSuccess } from 'ducks/auth';
-import { browserHistory } from 'react-router';
-import { toast } from 'react-toastify';
 import { base } from 'services/api';
 import { Spinner } from 'components';
 

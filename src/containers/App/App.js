@@ -68,7 +68,7 @@ class App extends Component {
         <div className="basic-gradient-light" data-smooth-scroll-offset="77">
           <WebsiteHeader loggedIn={this.state.loggedIn} logout={this.logout} />
           <Popup  />
-          <Loading isLoading={this.props.loading} />
+          <Loading strokeWidth="2" style={{height: '700px', width: '10%'}} isLoading={this.props.loading} />
           <div className="content">
             {this.props.children}
           </div>

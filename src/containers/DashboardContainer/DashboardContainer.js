@@ -159,14 +159,13 @@ class DashboardContainer extends Component {
 
   render() {
     const {  user, profile } = this.props;
-    console.log(user, profile, '==========props');
     const { style , openClose, disableButton } = this.state;
     return (
       <div className="dashboard-container">
         <Popup />
         <div className="wrapper"  >
 
-          {(!user || user.size == 0) && (!profile || profile == undefined) && <Loading isLoading={true} />}
+          {(!user || user.size == 0) && (!profile || profile == undefined) && <Loading strokeWidth="2" style={{height: '700px', width: '10%'}} isLoading={true} />}
           {user && (profile || profile !== undefined) && <Sidebar {...this.props} openClose={openClose} openCloseSidebar={this.openCloseSidebar} disableButton={disableButton} onClick={this.closeDropdown} />}
           {user && (profile || profile !== undefined) &&
           <div>

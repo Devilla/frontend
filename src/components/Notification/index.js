@@ -7,6 +7,7 @@ import moment from 'moment';
 import { browserHistory } from 'react-router';
 import Popup from 'react-popup';
 import mobile from 'is-mobile';
+import Loading from 'react-loading-animation';
 
 import { fetchCampaign, fetchCampaignInfo, updateCampaign, successCampaign, removeCampaign } from 'ducks/campaign';
 import './Notification.scss';
@@ -117,47 +118,49 @@ class Notification extends Component {
 
   render() {
     const { modalbody, modalfoot, modaltitle , modalname } = this.state;
-
+    const { campaigns, profile, campaignInfo } = this.props;
     return (
-      <div className="manage-notification">
-        <div className="card-box">
-          <table className="table table-striped">
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>CAMPAIGN</th>
-                {!mobile() && <th>DOMAIN</th>}
-                <th>STATUS</th>
-                <th className='text-center'>TOTAL VISITORS</th>
-                {!mobile() && <th>TRACK ID</th>}
-                {!mobile() && <th>CREATED/UPDATED</th>}
-                <th>TRASH</th>
-              </tr>
-            </thead>
-            <tbody>
-              {this.getNotificationRows()}
-            </tbody>
-          </table>
-          <div className="modal fade show-modal" id={modalname} role="dialog">
-            <div className="modal-dialog">
-              <div className="modal-content align-modal">
-                <div className="modal-header">
-                  <button type="button" className="close" data-dismiss="modal">&times;</button>
-                  <h4 className="modal-title">{modaltitle}</h4>
-                </div>
-                <div className="modal-body pb-5">
-                  {modalbody}
-                </div>
-                <div className="modal-footer">
-                  <button type="button" className="float-left btn btn-primary close-btn" data-dismiss="modal">Close</button>
-                  <button type="button" className="btn btn-primary delete-btn" data-dismiss="modal"
-                    onClick={modalfoot === 'Upgrade Plan' ? () => browserHistory.push('/upgrade') : this.deletepopupContent} >{modalfoot}</button>
+      <Loading isLoading={!campaigns || !profile || !campaignInfo}>
+        <div className="manage-notification">
+          <div className="card-box">
+            <table className="table table-striped">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>CAMPAIGN</th>
+                  {!mobile() && <th>DOMAIN</th>}
+                  <th>STATUS</th>
+                  <th className='text-center'>TOTAL VISITORS</th>
+                  {!mobile() && <th>TRACK ID</th>}
+                  {!mobile() && <th>CREATED/UPDATED</th>}
+                  <th>TRASH</th>
+                </tr>
+              </thead>
+              <tbody>
+                {this.getNotificationRows()}
+              </tbody>
+            </table>
+            <div className="modal fade show-modal" id={modalname} role="dialog">
+              <div className="modal-dialog">
+                <div className="modal-content align-modal">
+                  <div className="modal-header">
+                    <button type="button" className="close" data-dismiss="modal">&times;</button>
+                    <h4 className="modal-title">{modaltitle}</h4>
+                  </div>
+                  <div className="modal-body pb-5">
+                    {modalbody}
+                  </div>
+                  <div className="modal-footer">
+                    <button type="button" className="float-left btn btn-primary close-btn" data-dismiss="modal">Close</button>
+                    <button type="button" className="btn btn-primary delete-btn" data-dismiss="modal"
+                      onClick={modalfoot === 'Upgrade Plan' ? () => browserHistory.push('/upgrade') : this.deletepopupContent} >{modalfoot}</button>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </Loading>
     );
   }
 }
