@@ -137,6 +137,7 @@ class Notification extends Component {
               {this.getNotificationRows()}
             </tbody>
           </table>
+          <button type="submit" className="btn btn-primary waves-light waves-effect ml-2 pl-4 pr-4 float-right"> Scripts </button>
           <div className="modal fade show-modal" id={modalname} role="dialog">
             <div className="modal-dialog">
               <div className="modal-content align-modal">

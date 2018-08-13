@@ -34,7 +34,8 @@ import {
   AuthorizationDialog,
   DashboardChannel,
   ReviewRedirect,
-  AnalyticsProfile
+  AnalyticsProfile,
+  WordpressPluginPage
 } from 'components';
 
 import {
@@ -67,6 +68,7 @@ const MyRoutes = ({routerHistory}) => (
       <Route path="/profile" component={Profile} />
       <Route path="/card-details" component={UpgradeCard} />
       <Route path="/billing-details" component={BillingDetails} />
+      <Route path="/wordpress-plugin-page" component={WordpressPluginPage} />
     </Route>
     <Route exact path="/connect/:provider" component={ConnectPage} />
     <Route exact path="/integrations/:provider/callback/" component={ReviewRedirect} />
@@ -92,7 +94,6 @@ const MyRoutes = ({routerHistory}) => (
       <Route path="/affiliateregister" component={AffiliateRegister} />
       <Route path="/forget-password" component={ForgetPassword} />
       <Route path="/reset-password" component={ResetPassword} />
-
     </Route>
     <Route path="*" component={Error} />
   </Router>

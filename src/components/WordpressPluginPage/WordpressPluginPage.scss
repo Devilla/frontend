@@ -1,0 +1,102 @@
+.CapturePage-container {
+  .url-field {
+    width: 30%;
+  }
+  .input-group {
+    padding-bottom: 2%;
+  }
+  .mdi-plus-circle-outline {
+    font-size: 17px;
+    position: absolute;
+    top: 4px !important;
+    left: 12px !important;
+  }
+  .subdomain {
+    border-radius: 5px !important;
+    position: relative;
+    padding-left: 35px !important;
+  }
+  .trash {
+    color: #097fff;
+    padding-left: 10px;
+    font-size: 15px !important;
+    cursor: pointer;
+  }
+  .addsubdomain {
+    width: 100px;
+    border-radius: 5px !important;
+  }
+  #urladd {
+    span {
+      border-radius: 5px;
+    }
+  }
+
+  .capturebtn-back, .capturebtn-next {
+    border-radius: 5px !important;
+  }
+
+  .path-error {
+    max-width: 300px;
+    margin: 0 auto !important;
+    position: relative;
+    left: 10px;
+  }
+
+  .dot {
+    height: 18px;
+    width: 18px;
+    text-align: center;
+    position: relative;
+    left: 0;
+    background-color: #4fab00;
+    border-radius: 50%;
+    display: inline-block;
+    color: whitesmoke;
+  }
+
+  .tabscontent {
+    .centertbl {
+      .url {
+        width: 30%;
+      }
+    }
+
+    .input-group {
+      .form-control {
+        border-radius: 6px!important;
+      }
+    }
+
+    .status {
+      ul {
+        display: flex;
+        list-style: none;
+
+        li {
+          display: flex;
+
+          .status-name {
+            margin: 3px 10px;
+          }
+        }
+      }
+    }
+
+    .unverified {
+      background-color: #FFEB3B;
+    }
+
+    .primary {
+      background-color: #2196F3;
+    }
+
+    .danger {
+      background-color: #F44336;
+    }
+
+    .success {
+      background-color: #4CAF50;
+    }
+  }
+}
