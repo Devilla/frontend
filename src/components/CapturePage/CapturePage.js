@@ -228,7 +228,7 @@ class CapturePage extends Component {
         <div className="modal-dialog">
           <div className="modal-content align-modal">
             <div className="modal-header">
-              <h4 className="modal-title">Add SubDomain</h4>
+              <h4 className="modal-title">Add Subdomain</h4>
               <div data-dismiss="modal" onClick={this.openCloseModal}><div>
                 <span><img src={Close}/></span>
               </div></div>
