@@ -58,16 +58,16 @@
   .show-modal {
    z-index: 999999999 !important;
    overflow: scroll !important;
-   background: rgba(248, 247, 247, 0.7);
+   background: #1011138a;
   }
   .align-modal {
-  margin-top: 140px;
-  height: 540px;
+  // margin-top: 140px;
+  height: 250px;
   width: 560px;
   border-radius: 10px;
   position: relative;
   right: 0px;
-  top: 130px;
+  top: 140px;
   }
   .modal-body {
     color: #097fff !important;

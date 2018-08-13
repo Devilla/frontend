@@ -228,7 +228,7 @@ class CapturePage extends Component {
           <div className="modal-content align-modal">
             <div className="modal-header">
               <h4 className="modal-title">Add SubDomain</h4>
-              <div data-dismiss="modal" onClick={this.openCloseModal}><i><span style={{cursor:'pointer'}}>X</span></i></div>
+              <div data-dismiss="modal" onClick={this.openCloseModal}><i className="close pl-2 pt-1 pb-2 pr-2">X</i></div>
             </div>
             <div className="modal-body row">
               <div className="col-md-9">
