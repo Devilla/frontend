@@ -2,9 +2,12 @@ import React, { Component } from 'react';
 import { browserHistory } from 'react-router';
 import { connect } from 'react-redux';
 import { checkTokenExists } from 'ducks/auth';
-import { WebsiteHeader, WebsiteFooter, Spinner } from 'components';
+import { load, loaded } from 'ducks/loading';
+import { WebsiteHeader, WebsiteFooter } from 'components';
 import { ToastContainer } from 'react-toastify';
 import Popup from 'react-popup';
+import Loading from 'react-loading-animation';
+
 import 'react-popup/style.css';
 import './scss/stack-interface.scss';
 import './scss/socicon.css';
@@ -26,6 +29,7 @@ class App extends Component {
   }
 
   componentWillMount() {
+    this.props.load();
     document.body.style = 'background-color:white';
     this.checkLogin();
   }
@@ -33,6 +37,10 @@ class App extends Component {
   componentWillReceiveProps(nextProps) {
     if(nextProps.location.pathname != this.props.location.pathname)
       this.checkLogin();
+  }
+
+  componentDidMount() {
+    this.props.loaded();
   }
 
   checkLogin = () => {
@@ -60,7 +68,7 @@ class App extends Component {
         <div className="basic-gradient-light" data-smooth-scroll-offset="77">
           <WebsiteHeader loggedIn={this.state.loggedIn} logout={this.logout} />
           <Popup  />
-          <Spinner loading={this.props.loading} />
+          <Loading isLoading={this.props.loading} />
           <div className="content">
             {this.props.children}
           </div>
@@ -77,7 +85,9 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
-  checkTokenExists
+  checkTokenExists,
+  load,
+  loaded
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

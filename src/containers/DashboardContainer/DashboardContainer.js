@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 import Popup from 'react-popup';
 import { ToastContainer } from 'react-toastify';
+import Loading from 'react-loading-animation';
 
 import { checkTokenExists } from 'ducks/auth';
 import { Header, Sidebar } from 'components';
@@ -157,16 +158,17 @@ class DashboardContainer extends Component {
   }
 
   render() {
-    const {  user } = this.props;
+    const {  user, profile } = this.props;
+    console.log(user, profile, '==========props');
     const { style , openClose, disableButton } = this.state;
     return (
       <div className="dashboard-container">
         <Popup />
         <div className="wrapper"  >
 
-          {!this.state.render && <p>Please wait</p>}
-          {this.state.render && <Sidebar {...this.props} openClose={openClose} openCloseSidebar={this.openCloseSidebar} disableButton={disableButton} onClick={this.closeDropdown} />}
-          {this.state.render &&
+          {(!user || user.size == 0) && (!profile || profile == undefined) && <Loading isLoading={true} />}
+          {user && (profile || profile !== undefined) && <Sidebar {...this.props} openClose={openClose} openCloseSidebar={this.openCloseSidebar} disableButton={disableButton} onClick={this.closeDropdown} />}
+          {user && (profile || profile !== undefined) &&
           <div>
             <div className="content-page" >
               <div className="topbar" >
