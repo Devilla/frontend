@@ -178,7 +178,7 @@ class Profile extends Component {
     const profile = this.state;
     const { user } = this.props;
     return (
-      <Loading style={{width: '10%', height: '700px'}} strokeWidth='2' isLoading={!user || !profile}>
+      <Loading className="transition-item profile-transition-container" style={{width: '10%', height: '700px'}} strokeWidth='2' isLoading={!user || !profile}>
         <div className="content fill profile-container">
           <Grid fluid={true}>
             <Col sm={12}>
@@ -338,4 +338,4 @@ const mapDispatchToProps = {
   updateProfile
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Profile);
+export default connect(mapStateToProps, mapDispatchToProps, null, { withRef: true })(Profile);

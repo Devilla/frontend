@@ -435,7 +435,7 @@ class Dashboard extends Component {
     }
 
     return (
-      <Loading strokeWidth='2' style={{height: '700px', width: '10%'}} isLoading={!profile || !campaignInfo || !campaigns || !heatmap || !map}>
+      <Loading className="transition-item dashboard-transition-container" strokeWidth='2' style={{height: '700px', width: '10%'}} isLoading={!profile || !campaignInfo || !campaigns || !heatmap || !map}>
         <div className="content dashboard-inner-container">
           <div className="container-fluid">
             <Row className="dashboard-boxes">
@@ -579,4 +579,4 @@ const mapDispatchToProps = {
   heatMapGraph
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
+export default connect(mapStateToProps, mapDispatchToProps, null, { withRef: true })(Dashboard);

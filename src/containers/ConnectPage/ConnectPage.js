@@ -36,4 +36,4 @@ const mapDispatchToProps = {
   socialLogin
 };
 
-export default connect(null, mapDispatchToProps)(ConnectPage);
+export default connect(null, mapDispatchToProps, null, { withRef: true })(ConnectPage);

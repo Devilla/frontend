@@ -92,4 +92,4 @@ const mapDispatchToProps = {
   deleteClientOauth
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Oauthpage);
+export default connect(mapStateToProps, mapDispatchToProps, null, { withRef: true })(Oauthpage);

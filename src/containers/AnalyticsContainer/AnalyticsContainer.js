@@ -203,7 +203,7 @@ class AnalyticsContainer extends Component {
 
   render() {
     return (
-      <Loading isLoading={!this.props.campaignInfo}>
+      <Loading className="transition-item analytics-transition-container" isLoading={!this.props.campaignInfo}>
         <div className="analytics-container">
           {!this.state.usersList.length ?
             <Analytics  renderList={this.renderList} />
@@ -226,4 +226,4 @@ const mapDispatchToProps = {
   fetchCampaignInfo
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(AnalyticsContainer);
+export default connect(mapStateToProps, mapDispatchToProps, null, { withRef: true })(AnalyticsContainer);

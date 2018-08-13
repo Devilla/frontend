@@ -66,7 +66,7 @@ class BillingDetails extends Component {
     const { profile, invoices } = this.props;
 
     return (
-      <Loading style={{width: '10%', height: '700px'}} strokeWidth='2' isLoading={!invoices || !profile}>
+      <Loading className="transition-item billing-transition-container" style={{width: '10%', height: '700px'}} strokeWidth='2' isLoading={!invoices || !profile}>
         <div className="content fill billing-details ml-1">
           <Grid fluid={true}>
             <Row className="inlineclr">
@@ -235,4 +235,4 @@ const mapDispatchToProps = {
   downloadInvoice
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(BillingDetails);
+export default connect(mapStateToProps, mapDispatchToProps, null, { withRef: true })(BillingDetails);

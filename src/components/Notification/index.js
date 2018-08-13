@@ -120,7 +120,7 @@ class Notification extends Component {
     const { modalbody, modalfoot, modaltitle , modalname } = this.state;
     const { campaigns, profile, campaignInfo } = this.props;
     return (
-      <Loading isLoading={!campaigns || !profile || !campaignInfo}>
+      <Loading className="transition-item manage-transition-notification" isLoading={!campaigns || !profile || !campaignInfo}>
         <div className="manage-notification">
           <div className="card-box">
             <table className="table table-striped">
@@ -179,4 +179,4 @@ const mapDispatchToProps = {
   removeCampaign
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Notification);
+export default connect(mapStateToProps, mapDispatchToProps, null, { withRef: true })(Notification);

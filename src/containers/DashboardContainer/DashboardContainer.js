@@ -4,6 +4,7 @@ import { browserHistory } from 'react-router';
 import Popup from 'react-popup';
 import { ToastContainer } from 'react-toastify';
 import Loading from 'react-loading-animation';
+import PageTransition from 'react-router-page-transition';
 
 import { checkTokenExists } from 'ducks/auth';
 import { Header, Sidebar } from 'components';
@@ -188,8 +189,10 @@ class DashboardContainer extends Component {
               </div>
 
               <div className="content dashboard-content" style={{ backgroundColor: '#FFF' }} onClick={this.closeDropdown}>
-                <div className="container-fluid p-2">
-                  {this.props.children}
+                <div className="container-fluid p-2" style={{minHeight: '750px'}}>
+                  <PageTransition className="content">
+                    {this.props.children}
+                  </PageTransition>
                 </div>
               </div>
             </div>
@@ -211,4 +214,4 @@ const mapDispatchToProps = {
   checkTokenExists
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(DashboardContainer);
+export default connect(mapStateToProps, mapDispatchToProps, null, { withRef: true })(DashboardContainer);
