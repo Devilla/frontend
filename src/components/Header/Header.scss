@@ -1,4 +1,21 @@
 .customer-header {
+  .avatar {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      font-size: 14px;
+       // display: table;
+       // vertical-align: middle;
+      background-color: #19a4dc;
+       background-position: center center;
+        text-align: center;
+      color: #fefefe;
+      }
+
+      .full-name {
+          font-size: 14px;
+        margin-right: 5px;
+      }
   .progress {
     background: #fafafa !important;
   }
@@ -77,10 +94,11 @@
       }
     }
   }
-
   .rounded-circle {
     position: relative;
     top: -5px;
+    width: 24px;
+    height: 24px;
     right: 40px;
     font-size: 22px !important;
   }

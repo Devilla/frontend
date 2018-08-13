@@ -34,9 +34,10 @@ const Header = ({openCloseDropdown, dropdownStyle, logout, renderHelp, openProfi
               style={{cursor:'pointer'}}
               onClick={openCloseDropdown}
             >
-              <i className=" mdi mdi-account-settings-variant"></i>
-              <span className="ml-1">
-              </span>
+              <div>
+                <div className="avatar" ><span className="profile-name">S</span></div>
+                <div className="full-name" ><span>Shanky Rana</span></div>
+              </div>
             </a>
             <div className="dropdown-menu dropdown-menu-right dropdown-menu-animated profile-dropdown" style={dropdownStyle}>
               <div className="dropdown-item noti-title">

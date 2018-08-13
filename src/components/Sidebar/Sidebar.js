@@ -15,7 +15,6 @@ class Sidebar extends Component {
       quotaPercentage:0
     };
   }
-
   activeRoute() {
     return 1;
   }
@@ -130,7 +129,6 @@ class Sidebar extends Component {
                   :
                   null
               }
-
             </ul>
           </div>
           <div className="clearfix" />
