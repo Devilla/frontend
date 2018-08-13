@@ -187,7 +187,7 @@ class BillingDetails extends Component {
                         <h4 className="header-title mt-0 m-b-20">Invoices </h4>
 
                         <Col md={12}>
-                          <div className="text-left">
+                          <div className="text-left table-responsive">
                             <Table className="table-striped">
                               <thead>
                                 <tr>

@@ -1,6 +1,6 @@
 import { call, put, fork, takeLatest } from 'redux-saga/effects';
 import * as api from 'services/api';
-import * as actions from 'ducks/notification';
+import * as actions from 'ducks/oauth';
 import { load, loaded } from 'ducks/loading';
 import { toast } from 'react-toastify';
 
@@ -13,11 +13,11 @@ const toastConfig = {
 function* fetch() {
   try {
     yield put(load());
-    const res = yield call(api.GET, 'notificationtypes');
+    const res = yield call(api.GET, 'client');
     if (res.error)
       console.log(res.error);
     else
-      yield put(actions.successNotification(res));
+      yield put(actions.createClientOauthSuccess(res));
     yield put(loaded());
   } catch (error) {
     yield put(loaded());
@@ -25,14 +25,14 @@ function* fetch() {
   }
 }
 
-function* create(action) {
+function* create() {
   try {
     yield put(load());
-    const res = yield call(api.POST, 'notificationtypes', action.notification);
+    const res = yield call(api.POST, 'client');
     if (res.error)
       console.log(res.error);
     else
-      yield put(actions.createSuccess(res));
+      yield put(actions.successClientOauth(res));
     yield put(loaded());
   } catch (error) {
     yield put(loaded());
@@ -44,38 +44,53 @@ function* create(action) {
 function* update(action) {
   try {
     yield put(load());
-    const res = yield call(api.PUT, `notificationtypes/${action.notification.id}`);
+    const res = yield call(api.PUT, `client/${action.client.id}`, action.client);
     if (res.error)
       console.log(res.error);
-    else {
-      let notification = action.notification;
-      notification['_id'] = notification.id;
-      yield put(actions.successNotification(action.notification));
-    }
+    yield toast.error('Client Configuration Saved', toastConfig);
     yield put(loaded());
   } catch (error) {
     yield put(loaded());
     yield toast.error(error.message, toastConfig);
   }
+}
 
+function* deleteClientOauth(action) {
+  try {
+    yield put(load());
+    const res = yield call(api.DELETE, `client/${action.id}`);
+    if (res.error)
+      console.log(res.error);
+    else
+      yield put(actions.popClientOauth(action.index));
+    yield put(loaded());
+  } catch (error) {
+    yield put(loaded());
+    yield toast.error(error.message, toastConfig);
+  }
 }
 
 export function* watchFetch() {
-  yield takeLatest(actions.FETCH, fetch);
+  yield takeLatest(actions.FETCH_CLIENT_OAUTH, fetch);
 }
 
 export function* watchCreate() {
-  yield takeLatest(actions.CREATE, create);
+  yield takeLatest(actions.CREATE_CLIENT_OAUTH, create);
 }
 
 export function* watchUpdate() {
-  yield takeLatest(actions.UPDATE, update);
+  yield takeLatest(actions.UPDATE_CLIENT_OAUTH, update);
+}
+
+export function* watchDelete() {
+  yield takeLatest(actions.DELETE_CLIENT_OAUTH, deleteClientOauth);
 }
 
 export default function* rootSaga() {
   yield [
     fork(watchFetch),
     fork(watchCreate),
-    fork(watchUpdate)
+    fork(watchUpdate),
+    fork(watchDelete)
   ];
 }

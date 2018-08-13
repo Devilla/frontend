@@ -64,3 +64,26 @@ button {
     }
   }
 }
+
+@media only screen and (max-width: 768px) and (min-width: 100px) {
+  .tab-notification-container {
+    .tab-notification-box {
+      .goliveRight {
+        right: 0px;
+        top: 0px;
+        padding-top: 0px;
+        margin: 0% 0% !important;
+      }
+      .new-campaign-tab-pills {
+        .nav-item {
+          .nav-link {
+            .mr-2 {
+              margin-right: 0px !important;
+            }
+          }
+        }
+      }
+    }
+  }
+
+}

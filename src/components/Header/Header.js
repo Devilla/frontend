@@ -6,7 +6,7 @@ import  ConnectionStatus  from './ConnectionStatus';
 import { connect } from 'react-redux';
 import { ProgressBar } from 'react-bootstrap';
 
-const Header = ({openCloseDropdown, dropdownStyle, logout, renderHelp, openProfile, loading, children}) => {
+const Header = ({openCloseDropdown, dropdownStyle, logout, renderHelp, openProfile, loading, children, openClose, openCloseSidebar}) => {
 
   return (
     <div className="customer-header">
@@ -20,7 +20,9 @@ const Header = ({openCloseDropdown, dropdownStyle, logout, renderHelp, openProfi
         <div className="topbar-left">
           <h4><Link onClick={() => browserHistory.goBack()}><i className="icon-arrow-left mr-1"></i></Link>{children.props.location.pathname == '/new'? 'Campaign Setting' :children.props.location.pathname.replace(/^\/+/g, '')}</h4>
         </div>
-
+        <div className="topbar-left-hamburger">
+          <h4><Link onClick={openCloseSidebar}><i className={openClose?'fa fa-times mr-1':'fa fa-bars mr-1'}></i></Link></h4>
+        </div>
         <ul className="list-unstyled topbar-right-menu float-right mb-0 nav-custom-header  rounded-circle">
           <li className="dropdown notification-list">
             <a

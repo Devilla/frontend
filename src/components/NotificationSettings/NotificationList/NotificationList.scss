@@ -57,3 +57,17 @@
     .cards-notification {
       margin-left: 20px !important;
     }
+
+@media only screen and (max-width: 768px) and (min-width: 100px) {
+  .cards-notification {
+    .notification-list {
+        margin-top: 80px !important;
+      .notification-box {
+        padding: 20px 20px;
+        .ribbon-box.indi-card {
+          width: 225px !important;
+        }
+      }
+    }
+  }
+}

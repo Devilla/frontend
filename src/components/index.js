@@ -55,3 +55,5 @@ export { default as AuthorizationDialog } from './Oauthgenerate/AuthorizationDia
 export { default as DashboardChannel  }  from './DashboardChannel/DashboardChannel';
 export { default as ReviewRedirect } from './ReviewRedirect/ReviewRedirect';
 export { default as WordpressPluginPage } from './WordpressPluginPage/WordpressPluginPage';
+export { default as OauthLogin } from './OauthLogin/OauthLogin';
+export { default as OauthAuthorization } from './OauthAuthorization/OauthAuthorization';

@@ -130,3 +130,16 @@
 button {
   margin: 0 2% !important;
 }
+
+@media only screen and (max-width: 768px) and (min-width: 100px) {
+  .profile-container {
+    .panel-body {
+      .text-left {
+        .profile-buttons {
+          padding-left: 0px;
+          padding-right: 0px;
+        }
+      }
+    }
+  }
+}

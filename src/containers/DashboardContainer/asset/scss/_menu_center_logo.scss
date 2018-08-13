@@ -778,7 +778,7 @@ body.enlarged.bg-transparent {
 
 @media (max-width: 480px) {
   .side-menu {
-    z-index: 10 !important;
+    z-index: 1000 !important;
   }
 
   .search-bar {
@@ -870,4 +870,3 @@ body.enlarged.bg-transparent {
   margin: 0 !important;
   line-height: 70px;
 }
-

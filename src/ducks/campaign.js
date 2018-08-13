@@ -39,7 +39,7 @@ export const popSubDomain = (index) => ({ type: POP_SUB_DOMAIN, index });
 export const successUpdate = (campaign, index) => ({ type: SUCCESS_UPDATE, campaign, index });
 
 const initialState = fromJS({});
-
+let campaigns;
 const campaign = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_SUCCESS:
@@ -47,7 +47,10 @@ const campaign = (state = initialState, action) => {
     case SUCCESS:
       return state.set('campaign', action.campaign);
     case SUCCESS_UPDATE:
-      return state.set('campaigns', state.get('campaigns').slice(action.index, 1).concat(state.get('campaigns').slice(action.index, 0, action.campaign)));
+      campaigns = state.get('campaigns');
+      delete campaigns[action.index];
+      campaigns[action.index] = action.campaign;
+      return state.set('campaigns', JSON.parse(JSON.stringify(campaigns)));
     case CLEAR_CAMPAIGN:
       return state.set('campaign', {});
     case POP_CAMPAIGN:

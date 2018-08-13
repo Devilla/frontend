@@ -26,7 +26,8 @@ class DashboardContainer extends Component {
     this.state = {
       render: true,
       disableButton: false,
-      style: {}
+      style: {},
+      openClose: false
     };
   }
 
@@ -68,6 +69,11 @@ class DashboardContainer extends Component {
     else
       this.setState({style: {visibility: 'visible', opacity: 1}});
   }
+
+  openCloseSidebar = () => {
+    this.setState({openClose: !this.state.openClose});
+  }
+
 
   closeDropdown = () => {
     this.setState({style: {}});
@@ -152,13 +158,14 @@ class DashboardContainer extends Component {
 
   render() {
     const {  user } = this.props;
+    const { style , openClose, disableButton } = this.state;
     return (
       <div className="dashboard-container">
         <Popup />
         <div className="wrapper"  >
 
           {!this.state.render && <p>Please wait</p>}
-          {this.state.render && <Sidebar {...this.props} disableButton={this.state.disableButton} onClick={this.closeDropdown} />}
+          {this.state.render && <Sidebar {...this.props} openClose={openClose} openCloseSidebar={this.openCloseSidebar} disableButton={disableButton} onClick={this.closeDropdown} />}
           {this.state.render &&
           <div>
             <div className="content-page" >
@@ -171,7 +178,9 @@ class DashboardContainer extends Component {
                     renderHelp={this.renderHelp}
                     settings={this.settings}
                     openProfile={this.openProfile}
-                    dropdownStyle={this.state.style}
+                    dropdownStyle={style}
+                    openClose={openClose}
+                    openCloseSidebar={this.openCloseSidebar}
                     {...this.props}
                   />
                 </nav>

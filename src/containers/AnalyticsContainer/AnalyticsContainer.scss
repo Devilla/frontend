@@ -58,10 +58,16 @@
       position: relative !important;
       font-weight: 500 !important;
     }
-
   }
   .mm-popup__close {
     background: none !important;
   }
+}
 
+@media only screen and (max-width: 768px) and (min-width: 100px) {
+  .analytics-chart {
+    canvas {
+      width: 100% !important;
+    }
+  }
 }

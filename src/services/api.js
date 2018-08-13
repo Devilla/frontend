@@ -124,11 +124,11 @@ export const POSTELASTIC = (url, body) => {
     'Content-Type':'application/json',
     'kbn-xsrf': 'reporting'
   };
-
-  return fetch(base + url, {
+  return fetch('http://35.202.85.190:9200/' + url, {
     method: 'POST',
     headers: headers,
     body: body,
+    mode: 'no-cors'
   })
     .then(res => res.json())
     .then(res => res);

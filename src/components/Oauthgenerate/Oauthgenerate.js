@@ -1,14 +1,12 @@
 import React , { Component } from 'react';
-import './Oauthgenerate.scss';
-import { Row,Col } from 'react-bootstrap';
-import { validateEmail } from 'services/FormUtils';
-import { HelpBlock } from 'react-bootstrap';
+import { connect } from 'react-redux';
+import { Row, Col, FormGroup, HelpBlock, FormControl } from 'react-bootstrap';
 import moment from 'moment';
-import {
-  FormGroup,
-  FormControl
-} from 'react-bootstrap';
+import { browserHistory }  from 'react-router';
 
+import { validateEmail } from 'services/FormUtils';
+import { updateClientOauth, deleteClientOauth } from 'ducks/oauth';
+import './Oauthgenerate.scss';
 
 class Oauthpage extends Component {
   constructor() {
@@ -25,17 +23,36 @@ class Oauthpage extends Component {
     secret = secret.generate(16);
 
     this.state = {
-      clientId: id,
-      clientSecret: secret,
+      clientId: '',
+      secret: '',
       clientname: '',
       errorname: '',
-      authorizedOrigin: '',
-      redirectURI: '',
+      origin: '',
+      redirectUri: '',
       errorName: '',
       errorURI: '',
       errorAuthorizedOrigin: ''
-
     };
+  }
+
+  componentDidMount() {
+    if(this.props.oauth && this.props.oauth.size != 0)
+      this.setOauth(this.props.oauth);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if(nextProps.oauth != this.props.oauth)
+      this.setOauth(nextProps.oauth);
+  }
+
+  setOauth = (oauth) => {
+    this.setState({
+      clientId: oauth.clientId,
+      secret: oauth.secret,
+      name: oauth.name,
+      origin: oauth.origin,
+      redirectUri: oauth.redirectUri
+    });
   }
 
   checkNameBlur = (event)=> {
@@ -70,33 +87,70 @@ class Oauthpage extends Component {
   }
 
   handleStateChange = (target, value) => {
-    this.setState({[target]: value});
-  }
-  getClientInfoList = () => {
-    return (
-      <div className="clientinfolist">
-        <span className="text h6"> Client ID </span><span className="data">{this.state.clientId}</span> <br/>
-        <span className="text h6"> Client Secret </span><span className="data">{this.state.clientSecret}</span> <br/>
-        <span className="text h6"> Creation Date </span><span className="data">{moment().format('DD-MM-YYYY HH:mm:ss')}</span>
-      </div>
-    );
+    this.setState({
+      [target]: value,
+      errorName: '',
+      errorURI: '',
+      errorAuthorizedOrigin: ''
+    });
   }
 
+  submitClientOauth = () => {
+    const { name, redirectUri, origin } = this.state;
+    let { oauth } = this.props;
+    /* eslint-disable */
+    var re = /^http(s)?:\/\/(www\.)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/;
+    /* eslint-disable */
+
+    if(!name)
+      return this.setState({errorName: 'Enter a valid name'});
+    else if(!origin || !re.test(origin))
+      return this.setState({errorAuthorizedOrigin: 'Enter a valid Authorized Origin'});
+    else if(!redirectUri || !re.test(redirectUri))
+      return this.setState({errorURI: 'Enter a valid Redirect URI'});
+
+    oauth['id'] = oauth._id;
+    oauth['name'] = name;
+    oauth['redirectUri'] = redirectUri;
+    oauth['origin'] = origin;
+    delete oauth['_id'];
+    this.props.updateClientOauth(oauth);
+  }
+
+  deleteClientOauth = (id) => {
+    this.props.deleteClientOauth(id);
+    browserHistory.push('oauthshow');
+  }
 
   render() {
+    const {
+      clientId,
+      name,
+      secret,
+      errorName,
+      origin,
+      errorAuthorizedOrigin,
+      redirectUri,
+      errorURI
+    } = this.state;
+    const { oauth } = this.props;
     return (
       <div className="oauthgen-container">
         <div className="content">
           <div className="card-box">
             <span className="header-title h4">Client ID for Web application</span>
-            <button type="button" className="btn btn-outline-primary  waves-light waves-effect pl-1 float-right h6" onClick={()=>{}}><i className="ml-3 mdi mdi-delete"></i>&nbsp;DELETE</button>
-            <button type="button" className="btn btn-outline-primary  waves-light waves-effect pl-1 float-right h6" onClick={()=>{}}><i className="ml-3 mdi mdi-lock-reset"></i>&nbsp;RESET SECRET</button>
+            <button type="button" className="btn btn-outline-primary  waves-light waves-effect pl-1 float-right h6" onClick={()=> this.deleteClientOauth(oauth._id)}><i className="ml-3 mdi mdi-delete"></i>&nbsp;DELETE</button>
+            {/* <button type="button" className="btn btn-outline-primary  waves-light waves-effect pl-1 float-right h6" onClick={()=>{}}><i className="ml-3 mdi mdi-lock-reset"></i>&nbsp;RESET SECRET</button> */}
 
             <span className="clearfix"></span>
             <hr/>
             <Row className="mb-4">
               <Col md={12}>
-                {this.getClientInfoList()}
+                <div className="clientinfolist">
+                  <span className="text h6"> Client ID </span><span className="data">{clientId}</span> <br/>
+                  <span className="text h6"> Client Secret </span><span className="data">{secret}</span> <br/>
+                  <span className="text h6"> Creation Date </span><span className="data">{moment(oauth.createdAt).format('DD-MM-YYYY')}</span>
+                </div>
               </Col>
             </Row>
             <Row>
@@ -107,16 +161,16 @@ class Oauthpage extends Component {
                   <FormControl
                     type="text"
                     bsClass="form-control"
-                    id="clientname"
-                    placeholder="example: John doe"
+                    id="name"
+                    placeholder="example: Ray-101, John doe"
                     required={true}
                     name="clientname"
-                    value={this.state.clientname}
+                    defaultValue={name}
                     onBlur={this.checkNameBlur}
-                    onChange={(e) => this.handleStateChange(e.target.name, e.target.value)}
+                    onChange={(e) => this.handleStateChange(e.target.id, e.target.value)}
                   />
                   <HelpBlock>
-                    <p className="website-error">{this.state.errorName}</p>
+                    <p className="website-error">{errorName}</p>
                   </HelpBlock>
                 </FormGroup>
               </Col>
@@ -130,17 +184,17 @@ class Oauthpage extends Component {
                     <FormControl
                       type="text"
                       bsClass="form-control "
-                      id="URI"
+                      id="origin"
                       placeholder="https://www.example.com"
                       onBlur={()=>{}}
                       required={true}
-                      name="authorizedOrigin"
-                      value={this.state.authorizedOrigin}
+                      name="origin"
+                      defaultValue={origin}
                       onBlur={this.checkAuthorizedOrigin}
-                      onChange={(e) => this.handleStateChange(e.target.name, e.target.value)}
+                      onChange={(e) => this.handleStateChange(e.target.id, e.target.value)}
                     />
                     <HelpBlock>
-                      <p className="website-error">{this.state.errorAuthorizedOrigin}</p>
+                      <p className="website-error">{errorAuthorizedOrigin}</p>
                     </HelpBlock>
                   </FormGroup>
                   <FormGroup>
@@ -149,23 +203,23 @@ class Oauthpage extends Component {
                     <FormControl
                       type="text"
                       bsClass="form-control"
-                      id="redirectURI"
+                      id="redirectUri"
                       placeholder="https://www.example.com/callback"
                       required={true}
-                      name="redirectURI"
-                      value={this.state.redirectURI}
+                      name="redirectUri"
+                      defaultValue={redirectUri}
                       onBlur={this.checkURIBlur}
-                      onChange={(e) => this.handleStateChange(e.target.name, e.target.value)}
+                      onChange={(e) => this.handleStateChange(e.target.id, e.target.value)}
                     />
                     <HelpBlock>
-                      <p className="website-error">{this.state.errorURI}</p>
+                      <p className="website-error">{errorURI}</p>
                     </HelpBlock>
                   </FormGroup>
                 </div>
               </Col>
             </Row>
             <Row className="mt-3">
-              <span type="button" className="btn btn-primary waves-effect saveClient">Save</span>
+              <span type="button" className="btn btn-primary waves-effect saveClient" onClick={this.submitClientOauth}>Save</span>
             </Row>
           </div>
         </div>
@@ -175,4 +229,14 @@ class Oauthpage extends Component {
   }
 }
 
-export default Oauthpage;
+const mapStateToProps = state => ({
+  loading: state.getIn(['loading', 'state']),
+  oauth: state.getIn(['oauth', 'oauth'])
+});
+
+const mapDispatchToProps = {
+  updateClientOauth,
+  deleteClientOauth
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Oauthpage);
