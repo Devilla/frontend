@@ -43,7 +43,8 @@ import {
   DashboardContainer,
   ConnectPage,
   AnalyticsContainer,
-  NewCampaignContainer
+  NewCampaignContainer,
+  OauthContainer
 } from 'containers';
 
 
@@ -70,6 +71,7 @@ const MyRoutes = ({routerHistory}) => (
       <Route path="/billing-details" component={BillingDetails} />
       <Route path="/wordpress-plugin-page" component={WordpressPluginPage} />
     </Route>
+    <Route exact path="/oauth/:type" component={OauthContainer} />
     <Route exact path="/connect/:provider" component={ConnectPage} />
     <Route exact path="/integrations/:provider/callback/" component={ReviewRedirect} />
     <Route exact path="/verify/:code" component={VerificationPage} />
