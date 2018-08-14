@@ -49,9 +49,6 @@ export { default as Tbars } from './3bars.png';
 export { default as Smallicon } from './smallicon.png';
 export { default as Ticon } from './3icon.png';
 export { default as Profile } from './3profile.png';
-export {default as sideScreen_1} from './sideScreen_1.png';
-export {default as sideScreen_2} from './sideScreen_2.png';
-export {default as upward} from './upward.png';
 
 //Integration pic
 export { default as Aweber } from './Aweber.png';
