@@ -349,7 +349,7 @@ class Dashboard extends Component {
     const xLabels = this.getDays();
     const datas = new Array(yLabels.length)
       .fill(0)
-      .map(() => new Array(xLabels.length).fill(0).map(() => Math.floor(Math.random() * 100)));
+      .map(() => new Array(xLabels.length).fill(0).map(() => 0));
 
     const { profile, campaigns, campaignInfo, heatmap, map } = this.props;
     const { selectedCampaign } = this.state;
@@ -527,6 +527,7 @@ class Dashboard extends Component {
                         </div>
                         <div className="clearfix"></div>
                       </div>
+                      <div className="clearfix"></div>
                     </Col>
                   </Row>
                   <div className="clearfix"></div>
@@ -538,7 +539,7 @@ class Dashboard extends Component {
                 <HeatMap
                   xLabels={xLabels}
                   yLabels={yLabels}
-                  data={heatmap != undefined?heatmap.message:datas}
+                  data={(heatmap != undefined && heatmap && heatmap.message.length !== 0)?heatmap.message:datas}
                   height={16}
                 />
               </Col>
@@ -557,6 +558,7 @@ class Dashboard extends Component {
           </div>
         </div>
       </Loading>
+
     );
   }
 }
