@@ -13,6 +13,7 @@ export { default as CustomerProfiles } from './new-profiling.svg';
 export { default as CustomerJourneys } from './new-customer-journey.svg';
 export { default as CustomeRules } from './new-popup-timings.svg';
 export { default as MobileReady } from './new-mobile-ready.svg';
+export { default as sideScreen_1} from './sideScreen_1.png';
 
 export { default as Inc42 } from './inc42glyph.png';
 export { default as Tnwg } from './tnwglyph3.png';
