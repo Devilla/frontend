@@ -110,14 +110,11 @@ class WebsiteHome extends Component {
 
                 </form>
                 <ul className="mobile-view">
-                  <li>Free 7-day trial</li>
+                  <li className="bullet-inline">Free 7-day trial</li>
                   <li className="bullet-inline">Easy setup</li>
                   <li className="bullet-inline">Cancel any time</li>
                 </ul>
-                <div className="all-view typed-text typed-text--cursor">
-                  Serving customers from over <span>150+</span> countries&nbsp;&nbsp;
-                </div>
-
+                  
               </div>
             </div>
           </section>
