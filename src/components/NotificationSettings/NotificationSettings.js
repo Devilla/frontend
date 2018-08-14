@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Row } from 'react-bootstrap';
+import Loading from 'react-loading-animation';
+
 import NotificationConfigure from 'components/NotificationConfigure/NotificationConfigure';
 import NotificationList from './NotificationList/NotificationList';
 
@@ -275,74 +277,71 @@ class Notifications extends Component {
   }
 
   render() {
-    const { notification, configurations, createSuccess, campaign, profile, setNotification } = this.props;
+    const { notification, notifications, configurations, createSuccess, campaign, profile, setNotification } = this.props;
     return (
-      <div className="notification-settings">
-        <div>
+      <Loading style={{width: '10%', height: '500px'}} strokeWidth='2' isLoading={!notifications || !configurations || !campaign || !profile}>
+        <div className="notification-settings">
           <div>
-            <h4 className="lead text-center m-b-30 m-t-20">Notifications</h4>
-            {notification &&
-              <div className="dropdown-campaigns">
-                <button type="button" className="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                  {this.state.pageName?this.state.pageName:'Pages'}
-                </button>
-                <div className="dropdown-menu">
-                  <a className="dropdown-item" href="#" onClick={() => this.clearSubCampaign()} >Default</a>
-                  {this.renderDropdownList()}
-
-                  {/* <a className="dropdown-item" href="#">Link 2</a>
-                  <a className="dropdown-item" href="#">Link 3</a> */}
+            <div>
+              <h4 className="lead text-center m-b-30 m-t-20">Notifications</h4>
+              {notification &&
+                <div className="dropdown-campaigns">
+                  <button type="button" className="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                    {this.state.pageName?this.state.pageName:'Pages'}
+                  </button>
+                  <div className="dropdown-menu">
+                    <a className="dropdown-item" href="#" onClick={() => this.clearSubCampaign()} >Default</a>
+                    {this.renderDropdownList()}
+                  </div>
                 </div>
-              </div>
+              }
+            </div>
+
+            {!this.props.notification
+              ?
+              <NotificationList
+                selectedSubCampaign={this.state.selectedSubCampaign}
+                campaignUrl={campaign.websiteUrl}
+                notificationList={notifications}
+                handleActivityChange={this.handleActivityChange}
+                handleContentChange={this.handleContentChange}
+                configure={this.configure}
+                configurations={configurations}
+                createSuccess={createSuccess}
+                setNotification={setNotification}
+                setNewConfig={this.setNewConfig}
+              />
+              :
+              <Row>
+                <NotificationConfigure
+                  notification={notification}
+                  profile={profile}
+                  showpopupfield={this.state.showpopupfield}
+                  handleContentChange={this.handleContentChange}
+                  setDefaultPanel={this.setDefaultPanel}
+                  handleActivityChange={this.handleActivityChange}
+                  handleNotificationStyleChange={this.handleNotificationStyleChange}
+                  handleClickableNotification={this.handleClickableNotification}
+                  saveConfiguration={this.saveConfiguration}
+                  backConfiguration={this.backConfiguration}
+                  showpopup={this.showpopup}
+                  popupName={this.state.popupName}
+                  campaign={this.props.campaign}
+                  {...this.state}
+                />
+              </Row>
             }
           </div>
-
-
-
-          {!this.props.notification
-            ?
-            <NotificationList
-              selectedSubCampaign={this.state.selectedSubCampaign}
-              campaignUrl={campaign.websiteUrl}
-              notificationList={this.props.notifications}
-              handleActivityChange={this.handleActivityChange}
-              handleContentChange={this.handleContentChange}
-              configure={this.configure}
-              configurations={configurations}
-              createSuccess={createSuccess}
-              setNotification={setNotification}
-              setNewConfig={this.setNewConfig}
-            />
-            :
-            <Row>
-              <NotificationConfigure
-                notification={notification}
-                profile={profile}
-                showpopupfield={this.state.showpopupfield}
-                handleContentChange={this.handleContentChange}
-                setDefaultPanel={this.setDefaultPanel}
-                handleActivityChange={this.handleActivityChange}
-                handleNotificationStyleChange={this.handleNotificationStyleChange}
-                handleClickableNotification={this.handleClickableNotification}
-                saveConfiguration={this.saveConfiguration}
-                backConfiguration={this.backConfiguration}
-                showpopup={this.showpopup}
-                popupName={this.state.popupName}
-                campaign={this.props.campaign}
-                {...this.state}
-              />
-            </Row>
+          {!this.props.notification &&
+            <div className="notifsettinglast-btn">
+              <div className="ml-2 float-right">
+                <button type="button" className="btn btn-primary  waves-light waves-effect cardnext-btn ml-2 pl-4 pr-3" onClick={this.handleNextState}>Next <i className="icon-arrow-right pl-2"></i> </button>
+              </div>
+              <div className="clearfix"></div>
+            </div>
           }
         </div>
-        {!this.props.notification &&
-          <div className="notifsettinglast-btn">
-            <div className="ml-2 float-right">
-              <button type="button" className="btn btn-primary  waves-light waves-effect cardnext-btn ml-2 pl-4 pr-3" onClick={this.handleNextState}>Next <i className="icon-arrow-right pl-2"></i> </button>
-            </div>
-            <div className="clearfix"></div>
-          </div>
-        }
-      </div>
+      </Loading>
     );
   }
 }

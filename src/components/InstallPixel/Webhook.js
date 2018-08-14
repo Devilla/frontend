@@ -192,4 +192,4 @@ const mapDispatchToProps = {
   clearWebhook
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Webhook);
+export default connect(mapStateToProps, mapDispatchToProps, null, { withRef: true })(Webhook);

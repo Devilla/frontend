@@ -67,7 +67,7 @@ class ForgetPassword extends Component {
   render() {
     const { showemailbtn ,usersemail} = this.state;
     return (<div className="forgetpassword-container">
-      <div className="authpage section innerpage">
+      <div className="transition-item authpage section innerpage">
         <div className="container">
           <div className="wrapper">
             <Animated className="center" animationIn="fadeIn" animationOut="fadeOut" isVisible={true}>
@@ -115,4 +115,4 @@ const mapDispatchToProps = {
   clearForgotPasswordError
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ForgetPassword);
+export default connect(mapStateToProps, mapDispatchToProps, null, { withRef: true })(ForgetPassword);

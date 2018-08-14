@@ -111,7 +111,7 @@ class WebsiteDemoPage extends  Component  {
     const { errorEmail, errorFirstName, errorLastName, errorPhoneNumber } = this.state;
     let { fm1, fm2 , fm3, error }  = this.state;
     return (
-      <div className="main-container">
+      <div className="transition-item main-container demopage-container">
         <section className="imagebg image--light cover cover-blocks bg--secondary">
           <div className="container">
             <div className="col-md-6">
@@ -285,4 +285,4 @@ const mapDispatchToProps = {
   clearDemoError
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(WebsiteDemoPage);
+export default connect(mapStateToProps, mapDispatchToProps, null, { withRef: true })(WebsiteDemoPage);

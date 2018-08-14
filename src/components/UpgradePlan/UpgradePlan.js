@@ -39,7 +39,7 @@ export default class UpgradePlan extends Component {
   render() {
     const { proceed, plan } = this.state;
     return (
-      <div className="upgrade-plan-container">
+      <div className="transition-item upgrade-plan-container">
         {!proceed ?
           <PlanList
             plan={plan}

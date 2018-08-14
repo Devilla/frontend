@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 import Popup from 'react-popup';
 import { ToastContainer } from 'react-toastify';
+import Loading from 'react-loading-animation';
+import PageTransition from 'react-router-page-transition';
 
 import { checkTokenExists } from 'ducks/auth';
 import { Header, Sidebar } from 'components';
@@ -157,16 +159,16 @@ class DashboardContainer extends Component {
   }
 
   render() {
-    const {  user } = this.props;
+    const {  user, profile } = this.props;
     const { style , openClose, disableButton } = this.state;
     return (
       <div className="dashboard-container">
         <Popup />
         <div className="wrapper"  >
 
-          {!this.state.render && <p>Please wait</p>}
-          {this.state.render && <Sidebar {...this.props} openClose={openClose} openCloseSidebar={this.openCloseSidebar} disableButton={disableButton} onClick={this.closeDropdown} />}
-          {this.state.render &&
+          {(!user || user.size == 0) && (!profile || profile == undefined) && <Loading strokeWidth="2" style={{height: '700px', width: '10%'}} isLoading={true} />}
+          {user && (profile || profile !== undefined) && <Sidebar {...this.props} openClose={openClose} openCloseSidebar={this.openCloseSidebar} disableButton={disableButton} onClick={this.closeDropdown} />}
+          {user && (profile || profile !== undefined) &&
           <div>
             <div className="content-page" >
               <div className="topbar" >
@@ -187,8 +189,10 @@ class DashboardContainer extends Component {
               </div>
 
               <div className="content dashboard-content" style={{ backgroundColor: '#FFF' }} onClick={this.closeDropdown}>
-                <div className="container-fluid p-2">
-                  {this.props.children}
+                <div className="container-fluid p-2" style={{minHeight: '750px'}}>
+                  <PageTransition className="content">
+                    {this.props.children}
+                  </PageTransition>
                 </div>
               </div>
             </div>
@@ -210,4 +214,4 @@ const mapDispatchToProps = {
   checkTokenExists
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(DashboardContainer);
+export default connect(mapStateToProps, mapDispatchToProps, null, { withRef: true })(DashboardContainer);

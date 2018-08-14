@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 import { ToastContainer } from 'react-toastify';
+import Loading from 'react-loading-animation';
 
 import TrailPayment from './TrailPayment';
 import { updateUser, checkTokenExists, validateCoupon, clearCouponError } from 'ducks/auth';
@@ -128,29 +129,31 @@ class LoginFlow extends Component {
     const { user, profile, couponRequestError, selectedPlan, load, loaded } = this.props;
     const couponDetails = this.props.couponDetails || this.props.coupon;
     return (
-      <div className="content login-flow">
-        {profile?
-          <TrailPayment
-            load={load}
-            loaded={loaded}
-            couponError={couponError || couponRequestError}
-            nameError={nameError}
-            cardError={cardError}
-            couponDetails={couponDetails}
-            user={user}
-            profile={profile}
-            plan={selectedPlan}
-            handleErrorChange={this.handleErrorChange}
-            handleStateChange={this.handleStateChange}
-            handleSubmit={this.submitPayment}
-            submitCoupon={this.submitCoupon}
-            couponProceed={this.couponProceed}
-          />
-          :
-          <Spinner loading={true} />
-        }
-        <ToastContainer hideProgressBar={true} />
-      </div>
+      <Loading style={{width: '10%', height: '700px'}} strokeWidth='2' isLoading={!user || !profile}>
+        <div className="content login-flow">
+          {profile?
+            <TrailPayment
+              load={load}
+              loaded={loaded}
+              couponError={couponError || couponRequestError}
+              nameError={nameError}
+              cardError={cardError}
+              couponDetails={couponDetails}
+              user={user}
+              profile={profile}
+              plan={selectedPlan}
+              handleErrorChange={this.handleErrorChange}
+              handleStateChange={this.handleStateChange}
+              handleSubmit={this.submitPayment}
+              submitCoupon={this.submitCoupon}
+              couponProceed={this.couponProceed}
+            />
+            :
+            <Spinner loading={true} />
+          }
+          <ToastContainer hideProgressBar={true} />
+        </div>
+      </Loading>
     );
   }
 }

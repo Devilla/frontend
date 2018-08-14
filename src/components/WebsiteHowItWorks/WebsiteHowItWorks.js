@@ -27,7 +27,7 @@ class WebsiteHowItWorks extends Component {
       autoplay: true,
     };
     return (
-      <div className="websitehowitworks-container ">
+      <div className="transition-item websitehowitworks-container ">
         <div className="main-container">
           <section className="cover text-center unpad--bottom ">
             <div className="container">

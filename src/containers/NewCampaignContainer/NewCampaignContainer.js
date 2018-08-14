@@ -175,7 +175,7 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
   render() {
 
     return (
-      <div className="NewCampaignContainer">
+      <div className="transition-item NewCampaignContainer">
 
         {this.props.campaign && Object.keys(this.props.campaign).length !== 0 && this.props.campaign.constructor === Object?
           <CampaignSettings
@@ -241,4 +241,4 @@ const mapDispatchToProps = {
   fetchSubCampaign
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(NewCampaignContainer);
+export default connect(mapStateToProps, mapDispatchToProps, null, { withRef: true })(NewCampaignContainer);

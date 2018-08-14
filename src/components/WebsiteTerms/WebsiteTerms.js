@@ -8,7 +8,7 @@ class WebsiteTerms extends Component {
 
   render() {
     return (
-      <div className="WebsiteTerms-container">
+      <div className="transition-item WebsiteTerms-container">
         <div className="main-container">
           <section className="text-center bg--secondary">
             <div className="container">
