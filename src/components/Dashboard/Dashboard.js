@@ -16,7 +16,6 @@ import { mapGraph, heatMapGraph } from 'ducks/elastic';
 import Card from './Card';
 
 import './Dashboard.scss';
-import 'react-datepicker/dist/react-datepicker.css';
 
 var LineChart = ReactChartJs.Line;
 let moment = extendMoment(Moment);

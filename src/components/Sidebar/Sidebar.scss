@@ -20,7 +20,38 @@
 
 .custombottom{
   position: relative;
-  margin-top: 200px;
+  margin-top: 35px;
+  .card {
+    border: 1px solid lightgray !important;
+    margin: 2px;
+    .change-percent-sidebar {
+      border: 1px solid lightgrey;
+      padding: 2px;
+      text-align: center;
+      margin: 15px;
+      p {
+        margin: 0;
+      }
+    }
+    .datepicker-sidebar {
+      display: flex;
+      width: 200px;
+      justify-content: space-between;
+      input {
+        width: 90px;
+      }
+      .date-picker-btn {
+        width: 100%;
+        padding: 5px;
+      }
+    }
+    .campaign-dropdown {
+      margin: 20px 25px 0px 25px;
+      button {
+        width: 130px;
+      }
+    }
+  }
 }
 
 .textColor{
