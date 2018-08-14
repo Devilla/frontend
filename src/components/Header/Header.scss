@@ -1,7 +1,7 @@
 .customer-header {
   .avatar {
-      width: 30px;
-      height: 30px;
+      width: 38px;
+      height: 38px;
       border-radius: 50%;
       font-size: 14px;
        // display: table;
@@ -14,7 +14,10 @@
 
       .full-name {
           font-size: 14px;
-        margin-right: 5px;
+        margin-top: -27px;
+        padding-left: 50px;
+        padding-right: 50px;
+        width: 180px;
       }
   .progress {
     background: #fafafa !important;
@@ -27,7 +30,7 @@
 
   .nav-topbar-flex {
     display: flex;
-    justify-content: space-between;
+    background-color: #ffffff;
 
     .topbar-left {
       width: 50%;

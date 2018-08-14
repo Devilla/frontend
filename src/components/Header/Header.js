@@ -36,7 +36,7 @@ const Header = ({openCloseDropdown, dropdownStyle, logout, renderHelp, openProfi
             >
               <div>
                 <div className="avatar" ><span className="profile-name">S</span></div>
-                <div className="full-name" ><span>Shanky Rana</span></div>
+                <div className="full-name" ><span>Shanky Rana <i className="icon-arrow-down"></i></span></div>
               </div>
             </a>
             <div className="dropdown-menu dropdown-menu-right dropdown-menu-animated profile-dropdown" style={dropdownStyle}>
