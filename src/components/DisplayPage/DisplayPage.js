@@ -300,6 +300,16 @@ class DisplayPage extends Component {
             <Row>
               <Col md={12}>
                 <h4 className="lead text-center m-b-30 m-t-20">Where do you want to show notifications?</h4>
+                <div className="notificationSwitch">
+                  <input
+                    className="tgl tgl-ios"
+                    id="toggle-display"
+                    type="checkbox"
+                    defaultChecked={true}
+                    // onChange={(e) => e.target.checked !=notification.activity? handleActivityChange(!notification.activity, notification._id, notification.configurationId):null}
+                  />
+                  <label className="tgl-btn" htmlFor="toggle-display"></label>
+                </div>
               </Col>
             </Row>
             <Row>
