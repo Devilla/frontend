@@ -11,7 +11,7 @@ import Loading from 'react-loading-animation';
 
 import { fetchCampaign, fetchCampaignInfo, updateCampaign, successCampaign, removeCampaign } from 'ducks/campaign';
 import './Notification.scss';
-
+import './Notify.css';
 class Notification extends Component {
   constructor() {
     super();
@@ -102,6 +102,15 @@ class Notification extends Component {
           <td>{campaign.campaignName}</td>
           {!mobile() && <td>{campaign.websiteUrl}</td>}
           <td className="switch">
+          <div className="row">
+   <div className="col-sm-5">
+  <button type="button" className="btn btn-sm btn-toggle active" data-toggle="button" aria-pressed="true" autocomplete="off">
+    <div className="handle"></div>
+  </button>
+</div>
+
+</div>
+
             <input className="tgl tgl-ios" id="cb2" type="checkbox" checked={this.state.isActive}  readOnly/>
             <label className="tgl-btn" htmlFor="cb2"  data-toggle="modal" data-target="#2"  onClick={(e) => this.handleActiveChange(!campaign.isActive, campaign, i)}></label>
           </td>

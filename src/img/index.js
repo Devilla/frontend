@@ -82,7 +82,9 @@ export { default as TrustRadius } from './trustradius.jpg';
 export { default as Yelp } from './yelp.png';
 export { default as BingPlaces } from './bingplaces.png';
 export { default as Smallpic } from './smallprofile.png';
-
+export { default as LinkedinFooter } from './linkedin.png';
+export { default as TwitterFooter } from './twitter.png';
+export { default as FacebookFooter } from './facebook.png';
 
 
 // How it works Page Image
