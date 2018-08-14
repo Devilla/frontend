@@ -5,6 +5,7 @@
   "homepage": "http://localhost:3000",
   "dependencies": {
     "autoprefixer": "7.1.6",
+    "aws-sdk": "^2.292.0",
     "axios": "^0.18.0",
     "babel-eslint": "^7.2.3",
     "babel-loader": "7.1.2",
@@ -49,6 +50,7 @@
     "jest-enzyme": "^6.0.2",
     "jquery": "^3.3.1",
     "lodash": "^4.17.5",
+    "module": "^1.2.5",
     "moment": "^2.22.0",
     "moment-range": "^4.0.1",
     "newrelic": "^4.8.0",
