@@ -34,9 +34,9 @@ const Header = ({openCloseDropdown, dropdownStyle, logout, renderHelp, openProfi
               style={{cursor:'pointer'}}
               onClick={openCloseDropdown}
             >
-              <div>
+              <div className="profile-dropdown">
                 <div className="avatar" ><span className="profile-name">S</span></div>
-                <div className="full-name" ><span>Shanky Rana <i className="icon-arrow-down"></i></span></div>
+                <div className="full-name" ><span>Shanky Rana &nbsp;<i className="icon-arrow-down"></i></span></div>
               </div>
             </a>
             <div className="dropdown-menu dropdown-menu-right dropdown-menu-animated profile-dropdown" style={dropdownStyle}>

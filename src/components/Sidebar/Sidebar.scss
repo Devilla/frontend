@@ -20,7 +20,7 @@
 
 .custombottom{
   position: relative;
-  margin-top: 200px;
+  margin-top: 80px;
 }
 
 .textColor{
@@ -78,7 +78,7 @@ span {
 div {
   &#sidebar-menu {
       overflow-y: auto;
-      height: 640px;
+      // height: 640px;
   }
 
   &::-webkit-scrollbar {
@@ -108,15 +108,27 @@ button {
 
 .addnew-btn {
   box-shadow: 0 8px 15px -4px #999;
-  border-radius: 5px !important;
+  border-radius: 50px !important;
+}
+ .text-right {
+    text-align: right !important;
+    margin-top: 300px;
+}
+.text-left {
+   text-align: left !important;
+   margin-top: 188px;
 }
 
 @media only screen and (max-width: 768px) and (min-width: 100px) {
+  &#side-menu {
+    max-width: 60px;
+  }
   &#sidebar-menu {
+    max-width:60px;
     height: fit-content !important;
     .addnew-small-btn {
       margin: 0px -2px !important;
-      padding: 5px 8px !important;
+      // padding: 5px 8px !important;
       .fi-plus {
         left: 2px;
       }

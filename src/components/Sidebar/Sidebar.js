@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
-import { Influence } from 'img';
-import { Col, ProgressBar } from 'react-bootstrap';
-import mobile from 'is-mobile';
+import { Influence, InfluenceMobile } from 'img';
+// import mobile from 'is-mobile';
+import {Col} from 'react-bootstrap';
 
 import appRoutes from 'routes/app';
 import './Sidebar.scss';
@@ -12,42 +12,63 @@ class Sidebar extends Component {
     super(props);
     this.state = {
       width: window.innerWidth,
-      quotaPercentage:0
+      collapse:false
     };
   }
   activeRoute() {
     return 1;
   }
 
+  handleCollapse()
+  {
+    this.setState({collapse: !this.state.collapse});
+  }
+
   render() {
-    const { disableButton, profile, openClose } = this.props;
-    let quotaPercentage = profile?Math.round(100*profile.uniqueVisitors/profile.uniqueVisitorQouta):0;
+    const { disableButton, openClose } = this.props;
+    // let quotaPercentage = profile?Math.round(100*profile.uniqueVisitors/profile.uniqueVisitorQouta):0;
     return (
-      <div className="left side-menu" style={!openClose && mobile() ?{width: '60px'}:{}}>
+      <div id="side-menu" className="left side-menu" style={!openClose && this.state.collapse  ?{width: '60px'}:{}}>
         <div>
           <div className="user-box">
             <h5></h5>
             <p className="text-muted"></p>
           </div>
-          <div
-            className="topbar-left mt-3 ml-2 pt-2 pl-2"
-            style={{ width: '200px' }}
-          >
-            <Link to="/dashboard" className="logo ">
-              <span>
-                <img src={Influence} className="ml-2" alt="influence-img" height="40" />
-              </span>
-            </Link>
-          </div>
+          {!openClose && this.state.collapse?
+            <div
+              className="topbar-left mt-3 ml-2 pt-2 pl-2"
+              style={{ width: '40px' }}
+            >
+              <Link to="/dashboard" className="logo ">
+                <span>
+                  <img src={InfluenceMobile} className="" alt="influence-img" height="40" width="40"/>
+                </span>
+              </Link>
+            </div>
+            :
+            <div
+              className="topbar-left mt-3 ml-2 pt-2 pl-2"
+              style={{ width: '200px' }}
+            >
+              <Link to="/dashboard" className="logo ">
+                <span>
+                  <img src={Influence} className="ml-2" alt="influence-img" height="40" />
+                </span>
+              </Link>
+            </div>
+          }
+
+
+
           <div id="sidebar-menu">
             <div className="button-list ml-2 pl-2">
               <Link to="/new">
-                {!openClose && mobile()?
+                {!openClose && this.state.collapse?
                   <button
                     type="button"
-                    className="btn btn-primary waves-effect addnew-small-btn addnew-btn  p-2  pt-0 pb-0"
+                    className="btn btn-primary waves-effect addnew-small-btn addnew-btn pl-2 pr-2 text-center" style={{borderRadius:'50px'}}
                   >
-                    <i className="fi-plus "/>&nbsp;{' '}
+                    <i className="fi-plus " style={{paddingLeft:'3px'}} data-toggle="tooltip text-muted"  data-delay='{"show":"0", "hide":"0"}' title="Create New Campaign"/>&nbsp;{' '}
                     {/* <span className="h6">New</span>{' '} */}
                   </button>
                   :
@@ -69,11 +90,11 @@ class Sidebar extends Component {
                     <li className={prop.upgrade ? 'active newbtn' : this.activeRoute(prop.path)} key={key}>
                       {prop.name === 'Help' ?
                         <Link onClick={this.renderHelp} className={disableButton ? 'disabled-link' : 'nav-link'} disabled={disableButton} activeClassName="active">
-                          <i className={prop.icon}></i>
-                          {openClose && mobile() ?
+                          <i className={prop.icon} data-toggle="tooltip text-muted"  data-delay='{"show":"0", "hide":"0"}' title="Create New Campaign"></i>
+                          {openClose && this.state.collapse ?
                             <span>{prop.upgrade}{prop.name}</span>
                             :
-                            !mobile() ?
+                            !this.state.collapse ?
                               <span>{prop.upgrade}{prop.name}</span>
                               :
                               null
@@ -82,12 +103,12 @@ class Sidebar extends Component {
                         :
                         <Link to={prop.path} className={prop.upgrade && disableButton ? 'new disabled-link' : disableButton ? 'disabled-link' : prop.upgrade ? 'new nav-link' : 'nav-link'} disabled={disableButton} activeClassName="active">
                           {
-                            prop.upgrade ? '' : <i className={prop.icon}></i>
+                            prop.upgrade ? '' : <i className={prop.icon} data-toggle="tooltip text-muted"  data-delay='{"show":"0", "hide":"0"}' title="Create New Campaign"></i>
                           }
-                          {openClose && mobile() ?
+                          {openClose && this.state.collapse ?
                             <span>{prop.upgrade}{prop.name}</span>
                             :
-                            !mobile() ?
+                            !this.state.collapse ?
                               <span>{prop.upgrade}{prop.name}</span>
                               :
                               null
@@ -99,35 +120,26 @@ class Sidebar extends Component {
                 return null;
               })
               }
-              {mobile() && openClose ?
-                <div className="custombottom ml-2 mb-5">
+              {this.state.collapse?
+                <div className="custombottom"  style={{width: '40px'}}>
                   <hr/>
-                  <Col md={12} className="pt-4">
-                    <div className="text-center">
-                      <ProgressBar striped active bsStyle={quotaPercentage<60?'info':quotaPercentage<90?'warning':'danger'} now={quotaPercentage} key={1} />
-                    </div>
-                    <div className="ml-4 ">
-                      <p className="textColor">{quotaPercentage} % consumed.</p>
+                  <Col md={1} className="">
+                    <div className="text-left">
+                      <i className="icon-arrow-right" onClick={()=>this.handleCollapse()}></i>
                     </div>
                     <hr/>
                   </Col>
                 </div>
                 :
-                !mobile()?
-                  <div className="custombottom ml-2 mb-5">
+                <div className="custombottom ">
+                  <hr/>
+                  <Col md={12}>
+                    <div className="text-right">
+                      <i className="icon-arrow-left" onClick={()=>this.handleCollapse()}></i>
+                    </div>
                     <hr/>
-                    <Col md={12} className="pt-4">
-                      <div className="text-center">
-                        <ProgressBar striped active bsStyle={quotaPercentage<60?'info':quotaPercentage<90?'warning':'danger'} now={quotaPercentage} key={1} />
-                      </div>
-                      <div className="ml-4 ">
-                        <p className="textColor">{quotaPercentage} % consumed.</p>
-                      </div>
-                      <hr/>
-                    </Col>
-                  </div>
-                  :
-                  null
+                  </Col>
+                </div>
               }
             </ul>
           </div>
