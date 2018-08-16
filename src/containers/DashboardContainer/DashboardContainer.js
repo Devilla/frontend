@@ -21,6 +21,7 @@ import 'react-select/dist/react-select.css';
 import 'react-popup/style.css';
 import './DashboardContainer.scss';
 import './toast.scss';
+import 'react-datepicker/dist/react-datepicker.css';
 
 class DashboardContainer extends Component {
   constructor(props) {
@@ -207,6 +208,7 @@ class DashboardContainer extends Component {
 
 const mapStateToProps = state => ({
   profile: state.getIn(['profile', 'profile']),
+  campaignInfo: state.getIn(['campaign', 'campaignInfo']),
   user: state.getIn(['auth', 'user'])
 });
 
