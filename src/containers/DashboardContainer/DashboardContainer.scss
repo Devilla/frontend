@@ -5,6 +5,14 @@
     z-index: 100000000;
   }
 
+    .content-page {
+      margin-left: 40px!important;
+    }
+
+ .notification-list {
+    margin-left: 272px!important;
+}
+
   .toast-style {
     background-color: rgba(0, 0, 0, 0.98) !important;
     color: #fff !important;
@@ -18,7 +26,7 @@
   }
 
   .topbar {
-    margin-left: 16%;
+    margin-left: 0%;
     z-index: 10000000;
     position: fixed;
     top: 0;
@@ -158,6 +166,7 @@
 @media only screen and (max-width: 768px) and (min-width: 100px) {
   .dashboard-container {
     .content-page {
+      margin-left: 40px;
       width: 90%;
       margin-left: 15% !important;
       .card-box {

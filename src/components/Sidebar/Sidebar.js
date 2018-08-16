@@ -121,7 +121,7 @@ class Sidebar extends Component {
               })
               }
               {this.state.collapse?
-                <div className="custombottom"  style={{width: '40px'}}>
+                <div className="custombottom"  style={{width: '40px',marginTop: '228px'}}>
                   <hr/>
                   <Col md={1} className="">
                     <div className="text-left">
