@@ -10,6 +10,7 @@ import { connect } from 'react-redux';
 import CardTable from 'components/Template/card-with-page-table';
 import { pagethArray } from 'components/Template/data';
 import { fetchDisplayUrl, createPageUrl, clearPageUrl, removePageUrl } from 'ducks/pageurl';
+import {Close} from 'img';
 
 import './DisplayPage.scss';
 
@@ -230,7 +231,10 @@ class DisplayPage extends Component {
         <div className="modal-dialog">
           <div className="modal-content align-modal">
             <div className="modal-header">
-              <h4 className="modal-title">Add SubDomain</h4>
+              <h4 className="modal-title">Add Subdomain</h4>
+              <div data-dismiss="modal" onClick={this.openCloseModal}><div style={{height:'25px', width:'25px'}}>
+                <span><img src={Close}/></span>
+              </div></div>
             </div>
             <div className="modal-body row">
               <div className="col-md-9">
@@ -249,9 +253,6 @@ class DisplayPage extends Component {
                  Add
                 </span>
               </div>
-            </div>
-            <div className="modal-footer">
-              <button type="button" className="btn btn-primary close-btn" onClick={this.openCloseModal}>Close</button>
             </div>
           </div>
         </div>
@@ -281,7 +282,7 @@ class DisplayPage extends Component {
               <span className="btn btn-primary nav nav-pills waves-light waves-effect addpath-btn pl-5 pr-5" onClick={() => this.addDomainUrl(domain.domainUrl, index)}>
                 Add
               </span>
-              <i className=" icon-trash trash" onClick={()=>{removeSubDomain(domain._id);}}></i>
+              <i className="ml-2 icon-trash trash" onClick={()=>{removeSubDomain(domain._id);}}></i>
             </span>
           </div>
         );

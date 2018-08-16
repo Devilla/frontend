@@ -539,7 +539,7 @@ class Dashboard extends Component {
                 <HeatMap
                   xLabels={xLabels}
                   yLabels={yLabels}
-                  data={heatmap != undefined?heatmap.message:datas}
+                  data={(heatmap != undefined && heatmap && heatmap.message.length !== 0)?heatmap.message:datas}
                   height={16}
                 />
               </Col>
@@ -558,6 +558,7 @@ class Dashboard extends Component {
           </div>
         </div>
       </Loading>
+
     );
   }
 }

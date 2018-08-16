@@ -55,9 +55,9 @@ class AnalyticsContainer extends Component {
     }
   }
 
-  handleProfileBack = () => {
+  /*handleProfileBack = () => {
     this.setState({usersList: []});
-  }
+  }*/
 
   handleViewProfile = (list) => {
     this.setState({usersList: list});
@@ -188,7 +188,7 @@ class AnalyticsContainer extends Component {
           <th scope="row">{index + 1}</th>
           <td className="text-center">{website.websiteUrl}</td>
           <td className="text-center">{visitor}</td>
-          <td className="text-center">{userDetails && userDetails.length} <a onClick={() => userDetails?this.handleViewProfile(userDetails):null && <AnalyticsProfile handleProfileBack={this.handleProfileBack} renderProfileList={this.renderProfileList} />}>&nbsp; Profiles</a></td>
+          <td className="text-center">{userDetails && userDetails.length} <a onClick={() =>  {/*browserHistory.push('analytics/profile') && */ userDetails?this.handleViewProfile(userDetails):null;} }>&nbsp; Profiles</a></td>
           <td className="text-center">-</td>
           <td className="text-center">
             {

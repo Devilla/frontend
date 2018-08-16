@@ -10,6 +10,7 @@ import { connect } from 'react-redux';
 import CardTable from 'components/Template/card-with-page-table';
 import { pagethArray } from 'components/Template/data';
 import { fetchLeadUrl, createPageUrl, clearPageUrl, removePageUrl } from 'ducks/pageurl';
+import {Close} from 'img';
 import './CapturePage.scss';
 
 class CapturePage extends Component {
@@ -183,7 +184,7 @@ class CapturePage extends Component {
                   <span className="dot ml-3" style={{backgroundColor: this.renderColor(lead.status) }}>
                   </span>
                 </td>
-                <td><a href="javascript:;"><i className="ml-3 icon-trash" onClick={() => this.deleteLead(lead._id, i, lead.type)}></i></a></td>
+                <td><a href="javascript:;"><i className="ml-2 icon-trash" onClick={() => this.deleteLead(lead._id, i, lead.type)}></i></a></td>
               </tr>;
             })
           }
@@ -227,7 +228,10 @@ class CapturePage extends Component {
         <div className="modal-dialog">
           <div className="modal-content align-modal">
             <div className="modal-header">
-              <h4 className="modal-title">Add SubDomain</h4>
+              <h4 className="modal-title">Add Subdomain</h4>
+              <div data-dismiss="modal" onClick={this.openCloseModal}><div>
+                <span><img src={Close}/></span>
+              </div></div>
             </div>
             <div className="modal-body row">
               <div className="col-md-9">
@@ -246,9 +250,6 @@ class CapturePage extends Component {
                  Add
                 </span>
               </div>
-            </div>
-            <div className="modal-footer">
-              <button type="button" className="btn btn-primary close-btn" data-dismiss="modal" onClick={this.openCloseModal}>Close</button>
             </div>
           </div>
         </div>
@@ -278,7 +279,7 @@ class CapturePage extends Component {
               <span className="btn btn-primary nav nav-pills waves-light waves-effect number pl-5 pr-5" onClick={() => this.addDomainUrl(domain.domainUrl, index)}>
                 Add
               </span>
-              <i className=" icon-trash trash" onClick={() => removeSubDomain(domain._id, index)}></i>
+              <i className="ml-3 icon-trash trash" onClick={() => removeSubDomain(domain._id, index)}></i>
             </span>
           </div>
         );
