@@ -5,6 +5,26 @@
   .input-group {
     padding-bottom: 2%;
   }
+  .display-page-row {
+    margin: 0 -6% !important;
+    .display-page-header {
+      display: flex;
+      justify-content: space-around;
+      h4 {
+        width: 100%;
+        margin-left: 12%;
+      }
+      button {
+        height: 35px;
+        border-radius: 6px;
+        width: 25%;
+        padding: 0px;
+        .fi-monitor {
+          padding-right: 10px;
+        }
+      }
+    }
+  }
 }
 
 .trash {
