@@ -117,7 +117,7 @@ class WebsiteContact extends Component {
             <div className="row justify-content-between">
               <div className="col-md-6">
                 <p className="lead">
-                  E:&nbsp;<a href="#">info@useinfluence.co</a>
+                  Email:&nbsp;<a href="#">info@useinfluence.co</a>
                   <br />
                 </p>
                 <p className="lead">

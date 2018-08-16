@@ -13,7 +13,7 @@ class WebsiteTerms extends Component {
           <section className="text-center bg--secondary">
             <div className="container">
               <div className="row">
-                <div className="col-md-10 col-lg-8">
+                <div className="col-md-10 col-lg-8 mt-5 pt-5">
                   <h2>Terms of service&nbsp;</h2>
                   <p className="lead"> ..... </p>
                 </div>
