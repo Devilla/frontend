@@ -184,7 +184,7 @@ class CapturePage extends Component {
                   <span className="dot ml-3" style={{backgroundColor: this.renderColor(lead.status) }}>
                   </span>
                 </td>
-                <td><a href="javascript:;"><i className="ml-2 icon-trash" onClick={() => this.deleteLead(lead._id, i, lead.type)}></i></a></td>
+                <td><a href="javascript:;"><i className="ml-3 icon-trash" onClick={() => this.deleteLead(lead._id, i, lead.type)}></i></a></td>
               </tr>;
             })
           }

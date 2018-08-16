@@ -6,7 +6,7 @@ export class CardTable extends Component {
     return (
       <div className="card card-plain">
         <div className="content">
-          <Scrollbars style={{ height: 300 }}>
+          <Scrollbars style={{ height: 300 }} autoHide>
             {this.props.content}
           </Scrollbars>
         </div>

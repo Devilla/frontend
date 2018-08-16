@@ -138,10 +138,10 @@
   .integration-container,
   .pageContent
     {
-    overflow: auto;
+    overflow: hidden;
     box-sizing: border-box;
     padding: 20px;
-    height: 100vh;
+    min-height: 100vh;
     transition: 500ms ease-out;
 
     &.transition-leave {
