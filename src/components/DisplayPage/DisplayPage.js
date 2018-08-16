@@ -10,7 +10,6 @@ import { connect } from 'react-redux';
 import CardTable from 'components/Template/card-with-page-table';
 import { pagethArray } from 'components/Template/data';
 import { fetchDisplayUrl, createPageUrl, clearPageUrl, removePageUrl } from 'ducks/pageurl';
-import {Close} from 'img';
 
 import './DisplayPage.scss';
 
@@ -65,12 +64,13 @@ class DisplayPage extends Component {
 
   addPageUrl = () => {
     if(this.state.displayUrl.url == '') {
-      if(this.state.count<1)
-        this.state.displayUrl.url='/';
-      else
-        return this.setState({error: 'Please enter a valid path'});
-
-      this.state.count++;
+      // if(this.state.count<1)
+      this.state.displayUrl.url='/';
+      this.state.displayUrl.status = 'unverified';
+      this.state.displayUrl.class = 'warning';
+      this.state.displayUrl.type = 'display';
+      // else
+      //   return this.setState({error: 'Please enter a valid path'});
     }
 
     if(this.state.displayUrl.url[0]!=='/')
@@ -80,6 +80,7 @@ class DisplayPage extends Component {
     displayUrl['rule'] = this.props.rules._id;
     displayUrl['domain'] = this.props.campaign.websiteUrl;
     displayUrl['campaignName'] = this.props.campaign.campaignName;
+
     this.props.createPageUrl(displayUrl);
     this.setState({displayUrl: {
       url: '',
@@ -231,10 +232,7 @@ class DisplayPage extends Component {
         <div className="modal-dialog">
           <div className="modal-content align-modal">
             <div className="modal-header">
-              <h4 className="modal-title">Add Subdomain</h4>
-              <div data-dismiss="modal" onClick={this.openCloseModal}><div style={{height:'25px', width:'25px'}}>
-                <span><img src={Close}/></span>
-              </div></div>
+              <h4 className="modal-title">Add SubDomain</h4>
             </div>
             <div className="modal-body row">
               <div className="col-md-9">
@@ -253,6 +251,9 @@ class DisplayPage extends Component {
                  Add
                 </span>
               </div>
+            </div>
+            <div className="modal-footer">
+              <button type="button" className="btn btn-primary close-btn" onClick={this.openCloseModal}>Close</button>
             </div>
           </div>
         </div>
@@ -282,7 +283,7 @@ class DisplayPage extends Component {
               <span className="btn btn-primary nav nav-pills waves-light waves-effect addpath-btn pl-5 pr-5" onClick={() => this.addDomainUrl(domain.domainUrl, index)}>
                 Add
               </span>
-              <i className="ml-2 icon-trash trash" onClick={()=>{removeSubDomain(domain._id);}}></i>
+              <i className=" icon-trash trash" onClick={()=>{removeSubDomain(domain._id);}}></i>
             </span>
           </div>
         );
@@ -298,19 +299,13 @@ class DisplayPage extends Component {
       <div className="display-container">
         <Grid fluid>
           <div className="tabscontent">
-            <Row>
-              <Col md={12}>
+            <Row className="display-page-row">
+              <Col md={12} className="display-page-header">
                 <h4 className="lead text-center m-b-30 m-t-20">Where do you want to show notifications?</h4>
-                <div className="notificationSwitch">
-                  <input
-                    className="tgl tgl-ios"
-                    id="toggle-display"
-                    type="checkbox"
-                    defaultChecked={true}
-                    // onChange={(e) => e.target.checked !=notification.activity? handleActivityChange(!notification.activity, notification._id, notification.configurationId):null}
-                  />
-                  <label className="tgl-btn" htmlFor="toggle-display"></label>
-                </div>
+                <button type="button" className="btn btn-outline-primary waves-light waves-effect number">
+                  <i className="fi-monitor"></i>
+                  Display on all pages
+                </button>
               </Col>
             </Row>
             <Row>

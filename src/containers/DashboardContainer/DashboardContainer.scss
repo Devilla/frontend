@@ -48,8 +48,8 @@ p {
   }
 
   .topbar {
-    margin-left: 0%;
-    z-index: 1;
+    margin-left: 17%;
+    z-index: 2;
     position: fixed;
     top: 0;
     left: 0;
@@ -168,10 +168,10 @@ p {
   .integration-container,
   .pageContent
     {
-    overflow: auto;
+    overflow: hidden;
     box-sizing: border-box;
     padding: 20px;
-    height: 100vh;
+    min-height: 100vh;
     transition: 500ms ease-out;
 
     &.transition-leave {

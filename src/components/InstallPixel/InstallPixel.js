@@ -16,9 +16,6 @@ const InstallPixel = ({
   handleTrackingIdCopy
 }) => {
 
-
-
-
   return (
     <div className="install-pixel">
       <h4 className="lead text-center m-b-30 m-t-20">Install Pixel to Your Website</h4>
@@ -41,12 +38,12 @@ const InstallPixel = ({
         {elastic!==undefined && elastic=='verified'}
         <button type="button" style={elastic==undefined?{backgroundColor:'#097fff'}:(elastic.error || (elastic.message.hits.total === 0))?{backgroundColor:'#f9bc0b'}:{backgroundColor:'#0acf97'}} className="btn btn-primary waves-light waves-effect pixel-btn" onClick={() => verifyPixelStatus()}>
           <Animated className="leftwrap center" animationIn="fadeIn" animationOut="fadeOut" isVisible={true}>
-            {loaderActive &&
-              <i className="fa fa-spinner fa-spin"></i>
-            }
           Verify Pixel
           </Animated>
         </button>
+        <div className="loader-icon">
+          <i className={loaderActive ? 'fa fa-circle-o-notch fa-spin': ''}></i>
+        </div>
       </div>
       <p className="m-t-30 pb-5">
         <br/>

@@ -3,7 +3,18 @@
     background-color: rgba(245, 245, 245, 0.816);
     color: #636769;
   }
-
+  .align-install-btn {
+    display: flex;
+    .loader-icon {
+      float: right;
+      margin: 1%;
+      .fa {
+        color: #2d7bf4;
+        padding: 0 0.5%;
+        font-size: 24px;
+      }
+    }
+  }
   .copy-btn ,.pixel-btn, .webhook-btn ,.pixelnext-btn {
     border-radius: 5px !important;
   }
@@ -24,10 +35,7 @@
     }
   }
 
-  .fa {
-    padding: 0 7%;
-    font-size: 18px;
-  }
+
 
   div {
     &.float-left > button {

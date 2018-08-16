@@ -195,7 +195,7 @@ class Sidebar extends Component {
                         <h5 className="card-title">Conversion Story</h5>
                         <p className="card-text">See your conversions % over a period of time.</p>
                         <div className="change-percent-sidebar">
-                          <p>Change - {((countValue.signupsCount/countValue.visitorCount)*100).toFixed(2)}%</p>
+                          <p>Change - {countValue.signupsCount && countValue.visitorCount ?((countValue.signupsCount/countValue.visitorCount)*100).toFixed(2):0}%</p>
                         </div>
                         <div className="datepicker-sidebar">
                           <div>

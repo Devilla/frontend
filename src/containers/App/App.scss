@@ -55,10 +55,10 @@ body {
   .WebsiteFeature-container,
   .affiliateregister-container
    {
-    overflow: auto;
+    overflow: hidden;
     box-sizing: border-box;
-    padding: 0px;
-    height: 100vh;
+    padding: 20px;
+    min-height: 100vh;
     transition: 500ms ease-out;
 
     &.transition-leave {
