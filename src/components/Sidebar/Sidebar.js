@@ -94,7 +94,7 @@ class Sidebar extends Component {
           </div>
           {!openClose && this.state.collapse?
             <div
-              className="topbar-left mt-3 ml-2 pt-2 pl-2"
+              className="topbar-left mt-5 ml-2 pt-2 pl-2"
               style={{ width: '40px' }}
             >
               <Link to="/dashboard" className="logo ">
@@ -126,7 +126,7 @@ class Sidebar extends Component {
                     type="button"
                     className="btn btn-primary waves-effect addnew-small-btn addnew-btn p-2 text-center" style={{borderRadius:'50px'}}
                   >
-                    <i className="fi-plus "/>&nbsp;{' '}
+                    <i className="pl-1 pt-2 fi-plus "/>&nbsp;{' '}
                   </button>
                   :
                   <button
