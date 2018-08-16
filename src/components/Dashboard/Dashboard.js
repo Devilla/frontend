@@ -332,8 +332,8 @@ class Dashboard extends Component {
 
   renderCampaignsIconList = (campaignList) => {
     if(campaignList)
-      return campaignList.map(campaign => {
-        return <li key={campaign.label} className="list-inline-item">
+      return campaignList.map((campaign, index) => {
+        return <li key={campaign.label+index} className="list-inline-item">
           <div className="icon-box" style={{background: campaign.pointColor}}></div>
           <div className="campaign-list-label">{campaign.label}</div>
         </li>;

@@ -42,7 +42,7 @@ const InstallPixel = ({
           </Animated>
         </button>
         <div className="loader-icon">
-          <i className={loaderActive && 'fa fa-circle-o-notch fa-spin'}></i>
+          <i className={loaderActive ? 'fa fa-circle-o-notch fa-spin': ''}></i>
         </div>
       </div>
       <p className="m-t-30 pb-5">
