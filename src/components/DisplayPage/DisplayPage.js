@@ -64,12 +64,13 @@ class DisplayPage extends Component {
 
   addPageUrl = () => {
     if(this.state.displayUrl.url == '') {
-      if(this.state.count<1)
-        this.state.displayUrl.url='/';
-      else
-        return this.setState({error: 'Please enter a valid path'});
-
-      this.state.count++;
+      // if(this.state.count<1)
+      this.state.displayUrl.url='/';
+      this.state.displayUrl.status = 'unverified';
+      this.state.displayUrl.class = 'warning';
+      this.state.displayUrl.type = 'display';
+      // else
+      //   return this.setState({error: 'Please enter a valid path'});
     }
 
     if(this.state.displayUrl.url[0]!=='/')
@@ -79,6 +80,7 @@ class DisplayPage extends Component {
     displayUrl['rule'] = this.props.rules._id;
     displayUrl['domain'] = this.props.campaign.websiteUrl;
     displayUrl['campaignName'] = this.props.campaign.campaignName;
+
     this.props.createPageUrl(displayUrl);
     this.setState({displayUrl: {
       url: '',
