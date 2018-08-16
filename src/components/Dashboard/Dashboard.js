@@ -527,7 +527,7 @@ class Dashboard extends Component {
                         </div>
                         <div className="clearfix"></div>
                       </div>
-                      <div className="clearfix"></div>
+
                     </Col>
                   </Row>
                   <div className="clearfix"></div>
