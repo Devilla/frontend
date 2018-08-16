@@ -19,7 +19,7 @@
 
   .topbar {
     margin-left: 16%;
-    z-index: 10000000;
+    z-index: 1;
     position: fixed;
     top: 0;
     left: 0;
@@ -152,6 +152,20 @@
       opacity: 1;
       transform: translate3d(100%, 0, 0);
     }
+  }
+}
+
+.dashboard-container {
+  .side-menu {
+      width: 240px;
+      z-index: 1!important;
+      background: #ffffff;
+      bottom: 0;
+      margin-top: 0;
+      padding-bottom: 30px;
+      position: fixed;
+      top: 0;
+      left: 0;
   }
 }
 

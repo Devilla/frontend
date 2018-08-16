@@ -9,7 +9,8 @@ import {
   Swivelscreen,
   Lawsikho,
   Stagephod,
-  Carpathy
+  Carpathy,
+  sideScreen_1
 
 } from 'img';
 import { browserHistory } from 'react-router';
@@ -93,20 +94,20 @@ class WebsiteHome extends Component {
     return (
       <div className="transition-item websitehome-container">
         <div className="main-container">
-          <section className="cover text-center parallax landing-home-section" data-overlay="0">
-            <div className="container">
+          <section className="pl-3 pr-3 pt-5 text-center row" data-overlay="0">
+            <div className="container col-md-6 pt-5">
               <div className="row pb-5">
-                <div className="col-md-10 col-lg-10 text-center">
-                  <h1 className="pt-2 main-title">Increase your website conversions using social proof notifications <br /> </h1>
-                  <p className="typed-text typed-text--cursor h3 sub-title"> Use Influence and get <span className="type--bold extrafocus">3x more business </span>right away &nbsp;</p>
+                <div className="text-center">
+                  <h2 className="pt-1 main-title pb-3">Increase your website conversions using social proof notifications <br /> </h2>
+                  <p className="typed-text typed-text--cursor h4 sub-title"> Use Influence and get <span className="type--bold extrafocus">3x more business </span>right away &nbsp;</p>
                 </div>
               </div>
-              <br /> <br />
+              <br />
               <div className="text-center pb-5 starttrial-form">
                 <form className="form--horizontal row">
-                  <div className="col-md-3 mr-1 pr-0 ml-0 pl-0"></div>
-                  <div className="col-md-4 ml-0 pl-0 mr-0 pr-0"> <input type="text" name="email" placeholder="Enter your email" onChange={(e) => this.setState({ email: e.target.value })} /> </div>
-                  <div className="col-md-2 ml-0 pl-0 mr-0 ml-0 pr-0 "> <button type="submit" onClick={() => browserHistory.push(`/signup?email=${this.state.email}`)} className="btn btn--primary freetrial-btn ml-0">Start Free Trial</button> </div>
+                  <div className="col-md-1 mr-1 pr-0 ml-0 pl-0"></div>
+                  <div className="col-md-6 ml-0 pl-0 mr-0 pr-0"> <input type="text" name="email" placeholder="Enter your email" onChange={(e) => this.setState({ email: e.target.value })} /> </div>
+                  <div className="col-md-4 ml-0 pl-0 mr-0 ml-0 pr-0 "> <button type="submit" onClick={() => browserHistory.push(`/signup?email=${this.state.email}`)} className="btn btn--primary freetrial-btn ml-0">Start Free Trial</button> </div>
 
                 </form>
                 <ul className="mobile-view">
@@ -117,6 +118,11 @@ class WebsiteHome extends Component {
                   
               </div>
             </div>
+
+            <div className="container col-md-5 pr-0 ml-0 pt-4">
+              <img alt="homescreen" src={sideScreen_1} className="mb-1" style={{height: '400px'}} />
+            </div>
+            
           </section>
 
           <p><br /></p><hr className="my-auto col-md-6" />

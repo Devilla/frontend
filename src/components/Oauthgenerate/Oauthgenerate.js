@@ -11,6 +11,7 @@ import './Oauthgenerate.scss';
 class Oauthpage extends Component {
   constructor() {
     super();
+
     this.state = {
       clientId: '',
       secret: '',

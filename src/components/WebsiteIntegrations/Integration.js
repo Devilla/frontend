@@ -1,5 +1,6 @@
 import React , { Component } from 'react';
 import './Integration.scss';
+import './WebsiteIntegration.scss';
 import { Row, Col } from 'react-bootstrap';
 import IntegrationContent from './IntegrationContent';
 
@@ -50,7 +51,7 @@ class Integrations extends Component {
     return (
       <div>
         <Row className="justify-content-center mb-5">
-          <Col md={3}  className="box-shadow ribbon-box">
+          <Col md={3}  className="box-shadow ">
 
             <div className="card-box tilebox-one">
               <img src={Wordpress} className="logocompany" />
@@ -60,7 +61,7 @@ class Integrations extends Component {
               <span className="text-muted"  >View Details&nbsp; <i className="fi-open"></i></span>
             </div>
           </Col>
-          <Col md={3}  className="box-shadow ribbon-box">
+          <Col md={3}  className="box-shadow">
 
             <div className="card-box tilebox-one">
               <img src={Googletag} className="logocompany" />
@@ -71,10 +72,10 @@ class Integrations extends Component {
             </div>
           </Col>
 
-          <Col md={3}  className="box-shadow ribbon-box">
+          <Col md={3}  className="box-shadow ">
 
             <div className="card-box tilebox-one">
-              <img src={Zapier} className="logocompany demio" />
+              <img src={Zapier} className="logocompany zapier" />
               <h4 className="text-muted text-uppercase mt-0 ml-3 i-title zapier">Zapier</h4>
               <p className="text-center desc-page text-muted">Sync your conversation and import yourFAQs from Zapier</p>
 
@@ -83,7 +84,7 @@ class Integrations extends Component {
           </Col>
         </Row>
         <Row className="justify-content-center mb-5">
-          <Col md={3}  className="box-shadow ribbon-box">
+          <Col md={3}  className="box-shadow ">
 
             <div className="card-box tilebox-one">
               <img src={Hubspot} className="logocompany" />
@@ -93,7 +94,7 @@ class Integrations extends Component {
               <span className="text-muted ">View Details&nbsp; <i className="fi-open"></i></span>
             </div>
           </Col>
-          <Col md={3}  className="box-shadow ribbon-box">
+          <Col md={3}  className="box-shadow ">
 
             <div className="card-box tilebox-one">
               <img src={Instapage} className="logocompany" />
@@ -103,7 +104,7 @@ class Integrations extends Component {
               <span className="text-muted ">View Details&nbsp; <i className="fi-open"></i></span>
             </div>
           </Col>
-          <Col md={3}  className="box-shadow ribbon-box">
+          <Col md={3}  className="box-shadow ">
 
             <div className="card-box tilebox-one">
               <img src={Leadpages} className="logocompany" />
@@ -115,7 +116,7 @@ class Integrations extends Component {
           </Col>
         </Row>
         <Row className="justify-content-center mb-5">
-          <Col md={3}  className="box-shadow ribbon-box">
+          <Col md={3}  className="box-shadow ">
 
             <div className="card-box tilebox-one">
               <img src={Mailmunch} className="logocompany" />
@@ -125,7 +126,7 @@ class Integrations extends Component {
               <span className="text-muted " >View Details&nbsp; <i className="fi-open"></i></span>
             </div>
           </Col>
-          <Col md={3}  className="box-shadow ribbon-box">
+          <Col md={3}  className="box-shadow ">
 
             <div className="card-box tilebox-one">
               <img src={Ontraport} className="logocompany" />
@@ -135,7 +136,7 @@ class Integrations extends Component {
               <span className="text-muted "  >View Details&nbsp; <i className="fi-open"></i></span>
             </div>
           </Col>
-          <Col md={3}  className="box-shadow ribbon-box">
+          <Col md={3}  className="box-shadow ">
 
             <div className="card-box tilebox-one">
               <img src={Squarespace} className="logocompany" />
@@ -147,7 +148,7 @@ class Integrations extends Component {
           </Col>
         </Row>
         <Row className="justify-content-center mb-5">
-          <Col md={3}  className="box-shadow ribbon-box">
+          <Col md={3}  className="box-shadow ">
 
             <div className="card-box tilebox-one">
               <img src={Thrivecart} className="logocompany" />
@@ -157,7 +158,7 @@ class Integrations extends Component {
               <span className="text-muted" >View Details&nbsp; <i className="fi-open"></i></span>
             </div>
           </Col>
-          <Col md={3}  className="box-shadow ribbon-box">
+          <Col md={3}  className="box-shadow ">
 
             <div className="card-box tilebox-one">
               <img src={Unbounce} className="logocompany" />
@@ -167,7 +168,7 @@ class Integrations extends Component {
               <span className="text-muted">View Details&nbsp; <i className="fi-open"></i></span>
             </div>
           </Col>
-          <Col md={3}  className="box-shadow ribbon-box">
+          <Col md={3}  className="box-shadow ">
 
             <div className="card-box tilebox-one">
               <img src={Webflow} className="logocompany" />
@@ -179,7 +180,7 @@ class Integrations extends Component {
           </Col>
         </Row>
         <Row className="justify-content-center mb-5">
-          <Col md={3}  className="box-shadow ribbon-box">
+          <Col md={3}  className="box-shadow ">
 
             <div className="card-box tilebox-one">
               <img src={Woocommerce} className="logocompany" />
@@ -189,7 +190,7 @@ class Integrations extends Component {
               <span className="text-muted">View Details&nbsp; <i className="fi-open"></i></span>
             </div>
           </Col>
-          <Col md={3}  className="box-shadow ribbon-box">
+          <Col md={3}  className="box-shadow ">
 
             <div className="card-box tilebox-one">
               <img src={Aweber} className="logocompany" />
@@ -199,7 +200,7 @@ class Integrations extends Component {
               <span  className="text-muted">View Details&nbsp; <i className="fi-open"></i></span>
             </div>
           </Col>
-          <Col md={3}  className="box-shadow ribbon-box">
+          <Col md={3}  className="box-shadow ">
 
             <div className="card-box tilebox-one">
               <img src={Clickfunnels} className="logocompany" />

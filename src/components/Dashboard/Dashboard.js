@@ -556,6 +556,7 @@ class Dashboard extends Component {
           </div>
         </div>
       </Loading>
+
     );
   }
 }
