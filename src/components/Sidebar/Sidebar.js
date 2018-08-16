@@ -66,7 +66,7 @@ class Sidebar extends Component {
                 {!openClose && this.state.collapse?
                   <button
                     type="button"
-                    className="btn btn-primary waves-effect addnew-small-btn addnew-btn pl-2 pr-2 text-center" style={{borderRadius:'50px'}}
+                    className="btn btn-primary waves-effect addnew-small-btn addnew-btn p-2 text-center" style={{borderRadius:'50px'}}
                   >
                     <i className="fi-plus " style={{paddingLeft:'3px'}} data-toggle="tooltip text-muted"  data-delay='{"show":"0", "hide":"0"}' title="Create New Campaign"/>&nbsp;{' '}
                     {/* <span className="h6">New</span>{' '} */}

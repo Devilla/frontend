@@ -10,10 +10,7 @@ class WebsiteFooter extends Component {
       closeCookie:'flex'
     };
   }
-  closeCookie = () => {
-    // this.setState({});
-    this.state.closeCookie='flex';
-  }
+
   render() {
     return (
       <div className="websitefooter-container">
@@ -71,7 +68,7 @@ class WebsiteFooter extends Component {
                     <div className="cookie-notice-container" style={{display:this.state.closeCookie}}>
                       <div className="cookie-text">
                         <span className="cookie-label">We use cookies to enhance your experience, and by continuing to visit this site you agree to our use of cookies. <a href="https://useinfluence.co/privacy-policy" target="_blank">More Info</a></span>
-                        <button type="button" onClick={this.closeCookie()}>Got it</button>
+                        <button type="button" onClick={()=>{this.setState({closeCookie:'none'});}}>Got it</button>
                       </div>
                     </div>
                     <div className="col-sm-6 text-right text-center-xs">

@@ -1,5 +1,19 @@
 @import '../../components/SwitchPartialScss/toggle';
 
+.dashboard-boxes {
+  .m-b-10 {
+    .campaign {
+        top: -46px!important;
+    }
+  }
+}
+
+
+.customer-header {
+  .progress {
+      background: #fff !important;
+  }
+}
 .dashboard-container {
   [data-css-1ar5iql] {
     z-index: 100000000;
@@ -10,7 +24,8 @@
     }
 
  .notification-list {
-    margin-left: 272px!important;
+   background-color: #fff!important;
+    margin-left: 372px!important;
 }
 
 p {
@@ -42,7 +57,7 @@ p {
     height: 50px !important;
     background: #fafafa;
     .nav-custom-header {
-          background: #fafafa;
+          background: #fff;
     }
   }
 
