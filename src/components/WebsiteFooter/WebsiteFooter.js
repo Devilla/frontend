@@ -21,7 +21,7 @@ class WebsiteFooter extends Component {
                       <li className="type--uppercase col-sm-12 col-md-12 h6"><Link to="/login"> Login (Already a user?) </Link></li>
                       <li className="type--uppercase col-sm-12 col-md-12 h6"><Link to="/demopage"> SCHEDULE A DEMO </Link></li>
                       <li className="type--uppercase col-sm-12 col-md-12 h6"><Link to="/featurepage">Features</Link></li>
-                      <li className="type--uppercase col-sm-12 col-md-12 h6"> <Link to="/integration">INTEGRATIONS</Link> </li>
+                      <li className="type--uppercase col-sm-12 col-md-12 h6"> <Link to="/integration" target='_blank'>INTEGRATIONS</Link> </li>
                     </ul>
                   </div>
 
@@ -38,9 +38,9 @@ class WebsiteFooter extends Component {
                   <div className="menu-vertical col-md-3 col-sm-6 foot3">
                     <ul>
                       <li className="type--uppercase col-sm-12 col-md-12 h5 foo-t3"><Link to=""> <b>Resources</b> </Link></li>
-                      <li className="type--uppercase col-sm-12 col-md-12 h6"><Link href="https://useinfluence.freshdesk.com/support/home"> FAQs </Link></li>
+                      <li className="type--uppercase col-sm-12 col-md-12 h6"><Link href="https://useinfluence.freshdesk.com/support/home" target='_blank'> FAQs </Link></li>
                       <li className="type--uppercase col-sm-12 col-md-12 h6"><Link href="https://blog.useinfluence.co/"> Blog </Link></li>
-                      <li className="type--uppercase col-sm-12 col-md-12 h6"><Link href="https://angel.co/influence-8/jobs"> Careers </Link> </li>
+                      <li className="type--uppercase col-sm-12 col-md-12 h6"><Link href="https://angel.co/influence-8/jobs" target='_blank'> Careers </Link> </li>
                       <li className="type--uppercase col-sm-12 col-md-12 h6"><Link to="/contact"> Contact Us </Link></li>
                     </ul>
                   </div>
