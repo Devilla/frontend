@@ -80,6 +80,13 @@
   .account-stats {
     display: flex;
     justify-content: center;
+    .cards {
+      .text-center {
+        .card-content-width {
+          z-index: 0;
+        }
+      }
+    }
   }
 
   .m-b-10 {
@@ -206,6 +213,7 @@
   .heatmap {
     font-weight: 300;
     font-size: 11px;
+    z-index: 0;
     div {
       padding: .2px 0px .2px 0px;
     }
@@ -249,7 +257,7 @@
 
 .heatmap,
 .worldmap {
-  z-index: 1;
+  z-index: 0;
   flex: 0 0 48% !important;
   box-shadow: 0 1px 10px -3px #999;
   padding: 40px 40px 20px 2px !important;

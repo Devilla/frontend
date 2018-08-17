@@ -305,6 +305,7 @@ class DisplayPage extends Component {
                 <button type="button" className="btn btn-outline-primary waves-light waves-effect number">
                   <i className="fi-monitor"></i>
                   Display on all pages
+                  {/* <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked /> */}
                 </button>
               </Col>
             </Row>
