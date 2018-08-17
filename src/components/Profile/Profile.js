@@ -182,7 +182,7 @@ class Profile extends Component {
         <div className="content fill profile-container">
           <div className="content-tabs" style={{width:'178px', height:'60px'}}>My Profile</div>
           <div className="content-tabs" style={{width:'178px', height:'60px'}}>Change Password</div>
-          <div className="content-tabs" style={{width:'178px', height:'60px'}}>More Options</div>
+          <button className="btn btn-primary waves-effect content-tabs" style={{marginLeft: '-4px!important', width:'178px', height:'60px'}} data-toggle="modal" data-target="#deletemodal">More Options</button>
           <Grid fluid={true}>
             <Col sm={8} style={{maxWidth: '1069px'}}>
               <div className="profile-user-box card-box" >
@@ -203,7 +203,7 @@ class Profile extends Component {
               </div>
             </Col>
             <Row>
-              <Col md={6} style={{marginLeft: '229px',background: '#fff',marginTop: '-105px', borderRadius:'5px'}}>
+              <Col md={7} style={{marginLeft: '229px',background: '#fff',marginTop: '-105px', borderRadius:'5px', maxWidth:'51.2%' }}>
                 <div className="panel-body">
                   <hr />
                   <div className="text-left">
