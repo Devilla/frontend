@@ -292,9 +292,19 @@ class DisplayPage extends Component {
       return <div/>;
   }
 
+  handleDisplayChange = (e) => {
+    let newRule = this.props.rules;
+    newRule['displayOnAllPages'] = e.target.checked;
+    newRule['id'] = this.props.rules._id;
+    delete newRule['_id'];
+
+    this.props.updateRules(newRule);
+  }
 
   render(){
     const { error, displayUrl } = this.state;
+    const { rules } = this.props;
+
     return (
       <div className="display-container">
         <Grid fluid>
@@ -306,7 +316,7 @@ class DisplayPage extends Component {
                   <i className="fi-monitor"></i>
                   <span>Display on all pages</span>
                   <label className="checkbox-container">
-                    <input type="checkbox" />
+                    <input type="checkbox" defaultChecked={rules.displayOnAllPages} onChange={this.handleDisplayChange} />
                     <span className="checkmark"></span>
                   </label>
                 </button>
@@ -403,7 +413,8 @@ class DisplayPage extends Component {
 
 const mapStateToProps = state => ({
   displayUrls: state.getIn(['pageurl', 'display']),
-  subdomain: state.getIn(['campaign', 'subdomain'])
+  subdomain: state.getIn(['campaign', 'subdomain']),
+  rules: state.getIn(['rules', 'rule'])
 });
 
 const mapDispatchToProps = {
