@@ -304,8 +304,11 @@ class DisplayPage extends Component {
                 <h4 className="lead text-center m-b-30 m-t-20">Where do you want to show notifications?</h4>
                 <button type="button" className="btn btn-outline-primary waves-light waves-effect number">
                   <i className="fi-monitor"></i>
-                  Display on all pages
-                  <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked />
+                  <span>Display on all pages</span>
+                  <label className="checkbox-container">
+                    <input type="checkbox" />
+                    <span className="checkmark"></span>
+                  </label>
                 </button>
               </Col>
             </Row>
