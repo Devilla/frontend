@@ -143,25 +143,25 @@ class BillingDetails extends Component {
                                   <p className="text-muted font-13">
                                     <strong>Next Payment Due Date : </strong>
                                     <span className="m-l-15">
-                                      {planSelected.updated_at ? moment(planSelected.updated_at).add(planSelected.interval_count, planSelected.interval).format('DD MMM YYYY') : '-'}
+                                      {planSelected && planSelected.updated_at ? moment(planSelected.updated_at).add(planSelected.interval_count, planSelected.interval).format('DD MMM YYYY') : '-'}
                                     </span>
                                   </p>
                                   <p className="text-muted font-13">
                                     <strong>Payment Method : </strong>
                                     <span className="m-l-15">
-                                      {planSelected.interval ? 'Card' : '-'}
+                                      {planSelected && planSelected.interval ? 'Card' : '-'}
                                     </span>
                                   </p>
                                   <p className="text-muted font-13">
                                     <strong>Last Paid : </strong>
                                     <span className="m-l-15">
-                                      {planSelected.updated_at ? moment(planSelected.updated_at).format('DD MMM YYYY') : '-'}
+                                      {planSelected && planSelected.updated_at ? moment(planSelected.updated_at).format('DD MMM YYYY') : '-'}
                                     </span>
                                   </p>
                                   <p className="text-muted font-13">
                                     <strong>Billing Cycle : </strong>
                                     <span className="m-l-15">
-                                      {planSelected.interval ? (planSelected.interval.charAt(0).toUpperCase() + planSelected.interval.slice(1)) : '-'}
+                                      {planSelected && planSelected.interval ? (planSelected.interval.charAt(0).toUpperCase() + planSelected.interval.slice(1)) : '-'}
                                     </span>
                                   </p>
                                   <p className="text-muted font-13">
