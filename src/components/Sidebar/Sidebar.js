@@ -85,6 +85,7 @@ class Sidebar extends Component {
     let quotaPercentage = profile?Math.round(100*profile.uniqueVisitors/profile.uniqueVisitorQouta):0;
 
     const countValue = this.visitorCount();
+    const conversionPercent = countValue.signupsCount && countValue.visitorCount ?((countValue.signupsCount/countValue.visitorCount)*100).toFixed(2):0;
 
     return (
       <div className="left side-menu" style={!openClose && mobile() ?{width: '60px'}:{}}>
@@ -183,7 +184,14 @@ class Sidebar extends Component {
                         <h5 className="card-title">Conversion Story</h5>
                         <p className="card-text">See your conversions % over a period of time.</p>
                         <div className="change-percent-sidebar">
-                          <p>Change - {countValue.signupsCount && countValue.visitorCount ?((countValue.signupsCount/countValue.visitorCount)*100).toFixed(2):0}%</p>
+                          <p>
+                            Change - {conversionPercent}%
+                            {conversionPercent>0?
+                              <i className="fa fa-arrow-up"></i>
+                              :
+                              <i className="fa fa-arrow-down"></i>
+                            }
+                          </p>
                         </div>
                         <div className="datepicker-sidebar">
                           <div>

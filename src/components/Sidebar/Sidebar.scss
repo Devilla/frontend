@@ -33,6 +33,10 @@
       p {
         margin: 0;
       }
+      i {
+        -webkit-text-stroke: 1px white;
+        padding: 0px 10px;
+      }
     }
     .datepicker-sidebar {
       display: flex;
