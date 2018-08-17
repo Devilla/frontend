@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect}  from 'react-redux';
-import { browserHistory } from 'react-router';
 import Loading from 'react-loading-animation';
 import {
   Grid,
@@ -97,9 +96,9 @@ class Profile extends Component {
   }
 
   componentDidMount() {
-    fetch('https://raw.githubusercontent.com/sagarshirbhate/Country-State-City-Database/master/Contries.json')
-      .then(res => res.json())
-      .then(res => this.setState({countryList : res.Countries}));
+    // fetch('https://raw.githubusercontent.com/sagarshirbhate/Country-State-City-Database/master/Contries.json')
+    //   .then(res => res.json())
+    //   .then(res => this.setState({countryList : res.Countries}));
     window.scrollTo(0,0);
   }
 
@@ -111,28 +110,28 @@ class Profile extends Component {
     ));
   }
 
-  getStateRows = () => {
-    let countryList = this.state.countryList.filter(country => country.CountryName === this.state.country);
-    return countryList.map(country => {
-      return country.States.map((state, i) => {
-        return <option key={i}  value={state.StateName}>
-          {state.StateName}
-        </option>;
-      });
-    });
-  }
+  // getStateRows = () => {
+  //   let countryList = this.state.countryList.filter(country => country.CountryName === this.state.country);
+  //   return countryList.map(country => {
+  //     return country.States.map((state, i) => {
+  //       return <option key={i}  value={state.StateName}>
+  //         {state.StateName}
+  //       </option>;
+  //     });
+  //   });
+  // }
 
-  getCityRows = () => {
-    let countryList = this.state.countryList.filter(country => country.CountryName === this.state.country);
-    let stateList = countryList.length?countryList[0].States.filter(state => state.StateName === this.state.state):[];
-    return stateList.map(state => {
-      return state.Cities.map((city, i) => {
-        return <option key={i}  value={city}>
-          {city}
-        </option>;
-      });
-    });
-  }
+  // getCityRows = () => {
+  //   let countryList = this.state.countryList.filter(country => country.CountryName === this.state.country);
+  //   let stateList = countryList.length?countryList[0].States.filter(state => state.StateName === this.state.state):[];
+  //   return stateList.map(state => {
+  //     return state.Cities.map((city, i) => {
+  //       return <option key={i}  value={city}>
+  //         {city}
+  //       </option>;
+  //     });
+  //   });
+  // }
 
   showPopupOne = () => {
     return (
@@ -179,9 +178,13 @@ class Profile extends Component {
     const { user } = this.props;
     return (
       <Loading className="transition-item profile-transition-container" style={{width: '10%', height: '700px'}} strokeWidth='2' isLoading={!user || !profile}>
+
         <div className="content fill profile-container">
+          <div className="content-tabs" style={{width:'178px', height:'60px'}}>My Profile</div>
+          <div className="content-tabs" style={{width:'178px', height:'60px'}}>Change Password</div>
+          <div className="content-tabs" style={{width:'178px', height:'60px'}}>More Options</div>
           <Grid fluid={true}>
-            <Col sm={12}>
+            <Col sm={8} style={{maxWidth: '1069px'}}>
               <div className="profile-user-box card-box" >
                 <Row>
                   <Col sm={2}>
@@ -196,19 +199,11 @@ class Profile extends Component {
                       <h6 className="text-muted text-uppercase mt-0">Plan Type </h6><h3> {this.props.profile?this.props.profile.plan.name:null}</h3>
                     </div>
                   </Col>
-                  <Col md={2}>
-                    <div className="profbtn">
-                      <button type="button" onClick={() => browserHistory.push('/upgrade')} className="btn btn-block btn-primary waves-light waves-effect upgrade1">Upgrade</button>
-                      <div> <br /></div>
-                      <button type="button" onClick={() => browserHistory.push('/billing-details')} className="btn btn-block btn-primary waves-light waves-effect billing1">Billing</button>
-                    </div>
-                  </Col>
                 </Row>
               </div>
             </Col>
             <Row>
-              <Col md={12}>
-                <h4 className="header-title m-b-20">Personal Information</h4>
+              <Col md={6} style={{marginLeft: '229px',background: '#fff',marginTop: '-105px', borderRadius:'5px'}}>
                 <div className="panel-body">
                   <hr />
                   <div className="text-left">
@@ -248,54 +243,14 @@ class Profile extends Component {
                             <FormControl type="text" value={profile.address} autoComplete='address-line2' placeholder="Billing Address" id="address" onChange={(e) => this.handleStateChange(e)} />
                           </FormGroup>
                         </Col>
-                        <Col md={6}>
-                          <span className="text-muted font-13 p"><strong>Country :</strong> </span>
-                          <FormGroup controlId="formControlsSelect">
-                            <FormControl componentClass="select" autoComplete='country-name' placeholder="Country Name" value={profile.country} onChange={(e) => this.setState({country: e.target.value})} >
-                              <option value={null}>Select Country</option>
-                              {this.getCountryRows()}
-                            </FormControl>
-                          </FormGroup>
-                        </Col>
-                      </Row>
-                      <Row>
-                        <Col md={6}>
-                          <span className="text-muted font-13 p"><strong>States :</strong> </span>
-                          <FormGroup controlId="formfBillinControlsSelect">
-                            <FormControl componentClass="select" placeholder="States" autoComplete='address-level1' value={profile.state} onChange={(e) => this.setState({state: e.target.value})}>
-                              <option value={null}>Select State</option>
-                              {this.getStateRows()}
-                            </FormControl>
-                          </FormGroup>
-                        </Col>
-                        <Col md={6}>
-                          <span className="text-muted font-13 p"><strong>City :</strong> </span>
-                          <FormGroup controlId="formControlsSelect">
-                            <FormControl componentClass="select" autoComplete='address-level2' placeholder="City" value={profile.city} onChange={(e) => this.setState({city: e.target.value})}>
-                              <option value={null}>Select City</option>
-                              {this.getCityRows()}
-                            </FormControl>
-                          </FormGroup>
-                        </Col>
-                      </Row>
-                      <Row>
-                        <Col md={6}>
-                          <span className="text-muted font-13 p"><strong>Company :</strong> </span>
-                          <FormGroup>
-                            <FormControl type="text" value={profile.companyName} autoComplete='organization' placeholder="Company Name" id="companyName" onChange={(e) => this.handleStateChange(e)} />
-                          </FormGroup>
-                        </Col>
                       </Row>
                       <Col md={12} className="profile-buttons">
-                        <div className="text-right save">
-                          <button type="button" className="btn btn-primary waves-effect" onClick={this.updateProfile}>
-                            <i className="mdi mdi-account-settings-variant mr-1"></i>  {this.props.loading ? ( this.state.savedtext
+                        <div className="text-left save" style={{marginTop: '0px', marginLeft: '-26px', borderRadius: '8px'}}>
+                          <button type="button" className="btn btn-primary waves-effect mb-4" onClick={this.updateProfile}>
+                            {this.props.loading ? ( this.state.savedtext
                             )
-                              : 'Save Profile'}
+                              : 'Save'}
 
-                          </button>
-                          <button type="button" className="btn btn-primary waves-effect" data-toggle="modal" data-target="#deletemodal">
-                            <i className="mdi mdi-settings mr-1"></i>More Options
                           </button>
                         </div>
                       </Col>

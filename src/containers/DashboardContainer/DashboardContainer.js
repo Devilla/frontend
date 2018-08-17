@@ -189,8 +189,8 @@ class DashboardContainer extends Component {
                 </nav>
               </div>
 
-              <div className="content dashboard-content" style={{ backgroundColor: '#FFF' }} onClick={this.closeDropdown}>
-                <div className="container-fluid p-2" style={{minHeight: '750px'}}>
+              <div className="content dashboard-content" style={{ backgroundColor: '#f2f5f7' }} onClick={this.closeDropdown}>
+                <div className="container-fluid" style={{minHeight: '750px'}}>
                   <PageTransition className="content">
                     {this.props.children}
                   </PageTransition>

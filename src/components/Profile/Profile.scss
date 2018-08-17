@@ -1,6 +1,23 @@
+.dashboard-container .container-fluid {
+  width: 956px;
+  margin-left: -1px;
+}
+
 .profile-container {
   display: grid;
 
+
+.content-tabs{
+font-size: 14px;
+padding: 20px 15px;
+white-space: pre;
+color: #5D657A;
+border: none;
+border-radius: 3px;
+text-align: left;
+margin-bottom: 5px;
+background: #EBEDEF;
+}
   #formControlsSelect {
     color: #757575;
   }
@@ -17,6 +34,8 @@
 
   .profile-user-box {
     background-color: rgba(9, 128, 255, 0.152);
+    margin-left: 200px;
+    margin-top: -194px;
   }
 
   button {
@@ -134,6 +153,10 @@ button {
 @media only screen and (max-width: 768px) and (min-width: 100px) {
   .profile-container {
     .panel-body {
+      background: #fff!important;
+      width: 657px;
+      margin-left: 215px;
+      margin-top: -95px;
       .text-left {
         .profile-buttons {
           padding-left: 0px;
