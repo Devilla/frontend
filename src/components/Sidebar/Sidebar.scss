@@ -37,6 +37,12 @@
         -webkit-text-stroke: 1px white;
         padding: 0px 10px;
       }
+      .fa-arrow-down {
+        color: red;
+      }
+      .fa-arrow-up {
+        color: green;
+      }
     }
     .datepicker-sidebar {
       display: flex;
@@ -48,6 +54,9 @@
       .date-picker-btn {
         width: 100%;
         padding: 5px;
+      }
+      .directional-conversion-icon {
+        margin: 4% 0;
       }
     }
     .campaign-dropdown {
