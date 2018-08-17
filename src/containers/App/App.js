@@ -71,7 +71,7 @@ class App extends Component {
           <WebsiteHeader loggedIn={this.state.loggedIn} logout={this.logout} />
           <Popup  />
           <Loading strokeWidth="2" style={{height: '700px', width: '10%'}} isLoading={this.props.loading} />
-          <div style={{height: '750px'}}>
+          <div style={{minHeight: '750px'}}>
             <PageTransition className="content">
               {this.props.children}
             </PageTransition>

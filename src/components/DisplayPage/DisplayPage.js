@@ -292,9 +292,19 @@ class DisplayPage extends Component {
       return <div/>;
   }
 
+  handleDisplayChange = (e) => {
+    let newRule = this.props.rules;
+    newRule['displayOnAllPages'] = e.target.checked;
+    newRule['id'] = this.props.rules._id;
+    delete newRule['_id'];
+
+    this.props.updateRules(newRule);
+  }
 
   render(){
     const { error, displayUrl } = this.state;
+    const { rules } = this.props;
+
     return (
       <div className="display-container">
         <Grid fluid>
@@ -304,7 +314,11 @@ class DisplayPage extends Component {
                 <h4 className="lead text-center m-b-30 m-t-20">Where do you want to show notifications?</h4>
                 <button type="button" className="btn btn-outline-primary waves-light waves-effect number">
                   <i className="fi-monitor"></i>
-                  Display on all pages
+                  <span>Display on all pages</span>
+                  <label className="checkbox-container">
+                    <input type="checkbox" defaultChecked={rules.displayOnAllPages} onChange={this.handleDisplayChange} />
+                    <span className="checkmark"></span>
+                  </label>
                 </button>
               </Col>
             </Row>
@@ -399,7 +413,8 @@ class DisplayPage extends Component {
 
 const mapStateToProps = state => ({
   displayUrls: state.getIn(['pageurl', 'display']),
-  subdomain: state.getIn(['campaign', 'subdomain'])
+  subdomain: state.getIn(['campaign', 'subdomain']),
+  rules: state.getIn(['rules', 'rule'])
 });
 
 const mapDispatchToProps = {

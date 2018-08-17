@@ -453,7 +453,7 @@ class Dashboard extends Component {
                       </div>
                       <div className="card-box pb-0 mb-0 cardbox1">
                         <Row className="account-stats">
-
+                          <hr className="account-stats-cut" />
                           {this.renderCardBox(
                             <div className=" widget-flat card-box  text-muted pb-5 pt-2 pos-vertical-center c2" onClick={()=> browserHistory.push('/campaigns')}>
                               <p className="text-uppercase title m-b-5 fonttitle font-600 mincard-ht">Active Campaign</p>
