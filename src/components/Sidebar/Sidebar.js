@@ -28,18 +28,18 @@ class Sidebar extends Component {
     const { disableButton, openClose } = this.props;
     // let quotaPercentage = profile?Math.round(100*profile.uniqueVisitors/profile.uniqueVisitorQouta):0;
     return (
-      <div id="side-menu" className="left side-menu" style={!openClose && this.state.collapse  ?{width: '60px'}:{}}>
-        <div>
+      <div id="side-menu" className="left side-menu" style={!openClose && this.state.collapse  ?{width: '70px'}:{}}>
+        <div className="slimscroll-menu">
           <div className="user-box">
             <h5></h5>
             <p className="text-muted"></p>
           </div>
           {!openClose && this.state.collapse?
             <div
-              className="topbar-left mt-5 ml-2 pt-2 pl-2"
+              className="topbar-left"
               style={{ width: '40px' }}
             >
-              <Link to="/dashboard" className="logo ">
+              <Link to="/dashboard" className="logo">
                 <span>
                   <img src={InfluenceMobile} className="" alt="influence-img" height="40" width="40"/>
                 </span>

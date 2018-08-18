@@ -133,13 +133,14 @@ button {
   & i.fi-plus {
     font-weight: bolder;
     position: relative;
-    top: -2px;
+    top: -1px;
+    font-size: 21px;
+
   }
 }
 
 .addnew-btn {
-  box-shadow: 0 8px 15px -4px #999;
-  border-radius: 50px !important;
+  border-radius: 5px !important;
 }
  .text-right {
     text-align: right !important;
@@ -165,4 +166,25 @@ button {
       }
     }
   }
+}
+
+.fa-dashboard:before, .fa-tachometer:before {
+    content: "\F0E4";
+    color: #a0a3b3;
+}
+
+.fa-bullhorn:before {
+    content: "\F0A1";
+    color: #a0a3b3;
+}
+
+
+.fi-bar-graph-2:before {
+    content: "\E091";
+    color: #a0a3b3;
+}
+
+.fi-cog:before {
+    content: "\E023";
+    color: #a0a3b3;
 }
