@@ -193,7 +193,7 @@ class Profile extends Component {
                   </Col>
                   <Col sm={8}>
                     <div className="card-box tilebox-one text-center  ">
-                      <h6 className="text-muted text-uppercase mt-0">Plan Type </h6><h3> {this.props.profile?this.props.profile.plan.name:null}</h3>
+                      <h6 className="text-muted text-uppercase mt-0">Plan Type </h6><h3> {this.props.profile && this.props.profile.plan?this.props.profile.plan.name:null}</h3>
                     </div>
                   </Col>
                   <Col md={2}>
