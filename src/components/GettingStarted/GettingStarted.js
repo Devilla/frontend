@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Col } from 'react-bootstrap';
+import { browserHistory } from 'react-router';
 
 import './GettingStarted.scss';
 
@@ -34,21 +35,21 @@ class GettingStarted extends Component {
                 <label className="form-check-label" htmlFor="defaultCheck1">
                   Launch you first campaign
                 </label>
-                <i className="fa fa-angle-right"></i>
+                <i className="fa fa-angle-right" onClick={() => browserHistory.push('/new')}></i>
               </div>
               <div className="form-check">
                 <i className="fa fa-check-circle"></i>
                 <label className="form-check-label" htmlFor="defaultCheck1">
                   Complete my profile
                 </label>
-                <i className="fa fa-angle-right"></i>
+                <i className="fa fa-angle-right" onClick={() => browserHistory.push('/profile')}></i>
               </div>
               <div className="form-check">
                 <i className="fa fa-check-circle"></i>
                 <label className="form-check-label" htmlFor="defaultCheck1">
                   Integrate with other accounts
                 </label>
-                <i className="fa fa-angle-right"></i>
+                <i className="fa fa-angle-right" onClick={() => browserHistory.push('/integrations')}></i>
               </div>
               <div className="form-check">
                 <i className="fa fa-check-circle"></i>
