@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import { Influence, InfluenceMobile } from 'img';
-import {Col} from 'react-bootstrap';
+import { Col } from 'react-bootstrap';
 import ReactTooltip from 'react-tooltip';
 
 import appRoutes from 'routes/app';
@@ -69,7 +69,6 @@ class Sidebar extends Component {
                     className="btn btn-primary waves-effect addnew-small-btn addnew-btn p-2 text-center" style={{borderRadius:'50px'}}
                   >
                     <i className="fi-plus " style={{paddingLeft:'3px'}} title="Create New Campaign"/>&nbsp;{' '}
-                    {/* <span className="h6">New</span>{' '} */}
                   </button>
                   :
                   <button

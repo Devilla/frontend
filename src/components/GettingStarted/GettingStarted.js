@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Col } from 'react-bootstrap';
 import { browserHistory } from 'react-router';
 
@@ -14,7 +15,7 @@ class GettingStarted extends Component {
 
   render() {
     return (
-      <div className="list-modal-container">
+      <div className="transition-item list-modal-container">
         <div className="list-header">
           <p className="list-header-para">You can get started in less then 5 minutes.</p>
         </div>
@@ -31,7 +32,7 @@ class GettingStarted extends Component {
             <div className="list-checklist">
               <div className="form-check">
                 {/* <i class="fa fa-circle" aria-hidden="true"></i> */}
-                <i className="fa fa-check-circle"></i>
+                <i className="fa fa-circle"></i>
                 <label className="form-check-label" htmlFor="defaultCheck1">
                   Launch you first campaign
                 </label>
@@ -61,16 +62,18 @@ class GettingStarted extends Component {
             </div>
           </Col>
         </div>
-        {/* <div id="listModal" className="list-modal" style={{opacity: 1, display: 'block'}}>
-          <div className="list-modal-content">
-            <span className="close">&times;</span>
-            <p>Some text in the Modal..</p>
-          </div>
-        </div> */}
-
       </div>
     );
   }
 }
 
-export default GettingStarted;
+const mapStateToProps = state => ({
+  profile: state.getIn(['profile', 'profile']),
+  campaignInfo: state.getIn(['campaign', 'campaignInfo']),
+  user: state.getIn(['auth', 'user'])
+});
+
+const mapDispatchToProps = {
+};
+
+export default connect(mapStateToProps, mapDispatchToProps, null, { withRef: true })(GettingStarted);
