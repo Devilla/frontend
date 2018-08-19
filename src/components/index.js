@@ -57,4 +57,4 @@ export { default as ReviewRedirect } from './ReviewRedirect/ReviewRedirect';
 export { default as WordpressPluginPage } from './WordpressPluginPage/WordpressPluginPage';
 export { default as OauthLogin } from './OauthLogin/OauthLogin';
 export { default as OauthAuthorization } from './OauthAuthorization/OauthAuthorization';
-// export { default as Loading } from './Loading';
+export { default as GettingStarted } from './GettingStarted/GettingStarted';

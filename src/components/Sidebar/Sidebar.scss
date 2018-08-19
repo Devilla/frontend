@@ -94,9 +94,7 @@
 .dropdown:hover{ .dropdown-content {
     display: block;
 }}
-.dashboard-container #sidebar-menu > ul > li > a.active {
-  color:  #5A616B !important;
-}
+
 a.nav-link {
     &:hover:not(:focus) {
       background-color: rgba(245, 245, 245, 0.816);
@@ -108,8 +106,6 @@ a.nav-link {
       font-weight: 700;
       color: #097fff !important;
     }
-
-
 }
 
 span {
@@ -123,11 +119,11 @@ span {
 div {
   &#sidebar-menu {
       overflow-y: auto;
-      height: 640px;
+      // height: 640px;
   }
 
   &::-webkit-scrollbar {
-    width: 5px;
+    width: 0px;
 
 }
 
@@ -147,24 +143,58 @@ button {
   & i.fi-plus {
     font-weight: bolder;
     position: relative;
-    top: -2px;
+    top: -1px;
+    font-size: 21px;
+
   }
 }
 
 .addnew-btn {
-  box-shadow: 0 8px 15px -4px #999;
   border-radius: 5px !important;
+}
+ .text-right {
+    text-align: right !important;
+    margin-top: 300px;
+}
+.text-left {
+   text-align: left !important;
+   margin-top: 188px;
 }
 
 @media only screen and (max-width: 768px) and (min-width: 100px) {
+  &#side-menu {
+    max-width: 60px;
+  }
   &#sidebar-menu {
+    max-width:60px;
     height: fit-content !important;
     .addnew-small-btn {
       margin: 0px -2px !important;
-      padding: 5px 8px !important;
+      // padding: 5px 8px !important;
       .fi-plus {
         left: 2px;
       }
     }
   }
+}
+
+.fa-dashboard:before, .fa-tachometer:before {
+    content: "\F0E4";
+    color: #a0a3b3;
+}
+
+.fa-bullhorn:before {
+    content: "\F0A1";
+    color: #a0a3b3;
+}
+
+
+.fi-bar-graph-2:before {
+    content: "\E091";
+    color: #a0a3b3;
+}
+
+.fi-cog:before {
+    content: "\E023";
+    color: #a0a3b3;
 }

@@ -1,4 +1,31 @@
 .customer-header {
+  .profile-dropdown {
+    margin-left: 542px;
+    margin-top: -72px;
+  }
+  .avatar {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      font-size: 14px;
+       // display: table;
+       // vertical-align: middle;
+      background-color: #22d197;
+       background-position: center center;
+        text-align: center;
+      color: #fefefe;
+      }
+
+      .full-name {
+          font-size: 14px;
+          margin-top: -38px;
+          padding-left: 50px;
+          width: 180px;
+      }
+      .icon-arrow-down{
+        font-size: 13px;
+      }
+
   .progress {
     background: #fafafa !important;
   }
@@ -10,7 +37,7 @@
 
   .nav-topbar-flex {
     display: flex;
-    justify-content: space-between;
+    background-color: #f9f9f9;
 
     .topbar-left {
       width: 50%;
@@ -36,7 +63,7 @@
 
   .nav-custom-header {
     .nav-user {
-      line-height: 40px !important;
+      line-height: 37px !important;
       margin: 10% 0 0;
     }
   }
@@ -55,7 +82,7 @@
     height: 20px !important;
     z-index: 999;
     position: absolute;
-    top: -10px;
+    top: 6px;
     right: 0;
   }
 
@@ -64,8 +91,9 @@
     & h4 {
       padding-top: 0 !important;
       padding-bottom: 0 !important;
-      padding-left: 30px !important;
-      font-size: 11px !important;
+      padding-left: 0px !important;
+      font-size: 15px !important;
+      color: #5f5f5f;
       position: relative;
       top: -1px;
 
@@ -77,10 +105,11 @@
       }
     }
   }
-
   .rounded-circle {
     position: relative;
     top: -5px;
+    width: 24px;
+    height: 24px;
     right: 40px;
     font-size: 22px !important;
   }
@@ -96,6 +125,12 @@
           font-size: xx-large;
         }
       }
+      #sidebar-menu {
+          overflow-y: auto;
+          height: 640px;
+          width: 60px;
+        }
+
       .topbar-right-menu {
         display: flex;
         top: 2px;
