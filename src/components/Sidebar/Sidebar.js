@@ -25,7 +25,9 @@ class Sidebar extends Component {
   }
 
   render() {
-    const { disableButton, openClose } = this.props;
+    const { disableButton, openClose, user } = this.props;
+    const campaignValidation = user && user.path == '/getting-started';
+
     return (
       <div id="side-menu" className="left side-menu" style={!openClose && this.state.collapse  ?{width: '70px'}:{}}>
         <div className="slimscroll-menu">
@@ -89,7 +91,7 @@ class Sidebar extends Component {
                   return (
                     <li className={prop.upgrade ? 'active newbtn' : this.activeRoute(prop.path)} key={key}>
                       {prop.name === 'Help' ?
-                        <Link onClick={this.renderHelp} className={disableButton ? 'disabled-link' : 'nav-link'} disabled={disableButton} activeClassName="active">
+                        <Link onClick={this.renderHelp} className={disableButton || campaignValidation ? 'disabled-link' : 'nav-link'} disabled={disableButton || campaignValidation} activeClassName="active">
                           <i data-tip={prop.name} data-place="right" className={prop.icon} ></i>
                           {openClose && this.state.collapse ?
                             <span>{prop.upgrade}{prop.name}</span>
@@ -101,7 +103,7 @@ class Sidebar extends Component {
                           }
                         </Link>
                         :
-                        <Link to={prop.path} className={prop.upgrade && disableButton ? 'new disabled-link' : disableButton ? 'disabled-link' : prop.upgrade ? 'new nav-link' : 'nav-link'} disabled={disableButton} activeClassName="active">
+                        <Link to={prop.path} className={prop.upgrade && disableButton ? 'new disabled-link' : (disableButton || campaignValidation) && prop.name != 'Getting Started' ? 'disabled-link' : prop.upgrade ? 'new nav-link' : 'nav-link'} disabled={(disableButton || campaignValidation)  && prop.name != 'Getting Started'} activeClassName="active">
                           {
                             prop.upgrade ? '' : <i data-tip={prop.name} data-place="right" className={prop.icon} ></i>
                           }
