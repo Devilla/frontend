@@ -68,7 +68,7 @@ class Sidebar extends Component {
                     type="button"
                     className="btn btn-primary waves-effect addnew-small-btn addnew-btn p-2 text-center" style={{borderRadius:'50px'}}
                   >
-                    <i className="fi-plus " style={{paddingLeft:'3px'}} title="Create New Campaign"/>&nbsp;{' '}
+                    <i className="fi-plus " style={{paddingLeft:'3px'}} />&nbsp;{' '}
                   </button>
                   :
                   <button
@@ -90,7 +90,7 @@ class Sidebar extends Component {
                     <li className={prop.upgrade ? 'active newbtn' : this.activeRoute(prop.path)} key={key}>
                       {prop.name === 'Help' ?
                         <Link onClick={this.renderHelp} className={disableButton ? 'disabled-link' : 'nav-link'} disabled={disableButton} activeClassName="active">
-                          <i data-tip={prop.name} data-place="right" className={prop.icon} title="Create New Campaign"></i>
+                          <i data-tip={prop.name} data-place="right" className={prop.icon} ></i>
                           {openClose && this.state.collapse ?
                             <span>{prop.upgrade}{prop.name}</span>
                             :
@@ -103,7 +103,7 @@ class Sidebar extends Component {
                         :
                         <Link to={prop.path} className={prop.upgrade && disableButton ? 'new disabled-link' : disableButton ? 'disabled-link' : prop.upgrade ? 'new nav-link' : 'nav-link'} disabled={disableButton} activeClassName="active">
                           {
-                            prop.upgrade ? '' : <i data-tip={prop.name} data-place="right" className={prop.icon} title="Create New Campaign"></i>
+                            prop.upgrade ? '' : <i data-tip={prop.name} data-place="right" className={prop.icon} ></i>
                           }
                           {openClose && this.state.collapse ?
                             <span>{prop.upgrade}{prop.name}</span>

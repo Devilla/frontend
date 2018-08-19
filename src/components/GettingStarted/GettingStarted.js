@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Col } from 'react-bootstrap';
 import { browserHistory } from 'react-router';
+import { fetchCampaignInfo } from 'ducks/campaign';
 
 import './GettingStarted.scss';
 
@@ -9,11 +10,33 @@ class GettingStarted extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      openModal: true
+      openModal: true,
+      campaignValid: false,
+      profileComplete: false,
+      intergrationComplete: false,
+      enrolled: false
     };
   }
 
+  componentWillMount() {
+    const { campaignInfo, fetchCampaignInfo, profile } = this.props;
+    const { uniqueVisitorQouta, uniqueVisitors, uniqueVisitorsQoutaLeft, firstName, lastName, city, state, address, country, phoneNumber } = profile;
+    if(!campaignInfo)
+      fetchCampaignInfo();
+    else
+      this.setState({campaignValid: campaignInfo.uniqueUsers.length?true:false });
+    if(profile && uniqueVisitorQouta && uniqueVisitors && uniqueVisitorsQoutaLeft && firstName && lastName && city && state && address && country && phoneNumber)
+      this.setState({ profileComplete: true });
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if(nextProps.campaignInfo != this.props.campaignInfo)
+      this.setState({campaignValid: nextProps.campaignInfo.uniqueUsers.length?true:false });
+  }
+
   render() {
+    const { campaignValid, profileComplete, intergrationComplete, enrolled } = this.state;
+    console.log(this.props, '================');
     return (
       <div className="transition-item list-modal-container">
         <div className="list-header">
@@ -31,29 +54,44 @@ class GettingStarted extends Component {
             <p className="list-content-para">Quick start checklist</p>
             <div className="list-checklist">
               <div className="form-check">
-                {/* <i class="fa fa-circle" aria-hidden="true"></i> */}
-                <i className="fa fa-circle"></i>
+                {campaignValid ?
+                  <i className="fa fa-check-circle"></i>
+                  :
+                  <i className="fa fa-circle" aria-hidden="true"></i>
+                }
                 <label className="form-check-label" htmlFor="defaultCheck1">
                   Launch you first campaign
                 </label>
                 <i className="fa fa-angle-right" onClick={() => browserHistory.push('/new')}></i>
               </div>
               <div className="form-check">
-                <i className="fa fa-check-circle"></i>
+                {profileComplete?
+                  <i className="fa fa-check-circle"></i>
+                  :
+                  <i className="fa fa-circle" aria-hidden="true"></i>
+                }
                 <label className="form-check-label" htmlFor="defaultCheck1">
                   Complete my profile
                 </label>
                 <i className="fa fa-angle-right" onClick={() => browserHistory.push('/profile')}></i>
               </div>
               <div className="form-check">
-                <i className="fa fa-check-circle"></i>
+                {intergrationComplete?
+                  <i className="fa fa-check-circle"></i>
+                  :
+                  <i className="fa fa-circle" aria-hidden="true"></i>
+                }
                 <label className="form-check-label" htmlFor="defaultCheck1">
                   Integrate with other accounts
                 </label>
                 <i className="fa fa-angle-right" onClick={() => browserHistory.push('/integrations')}></i>
               </div>
               <div className="form-check">
-                <i className="fa fa-check-circle"></i>
+                {enrolled?
+                  <i className="fa fa-check-circle"></i>
+                  :
+                  <i className="fa fa-circle" aria-hidden="true"></i>
+                }
                 <label className="form-check-label" htmlFor="defaultCheck1">
                   Enroll into "Beta" feature club
                 </label>
@@ -74,6 +112,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
+  fetchCampaignInfo
 };
 
 export default connect(mapStateToProps, mapDispatchToProps, null, { withRef: true })(GettingStarted);
