@@ -21,7 +21,7 @@ class GettingStarted extends Component {
         <div className="list-content row border-between">
           <Col md={6} className="list1-content">
             <p className="list-content-para">Create your first campaign.</p>
-            <button className="btn btn-primary" onClick={() => browserHistory('new')}>
+            <button className="btn btn-primary" onClick={() => browserHistory.push('new')}>
               <i className="fa fa-plus"></i>
               <p className="list-content-button-para">New Campaign</p>
             </button>
