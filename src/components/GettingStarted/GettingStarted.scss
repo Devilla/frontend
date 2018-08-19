@@ -10,6 +10,11 @@
     font-size: xx-large;
     font-weight: 200;
     color: gray;
+    .list-header-para {
+      font-size: xx-large;
+      font-weight: 200;
+      color: gray;
+    }
   }
   .list-content {
     display: flex;
@@ -18,7 +23,7 @@
     .list1-content {
       padding-right:20px;
       border-right: 1px solid #ccc;
-      p {
+      .list-content-para {
         font-size: 25px;
         padding: 5% 0% 10% 0%;
         font-weight: 200;
@@ -31,11 +36,11 @@
         width: 75%;
         font-size: 20px;
         border-radius: 10px;
-        p {
+        .list-content-button-para {
+          font-size: 20px;
           margin: 10px;
-          color: white;
+          color: white !important;
           padding: 0;
-          margin: 5px;
         }
         i {
           margin: 5%;

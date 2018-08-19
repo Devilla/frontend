@@ -16,18 +16,18 @@ class GettingStarted extends Component {
     return (
       <div className="list-modal-container">
         <div className="list-header">
-          <p>You can get started in less then 5 minutes.</p>
+          <p className="list-header-para">You can get started in less then 5 minutes.</p>
         </div>
         <div className="list-content row border-between">
           <Col md={6} className="list1-content">
-            <p>Create your first campaign.</p>
+            <p className="list-content-para">Create your first campaign.</p>
             <button className="btn btn-primary" onClick={() => browserHistory('new')}>
               <i className="fa fa-plus"></i>
-              <p>New Campaign</p>
+              <p className="list-content-button-para">New Campaign</p>
             </button>
           </Col>
           <Col md={6} className="list2-content">
-            <p>Quick start checklist</p>
+            <p className="list-content-para">Quick start checklist</p>
             <div className="list-checklist">
               <div className="form-check">
                 {/* <i class="fa fa-circle" aria-hidden="true"></i> */}
