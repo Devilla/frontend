@@ -73,14 +73,7 @@ class WebsiteHome extends Component {
         visitorText: ' people '
       }
     };
-
-
   }
-
-
-
-
-
 
   render() {
     const settings = {
@@ -115,14 +108,18 @@ class WebsiteHome extends Component {
                   <li className="bullet-inline">Easy setup</li>
                   <li className="bullet-inline">Cancel any time</li>
                 </ul>
-                  
+
               </div>
             </div>
 
             <div className="container col-md-5 pr-0 ml-0 pt-4">
               <img alt="homescreen" src={sideScreen_1} className="mb-1" style={{height: '400px'}} />
+              <Slider vertical={true} {...settings} className="im1  website-home-top-image">
+                <div><NotificationView tab='1' animation='' display='block' position='' notificationPanelStyle={this.state.notificationPanelStyle}/></div>
+                <div><NotificationView tab='1.1' animation='' display='block' position='' notificationPanelStyle={this.state.notificationPanelStyle}/></div>
+              </Slider>
             </div>
-            
+
           </section>
 
           <p><br /></p><hr className="my-auto col-md-6" />
@@ -209,7 +206,7 @@ class WebsiteHome extends Component {
                   <div className="mainImg">
                     <img alt="Swivelscreen" src={Swivelscreen} />
 
-                    <Slider {...settings} className="im1">
+                    <Slider {...settings} className="im1 fire-notification-container">
                       <div><NotificationView tab='3' animation='' display='block' position='' notificationPanelStyle={this.state.notificationPanelStyle}/></div>
                       <div><NotificationView tab='3.1' animation='' display='block' position='' notificationPanelStyle={this.state.notificationPanelStyle}/></div>
                     </Slider>

@@ -19,14 +19,92 @@ class Sidebar extends Component {
     return 1;
   }
 
-  handleCollapse()
-  {
+  // selectCampaign = (e) => {
+  //   this.setState({selectedCampaign: {
+  //     id: e.target.id,
+  //     campaignName: e.target.innerHTML
+  //   }});
+  // }
+  //
+  // renderCampaigns = () => {
+  //   let campaignInfo = this.props.campaignInfo;
+  //   if(campaignInfo) {
+  //     return campaignInfo.websiteLive.map(campaign => {
+  //       return <div key={campaign._id} className="dropdown-item text-right" id={campaign._id} onClick={this.selectCampaign}>{campaign.campaignName}</div>;
+  //     });
+  //   }
+  // }
+  //
+  // handleFromDateChange = (date) => {
+  //   this.setState({ fromDate: date, openFirst: false });
+  // }
+  //
+  // handleToDateChange = (date) => {
+  //   this.setState({ toDate: date, openSecond: false });
+  // }
+  //
+  // visitorCount() {
+  //   let visitorCount = 0, signupsCount = 0;
+  //   let toVisitorCount = 0, fromVisitorCount = 0, toSignupsCount = 0, fromSignupsCount = 0;
+  //   if(this.props.campaignInfo && this.props.campaignInfo.uniqueUsers.length) {
+  //     let campaignDetails = this.props.campaignInfo.websiteLive.filter(campaign => {
+  //       if(this.state.selectedCampaign.id)
+  //         return campaign._id == this.state.selectedCampaign.id;
+  //       else
+  //         return campaign;
+  //     });
+  //
+  //     campaignDetails.map(campaign => {
+  //       let user = campaign.uniqueUsers;
+  //       let signups = campaign.signups;
+  //       (user && user.aggregations) ? user.aggregations.users.buckets.map(bucket => {
+  //         if(moment(bucket.key_as_string).isAfter(moment(this.state.fromDate)) && moment(bucket.key_as_string).isBefore(moment(this.state.toDate)) )
+  //           visitorCount = visitorCount + bucket.visitors.sum_other_doc_count + bucket.visitors.buckets.length;
+  //         if(moment(bucket.key_as_string).format('DD/MM/YYYY') == moment(this.state.toDate).format('DD/MM/YYYY'))
+  //           toVisitorCount = bucket.visitors.sum_other_doc_count + bucket.visitors.buckets.length;
+  //         if(moment(bucket.key_as_string).format('DD/MM/YYYY') == moment(this.state.fromDate).format('DD/MM/YYYY'))
+  //           fromVisitorCount = bucket.visitors.sum_other_doc_count + bucket.visitors.buckets.length;
+  //       }) : 0;
+  //       (signups && signups.userDetails) ? signups.userDetails.map(user => {
+  //         if(moment(user.timestamp).isAfter(moment(this.state.fromDate)) && moment(user.timestamp).isBefore(moment(this.state.toDate)) )
+  //           signupsCount = signupsCount + 1;
+  //         if(moment(user.timestamp).format('DD/MM/YYYY') == moment(this.state.toDate).format('DD/MM/YYYY'))
+  //           toSignupsCount = toSignupsCount + 1;
+  //         if(moment(user.timestamp).format('DD/MM/YYYY') == moment(this.state.fromDate).format('DD/MM/YYYY'))
+  //           fromSignupsCount = fromSignupsCount + 1;
+  //       }) : 0;
+  //     });
+  //     return {
+  //       visitorCount: visitorCount,
+  //       signupsCount: signupsCount,
+  //       toVisitorCount: toVisitorCount,
+  //       fromVisitorCount: fromVisitorCount,
+  //       toSignupsCount: toSignupsCount,
+  //       fromSignupsCount: fromSignupsCount
+  //     };
+  //   } else
+  //     return {
+  //       visitorCount: visitorCount,
+  //       signupsCount: signupsCount,
+  //       toSignupsCount: toSignupsCount,
+  //       fromSignupsCount: fromSignupsCount
+  //     };
+  // }
+
+  handleCollapse() {
     this.setState({collapse: !this.state.collapse});
   }
 
   render() {
     const { disableButton, openClose } = this.props;
     // let quotaPercentage = profile?Math.round(100*profile.uniqueVisitors/profile.uniqueVisitorQouta):0;
+    //
+    // const countValue = this.visitorCount();
+    //
+    // const conversion2 = countValue.toSignupsCount && countValue.toVisitorCount ?(Number(countValue.toSignupsCount/countValue.toVisitorCount)*100).toFixed(2):0;
+    // const conversion1 = countValue.fromSignupsCount && countValue.fromVisitorCount ?(Number(countValue.fromSignupsCount/countValue.fromVisitorCount)*100).toFixed(2):0;
+    // const totalConversionPercent = conversion1 && conversion2 ? ((conversion1/conversion2)*100).toFixed(2): conversion1 ? -Number(conversion1).toFixed(2): Number(conversion2).toFixed(2);
+
     return (
       <div id="side-menu" className="left side-menu" style={!openClose && this.state.collapse  ?{width: '70px'}:{}}>
         <div className="slimscroll-menu">
@@ -136,6 +214,74 @@ class Sidebar extends Component {
                   <Col md={12}>
                     <div className="text-right">
                       <i className="icon-arrow-left" onClick={()=>this.handleCollapse()}></i>
+                      {/* !mobile()?
+                      <div className="custombottom">
+                        <div className="card">
+                          <div className="card-body">
+                            <h5 className="card-title">Conversion Story</h5>
+                            <p className="card-text">See your conversions between period of time.</p>
+                            <div className="change-percent-sidebar">
+                              <p>
+                                Change :  {totalConversionPercent}%
+                                {totalConversionPercent>0?
+                                  <i className="fa fa-arrow-up"></i>
+                                  :
+                                  <i className="fa fa-arrow-down"></i>
+                                }
+                              </p>
+                            </div>
+                            <div className="datepicker-sidebar">
+                              <div>
+                                <button
+                                  className="btn btn-primary date-picker-btn"
+                                  onClick={() => this.setState({openFirst: !this.state.openFirst})}>
+                                  {this.state.fromDate.format('DD-MM-YYYY')}
+                                </button>
+                                {this.state.openFirst &&
+                                  <DatePicker
+                                    selected={this.state.fromDate}
+                                    onChange={this.handleFromDateChange}
+                                    minDate={moment().subtract(60, 'years')}
+                                    maxDate={moment().subtract(1, 'day')}
+                                    withPortal
+                                    inline
+                                  />
+                                }
+                              </div>
+                              <div className="directional-conversion-icon">
+                                <i className="fa fa-arrows-h"></i>
+                              </div>
+                              <div>
+                                <button
+                                  className="btn btn-primary date-picker-btn"
+                                  onClick={() => this.setState({openSecond: !this.state.openSecond})}>
+                                  {this.state.toDate.format('DD-MM-YYYY')}
+                                </button>
+                                {this.state.openSecond &&
+                                  <DatePicker
+                                    selected={this.state.toDate}
+                                    onChange={this.handleToDateChange}
+                                    minDate={moment().subtract(60, 'years')}
+                                    maxDate={moment()}
+                                    withPortal
+                                    inline
+                                  />
+                                }
+                              </div>
+                            </div>
+                            <div className="clearfix" />
+                            <div>
+                              <div className="btn-group campaign-dropdown">
+                                <button className="btn btn-primary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                  {this.state.selectedCampaign.campaignName?this.state.selectedCampaign.campaignName:'All Campaigns'}
+                                </button>
+                                <div className="dropdown-menu">
+                                  <div className="dropdown-item text-right" id={null} onClick={this.selectCampaign}>All Campaigns</div>
+                                  {this.renderCampaigns()}
+                                </div>
+                              </div>
+                            </div>
+                          </div> */}
                     </div>
                     <hr/>
                   </Col>

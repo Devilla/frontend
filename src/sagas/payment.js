@@ -72,6 +72,7 @@ function* create(action) {
         </div>,
         buttons: {}
       }, true);
+      yield put(setTimeout(function(){ Popup.close(); }, 3000));
     }
     yield put(loaded());
   } catch (error) {

@@ -24,9 +24,12 @@ const CouponPage = ({
               defaultValue={couponDetails?couponDetails.code:''}
               id="coupon"
             />
+            <HelpBlock>
+              <p className="error-text">{error}</p>
+            </HelpBlock>
           </Col>
         </Row>
-        <Row>
+        <Row className="apply-coupon-button">
           <Col md={12}>
             <input
               className="btn btn-primary apply"
@@ -36,11 +39,6 @@ const CouponPage = ({
               disabled={couponDetails?true:false}
             />
           </Col>
-          {error &&
-          <HelpBlock>
-            <p className="error-text">{error}</p>
-          </HelpBlock>
-          }
         </Row>
       </form>
     </div>

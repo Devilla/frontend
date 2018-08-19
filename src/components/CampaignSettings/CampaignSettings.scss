@@ -37,6 +37,11 @@ button {
     > li > a.active {
       font-family: "Rubik", sans-serif;
     }
+    .nav-item {
+      i {
+        padding: 0 0px 0 5px;
+      }
+    }
     .nav-item.show.nav-link, .nav-link.active {
       background: #097fff;
     }
