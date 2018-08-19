@@ -6,8 +6,18 @@ import  ConnectionStatus  from './ConnectionStatus';
 import { connect } from 'react-redux';
 import { ProgressBar } from 'react-bootstrap';
 
-const Header = ({openCloseDropdown, dropdownStyle, logout, renderHelp, openProfile, loading, children, openClose, openCloseSidebar}) => {
-
+const Header = ({
+  openCloseDropdown,
+  dropdownStyle,
+  logout,
+  renderHelp,
+  openProfile,
+  loading,
+  children,
+  openClose,
+  openCloseSidebar,
+  username
+}) => {
   return (
     <div className="customer-header">
       {loading ?
@@ -35,8 +45,8 @@ const Header = ({openCloseDropdown, dropdownStyle, logout, renderHelp, openProfi
               onClick={openCloseDropdown}
             >
               <div className="profile-dropdown">
-                <div className="avatar" ><span className="profile-name">S</span></div>
-                <div className="full-name" ><span>Shanky Rana &nbsp;<i className="icon-arrow-down"></i></span></div>
+                <div className="avatar" ><span className="profile-name">{username ? username.charAt(0).toUpperCase():'?'}</span></div>
+                <div className="full-name" ><span>{username ? username.charAt(0).toUpperCase() + username.slice(1): 'Anonymous'} &nbsp;<i className="icon-arrow-down"></i></span></div>
               </div>
             </a>
             <div className="dropdown-menu dropdown-menu-right dropdown-menu-animated profile-dropdown" style={dropdownStyle}>
