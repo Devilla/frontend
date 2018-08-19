@@ -1,0 +1,75 @@
+import React, { Component } from 'react';
+import { Col } from 'react-bootstrap';
+
+import './GettingStarted.scss';
+
+class GettingStarted extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      openModal: true
+    };
+  }
+
+  render() {
+    return (
+      <div className="list-modal-container">
+        <div className="list-header">
+          <p>You can get started in less then 5 minutes.</p>
+        </div>
+        <div className="list-content row border-between">
+          <Col md={6} className="list1-content">
+            <p>Create your first campaign.</p>
+            <button className="btn btn-primary">
+              <i className="fa fa-plus"></i>
+              <p>New Campaign</p>
+            </button>
+          </Col>
+          <Col md={6} className="list2-content">
+            <p>Quick start checklist</p>
+            <div className="list-checklist">
+              <div className="form-check">
+                {/* <i class="fa fa-circle" aria-hidden="true"></i> */}
+                <i className="fa fa-check-circle"></i>
+                <label className="form-check-label" htmlFor="defaultCheck1">
+                  Launch you first campaign
+                </label>
+                <i className="fa fa-angle-right"></i>
+              </div>
+              <div className="form-check">
+                <i className="fa fa-check-circle"></i>
+                <label className="form-check-label" htmlFor="defaultCheck1">
+                  Complete my profile
+                </label>
+                <i className="fa fa-angle-right"></i>
+              </div>
+              <div className="form-check">
+                <i className="fa fa-check-circle"></i>
+                <label className="form-check-label" htmlFor="defaultCheck1">
+                  Integrate with other accounts
+                </label>
+                <i className="fa fa-angle-right"></i>
+              </div>
+              <div className="form-check">
+                <i className="fa fa-check-circle"></i>
+                <label className="form-check-label" htmlFor="defaultCheck1">
+                  Enroll into "Beta" feature club
+                </label>
+                <i className="fa fa-angle-right"></i>
+              </div>
+            </div>
+          </Col>
+        </div>
+        {/* <div id="listModal" className="list-modal" style={{opacity: 1, display: 'block'}}>
+          <div className="list-modal-content">
+            <span className="close">&times;</span>
+            <p>Some text in the Modal..</p>
+          </div>
+        </div> */}
+
+      </div>
+    );
+  }
+}
+
+export default GettingStarted;
