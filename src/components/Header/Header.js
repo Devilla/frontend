@@ -23,7 +23,7 @@ const Header = ({openCloseDropdown, dropdownStyle, logout, renderHelp, openProfi
         <div className="topbar-left-hamburger">
           <h4><Link onClick={openCloseSidebar}><i className={openClose?'fa fa-times mr-1':'fa fa-bars mr-1'}></i></Link></h4>
         </div>
-        <ul className="list-unstyled topbar-right-menu float-right mb-0 nav-custom-header  rounded-circle">
+        <ul className="list-unstyled list-inline topbar-right float-right mb-0 nav-custom-header">
           <li className="dropdown notification-list">
             <a
               className="nav-link dropdown-toggle nav-user"
@@ -34,9 +34,10 @@ const Header = ({openCloseDropdown, dropdownStyle, logout, renderHelp, openProfi
               style={{cursor:'pointer'}}
               onClick={openCloseDropdown}
             >
-              <i className=" mdi mdi-account-settings-variant"></i>
-              <span className="ml-1">
-              </span>
+              <div className="profile-dropdown">
+                <div className="avatar" ><span className="profile-name">S</span></div>
+                <div className="full-name" ><span>Shanky Rana &nbsp;<i className="icon-arrow-down"></i></span></div>
+              </div>
             </a>
             <div className="dropdown-menu dropdown-menu-right dropdown-menu-animated profile-dropdown" style={dropdownStyle}>
               <div className="dropdown-item noti-title">
