@@ -57,7 +57,7 @@ const NotificationView = ({tab, display, position, animation, notificationPanelS
       notificationPosition = {left: '50%', transform: 'translate(-50%, 0)', top: '10px'};
       break;
     default:
-      notificationPosition = {left: '0px', bottom: '0px'};
+      notificationPosition = {left: '10px', bottom: '60px'};
   }
 
   return (

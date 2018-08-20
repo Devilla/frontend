@@ -71,8 +71,23 @@ class WebsiteHome extends Component {
         hideAnonymousConversion: true,
         onlyDisplayNotification: false,
         visitorText: ' people '
-      }
+      },
+      notificationTab: 1,
+      animation: 'fadeInUp',
+      display: 'none'
     };
+  }
+
+  componentWillMount() {
+    setInterval(() => {
+      this.setState({ animation: 'fadeInUp slower', display: 'block', notificationTab: this.state.notificationTab == 3?1: this.state.notificationTab+1});
+      setTimeout(() => {
+        this.setState({animation: 'fadeOutDown slower'});
+      }, 6000);
+      setTimeout(() => {
+        this.setState({display: 'none'});
+      }, 7000);
+    }, 8000);
   }
 
   render() {
@@ -85,15 +100,15 @@ class WebsiteHome extends Component {
       autoplay: true
     };
 
-    const settingsLanding = {
-      dots: true,
-      infinite: true,
-      speed: 3000,
-      slideToShow: 1,
-      slideToScroll: 1,
-      autoplay: true
-    };
-
+    // const settingsLanding = {
+    //   dots: true,
+    //   infinite: true,
+    //   speed: 3000,
+    //   slideToShow: 1,
+    //   slideToScroll: 1,
+    //   autoplay: true
+    // };
+    const { display, animation,notificationTab } = this.state;
     return (
       <div className="transition-item websitehome-container">
         <div className="main-container">
@@ -124,10 +139,12 @@ class WebsiteHome extends Component {
 
             <div className="container col-md-5 pr-0 ml-0 pt-4">
               <img alt="homescreen" src={sideScreen_1} className="mb-1" style={{height: '400px'}} />
-              <Slider vertical={true} {...settingsLanding} className="im1  website-home-top-image">
-                <div><NotificationView tab='1' animation='' display='block' position='' notificationPanelStyle={this.state.notificationPanelStyle}/></div>
-                <div><NotificationView tab='1.1' animation='' display='block' position='' notificationPanelStyle={this.state.notificationPanelStyle}/></div>
-              </Slider>
+              {/* <Slider vertical={true} {...settingsLanding} className="im1  website-home-top-image"> */}
+              <div className="im1  website-home-top-image">
+                <NotificationView tab={notificationTab} animation={animation} display={display} position='' notificationPanelStyle={this.state.notificationPanelStyle}/>
+              </div>
+              {/* <div><NotificationView tab='1.1' animation='' display='block' position='' notificationPanelStyle={this.state.notificationPanelStyle}/></div> */}
+              {/* </Slider> */}
             </div>
 
           </section>
