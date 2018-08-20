@@ -115,7 +115,50 @@
 
 @media only screen and (min-width: 100px) and (max-width: 768px) {
   .navbar-custom  {
+    width: 100%;
+    left: 70px !important;
+
     .customer-header {
+      .nav-topbar-flex {
+        .topbar-left {
+          width: 20% !important;
+          h4 {
+            display: flex;
+            justify-content: start;
+            margin: 20px 0px;
+            i {
+              line-height: 0px !important;
+            }
+          }
+        }
+        .topbar-right {
+          width: 70%;
+          text-align: right;
+          .notification-list {
+            width: 40%;
+            padding-right: 12%;
+            margin: 5px 0px 0px 0px;
+            height: 50px;
+            .dropdown-toggle {
+              padding-top: 50px !important;
+            }
+            .dropdown-menu.dropdown-menu-right {
+              margin-top: 0px !important;
+            }
+            .profile-dropdown {
+              justify-content: flex-end;
+              text-align: end;
+              width: 130%;
+              margin-left: 0 !important;
+              margin-top: -60px !important;
+              .avatar {
+                margin-right: 15px;
+              }
+            }
+          }
+        }
+      }
+
       .topbar-left-hamburger {
         display: block;
         margin: 5px 15px;
