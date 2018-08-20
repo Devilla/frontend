@@ -38,7 +38,14 @@ class GettingStarted extends Component {
   }
 
   validateCampaign = (campaignInfo) => {
-    const campaignValid = campaignInfo.uniqueUsers.length && campaignInfo.uniqueUsers[0].hits.total ?true:false;
+    var campaignValid;
+    if(campaignInfo.uniqueUsers.length)
+      campaignInfo.uniqueUsers.map(users => {
+        if(users.hits.total)
+          campaignValid = true;
+      });
+    else
+      campaignValid = false;
     const { user } = this.props;
     this.setState({ campaignValid });
     if(campaignValid && user.path == '/getting-started') {
