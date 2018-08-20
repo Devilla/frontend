@@ -2,29 +2,27 @@
   .profile-dropdown {
     margin-left: 542px;
     margin-top: -72px;
+    display: flex;
+    justify-content: space-evenly;
   }
-  .avatar {
+    .avatar {
       width: 38px;
       height: 38px;
       border-radius: 50%;
       font-size: 14px;
-       // display: table;
-       // vertical-align: middle;
       background-color: #22d197;
-       background-position: center center;
-        text-align: center;
+      background-position: center center;
+      text-align: center;
       color: #fefefe;
-      }
+    }
 
-      .full-name {
-          font-size: 14px;
-          margin-top: -38px;
-          padding-left: 50px;
-          width: 180px;
-      }
-      .icon-arrow-down{
-        font-size: 13px;
-      }
+    .full-name {
+      font-size: 14px;
+    }
+
+    .icon-arrow-down{
+      font-size: 13px;
+    }
 
   .progress {
     background: #fafafa !important;

@@ -119,7 +119,9 @@ span {
 div {
   &#sidebar-menu {
       overflow-y: auto;
-      // height: 640px;
+      text-align: center;
+      margin-left: 0 !important;
+      padding-left: 0 !important;
   }
 
   &::-webkit-scrollbar {

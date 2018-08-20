@@ -198,8 +198,12 @@ p {
         padding-left: 15px !important;
       }
       .metismenu {
+        text-align: center;
         li {
           a {
+            width: 100%;
+            padding: 15px 0px 15px 0px !important;
+            margin: 18px 0px !important;
             color: white !important;
           }
         }

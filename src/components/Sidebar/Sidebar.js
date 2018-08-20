@@ -38,7 +38,7 @@ class Sidebar extends Component {
           {!openClose && this.state.collapse?
             <div
               className="topbar-left"
-              style={{ width: '40px' }}
+              style={{ width: '50px' }}
             >
               <Link to="/dashboard" className="logo">
                 <span>
@@ -62,7 +62,7 @@ class Sidebar extends Component {
 
 
           <div id="sidebar-menu">
-            <div className="button-list ml-1 pl-2">
+            <div className="button-list pl-2">
               <Link to="/new">
                 {!openClose && this.state.collapse?
                   <button
