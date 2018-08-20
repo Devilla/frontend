@@ -82,6 +82,9 @@
     position: absolute;
     top: 6px;
     right: 0;
+    .dropdown-menu.dropdown-menu-right {
+      margin-top: 15px !important;
+    }
   }
 
   .topbar-left {
