@@ -1,3 +1,6 @@
+.transition-wrapper {
+  position: inherit !important;
+}
 .dashboard-boxes {
   .dates-select {
     border: none !important;
@@ -40,6 +43,7 @@
 
     .dropdown-item {
       cursor: pointer;
+      text-align: right;
     }
   }
 
@@ -80,6 +84,20 @@
   .account-stats {
     display: flex;
     justify-content: center;
+    .account-stats-cut {
+      size: 10%;
+      position: absolute;
+      width: 97%;
+      height: 26px;
+      margin: 8.2% 0%;
+    }
+    .cards {
+      .text-center {
+        .card-content-width {
+          z-index: 1;
+        }
+      }
+    }
   }
 
   .m-b-10 {
@@ -88,7 +106,7 @@
       font-size: 30px;
       font-weight: 100;
       position: relative;
-      top: -5px;
+      top: -45px;
     }
 
     &.notify {
@@ -96,7 +114,7 @@
       font-size: 30px;
       font-weight: 100;
       position: relative;
-      top: -5px;
+      top: -45px;
     }
 
     &.campaign {
@@ -104,7 +122,7 @@
       font-size: 30px;
       font-weight: 100;
       position: relative;
-      top: -5px;
+      top: -45px;
     }
 
     &.profile {
@@ -112,7 +130,7 @@
       font-size: 30px;
       font-weight: 100;
       position: relative;
-      top: -5px;
+      top: -45px;
     }
   }
 
@@ -137,9 +155,10 @@
   .graph-card {
     box-shadow: 0 7px 16px -14px #999;
     position: relative;
-    top: -120px;
+    top: -115px;
     border: 2px solid #e8e8e8;
     padding: 60px 60px 20px;
+    background: #f9f9f9;
 
     .category {
       text-align: center;
@@ -206,6 +225,7 @@
   .heatmap {
     font-weight: 300;
     font-size: 11px;
+    z-index: 0;
     div {
       padding: .2px 0px .2px 0px;
     }
@@ -249,7 +269,7 @@
 
 .heatmap,
 .worldmap {
-  z-index: 1;
+  z-index: 0;
   flex: 0 0 48% !important;
   box-shadow: 0 1px 10px -3px #999;
   padding: 40px 40px 20px 2px !important;

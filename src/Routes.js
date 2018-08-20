@@ -31,9 +31,12 @@ import {
   AffiliateRegister,
   Oauthpage,
   Oauthgenerate,
+  AuthorizationDialog,
   DashboardChannel,
   ReviewRedirect,
-  AnalyticsProfile
+  AnalyticsProfile,
+  WordpressPluginPage,
+  GettingStarted
 } from 'components';
 
 import {
@@ -57,6 +60,7 @@ const MyRoutes = ({routerHistory}) => (
       <Route path="/campaigns" component={Notification} />
       <Route path="/oauthshow" component={Oauthpage} />
       <Route path="/oauthgenerate" component={Oauthgenerate} />
+      <Route path="/oauthdialog" component={AuthorizationDialog} />
       <Route path="/channels" component={DashboardChannel} />
       <Route path="/analytics" component={AnalyticsContainer} />
       <Route path="/analytics/profile" component={AnalyticsProfile} />
@@ -66,6 +70,8 @@ const MyRoutes = ({routerHistory}) => (
       <Route path="/profile" component={Profile} />
       <Route path="/card-details" component={UpgradeCard} />
       <Route path="/billing-details" component={BillingDetails} />
+      <Route path="/wordpress-plugin-page" component={WordpressPluginPage} />
+      <Route path="/getting-started" component={GettingStarted} />
     </Route>
     <Route exact path="/oauth/:type" component={OauthContainer} />
     <Route exact path="/connect/:provider" component={ConnectPage} />
@@ -92,7 +98,6 @@ const MyRoutes = ({routerHistory}) => (
       <Route path="/affiliateregister" component={AffiliateRegister} />
       <Route path="/forget-password" component={ForgetPassword} />
       <Route path="/reset-password" component={ResetPassword} />
-
     </Route>
     <Route path="*" component={Error} />
   </Router>

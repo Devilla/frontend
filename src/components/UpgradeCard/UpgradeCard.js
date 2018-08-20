@@ -73,7 +73,7 @@ class UpgradeCard extends Component {
       this.state.goback ?
         <UpgradePlan />
         :
-        <div className="col-md-12 tab-notification-container">
+        <div className="transition-item col-md-12 tab-notification-container upgrade-card-transition">
           <div className="card-box">
             <div className="ml-3 mt-1 new-campaign-header upgrade-card">
 
@@ -232,4 +232,4 @@ const mapDispatchToProps = {
   updateProfile
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(UpgradeCard);
+export default connect(mapStateToProps, mapDispatchToProps, null, { withRef: true })(UpgradeCard);

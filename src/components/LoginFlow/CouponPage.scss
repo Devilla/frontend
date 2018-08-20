@@ -5,8 +5,18 @@
     .coupon-row-padding{
       padding-bottom: 3%;
       input {
+        height: 45px;
         font-size: 19px;
         font-family: Raleway, sans-serif;
+      }
+      .error-text {
+        height: 30px;
+      }
+    }
+    .apply-coupon-button {
+      margin-top: 7% !important;
+      input {
+        width: 100% !important;
       }
     }
     input {

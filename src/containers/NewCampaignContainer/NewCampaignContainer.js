@@ -135,9 +135,8 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
     const elastic = this.props.elastic;
     if(elastic && (elastic.error || (elastic.message.hits.total === 0))) {
       this.setState({
-        title : 'Alert',
-        content : 'Please verify your pixel first.',
-        buttonText :  'Close'
+        title : 'Alert', buttonText :  'Close',
+        content : 'Please verify your pixel first.'
       });
 
     } else if(!this.props.leads || !this.props.leads.length) {
@@ -155,7 +154,7 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
     } else {
       this.setState({
         title : 'Campaign is Live',
-        content : 'Campaign has be successfully created',
+        content : 'Campaign has been successfully created',
         buttonText :  'Finish',
         path : 'campaigns'
       });
@@ -175,7 +174,7 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
   render() {
 
     return (
-      <div className="NewCampaignContainer">
+      <div className="transition-item NewCampaignContainer">
 
         {this.props.campaign && Object.keys(this.props.campaign).length !== 0 && this.props.campaign.constructor === Object?
           <CampaignSettings
@@ -241,4 +240,4 @@ const mapDispatchToProps = {
   fetchSubCampaign
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(NewCampaignContainer);
+export default connect(mapStateToProps, mapDispatchToProps, null, { withRef: true })(NewCampaignContainer);

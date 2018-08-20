@@ -20,13 +20,13 @@
 button {
   &.goliveRight{
     position: absolute;
-    right: 20px;
-    top:6px;
+    right: 21px;
+    top:24px;
     padding-top: 3px;
     padding-bottom: 2px;
     height: 30px;
     margin: 1% 3% !important;
-    border-radius: 5px !important;
+    border-radius: 4px !important;
   }
 }
 
@@ -36,6 +36,11 @@ button {
 .nav.nav-pills {
     > li > a.active {
       font-family: "Rubik", sans-serif;
+    }
+    .nav-item {
+      i {
+        padding: 0 0px 0 5px;
+      }
     }
     .nav-item.show.nav-link, .nav-link.active {
       background: #097fff;
@@ -47,7 +52,7 @@ button {
 
   .new-campaign-header {
     position:  relative;
-    padding-bottom:  5px;
+    padding-bottom:  8px;
 
   }
   .textTransform{

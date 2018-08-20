@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 import Popup from 'react-popup';
 import { ToastContainer } from 'react-toastify';
+import Loading from 'react-loading-animation';
+import PageTransition from 'react-router-page-transition';
 
 import { checkTokenExists } from 'ducks/auth';
 import { Header, Sidebar } from 'components';
@@ -19,6 +21,7 @@ import 'react-select/dist/react-select.css';
 import 'react-popup/style.css';
 import './DashboardContainer.scss';
 import './toast.scss';
+import 'react-datepicker/dist/react-datepicker.css';
 
 class DashboardContainer extends Component {
   constructor(props) {
@@ -157,16 +160,16 @@ class DashboardContainer extends Component {
   }
 
   render() {
-    const {  user } = this.props;
+    const {  user, profile } = this.props;
     const { style , openClose, disableButton } = this.state;
     return (
       <div className="dashboard-container">
         <Popup />
         <div className="wrapper"  >
 
-          {!this.state.render && <p>Please wait</p>}
-          {this.state.render && <Sidebar {...this.props} openClose={openClose} openCloseSidebar={this.openCloseSidebar} disableButton={disableButton} onClick={this.closeDropdown} />}
-          {this.state.render &&
+          {(!user || user.size == 0) && (!profile || profile == undefined) && <Loading strokeWidth="2" style={{height: '700px', width: '10%'}} isLoading={true} />}
+          {user && (profile || profile !== undefined) && <Sidebar {...this.props} openClose={openClose} openCloseSidebar={this.openCloseSidebar} disableButton={disableButton} onClick={this.closeDropdown} />}
+          {user && (profile || profile !== undefined) &&
           <div>
             <div className="content-page" >
               <div className="topbar" >
@@ -186,9 +189,11 @@ class DashboardContainer extends Component {
                 </nav>
               </div>
 
-              <div className="content dashboard-content" style={{ backgroundColor: '#FFF' }} onClick={this.closeDropdown}>
-                <div className="container-fluid p-2">
-                  {this.props.children}
+              <div className="content dashboard-content" style={{ backgroundColor: '#f9f9f9' }} onClick={this.closeDropdown}>
+                <div className="container-fluid" style={{minHeight: '750px'}}>
+                  <PageTransition className="content">
+                    {this.props.children}
+                  </PageTransition>
                 </div>
               </div>
             </div>
@@ -203,6 +208,7 @@ class DashboardContainer extends Component {
 
 const mapStateToProps = state => ({
   profile: state.getIn(['profile', 'profile']),
+  campaignInfo: state.getIn(['campaign', 'campaignInfo']),
   user: state.getIn(['auth', 'user'])
 });
 
@@ -210,4 +216,4 @@ const mapDispatchToProps = {
   checkTokenExists
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(DashboardContainer);
+export default connect(mapStateToProps, mapDispatchToProps, null, { withRef: true })(DashboardContainer);

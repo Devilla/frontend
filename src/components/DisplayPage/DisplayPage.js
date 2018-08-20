@@ -64,12 +64,13 @@ class DisplayPage extends Component {
 
   addPageUrl = () => {
     if(this.state.displayUrl.url == '') {
-      if(this.state.count<1)
-        this.state.displayUrl.url='/';
-      else
-        return this.setState({error: 'Please enter a valid path'});
-
-      this.state.count++;
+      // if(this.state.count<1)
+      this.state.displayUrl.url='/';
+      this.state.displayUrl.status = 'unverified';
+      this.state.displayUrl.class = 'warning';
+      this.state.displayUrl.type = 'display';
+      // else
+      //   return this.setState({error: 'Please enter a valid path'});
     }
 
     if(this.state.displayUrl.url[0]!=='/')
@@ -79,6 +80,7 @@ class DisplayPage extends Component {
     displayUrl['rule'] = this.props.rules._id;
     displayUrl['domain'] = this.props.campaign.websiteUrl;
     displayUrl['campaignName'] = this.props.campaign.campaignName;
+
     this.props.createPageUrl(displayUrl);
     this.setState({displayUrl: {
       url: '',
@@ -290,16 +292,34 @@ class DisplayPage extends Component {
       return <div/>;
   }
 
+  handleDisplayChange = (e) => {
+    let newRule = this.props.rules;
+    newRule['displayOnAllPages'] = e.target.checked;
+    newRule['id'] = this.props.rules._id;
+    delete newRule['_id'];
+
+    this.props.updateRules(newRule);
+  }
 
   render(){
     const { error, displayUrl } = this.state;
+    const { rules } = this.props;
+
     return (
       <div className="display-container">
         <Grid fluid>
           <div className="tabscontent">
-            <Row>
-              <Col md={12}>
+            <Row className="display-page-row">
+              <Col md={12} className="display-page-header">
                 <h4 className="lead text-center m-b-30 m-t-20">Where do you want to show notifications?</h4>
+                <button type="button" className="btn btn-outline-primary waves-light waves-effect number">
+                  <i className="fi-monitor"></i>
+                  <span>Display on all pages</span>
+                  <label className="checkbox-container">
+                    <input type="checkbox" defaultChecked={rules.displayOnAllPages} onChange={this.handleDisplayChange} />
+                    <span className="checkmark"></span>
+                  </label>
+                </button>
               </Col>
             </Row>
             <Row>
@@ -393,7 +413,8 @@ class DisplayPage extends Component {
 
 const mapStateToProps = state => ({
   displayUrls: state.getIn(['pageurl', 'display']),
-  subdomain: state.getIn(['campaign', 'subdomain'])
+  subdomain: state.getIn(['campaign', 'subdomain']),
+  rules: state.getIn(['rules', 'rule'])
 });
 
 const mapDispatchToProps = {
@@ -403,4 +424,4 @@ const mapDispatchToProps = {
   clearPageUrl
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(DisplayPage);
+export default connect(mapStateToProps, mapDispatchToProps, null, { withRef: true })(DisplayPage);

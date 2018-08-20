@@ -1,4 +1,32 @@
 .customer-header {
+  .profile-dropdown {
+    margin-left: 542px;
+    margin-top: -72px;
+    display: flex;
+    justify-content: space-evenly;
+  }
+    .avatar {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      font-size: 13px;
+      background-color: #fba62d;
+      background-position: center center;
+      text-align: center;
+      color: #fefefe;
+    }
+
+      .full-name {
+          font-size: 13px;
+          margin-top: -30px;
+          padding-left: 39px;
+          width: 180px;
+          color: #6f6f6f;
+      }
+      .icon-arrow-down{
+        font-size: 13px;
+      }
+
   .progress {
     background: #fafafa !important;
   }
@@ -10,7 +38,7 @@
 
   .nav-topbar-flex {
     display: flex;
-    justify-content: space-between;
+    background-color: #f9f9f9;
 
     .topbar-left {
       width: 50%;
@@ -22,22 +50,22 @@
         }
         font-family: "Rubik", sans-serif;
         padding: 3% 5%;
-        letter-spacing: 0.10em;
-        font-size: 15px;
+        letter-spacing: 0.09em;
+        font-size: 14px;
         font-weight: 500;
-        text-transform: uppercase;
+        text-transform: capitalize;
       }
     }
   }
 
-  .nav-link.dropdown-toggle.nav-user {
+  .nav-link.dropdown-custom-toggle.nav-user {
     background: none !important;
   }
 
   .nav-custom-header {
     .nav-user {
-      line-height: 40px !important;
-      margin: 10% 0 0;
+      line-height: 30px !important;
+      margin: 46% 0 0;
     }
   }
 
@@ -55,32 +83,38 @@
     height: 20px !important;
     z-index: 999;
     position: absolute;
-    top: -10px;
+    top: 6px;
     right: 0;
+    .dropdown-menu.dropdown-menu-right {
+      margin-top: 15px !important;
+    }
   }
 
   .topbar-left {
-    padding-left: 20px !important;
+    padding-left: 0px !important;
     & h4 {
       padding-top: 0 !important;
       padding-bottom: 0 !important;
-      padding-left: 30px !important;
-      font-size: 11px !important;
+      padding-left: 0px !important;
+      font-size: 15px !important;
+      color: #5f5f5f;
       position: relative;
       top: -1px;
 
       & .icon-arrow-left {
         padding: 10px !important;
+        font-size: 12px;
          &:hover {
            background-color: #dbdada !important;
          }
       }
     }
   }
-
   .rounded-circle {
     position: relative;
     top: -5px;
+    width: 24px;
+    height: 24px;
     right: 40px;
     font-size: 22px !important;
   }
@@ -88,7 +122,50 @@
 
 @media only screen and (min-width: 100px) and (max-width: 768px) {
   .navbar-custom  {
+    width: 100%;
+    left: 70px !important;
+
     .customer-header {
+      .nav-topbar-flex {
+        .topbar-left {
+          width: 20% !important;
+          h4 {
+            display: flex;
+            justify-content: start;
+            margin: 20px 0px;
+            i {
+              line-height: 0px !important;
+            }
+          }
+        }
+        .topbar-right {
+          width: 70%;
+          text-align: right;
+          .notification-list {
+            width: 40%;
+            padding-right: 12%;
+            margin: 5px 0px 0px 0px;
+            height: 50px;
+            .dropdown-custom-toggle {
+              padding-top: 50px !important;
+            }
+            .dropdown-menu.dropdown-menu-right {
+              margin-top: 0px !important;
+            }
+            .profile-dropdown {
+              justify-content: flex-end;
+              text-align: end;
+              width: 130%;
+              margin-left: 0 !important;
+              margin-top: -60px !important;
+              .avatar {
+                margin-right: 15px;
+              }
+            }
+          }
+        }
+      }
+
       .topbar-left-hamburger {
         display: block;
         margin: 5px 15px;
@@ -96,6 +173,12 @@
           font-size: xx-large;
         }
       }
+      #sidebar-menu {
+          overflow-y: auto;
+          height: 640px;
+          width: 60px;
+        }
+
       .topbar-right-menu {
         display: flex;
         top: 2px;

@@ -20,7 +20,52 @@
 
 .custombottom{
   position: relative;
-  margin-top: 200px;
+  margin-top: 35px;
+  .card {
+    border: 1px solid lightgray !important;
+    margin: 2px;
+    box-shadow: 1px 2px 10px 0px #88888880;
+    .change-percent-sidebar {
+      border: 1px solid lightgrey;
+      padding: 2px;
+      text-align: center;
+      margin: 15px;
+      p {
+        margin: 0;
+      }
+      i {
+        -webkit-text-stroke: 1px white;
+        padding: 0px 10px;
+      }
+      .fa-arrow-down {
+        color: red;
+      }
+      .fa-arrow-up {
+        color: green;
+      }
+    }
+    .datepicker-sidebar {
+      display: flex;
+      width: 200px;
+      justify-content: space-between;
+      input {
+        width: 90px;
+      }
+      .date-picker-btn {
+        width: 100%;
+        padding: 5px;
+      }
+      .directional-conversion-icon {
+        margin: 4% 0;
+      }
+    }
+    .campaign-dropdown {
+      margin: 20px 25px 0px 25px;
+      button {
+        width: 130px;
+      }
+    }
+  }
 }
 
 .textColor{
@@ -49,12 +94,10 @@
 .dropdown:hover{ .dropdown-content {
     display: block;
 }}
-.dashboard-container #sidebar-menu > ul > li > a.active {
-  color:  #5A616B !important;
-}
+
 a.nav-link {
     &:hover:not(:focus) {
-      background-color: rgba(245, 245, 245, 0.816);
+      background-color: gray;
       color: #097fff !important;
     }
 
@@ -63,8 +106,6 @@ a.nav-link {
       font-weight: 700;
       color: #097fff !important;
     }
-
-
 }
 
 span {
@@ -78,11 +119,13 @@ span {
 div {
   &#sidebar-menu {
       overflow-y: auto;
-      height: 640px;
+      text-align: center;
+      margin-left: 0 !important;
+      padding-left: 0 !important;
   }
 
   &::-webkit-scrollbar {
-    width: 5px;
+    width: 0px;
 
 }
 
@@ -102,24 +145,101 @@ button {
   & i.fi-plus {
     font-weight: bolder;
     position: relative;
-    top: -2px;
+    top: -1px;
+    font-size: 21px;
+
   }
 }
 
 .addnew-btn {
-  box-shadow: 0 8px 15px -4px #999;
   border-radius: 5px !important;
+}
+ .text-right {
+    text-align: right !important;
+    margin-top: 300px;
+}
+.text-left {
+   text-align: left !important;
+   margin-top: 188px;
 }
 
 @media only screen and (max-width: 768px) and (min-width: 100px) {
+  &#side-menu {
+    max-width: 70px;
+    .topbar-left {
+      .logo {
+        span {
+          display: block;
+        }
+      }
+
+    }
+  }
   &#sidebar-menu {
+    max-width:70px;
     height: fit-content !important;
     .addnew-small-btn {
       margin: 0px -2px !important;
-      padding: 5px 8px !important;
+      // padding: 5px 8px !important;
       .fi-plus {
         left: 2px;
       }
     }
   }
+}
+
+.fa-dashboard:before, .fa-tachometer:before {
+    content: "\F0E4";
+    color: #a0a3b3;
+}
+
+.fa-bullhorn:before {
+    content: "\F0A1";
+    color: #a0a3b3;
+}
+
+
+.fi-bar-graph-2:before {
+    content: "\E091";
+    color: #a0a3b3;
+}
+
+.fi-cog:before {
+    content: "\E023";
+    color: #a0a3b3;
+}
+
+a.card {
+  height: 2.5rem !important;
+  width: 2.5rem !important;
+  background: #2a4d7c !important;
+  border-radius: 5px;
+  margin-left: 18px;
+  margin-bottom: 18px;
+  
+}
+a.active{
+  background: #1e68c6 !important;
+}
+
+
+#sidebar-menu{
+  ul {
+  li {
+  a {
+  i{
+    padding-left: 1px;
+    padding-top: 18px;
+    margin: 0px !important;
+    font-size: 15px !important;
+    line-height: 0px !important;
+  }
+    padding: 0px 5px !important;
+    margin: 18px 14px !important;
+    font-size: 15px !important;
+    }
+
+  }
+  }
+
 }

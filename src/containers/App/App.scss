@@ -3,6 +3,8 @@
 
 body {
   font-family: "Raleway, Source Sans Pro, Verdana, Helvetica", sans-serif;
+  display: block;
+  margin: 0px;
 }
 
 .website-app {
@@ -24,6 +26,48 @@ body {
     button {
       height: 1.5em;
       color: #fff;
+    }
+  }
+
+  .transition-wrapper {
+    position: relative;
+    z-index: 1;
+    .transition-item {
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: 0;
+    }
+  }
+  .signin-container,
+  .authpage,
+  .websitepolicy-container,
+  .websitehowitworks-container,
+  .websitehome-container,
+  .WebsiteTerms-container,
+  .websitepricing-container,
+  .website-payment-container,
+  .websiteintegrations-container,
+  .demopage-container,
+  .website-cust-story,
+  .websitecontact-container,
+  .websiteabout-container,
+  .WebsiteFeature-container,
+  .affiliateregister-container
+   {
+    overflow: hidden;
+    box-sizing: border-box;
+    padding: 20px 0px;
+    min-height: 100vh;
+    transition: 500ms ease-out;
+
+    &.transition-leave {
+      opacity: 1;
+    }
+
+    &.transition-leave.transition-leave-active {
+      opacity: 1;
+      transform: translate3d(100%, 0, 0);
     }
   }
 }

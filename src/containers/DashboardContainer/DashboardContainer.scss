@@ -1,9 +1,39 @@
 @import '../../components/SwitchPartialScss/toggle';
 
+.dashboard-boxes {
+  .m-b-10 {
+    .campaign {
+        top: -46px!important;
+    }
+  }
+}
+
+
+.customer-header {
+  .progress {
+      background: #f9f9f9 !important;
+  }
+}
 .dashboard-container {
   [data-css-1ar5iql] {
     z-index: 100000000;
   }
+
+    .content-page {
+      margin-left: 40px!important;
+    }
+
+ .notification-list {
+   background-color: #f9f9f9!important;
+    margin-left: 5px!important;
+}
+
+p {
+    margin-top: 21px;
+    color: #98a6ad !important;
+    line-height: 1.6;
+    font-size: 13px;
+}
 
   .toast-style {
     background-color: rgba(0, 0, 0, 0.98) !important;
@@ -18,17 +48,13 @@
   }
 
   .topbar {
-    margin-left: 16%;
-    z-index: 10000000;
+    padding-left: 70px;
+    z-index: 999;
     position: fixed;
-    top: 0;
+    top: 0px;
     left: 0;
-    width: 84%;
+    width: 100%;
     height: 50px !important;
-    background: #fafafa;
-    .nav-custom-header {
-          background: #fafafa;
-    }
   }
 
   .dashboard-content {
@@ -115,15 +141,134 @@
     background-color: rgba(9, 128, 255, 0.152);
   }
 
+  .transition-wrapper {
+    position: relative;
+    z-index: 1;
+    .transition-item {
+      position: inherit;
+      top: 0;
+      right: 0;
+      left: 0;
+    }
+  }
+
+  .dashboard-transition-container,
+  .manage-transition-notification,
+  .analytics-transition-container,
+  .NewCampaignContainer,
+  .oauth-transition-container,
+  .profile-transition-container,
+  .billing-transition-container,
+  .upgrade-card-transition,
+  .upgrade-plan-container,
+  .integration-container,
+  .pageContent,
+  .list-modal-container
+    {
+    overflow: hidden;
+    box-sizing: border-box;
+    padding: 20px;
+    min-height: 100vh;
+    transition: 500ms ease-out;
+
+    &.transition-leave {
+      opacity: 1;
+    }
+
+    &.transition-leave.transition-leave-active {
+      opacity: 1;
+      transform: translate3d(100%, 0, 0);
+    }
+  }
+}
+
+.dashboard-container {
+  .side-menu {
+      width: 240px;
+      z-index: 1!important;
+      background: #082a52 !important;
+      bottom: 0;
+      margin-top: 0;
+      padding-bottom: 30px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      .topbar-left{
+        background: #082a52 !important;
+        padding-left: 17px !important;
+      }
+      .button-list{
+        margin-left: 0px;
+        margin-bottom: 0px;
+      }
+      .metismenu {
+        text-align: center;
+        li {
+          a {
+            width: 100%;
+            padding: 15px 0px 15px 0px !important;
+            margin: 18px 0px !important;
+            color: white !important;
+          }
+        }
+      }
+
+  .header-title {
+  margin-bottom: 20px;
+  margin-top: 18px !important;
+  text-transform: uppercase;
+  letter-spacing: 0.20em;
+  font-size: 11px;
+  font-weight: 400;
+  margin-top: 0;
+  margin-left: 0px !important;
+  color: #4c4c4c;
+}
+
+  }
+  .card-box{
+    background: #f9f9f9 !important;
+  }
+  .widget-flat{
+    padding: 0 !important;
+    background: #ffffff !important;
+  }
+
+  .card{
+    background: #f9f9f9;
+  }
+  .metismenu{
+    background: #082a52;
+  }
+  .user-box{
+    background: #082a52;
+  }
+  .btn-primary{
+    background-color: #4aa5ea !important;
+    border: 1px solid #4aa5ea !important;
+  }
+}
+
+@media only screen and (max-width: 1024px) and (min-width: 768px) {
+  .dashboard-container {
+    .content-page {
+      padding: 25px 25px 15px 25px !important;
+      .navbar-custom {
+        left: 70px;
+      }
+    }
+  }
 }
 
 @media only screen and (max-width: 768px) and (min-width: 100px) {
   .dashboard-container {
     .content-page {
+      margin-left: 40px;
       width: 90%;
       margin-left: 15% !important;
       .card-box {
         padding: 20px 20px 0px 20px !important;
+        background: #f9f9f9 !important;
       }
     }
     .modal {
@@ -142,3 +287,12 @@
     }
   }
 }
+
+
+.navbar-custom {
+  box-shadow: 0px 1px 1px 0px #e5e5e5;
+  background: #f9f9f9;
+  min-height: 60px !important;
+}
+
+

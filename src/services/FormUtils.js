@@ -117,4 +117,4 @@ const register = (email, password) => {
 };
 
 
-export { validateEmail, validatePassword, login, register, PASSWORD_MIN_LENGTH, PASSWORD_MAX_LENGTH, WEBSITE_REGEXP, validateWebsite, validateCompanyName };
+export { validateEmail, validatePassword, login, register, PASSWORD_MIN_LENGTH, PASSWORD_MAX_LENGTH, WEBSITE_REGEXP, validateWebsite, validateCompanyName, INVALID_PASSWORD_MSG };

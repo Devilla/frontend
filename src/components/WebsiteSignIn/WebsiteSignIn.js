@@ -103,7 +103,7 @@ class WebsiteSignIn extends Component {
     const { error, errorEmail, isPasswordShown, errorPassword, isEmailValid, isPwdValid } = this.state;
 
     return (
-      <div className="signin-container">
+      <div className="transition-item signin-container">
         <Animated
           className='leftwrap center'
 
@@ -215,4 +215,4 @@ const mapDispatchToProps = {
   load,
   loaded
 };
-export default connect(null, mapDispatchToProps)(WebsiteSignIn);
+export default connect(null, mapDispatchToProps, null, { withRef: true })(WebsiteSignIn);

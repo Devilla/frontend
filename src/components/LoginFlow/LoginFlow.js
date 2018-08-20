@@ -25,7 +25,6 @@ class LoginFlow extends Component {
   }
 
   componentWillMount() {
-    this.checkLogin();
     this.updateState(this.props.user, this.props.selectedPlan);
   }
 
@@ -59,7 +58,7 @@ class LoginFlow extends Component {
   handleStateChange = (state, stateName) => {
     if(stateName === 'coupon' && this.props.coupon)
       this.props.clearCoupon();
-    this.setState({[stateName]:state});
+    this.setState({[stateName]:state, couponError: ''});
   }
 
   submitPayment = (data) => {
@@ -173,4 +172,4 @@ const mapDispatchToProps = {
   clearCouponError
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginFlow);
+export default connect(mapStateToProps, mapDispatchToProps, null, { withRef: true })(LoginFlow);

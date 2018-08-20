@@ -19,7 +19,7 @@ class WebsiteIntegrations extends Component {
 
   render() {
     return (
-      <div className="websiteintegrations-container">
+      <div className="transition-item websiteintegrations-container">
         <div className="main-container">
           <section className="cover switchable text-center-xs bg--secondary switchable--switch pt-0">
             <div className="container">

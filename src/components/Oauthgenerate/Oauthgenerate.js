@@ -11,6 +11,7 @@ import './Oauthgenerate.scss';
 class Oauthpage extends Component {
   constructor() {
     super();
+
     this.state = {
       clientId: '',
       secret: '',
@@ -228,4 +229,4 @@ const mapDispatchToProps = {
   deleteClientOauth
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Oauthpage);
+export default connect(mapStateToProps, mapDispatchToProps, null, { withRef: true })(Oauthpage);

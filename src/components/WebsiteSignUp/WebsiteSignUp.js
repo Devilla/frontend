@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
-import { validateEmail, validatePassword, register, PASSWORD_MAX_LENGTH } from 'services/FormUtils';
-import { Animated } from'react-animated-css';
+import { validateEmail, validatePassword, register, PASSWORD_MAX_LENGTH, INVALID_PASSWORD_MSG } from 'services/FormUtils';
+import { Animated } from 'react-animated-css';
 import { Alert, HelpBlock } from 'react-bootstrap';
+import { browserHistory } from 'react-router';
+import { toast } from 'react-toastify';
+
 import { store } from 'App.js';
 import { load, loaded } from 'ducks/loading';
 import { loginSuccess } from 'ducks/auth';
-import { browserHistory } from 'react-router';
-import { toast } from 'react-toastify';
 import { base } from 'services/api';
 import { Spinner } from 'components';
 
@@ -27,7 +28,7 @@ class WebsiteSignUp extends Component {
       username: '',
       email: '',
       password: '',
-      confirmPassword:'',
+      confirmPassword: '',
       isPasswordShown: false,
       isRegistered: false,
       errorPassword: '',
@@ -37,35 +38,35 @@ class WebsiteSignUp extends Component {
     };
   }
   componentDidMount() {
-    window.scrollTo(0,0);
+    window.scrollTo(0, 0);
   }
 
   componentWillMount() {
-    if(this.props.location && this.props.location.query.email)
-      this.setState({email: this.props.location.query.email});
+    if (this.props.location && this.props.location.query.email)
+      this.setState({ email: this.props.location.query.email });
   }
 
   handleInputChange = event => {
-    const {name, value} = event.target;
-    this.setState({[name]: value, error: '', errorUsername: '', errorEmail: '', errorPassword:'', errorConfirmPassword:''});
+    const { name, value } = event.target;
+    this.setState({ [name]: value, error: '', errorUsername: '', errorEmail: '', errorPassword: '', errorConfirmPassword: '' });
   };
 
   // triggers when user leaves the email input field
   handleEmailBlur = event => {
     const value = event.target.value;
-    if(!value)
-      this.setState({errorEmail: 'Email id required'});
+    if (!value)
+      this.setState({ errorEmail: 'Email id required' });
     else if (!validateEmail(value))
-      this.setState({errorEmail: 'Enter a valid Email id'});
+      this.setState({ errorEmail: 'Enter a valid Email id' });
   };
 
   // triggers when user leaves the password input field
   handlePasswordBlur = event => {
     const value = event.target.value;
-    if(!value)
-      this.setState({errorPassword: 'Password required'});
+    if (!value)
+      this.setState({ errorPassword: 'Password required' });
     else if (!validatePassword(value))
-      this.setState({errorPassword: 'Enter a valid Password'});
+      this.setState({ errorPassword: INVALID_PASSWORD_MSG });
   };
 
   togglePasswordShown = () => {
@@ -83,8 +84,8 @@ class WebsiteSignUp extends Component {
       password
     } = this.state;
 
-    if(!email || !password)
-      return this.setState({error: 'All fields are required'});
+    if (!email || !password)
+      return this.setState({ error: 'All fields are required' });
 
     store.dispatch(load());
     // TODO: Show 'Check email for further instructions.' message on success
@@ -93,10 +94,10 @@ class WebsiteSignUp extends Component {
       store.dispatch(loginSuccess(res));
       store.dispatch(loaded());
       browserHistory.push(res.user.path);
-      this.setState({isRegistered: true, error: ''});
+      this.setState({ isRegistered: true, error: '' });
     }).catch(err => {
       store.dispatch(loaded());
-      this.setState({error: err.msg || err});
+      this.setState({ error: err.msg || err });
     });
   };
 
@@ -107,7 +108,7 @@ class WebsiteSignUp extends Component {
       password: '',
       error: '',
       errorEmail: '',
-      errorPassword: '' ,
+      errorPassword: '',
       errorConfirmPassword: ''
     });
   }
@@ -166,7 +167,7 @@ class WebsiteSignUp extends Component {
                                 maxLength={PASSWORD_MAX_LENGTH}
                                 onBlur={this.handlePasswordBlur}
                                 onChange={this.handleInputChange}
-                                type={isPasswordShown? 'text': 'password'}
+                                type={isPasswordShown ? 'text' : 'password'}
                                 placeholder='Password'
                               />
                               <HelpBlock>
@@ -203,7 +204,7 @@ class WebsiteSignUp extends Component {
                             <div className="btn btn--icon bg--facebook" to="">
                               <span className="btn__text ">
                                 <i className="socicon socicon-facebook"></i>
-                          Signup with Facebook
+                                Signup with Facebook
                               </span>
                             </div>
                           </a>
@@ -212,7 +213,7 @@ class WebsiteSignUp extends Component {
                             <div className="btn btn--icon bg--googleplus link-go" to="">
                               <span className="btn__text">
                                 <i className="socicon socicon-google"></i>
-                          Signup with Google
+                                Signup with Google
                               </span>
                             </div>
                           </a>
@@ -226,7 +227,7 @@ class WebsiteSignUp extends Component {
           </div>
         </div>);
     return (
-      <div className='authpage section innerpage'>
+      <div className='transition-item authpage section innerpage'>
         <div className='wrapper'>
           <Spinner loading={this.props.loading} />
           <Animated

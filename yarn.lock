@@ -8214,6 +8214,10 @@ promise-polyfill@7.1.2:
   version "7.1.2"
   resolved "https://registry.yarnpkg.com/promise-polyfill/-/promise-polyfill-7.1.2.tgz#ab05301d8c28536301622d69227632269a70ca3b"
 
+promise-queue@^2.2.3:
+  version "2.2.5"
+  resolved "https://registry.yarnpkg.com/promise-queue/-/promise-queue-2.2.5.tgz#2f6f5f7c0f6d08109e967659c79b88a9ed5e93b4"
+
 promise@8.0.1:
   version "8.0.1"
   resolved "https://registry.yarnpkg.com/promise/-/promise-8.0.1.tgz#e45d68b00a17647b6da711bf85ed6ed47208f450"
@@ -8361,6 +8365,10 @@ raf@3.4.0, raf@^3.1.0, raf@^3.2.0, raf@^3.4.0:
 railroad-diagrams@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/railroad-diagrams/-/railroad-diagrams-1.0.0.tgz#eb7e6267548ddedfb899c1b90e57374559cddb7e"
+
+rand-token@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/rand-token/-/rand-token-0.4.0.tgz#1a565b6ad12d92dd4b30c4c4e5945e8aa24a5b3b"
 
 randexp@0.4.6:
   version "0.4.6"
@@ -8694,6 +8702,10 @@ react-load-script@^0.0.6:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/react-load-script/-/react-load-script-0.0.6.tgz#db6851236aaa25bb622677a2eb51dad4f8d2c258"
 
+react-loading-animation@^1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/react-loading-animation/-/react-loading-animation-1.4.0.tgz#6b13dd148dc8ca15bd1e4136559c7c0bc1a2797c"
+
 react-maskedinput@^4.0.1:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/react-maskedinput/-/react-maskedinput-4.0.1.tgz#e9ccfeff39c19b15ac62e4dcedc7275a3ab446df"
@@ -8806,6 +8818,12 @@ react-responsive-mixin@^0.4.0:
     enquire.js "^2.1.1"
     json2mq "^0.2.0"
 
+react-router-page-transition@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/react-router-page-transition/-/react-router-page-transition-3.1.0.tgz#a3acab479f277451fac93c3a576ab9945ab891e9"
+  dependencies:
+    promise-queue "^2.2.3"
+
 react-router-redux@^4.0.8:
   version "4.0.8"
   resolved "https://registry.yarnpkg.com/react-router-redux/-/react-router-redux-4.0.8.tgz#227403596b5151e182377dab835b5d45f0f8054e"
@@ -8902,6 +8920,13 @@ react-toastify@^3.4.2:
     glamor "^2.20.40"
     prop-types "^15.6.0"
     react-transition-group "^2.2.1"
+
+react-tooltip@^3.6.1:
+  version "3.6.1"
+  resolved "https://registry.yarnpkg.com/react-tooltip/-/react-tooltip-3.6.1.tgz#2ca993baa50d7e0271b8d13c6024445a883842eb"
+  dependencies:
+    classnames "^2.2.5"
+    prop-types "^15.6.0"
 
 react-transition-group@^2.2.1:
   version "2.4.0"

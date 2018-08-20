@@ -2,37 +2,40 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 import { Row, Col } from 'react-bootstrap';
-import Moment from 'moment';
 import { extendMoment } from 'moment-range';
+// import { Chart } from 'react-google-charts';
+
+import ReactChartJs from 'react-chartjs';
+// import HeatMap from 'react-heatmap-grid';
+import DatePicker from 'react-datepicker';
+import Loading from 'react-loading-animation';
+import Moment from 'moment';
+
 import { fetchCampaignInfo, successCampaign , fetchCampaign } from 'ducks/campaign';
 import { mapGraph, heatMapGraph } from 'ducks/elastic';
-import './Dashboard.scss';
 import Card from './Card';
-import ReactChartJs from 'react-chartjs';
-import HeatMap from 'react-heatmap-grid';
-import { Chart } from 'react-google-charts';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
+
+import './Dashboard.scss';
 
 var LineChart = ReactChartJs.Line;
 let moment = extendMoment(Moment);
 
-const chartEvents = [
-  {
-    eventName: 'select',
-    callback(chartWrapper) {
-      console.log('Selected ', chartWrapper.getChart().getSelection());
-    }
-  }
-];
+// const chartEvents = [
+//   {
+//     eventName: 'select',
+//     callback(chartWrapper) {
+//       console.log('Selected ', chartWrapper.getChart().getSelection());
+//     }
+//   }
+// ];
 
-const geooptions = {
-  title: 'Country vs. traffic',
-  hAxis: { title: 'Country', viewWindow: { min: 0, max: 40 } },
-  vAxis: { title: 'traffic', viewWindow: { min: 0, max: 40 } },
-  colorAxis: {colors: ['#81d4fa',  '#329fff']},
-  defaultColor: '#f5f5f5'
-};
+// const geooptions = {
+//   title: 'Country vs. traffic',
+//   hAxis: { title: 'Country', viewWindow: { min: 0, max: 40 } },
+//   vAxis: { title: 'traffic', viewWindow: { min: 0, max: 40 } },
+//   colorAxis: {colors: ['#81d4fa',  '#329fff']},
+//   defaultColor: '#f5f5f5'
+// };
 
 const color_list = [
   '#69d217',
@@ -278,7 +281,7 @@ class Dashboard extends Component {
     let campaignInfo = this.props.campaignInfo;
     if(campaignInfo) {
       return campaignInfo.websiteLive.map(campaign => {
-        return <div key={campaign._id} className="dropdown-item text-right" id={campaign._id} onClick={this.selectCampaign}>{campaign.campaignName}</div>;
+        return <div key={campaign._id} className="dropdown-item" id={campaign._id} onClick={this.selectCampaign}>{campaign.campaignName}</div>;
       });
     }
   }
@@ -329,8 +332,8 @@ class Dashboard extends Component {
 
   renderCampaignsIconList = (campaignList) => {
     if(campaignList)
-      return campaignList.map(campaign => {
-        return <li key={campaign.label} className="list-inline-item">
+      return campaignList.map((campaign, index) => {
+        return <li key={campaign.label+index} className="list-inline-item">
           <div className="icon-box" style={{background: campaign.pointColor}}></div>
           <div className="campaign-list-label">{campaign.label}</div>
         </li>;
@@ -341,13 +344,13 @@ class Dashboard extends Component {
 
 
   render() {
-    const yLabels = this.getHeatMapHours();
-    const xLabels = this.getDays();
-    const datas = new Array(yLabels.length)
-      .fill(0)
-      .map(() => new Array(xLabels.length).fill(0).map(() => 0));
+    // const yLabels = this.getHeatMapHours();
+    // const xLabels = this.getDays();
+    // const datas = new Array(yLabels.length)
+    //   .fill(0)
+    //   .map(() => new Array(xLabels.length).fill(0).map(() => 0));
 
-    const { campaignInfo, heatmap, map } = this.props;
+    const { profile, campaigns, campaignInfo, heatmap, map } = this.props;
     const { selectedCampaign } = this.state;
     const { userCount, totalUsers } = this.usersCount();
 
@@ -431,127 +434,128 @@ class Dashboard extends Component {
     }
 
     return (
-
-      <div className="content dashboard-inner-container">
-        <div className="container-fluid">
-          <Row className="dashboard-boxes">
-            <Col md={12}>
-              <div className="card-box">
-                <Row>
-                  <Col md={12}>
-                    <div className="btn-group campaign-dropdown">
-                      <button className="btn btn-primary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        {selectedCampaign.campaignName?selectedCampaign.campaignName:'All Campaigns'}
-                      </button>
-                      <div className="dropdown-menu">
-                        <div className="dropdown-item text-right" id={null} onClick={this.selectCampaign}>All Campaigns</div>
-                        {this.renderCampaigns()}
+      <Loading className="transition-item dashboard-transition-container" strokeWidth='2' style={{height: '700px', width: '10%'}} isLoading={!profile || !campaignInfo || !campaigns || !heatmap || !map}>
+        <div className="content dashboard-inner-container">
+          <div className="container-fluid">
+            <Row className="dashboard-boxes">
+              <Col md={12}>
+                <div className="card-box">
+                  <Row>
+                    <Col md={12}>
+                      <div className="btn-group campaign-dropdown">
+                        <button className="btn btn-primary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          {selectedCampaign.campaignName?selectedCampaign.campaignName:'All Campaigns'}
+                        </button>
+                        <div className="dropdown-menu">
+                          <div className="dropdown-item" id={null} onClick={this.selectCampaign}>All Campaigns</div>
+                          {this.renderCampaigns()}
+                        </div>
                       </div>
-                    </div>
-                    <div className="card-box pb-0 mb-0 cardbox1">
-                      <Row className="account-stats">
+                      <div className="card-box pb-0 mb-0 cardbox1">
+                        <Row className="account-stats">
+                          {this.renderCardBox(
+                            <div className=" widget-flat card-box  text-muted pb-5 pt-2 pos-vertical-center c2" onClick={()=> browserHistory.push('/campaigns')}>
+                              <p className="text-uppercase title m-b-5 fonttitle font-600 mincard-ht">Active Campaigns</p>
+                              <h3 className="m-b-10 campaign">{campaignActive}</h3>
 
-                        {this.renderCardBox(
-                          <div className=" widget-flat card-box  text-muted pb-5 pt-2 pos-vertical-center c2" onClick={()=> browserHistory.push('/campaigns')}>
-                            <p className="text-uppercase title m-b-5 fonttitle font-600 mincard-ht">Active Campaign</p>
-                            <h3 className="m-b-10 campaign">{campaignActive}</h3>
+                            </div>
+                          )}
+                          {this.renderCardBox(
+                            <div className=" widget-flat card-box  text-muted pb-5 pt-2 pos-vertical-center c2" onClick={()=> browserHistory.push('/analytics')}>
+                              <p className="text-uppercase title m-b-5 fonttitle font-600 mincard-ht">Total Visitors</p>
+                              <h3 className="m-b-10 campaign">{totalUsers?totalUsers:0}</h3>
+                            </div>
+                          )}
+                          {this.renderCardBox(
+                            <div className=" widget-flat card-box  text-muted pb-5 pt-2 pos-vertical-center c2" onClick={()=> browserHistory.push('/analytics')}>
+                              <p className="text-uppercase title m-b-5 fonttitle font-600 mincard-ht">Unique Visitors</p>
+                              <h3 className="m-b-10 profile">{userCount? Number(userCount) :0 }</h3>
+                            </div>
+                          )}
 
-                          </div>
-                        )}
-                        {this.renderCardBox(
-                          <div className=" widget-flat card-box  text-muted pb-5 pt-2 pos-vertical-center c2" onClick={()=> browserHistory.push('/analytics')}>
-                            <p className="text-uppercase title m-b-5 fonttitle font-600 mincard-ht">Total Visitors</p>
-                            <h3 className="m-b-10 campaign">{totalUsers?totalUsers:0}</h3>
-                          </div>
-                        )}
-                        {this.renderCardBox(
-                          <div className=" widget-flat card-box  text-muted pb-5 pt-2 pos-vertical-center c2" onClick={()=> browserHistory.push('/analytics')}>
-                            <p className="text-uppercase title m-b-5 fonttitle font-600 mincard-ht">Unique Visitors</p>
-                            <h3 className="m-b-10 profile">{userCount? Number(userCount) :0 }</h3>
-                          </div>
-                        )}
-
-                        {this.renderCardBox(
-                          <div className=" widget-flat card-box  text-muted pb-5 pt-2 pos-vertical-center c2" onClick={()=> browserHistory.push('/analytics')}>
-                            <p className="text-uppercase title m-b-5 fonttitle font-600 mincard-ht">Total &nbsp; Signups</p>
-                            <h3 className="m-b-10 usersignup">{userSignUps}</h3>
-                          </div>
-                        )}
-                        {this.renderCardBox(
-                          <div className=" widget-flat card-box  text-muted pb-5 pt-2 pos-vertical-center c2" onClick={()=> browserHistory.push('/analytics')}>
-                            <p className="text-uppercase title m-b-5 fonttitle font-600">Conversion &nbsp; %</p>
-                            <h3 className="m-b-10 notify">{userCount && (userSignUps/userCount)*100 ? ((userSignUps/userCount)*100).toFixed(2) : 0}</h3>
-                          </div>
-                        )}
-                      </Row>
-                    </div>
-                    <div className="graph-card">
-                      <Card
-                        statsIcon="fa fa-history"
-                        id="chartHours"
-                        category="Unique Visitors Log"
-                        stats="Updated 3 minutes ago"
-                        content={
-                          <div className="ct-chart canvas-brdr">
-                            <LineChart data={chartData} options={chartOptions} height="250" redraw />
-                          </div>
-                        }
-                      />
-                      <div className="d-inline-flex justify-content-center" style={{width:'100%'}}>
-                        <ul className="nav navbar-nav d-inline-flex">
-                          <li className="nav-item">
-                            <ul className="list-inline-mb-0">
-                              {this.renderCampaignsIconList(chartData.datasets)}
-                            </ul>
-                          </li>
-                        </ul>
+                          {this.renderCardBox(
+                            <div className=" widget-flat card-box  text-muted pb-5 pt-2 pos-vertical-center c2" onClick={()=> browserHistory.push('/analytics')}>
+                              <p className="text-uppercase title m-b-5 fonttitle font-600 mincard-ht">Total Signups</p>
+                              <h3 className="m-b-10 usersignup">{userSignUps}</h3>
+                            </div>
+                          )}
+                          {this.renderCardBox(
+                            <div className=" widget-flat card-box  text-muted pb-5 pt-2 pos-vertical-center c2" onClick={()=> browserHistory.push('/analytics')}>
+                              <p className="text-uppercase title m-b-5 fonttitle font-600 mincard-ht">Conversion&nbsp; %</p>
+                              <h3 className="m-b-10 notify">{userCount && (userSignUps/userCount)*100 ? ((userSignUps/userCount)*100).toFixed(2) : 0}</h3>
+                            </div>
+                          )}
+                        </Row>
                       </div>
-                      <hr/>
-                      <div className=" pull-left">
-                        { this.state.datePicker == 'd1' ?
-                          <div className = "customPicker">
-                            <DatePicker
-                              selected={this.state.startDate}
-                              onChange={this.handleChange}
-                            />
-                          </div>
-                          : ' ' }
-                        {this.renderDayOption('d1')}
+                      <div className="graph-card">
+                        <Card
+                          statsIcon="fa fa-history"
+                          id="chartHours"
+                          category="Unique Visitors Log"
+                          stats="Updated 3 minutes ago"
+                          content={
+                            <div className="ct-chart canvas-brdr">
+                              <LineChart data={chartData} options={chartOptions} height="250" redraw />
+                            </div>
+                          }
+                        />
+                        <div className="d-inline-flex justify-content-center" style={{width:'100%'}}>
+                          <ul className="nav navbar-nav d-inline-flex">
+                            <li className="nav-item">
+                              <ul className="list-inline-mb-0">
+                                {this.renderCampaignsIconList(chartData.datasets)}
+                              </ul>
+                            </li>
+                          </ul>
+                        </div>
+                        <hr/>
+                        <div className=" pull-left">
+                          { this.state.datePicker == 'd1' ?
+                            <div className = "customPicker">
+                              <DatePicker
+                                selected={this.state.startDate}
+                                onChange={this.handleChange}
+                              />
+                            </div>
+                            : ' ' }
+                          {this.renderDayOption('d1')}
+                        </div>
+                        <div className="pull-right audience" onClick={()=>{browserHistory.push('/analytics');}}>
+                          Audience Overview &nbsp;<i className="icon-arrow-right mt-1 pt-1"></i>
+                        </div>
+                        <div className="clearfix"></div>
                       </div>
-                      <div className="pull-right audience" onClick={()=>{browserHistory.push('/analytics');}}>
-                        Audience Overview &nbsp;<i className="icon-arrow-right mt-1 pt-1"></i>
-                      </div>
-                      <div className="clearfix"></div>
-                    </div>
-                  </Col>
-                </Row>
-                <div className="clearfix"></div>
-              </div>
-            </Col>
-          </Row>
-          <Row  className="justify-content-around text-muted mb-5 heat-graph">
-            <Col md={5} className="heatmap">
-              <HeatMap
-                xLabels={xLabels}
-                yLabels={yLabels}
-                data={(heatmap != undefined && heatmap && heatmap.message.length !== 0)?heatmap.message:datas}
-                height={16}
-              />
-            </Col>
-            <Col className="worldmap">
-              <Chart
-                chartType="GeoChart"
-                data={map?map.message:[]}
-                options={geooptions}
-                graphID="GeoChart"
-                width="100%"
-                height="500px"
-                chartEvents={chartEvents}
-              />
-            </Col>
-          </Row>
+                    </Col>
+                  </Row>
+                  <div className="clearfix"></div>
+                </div>
+              </Col>
+            </Row>
+            {/* <Row  className="justify-content-around text-muted mb-5 heat-graph">
+              <Col md={5} className="heatmap">
+                <HeatMap
+                  xLabels={xLabels}
+                  yLabels={yLabels}
+                  data={(heatmap != undefined && heatmap && heatmap.message.length !== 0)?heatmap.message:datas}
+                  height={16}
+                />
+              </Col>
+              <Col className="worldmap">
+                <Chart
+                  chartType="GeoChart"
+                  data={map?map.message:[]}
+                  options={geooptions}
+                  graphID="GeoChart"
+                  width="100%"
+                  height="500px"
+                  chartEvents={chartEvents}
+                />
+              </Col>
+            </Row> */}
+          </div>
         </div>
-      </div>
+      </Loading>
+
     );
   }
 }
@@ -574,4 +578,4 @@ const mapDispatchToProps = {
   heatMapGraph
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
+export default connect(mapStateToProps, mapDispatchToProps, null, { withRef: true })(Dashboard);
