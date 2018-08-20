@@ -1,7 +1,6 @@
 .list-modal-container {
+  padding: 10% 15% 5% 15% !important;
   min-height: 650px;
-  padding: 8%;
-  padding: 8%;
   background: #fafafa;
   border-radius: 10px;
   .list-header {
@@ -32,17 +31,17 @@
         display: flex;
         margin: 0 auto !important;
         justify-content: center;
-        width: 55%;
+        width: 45%;
         font-size: 20px;
         border-radius: 10px;
         .list-content-button-para {
           font-size: 20px;
-          margin: 10px;
+          margin: 2px;
           color: white !important;
           padding: 0;
         }
         i {
-          margin: 6%;
+          margin: 5%;
         }
       }
     }
@@ -128,5 +127,66 @@
       color: black;
       text-decoration: none;
       cursor: pointer;
+  }
+}
+
+
+@media only screen and (min-width: 1024px) and (max-width: 1300px) {
+  .list-modal-container {
+    .list-content {
+      .list1-content {
+        button {
+          i {
+            font-size: inherit;
+          }
+          .list-content-button-para {
+            font-size: 15px;
+          }
+        }
+      }
+      .list2-content {
+        .list-checklist {
+          .form-check {
+            .form-check-label {
+              font-size: initial;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 940px) and (max-width: 1024px) {
+  .list-modal-container {
+    .list-content {
+      .list1-content {
+        button {
+          i {
+            font-size: initial;
+          }
+          .list-content-button-para {
+            font-size: 13px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 940px) {
+  .list-modal-container {
+    .list-content {
+      .list1-content {
+        button {
+          i {
+            font-size: small;
+          }
+          .list-content-button-para {
+            font-size: 10px;
+          }
+        }
+      }
+    }
   }
 }

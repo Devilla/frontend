@@ -62,7 +62,7 @@ class Sidebar extends Component {
 
 
           <div id="sidebar-menu">
-            <div className="button-list ml-2 pl-1">
+            <div className="button-list">
               <Link to="/new">
                 {!openClose && this.state.collapse?
                   <button

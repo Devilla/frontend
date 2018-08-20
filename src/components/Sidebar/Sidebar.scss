@@ -97,7 +97,7 @@
 
 a.nav-link {
     &:hover:not(:focus) {
-      background-color: rgba(245, 245, 245, 0.816);
+      background-color: gray;
       color: #097fff !important;
     }
 
@@ -119,7 +119,9 @@ span {
 div {
   &#sidebar-menu {
       overflow-y: auto;
-      // height: 640px;
+      text-align: center;
+      margin-left: 0 !important;
+      padding-left: 0 !important;
   }
 
   &::-webkit-scrollbar {
@@ -163,10 +165,18 @@ button {
 
 @media only screen and (max-width: 768px) and (min-width: 100px) {
   &#side-menu {
-    max-width: 60px;
+    max-width: 70px;
+    .topbar-left {
+      .logo {
+        span {
+          display: block;
+        }
+      }
+
+    }
   }
   &#sidebar-menu {
-    max-width:60px;
+    max-width:70px;
     height: fit-content !important;
     .addnew-small-btn {
       margin: 0px -2px !important;
@@ -200,8 +210,8 @@ button {
 }
 
 a.card {
-  height: 35px;
-  width: 35px;
+  height: 2.5rem !important;
+  width: 2.5rem !important;
   background: #2a4d7c !important;
   border-radius: 5px;
   margin-left: 18px;
@@ -218,14 +228,14 @@ a.active{
   li {
   a {
   i{
-    padding-left: 5px;
-    padding-top: 13px;
+    padding-left: 1px;
+    padding-top: 18px;
     margin: 0px !important;
     font-size: 15px !important;
     line-height: 0px !important;
   }
     padding: 0px 5px !important;
-    margin: 18px 16px !important;
+    margin: 18px 14px !important;
     font-size: 15px !important;
     }
 

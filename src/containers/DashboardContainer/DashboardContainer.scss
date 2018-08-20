@@ -48,7 +48,7 @@ p {
   }
 
   .topbar {
-    padding-left: 5%;
+    padding-left: 70px;
     z-index: 999;
     position: fixed;
     top: 0px;
@@ -197,9 +197,17 @@ p {
         background: #082a52 !important;
         padding-left: 17px !important;
       }
+      .button-list{
+        margin-left: 0px;
+        margin-bottom: 0px;
+      }
       .metismenu {
+        text-align: center;
         li {
           a {
+            width: 100%;
+            padding: 15px 0px 15px 0px !important;
+            margin: 18px 0px !important;
             color: white !important;
           }
         }
@@ -209,6 +217,7 @@ p {
     background: #f9f9f9 !important;
   }
   .widget-flat{
+    padding: 0 !important;
     background: #ffffff !important;
   }
 
@@ -224,6 +233,17 @@ p {
   .btn-primary{
     background-color: #4aa5ea !important;
     border: 1px solid #4aa5ea !important;
+  }
+}
+
+@media only screen and (max-width: 1024px) and (min-width: 768px) {
+  .dashboard-container {
+    .content-page {
+      padding: 25px 25px 15px 25px !important;
+      .navbar-custom {
+        left: 70px;
+      }
+    }
   }
 }
 
@@ -261,3 +281,5 @@ p {
   background: #f9f9f9;
   min-height: 60px !important;
 }
+
+

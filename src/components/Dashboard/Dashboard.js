@@ -3,10 +3,10 @@ import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 import { Row, Col } from 'react-bootstrap';
 import { extendMoment } from 'moment-range';
-import { Chart } from 'react-google-charts';
+// import { Chart } from 'react-google-charts';
 
 import ReactChartJs from 'react-chartjs';
-import HeatMap from 'react-heatmap-grid';
+// import HeatMap from 'react-heatmap-grid';
 import DatePicker from 'react-datepicker';
 import Loading from 'react-loading-animation';
 import Moment from 'moment';
@@ -20,22 +20,22 @@ import './Dashboard.scss';
 var LineChart = ReactChartJs.Line;
 let moment = extendMoment(Moment);
 
-const chartEvents = [
-  {
-    eventName: 'select',
-    callback(chartWrapper) {
-      console.log('Selected ', chartWrapper.getChart().getSelection());
-    }
-  }
-];
+// const chartEvents = [
+//   {
+//     eventName: 'select',
+//     callback(chartWrapper) {
+//       console.log('Selected ', chartWrapper.getChart().getSelection());
+//     }
+//   }
+// ];
 
-const geooptions = {
-  title: 'Country vs. traffic',
-  hAxis: { title: 'Country', viewWindow: { min: 0, max: 40 } },
-  vAxis: { title: 'traffic', viewWindow: { min: 0, max: 40 } },
-  colorAxis: {colors: ['#81d4fa',  '#329fff']},
-  defaultColor: '#f5f5f5'
-};
+// const geooptions = {
+//   title: 'Country vs. traffic',
+//   hAxis: { title: 'Country', viewWindow: { min: 0, max: 40 } },
+//   vAxis: { title: 'traffic', viewWindow: { min: 0, max: 40 } },
+//   colorAxis: {colors: ['#81d4fa',  '#329fff']},
+//   defaultColor: '#f5f5f5'
+// };
 
 const color_list = [
   '#69d217',
@@ -344,11 +344,11 @@ class Dashboard extends Component {
 
 
   render() {
-    const yLabels = this.getHeatMapHours();
-    const xLabels = this.getDays();
-    const datas = new Array(yLabels.length)
-      .fill(0)
-      .map(() => new Array(xLabels.length).fill(0).map(() => 0));
+    // const yLabels = this.getHeatMapHours();
+    // const xLabels = this.getDays();
+    // const datas = new Array(yLabels.length)
+    //   .fill(0)
+    //   .map(() => new Array(xLabels.length).fill(0).map(() => 0));
 
     const { profile, campaigns, campaignInfo, heatmap, map } = this.props;
     const { selectedCampaign } = this.state;
@@ -453,7 +453,6 @@ class Dashboard extends Component {
                       </div>
                       <div className="card-box pb-0 mb-0 cardbox1">
                         <Row className="account-stats">
-                          <hr className="account-stats-cut" />
                           {this.renderCardBox(
                             <div className=" widget-flat card-box  text-muted pb-5 pt-2 pos-vertical-center c2" onClick={()=> browserHistory.push('/campaigns')}>
                               <p className="text-uppercase title m-b-5 fonttitle font-600 mincard-ht">Active Campaign</p>
@@ -482,7 +481,7 @@ class Dashboard extends Component {
                           )}
                           {this.renderCardBox(
                             <div className=" widget-flat card-box  text-muted pb-5 pt-2 pos-vertical-center c2" onClick={()=> browserHistory.push('/analytics')}>
-                              <p className="text-uppercase title m-b-5 fonttitle font-600">Conversion &nbsp; %</p>
+                              <p className="text-uppercase title m-b-5 fonttitle font-600 mincard-ht">Conversion &nbsp; %</p>
                               <h3 className="m-b-10 notify">{userCount && (userSignUps/userCount)*100 ? ((userSignUps/userCount)*100).toFixed(2) : 0}</h3>
                             </div>
                           )}
@@ -532,7 +531,7 @@ class Dashboard extends Component {
                 </div>
               </Col>
             </Row>
-            <Row  className="justify-content-around text-muted mb-5 heat-graph">
+            {/* <Row  className="justify-content-around text-muted mb-5 heat-graph">
               <Col md={5} className="heatmap">
                 <HeatMap
                   xLabels={xLabels}
@@ -552,7 +551,7 @@ class Dashboard extends Component {
                   chartEvents={chartEvents}
                 />
               </Col>
-            </Row>
+            </Row> */}
           </div>
         </div>
       </Loading>
