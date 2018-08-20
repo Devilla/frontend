@@ -10,15 +10,11 @@ const CampaignSettings = (props) => {
   return (
     <div className="col-md-12 tab-notification-container">
       <div className="card-box tab-notification-box">
-        <div className="ml-3 mt-1 new-campaign-header">
-          <i className="fi-layers mr-2 mt-1"></i>
+        <div className=" mt-3 new-campaign-header">
+          
           <h4 className=" header-title">{props.campaign
             ? props.campaign.websiteUrl
-            : 'http://localhost:3000'} {' - '}</h4><p className="textTransform  header-title">{props.campaign
-            ? props.campaign.campaignName
-            : 'http://localhost:3000'}
-          </p>
-
+            : 'http://localhost:3000'}</h4>
 
         </div>
         <div className="modal fade show-modal" id="myModallive" role="dialog">
