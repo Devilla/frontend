@@ -50,10 +50,10 @@
         }
         font-family: "Rubik", sans-serif;
         padding: 3% 5%;
-        letter-spacing: 0.10em;
-        font-size: 15px;
+        letter-spacing: 0.09em;
+        font-size: 14px;
         font-weight: 500;
-        text-transform: uppercase;
+        text-transform: capitalize;
       }
     }
   }
@@ -103,6 +103,7 @@
 
       & .icon-arrow-left {
         padding: 10px !important;
+        font-size: 12px;
          &:hover {
            background-color: #dbdada !important;
          }

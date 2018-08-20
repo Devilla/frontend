@@ -28,7 +28,7 @@ const Header = ({
       <ConnectionStatus />
       <div className="nav-topbar-flex">
         <div className="topbar-left">
-          <h4><Link onClick={() => browserHistory.goBack()}><i className="icon-arrow-left mr-1"></i></Link>{children.props.location.pathname == '/new'? 'Campaign Setting' :children.props.location.pathname.replace(/^\/+/g, '')}</h4>
+          <h4><Link onClick={() => browserHistory.goBack()}><i className="icon-arrow-left"></i></Link>{children.props.location.pathname == '/new'? 'Campaign Setting' :children.props.location.pathname.replace(/^\/+/g, '')}</h4>
         </div>
         {/* <div className="topbar-left-hamburger">
           <h4><Link onClick={openCloseSidebar}><i className={openClose?'fa fa-times mr-1':'fa fa-bars mr-1'}></i></Link></h4>
