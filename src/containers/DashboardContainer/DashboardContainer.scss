@@ -48,7 +48,7 @@ p {
   }
 
   .topbar {
-    padding-left: 5%;
+    padding-left: 70px;
     z-index: 999;
     position: fixed;
     top: 0px;
@@ -224,6 +224,17 @@ p {
   .btn-primary{
     background-color: #4aa5ea !important;
     border: 1px solid #4aa5ea !important;
+  }
+}
+
+@media only screen and (max-width: 1024px) and (min-width: 768px) {
+  .dashboard-container {
+    .content-page {
+      padding: 25px 25px 15px 25px !important;
+      .navbar-custom {
+        left: 70px;
+      }
+    }
   }
 }
 
