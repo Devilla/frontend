@@ -28,27 +28,30 @@ const Header = ({
       <ConnectionStatus />
       <div className="nav-topbar-flex">
         <div className="topbar-left">
-          <h4><Link onClick={() => browserHistory.goBack()}><i className="icon-arrow-left mr-1"></i></Link>{children.props.location.pathname == '/new'? 'Campaign Setting' :children.props.location.pathname.replace(/^\/+/g, '')}</h4>
+          <h4><Link onClick={() => browserHistory.goBack()}><i className="icon-arrow-left"></i></Link>{children.props.location.pathname == '/new'? 'Campaign Setting' :children.props.location.pathname.replace(/^\/+/g, '')}</h4>
         </div>
         {/* <div className="topbar-left-hamburger">
           <h4><Link onClick={openCloseSidebar}><i className={openClose?'fa fa-times mr-1':'fa fa-bars mr-1'}></i></Link></h4>
         </div> */}
-        <ul className="list-unstyled list-inline topbar-right float-right mb-0 nav-custom-header">
+        <ul className="list-unstyled list-inline topbar-right float-right ml-2 mb-0 nav-custom-header">
           <li className="dropdown notification-list">
-            <a
-              className="nav-link dropdown-toggle nav-user"
-              data-toggle="dropdown"
-              role="button"
-              aria-haspopup="false"
-              aria-expanded="false"
-              style={{cursor:'pointer'}}
-              onClick={openCloseDropdown}
-            >
-              <div className="profile-dropdown">
+            <div className="profile-dropdown">
+              <a
+                className="nav-link dropdown-toggle nav-user"
+                data-toggle="dropdown"
+                role="button"
+                aria-haspopup="false"
+                aria-expanded="false"
+                style={{cursor:'pointer'}}
+                onClick={openCloseDropdown}
+              >
+              
                 <div className="avatar" ><span className="profile-name">{username ? username.charAt(0).toUpperCase():'?'}</span></div>
                 <div className="full-name" ><span>{username ? username.charAt(0).toUpperCase() + username.slice(1): 'Anonymous'} &nbsp;<i className="icon-arrow-down"></i></span></div>
-              </div>
-            </a>
+              
+              </a>
+            </div>
+
             <div className="dropdown-menu dropdown-menu-right dropdown-menu-animated profile-dropdown" style={dropdownStyle}>
               <div className="dropdown-item noti-title">
                 <h6 className="text-overflow m-0"></h6>

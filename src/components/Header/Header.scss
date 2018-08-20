@@ -6,23 +6,26 @@
     justify-content: space-evenly;
   }
     .avatar {
-      width: 38px;
-      height: 38px;
+      width: 30px;
+      height: 30px;
       border-radius: 50%;
-      font-size: 14px;
+      font-size: 13px;
       background-color: #22d197;
       background-position: center center;
       text-align: center;
       color: #fefefe;
     }
 
-    .full-name {
-      font-size: 14px;
-    }
-
-    .icon-arrow-down{
-      font-size: 13px;
-    }
+      .full-name {
+          font-size: 13px;
+          margin-top: -30px;
+          padding-left: 39px;
+          width: 180px;
+          color: #6f6f6f;
+      }
+      .icon-arrow-down{
+        font-size: 13px;
+      }
 
   .progress {
     background: #fafafa !important;
@@ -47,10 +50,10 @@
         }
         font-family: "Rubik", sans-serif;
         padding: 3% 5%;
-        letter-spacing: 0.10em;
-        font-size: 15px;
+        letter-spacing: 0.09em;
+        font-size: 14px;
         font-weight: 500;
-        text-transform: uppercase;
+        text-transform: capitalize;
       }
     }
   }
@@ -61,8 +64,8 @@
 
   .nav-custom-header {
     .nav-user {
-      line-height: 37px !important;
-      margin: 10% 0 0;
+      line-height: 30px !important;
+      margin: 46% 0 0;
     }
   }
 
@@ -100,6 +103,7 @@
 
       & .icon-arrow-left {
         padding: 10px !important;
+        font-size: 12px;
          &:hover {
            background-color: #dbdada !important;
          }

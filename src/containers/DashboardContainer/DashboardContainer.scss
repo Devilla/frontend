@@ -195,7 +195,11 @@ p {
       left: 0;
       .topbar-left{
         background: #082a52 !important;
-        padding-left: 15px !important;
+        padding-left: 17px !important;
+      }
+      .button-list{
+        margin-left: 0px;
+        margin-bottom: 0px;
       }
       .metismenu {
         text-align: center;
@@ -218,7 +222,7 @@ p {
   }
 
   .card{
-    background: #f9f9f9 !important;
+    background: #f9f9f9;
   }
   .metismenu{
     background: #082a52;
@@ -277,3 +281,5 @@ p {
   background: #f9f9f9;
   min-height: 60px !important;
 }
+
+

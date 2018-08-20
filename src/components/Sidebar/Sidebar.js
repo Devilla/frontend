@@ -38,7 +38,7 @@ class Sidebar extends Component {
           {!openClose && this.state.collapse?
             <div
               className="topbar-left"
-              style={{ width: '50px' }}
+              style={{ width: '53px' }}
             >
               <Link to="/dashboard" className="logo">
                 <span>
@@ -62,7 +62,7 @@ class Sidebar extends Component {
 
 
           <div id="sidebar-menu">
-            <div className="button-list pl-2">
+            <div className="button-list">
               <Link to="/new">
                 {!openClose && this.state.collapse?
                   <button
@@ -103,9 +103,9 @@ class Sidebar extends Component {
                           }
                         </Link>
                         :
-                        <Link to={prop.path} className={prop.upgrade && disableButton ? 'new disabled-link' : (disableButton || campaignValidation) && prop.name != 'Getting Started' ? 'disabled-link' : prop.upgrade ? 'new nav-link' : 'nav-link'} disabled={(disableButton || campaignValidation)  && prop.name != 'Getting Started'} activeClassName="active">
+                        <Link to={prop.path} data-tip={prop.name} data-place="right" className={prop.upgrade && disableButton ? 'new disabled-link' : (disableButton || campaignValidation) && prop.name != 'Getting Started' ? 'disabled-link' : prop.upgrade ? 'new nav-link' : 'nav-link card'} disabled={(disableButton || campaignValidation)  && prop.name != 'Getting Started'} activeClassName="active">
                           {
-                            prop.upgrade ? '' : <i data-tip={prop.name} data-place="right" className={prop.icon} ></i>
+                            prop.upgrade ? '' : <i className={prop.icon} ></i>
                           }
                           {openClose && this.state.collapse ?
                             <span>{prop.upgrade}{prop.name}</span>

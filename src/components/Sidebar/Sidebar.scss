@@ -208,3 +208,38 @@ button {
     content: "\E023";
     color: #a0a3b3;
 }
+
+a.card {
+  height: 2.5rem !important;
+  width: 2.5rem !important;
+  background: #2a4d7c !important;
+  border-radius: 5px;
+  margin-left: 18px;
+  margin-bottom: 18px;
+  
+}
+a.active{
+  background: #1e68c6 !important;
+}
+
+
+#sidebar-menu{
+  ul {
+  li {
+  a {
+  i{
+    padding-left: 1px;
+    padding-top: 18px;
+    margin: 0px !important;
+    font-size: 15px !important;
+    line-height: 0px !important;
+  }
+    padding: 0px 5px !important;
+    margin: 18px 14px !important;
+    font-size: 15px !important;
+    }
+
+  }
+  }
+
+}
