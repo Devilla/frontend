@@ -24,6 +24,37 @@ const Header = ({
         <ProgressBar bsStyle='info'  now={0} />
       }
       <ConnectionStatus />
+      {/* <div className="custom-navbar">
+        <div className="custom-navbar-left">
+          <h4><Link onClick={() => browserHistory.goBack()}><i className="icon-arrow-left"></i></Link>{children.props.location.pathname == '/new'? 'Campaign Setting' :children.props.location.pathname.replace(/^\/+/g, '')}</h4>
+        </div>
+        <div className="custom-navbar-right">
+          <button className="btn btn-primary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <div className="avatar" ><span className="profile-name">{username ? username.charAt(0).toUpperCase():'?'}</span></div>
+            <span>{username ? username.charAt(0).toUpperCase() + username.slice(1): 'Anonymous'} &nbsp;
+            </span>
+            {dropdownStyle.visibility == 'visible'?
+              <i className="icon-arrow-up"></i>
+              :
+              <i className="icon-arrow-down"></i>
+            }
+          </button>
+          <div className="dropdown-menu">
+            <div className="dropdown-item" id={1} onClick={this.addPageUrl} onClick={openProfile} >
+              <i className="fi-head"></i>
+              Profile
+            </div>
+            <div className="dropdown-item" id={1} onClick={this.openCloseModal} onClick={renderHelp} >
+              <i className="fi-help"></i>
+              Support
+            </div>
+            <div className="dropdown-item" id={2} onClick={logout} >
+              <i className="fi-power"></i>
+              Logout
+            </div>
+          </div>
+        </div>
+      </div> */}
       <div className="nav-topbar-flex">
         <div className="topbar-left">
           <h4><Link onClick={() => browserHistory.goBack()}><i className="icon-arrow-left"></i></Link>{children.props.location.pathname == '/new'? 'Campaign Setting' :children.props.location.pathname.replace(/^\/+/g, '')}</h4>
@@ -43,12 +74,16 @@ const Header = ({
                 <div className="avatar" ><span className="profile-name">{username ? username.charAt(0).toUpperCase():'?'}</span></div>
                 <div className="full-name" >
                   <span>{username ? username.charAt(0).toUpperCase() + username.slice(1): 'Anonymous'} &nbsp;
-                    {dropdownStyle.visibility == 'visible'?
-                      <i className="icon-arrow-up"></i>
-                      :
-                      <i className="icon-arrow-down"></i>
-                    }
+
                   </span>
+
+                </div>
+                <div>
+                  {dropdownStyle.visibility == 'visible'?
+                    <i className="icon-arrow-up"></i>
+                    :
+                    <i className="icon-arrow-down"></i>
+                  }
                 </div>
 
               </a>
