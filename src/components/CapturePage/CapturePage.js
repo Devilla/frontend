@@ -299,8 +299,8 @@ class CapturePage extends Component {
                 <h4 className="lead text-center m-b-30 m-t-20">Submit your conversion page</h4>
               </Col>
             </Row>
-            <Row>
-              <Col md={10}>
+            <Row style={{justifyContent: 'center'}}>
+              <Col md={8}>
                 <div className="pl-4 input-group col-md-12">
                   <label className="pt-2 pl-1 pr-3 text-muted url-field">{this.props.campaign
                     ? 'http://'+this.props.campaign.websiteUrl
@@ -314,16 +314,17 @@ class CapturePage extends Component {
                     onKeyUp={(e) => e.keyCode === 13?this.addPageUrl():null}
                   />
                   <span className="input-group-btn col-md-3" id="urladd">
-                    <span className="btn btn-primary nav nav-pills waves-light waves-effect number pl-5 pr-5" onClick={this.addPageUrl}>
-                      Add
-                    </span>
+                    <div className="btn-group campaign-dropdown">
+                      <button className="btn btn-primary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Action
+                      </button>
+                      <div className="dropdown-menu">
+                        <div className="dropdown-item" id={1} onClick={this.addPageUrl} >Add Path</div>
+                        <div className="dropdown-item last-item-dropdown" id={1} onClick={this.openCloseModal} >Add SubDomain</div>
+                      </div>
+                    </div>
                   </span>
                 </div>
-              </Col>
-              <Col md={2}>
-                <span className="btn btn-primary  subdomain" onClick={this.openCloseModal} >
-                  <i className=" mdi mdi-plus-circle-outline"></i>&nbsp;Add SubDomain
-                </span>
               </Col>
             </Row>
             <Row>

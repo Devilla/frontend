@@ -5,6 +5,17 @@
   .input-group {
     padding-bottom: 2%;
   }
+  .btn-sm {
+    padding: .4rem 1.6rem !important;
+    border-radius: 5px !important;
+  }
+  .dropdown-item {
+    padding: 10px 1.5rem !important;
+    border-bottom: 1px solid lightgrey !important;
+  }
+  .dropdown-item:last-child {
+    border-bottom: 0 !important;
+  }
   .mdi-plus-circle-outline {
     font-size: 17px;
     position: absolute;
