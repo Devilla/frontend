@@ -6,6 +6,10 @@
       .profile-dropdown {
         margin-left: 542px;
         margin-top: -72px;
+        i {
+          margin-right: 10px;
+          color: gray;
+        }
         // display: flex;
         // justify-content: space-evenly;
       }
@@ -32,13 +36,13 @@
       }
 
       .full-name {
-          font-size: 13px;
+          font-size: 15px;
           margin-top: -30px;
           padding-left: 39px;
           width: 180px;
           color: #6f6f6f;
       }
-      .icon-arrow-down{
+      .icon-arrow-down, .icon-arrow-up{
         font-size: 8px;
         -webkit-text-stroke: 1px black;;
       }
@@ -78,10 +82,19 @@
             background-color: white !important;
           }
           .dropdown-menu.dropdown-menu-right {
+            box-shadow: 1px 1px 6px 0px #888888;
             transform: none !important;
             top: 60% !important;
             right: 0 !important;
             left: 0% !important;
+            margin: 532px;
+            width: 180px;
+            .notify-item {
+              padding: 12px 20px;
+            }
+            .logout-btn {
+              border-top: 1px solid lightgray;
+            }
           }
         }
       }

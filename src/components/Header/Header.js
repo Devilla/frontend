@@ -41,15 +41,20 @@ const Header = ({
               >
 
                 <div className="avatar" ><span className="profile-name">{username ? username.charAt(0).toUpperCase():'?'}</span></div>
-                <div className="full-name" ><span>{username ? username.charAt(0).toUpperCase() + username.slice(1): 'Anonymous'} &nbsp;<i className="icon-arrow-down"></i></span></div>
+                <div className="full-name" >
+                  <span>{username ? username.charAt(0).toUpperCase() + username.slice(1): 'Anonymous'} &nbsp;
+                    {dropdownStyle.visibility == 'visible'?
+                      <i className="icon-arrow-up"></i>
+                      :
+                      <i className="icon-arrow-down"></i>
+                    }
+                  </span>
+                </div>
 
               </a>
             </div>
 
             <div className="dropdown-menu dropdown-menu-right dropdown-menu-animated profile-dropdown" style={dropdownStyle}>
-              <div className="dropdown-item noti-title">
-                <h6 className="text-overflow m-0"></h6>
-              </div>
 
               <a href="javascript:void(0);" className="dropdown-item notify-item">
                 <i className="fi-head"></i>
@@ -61,7 +66,7 @@ const Header = ({
                 <span>Support</span>
               </a>
 
-              <a href="javascript:void(0);" className="dropdown-item notify-item" onClick={logout} >
+              <a href="javascript:void(0);" className="dropdown-item notify-item logout-btn" onClick={logout} >
                 <i className="fi-power"></i>
                 <span>Logout</span>
               </a>
