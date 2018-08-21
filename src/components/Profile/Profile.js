@@ -182,18 +182,17 @@ class Profile extends Component {
         <div className="content fill profile-container">
           <Grid fluid={true}>
             <Col sm={12}>
-              <div className="profile-user-box card-box" >
+              <div className="profile-user-box card-box mb-0" >
                 <Row>
                   <Col sm={2}>
                     <span className="pull-left mr-3"><img src={profile.image?profile.image:'https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg'} alt="User profile" className="thumb-lg rounded-circle" /></span>
                     <div className=" media-body text-white">
-                      <h4 className="mt-1 mb-1 font-18">Username</h4>
-                      <p className="text-light mb-0">Country</p>
+                      <h4 className="mt-1 mb-1 text-dark font-18">Username</h4>
                     </div>
                   </Col>
                   <Col sm={8}>
                     <div className="card-box tilebox-one text-center  ">
-                      <h6 className="text-muted text-uppercase mt-0">Plan Type </h6><h3> {this.props.profile && this.props.profile.plan?this.props.profile.plan.name:null}</h3>
+                      <h6 className="text-muted text-uppercase font-14 mt-0">Plan Type </h6><h3> {this.props.profile && this.props.profile.plan?this.props.profile.plan.name:null}</h3>
                     </div>
                   </Col>
                   <Col md={2}>
@@ -208,10 +207,10 @@ class Profile extends Component {
             </Col>
             <Row>
               <Col md={12}>
-                <h4 className="header-title m-b-20">Personal Information</h4>
+                <h4 className="header-title font-14 text-muted">Personal Information</h4>
                 <div className="panel-body">
                   <hr />
-                  <div className="text-left">
+                  <div className="text-left mt-4">
                     <form>
                       <Row>
                         <Col md={6}>
@@ -226,8 +225,6 @@ class Profile extends Component {
                             <FormControl type="text" value={profile.lastName} autoComplete='family-name' placeholder="Last Name" id="lastName" onChange={(e) => this.handleStateChange(e)} />
                           </FormGroup>
                         </Col>
-                      </Row>
-                      <Row>
                         <Col md={6}>
                           <span className="text-muted font-13 p"><strong>Phone :</strong> </span>
                           <FormGroup>
@@ -240,8 +237,6 @@ class Profile extends Component {
                             <FormControl type="text" value={user.email} autoComplete='email' placeholder="Email Address" id="email" disabled />
                           </FormGroup>
                         </Col>
-                      </Row>
-                      <Row>
                         <Col md={6}>
                           <span className="text-muted font-13 p"><strong>Address :</strong> </span>
                           <FormGroup>
@@ -277,8 +272,6 @@ class Profile extends Component {
                             </FormControl>
                           </FormGroup>
                         </Col>
-                      </Row>
-                      <Row>
                         <Col md={6}>
                           <span className="text-muted font-13 p"><strong>Company :</strong> </span>
                           <FormGroup>
@@ -286,19 +279,22 @@ class Profile extends Component {
                           </FormGroup>
                         </Col>
                       </Row>
-                      <Col md={12} className="profile-buttons">
-                        <div className="text-right save">
-                          <button type="button" className="btn btn-primary waves-effect" onClick={this.updateProfile}>
-                            <i className="mdi mdi-account-settings-variant mr-1"></i>  {this.props.loading ? ( this.state.savedtext
-                            )
-                              : 'Save Profile'}
 
-                          </button>
-                          <button type="button" className="btn btn-primary waves-effect" data-toggle="modal" data-target="#deletemodal">
-                            <i className="mdi mdi-settings mr-1"></i>More Options
-                          </button>
-                        </div>
-                      </Col>
+                      <Row>
+                        <Col md={12} className="profile-buttons">
+                          <div className="text-right mt-0 save">
+                            <button type="button" className="btn btn-primary waves-effect" onClick={this.updateProfile}>
+                              <i className="mdi mdi-account-settings-variant mr-1"></i>  {this.props.loading ? ( this.state.savedtext
+                              )
+                                : 'Save Profile'}
+
+                            </button>
+                            <button type="button" className="btn btn-primary waves-effect" data-toggle="modal" data-target="#deletemodal">
+                              <i className="mdi mdi-settings mr-1"></i>More Options
+                            </button>
+                          </div>
+                        </Col>
+                      </Row>
                     </form>
                     <div className="modal fade show-modal" id="deletemodal" role="dialog">
                       <div className="modal-dialog">
