@@ -34,7 +34,7 @@ export default class Settings extends Component{
             <div className="thumbs ">
               <div className="link-content-icon">
                 <img src="https://web.freshchat.com/assets/images/settings/billing-715beb90d3a115fee034546af3f350ad.svg"/>
-                <Link to="/billing-details"><p>Billing</p></Link>
+                <Link to="/fresh-billing"><p>Billing</p></Link>
               </div>
             </div>
           </div>

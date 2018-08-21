@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Gdpr,FacebookFooter,LinkedinFooter,TwitterFooter } from 'img';
+import { Gdpr, FacebookFooter, LinkedinFooter, TwitterFooter } from 'img';
 import { Link } from 'react-router';
 import './WebsiteFooter.scss';
 
@@ -49,6 +49,7 @@ class WebsiteFooter extends Component {
                       <li className="type--uppercase col-sm-12 col-md-12 h6"><Link href="https://blog.useinfluence.co/"> Blog </Link></li>
                       <li className="type--uppercase col-sm-12 col-md-12 h6"><Link href="https://angel.co/influence-8/jobs" target='_blank'> Careers </Link> </li>
                       <li className="type--uppercase col-sm-12 col-md-12 h6"><Link to="/contact"> Contact Us </Link></li>
+                      <li className="type--uppercase col-sm-12 col-md-12 h6"><Link href="https://useinfluence.freshdesk.com/support/tickets/new" target="_blank"> Support </Link></li>
                     </ul>
                   </div>
 

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router';
 import './WebsitePricing.scss';
 import { Animated } from'react-animated-css';
+import Loading from 'react-loading-animation';
 
 
 class WebsitePricing extends Component {
@@ -71,7 +72,7 @@ class WebsitePricing extends Component {
 
   renderPriceList = () => {
 
-    let planList =this.state.servicebotPlans.filter(plan =>
+    let planList = this.state.servicebotPlans.filter(plan =>
       (this.state.planPeriod === 12 ? plan.interval === 'year': plan.interval === 'month') &&
       (plan.references.service_template_properties[0].name !== 'coupon')
     );
@@ -79,70 +80,73 @@ class WebsitePricing extends Component {
       return b.id - a.id;
     });
 
-    return planList.map(plan => {
-      return <div key={plan.name} className="col-md-3 pl-3 pr-0 cards">
-        <div className="pricing pricing-1  pr-0 pl-0 pricing-tab"  style={ /\b(year)\b/m.test(plan.interval) ? {minHeight:'820px'} : {minHeight:'720px'}} >
-          <div className={`pricing__head ${this.stellarFeel(plan.name) }  boxed boxed--border boxed--lg price-head`}>
-            <h3>{this.filterPlanName(plan.name)}</h3>
-            <span className="h1">
-              <span className="pricing__dollar">$</span>
-              <span>{plan.interval === 'year' ? plan.amount/1000 : plan.amount/100}</span>
-            </span>
-            {plan.interval === 'year' ?  <p className= 'mt-0 mb-0'><i> 2 Months FREE </i></p> :  ''}
-          </div>
-          <hr  className = { /\b(year)\b/m.test(plan.interval) && /\b(Advanced)\b/m.test(plan.name) ? 'makeAlignConst' : '' }/>
-          <ul className='h6'>
-            <li className="visitors-content">
-              <span className="bg--primary-1"></span>
-              <span className="h3">
-                {plan.description}
+    if(planList.length)
+      return planList.map(plan => {
+        return <div key={plan.name} className="col-md-3 pl-3 pr-0 cards">
+          <div className="pricing pricing-1  pr-0 pl-0 pricing-tab"  style={ /\b(year)\b/m.test(plan.interval) ? {minHeight:'820px'} : {minHeight:'720px'}} >
+            <div className={`pricing__head ${this.stellarFeel(plan.name) }  boxed boxed--border boxed--lg price-head`}>
+              <h3>{this.filterPlanName(plan.name)}</h3>
+              <span className="h1">
+                <span className="pricing__dollar">$</span>
+                <span>{plan.interval === 'year' ? plan.amount/1000 : plan.amount/100}</span>
               </span>
-              <p className=" mt-0 mb-0 visitors-text">Unique visitors</p>
-            </li><hr/>
-            <li className="text-left pl-5">
-              <span className="checkmark bg--primary-1"></span>
-              <span className="h5 inline-block">
-                Unlimited Notifications</span>
-            </li>
+              {plan.interval === 'year' ?  <p className= 'mt-0 mb-0'><i> 2 Months FREE </i></p> :  ''}
+            </div>
+            <hr  className = { /\b(year)\b/m.test(plan.interval) && /\b(Advanced)\b/m.test(plan.name) ? 'makeAlignConst' : '' }/>
+            <ul className='h6'>
+              <li className="visitors-content">
+                <span className="bg--primary-1"></span>
+                <span className="h3">
+                  {plan.description}
+                </span>
+                <p className=" mt-0 mb-0 visitors-text">Unique visitors</p>
+              </li><hr/>
+              <li className="text-left pl-5">
+                <span className="checkmark bg--primary-1"></span>
+                <span className="h5 inline-block">
+                  Unlimited Notifications</span>
+              </li>
 
-            <li className="text-left pl-5">
-              <span className="checkmark bg--primary-1"></span>
-              <span className="h5 inline-block">Unlimited Domains</span>
-            </li>
-            <li className="text-left pl-5">
-              <span className="checkmark bg--primary-1"></span>
-              <span className="h5 inline-block">Custom Settings</span>
-            </li>
+              <li className="text-left pl-5">
+                <span className="checkmark bg--primary-1"></span>
+                <span className="h5 inline-block">Unlimited Domains</span>
+              </li>
+              <li className="text-left pl-5">
+                <span className="checkmark bg--primary-1"></span>
+                <span className="h5 inline-block">Custom Settings</span>
+              </li>
 
-            <li className="text-left pl-5">
-              <span className="checkmark bg--primary-1"></span>
-              <span className="h5 inline-block">All Notification Types</span>
-            </li>
-            <li className="text-left pl-5">
-              <span className="checkmark bg--primary-1"></span>
-              <span className="h5 inline-block">Priority Support</span>
-            </li>
-            <li className="text-left pl-5">
-              <span className="checkmark bg--primary-1"></span>
-              <span className="h5 inline-block">Beta Features</span>
-            </li>
-            <li className="text-left pl-5">
-              <span className=" bg--primary-1"></span>
-              <span>&nbsp;</span>
-            </li>
-          </ul>
+              <li className="text-left pl-5">
+                <span className="checkmark bg--primary-1"></span>
+                <span className="h5 inline-block">All Notification Types</span>
+              </li>
+              <li className="text-left pl-5">
+                <span className="checkmark bg--primary-1"></span>
+                <span className="h5 inline-block">Priority Support</span>
+              </li>
+              <li className="text-left pl-5">
+                <span className="checkmark bg--primary-1"></span>
+                <span className="h5 inline-block">Beta Features</span>
+              </li>
+              <li className="text-left pl-5">
+                <span className=" bg--primary-1"></span>
+                <span>&nbsp;</span>
+              </li>
+            </ul>
 
-          <Link className="btn btn--primary col-md-12 text-center  starttrial-btn" to="/signup" >
-            <span className="btn__text">Start Free Trial</span>
-          </Link>
-        </div>
-      </div>;
-    });
+            <Link className="btn btn--primary col-md-12 text-center  starttrial-btn" to="/signup" >
+              <span className="btn__text">Start Free Trial</span>
+            </Link>
+          </div>
+        </div>;
+      });
+    else
+      return <Loading strokeWidth="2" style={{height: '500px', width: '10%'}} isLoading={true} />;
   }
 
   render() {
     return (
-      <div className="transition-item websitepricing-container">
+      <div className="websitepricing-container">
         <div className="main-container">
           <section className="text-center bg--secondary pricing-title">
             <div className="container">
@@ -179,7 +183,7 @@ class WebsitePricing extends Component {
             isVisible={true}>
             <section className="text-center unpad--top">
               <div className="container">
-                <div className="row price-cards">
+                <div className="row price-cards" style={{minHeight: '500px'}}>
                   {this.renderPriceList()}
                 </div>
               </div>

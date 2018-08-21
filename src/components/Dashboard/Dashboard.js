@@ -452,6 +452,7 @@ class Dashboard extends Component {
                         </div>
                       </div>
                       <div className="card-box pb-0 mb-0 cardbox1">
+
                         <Row className="account-stats">
                           <hr className="account-stats-cut" />
                           {this.renderCardBox(

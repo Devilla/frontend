@@ -73,14 +73,7 @@ class WebsiteHome extends Component {
         visitorText: ' people '
       }
     };
-
-
   }
-
-
-
-
-
 
   render() {
     const settings = {
@@ -213,7 +206,7 @@ class WebsiteHome extends Component {
                   <div className="mainImg">
                     <img alt="Swivelscreen" src={Swivelscreen} />
 
-                    <Slider {...settings} className="im1">
+                    <Slider {...settings} className="im1 fire-notification-container">
                       <div><NotificationView tab='3' animation='' display='block' position='' notificationPanelStyle={this.state.notificationPanelStyle}/></div>
                       <div><NotificationView tab='3.1' animation='' display='block' position='' notificationPanelStyle={this.state.notificationPanelStyle}/></div>
                     </Slider>

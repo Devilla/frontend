@@ -11,7 +11,7 @@
 
 .customer-header {
   .progress {
-      background: #fff !important;
+      background: #f9f9f9 !important;
   }
 }
 .dashboard-container {
@@ -24,12 +24,12 @@
     }
 
  .notification-list {
-   background-color: #fff!important;
-    margin-left: 372px!important;
+   background-color: #f9f9f9!important;
+    margin-left: 0px!important;
 }
 
 p {
-    margin-top: 29px;
+    margin-top: 21px;
     color: #98a6ad !important;
     line-height: 1.6;
     font-size: 13px;
@@ -48,17 +48,13 @@ p {
   }
 
   .topbar {
-    margin-left: 17%;
+    margin-left: 5%;
     z-index: 2;
     position: fixed;
-    top: 0;
+    top: 5px;
     left: 0;
-    width: 84%;
+    width: 95%;
     height: 50px !important;
-    background: #fafafa;
-    .nav-custom-header {
-          background: #fff;
-    }
   }
 
   .dashboard-content {
@@ -189,13 +185,37 @@ p {
   .side-menu {
       width: 240px;
       z-index: 1!important;
-      background: #ffffff;
+      background: #082a52 !important;
       bottom: 0;
       margin-top: 0;
       padding-bottom: 30px;
       position: fixed;
       top: 0;
       left: 0;
+      .topbar-left{
+      background: #082a52 !important;
+      padding-left: 15px !important;
+      }
+  }
+  .card-box{
+    background: #f9f9f9 !important;
+  }
+  .widget-flat{
+    background: #ffffff !important;
+  }
+
+  .card{
+    background: #f9f9f9 !important;
+  }
+  .metismenu{
+    background: #082a52;
+  }
+  .user-box{
+    background: #082a52;
+  }
+  .btn-primary{
+    background-color: #4aa5ea !important;
+    border: 1px solid #4aa5ea !important;
   }
 }
 
@@ -207,6 +227,7 @@ p {
       margin-left: 15% !important;
       .card-box {
         padding: 20px 20px 0px 20px !important;
+        background: #f9f9f9 !important;
       }
     }
     .modal {
@@ -224,4 +245,11 @@ p {
       }
     }
   }
+}
+
+
+.navbar-custom {
+  box-shadow: 0px 1px 1px 0px #e5e5e5;
+  background: #f9f9f9;
+  min-height: 60px !important;
 }
