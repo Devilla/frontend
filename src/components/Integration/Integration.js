@@ -49,6 +49,13 @@ class Integrations extends Component {
   channelsList = () => {
     return (
       <div>
+        <Row className="mb-5 navbar-custom integrations-header">
+          
+          <div className="col-xl-12"><h3 className="integrationheader-1"> Integrations </h3></div>
+          <div className="col-xl-12"><p className=" mb-5 h6 integrationheader-2"> The best of all worlds - Use Influence with your favourite apps </p></div>
+          
+        </Row>
+
         <Row className="justify-content-center mb-5">
           <Col md={3}  className="box-shadow ribbon-box">
             <div className="ribbon-two ribbon-two-success"><span>Active</span></div>
