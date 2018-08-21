@@ -12,6 +12,10 @@
   .dropdown-item {
     padding: 10px 1.5rem !important;
     border-bottom: 1px solid lightgrey !important;
+    .fi-monitor, .fi-circle-plus, .fi-plus {
+      margin-left: -12%;
+      padding-right: 10px;
+    }
   }
   .dropdown-item:last-child {
     border-bottom: 0 !important;
@@ -101,10 +105,7 @@
         border-radius: 6px;
         width: 30%;
         padding: 0px;
-        .fi-monitor {
-          margin-left: -12%;
-          padding-right: 10px;
-        }
+
       }
 
     }

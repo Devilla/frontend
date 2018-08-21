@@ -335,9 +335,16 @@ class DisplayPage extends Component {
                         Action
                       </button>
                       <div className="dropdown-menu">
-                        <div className="dropdown-item" id={1} onClick={this.addPageUrl} >Add Path</div>
-                        <div className="dropdown-item" id={1} onClick={this.openCloseModal} >Add SubDomain</div>
+                        <div className="dropdown-item" id={1} onClick={this.addPageUrl} >
+                          <i className="fi-plus"></i>
+                          Add Path
+                        </div>
+                        <div className="dropdown-item" id={1} onClick={this.openCloseModal} >
+                          <i className="fi-circle-plus"></i>
+                          Add SubDomain
+                        </div>
                         <div className="dropdown-item" id={2} >
+                          <i className="fi-monitor"></i>
                           Add to All pages
                           <label className="checkbox-container">
                             <input type="checkbox" defaultChecked={rules.displayOnAllPages} onChange={this.handleDisplayChange} />
