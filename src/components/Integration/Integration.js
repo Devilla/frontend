@@ -52,9 +52,9 @@ class Integrations extends Component {
         <Row className="justify-content-center mb-5">
           <Col md={3}  className="box-shadow ribbon-box">
             <div className="ribbon-two ribbon-two-success"><span>Active</span></div>
-            <div className="card-box tilebox-one">
+            <div className="tilebox-one">
               <img src={Wordpress} className="logocompany" />
-              <h4 className="text-muted text-uppercase mt-0 i-title">Wordpress</h4>
+              <h4 className="text-muted text-uppercase mt-0 i-title wordpress">Wordpress</h4>
               <p className="text-center desc-page text-muted">Sync your conversation and import yourFAQs from Wordpress</p>
 
               <span className="text-muted"  onClick={() => this.renderIntegration(14)}>View Details&nbsp; <i className="fi-open"></i></span>
@@ -62,7 +62,7 @@ class Integrations extends Component {
           </Col>
           <Col md={3}  className="box-shadow ribbon-box">
             <div className="ribbon-two ribbon-two-success"><span>Active</span></div>
-            <div className="card-box tilebox-one">
+            <div className="tilebox-one">
               <img src={Googletag} className="logocompany" />
               <h4 className="text-muted text-uppercase mt-0 ml-2 i-title googletag">Google Tag Manager</h4>
               <p className="text-center desc-page text-muted">Sync your conversation and import yourFAQs from Tag Manager</p>
@@ -73,7 +73,7 @@ class Integrations extends Component {
 
           <Col md={3}  className="box-shadow ribbon-box">
             <div className="ribbon-two ribbon-two-success"><span>Active</span></div>
-            <div className="card-box tilebox-one">
+            <div className="tilebox-one">
               <img src={Zapier} className="logocompany demio" />
               <h4 className="text-muted text-uppercase mt-0 ml-3 i-title zapier">Zapier</h4>
               <p className="text-center desc-page text-muted">Sync your conversation and import yourFAQs from Zapier</p>
@@ -85,7 +85,7 @@ class Integrations extends Component {
         <Row className="justify-content-center mb-5">
           <Col md={3}  className="box-shadow ribbon-box">
             <div className="ribbon-two ribbon-two-danger"><span>Inactive</span></div>
-            <div className="card-box tilebox-one">
+            <div className="tilebox-one">
               <img src={Hubspot} className="logocompany" />
               <h4 className="text-muted text-uppercase mt-0 ml-4 i-title hubspot">Hubspot</h4>
               <p className="text-center desc-page text-muted">Sync your conversation and import yourFAQs from Hubspot</p>
@@ -95,9 +95,9 @@ class Integrations extends Component {
           </Col>
           <Col md={3}  className="box-shadow ribbon-box">
             <div className="ribbon-two ribbon-two-danger"><span>Inactive</span></div>
-            <div className="card-box tilebox-one">
+            <div className="tilebox-one">
               <img src={Instapage} className="logocompany" />
-              <h4 className="text-muted text-uppercase mt-0 i-title">Instapage</h4>
+              <h4 className="text-muted text-uppercase mt-0 i-title instapage">Instapage</h4>
               <p className="text-center desc-page text-muted">Sync your conversation and import yourFAQs from Instapage</p>
 
               <span className="text-muted "><a href= "https://useinfluence.freshdesk.com/support/solutions/articles/36000076079-integrate-with-instapage"> View Details&nbsp; <i className="fi-open"></i></a></span>
@@ -105,9 +105,9 @@ class Integrations extends Component {
           </Col>
           <Col md={3}  className="box-shadow ribbon-box">
             <div className="ribbon-two ribbon-two-danger"><span>Inactive</span></div>
-            <div className="card-box tilebox-one">
+            <div className="tilebox-one">
               <img src={Leadpages} className="logocompany" />
-              <h4 className="text-muted text-uppercase mt-0 ml-3 i-title">Leadpages</h4>
+              <h4 className="text-muted text-uppercase mt-0 ml-3 i-title leadpages">Leadpages</h4>
               <p className="text-center desc-page text-muted">Sync your conversation and import yourFAQs from Leadpages </p>
 
               <span className="text-muted "  onClick={() => this.renderIntegration(6)}>View Details&nbsp; <i className="fi-open"></i></span>
@@ -117,9 +117,9 @@ class Integrations extends Component {
         <Row className="justify-content-center mb-5">
           <Col md={3}  className="box-shadow ribbon-box">
             <div className="ribbon-two ribbon-two-danger"><span>Inactive</span></div>
-            <div className="card-box tilebox-one">
+            <div className="tilebox-one">
               <img src={Mailmunch} className="logocompany" />
-              <h4 className="text-muted text-uppercase mt-0 i-title">Mailmunch</h4>
+              <h4 className="text-muted text-uppercase mt-0 i-title mailmunch">Mailmunch</h4>
               <p className="text-center desc-page text-muted">Sync your conversation and import yourFAQs from Mailmunch </p>
 
               <span className="text-muted "> <a href="https://useinfluence.freshdesk.com/support/solutions/articles/36000076088-integrate-with-mailmunch"> View Details&nbsp; <i className="fi-open"></i></a></span>
@@ -127,7 +127,7 @@ class Integrations extends Component {
           </Col>
           <Col md={3}  className="box-shadow ribbon-box">
             <div className="ribbon-two ribbon-two-danger"><span>Inactive</span></div>
-            <div className="card-box tilebox-one">
+            <div className="tilebox-one">
               <img src={Ontraport} className="logocompany" />
               <h4 className="text-muted text-uppercase mt-0 ml-3 pl-3 i-title ontraport">Ontraport</h4>
               <p className="text-center desc-page text-muted">Sync your conversation and import yourFAQs from Ontraport</p>
@@ -137,7 +137,7 @@ class Integrations extends Component {
           </Col>
           <Col md={3}  className="box-shadow ribbon-box">
             <div className="ribbon-two ribbon-two-danger"><span>Inactive</span></div>
-            <div className="card-box tilebox-one">
+            <div className="tilebox-one">
               <img src={Squarespace} className="logocompany" />
               <h4 className="text-muted text-uppercase mt-0 i-title sqspace">Squarespace</h4>
               <p className="text-center desc-page text-muted">Sync your conversation and import yourFAQs from Squarespace</p>
@@ -149,9 +149,9 @@ class Integrations extends Component {
         <Row className="justify-content-center mb-5">
           <Col md={3}  className="box-shadow ribbon-box">
             <div className="ribbon-two ribbon-two-danger"><span>Inactive</span></div>
-            <div className="card-box tilebox-one">
+            <div className="tilebox-one">
               <img src={Thrivecart} className="logocompany" />
-              <h4 className="text-muted text-uppercase mt-0 i-title ">Thrivecart</h4>
+              <h4 className="text-muted text-uppercase mt-0 i-title thrivecart">Thrivecart</h4>
               <p className="text-center desc-page text-muted">Sync your conversation and import yourFAQs from Thrivecart </p>
 
               <span className="text-muted"  onClick={() => this.renderIntegration(10)}>View Details&nbsp; <i className="fi-open"></i></span>
@@ -159,7 +159,7 @@ class Integrations extends Component {
           </Col>
           <Col md={3}  className="box-shadow ribbon-box">
             <div className="ribbon-two ribbon-two-danger"><span>Inactive</span></div>
-            <div className="card-box tilebox-one">
+            <div className="tilebox-one">
               <img src={Unbounce} className="logocompany" />
               <h4 className="text-muted text-uppercase mt-0 i-title unbounce">Unbounce</h4>
               <p className="text-center desc-page text-muted">Sync your conversation and import yourFAQs from Unbounce</p>
@@ -169,9 +169,9 @@ class Integrations extends Component {
           </Col>
           <Col md={3}  className="box-shadow ribbon-box">
             <div className="ribbon-two ribbon-two-danger"><span>Inactive</span></div>
-            <div className="card-box tilebox-one">
+            <div className="tilebox-one">
               <img src={Webflow} className="logocompany" />
-              <h4 className="text-muted text-uppercase mt-0 i-title">Webflow</h4>
+              <h4 className="text-muted text-uppercase mt-0 i-title webflow">Webflow</h4>
               <p className="text-center desc-page text-muted">Sync your conversation and import yourFAQs from Webflow</p>
               <span className="text-muted">< a href = "https://useinfluence.freshdesk.com/support/solutions/articles/36000075200-integrate-with-webflow"> View Details&nbsp; <i className="fi-open"></i></a></span>
             </div>
@@ -180,9 +180,9 @@ class Integrations extends Component {
         <Row className="justify-content-center mb-5">
           <Col md={3}  className="box-shadow ribbon-box">
             <div className="ribbon-two ribbon-two-danger"><span>Inactive</span></div>
-            <div className="card-box tilebox-one">
+            <div className="tilebox-one">
               <img src={Woocommerce} className="logocompany" />
-              <h4 className="text-muted text-uppercase mt-0 i-title">Woocommerce</h4>
+              <h4 className="text-muted text-uppercase mt-0 i-title woocomm">Woocommerce</h4>
               <p className="text-center desc-page text-muted">Sync your conversation and import yourFAQs from Woocommerce</p>
 
               <span className="text-muted"  onClick={() => this.renderIntegration(13)} >View Details&nbsp; <i className="fi-open"></i></span>
@@ -190,7 +190,7 @@ class Integrations extends Component {
           </Col>
           <Col md={3}  className="box-shadow ribbon-box">
             <div className="ribbon-two ribbon-two-danger"><span>Inactive</span></div>
-            <div className="card-box tilebox-one">
+            <div className="tilebox-one">
               <img src={Aweber} className="logocompany" />
               <h4 className="text-muted text-uppercase mt-0 ml-2 i-title aweber">Aweber</h4>
               <p className="text-center desc-page text-muted">Sync your conversation and import yourFAQs from Aweber</p>
@@ -200,7 +200,7 @@ class Integrations extends Component {
           </Col>
           <Col md={3}  className="box-shadow ribbon-box">
             <div className="ribbon-two ribbon-two-danger"><span>Inactive</span></div>
-            <div className="card-box tilebox-one">
+            <div className="tilebox-one">
               <img src={Clickfunnels} className="logocompany" />
               <h4 className="text-muted text-uppercase mt-0 ml-3 i-title click cfunnel">Clickfunnels</h4>
               <p className="text-center desc-page text-muted">Sync your conversation and import yourFAQs from Clickfunnels</p>

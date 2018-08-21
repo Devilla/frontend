@@ -53,7 +53,7 @@ export { default as Instapage }  from './instapage.png';
 export { default as Leadpages } from './leadpages.png';
 export { default as Mailmunch } from './mailmunch.png';
 export { default as Ontraport } from './ontraport.png';
-export { default as Squarespace } from './squarespace.png';
+export { default as Squarespace } from './squarespace.svg';
 export { default as Thrivecart } from './Thrivecart.png';
 export { default as Unbounce}  from './unbounce.png';
 export { default as Webflow }  from  './webflow.png';
