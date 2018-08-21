@@ -312,18 +312,10 @@ class DisplayPage extends Component {
             <Row className="display-page-row">
               <Col md={12} className="display-page-header">
                 <h4 className="lead text-center m-b-30 m-t-20">Where do you want to show notifications?</h4>
-                <button type="button" className="btn btn-outline-primary waves-light waves-effect number">
-                  <i className="fi-monitor"></i>
-                  <span>Display on all pages</span>
-                  <label className="checkbox-container">
-                    <input type="checkbox" defaultChecked={rules.displayOnAllPages} onChange={this.handleDisplayChange} />
-                    <span className="checkmark"></span>
-                  </label>
-                </button>
               </Col>
             </Row>
-            <Row>
-              <Col md={10}>
+            <Row style={{justifyContent: 'center'}}>
+              <Col md={8}>
                 <div className="pl-4 input-group col-md-12">
                   <label className="pt-2 pl-1 pr-3 text-muted url-field">{this.props.campaign
                     ? 'http://'+this.props.campaign.websiteUrl
@@ -338,15 +330,25 @@ class DisplayPage extends Component {
                   />
                   <span className="input-group-btn col-md-3"
                     id="urladd">
-                    <span className="btn btn-primary nav nav-pills waves-light waves-effect addpath-btn pl-5 pr-5"
-                      onClick={this.addPageUrl}>Add</span>
+                    <div className="btn-group campaign-dropdown">
+                      <button className="btn btn-primary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Action
+                      </button>
+                      <div className="dropdown-menu">
+                        <div className="dropdown-item" id={1} onClick={this.addPageUrl} >Add Path</div>
+                        <div className="dropdown-item" id={1} onClick={this.openCloseModal} >Add SubDomain</div>
+                        <div className="dropdown-item" id={2} >
+                          Add to All pages
+                          <label className="checkbox-container">
+                            <input type="checkbox" defaultChecked={rules.displayOnAllPages} onChange={this.handleDisplayChange} />
+                            <span className="checkmark"></span>
+                          </label>
+                        </div>
+                      </div>
+                    </div>
                   </span>
+
                 </div>
-              </Col>
-              <Col md={2}>
-                <span className="btn btn-primary  subdomain" data-toggle="modal" onClick={this.openCloseModal}>
-                  <i className=" mdi mdi-plus-circle-outline"></i>&nbsp;Add SubDomain
-                </span>
               </Col>
             </Row>
             <Row>
