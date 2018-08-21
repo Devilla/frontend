@@ -38,13 +38,13 @@ class Sidebar extends Component {
           {!openClose && this.state.collapse?
             <div
               className="topbar-left"
-              style={{ width: '53px' }}
+              style={{ width: '62px' }}
             >
-              <Link to="/dashboard" className="logo">
-                <span>
-                  <img src={InfluenceMobile} className="" alt="influence-img" height="40" width="40"/>
-                </span>
-              </Link>
+              <span>
+                <Link to="/dashboard" className="logo">
+                  <img src={InfluenceMobile} className="" alt="influence-img" height="60" width="60"/>
+                </Link>
+              </span>
             </div>
             :
             <div

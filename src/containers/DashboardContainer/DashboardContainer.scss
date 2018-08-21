@@ -186,7 +186,7 @@ p {
 .dashboard-container {
   .side-menu {
       width: 240px;
-      z-index: 1!important;
+      z-index: 99999999999!important;
       background: #082a52 !important;
       bottom: 0;
       margin-top: 0;
@@ -196,7 +196,7 @@ p {
       left: 0;
       .topbar-left{
         background: #082a52 !important;
-        padding-left: 17px !important;
+        padding-left: 3px !important;
       }
       .button-list{
         margin-left: 0px;

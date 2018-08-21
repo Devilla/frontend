@@ -16,11 +16,11 @@ const PlanList = ({ plan, handleCheckChange, makePayment }) => {
           <Row className="inlineclr">
             <Col md={12}>
               <div className="card-box pt-0 pl-0">
-                <h4 className="header-title text-left">Upgrade your Plan</h4>
+                <h4 className="header-title text-left mt-3 upgradeheader">Upgrade your Plan</h4>
                 <hr/>
-                <div className="plans float-right">
+                <div className="plans ml-5">
                   <Row>
-                    <Animated className="leftwrap center text-center" animationIn="fadeIn" animationOut="fadeOut" isVisible={true}>
+                    <Animated className="leftwrap center text-center ml-5" animationIn="fadeIn" animationOut="fadeOut" isVisible={true}>
                       <PricePage
                         paymentPage={true}
                         selectedPlan={plan}
