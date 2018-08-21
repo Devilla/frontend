@@ -14,8 +14,6 @@ const Header = ({
   openProfile,
   loading,
   children,
-  // openClose,
-  // openCloseSidebar,
   username
 }) => {
   return (
@@ -30,15 +28,11 @@ const Header = ({
         <div className="topbar-left">
           <h4><Link onClick={() => browserHistory.goBack()}><i className="icon-arrow-left"></i></Link>{children.props.location.pathname == '/new'? 'Campaign Setting' :children.props.location.pathname.replace(/^\/+/g, '')}</h4>
         </div>
-        {/* <div className="topbar-left-hamburger">
-          <h4><Link onClick={openCloseSidebar}><i className={openClose?'fa fa-times mr-1':'fa fa-bars mr-1'}></i></Link></h4>
-        </div> */}
         <ul className="list-unstyled list-inline topbar-right float-right ml-2 mb-0 nav-custom-header">
           <li className="dropdown notification-list">
-            <div className="profile-dropdown">
+            <div className="profile-dropdown name-header">
               <a
                 className="nav-link dropdown-custom-toggle nav-user"
-                // data-toggle="dropdown"
                 role="button"
                 aria-haspopup="false"
                 aria-expanded="false"
