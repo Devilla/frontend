@@ -37,18 +37,18 @@ const Header = ({
           <li className="dropdown notification-list">
             <div className="profile-dropdown">
               <a
-                className="nav-link dropdown-toggle nav-user"
-                data-toggle="dropdown"
+                className="nav-link dropdown-custom-toggle nav-user"
+                // data-toggle="dropdown"
                 role="button"
                 aria-haspopup="false"
                 aria-expanded="false"
                 style={{cursor:'pointer'}}
                 onClick={openCloseDropdown}
               >
-              
+
                 <div className="avatar" ><span className="profile-name">{username ? username.charAt(0).toUpperCase():'?'}</span></div>
                 <div className="full-name" ><span>{username ? username.charAt(0).toUpperCase() + username.slice(1): 'Anonymous'} &nbsp;<i className="icon-arrow-down"></i></span></div>
-              
+
               </a>
             </div>
 

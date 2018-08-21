@@ -58,7 +58,7 @@
     }
   }
 
-  .nav-link.dropdown-toggle.nav-user {
+  .nav-link.dropdown-custom-toggle.nav-user {
     background: none !important;
   }
 
@@ -146,7 +146,7 @@
             padding-right: 12%;
             margin: 5px 0px 0px 0px;
             height: 50px;
-            .dropdown-toggle {
+            .dropdown-custom-toggle {
               padding-top: 50px !important;
             }
             .dropdown-menu.dropdown-menu-right {
