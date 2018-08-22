@@ -13,7 +13,7 @@ const billingHeader = [
   'Billing Date', 'Amount', 'Transaction Id', 'Status', 'Download'
 ];
 
-class FressBill extends Component {
+class FreshBill extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -150,4 +150,4 @@ const mapDispatchToProps = {
   downloadInvoice
 };
 
-export default connect(mapStateToProps, mapDispatchToProps, null, { withRef: true })(FressBill);
+export default connect(mapStateToProps, mapDispatchToProps, null, { withRef: true })(FreshBill);
