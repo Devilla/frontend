@@ -6,8 +6,16 @@ import  ConnectionStatus  from './ConnectionStatus';
 import { connect } from 'react-redux';
 import { ProgressBar } from 'react-bootstrap';
 
-const Header = ({openCloseDropdown, dropdownStyle, logout, renderHelp, openProfile, loading, children, openClose, openCloseSidebar}) => {
-
+const Header = ({
+  openCloseDropdown,
+  dropdownStyle,
+  logout,
+  renderHelp,
+  openProfile,
+  loading,
+  children,
+  username
+}) => {
   return (
     <div className="customer-header">
       {loading ?
@@ -18,31 +26,39 @@ const Header = ({openCloseDropdown, dropdownStyle, logout, renderHelp, openProfi
       <ConnectionStatus />
       <div className="nav-topbar-flex">
         <div className="topbar-left">
-          <h4><Link onClick={() => browserHistory.goBack()}><i className="icon-arrow-left mr-1"></i></Link>{children.props.location.pathname == '/new'? 'Campaign Setting' :children.props.location.pathname.replace(/^\/+/g, '')}</h4>
+          <h4><Link onClick={() => browserHistory.goBack()}><i className="icon-arrow-left"></i></Link>{children.props.location.pathname == '/new'? 'Campaign Setting' :children.props.location.pathname.replace(/^\/+/g, '')}</h4>
         </div>
-        <div className="topbar-left-hamburger">
-          <h4><Link onClick={openCloseSidebar}><i className={openClose?'fa fa-times mr-1':'fa fa-bars mr-1'}></i></Link></h4>
-        </div>
-        <ul className="list-unstyled list-inline topbar-right float-right mb-0 nav-custom-header">
+        <ul className="list-unstyled list-inline topbar-right float-right ml-2 mb-0 nav-custom-header">
           <li className="dropdown notification-list">
-            <a
-              className="nav-link dropdown-toggle nav-user"
-              data-toggle="dropdown"
-              role="button"
-              aria-haspopup="false"
-              aria-expanded="false"
-              style={{cursor:'pointer'}}
-              onClick={openCloseDropdown}
-            >
-              <div className="profile-dropdown">
-                <div className="avatar" ><span className="profile-name">S</span></div>
-                <div className="full-name" ><span>Shanky Rana &nbsp;<i className="icon-arrow-down"></i></span></div>
-              </div>
-            </a>
+            <div className="profile-dropdown name-header">
+              <a
+                className="nav-link dropdown-custom-toggle nav-user"
+                role="button"
+                aria-haspopup="false"
+                aria-expanded="false"
+                style={{cursor:'pointer'}}
+                onClick={openCloseDropdown}
+              >
+
+                <div className="avatar" ><span className="profile-name">{username ? username.charAt(0).toUpperCase():'?'}</span></div>
+                <div className="full-name" >
+                  <span>{username ? username.charAt(0).toUpperCase() + username.slice(1): 'Anonymous'} &nbsp;
+
+                  </span>
+
+                </div>
+                <div>
+                  {dropdownStyle.visibility == 'visible'?
+                    <i className="icon-arrow-up"></i>
+                    :
+                    <i className="icon-arrow-down"></i>
+                  }
+                </div>
+
+              </a>
+            </div>
+
             <div className="dropdown-menu dropdown-menu-right dropdown-menu-animated profile-dropdown" style={dropdownStyle}>
-              <div className="dropdown-item noti-title">
-                <h6 className="text-overflow m-0"></h6>
-              </div>
 
               <a href="javascript:void(0);" className="dropdown-item notify-item">
                 <i className="fi-head"></i>
@@ -54,7 +70,7 @@ const Header = ({openCloseDropdown, dropdownStyle, logout, renderHelp, openProfi
                 <span>Support</span>
               </a>
 
-              <a href="javascript:void(0);" className="dropdown-item notify-item" onClick={logout} >
+              <a href="javascript:void(0);" className="dropdown-item notify-item logout-btn" onClick={logout} >
                 <i className="fi-power"></i>
                 <span>Logout</span>
               </a>

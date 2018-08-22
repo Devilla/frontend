@@ -19,13 +19,14 @@
     z-index: 100000000;
   }
 
-    .content-page {
-      margin-left: 40px!important;
-    }
+  .content-page {
+    padding: 25px 0px 15px 25px !important;
+    margin-left: 40px!important;
+  }
 
  .notification-list {
    background-color: #f9f9f9!important;
-    margin-left: 0px!important;
+    margin-left: 5px!important;
 }
 
 p {
@@ -48,12 +49,12 @@ p {
   }
 
   .topbar {
-    margin-left: 5%;
-    z-index: 2;
+    padding-left: 70px;
+    z-index: 999;
     position: fixed;
-    top: 5px;
+    top: 0px;
     left: 0;
-    width: 95%;
+    width: 100%;
     height: 50px !important;
   }
 
@@ -162,7 +163,9 @@ p {
   .upgrade-card-transition,
   .upgrade-plan-container,
   .integration-container,
-  .pageContent
+  .pageContent,
+  .list-modal-container,
+  .settings-container
     {
     overflow: hidden;
     box-sizing: border-box;
@@ -184,7 +187,7 @@ p {
 .dashboard-container {
   .side-menu {
       width: 240px;
-      z-index: 1!important;
+      z-index: 99999999999!important;
       background: #082a52 !important;
       bottom: 0;
       margin-top: 0;
@@ -193,19 +196,48 @@ p {
       top: 0;
       left: 0;
       .topbar-left{
-      background: #082a52 !important;
-      padding-left: 15px !important;
+        background: #082a52 !important;
+        padding-left: 3px !important;
       }
+      .button-list{
+        margin-left: 0px;
+        margin-bottom: 0px;
+      }
+      .metismenu {
+        text-align: center;
+        li {
+          a {
+            width: 100%;
+            padding: 15px 0px 15px 0px !important;
+            margin: 18px 0px !important;
+            color: white !important;
+          }
+        }
+      }
+
+  .header-title {
+    margin-bottom: 20px;
+    margin-top: 18px !important;
+    text-transform: uppercase;
+    letter-spacing: 0.20em;
+    font-size: 11px;
+    font-weight: 400;
+    margin-top: 0;
+    margin-left: 0px !important;
+    color: #4c4c4c;
+  }
+
   }
   .card-box{
     background: #f9f9f9 !important;
   }
   .widget-flat{
+    padding: 0 !important;
     background: #ffffff !important;
   }
 
   .card{
-    background: #f9f9f9 !important;
+    background: #f9f9f9;
   }
   .metismenu{
     background: #082a52;
@@ -216,6 +248,17 @@ p {
   .btn-primary{
     background-color: #4aa5ea !important;
     border: 1px solid #4aa5ea !important;
+  }
+}
+
+@media only screen and (max-width: 1024px) and (min-width: 768px) {
+  .dashboard-container {
+    .content-page {
+      padding: 25px 25px 15px 25px !important;
+      .navbar-custom {
+        left: 70px;
+      }
+    }
   }
 }
 

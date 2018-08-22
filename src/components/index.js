@@ -20,7 +20,6 @@ export { default as AffiliateRegister}  from './Affiliate/AffiliateRegister';
 export { default as Header } from './Header/Header';
 export { default as Campaign } from './Campaign/Campaign';
 export { default as CampaignSettings } from './CampaignSettings/CampaignSettings';
-export { default as Settings } from './Settings/Settings';
 
 export { default as ForgetPassword } from './ForgetPassword';
 export { default as PricePage } from './PricePage';
@@ -60,5 +59,5 @@ export { default as WordpressPluginPage } from './WordpressPluginPage/WordpressP
 export { default as OauthLogin } from './OauthLogin/OauthLogin';
 export { default as OauthAuthorization } from './OauthAuthorization/OauthAuthorization';
 export { default as FreshBilling } from './Billing/fresh-biiling.js';
-
-// export { default as Loading } from './Loading';
+export { default as GettingStarted } from './GettingStarted/GettingStarted';
+export { default as Settings } from './Settings/Settings';

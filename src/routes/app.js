@@ -2,6 +2,8 @@ import {
   Dashboard,
   Notification,
   Analytics,
+  Oauthpage,
+  GettingStarted,
   Settings
 } from 'components';
 
@@ -10,6 +12,8 @@ const appRoutes = [
   { path: '/campaigns', name: 'Campaigns', icon: 'fa fa-bullhorn', component: Notification },
   { path: '/analytics', name: 'Analytics', icon: 'fi-bar-graph-2', component: Analytics },
   { path: '/settings', name: 'Settings', icon: 'fi-cog', component: Settings },
+  { path: '/oauthshow', name: 'Oauth', icon: 'fi-link', component: Oauthpage },
+  { path: '/getting-started', name: 'Getting Started', icon: 'fi-speech-bubble', component: GettingStarted },
   { redirect: true }
 ];
 

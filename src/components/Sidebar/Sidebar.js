@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import { Influence, InfluenceMobile } from 'img';
-import {Col} from 'react-bootstrap';
+import { Col } from 'react-bootstrap';
+import ReactTooltip from 'react-tooltip';
 
 import appRoutes from 'routes/app';
 import './Sidebar.scss';
@@ -24,7 +25,9 @@ class Sidebar extends Component {
   }
 
   render() {
-    const { disableButton, openClose } = this.props;
+    const { disableButton, openClose, user } = this.props;
+    const campaignValidation = user && user.path == '/getting-started';
+
     return (
       <div id="side-menu" className="left side-menu" style={!openClose && this.state.collapse  ?{width: '70px'}:{}}>
         <div className="slimscroll-menu">
@@ -35,13 +38,13 @@ class Sidebar extends Component {
           {!openClose && this.state.collapse?
             <div
               className="topbar-left"
-              style={{ width: '40px' }}
+              style={{ width: '62px' }}
             >
-              <Link to="/dashboard" className="logo">
-                <span>
-                  <img src={InfluenceMobile} className="" alt="influence-img" height="40" width="40"/>
-                </span>
-              </Link>
+              <span>
+                <Link to="/dashboard" className="logo">
+                  <img src={InfluenceMobile} className="" alt="influence-img" height="60" width="60"/>
+                </Link>
+              </span>
             </div>
             :
             <div
@@ -59,18 +62,19 @@ class Sidebar extends Component {
 
 
           <div id="sidebar-menu">
-            <div className="button-list ml-1 pl-2">
+            <div className="button-list">
               <Link to="/new">
                 {!openClose && this.state.collapse?
                   <button
+                    data-tip="Create New Campaign"
                     type="button"
                     className="btn btn-primary waves-effect addnew-small-btn addnew-btn p-2 text-center" style={{borderRadius:'50px'}}
                   >
-                    <i className="fi-plus " style={{paddingLeft:'3px'}} data-toggle="tooltip text-muted"  data-delay='{"show":"0", "hide":"0"}' title="Create New Campaign"/>&nbsp;{' '}
-                    {/* <span className="h6">New</span>{' '} */}
+                    <i className="fi-plus " style={{paddingLeft:'3px'}} />&nbsp;{' '}
                   </button>
                   :
                   <button
+                    data-tip="Create New Campaign"
                     type="button"
                     className="btn btn-primary waves-effect  addnew-btn  ml-4 p-2  pt-0 pb-0  w-lg "
                   >
@@ -87,8 +91,8 @@ class Sidebar extends Component {
                   return (
                     <li className={prop.upgrade ? 'active newbtn' : this.activeRoute(prop.path)} key={key}>
                       {prop.name === 'Help' ?
-                        <Link onClick={this.renderHelp} className={disableButton ? 'disabled-link' : 'nav-link'} disabled={disableButton} activeClassName="active">
-                          <i className={prop.icon} data-toggle="tooltip text-muted"  data-delay='{"show":"0", "hide":"0"}' title="Create New Campaign"></i>
+                        <Link onClick={this.renderHelp} className={disableButton || campaignValidation ? 'disabled-link' : 'nav-link'} disabled={disableButton || campaignValidation} activeClassName="active">
+                          <i data-tip={prop.name} data-place="right" className={prop.icon} ></i>
                           {openClose && this.state.collapse ?
                             <span>{prop.upgrade}{prop.name}</span>
                             :
@@ -99,9 +103,9 @@ class Sidebar extends Component {
                           }
                         </Link>
                         :
-                        <Link to={prop.path} className={prop.upgrade && disableButton ? 'new disabled-link' : disableButton ? 'disabled-link' : prop.upgrade ? 'new nav-link' : 'nav-link'} disabled={disableButton} activeClassName="active">
+                        <Link to={prop.path} data-tip={prop.name} data-place="right" className={prop.upgrade && disableButton ? 'new disabled-link' : (disableButton || campaignValidation) && prop.name != 'Getting Started' ? 'disabled-link' : prop.upgrade ? 'new nav-link' : 'nav-link card'} disabled={(disableButton || campaignValidation)  && prop.name != 'Getting Started'} activeClassName="active">
                           {
-                            prop.upgrade ? '' : <i className={prop.icon} data-toggle="tooltip text-muted"  data-delay='{"show":"0", "hide":"0"}' title="Create New Campaign"></i>
+                            prop.upgrade ? '' : <i className={prop.icon} ></i>
                           }
                           {openClose && this.state.collapse ?
                             <span>{prop.upgrade}{prop.name}</span>
@@ -143,6 +147,7 @@ class Sidebar extends Component {
           </div>
           <div className="clearfix" />
         </div>
+        <ReactTooltip />
       </div>
     );
   }
