@@ -37,6 +37,41 @@
   }
 }
 
+.billing-container {
+  padding: 2% 20%;
+  .billing-row {
+    min-height: 80px;
+    border-radius: 10px;
+    padding: 0px;
+    margin: 40px 0px 0px;
+    background: white;
+    box-shadow: 1px 2px 12px -4px #888888;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+  }
+  .billing-info {
+    display: none;
+    top: 0;
+    min-height: 150px;
+    background-color: white;
+  }
+  .billing-info:after {
+    background: linear-gradient(-45deg, #f9f9f9 16px, transparent 0), linear-gradient(45deg, #f9f9f9 16px, transparent 0);
+    background-position: left-bottom;
+    background-repeat: repeat-x;
+    background-size: 24px 24px;
+    content: " ";
+    display: block;
+    /* position: absolute; */
+    left: 0;
+    width: 100%;
+    clear: both;
+    bottom: 0;
+    height: 20px;
+    margin: 130px 0px auto;
+  }
+}
 @media only screen and (max-width: 768px) and (min-width: 100px) {
   .billing-details {
     padding-top: 20px !important;

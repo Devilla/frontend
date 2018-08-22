@@ -1,25 +1,25 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import { browserHistory, Link } from 'react-router';
-import moment from 'moment';
+// import { browserHistory, Link } from 'react-router';
+// import moment from 'moment';
 import Loading from 'react-loading-animation';
 
 import { fetchInvoices, downloadInvoice } from 'ducks/payment' ;
 import {
-  Grid,
+  // Grid,
   Row,
-  Col,
-  FormGroup,
-  FormControl,
-  Table
+  // Col,
+  // FormGroup,
+  // FormControl,
+  // Table
 } from 'react-bootstrap';
 
-import Button from 'components/Template/customButton';
+// import Button from 'components/Template/customButton';
 import './BillingDetails.scss';
 
-const billingHeader = [
-  'Billing Date', 'Amount', 'Transaction Id', 'Status', 'Download'
-];
+// const billingHeader = [
+//   'Billing Date', 'Amount', 'Transaction Id', 'Status', 'Download'
+// ];
 
 class BillingDetails extends Component {
   constructor(props) {
@@ -41,33 +41,33 @@ class BillingDetails extends Component {
     }
   }
 
-  renderPaymentList() {
-    if (this.props.invoices) {
-      this.props.invoices.sort((a, b) => {
-        return moment(a.created_at) < moment(b.created_at) ? 1 : moment(a.created_at) > moment(b.created_at) ? -1 : 0;
-      });
-      return this.props.invoices.map((invoice, index) => {
-        return <tr className=" text-muted font-13" key={index}>
-          <td className="name pl-3">{moment(invoice.created_at).format('DD MMM YYYY')}</td>
-          <td className="email pl-4">${invoice.amount_due / 100}</td>
-          <td className="location">{invoice.invoice_id}</td>
-          <td>{invoice.paid?'Paid':'Not Paid'}</td>
-          <td className="lastseen"><i className="fi-download pl-4" onClick={() => this.props.downloadInvoice(invoice.id)}></i></td>
-        </tr>;
-      });
-    } else
-      return <tr>
-        <td>nothing</td>
-      </tr>;
-  }
+  // renderPaymentList() {
+  //   if (this.props.invoices) {
+  //     this.props.invoices.sort((a, b) => {
+  //       return moment(a.created_at) < moment(b.created_at) ? 1 : moment(a.created_at) > moment(b.created_at) ? -1 : 0;
+  //     });
+  //     return this.props.invoices.map((invoice, index) => {
+  //       return <tr className=" text-muted font-13" key={index}>
+  //         <td className="name pl-3">{moment(invoice.created_at).format('DD MMM YYYY')}</td>
+  //         <td className="email pl-4">${invoice.amount_due / 100}</td>
+  //         <td className="location">{invoice.invoice_id}</td>
+  //         <td>{invoice.paid?'Paid':'Not Paid'}</td>
+  //         <td className="lastseen"><i className="fi-download pl-4" onClick={() => this.props.downloadInvoice(invoice.id)}></i></td>
+  //       </tr>;
+  //     });
+  //   } else
+  //     return <tr>
+  //       <td>nothing</td>
+  //     </tr>;
+  // }
 
   render() {
-    const { planSelected } = this.state;
-    const { profile, invoices } = this.props;
+    // const { planSelected } = this.state;
+    const { profile } = this.props;
 
     return (
-      <Loading className="transition-item billing-transition-container" style={{width: '10%', height: '700px'}} strokeWidth='2' isLoading={!invoices || !profile}>
-        <div className="content fill billing-details ml-1">
+      <Loading className="transition-item billing-transition-container" style={{width: '10%', height: '700px'}} strokeWidth='2' isLoading={!profile}>
+        {/* <div className="content fill billing-details ml-1">
           <Grid fluid={true}>
             <Row className="inlineclr">
               <Col md={12}>
@@ -219,6 +219,20 @@ class BillingDetails extends Component {
               </Col>
             </Row>
           </Grid>
+        </div> */}
+        <div className="billing-container">
+          <Row className="billing-row"></Row>
+          <Row className="billing-info">
+
+          </Row>
+          <Row className="billing-row"></Row>
+          <Row className="billing-info">
+
+          </Row>
+          <Row className="billing-row"></Row>
+          <Row className="billing-info">
+
+          </Row>
         </div>
       </Loading>
     );
