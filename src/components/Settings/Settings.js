@@ -82,9 +82,9 @@ class Settings extends Component {
         <div className="card" onClick={() => browserHistory.push(item.path)}>
           <div className="card-img-top">
             {item.head?
-              <h5>
+              <p>
                 {item.head}
-              </h5>
+              </p>
               :
               <h5 style={{background:'transparent'}}></h5>
             }
