@@ -13,18 +13,24 @@ const setup = [
   {
     icon: 'fi-cog',
     path: 'integration',
-    text: 'Integration',
+    text: 'Integrations',
     head: 'Unique'
   },
   {
     icon: 'fi-book',
     path: 'billing',
-    text: 'Billing Settings',
+    text: 'Billing',
   },
   {
     icon: 'fi-paper-stack',
     path: 'campaign',
-    text: 'Campaigns',
+    text: 'O-Auth',
+    head: 'Detailed'
+  },
+  {
+    icon: 'fi-paper-stack',
+    path: 'campaign',
+    text: 'Upgrade',
     head: 'Detailed'
   }
 ];
@@ -32,27 +38,43 @@ const setup = [
 const configuration = [
   {
     icon: 'fi-head',
-    path: 'profile',
-    text: 'Profile Settings'
+    path: 'campaign',
+    text: 'Campaign Setting'
   },
   {
     icon: 'fi-cog',
     path: 'integration',
-    text: 'Integration',
+    text: 'Analytics',
     head: 'Unique'
   },
   {
     icon: 'fi-book',
     path: 'billing',
-    text: 'Billing Settings',
+    text: 'User Profiles',
   },
   {
     icon: 'fi-paper-stack',
     path: 'campaign',
-    text: 'Campaigns',
+    text: 'Help & Support',
     head: 'Detailed'
   }
 ];
+
+const security = [
+  {
+    icon: 'fi-head',
+    path: 'campaign',
+    text: 'GDPR'
+  },
+  {
+    icon: 'fi-cog',
+    path: 'integration',
+    text: 'Analytics',
+    head: 'Unique'
+  },
+
+];
+
 
 class Settings extends Component {
 
@@ -98,26 +120,58 @@ class Settings extends Component {
     });
   }
 
+  renderSecurity = () => {
+    return security.map(item => {
+      return (
+        <div className="card" onClick={() => browserHistory.push(item.path)}>
+          <div className="card-img-top">
+            {item.head?
+              <p>
+                {item.head}
+              </p>
+              :
+              <h5 style={{background:'transparent'}}></h5>
+            }
+          </div>
+          <div className="card-body">
+            <i className={item.icon}></i>
+            <p className="card-text">{item.text}</p>
+          </div>
+        </div>
+      );
+    });
+  }
+
   render() {
     return (
       <div className="settings-container">
         <Row>
-          <Col md={1}>
-            <h3 className="settingsheader pl-0">Setup</h3>
+          <Col md={2}>
+            <h3 className="settingsheader">Setup</h3>
           </Col>
-          <Col md={11}>
+          <Col md={10}>
             <div className="settings-card-container">
               {this.renderSetup()}
             </div>
           </Col>
         </Row>
         <Row>
-          <Col md={1}>
-            <h3 className="settingsheader pl-0">Configure</h3>
+          <Col md={2}>
+            <h3 className="settingsheader">Configure</h3>
           </Col>
-          <Col md={11}>
+          <Col md={10}>
             <div className="settings-card-container">
               {this.renderConfigurations()}
+            </div>
+          </Col>
+        </Row>
+        <Row>
+          <Col md={2}>
+            <h3 className="settingsheader">Security & Compliance</h3>
+          </Col>
+          <Col md={10}>
+            <div className="settings-card-container">
+              {this.renderSecurity()}
             </div>
           </Col>
         </Row>
