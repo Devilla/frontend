@@ -7,11 +7,12 @@
       padding: 20px 0px;
       display: flex;
       .card {
-        width: 17%;
-        height: 170px;
+        width: 12%;
+        height: 145px;
         background-color: white;
-        box-shadow: 0px 0px 5px 0px #888888;
+        box-shadow: 6px 6px 27px -8px #808080;
         margin: 0 20px;
+        cursor: pointer;
         .card-img-top {
           display: flex;
           justify-content: flex-end;
@@ -20,29 +21,53 @@
           p {
             margin: 0;
             margin-top: 5px;
-            height: 18px;
-            padding: 1px 5px;
-            border-radius: 3px;
-            background: red;
+            height: 16px;
+            padding: 0px 5px;
+            border-radius: 2px;
+            background: #00d197;
             color: white !important;
-            font-size: 12px;
-            font-weight: 600;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
           }
         }
         .card-body {
-          padding: .1rem 1.25rem 1.5rem 1.25rem;
+          padding: .1rem 0.20rem 0.20rem 0.20rem;
           text-align: center;
           i {
-            font-size: 70px;
+            font-size: 45px;
           }
           p {
+            font-size: 11px;
             padding-top: 10px;
             text-transform: uppercase;
-            color: gray !important;
+            color: #2c3b48 !important;
+            letter-spacing: 0.2px;
           }
         }
       }
+      .card:hover {
+        box-shadow: 2px 5px 20px -2px #808080;
+      }
+      .card-body i:hover {
+        -moz-transform: rotate(3deg) scale(1.2);
+        -webkit-transform: rotate(3deg) scale(1.2);
+        -o-transform: rotate(3deg) scale(1.2);
+        -ms-transform: rotate(3deg) scale(1.2);
+        transform: rotate(3deg) scale(1.2);
+      }
     }
+  }
+
+  .settingsheader {
+    color: #1f2b36 !important;
+    font-weight: 500 !important;
+    text-transform: uppercase;
+    font-size: 14px !important;
+    line-height: 23px;
+    letter-spacing: -0.17px !important;
+    padding-left: 24% !important;
+    max-width: 200% !important;
   }
 
 }

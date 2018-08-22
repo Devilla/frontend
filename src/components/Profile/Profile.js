@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect}  from 'react-redux';
-import { browserHistory } from 'react-router';
 import Loading from 'react-loading-animation';
 import {
   Grid,
@@ -32,7 +31,9 @@ class Profile extends Component {
       profileState: 'edit',
       image: '',
       countryList: [],
-      savedtext: 'Save Profile'
+      savedtext: 'Save',
+      changePassword : false,
+      profileSetting : true
     };
   }
 
@@ -97,9 +98,6 @@ class Profile extends Component {
   }
 
   componentDidMount() {
-    fetch('https://raw.githubusercontent.com/sagarshirbhate/Country-State-City-Database/master/Contries.json')
-      .then(res => res.json())
-      .then(res => this.setState({countryList : res.Countries}));
     window.scrollTo(0,0);
   }
 
@@ -109,29 +107,6 @@ class Profile extends Component {
         {data.CountryName}
       </option>
     ));
-  }
-
-  getStateRows = () => {
-    let countryList = this.state.countryList.filter(country => country.CountryName === this.state.country);
-    return countryList.map(country => {
-      return country.States.map((state, i) => {
-        return <option key={i}  value={state.StateName}>
-          {state.StateName}
-        </option>;
-      });
-    });
-  }
-
-  getCityRows = () => {
-    let countryList = this.state.countryList.filter(country => country.CountryName === this.state.country);
-    let stateList = countryList.length?countryList[0].States.filter(state => state.StateName === this.state.state):[];
-    return stateList.map(state => {
-      return state.Cities.map((city, i) => {
-        return <option key={i}  value={city}>
-          {city}
-        </option>;
-      });
-    });
   }
 
   showPopupOne = () => {
@@ -174,13 +149,26 @@ class Profile extends Component {
     );
   }
 
+  showProfile() {
+    this.setState({profileSetting:true});
+    this.setState({changePassword:false});
+  }
+
+  changePassword() {
+    this.setState({profileSetting:false});
+    this.setState({changePassword:true});
+  }
+
   render() {
     const profile = this.state;
     const { user } = this.props;
     return (
       <Loading className="transition-item profile-transition-container" style={{width: '10%', height: '700px'}} strokeWidth='2' isLoading={!user || !profile}>
+
         <div className="content fill profile-container">
-          <Grid fluid={true}>
+          <div className="content-tabs" style={{width:'178px', height:'60px',zIndex: 99999}}>My Profile <i className="icon-arrow-right" onClick={()=>this.showProfile()}></i></div>
+          <div className="content-tabs" style={{width:'178px', height:'60px',zIndex: 99999}}>Change Password <i className="icon-arrow-right" onClick={()=>this.changePassword()}></i></div>
+          {/* <Grid fluid={true}>
             <Col sm={12}>
               <div className="profile-user-box card-box mb-0" >
                 <Row>
@@ -290,35 +278,126 @@ class Profile extends Component {
                           <button type="button" className="btn btn-primary waves-effect" onClick={this.updateProfile}>
                             <i className="mdi mdi-account-settings-variant mr-1"></i>  {this.props.loading ? ( this.state.savedtext
                             )
-                              : 'Save Profile'}
+                              : 'Save Profile'} */}
 
-                          </button>
-                          <button type="button" className="btn btn-primary waves-effect" data-toggle="modal" data-target="#deletemodal">
-                            <i className="mdi mdi-settings mr-1"></i>More Options
-                          </button>
+          <button className="btn btn-primary waves-effect content-tabs" style={{marginLeft: '-4px!important', width:'178px', height:'60px'}} data-toggle="modal" data-target="#deletemodal">More Options</button>
+          {this.state.changePassword?
+            <Grid fluid={true}>
+              <Col sm={8} style={{maxWidth: '1069px'}}>
+                <div className="profile-user-box card-box" >
+                  <Row>
+                    <div className="col-md-8" style={{fontSize: '13px'}}>
+                      <div className="intelli-details clearfix">
+                        <h5 className="title-h4">Change Password</h5>
+                        <div>
+You can change your password from
+                          <a target="_blank" href="https://accounts.useinfluencce.com/profile"> Useinfluence Account Settings</a>
                         </div>
-                      </Col>
-                    </form>
-                    <div className="modal fade show-modal" id="deletemodal" role="dialog">
-                      <div className="modal-dialog">
-                        <div className="modal-content align-modal">
-                          <div className="modal-header">
-                            <button type="button" className="close" data-dismiss="modal">&times;</button>
-                            <h4 className   ="modal-title">Your Account</h4>
+                      </div>
+                    </div>
+                  </Row>
+                </div>
+              </Col>
+            </Grid>
+            :''}
+
+
+
+          {this.state.profileSetting?
+            <Grid fluid={true}>
+              <Col sm={8} style={{maxWidth: '1069px'}}>
+                <div className="profile-user-box card-box" >
+                  <Row>
+                    <Col sm={2}>
+                      <span className="pull-left mr-3"><img src={profile.image?profile.image:'https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg'} alt="User profile" className="thumb-lg rounded-circle" /></span>
+                      <div className=" media-body text-white">
+                        <h4 className="mt-1 mb-1 font-18">Username</h4>
+                        <p className="text-light mb-0">Country</p>
+                      </div>
+                    </Col>
+                    <Col sm={8}>
+                      <div className="card-box tilebox-one text-center  ">
+                        <h6 className="text-muted text-uppercase mt-0">Plan Type </h6><h3> {this.props.profile?this.props.profile.plan.name:null}</h3>
+                      </div>
+                    </Col>
+                  </Row>
+                </div>
+              </Col>
+              <Row>
+                <Col md={7} style={{marginLeft: '229px',background: '#fff',marginTop: '-105px', borderRadius:'5px', maxWidth:'51.2%' }}>
+                  <div className="panel-body">
+                    <hr />
+                    <div className="text-left">
+                      <form>
+                        <Row>
+                          <Col md={6}>
+                            <span className="text-muted font-13 p mt-5"><strong>First Name :</strong> </span>
+                            <FormGroup>
+                              <FormControl type="text" value={profile.firstName} autoComplete='given-name' placeholder="First Name" id="firstName" onChange={(e) => this.handleStateChange(e)} />
+                            </FormGroup>
+                          </Col>
+                          <Col md={6}>
+                            <span className="text-muted font-13 p"><strong>Last Name :</strong> </span>
+                            <FormGroup>
+                              <FormControl type="text" value={profile.lastName} autoComplete='family-name' placeholder="Last Name" id="lastName" onChange={(e) => this.handleStateChange(e)} />
+                            </FormGroup>
+                          </Col>
+                        </Row>
+                        <Row>
+                          <Col md={6}>
+                            <span className="text-muted font-13 p"><strong>Phone :</strong> </span>
+                            <FormGroup>
+                              <FormControl type="number" value={profile.phoneNumber} autoComplete='tel-national' placeholder="Phone Number" id="phoneNumber" onChange={(e) => this.handleStateChange(e)} />
+                            </FormGroup>
+                          </Col>
+                          <Col md={6}>
+                            <span className="text-muted font-13 p"><strong>Email :</strong> </span>
+                            <FormGroup>
+                              <FormControl type="text" value={user.email} autoComplete='email' placeholder="Email Address" id="email" disabled />
+                            </FormGroup>
+                          </Col>
+                        </Row>
+                        <Row>
+                          <Col md={6}>
+                            <span className="text-muted font-13 p"><strong>Address :</strong> </span>
+                            <FormGroup>
+                              <FormControl type="text" value={profile.address} autoComplete='address-line2' placeholder="Billing Address" id="address" onChange={(e) => this.handleStateChange(e)} />
+                            </FormGroup>
+                          </Col>
+                        </Row>
+                        <Col md={12} className="profile-buttons">
+                          <div className="text-left save" style={{marginTop: '0px', marginLeft: '-26px', borderRadius: '8px'}}>
+                            <button type="button" className="btn btn-primary waves-effect mb-4" onClick={this.updateProfile}>
+                              {this.props.loading ? ( this.state.savedtext
+                              )
+                                : 'Save'}
+
+                            </button>
                           </div>
-                          <div className="modal-body">
-                            {this.showPopupOne()}
-                          </div>
-                          <div className="modal-footer">
+                        </Col>
+                      </form>
+                      <div className="modal fade show-modal" id="deletemodal" role="dialog">
+                        <div className="modal-dialog">
+                          <div className="modal-content align-modal">
+                            <div className="modal-header">
+                              <button type="button" className="close" data-dismiss="modal">&times;</button>
+                              <h4 className   ="modal-title">Your Account</h4>
+                            </div>
+                            <div className="modal-body">
+                              {this.showPopupOne()}
+                            </div>
+                            <div className="modal-footer">
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              </Col>
-            </Row>
-          </Grid>
+                </Col>
+              </Row>
+
+            </Grid>
+            :''}
           <ToastContainer hideProgressBar={true} />
         </div>
       </Loading>
