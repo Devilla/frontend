@@ -2,6 +2,7 @@ import React ,{Component} from 'react';
 import {connect} from 'react-redux';
 import moment from 'moment';
 import { fetchInvoices, downloadInvoice } from 'ducks/payment' ;
+import { UpgradeCard } from 'components';
 import {
   Col,
   Table
@@ -87,8 +88,10 @@ class FressBill extends Component {
           <i className="pl-2 icon-arrow-down" onClick={()=>this.handleCollapseTwo()}> </i>
         </div>
         {this.state.collapseTwo?
-          <div style={{display:'block', marginLeft:'400px', height:'400px', width:'900px', backgroundColor: '#fff', paddingTop: '12px',
-            boxShadow: '0 1px 1px rgba(0,0,0,.2)', borderRadius: '5px'}}> </div>
+          <div style={{display:'block', position:'relative', marginLeft:'400px', height:'400px', width:'900px', backgroundColor: '#fff', paddingTop: '12px',
+            boxShadow: '0 1px 1px rgba(0,0,0,.2)', borderRadius: '5px'}}>
+            <UpgradeCard plan={this.state.planSelected} />
+          </div>
           :
           <div style={{display:'none', marginLeft:'400px', height:'400px', width:'900px', backgroundColor: '#fff', paddingTop: '12px',
             boxShadow: '0 1px 1px rgba(0,0,0,.2)', borderRadius: '5px'}}> </div>
@@ -99,7 +102,7 @@ class FressBill extends Component {
           <i className="pl-2 icon-arrow-down" onClick={()=>this.handleCollapseThree()}> </i>
         </div>
         {this.state.collapseThree?
-          <div style={{display:'block', marginLeft:'400px', height:'400px', width:'900px', backgroundColor: '#fff', paddingTop: '12px',
+          <div style={{display:'block', position:'relative', marginLeft:'400px', height:'400px', width:'900px', backgroundColor: '#fff', paddingTop: '12px',
             boxShadow: '0 1px 1px rgba(0,0,0,.2)', borderRadius: '5px'}}>
             <div className="panel panel-default">
               <div className="card-box">
