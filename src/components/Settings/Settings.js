@@ -102,20 +102,20 @@ class Settings extends Component {
     return (
       <div className="settings-container">
         <Row>
-          <Col md={2}>
-            <h3>Setup</h3>
+          <Col md={1}>
+            <h3 className="settingsheader pl-0">Setup</h3>
           </Col>
-          <Col md={10}>
+          <Col md={11}>
             <div className="settings-card-container">
               {this.renderSetup()}
             </div>
           </Col>
         </Row>
         <Row>
-          <Col md={2}>
-            <h3>Configure</h3>
+          <Col md={1}>
+            <h3 className="settingsheader pl-0">Configure</h3>
           </Col>
-          <Col md={10}>
+          <Col md={11}>
             <div className="settings-card-container">
               {this.renderConfigurations()}
             </div>
