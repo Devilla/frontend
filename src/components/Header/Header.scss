@@ -168,12 +168,13 @@
 
     .customer-header {
       .nav-topbar-flex {
+        height: 40px;
         .topbar-left {
           width: 20% !important;
           h4 {
             display: flex;
             justify-content: start;
-            margin: 20px 0px;
+            margin: 12px 0px;
             i {
               line-height: 0px !important;
             }
@@ -185,23 +186,32 @@
           .notification-list {
             width: 40%;
             padding-right: 12%;
-            margin: 5px 0px 0px 0px;
-            height: 50px;
+            margin: 0px 0px 0px 0px;
+            height: 15px;
             .dropdown-custom-toggle {
-              padding-top: 50px !important;
+              margin: 42% 0 0 !important;
+              // padding-top: 50px !important;
+            }
+            .full-name {
+              padding-right: 3px;
+              padding-left: 8px;
+              text-align: left;
             }
             .dropdown-menu.dropdown-menu-right {
               margin-top: 0px !important;
+              margin: 40% 0 0;
+              top: 100% !important;
+              width: 100% !important;
+              text-align: left;
+              margin-left: -12% !important;
             }
             .profile-dropdown {
               justify-content: flex-end;
               text-align: end;
-              width: 130%;
+              width: 130% !important;
               margin-left: 0 !important;
-              margin-top: -60px !important;
-              .avatar {
-                margin-right: 15px;
-              }
+              margin-top: -76px !important;
+              padding-bottom: 10px !important;
             }
           }
         }
