@@ -8,7 +8,7 @@ import { fetchInvoices, downloadInvoice } from 'ducks/payment' ;
 import {
   // Grid,
   Row,
-  // Col,
+  Col,
   // FormGroup,
   // FormControl,
   // Table
@@ -25,7 +25,10 @@ class BillingDetails extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      planSelected: {}
+      planSelected: {},
+      openCloseRowOne: false,
+      openCloseRowTwo: false,
+      openCloseRowThree: false
     };
     props.fetchInvoices();
   }
@@ -60,10 +63,22 @@ class BillingDetails extends Component {
   //       <td>nothing</td>
   //     </tr>;
   // }
+  openCloseRowOne = () => {
+    this.setState({openCloseRowOne: !this.state.openCloseRowOne});
+  }
+
+  openCloseRowTwo = () => {
+    this.setState({openCloseRowTwo: !this.state.openCloseRowTwo});
+  }
+
+  openCloseRowThree = () => {
+    this.setState({openCloseRowThree: !this.state.openCloseRowThree});
+  }
 
   render() {
     // const { planSelected } = this.state;
     const { profile } = this.props;
+    const { openCloseRowOne, openCloseRowTwo, openCloseRowThree } = this.state;
 
     return (
       <Loading className="transition-item billing-transition-container" style={{width: '10%', height: '700px'}} strokeWidth='2' isLoading={!profile}>
@@ -221,16 +236,46 @@ class BillingDetails extends Component {
           </Grid>
         </div> */}
         <div className="billing-container">
-          <Row className="billing-row"></Row>
-          <Row className="billing-info">
+          <Row className="billing-row" onClick={this.openCloseRowOne}>
+            <Col md={3} className="row-one-col-one">
+              <img src="https://web.freshchat.com/assets/images/billing_sprout-d577fed24b84e4e1899b8d59c4c5b164.svg" />
+              <h5>SPROUT</h5>
+            </Col>
+            <Col md={6} className="row-one-col-two">
+              <div>
+                <h6>Billed Monthly</h6>
+                <span>Next Billing on Septmeber 8, 2018</span>
+              </div>
+            </Col>
+            <Col md={3} className="row-one-col-three">
+              <button className="btn btn-primary">Upgrade Plan</button>
+              <i className="fa fa-angle-up"></i>
+            </Col>
+          </Row>
+          <Row className="billing-info billing-info-one" style={{ display: openCloseRowOne?'block':'none' }}>
 
           </Row>
-          <Row className="billing-row"></Row>
-          <Row className="billing-info">
+
+          <Row className="billing-row" onClick={this.openCloseRowTwo}>
+            <Col md={1} className="row-two-col-one">
+              <i className="fa fa-credit-card"></i>
+            </Col>
+            <Col md={11} className="row-two-col-two">
+              <h5>ADD CARD DETAILS</h5>
+            </Col>
+          </Row>
+          <Row className="billing-info billing-info-two" style={{ display: openCloseRowTwo?'block':'none' }}>
 
           </Row>
-          <Row className="billing-row"></Row>
-          <Row className="billing-info">
+          <Row className="billing-row" onClick={this.openCloseRowThree}>
+            <Col md={1} className="row-three-col-one">
+              <i className="fa fa-file-text-o"></i>
+            </Col>
+            <Col md={11} className="row-three-col-two">
+              <h5>INVOICE</h5>
+            </Col>
+          </Row>
+          <Row className="billing-info billing-info-three" style={{ display: openCloseRowThree?'block':'none' }}>
 
           </Row>
         </div>
