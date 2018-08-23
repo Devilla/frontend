@@ -7,12 +7,14 @@
       padding: 20px 0px;
       display: flex;
       .card {
-        width: 12%;
-        height: 145px;
+        width: 150px;
+        height: 150px;
         background-color: white;
-        box-shadow: 0px 0px 1px 0px #6f6f6f;
+        box-shadow: 0px 0px 21px -8px #808080;
         margin: 0 20px;
         cursor: pointer;
+        border-radius: 5px;
+        border: 1px solid #95c5f8;
         .card-img-top {
           display: flex;
           justify-content: flex-end;
@@ -38,13 +40,28 @@
             font-size: 45px;
           }
           p {
-            font-size: 11px;
+            font-size: 10px;
             padding-top: 10px;
             text-transform: uppercase;
             color: #2c3b48 !important;
+            text-shadow: 0.01px 0.01px 0.01px #afafaf;
             letter-spacing: 0.2px;
           }
         }
+      }
+      .card:hover {
+        box-shadow: 2px 5px 20px -2px #808080;
+        p {
+          text-shadow: 0.08px 0.08px 0.2px #6f6f6f;
+          font-size: 10.3px;
+        }
+      }
+      .card-body i:hover {
+        -moz-transform: rotate(3deg) scale(1.2);
+        -webkit-transform: rotate(3deg) scale(1.2);
+        -o-transform: rotate(3deg) scale(1.2);
+        -ms-transform: rotate(3deg) scale(1.2);
+        transform: rotate(3deg) scale(1.2);
       }
     }
   }
@@ -57,6 +74,7 @@
     line-height: 23px;
     letter-spacing: -0.17px !important;
     padding-left: 24% !important;
+    padding-top: 3%;
     max-width: 200% !important;
   }
 

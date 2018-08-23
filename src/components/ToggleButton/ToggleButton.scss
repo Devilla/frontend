@@ -1,19 +1,3 @@
-// Colors
-@brand-primary: #29b5a8;
-@brand-secondary: #ff8300;
-@gray: #6b7381;
-@gray-light: lighten(@gray, 15%);
-@gray-lighter: lighten(@gray, 30%);;
-
-// Button Colors
-@btn-default-color: @gray;
-@btn-default-bg: @gray-lighter;
-
-// Toggle Sizes
-@toggle-default-size: 1.5rem;
-@toggle-default-label-width: 4rem;
-@toggle-default-font-size: .75rem;
-
 
 // General Styles for Demo
 .toggle-custom-button {
@@ -25,31 +9,29 @@
 
 
 // Mixin for Switch Colors
-// Variables: @color, @bg, @active-bg
-.toggle-color(@color: @btn-default-color; @bg: @btn-default-bg; @active-bg: @brand-primary;) {
-  color: @color;
-  background: @bg;
+.toggle-color {
+  color: #6b7381;
+  background: lighten(#6b7381, 30%);
   &:before,
   &:after {
-    color: @color;
+    color: #6b7381;
   }
   &.active {
-    background-color: @active-bg;
+    background-color: #29b5a8;
   }
 }
 
 // Mixin for Default Switch Styles
-// Variables: @size, @margin, @color, @bg, @active-bg, @font-size
-.toggle-mixin(@size: @toggle-default-size; @margin: @toggle-default-label-width; @font-size: @toggle-default-font-size;) {
+.toggle-mixin {
   // color: @color;
   // background: @bg;
-  margin: 0 @margin;
+  margin: 0 4rem;
   padding: 0;
   position: relative;
   border: none;
-  height: @size;
-  width: @size * 2;
-  border-radius: @size;
+  height: 1.5rem;
+  width: 1.5rem * 2;
+  border-radius: 1.5rem;
 
   &:focus,
   &.focus {
@@ -61,12 +43,12 @@
 
   &:before,
   &:after {
-    line-height: @size;
-    width: @margin;
+    line-height: 1.5rem;
+    width: 4rem;
     text-align: center;
     font-weight: 600;
     // color: @color;
-    font-size: @font-size;
+    font-size: .75rem;
     text-transform: uppercase;
     letter-spacing: 2px;
     position: absolute;
@@ -75,28 +57,28 @@
   }
   &:before {
     content: 'Off';
-    left: -@margin;
+    left: -4rem;
   }
   &:after {
     content: 'On';
-    right: -@margin;
+    right: -4rem;
     opacity: .5;
   }
 
   > .handle {
     position: absolute;
-    top: (@size * .25) / 2;
-    left: (@size * .25) / 2;
-    width: @size * .75;
-    height: @size * .75;
-    border-radius: @size * .75;
+    top: (1.5rem * .25) / 2;
+    left: (1.5rem * .25) / 2;
+    width: 1.5rem * .75;
+    height: 1.5rem * .75;
+    border-radius: 1.5rem * .75;
     background: #fff;
     transition: left .25s;
   }
   &.active {
     transition: background-color .25s;
     > .handle {
-      left: @size + ((@size * .25) / 2);
+      left: 1.5rem + ((1.5rem * .25) / 2);
       transition: left .25s;
     }
     &:before {
@@ -110,11 +92,11 @@
   &.btn-sm {
     &:before,
     &:after {
-      line-height: @size - 2px;
+      line-height: 1.5rem - 1rem;
       color: #fff;
       letter-spacing: .75px;
-      left: @size * .275;
-      width: @size * 1.55;
+      left: 1.5rem * .275;
+      width: 1.5rem * 1.55;
     }
     &:before {
       text-align: right;
@@ -147,22 +129,323 @@
 
   .btn-toggle {
 
-    .toggle-mixin;
-    .toggle-color;
-
     &.btn-lg {
-      .toggle-mixin(@size: 2.5rem; @font-size: 1rem; @margin: 5rem;);
+      .toggle-mixin {
+        margin: 0 5rem;
+        padding: 0;
+        position: relative;
+        border: none;
+        height: 2.5rem;
+        width: 2.5rem * 2;
+        border-radius: 2.5rem;
+
+        &:focus,
+        &.focus {
+          &,
+          &.active {
+            outline: none;
+          }
+        }
+
+        &:before,
+        &:after {
+          line-height: 2.5rem;
+          width: 5rem;
+          text-align: center;
+          font-weight: 600;
+          // color: @color;
+          font-size: 1rem;
+          text-transform: uppercase;
+          letter-spacing: 2px;
+          position: absolute;
+          bottom: 0;
+          transition: opacity .25s;
+        }
+        &:before {
+          content: 'Off';
+          left: -5rem;
+        }
+        &:after {
+          content: 'On';
+          right: -5rem;
+          opacity: .5;
+        }
+
+        > .handle {
+          position: absolute;
+          top: (2.5rem * .25) / 2;
+          left: (2.5rem * .25) / 2;
+          width: 2.5rem * .75;
+          height: 2.5rem * .75;
+          border-radius: 2.5rem * .75;
+          background: #fff;
+          transition: left .25s;
+        }
+        &.active {
+          transition: background-color .25s;
+          > .handle {
+            left: 2.5rem + ((2.5rem * .25) / 2);
+            transition: left .25s;
+          }
+          &:before {
+            opacity: .5;
+          }
+          &:after {
+            opacity: 1;
+          }
+        }
+
+        &.btn-sm {
+          &:before,
+          &:after {
+            line-height: 2.5rem - 1rem;
+            color: #fff;
+            letter-spacing: .75px;
+            left: 2.5rem * .275;
+            width: 2.5rem * 1.55;
+          }
+          &:before {
+            text-align: right;
+          }
+          &:after {
+            text-align: left;
+            opacity: 0;
+          }
+          &.active {
+            &:before {
+              opacity: 0;
+            }
+            &:after {
+              opacity: 1;
+            }
+          }
+        }
+
+        &.btn-xs {
+          &:before,
+          &:after {
+            display: none;
+          }
+        }
+      }
     }
 
     &.btn-sm {
-      .toggle-mixin(@font-size: .55rem; @margin: .5rem;);
+      .toggle-mixin {
+        // color: @color;
+        // background: @bg;
+        margin: 0 .5rem;
+        padding: 0;
+        position: relative;
+        border: none;
+        height: 1.5rem;
+        width: 1.5rem * 2;
+        border-radius: 1.5rem;
+
+        &:focus,
+        &.focus {
+          &,
+          &.active {
+            outline: none;
+          }
+        }
+
+        &:before,
+        &:after {
+          line-height: 1.5rem;
+          width: .5rem;
+          text-align: center;
+          font-weight: 600;
+          // color: @color;
+          font-size: .55rem;
+          text-transform: uppercase;
+          letter-spacing: 2px;
+          position: absolute;
+          bottom: 0;
+          transition: opacity .25s;
+        }
+        &:before {
+          content: 'Off';
+          left: -.5rem;
+        }
+        &:after {
+          content: 'On';
+          right: -.5rem;
+          opacity: .5;
+        }
+
+        > .handle {
+          position: absolute;
+          top: (1.5rem * .25) / 2;
+          left: (1.5rem * .25) / 2;
+          width: 1.5rem * .75;
+          height: 1.5rem * .75;
+          border-radius: 1.5rem * .75;
+          background: #fff;
+          transition: left .25s;
+        }
+        &.active {
+          transition: background-color .25s;
+          > .handle {
+            left: 1.5rem + ((1.5rem * .25) / 2);
+            transition: left .25s;
+          }
+          &:before {
+            opacity: .5;
+          }
+          &:after {
+            opacity: 1;
+          }
+        }
+
+        &.btn-sm {
+          &:before,
+          &:after {
+            line-height: 1.5rem - 1rem;
+            color: #fff;
+            letter-spacing: .75px;
+            left: 1.5rem * .275;
+            width: 1.5rem * 1.55;
+          }
+          &:before {
+            text-align: right;
+          }
+          &:after {
+            text-align: left;
+            opacity: 0;
+          }
+          &.active {
+            &:before {
+              opacity: 0;
+            }
+            &:after {
+              opacity: 1;
+            }
+          }
+        }
+
+        &.btn-xs {
+          &:before,
+          &:after {
+            display: none;
+          }
+        }
+      }
+
     }
 
     &.btn-xs {
-      .toggle-mixin(@size:1rem;@margin:0;)
+      .toggle-mixin {
+        margin: 0 0;
+        padding: 0;
+        position: relative;
+        border: none;
+        height: 1rem;
+        width: 1rem * 2;
+        border-radius: 1rem;
+
+        &:focus,
+        &.focus {
+          &,
+          &.active {
+            outline: none;
+          }
+        }
+
+        &:before,
+        &:after {
+          line-height: 1rem;
+          width: 0;
+          text-align: center;
+          font-weight: 600;
+          // font-size: @font-size;
+          text-transform: uppercase;
+          letter-spacing: 2px;
+          position: absolute;
+          bottom: 0;
+          transition: opacity .25s;
+        }
+        &:before {
+          content: 'Off';
+          left: 0;
+        }
+        &:after {
+          content: 'On';
+          right: 0;
+          opacity: .5;
+        }
+
+        > .handle {
+          position: absolute;
+          top: (1rem * .25) / 2;
+          left: (1rem * .25) / 2;
+          width: 1rem * .75;
+          height: 1rem * .75;
+          border-radius: 1rem * .75;
+          background: #fff;
+          transition: left .25s;
+        }
+        &.active {
+          transition: background-color .25s;
+          > .handle {
+            left: 1rem + ((1rem * .25) / 2);
+            transition: left .25s;
+          }
+          &:before {
+            opacity: .5;
+          }
+          &:after {
+            opacity: 1;
+          }
+        }
+
+        &.btn-sm {
+          &:before,
+          &:after {
+            line-height: 1rem - 1rem;
+            color: #fff;
+            letter-spacing: .75px;
+            left: 1rem * .275;
+            width: 1rem * 1.55;
+          }
+          &:before {
+            text-align: right;
+          }
+          &:after {
+            text-align: left;
+            opacity: 0;
+          }
+          &.active {
+            &:before {
+              opacity: 0;
+            }
+            &:after {
+              opacity: 1;
+            }
+          }
+        }
+
+        &.btn-xs {
+          &:before,
+          &:after {
+            display: none;
+          }
+        }
+      }
+
     }
 
     &.btn-secondary {
-      .toggle-color(@active-bg:@brand-secondary);
+      .toggle-color {
+        color: #6b7381;
+        background: lighten(#6b7381, 30%);
+        &:before,
+        &:after {
+          color: #6b7381;
+        }
+        &.active {
+          background-color: #ff8300;
+        }
+      }
     }
   }
