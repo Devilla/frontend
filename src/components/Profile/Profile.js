@@ -109,12 +109,22 @@ class Profile extends Component {
     ));
   }
 
+  selectAccountOption = (option) => {
+    this.setState({accountOption: option, error: false});
+  }
+
+  submitRequest = () => {
+    if(!this.state.accountOption)
+      return this.setState({ error: true });
+  }
+
   showPopupOne = () => {
+    const { accountOption, error } = this.state;
     return (
       <div>
         <Row className="givemeborder justify-content-around">
           <Col md={6} className="pauseContent">
-            <button type="button" className="btn btn-primary waves-effect">
+            <button type="button" className={`btn btn-primary waves-effect ${accountOption == 'pause'?'selectedOption':''}`} onClick={() => this.selectAccountOption('pause')}>
               <i className="mdi mdi-account-minus mr-1"></i>Pause Account
             </button>
             <div className='content'>
@@ -124,7 +134,7 @@ class Profile extends Component {
             </div>
           </Col>
           <Col md={6} className="deleteContent">
-            <button type="button" className="btn btn-primary waves-effect" >
+            <button type='button' className={`btn btn-primary waves-effect ${accountOption == 'delete'?'selectedOption':''}`} onClick={() => this.selectAccountOption('delete')}>
               <i className="mdi mdi-account-remove mr-1"></i>Delete Account
             </button>
             <div className='content'>
@@ -134,7 +144,7 @@ class Profile extends Component {
           </Col>
         </Row>
         <Row className="justify-content-center mb-3">
-          <button type="button" className="btn btn-outline-primary waves-effect submitaccount">Submit </button>
+          <button type="button" className={`btn btn-outline-primary waves-effect submitaccount ${error?'error-border':''}`} onClick={this.submitRequest}>Submit </button>
         </Row>
         <Row className="justify-content-center mb-3 text-desc">An email containing one time code has been sent to your registered email.</Row>
         <Row className="justify-content-center">
@@ -389,6 +399,7 @@ class Profile extends Component {
               :''
             }
           </Col>
+
           <div className="modal fade show-modal" id="deletemodal" role="dialog">
             <div className="modal-dialog">
               <div className="modal-content align-modal">

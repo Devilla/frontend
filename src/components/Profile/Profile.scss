@@ -104,9 +104,16 @@
     background: #097fff !important;
   }
 
+  .error-border {
+    border-color: red !important;
+  }
+  
   .givemeborder {
     margin: 10px;
     padding: 10px;
+    .selectedOption {
+      background-color: #40c74094 !important;
+    }
 
     .pauseContent {
       width: 45% !important;
