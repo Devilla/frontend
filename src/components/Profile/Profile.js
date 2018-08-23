@@ -381,21 +381,6 @@ class Profile extends Component {
                             </div>
                           </Col>
                         </form>
-                        <div className="modal fade show-modal" id="deletemodal" role="dialog">
-                          <div className="modal-dialog">
-                            <div className="modal-content align-modal">
-                              <div className="modal-header">
-                                <button type="button" className="close" data-dismiss="modal">&times;</button>
-                                <h4 className   ="modal-title">Your Account</h4>
-                              </div>
-                              <div className="modal-body">
-                                {this.showPopupOne()}
-                              </div>
-                              <div className="modal-footer">
-                              </div>
-                            </div>
-                          </div>
-                        </div>
                       </div>
                     </div>
                   </Col>
@@ -404,7 +389,21 @@ class Profile extends Component {
               :''
             }
           </Col>
-
+          <div className="modal fade show-modal" id="deletemodal" role="dialog">
+            <div className="modal-dialog">
+              <div className="modal-content align-modal">
+                <div className="modal-header">
+                  <button type="button" className="close" data-dismiss="modal">&times;</button>
+                  <h4 className   ="modal-title">Your Account</h4>
+                </div>
+                <div className="modal-body">
+                  {this.showPopupOne()}
+                </div>
+                <div className="modal-footer">
+                </div>
+              </div>
+            </div>
+          </div>
           <ToastContainer hideProgressBar={true} />
         </div>
       </Loading>
