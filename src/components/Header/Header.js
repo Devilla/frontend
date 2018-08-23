@@ -24,8 +24,8 @@ const Header = ({
       }
       <div className="cookie-notice-container" style={{display:'block'}}>
         <div className="cookie-text">
-          <span className="cookie-label">You have reached the 30 day limit, to keep your campaigns running, Please Followed by the upgrade button.</span>
-          <button type="button">Upgrade</button>
+          <span className="cookie-label text-center">You have reached the 30 day limit, to keep your campaigns running, Please Followed by the upgrade button.</span>
+          <button type="button" onClick={()=>{browserHistory.push('/upgrade');}}>Upgrade</button>
         </div>
       </div>
       <ConnectionStatus />
