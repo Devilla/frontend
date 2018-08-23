@@ -89,6 +89,7 @@
       height: 100%;
     }
     &:after {
+      margin-top: 0;
       left: 0;
     }
     &:before {
@@ -96,6 +97,7 @@
     }
   }
   &:checked + .tgl-btn:after {
+    margin-top: 0;
     left: 50%;
   }
 }
@@ -107,6 +109,8 @@
     background: #097fff!important;
     border-radius: 2em;
     padding: 2px;
+    padding-left: 0px !important;
+    padding-top: 0px !important;
     transition: all .4s ease;
     border: 1px solid #e8eae9;
     &:after {
