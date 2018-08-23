@@ -164,6 +164,7 @@
       table {
         thead {
           tr {
+            background-color: white;
             th {
               font-weight: 400;
               font-size: 14px;
@@ -174,6 +175,11 @@
               -webkit-font-smoothing: antialiased;
               text-rendering: optimizeLegibility;
             }
+          }
+        }
+        tbody {
+          tr {
+            background-color: white;
           }
         }
       }
@@ -190,6 +196,52 @@
       border-radius: 8px;
     }
 
+    .billing-final-info-one{
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      /* margin: 0 auto; */
+      margin: 10px 0px;
+      padding: 14px 20px;
+      h4 {
+        font-size: 14px;
+        font-weight: 500;
+      }
+    }
+    .billing-final-info-one-bottom {
+      margin: auto;
+      margin-top: -11px;
+      .style3 {
+        width: 100%;
+        margin-bottom: 0;
+      }
+      .billing-final-info-bottom {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        /* margin: 0 auto; */
+        margin: 10px 0px;
+        padding: 14px 20px;
+        h4 {
+          font-size: 13px;
+          font-weight: 100;
+        }
+      }
+    }
+
+    .billing-final-info-two {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      /* margin: 0 auto; */
+      margin: 10px 0px;
+      padding: 14px 20px;
+      h4 {
+        font-size: 14px;
+        font-weight: 500;
+      }
+    }
+
     .billing-final-info.row {
       padding: 16px 60px;
       display: flex;
@@ -203,9 +255,19 @@
     }
   }
 
-.fa-angle-up.drop-down{
-  font-size: xx-large;
-}
+  .fa-angle-up.drop-down {
+    font-size: xx-large;
+  }
+
+  .estimate {
+    background-color: #FAFBFC;
+    font-size: 12px;
+
+    hr{
+      border-top: dotted 1px;
+    }
+  }
+
   .billing-info-one:after {
     background: linear-gradient(-45deg, #f9f9f9 16px, transparent 0), linear-gradient(45deg, #f9f9f9 16px, transparent 0);
     background-position: left-bottom;
@@ -217,39 +279,39 @@
     left: 0;
     width: 100%;
     clear: both;
-    bottom: 185px;
+    // bottom: 185px;
     height: 20px;
   }
-  // .billing-info-two:after {
-  //   background: linear-gradient(-45deg, #f9f9f9 16px, transparent 0), linear-gradient(45deg, #f9f9f9 16px, transparent 0);
-  //   background-position: left-bottom;
-  //   background-repeat: repeat-x;
-  //   background-size: 24px 24px;
-  //   content: " ";
-  //   display: block;
-  //   position: absolute;
-  //   left: 0;
-  //   width: 100%;
-  //   clear: both;
-  //   bottom: 185px;
-  //   height: 20px;
-  //   // margin: 130px 0px auto;
-  // }
-  // .billing-info-three:after {
-  //   background: linear-gradient(-45deg, #f9f9f9 16px, transparent 0), linear-gradient(45deg, #f9f9f9 16px, transparent 0);
-  //   background-position: left-bottom;
-  //   background-repeat: repeat-x;
-  //   background-size: 24px 24px;
-  //   content: " ";
-  //   display: block;
-  //   position: absolute;
-  //   left: 0;
-  //   width: 100%;
-  //   clear: both;
-  //   bottom: -52px;
-  //   height: 20px;
-  //   // margin: 130px 0px auto;
-  // }
+  .billing-info-two:after {
+    background: linear-gradient(-45deg, #f9f9f9 16px, transparent 0), linear-gradient(45deg, #f9f9f9 16px, transparent 0);
+    background-position: left-bottom;
+    background-repeat: repeat-x;
+    background-size: 24px 24px;
+    content: " ";
+    display: block;
+    // position: absolute;
+    left: 0;
+    width: 100%;
+    clear: both;
+    // bottom: 185px;
+    height: 20px;
+    // margin: 130px 0px auto;
+  }
+  .billing-info-three:after {
+    background: linear-gradient(-45deg, #f9f9f9 16px, transparent 0), linear-gradient(45deg, #f9f9f9 16px, transparent 0);
+    background-position: left-bottom;
+    background-repeat: repeat-x;
+    background-size: 24px 24px;
+    content: " ";
+    display: block;
+    // position: absolute;
+    left: 0;
+    width: 100%;
+    clear: both;
+    // bottom: -52px;
+    height: 20px;
+    // margin: 130px 0px auto;
+  }
 }
 @media only screen and (max-width: 768px) and (min-width: 100px) {
   .billing-details {

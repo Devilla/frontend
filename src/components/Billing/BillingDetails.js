@@ -88,9 +88,9 @@ class BillingDetails extends Component {
   }
 
   arrowUpClick = () => {
-    this.setState({ show : true});
-    window.alert('hiiii');
+    this.setState({ show : !this.state.show});
   }
+
   render() {
     const { planSelected, error } = this.state;
     const { profile, updatePaymentMethod } = this.props;
@@ -269,25 +269,34 @@ class BillingDetails extends Component {
             </Col>
           </Row>
           <Row className="billing-info billing-info-one" style={{ display: openCloseRowOne?'block':'none' }}>
-            <Col md={10} className="row-two-col-one">
-              <Row>
-              </Row>
-              <Row className="billing-final-info">
+            <Col md={12} className="billing-info-one-col-one">
+              {/* <Row>
+              </Row> */}
+              <Row className="billing-final-info-one estimate">
                 <h4>Estimated charge for next cycle</h4>
                 <h4>$0</h4>
                 <i className='fa fa-angle-up drop-down' onClick={this.arrowUpClick}></i>
               </Row>
               {this.state.show ?
-                <Row className="billing-final-info">
-                  <h4>Estimated charge for next cycle</h4>
-                  <h4>$0</h4>
-                  <i className='fa fa-angle-up drop-down' onClick={this.arrowUpClick}></i>
+                <Row className="billing-final-info-one-bottom estimate">
+                  <hr class="style3"></hr>
+                  <Row className="billing-final-info-bottom charge">
+                    <h4>Base Plan Charge(1 Acount owner)</h4>
+                    <h4>2</h4>
+                    <h4>$0</h4>
+                  </Row>
                 </Row>
                 :
-                null}
+                null
+              }
+
+              <Row className="billing-final-info-two estimate">
+                <h4>You Pay</h4>
+                <h4>$0</h4>
+              </Row>
             </Col>
           </Row>
-          <Row className="billing-info billing-info-one" style={{ display: openCloseRowOne?'block':'none' }}>
+          {/* <Row className="billing-info billing-info-one" style={{ display: openCloseRowOne?'block':'none' }}>
             <Col md={10} className="row-two-col-one">
               <Row>
               </Row>
@@ -296,7 +305,7 @@ class BillingDetails extends Component {
                 <h4>$0</h4>
               </Row>
             </Col>
-          </Row>
+          </Row> */}
 
           <Row className="billing-row" onClick={this.openCloseRowTwo}>
             <Col md={1} className="row-two-col-one">
