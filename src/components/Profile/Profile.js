@@ -121,12 +121,13 @@ class Profile extends Component {
 
   showPopupOne = () => {
     const { accountOption, error } = this.state;
+    const { user } = this.props;
     return (
       <div>
         <Row className="givemeborder justify-content-around">
           <Col md={6} className="pauseContent">
-            <button type="button" className={`btn btn-primary waves-effect ${accountOption == 'pause'?'selectedOption':''}`} onClick={() => this.selectAccountOption('pause')}>
-              <i className="mdi mdi-account-minus mr-1"></i>Pause Account
+            <button type="button" className={`btn btn-primary waves-effect ${(accountOption == 'pause' || accountOption == 'running') ?'selectedOption':''}`} onClick={() => this.selectAccountOption(user && user.status == 'pause'?'running':'pause')}>
+              <i className="mdi mdi-account-minus mr-1"></i>{user && user.status == 'paused'?'Resume':'Pause'} Account
             </button>
             <div className='content'>
               <h3>Recommended:</h3>
