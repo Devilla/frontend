@@ -61,6 +61,21 @@ function* update(action) {
   }
 }
 
+function* accountRequest(action) {
+  try {
+    yield put(load());
+    const res = yield call(api.GET, `profile/otp/${action.requestType}`);
+    if (res.error)
+      console.log(res.error);
+    else
+      yield put(actions.successAccountRequest(res));
+    yield put(loaded());
+  } catch (error) {
+    yield put(loaded());
+    yield toast.error(error.message, toastConfig);
+  }
+}
+
 export function* watchFetch() {
   yield takeLatest(actions.FETCH, fetch);
 }
@@ -73,10 +88,15 @@ export function* watchUpdate() {
   yield takeLatest(actions.UPDATE_PROFILE, update);
 }
 
+export function* watchSubmitAccountRequest() {
+  yield takeLatest(actions.SUBMIT_ACCOUNT_REQUEST, accountRequest);
+}
+
 export default function* rootSaga() {
   yield [
     fork(watchFetch),
     fork(watchCreate),
-    fork(watchUpdate)
+    fork(watchUpdate),
+    fork(watchSubmitAccountRequest)
   ];
 }
