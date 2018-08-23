@@ -67,7 +67,8 @@ function* accountRequest(action) {
     const res = yield call(api.GET, `profile/otp/${action.requestType}`);
     if (res.error)
       console.log(res.error);
-    // else
+    else
+      yield toast('Mail sent', toastConfig);
     //   yield put(actions.successAccountRequest(res));
     yield put(loaded());
   } catch (error) {
