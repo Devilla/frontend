@@ -65,14 +65,7 @@ const security = [
     icon: 'fi-head',
     path: 'campaign',
     text: 'GDPR'
-  },
-  {
-    icon: 'fi-cog',
-    path: 'integration',
-    text: 'Analytics',
-    head: 'Unique'
-  },
-
+  }
 ];
 
 
@@ -81,7 +74,7 @@ class Settings extends Component {
   renderConfigurations = () => {
     return configuration.map(item => {
       return (
-        <div className="card" onClick={() => browserHistory.push(item.path)}>
+        <div className="card mr-0" onClick={() => browserHistory.push(item.path)}>
           <div className="card-img-top">
             {item.head &&
               <p>
@@ -101,7 +94,7 @@ class Settings extends Component {
   renderSetup = () => {
     return setup.map(item => {
       return (
-        <div className="card" onClick={() => browserHistory.push(item.path)}>
+        <div className="card mr-0" onClick={() => browserHistory.push(item.path)}>
           <div className="card-img-top">
             {item.head?
               <p>
@@ -123,7 +116,7 @@ class Settings extends Component {
   renderSecurity = () => {
     return security.map(item => {
       return (
-        <div className="card" onClick={() => browserHistory.push(item.path)}>
+        <div className="card mr-0" onClick={() => browserHistory.push(item.path)}>
           <div className="card-img-top">
             {item.head?
               <p>
@@ -167,7 +160,7 @@ class Settings extends Component {
         </Row>
         <Row>
           <Col md={2}>
-            <h3 className="settingsheader">Security & Compliance</h3>
+            <h3 className="settingsheader">Security</h3>
           </Col>
           <Col md={10}>
             <div className="settings-card-container">
