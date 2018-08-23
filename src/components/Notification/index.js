@@ -8,7 +8,6 @@ import { browserHistory } from 'react-router';
 import Popup from 'react-popup';
 import mobile from 'is-mobile';
 import Loading from 'react-loading-animation';
-import {ToggleButton} from 'components';
 
 import { fetchCampaign, fetchCampaignInfo, updateCampaign, successCampaign, removeCampaign } from 'ducks/campaign';
 import './Notification.scss';
@@ -102,9 +101,8 @@ class Notification extends Component {
           <td>{campaign.campaignName}</td>
           {!mobile() && <td>{campaign.websiteUrl}</td>}
           <td className="switch">
-            <ToggleButton/>
-            {/*<input className="tgl tgl-ios" id="cb2" type="checkbox" checked={this.state.isActive}  readOnly/>
-            <label className="tgl-btn" htmlFor="cb2"  data-toggle="modal" data-target="#2"  onClick={(e) => this.handleActiveChange(!campaign.isActive, campaign, i)}></label>*/}
+            <input className="tgl tgl-ios" id="cb2" type="checkbox" checked={this.state.isActive}  readOnly/>
+            <label className="tgl-btn" htmlFor="cb2"  data-toggle="modal" data-target="#2"  onClick={(e) => this.handleActiveChange(!campaign.isActive, campaign, i)}>ON</label>
           </td>
           <td className='text-center'>{totalUsers}</td>
           {!mobile() && <td>{campaign.trackingId}</td>}
