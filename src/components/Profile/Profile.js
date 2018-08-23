@@ -9,7 +9,7 @@ import {
   FormControl
 } from 'react-bootstrap';
 import { ToastContainer } from 'react-toastify';
-import { fetchProfile, updateProfile, submitAccountRequest } from 'ducks/profile';
+import { fetchProfile, updateProfile, submitAccountRequest, submitAccountOtp } from 'ducks/profile';
 import './Profile.scss';
 
 class Profile extends Component {
@@ -33,7 +33,9 @@ class Profile extends Component {
       countryList: [],
       savedtext: 'Save',
       changePassword : false,
-      profileSetting : true
+      profileSetting : true,
+      otpCode: '',
+      errorOtp: ''
     };
   }
 
@@ -116,7 +118,13 @@ class Profile extends Component {
   submitRequest = () => {
     if(!this.state.accountOption)
       return this.setState({ error: true });
-    this.props.submitAccountRequest();
+    this.props.submitAccountRequest(this.state.accountOption);
+  }
+
+  submitOtpRequest = () => {
+    if(!this.state.otpCode)
+      return this.setState({ errorOtp: true });
+    this.props.submitAccountOtp(this.state.otpCode);
   }
 
   showPopupOne = () => {
@@ -433,7 +441,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = {
   fetchProfile,
   updateProfile,
-  submitAccountRequest
+  submitAccountRequest,
+  submitAccountOtp
 };
 
 export default connect(mapStateToProps, mapDispatchToProps, null, { withRef: true })(Profile);

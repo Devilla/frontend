@@ -14,7 +14,7 @@ export const createProfile = profile => ({ type: CREATE, profile });
 export const updateProfile = profile => ({ type: UPDATE_PROFILE, profile });
 export const successProfile = profile => ({ type: SUCCESS, profile });
 export const submitAccountRequest = requestType => ({ type: SUBMIT_ACCOUNT_REQUEST, requestType });
-export const successAccountRequest = code => ({ type: SUBMIT_ACCOUNT_OTP, code });
+export const submitAccountOtp = code => ({ type: SUBMIT_ACCOUNT_OTP, code });
 
 const initialState = fromJS({});
 
