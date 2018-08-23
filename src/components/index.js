@@ -61,4 +61,3 @@ export { default as OauthAuthorization } from './OauthAuthorization/OauthAuthori
 export { default as FreshBilling } from './Billing/fresh-biiling.js';
 export { default as GettingStarted } from './GettingStarted/GettingStarted';
 export { default as Settings } from './Settings/Settings';
-export { default as ToggleButton } from './ToggleButton/ToggleButton';

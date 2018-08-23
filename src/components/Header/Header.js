@@ -20,9 +20,14 @@ const Header = ({
     <div className="customer-header">
       {loading ?
         <ProgressBar bsStyle='info'  now={ 120 }/>
-        :
-        <ProgressBar bsStyle='info'  now={0} />
+        :''
       }
+      <div className="cookie-notice-container" style={{display:'block'}}>
+        <div className="cookie-text">
+          <span className="cookie-label">You have reached the 30 day limit, to keep your campaigns running, Please Followed by the upgrade button.</span>
+          <button type="button">Upgrade</button>
+        </div>
+      </div>
       <ConnectionStatus />
       <div className="nav-topbar-flex">
         <div className="topbar-left">
