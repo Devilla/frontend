@@ -316,15 +316,15 @@ class CapturePage extends Component {
                   <span className="input-group-btn col-md-3" id="urladd">
                     <div className="btn-group campaign-dropdown">
                       <button className="btn btn-primary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Action
+                        Add &nbsp;
                       </button>
                       <div className="dropdown-menu">
                         <div className="dropdown-item" id={1} onClick={this.addPageUrl} >
-                          <i className="fi-plus"></i>
+                          
                           Add Path
                         </div>
                         <div className="dropdown-item last-item-dropdown" id={1} onClick={this.openCloseModal} >
-                          <i className="fi-circle-plus"></i>
+                          
                           Add SubDomain
                         </div>
                       </div>

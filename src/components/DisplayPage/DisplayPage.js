@@ -332,7 +332,7 @@ class DisplayPage extends Component {
                     id="urladd">
                     <div className="btn-group campaign-dropdown">
                       <button className="btn btn-primary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Action
+                        Add &nbsp;
                       </button>
                       <div className="dropdown-menu">
                         <div className="dropdown-item" id={1} onClick={this.addPageUrl} >
