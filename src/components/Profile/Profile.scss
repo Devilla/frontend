@@ -2,24 +2,30 @@
   display: flex;
   padding-top: 50px;
   #formControlsSelect {
-    color: #757575;
+    color: #49475d;
   }
 
   .content-tabs {
     height: 60px;
-    padding: 20px;
-    background: #d3d3d34a;
+    padding: 23px;
     margin: 5px 0px;
+    background: #e2e5e7 !important;
+    color: #7d7b8a;
+    border-radius: 3px;
   }
 
   .content-tabs:hover, .active {
-    background-color: white;
+    background: #ffffff !important;
     font-weight: 600;
+    color: #696879;
+    border: 0.5px solid #c5c5c5;
   }
 
   .profile-content-contaier {
     .profile-content-col-one {
       background-color: white;
+      box-shadow: 0px 0px 1px rgba(0,0,0,0.2);
+      border-radius: 5px;
       .profile-user-box {
         background-color: white !important;
         padding: 20px;
@@ -63,7 +69,7 @@
 
   button {
     &.btn.btn-primary.waves-effect {
-      border-radius: 8px;
+      border-radius: 4px;
     }
   }
 
