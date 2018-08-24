@@ -203,12 +203,34 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
           <div className="cookie-text" style={{padding:'0px', minHeight: '52px'}}>
             <button type="button" className="text-left" style={{backgroundColor:'#5ac73a'}} onClick={()=>{browserHistory.push('/back');}}>Prev</button>
             <span className="radio radio-success">
-              <input type="radio" name="radio8" id="radio8" value="option8" defaultChecked/>
-              <label htmlFor="radio8">
+              <input type="radio" name="radio1" id="radio1" value="option8" defaultChecked/>
+              <label htmlFor="radio1">
               </label>
             </span>
-            <button type="radio" style={{borderRadius:'8px', width:'5px', backgroundColor:'#5ac73a'}}></button>
+            <button type="radio" style={{borderRadius: '2px',width: '5px', marginTop: '4px!important;', backgroundColor: 'rgb(90, 199, 58)', marginLeft: '-14px!important;'}}></button>
+            <span className="radio radio-success">
+              <input type="radio" name="radio2" id="radio2" value="option8" defaultChecked/>
+              <label htmlFor="radio2">
+              </label>
+            </span>
             <button type="radio" className="text-center"  style={{backgroundColor:'#5ac73a'}}></button>
+            <span className="radio radio-success">
+              <input type="radio" name="radio3" id="radio3" value="option8" defaultChecked/>
+              <label htmlFor="radio3">
+              </label>
+            </span>
+            <button type="radio" className="text-center"  style={{backgroundColor:'#5ac73a'}}></button>
+            <span className="radio radio-success">
+              <input type="radio" name="radio4" id="radio4" value="option8" defaultChecked/>
+              <label htmlFor="radio4">
+              </label>
+            </span>
+            <button type="radio" className="text-center"  style={{backgroundColor:'#5ac73a'}}></button>
+            <span className="radio radio-success">
+              <input type="radio" name="radio5" id="radio5" value="option8" defaultChecked/>
+              <label htmlFor="radio5">
+              </label>
+            </span>
             <button type="button" className="text-center"  style={{backgroundColor:'#5ac73a'}} onClick={this.handleNextButton}>Next</button>
             <button type="button" className="btn-right" style={{backgroundColor:'#5ac73a'}} onClick={this.goLive}>Publish</button>
           </div>

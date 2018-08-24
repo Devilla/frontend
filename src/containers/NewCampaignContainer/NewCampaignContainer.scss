@@ -10,7 +10,15 @@
   }
   .cookie-text {
     .radio-success {
-      background-color: #5ac73a;
+      background-color: #0074d9;
+      margin-top:-12px;
+
+      &before {
+        border-color: #0074d9;
+      }
+      &after {
+        border-color: #0074d9;
+      }
     }
       -webkit-box-align: center;
       align-items: center;
