@@ -200,8 +200,15 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
           />
         }
         <div className="cookie-notice-container" style={{display:'block', left: '-37px', top:'-150px'}}>
-          <div className="cookie-text" style={{padding:'8px', minHeight: '52px'}}>
+          <div className="cookie-text" style={{padding:'0px', minHeight: '52px'}}>
             <button type="button" className="text-left" style={{backgroundColor:'#5ac73a'}} onClick={()=>{browserHistory.push('/back');}}>Prev</button>
+            <span className="radio radio-success">
+              <input type="radio" name="radio8" id="radio8" value="option8" defaultChecked/>
+              <label htmlFor="radio8">
+              </label>
+            </span>
+            <button type="radio" style={{borderRadius:'8px', width:'5px', backgroundColor:'#5ac73a'}}></button>
+            <button type="radio" className="text-center"  style={{backgroundColor:'#5ac73a'}}></button>
             <button type="button" className="text-center"  style={{backgroundColor:'#5ac73a'}} onClick={this.handleNextButton}>Next</button>
             <button type="button" className="btn-right" style={{backgroundColor:'#5ac73a'}} onClick={this.goLive}>Publish</button>
           </div>
