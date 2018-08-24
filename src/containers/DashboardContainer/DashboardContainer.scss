@@ -245,9 +245,13 @@ p {
   .user-box{
     background: #082a52;
   }
-  .btn-primary{
+  .btn-primary {
     background-color: #4aa5ea !important;
     border: 1px solid #4aa5ea !important;
+  }
+  .btn-primary:hover {
+    background-color: #108ae6 !important;
+    border: 1px solid #108ae6 !important;
   }
 }
 
