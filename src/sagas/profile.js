@@ -4,6 +4,7 @@ import * as actions from 'ducks/profile';
 import { load, loaded } from 'ducks/loading';
 import { toast } from 'react-toastify';
 import { browserHistory } from 'react-router';
+import { fetchUser } from 'ducks/auth';
 
 const toastConfig = {
   position: toast.POSITION.BOTTOM_LEFT,
@@ -83,9 +84,14 @@ function* submitAccountOtp(action) {
     const res = yield call(api.POST, 'profile/otp/submit', action.code);
     if (res.error)
       console.log(res.error);
-    else
-      yield toast('Code valid', toastConfig);
-      // yield put(actions.successAccountRequest(res));
+    else {
+      if(res.code) {
+        yield put(fetchUser());
+        yield toast(`Account ${action.code.type == 'pause'?'Paused':action.code.type == 'running'?'Resumed':'Deleted'}`, toastConfig);
+      } else
+        yield put(actions.successAccountOtpRequest(res.code));
+    }
+
     yield put(loaded());
   } catch (error) {
     yield put(loaded());

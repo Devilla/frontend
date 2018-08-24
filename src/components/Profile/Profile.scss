@@ -90,6 +90,12 @@
     z-index: 999999999 !important;
     overflow: scroll !important;
     background: rgba(248, 247, 247, 0.7);
+    .help-block {
+      .website-error {
+        margin-top: 0 !important;
+        color: red !important;
+      }
+    }
   }
 
   .align-modal {
@@ -107,10 +113,11 @@
   .error-border {
     border-color: red !important;
   }
-  
+
   .givemeborder {
     margin: 10px;
     padding: 10px;
+
     .selectedOption {
       background-color: #40c74094 !important;
     }

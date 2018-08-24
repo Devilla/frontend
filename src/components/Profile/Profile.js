@@ -6,10 +6,12 @@ import {
   Row,
   Col,
   FormGroup,
-  FormControl
+  FormControl,
+  HelpBlock
 } from 'react-bootstrap';
+
 import { ToastContainer } from 'react-toastify';
-import { fetchProfile, updateProfile, submitAccountRequest, submitAccountOtp } from 'ducks/profile';
+import { fetchProfile, updateProfile, submitAccountRequest, submitAccountOtp, clearResponse } from 'ducks/profile';
 import './Profile.scss';
 
 class Profile extends Component {
@@ -124,17 +126,17 @@ class Profile extends Component {
   submitOtpRequest = () => {
     if(!this.state.otpCode)
       return this.setState({ errorOtp: true });
-    this.props.submitAccountOtp(this.state.otpCode);
+    this.props.submitAccountOtp({otpCode: this.state.otpCode, type: this.state.accountOption});
   }
 
   showPopupOne = () => {
     const { accountOption, error } = this.state;
-    const { user } = this.props;
+    const { user, otp_response } = this.props;
     return (
       <div>
         <Row className="givemeborder justify-content-around">
           <Col md={6} className="pauseContent">
-            <button type="button" className={`btn btn-primary waves-effect ${(accountOption == 'pause' || accountOption == 'running') ?'selectedOption':''}`} onClick={() => this.selectAccountOption(user && user.status == 'pause'?'running':'pause')}>
+            <button type="button" className={`btn btn-primary waves-effect ${(accountOption == 'pause' || accountOption == 'running') ?'selectedOption':''}`} onClick={() => this.selectAccountOption(user && user.status == 'paused'?'running':'pause')}>
               <i className="mdi mdi-account-minus mr-1"></i>{user && user.status == 'paused'?'Resume':'Pause'} Account
             </button>
             <div className='content'>
@@ -159,10 +161,13 @@ class Profile extends Component {
         <Row className="justify-content-center mb-3 text-desc">An email containing one time code has been sent to your registered email.</Row>
         <Row className="justify-content-center">
           <Col md={4}>
-            <input type="number" placeholder="Enter Code here" className="inputcode"/>
+            <input type="number" id="otpCode" placeholder="Enter Code here" className="inputcode" onChange={this.handleStateChange} />
+            <HelpBlock>
+              <p className="website-error">{otp_response==false?'Invalid OTP':''}</p>
+            </HelpBlock>
           </Col>
           <Col>
-            <button type="button" className="btn btn-outline-primary waves-effect confirmaccount" data-dismiss="modal" data-toggle="modal" data-target="#feedbackmodal">Confirm Action </button>
+            <button type="button" className="btn btn-outline-primary waves-effect confirmaccount" onClick={this.submitOtpRequest}>Confirm Action</button>
           </Col>
         </Row>
       </div>
@@ -177,9 +182,14 @@ class Profile extends Component {
     this.setState({profileSetting: false, changePassword: true});
   }
 
+  componentWillUnmount() {
+    this.props.clearResponse();
+  }
+
   render() {
     const profile = this.state;
-    const { user } = this.props;
+    const { user, otp_response } = this.props;
+
     return (
       <Loading className="transition-item profile-transition-container" style={{width: '10%', height: '700px'}} strokeWidth='2' isLoading={!user || !profile}>
 
@@ -415,7 +425,7 @@ class Profile extends Component {
               <div className="modal-content align-modal">
                 <div className="modal-header">
                   <button type="button" className="close" data-dismiss="modal">&times;</button>
-                  <h4 className   ="modal-title">Your Account</h4>
+                  <h4 className="modal-title">Your Account</h4>
                 </div>
                 <div className="modal-body">
                   {this.showPopupOne()}
@@ -435,14 +445,16 @@ class Profile extends Component {
 const mapStateToProps = state => ({
   profile: state.getIn(['profile', 'profile']),
   user: state.getIn(['auth', 'user']),
-  loading: state.getIn(['loading', 'state'])
+  loading: state.getIn(['loading', 'state']),
+  otp_response: state.getIn(['profile', 'otp_response'])
 });
 
 const mapDispatchToProps = {
   fetchProfile,
   updateProfile,
   submitAccountRequest,
-  submitAccountOtp
+  submitAccountOtp,
+  clearResponse
 };
 
 export default connect(mapStateToProps, mapDispatchToProps, null, { withRef: true })(Profile);
