@@ -32,7 +32,11 @@ const Header = ({
       <ConnectionStatus />
       <div className="nav-topbar-flex">
         <div className="topbar-left">
-          <h4><Link onClick={() => browserHistory.goBack()}><i className="icon-arrow-left"></i></Link>{children.props.location.pathname == '/new'? 'Campaign Setting' :children.props.location.pathname.replace(/^\/+/g, '')}</h4>
+          <ol className="breadcrumb ml-2">
+            <li className="breadcrumb-item"><Link to='/home'>home</Link></li>
+            <li className="breadcrumb-item active"><Link to={children.props.location.pathname}>{children.props.location.pathname == '/new'? 'Campaign Setting' :children.props.location.pathname.replace(/^\/+/g, '')}</Link></li>
+          </ol>
+          {/*<h4><Link onClick={() => browserHistory.goBack()}><i className="icon-arrow-left"></i></Link>{children.props.location.pathname == '/new'? 'Campaign Setting' :children.props.location.pathname.replace(/^\/+/g, '')}</h4>*/}
         </div>
         <ul className="list-unstyled list-inline topbar-right float-right ml-2 mb-0 nav-custom-header">
           <li className="dropdown notification-list">
