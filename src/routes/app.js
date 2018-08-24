@@ -14,7 +14,7 @@ const appRoutes = [
   { path: '/settings', name: 'Settings', icon: 'fi-cog', component: Settings },
   { path: '/oauthshow', name: 'Oauth', icon: 'fi-link', component: Oauthpage },
   // { path: '/settings', name: 'Oauth', icon: 'fi-link', component: Settings },
-  { path: '/getting-started', name: 'Getting Started', icon: 'fi-speech-bubble', component: GettingStarted },
+  { path: '/getting-started', name: 'Getting Started', icon: 'fi-open', component: GettingStarted },
   { redirect: true }
 ];
 
