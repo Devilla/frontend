@@ -85,11 +85,15 @@ function* submitAccountOtp(action) {
     if (res.error)
       console.log(res.error);
     else {
-      if(res.code) {
+      if(res.code && action.code.type !== 'delete') {
         yield put(fetchUser());
         yield toast(`Account ${action.code.type == 'pause'?'Paused':action.code.type == 'running'?'Resumed':'Deleted'}`, toastConfig);
-      } else
+      } else if(res.code && action.code.type === 'delete') {
+        localStorage.removeItem('authToken');
+        browserHistory.push('/home');
+      } else {
         yield put(actions.successAccountOtpRequest(res.code));
+      }
     }
 
     yield put(loaded());
