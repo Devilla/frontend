@@ -61,6 +61,38 @@ function* update(action) {
   }
 }
 
+function* accountRequest(action) {
+  try {
+    yield put(load());
+    const res = yield call(api.GET, `profile/otp/${action.requestType}`);
+    if (res.error)
+      console.log(res.error);
+    else
+      yield toast('Mail sent', toastConfig);
+    //   yield put(actions.successAccountRequest(res));
+    yield put(loaded());
+  } catch (error) {
+    yield put(loaded());
+    yield toast.error(error.message, toastConfig);
+  }
+}
+
+function* submitAccountOtp(action) {
+  try {
+    yield put(load());
+    const res = yield call(api.POST, 'profile/otp/submit', action.code);
+    if (res.error)
+      console.log(res.error);
+    else
+      yield toast('Code valid', toastConfig);
+      // yield put(actions.successAccountRequest(res));
+    yield put(loaded());
+  } catch (error) {
+    yield put(loaded());
+    yield toast.error(error.message, toastConfig);
+  }
+}
+
 export function* watchFetch() {
   yield takeLatest(actions.FETCH, fetch);
 }
@@ -73,10 +105,20 @@ export function* watchUpdate() {
   yield takeLatest(actions.UPDATE_PROFILE, update);
 }
 
+export function* watchSubmitAccountRequest() {
+  yield takeLatest(actions.SUBMIT_ACCOUNT_REQUEST, accountRequest);
+}
+
+export function* watchSubmitAccountOtp() {
+  yield takeLatest(actions.SUBMIT_ACCOUNT_OTP, submitAccountOtp);
+}
+
 export default function* rootSaga() {
   yield [
     fork(watchFetch),
     fork(watchCreate),
-    fork(watchUpdate)
+    fork(watchUpdate),
+    fork(watchSubmitAccountRequest),
+    fork(watchSubmitAccountOtp)
   ];
 }

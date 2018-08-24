@@ -1,10 +1,39 @@
 .profile-container {
-  display: grid;
-
+  display: flex;
+  padding-top: 50px;
   #formControlsSelect {
     color: #757575;
   }
 
+  .content-tabs {
+    height: 60px;
+    padding: 20px;
+    background: #d3d3d34a;
+    margin: 5px 0px;
+  }
+
+  .content-tabs:hover, .active {
+    background-color: white;
+    font-weight: 600;
+  }
+
+  .profile-content-contaier {
+    .profile-content-col-one {
+      background-color: white;
+      .profile-user-box {
+        background-color: white !important;
+        padding: 20px;
+        .media-body {
+          h4 {
+            color: black;
+          }
+        }
+        .tilebox-one {
+          background-color: white !important;
+        }
+      }
+    }
+  }
   button {
     border-radius: 5px;
 
@@ -75,9 +104,16 @@
     background: #097fff !important;
   }
 
+  .error-border {
+    border-color: red !important;
+  }
+  
   .givemeborder {
     margin: 10px;
     padding: 10px;
+    .selectedOption {
+      background-color: #40c74094 !important;
+    }
 
     .pauseContent {
       width: 45% !important;
