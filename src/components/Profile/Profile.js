@@ -185,8 +185,8 @@ class Profile extends Component {
 
         <div className="fill profile-container">
           <Col md={2}>
-            <div className={this.state.profileSetting?'content-tabs active':'content-tabs'} onClick={()=>this.showProfile()} >My Profile</div>
-            <div className={this.state.changePassword?'content-tabs active':'content-tabs'} onClick={()=>this.changePassword()} >Change Password</div>
+            <div className={this.state.profileSetting?'content-tabs active mt-0 mr-3 ml-3':'content-tabs mt-0 mr-3 ml-3'} onClick={()=>this.showProfile()} >My Profile</div>
+            <div className={this.state.changePassword?'content-tabs active mt-0 mr-3 ml-3':'content-tabs mt-0 mr-3 ml-3'} onClick={()=>this.changePassword()} >Change Password</div>
             {/* <Grid fluid={true}>
               <Col sm={12}>
                 <div className="profile-user-box card-box mb-0" >
@@ -298,7 +298,7 @@ class Profile extends Component {
                               <i className="mdi mdi-account-settings-variant mr-1"></i>  {this.props.loading ? ( this.state.savedtext
                               )
                                 : 'Save Profile'} */}
-            <div className="content-tabs" data-toggle="modal" data-target="#deletemodal">More Options</div>
+            <div className="content-tabs mt-0 mr-3 ml-3" data-toggle="modal" data-target="#deletemodal">More Options</div>
           </Col>
 
           <Col md={10} className="profile-content-contaier">
@@ -334,8 +334,8 @@ class Profile extends Component {
                             <img src={profile.image?profile.image:'https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg'} alt="User profile" className="rounded-circle" />
                           </span>
                           <div className=" media-body text-white">
-                            <h4 className="mt-1 mb-1 font-18">Username</h4>
-                            <p className="text-light mb-0">Country</p>
+                            <h4 className="mt-2 mb-1 font-16">Username</h4>
+                            <p className="text-dark mb-0">Country</p>
                           </div>
                         </Col>
                         <Col sm={8}>
@@ -349,12 +349,11 @@ class Profile extends Component {
                 </Row>
 
                 <Row>
-                  <Col md={7} style={{ background: '#fff', borderRadius:'5px' }}>
+                  <Col md={7} className="profile-content-col-one mt-3" style={{ background: '#fff', borderRadius:'5px' }}>
                     <div className="panel-body">
-                      <hr />
                       <div>
                         <form>
-                          <Row>
+                          <Row className="p-3">
                             <Col md={6}>
                               <span className="text-muted font-13 p mt-5"><strong>First Name :</strong> </span>
                               <FormGroup>
@@ -368,7 +367,7 @@ class Profile extends Component {
                               </FormGroup>
                             </Col>
                           </Row>
-                          <Row>
+                          <Row className="p-3">
                             <Col md={6}>
                               <span className="text-muted font-13 p"><strong>Phone :</strong> </span>
                               <FormGroup>
@@ -382,7 +381,7 @@ class Profile extends Component {
                               </FormGroup>
                             </Col>
                           </Row>
-                          <Row>
+                          <Row className="p-3">
                             <Col md={6}>
                               <span className="text-muted font-13 p"><strong>Address :</strong> </span>
                               <FormGroup>
@@ -391,7 +390,7 @@ class Profile extends Component {
                             </Col>
                           </Row>
                           <Col md={12} className="profile-buttons">
-                            <div className="text-left save" style={{marginTop: '0px', marginLeft: '-26px', borderRadius: '8px'}}>
+                            <div className="text-right save" style={{marginTop: '0px', marginLeft: '-26px', borderRadius: '8px'}}>
                               <button type="button" className="btn btn-primary waves-effect mb-4" onClick={this.updateProfile}>
                                 {this.props.loading ? ( this.state.savedtext
                                 )
