@@ -131,7 +131,7 @@ class Profile extends Component {
 
   showPopupOne = () => {
     const { accountOption, error } = this.state;
-    const { user, otp_response } = this.props;
+    const { user } = this.props;
     return (
       <div>
         <Row className="givemeborder justify-content-around">
