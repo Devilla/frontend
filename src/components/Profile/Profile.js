@@ -36,7 +36,8 @@ class Profile extends Component {
       changePassword : false,
       profileSetting : true,
       otpCode: '',
-      errorOtp: ''
+      errorOtp: '',
+      mailSend: false
     };
   }
 
@@ -113,13 +114,14 @@ class Profile extends Component {
   }
 
   selectAccountOption = (option) => {
-    this.setState({accountOption: option, error: false});
+    this.setState({accountOption: option, error: false, mailSend: false});
   }
 
   submitRequest = () => {
     if(!this.state.accountOption)
       return this.setState({ error: true });
     this.props.submitAccountRequest(this.state.accountOption);
+    this.setState({mailSend: true});
   }
 
   submitOtpRequest = () => {
@@ -129,8 +131,9 @@ class Profile extends Component {
   }
 
   showPopupOne = () => {
-    const { accountOption, error } = this.state;
+    const { accountOption, error, mailSend } = this.state;
     const { user, otp_response } = this.props;
+
     return (
       <div>
         <Row className="givemeborder justify-content-around">
@@ -157,18 +160,22 @@ class Profile extends Component {
         <Row className="justify-content-center mb-3">
           <button type="button" className={`btn btn-outline-primary waves-effect submitaccount ${error?'error-border':''}`} onClick={this.submitRequest}>Submit </button>
         </Row>
-        <Row className="justify-content-center mb-3 text-desc">An email containing one time code has been sent to your registered email.</Row>
-        <Row className="justify-content-center">
-          <Col md={4}>
-            <input type="number" id="otpCode" placeholder="Enter Code here" className="inputcode" onChange={this.handleStateChange} />
-            <HelpBlock>
-              <p className="website-error">{otp_response==false?'Invalid OTP':''}</p>
-            </HelpBlock>
-          </Col>
-          <Col>
-            <button type="button" className="btn btn-outline-primary waves-effect confirmaccount" onClick={this.submitOtpRequest}>Confirm Action</button>
-          </Col>
-        </Row>
+        {mailSend &&
+          <div>
+            <Row className="justify-content-center mb-3 text-desc">An email containing one time code has been sent to your registered email.</Row>
+            <Row className="justify-content-center">
+              <Col md={4}>
+                <input type="number" id="otpCode" placeholder="Enter Code here" className="inputcode" onChange={this.handleStateChange} />
+                <HelpBlock>
+                  <p className="website-error">{otp_response === false?'Invalid OTP':''}</p>
+                </HelpBlock>
+              </Col>
+              <Col>
+                <button type="button" className="btn btn-outline-primary waves-effect confirmaccount" onClick={this.submitOtpRequest}>Confirm Action</button>
+              </Col>
+            </Row>
+          </div>
+        }
       </div>
     );
   }
@@ -196,117 +203,6 @@ class Profile extends Component {
           <Col md={2}>
             <div className={this.state.profileSetting?'content-tabs active':'content-tabs'} onClick={()=>this.showProfile()} >My Profile</div>
             <div className={this.state.changePassword?'content-tabs active':'content-tabs'} onClick={()=>this.changePassword()} >Change Password</div>
-            {/* <Grid fluid={true}>
-              <Col sm={12}>
-                <div className="profile-user-box card-box mb-0" >
-                  <Row>
-                    <Col sm={2}>
-                      <span className="pull-left mr-3"><img src={profile.image?profile.image:'https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg'} alt="User profile" className="thumb-lg rounded-circle" /></span>
-                      <div className=" media-body text-white">
-                        <h4 className="mt-1 mb-1 text-dark font-18">Username</h4>
-                      </div>
-                    </Col>
-                    <Col sm={8}>
-                      <div className="card-box tilebox-one text-center  ">
-                        <h6 className="text-muted text-uppercase font-14 mt-0">Plan Type </h6><h3> {this.props.profile && this.props.profile.plan?this.props.profile.plan.name:null}</h3>
-                      </div>
-                    </Col>
-                    <Col md={2}>
-                      <div className="profbtn">
-                        <button type="button" onClick={() => browserHistory.push('/upgrade')} className="btn btn-block btn-primary waves-light waves-effect upgrade1">Upgrade</button>
-                        <div> <br /></div>
-                        <button type="button" onClick={() => browserHistory.push('/billing-details')} className="btn btn-block btn-primary waves-light waves-effect billing1">Billing</button>
-                      </div>
-                    </Col>
-                  </Row>
-                </div>
-              </Col>
-              <Row>
-                <Col md={12}>
-                  <h4 className="header-title font-14 text-muted">Personal Information</h4>
-                  <div className="panel-body">
-                    <hr />
-                    <div className="text-left mt-4">
-                      <form>
-                        <Row>
-                          <Col md={6}>
-                            <span className="text-muted font-13 p mt-5"><strong>First Name :</strong> </span>
-                            <FormGroup>
-                              <FormControl type="text" value={profile.firstName} autoComplete='given-name' placeholder="First Name" id="firstName" onChange={(e) => this.handleStateChange(e)} />
-                            </FormGroup>
-                          </Col>
-                          <Col md={6}>
-                            <span className="text-muted font-13 p"><strong>Last Name :</strong> </span>
-                            <FormGroup>
-                              <FormControl type="text" value={profile.lastName} autoComplete='family-name' placeholder="Last Name" id="lastName" onChange={(e) => this.handleStateChange(e)} />
-                            </FormGroup>
-                          </Col>
-                        </Row>
-                        <Row>
-                          <Col md={6}>
-                            <span className="text-muted font-13 p"><strong>Phone :</strong> </span>
-                            <FormGroup>
-                              <FormControl type="number" value={profile.phoneNumber} autoComplete='tel-national' placeholder="Phone Number" id="phoneNumber" onChange={(e) => this.handleStateChange(e)} />
-                            </FormGroup>
-                          </Col>
-                          <Col md={6}>
-                            <span className="text-muted font-13 p"><strong>Email :</strong> </span>
-                            <FormGroup>
-                              <FormControl type="text" value={user.email} autoComplete='email' placeholder="Email Address" id="email" disabled />
-                            </FormGroup>
-                          </Col>
-                        </Row>
-                        <Row>
-                          <Col md={6}>
-                            <span className="text-muted font-13 p"><strong>Address :</strong> </span>
-                            <FormGroup>
-                              <FormControl type="text" value={profile.address} autoComplete='address-line2' placeholder="Billing Address" id="address" onChange={(e) => this.handleStateChange(e)} />
-                            </FormGroup>
-                          </Col>
-                          <Col md={6}>
-                            <span className="text-muted font-13 p"><strong>Country :</strong> </span>
-                            <FormGroup controlId="formControlsSelect">
-                              <FormControl componentClass="select" autoComplete='country-name' placeholder="Country Name" value={profile.country} onChange={(e) => this.setState({country: e.target.value})} >
-                                <option value={null}>Select Country</option>
-                                {this.getCountryRows()}
-                              </FormControl>
-                            </FormGroup>
-                          </Col>
-                        </Row>
-                        <Row>
-                          <Col md={6}>
-                            <span className="text-muted font-13 p"><strong>States :</strong> </span>
-                            <FormGroup controlId="formfBillinControlsSelect">
-                              <FormControl componentClass="select" placeholder="States" autoComplete='address-level1' value={profile.state} onChange={(e) => this.setState({state: e.target.value})}>
-                                <option value={null}>Select State</option>
-                                {this.getStateRows()}
-                              </FormControl>
-                            </FormGroup>
-                          </Col>
-                          <Col md={6}>
-                            <span className="text-muted font-13 p"><strong>City :</strong> </span>
-                            <FormGroup controlId="formControlsSelect">
-                              <FormControl componentClass="select" autoComplete='address-level2' placeholder="City" value={profile.city} onChange={(e) => this.setState({city: e.target.value})}>
-                                <option value={null}>Select City</option>
-                                {this.getCityRows()}
-                              </FormControl>
-                            </FormGroup>
-                          </Col>
-                        </Row>
-                        <Row>
-                          <Col md={6}>
-                            <span className="text-muted font-13 p"><strong>Company :</strong> </span>
-                            <FormGroup>
-                              <FormControl type="text" value={profile.companyName} autoComplete='organization' placeholder="Company Name" id="companyName" onChange={(e) => this.handleStateChange(e)} />
-                            </FormGroup>
-                          </Col>
-                        </Row>
-                        <Col md={12} className="profile-buttons">
-                          <div className="text-right save mt-0">
-                            <button type="button" className="btn btn-primary waves-effect" onClick={this.updateProfile}>
-                              <i className="mdi mdi-account-settings-variant mr-1"></i>  {this.props.loading ? ( this.state.savedtext
-                              )
-                                : 'Save Profile'} */}
             <div className="content-tabs" data-toggle="modal" data-target="#deletemodal">More Options</div>
           </Col>
 
@@ -342,9 +238,9 @@ class Profile extends Component {
                           <span className="pull-left">
                             <img src={profile.image?profile.image:'https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg'} alt="User profile" className="rounded-circle" />
                           </span>
-                          <div className=" media-body text-white">
-                            <h4 className="mt-1 mb-1 font-18">Username</h4>
-                            <p className="text-light mb-0">Country</p>
+                          <div className="media-body text-white">
+                            <h4 className="mt-1 mb-1 font-18">{user.username}</h4>
+                            <p className="mb-0">{profile && profile.country?profile.country:''}</p>
                           </div>
                         </Col>
                         <Col sm={8}>

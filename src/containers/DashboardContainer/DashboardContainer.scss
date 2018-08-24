@@ -16,7 +16,7 @@
 }
 .dashboard-container {
   [data-css-1ar5iql] {
-    z-index: 100000000;
+    z-index: 9999999999;
   }
 
   .content-page {
@@ -43,7 +43,7 @@ p {
     height: 10px !important;
     border-radius: 5px !important;
     button {
-      height: 2.6em;
+      height: 1.6em;
       color: #fff;
     }
   }
