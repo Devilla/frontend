@@ -199,7 +199,7 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
             {...this.state}
           />
         }
-        <div className="cookie-notice-container" style={{display:'block', left: '-37px', top:'-150px'}}>
+        <div className="cookie-notice-container" style={{zIndex:'999', display:'block',position:'fixed', left: '80px', bottom:'0px'}}>
           <div className="cookie-text" style={{padding:'0px', minHeight: '52px'}}>
             <button type="button" className="text-left" style={{backgroundColor:'#5ac73a'}} onClick={()=>{browserHistory.push('/back');}}>Prev</button>
             <span className="radio radio-success">
