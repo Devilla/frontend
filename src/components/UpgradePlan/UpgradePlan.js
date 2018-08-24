@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import { UpgradeCard } from 'components';
 import PlanList from './PlanList';
 import './UpgradePlan.scss';
@@ -50,7 +50,6 @@ export default class UpgradePlan extends Component {
           :
           <UpgradeCard plan={plan} />
         }
-        <ToastContainer hideProgressBar={true} />
       </div>
     );
   }

@@ -10,7 +10,6 @@ import {
   HelpBlock
 } from 'react-bootstrap';
 
-import { ToastContainer } from 'react-toastify';
 import { fetchProfile, updateProfile, submitAccountRequest, submitAccountOtp, clearResponse } from 'ducks/profile';
 import './Profile.scss';
 
@@ -435,7 +434,6 @@ class Profile extends Component {
               </div>
             </div>
           </div>
-          <ToastContainer hideProgressBar={true} />
         </div>
       </Loading>
     );
