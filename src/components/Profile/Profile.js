@@ -131,7 +131,7 @@ class Profile extends Component {
 
   showPopupOne = () => {
     const { accountOption, error } = this.state;
-    const { user } = this.props;
+    const { user, otp_response } = this.props;
     return (
       <div>
         <Row className="givemeborder justify-content-around">
@@ -188,7 +188,7 @@ class Profile extends Component {
 
   render() {
     const profile = this.state;
-    const { user, otp_response } = this.props;
+    const { user } = this.props;
 
     return (
       <Loading className="transition-item profile-transition-container" style={{width: '10%', height: '700px'}} strokeWidth='2' isLoading={!user || !profile}>
