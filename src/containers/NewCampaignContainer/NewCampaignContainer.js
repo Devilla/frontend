@@ -202,8 +202,8 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
         <div className="cookie-notice-container" style={{display:'block', left: '-37px', top:'-150px'}}>
           <div className="cookie-text" style={{padding:'8px', minHeight: '52px'}}>
             <button type="button" className="text-left" style={{backgroundColor:'#5ac73a'}} onClick={()=>{browserHistory.push('/back');}}>Prev</button>
-            <button type="button" className="text-center"  style={{backgroundColor:'#5ac73a'}} onClick={()=>{browserHistory.push('/next');}}>Next</button>
-            <button type="button" className="btn-right" style={{backgroundColor:'#5ac73a'}} onClick={()=>{browserHistory.push('/go-live');}}>Publish</button>
+            <button type="button" className="text-center"  style={{backgroundColor:'#5ac73a'}} onClick={this.handleNextButton}>Next</button>
+            <button type="button" className="btn-right" style={{backgroundColor:'#5ac73a'}} onClick={this.goLive}>Publish</button>
           </div>
         </div>
       </div>
