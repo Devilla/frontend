@@ -207,25 +207,25 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
               <label htmlFor="radio1">
               </label>
             </span>
-            <button type="radio" style={{borderRadius: '2px',width: '5px', marginTop: '4px!important;', backgroundColor: 'rgb(90, 199, 58)', marginLeft: '-14px!important;'}}></button>
+            <button type="radio" className="conn-bar" ></button>
             <span className="radio radio-success">
               <input type="radio" name="radio2" id="radio2" value="option8" defaultChecked/>
               <label htmlFor="radio2">
               </label>
             </span>
-            <button type="radio" className="text-center"  style={{backgroundColor:'#5ac73a'}}></button>
+            <button type="radio" className="conn-bar"  style={{backgroundColor:'#5ac73a'}}></button>
             <span className="radio radio-success">
               <input type="radio" name="radio3" id="radio3" value="option8" defaultChecked/>
               <label htmlFor="radio3">
               </label>
             </span>
-            <button type="radio" className="text-center"  style={{backgroundColor:'#5ac73a'}}></button>
+            <button type="radio" className="conn-bar"  style={{backgroundColor:'#5ac73a'}}></button>
             <span className="radio radio-success">
               <input type="radio" name="radio4" id="radio4" value="option8" defaultChecked/>
               <label htmlFor="radio4">
               </label>
             </span>
-            <button type="radio" className="text-center"  style={{backgroundColor:'#5ac73a'}}></button>
+            <button type="radio" className="conn-bar"  style={{backgroundColor:'#5ac73a'}}></button>
             <span className="radio radio-success">
               <input type="radio" name="radio5" id="radio5" value="option8" defaultChecked/>
               <label htmlFor="radio5">

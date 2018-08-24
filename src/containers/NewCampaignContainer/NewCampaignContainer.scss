@@ -14,11 +14,20 @@
       margin-top:-12px;
 
       &before {
+        margin-top: -8px!important;
         border-color: #0074d9;
       }
       &after {
+        margin-top: -8px!important;
         border-color: #0074d9;
       }
+    }
+    .conn-bar{
+      border-radius: 2px;
+      width: 5px;
+      background-color: rgb(90, 199, 58);
+      margin-left: -14px!important;
+      margin-right: 2px!important;
     }
       -webkit-box-align: center;
       align-items: center;
@@ -37,7 +46,7 @@
       border-image: initial;
       transition: padding 0.3s;
       .btn-right {
-        margin-left: 1020px!important;
+        margin-left: 830px!important;
 
         .indicator {
             li {
