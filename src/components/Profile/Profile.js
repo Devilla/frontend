@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect}  from 'react-redux';
 import Loading from 'react-loading-animation';
+import {Link} from 'react-router';
 import {
   Grid,
   Row,
@@ -291,7 +292,7 @@ class Profile extends Component {
                         <h5 className="title-h4">Change Password</h5>
                         <div>
 You can change your password from
-                          <a target="_blank" href="https://accounts.useinfluence.com/profile"> Useinfluence Account Settings</a>
+                          <Link to="/change-password"> Useinfluence Account Settings</Link>
                         </div>
                       </div>
                     </div>

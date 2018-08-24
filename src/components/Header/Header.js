@@ -84,6 +84,13 @@ const Header = ({
           </li>
         </ul>
       </div>
+      <div className="cookie-notice-container" style={{display:'block', top:'0px', bottom:'0px'}}>
+        <div className="cookie-text" style={{padding:'8px', minHeight: '52px'}}>
+          <button type="button" className="text-left" style={{backgroundColor:'#5ac73a'}} onClick={()=>{browserHistory.push('/upgrade');}}>Prev</button>
+          <button type="button" className="text-center"  style={{backgroundColor:'#5ac73a'}} onClick={()=>{browserHistory.push('/upgrade');}}>Next</button>
+          <button type="button" className="btn-right" style={{backgroundColor:'#5ac73a'}} onClick={()=>{browserHistory.push('/upgrade');}}>Publish</button>
+        </div>
+      </div>
     </div>
   );
 };

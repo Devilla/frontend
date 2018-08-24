@@ -38,7 +38,8 @@ import {
   WordpressPluginPage,
   FreshBilling,
   GettingStarted,
-  Settings
+  Settings,
+  ChangePassword
 } from 'components';
 
 import {
@@ -76,6 +77,7 @@ const MyRoutes = ({routerHistory}) => (
       <Route path="/billing" component={FreshBilling} />
       <Route path="/getting-started" component={GettingStarted} />
       <Route path="/settings" component={Settings} />
+      <Route path="/change-password" component={ChangePassword} />
     </Route>
     <Route exact path="/oauth/:type" component={OauthContainer} />
     <Route exact path="/connect/:provider" component={ConnectPage} />

@@ -1,6 +1,4 @@
 .topbar {
-
-
   .navbar-custom {
     min-height: 50px !important;
     background-color: white;
@@ -22,13 +20,61 @@
               min-height: 26px;
               padding-left: 8px;
               position: relative;
-              width: 1420px;
+              width: 1371px;
               background: #0074d9;
               border-width: 1px;
               border-style: solid;
               border-color: rgb(135, 138, 140);
               border-image: initial;
               transition: padding 0.3s;
+              .btn-right {
+                margin-left: 1020px!important;
+
+                .indicator {
+                    li {
+                    padding: 0;
+                    margin: 0;
+                    background: #4b97c8;
+                    display: block;
+                    float: left;
+                    width: 16px;
+                    height: 16px;
+                    -webkit-border-radius: 8px;
+                    border-radius: 8px;
+                    position: relative;
+                    margin-right: 34px;
+                    cursor: pointer;
+                    &before {
+                      content: " ";
+                      width: 38px;
+                      left: 14px;
+                      background: #4b97c8;
+                      position: absolute;
+                      display: block;
+                      top: 6px;
+                      height: 4px;
+                      cursor: default;
+
+                    }
+                    &after {
+                      content: " ";
+                      background: #5bc739;
+                      width: 20px;
+                      height: 20px;
+                      border: 4px solid #fff;
+                      -webkit-border-radius: 10px;
+                      border-radius: 10px;
+                      display: block;
+                      top: -2px;
+                      left: -2px;
+                      position: absolute;
+                      -webkit-box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+                      -moz-box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+                      box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+                    }
+                }
+                }
+              }
           }
           .cookie-text {
             &before {
