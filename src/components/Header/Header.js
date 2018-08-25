@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import { ProgressBar } from 'react-bootstrap';
 
 const Header = ({
+  uniqueVisitors,
   openCloseDropdown,
   dropdownStyle,
   logout,
@@ -20,41 +21,15 @@ const Header = ({
     <div className="customer-header">
       {loading ?
         <ProgressBar bsStyle='info'  now={ 120 }/>
-        :
-        <ProgressBar bsStyle='info'  now={0} />
+        :''
       }
+      <div className="cookie-notice-container" style={{display:uniqueVisitors>100?'block':'none'}}>
+        <div className="cookie-text">
+          <span className="cookie-label text-center"><i className="fa fa-spinner fa-pulse mr-2"></i>You have reached the 30 day limit, to keep your campaigns running, Please Followed by the upgrade button.</span>
+          <button type="button" onClick={()=>{browserHistory.push('/upgrade');}}>Upgrade</button>
+        </div>
+      </div>
       <ConnectionStatus />
-      {/* <div className="custom-navbar">
-        <div className="custom-navbar-left">
-          <h4><Link onClick={() => browserHistory.goBack()}><i className="icon-arrow-left"></i></Link>{children.props.location.pathname == '/new'? 'Campaign Setting' :children.props.location.pathname.replace(/^\/+/g, '')}</h4>
-        </div>
-        <div className="custom-navbar-right">
-          <button className="btn btn-primary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <div className="avatar" ><span className="profile-name">{username ? username.charAt(0).toUpperCase():'?'}</span></div>
-            <span>{username ? username.charAt(0).toUpperCase() + username.slice(1): 'Anonymous'} &nbsp;
-            </span>
-            {dropdownStyle.visibility == 'visible'?
-              <i className="icon-arrow-up"></i>
-              :
-              <i className="icon-arrow-down"></i>
-            }
-          </button>
-          <div className="dropdown-menu">
-            <div className="dropdown-item" id={1} onClick={this.addPageUrl} onClick={openProfile} >
-              <i className="fi-head"></i>
-              Profile
-            </div>
-            <div className="dropdown-item" id={1} onClick={this.openCloseModal} onClick={renderHelp} >
-              <i className="fi-help"></i>
-              Support
-            </div>
-            <div className="dropdown-item" id={2} onClick={logout} >
-              <i className="fi-power"></i>
-              Logout
-            </div>
-          </div>
-        </div>
-      </div> */}
       <div className="nav-topbar-flex">
         <div className="topbar-left">
           <h4><Link onClick={() => browserHistory.goBack()}><i className="icon-arrow-left"></i></Link>{children.props.location.pathname == '/new'? 'Campaign Setting' :children.props.location.pathname.replace(/^\/+/g, '')}</h4>

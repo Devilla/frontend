@@ -36,6 +36,7 @@ import {
   ReviewRedirect,
   AnalyticsProfile,
   WordpressPluginPage,
+  FreshBilling,
   GettingStarted,
   Settings
 } from 'components';
@@ -72,6 +73,7 @@ const MyRoutes = ({routerHistory}) => (
       <Route path="/card-details" component={UpgradeCard} />
       <Route path="/billing-details" component={BillingDetails} />
       <Route path="/wordpress-plugin-page" component={WordpressPluginPage} />
+      <Route path="/billing" component={FreshBilling} />
       <Route path="/getting-started" component={GettingStarted} />
       <Route path="/settings" component={Settings} />
     </Route>

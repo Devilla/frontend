@@ -179,7 +179,7 @@ class WebsiteDemoPage extends  Component  {
                       <button
                         type="button"
                         name="schedule"
-                        className="btn btn--primary col-md-12 ml-0"
+                        className="btn btn--primary col-md-12 ml-0" style={{backgroundColor:'#097fff'}}
                         onClick={this.b1StepHandler} >Schedule a demo
                       </button>
                     </div>

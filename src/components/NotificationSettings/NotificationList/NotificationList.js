@@ -72,7 +72,7 @@ const NotificationList = ({
                 defaultChecked={notification.activity}
                 onChange={(e) => e.target.checked != notification.activity?handleActivityChange(e.target.checked, notification._id, notification.configurationId):null}
               />
-              <label className="tgl-btn" htmlFor={notification._id}></label>
+              <label className="tgl-btn" htmlFor={notification._id} style={{color:'#29b5a8'}}>.</label>
             </div>
             {notification.notificationName == 'Review Notification' ?
               <button

@@ -208,7 +208,7 @@ class Profile extends Component {
 
           <Col md={10} className="profile-content-contaier">
             {this.state.changePassword?
-              <Grid fluid={true}>
+              <Grid>
                 <Col sm={8} style={{maxWidth: '1069px'}}>
                   <div className="profile-user-box card-box" >
                     <Row>

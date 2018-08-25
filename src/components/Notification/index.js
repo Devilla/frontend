@@ -11,7 +11,6 @@ import Loading from 'react-loading-animation';
 
 import { fetchCampaign, fetchCampaignInfo, updateCampaign, successCampaign, removeCampaign } from 'ducks/campaign';
 import './Notification.scss';
-
 class Notification extends Component {
   constructor() {
     super();
