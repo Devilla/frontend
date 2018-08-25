@@ -5,26 +5,26 @@ const AnalyticsProfile = ({renderProfileList }) => {
   return (
     <div className="card-box analytics-profile">
       <div className="analytics-header">
-        <h4 className="m-t-0 header-title">Analytics/View Profile</h4>
+        <h4 className="m-t-0 header-title">Customer Identities</h4>
       </div>
       <div className="table-responsive">
-        <table className="table table-striped">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th className="img">Photo</th>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Location</th>
-              <th>Country</th>
-              <th>Sign up on</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
+        <div className="table table-striped">
+          <div className="thead tab-header flex">
+            <div className="tr tab-row flex row">
+              <div className="th text-center col-md-1">#</div>
+              <div className="img th text-center col-md-2">Photo</div>
+              <div className="th text-center col-md-1">Name</div>
+              <div className="th text-center col-md-4">Email</div>
+              <div className="th text-center col-md-1">Location</div>
+              <div className="th text-center col-md-1">Country</div>
+              <div className="th text-center col-md-1">Sign up on</div>
+              <div className="th text-center col-md-1">Action</div>
+            </div>
+          </div>
+          <div className="tbody tab-body">
             {renderProfileList()}
-          </tbody>
-        </table>
+          </div>
+        </div>
       </div>
     </div>
   );

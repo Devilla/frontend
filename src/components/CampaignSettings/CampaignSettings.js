@@ -40,7 +40,7 @@ const CampaignSettings = (props) => {
         <ul className="nav nav-pills navtab-bg nav-justified pull-in new-campaign-tab-pills">
           <li className="nav-item waves-effect text-center">
             <a data-toggle="tab" aria-expanded="true" className={`nav-link ${props.activeClass == 1?'active pb-2 pt-2':'pb-2 pt-2'}`} onClick={() => { props.setActiveState(1); props.clearNotification(); }}>
-              {!mobile() && '1.'} <i className="fi-mail mr-2"></i> {!mobile()? 'Notifications':''}
+              {!mobile() && '1.'} <i className="fi-bell mr-2"></i> {!mobile()? 'Notifications':''}
             </a>
           </li><li className="arrow-right"></li>
           <li className="nav-item waves-effect text-center">

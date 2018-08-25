@@ -5,9 +5,10 @@ import { browserHistory } from 'react-router';
 import  ConnectionStatus  from './ConnectionStatus';
 import { connect } from 'react-redux';
 import { ProgressBar } from 'react-bootstrap';
+import { InfluenceMobile } from 'img';
 
 const Header = ({
-  uniqueVisitors,
+  // uniqueVisitors,
   openCloseDropdown,
   dropdownStyle,
   logout,
@@ -23,10 +24,16 @@ const Header = ({
         <ProgressBar bsStyle='info'  now={ 120 }/>
         :''
       }
-      <div className="cookie-notice-container" style={{display:uniqueVisitors>100?'block':'none'}}>
+      {/*<div className="cookie-notice-container" style={{display:uniqueVisitors>100?'block':'none'}}>
         <div className="cookie-text">
           <span className="cookie-label text-center"><i className="fa fa-spinner fa-pulse mr-2"></i>You have reached the 30 day limit, to keep your campaigns running, Please Followed by the upgrade button.</span>
           <button type="button" onClick={()=>{browserHistory.push('/upgrade');}}>Upgrade</button>
+        </div>
+      </div>*/}
+      <div className="cookie-notice-container" style={{display:'block'}}>
+        <div className="cookie-text">
+          <span className="cookie-label float-left"><img src={InfluenceMobile} height="60px" width="60px"/>Join our newsletter today for free</span>
+          <button type="button" onClick={()=>{browserHistory.push('/upgrade');}}>Subscribe Now</button>
         </div>
       </div>
       <ConnectionStatus />

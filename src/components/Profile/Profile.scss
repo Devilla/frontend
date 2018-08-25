@@ -4,7 +4,7 @@
 }
 
 .profile-container {
-  display: grid;
+  /*display: grid;
 
 
 .content-tabs{
@@ -17,11 +17,53 @@ border-radius: 3px;
 text-align: left;
 margin-bottom: 5px;
 background: #EBEDEF;
-}
+}*/
+  display: flex;
+  padding-top: 50px;
+
   #formControlsSelect {
-    color: #757575;
+    color: #49475d;
   }
 
+  .content-tabs {
+    height: 60px;
+    padding: 23px;
+    margin: 5px 0px;
+    background: #e2e5e7 !important;
+    color: #7d7b8a;
+    border-radius: 3px;
+  }
+
+  .content-tabs:hover, .active {
+    background: #ffffff !important;
+    font-weight: 600;
+    color: #696879;
+    border: 0.5px solid #c5c5c5;
+  }
+
+  .profile-content-contaier {
+    .profile-content-col-one {
+      background-color: white;
+      box-shadow: 0px 0px 1px rgba(0,0,0,0.2);
+      border-radius: 5px;
+      .profile-user-box {
+        background-color: white !important;
+        padding: 20px;
+        .media-body {
+          h4 {
+            color: black;
+          }
+          p {
+            margin-top: 0px !important;
+            color: black !important;
+          }
+        }
+        .tilebox-one {
+          background-color: white !important;
+        }
+      }
+    }
+  }
   button {
     border-radius: 5px;
 
@@ -49,7 +91,7 @@ background: #EBEDEF;
 
   button {
     &.btn.btn-primary.waves-effect {
-      border-radius: 8px;
+      border-radius: 4px;
     }
   }
 
@@ -80,6 +122,12 @@ background: #EBEDEF;
     z-index: 999999999 !important;
     overflow: scroll !important;
     background: rgba(248, 247, 247, 0.7);
+    .help-block {
+      .website-error {
+        margin-top: 0 !important;
+        color: red !important;
+      }
+    }
   }
 
   .align-modal {
@@ -94,9 +142,17 @@ background: #EBEDEF;
     background: #097fff !important;
   }
 
+  .error-border {
+    border-color: red !important;
+  }
+
   .givemeborder {
     margin: 10px;
     padding: 10px;
+
+    .selectedOption {
+      background-color: #40c74094 !important;
+    }
 
     .pauseContent {
       width: 45% !important;
@@ -143,7 +199,7 @@ background: #EBEDEF;
 }
 
 .inputcode {
-  padding: 5px !important;
+  padding: 8px !important;
 }
 
 button {

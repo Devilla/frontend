@@ -1,31 +1,44 @@
 .list-modal-container {
-  padding: 10% 15% 5% 15% !important;
-  min-height: 650px;
-  background: #fafafa;
+  margin: 9% 15% 9% 15% !important;
+  background: #fcfcfc !important;
   border-radius: 10px;
+  border: 0.8px solid #e5e5e5 !important;
+  box-shadow: 0px 0px 4px #d5d5d5;
+  min-height: 62vh !important;
   .list-header {
     text-align: center;
     font-size: xx-large;
     font-weight: 200;
     color: gray;
     .list-header-para {
-      font-size: xx-large;
-      font-weight: 200;
-      color: gray;
+      color: #294661 !important;
+      font-weight: 600 !important;
+      text-transform: initial;
+      font-size: 30px !important;
+      letter-spacing: -0.17px !important;
+      max-width: 200% !important;
+      text-shadow: 0.05px -0.01px 0.01px;
     }
   }
   .list-content {
     display: flex;
-    padding-top: 8%;
+    padding-top: 1%;
     text-align: center;
     .list1-content {
       padding-right:20px;
       border-right: 1px solid #ccc;
+      .sub-text {
+          color: #294661 !important;
+          font-size: 20px !important;
+          font-weight: 500 !important;
+      }
       .list-content-para {
         font-size: 25px;
-        padding: 5% 0% 10% 0%;
+        padding: 1% 7% 1% 7%;
         font-weight: 200;
         color: gray;
+        border: 0.7px solid #8f8f8f;
+        border-radius: 5px;
       }
       button {
         display: flex;
@@ -33,7 +46,8 @@
         justify-content: center;
         width: 45%;
         font-size: 20px;
-        border-radius: 10px;
+        border-radius: 5px;
+        margin-top: 10% !important;
         .list-content-button-para {
           font-size: 20px;
           margin: 2px;
@@ -41,7 +55,7 @@
           padding: 0;
         }
         i {
-          margin: 5%;
+          margin: 5% 5%;
         }
       }
     }
@@ -52,25 +66,46 @@
         font-weight: 200;
         color: gray;
       }
+      .list-content-para {
+        font-size: 25px;
+        padding: 1% 7% 1% 7%;
+        font-weight: 200;
+        
+      }
+      .sub-text {
+          color: #294661 !important;
+          font-size: 24px;
+          font-weight: 500;
+          margin-left: 8%;
+          margin-bottom: 8%;
+      }
       .list-checklist {
         margin: 0 auto;
         text-align: left;
         width: 100%;
         padding-left: 40px;
+        
         .form-check {
           display: flex;
           justify-content: space-between;
+          border: 0.5px solid #d5d5d5;
+          border-radius: 5px;
+          width: 80%;
+          margin-left: 9%;
+          padding: 1% 2% !important;
+          background: #f2f5f7 !important;
           .form-check-input {
             font-size: 30px;
             margin: 4% -20px;
           }
           .form-check-label {
-            width: 100%;
+            width: 88%;
             text-align: start;
-            font-size: large;
-            color: gray;
+            font-size: 16px;
+            color: #696879;
             font-weight: 100;
             padding: 10px 45px 10px 24px;
+            cursor: pointer;
           }
           .fa-check-circle {
             font-size: 25px;
@@ -88,6 +123,10 @@
             color: gray;
             cursor: pointer;
           }
+        }
+        .form-check:hover {
+            box-shadow: 0px 0px 0.5px #8f8f8f;
+            border: 0.5px solid #8f8f8f;
         }
       }
     }
@@ -190,3 +229,4 @@
     }
   }
 }
+

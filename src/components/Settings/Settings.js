@@ -65,14 +65,7 @@ const security = [
     icon: 'fi-head',
     path: 'campaign',
     text: 'GDPR'
-  },
-  {
-    icon: 'fi-cog',
-    path: 'integration',
-    text: 'Analytics',
-    head: 'Unique'
-  },
-
+  }
 ];
 
 

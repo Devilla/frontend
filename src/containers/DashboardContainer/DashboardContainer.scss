@@ -24,7 +24,7 @@
 }
 .dashboard-container {
   [data-css-1ar5iql] {
-    z-index: 100000000;
+    z-index: 9999999999;
   }
 
   .content-page {
@@ -51,7 +51,7 @@ p {
     height: 10px !important;
     border-radius: 5px !important;
     button {
-      height: 2.6em;
+      height: 1.6em;
       color: #fff;
     }
   }
@@ -70,7 +70,7 @@ p {
     font-size: 14px;
     margin-top: 0% !important;
     .css-1ar5iql, [data-css-1ar5iql] {
-      z-index: 999999999;
+      z-index: 9999999999;
     }
   }
 
@@ -253,9 +253,13 @@ p {
   .user-box{
     background: #082a52;
   }
-  .btn-primary{
+  .btn-primary {
     background-color: #4aa5ea !important;
     border: 1px solid #4aa5ea !important;
+  }
+  .btn-primary:hover {
+    background-color: #108ae6 !important;
+    border: 1px solid #108ae6 !important;
   }
 }
 
