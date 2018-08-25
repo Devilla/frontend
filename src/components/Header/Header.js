@@ -32,8 +32,9 @@ const Header = ({
       </div>*/}
       <div className="cookie-notice-container" style={{display:'block'}}>
         <div className="cookie-text">
-          <span className="cookie-label float-left"><img src={InfluenceMobile} height="60px" width="60px"/>Join our newsletter today for free</span>
-          <span className='float-left'><input type='text' placeholder='Enter your Email'/></span>
+          <span className="cookie-label float-left"><img src={InfluenceMobile} height="40px" width="40px"/></span>
+          <span className="cookie-label float-center">Join our newsletter today for free</span>
+          <span ><input type='text' className='input-style' placeholder='Enter your Email'/></span>
           <button type="button" onClick={()=>{browserHistory.push('/upgrade');}}>Subscribe Now</button>
         </div>
       </div>

@@ -108,6 +108,29 @@
           }
 
           .cookie-text {
+
+            .input-style{
+              color: rgb(0, 0, 0);
+              background-color: rgb(255, 255, 255);
+              font-family: "Open Sans", sans-serif;
+              font-weight: 400;
+              font-style: normal;
+              font-size: 12px;
+              text-align: left;
+              border-width: 1px;
+              border-color: rgb(204, 204, 204);
+              border-style: solid;
+              border-radius: 4px;
+              box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px inset;
+              text-shadow: rgba(0, 0, 0, 0) 0px 0px 0px;
+              margin-right:442px!important;
+              padding: 0px 14px;
+              margin: 0px;
+              display: block;
+              width: 28%;
+              height: 23px;
+              transition: none;
+            }
             button {
                box-sizing: border-box;
                cursor: pointer;
