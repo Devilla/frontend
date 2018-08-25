@@ -101,11 +101,11 @@ class BillingDetails extends Component {
 
         <div className="billing-container">
           <Row className="billing-row" onClick={this.openCloseRowOne}>
-            <Col md={3} className="row-one-col-one">
+            <Col md={4} className="row-one-col-one">
               <img src="https://web.freshchat.com/assets/images/billing_sprout-d577fed24b84e4e1899b8d59c4c5b164.svg" />
-              <h5>SPROUT</h5>
+              <h5>{profile && profile.plan?profile.plan.name:'SPROUT'}</h5>
             </Col>
-            <Col md={6} className="row-one-col-two">
+            <Col md={5} className="row-one-col-two">
               <div>
                 <h6>Billed Monthly</h6>
                 <span>Next Billing on {planSelected && planSelected.updated_at ? moment(planSelected.updated_at).add(planSelected.interval_count, planSelected.interval).format('MMMM Do, YYYY') : '-'}</span>
