@@ -60,8 +60,8 @@ class Notification extends Component {
   }
 
   handleRouteChange(e, campaign) {
-    if (e.target.className === 'tgl-btn' ||
-      e.target.className === 'tgl tgl-ios' ||
+    if (e.target.className === 'tgl-btn text-center m-0' ||
+      e.target.className === 'tgl tgl-ios text-center' ||
       e.target.className === 'ml-3 icon-trash'
     )
       return;
