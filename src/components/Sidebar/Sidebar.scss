@@ -1,9 +1,14 @@
 |a[disabled] {
     pointer-events: none;
+    color: gray;
 }
 
 .disabled-link {
   pointer-events: none;
+  color: gray !important;
+  .btn-primary {
+    background-color: gray !important;
+  }
 }
 
 .sidebar {
@@ -122,12 +127,22 @@ div {
       text-align: center;
       margin-left: 0 !important;
       padding-left: 0 !important;
+      .button-list {
+        .disabled-link {
+          pointer-events: visible;
+          color: gray !important;
+          .btn-primary {
+            border-color: #a2a2a2 !important;
+            background-color: #a2a2a2 !important;
+          }
+        }
+      }
   }
+
 
   &::-webkit-scrollbar {
     width: 0px;
-
-}
+  }
 
 &::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
@@ -190,18 +205,18 @@ button {
 
 .fa-dashboard:before, .fa-tachometer:before {
     content: "\F0E4";
-    
+
 }
 
 .fa-bullhorn:before {
     content: "\F0A1";
-    
+
 }
 
 
 .fi-bar-graph-2:before {
     content: "\E091";
-    
+
 }
 
 .fi-cog:before {
@@ -215,7 +230,7 @@ a.card {
   border-radius: 5px;
   margin-left: 18px;
   margin-bottom: 18px;
-  
+
 }
 a.active{
   background: #1e68c6 !important;

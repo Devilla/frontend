@@ -63,18 +63,18 @@ class Sidebar extends Component {
 
           <div id="sidebar-menu">
             <div className="button-list">
-              <Link to="/new">
+              <Link to={user && user.status == 'paused'?'':'/new'} className={user && user.status == 'paused'?'disabled-link':''} data-tip={user && user.status == 'paused'? 'Resume your account to create Campaign' : 'Create New Campaign'}>
                 {!openClose && this.state.collapse?
                   <button
-                    data-tip="Create New Campaign"
+                    // data-tip={user && user.status == 'paused'? 'Resume your account to create Campaign' : 'Create New Campaign'}
                     type="button"
-                    className="btn btn-primary waves-effect addnew-small-btn addnew-btn p-2 text-center" style={{borderRadius:'50px'}}
+                    className="btn btn-primary waves-effect addnew-small-btn addnew-btn p-2 text-center" style={user && user.status == 'paused'?{backgroundColor: 'gray'}:{borderRadius:'50px'}}
                   >
                     <i className="fi-plus " style={{paddingLeft:'3px'}} />&nbsp;{' '}
                   </button>
                   :
                   <button
-                    data-tip="Create New Campaign"
+
                     type="button"
                     className="btn btn-primary waves-effect  addnew-btn  ml-4 p-2  pt-0 pb-0  w-lg "
                   >
