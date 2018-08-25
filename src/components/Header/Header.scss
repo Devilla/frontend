@@ -9,20 +9,18 @@
               display: flex;
               left: 0px;
               position: relative;
-              width: 0px;
+              width: 100%;
               z-index: 1;
           }
           .cookie-text {
               -webkit-box-align: center;
               align-items: center;
-              //box-shadow: rgba(0, 0, 0, 0.3) 0px 2px 15px 0px;
               box-sizing: border-box;
               display: flex;
               margin-bottom: 12px;
               min-height: 26px;
               padding-left: 8px;
               position: relative;
-              width: 1420px;
               background: #0074d9;
               border-width: 1px;
               border-style: solid;
