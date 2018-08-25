@@ -66,25 +66,25 @@ class AnalyticsContainer extends Component {
   renderProfileList = () => {
     if(this.state.usersList.length)
       return this.state.usersList.map((user, index) => {
-        return <tr className="table-active analytics-tr" key={index}>
-          <td>{index + 1}</td>
-          <td className="img"><img src={user.profile_pic?user.profile_pic:'https://www.totaldenturecare.com.au/wp-content/uploads/2017/06/default-user-image-female.png'} /></td>
-          <td>{user.username}</td>
-          <td>{user.email}</td>
-          <td>{user.city}</td>
-          <td>{user.country}</td>
-          <td>{moment(user.timestamp).fromNow()}</td>
-          <td>
+        return <div className="table-active analytics-tr tr row" key={index}>
+          <div className="text-center td col-md-1">{index + 1}</div>
+          <div className="img text-center td col-md-2"><img src={user.profile_pic?user.profile_pic:'https://www.totaldenturecare.com.au/wp-content/uploads/2017/06/default-user-image-female.png'}/></div>
+          <div className="text-center td col-md-1">{user.username}</div>
+          <div className="text-center td col-md-4">{user.email}</div>
+          <div className="text-center td col-md-1">{user.city}</div>
+          <div className="text-center td col-md-1">{user.country}</div>
+          <div className="text-center td col-md-1">{moment(user.timestamp).fromNow()}</div>
+          <div className="text-center td col-md-1">
             <OverlayTrigger
               overlay={
                 <Tooltip id={user.email} placement="top">
                   <span>Coming Soon</span>
                 </Tooltip>
               }>
-              <a>Coming Soon</a>
+              <a>-</a>
             </OverlayTrigger>
-          </td>
-        </tr>;
+          </div>
+        </div>;
       });
     else
       return [];
@@ -204,7 +204,7 @@ class AnalyticsContainer extends Component {
   render() {
     return (
       <Loading className="transition-item analytics-transition-container" isLoading={!this.props.campaignInfo}>
-        <div className="analytics-container mt-5">
+        <div className="analytics-container mt-3">
           {!this.state.usersList.length ?
             <Analytics  renderList={this.renderList} />
             :
