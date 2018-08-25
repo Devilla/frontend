@@ -97,23 +97,23 @@ class Notification extends Component {
       this.state.isActive=campaign.isActive;
       const { totalUsers } = this.usersCount(campaign._id);
       return (
-        <tr className="campaign-td" key={i} onClick={(e) => this.handleRouteChange(e, campaign)}>
-          <th scope="row">{i + 1}</th>
-          <td>{campaign.campaignName}</td>
-          {!mobile() && <td>{campaign.websiteUrl}</td>}
-          <td className="switch">
-            <input className="tgl tgl-ios" id="cb2" type="checkbox" checked={this.state.isActive}  readOnly/>
-            <label className="tgl-btn" htmlFor="cb2"  data-toggle="modal" data-target="#2"  onClick={(e) => this.handleActiveChange(!campaign.isActive, campaign, i)}></label>
-          </td>
-          <td className='text-center'>{totalUsers}</td>
-          {!mobile() && <td>{campaign.trackingId}</td>}
-          {!mobile() && <td>{moment(campaign.updatedAt).format('MM/DD/YYYY')}</td>}
-          <td><a href="javascript:;"><i className="ml-3 icon-trash" data-toggle="modal" data-target="#1"  onClick={(e) => this.deleteCampaign(i,campaign,e)}></i></a></td>
-        </tr>
+        <div className="campaign-td tr" key={i} onClick={(e) => this.handleRouteChange(e, campaign)}>
+          <div scope="row" className="th col-md-1 text-center">{i + 1}</div> 
+          <div className="td col-md-2 text-center p-1">{campaign.campaignName}</div>
+          {!mobile() && <div className="td col-md-3 text-center p-1">{campaign.websiteUrl}</div>}
+          <div className="switch td col-md-1 text-center">
+            <input className="tgl tgl-ios text-center" id="cb2" type="checkbox" checked={this.state.isActive}  readOnly/>
+            <label className="tgl-btn text-center m-0" htmlFor="cb2"  data-toggle="modal" data-target="#2"  onClick={(e) => this.handleActiveChange(!campaign.isActive, campaign, i)}></label>
+          </div>
+          <div className="text-center td col-md-1 p-1">{totalUsers}</div>
+          {!mobile() && <div className="td col-md-2 text-center p-1">{campaign.trackingId}</div>}
+          {!mobile() && <div className="td col-md-1 text-center p-1">{moment(campaign.updatedAt).format('MM/DD/YYYY')}</div>}
+          <div className="td col-md-1 text-center p-1"><a href="javascript:;"><i className="ml-3 icon-trash" data-toggle="modal" data-target="#1"  onClick={(e) => this.deleteCampaign(i,campaign,e)}></i></a></div>
+        </div>
       );
     })
       :
-      <tr></tr>;
+      <div className="tr"></div>;
   }
 
   render() {
@@ -121,25 +121,25 @@ class Notification extends Component {
     const { campaigns, profile, campaignInfo } = this.props;
     return (
       <Loading className="transition-item manage-transition-notification" isLoading={!campaigns || !profile || !campaignInfo}>
-        <div className="manage-notification">
-          <div className="card-box">
-            <table className="table table-striped">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>CAMPAIGN</th>
-                  {!mobile() && <th>DOMAIN</th>}
-                  <th>STATUS</th>
-                  <th className='text-center'>TOTAL VISITORS</th>
-                  {!mobile() && <th>TRACK ID</th>}
-                  {!mobile() && <th>CREATED/UPDATED</th>}
-                  <th>TRASH</th>
-                </tr>
-              </thead>
-              <tbody>
+        <div className="manage-notification mt-5">
+          <div className="table-responsive">
+            <div className="table table-striped">
+              <div className="thead table-header flex">
+                <div className="tr tab-row">
+                  <div className="th col-md-1 text-center p-1">#</div>
+                  <div className="th col-md-2 text-center p-1">CAMPAIGN</div>
+                  {!mobile() && <div className="th col-md-3 text-center p-1">DOMAIN</div>}
+                  <div className="th col-md-1 text-center p-1">STATUS</div>
+                  <div className="text-center th col-md-1 p-1">TOTAL VISITORS</div>
+                  {!mobile() && <div className="th col-md-2 text-center p-1">TRACK ID</div>}
+                  {!mobile() && <div className="th col-md-1 text-center p-1">CREATED/UPDATED</div>}
+                  <div className="th col-md-1 text-center p-1">TRASH</div>
+                </div>
+              </div>
+              <div className="tbody tab-body">
                 {this.getNotificationRows()}
-              </tbody>
-            </table>
+              </div>
+            </div>
             <button type="button" className="btn btn-primary waves-light waves-effect ml-2 pl-4 pr-4 float-right" onClick={() => browserHistory.push('/scripts')}> Scripts </button>
             <div className="modal fade show-modal" id={modalname} role="dialog">
               <div className="modal-dialog">
