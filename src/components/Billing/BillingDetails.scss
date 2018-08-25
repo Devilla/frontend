@@ -123,6 +123,10 @@
       }
     }
 
+    .row-two-col-three {
+      padding: 30px 20px;
+    }
+
     .row-three-col-one {
       .fa {
         padding: 28px 10px 25px 20px;
@@ -140,6 +144,10 @@
         font-size: 14px;
         padding: 21px 4px;
       }
+    }
+
+    .row-three-col-three {
+      padding: 30px 20px;
     }
   }
 
@@ -179,7 +187,11 @@
         }
         tbody {
           tr {
+            color: gray !important;
             background-color: white;
+            td {
+              border-top: 0px;
+            }
           }
         }
       }
@@ -255,7 +267,7 @@
     }
   }
 
-  .fa-angle-up.drop-down {
+  .fa-angle-up.drop-down, .fa-angle-down.drop-down {
     font-size: xx-large;
   }
 
