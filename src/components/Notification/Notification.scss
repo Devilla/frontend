@@ -1,17 +1,48 @@
+.notification {
 
+  
+}
 
 .manage-notification {
-  .card-box {
-    padding: 20px 15px;
-    .campaign-td {
-      th, td {
-        padding: 10px 5px 5px 10px;
-      }
-      td {
-        cursor: pointer;
-      }
-    }
+  
+  .campaign-td {
+    cursor: pointer;
+    display: flex;
+    padding: 1.5% 0% 1.5% 0%;
+    margin: 10px auto;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+    background: #fff;
+    border-radius: 3px;
+    color: #50697e;
+    border: 0.5px solid #e1e1e1;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    font-weight: 500;
+    word-wrap: break-word;
+    justify-content: center;
+    align-items: center;
+
   }
+
+  .tab-header {
+    margin-bottom: 5px;
+  }
+
+  .tab-row {
+    margin: 2% 0% !important;
+    background: #f9f9f9;
+    border: 0.5px solid #f7f7f7;
+    display: flex;
+    font-size: 11px;
+    color: #56636d;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    word-wrap: break-word;
+    justify-content: center;
+    align-items: center;
+  }
+  
   .close-btn ,.delete-btn {
     border-radius: 5px !important;
   }
@@ -31,9 +62,7 @@
   th:first-child, td:first-child {
     padding-left: 15px !important;
   }
-  td {
-    text-align: inherit !important;
-  }
+  
 
   .addchannel {
     background: #097fff !important;
