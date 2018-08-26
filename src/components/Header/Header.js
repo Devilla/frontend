@@ -5,9 +5,10 @@ import { browserHistory } from 'react-router';
 import  ConnectionStatus  from './ConnectionStatus';
 import { connect } from 'react-redux';
 import { ProgressBar } from 'react-bootstrap';
+import moment from 'moment';
 
 const Header = ({
-  uniqueVisitors,
+  profile,
   openCloseDropdown,
   dropdownStyle,
   logout,
@@ -23,12 +24,22 @@ const Header = ({
         <ProgressBar bsStyle='info'  now={ 120 }/>
         :''
       }
-      <div className="cookie-notice-container" style={{display:uniqueVisitors>100?'block':'none'}}>
+      <div
+        className="cookie-notice-container"
+        style={
+          profile &&
+          profile.plan.name == 'Beta Plan' &&
+          moment(profile.plan.updated_at).format() <= moment().format() ?
+            { display: 'block', marginBottom: '-10px' }
+            :
+            { display: 'none' }
+        }>
         <div className="cookie-text">
           <span className="cookie-label text-center"><i className="fa fa-spinner fa-pulse mr-2"></i>You have reached the 30 day limit, to keep your campaigns running, Please Followed by the upgrade button.</span>
           <button type="button" onClick={()=>{browserHistory.push('/upgrade');}}>Upgrade</button>
         </div>
       </div>
+      {console.log(moment(profile.plan.updated_at).format() <= moment().format())}
       <ConnectionStatus />
       <div className="nav-topbar-flex">
         <div className="topbar-left">

@@ -175,7 +175,6 @@ class DashboardContainer extends Component {
               <div className="topbar" >
                 <nav className="navbar-custom pl-0 pr-0">
                   <Header
-                    uniqueVisitors={profile.uniqueVisitors}
                     username={user.username}
                     openCloseDropdown={this.openCloseDropdown}
                     logout={this.logout}

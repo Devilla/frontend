@@ -60,8 +60,8 @@ class Notification extends Component {
   }
 
   handleRouteChange(e, campaign) {
-    if (e.target.className === 'tgl-btn' ||
-      e.target.className === 'tgl tgl-ios' ||
+    if (e.target.className === 'tgl-btn text-center m-0' ||
+      e.target.className === 'tgl tgl-ios text-center' ||
       e.target.className === 'ml-3 icon-trash'
     )
       return;
@@ -108,7 +108,7 @@ class Notification extends Component {
           <div scope="row" className="th col-md-1 text-center">{i + 1}</div>
           <div className="td col-md-2 text-center p-1">{campaign.campaignName}</div>
           {!mobile() && <div className="td col-md-3 text-center p-1">{campaign.websiteUrl}</div>}
-          <ToggleSwitch handleChange={() => this.handleActiveChange(!campaign.isActive, campaign, i)}/>
+          <ToggleSwitch handleChange={(e) => this.handleActiveChange(!campaign.isActive, campaign, i)}/>
           {/*<div className="switch td col-md-1 text-center">
             <input className="tgl tgl-ios text-center" id="cb2" type="checkbox" checked={this.state.isActive}  readOnly/>
             <label className="tgl-btn text-center m-0" htmlFor="cb2"  data-toggle="modal" data-target="#2"  onClick={(e) => this.handleActiveChange(!campaign.isActive, campaign, i)}></label>
