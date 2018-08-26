@@ -20,7 +20,7 @@ const Header = ({
 }) => {
   return (
     <div className="customer-header">
-      {loading ?console.log(uniqueVisitors,'>>>>>>>>>>>>uniqueVisitors') &&
+      {loading ?
         <ProgressBar bsStyle='info'  now={ 120 }/>
         :''
       }
@@ -28,7 +28,7 @@ const Header = ({
         className="cookie-notice-container"
         style={
           profile &&
-          profile.plan.name == 'Beta Plan' &&
+          profile.plan.name == 'Beta Plan' && profile.uniqueVisitors>1000 &&
           moment(profile.plan.updated_at).format() <= moment().format() ?
             { display: 'block', marginBottom: '-10px' }
             :

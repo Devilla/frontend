@@ -23,13 +23,13 @@ class Oauthpage extends Component {
   getOAuthRows = () => {
     const { oauths, deleteClientOauth } = this.props;
     return oauths.map((oauth, index) =>
-      <tr className="auth-td" key={index} onClick={(e) => this.openGenerator(e, oauth)}>
-        <th scope="row">{index+1}</th>
-        <td>{oauth.name}</td>
-        <td>{moment(oauth.createdAt).format('DD/MM/YYYY')}</td>
-        <td>{oauth.secret.replace(/./g, '*')}</td>
-        <td>{oauth.clientId}</td>
-        <td>
+      <tr className="campaign-td auth-td" key={index} onClick={(e) => this.openGenerator(e, oauth)}>
+        <th className="text-center pt-4 pb-4" scope="row">{index+1}</th>
+        <td className="text-center pt-4 pb-4">{oauth.name}</td>
+        <td className="text-center pt-4 pb-4">{moment(oauth.createdAt).format('DD/MM/YYYY')}</td>
+        <td className="text-center pt-4 pb-4">{oauth.secret.replace(/./g, '*')}</td>
+        <td className="text-center pt-4 pb-4">{oauth.clientId}</td>
+        <td className="text-center pt-4 pb-4">
           <a href="javascript:;"><i className="ml-3 icon-trash" onClick={() => deleteClientOauth(oauth.id, index)}></i></a>
         </td>
       </tr>
@@ -58,15 +58,15 @@ class Oauthpage extends Component {
               Create Credentials
             </button>
 
-            <table className="table table-striped">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>NAME</th>
-                  <th>CREATION DATE</th>
-                  <th>Secret</th>
-                  <th>CLIENT ID</th>
-                  <th>ACTION</th>
+            <table className="table">
+              <thead className="campaign-td">
+                <tr className="tab-row">
+                  <th className="text-center pt-4 pb-4">#</th>
+                  <th className="text-center pt-4 pb-4">NAME</th>
+                  <th className="text-center pt-4 pb-4">CREATION DATE</th>
+                  <th className="text-center pt-4 pb-4">Secret</th>
+                  <th className="text-center pt-4 pb-4">CLIENT ID</th>
+                  <th className="text-center pt-4 pb-4">ACTION</th>
                 </tr>
               </thead>
               <tbody>
