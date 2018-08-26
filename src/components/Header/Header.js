@@ -19,7 +19,7 @@ const Header = ({
 }) => {
   return (
     <div className="customer-header">
-      {loading ?
+      {loading ?console.log(uniqueVisitors,'>>>>>>>>>>>>uniqueVisitors') &&
         <ProgressBar bsStyle='info'  now={ 120 }/>
         :''
       }
