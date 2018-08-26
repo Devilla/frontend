@@ -108,9 +108,9 @@ class Notification extends Component {
           <div scope="row" className="th col-md-1 text-center">{i + 1}</div>
           <div className="td col-md-2 text-center p-1">{campaign.campaignName}</div>
           {!mobile() && <div className="td col-md-3 text-center p-1">{campaign.websiteUrl}</div>}
-          <div className="switch td col-md-1 text-center">
-            <input className="tgl tgl-ios text-center" id="cb2" type="checkbox" checked={this.state.isActive}  readOnly/>
-            <label className="tgl-btn text-center m-0" htmlFor="cb2"  data-toggle="modal" data-target="#2"  onClick={(e) => this.handleActiveChange(!campaign.isActive, campaign, i)}></label>
+          <div className="switch td col-md-1">
+            <input className="tgl tgl-ios" id="cb2" type="checkbox" checked={this.state.isActive}  readOnly/>
+            <label className="tgl-btn m-0" htmlFor="cb2"  data-toggle="modal" data-target="#2"  onClick={(e) => this.handleActiveChange(!campaign.isActive, campaign, i)}>ON</label>
           </div>
           <div className="text-center td col-md-1 p-1">{totalUsers}</div>
           {!mobile() && <div className="td col-md-2 text-center p-1">{campaign.trackingId}</div>}
