@@ -439,7 +439,7 @@ class Dashboard extends Component {
           <div className="container-fluid">
             <Row className="dashboard-boxes">
               <Col md={12}>
-                <div className="card-box">
+                <div className="card-box pt-0">
                   <Row>
                     <Col md={12}>
                       <div className="btn-group campaign-dropdown">

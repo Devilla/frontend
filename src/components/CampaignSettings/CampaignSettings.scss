@@ -21,7 +21,7 @@ button {
   &.goliveRight{
     position: absolute;
     right: 21px;
-    top:24px;
+    top:8px;
     padding-top: 3px;
     padding-bottom: 2px;
     height: 30px;
@@ -53,6 +53,12 @@ button {
   .new-campaign-header {
     position:  relative;
     padding-bottom:  8px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: -0.17px;
+    font-size: 14px;
+    font-weight: 400;
+    color: #575788;
 
   }
   .textTransform{
