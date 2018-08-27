@@ -1,4 +1,11 @@
 .stripe-container {
+  width: 100%;
+
+  .upgrade-card-buttons {
+    display: flex;
+    justify-content: flex-end;
+  }
+
   .help-block {
     .website-error {
       color: red !important;

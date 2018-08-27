@@ -193,8 +193,26 @@
             }
           }
         }
+        .billing-final-info-bottom-two {
+          display: flex;
+          justify-content: flex-end;
+          width: 100%;
+          margin: 10px 0px;
+          padding: 0px 20px;
+          button {
+            width: 20%;
+            border-radius: 6px;
+          }
+          button:disabled {
+            opacity: .65;
+            border-color: lightgrey !important;
+            background-color: lightgray !important;
+          }
+          button[disabled]:hover {
+            background-color: lightgrey !important;
+          }
+        }
       }
-
     }
 
     .billing-info-three {
