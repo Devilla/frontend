@@ -11,6 +11,7 @@ export const DOWNLOAD_INVOICE = action('DOWNLOAD_INVOICE');
 export const SUCCESS_INVOICE = action('SUCCESS_INVOICE');
 export const UPDATE_PAYMENT_METHOD = action('UPDATE_PAYMENT_METHOD');
 export const FETCH_CARDS = action('FETCH_CARDS');
+export const FETCH_CARDS_SUCCESS = action('FETCH_CARDS_SUCCESS');
 
 export const fetchPayment = () => ({ type: FETCH });
 export const fetchInvoices = () => ({ type: FETCH_INVOICES });

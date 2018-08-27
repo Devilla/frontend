@@ -124,7 +124,7 @@ function* updatePaymentMethod(action) {
     if(res.error)
       console.log(res.error);
     else
-      browserHistory.push('/billing-details');
+      yield put(actions.fetchCards());
     yield put(loaded());
   } catch (error) {
     yield put(loaded());
@@ -132,7 +132,7 @@ function* updatePaymentMethod(action) {
   }
 }
 
-function* fetchCards(action) {
+function* fetchCards() {
   try {
     yield put(load());
     const res = yield call(api.GET, 'payment/servicebot/card');

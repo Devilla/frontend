@@ -4,7 +4,7 @@ import moment from 'moment';
 import Loading from 'react-loading-animation';
 import StripeCard from '../UpgradeCard/StripeCard';
 import { Elements } from 'react-stripe-elements';
-import { updatePaymentMethod } from 'ducks/payment';
+import { updatePaymentMethod, fetchCards } from 'ducks/payment';
 
 import { fetchInvoices, downloadInvoice } from 'ducks/payment' ;
 import {
@@ -18,27 +18,6 @@ import { UpgradePlan } from 'components';
 
 const billingHeader = [
   'Billing Date', 'Amount', 'Transaction Id', 'Status', 'Download'
-];
-
-const savedCards = [
-  {
-    holderName: 'Shanky',
-    cardNumber: '2342342323452345',
-    expiryDate: '08/19',
-    cardType: 'visa'
-  },
-  {
-    holderName: 'Rana',
-    cardNumber: '2342342323451234',
-    expiryDate: '08/18',
-    cardType: 'rupay'
-  },
-  {
-    holderName: 'Shaan',
-    cardNumber: '2342342323454567',
-    expiryDate: '08/29',
-    cardType: 'master'
-  }
 ];
 
 class BillingDetails extends Component {
@@ -56,6 +35,7 @@ class BillingDetails extends Component {
       showAddCard: false
     };
     props.fetchInvoices();
+    props.fetchCards();
   }
 
   componentDidMount() {
@@ -117,59 +97,54 @@ class BillingDetails extends Component {
   }
 
   renderSavedCards = () => {
-    return savedCards.map(card => {
+    const { cards } = this.props;
+
+    if(cards.length)
+      return cards.map(savedCard => {
+        const card = savedCard.source.card;
+        return (
+          <Row key={card.id} className="billing-final-info-bottom charge">
+            <div className="form-check">
+              <label className="form-check-label">
+                <input type="radio" className="form-check-input" name="optradio" />
+                <img
+                  style={
+                    card.brand == 'Visa'?
+                      { width: '20%', margin: '3px 0px', height: '15px' }
+                      :
+                      card.brand == 'MasterCard'?
+                        { width: '18%', margin: '-5px 0px', height: '25px' }
+                        :
+                        { width: '25%', margin: '2px 0px', height: '20px' }
+                  }
+                  src={
+                    card.brand == 'Visa'?
+                      'http://www.careersinafrica.com/wp-content/uploads/sites/2/2016/01/visa_logo_blu.png'
+                      :
+                      card.brand == 'MasterCard'?
+                        'https://content.heropay.com/wp-content/uploads/2016/11/MasterCard_Logo.png'
+                        :
+                        'http://www.adcbank.coop/images/rupay.png'
+                  }
+                />
+                <h4>{card.brand} ending in {card.last4}</h4>
+              </label>
+            </div>
+            <h4>{card.name}</h4>
+            <h4>{card.exp_month}/{card.exp_year}</h4>
+            <div className="form-group">
+              <input type="text" className="form-control" id="cvv" placeholder="CVV" />
+            </div>
+          </Row>
+        );
+      });
+    else
       return (
-        <Row key={card.cardNumber} className="billing-final-info-bottom charge">
-          <div className="form-check">
-            <label className="form-check-label">
-              <input type="radio" className="form-check-input" name="optradio" />
-              <img
-                style={
-                  card.cardType == 'visa'?
-                    { width: '20%', margin: '3px 0px', height: '15px' }
-                    :
-                    card.cardType == 'master'?
-                      { width: '18%', margin: '-5px 0px', height: '25px' }
-                      :
-                      { width: '25%', margin: '2px 0px', height: '20px' }
-                }
-                src={
-                  card.cardType == 'visa'?
-                    'http://www.careersinafrica.com/wp-content/uploads/sites/2/2016/01/visa_logo_blu.png'
-                    :
-                    card.cardType == 'master'?
-                      'https://content.heropay.com/wp-content/uploads/2016/11/MasterCard_Logo.png'
-                      :
-                      'http://www.adcbank.coop/images/rupay.png'
-                }
-              />
-              <h4>{card.cardType} ending in {card.cardNumber.substr(12)}</h4>
-            </label>
-          </div>
-          <h4>{card.holderName}</h4>
-          <h4>{card.expiryDate}</h4>
-          <div class="form-group">
-            <input type="text" className="form-control" id="cvv" placeholder="CVV" />
-          </div>
+        <Row className="billing-final-info-bottom charge">
+          <h4>No card saved</h4>
         </Row>
       );
-    });
   }
-
-  // addNewCard = (cardDetails) => {
-  //   console.log(cardDetails, '===========>cards');
-  //   const cardInfo = {
-  //     cardId: cardDetails.id,
-  //     cardNumber: cardDetails.last4,
-  //     expiryYear: cardDetails.exp_year,
-  //     expiryMonth: cardDetails.exp_month,
-  //     country: cardDetails.country,
-  //     cardType: cardDetails.brand,
-  //     zip: cardDetails.address_zip,
-  //     type: cardDetails.object
-  //   };
-  //   console.log(cardInfo, '=========cardInfo');
-  // }
 
   render() {
     const { planSelected, error, show, showSavedCards, showAddCard } = this.state;
@@ -326,13 +301,15 @@ class BillingDetails extends Component {
 
 const mapStateToProps = state => ({
   profile: state.getIn(['profile', 'profile']),
-  invoices: state.getIn(['payment', 'invoices'])
+  invoices: state.getIn(['payment', 'invoices']),
+  cards: state.getIn(['payment', 'cards'])
 });
 
 const mapDispatchToProps = {
   fetchInvoices,
   downloadInvoice,
-  updatePaymentMethod
+  updatePaymentMethod,
+  fetchCards
 };
 
 export default connect(mapStateToProps, mapDispatchToProps, null, { withRef: true })(BillingDetails);
