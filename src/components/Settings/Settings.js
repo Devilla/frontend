@@ -36,26 +36,11 @@ const setup = [
 ];
 
 const configuration = [
-  {
-    icon: 'fi-head',
-    path: 'campaigns',
-    text: 'Campaign Setting'
-  },
-  {
-    icon: 'fi-cog',
-    path: 'analytics',
-    text: 'Analytics',
-    head: 'Unique'
-  },
-  {
-    icon: 'fi-book',
-    path: 'analytics',
-    text: 'User Profiles',
-  },
+ 
   {
     icon: 'fi-paper-stack',
-    path: 'campaigns',
-    text: 'Help & Support',
+    path: '',
+    text: 'FAQs',
     head: 'Detailed'
   }
 ];
