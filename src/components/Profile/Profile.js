@@ -234,7 +234,7 @@ class Profile extends Component {
                   <Col sm={7} className="profile-content-col-one">
                     <div className="profile-user-box" >
                       <Row>
-                        <Col sm={2}>
+                        <Col sm={4}>
                           <span className="pull-left">
                             <img src={profile.image?profile.image:'https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg'} alt="User profile" className="rounded-circle" />
                           </span>

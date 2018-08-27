@@ -137,7 +137,7 @@ class Settings extends Component {
 
   render() {
     return (
-      <div className="settings-container">
+      <div className="settings-container mt-5">
         <Row className="pt-0">
           <Col md={2}>
             <h3 className="settingsheader">Setup</h3>

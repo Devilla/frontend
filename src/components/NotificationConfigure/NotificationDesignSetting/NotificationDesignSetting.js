@@ -276,7 +276,7 @@ export class NotificationDesignSetting extends Component {
           </div>
           : ' '}
 
-        <div className="setting" style={{ backgroundColor: 'white' }}>
+        <div className="setting">
           <Row>
             <Col md={12}>
               <div className="card-box box2">

@@ -8,10 +8,10 @@ import './CampaignSettings.scss';
 const CampaignSettings = (props) => {
 
   return (
-    <div className="col-md-12 tab-notification-container">
+    <div className="col-md-12 tab-notification-container mt-5">
       <div className="card-box tab-notification-box">
         <div className=" mt-3 new-campaign-header">
-          
+
           <h4 className=" header-title">{props.campaign
             ? props.campaign.websiteUrl
             : 'http://localhost:3000'}</h4>

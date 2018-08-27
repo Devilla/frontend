@@ -283,7 +283,7 @@ class DisplayPage extends Component {
               <span className="btn btn-primary nav nav-pills waves-light waves-effect addpath-btn pl-5 pr-5" onClick={() => this.addDomainUrl(domain.domainUrl, index)}>
                 Add
               </span>
-              <i className=" icon-trash trash" onClick={()=>{removeSubDomain(domain._id);}}></i>
+              <i className=" icon-trash trash ml-3" onClick={()=>{removeSubDomain(domain._id);}}></i>
             </span>
           </div>
         );
@@ -315,7 +315,7 @@ class DisplayPage extends Component {
               </Col>
             </Row>
             <Row style={{justifyContent: 'center'}}>
-              <Col md={8}>
+              <Col md={10}>
                 <div className="pl-4 input-group col-md-12">
                   <label className="pt-2 pl-1 pr-3 text-muted url-field">{this.props.campaign
                     ? 'http://'+this.props.campaign.websiteUrl
@@ -358,7 +358,7 @@ class DisplayPage extends Component {
                 </div>
               </Col>
             </Row>
-            <Row>
+            <Row style={{justifyContent: 'center'}}>
               <Col md={10}>
                 {this.renderSubDomain()}
               </Col>
