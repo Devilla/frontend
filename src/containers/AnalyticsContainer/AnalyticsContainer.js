@@ -204,7 +204,7 @@ class AnalyticsContainer extends Component {
   render() {
     return (
       <Loading className="transition-item analytics-transition-container" isLoading={!this.props.campaignInfo}>
-        <div className="analytics-container mt-5">
+        <div className="analytics-container mt-3">
           {!this.state.usersList.length ?
             <Analytics  renderList={this.renderList} />
             :

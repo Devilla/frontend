@@ -129,7 +129,7 @@ class Notification extends Component {
 
     return (
       <Loading className="transition-item manage-transition-notification" isLoading={!campaigns || !profile || !campaignInfo}>
-        <div className="manage-notification mt-5">
+        <div className="manage-notification mt-3">
           <div className="table-responsive">
             <div className="table table-striped">
               <div className="thead table-header flex">
