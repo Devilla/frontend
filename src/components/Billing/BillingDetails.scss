@@ -1,233 +1,196 @@
-.billing-details {
-  .billing-buttons {
-    padding: 2% 0;
-  }
-
-  .billing-info-list {
-    min-height: 600px;
-  }
-
-  .payment-info {
-    padding: 2%;
-
-    .plan-info-details {
-      padding: 2% 1%;
+.billing-transition-container {
+  .modal {
+    .modal-lg {
+      max-width: 80%;
+      .modal-content {
+        .modal-body {
+          padding: 0px !important;
+          .upgrade-plan-container {
+            .planlist-container {
+              .upgrade-plan {
+                .container {
+                  .inlineclr {
+                    .col-md-12 {
+                      .card-box {
+                        background-color: white !important;
+                        .text-center {
+                          margin: 0 auto;
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
+  .billing-container {
+    padding: 2% 20%;
 
-  .billing-list {
-    border: 1px solid lightgray;
-    border-left: 0;
-    border-right: 0;
-    margin: 1%;
-    padding: 2% 0;
+    .billing-row {
+      min-height: 80px;
+      border-radius: 10px;
+      padding: 0;
+      margin: 40px 0 0;
+      background: white;
+      box-shadow: 1px 2px 12px -4px #888888;
+      cursor: pointer;
+      position: relative;
+      z-index: 0;
 
-    .table {
-      margin: 0 3% !important;
+      .row-one-col-one {
+        display: flex;
+        height: 50px;
+        margin: 16px 0;
+        border-right: 1px solid lightgray;
 
-      td {
+        img {
+          border-radius: 12px;
+          width: 60%;
+        }
+
+        // h5 {
+        //   padding: 5px 10px;
+        // }
+      }
+
+      .row-one-col-two {
+        padding: 15px 20px;
+
+        h6 {
+          margin-bottom: 0;
+        }
+
+        span {
+          font-size: 13px;
+          color: gray;
+          -webkit-font-smoothing: antialiased;
+          text-rendering: optimizeLegibility;
+          font-family: "Proxima Nova","Helvetica Neue",Arial,sans-serif;
+        }
+      }
+
+      .row-one-col-three {
+        padding: 23px 0px;
+
+        button {
+          border-radius: 6px;
+        }
+
+        .fa {
+          padding: 0 5%;
+        }
+      }
+
+      .row-two-col-one {
+        .fa {
+          padding: 28px 10px 25px 20px;
+        }
+
+        .fa-credit-card:before {
+          font-size: 20px;
+        }
+      }
+
+      .row-two-col-two {
+        padding: 0;
+
+        h5 {
+          font-size: 14px;
+          padding: 21px 4px;
+        }
+      }
+
+      .row-two-col-three {
+        padding: 30px 0px;
+      }
+
+      .row-three-col-one {
+        .fa {
+          padding: 28px 10px 25px 20px;
+        }
+
+        .fa-file-text-o:before {
+          font-size: 20px;
+        }
+      }
+
+      .row-three-col-two {
+        padding: 0;
+
+        h5 {
+          font-size: 14px;
+          padding: 21px 4px;
+        }
+      }
+
+      .row-three-col-three {
+        padding: 30px 0px;
+      }
+    }
+
+    .billing-info {
+      display: none;
+      top: 0;
+      margin: 0px 0px 0px;
+      min-height: 150px;
+      background-color: white;
+    }
+
+    .billing-info-two {
+      .stripe-container {
+        padding: 40px 50px;
+      }
+    }
+
+    .billing-info-three {
+      .table-responsive {
         text-align: left;
-      }
-    }
-  }
+        padding: 30px 50px;
 
-  Button {
-    &.btn.btn-primary {
-      border-radius: 5px;
-    }
-  }
-
-  .fi-download {
-    cursor: pointer;
-  }
-
-  .fi-download:before {
-    font-size: 15px;
-  }
-}
-
-.billing-container {
-  padding: 2% 20%;
-
-  .billing-row {
-    min-height: 80px;
-    border-radius: 10px;
-    padding: 0;
-    margin: 40px 0 0;
-    background: white;
-    box-shadow: 1px 2px 12px -4px #888888;
-    cursor: pointer;
-    position: relative;
-    z-index: 0;
-
-    .row-one-col-one {
-      display: flex;
-      height: 50px;
-      margin: 16px 0;
-      border-right: 1px solid lightgray;
-
-      img {
-        border-radius: 12px;
-        width: 60%;
-      }
-
-      h5 {
-        padding: 5px 10px;
-      }
-    }
-
-    .row-one-col-two {
-      padding: 15px 20px;
-
-      h6 {
-        margin-bottom: 0;
-      }
-
-      span {
-        font-size: 13px;
-        color: gray;
-        -webkit-font-smoothing: antialiased;
-        text-rendering: optimizeLegibility;
-        font-family: "Proxima Nova","Helvetica Neue",Arial,sans-serif;
-      }
-    }
-
-    .row-one-col-three {
-      padding: 23px 0px;
-
-      button {
-        border-radius: 6px;
-      }
-
-      .fa {
-        padding: 0 5%;
-      }
-    }
-
-    .row-two-col-one {
-      .fa {
-        padding: 28px 10px 25px 20px;
-      }
-
-      .fa-credit-card:before {
-        font-size: 20px;
-      }
-    }
-
-    .row-two-col-two {
-      padding: 0;
-
-      h5 {
-        font-size: 14px;
-        padding: 21px 4px;
-      }
-    }
-
-    .row-two-col-three {
-      padding: 30px 0px;
-    }
-
-    .row-three-col-one {
-      .fa {
-        padding: 28px 10px 25px 20px;
-      }
-
-      .fa-file-text-o:before {
-        font-size: 20px;
-      }
-    }
-
-    .row-three-col-two {
-      padding: 0;
-
-      h5 {
-        font-size: 14px;
-        padding: 21px 4px;
-      }
-    }
-
-    .row-three-col-three {
-      padding: 30px 0px;
-    }
-  }
-
-  .billing-info {
-    display: none;
-    top: 0;
-    min-height: 150px;
-    background-color: white;
-  }
-
-  .billing-info-two {
-    .stripe-container {
-      padding: 40px 50px;
-    }
-  }
-
-  .billing-info-three {
-    .table-responsive {
-      text-align: left;
-      padding: 30px 50px;
-
-      table {
-        thead {
-          tr {
-            background-color: white;
-            th {
-              font-weight: 400;
-              font-size: 14px;
-              color: #a9a9a9;
-              text-transform: uppercase;
-              border: 0;
-              font-family: "Proxima Nova","Helvetica Neue",Arial,sans-serif;
-              -webkit-font-smoothing: antialiased;
-              text-rendering: optimizeLegibility;
+        table {
+          thead {
+            tr {
+              background-color: white;
+              th {
+                font-weight: 400;
+                font-size: 14px;
+                color: #a9a9a9;
+                text-transform: uppercase;
+                border: 0;
+                font-family: "Proxima Nova","Helvetica Neue",Arial,sans-serif;
+                -webkit-font-smoothing: antialiased;
+                text-rendering: optimizeLegibility;
+              }
             }
           }
-        }
-        tbody {
-          tr {
-            color: gray !important;
-            background-color: white;
-            td {
-              border-top: 0px;
+          tbody {
+            tr {
+              color: gray !important;
+              background-color: white;
+              td {
+                border-top: 0px;
+              }
             }
           }
         }
       }
     }
-  }
 
-  .billing-info-one {
-    padding:: 15px 20px;
+    .billing-info-one {
+      padding:: 15px 20px;
 
-    .row-two-col-one {
-      margin: auto auto 15px;
-      background-color: #DBEBF4;
-      font-weight: 700;
-      border-radius: 8px;
-    }
-
-    .billing-final-info-one{
-      display: flex;
-      justify-content: space-between;
-      width: 100%;
-      /* margin: 0 auto; */
-      margin: 10px 0px;
-      padding: 14px 20px;
-      h4 {
-        font-size: 14px;
-        font-weight: 500;
+      .row-two-col-one {
+        margin: auto auto 15px;
+        background-color: #DBEBF4;
+        font-weight: 700;
+        border-radius: 8px;
       }
-    }
-    .billing-final-info-one-bottom {
-      margin: auto;
-      margin-top: -11px;
-      .style3 {
-        width: 100%;
-        margin-bottom: 0;
-      }
-      .billing-final-info-bottom {
+
+      .billing-final-info-one{
         display: flex;
         justify-content: space-between;
         width: 100%;
@@ -235,96 +198,120 @@
         margin: 10px 0px;
         padding: 14px 20px;
         h4 {
-          font-size: 13px;
-          font-weight: 100;
+          font-size: 14px;
+          font-weight: 500;
+        }
+      }
+      .billing-final-info-one-bottom {
+        margin: auto;
+        margin-top: -11px;
+        .style3 {
+          width: 100%;
+          margin-bottom: 0;
+        }
+        .billing-final-info-bottom {
+          display: flex;
+          justify-content: space-between;
+          width: 100%;
+          margin: 10px 0px;
+          padding: 14px 20px;
+          h4 {
+            font-size: 13px;
+            font-weight: 100;
+            p {
+              margin: 0;
+            }
+          }
+        }
+      }
+
+      .billing-final-info-two {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        /* margin: 0 auto; */
+        margin: 10px 0px;
+        padding: 14px 20px;
+        h4 {
+          font-size: 14px;
+          font-weight: 500;
+        }
+      }
+
+      .billing-final-info.row {
+        padding: 16px 60px;
+        display: flex;
+        justify-content: space-between;
+
+        h4 {
+          font-weight: 700;
+          font-size: 18px;
+          color: #5D657A;
         }
       }
     }
 
-    .billing-final-info-two {
-      display: flex;
-      justify-content: space-between;
+    .fa-angle-up.drop-down, .fa-angle-down.drop-down {
+      font-size: xx-large;
+    }
+
+    .estimate {
+      background-color: #FAFBFC;
+      font-size: 12px;
+
+      hr{
+        border-top: dotted 1px;
+      }
+    }
+
+    .billing-info-one:after {
+      background: linear-gradient(-45deg, #f9f9f9 16px, transparent 0), linear-gradient(45deg, #f9f9f9 16px, transparent 0);
+      background-position: left-bottom;
+      background-repeat: repeat-x;
+      background-size: 24px 24px;
+      content: " ";
+      display: block;
+      position: absolute;
+      left: 0;
       width: 100%;
-      /* margin: 0 auto; */
-      margin: 10px 0px;
-      padding: 14px 20px;
-      h4 {
-        font-size: 14px;
-        font-weight: 500;
-      }
+      clear: both;
+      // bottom: 185px;
+      height: 20px;
     }
-
-    .billing-final-info.row {
-      padding: 16px 60px;
-      display: flex;
-      justify-content: space-between;
-
-      h4 {
-        font-weight: 700;
-        font-size: 18px;
-        color: #5D657A;
-      }
+    .billing-info-two:after {
+      background: linear-gradient(-45deg, #f9f9f9 16px, transparent 0), linear-gradient(45deg, #f9f9f9 16px, transparent 0);
+      background-position: left-bottom;
+      background-repeat: repeat-x;
+      background-size: 24px 24px;
+      content: " ";
+      display: block;
+      // position: absolute;
+      left: 0;
+      width: 100%;
+      clear: both;
+      // bottom: 185px;
+      height: 20px;
+      // margin: 130px 0px auto;
+    }
+    .billing-info-three:after {
+      background: linear-gradient(-45deg, #f9f9f9 16px, transparent 0), linear-gradient(45deg, #f9f9f9 16px, transparent 0);
+      background-position: left-bottom;
+      background-repeat: repeat-x;
+      background-size: 24px 24px;
+      content: " ";
+      display: block;
+      // position: absolute;
+      left: 0;
+      width: 100%;
+      clear: both;
+      // bottom: -52px;
+      height: 20px;
+      // margin: 130px 0px auto;
     }
   }
 
-  .fa-angle-up.drop-down, .fa-angle-down.drop-down {
-    font-size: xx-large;
-  }
-
-  .estimate {
-    background-color: #FAFBFC;
-    font-size: 12px;
-
-    hr{
-      border-top: dotted 1px;
-    }
-  }
-
-  .billing-info-one:after {
-    background: linear-gradient(-45deg, #f9f9f9 16px, transparent 0), linear-gradient(45deg, #f9f9f9 16px, transparent 0);
-    background-position: left-bottom;
-    background-repeat: repeat-x;
-    background-size: 24px 24px;
-    content: " ";
-    display: block;
-    position: absolute;
-    left: 0;
-    width: 100%;
-    clear: both;
-    // bottom: 185px;
-    height: 20px;
-  }
-  .billing-info-two:after {
-    background: linear-gradient(-45deg, #f9f9f9 16px, transparent 0), linear-gradient(45deg, #f9f9f9 16px, transparent 0);
-    background-position: left-bottom;
-    background-repeat: repeat-x;
-    background-size: 24px 24px;
-    content: " ";
-    display: block;
-    // position: absolute;
-    left: 0;
-    width: 100%;
-    clear: both;
-    // bottom: 185px;
-    height: 20px;
-    // margin: 130px 0px auto;
-  }
-  .billing-info-three:after {
-    background: linear-gradient(-45deg, #f9f9f9 16px, transparent 0), linear-gradient(45deg, #f9f9f9 16px, transparent 0);
-    background-position: left-bottom;
-    background-repeat: repeat-x;
-    background-size: 24px 24px;
-    content: " ";
-    display: block;
-    // position: absolute;
-    left: 0;
-    width: 100%;
-    clear: both;
-    // bottom: -52px;
-    height: 20px;
-    // margin: 130px 0px auto;
-  }
 }
+
 @media only screen and (max-width: 768px) and (min-width: 100px) {
   .billing-details {
     padding-top: 20px !important;

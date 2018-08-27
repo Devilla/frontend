@@ -8,16 +8,14 @@ import { Animated } from 'react-animated-css';
 import PricePage from 'components/PricePage';
 import './PlanList.scss';
 
-const PlanList = ({ plan, handleCheckChange, makePayment }) => {
+const PlanList = ({ plan, handleCheckChange }) => {
   return (
     <div className="planlist-container">
       <div className="content fill upgrade-plan ">
-        <Grid fluid={true} >
+        <Grid fluid={false} >
           <Row className="inlineclr">
             <Col md={12}>
               <div className="card-box pt-0 pl-0">
-                <h4 className="header-title text-left mt-3 upgradeheader">Upgrade your Plan</h4>
-                <hr/>
                 <div className="plans ml-5">
                   <Row>
                     <Animated className="leftwrap center text-center ml-5" animationIn="fadeIn" animationOut="fadeOut" isVisible={true}>
@@ -28,15 +26,9 @@ const PlanList = ({ plan, handleCheckChange, makePayment }) => {
                       />
                     </Animated>
                   </Row>
-                  <Row className="float-right">
-                    <div className="m-t-50 ">
-                      <span type="button" className="btn btn-primary  waves-light waves-effect number ml-2 pl-4 pr-4" onClick={() => makePayment()}>Proceed </span>
-                    </div>
-                  </Row>
                 </div>
               </div>
             </Col>
-
           </Row>
         </Grid>
         <div className="clearfix"></div>

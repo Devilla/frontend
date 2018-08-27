@@ -21,9 +21,16 @@ export default class UpgradePlan extends Component {
     this.makePayment = this.makePayment.bind(this);
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.plan) {
+      const { plan } = nextProps;
+      this.setState({ plan });
+    }
+  }
 
   handleCheckChange(checked, value) {
     this.setState({ plan: checked ? value : null });
+    this.props.handleSelectedPlan(value);
   }
 
   makePayment() {
