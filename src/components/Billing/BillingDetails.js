@@ -30,7 +30,9 @@ class BillingDetails extends Component {
       openCloseRowThree: false,
       error: '',
       goback:  false,
-      show: false
+      show: false,
+      showSavedCards: false,
+      showAddCard: false
     };
     props.fetchInvoices();
   }
@@ -81,12 +83,20 @@ class BillingDetails extends Component {
     this.setState({ show : !this.state.show});
   }
 
+  openCloseSavedCards = () => {
+    this.setState({showSavedCards: !this.state.showSavedCards});
+  }
+
+  openCloseAddCard = () => {
+    this.setState({showAddCard: !this.state.showAddCard});
+  }
+
   handleSelectedPlan = (plan) => {
     this.setState({planSelected: plan , openCloseRowOne: true, show: true });
   }
 
   render() {
-    const { planSelected, error, show } = this.state;
+    const { planSelected, error, show, showSavedCards, showAddCard } = this.state;
     const { profile, updatePaymentMethod } = this.props;
     const { openCloseRowOne, openCloseRowTwo, openCloseRowThree } = this.state;
 
@@ -151,14 +161,44 @@ class BillingDetails extends Component {
             </Col>
           </Row>
           <Row className="billing-info billing-info-two" style={{ display: openCloseRowTwo?'block':'none' }}>
-            <Elements>
-              <StripeCard
-                currentState='upgrade'
-                error={error}
-                handleError={this.handleError}
-                updatePaymentMethod={updatePaymentMethod}
-              />
-            </Elements>
+            <Col md={12} className="billing-info-two-col-one">
+              <Row className="billing-final-two-info-two estimate">
+                <h4>Saved Cards</h4>
+                <i className={showSavedCards?'fa fa-angle-up drop-down':'fa fa-angle-down drop-down'} onClick={this.openCloseSavedCards}></i>
+              </Row>
+              {showSavedCards ?
+                <Row className="billing-final-two-info-two-bottom estimate">
+                  <hr className="style3"></hr>
+                  <Row className="billing-final-info-bottom charge">
+                    <h4>Base Plan Details</h4>
+                    <h4><div className="font-desc" dangerouslySetInnerHTML={{ __html:  planSelected?planSelected.details:'' }} /> </h4>
+                    <h4>${planSelected?(planSelected.amount/100):0}</h4>
+                  </Row>
+                </Row>
+                :
+                null
+              }
+
+              <Row className="billing-final-two-info-two estimate">
+                <h4>Add New Card</h4>
+                <i className={showAddCard?'fa fa-angle-up drop-down':'fa fa-angle-down drop-down'} onClick={this.openCloseAddCard}></i>
+              </Row>
+              {showAddCard ?
+                <Row className="billing-final-two-info-two-bottom estimate">
+                  <hr className="style3"></hr>
+                  <Elements>
+                    <StripeCard
+                      currentState='upgrade'
+                      error={error}
+                      handleError={this.handleError}
+                      updatePaymentMethod={updatePaymentMethod}
+                    />
+                  </Elements>
+                </Row>
+                :
+                null
+              }
+            </Col>
           </Row>
           <Row className="billing-row" onClick={this.openCloseRowThree}>
             <Col md={1} className="row-three-col-one">
