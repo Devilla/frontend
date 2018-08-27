@@ -32,7 +32,7 @@ const Header = ({
           moment(profile.plan.updated_at).format() <= moment().format() ?
             { display: 'block', marginBottom: '-10px' }
             :
-            { display: 'block' }
+            { display: 'none' }
         }>
         <div className="cookie-text">
           <span className="cookie-label text-center"><i className="fa fa-spinner fa-pulse mr-2"></i>You have reached your 30 day free account limit, please upgrade to keep your campaign running.</span>
