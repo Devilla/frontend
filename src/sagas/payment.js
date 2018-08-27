@@ -132,6 +132,21 @@ function* updatePaymentMethod(action) {
   }
 }
 
+function* fetchCards(action) {
+  try {
+    yield put(load());
+    const res = yield call(api.GET, 'payment/servicebot/card');
+    if(res.error)
+      console.log(res.error);
+    else
+      yield put(actions.fetchCardsSuccess(res));
+    yield put(loaded());
+  } catch (error) {
+    yield put(loaded());
+    yield toast.error(error.message, toastConfig);
+  }
+}
+
 export function* watchFetch() {
   yield takeLatest(actions.FETCH, fetch);
 }
@@ -156,6 +171,10 @@ export function* watchUpdatePaymentMethod() {
   yield takeLatest(actions.UPDATE_PAYMENT_METHOD, updatePaymentMethod);
 }
 
+export function* watchFetchCards() {
+  yield takeLatest(actions.FETCH_CARDS, fetchCards);
+}
+
 export default function* rootSaga() {
   yield [
     fork(watchFetch),
@@ -163,6 +182,7 @@ export default function* rootSaga() {
     fork(watchUpdate),
     fork(watchFetchInvoices),
     fork(watchUpdatePaymentMethod),
-    fork(watchDownloadInvoice)
+    fork(watchDownloadInvoice),
+    fork(watchFetchCards)
   ];
 }

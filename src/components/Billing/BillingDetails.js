@@ -156,9 +156,24 @@ class BillingDetails extends Component {
     });
   }
 
+  // addNewCard = (cardDetails) => {
+  //   console.log(cardDetails, '===========>cards');
+  //   const cardInfo = {
+  //     cardId: cardDetails.id,
+  //     cardNumber: cardDetails.last4,
+  //     expiryYear: cardDetails.exp_year,
+  //     expiryMonth: cardDetails.exp_month,
+  //     country: cardDetails.country,
+  //     cardType: cardDetails.brand,
+  //     zip: cardDetails.address_zip,
+  //     type: cardDetails.object
+  //   };
+  //   console.log(cardInfo, '=========cardInfo');
+  // }
+
   render() {
     const { planSelected, error, show, showSavedCards, showAddCard } = this.state;
-    const { profile, updatePaymentMethod } = this.props;
+    const { profile } = this.props;
     const { openCloseRowOne, openCloseRowTwo, openCloseRowThree } = this.state;
 
     return (

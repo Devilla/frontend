@@ -45,7 +45,7 @@ class StripeCard extends Component {
           if(payload.error)
             return handleError(payload.error.message);
           if (currentState == 'upgrade')
-            updatePaymentMethod(payload.token);
+            updatePaymentMethod(payload.token.card);
           else {
             const data = {
               amount: plan.amount,
@@ -61,8 +61,6 @@ class StripeCard extends Component {
       console.log('Stripe.js has not loaded yet.');
     }
   };
-
-
 
   render() {
 
@@ -111,7 +109,7 @@ class StripeCard extends Component {
           </Row>
           <Row className='upgrade-card-buttons'>
             <div className='col-md-4  mr-2'>
-              <Button type='submit' icon='usd' bsStyle='primary' className='cardpay-btn'  fill={true} >{currentState === 'upgrade' ? 'Update Card' : 'Make Payment'}</Button>
+              <Button type='submit' icon='usd' bsStyle='primary' className='cardpay-btn'  fill={true} >{currentState === 'upgrade' ? 'Add Card' : 'Make Payment'}</Button>
             </div>
 
             {currentState !== 'upgrade' ?

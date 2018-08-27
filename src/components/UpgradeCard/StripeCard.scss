@@ -1,4 +1,15 @@
 .stripe-container {
+  .help-block {
+    .website-error {
+      color: red !important;
+      margin: 0px 0px 10px 0;
+    }
+  }
+  .text-muted {
+    label {
+      width: 100%;
+    }
+  }
   .auth-divider {
     display: flex;
     justify-content: center;
@@ -16,16 +27,15 @@
       margin: 0px 0px;
       margin-top: -10px;
       font-size: 19px !important;
-      margin-right: 15px !important;  
+      margin-right: 15px !important;
     }
   }
   .changeplan-btn {
   border-radius: 5px !important;
 
   }
-  
+
 }
 .cardpay-btn {
   border-radius: 5px !important;
 }
-
