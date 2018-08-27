@@ -300,7 +300,7 @@ class CapturePage extends Component {
               </Col>
             </Row>
             <Row style={{justifyContent: 'center'}}>
-              <Col md={8}>
+              <Col md={10}>
                 <div className="pl-4 input-group col-md-12">
                   <label className="pt-2 pl-1 pr-3 text-muted url-field">{this.props.campaign
                     ? 'http://'+this.props.campaign.websiteUrl
@@ -320,11 +320,11 @@ class CapturePage extends Component {
                       </button>
                       <div className="dropdown-menu">
                         <div className="dropdown-item" id={1} onClick={this.addPageUrl} >
-                          
+
                           Add Path
                         </div>
                         <div className="dropdown-item last-item-dropdown" id={1} onClick={this.openCloseModal} >
-                          
+
                           Add SubDomain
                         </div>
                       </div>
@@ -333,7 +333,7 @@ class CapturePage extends Component {
                 </div>
               </Col>
             </Row>
-            <Row>
+            <Row style={{justifyContent: 'center'}}>
               <Col md={10}>
                 {this.renderSubDomain()}
               </Col>

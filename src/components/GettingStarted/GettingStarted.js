@@ -58,12 +58,12 @@ class GettingStarted extends Component {
 
   render() {
     const { campaignValid, profileComplete, intergrationComplete} = this.state;
-    const { profile, campaignInfo } = this.props;
+    const { profile, campaignInfo, user } = this.props;
     return (
       <Loading strokeWidth="2" style={{height: '700px', width: '10%'}} isLoading={!profile || !campaignInfo} >
         <div className="transition-item list-modal-container card">
           <div className="list-header">
-            <p className="list-header-para">Hello "name"!  Let's get started.</p>
+            <p className="list-header-para">Hello {user.username}!  Let's get started.</p>
           </div>
           <div className="list-content row border-between mr-0 ml-0">
             <Col md={6} className="list1-content pb-4 pr-0">
@@ -111,7 +111,7 @@ class GettingStarted extends Component {
                   </label>
                   <i className="fa fa-angle-right" ></i>
                 </div>
-                
+
               </div>
             </Col>
           </div>

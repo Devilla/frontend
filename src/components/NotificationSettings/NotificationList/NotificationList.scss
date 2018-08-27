@@ -41,8 +41,13 @@
 
     }
     .ribbon-box.indi-card {
-      width: 280px !important;
-
+      width: 75% !important;
+      margin: 0 auto;
+      justify-content: center;
+      display: flex;
+      .card-box {
+        width: 100%;
+      }
     }
     .card-box.bx {
       border-radius: 10px !important;

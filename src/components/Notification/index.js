@@ -11,7 +11,6 @@ import Loading from 'react-loading-animation';
 
 import { fetchCampaign, fetchCampaignInfo, updateCampaign, successCampaign, removeCampaign } from 'ducks/campaign';
 import './Notification.scss';
-
 class Notification extends Component {
   constructor() {
     super();
@@ -38,23 +37,31 @@ class Notification extends Component {
   }
 
   handleActiveChange(active, campaign, index) {
-    if (active && this.props.profile.uniqueVisitorsQoutaLeft <= 0) {
+    if(this.props.user && this.props.user.status == 'paused')
       this.setState({
-        modaltitle: 'Limit exceeded',
-        modalbody: 'Please upgrade your plan to continue',
-        modalfoot: 'Upgrade Plan',
+        modaltitle: 'Account Paused',
+        modalbody: 'Please resume your account to continue',
+        modalfoot: 'Resume account',
         modalname: '2'
       });
-    } else {
-      campaign['isActive'] = active;
-      delete campaign['_id'];
-      this.props.updateCampaign(campaign, index);
-    }
+    else
+      if (active && this.props.profile.uniqueVisitorsQoutaLeft <= 0) {
+        this.setState({
+          modaltitle: 'Limit exceeded',
+          modalbody: 'Please upgrade your plan to continue',
+          modalfoot: 'Upgrade Plan',
+          modalname: '2'
+        });
+      } else {
+        campaign['isActive'] = active;
+        delete campaign['_id'];
+        this.props.updateCampaign(campaign, index);
+      }
   }
 
   handleRouteChange(e, campaign) {
-    if (e.target.className === 'tgl-btn' ||
-      e.target.className === 'tgl tgl-ios' ||
+    if (e.target.className === 'tgl-btn text-center m-0' ||
+      e.target.className === 'tgl tgl-ios text-center' ||
       e.target.className === 'ml-3 icon-trash'
     )
       return;
@@ -98,12 +105,12 @@ class Notification extends Component {
       const { totalUsers } = this.usersCount(campaign._id);
       return (
         <div className="campaign-td tr" key={i} onClick={(e) => this.handleRouteChange(e, campaign)}>
-          <div scope="row" className="th col-md-1 text-center">{i + 1}</div> 
+          <div scope="row" className="th col-md-1 text-center">{i + 1}</div>
           <div className="td col-md-2 text-center p-1">{campaign.campaignName}</div>
           {!mobile() && <div className="td col-md-3 text-center p-1">{campaign.websiteUrl}</div>}
-          <div className="switch td col-md-1 text-center">
-            <input className="tgl tgl-ios text-center" id="cb2" type="checkbox" checked={this.state.isActive}  readOnly/>
-            <label className="tgl-btn text-center m-0" htmlFor="cb2"  data-toggle="modal" data-target="#2"  onClick={(e) => this.handleActiveChange(!campaign.isActive, campaign, i)}></label>
+          <div className="switch td col-md-1">
+            <input className="tgl tgl-ios" id="cb2" type="checkbox" checked={this.state.isActive}  readOnly/>
+            <label className="tgl-btn m-0" htmlFor="cb2"  data-toggle="modal" data-target="#2"  onClick={(e) => this.handleActiveChange(!campaign.isActive, campaign, i)}>ON</label>
           </div>
           <div className="text-center td col-md-1 p-1">{totalUsers}</div>
           {!mobile() && <div className="td col-md-2 text-center p-1">{campaign.trackingId}</div>}
@@ -119,9 +126,10 @@ class Notification extends Component {
   render() {
     const { modalbody, modalfoot, modaltitle , modalname } = this.state;
     const { campaigns, profile, campaignInfo } = this.props;
+
     return (
       <Loading className="transition-item manage-transition-notification" isLoading={!campaigns || !profile || !campaignInfo}>
-        <div className="manage-notification mt-5">
+        <div className="manage-notification mt-3">
           <div className="table-responsive">
             <div className="table table-striped">
               <div className="thead table-header flex">
@@ -154,7 +162,7 @@ class Notification extends Component {
                   <div className="modal-footer">
                     <button type="button" className="float-left btn btn-primary close-btn" data-dismiss="modal">Close</button>
                     <button type="button" className="btn btn-primary delete-btn" data-dismiss="modal"
-                      onClick={modalfoot === 'Upgrade Plan' ? () => browserHistory.push('/upgrade') : this.deletepopupContent} >{modalfoot}</button>
+                      onClick={modalfoot === 'Upgrade Plan' ? () => browserHistory.push('/upgrade') : modalfoot == 'Resume account' ? () => browserHistory.push('/profile') : this.deletepopupContent} >{modalfoot}</button>
                   </div>
                 </div>
               </div>
@@ -167,6 +175,7 @@ class Notification extends Component {
 }
 
 const mapStateToProps = state => ({
+  user: state.getIn(['auth', 'user']),
   campaigns: state.getIn(['campaign', 'campaigns']),
   profile: state.getIn(['profile', 'profile']),
   campaignInfo: state.getIn(['campaign', 'campaignInfo'])

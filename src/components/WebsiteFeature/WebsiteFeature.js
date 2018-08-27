@@ -24,7 +24,7 @@ class WebsiteFeature extends Component {
                 <div className="col-md-10 col-lg-10">
                   <h2>Power in your hands!</h2>
                   <p className="lead col-md-12 text-center"> From a team of passionate creators & creative thinkers.</p>
-                  <Link className="btn btn--primary type--uppercase" to="#"> <span className="btn__text">Try influence now</span> </Link>
+                  <Link className="btn btn--primary type--uppercase" to="#" style={{backgroundColor:'#097fff'}}> <span className="btn__text">Try influence now</span> </Link>
                   <div></div>
                 </div>
               </div>

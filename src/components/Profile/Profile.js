@@ -208,7 +208,7 @@ class Profile extends Component {
 
           <Col md={10} className="profile-content-contaier">
             {this.state.changePassword?
-              <Grid fluid={true}>
+              <Grid>
                 <Col sm={8} style={{maxWidth: '1069px'}}>
                   <div className="profile-user-box card-box" >
                     <Row>
@@ -234,7 +234,7 @@ class Profile extends Component {
                   <Col sm={7} className="profile-content-col-one">
                     <div className="profile-user-box" >
                       <Row>
-                        <Col sm={2}>
+                        <Col sm={4}>
                           <span className="pull-left">
                             <img src={profile.image?profile.image:'https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg'} alt="User profile" className="rounded-circle" />
                           </span>

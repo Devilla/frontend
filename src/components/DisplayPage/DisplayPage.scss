@@ -169,6 +169,11 @@
     }
 
     .tabscontent {
+      .campaign-dropdown {
+        .dropdown-toggle {
+          padding: .375rem 2.3rem !important;
+        }
+      }
       .mdi-plus-circle-outline {
         font-size: 17px;
         position: absolute;

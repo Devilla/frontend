@@ -72,9 +72,9 @@ const security = [
 class Settings extends Component {
 
   renderConfigurations = () => {
-    return configuration.map(item => {
+    return configuration.map((item, index) => {
       return (
-        <div className="card mr-0" onClick={() => browserHistory.push(item.path)}>
+        <div key={index+item.text} className="card mr-0" onClick={() => browserHistory.push(item.path)}>
           <div className="card-img-top">
             {item.head &&
               <p>
@@ -92,9 +92,9 @@ class Settings extends Component {
   }
 
   renderSetup = () => {
-    return setup.map(item => {
+    return setup.map((item, index) => {
       return (
-        <div className="card mr-0" onClick={() => browserHistory.push(item.path)}>
+        <div key={index+item.text} className="card mr-0" onClick={() => browserHistory.push(item.path)}>
           <div className="card-img-top">
             {item.head?
               <p>
@@ -114,9 +114,9 @@ class Settings extends Component {
   }
 
   renderSecurity = () => {
-    return security.map(item => {
+    return security.map((item, index) => {
       return (
-        <div className="card mr-0" onClick={() => browserHistory.push(item.path)}>
+        <div key={index+item.text} className="card mr-0" onClick={() => browserHistory.push(item.path)}>
           <div className="card-img-top">
             {item.head?
               <p>
@@ -137,7 +137,7 @@ class Settings extends Component {
 
   render() {
     return (
-      <div className="settings-container">
+      <div className="settings-container mt-3">
         <Row className="pt-0">
           <Col md={2}>
             <h3 className="settingsheader">Setup</h3>
