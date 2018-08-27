@@ -4,7 +4,7 @@ import moment from 'moment';
 import Loading from 'react-loading-animation';
 import StripeCard from '../UpgradeCard/StripeCard';
 import { Elements } from 'react-stripe-elements';
-import { updatePaymentMethod } from 'ducks/payment';
+import { updatePaymentMethod, fetchCards } from 'ducks/payment';
 
 import { fetchInvoices, downloadInvoice } from 'ducks/payment' ;
 import {
@@ -32,9 +32,11 @@ class BillingDetails extends Component {
       goback:  false,
       show: false,
       showSavedCards: false,
-      showAddCard: false
+      showAddCard: false,
+      cvv: ''
     };
     props.fetchInvoices();
+    props.fetchCards();
   }
 
   componentDidMount() {
@@ -95,9 +97,68 @@ class BillingDetails extends Component {
     this.setState({planSelected: plan , openCloseRowOne: true, show: true });
   }
 
+  handleCvv = (e) => {
+    this.setState({cvv: e.target.value});
+  }
+
+  handleCardSelect = (e) => {
+    this.setState({selectedCard: e.target.id});
+  }
+
+  renderSavedCards = () => {
+    const { cards } = this.props;
+    const { selectedCard } = this.state;
+
+    if(cards && cards.length)
+      return cards.map(savedCard => {
+        const card = savedCard.source.card;
+        return (
+          <Row key={card.id} className="billing-final-info-bottom charge">
+            <div className="form-check">
+              <label className="form-check-label">
+                <input type="radio" id={card.id} className="form-check-input" name="optradio" onChange={(e) => this.handleCardSelect(e)} />
+                <img
+                  style={
+                    card.brand == 'Visa'?
+                      { width: '20%', margin: '3px 0px', height: '15px' }
+                      :
+                      card.brand == 'MasterCard'?
+                        { width: '18%', margin: '-5px 0px', height: '25px' }
+                        :
+                        { width: '25%', margin: '2px 0px', height: '20px' }
+                  }
+                  src={
+                    card.brand == 'Visa'?
+                      'http://www.careersinafrica.com/wp-content/uploads/sites/2/2016/01/visa_logo_blu.png'
+                      :
+                      card.brand == 'MasterCard'?
+                        'https://content.heropay.com/wp-content/uploads/2016/11/MasterCard_Logo.png'
+                        :
+                        'http://www.adcbank.coop/images/rupay.png'
+                  }
+                />
+                <h4>{card.brand} ending in {card.last4}</h4>
+              </label>
+            </div>
+            <h4>{card.name}</h4>
+            <h4>{card.exp_month}/{card.exp_year}</h4>
+            <div className="form-group">
+              <input type="text" className="form-control" id="cvv" placeholder="CVV" onChange={this.handleCvv} disabled={card.id != selectedCard}/>
+            </div>
+          </Row>
+        );
+      });
+    else
+      return (
+        <Row className="billing-final-info-bottom charge" style={{justifyContent: 'center'}}>
+          <h4>No card saved</h4>
+        </Row>
+      );
+  }
+
   render() {
-    const { planSelected, error, show, showSavedCards, showAddCard } = this.state;
-    const { profile, updatePaymentMethod } = this.props;
+    const { planSelected, error, show, showSavedCards, showAddCard, cvv, selectedCard } = this.state;
+    const { profile } = this.props;
     const { openCloseRowOne, openCloseRowTwo, openCloseRowThree } = this.state;
 
     return (
@@ -117,7 +178,6 @@ class BillingDetails extends Component {
             </Col>
             <Col md={3} className="row-one-col-three">
               <button className="btn btn-primary" data-toggle="modal" data-target="#upgradePlanModal">Upgrade Plan</button>
-
               <i className={openCloseRowOne?'fa fa-angle-up':'fa fa-angle-down'}></i>
             </Col>
           </Row>
@@ -133,7 +193,7 @@ class BillingDetails extends Component {
                 <Row className="billing-final-info-one-bottom estimate">
                   <hr className="style3"></hr>
                   <Row className="billing-final-info-bottom charge">
-                    <h4>Base Plan Details</h4>
+                    <h4>Plan Details</h4>
                     <h4><div className="font-desc" dangerouslySetInnerHTML={{ __html:  planSelected?planSelected.details:'' }} /> </h4>
                     <h4>${planSelected?(planSelected.amount/100):0}</h4>
                   </Row>
@@ -162,26 +222,25 @@ class BillingDetails extends Component {
           </Row>
           <Row className="billing-info billing-info-two" style={{ display: openCloseRowTwo?'block':'none' }}>
             <Col md={12} className="billing-info-two-col-one">
-              <Row className="billing-final-two-info-two estimate">
+              <Row className="billing-final-two-info-two estimate" onClick={this.openCloseSavedCards}>
                 <h4>Saved Cards</h4>
-                <i className={showSavedCards?'fa fa-angle-up drop-down':'fa fa-angle-down drop-down'} onClick={this.openCloseSavedCards}></i>
+                <i className={showSavedCards?'fa fa-angle-up drop-down':'fa fa-angle-down drop-down'}></i>
               </Row>
               {showSavedCards ?
                 <Row className="billing-final-two-info-two-bottom estimate">
                   <hr className="style3"></hr>
-                  <Row className="billing-final-info-bottom charge">
-                    <h4>Base Plan Details</h4>
-                    <h4><div className="font-desc" dangerouslySetInnerHTML={{ __html:  planSelected?planSelected.details:'' }} /> </h4>
-                    <h4>${planSelected?(planSelected.amount/100):0}</h4>
+                  {this.renderSavedCards()}
+                  <Row className="billing-final-info-bottom-two">
+                    <button className="btn btn-primary" disabled={!selectedCard || !cvv || cvv.length != 3}>Make Payment</button>
                   </Row>
                 </Row>
                 :
                 null
               }
 
-              <Row className="billing-final-two-info-two estimate">
+              <Row className="billing-final-two-info-two estimate" onClick={this.openCloseAddCard}>
                 <h4>Add New Card</h4>
-                <i className={showAddCard?'fa fa-angle-up drop-down':'fa fa-angle-down drop-down'} onClick={this.openCloseAddCard}></i>
+                <i className={showAddCard?'fa fa-angle-up drop-down':'fa fa-angle-down drop-down'}></i>
               </Row>
               {showAddCard ?
                 <Row className="billing-final-two-info-two-bottom estimate">
@@ -254,13 +313,15 @@ class BillingDetails extends Component {
 
 const mapStateToProps = state => ({
   profile: state.getIn(['profile', 'profile']),
-  invoices: state.getIn(['payment', 'invoices'])
+  invoices: state.getIn(['payment', 'invoices']),
+  cards: state.getIn(['payment', 'cards'])
 });
 
 const mapDispatchToProps = {
   fetchInvoices,
   downloadInvoice,
-  updatePaymentMethod
+  updatePaymentMethod,
+  fetchCards
 };
 
 export default connect(mapStateToProps, mapDispatchToProps, null, { withRef: true })(BillingDetails);

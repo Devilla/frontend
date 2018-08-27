@@ -89,8 +89,9 @@ class DashboardContainer extends Component {
     browserHistory.push('/home');
   }
 
-  renderHelp = () => {
-    this.openCloseDropdown();
+  renderHelp = (e, dropdown) => {
+    if(dropdown)
+      this.openCloseDropdown();
     Popup.create({
       title: 'How can we help you today',
       content: <div className="help-container">
@@ -168,7 +169,7 @@ class DashboardContainer extends Component {
         <div className="wrapper"  >
 
           {(!user || user.size == 0) && (!profile || profile == undefined) && <Loading strokeWidth="2" style={{height: '700px', width: '10%'}} isLoading={true} />}
-          {user && (profile || profile !== undefined) && <Sidebar {...this.props} openClose={openClose} openCloseSidebar={this.openCloseSidebar} disableButton={disableButton} onClick={this.closeDropdown} />}
+          {user && (profile || profile !== undefined) && <Sidebar {...this.props} renderHelp={this.renderHelp} openClose={openClose} openCloseSidebar={this.openCloseSidebar} disableButton={disableButton} onClick={this.closeDropdown} />}
           {user && (profile || profile !== undefined) &&
           <div>
             <div className="content-page" >

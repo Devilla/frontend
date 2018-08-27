@@ -68,7 +68,7 @@ const PricePage = ({
     return planList.map((plan, index) =>
       <div key={index} className="col-md-3 col-sm-6">
         <div className="pricingTable"  onClick={handleYearChange}>
-          <div className="price_card text-center"  className={selectedPlan.id === plan.id ? 'makebx' : ''} onClick={() => handleCheckChange(true, plan)}>
+          <div className="price_card text-center"  className={selectedPlan.id === plan.id ? 'makebx' : ''} data-dismiss="modal" onClick={() => handleCheckChange(true, plan)}>
             <div className="pricing-header bg-primary">
               <span className="price pt-3">${plan.interval === 'year' ? plan.amount / 100 :  ''}</span>
               <span className="name">{filterPlanName(plan.name)}</span>

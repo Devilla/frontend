@@ -169,7 +169,22 @@
           justify-content: space-between;
           width: 100%;
           margin: 10px 0px;
-          padding: 14px 20px;
+          padding: 0px 20px;
+          .form-check {
+            width: 40%;
+            margin: 12px;
+            .form-check-label {
+              display: flex;
+              h4 {
+                width: 55%;
+                margin: 0px 10px;
+              }
+            }
+          }
+          .form-group {
+            width: 10%;
+            margin: 2px;
+          }
           h4 {
             font-size: 13px;
             font-weight: 100;
@@ -178,8 +193,26 @@
             }
           }
         }
+        .billing-final-info-bottom-two {
+          display: flex;
+          justify-content: flex-end;
+          width: 100%;
+          margin: 10px 0px;
+          padding: 0px 20px;
+          button {
+            width: 20%;
+            border-radius: 6px;
+          }
+          button:disabled {
+            opacity: .65;
+            border-color: lightgrey !important;
+            background-color: lightgray !important;
+          }
+          button[disabled]:hover {
+            background-color: lightgrey !important;
+          }
+        }
       }
-
     }
 
     .billing-info-three {
@@ -230,7 +263,6 @@
         display: flex;
         justify-content: space-between;
         width: 100%;
-        /* margin: 0 auto; */
         margin: 10px 0px;
         padding: 14px 20px;
         h4 {
@@ -265,7 +297,6 @@
         display: flex;
         justify-content: space-between;
         width: 100%;
-        /* margin: 0 auto; */
         margin: 10px 0px;
         padding: 14px 20px;
         h4 {
@@ -311,7 +342,6 @@
       left: 0;
       width: 100%;
       clear: both;
-      // bottom: 185px;
       height: 20px;
     }
     .billing-info-two:after {
@@ -325,9 +355,7 @@
       left: 0;
       width: 100%;
       clear: both;
-      // bottom: 185px;
       height: 20px;
-      // margin: 130px 0px auto;
     }
     .billing-info-three:after {
       background: linear-gradient(-45deg, #f9f9f9 16px, transparent 0), linear-gradient(45deg, #f9f9f9 16px, transparent 0);
@@ -336,13 +364,11 @@
       background-size: 24px 24px;
       content: " ";
       display: block;
-      // position: absolute;
+      position: absolute;
       left: 0;
       width: 100%;
       clear: both;
-      // bottom: -52px;
       height: 20px;
-      // margin: 130px 0px auto;
     }
   }
 

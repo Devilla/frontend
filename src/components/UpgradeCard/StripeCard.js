@@ -13,9 +13,6 @@ const createOptions = (fontSize, padding) => {
   return {
     style: {
       base: {
-        border: '1px solid lightblue !important',
-        height: '40px  !important',
-        borderRadius: '3px  !important',
         fontSize: '16px',
         color: '#424770',
         letterSpacing: '0.025em',
@@ -37,32 +34,27 @@ class StripeCard extends Component {
 
   handleSubmit = (ev) => {
     ev.preventDefault();
-    const { stripe, currentState, updatePaymentMethod, makePayment, plan, user, handleError } = this.props;
+    const { stripe, updatePaymentMethod, makePayment, plan, user, handleError } = this.props;
     if (stripe) {
       stripe
         .createToken()
         .then((payload) => {
           if(payload.error)
             return handleError(payload.error.message);
-          if (currentState == 'upgrade')
-            updatePaymentMethod(payload.token);
-          else {
-            const data = {
-              amount: plan.amount,
-              paymentProvider: payload.token,
-              paymentType: payload.token.type,
-              user: user._id,
-              plan: plan,
-            };
-            makePayment(data);
-          }
+          updatePaymentMethod(payload.token);
+          const data = {
+            amount: plan.amount,
+            paymentProvider: payload.token,
+            paymentType: payload.token.type,
+            user: user._id,
+            plan: plan,
+          };
+          makePayment(data);
         });
     } else {
       console.log('Stripe.js has not loaded yet.');
     }
   };
-
-
 
   render() {
 
@@ -110,8 +102,8 @@ class StripeCard extends Component {
             </HelpBlock>
           </Row>
           <Row className='upgrade-card-buttons'>
-            <div className='col-md-4  mr-2'>
-              <Button type='submit' icon='usd' bsStyle='primary' className='cardpay-btn'  fill={true} >{currentState === 'upgrade' ? 'Update Card' : 'Make Payment'}</Button>
+            <div className='mr-2'>
+              <Button type='submit' icon='usd' bsStyle='primary' className='cardpay-btn'  fill={true} >Make Payment</Button>
             </div>
 
             {currentState !== 'upgrade' ?
