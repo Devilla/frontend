@@ -160,7 +160,7 @@ class BillingDetails extends Component {
     const { planSelected, error, show, showSavedCards, showAddCard, cvv, selectedCard } = this.state;
     const { profile } = this.props;
     const { openCloseRowOne, openCloseRowTwo, openCloseRowThree } = this.state;
-    console.log(selectedCard , cvv, '=============lolol');
+
     return (
       <Loading className="transition-item billing-transition-container" style={{width: '10%', height: '700px'}} strokeWidth='2' isLoading={!profile}>
 

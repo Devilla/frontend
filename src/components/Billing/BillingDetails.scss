@@ -263,7 +263,6 @@
         display: flex;
         justify-content: space-between;
         width: 100%;
-        /* margin: 0 auto; */
         margin: 10px 0px;
         padding: 14px 20px;
         h4 {
@@ -298,7 +297,6 @@
         display: flex;
         justify-content: space-between;
         width: 100%;
-        /* margin: 0 auto; */
         margin: 10px 0px;
         padding: 14px 20px;
         h4 {
@@ -344,7 +342,6 @@
       left: 0;
       width: 100%;
       clear: both;
-      // bottom: 185px;
       height: 20px;
     }
     .billing-info-two:after {
@@ -358,9 +355,7 @@
       left: 0;
       width: 100%;
       clear: both;
-      // bottom: 185px;
       height: 20px;
-      // margin: 130px 0px auto;
     }
     .billing-info-three:after {
       background: linear-gradient(-45deg, #f9f9f9 16px, transparent 0), linear-gradient(45deg, #f9f9f9 16px, transparent 0);
@@ -369,13 +364,11 @@
       background-size: 24px 24px;
       content: " ";
       display: block;
-      // position: absolute;
+      position: absolute;
       left: 0;
       width: 100%;
       clear: both;
-      // bottom: -52px;
       height: 20px;
-      // margin: 130px 0px auto;
     }
   }
 
