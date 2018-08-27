@@ -59,29 +59,37 @@
    overflow: scroll !important;
    background: #101113d1;
   }
-  .align-modal {
-  // margin-top: 140px;
-  height: 250px;
-  width: 560px;
-  border-radius: 10px;
-  position: relative;
-  right: 0px;
-  top: 140px;
+  .modal {
+    .modal-dialog {
+      .align-modal {
+        min-height: 250px;
+        // width: 560px;
+        border-radius: 10px;
+        position: relative;
+        right: 0px;
+        top: 110px;
+        .modal-body {
+          color: #097fff !important;
+          font-size: 17px !important;
+          padding: 40px 30px !important;
+        }
+        .close {
+          top: 6px !important;
+          width: 31px;
+          height: 31px;
+        }
+      }
+    }
   }
-  .modal-body {
-    padding-top: 65px!important;
-    margin-left: -20px;
-    margin-right: -60px;
-    color: #097fff !important;
-    font-size: 17px !important;
-  }
+
+
   .modal-header {
     font-weight: bolder;
     height: 45px;
     padding: 8px;
     background-color: #097fff;
     color: #ffffff;
-
+    display: block;
     div {
       div{
         padding: 5px;

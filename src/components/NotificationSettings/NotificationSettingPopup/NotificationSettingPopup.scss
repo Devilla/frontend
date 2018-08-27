@@ -17,6 +17,11 @@
         font-family: sans-serif;
         font-weight: 600;
     }
+    .modal-body {
+      .card {
+        background-color: white;
+      }
+    }
     .addpage,.addpagepopup-btn,.close-btn {
         border-radius: 5px !important;
     }
@@ -30,11 +35,11 @@
         overflow: scroll !important;
         background: rgba(248, 247, 247, 0.7);
        }
-       .align-modal {
-       width: 800px !important;
-       position: relative;
-       right: 100px !important;
-       }
+       // .align-modal {
+       // width: 800px !important;
+       // position: relative;
+       // right: 100px !important;
+       // }
 
     .info-text {
      position: relative;

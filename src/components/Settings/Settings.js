@@ -36,26 +36,11 @@ const setup = [
 ];
 
 const configuration = [
-  {
-    icon: 'fi-head',
-    path: 'campaign',
-    text: 'Campaign Setting'
-  },
-  {
-    icon: 'fi-cog',
-    path: 'analytics',
-    text: 'Analytics',
-    head: 'Unique'
-  },
-  {
-    icon: 'fi-book',
-    path: 'billing',
-    text: 'User Profiles',
-  },
+ 
   {
     icon: 'fi-paper-stack',
-    path: 'campaign',
-    text: 'Help & Support',
+    path: '',
+    text: 'FAQs',
     head: 'Detailed'
   }
 ];
@@ -63,7 +48,7 @@ const configuration = [
 const security = [
   {
     icon: 'fi-head',
-    path: 'campaign',
+    path: 'campaigns',
     text: 'GDPR'
   }
 ];
@@ -137,7 +122,7 @@ class Settings extends Component {
 
   render() {
     return (
-      <div className="settings-container">
+      <div className="settings-container mt-3">
         <Row className="pt-0">
           <Col md={2}>
             <h3 className="settingsheader">Setup</h3>

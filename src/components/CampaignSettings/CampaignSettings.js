@@ -8,17 +8,17 @@ import './CampaignSettings.scss';
 const CampaignSettings = (props) => {
 
   return (
-    <div className="col-md-12 tab-notification-container">
-      <div className="card-box tab-notification-box">
+    <div className="col-md-12 tab-notification-container mt-1">
+      <div className="card-box tab-notification-box pt-1">
         <div className=" mt-3 new-campaign-header">
-          
+
           <h4 className=" header-title">{props.campaign
             ? props.campaign.websiteUrl
             : 'http://localhost:3000'}</h4>
 
         </div>
         <div className="modal fade show-modal" id="myModallive" role="dialog">
-          <div className="modal-dialog">
+          <div className="modal-dialog modal-lg">
             <div className="modal-content align-modal">
               <div className="modal-header">
                 <h4 className="modal-title">{props.title}</h4>

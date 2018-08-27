@@ -21,7 +21,7 @@ class Notification extends Component {
       hidepop:  false,
       selectedCampaign: {},
       modaltitle: 'Are you sure you want to delete this campaign?',
-      modalbody: 'Alert ! These may delete all your customer activities .',
+      modalbody: 'Alert ! This will delete all your customer activities .',
       modalfoot: 'Delete' ,
       modalname: '1',
       isActive:false
@@ -60,8 +60,8 @@ class Notification extends Component {
   }
 
   handleRouteChange(e, campaign) {
-    if (e.target.className === 'tgl-btn text-center m-0' ||
-      e.target.className === 'tgl tgl-ios text-center' ||
+    if (e.target.className === 'tgl-btn m-0' ||
+      e.target.className === 'tgl tgl-ios' ||
       e.target.className === 'ml-3 icon-trash'
     )
       return;
@@ -130,7 +130,7 @@ class Notification extends Component {
 
     return (
       <Loading className="transition-item manage-transition-notification" isLoading={!campaigns || !profile || !campaignInfo}>
-        <div className="manage-notification mt-5">
+        <div className="manage-notification mt-3">
           <div className="table-responsive">
             <div className="table table-striped">
               <div className="thead table-header flex">
@@ -149,12 +149,14 @@ class Notification extends Component {
                 {this.getNotificationRows()}
               </div>
             </div>
-            <button type="button" className="btn btn-primary waves-light waves-effect ml-2 pl-4 pr-4 float-right" onClick={() => browserHistory.push('/scripts')}> Scripts </button>
+            
             <div className="modal fade show-modal" id={modalname} role="dialog">
-              <div className="modal-dialog">
+              <div className="modal-dialog modal-lg">
                 <div className="modal-content align-modal">
                   <div className="modal-header">
-                    <button type="button" className="close" data-dismiss="modal">&times;</button>
+                    <button type="button" className="close" data-dismiss="modal">
+                      <i className="fa fa-close"></i>
+                    </button>
                     <h4 className="modal-title">{modaltitle}</h4>
                   </div>
                   <div className="modal-body pb-5">

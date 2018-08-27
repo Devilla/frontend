@@ -12,6 +12,7 @@ const appRoutes = [
   { path: '/analytics', name: 'Analytics', icon: 'fi-bar-graph-2', component: Analytics },
   { path: '/settings', name: 'Settings', icon: 'fi-cog', component: Settings },
   { path: '/getting-started', name: 'Getting Started', icon: 'fi-speech-bubble', component: GettingStarted },
+  { name: 'Help & Support', icon: 'fa fa-question-circle', component: GettingStarted },
   { redirect: true }
 ];
 

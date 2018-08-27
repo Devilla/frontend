@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {
-  Grid,
   Row,
   Col,
   Table,
@@ -283,7 +282,7 @@ class DisplayPage extends Component {
               <span className="btn btn-primary nav nav-pills waves-light waves-effect addpath-btn pl-5 pr-5" onClick={() => this.addDomainUrl(domain.domainUrl, index)}>
                 Add
               </span>
-              <i className=" icon-trash trash" onClick={()=>{removeSubDomain(domain._id);}}></i>
+              <i className=" icon-trash trash ml-3" onClick={()=>{removeSubDomain(domain._id);}}></i>
             </span>
           </div>
         );
@@ -307,114 +306,113 @@ class DisplayPage extends Component {
 
     return (
       <div className="display-container">
-        <Grid fluid>
-          <div className="tabscontent">
-            <Row className="display-page-row">
-              <Col md={12} className="display-page-header">
-                <h4 className="lead text-center m-b-30 m-t-20">Where do you want to show notifications?</h4>
-              </Col>
-            </Row>
-            <Row style={{justifyContent: 'center'}}>
-              <Col md={8}>
-                <div className="pl-4 input-group col-md-12">
-                  <label className="pt-2 pl-1 pr-3 text-muted url-field">{this.props.campaign
-                    ? 'http://'+this.props.campaign.websiteUrl
-                    : 'http://localhost:3000'}/</label>
-                  <input type="text"
-                    className="form-control txtpageurl"
-                    placeholder="eg. /mypage, /register, /products"
-                    aria-describedby="urladd"
-                    value={displayUrl.url}
-                    onChange={this.handlePageUrl}
-                    onKeyUp={(e) => e.keyCode === 13?this.addPageUrl():null}
-                  />
-                  <span className="input-group-btn col-md-3"
-                    id="urladd">
-                    <div className="btn-group campaign-dropdown">
-                      <button className="btn btn-primary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Add &nbsp;
-                      </button>
-                      <div className="dropdown-menu">
-                        <div className="dropdown-item" id={1} onClick={this.addPageUrl} >
-                          <i className="fi-plus"></i>
-                          Add Path
-                        </div>
-                        <div className="dropdown-item" id={1} onClick={this.openCloseModal} >
-                          <i className="fi-circle-plus"></i>
-                          Add SubDomain
-                        </div>
-                        <div className="dropdown-item" id={2} >
-                          <i className="fi-monitor"></i>
-                          Add to All pages
-                          <label className="checkbox-container">
-                            <input type="checkbox" defaultChecked={rules.displayOnAllPages} onChange={this.handleDisplayChange} />
-                            <span className="checkmark"></span>
-                          </label>
-                        </div>
+        
+        <div className="tabscontent">
+          <Row className="display-page-row">
+            <Col md={12} className="display-page-header">
+              <h4 className="lead text-center m-b-30 m-t-20">Where do you want to show notifications?</h4>
+            </Col>
+          </Row>
+          <Row style={{justifyContent: 'center'}}>
+            <Col md={10}>
+              <div className="pl-4 input-group col-md-12">
+                <label className="pt-2 pl-1 pr-3 text-muted url-field">{this.props.campaign
+                  ? 'http://'+this.props.campaign.websiteUrl
+                  : 'http://localhost:3000'}/</label>
+                <input type="text"
+                  className="form-control txtpageurl"
+                  placeholder="eg. /mypage, /register, /products"
+                  aria-describedby="urladd"
+                  value={displayUrl.url}
+                  onChange={this.handlePageUrl}
+                  onKeyUp={(e) => e.keyCode === 13?this.addPageUrl():null}
+                />
+                <span className="input-group-btn col-md-3"
+                  id="urladd">
+                  <div className="btn-group campaign-dropdown">
+                    <button className="btn btn-primary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Add &nbsp;
+                    </button>
+                    <div className="dropdown-menu">
+                      <div className="dropdown-item" id={1} onClick={this.addPageUrl} >
+                        Add Path
+                      </div>
+                      <div className="dropdown-item" id={1} onClick={this.openCloseModal} >
+                      
+                        Add SubDomain
+                      </div>
+                      <div className="dropdown-item" id={2} >
+                    
+                        Add to All pages
+                        <label className="checkbox-container">
+                          <input type="checkbox" defaultChecked={rules.displayOnAllPages} onChange={this.handleDisplayChange} />
+                          <span className="checkmark"></span>
+                        </label>
                       </div>
                     </div>
-                  </span>
+                  </div>
+                </span>
 
-                </div>
-              </Col>
-            </Row>
-            <Row>
-              <Col md={10}>
-                {this.renderSubDomain()}
-              </Col>
-            </Row>
-            {this.showModalDisplay()}
-            <Row className="pt-2 path-error">
-              <HelpBlock>
-                <p className="website-error">{error}</p>
-              </HelpBlock>
-            </Row>
-            <Row>
-            </Row>
-            <Row>
-              <Col md={12}>
-                <div className="status">
-                  <ul>
-                    <li>
-                      <span className="dot success"></span>
-                      <span className="status-name">Active</span>
-                    </li>
-                    <li>
-                      <span className="dot primary"></span>
-                      <span className="status-name">Last seen over 24 hrs ago</span>
-                    </li>
-                    <li>
-                      <span className="dot unverified"></span>
-                      <span className="status-name">Has Never Been Tracked</span>
-                    </li>
-                    <li>
-                      <span className="dot danger"></span>
-                      <span className="status-name">Invalid URL</span>
-                    </li>
-                  </ul>
-                </div>
-              </Col>
-            </Row>
-            <Row>
-              <Col md={12}>
-                <CardTable
-                  content ={
-                    <div className="centertbl">
-                      {this.renderLeads()}
-                    </div>
-                  }
-                />
-              </Col>
-            </Row>
-            <div className="float-left">
-              <button type="button" className="btn btn-primary waves-effect number displaybtn-back" onClick={this.handleBackState}><i className="icon-arrow-left pr-2"></i>Back</button>
-            </div>
-            <div className="float-right">
-              <button type="button" className="btn btn-primary  waves-effect number pl-4 pr-3 displaybtn-finish" onClick={this.handleNextState}>Next<i className="icon-arrow-right pl-2"></i> </button>
-            </div>
-            <div className="clearfix"></div>
+              </div>
+            </Col>
+          </Row>
+          <Row style={{justifyContent: 'center'}}>
+            <Col md={10}>
+              {this.renderSubDomain()}
+            </Col>
+          </Row>
+          {this.showModalDisplay()}
+          <Row className="pt-2 path-error">
+            <HelpBlock>
+              <p className="website-error">{error}</p>
+            </HelpBlock>
+          </Row>
+          <Row>
+          </Row>
+          <Row>
+            <Col md={12}>
+              <div className="status">
+                <ul>
+                  <li>
+                    <span className="dot success"></span>
+                    <span className="status-name">Active</span>
+                  </li>
+                  <li>
+                    <span className="dot primary"></span>
+                    <span className="status-name">Last seen over 24 hrs ago</span>
+                  </li>
+                  <li>
+                    <span className="dot unverified"></span>
+                    <span className="status-name">Has Never Been Tracked</span>
+                  </li>
+                  <li>
+                    <span className="dot danger"></span>
+                    <span className="status-name">Invalid URL</span>
+                  </li>
+                </ul>
+              </div>
+            </Col>
+          </Row>
+          <Row>
+            <Col md={12}>
+              <CardTable
+                content ={
+                  <div className="centertbl">
+                    {this.renderLeads()}
+                  </div>
+                }
+              />
+            </Col>
+          </Row>
+          <div className="float-left">
+            <button type="button" className="btn btn-primary waves-effect number displaybtn-back" onClick={this.handleBackState}><i className="icon-arrow-left pr-2"></i>Back</button>
           </div>
-        </Grid>
+          <div className="float-right">
+            <button type="button" className="btn btn-primary  waves-effect number pl-4 pr-3 displaybtn-finish" onClick={this.handleNextState}>Next<i className="icon-arrow-right pl-2"></i> </button>
+          </div>
+          <div className="clearfix"></div>
+        </div>
+        
       </div>
     );
   }

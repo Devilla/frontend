@@ -17,9 +17,9 @@
               align-items: center;
               box-sizing: border-box;
               display: flex;
-              margin-bottom: 12px;
-              min-height: 26px;
-              padding-left: 8px;
+              margin-bottom: 0px ;
+              min-height: 41px;
+              padding: 2px;
               position: relative;
               background: #0074d9;
               border-width: 1px;
@@ -54,7 +54,6 @@
                 font-weight: 400;
                 line-height: 21px;
                 color: #fff;
-                margin-left: 12px;
                 flex: 1 1 0%;
             }
           }
@@ -66,19 +65,29 @@
                text-align: center;
                font-size: 10px;
                font-weight: 700;
-               letter-spacing: 0.5px;
-               line-height: 24px;
+               letter-spacing: 0.8px;
+               line-height: 21px;
                text-transform: uppercase;
-               background-color: #097fff;
-               color: rgb(255, 255, 255);
+               background-color: #efefef;
+               color: #5f5f5f;
                border-width: 1px;
                border-style: solid;
                border-image: initial;
                border-radius: 4px;
                text-decoration: none;
                padding: 3px 16px;
-               border-color: #097fff;
-               margin: 0px 12px;
+               border-color: #efefef;
+               margin: 5px 40px !important;
+               position: absolute;
+               right: 14%;
+               top: 0px;
+               &:hover {
+                background: #d9d9d9;
+                border-color: #d9d9d9;
+                color: #5c5c5c;
+                padding: 3.5px 16px;
+                font-weight: 800;
+               }
            }
           }
       .profile-dropdown {

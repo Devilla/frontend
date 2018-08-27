@@ -28,18 +28,19 @@ const Header = ({
         className="cookie-notice-container"
         style={
           profile &&
-          profile.plan.name == 'Beta Plan' && profile.uniqueVisitors>1000 &&
+          profile.plan &&
+          profile.plan.name == 'Beta Plan' &&
+          profile.uniqueVisitors > 1000 &&
           moment(profile.plan.updated_at).format() <= moment().format() ?
             { display: 'block', marginBottom: '-10px' }
             :
             { display: 'none' }
         }>
         <div className="cookie-text">
-          <span className="cookie-label text-center"><i className="fa fa-spinner fa-pulse mr-2"></i>You have reached the 30 day limit, to keep your campaigns running, Please Followed by the upgrade button.</span>
+          <span className="cookie-label text-center"><i className="fa fa-spinner fa-pulse mr-2"></i>You have reached your 30 day free account limit, please upgrade to keep your campaign running.</span>
           <button type="button" onClick={()=>{browserHistory.push('/upgrade');}}>Upgrade</button>
         </div>
       </div>
-      {console.log(moment(profile.plan.updated_at).format() <= moment().format())}
       <ConnectionStatus />
       <div className="nav-topbar-flex">
         <div className="topbar-left">
@@ -82,7 +83,7 @@ const Header = ({
                 <span onClick={openProfile}>Your Profile</span>
               </a>
 
-              <a href="javascript:void(0);" className="dropdown-item notify-item" onClick={renderHelp}>
+              <a href="javascript:void(0);" className="dropdown-item notify-item" onClick={() => renderHelp(null, true)}>
                 <i className="fi-help"></i>
                 <span>Support</span>
               </a>

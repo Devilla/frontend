@@ -16,6 +16,8 @@
 
     .upgrade-card-buttons {
       padding: 4% 0;
+      display: flex;
+      justify-content: flex-end;
     }
 
     label {

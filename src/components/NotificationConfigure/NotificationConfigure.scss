@@ -36,6 +36,34 @@
   }
   .notification-configure-content{
     height: 400px;
+    .row {
+      width: 100%;
+      .col-md-7 {
+        justify-content: center;
+        display: flex;
+      }
+      .col-md-5 {
+        .setting {
+          .row {
+            .col-md-12 {
+              .card-box {
+                .nav-tabs {
+                  .nav-item {
+                    a.active {
+                      color: white;
+                    }
+                    a.nav-link:hover:not(:focus) {
+                      background-color: #1e68c6;
+                      color: white;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
   }
 }
 

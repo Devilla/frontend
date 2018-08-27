@@ -35,7 +35,13 @@
  .notification-list {
    background-color: #f9f9f9!important;
     margin-left: 5px!important;
-}
+  }
+
+  .lead {
+    color: #56636d;
+    font-size: 18px;
+    font-weight: 400;
+  }
 
 p {
     margin-top: 21px;
@@ -140,7 +146,7 @@ p {
     -ms-flex-align: center;
     align-items: center;
     -ms-flex-pack: end;
-    justify-content: flex-end;
+    justify-content: space-around;
     padding: 1rem;
     border-top: 1px solid #e9ecef;
   }
@@ -169,7 +175,7 @@ p {
   .profile-transition-container,
   .billing-transition-container,
   .upgrade-card-transition,
-  .upgrade-plan-container,
+  // .upgrade-plan-container,
   .integration-container,
   .pageContent,
   .list-modal-container,
