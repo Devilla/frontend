@@ -22,7 +22,7 @@ class Notification extends Component {
       hidepop:  false,
       selectedCampaign: {},
       modaltitle: 'Are you sure you want to delete this campaign?',
-      modalbody: 'Alert ! These may delete all your customer activities .',
+      modalbody: 'Alert ! This will delete all your customer activities .',
       modalfoot: 'Delete' ,
       modalname: '1',
       isActive:false
