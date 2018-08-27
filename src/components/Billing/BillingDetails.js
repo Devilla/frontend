@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import { browserHistory } from 'react-router';
 import moment from 'moment';
 import Loading from 'react-loading-animation';
 import StripeCard from '../UpgradeCard/StripeCard';
@@ -9,17 +8,13 @@ import { updatePaymentMethod } from 'ducks/payment';
 
 import { fetchInvoices, downloadInvoice } from 'ducks/payment' ;
 import {
-  // Grid,
   Row,
   Col,
-  // FormGroup,
-  // FormControl,
   Table
 } from 'react-bootstrap';
 
-// import Button from 'components/Template/customButton';
 import './BillingDetails.scss';
-// import {UpgradeCard} from 'components';
+import { UpgradePlan } from 'components';
 
 const billingHeader = [
   'Billing Date', 'Amount', 'Transaction Id', 'Status', 'Download'
@@ -29,26 +24,21 @@ class BillingDetails extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      planSelected: {},
+      planSelected: '',
       openCloseRowOne: false,
       openCloseRowTwo: false,
       openCloseRowThree: false,
       error: '',
       goback:  false,
-      show: false
+      show: false,
+      showSavedCards: false,
+      showAddCard: false
     };
     props.fetchInvoices();
   }
+
   componentDidMount() {
     window.scrollTo(0,0);
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.profile) {
-      const { profile } = nextProps;
-      let planSelected = profile ? profile.plan : {};
-      this.setState({ planSelected });
-    }
   }
 
   renderPaymentList() {
@@ -71,7 +61,9 @@ class BillingDetails extends Component {
       </tr>;
   }
 
-  openCloseRowOne = () => {
+  openCloseRowOne = (e) => {
+    if(e.target.className === 'btn btn-primary')
+      return;
     this.setState({openCloseRowOne: !this.state.openCloseRowOne});
   }
 
@@ -91,8 +83,20 @@ class BillingDetails extends Component {
     this.setState({ show : !this.state.show});
   }
 
+  openCloseSavedCards = () => {
+    this.setState({showSavedCards: !this.state.showSavedCards});
+  }
+
+  openCloseAddCard = () => {
+    this.setState({showAddCard: !this.state.showAddCard});
+  }
+
+  handleSelectedPlan = (plan) => {
+    this.setState({planSelected: plan , openCloseRowOne: true, show: true });
+  }
+
   render() {
-    const { planSelected, error, show } = this.state;
+    const { planSelected, error, show, showSavedCards, showAddCard } = this.state;
     const { profile, updatePaymentMethod } = this.props;
     const { openCloseRowOne, openCloseRowTwo, openCloseRowThree } = this.state;
 
@@ -100,19 +104,20 @@ class BillingDetails extends Component {
       <Loading className="transition-item billing-transition-container" style={{width: '10%', height: '700px'}} strokeWidth='2' isLoading={!profile}>
 
         <div className="billing-container">
-          <Row className="billing-row" onClick={this.openCloseRowOne}>
+          <Row className="billing-row" onClick={(e) => this.openCloseRowOne(e)}>
             <Col md={4} className="row-one-col-one">
               <img src="https://web.freshchat.com/assets/images/billing_sprout-d577fed24b84e4e1899b8d59c4c5b164.svg" />
-              <h5>{profile && profile.plan?profile.plan.name:'SPROUT'}</h5>
+              <h5>{planSelected?planSelected.name:profile && profile.plan?profile.plan.name:'SPROUT'}</h5>
             </Col>
             <Col md={5} className="row-one-col-two">
               <div>
                 <h6>Billed Monthly</h6>
-                <span>Next Billing on {planSelected && planSelected.updated_at ? moment(planSelected.updated_at).add(planSelected.interval_count, planSelected.interval).format('MMMM Do, YYYY') : '-'}</span>
+                <span>Next Billing on {profile && profile.plan ? moment(profile.plan.updated_at).add(profile.plan.interval_count, profile.plan.interval).format('MMMM Do, YYYY') : '-'}</span>
               </div>
             </Col>
             <Col md={3} className="row-one-col-three">
-              <button className="btn btn-primary" onClick={() => browserHistory.push('/Upgrade')}>Upgrade Plan</button>
+              <button className="btn btn-primary" data-toggle="modal" data-target="#upgradePlanModal">Upgrade Plan</button>
+
               <i className={openCloseRowOne?'fa fa-angle-up':'fa fa-angle-down'}></i>
             </Col>
           </Row>
@@ -121,16 +126,16 @@ class BillingDetails extends Component {
             <Col md={12} className="billing-info-one-col-one">
               <Row className="billing-final-info-one estimate">
                 <h4>Estimated charge for next cycle</h4>
-                <h4>$0</h4>
+                <h4>${planSelected?(planSelected.amount/100):0}</h4>
                 <i className={show?'fa fa-angle-up drop-down':'fa fa-angle-down drop-down'} onClick={this.arrowUpClick}></i>
               </Row>
               {show ?
                 <Row className="billing-final-info-one-bottom estimate">
-                  <hr class="style3"></hr>
+                  <hr className="style3"></hr>
                   <Row className="billing-final-info-bottom charge">
-                    <h4>Base Plan Charge(1 Acount owner)</h4>
-                    <h4>2</h4>
-                    <h4>$0</h4>
+                    <h4>Base Plan Details</h4>
+                    <h4><div className="font-desc" dangerouslySetInnerHTML={{ __html:  planSelected?planSelected.details:'' }} /> </h4>
+                    <h4>${planSelected?(planSelected.amount/100):0}</h4>
                   </Row>
                 </Row>
                 :
@@ -139,7 +144,7 @@ class BillingDetails extends Component {
 
               <Row className="billing-final-info-two estimate">
                 <h4>You Pay</h4>
-                <h4>$0</h4>
+                <h4>${planSelected?(planSelected.amount/100):0}</h4>
               </Row>
             </Col>
           </Row>
@@ -156,14 +161,44 @@ class BillingDetails extends Component {
             </Col>
           </Row>
           <Row className="billing-info billing-info-two" style={{ display: openCloseRowTwo?'block':'none' }}>
-            <Elements>
-              <StripeCard
-                currentState='upgrade'
-                error={error}
-                handleError={this.handleError}
-                updatePaymentMethod={updatePaymentMethod}
-              />
-            </Elements>
+            <Col md={12} className="billing-info-two-col-one">
+              <Row className="billing-final-two-info-two estimate">
+                <h4>Saved Cards</h4>
+                <i className={showSavedCards?'fa fa-angle-up drop-down':'fa fa-angle-down drop-down'} onClick={this.openCloseSavedCards}></i>
+              </Row>
+              {showSavedCards ?
+                <Row className="billing-final-two-info-two-bottom estimate">
+                  <hr className="style3"></hr>
+                  <Row className="billing-final-info-bottom charge">
+                    <h4>Base Plan Details</h4>
+                    <h4><div className="font-desc" dangerouslySetInnerHTML={{ __html:  planSelected?planSelected.details:'' }} /> </h4>
+                    <h4>${planSelected?(planSelected.amount/100):0}</h4>
+                  </Row>
+                </Row>
+                :
+                null
+              }
+
+              <Row className="billing-final-two-info-two estimate">
+                <h4>Add New Card</h4>
+                <i className={showAddCard?'fa fa-angle-up drop-down':'fa fa-angle-down drop-down'} onClick={this.openCloseAddCard}></i>
+              </Row>
+              {showAddCard ?
+                <Row className="billing-final-two-info-two-bottom estimate">
+                  <hr className="style3"></hr>
+                  <Elements>
+                    <StripeCard
+                      currentState='upgrade'
+                      error={error}
+                      handleError={this.handleError}
+                      updatePaymentMethod={updatePaymentMethod}
+                    />
+                  </Elements>
+                </Row>
+                :
+                null
+              }
+            </Col>
           </Row>
           <Row className="billing-row" onClick={this.openCloseRowThree}>
             <Col md={1} className="row-three-col-one">
@@ -196,6 +231,21 @@ class BillingDetails extends Component {
               </Table>
             </div>
           </Row>
+        </div>
+        <div className="modal fade show-modal" id="upgradePlanModal" role="dialog">
+          <div className="modal-dialog modal-lg">
+            <div className="modal-content align-modal">
+              <div className="modal-header">
+                <button type="button" className="close" data-dismiss="modal">
+                  <i className="fa fa-close"></i>
+                </button>
+                <h4 className="modal-title">Upgrade Plan</h4>
+              </div>
+              <div className="modal-body">
+                <UpgradePlan plan={planSelected?planSelected:profile && profile.plan?profile.plan:''} handleSelectedPlan={this.handleSelectedPlan} />
+              </div>
+            </div>
+          </div>
         </div>
       </Loading>
     );

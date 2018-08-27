@@ -1,4 +1,6 @@
 import React from 'react';
+import Loading from 'react-loading-animation';
+
 import './PricePage.scss';
 
 const PricePage = ({
@@ -46,7 +48,7 @@ const PricePage = ({
     return planList.map((plan, index) =>
       <div key={index} className="col-md-3 col-sm-6">
         <div className="pricingTable" onClick={handleMonthChange}>
-          <div className="price_card text-center"  className={selectedPlan.id === plan.id ? 'makebx' : ''} onClick={() => handleCheckChange(true, plan)}>
+          <div className="price_card text-center"  className={selectedPlan.id === plan.id ? 'makebx' : ''} data-dismiss="modal" onClick={() => handleCheckChange(true, plan)}>
             <div className="pricing-header bg-primary">
               <span className="price pt-3">${plan.interval === 'month' ? plan.amount / 100 : '' }</span>
               <span className="name">{filterPlanName(plan.name)}</span>
@@ -55,11 +57,11 @@ const PricePage = ({
               <ul className="price-features">
                 <li><div className="font-desc" dangerouslySetInnerHTML={{ __html:  plan.details }} /></li>
               </ul>
-
             </div>
           </div>
         </div>
-      </div>);
+      </div>
+    );
   }
 
   function yearlyPriceHandler () {
@@ -73,63 +75,63 @@ const PricePage = ({
             </div>
             <div className="pricing-content pt-4 pb-2">
               <ul className="price-features">
-                <li><div  className="font-desc" dangerouslySetInnerHTML={{ __html:  plan.details }} /></li>
+                <li><div className="font-desc" dangerouslySetInnerHTML={{ __html:  plan.details }} /></li>
               </ul>
-
-
-
             </div>
           </div>
         </div>
-      </div>);
+      </div>
+    );
   }
 
 
   return (
-    <div style={{ width: '100%' }}>
-      <div className="price pt-2">
-        <div className="pricing-row w-row" style={{ width: '100%' }}>
-          <div className="w-col">
-            <span className={externalValue
-              ? 'active btn btn-outline-success waves-light waves-effect mr-2 set-br'
-              : 'btn btn-outline-info waves-light waves-effect mr-2 set-br'
-            } onClick={handleMonthChange}>Monthly</span>
+    <Loading style={{width: '10%', height: '700px'}} strokeWidth='2' isLoading={!planList}>
+      <div style={{ width: '100%' }}>
+        <div className="price pt-2">
+          <div className="pricing-row w-row" style={{ width: '100%' }}>
+            <div className="w-col">
+              <span className={externalValue
+                ? 'active btn btn-outline-success waves-light waves-effect mr-2 set-br'
+                : 'btn btn-outline-info waves-light waves-effect mr-2 set-br'
+              } onClick={handleMonthChange}>Monthly</span>
+            </div>
           </div>
         </div>
-      </div>
-      <div className={'row'} style={monthOpaque}>
+        <div className={'row'} style={monthOpaque}>
 
-        { planList ?
-          monthlyPriceHandler()
-          :
-          <div>No Plan to select from.</div>
-        }
+          { planList ?
+            monthlyPriceHandler()
+            :
+            <div>No Plan to select from.</div>
+          }
 
-      </div>
-      <div className="price">
-        <div className="pricing-row w-row" style={{ width: '100%' }}>
-          <div className="w-col">
-            <span className={!externalValue
-              ? 'active btn btn-outline-success waves-light waves-effect ml-2 set-br'
-              : 'btn btn-outline-info waves-light waves-effect ml-2 set-br'
-            }
-            onClick={handleYearChange}
-            >
-                  &nbsp;Yearly&nbsp;
-            </span>
+        </div>
+        <div className="price">
+          <div className="pricing-row w-row" style={{ width: '100%' }}>
+            <div className="w-col">
+              <span className={!externalValue
+                ? 'active btn btn-outline-success waves-light waves-effect ml-2 set-br'
+                : 'btn btn-outline-info waves-light waves-effect ml-2 set-br'
+              }
+              onClick={handleYearChange}
+              >
+                    &nbsp;Yearly&nbsp;
+              </span>
+            </div>
           </div>
         </div>
-      </div>
-      <div className={'row'} style={yearOpaque}>
-      
-        { planList ?
-          yearlyPriceHandler()
-          :
-          <div>No Plan to select from.</div>
-        }
+        <div className={'row'} style={yearOpaque}>
 
+          { planList ?
+            yearlyPriceHandler()
+            :
+            <div>No Plan to select from.</div>
+          }
+
+        </div>
       </div>
-    </div>
+    </Loading>
   );
 };
 

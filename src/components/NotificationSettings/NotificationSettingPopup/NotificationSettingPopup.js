@@ -246,7 +246,7 @@ class NotificationSettingPopup  extends Component {
     const { subcampaigns, deleteSubCampaign, selectedSubCampaign } = this.props;
     return (
       <div className="popuppage-container">
-        <button type="button" className="btn btn-outline-primary  addpage" data-toggle="modal" data-target="#myModal" onClick={()=>{}} ><i className="fi-plus"></i>&nbsp;Set Page Specifc Notifications</button>
+        <button type="button" className="btn btn-outline-primary  addpage" data-toggle="modal" data-target="#myModal" ><i className="fi-plus"></i>&nbsp;Set Page Specifc Notifications</button>
         <div className="modal fade show-modal" id="myModal" role="dialog">
           <div className="modal-dialog modal-lg">
             <div className="modal-content align-modal">
