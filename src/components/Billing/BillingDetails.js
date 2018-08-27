@@ -20,6 +20,27 @@ const billingHeader = [
   'Billing Date', 'Amount', 'Transaction Id', 'Status', 'Download'
 ];
 
+const savedCards = [
+  {
+    holderName: 'Shanky',
+    cardNumber: '2342342323452345',
+    expiryDate: '08/19',
+    cardType: 'visa'
+  },
+  {
+    holderName: 'Rana',
+    cardNumber: '2342342323451234',
+    expiryDate: '08/18',
+    cardType: 'visa'
+  },
+  {
+    holderName: 'Shaan',
+    cardNumber: '2342342323454567',
+    expiryDate: '08/29',
+    cardType: 'visa'
+  }
+];
+
 class BillingDetails extends Component {
   constructor(props) {
     super(props);
@@ -93,6 +114,27 @@ class BillingDetails extends Component {
 
   handleSelectedPlan = (plan) => {
     this.setState({planSelected: plan , openCloseRowOne: true, show: true });
+  }
+
+  renderSavedCards = () => {
+    return savedCards.map(card => {
+      return (
+        <Row key={card.cardNumber} className="billing-final-info-bottom charge">
+          <div className="form-check" style={{width: '35%', margin: '12px'}}>
+            <label className="form-check-label">
+              <input type="radio" className="form-check-input" name="optradio" />
+              <img style={{width: '25%'}} src="http://www.careersinafrica.com/wp-content/uploads/sites/2/2016/01/visa_logo_blu.png" />
+              <h4>{card.cardType} ending in {card.cardNumber.substr(12)}</h4>
+            </label>
+          </div>
+          <h4>{card.holderName}</h4>
+          <h4>{card.expiryDate}</h4>
+          <div class="form-group" style={{width: '10%', margin: '2px'}}>
+            <input type="text" className="form-control" id="cvv" placeholder="CVV" />
+          </div>
+        </Row>
+      );
+    });
   }
 
   render() {
@@ -169,11 +211,7 @@ class BillingDetails extends Component {
               {showSavedCards ?
                 <Row className="billing-final-two-info-two-bottom estimate">
                   <hr className="style3"></hr>
-                  <Row className="billing-final-info-bottom charge">
-                    <h4>Base Plan Details</h4>
-                    <h4><div className="font-desc" dangerouslySetInnerHTML={{ __html:  planSelected?planSelected.details:'' }} /> </h4>
-                    <h4>${planSelected?(planSelected.amount/100):0}</h4>
-                  </Row>
+                  {this.renderSavedCards()}
                 </Row>
                 :
                 null
