@@ -98,7 +98,7 @@ const SubCampaignFields = ({
         {show !== 'hidden' && <span className="info-text"  onClick={() => show()}>  <i className={displaynotifbuttons?'icon-arrow-up pl-2':'icon-arrow-down pl-2'}></i></span>}
         <div className="toggle-btn">
           <input className="tgl tgl-ios" id="cb2" type="checkbox"  defaultChecked={isActive}/>
-          <label className="tgl-btn toggleId"  htmlFor="cb2"  onClick={() => handleToggleChange(!isActive)}></label>
+          <label className="tgl-btn toggleId"  htmlFor="cb2"  onClick={() => handleToggleChange(!isActive)}>ON</label>
         </div>
       </Row>
       <Row className="justify-content-center">

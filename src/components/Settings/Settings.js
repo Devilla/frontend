@@ -38,7 +38,7 @@ const setup = [
 const configuration = [
   {
     icon: 'fi-head',
-    path: 'campaign',
+    path: 'campaigns',
     text: 'Campaign Setting'
   },
   {
@@ -49,12 +49,12 @@ const configuration = [
   },
   {
     icon: 'fi-book',
-    path: 'billing',
+    path: 'analytics',
     text: 'User Profiles',
   },
   {
     icon: 'fi-paper-stack',
-    path: 'campaign',
+    path: 'campaigns',
     text: 'Help & Support',
     head: 'Detailed'
   }
@@ -63,7 +63,7 @@ const configuration = [
 const security = [
   {
     icon: 'fi-head',
-    path: 'campaign',
+    path: 'campaigns',
     text: 'GDPR'
   }
 ];
