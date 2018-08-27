@@ -1,10 +1,10 @@
 .notification {
 
-  
+
 }
 
 .manage-notification {
-  
+
   .campaign-td {
     cursor: pointer;
     display: flex;
@@ -42,7 +42,7 @@
     justify-content: center;
     align-items: center;
   }
-  
+
   .close-btn ,.delete-btn {
     border-radius: 5px !important;
   }
@@ -62,7 +62,7 @@
   th:first-child, td:first-child {
     padding-left: 15px !important;
   }
-  
+
 
   .addchannel {
     background: #097fff !important;
@@ -105,10 +105,10 @@
    background: rgba(248, 247, 247, 0.7);
   }
   .align-modal {
-  width: 800px !important;
-  position: relative;
-  right: 100px;
-  top: 130px;
+  //   width: 800px !important;
+  //   position: relative;
+  //   right: 100px;
+    top: 130px;
   }
   .modal-body {
     color: #097fff !important;
