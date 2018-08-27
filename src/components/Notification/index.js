@@ -148,7 +148,7 @@ class Notification extends Component {
                 {this.getNotificationRows()}
               </div>
             </div>
-            <button type="button" className="btn btn-primary waves-light waves-effect ml-2 pl-4 pr-4 float-right" onClick={() => browserHistory.push('/scripts')}> Scripts </button>
+            
             <div className="modal fade show-modal" id={modalname} role="dialog">
               <div className="modal-dialog modal-lg">
                 <div className="modal-content align-modal">
