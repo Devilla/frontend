@@ -31,13 +31,13 @@ const savedCards = [
     holderName: 'Rana',
     cardNumber: '2342342323451234',
     expiryDate: '08/18',
-    cardType: 'visa'
+    cardType: 'rupay'
   },
   {
     holderName: 'Shaan',
     cardNumber: '2342342323454567',
     expiryDate: '08/29',
-    cardType: 'visa'
+    cardType: 'master'
   }
 ];
 
@@ -120,16 +120,35 @@ class BillingDetails extends Component {
     return savedCards.map(card => {
       return (
         <Row key={card.cardNumber} className="billing-final-info-bottom charge">
-          <div className="form-check" style={{width: '35%', margin: '12px'}}>
+          <div className="form-check">
             <label className="form-check-label">
               <input type="radio" className="form-check-input" name="optradio" />
-              <img style={{width: '25%'}} src="http://www.careersinafrica.com/wp-content/uploads/sites/2/2016/01/visa_logo_blu.png" />
+              <img
+                style={
+                  card.cardType == 'visa'?
+                    { width: '20%', margin: '3px 0px', height: '15px' }
+                    :
+                    card.cardType == 'master'?
+                      { width: '18%', margin: '-5px 0px', height: '25px' }
+                      :
+                      { width: '25%', margin: '2px 0px', height: '20px' }
+                }
+                src={
+                  card.cardType == 'visa'?
+                    'http://www.careersinafrica.com/wp-content/uploads/sites/2/2016/01/visa_logo_blu.png'
+                    :
+                    card.cardType == 'master'?
+                      'https://content.heropay.com/wp-content/uploads/2016/11/MasterCard_Logo.png'
+                      :
+                      'http://www.adcbank.coop/images/rupay.png'
+                }
+              />
               <h4>{card.cardType} ending in {card.cardNumber.substr(12)}</h4>
             </label>
           </div>
           <h4>{card.holderName}</h4>
           <h4>{card.expiryDate}</h4>
-          <div class="form-group" style={{width: '10%', margin: '2px'}}>
+          <div class="form-group">
             <input type="text" className="form-control" id="cvv" placeholder="CVV" />
           </div>
         </Row>
