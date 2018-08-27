@@ -35,7 +35,7 @@ const Header = ({
             { display: 'none' }
         }>
         <div className="cookie-text">
-          <span className="cookie-label text-center"><i className="fa fa-spinner fa-pulse mr-2"></i>You have reached the 30 day limit, to keep your campaigns running, Please Followed by the upgrade button.</span>
+          <span className="cookie-label text-center"><i className="fa fa-spinner fa-pulse mr-2"></i>You have reached your 30 day free account limit, please upgrade to keep your campaign running.</span>
           <button type="button" onClick={()=>{browserHistory.push('/upgrade');}}>Upgrade</button>
         </div>
       </div>
