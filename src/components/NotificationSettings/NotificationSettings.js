@@ -87,6 +87,12 @@ class Notifications extends Component {
   componentWillMount() {
     this.props.fetchNotification();
     this.props.fetchConfiguration(this.props.campaign._id);
+    let breadcrumb = this.props.breadcrumb;
+    breadcrumb.push({
+      name: 'Notifications',
+      path: ''
+    });
+    this.props.setBreadCrumbs(breadcrumb);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -204,6 +210,12 @@ class Notifications extends Component {
     this.props.fetchCampaignConfiguration(this.props.campaign._id, notification._id);
     this.props.setNotification(notification);
     this.setState({ showpopupfield: !showpopup });
+    let breadcrumb = this.props.breadcrumb;
+    breadcrumb.push({
+      name: 'Configure',
+      path: ''
+    });
+    this.props.setBreadCrumbs(breadcrumb);
   }
 
   saveConfiguration = (activity, id, configId) => {

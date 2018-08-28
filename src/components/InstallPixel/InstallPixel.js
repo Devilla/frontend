@@ -12,10 +12,21 @@ const InstallPixel = ({
   verifyPixelStatus,
   handlePixelCopy,
   toggleWebhook,
-  displayWebhookIntegration
+  displayWebhookIntegration,
+  breadcrumb,
+  setBreadCrumbs
 }) => {
   const verifyStatus = elastic==undefined?undefined:(elastic.error || (elastic.message.hits.total === 0))?false:true;
   const verifyPixelClass =`btn btn-primary waves-light waves-effect pixel-btn ${elastic==undefined?'warning-elastic':(elastic.error || (elastic.message.hits.total === 0))?'error-elastic':'success-elastic'}`;
+  const integrations = () => {
+    let breadcrumbs = breadcrumb;
+    breadcrumbs.push({
+      name: 'Integrations',
+      path: '/integrations'
+    });
+    setBreadCrumbs(breadcrumbs);
+    browserHistory.push('/integrations');
+  };
 
   return (
     <div className="install-pixel">
@@ -84,14 +95,14 @@ const InstallPixel = ({
         </Col>
 
         <Col md={4}>
-            <a href="https://useinfluence.freshdesk.com/support/solutions/articles/36000080637-integrate-with-google-tag-manager"><span className="btn btn-outline-primary tagmanager "> Google Tag Manager</span></a>
+          <a href="https://useinfluence.freshdesk.com/support/solutions/articles/36000080637-integrate-with-google-tag-manager"><span className="btn btn-outline-primary tagmanager "> Google Tag Manager</span></a>
         </Col>
         <Col md={4}>
-          <span className="btn btn-outline-primary integrations" onClick={() => browserHistory.push('/integrations')}>Integrations</span>
+          <span className="btn btn-outline-primary integrations" onClick={() => integrations()}>Integrations</span>
         </Col>
 
         {displayWebhookIntegration &&
-        <Webhook campaign={campaign} />
+          <Webhook campaign={campaign} />
         }
       </Row>
     </div>
