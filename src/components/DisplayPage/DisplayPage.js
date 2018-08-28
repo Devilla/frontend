@@ -230,30 +230,28 @@ class DisplayPage extends Component {
       <div className="modal fade show-modal" role="dialog" style={{ display: openClose?'block':'none', opacity: openClose?1:0 }}>
         <div className="modal-dialog">
           <div className="modal-content align-modal">
-            <div className="modal-header">
+            <div className="modal-header flex">
               <h4 className="modal-title">Add SubDomain</h4>
+              <h4 className="close-btn"> <i className="fa fa-times" type="button" onClick={this.openCloseModal}></i></h4>
             </div>
             <div className="modal-body row">
-              <div className="col-md-9">
+              <div className="col-md-8 pl-5">
                 <input type="text"
                   className="form-control"
                   placeholder="Add your subdomain"
                   onChange={this.handleSubdomain}
                   onKeyUp={(e) => e.keyCode === 13?this.submitSubdomain():null}
                 />
-                <HelpBlock className="text-center">
-                  <p className="website-error">{domainError}</p>
-                </HelpBlock>
               </div>
-              <div>
+              <div className="col-md-4">
                 <span className="btn btn-primary  addsubdomain" onClick={this.submitSubdomain}>
                  Add
                 </span>
               </div>
             </div>
-            <div className="modal-footer">
-              <button type="button" className="btn btn-primary close-btn" onClick={this.openCloseModal}>Close</button>
-            </div>
+            <HelpBlock className="text-center row">
+              <p className="website-error mb-0 mt-1">{domainError}</p>
+            </HelpBlock>
           </div>
         </div>
       </div>

@@ -104,6 +104,7 @@ class Sidebar extends Component {
                         </Link>
                         :
                         <Link to={prop.path} data-tip={prop.name} data-place="right" className={prop.upgrade && disableButton ? 'new disabled-link' : (disableButton || campaignValidation) && prop.name != 'Getting Started' ? 'disabled-link' : prop.upgrade ? 'new nav-link' : 'nav-link card'} disabled={(disableButton || campaignValidation)  && prop.name != 'Getting Started'} activeClassName="active">
+                          { prop.name=='Getting Started' && <span className="red-dot"></span> }
                           {
                             prop.upgrade ? '' : <i className={prop.icon} ></i>
                           }

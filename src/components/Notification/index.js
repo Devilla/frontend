@@ -110,7 +110,9 @@ class Notification extends Component {
           {!mobile() && <div className="td col-md-3 text-center p-1">{campaign.websiteUrl}</div>}
           <div className="switch td col-md-1">
             <input className="tgl tgl-ios" id="cb2" type="checkbox" checked={this.state.isActive}  readOnly/>
-            <label className="tgl-btn m-0" htmlFor="cb2"  data-toggle="modal" data-target="#2"  onClick={(e) => this.handleActiveChange(!campaign.isActive, campaign, i)}>ON</label>
+            <label className="tgl-btn m-0" htmlFor="cb2"  data-toggle="modal" data-target="#2"  onClick={(e) => this.handleActiveChange(!campaign.isActive, campaign, i)}>
+              <div className="toggle-text">ON</div>
+            </label>
           </div>
           <div className="text-center td col-md-1 p-1">{totalUsers}</div>
           {!mobile() && <div className="td col-md-2 text-center p-1">{campaign.trackingId}</div>}
@@ -148,7 +150,7 @@ class Notification extends Component {
                 {this.getNotificationRows()}
               </div>
             </div>
-            
+
             <div className="modal fade show-modal" id={modalname} role="dialog">
               <div className="modal-dialog modal-lg">
                 <div className="modal-content align-modal">

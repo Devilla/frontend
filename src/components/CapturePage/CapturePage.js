@@ -9,7 +9,6 @@ import { connect } from 'react-redux';
 import CardTable from 'components/Template/card-with-page-table';
 import { pagethArray } from 'components/Template/data';
 import { fetchLeadUrl, createPageUrl, clearPageUrl, removePageUrl } from 'ducks/pageurl';
-import {Close} from 'img';
 import './CapturePage.scss';
 
 class CapturePage extends Component {
@@ -228,28 +227,28 @@ class CapturePage extends Component {
           <div className="modal-content align-modal">
             <div className="modal-header">
               <h4 className="modal-title">Add Subdomain</h4>
-              <div data-dismiss="modal" onClick={this.openCloseModal}><div>
-                <span><img src={Close}/></span>
-              </div></div>
+              <div data-dismiss="modal">
+                <h4 className="close-btn"><i className="fa fa-times" type="button" onClick={this.openCloseModal}></i></h4>
+              </div>
             </div>
             <div className="modal-body row">
-              <div className="col-md-9">
+              <div className="col-md-8 pl-5">
                 <input type="text"
                   className="form-control"
                   placeholder="Add your subdomain url"
                   onChange={this.handleSubdomain}
                   onKeyUp={(e) => e.keyCode === 13?this.submitSubdomain():null}
                 />
-                <HelpBlock className="text-center">
-                  <p className="website-error">{domainError}</p>
-                </HelpBlock>
               </div>
-              <div>
+              <div className="col-md-4">
                 <span className="btn btn-primary addsubdomain" data-dismiss="modal" onClick={this.submitSubdomain}>
                  Add
                 </span>
               </div>
             </div>
+            <HelpBlock className="text-center row">
+              <p className="website-error mb-0">{domainError}</p>
+            </HelpBlock>
           </div>
         </div>
       </div>
