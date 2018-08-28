@@ -88,6 +88,7 @@
     "react-highlight": "^0.10.0",
     "react-hot-loader": "^4.1.1",
     "react-images-uploader": "^1.1.0",
+    "react-indicators": "^0.3.7",
     "react-ionicons": "^2.1.6",
     "react-loading-animation": "^1.4.0",
     "react-maskedinput": "^4.0.1",

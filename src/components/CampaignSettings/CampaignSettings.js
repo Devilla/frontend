@@ -36,7 +36,7 @@ const CampaignSettings = (props) => {
 
         <div className="clearfix"></div>
 
-        <button type="button" className="btn btn-outline-primary goliveRight waves-light waves-effect number" data-toggle="modal" data-target="#myModallive" onClick={props.goLive}><i className="fi-location"></i>&nbsp;Go Live</button>
+        {/* <button type="button" className="btn btn-outline-primary goliveRight waves-light waves-effect number" data-toggle="modal" data-target="#myModallive" onClick={props.goLive}><i className="fi-location"></i>&nbsp;Go Live</button> */}
 
         <ul className="nav nav-pills navtab-bg nav-justified pull-in new-campaign-tab-pills">
           <li className="nav-item waves-effect text-center">
@@ -89,7 +89,11 @@ const CampaignSettings = (props) => {
           </div>
         </div>
       </div>
-      <CampaignFooter step={props.activeClass} setActiveState={props.setActiveState} />
+      <CampaignFooter
+        step={props.activeClass}
+        setActiveState={props.setActiveState}
+        goLive={props.goLive}
+      />
     </div>
   );
 };

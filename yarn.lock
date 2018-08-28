@@ -2109,6 +2109,10 @@ clean-css@4.1.x:
   dependencies:
     source-map "0.5.x"
 
+clean-react-props@^0.2.6:
+  version "0.2.8"
+  resolved "https://registry.yarnpkg.com/clean-react-props/-/clean-react-props-0.2.8.tgz#6dc0e186343e097833ecae42eb252f3ad6b8a727"
+
 cli-boxes@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/cli-boxes/-/cli-boxes-1.0.0.tgz#4fa917c3e59c94a004cd61f8ee509da651687143"
@@ -6623,6 +6627,10 @@ loglevel@^1.4.1:
   version "1.6.1"
   resolved "https://registry.yarnpkg.com/loglevel/-/loglevel-1.6.1.tgz#e0fc95133b6ef276cdc8887cdaf24aa6f156f8fa"
 
+lomit@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/lomit/-/lomit-0.1.1.tgz#b9270fa45d80a352cfdcf2d019a97e91d6ec21e6"
+
 long@~3:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/long/-/long-3.2.0.tgz#d821b7138ca1cb581c172990ef14db200b5c474b"
@@ -8471,6 +8479,13 @@ react-bootstrap@^0.31.5:
     uncontrollable "^4.1.0"
     warning "^3.0.0"
 
+react-canvas-wrapper@^0.2.6:
+  version "0.2.6"
+  resolved "https://registry.yarnpkg.com/react-canvas-wrapper/-/react-canvas-wrapper-0.2.6.tgz#280ac0b7b13b431c25254d5146a5401e4c009ff6"
+  dependencies:
+    clean-react-props "^0.2.6"
+    prop-types "^15.6.2"
+
 react-chartist@^0.13.0:
   version "0.13.1"
   resolved "https://registry.yarnpkg.com/react-chartist/-/react-chartist-0.13.1.tgz#79cee44891dfd7008d555a7a5a623ab09c0b59d1"
@@ -8683,6 +8698,14 @@ react-images-uploader@^1.1.0:
     react-dropzone "^3.7.3"
     react-hot-loader "^3.0.0-beta.6"
     react-progress-button "git+https://github.com/aleksei0807/react-progress-button.git"
+
+react-indicators@^0.3.7:
+  version "0.3.7"
+  resolved "https://registry.yarnpkg.com/react-indicators/-/react-indicators-0.3.7.tgz#6f08f7355f2f9ea56de65fefbb66cf2b1480dcb5"
+  dependencies:
+    lomit "^0.1.1"
+    prop-types "^15.6.2"
+    react-canvas-wrapper "^0.2.6"
 
 react-input-autosize@^2.1.2:
   version "2.2.1"
