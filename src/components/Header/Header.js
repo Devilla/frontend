@@ -15,9 +15,26 @@ const Header = ({
   renderHelp,
   openProfile,
   loading,
-  children,
-  username
+  username,
+  breadcrumb,
+  setBreadCrumbs
 }) => {
+
+  const removeItems = (index) => {
+    let breadcrumbs = breadcrumb;
+    breadcrumbs.splice(index+1);
+    setBreadCrumbs(breadcrumbs);
+  };
+
+  const renderBreadCrums = () => {
+    return breadcrumb.map((crumb, index) => {
+      if(index > 0)
+        return <span key={crumb.name+index}><i className="icon-arrow-right"></i><Link to={crumb.path?crumb.path:''} onClick={() => removeItems(index)}>{crumb.name}</Link></span>;
+      else
+        return <span key={crumb.name+index}><Link to={crumb.path?crumb.path:''} onClick={() => removeItems(index)}>{crumb.name}</Link></span>;
+    });
+  };
+
   return (
     <div className="customer-header">
       {loading ?
@@ -44,7 +61,9 @@ const Header = ({
       <ConnectionStatus />
       <div className="nav-topbar-flex">
         <div className="topbar-left">
-          <h4><Link onClick={() => browserHistory.goBack()}><i className="icon-arrow-left"></i></Link>{children.props.location.pathname == '/new'? 'Campaign Setting' :children.props.location.pathname.replace(/^\/+/g, '')}</h4>
+          <h4>
+            {renderBreadCrums()}
+          </h4>
         </div>
         <ul className="list-unstyled list-inline topbar-right float-right ml-2 mb-0 nav-custom-header">
           <li className="dropdown notification-list">

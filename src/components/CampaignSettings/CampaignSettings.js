@@ -15,7 +15,8 @@ const CampaignSettings = (props) => {
 
           <h4 className=" header-title">{props.campaign
             ? props.campaign.websiteUrl
-            : 'http://localhost:3000'}</h4>
+            : 'http://localhost:3000'}
+          </h4>
 
         </div>
         <div className="modal fade show-modal" id="myModallive" role="dialog">

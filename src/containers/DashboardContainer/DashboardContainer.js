@@ -7,6 +7,7 @@ import Loading from 'react-loading-animation';
 import PageTransition from 'react-router-page-transition';
 
 import { checkTokenExists } from 'ducks/auth';
+import { setBreadCrumbs } from 'ducks/breadcrumb';
 import { Header, Sidebar } from 'components';
 import {
   Radio,
@@ -157,6 +158,14 @@ class DashboardContainer extends Component {
     this.openCloseDropdown();
     if(this.state.disableButton)
       return;
+
+    let breadcrumb = this.props.breadcrumb;
+    breadcrumb.push({
+      name: 'Profile Settings',
+      path: '/profile'
+    });
+    this.props.setBreadCrumbs(breadcrumb);
+
     browserHistory.push('/profile');
   }
 
@@ -210,11 +219,13 @@ class DashboardContainer extends Component {
 const mapStateToProps = state => ({
   profile: state.getIn(['profile', 'profile']),
   campaignInfo: state.getIn(['campaign', 'campaignInfo']),
-  user: state.getIn(['auth', 'user'])
+  user: state.getIn(['auth', 'user']),
+  breadcrumb: state.getIn(['breadcrumb', 'breadcrumb'])
 });
 
 const mapDispatchToProps = {
-  checkTokenExists
+  checkTokenExists,
+  setBreadCrumbs
 };
 
 export default connect(mapStateToProps, mapDispatchToProps, null, { withRef: true })(DashboardContainer);
