@@ -2,14 +2,15 @@
   z-index: 99999;
   display: block;
   position: fixed;
-  bottom: 0px;
-  width: 98%;
-  height: 60px;
-  left: 4%;
-  padding: 0 20px;
+  bottom: 1%;
+  width: 85%;
+  height: 58px;
+  left: 7%;
+  padding: 1px;
   background-color: #082a52;
+  opacity: 0.85;
   .campaign-footer-steps {
     display: flex;
-    padding: 12px;
+    padding: 11px;
   }
 }
