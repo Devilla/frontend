@@ -89,7 +89,7 @@ const CampaignSettings = (props) => {
           </div>
         </div>
       </div>
-      <CampaignFooter />
+      <CampaignFooter step={props.activeClass} setActiveState={props.setActiveState} />
     </div>
   );
 };
