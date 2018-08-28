@@ -8,7 +8,6 @@ import { browserHistory } from 'react-router';
 import Popup from 'react-popup';
 import mobile from 'is-mobile';
 import Loading from 'react-loading-animation';
-import {ToggleSwitch} from 'components';
 import { fetchCampaign, fetchCampaignInfo, updateCampaign, successCampaign, removeCampaign } from 'ducks/campaign';
 import './Notification.scss';
 class Notification extends Component {
@@ -108,11 +107,12 @@ class Notification extends Component {
           <div scope="row" className="th col-md-1 text-center">{i + 1}</div>
           <div className="td col-md-2 text-center p-1">{campaign.campaignName}</div>
           {!mobile() && <div className="td col-md-3 text-center p-1">{campaign.websiteUrl}</div>}
-          <ToggleSwitch handleChange={(e) => this.handleActiveChange(!campaign.isActive, campaign, i)}/>
-          {/*<div className="switch td col-md-1 text-center">
-            <input className="tgl tgl-ios text-center" id="cb2" type="checkbox" checked={this.state.isActive}  readOnly/>
-            <label className="tgl-btn text-center m-0" htmlFor="cb2"  data-toggle="modal" data-target="#2"  onClick={(e) => this.handleActiveChange(!campaign.isActive, campaign, i)}></label>
-          </div>*/}
+          <div className="switch td col-md-1">
+            <input className="tgl tgl-ios" id="cb2" type="checkbox" checked={this.state.isActive}  readOnly/>
+            <label className="tgl-btn m-0" htmlFor="cb2"  data-toggle="modal" data-target="#2"  onClick={(e) => this.handleActiveChange(!campaign.isActive, campaign, i)}>
+              <div className="toggle-text">ON</div>
+            </label>
+          </div>
           <div className="text-center td col-md-1 p-1">{totalUsers}</div>
           {!mobile() && <div className="td col-md-2 text-center p-1">{campaign.trackingId}</div>}
           {!mobile() && <div className="td col-md-1 text-center p-1">{moment(campaign.updatedAt).format('MM/DD/YYYY')}</div>}
@@ -149,7 +149,7 @@ class Notification extends Component {
                 {this.getNotificationRows()}
               </div>
             </div>
-            
+
             <div className="modal fade show-modal" id={modalname} role="dialog">
               <div className="modal-dialog modal-lg">
                 <div className="modal-content align-modal">

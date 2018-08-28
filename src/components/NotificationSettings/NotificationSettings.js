@@ -284,7 +284,7 @@ class Notifications extends Component {
           <div>
             <div>
               <h4 className="lead text-center m-b-30 m-t-20">Notifications</h4>
-              {notification &&
+              {/* {notification &&
                 <div className="dropdown-campaigns">
                   <button type="button" className="btn btn-primary dropdown-toggle" data-toggle="dropdown">
                     {this.state.pageName?this.state.pageName:'Pages'}
@@ -294,7 +294,7 @@ class Notifications extends Component {
                     {this.renderDropdownList()}
                   </div>
                 </div>
-              }
+              } */}
             </div>
 
             {!this.props.notification

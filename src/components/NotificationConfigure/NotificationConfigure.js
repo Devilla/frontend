@@ -3,7 +3,6 @@ import { Row, Col } from 'react-bootstrap';
 import { Card } from './Card';
 import NotificationDesign from './NotificationDesign/NotificationDesign';
 import { NotificationDesignSetting } from './NotificationDesignSetting/NotificationDesignSetting';
-import {ToggleSwitch} from 'components';
 import './NotificationConfigure.scss';
 
 const NotificationConfigure = ({
@@ -18,7 +17,7 @@ const NotificationConfigure = ({
   liveVisitorText,
   notificationUrl,
   setDefaultPanel,
-  // handleActivityChange,
+  handleActivityChange,
   handleContentChange,
   notificationPanelStyle,
   handleNotificationStyleChange,
@@ -35,17 +34,19 @@ const NotificationConfigure = ({
       <Row>
         <Col md={12}>
           <Card title={notification.notificationName}
-            status={<ToggleSwitch />
-              /*<div className="notificationSwitch">
-              <input
-                className="tgl tgl-ios"
-                id={notification.notificationName}
-                type="checkbox"
-                defaultChecked={notification.activity}
-                onChange={(e) => e.target.checked !=notification.activity? handleActivityChange(!notification.activity, notification._id, notification.configurationId):null}
-              />
-              <label className="tgl-btn" htmlFor={notification.notificationName}>ON</label>
-            </div>*/
+            status={
+              <div className="notificationSwitch">
+                <input
+                  className="tgl tgl-ios"
+                  id={notification.notificationName}
+                  type="checkbox"
+                  defaultChecked={notification.activity}
+                  onChange={(e) => e.target.checked !=notification.activity? handleActivityChange(!notification.activity, notification._id, notification.configurationId):null}
+                />
+                <label className="tgl-btn" htmlFor={notification.notificationName}>
+                  <div className="toggle-text">ON</div>
+                </label>
+              </div>
             }
             isDisabled={activity}
             content={

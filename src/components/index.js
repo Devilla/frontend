@@ -60,4 +60,4 @@ export { default as OauthLogin } from './OauthLogin/OauthLogin';
 export { default as OauthAuthorization } from './OauthAuthorization/OauthAuthorization';
 export { default as GettingStarted } from './GettingStarted/GettingStarted';
 export { default as Settings } from './Settings/Settings';
-export { default as ToggleSwitch } from './ToggleSwitch/ToggleSwitch';
+export { default as CampaignFooter } from './CampaignFooter/CampaignFooter';
