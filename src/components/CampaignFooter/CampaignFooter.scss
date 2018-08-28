@@ -1,0 +1,42 @@
+.campaign-footer-container {
+  z-index: 99999;
+  display: block;
+  position: fixed;
+  bottom: 1%;
+  width: 89%;
+  height: 58px;
+  left: 6.2%;
+  padding: 1px;
+  background-color: #1e68c6;
+  opacity: 0.85;
+  border-radius: 5px;
+  .campaign-footer-steps {
+    display: flex;
+    padding: 8px;
+    .footer-progress-bar {
+      margin: 8px 0;
+    }
+    .influence-react-indicator {
+      margin: 8px 15px;
+      padding: 0;
+      vertical-align: middle;
+      list-style: none;
+      display: inline-block;
+    }
+    .btn-footer {
+      background: #5bc739;
+      border: 1px solid #5bc739;
+      color: #ffffff;
+      border-radius: 5px;
+      padding: 8px;
+      cursor: pointer;
+      &:hover {
+        color: #fefefe;
+        background: #3cb416;
+        border-color: #3cb416;
+      }
+
+
+    }
+  }
+}

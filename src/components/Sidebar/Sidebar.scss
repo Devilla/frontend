@@ -3,6 +3,17 @@
     color: gray;
 }
 
+.red-dot {
+  height: 10px;
+  width: 10px;
+  background-color: red;
+  border-radius: 50%;
+  display: inline-block;
+  position: absolute;
+  margin-left: 18px;
+  margin-top: 2px;
+}
+
 .disabled-link {
   pointer-events: none;
   color: gray !important;
