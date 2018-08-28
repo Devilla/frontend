@@ -84,7 +84,7 @@ const InstallPixel = ({
         </Col>
 
         <Col md={4}>
-          <span className="btn btn-outline-primary tagmanager "> Google Tag Manager</span>
+            <a href="https://useinfluence.freshdesk.com/support/solutions/articles/36000080637-integrate-with-google-tag-manager"><span className="btn btn-outline-primary tagmanager "> Google Tag Manager</span></a>
         </Col>
         <Col md={4}>
           <span className="btn btn-outline-primary integrations" onClick={() => browserHistory.push('/integrations')}>Integrations</span>
