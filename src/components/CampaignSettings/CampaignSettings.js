@@ -2,6 +2,7 @@ import React from 'react';
 import  { InstallPixel, CapturePage, DisplayPage, Rules, NotificationSettings } from 'components';
 import { browserHistory } from 'react-router';
 import mobile from 'is-mobile';
+import { CampaignFooter } from 'components';
 
 import './CampaignSettings.scss';
 
@@ -88,6 +89,7 @@ const CampaignSettings = (props) => {
           </div>
         </div>
       </div>
+      <CampaignFooter />
     </div>
   );
 };

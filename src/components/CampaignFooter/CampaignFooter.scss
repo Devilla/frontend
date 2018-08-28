@@ -1,0 +1,15 @@
+.campaign-footer-container {
+  z-index: 99999;
+  display: block;
+  position: fixed;
+  bottom: 0px;
+  width: 98%;
+  height: 60px;
+  left: 4%;
+  padding: 0 20px;
+  background-color: #082a52;
+  .campaign-footer-steps {
+    display: flex;
+    padding: 12px;
+  }
+}
