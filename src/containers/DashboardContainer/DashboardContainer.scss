@@ -295,6 +295,10 @@ p {
       .modal-dialog {
         .modal-content {
           width: 100% !important;
+          .modal-header {
+            display: flex;
+            color: #097fff;
+          }
         }
       }
     }
