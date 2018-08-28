@@ -65,8 +65,7 @@ class NewCampaignContainer extends Component {
     });
   }
 
-  handleNextButton = (evt) => {
-    console.log(evt, '============bevx');
+  handleNextButton = (evt, pages) => {
     evt.preventDefault();
     if(!this.state.campaignname)
       return this.setState({errorName: 'Enter campaign name'});
@@ -77,12 +76,13 @@ class NewCampaignContainer extends Component {
     else if(!this.state.averageCustomer)
       return this.setState({errorAverageCustomer: 'Enter the numbers of signups per day'});
     const data = {
+      campaignType: this.state.campaignType,
       campaignName: this.state.campaignname,
       websiteUrl: this.state.website,
       averageCustomer: this.state.averageCustomer,
       profile: this.props.profile._id
     };
-    return this.props.createCampaign(data);
+    return this.props.createCampaign(data, pages);
   }
 
   setActiveState = (val) => {

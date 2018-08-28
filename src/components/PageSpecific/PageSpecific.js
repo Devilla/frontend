@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Row, Col } from 'react-bootstrap';
+import { Row, Col, HelpBlock } from 'react-bootstrap';
 
 import './PageSpecific.scss';
 
@@ -7,14 +7,15 @@ class PageSpecific extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      pages : []
+      pages : [],
+      error: ''
     };
   }
 
   handleChange = (e, index) => {
     let pages = this.state.pages;
     pages[index][e.target.id] = e.target.value;
-    this.setState({pages});
+    this.setState({pages, error: ''});
   }
 
   deletePage = (pageIndex) => {
@@ -57,25 +58,40 @@ class PageSpecific extends Component {
     };
     let pages = this.state.pages;
     pages.push(initialData);
-    this.setState({ pages });
+    this.setState({ pages, error: '' });
+  }
+
+  handleSubmit = (e) => {
+    const { pages } = this.state;
+    let error;
+    if(!pages.length)
+      return this.setState({error: 'Please add a page to your campaign'});
+    pages.map(page => {
+      if(!page.productName || !page.productUrl || !page.captureUrl)
+        error = 'Enter all details';
+    });
+    if(error)
+      this.setState({ error });
+    else
+      this.props.handleNextButton(e, pages);
   }
 
   render() {
-    const { handleNextButton } = this.props;
-    
-    console.log(this.state.pages, '============pages');
     return (
       <div className="page-specific-container">
         <h4 className="header-title">Page Specific</h4>
         <div className="page-specific-content">
           {this.renderPages()}
+          <HelpBlock>
+            <p className="website-error">{this.state.error}</p>
+          </HelpBlock>
           <Row className="page-specific-buttons">
             <button className="btn btn-primary addpagepopup-btn newcamp-btn" onClick={()=> this.addpage()}><i className="fi-plus"></i> &nbsp;Add Page</button>
             <button
               type="submit"
               htmlFor="campaignForm"
               className="btn btn-primary waves-light waves-effect newcamp-btn"
-              onClick={handleNextButton}
+              onClick={(e) => this.handleSubmit(e)}
             >
               Create Your Campaign
             </button>

@@ -105,7 +105,7 @@ const CampaignInfo = ({
           <Row className="product-specific-row">
             <Col md={12}>
               <div className="card-box">
-                <PageSpecific handleNextButton={handleNextButton}/>
+                <PageSpecific handleNextButton={handleNextButton} />
               </div>
             </Col>
           </Row>
