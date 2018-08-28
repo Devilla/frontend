@@ -7,7 +7,7 @@ import {
 
 const CampaignType = ({handleCampaignType}) => {
   return (
-    <Grid className="campaign-type-container">
+    <Grid data-transition-id="campaign-type-page" className="campaign-type-container">
       <Row>
         <Col md={12}>
           <div className="card-box">

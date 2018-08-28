@@ -6,7 +6,7 @@ import './Campaign.scss';
 
 const Campaign = (props) => {
   return (
-    <div className="content fill campaign-container">
+    <div data-transition-id="campaign-page" className="content fill campaign-container">
       {!props.campaignType?
         <CampaignType  handleCampaignType={props.handleCampaignType} />
         :

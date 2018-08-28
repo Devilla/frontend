@@ -140,7 +140,6 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
         title : 'Alert', buttonText :  'Close',
         content : 'Please verify your pixel first.'
       });
-
     } else if(!this.props.leads || !this.props.leads.length) {
       this.setState({
         title : 'Alert',
@@ -180,7 +179,7 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
   render() {
 
     return (
-      <div className="transition-item NewCampaignContainer">
+      <div data-transition-id="notification-container-page" className="transition-item NewCampaignContainer">
 
         {this.props.campaign && Object.keys(this.props.campaign).length !== 0 && this.props.campaign.constructor === Object?
           <CampaignSettings

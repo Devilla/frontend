@@ -98,7 +98,7 @@ const NotificationList = ({
   };
 
   return (
-    <div>
+    <div data-transition-id="notification-list-page">
       <div className="popuppage-container">
         <button type="button" className="btn btn-outline-primary  addpage" data-toggle="modal" data-target="#myModal" ><i className="fi-plus"></i>&nbsp;Set Page Specifc Notifications</button>
         <div className="modal fade show-modal" id="myModal" role="dialog">

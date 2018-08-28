@@ -8,7 +8,7 @@ import './CampaignSettings.scss';
 const CampaignSettings = (props) => {
 
   return (
-    <div className="col-md-12 tab-notification-container mt-1">
+    <div data-transition-id="campaign-settings-page" className="col-md-12 tab-notification-container mt-1">
       <div className="card-box tab-notification-box pt-1">
         <div className=" mt-3 new-campaign-header">
 

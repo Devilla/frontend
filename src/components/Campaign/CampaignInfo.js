@@ -24,7 +24,7 @@ const CampaignInfo = ({
   handleCampaignStateChange
 }) => {
   return (
-    <div className="content fill campaign-info-container">
+    <div data-transition-id="campaign-info-page" className="content fill campaign-info-container">
       <Grid>
         <Row>
           <Col md={12}>

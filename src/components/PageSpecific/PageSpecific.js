@@ -39,7 +39,7 @@ class PageSpecific extends Component {
             </Col>
             <Col md={4} className="form-group">
               <label htmlFor="captureUrl">Capture Url</label>
-              <input type="password" className="form-control" id="captureUrl" value={page.captureUrl} placeholder="Enter Capture Url" onChange={(e) => this.handleChange(e, index)} />
+              <input type="text" className="form-control" id="captureUrl" value={page.captureUrl} placeholder="Enter Capture Url" onChange={(e) => this.handleChange(e, index)} />
             </Col>
             <Col md={1} className="page-trash-button">
               <a href="javascript:;"><i className="ml-3 icon-trash" data-toggle="modal" data-target="#1"  onClick={() => this.deletePage(index)}></i></a>

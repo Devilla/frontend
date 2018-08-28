@@ -269,7 +269,7 @@ export class NotificationDesignSetting extends Component {
     const planType = profile.plan.references.service_template_properties[1]?profile.plan.references.service_template_properties[1].data.value:'';
 
     return (
-      <div>
+      <div data-transition-id="notification-design-settings-page">
         {showpopupfield ?
           <div className="DashboardChannelcomponent">
             <DashboardChannel campaign={campaign} />

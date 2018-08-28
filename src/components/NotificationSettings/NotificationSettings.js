@@ -135,7 +135,6 @@ class Notifications extends Component {
   setInitialState = () => {
     this.props.clearNotification();
     this.setState({
-      // notification: '',
       activity: true,
       notificationPanelStyle: notificationPanelStyleDefault,
       contentText: 'Company Name',
@@ -255,7 +254,6 @@ class Notifications extends Component {
     this.setState({pageName: name, selectedSubCampaign: subcampaign});
     this.setNewConfig(subcampaign[notification]);
     this.props.setNotification({notificationName: notificationName, type: notification, activity: subcampaign[notification].activity });
-
   }
 
   renderDropdownList = () => {
@@ -267,7 +265,7 @@ class Notifications extends Component {
         :
         'live';
     return this.props.subcampaigns.map(subcampaign => {
-      return <a key={subcampaign._id} className="dropdown-item" href="#" onClick={() => this.setSubCampaign(subcampaign, notification, subcampaign.name, this.props.notification.notificationName)} >{subcampaign.name}</a>;
+      return <a key={subcampaign._id} className="dropdown-item" onClick={() => this.setSubCampaign(subcampaign, notification, subcampaign.name, this.props.notification.notificationName)} >{subcampaign.name}</a>;
     });
   }
 
@@ -279,7 +277,7 @@ class Notifications extends Component {
   render() {
     const { notification, notifications, configurations, createSuccess, campaign, profile, setNotification } = this.props;
     return (
-      <Loading style={{width: '10%', height: '500px'}} strokeWidth='2' isLoading={!notifications || !configurations || !campaign || !profile}>
+      <Loading data-transition-id="notification-settings-page" style={{width: '10%', height: '500px'}} strokeWidth='2' isLoading={!notifications || !configurations || !campaign || !profile}>
         <div className="notification-settings">
           <div>
             <div>
@@ -290,7 +288,7 @@ class Notifications extends Component {
                     {this.state.pageName?this.state.pageName:'Pages'}
                   </button>
                   <div className="dropdown-menu">
-                    <a className="dropdown-item" href="#" onClick={() => this.clearSubCampaign()} >Default</a>
+                    <a className="dropdown-item" onClick={() => this.clearSubCampaign()} >Default</a>
                     {this.renderDropdownList()}
                   </div>
                 </div>

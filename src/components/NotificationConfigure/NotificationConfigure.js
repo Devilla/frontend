@@ -30,7 +30,7 @@ const NotificationConfigure = ({
   campaign
 }) => {
   return (
-    <div className="notification-configure col-md-12">
+    <div data-transition-id="notification-configuration-page" className="notification-configure col-md-12">
       <Row>
         <Col md={12}>
           <Card title={notification.notificationName}
