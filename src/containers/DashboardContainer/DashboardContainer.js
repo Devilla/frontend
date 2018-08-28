@@ -124,7 +124,7 @@ class DashboardContainer extends Component {
         </FormGroup>
         <Row>
           <h4>Tell us more</h4>
-          <textarea className="form-control z-depth-1" id="exampleFormControlTextarea6" rows="3" placeholder="Briefly explain what happened and steps to replicate the issue."></textarea>
+          <textarea className="form-control z-depth-1" id="exampleFormControlTextarea6" rows="3" placeholder="Briefly explain about the issue you are facing."></textarea>
         </Row>
       </div>,
       buttons: {
