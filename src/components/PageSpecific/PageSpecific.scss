@@ -1,0 +1,103 @@
+.page-specific-container {
+  .addpagepopup-btn {
+    border-radius: 5px !important;
+  }
+
+  .fa-info-circle {
+    position: relative;
+    top: 12px;
+    right: 15px;
+    font-size: 15px;
+    &.capture {
+       right: -11px !important;
+    }
+  }
+
+  .info-text {
+   position: relative;
+      // top: 25px;
+      border-radius: 5px;
+      border: 1px solid #097fff;
+      height: 35px;
+      padding: 8px;
+      padding-right: 13px;
+      cursor: pointer;
+      color: #097fff;
+      &:hover {
+          background: #097fff;
+          color: #fff;
+      }
+  }
+
+  .capurl-text,.prourl-text {
+     margin-left: 13px !important;
+  }
+
+  .n-btn {
+      padding: 7px 50px !important;
+      border-radius: 5px !important;
+      margin-right: 10px;
+      // margin-top: 20px;
+
+  }
+  .toggle-area {
+      margin-top: 30px;
+      justify-content: space-between;
+      display: flex;
+      width: 65%;
+      .toggle-save button {
+          border-radius: 5px !important;
+      }
+      .toggle-settings button {
+          border-radius: 5px !important;
+      }
+
+  }
+
+  .toggle-btn-custom {
+    padding: 15px 0px 0px 0px;
+    justify-content: space-around;
+    .toggle-btn {
+      top: 5px;
+      position: relative;
+    }
+  }
+
+
+  .sub-campaign-fields {
+    padding: 25px 0px;
+  }
+
+  .card {
+    padding: 10px 0px;
+    cursor: pointer;
+  }
+  .header-body {
+    display: flex;
+    justify-content: space-between;
+    .name-width {
+      width: 30%;
+    }
+    .url-width {
+      width: 30%;
+    }
+    .header-status {
+      display: flex;
+      .icon-box {
+        width: 15px;
+        height: 15px;
+        border-radius: 10px;
+        margin: 3px 8px;
+      }
+    }
+    .icon-pointer-cursor {
+      pointer: cursor;
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) and (min-width: 100px) {
+  .popuppage-container {
+    top: 180px;
+  }
+}
