@@ -12,31 +12,75 @@
   border-radius: 5px;
   .campaign-footer-steps {
     display: flex;
-    padding: 8px;
+    padding: 10px 10px 5px 10px;
     .footer-progress-bar {
-      margin: 8px 0;
+      margin: 8px 0px;
     }
     .influence-react-indicator {
-      margin: 8px 15px;
+      margin: 6px 15px;
       padding: 0;
       vertical-align: middle;
       list-style: none;
       display: inline-block;
+      position: absolute;
+      left: 133px;
+      .bar-1 {
+        margin: 8px -25px 8px 0px;
+      }
+      .bar-2 {
+       margin: 8px -25px 8px 0px;
+      }
+      .bar-3 {
+       margin: 8px -25px 8px 0px;
+      }
+      .bar-4 {
+       margin: 8px -25px 8px 0px;
+      }
     }
-    .btn-footer {
+    .btn-footer-1 {
       background: #5bc739;
       border: 1px solid #5bc739;
       color: #ffffff;
       border-radius: 5px;
-      padding: 8px;
+      padding: 8px 18px;
       cursor: pointer;
+      position: absolute;
+      left: 20px;
       &:hover {
         color: #fefefe;
         background: #3cb416;
         border-color: #3cb416;
       }
-
-
+    }
+    .btn-footer-2 {
+      background: #5bc739;
+      border: 1px solid #5bc739;
+      color: #ffffff;
+      border-radius: 5px;
+      padding: 8px 18px;
+      cursor: pointer;
+      position: absolute;
+      left: 643px;
+      &:hover {
+        color: #fefefe;
+        background: #3cb416;
+        border-color: #3cb416;
+      }
+    }
+    .btn-footer-3 {
+      background: #5bc739;
+      border: 1px solid #5bc739;
+      color: #ffffff;
+      border-radius: 5px;
+      padding: 8px 18px;
+      cursor: pointer;
+      position: absolute;
+      right: 15px;
+      &:hover {
+        color: #fefefe;
+        background: #3cb416;
+        border-color: #3cb416;
+      }
     }
   }
 }
