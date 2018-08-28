@@ -60,7 +60,7 @@ const CampaignSettings = (props) => {
           </li>
           <li className="nav-item waves-effect text-center">
             <a data-toggle="tab" aria-expanded="false" className={`nav-link ${props.activeClass == 5?'active pb-2 pt-2':'pb-2 pt-2'}`} onClick={() => props.setActiveState(5)}>
-              {!mobile() && '5.'}<i className="fi-download mr-2"></i> {!mobile()? 'Install Pixel':''}
+              {!mobile() && '5.'}<i className="fa fa-code mr-2"></i> {!mobile()? 'Install Pixel':''}
             </a>
           </li>
         </ul>
