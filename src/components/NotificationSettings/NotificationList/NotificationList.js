@@ -1,6 +1,6 @@
 import React from 'react';
 import './NotificationList.scss';
-import { PageSpecific } from 'components';
+import { PageSpecificPopup } from 'components';
 
 
 const NotificationList = ({
@@ -111,7 +111,7 @@ const NotificationList = ({
                 <h4 className="modal-title">Customize the Notification Display</h4>
               </div>
               <div className="modal-body">
-                <PageSpecific
+                <PageSpecificPopup
                   handleContentChange={handleContentChange}
                   selectedSubCampaign={selectedSubCampaign}
                   setNotification={setNotification}

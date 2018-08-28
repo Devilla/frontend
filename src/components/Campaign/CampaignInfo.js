@@ -8,6 +8,8 @@ import {
   FormControl,
   HelpBlock
 } from 'react-bootstrap';
+
+import { PageSpecific } from 'components';
 import './Campaign.scss';
 
 const CampaignInfo = ({
@@ -91,6 +93,15 @@ const CampaignInfo = ({
             </div>
           </Col>
         </Row>
+        {campaignType == 'page' &&
+          <Row className="product-specific-row">
+            <Col md={12}>
+              <div className="card-box">
+                <PageSpecific/>
+              </div>
+            </Col>
+          </Row>
+        }
       </Grid>
     </div>
   );
