@@ -66,6 +66,7 @@ class NewCampaignContainer extends Component {
   }
 
   handleNextButton = (evt) => {
+    console.log(evt, '============bevx');
     evt.preventDefault();
     if(!this.state.campaignname)
       return this.setState({errorName: 'Enter campaign name'});

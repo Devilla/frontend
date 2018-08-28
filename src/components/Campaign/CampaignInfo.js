@@ -31,7 +31,7 @@ const CampaignInfo = ({
             <div className="card-box">
               <h4 className="header-title">Create Your {campaignType == 'page'?'Product Specifc Campaign':'Campaign'}</h4>
               <hr/>
-              <form onSubmit={handleNextButton}>
+              <form id="campaignForm" onSubmit={handleNextButton}>
                 <Row>
                   <div className="col-md-6">
                     <FormGroup>
@@ -87,7 +87,15 @@ const CampaignInfo = ({
                     </FormGroup>
                   </div>
                 </Row>
-                <button type="submit" className="btn btn-primary waves-light waves-effect newcamp-btn ml-2 pl-4 pr-4"> Create Your Campaign </button>
+                <button
+                  type="submit"
+                  id="campaignForm"
+                  className="btn btn-primary waves-light waves-effect newcamp-btn ml-2 pl-4 pr-4"
+                  style={{display: campaignType !== 'page'?'block':'none'}}
+                  onClick={handleNextButton}
+                >
+                  Create Your Campaign
+                </button>
                 <div className="clearfix"></div>
               </form>
             </div>
@@ -97,7 +105,7 @@ const CampaignInfo = ({
           <Row className="product-specific-row">
             <Col md={12}>
               <div className="card-box">
-                <PageSpecific/>
+                <PageSpecific handleNextButton={handleNextButton}/>
               </div>
             </Col>
           </Row>
