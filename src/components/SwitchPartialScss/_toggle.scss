@@ -38,6 +38,9 @@
       &::selection {
         background: none;
       }
+      .toggle-text {
+        padding-top: 1px;
+      }
       outline: 0;
       display: block;
       width: 4em;
@@ -57,7 +60,7 @@
       }
       &:after {
         left: 0;
-        margin-top: -13px;
+        margin-top: -14.4px;
       }
       &:before {
         display: none;
@@ -65,7 +68,7 @@
     }
     &:checked + .tgl-btn:after {
       left: 50%;
-      margin-top: -13px;
+      margin-top: -14.4px;
     }
   }
 
