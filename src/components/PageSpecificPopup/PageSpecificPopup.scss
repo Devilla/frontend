@@ -1,21 +1,52 @@
-.page-specific-popup-container {
-  .addpagepopup-btn {
+
+.popuppage-container {
+  width: 300px !important;
+  margin: 0px !important;
+  position: absolute;
+  right: 0px;
+  top: 140px;
+
+  .modal-title {
+      font-family: sans-serif;
+      font-weight: 600;
+  }
+  .modal-body {
+    .card {
+      background-color: white;
+    }
+  }
+  .close {
+    background: #097fff !important;
+    position: relative;
+    top: 10px !important;
+  }
+  .show-modal {
+    z-index: 999999999 !important;
+    overflow: scroll !important;
+    background: rgba(248, 247, 247, 0.7);
+  }
+  .addpage, .close-btn {
     border-radius: 5px !important;
   }
 
-  .fa-info-circle {
-    position: relative;
-    top: 12px;
-    right: 15px;
-    font-size: 15px;
-    &.capture {
-       right: -11px !important;
-    }
-  }
+  .page-specific-popup-container {
 
-  .info-text {
-   position: relative;
-      // top: 25px;
+    .addpagepopup-btn {
+      border-radius: 5px !important;
+    }
+
+    .fa-info-circle {
+      position: relative;
+      top: 12px;
+      right: 15px;
+      font-size: 15px;
+      &.capture {
+        right: -11px !important;
+      }
+    }
+
+    .info-text {
+      position: relative;
       border-radius: 5px;
       border: 1px solid #097fff;
       height: 35px;
@@ -24,23 +55,22 @@
       cursor: pointer;
       color: #097fff;
       &:hover {
-          background: #097fff;
-          color: #fff;
+        background: #097fff;
+        color: #fff;
       }
-  }
+    }
 
-  .capurl-text,.prourl-text {
-     margin-left: 13px !important;
-  }
+    .capurl-text,.prourl-text {
+      margin-left: 13px !important;
+    }
 
-  .n-btn {
+    .n-btn {
       padding: 7px 50px !important;
       border-radius: 5px !important;
       margin-right: 10px;
-      // margin-top: 20px;
+    }
 
-  }
-  .toggle-area {
+    .toggle-area {
       margin-top: 30px;
       justify-content: space-between;
       display: flex;
@@ -51,47 +81,46 @@
       .toggle-settings button {
           border-radius: 5px !important;
       }
-
-  }
-
-  .toggle-btn-custom {
-    padding: 15px 0px 0px 0px;
-    justify-content: space-around;
-    .toggle-btn {
-      top: 5px;
-      position: relative;
     }
-  }
 
-
-  .sub-campaign-fields {
-    padding: 25px 0px;
-  }
-
-  .card {
-    padding: 10px 0px;
-    cursor: pointer;
-  }
-  .header-body {
-    display: flex;
-    justify-content: space-between;
-    .name-width {
-      width: 30%;
-    }
-    .url-width {
-      width: 30%;
-    }
-    .header-status {
-      display: flex;
-      .icon-box {
-        width: 15px;
-        height: 15px;
-        border-radius: 10px;
-        margin: 3px 8px;
+    .toggle-btn-custom {
+      padding: 15px 0px 0px 0px;
+      justify-content: space-around;
+      .toggle-btn {
+        top: 5px;
+        position: relative;
       }
     }
-    .icon-pointer-cursor {
-      pointer: cursor;
+
+    .sub-campaign-fields {
+      padding: 25px 0px;
+    }
+
+    .card {
+      padding: 10px 0px;
+      cursor: pointer;
+    }
+    .header-body {
+      display: flex;
+      justify-content: space-between;
+      .name-width {
+        width: 30%;
+      }
+      .url-width {
+        width: 30%;
+      }
+      .header-status {
+        display: flex;
+        .icon-box {
+          width: 15px;
+          height: 15px;
+          border-radius: 10px;
+          margin: 3px 8px;
+        }
+      }
+      .icon-pointer-cursor {
+        pointer: cursor;
+      }
     }
   }
 }

@@ -1,6 +1,4 @@
 
-
-
   .notification-box {
     &.lastbox {
       position: relative;
@@ -22,46 +20,43 @@
 
     }
 
-
     .toggle-checkbox {
       width: 55px !important;
       margin: 0 auto;
       margin-bottom: 10% !important;
       margin-top: 10% !important;
-
     }
-
   }
 
-    .addChannel {
-      margin: 0 auto;
-      padding-top: 50px !important;
-      padding-left: 30px !important;
+  .addChannel {
+    margin: 0 auto;
+    padding-top: 50px !important;
+    padding-left: 30px !important;
 
 
+  }
+  .ribbon-box.indi-card {
+    width: 75% !important;
+    margin: 0 auto;
+    justify-content: center;
+    display: flex;
+    .card-box {
+      width: 100%;
     }
-    .ribbon-box.indi-card {
-      width: 75% !important;
-      margin: 0 auto;
-      justify-content: center;
-      display: flex;
-      .card-box {
-        width: 100%;
-      }
-    }
-    .card-box.bx {
-      border-radius: 10px !important;
-      border: 1px solid #95c5f8;
-      box-shadow: 0px 4px 10px -4px #999;
-      background: rgb(252, 252, 252) !important;
-      &:hover {
-      box-shadow: 0px 5px 15px -4px #999;
+  }
+  .card-box.bx {
+    border-radius: 10px !important;
+    border: 1px solid #95c5f8;
+    box-shadow: 0px 4px 10px -4px #999;
+    background: rgb(252, 252, 252) !important;
+    &:hover {
+    box-shadow: 0px 5px 15px -4px #999;
 
-      }
     }
-    .cards-notification {
-      margin-left: 20px !important;
-    }
+  }
+  .cards-notification {
+    margin-left: 20px !important;
+  }
 
 @media only screen and (max-width: 768px) and (min-width: 100px) {
   .cards-notification {
@@ -74,5 +69,8 @@
         }
       }
     }
+  }
+  .popuppage-container {
+    top: 180px;
   }
 }

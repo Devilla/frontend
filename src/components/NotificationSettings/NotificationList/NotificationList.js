@@ -99,29 +99,12 @@ const NotificationList = ({
 
   return (
     <div data-transition-id="notification-list-page">
-      <div className="popuppage-container">
-        <button type="button" className="btn btn-outline-primary  addpage" data-toggle="modal" data-target="#myModal" ><i className="fi-plus"></i>&nbsp;Set Page Specifc Notifications</button>
-        <div className="modal fade show-modal" id="myModal" role="dialog">
-          <div className="modal-dialog modal-lg">
-            <div className="modal-content align-modal">
-              <div className="modal-header">
-                <button type="button" className="close" data-dismiss="modal">
-                  <i className="fa fa-close"></i>
-                </button>
-                <h4 className="modal-title">Customize the Notification Display</h4>
-              </div>
-              <div className="modal-body">
-                <PageSpecificPopup
-                  handleContentChange={handleContentChange}
-                  selectedSubCampaign={selectedSubCampaign}
-                  setNotification={setNotification}
-                  setNewConfig={setNewConfig}
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <PageSpecificPopup
+        handleContentChange={handleContentChange}
+        selectedSubCampaign={selectedSubCampaign}
+        setNotification={setNotification}
+        setNewConfig={setNewConfig}
+      />
       <div className="cards-notification">
         <div className="row m-t-50 notification-list">
           {renderNotifications()}
