@@ -39,7 +39,8 @@ class NewCampaignContainer extends Component {
       title: '',
       content: '',
       buttonText: '',
-      path: ''
+      path: '',
+      campaignType: ''
     };
   }
 
@@ -165,6 +166,10 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
     this.setState({displayWebhookIntegration: !this.state.displayWebhookIntegration});
   }
 
+  handleCampaignType = (campaignType) => {
+    this.setState({campaignType});
+  }
+
   componentWillUnmount() {
     this.props.clearCampaign();
     this.props.clearElastic();
@@ -193,6 +198,7 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
           />
           :
           <Campaign
+            handleCampaignType={this.handleCampaignType}
             handleNextButton={this.handleNextButton}
             handleCampaignStateChange={this.handleCampaignStateChange}
             {...this.state}
