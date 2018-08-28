@@ -57,69 +57,61 @@ class GettingStarted extends Component {
   }
 
   render() {
-    const { campaignValid, profileComplete, intergrationComplete, enrolled } = this.state;
-    const { profile, campaignInfo } = this.props;
+    const { campaignValid, profileComplete, intergrationComplete} = this.state;
+    const { profile, campaignInfo, user } = this.props;
     return (
       <Loading strokeWidth="2" style={{height: '700px', width: '10%'}} isLoading={!profile || !campaignInfo} >
-        <div className="transition-item list-modal-container">
+        <div className="transition-item list-modal-container card">
           <div className="list-header">
-            <p className="list-header-para">You can get started in less then 5 minutes.</p>
+            <p className="list-header-para">Hello {user.username}!  Let's get started.</p>
           </div>
-          <div className="list-content row border-between">
-            <Col md={6} className="list1-content">
-              <p className="list-content-para">Create your first campaign.</p>
+          <div className="list-content row border-between mr-0 ml-0">
+            <Col md={6} className="list1-content pb-4 pr-0">
+              <p className="list-content-para btn sub-text">Step 1</p>
               <button className="btn btn-primary" onClick={() => browserHistory.push('new')}>
                 <i className="fa fa-plus"></i>
                 <p className="list-content-button-para">New Campaign</p>
               </button>
             </Col>
-            <Col md={6} className="list2-content">
-              <p className="list-content-para">Quick start checklist</p>
+            <Col md={6} className="list2-content pb-4 pl-0">
+              <p className="list-content-para sub-text">Quick start checklist</p>
               <div className="list-checklist">
-                <div className="form-check">
+                <div className="form-check card-box mb-2 p-1" onClick={() => browserHistory.push('/new')}>
                   {campaignValid ?
                     <i className="fa fa-check-circle"></i>
                     :
                     <i className="fa fa-circle" aria-hidden="true"></i>
                   }
-                  <label className="form-check-label" htmlFor="defaultCheck1">
+                  <label className="form-check-label pr-0" htmlFor="defaultCheck1">
                     Launch you first campaign
                   </label>
-                  <i className="fa fa-angle-right" onClick={() => browserHistory.push('/new')}></i>
+                  <i className="fa fa-angle-right" ></i>
                 </div>
-                <div className="form-check">
+
+                <div className="form-check card-box mb-2 p-1" onClick={() => browserHistory.push('/profile')}>
                   {profileComplete?
                     <i className="fa fa-check-circle"></i>
                     :
                     <i className="fa fa-circle" aria-hidden="true"></i>
                   }
-                  <label className="form-check-label" htmlFor="defaultCheck1">
+                  <label className="form-check-label pr-0" htmlFor="defaultCheck1">
                     Complete my profile
                   </label>
-                  <i className="fa fa-angle-right" onClick={() => browserHistory.push('/profile')}></i>
+                  <i className="fa fa-angle-right" ></i>
                 </div>
-                <div className="form-check">
+
+                <div className="form-check card-box mb-2 p-1" onClick={() => browserHistory.push('/integrations')} >
                   {intergrationComplete?
                     <i className="fa fa-check-circle"></i>
                     :
                     <i className="fa fa-circle" aria-hidden="true"></i>
                   }
-                  <label className="form-check-label" htmlFor="defaultCheck1">
+                  <label className="form-check-label pr-0" htmlFor="defaultCheck1">
                     Integrate with other accounts
                   </label>
-                  <i className="fa fa-angle-right" onClick={() => browserHistory.push('/integrations')}></i>
+                  <i className="fa fa-angle-right" ></i>
                 </div>
-                <div className="form-check">
-                  {enrolled?
-                    <i className="fa fa-check-circle"></i>
-                    :
-                    <i className="fa fa-circle" aria-hidden="true"></i>
-                  }
-                  <label className="form-check-label" htmlFor="defaultCheck1">
-                    Enroll into "Beta" feature club
-                  </label>
-                  <i className="fa fa-angle-right"></i>
-                </div>
+
               </div>
             </Col>
           </div>

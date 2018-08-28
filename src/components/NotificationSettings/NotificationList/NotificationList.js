@@ -1,16 +1,16 @@
 import React from 'react';
 import './NotificationList.scss';
-import NotificationSettingPopup from '../NotificationSettingPopup/NotificationSettingPopup';
+// import NotificationSettingPopup from '../NotificationSettingPopup/NotificationSettingPopup';
 
 
 const NotificationList = ({
   notificationList,
   configure,
   handleActivityChange,
-  setNotification,
-  setNewConfig,
-  handleContentChange,
-  selectedSubCampaign
+  // setNotification,
+  // setNewConfig,
+  // handleContentChange,
+  // selectedSubCampaign
 }) => {
   const renderNotifications = () => {
     return notificationList.map(notification =>
@@ -51,13 +51,13 @@ const NotificationList = ({
               <p className="text-muted notification-list-content">
                 {
                   notification.notificationName === 'Bulk Activity' ?
-                    'Visitors activity over time.'
+                    'Show visitor activity over a period of time'
                     :
                     notification.notificationName === 'Live Visitor Count' ?
-                      'Live visitors.'
+                      'Shows live website viewers'
                       :
                       notification.notificationName === 'Recent Activity' ?
-                        'Recent visitors.'
+                        'Shows recent user conversions'
                         :
                         'Get popup Insights'
 
@@ -72,7 +72,9 @@ const NotificationList = ({
                 defaultChecked={notification.activity}
                 onChange={(e) => e.target.checked != notification.activity?handleActivityChange(e.target.checked, notification._id, notification.configurationId):null}
               />
-              <label className="tgl-btn" htmlFor={notification._id}></label>
+              <label className="tgl-btn" htmlFor={notification._id} style={{textAlign:'left'}}>
+                <div className="toggle-text">ON</div>
+              </label>
             </div>
             {notification.notificationName == 'Review Notification' ?
               <button
@@ -99,12 +101,12 @@ const NotificationList = ({
 
   return (
     <div>
-      <NotificationSettingPopup
+      {/* <NotificationSettingPopup
         handleContentChange={handleContentChange}
         selectedSubCampaign={selectedSubCampaign}
         setNotification={setNotification}
         setNewConfig={setNewConfig}
-      />
+      /> */}
       <div className="cards-notification">
         <div className="row m-t-50 notification-list">
           {renderNotifications()}

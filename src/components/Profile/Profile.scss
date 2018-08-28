@@ -1,10 +1,78 @@
-.profile-container {
-  display: grid;
+.dashboard-container .container-fluid {
+  width: 956px;
+  margin-left: -1px;
+}
 
+.profile-container {
+// <<<<<<< HEAD
+  display: flex;
+  padding-top: 50px;
+// =======
+  // display: grid;
+
+
+.content-tabs{
+font-size: 14px;
+padding: 20px 15px;
+white-space: pre;
+color: #5D657A;
+border: none;
+border-radius: 3px;
+text-align: left;
+margin-bottom: 5px;
+background: #EBEDEF;
+}
   #formControlsSelect {
-    color: #757575;
+    color: #49475d;
   }
 
+  .content-tabs {
+    height: 60px;
+    padding: 23px;
+    margin: 5px 0px;
+    background: #e2e5e7 !important;
+    color: #7d7b8a;
+    border-radius: 3px;
+  }
+
+  .content-tabs:hover, .active {
+    background: #ffffff !important;
+    font-weight: 600;
+    color: #696879;
+    border: 0.5px solid #c5c5c5;
+  }
+
+  .profile-content-contaier {
+    .container-fluid {
+      margin-top: 0;
+    }
+    .profile-content-col-one {
+      background-color: white;
+      box-shadow: 0px 0px 1px rgba(0,0,0,0.2);
+      border-radius: 5px;
+      .profile-user-box {
+        background-color: white !important;
+        padding: 20px;
+        .pull-left {
+          img {
+            width: 50% !important;
+          }
+        }
+        .media-body {
+          h4 {
+            color: black;
+          }
+          p {
+            margin-top: 0px !important;
+            color: black !important;
+          }
+        }
+        .tilebox-one {
+          background-color: white !important;
+        }
+      }
+    }
+  }
   button {
     border-radius: 5px;
 
@@ -17,6 +85,8 @@
 
   .profile-user-box {
     background-color: rgba(9, 128, 255, 0.152);
+    // margin-left: 200px;
+    // margin-top: -194px;
   }
 
   button {
@@ -30,7 +100,7 @@
 
   button {
     &.btn.btn-primary.waves-effect {
-      border-radius: 8px;
+      border-radius: 4px;
     }
   }
 
@@ -61,6 +131,12 @@
     z-index: 999999999 !important;
     overflow: scroll !important;
     background: rgba(248, 247, 247, 0.7);
+    .help-block {
+      .website-error {
+        margin-top: 0 !important;
+        color: red !important;
+      }
+    }
   }
 
   .align-modal {
@@ -75,9 +151,17 @@
     background: #097fff !important;
   }
 
+  .error-border {
+    border-color: red !important;
+  }
+
   .givemeborder {
     margin: 10px;
     padding: 10px;
+
+    .selectedOption {
+      background-color: #40c74094 !important;
+    }
 
     .pauseContent {
       width: 45% !important;
@@ -124,7 +208,7 @@
 }
 
 .inputcode {
-  padding: 5px !important;
+  padding: 8px !important;
 }
 
 button {
@@ -134,6 +218,10 @@ button {
 @media only screen and (max-width: 768px) and (min-width: 100px) {
   .profile-container {
     .panel-body {
+      background: #fff!important;
+      width: 657px;
+      margin-left: 215px;
+      margin-top: -95px;
       .text-left {
         .profile-buttons {
           padding-left: 0px;

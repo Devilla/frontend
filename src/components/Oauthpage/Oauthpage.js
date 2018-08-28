@@ -23,16 +23,16 @@ class Oauthpage extends Component {
   getOAuthRows = () => {
     const { oauths, deleteClientOauth } = this.props;
     return oauths.map((oauth, index) =>
-      <tr className="auth-td" key={index} onClick={(e) => this.openGenerator(e, oauth)}>
-        <th scope="row">{index+1}</th>
-        <td>{oauth.name}</td>
-        <td>{moment(oauth.createdAt).format('DD/MM/YYYY')}</td>
-        <td>{oauth.secret.replace(/./g, '*')}</td>
-        <td>{oauth.clientId}</td>
-        <td>
+      <div className="auth-td tr" key={index} onClick={(e) => this.openGenerator(e, oauth)}>
+        <div scope="row" className="th col-md-1 text-center">{index+1}</div>
+        <div className="td col-md-2 text-center">{oauth.name}</div>
+        <div className="td col-md-2 text-center">{moment(oauth.createdAt).format('DD/MM/YYYY')}</div>
+        <div className="td col-md-3 text-center">{oauth.secret.replace(/./g, '*')}</div>
+        <div className="td col-md-3 text-center">{oauth.clientId}</div>
+        <div className="td col-md-1 text-center">
           <a href="javascript:;"><i className="ml-3 icon-trash" onClick={() => deleteClientOauth(oauth.id, index)}></i></a>
-        </td>
-      </tr>
+        </div>
+      </div>
     );
   }
 
@@ -46,7 +46,7 @@ class Oauthpage extends Component {
       <div className="oauth-container">
         <div className="content">
           <div className="card-box">
-            <h4 className="header-title">OAuth 2.0 Client IDs</h4>
+            <h4 className="oauthheader mt-3">OAuth 2.0 Client ID</h4>
             <hr/>
             <button
               type="button"
@@ -58,21 +58,21 @@ class Oauthpage extends Component {
               Create Credentials
             </button>
 
-            <table className="table table-striped">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>NAME</th>
-                  <th>CREATION DATE</th>
-                  <th>Secret</th>
-                  <th>CLIENT ID</th>
-                  <th>ACTION</th>
-                </tr>
-              </thead>
-              <tbody>
+            <div className="table table-striped">
+              <div className="thead table-header flex">
+                <div className="tr tab-row">
+                  <div className="th col-md-1 text-center">#</div>
+                  <div className="th col-md-2 text-center">NAME</div>
+                  <div className="th col-md-2 text-center">CREATION DATE</div>
+                  <div className="th col-md-3 text-center">Secret</div>
+                  <div className="th col-md-3 text-center">CLIENT ID</div>
+                  <div className="th col-md-1 text-center">ACTION</div>
+                </div>
+              </div>
+              <div className="tbody">
                 {this.getOAuthRows()}
-              </tbody>
-            </table>
+              </div>
+            </div>
           </div>
         </div>
       </div>

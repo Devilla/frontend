@@ -106,7 +106,7 @@ class WebsiteIntegrations extends Component {
                 <div className="col-md-8 col-lg-6">
                   <div className="cta">
                     <p className="integration-text"> Don't see your integration if you can help us understanding your requirements we can make it</p>
-                    <a className="btn  btn--lg talk-btn" href="#purchase-template">Lets talk</a>
+                    <a className="btn  btn--lg talk-btn" href="#purchase-template" style={{backgroundColor:'#097fff'}}>Lets talk</a>
                   </div>
                 </div>
               </div>

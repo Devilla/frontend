@@ -8,6 +8,14 @@
   }
 }
 
+.container-fluid {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 50px;
+}
 
 .customer-header {
   .progress {
@@ -16,17 +24,24 @@
 }
 .dashboard-container {
   [data-css-1ar5iql] {
-    z-index: 100000000;
+    z-index: 9999999999;
   }
 
-    .content-page {
-      margin-left: 40px!important;
-    }
+  .content-page {
+    padding: 25px 0px 15px 25px !important;
+    margin-left: 40px!important;
+  }
 
  .notification-list {
    background-color: #f9f9f9!important;
     margin-left: 5px!important;
-}
+  }
+
+  .lead {
+    color: #56636d;
+    font-size: 18px;
+    font-weight: 400;
+  }
 
 p {
     margin-top: 21px;
@@ -42,7 +57,7 @@ p {
     height: 10px !important;
     border-radius: 5px !important;
     button {
-      height: 2.6em;
+      height: 1.6em;
       color: #fff;
     }
   }
@@ -61,12 +76,13 @@ p {
     font-size: 14px;
     margin-top: 0% !important;
     .css-1ar5iql, [data-css-1ar5iql] {
-      z-index: 999999999;
+      z-index: 9999999999;
     }
   }
 
   .mm-popup__overlay {
     z-index: 1000000000;
+    background: #101113d1 !important;
   }
 
   .mm-popup__box{
@@ -103,7 +119,6 @@ p {
     border: 1px solid #2d7bf4;
     font-size: 14px;
     outline: none !important;
-    padding: .375rem 1.1rem;
     display: inline-block;
     font-weight: 400;
     text-align: center;
@@ -113,7 +128,6 @@ p {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    padding: 0.775rem 0.75rem;
     font-size: 1rem;
     line-height: 0.5;
     border-radius: .25rem;
@@ -121,9 +135,13 @@ p {
   }
 
   .mm-popup__box__header__title {
-    font-size: 20px;
-    text-align: left;
-    font-weight: 600;
+    color: #1f2b36 !important;
+    font-weight: 400 !important;
+    text-transform: uppercase;
+    font-size: 17px !important;
+    letter-spacing: -0.17px !important;
+    max-width: 200% !important;
+    text-shadow: 0.05px -0.01px 0.01px;
   }
 
   .mm-popup__box__footer {
@@ -131,7 +149,7 @@ p {
     -ms-flex-align: center;
     align-items: center;
     -ms-flex-pack: end;
-    justify-content: flex-end;
+    justify-content: space-around;
     padding: 1rem;
     border-top: 1px solid #e9ecef;
   }
@@ -160,10 +178,11 @@ p {
   .profile-transition-container,
   .billing-transition-container,
   .upgrade-card-transition,
-  .upgrade-plan-container,
+  // .upgrade-plan-container,
   .integration-container,
   .pageContent,
-  .list-modal-container
+  .list-modal-container,
+  .settings-container
     {
     overflow: hidden;
     box-sizing: border-box;
@@ -185,7 +204,7 @@ p {
 .dashboard-container {
   .side-menu {
       width: 240px;
-      z-index: 1!important;
+      z-index: 99999999999!important;
       background: #082a52 !important;
       bottom: 0;
       margin-top: 0;
@@ -195,7 +214,7 @@ p {
       left: 0;
       .topbar-left{
         background: #082a52 !important;
-        padding-left: 17px !important;
+        padding-left: 3px !important;
       }
       .button-list{
         margin-left: 0px;
@@ -214,16 +233,16 @@ p {
       }
 
   .header-title {
-  margin-bottom: 20px;
-  margin-top: 18px !important;
-  text-transform: uppercase;
-  letter-spacing: 0.20em;
-  font-size: 11px;
-  font-weight: 400;
-  margin-top: 0;
-  margin-left: 0px !important;
-  color: #4c4c4c;
-}
+    margin-bottom: 20px;
+    margin-top: 18px !important;
+    text-transform: uppercase;
+    letter-spacing: 0.20em;
+    font-size: 11px;
+    font-weight: 400;
+    margin-top: 0;
+    margin-left: 0px !important;
+    color: #4c4c4c;
+  }
 
   }
   .card-box{
@@ -243,9 +262,13 @@ p {
   .user-box{
     background: #082a52;
   }
-  .btn-primary{
+  .btn-primary {
     background-color: #4aa5ea !important;
     border: 1px solid #4aa5ea !important;
+  }
+  .btn-primary:hover {
+    background-color: #108ae6 !important;
+    border: 1px solid #108ae6 !important;
   }
 }
 
@@ -275,6 +298,10 @@ p {
       .modal-dialog {
         .modal-content {
           width: 100% !important;
+          .modal-header {
+            display: flex;
+            color: #097fff;
+          }
         }
       }
     }
@@ -295,4 +322,22 @@ p {
   min-height: 60px !important;
 }
 
+.help-container {
+  .help-form-fields {
+    color: #1f2b36 !important;
+    font-weight: 400 !important;
+    text-transform: uppercase;
+    font-size: 12px !important;
+    padding-left: 4%;
+    letter-spacing: 0.65px !important;
+    max-width: 200% !important;
+    text-shadow: 0.05px -0.01px 0.01px;
+    .radio-text {
+      padding: 2px;
+    }
 
+  }
+}
+.form-control {
+  background: #efefef !important;
+}

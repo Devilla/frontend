@@ -2,17 +2,17 @@ import {
   Dashboard,
   Notification,
   Analytics,
-  Oauthpage,
-  GettingStarted
+  GettingStarted,
+  Settings
 } from 'components';
 
 const appRoutes = [
-  { path: '/dashboard', name: 'Home', icon: 'fi-air-play', component: Dashboard },
-  { path: '/campaigns', name: 'Campaigns', icon: 'fi-layers', component: Notification },
+  { path: '/dashboard', name: 'Home', icon: 'fa fa-dashboard', component: Dashboard },
+  { path: '/campaigns', name: 'Campaigns', icon: 'fa fa-bullhorn', component: Notification },
   { path: '/analytics', name: 'Analytics', icon: 'fi-bar-graph-2', component: Analytics },
-  { path: '/integrations', name: 'Integrations', icon: 'fi-command', component: Dashboard },
-  { path: '/oauthshow', name: 'Oauth', icon: 'fi-link', component: Oauthpage },
-  { path: '/getting-started', name: 'Getting Started', icon: 'fi-align-left', component: GettingStarted },
+  { path: '/settings', name: 'Settings', icon: 'fi-cog', component: Settings },
+  { path: '/getting-started', name: 'Getting Started', icon: 'fi-speech-bubble', component: GettingStarted },
+  { name: 'Help & Support', icon: 'fa fa-question-circle', component: GettingStarted },
   { redirect: true }
 ];
 

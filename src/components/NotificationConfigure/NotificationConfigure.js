@@ -42,7 +42,9 @@ const NotificationConfigure = ({
                 defaultChecked={notification.activity}
                 onChange={(e) => e.target.checked !=notification.activity? handleActivityChange(!notification.activity, notification._id, notification.configurationId):null}
               />
-              <label className="tgl-btn" htmlFor={notification.notificationName}></label>
+              <label className="tgl-btn" htmlFor={notification.notificationName}>
+                <div className="toggle-text">ON</div>
+              </label>
             </div>
             }
             isDisabled={activity}

@@ -12,15 +12,16 @@ const InstallPixel = ({
   verifyPixelStatus,
   handlePixelCopy,
   toggleWebhook,
-  displayWebhookIntegration,
-  handleTrackingIdCopy
+  displayWebhookIntegration
 }) => {
+  const verifyStatus = elastic==undefined?undefined:(elastic.error || (elastic.message.hits.total === 0))?false:true;
+  const verifyPixelClass =`btn btn-primary waves-light waves-effect pixel-btn ${elastic==undefined?'warning-elastic':(elastic.error || (elastic.message.hits.total === 0))?'error-elastic':'success-elastic'}`;
 
   return (
     <div className="install-pixel">
       <h4 className="lead text-center m-b-30 m-t-20">Install Pixel to Your Website</h4>
-      <p className="text-muted text-left">Please copy your unique script & paste it in the Header of your Website. Add this
-        To every page where you want To track, measure And show notifications.</p>
+      <p className="text-muted text-left">Copy your unique script & paste it in the Header of your Website. Add this
+        to every page where you want to track, measure and show notifications.</p>
       <div className="bgcolor text-monospace border-dark">
         <p className="m-l-30 p-3">{`<script src="https://storage.googleapis.com/influence-197607.appspot.com/influence-analytics.js">
       </script>`}
@@ -33,24 +34,24 @@ const InstallPixel = ({
         </p>
       </div>
       <div className="float-left custom-width align-install-btn">
-        <button type="button" className="btn btn-primary waves-effect copy-btn" onClick={() => { this.buttonDOM.blur(); handlePixelCopy(); }} ref={(buttonDOM) => this.buttonDOM = buttonDOM}>Copy Pixel</button>
-        <button type="button" className="btn btn-primary waves-effect copy-btn" onClick={() => { this.trackingDOM.blur(); handleTrackingIdCopy(); }} ref={(trackingDOM) => this.trackingDOM = trackingDOM}>Copy Tracking Id</button>
+        <button type="button" className="btn btn-primary waves-effect copy-btn ml-0 mr-0" onClick={() => { this.buttonDOM.blur(); handlePixelCopy(); }} ref={(buttonDOM) => this.buttonDOM = buttonDOM}>Copy Pixel</button>
+        {/* <button type="button" className="btn btn-primary waves-effect copy-btn" onClick={() => { this.trackingDOM.blur(); handleTrackingIdCopy(); }} ref={(trackingDOM) => this.trackingDOM = trackingDOM}>Copy Tracking Id</button> */}
         {elastic!==undefined && elastic=='verified'}
-        <button type="button" style={elastic==undefined?{backgroundColor:'#097fff'}:(elastic.error || (elastic.message.hits.total === 0))?{backgroundColor:'#f9bc0b'}:{backgroundColor:'#0acf97'}} className="btn btn-primary waves-light waves-effect pixel-btn" onClick={() => verifyPixelStatus()}>
+        <button type="button" className={verifyPixelClass} onClick={() => verifyPixelStatus()}>
           <Animated className="leftwrap center" animationIn="fadeIn" animationOut="fadeOut" isVisible={true}>
-          Verify Pixel
+            {verifyStatus==undefined?'Verify':!verifyStatus?'Unverified':'Verified'} Pixel
           </Animated>
         </button>
         <div className="loader-icon">
           <i className={loaderActive ? 'fa fa-circle-o-notch fa-spin': ''}></i>
         </div>
       </div>
-      <p className="m-t-30 pb-5">
+      <p className="m-t-30 pb-3">
         <br/>
       </p>
 
       {/* The radio buttons for warning, success */}
-      <span className="radio radio-warning ml-2 pr-4">
+      <span className="radio radio-warning ml-1 pr-4">
         <input type="radio" name="radio8" id="radio8" value="option8" defaultChecked/>
         <label htmlFor="radio8">
           Unverified

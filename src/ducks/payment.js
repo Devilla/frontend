@@ -10,6 +10,8 @@ export const FETCH_INVOICES = action('FETCH_INVOICES');
 export const DOWNLOAD_INVOICE = action('DOWNLOAD_INVOICE');
 export const SUCCESS_INVOICE = action('SUCCESS_INVOICE');
 export const UPDATE_PAYMENT_METHOD = action('UPDATE_PAYMENT_METHOD');
+export const FETCH_CARDS = action('FETCH_CARDS');
+export const FETCH_CARDS_SUCCESS = action('FETCH_CARDS_SUCCESS');
 
 export const fetchPayment = () => ({ type: FETCH });
 export const fetchInvoices = () => ({ type: FETCH_INVOICES });
@@ -19,6 +21,8 @@ export const updatePaymentMethod = (details) => ({ type: UPDATE_PAYMENT_METHOD, 
 export const downloadInvoice = (invoice_id) => ({ type: DOWNLOAD_INVOICE, invoice_id });
 export const successPayment = (payment) => ({ type: SUCCESS, payment });
 export const successInvoice = (invoices) => ({ type: SUCCESS_INVOICE, invoices });
+export const fetchCards = () => ({ type: FETCH_CARDS });
+export const fetchCardsSuccess = (cards) => ({ type: FETCH_CARDS_SUCCESS, cards });
 
 const initialState = fromJS({});
 
@@ -28,6 +32,8 @@ const payment = (state = initialState, action) => {
       return state.set('payments', action.payment);
     case SUCCESS_INVOICE:
       return state.set('invoices', action.invoices);
+    case FETCH_CARDS_SUCCESS:
+      return state.set('cards', action.cards);
     default:
       return state;
   }

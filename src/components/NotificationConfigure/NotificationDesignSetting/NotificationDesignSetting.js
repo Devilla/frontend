@@ -276,7 +276,7 @@ export class NotificationDesignSetting extends Component {
           </div>
           : ' '}
 
-        <div className="setting" style={{ backgroundColor: 'white' }}>
+        <div className="setting">
           <Row>
             <Col md={12}>
               <div className="card-box box2">
@@ -380,7 +380,7 @@ export class NotificationDesignSetting extends Component {
                             checked={toggleMap}
                             readOnly
                           />
-                          <label className="tgl-btn" htmlFor="cb2" onClick={() => handleContentChange('toggleMap', !toggleMap)}></label>
+                          <label className="tgl-btn" htmlFor="cb2" onClick={() => handleContentChange('toggleMap', !toggleMap)}>ON</label>
                         </Col>
                       </Row>
                     }
@@ -596,7 +596,7 @@ export class NotificationDesignSetting extends Component {
                                   checked={notificationPanelStyle.hideAnonymousConversion}
                                   readOnly
                                 />
-                                <label className="tgl-btn" htmlFor="anonymousConversionChange" onClick={() => this.handleAnonymousConversionsChange(!notificationPanelStyle.hideAnonymousConversion)}></label>
+                                <label className="tgl-btn" htmlFor="anonymousConversionChange" onClick={() => this.handleAnonymousConversionsChange(!notificationPanelStyle.hideAnonymousConversion)}>ON</label>
                               </Col>
                             </Row>
                             <Row className="mb-3">
@@ -611,7 +611,7 @@ export class NotificationDesignSetting extends Component {
                                   checked={notificationPanelStyle.onlyDisplayNotification}
                                   readOnly
                                 />
-                                <label className="tgl-btn" htmlFor="handleOnlyDisplayNotification" onClick={() => this.handleOnlyDisplayNotification(!notificationPanelStyle.onlyDisplayNotification)}></label>
+                                <label className="tgl-btn" htmlFor="handleOnlyDisplayNotification" onClick={() => this.handleOnlyDisplayNotification(!notificationPanelStyle.onlyDisplayNotification)}>ON</label>
                               </Col>
                             </Row>
                           </div>
@@ -632,7 +632,7 @@ export class NotificationDesignSetting extends Component {
                               checked={toggleTextBox}
                               readOnly
                             />
-                            <label className="tgl-btn" htmlFor="handleClickableNotification" onClick={handleClickableNotification}></label>
+                            <label className="tgl-btn" htmlFor="handleClickableNotification" onClick={handleClickableNotification}>ON</label>
                           </Col>
                         </Row>
                         <Row style={toggleTextBox?{ display:'block', marginBottom: '-9%' }:{ display:'none', marginBottom: '-9%' }}>

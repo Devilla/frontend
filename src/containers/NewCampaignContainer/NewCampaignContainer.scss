@@ -38,6 +38,9 @@
   }
   .close-btn {
     border-radius: 5px !important;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: lighter;
   }
 
   .bx-shadow {
@@ -59,29 +62,40 @@
    overflow: scroll !important;
    background: #101113d1;
   }
-  .align-modal {
-  // margin-top: 140px;
-  height: 250px;
-  width: 560px;
-  border-radius: 10px;
-  position: relative;
-  right: 0px;
-  top: 140px;
+  .modal {
+    .modal-dialog {
+      .align-modal {
+        min-height: 250px;
+        // width: 560px;
+        border-radius: 5px;
+        position: relative;
+        right: 8px;
+        top: 250px;
+        .modal-body {
+          color: #097fff !important;
+          font-size: 17px !important;
+          padding: 30px 30px !important;
+          align-items: center;
+        }
+        .close {
+          top: 6px !important;
+          width: 31px;
+          height: 31px;
+        }
+      }
+    }
   }
-  .modal-body {
-    padding-top: 65px!important;
-    margin-left: -20px;
-    margin-right: -60px;
-    color: #097fff !important;
-    font-size: 17px !important;
-  }
+
+
   .modal-header {
     font-weight: bolder;
-    height: 45px;
-    padding: 8px;
+
+    display: flex !important;
     background-color: #097fff;
     color: #ffffff;
-
+    display: block;
+    align-items: center;
+    padding: 10px 24px 10px 20px;
     div {
       div{
         padding: 5px;

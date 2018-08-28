@@ -4,6 +4,7 @@ import * as actions from 'ducks/profile';
 import { load, loaded } from 'ducks/loading';
 import { toast } from 'react-toastify';
 import { browserHistory } from 'react-router';
+import { fetchUser } from 'ducks/auth';
 
 const toastConfig = {
   position: toast.POSITION.BOTTOM_LEFT,
@@ -61,6 +62,47 @@ function* update(action) {
   }
 }
 
+function* accountRequest(action) {
+  try {
+    yield put(load());
+    const res = yield call(api.GET, `profile/otp/${action.requestType}`);
+    if (res.error)
+      console.log(res.error);
+    else
+      yield toast('Mail sent', toastConfig);
+    //   yield put(actions.successAccountRequest(res));
+    yield put(loaded());
+  } catch (error) {
+    yield put(loaded());
+    yield toast.error(error.message, toastConfig);
+  }
+}
+
+function* submitAccountOtp(action) {
+  try {
+    yield put(load());
+    const res = yield call(api.POST, 'profile/otp/submit', action.code);
+    if (res.error)
+      console.log(res.error);
+    else {
+      if(res.code && action.code.type !== 'delete') {
+        yield put(fetchUser());
+        yield toast(`Account ${action.code.type == 'pause'?'Paused':action.code.type == 'running'?'Resumed':'Deleted'}`, toastConfig);
+      } else if(res.code && action.code.type === 'delete') {
+        localStorage.removeItem('authToken');
+        browserHistory.push('/home');
+      } else {
+        yield put(actions.successAccountOtpRequest(res.code));
+      }
+    }
+
+    yield put(loaded());
+  } catch (error) {
+    yield put(loaded());
+    yield toast.error(error.message, toastConfig);
+  }
+}
+
 export function* watchFetch() {
   yield takeLatest(actions.FETCH, fetch);
 }
@@ -73,10 +115,20 @@ export function* watchUpdate() {
   yield takeLatest(actions.UPDATE_PROFILE, update);
 }
 
+export function* watchSubmitAccountRequest() {
+  yield takeLatest(actions.SUBMIT_ACCOUNT_REQUEST, accountRequest);
+}
+
+export function* watchSubmitAccountOtp() {
+  yield takeLatest(actions.SUBMIT_ACCOUNT_OTP, submitAccountOtp);
+}
+
 export default function* rootSaga() {
   yield [
     fork(watchFetch),
     fork(watchCreate),
-    fork(watchUpdate)
+    fork(watchUpdate),
+    fork(watchSubmitAccountRequest),
+    fork(watchSubmitAccountOtp)
   ];
 }

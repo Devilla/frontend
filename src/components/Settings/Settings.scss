@@ -1,0 +1,81 @@
+.settings-container {
+  padding: 50px 20px !important;
+  .row {
+    padding: 20px 0px;
+    border-bottom: 1px solid lightgray;
+    .settings-card-container {
+      padding: 20px 0px;
+      display: flex;
+      .card {
+        width: 150px;
+        height: 150px;
+        background-color: white;
+        box-shadow: 0px 0px 21px -8px #808080;
+        margin: 0 20px;
+        cursor: pointer;
+        border-radius: 5px;
+        border: 1px solid #95c5f8;
+        .card-img-top {
+          display: flex;
+          justify-content: flex-end;
+          padding: 0px 5px;
+          height: 20%;
+          p {
+            margin: 0;
+            margin-top: 5px;
+            height: 16px;
+            padding: 0px 5px;
+            border-radius: 2px;
+            background: #00d197;
+            color: white !important;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+          }
+        }
+        .card-body {
+          padding: .1rem 0.20rem 0.20rem 0.20rem;
+          text-align: center;
+          i {
+            font-size: 45px;
+          }
+          p {
+            font-size: 10px;
+            padding-top: 10px;
+            text-transform: uppercase;
+            color: #2c3b48 !important;
+            text-shadow: 0.01px 0.01px 0.01px #afafaf;
+            letter-spacing: 0.2px;
+          }
+        }
+      }
+      .card:hover {
+        box-shadow: 2px 5px 20px -2px #808080;
+        p {
+          text-shadow: 0.08px 0.08px 0.2px #6f6f6f;
+          font-size: 10.3px;
+        }
+      }
+      .card-body i:hover {
+        -moz-transform: rotate(3deg) scale(1.2);
+        -webkit-transform: rotate(3deg) scale(1.2);
+        -o-transform: rotate(3deg) scale(1.2);
+        -ms-transform: rotate(3deg) scale(1.2);
+        transform: rotate(3deg) scale(1.2);
+      }
+    }
+  }
+
+  .settingsheader {
+    color: #1f2b36 !important;
+    font-weight: 500 !important;
+    text-transform: uppercase;
+    font-size: 14px !important;
+    line-height: 23px;
+    letter-spacing: -0.17px !important;
+    padding-left: 24% !important;
+    padding-top: 3%;
+    max-width: 200% !important;
+  }
+
+}

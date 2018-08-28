@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import { UpgradeCard } from 'components';
 import PlanList from './PlanList';
 import './UpgradePlan.scss';
@@ -21,9 +21,16 @@ export default class UpgradePlan extends Component {
     this.makePayment = this.makePayment.bind(this);
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.plan) {
+      const { plan } = nextProps;
+      this.setState({ plan });
+    }
+  }
 
   handleCheckChange(checked, value) {
     this.setState({ plan: checked ? value : null });
+    this.props.handleSelectedPlan(value);
   }
 
   makePayment() {
@@ -50,7 +57,6 @@ export default class UpgradePlan extends Component {
           :
           <UpgradeCard plan={plan} />
         }
-        <ToastContainer hideProgressBar={true} />
       </div>
     );
   }

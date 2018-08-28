@@ -1,9 +1,16 @@
 import React, { Component } from 'react';
-import { Gdpr } from 'img';
+import { Gdpr, FacebookFooter, LinkedinFooter, TwitterFooter } from 'img';
 import { Link } from 'react-router';
 import './WebsiteFooter.scss';
 
 class WebsiteFooter extends Component {
+  constructor() {
+    super();
+    this.state = {
+      closeCookie:'flex'
+    };
+  }
+
   render() {
     return (
       <div className="websitefooter-container">
@@ -59,10 +66,17 @@ class WebsiteFooter extends Component {
                   <div className="row">
                     <div className="col-sm-6"> <span className="type--fine-print">© <span className="update-year">2018 Influence&nbsp;</span>&nbsp; All Rights Reserved</span>
                     </div>
+                    <div className="cookie-notice-container" style={{display:this.state.closeCookie}}>
+                      <div className="cookie-text">
+                        <span className="cookie-label">We use cookies to enhance your experience, and by continuing to visit this site you agree to our use of cookies. <a href="https://useinfluence.co/privacy-policy" target="_blank">More Info</a></span>
+                        <button type="button" onClick={()=>{this.setState({closeCookie:'none'});}}>Got it</button>
+                      </div>
+                    </div>
                     <div className="col-sm-6 text-right text-center-xs">
                       <ul className="social-list list-inline">
-                        <li><Link href="https://www.facebook.com/groups/215429202366620/" target="_blank"><i className="socicon socicon-facebook bg--facebook icon icon--xs"></i></Link></li>
-
+                        <li><Link href="https://www.facebook.com/groups/215429202366620/" target="_blank"><img src={FacebookFooter} style={{width:'24px', height:'24px'}}/></Link></li>
+                        <li><Link href="https://www.facebook.com/groups/215429202366620/" target="_blank"><img src={TwitterFooter} style={{width:'24px', height:'24px'}}/></Link></li>
+                        <li><Link href="https://www.facebook.com/groups/215429202366620/" target="_blank"><img src={LinkedinFooter} style={{width:'24px', height:'24px'}}/></Link></li>
                       </ul>
                     </div>
                   </div>

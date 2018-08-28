@@ -38,18 +38,18 @@ let moment = extendMoment(Moment);
 // };
 
 const color_list = [
-  '#69d217',
-  '#69d2e7',
-  '#1fda65',
-  '#ffda65',
-  '#ff2765',
-  '#ffd041',
-  '#53bbf4',
-  '#ff6d74',
-  '#ff6e00',
-  '#ff0100',
-  '#87CEEB',
-  '#F5F5F5'
+  'rgb(105, 210, 23, 0.68)',
+  'rgb(105, 210, 231, 0.7)',
+  'rgb(31, 218, 101, 0.6)',
+  'rgb(83, 187, 244, 0.6)',
+  'rgb(255, 218, 101, 0.8)',
+  'rgb(255, 39, 101, 0.6)',
+  'rgb(255, 208, 65, 0.7)',
+  'rgb(255, 109, 116, 0.7)',
+  'rgb(255, 110, 0, 0.6)',
+  'rgb(255, 1, 0, 0.65)',
+  'rgb(135, 206, 235, 0.75)',
+  'rgb(147, 237, 151, 0.85)'
 ];
 
 class Dashboard extends Component {
@@ -439,7 +439,7 @@ class Dashboard extends Component {
           <div className="container-fluid">
             <Row className="dashboard-boxes">
               <Col md={12}>
-                <div className="card-box">
+                <div className="card-box pt-0">
                   <Row>
                     <Col md={12}>
                       <div className="btn-group campaign-dropdown">
@@ -452,6 +452,7 @@ class Dashboard extends Component {
                         </div>
                       </div>
                       <div className="card-box pb-0 mb-0 cardbox1">
+
                         <Row className="account-stats">
                           {this.renderCardBox(
                             <div className=" widget-flat card-box  text-muted pb-5 pt-2 pos-vertical-center c2" onClick={()=> browserHistory.push('/campaigns')}>

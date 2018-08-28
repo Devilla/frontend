@@ -1,18 +1,27 @@
 .install-pixel {
   .bgcolor {
-    background-color: rgba(245, 245, 245, 0.816);
+    background: #ffffff;
     color: #636769;
   }
   .align-install-btn {
     display: flex;
     .loader-icon {
       float: right;
-      margin: 1%;
+      margin: 0.4%;
       .fa {
         color: #2d7bf4;
         padding: 0 0.5%;
         font-size: 24px;
       }
+    }
+    .warning-elastic {
+      background-color: #097fff !important;
+    }
+    .error-elastic {
+      background-color: #f9bc0b !important;
+    }
+    .success-elastic {
+      background-color: #0acf97 !important;
     }
   }
   .copy-btn ,.pixel-btn, .webhook-btn ,.pixelnext-btn {
@@ -39,7 +48,7 @@
 
   div {
     &.float-left > button {
-      width: 20%;
+      width: 15%;
     }
 
     &.integration > button {
