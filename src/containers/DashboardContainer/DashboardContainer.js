@@ -93,32 +93,32 @@ class DashboardContainer extends Component {
     if(dropdown)
       this.openCloseDropdown();
     Popup.create({
-      title: 'How can we help you today',
+      title: 'How can we help you today?',
       content: <div className="help-container">
         <FormGroup>
           <Row className="help-form-fields">
-            <Radio name="radioGroup" inline={true}>
-              &nbsp;&nbsp;I need help setting up my Campaign
+            <Radio name="radioGroup" inline={true} className="radio-text">
+              &nbsp;&nbsp; &nbsp; &nbsp;I need help setting up my Campaign
             </Radio>
           </Row>
           <Row className="help-form-fields">
-            <Radio name="radioGroup" inline="inline">
-              &nbsp;&nbsp;I want to know how to use Influence
+            <Radio name="radioGroup" inline="inline" className="radio-text">
+              &nbsp;&nbsp; &nbsp; &nbsp;I want to know how to use Influence
             </Radio>
           </Row>
           <Row className="help-form-fields">
-            <Radio name="radioGroup" inline="inline">
-              &nbsp;&nbsp;Something is not working
+            <Radio name="radioGroup" inline="inline" className="radio-text">
+              &nbsp;&nbsp; &nbsp; &nbsp;Something is not working
             </Radio>
           </Row>
           <Row className="help-form-fields">
-            <Radio name="radioGroup" inline="inline">
-              &nbsp;&nbsp;I have feedback / feature request
+            <Radio name="radioGroup" inline="inline" className="radio-text">
+              &nbsp;&nbsp; &nbsp; &nbsp;I have feedback / feature request
             </Radio>
           </Row>
           <Row className="help-form-fields">
-            <Radio name="radioGroup" inline="inline">
-              &nbsp;&nbsp;I need help with something else
+            <Radio name="radioGroup" inline="inline" className="radio-text">
+              &nbsp;&nbsp; &nbsp; &nbsp;I need help with something else
             </Radio>
           </Row>
         </FormGroup>
