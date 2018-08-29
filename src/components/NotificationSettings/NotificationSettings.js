@@ -295,7 +295,7 @@ class Notifications extends Component {
           <div>
             <div>
               <h4 className="lead text-center m-b-30 m-t-20">Notifications</h4>
-              {notification && campaign.campaignType == 'page' && 
+              {notification && campaign.campaignType == 'page' &&
                 <div className="notification-settings-options">
                   <div className="dropdown-campaigns">
                     <button type="button" className="btn btn-primary dropdown-toggle" data-toggle="dropdown">
@@ -325,6 +325,7 @@ class Notifications extends Component {
                 createSuccess={createSuccess}
                 setNotification={setNotification}
                 setNewConfig={this.setNewConfig}
+                campaign={campaign}
               />
               :
               <Row>
