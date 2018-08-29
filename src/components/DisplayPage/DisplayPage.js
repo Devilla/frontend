@@ -5,7 +5,6 @@ import {
   HelpBlock
 } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import CardTable from 'components/Template/card-with-page-table';
 import { pagethArray } from 'components/Template/data';
 import { fetchDisplayUrl, createPageUrl, clearPageUrl, removePageUrl } from 'ducks/pageurl';
 
@@ -360,7 +359,7 @@ class DisplayPage extends Component {
               <p className="website-error">{error}</p>
             </HelpBlock>
           </Row>
-          
+
           <Row>
             <Col md={3}></Col>
             <Col md={6}>
@@ -389,16 +388,12 @@ class DisplayPage extends Component {
           </Row>
           <Row>
             <Col md={12}>
-              <CardTable
-                content ={
-                  <div className="centertbl">
-                    {this.renderLeads()}
-                  </div>
-                }
-              />
+              <div className="centertbl">
+                {this.renderLeads()}
+              </div>
             </Col>
           </Row>
-          
+
         </div>
 
       </div>

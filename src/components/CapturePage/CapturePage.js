@@ -5,7 +5,6 @@ import {
   HelpBlock
 } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import CardTable from 'components/Template/card-with-page-table';
 import { pagethArray } from 'components/Template/data';
 import { fetchLeadUrl, createPageUrl, clearPageUrl, removePageUrl } from 'ducks/pageurl';
 import './CapturePage.scss';
@@ -368,17 +367,13 @@ class CapturePage extends Component {
           </Row>
           <Row>
             <Col md={12}>
-              <CardTable
-                content ={
-                  <div className="centertbl">
-                    {this.renderLeads()}
-                  </div>
-                }
-              />
+              <div className="centertbl">
+                {this.renderLeads()}
+              </div>
             </Col>
           </Row>
 
-          
+
           <div className="clearfix"></div>
         </div>
       </div>
