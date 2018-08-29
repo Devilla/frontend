@@ -297,11 +297,12 @@ class Notifications extends Component {
               {notification &&
                 <div className="dropdown-campaigns">
                   <button type="button" className="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                    {this.state.pageName?this.state.pageName:'Pages'}
+                    {this.state.pageName?this.state.pageName:'Products'}
                   </button>
                   <div className="dropdown-menu">
                     <a className="dropdown-item" onClick={() => this.clearSubCampaign()} >Default</a>
                     {this.renderDropdownList()}
+                    <a className="dropdown-item">Add New Product</a>
                   </div>
                 </div>
               }
