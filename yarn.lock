@@ -8635,6 +8635,10 @@ react-flexible-switch@^1.2.1:
     classnames "^2.1.2"
     prop-types "^15.6.0"
 
+react-flip-move@^3.0.1:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/react-flip-move/-/react-flip-move-3.0.2.tgz#2f6f16ca6cb0a8490fba15a98b3440a76127e825"
+
 react-google-charts@^2.0.21:
   version "2.0.29"
   resolved "https://registry.yarnpkg.com/react-google-charts/-/react-google-charts-2.0.29.tgz#1f07b6cccf6c6b0965a00ae9e50f1d75d48f723d"
@@ -8681,6 +8685,13 @@ react-hot-loader@^4.1.1:
     prop-types "^15.6.1"
     react-lifecycles-compat "^3.0.4"
     shallowequal "^1.0.2"
+
+react-images-upload@^1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/react-images-upload/-/react-images-upload-1.2.2.tgz#90f6bb1f1acccc1b60f4267b9577083632b5bf09"
+  dependencies:
+    react "^16.2.0"
+    react-flip-move "^3.0.1"
 
 react-images-uploader@^1.1.0:
   version "1.1.0"
@@ -8987,7 +8998,7 @@ react@^15.4.1, react@^15.5.4, react@^15.6.1:
     object-assign "^4.1.0"
     prop-types "^15.5.10"
 
-react@^16.1.0, react@^16.3.2:
+react@^16.1.0, react@^16.2.0, react@^16.3.2:
   version "16.4.2"
   resolved "https://registry.yarnpkg.com/react/-/react-16.4.2.tgz#2cd90154e3a9d9dd8da2991149fdca3c260e129f"
   dependencies:
