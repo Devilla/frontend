@@ -95,7 +95,10 @@ class Rules extends Component{
   }
 
   handleNextState() {
-    this.props.setActiveState(3);
+    if(this.props.campaign && this.props.campaign.campaignType == 'page')
+      this.props.setActiveState(5);
+    else
+      this.props.setActiveState(3);
   }
 
   handleBackState() {

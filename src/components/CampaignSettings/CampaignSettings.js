@@ -50,16 +50,20 @@ const CampaignSettings = (props) => {
               {!mobile() && '2.'}<i className="fi-cog mr-2"></i> {!mobile()? 'Settings':''}
             </a>
           </li>
-          <li className="nav-item waves-effect text-center">
-            <a data-toggle="tab" aria-expanded="false" className={`nav-link ${props.activeClass == 3?'active pb-2 pt-2':'pb-2 pt-2'}`} onClick={() => props.setActiveState(3)}>
-              {!mobile() && '3.'}<i className="fi-head mr-2"></i> {!mobile()? 'Capture Leads':''}
-            </a>
-          </li>
-          <li className="nav-item waves-effect">
-            <a data-toggle="tab" aria-expanded="false" className={`nav-link ${props.activeClass == 4?'active pb-2 pt-2':'pb-2 pt-2'}`} onClick={() => props.setActiveState(4)}>
-              {!mobile() && '4.'}<i className="fi-monitor mr-2"></i> {!mobile()? 'Display':''}
-            </a>
-          </li>
+          {props.campaign.campaignType !== 'page' &&
+            <li className="nav-item waves-effect text-center">
+              <a data-toggle="tab" aria-expanded="false" className={`nav-link ${props.activeClass == 3?'active pb-2 pt-2':'pb-2 pt-2'}`} onClick={() => props.setActiveState(3)}>
+                {!mobile() && '3.'}<i className="fi-head mr-2"></i> {!mobile()? 'Capture Leads':''}
+              </a>
+            </li>
+          }
+          {props.campaign.campaignType !== 'page' &&
+            <li className="nav-item waves-effect">
+              <a data-toggle="tab" aria-expanded="false" className={`nav-link ${props.activeClass == 4?'active pb-2 pt-2':'pb-2 pt-2'}`} onClick={() => props.setActiveState(4)}>
+                {!mobile() && '4.'}<i className="fi-monitor mr-2"></i> {!mobile()? 'Display':''}
+              </a>
+            </li>
+          }
           <li className="nav-item waves-effect text-center">
             <a data-toggle="tab" aria-expanded="false" className={`nav-link ${props.activeClass == 5?'active pb-2 pt-2':'pb-2 pt-2'}`} onClick={() => props.setActiveState(5)}>
               {!mobile() && '5.'}<i className="fa fa-code mr-2"></i> {!mobile()? 'Install Pixel':''}
@@ -94,6 +98,7 @@ const CampaignSettings = (props) => {
         step={props.activeClass}
         setActiveState={props.setActiveState}
         goLive={props.goLive}
+        campaign={props.campaign}
       />
     </div>
   );
