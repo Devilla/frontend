@@ -2,6 +2,7 @@ import React from 'react';
 import  { InstallPixel, CapturePage, DisplayPage, Rules, NotificationSettings } from 'components';
 import { browserHistory } from 'react-router';
 import mobile from 'is-mobile';
+import { CampaignFooter } from 'components';
 
 import './CampaignSettings.scss';
 
@@ -14,7 +15,8 @@ const CampaignSettings = (props) => {
 
           <h4 className=" header-title">{props.campaign
             ? props.campaign.websiteUrl
-            : 'http://localhost:3000'}</h4>
+            : 'http://localhost:3000'}
+          </h4>
 
         </div>
         <div className="modal fade show-modal" id="myModallive" role="dialog">
@@ -35,7 +37,7 @@ const CampaignSettings = (props) => {
 
         <div className="clearfix"></div>
 
-        <button type="button" className="btn btn-outline-primary goliveRight waves-light waves-effect number" data-toggle="modal" data-target="#myModallive" onClick={props.goLive}><i className="fi-location"></i>&nbsp;Go Live</button>
+        {/* <button type="button" className="btn btn-outline-primary goliveRight waves-light waves-effect number" data-toggle="modal" data-target="#myModallive" onClick={props.goLive}><i className="fi-location"></i>&nbsp;Go Live</button> */}
 
         <ul className="nav nav-pills navtab-bg nav-justified pull-in new-campaign-tab-pills">
           <li className="nav-item waves-effect text-center">
@@ -60,7 +62,7 @@ const CampaignSettings = (props) => {
           </li>
           <li className="nav-item waves-effect text-center">
             <a data-toggle="tab" aria-expanded="false" className={`nav-link ${props.activeClass == 5?'active pb-2 pt-2':'pb-2 pt-2'}`} onClick={() => props.setActiveState(5)}>
-              {!mobile() && '5.'}<i className="fi-download mr-2"></i> {!mobile()? 'Install Pixel':''}
+              {!mobile() && '5.'}<i className="fa fa-code mr-2"></i> {!mobile()? 'Install Pixel':''}
             </a>
           </li>
         </ul>
@@ -88,6 +90,11 @@ const CampaignSettings = (props) => {
           </div>
         </div>
       </div>
+      <CampaignFooter
+        step={props.activeClass}
+        setActiveState={props.setActiveState}
+        goLive={props.goLive}
+      />
     </div>
   );
 };

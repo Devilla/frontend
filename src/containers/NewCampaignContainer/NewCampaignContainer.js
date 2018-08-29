@@ -10,6 +10,7 @@ import { updateSubCampaign, fetchSubCampaign } from 'ducks/subcampaign';
 import { fetchElastic, clearElastic } from 'ducks/elastic';
 import { fetchOneRules, createRules, updateRules } from 'ducks/rules';
 import { fetchNotification } from 'ducks/notification';
+import { setBreadCrumbs } from 'ducks/breadcrumb';
 import { createConfiguration, fetchConfiguration, fetchCampaignConfiguration, clearConfiguration, updateConfiguration, createSuccess } from 'ducks/configuration';
 import { CampaignSettings, Campaign } from 'components';
 import './NewCampaignContainer.scss';
@@ -19,6 +20,14 @@ const toastConfig = {
   autoClose: 2000,
   className: 'toast-style'
 };
+
+const campaignTabs = [
+  'Notification',
+  'Rules Setting',
+  'Capture',
+  'Display',
+  'Install Pixel'
+];
 
 class NewCampaignContainer extends Component {
   constructor() {
@@ -91,6 +100,14 @@ class NewCampaignContainer extends Component {
     if(val == 2)
       this.setState({notification: ''});
     this.setState({activeClass: val});
+
+    let breadcrumb = this.props.breadcrumb;
+    breadcrumb.splice(1);
+    breadcrumb.push({
+      name: campaignTabs[val-1],
+      path: ''
+    });
+    this.props.setBreadCrumbs(breadcrumb);
   }
 
   verifyPixelStatus = (campaign) => {
@@ -221,6 +238,7 @@ const mapStateToProps = state => ({
   displayUrls: state.getIn(['pageurl', 'display']),
   leads: state.getIn(['pageurl', 'lead']),
   subcampaigns: state.getIn(['subcampaign', 'subcampaigns']),
+  breadcrumb: state.getIn(['breadcrumb', 'breadcrumb'])
 });
 
 const mapDispatchToProps = {
@@ -243,7 +261,8 @@ const mapDispatchToProps = {
   clearConfiguration,
   createSuccess,
   updateSubCampaign,
-  fetchSubCampaign
+  fetchSubCampaign,
+  setBreadCrumbs
 };
 
 export default connect(mapStateToProps, mapDispatchToProps, null, { withRef: true })(NewCampaignContainer);

@@ -62,3 +62,4 @@ export { default as GettingStarted } from './GettingStarted/GettingStarted';
 export { default as Settings } from './Settings/Settings';
 export { default as PageSpecificPopup } from './PageSpecificPopup/PageSpecificPopup';
 export { default as PageSpecific } from './PageSpecific/PageSpecific';
+export { default as CampaignFooter } from './CampaignFooter/CampaignFooter';

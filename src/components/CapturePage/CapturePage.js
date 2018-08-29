@@ -2,14 +2,11 @@ import React, { Component } from 'react';
 import {
   Row,
   Col,
-  Table,
   HelpBlock
 } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import CardTable from 'components/Template/card-with-page-table';
 import { pagethArray } from 'components/Template/data';
 import { fetchLeadUrl, createPageUrl, clearPageUrl, removePageUrl } from 'ducks/pageurl';
-import {Close} from 'img';
 import './CapturePage.scss';
 
 class CapturePage extends Component {
@@ -160,35 +157,35 @@ class CapturePage extends Component {
     let leads = this.props.leads?this.props.leads.filter(lead => lead.type == 'lead'):[];
     let { campaign } = this.props;
     return (
-      <Table>
-        <thead>
-          <tr>
+      <div className="Table">
+        <div className="thead table-header flex">
+          <div className="tr tab-row">
             {
               pagethArray.map((prop, key) => {
                 return (
-                  <th  key={key}>{prop}</th>
+                  <div className="th col-md-2"  key={key}>{prop}</div>
                 );
               })
             }
-          </tr>
-        </thead>
-        <tbody>
+          </div>
+        </div>
+        <div>
           {
             leads.map((lead, i) => {
-              return <tr key={i}>
-                <td className="url">{lead.url}</td>
-                <td>{lead.domain === campaign.websiteUrl?'Domain':'Sub Domain'}</td>
-                <td>{lead.campaignName}</td>
-                <td className="ml-4 status">
+              return <div className="capture-td tr" key={i}>
+                <div className="url td col-md-2">{lead.url}</div>
+                <div className="td col-md-2">{lead.domain === campaign.websiteUrl?'Domain':'Sub Domain'}</div>
+                <div className="td col-md-2">{lead.campaignName}</div>
+                <div className="pl-4 status td col-md-2">
                   <span className="dot ml-3" style={{backgroundColor: this.renderColor(lead.status) }}>
                   </span>
-                </td>
-                <td><a href="javascript:;"><i className="ml-3 icon-trash" onClick={() => this.deleteLead(lead._id, i, lead.type)}></i></a></td>
-              </tr>;
+                </div>
+                <div className="td col-md-2"><a href="javascript:;"><i className="ml-3 icon-trash" onClick={() => this.deleteLead(lead._id, i, lead.type)}></i></a></div>
+              </div>;
             })
           }
-        </tbody>
-      </Table>
+        </div>
+      </div>
     );
   }
 
@@ -228,28 +225,28 @@ class CapturePage extends Component {
           <div className="modal-content align-modal">
             <div className="modal-header">
               <h4 className="modal-title">Add Subdomain</h4>
-              <div data-dismiss="modal" onClick={this.openCloseModal}><div>
-                <span><img src={Close}/></span>
-              </div></div>
+              <div data-dismiss="modal">
+                <h4 className="close-btn"><i className="fa fa-times" type="button" onClick={this.openCloseModal}></i></h4>
+              </div>
             </div>
             <div className="modal-body row">
-              <div className="col-md-9">
+              <div className="col-md-8 pl-5">
                 <input type="text"
                   className="form-control"
                   placeholder="Add your subdomain url"
                   onChange={this.handleSubdomain}
                   onKeyUp={(e) => e.keyCode === 13?this.submitSubdomain():null}
                 />
-                <HelpBlock className="text-center">
-                  <p className="website-error">{domainError}</p>
-                </HelpBlock>
               </div>
-              <div>
+              <div className="col-md-4">
                 <span className="btn btn-primary addsubdomain" data-dismiss="modal" onClick={this.submitSubdomain}>
                  Add
                 </span>
               </div>
             </div>
+            <HelpBlock className="text-center row">
+              <p className="website-error mb-0">{domainError}</p>
+            </HelpBlock>
           </div>
         </div>
       </div>
@@ -343,20 +340,21 @@ class CapturePage extends Component {
             </HelpBlock>
           </Row>
           <Row>
-            <Col md={12}>
+            <Col md={3}></Col>
+            <Col md={6}>
               <div className="status">
-                <ul>
+                <ul className="mb-0">
                   <li>
                     <span className="dot success"></span>
                     <span className="status-name">Active</span>
                   </li>
                   <li>
                     <span className="dot primary"></span>
-                    <span className="status-name">Last seen over 24 hrs ago</span>
+                    <span className="status-name">Seen 24hrs ago</span>
                   </li>
                   <li>
                     <span className="dot unverified"></span>
-                    <span className="status-name">Has Never Been Tracked</span>
+                    <span className="status-name">Never Been Tracked</span>
                   </li>
                   <li>
                     <span className="dot danger"></span>
@@ -365,25 +363,17 @@ class CapturePage extends Component {
                 </ul>
               </div>
             </Col>
+            <Col md={3}></Col>
           </Row>
           <Row>
             <Col md={12}>
-              <CardTable
-                content ={
-                  <div className="centertbl">
-                    {this.renderLeads()}
-                  </div>
-                }
-              />
+              <div className="centertbl">
+                {this.renderLeads()}
+              </div>
             </Col>
           </Row>
 
-          <div className=" float-left ">
-            <button type="button" className="btn btn-primary  waves-effect  capturebtn-back" onClick={this.handleBackState}><i className="icon-arrow-left pr-2"></i>Back</button>
-          </div>
-          <div className=" float-right ">
-            <button type="button" className="btn btn-primary waves-effect ml-2 pl-4 pr-3 capturebtn-next" onClick={this.handleNextState}>Next<i className="icon-arrow-right pl-2"></i> </button>
-          </div>
+
           <div className="clearfix"></div>
         </div>
       </div>

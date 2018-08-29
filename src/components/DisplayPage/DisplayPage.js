@@ -2,11 +2,9 @@ import React, { Component } from 'react';
 import {
   Row,
   Col,
-  Table,
   HelpBlock
 } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import CardTable from 'components/Template/card-with-page-table';
 import { pagethArray } from 'components/Template/data';
 import { fetchDisplayUrl, createPageUrl, clearPageUrl, removePageUrl } from 'ducks/pageurl';
 
@@ -63,13 +61,10 @@ class DisplayPage extends Component {
 
   addPageUrl = () => {
     if(this.state.displayUrl.url == '') {
-      // if(this.state.count<1)
       this.state.displayUrl.url='/';
       this.state.displayUrl.status = 'unverified';
       this.state.displayUrl.class = 'warning';
       this.state.displayUrl.type = 'display';
-      // else
-      //   return this.setState({error: 'Please enter a valid path'});
     }
 
     if(this.state.displayUrl.url[0]!=='/')
@@ -164,35 +159,35 @@ class DisplayPage extends Component {
     let displayUrls = this.props.displayUrls?this.props.displayUrls.filter(lead => lead.type == 'display'):[];
     let { campaign } = this.props;
     return (
-      <Table>
-        <thead>
-          <tr>
+      <div className="Table table-striped">
+        <div className="thead table-header flex">
+          <div className="tr tab-row">
             {
               pagethArray.map((prop, key) => {
                 return (
-                  <th  key={key}>{prop}</th>
+                  <div className="th col-md-2"  key={key}>{prop}</div>
                 );
               })
             }
-          </tr>
-        </thead>
-        <tbody>
+          </div>
+        </div>
+        <div>
           {
             displayUrls.map((displayUrl, i) => {
-              return <tr key={i}>
-                <td className="display-url">{displayUrl.url}</td>
-                <td>{displayUrl.domain === campaign.websiteUrl?'Domain':'Sub Domain'}</td>
-                <td>{displayUrl.campaignName}</td>
-                <td className="pl-4 status">
+              return <div className="display-td tr" key={i}>
+                <div className="display-url td col-md-2">{displayUrl.url}</div>
+                <div className="td col-md-2">{displayUrl.domain === campaign.websiteUrl?'Domain':'Sub Domain'}</div>
+                <div className="td col-md-2">{displayUrl.campaignName}</div>
+                <div className="pl-4 status td col-md-2">
                   <span className="dot display" style={{backgroundColor: this.renderColor(displayUrl.status) }}>
                   </span>
-                </td>
-                <td><a href="javascript:;"><i className="ml-3 icon-trash" onClick={() => this.deleteDisplayUrl(displayUrl._id, i, displayUrl.type)}></i></a></td>
-              </tr>;
+                </div>
+                <div className="td col-md-2"><a href="javascript:;"><i className="ml-3 icon-trash" onClick={() => this.deleteDisplayUrl(displayUrl._id, i, displayUrl.type)}></i></a></div>
+              </div>;
             })
           }
-        </tbody>
-      </Table>
+        </div>
+      </div>
     );
   }
 
@@ -230,30 +225,28 @@ class DisplayPage extends Component {
       <div className="modal fade show-modal" role="dialog" style={{ display: openClose?'block':'none', opacity: openClose?1:0 }}>
         <div className="modal-dialog">
           <div className="modal-content align-modal">
-            <div className="modal-header">
+            <div className="modal-header flex">
               <h4 className="modal-title">Add SubDomain</h4>
+              <h4 className="close-btn"> <i className="fa fa-times" type="button" onClick={this.openCloseModal}></i></h4>
             </div>
             <div className="modal-body row">
-              <div className="col-md-9">
+              <div className="col-md-8 pl-5">
                 <input type="text"
                   className="form-control"
                   placeholder="Add your subdomain"
                   onChange={this.handleSubdomain}
                   onKeyUp={(e) => e.keyCode === 13?this.submitSubdomain():null}
                 />
-                <HelpBlock className="text-center">
-                  <p className="website-error">{domainError}</p>
-                </HelpBlock>
               </div>
-              <div>
+              <div className="col-md-4">
                 <span className="btn btn-primary  addsubdomain" onClick={this.submitSubdomain}>
                  Add
                 </span>
               </div>
             </div>
-            <div className="modal-footer">
-              <button type="button" className="btn btn-primary close-btn" onClick={this.openCloseModal}>Close</button>
-            </div>
+            <HelpBlock className="text-center row">
+              <p className="website-error mb-0 mt-1">{domainError}</p>
+            </HelpBlock>
           </div>
         </div>
       </div>
@@ -306,7 +299,7 @@ class DisplayPage extends Component {
 
     return (
       <div className="display-container">
-        
+
         <div className="tabscontent">
           <Row className="display-page-row">
             <Col md={12} className="display-page-header">
@@ -338,11 +331,10 @@ class DisplayPage extends Component {
                         Add Path
                       </div>
                       <div className="dropdown-item" id={1} onClick={this.openCloseModal} >
-                      
+
                         Add SubDomain
                       </div>
                       <div className="dropdown-item" id={2} >
-                    
                         Add to All pages
                         <label className="checkbox-container">
                           <input type="checkbox" defaultChecked={rules.displayOnAllPages} onChange={this.handleDisplayChange} />
@@ -367,23 +359,23 @@ class DisplayPage extends Component {
               <p className="website-error">{error}</p>
             </HelpBlock>
           </Row>
+
           <Row>
-          </Row>
-          <Row>
-            <Col md={12}>
+            <Col md={3}></Col>
+            <Col md={6}>
               <div className="status">
-                <ul>
+                <ul className="mb-0">
                   <li>
                     <span className="dot success"></span>
                     <span className="status-name">Active</span>
                   </li>
                   <li>
                     <span className="dot primary"></span>
-                    <span className="status-name">Last seen over 24 hrs ago</span>
+                    <span className="status-name">Seen 24hrs ago</span>
                   </li>
                   <li>
                     <span className="dot unverified"></span>
-                    <span className="status-name">Has Never Been Tracked</span>
+                    <span className="status-name">Never Been Tracked</span>
                   </li>
                   <li>
                     <span className="dot danger"></span>
@@ -392,27 +384,18 @@ class DisplayPage extends Component {
                 </ul>
               </div>
             </Col>
+            <Col md={3}></Col>
           </Row>
           <Row>
             <Col md={12}>
-              <CardTable
-                content ={
-                  <div className="centertbl">
-                    {this.renderLeads()}
-                  </div>
-                }
-              />
+              <div className="centertbl">
+                {this.renderLeads()}
+              </div>
             </Col>
           </Row>
-          <div className="float-left">
-            <button type="button" className="btn btn-primary waves-effect number displaybtn-back" onClick={this.handleBackState}><i className="icon-arrow-left pr-2"></i>Back</button>
-          </div>
-          <div className="float-right">
-            <button type="button" className="btn btn-primary  waves-effect number pl-4 pr-3 displaybtn-finish" onClick={this.handleNextState}>Next<i className="icon-arrow-right pl-2"></i> </button>
-          </div>
-          <div className="clearfix"></div>
+
         </div>
-        
+
       </div>
     );
   }

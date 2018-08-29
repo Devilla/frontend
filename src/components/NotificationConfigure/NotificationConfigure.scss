@@ -54,7 +54,7 @@
                     }
                     a.nav-link:hover:not(:focus) {
                       background-color: #1e68c6;
-                      color: white;
+                      color: white !important;
                     }
                   }
                 }
@@ -404,7 +404,7 @@ img {
   }
   #FPqR2fZIqJeA2fZI7MM9_0 .FPqR3zjZqJeA3zjZ7MM9_0 .FPqR1JYFqJeA1JYF7MM9_0 img {
     width:100%;
-    border-radius: 50px;
+    border-radius: 50px !important;
   }
   #FPqR2lriqJeA2lri7MM9_0 .FPqR1XogqJeA1Xog7MM9_0.FPqR27wVqJeA27wV7MM9_0, #FPqR3dGiqJeA3dGi7MM9_0 .FPqR2B_4qJeA2B_47MM9_0.FPqRD2zVqJeAD2zV7MM9_0 {
     cursor: pointer;

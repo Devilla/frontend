@@ -1,16 +1,16 @@
 import React from 'react';
 import './NotificationList.scss';
-import { PageSpecificPopup } from 'components';
+// import { PageSpecificPopup } from 'components';
 
 
 const NotificationList = ({
   notificationList,
   configure,
   handleActivityChange,
-  setNotification,
-  setNewConfig,
-  handleContentChange,
-  selectedSubCampaign
+  // setNotification,
+  // setNewConfig,
+  // handleContentChange,
+  // selectedSubCampaign
 }) => {
   const renderNotifications = () => {
     return notificationList.map(notification =>
@@ -72,7 +72,9 @@ const NotificationList = ({
                 defaultChecked={notification.activity}
                 onChange={(e) => e.target.checked != notification.activity?handleActivityChange(e.target.checked, notification._id, notification.configurationId):null}
               />
-              <label className="tgl-btn" htmlFor={notification._id} style={{textAlign:'left'}}>ON</label>
+              <label className="tgl-btn" htmlFor={notification._id} style={{textAlign:'left'}}>
+                <div className="toggle-text">ON</div>
+              </label>
             </div>
             {notification.notificationName == 'Review Notification' ?
               <button
@@ -99,12 +101,12 @@ const NotificationList = ({
 
   return (
     <div data-transition-id="notification-list-page">
-      <PageSpecificPopup
+      {/* <PageSpecificPopup
         handleContentChange={handleContentChange}
         selectedSubCampaign={selectedSubCampaign}
         setNotification={setNotification}
         setNewConfig={setNewConfig}
-      />
+      /> */}
       <div className="cards-notification">
         <div className="row m-t-50 notification-list">
           {renderNotifications()}

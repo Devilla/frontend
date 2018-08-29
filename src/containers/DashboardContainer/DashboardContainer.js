@@ -7,6 +7,7 @@ import Loading from 'react-loading-animation';
 import PageTransition from 'react-router-page-transition';
 
 import { checkTokenExists } from 'ducks/auth';
+import { setBreadCrumbs } from 'ducks/breadcrumb';
 import { Header, Sidebar } from 'components';
 import {
   Radio,
@@ -93,38 +94,38 @@ class DashboardContainer extends Component {
     if(dropdown)
       this.openCloseDropdown();
     Popup.create({
-      title: 'How can we help you today',
+      title: 'How can we help you today?',
       content: <div className="help-container">
         <FormGroup>
           <Row className="help-form-fields">
-            <Radio name="radioGroup" inline={true}>
-              &nbsp;&nbsp;I need help setting up my Campaign
+            <Radio name="radioGroup" inline={true} className="radio-text">
+              &nbsp;&nbsp; &nbsp; &nbsp;I need help setting up my Campaign
             </Radio>
           </Row>
           <Row className="help-form-fields">
-            <Radio name="radioGroup" inline="inline">
-              &nbsp;&nbsp;I want to know how to use Influence
+            <Radio name="radioGroup" inline="inline" className="radio-text">
+              &nbsp;&nbsp; &nbsp; &nbsp;I want to know how to use Influence
             </Radio>
           </Row>
           <Row className="help-form-fields">
-            <Radio name="radioGroup" inline="inline">
-              &nbsp;&nbsp;Something is not working
+            <Radio name="radioGroup" inline="inline" className="radio-text">
+              &nbsp;&nbsp; &nbsp; &nbsp;Something is not working
             </Radio>
           </Row>
           <Row className="help-form-fields">
-            <Radio name="radioGroup" inline="inline">
-              &nbsp;&nbsp;I have feedback / feature request
+            <Radio name="radioGroup" inline="inline" className="radio-text">
+              &nbsp;&nbsp; &nbsp; &nbsp;I have feedback / feature request
             </Radio>
           </Row>
           <Row className="help-form-fields">
-            <Radio name="radioGroup" inline="inline">
-              &nbsp;&nbsp;I need help with something else
+            <Radio name="radioGroup" inline="inline" className="radio-text">
+              &nbsp;&nbsp; &nbsp; &nbsp;I need help with something else
             </Radio>
           </Row>
         </FormGroup>
         <Row>
           <h4>Tell us more</h4>
-          <textarea className="form-control z-depth-1" id="exampleFormControlTextarea6" rows="3" placeholder="Briefly explain what happened and steps to replicate the issue."></textarea>
+          <textarea className="form-control z-depth-1" id="exampleFormControlTextarea6" rows="3" placeholder="Briefly explain about the issue you are facing."></textarea>
         </Row>
       </div>,
       buttons: {
@@ -157,6 +158,14 @@ class DashboardContainer extends Component {
     this.openCloseDropdown();
     if(this.state.disableButton)
       return;
+
+    let breadcrumb = this.props.breadcrumb;
+    breadcrumb.push({
+      name: 'Profile Settings',
+      path: '/profile'
+    });
+    this.props.setBreadCrumbs(breadcrumb);
+
     browserHistory.push('/profile');
   }
 
@@ -210,11 +219,13 @@ class DashboardContainer extends Component {
 const mapStateToProps = state => ({
   profile: state.getIn(['profile', 'profile']),
   campaignInfo: state.getIn(['campaign', 'campaignInfo']),
-  user: state.getIn(['auth', 'user'])
+  user: state.getIn(['auth', 'user']),
+  breadcrumb: state.getIn(['breadcrumb', 'breadcrumb'])
 });
 
 const mapDispatchToProps = {
-  checkTokenExists
+  checkTokenExists,
+  setBreadCrumbs
 };
 
 export default connect(mapStateToProps, mapDispatchToProps, null, { withRef: true })(DashboardContainer);
