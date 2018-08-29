@@ -62,13 +62,10 @@ class DisplayPage extends Component {
 
   addPageUrl = () => {
     if(this.state.displayUrl.url == '') {
-      // if(this.state.count<1)
       this.state.displayUrl.url='/';
       this.state.displayUrl.status = 'unverified';
       this.state.displayUrl.class = 'warning';
       this.state.displayUrl.type = 'display';
-      // else
-      //   return this.setState({error: 'Please enter a valid path'});
     }
 
     if(this.state.displayUrl.url[0]!=='/')
@@ -303,7 +300,7 @@ class DisplayPage extends Component {
 
     return (
       <div className="display-container">
-        
+
         <div className="tabscontent">
           <Row className="display-page-row">
             <Col md={12} className="display-page-header">
@@ -335,11 +332,10 @@ class DisplayPage extends Component {
                         Add Path
                       </div>
                       <div className="dropdown-item" id={1} onClick={this.openCloseModal} >
-                      
+
                         Add SubDomain
                       </div>
                       <div className="dropdown-item" id={2} >
-                    
                         Add to All pages
                         <label className="checkbox-container">
                           <input type="checkbox" defaultChecked={rules.displayOnAllPages} onChange={this.handleDisplayChange} />
@@ -404,7 +400,7 @@ class DisplayPage extends Component {
           </Row>
           
         </div>
-        
+
       </div>
     );
   }

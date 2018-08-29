@@ -8,6 +8,7 @@ import { Animated } from 'react-animated-css';
 import Loading from 'react-loading-animation';
 
 import { fetchElastic } from 'ducks/elastic';
+import { setBreadCrumbs } from 'ducks/breadcrumb';
 import { fetchCampaignInfo, successCampaign } from 'ducks/campaign';
 import { Tooltip, OverlayTrigger } from 'react-bootstrap';
 import { Analytics, AnalyticsProfile } from 'components';
@@ -55,12 +56,19 @@ class AnalyticsContainer extends Component {
     }
   }
 
-  /*handleProfileBack = () => {
+  handleProfileBack = () => {
     this.setState({usersList: []});
-  }*/
+  }
 
   handleViewProfile = (list) => {
     this.setState({usersList: list});
+
+    let breadcrumb = this.props.breadcrumb;
+    breadcrumb.push({
+      name: 'Analytics Profile',
+      path: ''
+    });
+    this.props.setBreadCrumbs(breadcrumb);
   }
 
   renderProfileList = () => {
@@ -170,6 +178,7 @@ class AnalyticsContainer extends Component {
   }
 
   renderList = () => {
+
     if(this.props.campaignInfo && this.props.campaignInfo.websiteLive.length)
       return this.props.campaignInfo.websiteLive.map((website, index) => {
         let visitor = 0;
@@ -188,7 +197,7 @@ class AnalyticsContainer extends Component {
           <div scope="row" className="text-center td col-md-1">{index + 1}</div>
           <div className="text-center td col-md-3">{website.websiteUrl}</div>
           <div className="text-center td-2 col-md-2">{visitor}</div>
-          <div className="text-center td-3 col-md-2">{userDetails && userDetails.length} <a onClick={() =>  {/*browserHistory.push('analytics/profile') && */ userDetails?this.handleViewProfile(userDetails):null;} }>&nbsp; Profiles</a></div>
+          <div className="text-center td-3 col-md-2">{userDetails && userDetails.length} <a onClick={() => userDetails?this.handleViewProfile(userDetails):null }>&nbsp; Profiles</a></div>
           <div className="text-center td-4 col-md-1">-</div>
           <div className="text-center td-5 col-md-2">
             {
@@ -218,12 +227,14 @@ class AnalyticsContainer extends Component {
 
 const mapStateToProps = state => ({
   campaignInfo: state.getIn(['campaign', 'campaignInfo']),
+  breadcrumb: state.getIn(['breadcrumb', 'breadcrumb'])
 });
 
 const mapDispatchToProps = {
   fetchElastic,
   successCampaign,
-  fetchCampaignInfo
+  fetchCampaignInfo,
+  setBreadCrumbs
 };
 
 export default connect(mapStateToProps, mapDispatchToProps, null, { withRef: true })(AnalyticsContainer);
