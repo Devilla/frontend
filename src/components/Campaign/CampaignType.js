@@ -15,28 +15,28 @@ const CampaignType = ({handleCampaignType}) => {
               <h4 className="header-title">Choose Campaign Type</h4>
             </Row>
             <Row className="campaign-type-content">
-              <Col md={5}>
-                <Row className="campaign-type-button">
-                  <button className="btn btn-primary" onClick={() => handleCampaignType('default')}>Default Campaign</button>
+              <Col md={5} className="left-content pr-0 mr-0">
+                <Row className="campaign-type-button ml-5">
+                  <button className="btn btn-normal-campaign" onClick={() => handleCampaignType('default')}>Normal Campaign</button>
                 </Row>
-                <Row className="campaign-type-info">
+                <Row className="campaign-type-info ml-5 mt-4">
                   <Col>
-                    <p>All notification will be display over website pages</p>
+                    <p className="campaign-type-info">All notifications will be displayed on all the pages.</p>
                   </Col>
                 </Row>
               </Col>
-              <Col md={2} className="campaign-type-divider">
-                <h4>Or</h4>
+              <Col md={2} className="campaign-type-divider pl-0 pr-0">
+                <h4 className="content">Or</h4>
                 <div className="divider"></div>
               </Col>
-              <Col md={5}>
-                <Row className="campaign-type-button">
-                  <button className="btn btn-primary" onClick={() => handleCampaignType('page')}>Page Specifc Campaign</button>
+              <Col md={5} className="right-content pl-0 ml-0">
+                <Row className="campaign-type-button mr-5">
+                  <button className="btn btn-product-specific" onClick={() => handleCampaignType('page')}>Page Specifc Campaign</button>
                 </Row>
-                <Row className="campaign-type-info">
+                <Row className="campaign-type-info mr-5 mt-4">
                   <Col>
-                    <p>For online stores & ecommerce:</p>
-                    <p>Notification specific to that Page/Product will be shown</p>
+                    <p className="mb-0 campaign-type-info">For online stores Or ecommerce websites.</p>
+                    <p className="mt-0 campaign-type-info">Notification specific to that Page/Product will be shown</p>
                   </Col>
                 </Row>
               </Col>
