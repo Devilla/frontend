@@ -4,6 +4,7 @@ import Loading from 'react-loading-animation';
 
 import NotificationConfigure from 'components/NotificationConfigure/NotificationConfigure';
 import NotificationList from './NotificationList/NotificationList';
+import { ProductImages } from 'components';
 
 import './NotificationSettings.scss';
 
@@ -295,15 +296,18 @@ class Notifications extends Component {
             <div>
               <h4 className="lead text-center m-b-30 m-t-20">Notifications</h4>
               {notification &&
-                <div className="dropdown-campaigns">
-                  <button type="button" className="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                    {this.state.pageName?this.state.pageName:'Products'}
-                  </button>
-                  <div className="dropdown-menu">
-                    <a className="dropdown-item" onClick={() => this.clearSubCampaign()} >Default</a>
-                    {this.renderDropdownList()}
-                    <a className="dropdown-item">Add New Product</a>
+                <div className="notification-settings-options">
+                  <div className="dropdown-campaigns">
+                    <button type="button" className="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                      {this.state.pageName?this.state.pageName:'Products'}
+                    </button>
+                    <div className="dropdown-menu">
+                      <a className="dropdown-item" onClick={() => this.clearSubCampaign()} >Default</a>
+                      {this.renderDropdownList()}
+                      <a className="dropdown-item">Add New Product</a>
+                    </div>
                   </div>
+                  <button className="btn btn-primary" data-toggle="modal" data-target="#productImages" >Add Product Images</button>
                 </div>
               }
             </div>
@@ -352,6 +356,7 @@ class Notifications extends Component {
             </div>
           }
         </div>
+        <ProductImages products={this.props.subcampaigns} />
       </Loading>
     );
   }

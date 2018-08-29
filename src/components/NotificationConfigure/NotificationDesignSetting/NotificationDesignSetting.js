@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { FormGroup, Row, Col, Button, FormControl } from 'react-bootstrap';
 import Slider from 'react-rangeslider';
 import reactCSS from 'reactcss';
-// import './NotificationConfigure.scss';
 import 'react-images-uploader/styles.css';
 import 'react-images-uploader/font.css';
 import { ChromePicker } from 'react-color';
