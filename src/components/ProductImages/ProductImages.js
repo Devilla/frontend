@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ImageUploader from 'react-images-upload';
-
+import { updateSubCampaign } from 'ducks/subcampaign';
 import './ProductImages.scss';
 
 const pagethArray = [
@@ -23,18 +23,17 @@ class ProductImages extends Component {
   }
 
   onDrop = (picture, index) => {
-    let products = this.state.products;
-    products[index]['productImage'] = picture[0];
-    this.setState({products});
-  }
-
-  getBase64 = (file, index) => {
     var reader = new window.FileReader();
-    reader.readAsDataURL(file);
+    reader.readAsDataURL(picture[0]);
     reader.onload = () => {
       let products = this.state.products;
+      const updatedProduct = {
+        id: products[index]._id,
+        productImage: reader.result
+      };
       products[index]['productImage'] = reader.result;
       this.setState({products});
+      this.props.updateSubCampaign(updatedProduct);
     };
   }
 
@@ -71,7 +70,7 @@ class ProductImages extends Component {
                         return (
                           <div className="display-td tr" key={i}>
                             <div className="td col-md-4">
-                              <img src={product.productImage? typeof product.productImage.name == 'string'?this.getBase64(product.productImage, i):product.productImage:'http://weggelopen.info/wp-content/uploads/2018/08/jordan-map-images.jpg'} />
+                              <img src={product.productImage?product.productImage:'http://weggelopen.info/wp-content/uploads/2018/08/jordan-map-images.jpg'} />
                             </div>
                             <div className="td col-md-4">{product.name}</div>
 
@@ -79,7 +78,7 @@ class ProductImages extends Component {
                               <a href="javascript:;">
                                 <ImageUploader
                                   withIcon={true}
-                                  buttonText='Choose images'
+                                  buttonText='Choose Product image'
                                   onChange={(image) => this.onDrop(image, i)}
                                   imgExtension={['.jpg', '.gif', '.png', '.gif']}
                                   maxFileSize={5242880}
@@ -101,11 +100,8 @@ class ProductImages extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  campaign: state.getIn(['campaign', 'campaign'])
-});
-
 const mapDispatchToProps = {
+  updateSubCampaign
 };
 
-export default connect(mapStateToProps, mapDispatchToProps, null, { withRef: true })(ProductImages);
+export default connect(null, mapDispatchToProps, null, { withRef: true })(ProductImages);
