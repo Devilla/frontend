@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import mobile from 'is-mobile';
 
 import LeftView from './LeftView';
 import RightView from './RightView';
@@ -133,10 +132,8 @@ class Rules extends Component{
           />
         </div>
         <div className="rules-buttons">
-          <button type="button" className="btn btn-color waves-light waves-effect number " onClick={this.handleBackState}><i className="icon-arrow-left pr-2"></i>{!mobile() && 'Back'}</button>
           <button type="button" className="btn btn-color btn-outline-primary waves-light waves-effect number" onClick={showNotification}>{sampleDisplay?'Hide':'Show'} Notification </button>
           <button type="button" className="btn btn-color btn-outline-primary waves-light waves-effect number" onClick={this.setDefaultRules}>Set Default</button>
-          <button type="button" className="btn btn-color waves-light waves-effect number ml-2 pl-4 pr-3" onClick={this.saveRules}>{!mobile() && 'Next'}<i className="icon-arrow-right pl-2"></i> </button>
         </div>
         <div className="clearfix"></div>
       </div>

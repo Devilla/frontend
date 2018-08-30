@@ -4,7 +4,7 @@ import Loading from 'react-loading-animation';
 
 import NotificationConfigure from 'components/NotificationConfigure/NotificationConfigure';
 import NotificationList from './NotificationList/NotificationList';
-import { ProductImages } from 'components';
+import { ProductImages, PageSpecific, Modal } from 'components';
 
 import './NotificationSettings.scss';
 
@@ -302,12 +302,11 @@ class Notifications extends Component {
                       {this.state.pageName?this.state.pageName:'Products'}
                     </button>
                     <div className="dropdown-menu">
-                      <a className="dropdown-item" onClick={() => this.clearSubCampaign()} >Default</a>
                       {this.renderDropdownList()}
-                      <a className="dropdown-item">Add New Product</a>
+                      <a className="dropdown-item" data-toggle="modal" data-target="#addNewProduct">Add/Edit Products</a>
                     </div>
                   </div>
-                  <button className="btn btn-primary" data-toggle="modal" data-target="#productImages" >Add Product Images</button>
+                  <button className="btn btn-primary" data-toggle="modal" data-target="#productImages">Add Product Images</button>
                 </div>
               }
             </div>
@@ -332,7 +331,7 @@ class Notifications extends Component {
                 <NotificationConfigure
                   notification={notification}
                   profile={profile}
-                  showpopupfield={this.state.showpopupfield}
+                  campaign={campaign}
                   handleContentChange={this.handleContentChange}
                   setDefaultPanel={this.setDefaultPanel}
                   handleActivityChange={this.handleActivityChange}
@@ -341,24 +340,37 @@ class Notifications extends Component {
                   saveConfiguration={this.saveConfiguration}
                   backConfiguration={this.backConfiguration}
                   showpopup={this.showpopup}
-                  popupName={this.state.popupName}
-                  campaign={campaign}
                   {...this.state}
                 />
               </Row>
             }
           </div>
-          {!this.props.notification &&
-            <div className="notifsettinglast-btn">
-              <div className="ml-2 float-right">
-                <button type="button" className="btn btn-primary  waves-light waves-effect cardnext-btn ml-2 pl-4 pr-3" onClick={this.handleNextState}>Next <i className="icon-arrow-right pl-2"></i> </button>
-              </div>
-              <div className="clearfix"></div>
-            </div>
-          }
         </div>
         {campaign.campaignType == 'page' &&
-          <ProductImages products={this.props.subcampaigns} />
+          <div>
+            <ProductImages products={this.props.subcampaigns} />
+            <Modal
+              id="addNewProduct"
+              title="Add new Product"
+              content={
+                <PageSpecific
+                  campaign={this.props.campaign}
+                  products={this.props.subcampaigns}
+                  updateSubCampaign={this.props.updateSubCampaign}
+                  createSubCampaign={this.props.createSubCampaign}
+                  rules={this.props.rules}
+                  addNew={true}
+                />
+              }
+              style={
+                {
+                  alignModalStyle: {
+                    top: '100px'
+                  }
+                }
+              }
+            />
+          </div>
         }
       </Loading>
     );

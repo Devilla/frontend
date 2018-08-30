@@ -12,6 +12,16 @@ class PageSpecific extends Component {
     };
   }
 
+  componentWillMount() {
+    if(this.props.products)
+      this.setState({pages: JSON.parse(JSON.stringify(this.props.products))});
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if(nextProps.products != this.props.products)
+      this.setState({pages: JSON.parse(JSON.stringify(nextProps.products))});
+  }
+
   handleChange = (e, index) => {
     let pages = this.state.pages;
     pages[index][e.target.id] = e.target.value;
@@ -29,7 +39,7 @@ class PageSpecific extends Component {
       return (
         <Row key={index}>
           <form className="product-details-form">
-            <Col md={4} className="form-group">
+            <Col md={3} className="form-group">
               <label htmlFor="productName">Product Name</label>
               <input type="text" className="form-control" id="productName" value={page.productName} aria-describedby="productName" placeholder="Enter Product Name" onChange={(e) => this.handleChange(e, index)} />
             </Col>
@@ -76,10 +86,50 @@ class PageSpecific extends Component {
       this.props.handleNextButton(e, pages);
   }
 
+  updateProduct = () => {
+    const { pages } = this.state;
+    let error;
+    if(!pages.length)
+      return this.setState({error: 'Please add a page to your campaign'});
+    pages.map(page => {
+      if(!page.productName || !page.productUrl || !page.captureUrl)
+        error = 'Enter all details';
+    });
+    if(error)
+      return this.setState({ error });
+    else {
+      pages.map((page, index) => {
+        const product = this.props.products[index];
+        const { campaign, rules, createSubCampaign, updateSubCampaign } = this.props;
+        if(page._id && (page.productName != product.productName || page.productUrl != product.productUrl || page.captureUrl != product.captureUrl)) {
+          updateSubCampaign({
+            id: page._id,
+            productName: page.productName,
+            productUrl: page.productUrl,
+            captureUrl: page.captureUrl
+          });
+        } else if(!page._id) {
+          let pageValue = {
+            name: page.productName,
+            productName: page.productName,
+            productUrl: page.productUrl,
+            captureUrl: page.captureUrl,
+            campaign: campaign._id,
+            domain: campaign.websiteUrl,
+            rule: rules._id,
+            isActive: true
+          };
+          createSubCampaign(pageValue);
+        }
+      });
+    }
+  }
+
   render() {
+    const { addNew } = this.props;
     return (
       <div className="page-specific-container">
-        <h4 className="header-title">Page Specific</h4>
+        {!addNew && <h4 className="header-title">Page Specific</h4>}
         <div className="page-specific-content">
           {this.renderPages()}
           <HelpBlock>
@@ -91,9 +141,9 @@ class PageSpecific extends Component {
               type="submit"
               htmlFor="campaignForm"
               className="btn btn-primary waves-light waves-effect newcamp-btn"
-              onClick={(e) => this.handleSubmit(e)}
+              onClick={(e) => addNew?this.updateProduct(e):this.handleSubmit(e)}
             >
-              Create Your Campaign
+              {addNew? 'Update' : 'Create Your Campaign'}
             </button>
           </Row>
         </div>

@@ -100,14 +100,6 @@ class WebsiteHome extends Component {
       autoplay: true
     };
 
-    // const settingsLanding = {
-    //   dots: true,
-    //   infinite: true,
-    //   speed: 3000,
-    //   slideToShow: 1,
-    //   slideToScroll: 1,
-    //   autoplay: true
-    // };
     const { display, animation,notificationTab } = this.state;
     return (
       <div className="transition-item websitehome-container">
@@ -139,12 +131,9 @@ class WebsiteHome extends Component {
 
             <div className="container col-md-5 pr-0 ml-0 pt-4">
               <img alt="homescreen" src={sideScreen_1} className="mb-1" style={{height: '400px'}} />
-              {/* <Slider vertical={true} {...settingsLanding} className="im1  website-home-top-image"> */}
               <div className="im1  website-home-top-image">
                 <NotificationView tab={notificationTab} animation={animation} display={display} position='' notificationPanelStyle={this.state.notificationPanelStyle}/>
               </div>
-              {/* <div><NotificationView tab='1.1' animation='' display='block' position='' notificationPanelStyle={this.state.notificationPanelStyle}/></div> */}
-              {/* </Slider> */}
             </div>
 
           </section>

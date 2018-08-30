@@ -66,7 +66,7 @@ const NotificationList = ({
               <p className="text-muted notification-list-content">
                 {
                   notification.notificationName === 'Bulk Activity' ?
-                    'Show visitor activity over a period of time'
+                    'Show total visitors'
                     :
                     notification.notificationName === 'Live Visitor Count' ?
                       'Shows live website viewers'
