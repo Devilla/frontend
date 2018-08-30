@@ -3,6 +3,7 @@ import { Row, Col } from 'react-bootstrap';
 import { browserHistory } from 'react-router';
 import { connect } from 'react-redux';
 
+import { UpgradePlan } from 'components';
 import { setBreadCrumbs } from 'ducks/breadcrumb';
 import './Settings.scss';
 
@@ -31,7 +32,7 @@ const setup = [
   },
   {
     icon: 'fi-paper-stack',
-    path: 'upgrade',
+    modal: 'upgradePlanModal',
     text: 'Upgrade',
     head: 'Detailed'
   }
@@ -64,13 +65,17 @@ const security = [
 class Settings extends Component {
 
   handleRoutes = (name, path) => {
-    let breadcrumb = this.props.breadcrumb;
-    breadcrumb.push({
-      name: name,
-      path: path
-    });
-    this.props.setBreadCrumbs(breadcrumb);
-    browserHistory.push(path);
+    if(path) {
+      let breadcrumb = this.props.breadcrumb;
+      breadcrumb.push({
+        name: name,
+        path: path
+      });
+      this.props.setBreadCrumbs(breadcrumb);
+      browserHistory.push(path);
+    } else {
+      return;
+    }
   }
 
   renderConfigurations = () => {
@@ -96,7 +101,7 @@ class Settings extends Component {
   renderSetup = () => {
     return setup.map((item, index) => {
       return (
-        <div key={index+item.text} className="card mr-0" onClick={() => this.handleRoutes(item.text, item.path)}>
+        <div key={index+item.text} className="card mr-0" data-toggle={item.modal?'modal':''} data-target={item.modal?`#${item.modal}`:''} onClick={() => this.handleRoutes(item.text, item.path)}>
           <div className="card-img-top">
             {item.head?
               <p>
@@ -137,6 +142,10 @@ class Settings extends Component {
     });
   }
 
+  handleSelectedPlan = (plan) => {
+    browserHistory.push(`/billing-details/${plan.id}`);
+  }
+
   render() {
     return (
       <div className="settings-container mt-3">
@@ -170,6 +179,7 @@ class Settings extends Component {
             </div>
           </Col>
         </Row>
+        <UpgradePlan handleSelectedPlan={this.handleSelectedPlan} />
       </div>
     );
   }
