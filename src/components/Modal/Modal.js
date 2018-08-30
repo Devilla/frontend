@@ -4,7 +4,7 @@ import './Modal.scss';
 const Modal = ({className, id, title, content, footer, style, closeModal, modalSize }) => {
   return (
     <div className={`modal fade show-modal ${className}`} style={style?style.modalStyle:{}}  id={id} role="dialog">
-      <div className={`modal-dialog ${modalSize?modalSize:'modal-lg'}`}>
+      <div className={`modal-dialog ${modalSize?modalSize:'modal-lg'}`} style={style?style.modalDialog:{}}>
         <div className="modal-content align-modal" style={style?style.alignModalStyle:{}}>
           <div className="modal-header">
             <button type="button" className="close" data-dismiss="modal" onClick={closeModal} >
