@@ -16,26 +16,26 @@ export default class WordpressPluginPage extends React.Component {
             </tr>
           </thead>
           <tbody>
-            <tr className="campaign-td">
-              <td>1.</td>
-              <td>Campaign Name</td>
-              <td>Tracking ID</td>
+            <tr className="campaign-td mt-3">
+              <td className="ml-3">1.</td>
+              <td>Influence</td>
+              <td>INF-XXXXXXXXX</td>
               <td>
                 <button className="p-2 btn btn-primary">Copy</button>
               </td>
             </tr>
             <tr>
-              <td>2.</td>
-              <td>Campaign Name</td>
-              <td>Tracking ID</td>
+              <td className="ml-3">2.</td>
+              <td>Spykeys</td>
+              <td>INF-XXXXXXXXX</td>
               <td>
                 <button className="p-2 btn btn-primary">Copy</button>
               </td>
             </tr>
             <tr>
-              <td>3.</td>
-              <td>Campaign Name</td>
-              <td>Tracking ID</td>
+              <td className="ml-3">3.</td>
+              <td>yahoo</td>
+              <td>INF-XXXXXXXXX</td>
               <td className="pr-2">
                 <button className="p-2 btn btn-primary">Copy</button>
               </td>
