@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { FormGroup, Row, Col, Button, FormControl } from 'react-bootstrap';
 import Slider from 'react-rangeslider';
 import reactCSS from 'reactcss';
-// import './NotificationConfigure.scss';
 import 'react-images-uploader/styles.css';
 import 'react-images-uploader/font.css';
 import { ChromePicker } from 'react-color';
@@ -269,7 +268,7 @@ export class NotificationDesignSetting extends Component {
     const planType = profile.plan.references.service_template_properties[1]?profile.plan.references.service_template_properties[1].data.value:'';
 
     return (
-      <div>
+      <div data-transition-id="notification-design-settings-page">
         {showpopupfield ?
           <div className="DashboardChannelcomponent">
             <DashboardChannel campaign={campaign} />

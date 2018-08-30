@@ -24,6 +24,14 @@ class Sidebar extends Component {
     this.setState({collapse: !this.state.collapse});
   }
 
+  setBreadCrumbs(crumb) {
+    const breadcrumb = {
+      name: crumb.name,
+      path: crumb.path
+    };
+    this.props.setBreadCrumbs([breadcrumb]);
+  }
+
   render() {
     const { disableButton, openClose, user, renderHelp } = this.props;
     const campaignValidation = user && user.path == '/getting-started';
@@ -68,6 +76,7 @@ class Sidebar extends Component {
                   <button
                     type="button"
                     className="btn btn-primary waves-effect addnew-small-btn addnew-btn p-2 text-center" style={user && user.status == 'paused'?{backgroundColor: 'gray'}:{borderRadius:'50px'}}
+                    onClick={() => this.setBreadCrumbs({name: 'Create Campaign', path: '/new'})}
                   >
                     <i className="fi-plus " style={{paddingLeft:'3px'}} />&nbsp;{' '}
                   </button>
@@ -75,6 +84,7 @@ class Sidebar extends Component {
                   <button
                     type="button"
                     className="btn btn-primary waves-effect  addnew-btn  ml-4 p-2  pt-0 pb-0  w-lg "
+                    onClick={() => this.setBreadCrumbs({name: 'Create Campaign', path: '/new'})}
                   >
                     <i className="fi-plus "/>&nbsp;{' '}
                     <span className="h6">New</span>{' '}
@@ -103,7 +113,7 @@ class Sidebar extends Component {
                           }
                         </Link>
                         :
-                        <Link to={prop.path} data-tip={prop.name} data-place="right" className={prop.upgrade && disableButton ? 'new disabled-link' : (disableButton || campaignValidation) && prop.name != 'Getting Started' ? 'disabled-link' : prop.upgrade ? 'new nav-link' : 'nav-link card'} disabled={(disableButton || campaignValidation)  && prop.name != 'Getting Started'} activeClassName="active">
+                        <Link onClick={() => this.setBreadCrumbs(prop)} to={prop.path} data-tip={prop.name} data-place="right" className={prop.upgrade && disableButton ? 'new disabled-link' : (disableButton || campaignValidation) && prop.name != 'Getting Started' ? 'disabled-link' : prop.upgrade ? 'new nav-link' : 'nav-link card'} disabled={(disableButton || campaignValidation)  && prop.name != 'Getting Started'} activeClassName="active">
                           { prop.name=='Getting Started' && <span className="red-dot"></span> }
                           {
                             prop.upgrade ? '' : <i className={prop.icon} ></i>

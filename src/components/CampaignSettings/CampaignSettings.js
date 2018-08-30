@@ -7,15 +7,16 @@ import { CampaignFooter } from 'components';
 import './CampaignSettings.scss';
 
 const CampaignSettings = (props) => {
-
+  const campaignCheck = props.campaign.campaignType !== 'page';
   return (
-    <div className="col-md-12 tab-notification-container mt-1">
+    <div data-transition-id="campaign-settings-page" className="col-md-12 tab-notification-container mt-1">
       <div className="card-box tab-notification-box pt-1">
         <div className=" mt-3 new-campaign-header">
 
           <h4 className=" header-title">{props.campaign
             ? props.campaign.websiteUrl
-            : 'http://localhost:3000'}</h4>
+            : 'http://localhost:3000'}
+          </h4>
 
         </div>
         <div className="modal fade show-modal" id="myModallive" role="dialog">
@@ -49,19 +50,23 @@ const CampaignSettings = (props) => {
               {!mobile() && '2.'}<i className="fi-cog mr-2"></i> {!mobile()? 'Settings':''}
             </a>
           </li>
-          <li className="nav-item waves-effect text-center">
-            <a data-toggle="tab" aria-expanded="false" className={`nav-link ${props.activeClass == 3?'active pb-2 pt-2':'pb-2 pt-2'}`} onClick={() => props.setActiveState(3)}>
-              {!mobile() && '3.'}<i className="fi-head mr-2"></i> {!mobile()? 'Capture Leads':''}
-            </a>
-          </li>
-          <li className="nav-item waves-effect">
-            <a data-toggle="tab" aria-expanded="false" className={`nav-link ${props.activeClass == 4?'active pb-2 pt-2':'pb-2 pt-2'}`} onClick={() => props.setActiveState(4)}>
-              {!mobile() && '4.'}<i className="fi-monitor mr-2"></i> {!mobile()? 'Display':''}
-            </a>
-          </li>
+          {campaignCheck &&
+            <li className="nav-item waves-effect text-center">
+              <a data-toggle="tab" aria-expanded="false" className={`nav-link ${props.activeClass == 3?'active pb-2 pt-2':'pb-2 pt-2'}`} onClick={() => props.setActiveState(3)}>
+                {!mobile() && '3.'}<i className="fi-head mr-2"></i> {!mobile()? 'Capture Leads':''}
+              </a>
+            </li>
+          }
+          {campaignCheck &&
+            <li className="nav-item waves-effect">
+              <a data-toggle="tab" aria-expanded="false" className={`nav-link ${props.activeClass == 4?'active pb-2 pt-2':'pb-2 pt-2'}`} onClick={() => props.setActiveState(4)}>
+                {!mobile() && '4.'}<i className="fi-monitor mr-2"></i> {!mobile()? 'Display':''}
+              </a>
+            </li>
+          }
           <li className="nav-item waves-effect text-center">
             <a data-toggle="tab" aria-expanded="false" className={`nav-link ${props.activeClass == 5?'active pb-2 pt-2':'pb-2 pt-2'}`} onClick={() => props.setActiveState(5)}>
-              {!mobile() && '5.'}<i className="fa fa-code mr-2"></i> {!mobile()? 'Install Pixel':''}
+              {!mobile() && campaignCheck ?'5.':'3.'}<i className="fa fa-code mr-2"></i> {!mobile()? 'Install Pixel':''}
             </a>
           </li>
         </ul>
@@ -93,6 +98,7 @@ const CampaignSettings = (props) => {
         step={props.activeClass}
         setActiveState={props.setActiveState}
         goLive={props.goLive}
+        campaign={props.campaign}
       />
     </div>
   );

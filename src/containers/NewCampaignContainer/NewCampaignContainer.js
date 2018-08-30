@@ -6,10 +6,11 @@ import copy from 'copy-to-clipboard';
 
 import { validatewebsite } from 'components/Common/function';
 import { createCampaign, clearCampaign, addSubdomain, fetchSubdomain, clearSubDomain, removeSubDomain } from 'ducks/campaign';
-import { updateSubCampaign, fetchSubCampaign } from 'ducks/subcampaign';
+import { updateSubCampaign, fetchSubCampaign, createSubCampaign } from 'ducks/subcampaign';
 import { fetchElastic, clearElastic } from 'ducks/elastic';
 import { fetchOneRules, createRules, updateRules } from 'ducks/rules';
 import { fetchNotification } from 'ducks/notification';
+import { setBreadCrumbs } from 'ducks/breadcrumb';
 import { createConfiguration, fetchConfiguration, fetchCampaignConfiguration, clearConfiguration, updateConfiguration, createSuccess } from 'ducks/configuration';
 import { CampaignSettings, Campaign } from 'components';
 import './NewCampaignContainer.scss';
@@ -19,6 +20,14 @@ const toastConfig = {
   autoClose: 2000,
   className: 'toast-style'
 };
+
+const campaignTabs = [
+  'Notification',
+  'Rules Setting',
+  'Capture',
+  'Display',
+  'Install Pixel'
+];
 
 class NewCampaignContainer extends Component {
   constructor() {
@@ -39,7 +48,8 @@ class NewCampaignContainer extends Component {
       title: '',
       content: '',
       buttonText: '',
-      path: ''
+      path: '',
+      campaignType: ''
     };
   }
 
@@ -64,7 +74,7 @@ class NewCampaignContainer extends Component {
     });
   }
 
-  handleNextButton = (evt) => {
+  handleNextButton = (evt, pages) => {
     evt.preventDefault();
     if(!this.state.campaignname)
       return this.setState({errorName: 'Enter campaign name'});
@@ -75,12 +85,13 @@ class NewCampaignContainer extends Component {
     else if(!this.state.averageCustomer)
       return this.setState({errorAverageCustomer: 'Enter the numbers of signups per day'});
     const data = {
+      campaignType: this.state.campaignType,
       campaignName: this.state.campaignname,
       websiteUrl: this.state.website,
       averageCustomer: this.state.averageCustomer,
       profile: this.props.profile._id
     };
-    return this.props.createCampaign(data);
+    return this.props.createCampaign(data, pages);
   }
 
   setActiveState = (val) => {
@@ -89,6 +100,14 @@ class NewCampaignContainer extends Component {
     if(val == 2)
       this.setState({notification: ''});
     this.setState({activeClass: val});
+
+    let breadcrumb = this.props.breadcrumb;
+    breadcrumb.splice(1);
+    breadcrumb.push({
+      name: campaignTabs[val-1],
+      path: ''
+    });
+    this.props.setBreadCrumbs(breadcrumb);
   }
 
   verifyPixelStatus = (campaign) => {
@@ -138,7 +157,6 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
         title : 'Alert', buttonText :  'Close',
         content : 'Please verify your pixel first.'
       });
-
     } else if(!this.props.leads || !this.props.leads.length) {
       this.setState({
         title : 'Alert',
@@ -165,6 +183,10 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
     this.setState({displayWebhookIntegration: !this.state.displayWebhookIntegration});
   }
 
+  handleCampaignType = (campaignType) => {
+    this.setState({campaignType});
+  }
+
   componentWillUnmount() {
     this.props.clearCampaign();
     this.props.clearElastic();
@@ -174,7 +196,7 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
   render() {
 
     return (
-      <div className="transition-item NewCampaignContainer">
+      <div data-transition-id="notification-container-page" className="transition-item NewCampaignContainer">
 
         {this.props.campaign && Object.keys(this.props.campaign).length !== 0 && this.props.campaign.constructor === Object?
           <CampaignSettings
@@ -193,6 +215,7 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
           />
           :
           <Campaign
+            handleCampaignType={this.handleCampaignType}
             handleNextButton={this.handleNextButton}
             handleCampaignStateChange={this.handleCampaignStateChange}
             {...this.state}
@@ -215,6 +238,7 @@ const mapStateToProps = state => ({
   displayUrls: state.getIn(['pageurl', 'display']),
   leads: state.getIn(['pageurl', 'lead']),
   subcampaigns: state.getIn(['subcampaign', 'subcampaigns']),
+  breadcrumb: state.getIn(['breadcrumb', 'breadcrumb'])
 });
 
 const mapDispatchToProps = {
@@ -237,7 +261,9 @@ const mapDispatchToProps = {
   clearConfiguration,
   createSuccess,
   updateSubCampaign,
-  fetchSubCampaign
+  fetchSubCampaign,
+  createSubCampaign,
+  setBreadCrumbs
 };
 
 export default connect(mapStateToProps, mapDispatchToProps, null, { withRef: true })(NewCampaignContainer);

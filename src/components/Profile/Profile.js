@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { connect}  from 'react-redux';
+import { connect }  from 'react-redux';
 import Loading from 'react-loading-animation';
+import ImageUploader from 'react-images-upload';
 import {
   Grid,
   Row,
@@ -10,6 +11,7 @@ import {
   HelpBlock
 } from 'react-bootstrap';
 
+import { Modal } from 'components';
 import { fetchProfile, updateProfile, submitAccountRequest, submitAccountOtp, clearResponse } from 'ducks/profile';
 import './Profile.scss';
 
@@ -78,7 +80,6 @@ class Profile extends Component {
       address,
       phoneNumber,
       companyName,
-      image
     } = this.state;
     let profile = {
       id: this.props.profile? this.props.profile._id : null,
@@ -89,8 +90,7 @@ class Profile extends Component {
       country: country,
       address: address,
       phoneNumber: phoneNumber,
-      companyName: companyName,
-      image: image
+      companyName: companyName
     };
     return this.props.updateProfile(profile);
   }
@@ -192,6 +192,19 @@ class Profile extends Component {
     this.props.clearResponse();
   }
 
+  onDrop = (image) => {
+    var reader = new window.FileReader();
+    reader.readAsDataURL(image[0]);
+    reader.onload = () => {
+      const updatedProfile = {
+        id: this.props.profile._id,
+        image: reader.result
+      };
+      this.setState({image: reader.result});
+      this.props.updateProfile(updatedProfile);
+    };
+  }
+
   render() {
     const profile = this.state;
     const { user } = this.props;
@@ -234,9 +247,17 @@ class Profile extends Component {
                   <Col sm={7} className="profile-content-col-one">
                     <div className="profile-user-box" >
                       <Row>
-                        <Col sm={4}>
+                        <Col sm={3}>
                           <span className="pull-left">
                             <img src={profile.image?profile.image:'https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg'} alt="User profile" className="rounded-circle" />
+                            <ImageUploader
+                              withIcon={false}
+                              buttonText={<i className="fa fa-camera"></i>}
+                              onChange={this.onDrop}
+                              imgExtension={['.jpg', '.jpeg', '.gif', '.png', '.gif', '.tif', '.tiff', '.jif', '.jfif', '.jp2', '.jpx', '.j2k', '.j2c', '.fpx', '.pcd']}
+                              maxFileSize={52428800}
+                              singleImage={true}
+                            />
                           </span>
                           <div className=" media-body text-white">
                             <h4 className="mt-2 mb-1 font-16">{user.username}</h4>
@@ -314,21 +335,18 @@ class Profile extends Component {
             }
           </Col>
 
-          <div className="modal fade show-modal" id="deletemodal" role="dialog">
-            <div className="modal-dialog">
-              <div className="modal-content align-modal">
-                <div className="modal-header">
-                  <button type="button" className="close" data-dismiss="modal">&times;</button>
-                  <h4 className="modal-title">Your Account</h4>
-                </div>
-                <div className="modal-body">
-                  {this.showPopupOne()}
-                </div>
-                <div className="modal-footer">
-                </div>
-              </div>
-            </div>
-          </div>
+          <Modal
+            id='deletemodal'
+            title='Your Account'
+            content={this.showPopupOne()}
+            style={
+              {
+                alignModalStyle: {
+                  top: '100px'
+                }
+              }
+            }
+          />
         </div>
       </Loading>
     );

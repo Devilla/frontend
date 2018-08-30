@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'react-bootstrap';
 import { browserHistory } from 'react-router';
+import { connect } from 'react-redux';
 
+import { setBreadCrumbs } from 'ducks/breadcrumb';
 import './Settings.scss';
 
 const setup = [
@@ -36,11 +38,16 @@ const setup = [
 ];
 
 const configuration = [
- 
   {
     icon: 'fi-paper-stack',
     path: '',
     text: 'FAQs',
+    head: 'Detailed'
+  },
+  {
+    icon: 'fi-link',
+    path: '',
+    text: 'Campaign Keys',
     head: 'Detailed'
   }
 ];
@@ -56,10 +63,20 @@ const security = [
 
 class Settings extends Component {
 
+  handleRoutes = (name, path) => {
+    let breadcrumb = this.props.breadcrumb;
+    breadcrumb.push({
+      name: name,
+      path: path
+    });
+    this.props.setBreadCrumbs(breadcrumb);
+    browserHistory.push(path);
+  }
+
   renderConfigurations = () => {
     return configuration.map((item, index) => {
       return (
-        <div key={index+item.text} className="card mr-0" onClick={() => browserHistory.push(item.path)}>
+        <div key={index+item.text} className="card mr-0" onClick={() => this.handleRoutes(item.text, item.path)}>
           <div className="card-img-top">
             {item.head &&
               <p>
@@ -69,7 +86,7 @@ class Settings extends Component {
           </div>
           <div className="card-body">
             <i className={item.icon}></i>
-            <p className="card-text">{item.text}</p>
+            {item.text=='FAQs' ? <a href="https://useinfluence.freshdesk.com/support/solutions" target="_blank"><p className="card-text">{item.text}</p></a>:<p className="card-text">{item.text}</p>}
           </div>
         </div>
       );
@@ -79,7 +96,7 @@ class Settings extends Component {
   renderSetup = () => {
     return setup.map((item, index) => {
       return (
-        <div key={index+item.text} className="card mr-0" onClick={() => browserHistory.push(item.path)}>
+        <div key={index+item.text} className="card mr-0" onClick={() => this.handleRoutes(item.text, item.path)}>
           <div className="card-img-top">
             {item.head?
               <p>
@@ -101,7 +118,7 @@ class Settings extends Component {
   renderSecurity = () => {
     return security.map((item, index) => {
       return (
-        <div key={index+item.text} className="card mr-0" onClick={() => browserHistory.push(item.path)}>
+        <div key={index+item.text} className="card mr-0" onClick={() => this.handleRoutes(item.text, item.path)}>
           <div className="card-img-top">
             {item.head?
               <p>
@@ -158,4 +175,12 @@ class Settings extends Component {
   }
 }
 
-export default Settings;
+const mapStateToProps = state => ({
+  breadcrumb: state.getIn(['breadcrumb', 'breadcrumb'])
+});
+
+const mapDispatchToProps = {
+  setBreadCrumbs
+};
+
+export default connect(mapStateToProps, mapDispatchToProps, null, { withRef: true })(Settings);

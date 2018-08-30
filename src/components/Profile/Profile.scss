@@ -7,19 +7,18 @@
   display: flex;
   padding-top: 50px;
 
+  .content-tabs{
+    font-size: 14px;
+    padding: 20px 15px;
+    white-space: pre;
+    color: #5D657A;
+    border: none;
+    border-radius: 3px;
+    text-align: left;
+    margin-bottom: 5px;
+    background: #EBEDEF;
+  }
 
-
-.content-tabs{
-font-size: 14px;
-padding: 20px 15px;
-white-space: pre;
-color: #5D657A;
-border: none;
-border-radius: 3px;
-text-align: left;
-margin-bottom: 5px;
-background: #EBEDEF;
-}
   #formControlsSelect {
     color: #49475d;
   }
@@ -52,8 +51,32 @@ background: #EBEDEF;
         background-color: white !important;
         padding: 20px;
         .pull-left {
+          width: 82px;
+          height: 90px;
           img {
-            width: 50% !important;
+            width: 82px !important;
+            height: 82px;
+          }
+          .fileUploader {
+            .fileContainer {
+              width: 90%;
+              background: transparent;
+              margin-top: -15%;
+              position: absolute;
+              padding: 0;
+              border: 0;
+              box-shadow: none !important;
+              -webkit-box-shadow: none !important;
+              // img {
+              //   display: none;
+              // }
+              p {
+                display: none;
+              }
+              .chooseFileButton {
+                padding: 6px 7px;
+              }
+            }
           }
         }
         .media-body {
