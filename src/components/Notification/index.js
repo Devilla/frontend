@@ -134,7 +134,7 @@ class Notification extends Component {
         <div className="manage-notification mt-3">
           <div className="table-responsive">
             <div className="table table-striped">
-              <div className="thead table-header flex">
+              <div className="thead flex">
                 <div className="tr tab-row">
                   <div className="th col-md-1 text-center p-1">#</div>
                   <div className="th col-md-2 text-center p-1">CAMPAIGN</div>
