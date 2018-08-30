@@ -105,7 +105,7 @@ class Notification extends Component {
       const { totalUsers } = this.usersCount(campaign._id);
       return (
         <div className="campaign-td tr" key={i} onClick={(e) => this.handleRouteChange(e, campaign)}>
-          <div scope="row" className="th col-md-1 text-center">{i + 1}</div>
+          <div scope="row" className="th col-md-1 text-center">{campaign.campaignType=='page'?'Page Specific':'Normal'}</div>
           <div className="td col-md-2 text-center p-1">{campaign.campaignName}</div>
           {!mobile() && <div className="td col-md-3 text-center p-1">{campaign.websiteUrl}</div>}
           <div className="switch td col-md-1">
@@ -136,7 +136,7 @@ class Notification extends Component {
             <div className="table table-striped">
               <div className="thead table-header flex">
                 <div className="tr tab-row">
-                  <div className="th col-md-1 text-center p-1">#</div>
+                  <div className="th col-md-1 text-center p-1">CAMPAIGN TYPE</div>
                   <div className="th col-md-2 text-center p-1">CAMPAIGN</div>
                   {!mobile() && <div className="th col-md-3 text-center p-1">DOMAIN</div>}
                   <div className="th col-md-1 text-center p-1">STATUS</div>
