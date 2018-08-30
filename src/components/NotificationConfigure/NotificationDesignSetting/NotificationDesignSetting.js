@@ -441,7 +441,7 @@ export class NotificationDesignSetting extends Component {
                               <FormControl
                                 type="text"
                                 maxLength='35'
-                                defaultValue={otherText}
+                                value={otherText}
                                 placeholder="Enter Other Text for notification"
                                 id="otherText"
                                 onChange={(e) => handleContentChange(e.target.id, e.target.value)}
