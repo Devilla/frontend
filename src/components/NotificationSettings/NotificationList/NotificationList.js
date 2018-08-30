@@ -68,7 +68,7 @@ const NotificationList = ({
                   notification.notificationName === 'Bulk Activity' ?
                     'Show total visitors'
                     :
-                    notification.notificationNsame === 'Live Visitor Count' ?
+                    notification.notificationName === 'Live Visitor Count' ?
                       'Shows live website viewers'
                       :
                       notification.notificationName === 'Recent Activity' ?

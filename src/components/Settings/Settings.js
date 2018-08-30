@@ -47,7 +47,7 @@ const configuration = [
   },
   {
     icon: 'fi-link',
-    path: '',
+    path: '/campaigns/scripts',
     text: 'Campaign Keys',
     head: 'Detailed'
   }
@@ -91,7 +91,7 @@ class Settings extends Component {
           </div>
           <div className="card-body">
             <i className={item.icon}></i>
-            {item.text=='FAQs' ? <a href="https://useinfluence.freshdesk.com/support/solutions"><p className="card-text">{item.text}</p></a>:<p className="card-text">{item.text}</p>}
+            {item.text=='FAQs' ? <a href="https://useinfluence.freshdesk.com/support/solutions" target="_blank"><p className="card-text">{item.text}</p></a>:<p className="card-text">{item.text}</p>}
           </div>
         </div>
       );
