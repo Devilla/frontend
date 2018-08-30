@@ -14,7 +14,7 @@ import {
 } from 'react-bootstrap';
 
 import './BillingDetails.scss';
-import { UpgradePlan } from 'components';
+import { UpgradePlan, Modal } from 'components';
 
 const billingHeader = [
   'Billing Date', 'Amount', 'Transaction Id', 'Status', 'Download'
@@ -291,21 +291,22 @@ class BillingDetails extends Component {
             </div>
           </Row>
         </div>
-        <div className="modal fade show-modal" id="upgradePlanModal" role="dialog">
-          <div className="modal-dialog modal-lg">
-            <div className="modal-content align-modal">
-              <div className="modal-header">
-                <button type="button" className="close" data-dismiss="modal">
-                  <i className="fa fa-close"></i>
-                </button>
-                <h4 className="modal-title">Upgrade Plan</h4>
-              </div>
-              <div className="modal-body">
-                <UpgradePlan plan={planSelected?planSelected:profile && profile.plan?profile.plan:''} handleSelectedPlan={this.handleSelectedPlan} />
-              </div>
+        <Modal
+          id='upgradePlanModal'
+          title='Upgrade Plan'
+          content={
+            <div className="modal-body">
+              <UpgradePlan plan={planSelected?planSelected:profile && profile.plan?profile.plan:''} handleSelectedPlan={this.handleSelectedPlan} />
             </div>
-          </div>
-        </div>
+          }
+          style={
+            {
+              alignModalStyle: {
+                top: '10px'
+              }
+            }
+          }
+        />
       </Loading>
     );
   }
