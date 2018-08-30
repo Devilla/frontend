@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ImageUploader from 'react-images-upload';
 import { updateSubCampaign } from 'ducks/subcampaign';
+import { Modal } from 'components';
 import './ProductImages.scss';
 
 const pagethArray = [

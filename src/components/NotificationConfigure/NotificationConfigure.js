@@ -27,7 +27,8 @@ const NotificationConfigure = ({
   showpopupfield,
   showpopup,
   popupName,
-  campaign
+  campaign,
+  selectedSubCampaign
 }) => {
   return (
     <div data-transition-id="notification-configuration-page" className="notification-configure col-md-12">
@@ -61,6 +62,7 @@ const NotificationConfigure = ({
                       notification={notification}
                       notificationPanelStyle={notificationPanelStyle}
                       popupName={popupName}
+                      image={selectedSubCampaign.productImage}
                     />
                   </Col>
                   <Col md={5}>
