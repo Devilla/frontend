@@ -1,10 +1,11 @@
-.campaign-td {
+.dashboard-container {
+  .campaign-td {
   cursor: pointer;
   display: flex;
   padding: 1.5% 0% 1.5% 0%;
   margin: 10px auto;
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
-  background: #fff;
+  background: #fff!important;
   border-radius: 3px;
   color: #50697e;
   border: 0.5px solid #e1e1e1;
@@ -34,4 +35,5 @@
   word-wrap: break-word;
   justify-content: center;
   align-items: center;
+}
 }

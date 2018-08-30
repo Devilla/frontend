@@ -1,47 +1,47 @@
 import React from 'react';
-import {Table} from 'react-bootstrap';
-
 
 export default class WordpressPluginPage extends React.Component {
 
   render() {
     return (
       <div>
-        <Table className="mt-5 ml-5">
-          <thead>
-            <tr>
-              <td>S. NO.</td>
-              <td>Campaign Name</td>
-              <td>Tracking ID</td>
-            </tr>
-          </thead>
-          <tbody>
-            <tr className="campaign-td mt-3">
-              <td className="ml-3">1.</td>
-              <td>Influence</td>
-              <td>INF-XXXXXXXXX</td>
-              <td>
-                <button className="p-2 btn btn-primary">Copy</button>
-              </td>
-            </tr>
-            <tr>
-              <td className="ml-3">2.</td>
-              <td>Spykeys</td>
-              <td>INF-XXXXXXXXX</td>
-              <td>
-                <button className="p-2 btn btn-primary">Copy</button>
-              </td>
-            </tr>
-            <tr>
-              <td className="ml-3">3.</td>
-              <td>yahoo</td>
-              <td>INF-XXXXXXXXX</td>
-              <td className="pr-2">
-                <button className="p-2 btn btn-primary">Copy</button>
-              </td>
-            </tr>
-          </tbody>
-        </Table>
+        <div className="table-responsive">
+          <div className="table table-striped">
+            <div className="thead table-header flex">
+              <div className="tr tab-row">
+                <div className="th col-md-2 text-center p-1">S. NO.</div>
+                <div className="th col-md-5 text-center p-1">Campaign Name</div>
+                <div className="th col-md-5 text-center p-1">Tracking ID</div>
+              </div>
+            </div>
+            <div className="tbody tab-body">
+              <div className="campaign-td tr">
+                <div className="th col-md-1 text-center">1.</div>
+                <div className="td col-md-4 text-center p-1">Influence</div>
+                <div className="td col-md-4 text-center p-1">INF-XXXXXXXXX</div>
+                <div className="td col-md-3 text-center p-1">
+                  <button className="p-2 btn btn-primary">Copy</button>
+                </div>
+              </div>
+              <div className="campaign-td tr">
+                <div className="th col-md-1 text-center">2.</div>
+                <div className="td col-md-4 text-center p-1">Influence</div>
+                <div className="td col-md-4 text-center p-1">INF-XXXXXXXXX</div>
+                <div className="td col-md-3 text-center p-1">
+                  <button className="p-2 btn btn-primary">Copy</button>
+                </div>
+              </div>
+              <div className="campaign-td tr">
+                <div className="th col-md-1 text-center">3.</div>
+                <div className="td col-md-4 text-center p-1">Influence</div>
+                <div className="td col-md-4 text-center p-1">INF-XXXXXXXXX</div>
+                <div className="td col-md-3 text-center p-1">
+                  <button className="p-2 btn btn-primary">Copy</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
