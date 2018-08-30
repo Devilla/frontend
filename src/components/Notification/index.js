@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Card from 'components/utils/card';
-import Switch from 'react-flexible-switch';
-import { getCookie } from 'components/Common/function';
-import moment from 'moment';
 import { browserHistory } from 'react-router';
+import Switch from 'react-flexible-switch';
+import moment from 'moment';
 import Popup from 'react-popup';
 import mobile from 'is-mobile';
 import Loading from 'react-loading-animation';
 
+import { Modal } from 'components';
 import { fetchCampaign, fetchCampaignInfo, updateCampaign, successCampaign, removeCampaign } from 'ducks/campaign';
 import './Notification.scss';
+
 class Notification extends Component {
   constructor() {
     super();
@@ -151,26 +151,22 @@ class Notification extends Component {
               </div>
             </div>
 
-            <div className="modal fade show-modal" id={modalname} role="dialog">
-              <div className="modal-dialog modal-lg">
-                <div className="modal-content align-modal">
-                  <div className="modal-header">
-                    <button type="button" className="close" data-dismiss="modal">
-                      <i className="fa fa-close"></i>
-                    </button>
-                    <h4 className="modal-title">{modaltitle}</h4>
-                  </div>
-                  <div className="modal-body pb-5">
-                    {modalbody}
-                  </div>
-                  <div className="modal-footer">
-                    <button type="button" className="float-left btn btn-primary close-btn" data-dismiss="modal">Close</button>
-                    <button type="button" className="btn btn-primary delete-btn" data-dismiss="modal"
-                      onClick={modalfoot === 'Upgrade Plan' ? () => browserHistory.push('/upgrade') : modalfoot == 'Resume account' ? () => browserHistory.push('/profile') : this.deletepopupContent} >{modalfoot}</button>
-                  </div>
+            <Modal
+              id={modalname}
+              title={modaltitle}
+              content={
+                <div className="modal-body">
+                  {modalbody}
                 </div>
-              </div>
-            </div>
+              }
+              footer={
+                <div className="modal-footer">
+                  <button type="button" className="float-left btn btn-primary close-btn" data-dismiss="modal">Close</button>
+                  <button type="button" className="btn btn-primary delete-btn" data-dismiss="modal"
+                    onClick={modalfoot === 'Upgrade Plan' ? () => browserHistory.push('/upgrade') : modalfoot == 'Resume account' ? () => browserHistory.push('/profile') : this.deletepopupContent} >{modalfoot}</button>
+                </div>
+              }
+            />
           </div>
         </div>
       </Loading>

@@ -64,3 +64,4 @@ export { default as PageSpecificPopup } from './PageSpecificPopup/PageSpecificPo
 export { default as PageSpecific } from './PageSpecific/PageSpecific';
 export { default as CampaignFooter } from './CampaignFooter/CampaignFooter';
 export { default as ProductImages } from './ProductImages/ProductImages';
+export { default as Modal } from './Modal/Modal';
