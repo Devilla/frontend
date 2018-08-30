@@ -7,7 +7,7 @@ import { CampaignFooter } from 'components';
 import './CampaignSettings.scss';
 
 const CampaignSettings = (props) => {
-
+  const campaignCheck = props.campaign.campaignType !== 'page';
   return (
     <div data-transition-id="campaign-settings-page" className="col-md-12 tab-notification-container mt-1">
       <div className="card-box tab-notification-box pt-1">
@@ -50,14 +50,14 @@ const CampaignSettings = (props) => {
               {!mobile() && '2.'}<i className="fi-cog mr-2"></i> {!mobile()? 'Settings':''}
             </a>
           </li>
-          {props.campaign.campaignType !== 'page' &&
+          {campaignCheck &&
             <li className="nav-item waves-effect text-center">
               <a data-toggle="tab" aria-expanded="false" className={`nav-link ${props.activeClass == 3?'active pb-2 pt-2':'pb-2 pt-2'}`} onClick={() => props.setActiveState(3)}>
                 {!mobile() && '3.'}<i className="fi-head mr-2"></i> {!mobile()? 'Capture Leads':''}
               </a>
             </li>
           }
-          {props.campaign.campaignType !== 'page' &&
+          {campaignCheck &&
             <li className="nav-item waves-effect">
               <a data-toggle="tab" aria-expanded="false" className={`nav-link ${props.activeClass == 4?'active pb-2 pt-2':'pb-2 pt-2'}`} onClick={() => props.setActiveState(4)}>
                 {!mobile() && '4.'}<i className="fi-monitor mr-2"></i> {!mobile()? 'Display':''}
@@ -66,7 +66,7 @@ const CampaignSettings = (props) => {
           }
           <li className="nav-item waves-effect text-center">
             <a data-toggle="tab" aria-expanded="false" className={`nav-link ${props.activeClass == 5?'active pb-2 pt-2':'pb-2 pt-2'}`} onClick={() => props.setActiveState(5)}>
-              {!mobile() && '5.'}<i className="fa fa-code mr-2"></i> {!mobile()? 'Install Pixel':''}
+              {!mobile() && campaignCheck ?'5.':'3.'}<i className="fa fa-code mr-2"></i> {!mobile()? 'Install Pixel':''}
             </a>
           </li>
         </ul>
