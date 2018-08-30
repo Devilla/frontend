@@ -4,6 +4,7 @@ import {
   Col,
   HelpBlock
 } from 'react-bootstrap';
+import {Close} from 'img';
 import { connect } from 'react-redux';
 import { pagethArray } from 'components/Template/data';
 import { fetchLeadUrl, createPageUrl, clearPageUrl, removePageUrl } from 'ducks/pageurl';
@@ -225,9 +226,9 @@ class CapturePage extends Component {
           <div className="modal-content align-modal">
             <div className="modal-header">
               <h4 className="modal-title">Add Subdomain</h4>
-              <div data-dismiss="modal">
-                <h4 className="close-btn"><i className="fa fa-times" type="button" onClick={this.openCloseModal}></i></h4>
-              </div>
+              <div data-dismiss="modal" onClick={this.openCloseModal}><div>
+                <span><img src={Close}/></span>
+              </div></div>
             </div>
             <div className="modal-body row">
               <div className="col-md-8 pl-5">
