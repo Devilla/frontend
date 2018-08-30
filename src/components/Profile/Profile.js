@@ -254,7 +254,7 @@ class Profile extends Component {
                               withIcon={false}
                               buttonText={<i className="fa fa-camera"></i>}
                               onChange={this.onDrop}
-                              imgExtension={['.jpg', '.gif', '.png', '.gif']}
+                              imgExtension={['.jpg', '.jpeg', '.gif', '.png', '.gif', '.tif', '.tiff', '.jif', '.jfif', '.jp2', '.jpx', '.j2k', '.j2c', '.fpx', '.pcd']}
                               maxFileSize={52428800}
                               singleImage={true}
                             />

@@ -1,9 +1,9 @@
 import React from 'react';
 import './Modal.scss';
 
-const Modal = ({id, title, content, footer, style }) => {
+const Modal = ({className, id, title, content, footer, style }) => {
   return (
-    <div className="modal fade show-modal" id={id} role="dialog">
+    <div className={`modal fade show-modal ${className}`}  id={id} role="dialog">
       <div className="modal-dialog modal-lg">
         <div className="modal-content align-modal" style={style?style.alignModalStyle:{}}>
           <div className="modal-header">

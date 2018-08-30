@@ -166,6 +166,13 @@ class Notification extends Component {
                     onClick={modalfoot === 'Upgrade Plan' ? () => browserHistory.push('/upgrade') : modalfoot == 'Resume account' ? () => browserHistory.push('/profile') : this.deletepopupContent} >{modalfoot}</button>
                 </div>
               }
+              style={
+                {
+                  alignModalStyle: {
+                    top: '100px'
+                  }
+                }
+              }
             />
           </div>
         </div>
