@@ -21,7 +21,7 @@ export const POP_SUB_DOMAIN = action('POP_SUB_DOMAIN');
 export const SUCCESS_UPDATE = action('SUCCESS_UPDATE');
 
 export const fetchCampaign = () => ({ type: FETCH });
-export const createCampaign = (campaign) => ({ type: CREATE, campaign });
+export const createCampaign = (campaign, pages) => ({ type: CREATE, campaign, pages });
 export const updateCampaign = (campaign, index) => ({ type: UPDATE, campaign, index });
 export const removeCampaign = (index, campaignId) => ({ type: REMOVE, index, campaignId });
 export const popCampaign = (index) => ({ type: POP_CAMPAIGN, index });

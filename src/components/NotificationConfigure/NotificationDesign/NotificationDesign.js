@@ -51,7 +51,7 @@ const NotificationDesign = ({
   let imgSrc = popupName === 'Google' ? Googlepop : Facebookpop;
 
   return (
-    <div className="card-box p-0">
+    <div data-transition-id="notification-design-page" className="card-box p-0">
       <div className="text-center">
         <div className="row">
           <div className="col-md-12 ">
