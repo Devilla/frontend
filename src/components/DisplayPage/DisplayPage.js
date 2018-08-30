@@ -343,8 +343,7 @@ class DisplayPage extends Component {
                       </div>
                     </div>
                   </div>
-                </span>
-
+                </span> 
               </div>
             </Col>
           </Row>
@@ -354,13 +353,12 @@ class DisplayPage extends Component {
             </Col>
           </Row>
           {this.showModalDisplay()}
-          <Row className="pt-2 path-error">
+          <Row className="pt-2 pb-2 mb-2 path-error">
             <HelpBlock>
               <p className="website-error">{error}</p>
             </HelpBlock>
           </Row>
-
-          <Row>
+          <Row className="mb-3">
             <Col md={3}></Col>
             <Col md={6}>
               <div className="status">
