@@ -74,7 +74,7 @@ class Integrations extends Component {
               <h4 className="text-muted text-uppercase mt-0 ml-2 i-title googletag">Google Tag Manager</h4>
               <p className="text-center desc-page text-muted">Sync your conversation and import yourFAQs from Tag Manager</p>
 
-              <span  className="text-muted" >View Details&nbsp; <i className="fi-open"></i></span>
+              <span className="text-muted" ><a href=' https://useinfluence.freshdesk.com/support/solutions/articles/36000080637-integrate-with-google-tag-manager' target="_blank">View Details&nbsp; <i className="fi-open"></i></a></span>
             </div>
           </Col>
 
@@ -117,7 +117,7 @@ class Integrations extends Component {
               <h4 className="text-muted text-uppercase mt-0 ml-3 i-title leadpages">Leadpages</h4>
               <p className="text-center desc-page text-muted">Sync your conversation and import yourFAQs from Leadpages </p>
 
-              <span className="text-muted " >View Details&nbsp; <i className="fi-open"></i></span>
+              <span className="text-muted "><a href= "https://useinfluence.freshdesk.com/support/solutions/articles/36000078519-integrate-with-leadpages" target="_blank"> View Details&nbsp; <i className="fi-open"></i></a></span>
             </div>
           </Col>
         </Row>
@@ -192,7 +192,7 @@ class Integrations extends Component {
               <h4 className="text-muted text-uppercase mt-0 i-title woocomm">Woocommerce</h4>
               <p className="text-center desc-page text-muted">Sync your conversation and import yourFAQs from Woocommerce</p>
 
-              <span className="text-muted" >View Details&nbsp; <i className="fi-open"></i></span>
+              <span className="text-muted" ><a href='https://wordpress.org/plugins/useinfluence/' target="_blank">View Details&nbsp; <i className="fi-open"></i></a></span>
             </div>
           </Col>
           <Col md={3}  className="box-shadow ribbon-box">
@@ -211,7 +211,7 @@ class Integrations extends Component {
               <img src={Clickfunnels} className="logocompany" />
               <h4 className="text-muted text-uppercase mt-0 ml-3 i-title click cfunnel">Clickfunnels</h4>
               <p className="text-center desc-page text-muted">Sync your conversation and import yourFAQs from Clickfunnels</p>
-              <span className="text-muted"><a href="https://useinfluence.freshdesk.com/support/solutions/articles/36000072080-integrate-with-clickfunnels"> View Details&nbsp; <i className="fi-open"></i></a></span>
+              <span className="text-muted"><a href="https://useinfluence.freshdesk.com/support/solutions/articles/36000072080-integrate-with-clickfunnels" target="_blank"> View Details&nbsp; <i className="fi-open"></i></a></span>
             </div>
           </Col>
         </Row>
