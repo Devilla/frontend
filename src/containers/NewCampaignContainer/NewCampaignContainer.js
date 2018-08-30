@@ -154,20 +154,18 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
     const elastic = this.props.elastic;
     if(elastic && (elastic.error || (elastic.message.hits.total === 0))) {
       this.setState({
-        title : 'Alert', buttonText :  'Close',
+        title : 'Alert',
         content : 'Please verify your pixel first.'
       });
     } else if(!this.props.leads || !this.props.leads.length) {
       this.setState({
         title : 'Alert',
-        content : 'Add a capture page before going live.',
-        buttonText :  'Close'
+        content : 'Add a capture page before going live.'
       });
     } else if(!this.props.leads || !this.props.displayUrls.length) {
       this.setState({
         title : 'Alert',
-        content : 'Add a display page before going live.',
-        buttonText :  'Close'
+        content : 'Add a display page before going live.'
       });
     } else {
       this.setState({
