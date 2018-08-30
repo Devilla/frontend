@@ -129,13 +129,6 @@ class DashboardContainer extends Component {
         </Row>
       </div>,
       buttons: {
-        left: [{
-          text: 'Cancel',
-          className: 'success',
-          action: function () {
-            Popup.close();
-          }
-        }],
         right: [{
           text: 'Submit',
           className: 'success',
