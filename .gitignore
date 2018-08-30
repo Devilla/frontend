@@ -25,6 +25,5 @@ node_modules
 .env.production.local
 
 npm-debug.log*
-newrelic_agent.log
 
 yarn-error.log

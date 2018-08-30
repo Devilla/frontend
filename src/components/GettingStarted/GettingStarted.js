@@ -71,7 +71,7 @@ class GettingStarted extends Component {
           <div className="list-content row border-between mr-0 ml-0">
             <Col md={6} className="list1-content pb-4 pr-0">
               <p className="list-content-para btn sub-text">Step {step}</p>
-              <button className="btn btn-primary" onClick={() => browserHistory.push(step == 1?'wew':step == 2?'profile':'integrations')}>
+              <button className="btn" onClick={() => browserHistory.push(step == 1?'wew':step == 2?'profile':'integrations')}>
                 <i className="fa fa-plus"></i>
                 <p className="list-content-button-para">{step == 1?'New Campaign':step == 2?'Update Profile':'Integrate'}</p>
               </button>
