@@ -71,6 +71,8 @@ const MyRoutes = ({routerHistory}) => (
       <Route path="/profile" component={Profile} />
       <Route path="/card-details" component={UpgradeCard} />
       <Route path="/billing-details" component={BillingDetails} />
+      <Route path="/billing-details/:planId" component={BillingDetails} />
+      <Route path="/wordpress-plugin-page" component={WordpressPluginPage} />
       <Route path="/campaigns/scripts" component={WordpressPluginPage} />
       <Route path="/getting-started" component={GettingStarted} />
       <Route path="/settings" component={Settings} />

@@ -4,6 +4,7 @@ import copy from 'copy-to-clipboard';
 import { toast } from 'react-toastify';
 import { fetchWebhook, createWebhook, deleteWebhook, clearWebhook } from 'ducks/webhooks';
 import { updateCampaign } from 'ducks/campaign';
+import { Modal } from 'components';
 import './Webhook.scss';
 
 const toastConfig = {
@@ -66,31 +67,35 @@ class Webhook extends Component {
 
   popupContent = () => {
     return (
-      <div className="modal fade show-modal" style={this.state.openClose?{ display: 'block', opacity: '1' }: { display: 'none', opacity: '0' }} role="dialog">
-        <div className="modal-dialog">
-          <div className="modal-content align-modal">
-            <div className="modal-header">
-              <button type="button" className="close" onClick={this.openCloseModal}>&times;</button>
-              <h4 className="modal-title">Add new Webhook</h4>
-            </div>
-            <div className="modal-body">
-              <div className="input-group mb-3">
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="Webhook Name"
-                  aria-label="Webhook Name"
-                  aria-describedby="basic-addon1"
-                  onChange={(e) => this.setState({webhookName: e.target.value})}
-                />
-              </div>
-            </div>
-            <div className="modal-footer">
-              <button type="button" className="btn btn-primary save-btn" data-dismiss="modal" onClick={() => this.saveWebhook()}>Save Webhook</button>
+      <Modal
+        title='Add new Webhook'
+        closeModal={this.openCloseModal}
+        modalSize='modal-md'
+        content={
+          <div className="modal-body">
+            <div className="input-group mb-3">
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Webhook Name"
+                aria-label="Webhook Name"
+                aria-describedby="basic-addon1"
+                onChange={(e) => this.setState({webhookName: e.target.value})}
+              />
             </div>
           </div>
-        </div>
-      </div>
+        }
+        footer={
+          <div className="modal-footer">
+            <button type="button" className="btn btn-primary save-btn" data-dismiss="modal" onClick={() => this.saveWebhook()}>Save Webhook</button>
+          </div>
+        }
+        style={
+          {
+            modalStyle: this.state.openClose?{ display: 'block', opacity: '1' }: { display: 'none', opacity: '0' }
+          }
+        }
+      />
     );
   }
 

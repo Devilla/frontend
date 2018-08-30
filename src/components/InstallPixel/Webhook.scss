@@ -9,6 +9,7 @@
   .card-text {
     color: #999;
   }
+
   .input-group-text{
     border-radius: 5px !important;
     font-size: 14px !important;
@@ -27,6 +28,7 @@
       border-radius: 5px;
     }
   }
+
   .webhook-section {
     border-radius: 5px !important;
     padding: 0px !important;
@@ -74,25 +76,27 @@
       }
     }
   }
-  .show-modal {
-   z-index: 999999999 !important;
-   overflow: scroll !important;
-   background: rgba(248, 247, 247, 0.7);
-  }
-  .align-modal {
-  width: 800px !important;
-  position: relative;
-  right: 100px;
-  top: 100px !important;
-  }
-  .save-btn {
-    border-radius: 5px !important;
-  }
-  .close {
-    background: #097fff !important;
-    position: relative;
-    top: 10px !important;
-  }
+
+  // .show-modal {
+  //  z-index: 999999999 !important;
+  //  overflow: scroll !important;
+  //  background: rgba(248, 247, 247, 0.7);
+  // }
+  //
+  // .align-modal {
+  // width: 800px !important;
+  // position: relative;
+  // right: 100px;
+  // top: 100px !important;
+  // }
+  // .save-btn {
+  //   border-radius: 5px !important;
+  // }
+  // .close {
+  //   background: #097fff !important;
+  //   position: relative;
+  //   top: 10px !important;
+  // }
 }
 
 @media only screen and (max-width: 768px) and (min-width: 100px) {

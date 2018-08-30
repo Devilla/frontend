@@ -1,8 +1,9 @@
 import React from 'react';
 import  { InstallPixel, CapturePage, DisplayPage, Rules, NotificationSettings } from 'components';
-import { browserHistory } from 'react-router';
+// import { browserHistory } from 'react-router';
 import mobile from 'is-mobile';
 import { CampaignFooter } from 'components';
+import {Close} from 'img';
 
 import './CampaignSettings.scss';
 
@@ -20,17 +21,21 @@ const CampaignSettings = (props) => {
 
         </div>
         <div className="modal fade show-modal" id="myModallive" role="dialog">
-          <div className="modal-dialog modal-lg">
+          <div className="modal-dialog modal-md">
             <div className="modal-content align-modal">
               <div className="modal-header">
                 <h4 className="modal-title">{props.title}</h4>
+                <div data-dismiss="modal"><div>
+                  <span><img src={Close}/></span>
+                </div></div>
+
               </div>
               <div className="modal-body">
                 {props.content}
               </div>
-              <div className="modal-footer">
+              {/*<div className="modal-footer">
                 <button type="button" className="btn btn-primary close-btn" data-dismiss="modal" onClick={ props.path ? () => browserHistory.push(props.path):  ()=> {} }>{props.buttonText}</button>
-              </div>
+              </div>*/}
             </div>
           </div>
         </div>
