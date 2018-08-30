@@ -45,18 +45,18 @@ class Notification extends Component {
         modalname: '2'
       });
     else
-      if (active && this.props.profile.uniqueVisitorsQoutaLeft <= 0) {
-        this.setState({
-          modaltitle: 'Limit exceeded',
-          modalbody: 'Please upgrade your plan to continue',
-          modalfoot: 'Upgrade Plan',
-          modalname: '2'
-        });
-      } else {
-        campaign['isActive'] = active;
-        delete campaign['_id'];
-        this.props.updateCampaign(campaign, index);
-      }
+    if (active && this.props.profile.uniqueVisitorsQoutaLeft <= 0) {
+      this.setState({
+        modaltitle: 'Limit exceeded',
+        modalbody: 'Please upgrade your plan to continue',
+        modalfoot: 'Upgrade Plan',
+        modalname: '2'
+      });
+    } else {
+      campaign['isActive'] = active;
+      delete campaign['_id'];
+      this.props.updateCampaign(campaign, index);
+    }
   }
 
   handleRouteChange(e, campaign) {

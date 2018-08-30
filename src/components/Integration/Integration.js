@@ -50,10 +50,10 @@ class Integrations extends Component {
     return (
       <div>
         <Row className="mb-5 navbar-custom integrations-header">
-          
+
           <div className="col-xl-12"><h3 className="integrationheader-1"> Integrations </h3></div>
           <div className="col-xl-12"><p className=" mb-5 h6 integrationheader-2"> The best of all worlds - Use Influence with your favourite apps </p></div>
-          
+
         </Row>
 
         <Row className="justify-content-center mb-5">
@@ -62,9 +62,9 @@ class Integrations extends Component {
             <div className="tilebox-one">
               <img src={Wordpress} className="logocompany" />
               <h4 className="text-muted text-uppercase mt-0 i-title wordpress">Wordpress</h4>
-              <p className="text-center desc-page text-muted">Show social proof notification on wordpress using our app.</p>
+              <p className="text-center desc-page text-muted">Show social proof notification on wordpress using our app. </p>
 
-              <span className="text-muted"  onClick={() => this.renderIntegration(14)}>View Details&nbsp; <i className="fi-open"></i></span>
+              <span className="text-muted" ><a href='https://wordpress.org/plugins/useinfluence/' target="_blank">View Details&nbsp; <i className="fi-open"></i></a></span>
             </div>
           </Col>
           <Col md={3}  className="box-shadow ribbon-box">
@@ -72,9 +72,9 @@ class Integrations extends Component {
             <div className="tilebox-one">
               <img src={Googletag} className="logocompany" />
               <h4 className="text-muted text-uppercase mt-0 ml-2 i-title googletag">Google Tag Manager</h4>
-              <p className="text-center desc-page text-muted">Sync influence with google tag manager in a single click.</p>
+              <p className="text-center desc-page text-muted">Sync your conversation and import yourFAQs from Tag Manager</p>
 
-              <span  className="text-muted"  onClick={() => this.renderIntegration(15)}>View Details&nbsp; <i className="fi-open"></i></span>
+              <span className="text-muted" ><a href=' https://useinfluence.freshdesk.com/support/solutions/articles/36000080637-integrate-with-google-tag-manager' target="_blank">View Details&nbsp; <i className="fi-open"></i></a></span>
             </div>
           </Col>
 
@@ -83,9 +83,9 @@ class Integrations extends Component {
             <div className="tilebox-one">
               <img src={Zapier} className="logocompany demio" />
               <h4 className="text-muted text-uppercase mt-0 ml-3 i-title zapier">Zapier</h4>
-              <p className="text-center desc-page text-muted">Sync social proof notification by connecting with any app you want.</p>
+              <p className="text-center desc-page text-muted">Sync your conversation and import yourFAQs from Zapier</p>
 
-              <span><a href='https://useinfluence.freshdesk.com/support/solutions/articles/36000075182-integrate-with-zapier-'>View Details&nbsp; <i className="fi-open"></i></a></span>
+              <span><a href='https://useinfluence.freshdesk.com/support/solutions/articles/36000075182-integrate-with-zapier-' target="_blank">View Details&nbsp; <i className="fi-open"></i></a></span>
             </div>
           </Col>
         </Row>
@@ -95,9 +95,9 @@ class Integrations extends Component {
             <div className="tilebox-one">
               <img src={Hubspot} className="logocompany" />
               <h4 className="text-muted text-uppercase mt-0 ml-4 i-title hubspot">Hubspot</h4>
-              <p className="text-center desc-page text-muted">Show social proof notifications by getting data from hubspot.</p>
+              <p className="text-center desc-page text-muted">Sync your conversation and import yourFAQs from Hubspot</p>
 
-              <span className="text-muted "  onClick={() => this.renderIntegration(4)}>View Details&nbsp; <i className="fi-open"></i></span>
+              <span className="text-muted " >View Details&nbsp; <i className="fi-open"></i></span>
             </div>
           </Col>
           <Col md={3}  className="box-shadow ribbon-box">
@@ -105,9 +105,9 @@ class Integrations extends Component {
             <div className="tilebox-one">
               <img src={Instapage} className="logocompany" />
               <h4 className="text-muted text-uppercase mt-0 i-title instapage">Instapage</h4>
-              <p className="text-center desc-page text-muted">Show social proof notifications on your landing pages.</p>
+              <p className="text-center desc-page text-muted">Sync your conversation and import yourFAQs from Instapage</p>
 
-              <span className="text-muted "><a href= "https://useinfluence.freshdesk.com/support/solutions/articles/36000076079-integrate-with-instapage"> View Details&nbsp; <i className="fi-open"></i></a></span>
+              <span className="text-muted "><a href= "https://useinfluence.freshdesk.com/support/solutions/articles/36000076079-integrate-with-instapage" target="_blank"> View Details&nbsp; <i className="fi-open"></i></a></span>
             </div>
           </Col>
           <Col md={3}  className="box-shadow ribbon-box">
@@ -115,9 +115,9 @@ class Integrations extends Component {
             <div className="tilebox-one">
               <img src={Leadpages} className="logocompany" />
               <h4 className="text-muted text-uppercase mt-0 ml-3 i-title leadpages">Leadpages</h4>
-              <p className="text-center desc-page text-muted">Show social proof notifications on your landing pages.</p>
+              <p className="text-center desc-page text-muted">Sync your conversation and import yourFAQs from Leadpages </p>
 
-              <span className="text-muted "  onClick={() => this.renderIntegration(6)}>View Details&nbsp; <i className="fi-open"></i></span>
+              <span className="text-muted "><a href= "https://useinfluence.freshdesk.com/support/solutions/articles/36000078519-integrate-with-leadpages" target="_blank"> View Details&nbsp; <i className="fi-open"></i></a></span>
             </div>
           </Col>
         </Row>
@@ -127,9 +127,9 @@ class Integrations extends Component {
             <div className="tilebox-one">
               <img src={Mailmunch} className="logocompany" />
               <h4 className="text-muted text-uppercase mt-0 i-title mailmunch">Mailmunch</h4>
-              <p className="text-center desc-page text-muted">Show social proof notifications by showing customers from mailing list.</p>
+              <p className="text-center desc-page text-muted">Sync your conversation and import yourFAQs from Mailmunch </p>
 
-              <span className="text-muted "> <a href="https://useinfluence.freshdesk.com/support/solutions/articles/36000076088-integrate-with-mailmunch"> View Details&nbsp; <i className="fi-open"></i></a></span>
+              <span className="text-muted "> <a href="https://useinfluence.freshdesk.com/support/solutions/articles/36000076088-integrate-with-mailmunch" target="_blank"> View Details&nbsp; <i className="fi-open"></i></a></span>
             </div>
           </Col>
           <Col md={3}  className="box-shadow ribbon-box">
@@ -137,9 +137,9 @@ class Integrations extends Component {
             <div className="tilebox-one">
               <img src={Ontraport} className="logocompany" />
               <h4 className="text-muted text-uppercase mt-0 ml-3 pl-3 i-title ontraport">Ontraport</h4>
-              <p className="text-center desc-page text-muted">Show social proof notifications by showing customers from mailing list.</p>
+              <p className="text-center desc-page text-muted">Sync your conversation and import yourFAQs from Ontraport</p>
 
-              <span className="text-muted "  onClick={() => this.renderIntegration(8)}>View Details&nbsp; <i className="fi-open"></i></span>
+              <span className="text-muted "> <a href="https://useinfluence.freshdesk.com/support/solutions/articles/36000076192-integrate-with-ontraport-" target="_blank"> View Details&nbsp; <i className="fi-open"></i></a></span>
             </div>
           </Col>
           <Col md={3}  className="box-shadow ribbon-box">
@@ -147,9 +147,9 @@ class Integrations extends Component {
             <div className="tilebox-one">
               <img src={Squarespace} className="logocompany" />
               <h4 className="text-muted text-uppercase mt-0 i-title sqspace">Squarespace</h4>
-              <p className="text-center desc-page text-muted">Show social proof notifications on your websites.</p>
+              <p className="text-center desc-page text-muted">Sync your conversation and import yourFAQs from Squarespace</p>
 
-              <span className="text-muted"><a href="https://useinfluence.freshdesk.com/support/solutions/articles/36000076111-integrate-with-squarespace"> View Details&nbsp; <i className="fi-open"></i></a></span>
+              <span className="text-muted"><a href="https://useinfluence.freshdesk.com/support/solutions/articles/36000076111-integrate-with-squarespace" target="_blank"> View Details&nbsp; <i className="fi-open"></i></a></span>
             </div>
           </Col>
         </Row>
@@ -159,9 +159,9 @@ class Integrations extends Component {
             <div className="tilebox-one">
               <img src={Thrivecart} className="logocompany" />
               <h4 className="text-muted text-uppercase mt-0 i-title thrivecart">Thrivecart</h4>
-              <p className="text-center desc-page text-muted">Show social proof notifications on your ecommerce store.</p>
+              <p className="text-center desc-page text-muted">Sync your conversation and import yourFAQs from Thrivecart </p>
 
-              <span className="text-muted"  onClick={() => this.renderIntegration(10)}>View Details&nbsp; <i className="fi-open"></i></span>
+              <span className="text-muted" >View Details&nbsp; <i className="fi-open"></i></span>
             </div>
           </Col>
           <Col md={3}  className="box-shadow ribbon-box">
@@ -169,9 +169,9 @@ class Integrations extends Component {
             <div className="tilebox-one">
               <img src={Unbounce} className="logocompany" />
               <h4 className="text-muted text-uppercase mt-0 i-title unbounce">Unbounce</h4>
-              <p className="text-center desc-page text-muted">Show social proof notifications on your landing pages.</p>
+              <p className="text-center desc-page text-muted">Sync your conversation and import yourFAQs from Unbounce</p>
 
-              <span className="text-muted"  onClick={() => this.renderIntegration(11)}>View Details&nbsp; <i className="fi-open"></i></span>
+              <span className="text-muted" >View Details&nbsp; <i className="fi-open"></i></span>
             </div>
           </Col>
           <Col md={3}  className="box-shadow ribbon-box">
@@ -179,8 +179,8 @@ class Integrations extends Component {
             <div className="tilebox-one">
               <img src={Webflow} className="logocompany" />
               <h4 className="text-muted text-uppercase mt-0 i-title webflow">Webflow</h4>
-              <p className="text-center desc-page text-muted">Show social proof notifications on your own websites.</p>
-              <span className="text-muted">< a href = "https://useinfluence.freshdesk.com/support/solutions/articles/36000075200-integrate-with-webflow"> View Details&nbsp; <i className="fi-open"></i></a></span>
+              <p className="text-center desc-page text-muted">Sync your conversation and import yourFAQs from Webflow</p>
+              <span className="text-muted">< a href = "https://useinfluence.freshdesk.com/support/solutions/articles/36000075200-integrate-with-webflow" target="_blank"> View Details&nbsp; <i className="fi-open"></i></a></span>
             </div>
           </Col>
         </Row>
@@ -190,9 +190,9 @@ class Integrations extends Component {
             <div className="tilebox-one">
               <img src={Woocommerce} className="logocompany" />
               <h4 className="text-muted text-uppercase mt-0 i-title woocomm">Woocommerce</h4>
-              <p className="text-center desc-page text-muted">Show social proof notifications on your ecommerce store.</p>
+              <p className="text-center desc-page text-muted">Sync your conversation and import yourFAQs from Woocommerce</p>
 
-              <span className="text-muted"  onClick={() => this.renderIntegration(13)} >View Details&nbsp; <i className="fi-open"></i></span>
+              <span className="text-muted" ><a href='https://wordpress.org/plugins/useinfluence/' target="_blank">View Details&nbsp; <i className="fi-open"></i></a></span>
             </div>
           </Col>
           <Col md={3}  className="box-shadow ribbon-box">
@@ -200,9 +200,9 @@ class Integrations extends Component {
             <div className="tilebox-one">
               <img src={Aweber} className="logocompany" />
               <h4 className="text-muted text-uppercase mt-0 ml-2 i-title aweber">Aweber</h4>
-              <p className="text-center desc-page text-muted">Show social proof notifications by showing customers from mailing list.</p>
+              <p className="text-center desc-page text-muted">Sync your conversation and import yourFAQs from Aweber</p>
 
-              <span  className="text-muted"  onClick={() => this.renderIntegration(1)}>View Details&nbsp; <i className="fi-open"></i></span>
+              <span  className="text-muted" >View Details&nbsp; <i className="fi-open"></i></span>
             </div>
           </Col>
           <Col md={3}  className="box-shadow ribbon-box">
@@ -210,8 +210,8 @@ class Integrations extends Component {
             <div className="tilebox-one">
               <img src={Clickfunnels} className="logocompany" />
               <h4 className="text-muted text-uppercase mt-0 ml-3 i-title click cfunnel">Clickfunnels</h4>
-              <p className="text-center desc-page text-muted">Show social proof notifications with clickfunnels.</p>
-              <span className="text-muted"><a href="https://useinfluence.freshdesk.com/support/solutions/articles/36000072080-integrate-with-clickfunnels"> View Details&nbsp; <i className="fi-open"></i></a></span>
+              <p className="text-center desc-page text-muted">Sync your conversation and import yourFAQs from Clickfunnels</p>
+              <span className="text-muted"><a href="https://useinfluence.freshdesk.com/support/solutions/articles/36000072080-integrate-with-clickfunnels" target="_blank"> View Details&nbsp; <i className="fi-open"></i></a></span>
             </div>
           </Col>
         </Row>
