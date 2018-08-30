@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { connect}  from 'react-redux';
+import { connect }  from 'react-redux';
 import Loading from 'react-loading-animation';
 import ImageUploader from 'react-images-upload';
 import {
@@ -11,6 +11,7 @@ import {
   HelpBlock
 } from 'react-bootstrap';
 
+import { Modal } from 'components';
 import { fetchProfile, updateProfile, submitAccountRequest, submitAccountOtp, clearResponse } from 'ducks/profile';
 import './Profile.scss';
 
@@ -334,21 +335,18 @@ class Profile extends Component {
             }
           </Col>
 
-          <div className="modal fade show-modal" id="deletemodal" role="dialog">
-            <div className="modal-dialog">
-              <div className="modal-content align-modal">
-                <div className="modal-header">
-                  <button type="button" className="close" data-dismiss="modal">&times;</button>
-                  <h4 className="modal-title">Your Account</h4>
-                </div>
-                <div className="modal-body">
-                  {this.showPopupOne()}
-                </div>
-                <div className="modal-footer">
-                </div>
-              </div>
-            </div>
-          </div>
+          <Modal
+            id='deletemodal'
+            title='Your Account'
+            content={this.showPopupOne()}
+            style={
+              {
+                alignModalStyle: {
+                  top: '100px'
+                }
+              }
+            }
+          />
         </div>
       </Loading>
     );
