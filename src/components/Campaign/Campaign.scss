@@ -1,6 +1,95 @@
 .campaign-container {
-  .newcamp-btn {
-    border-radius: 5px !important;
-    margin-top: 30px !important;
+  .campaign-type-container {
+    .card-box {
+      border: 0.5px solid #e5e5e5;
+      margin-top: 5%;
+      background: #ffffff !important;
+      .header-title {
+        margin: 0 auto;
+        padding: 25px;
+        color: #294661 !important;
+        font-weight: 500 !important;
+        text-transform: initial;
+        font-size: 30px !important;
+        letter-spacing: -0.17px !important;
+        text-shadow: 0.05px -0.01px 0.01px;
+      }
+      .campaign-type-divider {
+        text-align: center;
+        .divider {
+          height: 300px;
+          width: 1%;
+          margin: 0 auto;
+          border: 0;
+          border-left: 2px solid lightgray;
+          border-style: dotted;
+          left: 50%;
+          top: 0;
+        }
+
+      }
+      .campaign-type-button {
+        justify-content: center;
+        .btn-product-specific {
+          background-color: #ff3e57 !important;
+          border-color: #ff3e57 !important;
+          border-radius: 5px;
+          color: #ffffff;
+          font-size: 14px;
+          font-weight: 500;
+          &:hover {
+            background-color: #fe0023 !important;
+            border-color: #fe0023 !important;
+            font-size: 14.7px;
+          }
+        }
+        .btn-normal-campaign {
+          background-color: #5bc739;
+          border-color: #5bc739;
+          border-radius: 5px;
+          color: #ffffff;
+          font-size: 14px;
+          font-weight: 500;
+          &:hover {
+           background-color: #3cb416;
+           border-color: #3cb416;
+           font-size: 14.7px;
+          }
+        }
+      }
+      .campaign-type-info {
+        text-align: center;
+        justify-content: center;
+        color: #294661 !important;
+        font-size: 15px;
+        font-weight: 500;
+      }
+
+      .campaign-type-content {
+        margin-top: 3%;
+        .left-content {
+          margin-top: 10%;
+        }
+        .right-content {
+          margin-top: 10%;
+        }
+        .content {
+          color: #294661;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+
+  .campaign-info-container {
+    .newcamp-btn {
+      border-radius: 5px !important;
+      margin-top: 30px !important;
+    }
+    .product-specific-row {
+      border: 0;
+      border-top: 2px solid lightgray;
+      border-top-style: dotted;
+    }
   }
 }

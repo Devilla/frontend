@@ -13,6 +13,7 @@ class GettingStarted extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      step: 1,
       openModal: true,
       campaignValid: false,
       profileComplete: false,
@@ -23,13 +24,13 @@ class GettingStarted extends Component {
 
   componentWillMount() {
     const { campaignInfo, fetchCampaignInfo, profile } = this.props;
-    const { uniqueVisitorQouta, uniqueVisitors, uniqueVisitorsQoutaLeft, firstName, lastName, city, state, address, country, phoneNumber } = profile;
+    const { uniqueVisitorQouta, uniqueVisitors, uniqueVisitorsQoutaLeft, firstName, lastName, address, phoneNumber } = profile;
     if(!campaignInfo)
       fetchCampaignInfo();
     else
       this.validateCampaign(campaignInfo);
-    if(profile && uniqueVisitorQouta && uniqueVisitors && uniqueVisitorsQoutaLeft && firstName && lastName && city && state && address && country && phoneNumber)
-      this.setState({ profileComplete: true });
+    if(profile && uniqueVisitorQouta && uniqueVisitors && uniqueVisitorsQoutaLeft && firstName && lastName && address && phoneNumber)
+      this.setState({ profileComplete: true, step: 3 });
   }
 
   componentWillReceiveProps(nextProps) {
@@ -48,6 +49,8 @@ class GettingStarted extends Component {
       campaignValid = false;
     const { user } = this.props;
     this.setState({ campaignValid });
+    if(campaignValid && !this.state.profileComplete)
+      this.setState({ step: 2 });
     if(campaignValid && user.path == '/getting-started') {
       let userUpdate = {};
       userUpdate['path'] = '/dashboard';
@@ -57,20 +60,20 @@ class GettingStarted extends Component {
   }
 
   render() {
-    const { campaignValid, profileComplete, intergrationComplete} = this.state;
+    const { step, campaignValid, profileComplete, intergrationComplete} = this.state;
     const { profile, campaignInfo, user } = this.props;
     return (
       <Loading strokeWidth="2" style={{height: '700px', width: '10%'}} isLoading={!profile || !campaignInfo} >
         <div className="transition-item list-modal-container card">
           <div className="list-header">
-            <p className="list-header-para">Hello {user.username}!  Let's get started.</p>
+            <p className="list-header-para">Hello {user.username}!  {step == 1?'Let`s get started.':step == 2?'You`re almost done':'Final Step'}</p>
           </div>
           <div className="list-content row border-between mr-0 ml-0">
             <Col md={6} className="list1-content pb-4 pr-0">
-              <p className="list-content-para btn sub-text">Step 1</p>
-              <button className="btn btn-primary" onClick={() => browserHistory.push('new')}>
+              <p className="list-content-para btn sub-text">Step {step}</p>
+              <button className="btn btn-primary" onClick={() => browserHistory.push(step == 1?'wew':step == 2?'profile':'integrations')}>
                 <i className="fa fa-plus"></i>
-                <p className="list-content-button-para">New Campaign</p>
+                <p className="list-content-button-para">{step == 1?'New Campaign':step == 2?'Update Profile':'Integrate'}</p>
               </button>
             </Col>
             <Col md={6} className="list2-content pb-4 pl-0">

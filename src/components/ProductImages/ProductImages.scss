@@ -1,0 +1,28 @@
+.product-images-container {
+  .Table {
+    .table-header {
+      .tab-row {
+        height: 50px;
+      }
+    }
+    img {
+      width: 30%;
+      border-radius: 50%;
+      height: 65px;
+    }
+  }
+  .fileUploader {
+    .fileContainer {
+      padding: 5px 0;
+      border: 0;
+      box-shadow: none !important;
+      -webkit-box-shadow: none !important;
+      img {
+        display: none;
+      }
+      p {
+        display: none;
+      }
+    }
+  }
+}

@@ -4,6 +4,7 @@ import Loading from 'react-loading-animation';
 
 import NotificationConfigure from 'components/NotificationConfigure/NotificationConfigure';
 import NotificationList from './NotificationList/NotificationList';
+import { ProductImages } from 'components';
 
 import './NotificationSettings.scss';
 
@@ -141,7 +142,6 @@ class Notifications extends Component {
   setInitialState = () => {
     this.props.clearNotification();
     this.setState({
-      // notification: '',
       activity: true,
       notificationPanelStyle: notificationPanelStyleDefault,
       contentText: 'Company Name',
@@ -267,7 +267,6 @@ class Notifications extends Component {
     this.setState({pageName: name, selectedSubCampaign: subcampaign});
     this.setNewConfig(subcampaign[notification]);
     this.props.setNotification({notificationName: notificationName, type: notification, activity: subcampaign[notification].activity });
-
   }
 
   renderDropdownList = () => {
@@ -279,7 +278,7 @@ class Notifications extends Component {
         :
         'live';
     return this.props.subcampaigns.map(subcampaign => {
-      return <a key={subcampaign._id} className="dropdown-item" href="#" onClick={() => this.setSubCampaign(subcampaign, notification, subcampaign.name, this.props.notification.notificationName)} >{subcampaign.name}</a>;
+      return <a key={subcampaign._id} className="dropdown-item" onClick={() => this.setSubCampaign(subcampaign, notification, subcampaign.name, this.props.notification.notificationName)} >{subcampaign.name}</a>;
     });
   }
 
@@ -291,22 +290,26 @@ class Notifications extends Component {
   render() {
     const { notification, notifications, configurations, createSuccess, campaign, profile, setNotification } = this.props;
     return (
-      <Loading style={{width: '10%', height: '500px'}} strokeWidth='2' isLoading={!notifications || !configurations || !campaign || !profile}>
+      <Loading data-transition-id="notification-settings-page" style={{width: '10%', height: '500px'}} strokeWidth='2' isLoading={!notifications || !configurations || !campaign || !profile}>
         <div className="notification-settings">
           <div>
             <div>
               <h4 className="lead text-center m-b-30 m-t-20">Notifications</h4>
-              {/* {notification &&
-                <div className="dropdown-campaigns">
-                  <button type="button" className="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                    {this.state.pageName?this.state.pageName:'Pages'}
-                  </button>
-                  <div className="dropdown-menu">
-                    <a className="dropdown-item" href="#" onClick={() => this.clearSubCampaign()} >Default</a>
-                    {this.renderDropdownList()}
+              {notification && campaign.campaignType == 'page' &&
+                <div className="notification-settings-options">
+                  <div className="dropdown-campaigns">
+                    <button type="button" className="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                      {this.state.pageName?this.state.pageName:'Products'}
+                    </button>
+                    <div className="dropdown-menu">
+                      <a className="dropdown-item" onClick={() => this.clearSubCampaign()} >Default</a>
+                      {this.renderDropdownList()}
+                      <a className="dropdown-item">Add New Product</a>
+                    </div>
                   </div>
+                  <button className="btn btn-primary" data-toggle="modal" data-target="#productImages" >Add Product Images</button>
                 </div>
-              } */}
+              }
             </div>
 
             {!this.props.notification
@@ -322,6 +325,7 @@ class Notifications extends Component {
                 createSuccess={createSuccess}
                 setNotification={setNotification}
                 setNewConfig={this.setNewConfig}
+                campaign={campaign}
               />
               :
               <Row>
@@ -338,7 +342,7 @@ class Notifications extends Component {
                   backConfiguration={this.backConfiguration}
                   showpopup={this.showpopup}
                   popupName={this.state.popupName}
-                  campaign={this.props.campaign}
+                  campaign={campaign}
                   {...this.state}
                 />
               </Row>
@@ -353,6 +357,9 @@ class Notifications extends Component {
             </div>
           }
         </div>
+        {campaign.campaignType == 'page' &&
+          <ProductImages products={this.props.subcampaigns} />
+        }
       </Loading>
     );
   }

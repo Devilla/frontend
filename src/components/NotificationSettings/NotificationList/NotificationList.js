@@ -1,17 +1,32 @@
 import React from 'react';
 import './NotificationList.scss';
-// import NotificationSettingPopup from '../NotificationSettingPopup/NotificationSettingPopup';
+// import { PageSpecificPopup } from 'components';
 
 
 const NotificationList = ({
   notificationList,
   configure,
   handleActivityChange,
+  campaign,
   // setNotification,
   // setNewConfig,
   // handleContentChange,
   // selectedSubCampaign
 }) => {
+  
+  const getNotificationNames = (notificationName) => {
+    if(campaign && campaign.campaignType == 'page') {
+      if(notificationName === 'Bulk Activity')
+        return 'Product Buyers';
+      if(notificationName === 'Live Visitor Count')
+        return 'Product Viewers';
+      if(notificationName === 'Recent Activity')
+        return 'Total Buyers';
+    } else {
+      return notificationName;
+    }
+  };
+
   const renderNotifications = () => {
     return notificationList.map(notification =>
       <div key={notification._id}
@@ -47,7 +62,7 @@ const NotificationList = ({
                       'recentColor'
                       :
                       'reviewColor'
-              }>{notification.notificationName}</h4>
+              }>{getNotificationNames(notification.notificationName)}</h4>
               <p className="text-muted notification-list-content">
                 {
                   notification.notificationName === 'Bulk Activity' ?
@@ -100,8 +115,8 @@ const NotificationList = ({
   };
 
   return (
-    <div>
-      {/* <NotificationSettingPopup
+    <div data-transition-id="notification-list-page">
+      {/* <PageSpecificPopup
         handleContentChange={handleContentChange}
         selectedSubCampaign={selectedSubCampaign}
         setNotification={setNotification}
