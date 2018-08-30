@@ -90,6 +90,13 @@ class ProductImages extends Component {
             </div>
           </div>
         }
+        style={
+          {
+            alignModalStyle: {
+              top: '100px'
+            }
+          }
+        }
       />
     );
   }

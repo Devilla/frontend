@@ -6,7 +6,7 @@ import copy from 'copy-to-clipboard';
 
 import { validatewebsite } from 'components/Common/function';
 import { createCampaign, clearCampaign, addSubdomain, fetchSubdomain, clearSubDomain, removeSubDomain } from 'ducks/campaign';
-import { updateSubCampaign, fetchSubCampaign } from 'ducks/subcampaign';
+import { updateSubCampaign, fetchSubCampaign, createSubCampaign } from 'ducks/subcampaign';
 import { fetchElastic, clearElastic } from 'ducks/elastic';
 import { fetchOneRules, createRules, updateRules } from 'ducks/rules';
 import { fetchNotification } from 'ducks/notification';
@@ -262,6 +262,7 @@ const mapDispatchToProps = {
   createSuccess,
   updateSubCampaign,
   fetchSubCampaign,
+  createSubCampaign,
   setBreadCrumbs
 };
 

@@ -4,7 +4,7 @@ import Loading from 'react-loading-animation';
 
 import NotificationConfigure from 'components/NotificationConfigure/NotificationConfigure';
 import NotificationList from './NotificationList/NotificationList';
-import { ProductImages } from 'components';
+import { ProductImages, PageSpecific, Modal } from 'components';
 
 import './NotificationSettings.scss';
 
@@ -302,12 +302,12 @@ class Notifications extends Component {
                       {this.state.pageName?this.state.pageName:'Products'}
                     </button>
                     <div className="dropdown-menu">
-                      <a className="dropdown-item" onClick={() => this.clearSubCampaign()} >Default</a>
+                      {/* <a className="dropdown-item" onClick={() => this.clearSubCampaign()} >Default</a> */}
                       {this.renderDropdownList()}
-                      <a className="dropdown-item">Add New Product</a>
+                      <a className="dropdown-item" data-toggle="modal" data-target="#addNewProduct">Add/Edit Products</a>
                     </div>
                   </div>
-                  <button className="btn btn-primary" data-toggle="modal" data-target="#productImages" >Add Product Images</button>
+                  <button className="btn btn-primary" data-toggle="modal" data-target="#productImages">Add Product Images</button>
                 </div>
               }
             </div>
@@ -358,7 +358,30 @@ class Notifications extends Component {
           }
         </div>
         {campaign.campaignType == 'page' &&
-          <ProductImages products={this.props.subcampaigns} />
+          <div>
+            <ProductImages products={this.props.subcampaigns} />
+            <Modal
+              id="addNewProduct"
+              title="Add new Product"
+              content={
+                <PageSpecific
+                  campaign={this.props.campaign}
+                  products={this.props.subcampaigns}
+                  updateSubCampaign={this.props.updateSubCampaign}
+                  createSubCampaign={this.props.createSubCampaign}
+                  rules={this.props.rules}
+                  addNew={true}
+                />
+              }
+              style={
+                {
+                  alignModalStyle: {
+                    top: '100px'
+                  }
+                }
+              }
+            />
+          </div>
         }
       </Loading>
     );
