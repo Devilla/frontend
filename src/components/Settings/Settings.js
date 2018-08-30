@@ -46,7 +46,7 @@ const configuration = [
   },
   {
     icon: 'fi-link',
-    path: '',
+    path: '/campaigns/scripts',
     text: 'Campaign Keys',
     head: 'Detailed'
   }
