@@ -94,10 +94,6 @@ const NotificationConfigure = ({
       <i className="icon-arrow-left ml-2 btn-back-notif" onClick={backConfiguration}></i>
       <Row className="state-btn">
 
-        <span className="btn btn-primary" onClick={backConfiguration}>
-          Back
-        </span>
-
         <span className="btn btn-primary" onClick={setDefaultPanel} >
           Set Default
         </span>
