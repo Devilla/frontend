@@ -43,6 +43,12 @@ const configuration = [
     path: '',
     text: 'FAQs',
     head: 'Detailed'
+  },
+  {
+    icon: 'fi-link',
+    path: '',
+    text: 'Campaign Keys',
+    head: 'Detailed'
   }
 ];
 
