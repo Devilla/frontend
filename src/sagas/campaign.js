@@ -32,7 +32,11 @@ function* fetch() {
 function* create(action) {
   try {
     yield put(load());
-    const res = yield call(api.POST, 'campaign', action.campaign);
+    const campaignData = {
+      campaign: action.campaign,
+      pages: action.pages
+    };
+    const res = yield call(api.POST, 'campaign', campaignData);
     if(res.error)
       if(res.message == 'Invalid domain')
         yield toast.error('This website url is Invalid.', toastConfig);
@@ -46,7 +50,6 @@ function* create(action) {
     console.log('Failed to fetch doc', error);
     yield toast.error(error.message, toastConfig);
   }
-
 }
 
 function* update(action) {

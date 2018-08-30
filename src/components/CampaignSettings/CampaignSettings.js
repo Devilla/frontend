@@ -1,15 +1,16 @@
 import React from 'react';
 import  { InstallPixel, CapturePage, DisplayPage, Rules, NotificationSettings } from 'components';
-import { browserHistory } from 'react-router';
+// import { browserHistory } from 'react-router';
 import mobile from 'is-mobile';
 import { CampaignFooter } from 'components';
+import {Close} from 'img';
 
 import './CampaignSettings.scss';
 
 const CampaignSettings = (props) => {
-
+  const campaignCheck = props.campaign.campaignType !== 'page';
   return (
-    <div className="col-md-12 tab-notification-container mt-1">
+    <div data-transition-id="campaign-settings-page" className="col-md-12 tab-notification-container mt-1">
       <div className="card-box tab-notification-box pt-1">
         <div className=" mt-3 new-campaign-header">
 
@@ -20,17 +21,21 @@ const CampaignSettings = (props) => {
 
         </div>
         <div className="modal fade show-modal" id="myModallive" role="dialog">
-          <div className="modal-dialog modal-lg">
+          <div className="modal-dialog modal-md">
             <div className="modal-content align-modal">
               <div className="modal-header">
                 <h4 className="modal-title">{props.title}</h4>
+                <div data-dismiss="modal"><div>
+                  <span><img src={Close}/></span>
+                </div></div>
+
               </div>
               <div className="modal-body">
                 {props.content}
               </div>
-              <div className="modal-footer">
+              {/*<div className="modal-footer">
                 <button type="button" className="btn btn-primary close-btn" data-dismiss="modal" onClick={ props.path ? () => browserHistory.push(props.path):  ()=> {} }>{props.buttonText}</button>
-              </div>
+              </div>*/}
             </div>
           </div>
         </div>
@@ -50,19 +55,23 @@ const CampaignSettings = (props) => {
               {!mobile() && '2.'}<i className="fi-cog mr-2"></i> {!mobile()? 'Settings':''}
             </a>
           </li>
-          <li className="nav-item waves-effect text-center">
-            <a data-toggle="tab" aria-expanded="false" className={`nav-link ${props.activeClass == 3?'active pb-2 pt-2':'pb-2 pt-2'}`} onClick={() => props.setActiveState(3)}>
-              {!mobile() && '3.'}<i className="fi-head mr-2"></i> {!mobile()? 'Capture Leads':''}
-            </a>
-          </li>
-          <li className="nav-item waves-effect">
-            <a data-toggle="tab" aria-expanded="false" className={`nav-link ${props.activeClass == 4?'active pb-2 pt-2':'pb-2 pt-2'}`} onClick={() => props.setActiveState(4)}>
-              {!mobile() && '4.'}<i className="fi-monitor mr-2"></i> {!mobile()? 'Display':''}
-            </a>
-          </li>
+          {campaignCheck &&
+            <li className="nav-item waves-effect text-center">
+              <a data-toggle="tab" aria-expanded="false" className={`nav-link ${props.activeClass == 3?'active pb-2 pt-2':'pb-2 pt-2'}`} onClick={() => props.setActiveState(3)}>
+                {!mobile() && '3.'}<i className="fi-head mr-2"></i> {!mobile()? 'Capture Leads':''}
+              </a>
+            </li>
+          }
+          {campaignCheck &&
+            <li className="nav-item waves-effect">
+              <a data-toggle="tab" aria-expanded="false" className={`nav-link ${props.activeClass == 4?'active pb-2 pt-2':'pb-2 pt-2'}`} onClick={() => props.setActiveState(4)}>
+                {!mobile() && '4.'}<i className="fi-monitor mr-2"></i> {!mobile()? 'Display':''}
+              </a>
+            </li>
+          }
           <li className="nav-item waves-effect text-center">
             <a data-toggle="tab" aria-expanded="false" className={`nav-link ${props.activeClass == 5?'active pb-2 pt-2':'pb-2 pt-2'}`} onClick={() => props.setActiveState(5)}>
-              {!mobile() && '5.'}<i className="fa fa-code mr-2"></i> {!mobile()? 'Install Pixel':''}
+              {!mobile() && campaignCheck ?'5.':'3.'}<i className="fa fa-code mr-2"></i> {!mobile()? 'Install Pixel':''}
             </a>
           </li>
         </ul>
@@ -94,6 +103,7 @@ const CampaignSettings = (props) => {
         step={props.activeClass}
         setActiveState={props.setActiveState}
         goLive={props.goLive}
+        campaign={props.campaign}
       />
     </div>
   );

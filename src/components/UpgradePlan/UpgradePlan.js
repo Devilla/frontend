@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { toast } from 'react-toastify';
-import { UpgradeCard } from 'components';
+import { UpgradeCard, Modal } from 'components';
 import PlanList from './PlanList';
 import './UpgradePlan.scss';
 
@@ -46,17 +46,39 @@ export default class UpgradePlan extends Component {
   render() {
     const { proceed, plan } = this.state;
     return (
-      <div className="transition-item upgrade-plan-container">
-        {!proceed ?
-          <PlanList
-            plan={plan}
-            profile={this.props.profile}
-            handleCheckChange={this.handleCheckChange}
-            makePayment={this.makePayment}
-          />
-          :
-          <UpgradeCard plan={plan} />
-        }
+      <div className="upgrade-plan-container">
+        <Modal
+          id='upgradePlanModal'
+          title='Upgrade Plan'
+          content={
+            <div className="modal-body">
+              {!proceed ?
+                <PlanList
+                  plan={plan}
+                  setPlanList={this.props.setPlanList}
+                  profile={this.props.profile}
+                  handleCheckChange={this.handleCheckChange}
+                  makePayment={this.makePayment}
+                />
+                :
+                <UpgradeCard plan={plan} />
+              }
+            </div>
+          }
+          style={
+            {
+              alignModalStyle: {
+                top: '10px'
+              },
+              modalDialog : {
+                maxWidth: '80%'
+              },
+              modalBody : {
+                padding: '0px'
+              }
+            }
+          }
+        />
       </div>
     );
   }

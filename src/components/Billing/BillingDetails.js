@@ -33,7 +33,8 @@ class BillingDetails extends Component {
       show: false,
       showSavedCards: false,
       showAddCard: false,
-      cvv: ''
+      cvv: '',
+      planList: []
     };
     props.fetchInvoices();
     props.fetchCards();
@@ -154,6 +155,14 @@ class BillingDetails extends Component {
           <h4>No card saved</h4>
         </Row>
       );
+  }
+
+  setPlanList = (planList) => {
+    planList.map(plan => {
+      if(this.props.params.planId == plan.id)
+        this.handleSelectedPlan(plan);
+    });
+    this.setState({planList});
   }
 
   render() {
@@ -291,21 +300,7 @@ class BillingDetails extends Component {
             </div>
           </Row>
         </div>
-        <div className="modal fade show-modal" id="upgradePlanModal" role="dialog">
-          <div className="modal-dialog modal-lg">
-            <div className="modal-content align-modal">
-              <div className="modal-header">
-                <button type="button" className="close" data-dismiss="modal">
-                  <i className="fa fa-close"></i>
-                </button>
-                <h4 className="modal-title">Upgrade Plan</h4>
-              </div>
-              <div className="modal-body">
-                <UpgradePlan plan={planSelected?planSelected:profile && profile.plan?profile.plan:''} handleSelectedPlan={this.handleSelectedPlan} />
-              </div>
-            </div>
-          </div>
-        </div>
+        <UpgradePlan plan={planSelected?planSelected:profile && profile.plan?profile.plan:''} handleSelectedPlan={this.handleSelectedPlan} setPlanList={this.setPlanList} />
       </Loading>
     );
   }

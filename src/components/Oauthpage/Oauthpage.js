@@ -46,7 +46,7 @@ class Oauthpage extends Component {
       <div className="oauth-container">
         <div className="content">
           <div className="card-box">
-            <h4 className="oauthheader mt-3">OAuth 2.0 Client ID</h4>
+            <h4 className="oauthheader mt-3">OAuth</h4>
             <hr/>
             <button
               type="button"

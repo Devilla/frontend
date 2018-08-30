@@ -27,25 +27,27 @@ const NotificationConfigure = ({
   showpopupfield,
   showpopup,
   popupName,
-  campaign
+  campaign,
+  selectedSubCampaign
 }) => {
   return (
-    <div className="notification-configure col-md-12">
+    <div data-transition-id="notification-configuration-page" className="notification-configure col-md-12">
       <Row>
         <Col md={12}>
           <Card title={notification.notificationName}
-            status={ <div className="notificationSwitch">
-              <input
-                className="tgl tgl-ios"
-                id={notification.notificationName}
-                type="checkbox"
-                defaultChecked={notification.activity}
-                onChange={(e) => e.target.checked !=notification.activity? handleActivityChange(!notification.activity, notification._id, notification.configurationId):null}
-              />
-              <label className="tgl-btn" htmlFor={notification.notificationName}>
-                <div className="toggle-text">ON</div>
-              </label>
-            </div>
+            status={
+              <div className="notificationSwitch">
+                <input
+                  className="tgl tgl-ios"
+                  id={notification.notificationName}
+                  type="checkbox"
+                  defaultChecked={notification.activity}
+                  onChange={(e) => e.target.checked !=notification.activity? handleActivityChange(!notification.activity, notification._id, notification.configurationId):null}
+                />
+                <label className="tgl-btn" htmlFor={notification.notificationName}>
+                  <div className="toggle-text">ON</div>
+                </label>
+              </div>
             }
             isDisabled={activity}
             content={
@@ -61,6 +63,7 @@ const NotificationConfigure = ({
                       notification={notification}
                       notificationPanelStyle={notificationPanelStyle}
                       popupName={popupName}
+                      image={selectedSubCampaign.productImage}
                     />
                   </Col>
                   <Col md={5}>
@@ -91,10 +94,6 @@ const NotificationConfigure = ({
       </Row>
       <i className="icon-arrow-left ml-2 btn-back-notif" onClick={backConfiguration}></i>
       <Row className="state-btn">
-
-        <span className="btn btn-primary" onClick={backConfiguration}>
-          Back
-        </span>
 
         <span className="btn btn-primary" onClick={setDefaultPanel} >
           Set Default

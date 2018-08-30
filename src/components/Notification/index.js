@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Card from 'components/utils/card';
-import Switch from 'react-flexible-switch';
-import { getCookie } from 'components/Common/function';
-import moment from 'moment';
 import { browserHistory } from 'react-router';
+import Switch from 'react-flexible-switch';
+import moment from 'moment';
 import Popup from 'react-popup';
 import mobile from 'is-mobile';
 import Loading from 'react-loading-animation';
 
+import { Modal } from 'components';
 import { fetchCampaign, fetchCampaignInfo, updateCampaign, successCampaign, removeCampaign } from 'ducks/campaign';
 import './Notification.scss';
+
 class Notification extends Component {
   constructor() {
     super();
@@ -45,23 +45,24 @@ class Notification extends Component {
         modalname: '2'
       });
     else
-      if (active && this.props.profile.uniqueVisitorsQoutaLeft <= 0) {
-        this.setState({
-          modaltitle: 'Limit exceeded',
-          modalbody: 'Please upgrade your plan to continue',
-          modalfoot: 'Upgrade Plan',
-          modalname: '2'
-        });
-      } else {
-        campaign['isActive'] = active;
-        delete campaign['_id'];
-        this.props.updateCampaign(campaign, index);
-      }
+    if (active && this.props.profile.uniqueVisitorsQoutaLeft <= 0) {
+      this.setState({
+        modaltitle: 'Limit exceeded',
+        modalbody: 'Please upgrade your plan to continue',
+        modalfoot: 'Upgrade Plan',
+        modalname: '2'
+      });
+    } else {
+      campaign['isActive'] = active;
+      delete campaign['_id'];
+      this.props.updateCampaign(campaign, index);
+    }
   }
 
   handleRouteChange(e, campaign) {
     if (e.target.className === 'tgl-btn m-0' ||
       e.target.className === 'tgl tgl-ios' ||
+      e.target.className === 'toggle-text' ||
       e.target.className === 'ml-3 icon-trash'
     )
       return;
@@ -105,7 +106,7 @@ class Notification extends Component {
       const { totalUsers } = this.usersCount(campaign._id);
       return (
         <div className="campaign-td tr" key={i} onClick={(e) => this.handleRouteChange(e, campaign)}>
-          <div scope="row" className="th col-md-1 text-center">{i + 1}</div>
+          <div scope="row" className="th col-md-1 text-center">{campaign.campaignType=='page'?'Page Specific':'Normal'}</div>
           <div className="td col-md-2 text-center p-1">{campaign.campaignName}</div>
           {!mobile() && <div className="td col-md-3 text-center p-1">{campaign.websiteUrl}</div>}
           <div className="switch td col-md-1">
@@ -134,9 +135,9 @@ class Notification extends Component {
         <div className="manage-notification mt-3">
           <div className="table-responsive">
             <div className="table table-striped">
-              <div className="thead table-header flex">
+              <div className="thead flex">
                 <div className="tr tab-row">
-                  <div className="th col-md-1 text-center p-1">#</div>
+                  <div className="th col-md-1 text-center p-1">CAMPAIGN TYPE</div>
                   <div className="th col-md-2 text-center p-1">CAMPAIGN</div>
                   {!mobile() && <div className="th col-md-3 text-center p-1">DOMAIN</div>}
                   <div className="th col-md-1 text-center p-1">STATUS</div>
@@ -151,26 +152,29 @@ class Notification extends Component {
               </div>
             </div>
 
-            <div className="modal fade show-modal" id={modalname} role="dialog">
-              <div className="modal-dialog modal-lg">
-                <div className="modal-content align-modal">
-                  <div className="modal-header">
-                    <button type="button" className="close" data-dismiss="modal">
-                      <i className="fa fa-close"></i>
-                    </button>
-                    <h4 className="modal-title">{modaltitle}</h4>
-                  </div>
-                  <div className="modal-body pb-5">
-                    {modalbody}
-                  </div>
-                  <div className="modal-footer">
-                    <button type="button" className="float-left btn btn-primary close-btn" data-dismiss="modal">Close</button>
-                    <button type="button" className="btn btn-primary delete-btn" data-dismiss="modal"
-                      onClick={modalfoot === 'Upgrade Plan' ? () => browserHistory.push('/upgrade') : modalfoot == 'Resume account' ? () => browserHistory.push('/profile') : this.deletepopupContent} >{modalfoot}</button>
-                  </div>
+            <Modal
+              id={modalname}
+              title={modaltitle}
+              content={
+                <div className="modal-body">
+                  {modalbody}
                 </div>
-              </div>
-            </div>
+              }
+              footer={
+                <div className="modal-footer">
+                  <button type="button" className="float-left btn btn-primary close-btn" data-dismiss="modal">Close</button>
+                  <button type="button" className="btn btn-primary delete-btn" data-dismiss="modal"
+                    onClick={modalfoot === 'Upgrade Plan' ? () => browserHistory.push('/upgrade') : modalfoot == 'Resume account' ? () => browserHistory.push('/profile') : this.deletepopupContent} >{modalfoot}</button>
+                </div>
+              }
+              style={
+                {
+                  alignModalStyle: {
+                    top: '100px'
+                  }
+                }
+              }
+            />
           </div>
         </div>
       </Loading>

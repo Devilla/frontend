@@ -60,4 +60,8 @@ export { default as OauthLogin } from './OauthLogin/OauthLogin';
 export { default as OauthAuthorization } from './OauthAuthorization/OauthAuthorization';
 export { default as GettingStarted } from './GettingStarted/GettingStarted';
 export { default as Settings } from './Settings/Settings';
+export { default as PageSpecificPopup } from './PageSpecificPopup/PageSpecificPopup';
+export { default as PageSpecific } from './PageSpecific/PageSpecific';
 export { default as CampaignFooter } from './CampaignFooter/CampaignFooter';
+export { default as ProductImages } from './ProductImages/ProductImages';
+export { default as Modal } from './Modal/Modal';

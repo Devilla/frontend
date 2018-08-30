@@ -4,10 +4,10 @@ import { connect } from 'react-redux';
 import { fetchSubCampaign, fetchOneSubCampaign, createSubCampaign, updateSubCampaign, deleteSubCampaign, clearSubCampaign } from 'ducks/subcampaign';
 import SubCampaignFields from './SubCampaignFields';
 import SubCampaignList from './SubCampaignList';
-import './NotificationSettingPopup.scss';
+import './PageSpecificPopup.scss';
 
 
-class NotificationSettingPopup  extends Component {
+class PageSpecificPopup  extends Component {
 
   constructor(props) {
     super(props);
@@ -257,32 +257,33 @@ class NotificationSettingPopup  extends Component {
                 <h4 className="modal-title">Customize the Notification Display</h4>
               </div>
               <div className="modal-body">
-                <span className="btn btn-primary addpagepopup-btn mb-4" onClick={()=> this.addpage()}><i className="fi-plus"></i> &nbsp;Add Page</span>
-                {this.state.displayField ?
-                  <SubCampaignFields
-                    selectedSubCampaign={selectedSubCampaign}
+                <div className="page-specific-popup-container">
+                  <span className="btn btn-primary addpagepopup-btn mb-4" onClick={()=> this.addpage()}><i className="fi-plus"></i> &nbsp;Add Page</span>
+                  {this.state.displayField ?
+                    <SubCampaignFields
+                      selectedSubCampaign={selectedSubCampaign}
+                      handleStateChange={this.handleStateChange}
+                      show="hidden"
+                      handleToggleChange={this.handleToggleChange}
+                      submitSubCampaign={this.submitSubCampaign}
+                      {...this.state}
+                    />
+                    : ' '}
+                  <SubCampaignList
+                    selectSubCampaign={this.selectSubCampaign}
                     handleStateChange={this.handleStateChange}
-                    show="hidden"
                     handleToggleChange={this.handleToggleChange}
-                    submitSubCampaign={this.submitSubCampaign}
+                    show={this.show}
+                    updateSubCampaign={this.updateSubCampaign}
+                    duplicateSubCampaign={this.duplicateSubCampaign}
+                    deleteSubCampaign={deleteSubCampaign}
+                    subcampaigns={subcampaigns}
+                    setNotification={this.setNotification}
+                    selectedSubCampaign={selectedSubCampaign}
                     {...this.state}
                   />
-                  : ' '}
-                <SubCampaignList
-                  selectSubCampaign={this.selectSubCampaign}
-                  handleStateChange={this.handleStateChange}
-                  handleToggleChange={this.handleToggleChange}
-                  show={this.show}
-                  updateSubCampaign={this.updateSubCampaign}
-                  duplicateSubCampaign={this.duplicateSubCampaign}
-                  deleteSubCampaign={deleteSubCampaign}
-                  subcampaigns={subcampaigns}
-                  setNotification={this.setNotification}
-                  selectedSubCampaign={selectedSubCampaign}
-                  {...this.state}
-                />
+                </div>
               </div>
-
             </div>
           </div>
         </div>
@@ -310,4 +311,4 @@ const mapDispatchToProps = {
   clearSubCampaign
 };
 
-export default connect(mapStateToProps, mapDispatchToProps, null, { withRef: true })(NotificationSettingPopup);
+export default connect(mapStateToProps, mapDispatchToProps, null, { withRef: true })(PageSpecificPopup);

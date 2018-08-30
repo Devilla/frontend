@@ -1,0 +1,22 @@
+.page-specific-container {
+  h1 {
+    font-family: cursive;
+  }
+  .product-details-form {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+  .page-specific-content {
+    padding: 25px 12px;
+    .btn {
+      border-radius: 6px;
+    }
+    .page-trash-button {
+      margin: 35px 0px;
+    }
+    .page-specific-buttons {
+      justify-content: space-between;
+    }
+  }
+}
