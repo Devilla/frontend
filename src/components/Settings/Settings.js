@@ -143,7 +143,7 @@ class Settings extends Component {
   }
 
   handleSelectedPlan = (plan) => {
-    console.log(plan, 'cool');
+    browserHistory.push(`/billing-details/${plan.id}`);
   }
 
   render() {

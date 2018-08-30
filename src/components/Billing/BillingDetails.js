@@ -33,7 +33,8 @@ class BillingDetails extends Component {
       show: false,
       showSavedCards: false,
       showAddCard: false,
-      cvv: ''
+      cvv: '',
+      planList: []
     };
     props.fetchInvoices();
     props.fetchCards();
@@ -154,6 +155,14 @@ class BillingDetails extends Component {
           <h4>No card saved</h4>
         </Row>
       );
+  }
+
+  setPlanList = (planList) => {
+    planList.map(plan => {
+      if(this.props.params.planId == plan.id)
+        this.handleSelectedPlan(plan);
+    });
+    this.setState({planList});
   }
 
   render() {
@@ -291,7 +300,7 @@ class BillingDetails extends Component {
             </div>
           </Row>
         </div>
-        <UpgradePlan plan={planSelected?planSelected:profile && profile.plan?profile.plan:''} handleSelectedPlan={this.handleSelectedPlan} />
+        <UpgradePlan plan={planSelected?planSelected:profile && profile.plan?profile.plan:''} handleSelectedPlan={this.handleSelectedPlan} setPlanList={this.setPlanList} />
       </Loading>
     );
   }

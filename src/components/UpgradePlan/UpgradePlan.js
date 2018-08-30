@@ -55,6 +55,7 @@ export default class UpgradePlan extends Component {
               {!proceed ?
                 <PlanList
                   plan={plan}
+                  setPlanList={this.props.setPlanList}
                   profile={this.props.profile}
                   handleCheckChange={this.handleCheckChange}
                   makePayment={this.makePayment}

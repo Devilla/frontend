@@ -8,7 +8,7 @@ import { Animated } from 'react-animated-css';
 import PricePage from 'components/PricePage';
 import './PlanList.scss';
 
-const PlanList = ({ plan, handleCheckChange }) => {
+const PlanList = ({ plan, handleCheckChange, setPlanList }) => {
   return (
     <div className="planlist-container">
       <div className="content fill upgrade-plan ">
@@ -20,6 +20,7 @@ const PlanList = ({ plan, handleCheckChange }) => {
                   <Row>
                     <Animated className="leftwrap center text-center ml-5" animationIn="fadeIn" animationOut="fadeOut" isVisible={true}>
                       <PricePage
+                        setPlanList={setPlanList}
                         paymentPage={true}
                         selectedPlan={plan}
                         handleCheckChange={handleCheckChange}
