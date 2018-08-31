@@ -174,6 +174,7 @@ class Notification extends Component {
                   }
                 }
               }
+              modalSize= 'modal-md'
             />
           </div>
         </div>
