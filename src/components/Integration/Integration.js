@@ -38,7 +38,7 @@ class Integrations extends Component {
       name : 'Google Tag Manager',
       text:'Sync your conversation and import your FAQs from Tag Manager',
       url: 'https://useinfluence.freshdesk.com/support/solutions/articles/36000080637-integrate-with-google-tag-manager',
-      image: '../../img/googletag.png'
+      image: '/src/img/googletag.png'
     },
     {
       name:'Zapier',
