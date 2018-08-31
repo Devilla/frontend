@@ -2,7 +2,6 @@ import React , { Component } from 'react';
 import './Integration.scss';
 import { Row, Col } from 'react-bootstrap';
 import IntegrationContent from './IntegrationContent';
-import { browserHistory } from 'react-router';
 import { OauthIntegrations } from 'components';
 
 import {
@@ -259,7 +258,7 @@ class Integrations extends Component {
           )
         }
         <Row>
-          <button className="btn btn-primary" onClick={() => browserHistory.push('oauth-integration/shopify')}>Integration Shopify</button>
+          <button className="btn btn-primary" onClick={() => this.setState({type: 'shopify'})}>Integration Shopify</button>
           {type && <OauthIntegrations type={type} /> }
         </Row>
       </div>

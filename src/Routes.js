@@ -38,7 +38,8 @@ import {
   WordpressPluginPage,
   GettingStarted,
   Settings,
-  OauthIntegrations
+  OauthIntegrations,
+  OauthVerification
 } from 'components';
 
 import {
@@ -77,6 +78,7 @@ const MyRoutes = ({routerHistory}) => (
       <Route path="/campaigns/scripts" component={WordpressPluginPage} />
       <Route path="/getting-started" component={GettingStarted} />
       <Route path="/settings" component={Settings} />
+      <Route path="/oauth-integration/verification/:type" component={OauthVerification} />
       <Route path="/oauth-integration/:type" component={OauthIntegrations} />
     </Route>
     <Route exact path="/oauth/:type" component={OauthContainer} />

@@ -1,7 +1,9 @@
 import React , { Component } from 'react';
 import { Link } from 'react-router';
+import { connect } from 'react-redux';
 
 import { Modal } from 'components';
+import { fetchCampaign } from 'ducks/campaign';
 
 class OauthIntegrations extends Component {
   constructor(props) {
@@ -14,47 +16,67 @@ class OauthIntegrations extends Component {
       modalContent: '',
       modalFooter: '',
       modalStyle: '',
-      footerLink: ''
+      footerLink: '',
+      selectedTrackingId: '',
+      campaignRender: false
     };
 
     this.plugins = [
       {
         name: 'shopify',
-        clientId: '5a071151e69836040802ccfa8cca93e1',
-        clientSecret: 'b9e738cc827a0f6d2a6193368de653e6',
-        redirectUrl: 'http://localhost:3000/oauth/connect/',
+        clientId: '5a071151e69836040802ccfa8cca93e1',//process.env.SHOPIFY_CLIENT_ID
+        clientSecret: 'b9e738cc827a0f6d2a6193368de653e6',//process.env.SHOPIFY_CLIENT_SECRET
+        redirectUrl: 'http://localhost:3000/oauth-integration/verification/shopify/',
         type: 'modal',
-        scopes: 'write_orders,read_customers',
+        scopes: 'read_script_tags,write_script_tags',
         method: this.renderShopifyModal
       }
     ];
   }
 
-  // componentDidMount() {
-  //   if(this.props.params.type)
-  //     this.setState({selectedInteragtion: this.plugins[this.props.params.type] });
-  // }
-  //
-  // componentWillReceiveProps(nextProps) {
-  //   if(nextProps.params.type != this.props.params.type)
-  //     this.setState({selectedInteragtion: this.plugins[nextProps.type] });
-  // }
+  componentWillMount() {
+    this.props.fetchCampaign();
+  }
 
   handleChange = (e) => {
     this.setState({[e.target.id]: e.target.value});
   }
 
+  renderCampaigns = () => {
+    let { campaigns } = this.props;
+    console.log(campaigns, '=========campaigns');
+    if(campaigns) {
+      return campaigns.map(campaign => {
+        console.log(campaign, '======ookkok');
+        this.setState({campaignRender: true});
+        return <div key={campaign._id} className="dropdown-item" id={campaign._id} onClick={() => this.setState({selectedCampaign: campaign})}>{campaign.campaignName}</div>;
+      });
+
+    }
+  }
+
   renderShopifyModal = (selectedInteragtion, displayModal) => {
+    const { selectedCampaign } = this.state;
+    // const { campaigns } = this.props;
     const api_key = selectedInteragtion.clientId;
     const scopes = selectedInteragtion.scopes;
     const redirect_uri = selectedInteragtion.redirectUrl;
-    const nonce = '123456';
+    const nonce = selectedCampaign? selectedCampaign.trackingId:'123456';
+    // console.log(campaigns, '================>');
     this.setState({
       modalId: 'shopifyModal',
       modalTitle: 'Shopify',
       modalContent: (
         <div className="modal-body">
           <input id="shopName" placeholder="Enter Shop Name" onChange={this.handleChange}/>
+          <div className="btn-group campaign-dropdown">
+            <button className="btn btn-primary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              {selectedCampaign && selectedCampaign.campaignName?selectedCampaign.campaignName:'Select Campaign'}
+            </button>
+            <div className="dropdown-menu">
+              {this.renderCampaigns()}
+            </div>
+          </div>
         </div>
       ),
       modalFooter: (
@@ -83,9 +105,13 @@ class OauthIntegrations extends Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
+    console.log(nextState.modalContent, this.state.modalContent, '======prosp');
     if(nextState.shopName !== this.state.shopName ||
       (nextState.modalFooter && this.state.modalFooter && nextState.modalFooter.props.children.props.href != this.state.modalFooter.props.children.props.href) ||
-      nextState.modalId != this.state.modalId
+      nextState.campaignRender != this.state.campaignRender ||
+      nextState.modalId != this.state.modalId ||
+      nextState.selectedCampaign != this.state.selectedCampaign ||
+      nextProps.campaigns != this.props.campaigns
     )
       return true;
     else
@@ -94,10 +120,10 @@ class OauthIntegrations extends Component {
 
   render() {
     const { modalId, modalTitle, modalContent, modalFooter, modalStyle, shopName } = this.state;
-    const { type } = this.props;
+    const { type, campaigns } = this.props;
     return (
       <div>
-        {(!modalId || shopName) && this.renderIntegration(type)}
+        {(!modalId || shopName || campaigns) && this.renderIntegration(type)}
         { modalId &&
           <Modal
             id={modalId}
@@ -112,4 +138,12 @@ class OauthIntegrations extends Component {
   }
 }
 
-export default OauthIntegrations;
+const mapStateToProps = state => ({
+  campaigns: state.getIn(['campaign', 'campaigns'])
+});
+
+const mapDispatchToProps = {
+  fetchCampaign
+};
+
+export default connect(mapStateToProps, mapDispatchToProps, null, { withRef: true })(OauthIntegrations);
