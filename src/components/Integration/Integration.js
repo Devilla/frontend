@@ -2,6 +2,8 @@ import React , { Component } from 'react';
 import './Integration.scss';
 import { Row, Col } from 'react-bootstrap';
 import IntegrationContent from './IntegrationContent';
+import { browserHistory } from 'react-router';
+import { OauthIntegrations } from 'components';
 
 import {
   Aweber,
@@ -29,20 +31,25 @@ class Integrations extends Component {
       selectedChannels: [],
       channelContent: [],
       checked: false,
-      activePage: 0
+      activePage: 0,
+      type: ''
     };
   }
+
   renderIntegration =(value) => {
     this.setState({
       activePage: value
     });
   }
+
   componentDidMount() {
     window.scrollTo(0,0);
   }
+
   componentWillUnmount() {
     this.setState({
-      activePage: 0
+      activePage: 0,
+      type: ''
     });
   }
 
@@ -180,7 +187,7 @@ class Integrations extends Component {
               <img src={Webflow} className="logocompany" />
               <h4 className="text-muted text-uppercase mt-0 i-title webflow">Webflow</h4>
               <p className="text-center desc-page text-muted">Sync your conversation and import yourFAQs from Webflow</p>
-              <span className="text-muted">< a href = "https://useinfluence.freshdesk.com/support/solutions/articles/36000075200-integrate-with-webflow" target="_blank"> View Details&nbsp; <i className="fi-open"></i></a></span>
+              <span className="text-muted"><a href = "https://useinfluence.freshdesk.com/support/solutions/articles/36000075200-integrate-with-webflow" target="_blank"> View Details&nbsp; <i className="fi-open"></i></a></span>
             </div>
           </Col>
         </Row>
@@ -232,27 +239,31 @@ class Integrations extends Component {
 
 
   render() {
-
+    const { type } = this.state;
     return (
-      this.state.activePage === 0 ? (
-        <div className="transition-item integration-container">
-          <div className="channel-container" >
-            <div className="channel">
-              <div className="content">
-
-                {this.channelsList()}
-
+      <div>
+        {this.state.activePage === 0 ? (
+          <div className="transition-item integration-container">
+            <div className="channel-container" >
+              <div className="channel">
+                <div className="content">
+                  {this.channelsList()}
+                </div>
               </div>
-
-
             </div>
-          </div>
-        </div>)
-        : (
-          <div className="transition-item pageContent">
-            <IntegrationContent renderState={this.state.activePage} renderIntegration={this.renderIntegration}/>
-          </div>
-        )
+          </div>)
+          : (
+            <div className="transition-item pageContent">
+              <IntegrationContent renderState={this.state.activePage} renderIntegration={this.renderIntegration}/>
+            </div>
+          )
+        }
+        <Row>
+          <button className="btn btn-primary" onClick={() => browserHistory.push('oauth-integration/shopify')}>Integration Shopify</button>
+          {type && <OauthIntegrations type={type} /> }
+        </Row>
+      </div>
+
     );
   }
 }

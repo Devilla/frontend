@@ -37,7 +37,8 @@ import {
   AnalyticsProfile,
   WordpressPluginPage,
   GettingStarted,
-  Settings
+  Settings,
+  OauthIntegrations
 } from 'components';
 
 import {
@@ -76,6 +77,7 @@ const MyRoutes = ({routerHistory}) => (
       <Route path="/campaigns/scripts" component={WordpressPluginPage} />
       <Route path="/getting-started" component={GettingStarted} />
       <Route path="/settings" component={Settings} />
+      <Route path="/oauth-integration/:type" component={OauthIntegrations} />
     </Route>
     <Route exact path="/oauth/:type" component={OauthContainer} />
     <Route exact path="/connect/:provider" component={ConnectPage} />
