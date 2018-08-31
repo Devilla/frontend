@@ -1,7 +1,9 @@
+.help-container {
+    width: 100%;
+    padding: 1% 7%;
+    font-size: 15px;
+}
 .analytics-container {
-
-
-
   .analytics-tr {
     cursor: pointer;
     display: flex;
@@ -100,11 +102,21 @@
     }
   }
   .mm-popup__box__footer {
-    display:none;
+    display:block;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: end;
+    justify-content: space-around;
+    padding-top: 0rem!important;
+    padding-bottom: 2px!important;
+    /* padding: 1rem; */
+    border-top: none;
+    overflow: hidden;
+    padding: 40px 30px 20px;
   }
   .mm-popup__close {
     z-index: 9;
-    height: 14px; 
+    height: 14px;
     background-image: url("../../img/close.svg");
   }
 }
