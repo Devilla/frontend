@@ -98,27 +98,27 @@ class DashboardContainer extends Component {
       content: <div className="help-container">
         <FormGroup>
           <Row className="help-form-fields">
-            <Radio name="radioGroup" inline={true} className="radio-text">
+            <Radio name="radioGroup" inline={true} className="radio-text" style={{textTransform:'none'}}>
               &nbsp;&nbsp; &nbsp; &nbsp;I need help setting up my Campaign
             </Radio>
           </Row>
           <Row className="help-form-fields">
-            <Radio name="radioGroup" inline="inline" className="radio-text">
+            <Radio name="radioGroup" inline="inline" className="radio-text" style={{textTransform:'none'}}>
               &nbsp;&nbsp; &nbsp; &nbsp;I want to know how to use Influence
             </Radio>
           </Row>
           <Row className="help-form-fields">
-            <Radio name="radioGroup" inline="inline" className="radio-text">
+            <Radio name="radioGroup" inline="inline" className="radio-text" style={{textTransform:'NONE'}}>
               &nbsp;&nbsp; &nbsp; &nbsp;Something is not working
             </Radio>
           </Row>
           <Row className="help-form-fields">
-            <Radio name="radioGroup" inline="inline" className="radio-text">
+            <Radio name="radioGroup" inline="inline" className="radio-text" style={{textTransform:'NONE'}}>
               &nbsp;&nbsp; &nbsp; &nbsp;I have feedback / feature request
             </Radio>
           </Row>
           <Row className="help-form-fields">
-            <Radio name="radioGroup" inline="inline" className="radio-text">
+            <Radio name="radioGroup" inline="inline" className="radio-text" style={{textTransform:'NONE'}}>
               &nbsp;&nbsp; &nbsp; &nbsp;I need help with something else
             </Radio>
           </Row>
