@@ -4,8 +4,9 @@ import {
   Col,
   HelpBlock
 } from 'react-bootstrap';
-import { Modal } from 'components';
 import { connect } from 'react-redux';
+
+import { Modal } from 'components';
 import { pagethArray } from 'components/Template/data';
 import { fetchLeadUrl, createPageUrl, clearPageUrl, removePageUrl } from 'ducks/pageurl';
 import './CapturePage.scss';

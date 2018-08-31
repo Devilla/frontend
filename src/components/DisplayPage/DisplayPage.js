@@ -4,8 +4,9 @@ import {
   Col,
   HelpBlock
 } from 'react-bootstrap';
-import { Modal } from 'components';
 import { connect } from 'react-redux';
+
+import { Modal } from 'components';
 import { pagethArray } from 'components/Template/data';
 import { fetchDisplayUrl, createPageUrl, clearPageUrl, removePageUrl } from 'ducks/pageurl';
 
@@ -257,37 +258,6 @@ class DisplayPage extends Component {
           </div>
         }
       />
-
-      // <div className="modal fade show-modal" role="dialog" style={{ display: openClose?'block':'none', opacity: openClose?1:0 }}>
-      //   <div className="modal-dialog">
-      //     <div className="modal-content align-modal">
-      //       <div className="modal-header flex">
-      //         <h4 className="modal-title">Add SubDomain</h4>
-      //         <div data-dismiss="modal" onClick={this.openCloseModal}><div>
-      //           <span><img src={Close}/></span>
-      //         </div></div>
-      //       </div>
-      //       <div className="modal-body row">
-      //         <div className="col-md-8 pl-5">
-      //           <input type="text"
-      //             className="form-control"
-      //             placeholder="Add your subdomain"
-      //             onChange={this.handleSubdomain}
-      //             onKeyUp={(e) => e.keyCode === 13?this.submitSubdomain():null}
-      //           />
-      //         </div>
-      //         <div className="col-md-4">
-      //           <span className="btn btn-primary  addsubdomain" onClick={this.submitSubdomain}>
-      //            Add
-      //           </span>
-      //         </div>
-      //       </div>
-      //       <HelpBlock className="text-center row">
-      //         <p className="website-error mb-0 mt-1">{domainError}</p>
-      //       </HelpBlock>
-      //     </div>
-      //   </div>
-      // </div>
     );
   }
 
