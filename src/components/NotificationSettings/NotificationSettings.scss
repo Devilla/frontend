@@ -1,9 +1,18 @@
 .notification-settings {
   .notification-settings-options {
     display: flex;
+    margin-botton: 10px;
     .dropdown-campaigns {
       display: flex;
       justify-content: center;
+      cursor: pointer;
+    }
+    .btn-recent {
+        border-radius: 5px;
+        background-color: #29b5a8;
+        padding: 3px 6px;
+        font-size: 11px;
+        color: #ffffff;
     }
   }
 

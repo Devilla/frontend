@@ -144,7 +144,7 @@ class Profile extends Component {
             <div className='content'>
               <h3>Recommended:</h3>
               <p>Indefinitely deactivates your account till you activate it again.</p><br/>
-              <p>You will be charged just $1.8 month to safeguard your data in our secure vaults</p>
+              <p>You will be charged just $3 month to safeguard your data in our secure vaults</p>
             </div>
           </Col>
           <Col md={6} className="deleteContent">
