@@ -74,11 +74,11 @@
   .mm-popup__box {
     width: 45% !important;
     left: 42% !important;
+    border: none;
   }
   .mm-popup__overlay {
     z-index: 999999999 !important;
     overflow: scroll !important;
-    background: rgba(248, 247, 247, 0.7) !important;
   }
   .mm-popup__box__header {
     padding: 0px inherit  !important;
@@ -99,8 +99,13 @@
       position: relative !important;
     }
   }
+  .mm-popup__box__footer {
+    display:none;
+  }
   .mm-popup__close {
-    background: none !important;
+    z-index: 9;
+    height: 14px; 
+    background-image: url("../../img/close.svg");
   }
 }
 
