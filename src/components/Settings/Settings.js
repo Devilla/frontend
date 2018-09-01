@@ -31,7 +31,7 @@ const setup = [
     head: 'Detailed'
   },
   {
-    icon: 'fi-paper-stack',
+    icon: 'fa-flash',
     modal: 'upgradePlanModal',
     text: 'Upgrade',
     head: 'Detailed'
