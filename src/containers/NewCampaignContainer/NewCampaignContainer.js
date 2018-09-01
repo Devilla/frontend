@@ -49,7 +49,8 @@ class NewCampaignContainer extends Component {
       content: '',
       buttonText: '',
       path: '',
-      campaignType: ''
+      campaignType: '',
+      integrationType: ''
     };
   }
 
@@ -191,6 +192,10 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
     this.props.clearSubDomain();
   }
 
+  setIntegrationType = (type) => {
+    this.setState({integrationType: type});
+  }
+
   render() {
 
     return (
@@ -208,6 +213,7 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
             setActiveState={this.setActiveState}
             setNotification={this.setNotification}
             clearNotification={this.clearNotification}
+            setIntegrationType={this.setIntegrationType}
             {...this.props}
             {...this.state}
           />

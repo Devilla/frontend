@@ -1,9 +1,7 @@
 import React , { Component } from 'react';
 import { Link } from 'react-router';
-import { connect } from 'react-redux';
 
 import { Modal } from 'components';
-import { fetchCampaign } from 'ducks/campaign';
 
 class OauthIntegrations extends Component {
   constructor(props) {
@@ -17,8 +15,7 @@ class OauthIntegrations extends Component {
       modalFooter: '',
       modalStyle: '',
       footerLink: '',
-      selectedTrackingId: '',
-      campaignRender: false
+      displayModal: ''
     };
 
     this.plugins = [
@@ -34,48 +31,29 @@ class OauthIntegrations extends Component {
     ];
   }
 
-  componentWillMount() {
-    this.props.fetchCampaign();
-  }
-
   handleChange = (e) => {
     this.setState({[e.target.id]: e.target.value});
   }
 
-  renderCampaigns = () => {
-    let { campaigns } = this.props;
-
-    if(campaigns) {
-      return campaigns.map(campaign => {
-        this.setState({campaignRender: true});
-        return <div key={campaign._id} className="dropdown-item" id={campaign._id} onClick={() => this.setState({selectedCampaign: campaign})}>{campaign.campaignName}</div>;
-      });
-
-    }
-  }
-
   renderShopifyModal = (selectedInteragtion, displayModal) => {
-    const { selectedCampaign } = this.state;
-    // const { campaigns } = this.props;
+    const { campaign } = this.props;
     const api_key = selectedInteragtion.clientId;
     const scopes = selectedInteragtion.scopes;
     const redirect_uri = selectedInteragtion.redirectUrl;
-    const nonce = selectedCampaign? selectedCampaign.trackingId:'123456';
+    const nonce = campaign? campaign.trackingId:'123456';
 
     this.setState({
       modalId: 'shopifyModal',
       modalTitle: 'Shopify',
       modalContent: (
         <div className="modal-body">
-          <input id="shopName" placeholder="Enter Shop Name" onChange={this.handleChange}/>
-          <div className="btn-group campaign-dropdown">
-            <button className="btn btn-primary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              {selectedCampaign && selectedCampaign.campaignName?selectedCampaign.campaignName:'Select Campaign'}
-            </button>
-            <div className="dropdown-menu">
-              {this.renderCampaigns()}
-            </div>
-          </div>
+          <input
+            type="text"
+            className="form-control"
+            id="shopName"
+            placeholder="Enter Shop Name"
+            onChange={this.handleChange}
+          />
         </div>
       ),
       modalFooter: (
@@ -106,29 +84,32 @@ class OauthIntegrations extends Component {
   shouldComponentUpdate(nextProps, nextState) {
     if(nextState.shopName !== this.state.shopName ||
       (nextState.modalFooter && this.state.modalFooter && nextState.modalFooter.props.children.props.href != this.state.modalFooter.props.children.props.href) ||
-      nextState.campaignRender != this.state.campaignRender ||
       nextState.modalId != this.state.modalId ||
-      nextState.selectedCampaign != this.state.selectedCampaign ||
-      nextProps.campaigns != this.props.campaigns
+      nextProps.campaign != this.props.campaign
     )
       return true;
     else
       return false;
   }
 
+  closeModal = () => {
+    this.props.setIntegrationType(null);
+  }
+
   render() {
     const { modalId, modalTitle, modalContent, modalFooter, modalStyle, shopName } = this.state;
-    const { type, campaigns } = this.props;
+    const { type } = this.props;
     return (
       <div>
-        {(!modalId || shopName || campaigns) && this.renderIntegration(type)}
-        { modalId &&
+        {(!modalId || shopName) && this.renderIntegration(type)}
+        {modalId &&
           <Modal
             id={modalId}
             title={modalTitle}
             content={modalContent}
             footer={modalFooter}
             style={modalStyle}
+            closeModal={this.closeModal}
           />
         }
       </div>
@@ -136,12 +117,4 @@ class OauthIntegrations extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  campaigns: state.getIn(['campaign', 'campaigns'])
-});
-
-const mapDispatchToProps = {
-  fetchCampaign
-};
-
-export default connect(mapStateToProps, mapDispatchToProps, null, { withRef: true })(OauthIntegrations);
+export default OauthIntegrations;

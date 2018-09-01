@@ -2,7 +2,6 @@ import React , { Component } from 'react';
 import './Integration.scss';
 import { Row, Col } from 'react-bootstrap';
 import IntegrationContent from './IntegrationContent';
-import { OauthIntegrations } from 'components';
 
 import {
   Aweber,
@@ -47,8 +46,7 @@ class Integrations extends Component {
 
   componentWillUnmount() {
     this.setState({
-      activePage: 0,
-      type: ''
+      activePage: 0
     });
   }
 
@@ -230,15 +228,10 @@ class Integrations extends Component {
     this.setState((prevState) => {
       return {selectedChannels : prevState.selectedChannels.concat(value)};
     });
-
     //more code to write for each redirection to the correspoding oauth server of the  respective partner site.
   }
 
-
-
-
   render() {
-    const { type } = this.state;
     return (
       <div>
         {this.state.activePage === 0 ? (
@@ -257,10 +250,6 @@ class Integrations extends Component {
             </div>
           )
         }
-        <Row>
-          <button className="btn btn-primary" onClick={() => this.setState({type: 'shopify'})}>Integration Shopify</button>
-          {type && <OauthIntegrations type={type} /> }
-        </Row>
       </div>
 
     );
