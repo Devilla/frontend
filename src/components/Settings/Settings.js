@@ -43,7 +43,7 @@ const configuration = [
     icon: 'fi-paper-stack',
     path: '',
     text: 'FAQs',
-    head: 'Detailed'
+    head: 'Detailed',
   },
   {
     icon: 'fi-link',
