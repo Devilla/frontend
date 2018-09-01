@@ -14,6 +14,7 @@ class OauthIntegrations extends Component {
       modalContent: '',
       modalFooter: '',
       modalStyle: '',
+      modalSize: '',
       footerLink: '',
       displayModal: ''
     };
@@ -68,7 +69,8 @@ class OauthIntegrations extends Component {
             opacity: displayModal?'1':'0'
           }
         }
-      )
+      ),
+      modalSize: 'modal-md'
     });
   }
 
@@ -97,7 +99,7 @@ class OauthIntegrations extends Component {
   }
 
   render() {
-    const { modalId, modalTitle, modalContent, modalFooter, modalStyle, shopName } = this.state;
+    const { modalId, modalTitle, modalContent, modalFooter, modalStyle, modalSize, shopName } = this.state;
     const { type } = this.props;
     return (
       <div>
@@ -109,6 +111,7 @@ class OauthIntegrations extends Component {
             content={modalContent}
             footer={modalFooter}
             style={modalStyle}
+            modalSize={modalSize}
             closeModal={this.closeModal}
           />
         }
