@@ -3,6 +3,7 @@ import * as api from 'services/api';
 import * as actions from 'ducks/oauth';
 import { load, loaded } from 'ducks/loading';
 import { toast } from 'react-toastify';
+import { browserHistory } from 'react-router';
 
 const toastConfig = {
   position: toast.POSITION.BOTTOM_LEFT,
@@ -74,11 +75,8 @@ function* OauthGetAccessToken(action) {
   try {
     yield put(load());
     const res = yield call(api.POST, `oauth/access_token/${action.requestType}`, action.requestDetails);
-    console.log(res);
-    // if (res.error)
-    //   console.log(res.error);
-    // else
-    //   yield put(actions.popClientOauth(action.index));
+    yield toast.error(res.message, toastConfig);
+    yield browserHistory.push('/campaigns');
     yield put(loaded());
   } catch (error) {
     yield put(loaded());

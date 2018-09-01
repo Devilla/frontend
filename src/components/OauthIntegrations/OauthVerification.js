@@ -15,15 +15,15 @@ class OauthVerification extends Component {
       params: { type }
     } = this.props;
 
-    console.log(this.props, query, type, '========cool props');
     if(type == 'shopify') {
       let requestBody =  Credentials.filter(item => item.name == type)[0];
       requestBody['code'] = query.code;
-      console.log(process.env);
+
       const requestURL = `https://${query.shop}/admin/oauth/access_token`;
       const requestDetails = {
         requestURL,
         requestBody,
+        shopLink: query.shop,
         trackingId: query.state
       };
       this.props.OauthGetAccessToken(requestDetails, type);

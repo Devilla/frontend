@@ -44,10 +44,9 @@ class OauthIntegrations extends Component {
 
   renderCampaigns = () => {
     let { campaigns } = this.props;
-    console.log(campaigns, '=========campaigns');
+
     if(campaigns) {
       return campaigns.map(campaign => {
-        console.log(campaign, '======ookkok');
         this.setState({campaignRender: true});
         return <div key={campaign._id} className="dropdown-item" id={campaign._id} onClick={() => this.setState({selectedCampaign: campaign})}>{campaign.campaignName}</div>;
       });
@@ -62,7 +61,7 @@ class OauthIntegrations extends Component {
     const scopes = selectedInteragtion.scopes;
     const redirect_uri = selectedInteragtion.redirectUrl;
     const nonce = selectedCampaign? selectedCampaign.trackingId:'123456';
-    // console.log(campaigns, '================>');
+
     this.setState({
       modalId: 'shopifyModal',
       modalTitle: 'Shopify',
@@ -105,7 +104,6 @@ class OauthIntegrations extends Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    console.log(nextState.modalContent, this.state.modalContent, '======prosp');
     if(nextState.shopName !== this.state.shopName ||
       (nextState.modalFooter && this.state.modalFooter && nextState.modalFooter.props.children.props.href != this.state.modalFooter.props.children.props.href) ||
       nextState.campaignRender != this.state.campaignRender ||
