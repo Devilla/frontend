@@ -1,8 +1,11 @@
 .price {
-  font-size: 38px !important;
+  font-size: 36px !important;
+  color: #50697e;
 
   & + .name {
-    font-size: 13px !important;
+    font-size: 12px !important;
+    color: #50697e;
+    text-transform: uppercase;
   }
   ul {
     display: flex;
@@ -20,15 +23,14 @@
 }
 .pricingTable {
   padding: 0px 0 0;
-  background: #dcdbdb;
-  border-radius: 40px !important;
+  background: #ffffff;
+  border-radius: 5px !important;
   text-align: center;
   transition: all 0.3s ease 0s;
   position: relative;
-  left: 100;
   top: 0px;
-  width: 200px !important;
   cursor: pointer;
+  box-shadow: 0px 0px 4px #7f7f7f;
   &:hover {
     animation: boxes 0.1s ease  1 forwards ;
   }
@@ -57,11 +59,14 @@
     position: relative;
     border-bottom-left-radius: 10px !important;
     border-bottom-right-radius: 10px !important;
-    background: rgb(245, 245, 245);
+    background: #ffffff;
     ul {
       padding: 0;
       margin: 0 0 0px 0;
       list-style: none;
+      .price-features {
+        color: #50697e important;
+      }
       li {
         font-size: 15px;
         font-weight: 600;
@@ -76,6 +81,13 @@
 
 .font-desc {
   font-size: 13px !important;
+  cursor: pointer;
+  display: flex;
+  color: #50697e !important;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+  word-wrap: break-word;
 }
 .pricing-header {
   padding-bottom: 10px !important;

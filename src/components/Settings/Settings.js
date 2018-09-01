@@ -17,7 +17,6 @@ const setup = [
     icon: 'fi-cog',
     path: 'integrations',
     text: 'Integrations',
-    head: 'Unique'
   },
   {
     icon: 'fi-book',
@@ -25,16 +24,15 @@ const setup = [
     text: 'Billing',
   },
   {
-    icon: 'fi-paper-stack',
+    icon: 'fa fa-gears',
     path: 'oauthshow',
     text: 'O-Auth',
     head: 'Detailed'
   },
   {
-    icon: 'fi-paper-stack',
+    icon: 'fa fa-flash',
     modal: 'upgradePlanModal',
     text: 'Upgrade',
-    head: 'Detailed'
   }
 ];
 
@@ -43,13 +41,12 @@ const configuration = [
     icon: 'fi-paper-stack',
     path: '',
     text: 'FAQs',
-    head: 'Detailed'
+    head: 'Support',
   },
   {
     icon: 'fi-link',
     path: '/campaigns/scripts',
     text: 'Campaign Keys',
-    head: 'Detailed'
   }
 ];
 
@@ -81,19 +78,35 @@ class Settings extends Component {
   renderConfigurations = () => {
     return configuration.map((item, index) => {
       return (
-        <div key={index+item.text} className="card mr-0" onClick={() => this.handleRoutes(item.text, item.path)}>
-          <div className="card-img-top">
-            {item.head &&
+        item.text=='FAQs' ? <a href="https://useinfluence.freshdesk.com/support/solutions" target="_blank" style={{color:'inherit'}}>
+          <div key={index+item.text} className="card mr-0">
+            <div className="card-img-top">
+              {item.head &&
+            <p>
+              {item.head}
+            </p>
+              }
+            </div>
+            <div className="card-body">
+              <i className={item.icon}></i>
+              <p className="card-text">{item.text}</p>
+            </div>
+          </div>
+        </a>
+          :
+          <div key={index+item.text} className="card mr-0" onClick={() => this.handleRoutes(item.text, item.path)}>
+            <div className="card-img-top">
+              {item.head &&
               <p>
                 {item.head}
               </p>
-            }
+              }
+            </div>
+            <div className="card-body">
+              <i className={item.icon}></i>
+              <p className="card-text">{item.text}</p>
+            </div>
           </div>
-          <div className="card-body">
-            <i className={item.icon}></i>
-            {item.text=='FAQs' ? <a href="https://useinfluence.freshdesk.com/support/solutions" target="_blank"><p className="card-text">{item.text}</p></a>:<p className="card-text">{item.text}</p>}
-          </div>
-        </div>
       );
     });
   }
