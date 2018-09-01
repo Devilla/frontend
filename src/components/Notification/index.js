@@ -109,7 +109,7 @@ class Notification extends Component {
           <div scope="row" className="th col-md-1 text-center">{campaign.campaignType=='page'?'Page Specific':'Normal'}</div>
           <div className="td col-md-2 text-center p-1">{campaign.campaignName}</div>
           {!mobile() && <div className="td col-md-3 text-center p-1">{campaign.websiteUrl}</div>}
-          <div className="switch td col-md-1">
+          <div className="switch td col-md-1 pl-4">
             <input className="tgl tgl-ios" id="cb2" type="checkbox" checked={this.state.isActive}  readOnly/>
             <label className="tgl-btn m-0" htmlFor="cb2"  data-toggle="modal" data-target="#2"  onClick={(e) => this.handleActiveChange(!campaign.isActive, campaign, i)}>
               <div className="toggle-text">ON</div>
@@ -140,7 +140,7 @@ class Notification extends Component {
                   <div className="th col-md-1 text-center p-1">CAMPAIGN TYPE</div>
                   <div className="th col-md-2 text-center p-1">CAMPAIGN</div>
                   {!mobile() && <div className="th col-md-3 text-center p-1">DOMAIN</div>}
-                  <div className="th col-md-1 text-center p-1">STATUS</div>
+                  <div className="th col-md-1 text-center p-1 pr-3">STATUS</div>
                   <div className="text-center th col-md-1 p-1">TOTAL VISITORS</div>
                   {!mobile() && <div className="th col-md-2 text-center p-1">TRACK ID</div>}
                   {!mobile() && <div className="th col-md-1 text-center p-1">CREATED/UPDATED</div>}
@@ -156,13 +156,12 @@ class Notification extends Component {
               id={modalname}
               title={modaltitle}
               content={
-                <div className="modal-body">
+                <div className="modal-body text-center mt-4">
                   {modalbody}
                 </div>
               }
               footer={
                 <div className="modal-footer">
-                  <button type="button" className="float-left btn btn-primary close-btn" data-dismiss="modal">Close</button>
                   <button type="button" className="btn btn-primary delete-btn" data-dismiss="modal"
                     onClick={modalfoot === 'Upgrade Plan' ? () => browserHistory.push('/upgrade') : modalfoot == 'Resume account' ? () => browserHistory.push('/profile') : this.deletepopupContent} >{modalfoot}</button>
                 </div>
