@@ -81,19 +81,35 @@ class Settings extends Component {
   renderConfigurations = () => {
     return configuration.map((item, index) => {
       return (
-        <div key={index+item.text} className="card mr-0" onClick={() => this.handleRoutes(item.text, item.path)}>
-          <div className="card-img-top">
-            {item.head &&
+        item.text=='FAQs' ? <a href="https://useinfluence.freshdesk.com/support/solutions" target="_blank" style={{color:'inherit'}}>
+          <div key={index+item.text} className="card mr-0">
+            <div className="card-img-top">
+              {item.head &&
+            <p>
+              {item.head}
+            </p>
+              }
+            </div>
+            <div className="card-body">
+              <i className={item.icon}></i>
+              <p className="card-text">{item.text}</p>
+            </div>
+          </div>
+        </a>
+          :
+          <div key={index+item.text} className="card mr-0" onClick={() => this.handleRoutes(item.text, item.path)}>
+            <div className="card-img-top">
+              {item.head &&
               <p>
                 {item.head}
               </p>
-            }
+              }
+            </div>
+            <div className="card-body">
+              <i className={item.icon}></i>
+              <p className="card-text">{item.text}</p>
+            </div>
           </div>
-          <div className="card-body">
-            <i className={item.icon}></i>
-            {item.text=='FAQs' ? <a href="https://useinfluence.freshdesk.com/support/solutions" target="_blank"><p className="card-text">{item.text}</p></a>:<p className="card-text">{item.text}</p>}
-          </div>
-        </div>
       );
     });
   }

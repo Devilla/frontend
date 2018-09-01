@@ -49,39 +49,45 @@ class Integrations extends Component {
       name: 'Wordpress',
       text : 'Show social proof notification on wordpress using our app.',
       url: 'https://wordpress.org/plugins/useinfluence/',
-      image: `${Wordpress}`
+      image: `${Wordpress}`,
+      left: ''
 
     },
     {
       name : 'Google Tag Manager',
       text:'Sync your conversation and import your FAQs from Tag Manager',
       url: 'https://useinfluence.freshdesk.com/support/solutions/articles/36000080637-integrate-with-google-tag-manager',
-      image: `${Googletag}`
+      image: `${Googletag}`,
+      left: '28%'
     },
     {
       name:'Zapier',
       text:'Sync your conversation and import your FAQs from Zapier',
       url : 'https://useinfluence.freshdesk.com/support/solutions/articles/36000075182-integrate-with-zapier-',
-      image: `${Zapier}`
+      image: `${Zapier}`,
+      left: '40%'
     },
     {
       name:'Hubspot',
       text:'Sync your conversation and import yourFAQs from Hubspot',
       url : '',
-      image: `${Hubspot}`
+      image: `${Hubspot}`,
+      left : ''
     },
     {
       name:'Instapage',
       text:'Sync your conversation and import yourFAQs from Instapage',
       url : 'https://useinfluence.freshdesk.com/support/solutions/articles/36000076079-integrate-with-instapage',
-      image: `${Instapage}`
+      image: `${Instapage}`,
+      left : ''
 
     },
     {
       name:'Leadpages',
       text:'Sync your conversation and import yourFAQs from Leadpages',
       url: 'https://useinfluence.freshdesk.com/support/solutions/articles/36000078519-integrate-with-leadpages',
-      image: `${Leadpages}`
+      image: `${Leadpages}`,
+      left: ''
     },
 
 
@@ -89,64 +95,73 @@ class Integrations extends Component {
       name:'Mailmunch',
       text:'Sync your conversation and import yourFAQs from Mailmunch',
       url: 'https://useinfluence.freshdesk.com/support/solutions/articles/36000076088-integrate-with-mailmunch',
-      image: `${Mailmunch}`
+      image: `${Mailmunch}`,
+      left: ''
     },
     {
       name:'Ontraport',
       text:'Sync your conversation and import yourFAQs from Ontraport',
       url: 'https://useinfluence.freshdesk.com/support/solutions/articles/36000076192-integrate-with-ontraport-',
-      image: `${Ontraport}`
+      image: `${Ontraport}`,
+      left: ''
     },
     {
       name:'Squarespace',
       text:'Sync your conversation and import yourFAQs from Squarespace',
       url: 'https://useinfluence.freshdesk.com/support/solutions/articles/36000076111-integrate-with-squarespace',
-      image: `${Squarespace}`
+      image: `${Squarespace}`,
+      left: ''
     },
     {
       name:'Thrivecart',
       text:'Sync your conversation and import yourFAQs from Thrivecart',
       url: '',
-      image: `${Thrivecart}`
+      image: `${Thrivecart}`,
+      left: '35%'
     },
     {
       name:'Unbounce',
       text:'Sync your conversation and import yourFAQs from Unbounce',
       url: '',
-      image: `${Unbounce}`
+      image: `${Unbounce}`,
+      left: '37%'
     },
     {
       name:'Webflow',
       text:'Sync your conversation and import yourFAQs from Webflow',
       url: 'https://useinfluence.freshdesk.com/support/solutions/articles/36000075200-integrate-with-webflow',
-      image: `${Webflow}`
+      image: `${Webflow}`,
+      left: '38%'
     },
     {
       name:'Woocommerce',
       text:'Sync your conversation and import yourFAQs from Woocommerce',
       url: 'https://wordpress.org/plugins/useinfluence/',
-      image: `${Woocommerce}`
+      image: `${Woocommerce}`,
+      left: ''
     },
     {
       name:'Aweber',
       text:'Sync your conversation and import yourFAQs from Aweber',
       url: '',
-      image: `${Aweber}`
+      image: `${Aweber}`,
+      left: '39%'
     },
     {
       name:'Clickfunnels',
       text:'Sync your conversation and import yourFAQs from Clickfunnels',
       url: 'https://useinfluence.freshdesk.com/support/solutions/articles/36000072080-integrate-with-clickfunnels',
-      image: `${Clickfunnels}`
+      image: `${Clickfunnels}`,
+      left: '33%'
     },
 
 
     ];
     return (
       <div>
-        <Row className="mb-5 navbar-custom integrations-header">
+        <Row className="navbar-custom integrations-header">
           <div className="col-xl-12"><h3 className="integrationheader-1"> Integrations </h3></div>
-          <div className="col-xl-12"><p className=" mb-5 h6 integrationheader-2"> The best of all worlds - Use Influence with your favourite apps </p></div>
+          <div className="col-xl-12"><p className=" h6 integrationheader-2"> The best of all worlds - Use Influence with your favourite apps </p></div>
         </Row>
 
         <Row className="justify-content-center mb-5 ">
@@ -156,7 +171,7 @@ class Integrations extends Component {
                 <div className="ribbon-two ribbon-two-danger"><span>Inactive</span></div>
                 <div className="tilebox-one">
                   <img src={item.image} className="logocompany" />
-                  <h4 className="text-muted text-uppercase mt-0 i-title wordpress">{item.name}</h4>
+                  <h4 className="text-muted text-uppercase mt-0 i-title wordpress" style={{left:`${item.left}`}}>{item.name}</h4>
                   <p className="text-center desc-page text-muted">{item.text} </p>
                   <span className="text-muted" ><a href={item.url} target="_blank">View Details&nbsp; <i className="fi-open"></i></a></span>
                 </div>
