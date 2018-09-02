@@ -67,6 +67,8 @@ class PageSpecific extends Component {
       captureUrl: ''
     };
     let pages = this.state.pages;
+    if(pages.length)
+      initialData.captureUrl = pages[0].captureUrl;
     pages.push(initialData);
     this.setState({ pages, error: '' });
   }
