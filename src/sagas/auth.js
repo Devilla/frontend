@@ -72,8 +72,8 @@ export function* fetchUser() {
     yield put(load());
     const res = yield call(api.GET, 'user/me');
     if(!res.error) {
-      console.log(browserHistory, '=============>');
-      // browserHistory.push(res.path);
+      if(browserHistory.getCurrentLocation().pathname !== '/oauth-integration/verification/shopify/')
+        browserHistory.push(res.path);
       yield put(actions.fetchUserSuccess(res));
     }
     yield put(loaded());
