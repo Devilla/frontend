@@ -131,7 +131,7 @@ class Notification extends Component {
     const { campaigns, profile, campaignInfo } = this.props;
 
     return (
-      <Loading className="transition-item manage-transition-notification" isLoading={!campaigns || !profile || !campaignInfo}>
+      <Loading className="transition-item manage-transition-notification" strokeWidth="2" style={{height: '700px', width: '10%'}} isLoading={!campaigns || !profile || !campaignInfo}>
         <div className="manage-notification mt-3">
           <div className="table-responsive">
             <div className="table table-striped">
