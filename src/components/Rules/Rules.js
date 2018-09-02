@@ -90,7 +90,7 @@ class Rules extends Component{
 
   componentWillUnmount() {
     this.setState({sampleDisplay: false});
-    this.props.setActiveState(1);
+    this.props.setActiveState(1, true);
   }
 
   handleNextState() {

@@ -95,20 +95,21 @@ class NewCampaignContainer extends Component {
     return this.props.createCampaign(data, pages);
   }
 
-  setActiveState = (val) => {
+  setActiveState = (val, unMounting) => {
     if(this.state.sampleDisplay && val != 3)
       this.setState({sampleDisplay: false});
     if(val == 2)
       this.setState({notification: ''});
     this.setState({activeClass: val});
-
-    let breadcrumb = this.props.breadcrumb;
-    breadcrumb.splice(1);
-    breadcrumb.push({
-      name: campaignTabs[val-1],
-      path: ''
-    });
-    this.props.setBreadCrumbs(breadcrumb);
+    if(!unMounting) {
+      let breadcrumb = this.props.breadcrumb;
+      breadcrumb.splice(1);
+      breadcrumb.push({
+        name: campaignTabs[val-1],
+        path: ''
+      });
+      this.props.setBreadCrumbs(breadcrumb);
+    }
   }
 
   verifyPixelStatus = (campaign) => {

@@ -14,6 +14,7 @@ import Moment from 'moment';
 import { fetchCampaignInfo, successCampaign , fetchCampaign } from 'ducks/campaign';
 import { mapGraph, heatMapGraph } from 'ducks/elastic';
 import Card from './Card';
+import HealthTable from './HealthTable';
 
 import './Dashboard.scss';
 
@@ -530,6 +531,11 @@ class Dashboard extends Component {
                   </Row>
                   <div className="clearfix"></div>
                 </div>
+              </Col>
+            </Row>
+            <Row className="campaign-health-table">
+              <Col md={12}>
+                <HealthTable campaigns={campaigns} />
               </Col>
             </Row>
             {/* <Row  className="justify-content-around text-muted mb-5 heat-graph">

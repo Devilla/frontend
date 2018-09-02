@@ -31,7 +31,7 @@ class CapturePage extends Component {
   }
 
   componentWillUnmount() {
-    this.props.setActiveState(1);
+    this.props.setActiveState(1, true);
   }
 
   componentDidMount() {

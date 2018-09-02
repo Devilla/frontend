@@ -30,6 +30,7 @@
     background: #e2e5e7 !important;
     color: #7d7b8a;
     border-radius: 3px;
+    white-space: inherit;
   }
 
   .content-tabs:hover, .active {
@@ -60,7 +61,7 @@
           }
           .fileUploader {
             .fileContainer {
-              width: 90%;
+              width: 140px;
               background: transparent;
               margin-top: -15%;
               position: absolute;
@@ -83,6 +84,7 @@
         .media-body {
           h4 {
             color: black;
+            white-space: pre-line;
           }
           p {
             margin-top: 0px !important;

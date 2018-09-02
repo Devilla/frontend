@@ -1,6 +1,49 @@
 .transition-wrapper {
   position: inherit !important;
 }
+
+.campaign-health-table {
+  .campaign-td {
+    cursor: pointer;
+    display: flex;
+    padding: 1.5% 0% 1.5% 0%;
+    margin: 10px auto;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+    background: #fff;
+    border-radius: 3px;
+    color: #50697e;
+    border: 0.5px solid #e1e1e1;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    font-weight: 500;
+    word-wrap: break-word;
+    justify-content: center;
+    align-items: center;
+    .health-col {
+      display: flex;
+      justify-content: center;
+      .fa {
+        font-size: 14px;
+        margin-top: 1px;
+        padding: 0px 5px;
+      }
+      .fa-check-circle {
+        color: #afe875;
+      }
+      .fa-times-circle {
+        color: #f98293;
+      }
+      .fa-exclamation-circle {
+        color: #fde54d;
+      }
+      div {
+        text-transform: capitalize;
+        width: 15%;
+      }
+    }
+  }
+}
+
 .dashboard-boxes {
   .dates-select {
     border: none !important;
@@ -295,6 +338,7 @@
   padding-bottom: 10px !important;
   margin: 15px;
 }
+
 
 @media only screen and (max-width: 768px) and (min-width: 100px) {
   .dashboard-inner-container {
