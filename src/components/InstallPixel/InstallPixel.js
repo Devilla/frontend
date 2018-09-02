@@ -2,6 +2,8 @@ import React from 'react';
 import {Animated} from 'react-animated-css';
 import { browserHistory } from 'react-router';
 import { Row, Col } from 'react-bootstrap';
+
+import { OauthIntegrations } from 'components';
 import './InstallPixel.scss';
 import Webhook from './Webhook';
 
@@ -14,7 +16,9 @@ const InstallPixel = ({
   toggleWebhook,
   displayWebhookIntegration,
   breadcrumb,
-  setBreadCrumbs
+  setBreadCrumbs,
+  setIntegrationType,
+  integrationType
 }) => {
   const verifyStatus = elastic==undefined?undefined:(elastic.error || (elastic.message.hits.total === 0))?false:true;
   const verifyPixelClass =`btn btn-primary waves-light waves-effect pixel-btn ${elastic==undefined?'warning-elastic':(elastic.error || (elastic.message.hits.total === 0))?'error-elastic':'success-elastic'}`;
@@ -82,7 +86,7 @@ const InstallPixel = ({
         <h4 className="lead col-md-12 text-center m-b-30 m-t-20">UseInfluence Integrates Easily</h4>
       </div>
       <Row className="integration-row">
-        <Col md={4} className=" mr-0 pr-2">
+        <Col md={3} className=" mr-0 pr-2">
           <button
             type="button"
             className="btn btn-outline-primary waves-light waves-effect webhook-btn  pl-3 pr-3"
@@ -94,17 +98,21 @@ const InstallPixel = ({
           </button>
         </Col>
 
-        <Col md={4}>
+        <Col md={3}>
           <a href="https://useinfluence.freshdesk.com/support/solutions/articles/36000080637-integrate-with-google-tag-manager" target="_blank"><span className="btn btn-outline-primary tagmanager "> Google Tag Manager</span></a>
         </Col>
-        <Col md={4}>
+        <Col md={3}>
           <span className="btn btn-outline-primary integrations" onClick={() => integrations()}>Integrations</span>
+        </Col>
+        <Col md={3}>
+          <span className="btn btn-outline-primary integrations" onClick={() => setIntegrationType('shopify')}>Shopify</span>
         </Col>
 
         {displayWebhookIntegration &&
           <Webhook campaign={campaign} />
         }
       </Row>
+      {integrationType && <OauthIntegrations campaign={campaign} type={integrationType} setIntegrationType={setIntegrationType} /> }
     </div>
 
 

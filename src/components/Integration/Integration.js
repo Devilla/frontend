@@ -27,17 +27,21 @@ class Integrations extends Component {
       selectedChannels: [],
       channelContent: [],
       checked: false,
-      activePage: 0
+      activePage: 0,
+      type: ''
     };
   }
+
   renderIntegration =(value) => {
     this.setState({
       activePage: value
     });
   }
+
   componentDidMount() {
     window.scrollTo(0,0);
   }
+
   componentWillUnmount() {
     this.setState({
       activePage: 0
@@ -194,30 +198,25 @@ class Integrations extends Component {
 
   }
 
-
-
-
   render() {
-
     return (
-      this.state.activePage === 0 ? (
-        <div className="transition-item integration-container">
-          <div className="channel-container" >
-            <div className="channel">
-              <div className="content">
-
-                {this.channelsList()}
-
+      <div>
+        {this.state.activePage === 0 ? (
+          <div className="transition-item integration-container">
+            <div className="channel-container" >
+              <div className="channel">
+                <div className="content">
+                  {this.channelsList()}
+                </div>
               </div>
-
-
             </div>
-          </div>
-        </div>)
-        : (
-          <div className="transition-item pageContent">
-          </div>
-        )
+          </div>)
+          : (
+            <div className="transition-item pageContent">
+            </div>
+          )
+        }
+      </div>
     );
   }
 }
