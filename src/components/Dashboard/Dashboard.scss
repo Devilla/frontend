@@ -28,10 +28,17 @@
         padding: 0px 5px;
       }
       .fa-check-circle {
-        color: lightgreen;
+        color: #afe875;
+      }
+      .fa-times-circle {
+        color: #f98293;
+      }
+      .fa-exclamation-circle {
+        color: #fde54d;
       }
       div {
         text-transform: capitalize;
+        width: 15%;
       }
     }
   }
