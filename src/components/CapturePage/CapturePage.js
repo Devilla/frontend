@@ -295,9 +295,9 @@ class CapturePage extends Component {
     return (
       <div className="CapturePage-container">
         <div className="tabscontent">
-          <Row>
-            <Col md={12}>
-              <h4 className="lead text-center m-b-30 m-t-20">Submit your conversion page</h4>
+          <Row className="display-page-row">
+            <Col md={12} className="display-page-header">
+              <label className="text-muted text-center mb-4 mt-5">Submit your conversion page</label>
             </Col>
           </Row>
           <Row style={{justifyContent: 'center'}}>

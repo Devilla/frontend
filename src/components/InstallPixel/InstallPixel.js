@@ -34,8 +34,8 @@ const InstallPixel = ({
 
   return (
     <div className="install-pixel">
-      <p className="text-muted text-left">Copy your unique script & paste it in the Header of your Website. Add this
-        to every page where you want to track, measure and show notifications.</p>
+      <label className="text-muted">Copy your unique script & paste it in the Header of your Website. Add this
+        to every page where you want to track, measure and show notifications.</label>
       <div className="bgcolor text-monospace border-dark">
         <p className="m-l-30 p-3">{`<script src="https://storage.googleapis.com/influence-197607.appspot.com/influence-analytics.js">
       </script>`}
