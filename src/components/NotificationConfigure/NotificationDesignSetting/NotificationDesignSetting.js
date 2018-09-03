@@ -420,7 +420,7 @@ export class NotificationDesignSetting extends Component {
                       planType === 'premium')) &&
                       <Row className="mb-3">
                         <Col md={12}>
-                          <h4 className="text-muted h6">Brand Name</h4>
+                          <h4 className="text-muted h6">Brand Name {campaign.campaignType == 'page'?' / Product Name':''}</h4>
                           <Row>
                             <Col md={12}>
                               <FormControl

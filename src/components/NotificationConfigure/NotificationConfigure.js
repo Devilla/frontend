@@ -23,7 +23,6 @@ const NotificationConfigure = ({
   handleNotificationStyleChange,
   handleClickableNotification,
   saveConfiguration,
-  backConfiguration,
   showpopupfield,
   showpopup,
   popupName,
