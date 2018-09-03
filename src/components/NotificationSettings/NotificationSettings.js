@@ -259,6 +259,7 @@ class Notifications extends Component {
   }
 
   componentWillUnmount() {
+    console.log('==========notntotnto');
     this.props.setActiveState(1, true);
     this.props.clearConfiguration();
     this.setInitialState();

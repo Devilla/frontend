@@ -89,7 +89,7 @@ function* remove(action) {
             key: '⌘+s',
             className: 'btn btn-primary delete-btn',
             action: function () {
-              browserHistory.push('/dashboard');
+              browserHistory.push('/campaigns');
               Popup.close();
             }
           }]
