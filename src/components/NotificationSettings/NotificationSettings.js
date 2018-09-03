@@ -295,7 +295,6 @@ class Notifications extends Component {
         <div className="notification-settings">
           <div>
             <div>
-              <h4 className="lead text-center m-b-2 m-t-20">Notifications</h4>
               {notification && campaign.campaignType == 'page' &&
                 <div className="notification-settings-options">
                   <div className="dropdown-campaigns">

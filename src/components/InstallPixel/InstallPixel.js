@@ -34,7 +34,6 @@ const InstallPixel = ({
 
   return (
     <div className="install-pixel">
-      <h4 className="lead text-center m-b-30 m-t-20">Install Pixel to Your Website</h4>
       <p className="text-muted text-left">Copy your unique script & paste it in the Header of your Website. Add this
         to every page where you want to track, measure and show notifications.</p>
       <div className="bgcolor text-monospace border-dark">
