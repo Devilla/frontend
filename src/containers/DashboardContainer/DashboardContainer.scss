@@ -43,12 +43,21 @@
     font-weight: 400;
   }
 
-p {
+  .help-block {
+    .website-error {
+      margin-top: 0px;
+      color: red !important;
+    }
+  }
+  .error-input {
+    border-color: red !important;
+  }
+  p {
     margin-top: 21px;
     color: #98a6ad !important;
     line-height: 1.6;
     font-size: 13px;
-}
+  }
 
   .toast-style {
     background-color: rgba(0, 0, 0, 0.98) !important;
