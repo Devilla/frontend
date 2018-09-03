@@ -88,6 +88,7 @@ class Notifications extends Component {
   componentWillMount() {
     this.props.fetchNotification();
     this.props.fetchConfiguration(this.props.campaign._id);
+    this.props.fetchSubCampaign(this.props.campaign._id);
     let breadcrumb = this.props.breadcrumb;
     breadcrumb.push({
       name: 'Notifications',
