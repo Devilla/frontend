@@ -3,6 +3,11 @@
 }
 
 .campaign-health-table {
+  border: 0.5px solid #d5d5d5;
+  box-shadow: 0 0px 1px #c5c5c5;
+  margin-top: -2%;
+  width: 97%;
+  margin-left: 22px;
   .campaign-td {
     cursor: pointer;
     display: flex;
@@ -55,12 +60,13 @@
   }
 
   .audience {
-    font-size: 16px;
+    font-size: 14px;
     color: #097fff;
     cursor: pointer;
     padding: 6px 1% !important;
     position: relative;
     top: 15px !important;
+    font-weight: 700;
 
     &:hover {
       background: #0980ff2e;
@@ -368,4 +374,8 @@
       }
     }
   }
+}
+
+.health-table {
+  
 }

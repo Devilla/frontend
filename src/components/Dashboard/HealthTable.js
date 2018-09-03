@@ -21,12 +21,12 @@ const HealthTable = ({campaigns}) => {
 
   return (
     <div className="table-responsive">
-      <div className="table table-striped">
+      <div className="table table-striped mr-5 ml-5" style={{width: '93%'}}>
         <div className="thead flex">
           <div className="tr tab-row">
-            <div className="th col-md-3 text-center p-1">CAMPAIGN</div>
+            <div className="th col-md-3 text-center p-1">CAMPAIGN NAME</div>
             <div className="th col-md-3 text-center p-1">DOMAIN</div>
-            <div className="th col-md-3 text-center p-1 pr-3">HEALTH</div>
+            <div className="th col-md-3 text-center p-1 pr-3">HEALTH STATUS</div>
             <div className="th col-md-3 text-center p-1">CREATED/UPDATED</div>
           </div>
         </div>
