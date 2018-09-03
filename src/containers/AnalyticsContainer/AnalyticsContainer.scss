@@ -11,7 +11,6 @@
     justify-content: space-evenly;
   }
   .analytics-tr {
-    cursor: pointer;
     display: flex;
     padding: 1.5% 0% 1.5% 0%;
     margin: 10px auto;
@@ -32,6 +31,11 @@
 
     }
     .td-3 {
+      color: #097fff;
+      &:hover {
+        color: #0065d6;
+        cursor: pointer;
+      }
 
     }
     .td-4 {
