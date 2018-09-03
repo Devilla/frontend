@@ -65,8 +65,8 @@ const NotificationConfigure = ({
             isDisabled={activity}
             content={
               <div className="notification-configure-content">
-                <Row>
-                  <Col md={7}>
+                <Row className="notification-configure-row">
+                  <Col md={7} className="notification-configure-design">
                     <NotificationDesign
                       toggleMap={toggleMap}
                       contentText={contentText}
@@ -79,7 +79,7 @@ const NotificationConfigure = ({
                       image={selectedSubCampaign.productImage}
                     />
                   </Col>
-                  <Col md={5}>
+                  <Col md={5} className="notification-configure-design-setting">
                     <NotificationDesignSetting
                       profile={profile}
                       showpopup={showpopup}

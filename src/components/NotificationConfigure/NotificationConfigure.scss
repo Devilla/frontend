@@ -435,3 +435,29 @@ img {
 .recent-settings .row, .bulk-settings .row {
       padding: 10px 0px;
 }
+
+@media only screen and (max-width: 1190px) and (min-width: 100px) {
+  .notification-configure {
+    .notification-configure-content {
+      height: 600px;
+      .notification-configure-row {
+        display: block;
+        .notification-configure-design {
+          justify-content: center;
+          display: flex;
+          max-width: 100%;
+        }
+      }
+      .notification-configure-design-setting {
+        display: flex;
+        justify-content: center;
+        max-width: 100% !important;
+        flex: 0 0 100%;
+        .brand-settings {
+          display: block;
+        }
+      }
+    }
+  }
+
+}

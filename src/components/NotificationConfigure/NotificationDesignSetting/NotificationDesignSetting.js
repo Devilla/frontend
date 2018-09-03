@@ -418,7 +418,7 @@ export class NotificationDesignSetting extends Component {
                     {((notification.notificationName !== 'Live Visitor Count') ||
                       (notification.notificationName !== 'Live Visitor Count' &&
                       planType === 'premium')) &&
-                      <Row className="mb-3">
+                      <Row className="mb-3 brand-settings">
                         <Col md={12}>
                           <h4 className="text-muted h6">Brand Name {campaign.campaignType == 'page'?' / Product Name':''}</h4>
                           <Row>
@@ -559,7 +559,7 @@ export class NotificationDesignSetting extends Component {
                           </Col>
                         </Row>
                         <Row>
-                          <Col md={7} style={{padding: '8px 15px', width: '50%'}}>
+                          <Col md={7} style={{padding: '8px 15px', width: '50%', display: 'block'}}>
                             <span className="mt-5 text-muted h6">Display conversions from last</span>
                           </Col>
                           <Col md={2} style={{ padding: 0, width: '10%' }}>
