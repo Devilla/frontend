@@ -4,6 +4,12 @@
     font-size: 15px;
 }
 .analytics-container {
+  .tab-row {
+  	justify-content: space-evenly !important;
+  }
+  .analytics-tr {
+    justify-content: space-evenly;
+  }
   .analytics-tr {
     display: flex;
     padding: 1.5% 0% 1.5% 0%;

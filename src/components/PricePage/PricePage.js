@@ -50,7 +50,7 @@ class PricePage extends Component {
     let { handleMonthChange, selectedPlan, handleCheckChange } = this.props;
     let { planList } = this.state;
     return planList.map((plan, index) =>
-      <div key={index} className="col-md-3 col-sm-6 pl-5 pr-5">
+      <div key={index} className="col-md-3 col-sm-6 pl-5 pr-5 price-page-cards">
         <div className="pricingTable" onClick={handleMonthChange}>
           <div className="price_card text-center"  className={selectedPlan.id === plan.id ? 'makebx' : ''} data-dismiss="modal" onClick={() => handleCheckChange(true, plan)}>
             <div className="pricing-header">
@@ -72,7 +72,7 @@ class PricePage extends Component {
     let { handleYearChange, selectedPlan, handleCheckChange } = this.props;
     let { planList } = this.state;
     return planList.map((plan, index) =>
-      <div key={index} className="col-md-3 col-sm-6 pl-5 pr-5">
+      <div key={index} className="col-md-3 col-sm-6 pl-5 pr-5 price-page-cards">
         <div className="pricingTable"  onClick={handleYearChange}>
           <div className="price_card text-center"  className={selectedPlan.id === plan.id ? 'makebx' : ''} data-dismiss="modal" onClick={() => handleCheckChange(true, plan)}>
             <div className="pricing-header">
@@ -104,7 +104,7 @@ class PricePage extends Component {
 
     return (
       <Loading style={{width: '10%', height: '700px'}} strokeWidth='2' isLoading={!planList}>
-        <div style={{ width: '100%' }}>
+        <div className="price-page-container" style={{ width: '100%' }}>
           <div className="price pt-2">
             <div className="pricing-row w-row" style={{ width: '100%' }}>
               <div className="w-col">

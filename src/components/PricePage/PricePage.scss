@@ -11,7 +11,7 @@
     display: flex;
     justify-content: center;
     padding: 1%;
- 
+
     li {
       list-style: none;
       padding: 1%;
@@ -110,11 +110,34 @@
 
 
 @media only screen and (max-width: 990px) {
-  .pricingTable {
-    margin-bottom: 30px;
+  .price-page-container {
+    .row {
+      .price-page-cards {
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+        .pricingTable {
+          margin-bottom: 30px;
+        }
+      }
+    }
   }
+
 }
 
+@media only screen and (max-width: 1224px) and (min-width: 768px) {
+  .price-page-container {
+    .row {
+      .price-page-cards {
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+        .pricingTable {
+          margin-bottom: 30px;
+        }
+      }
+    }
+  }
+
+}
 
 @keyframes boxes{
   0% { top: 0px;}
