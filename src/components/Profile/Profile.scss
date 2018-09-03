@@ -239,13 +239,108 @@ button {
   margin: 0 2% !important;
 }
 
-@media only screen and (max-width: 768px) and (min-width: 100px) {
+@media only screen and (max-width: 1150px) and (min-width: 1024px) {
   .profile-container {
+    .profile-tabs {
+      padding: 15px 15px;
+      height: 50px;
+      margin-left: 1px !important;
+      margin-right: 1px !important;
+      font-size: 14px;
+    }
     .panel-body {
       background: #fff!important;
-      width: 657px;
-      margin-left: 215px;
-      margin-top: -95px;
+      .text-left {
+        .profile-buttons {
+          padding-left: 0px;
+          padding-right: 0px;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1024px) and (min-width: 940px) {
+  .profile-container {
+    .profile-tabs {
+      padding: 15px;
+      height: 50px;
+      margin-left: 1px !important;
+      margin-right: 1px !important;
+      font-size: 12px;
+    }
+    .panel-body {
+      background: #fff!important;
+      .text-left {
+        .profile-buttons {
+          padding-left: 0px;
+          padding-right: 0px;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 940px) and (min-width: 768px) {
+  .profile-container {
+    .profile-tabs {
+      padding: 10px 3px;
+      height: 50px;
+      margin-left: 1px !important;
+      margin-right: 1px !important;
+      font-size: 12px;
+      text-align: center;
+      width: 75px;
+    }
+    .profile-content-contaier {
+      .profile-content-col-one {
+        .profile-user-box {
+          .pull-left {
+            width: 60px;
+            height: 70px;
+            img {
+              width: 70px !important;
+              height: 60px;
+            }
+            .fileUploader {
+              .fileContainer {
+                width: 100px;
+                top: 30%;
+              }
+            }
+          }
+        }
+      }
+    }
+    .panel-body {
+      background: #fff!important;
+      .text-left {
+        .profile-buttons {
+          padding-left: 0px;
+          padding-right: 0px;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) and (min-width: 100px) {
+  .profile-container {
+    .profile-content-contaier {
+      .container-fluid {
+        .profile-content-col-one {
+          flex: 0 0 100%;
+          max-width: 100% !important;
+          .profile-user-box {
+            .row {
+              justify-content: center;
+            }
+          }
+        }
+      }
+    }
+    .panel-body {
+      background: #fff!important;
       .text-left {
         .profile-buttons {
           padding-left: 0px;

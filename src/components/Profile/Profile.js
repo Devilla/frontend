@@ -214,9 +214,9 @@ class Profile extends Component {
 
         <div className="fill profile-container">
           <Col md={2}>
-            <div className={this.state.profileSetting?'content-tabs active mt-0 mr-3 ml-3':'content-tabs mt-0 mr-3 ml-3'} onClick={()=>this.showProfile()} >My Profile</div>
-            <div className={this.state.changePassword?'content-tabs active mt-0 mr-3 ml-3':'content-tabs mt-0 mr-3 ml-3'} onClick={()=>this.changePassword()} >Change Password</div>
-            <div className="content-tabs mt-0 mr-3 ml-3" data-toggle="modal" data-target="#deletemodal">More Options</div>
+            <div className={this.state.profileSetting?'content-tabs active mt-0 mr-3 ml-3 profile-tabs':'content-tabs mt-0 mr-3 ml-3 profile-tabs'} onClick={()=>this.showProfile()} >My Profile</div>
+            <div className={this.state.changePassword?'content-tabs active mt-0 mr-3 ml-3 profile-tabs':'content-tabs mt-0 mr-3 ml-3 profile-tabs'} onClick={()=>this.changePassword()} >Change Password</div>
+            <div className="content-tabs mt-0 mr-3 ml-3 profile-tabs" data-toggle="modal" data-target="#deletemodal">More Options</div>
           </Col>
 
           <Col md={10} className="profile-content-contaier">
