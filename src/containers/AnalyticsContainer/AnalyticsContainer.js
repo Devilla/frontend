@@ -76,14 +76,14 @@ class AnalyticsContainer extends Component {
     if(this.state.usersList.length)
       return this.state.usersList.map((user, index) => {
         return <div className="table-active analytics-tr tr row" key={index}>
-          <div className="text-center td col-md-1">{index + 1}</div>
+          <div className="text-center td col-md-1 pt-3">{index + 1}</div>
           <div className="img text-center td col-md-2"><img src={user.profile_pic?user.profile_pic:'https://www.totaldenturecare.com.au/wp-content/uploads/2017/06/default-user-image-female.png'}/></div>
-          <div className="text-center td col-md-1">{user.username}</div>
-          <div className="text-center td col-md-4">{user.email}</div>
-          <div className="text-center td col-md-1">{user.city}</div>
-          <div className="text-center td col-md-1">{user.country}</div>
-          <div className="text-center td col-md-1">{moment(user.timestamp).fromNow()}</div>
-          <div className="text-center td col-md-1">
+          <div className="text-center td col-md-1 pt-3">{user.username}</div>
+          <div className="text-center td col-md-4 pt-3">{user.email}</div>
+          <div className="text-center td col-md-1 pt-3">{user.city}</div>
+          <div className="text-center td col-md-1 pt-3">{user.country}</div>
+          <div className="text-center td col-md-1 pt-3">{moment(user.timestamp).fromNow()}</div>
+          <div className="text-center td col-md-1 pt-3">
             <OverlayTrigger
               overlay={
                 <Tooltip id={user.email} placement="top">
