@@ -79,3 +79,23 @@
   }
 
 }
+
+@media only screen and (max-width: 600px) and (min-width: 100px) {
+  .settings-container {
+    .settings-card-container {
+      .card {
+        width: 190px;
+        height: 120px !important;
+        margin: 0 5px !important;
+        .card-body {
+          i {
+            font-size: 25px !important;
+          }
+          .card-text {
+            font-size: 8px !important;
+          }
+        }
+      }
+    }
+  }
+}
