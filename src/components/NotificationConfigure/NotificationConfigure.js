@@ -30,11 +30,25 @@ const NotificationConfigure = ({
   campaign,
   selectedSubCampaign
 }) => {
+  
+  const getNotificationNames = (notificationName) => {
+    if(campaign && campaign.campaignType == 'page') {
+      if(notificationName === 'Bulk Activity')
+        return 'Recent Purchases';
+      if(notificationName === 'Live Visitor Count')
+        return 'Product Viewers';
+      if(notificationName === 'Recent Activity')
+        return 'Total Buyers';
+    } else {
+      return notificationName;
+    }
+  };
+
   return (
     <div data-transition-id="notification-configuration-page" className="notification-configure col-md-12">
       <Row>
         <Col md={12}>
-          <Card title={notification.notificationName}
+          <Card title={getNotificationNames(notification.notificationName)}
             status={
               <div className="notificationSwitch">
                 <input
