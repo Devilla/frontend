@@ -76,14 +76,14 @@ class AnalyticsContainer extends Component {
     if(this.state.usersList.length)
       return this.state.usersList.map((user, index) => {
         return <div className="table-active analytics-tr tr row" key={index}>
-          <div className="text-center td col-md-1 analytics-width-1">{index + 1}</div>
+          <div className="text-center td col-md-1 analytics-width-1 pt-3">{index + 1}</div>
           <div className="img text-center td col-md-2 analytics-width-10"><img src={user.profile_pic?user.profile_pic:'https://www.totaldenturecare.com.au/wp-content/uploads/2017/06/default-user-image-female.png'}/></div>
-          <div className="text-center td col-md-1 analytics-width-20">{user.username}</div>
-          <div className="text-center td col-md-4 analytics-width-20">{user.email}</div>
-          <div className="text-center td col-md-1 analytics-width-15">{user.city}</div>
-          <div className="text-center td col-md-1 analytics-width-15">{user.country}</div>
-          <div className="text-center td col-md-1 analytics-width-10">{moment(user.timestamp).fromNow()}</div>
-          <div className="text-center td col-md-1 analytics-width-15">
+          <div className="text-center td col-md-1 analytics-width-20 pt-3">{user.username}</div>
+          <div className="text-center td col-md-4 analytics-width-20 pt-3">{user.email}</div>
+          <div className="text-center td col-md-1 analytics-width-15 pt-3">{user.city}</div>
+          <div className="text-center td col-md-1 analytics-width-15 pt-3">{user.country}</div>
+          <div className="text-center td col-md-1 analytics-width-10 pt-3">{moment(user.timestamp).fromNow()}</div>
+          <div className="text-center td col-md-1 analytics-width-15 pt-3">
             <OverlayTrigger
               overlay={
                 <Tooltip id={user.email} placement="top">
