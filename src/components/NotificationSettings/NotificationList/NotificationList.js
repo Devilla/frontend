@@ -21,7 +21,7 @@ const NotificationList = ({
       if(notificationName === 'Live Visitor Count')
         return 'Product Viewers';
       if(notificationName === 'Recent Activity')
-        return 'Total Buyers';
+        return 'Recent Purchases';
     } else {
       return notificationName;
     }
