@@ -141,7 +141,7 @@ class WebsiteHome extends Component {
           <p><br /></p><hr className="my-auto col-md-6" />
 
           <section className="col-md-12 pl-0 pt-3 pr-0 unpad--bottom " style={{ backgroundColor: '#00B7FF' }} >
-            <div className="container pt-5 pb-5">
+            <div className="container pt-2 pb-2">
               <div className="row  ">
                 <div className="col-md-6 text-left pt-5 pb-5 ">
                   <h2 className="color--white blue-strip-affiliate "> Thousands of brands are using Influence to get more customers </h2>

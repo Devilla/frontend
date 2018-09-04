@@ -436,28 +436,17 @@ img {
       padding: 10px 0px;
 }
 
-@media only screen and (max-width: 1190px) and (min-width: 100px) {
-  .notification-configure {
-    .notification-configure-content {
-      height: 600px;
-      .notification-configure-row {
-        display: block;
-        .notification-configure-design {
-          justify-content: center;
-          display: flex;
-          max-width: 100%;
-        }
-      }
-      .notification-configure-design-setting {
-        display: flex;
-        justify-content: center;
-        max-width: 100% !important;
-        flex: 0 0 100%;
-        .brand-settings {
-          display: block;
-        }
-      }
-    }
-  }
-
+.notif-configure {
+  align-items: center;
+  border: 0.5px solid #d5d5d5;
+  box-shadow: 0 0px 1px #c5c5c5;
+  align-items: center;
+  margin: 20px;
+  margin-top: 0px;
+  margin-bottom: 2px;
+  margin-left: 1% !important;
+  margin-right:1% !important;
+  height: 96%;
+  border-radius: 5px;
+  background: #ffffff !important;
 }

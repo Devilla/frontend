@@ -243,7 +243,7 @@ export class NotificationDesignSetting extends Component {
           backgroundColor: `rgb(${notificationPanelStyle.linkColor.r}, ${notificationPanelStyle.linkColor.g}, ${notificationPanelStyle.linkColor.b}, ${notificationPanelStyle.linkColor.a})`
         },
         swatch: {
-          margin: '5% 70%',
+          margin: '4% 43%',
           padding: '0px',
           background: '#fff',
           borderRadius: '1px',
@@ -278,28 +278,28 @@ export class NotificationDesignSetting extends Component {
         <div className="setting">
           <Row>
             <Col md={12}>
-              <div className="card-box box2">
-                <ul className="nav nav-tabs">
+              <div className="box2">
+                <ul className="nav-notif">
                   {showpopupfield ?
                     <li className="nav-item waves-effect">
-                      <a data-toggle="tab" aria-expanded="false" className={`nav-link ${activeClass == 4 ? 'active' : ''}`} onClick={() => this.setActiveState(4)}>
+                      <a data-toggle="tab" aria-expanded="false" className={`nav-link-2 btn-products${activeClass == 4 ? 'active' : ''}`} onClick={() => this.setActiveState(4)}>
                         <i className="fi-layers mr-2"></i> Your Channels
                       </a>
                     </li>
                     : ' '}
                   <li className="nav-item waves-effect">
-                    <a data-toggle="tab" aria-expanded="false" className={`nav-link ${activeClass == 1 ? 'active' : ''}`} onClick={() => this.setActiveState(1)}>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i className="fi-layers mr-2"></i>Box&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a data-toggle="tab" aria-expanded="false" className={`nav-link-2 btn-products ${activeClass == 1 ? 'active' : ''}`} onClick={() => this.setActiveState(1)}>
+                      <i className="fi-layers mr-2"></i>&nbsp; Box
                     </a>
                   </li>
                   <li className="nav-item waves-effect">
-                    <a data-toggle="tab" aria-expanded="true" className={`nav-link ${activeClass == 2 ? 'active' : ''}`} onClick={() => this.setActiveState(2)}>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i className="fi-mail mr-2"></i>Text&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a data-toggle="tab" aria-expanded="true" className={`nav-link-2 btn-products ${activeClass == 2 ? 'active' : ''}`} onClick={() => this.setActiveState(2)}>
+                      <i className="fi-mail mr-2"></i>&nbsp; Text
                     </a>
                   </li>
                   <li className="nav-item waves-effect">
-                    <a data-toggle="tab" aria-expanded="false" className={`nav-link ${activeClass == 3 ? 'active' : ''}`} onClick={() => this.setActiveState(3)}>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i className="fi-layers mr-2"></i>Settings&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a data-toggle="tab" aria-expanded="false" className={`nav-link-2 btn-products ${activeClass == 3 ? 'active' : ''}`} onClick={() => this.setActiveState(3)}>
+                      <i className="fi-layers mr-2"></i>&nbsp; Settings
                     </a>
                   </li>
                 </ul>
@@ -308,7 +308,7 @@ export class NotificationDesignSetting extends Component {
                   <div className={`tab-pane ${activeClass == 1 ? 'show active' : ''}`} id="credit">
                     <Row>
                       <Col md={12} className="text-muted">
-                        <p className="h6">Radius</p>
+                        <label className="text-muted">Radius</label>
                         <div className='slider'>
                           <Slider
                             tooltip={false}
@@ -321,8 +321,8 @@ export class NotificationDesignSetting extends Component {
                       </Col>
                     </Row>
                     <Row >
-                      <Col md={12} className="text-muted h6">
-                        <p className="h6">Border</p>
+                      <Col md={12} className="text-muted pt-3">
+                        <label className="text-muted">Border</label>
                         <Row>
                           <Col md={6}>
                             <div className='slider alignment'>
@@ -335,7 +335,7 @@ export class NotificationDesignSetting extends Component {
                               />
                             </div>
                           </Col>
-                          <Col md={6} className="mt-2">
+                          <Col md={6} className="mt-2 pr-5">
                             <div style={styles.swatch} onClick={this.showBorderSwatch}>
                               <div style={{ ...styles.colorSwatch, ...styles.border }} />
                             </div>
@@ -348,12 +348,12 @@ export class NotificationDesignSetting extends Component {
                       </Col>
                     </Row>
                     <Row >
-                      <Col md={12} className="text-muted ">
+                      <Col md={12} className="text-muted pt-2">
                         <Row>
-                          <Col md={6}>
-                            <p className="h6">Background Color</p>
+                          <Col md={6} className="p-3">
+                            <label className="text-muted">Background Color</label>
                           </Col>
-                          <Col md={6}>
+                          <Col md={6} className="pr-5 pt-1">
                             <div style={styles.swatch} onClick={this.showBgSwatch}>
                               <div style={{ ...styles.colorSwatch, ...styles.background }} />
                             </div>
@@ -369,7 +369,7 @@ export class NotificationDesignSetting extends Component {
                       planType === 'premium' &&
                       <Row style={{padding: '4% 0%'}}>
                         <Col md={10}>
-                          <span className="mt-5 text-muted h6">Display map icon only</span>
+                          <span className="mt-5 text-muted">Display map icon only</span>
                         </Col>
                         <Col md={2}>
                           <input
@@ -386,17 +386,17 @@ export class NotificationDesignSetting extends Component {
                   </div>
 
                   <div className={`tab-pane ${activeClass == 2 ? 'show active' : ''}`} id="debit">
-                    <Row className="mb-3">
+                    <Row className="mb-2">
                       <Col md={12}>
-                        <h4 className="text-muted h6">Text Style</h4>
+                        <label className="text-muted">Text Style</label>
                         <Row>
                           <Col md={4}>
-                            <Button bsSize="small" block active={notificationPanelStyle.fontWeight == FONT_WEIGHT_BOLD} onClick={this.handleFontWeightChange}>
+                            <Button className="select3" active={notificationPanelStyle.fontWeight == FONT_WEIGHT_BOLD} onClick={this.handleFontWeightChange}>
                               Bold
                             </Button>
                           </Col>
-                          <Col md={4}>
-                            <FormControl componentClass="select" bsSize="small" value={notificationPanelStyle.fontFamily} onChange={this.handleFontChange}>
+                          <Col md={5} className="pr-1 pl-5">
+                            <FormControl componentClass="select" className="select2" bsSize="small" value={notificationPanelStyle.fontFamily} onChange={this.handleFontChange}>
                               <option value='Roboto,helvetica,arial,sans-serif'>Default</option>
                               <option value="arial">Arial</option>
                               <option value="monospace">Monospace</option>
@@ -418,12 +418,13 @@ export class NotificationDesignSetting extends Component {
                     {((notification.notificationName !== 'Live Visitor Count') ||
                       (notification.notificationName !== 'Live Visitor Count' &&
                       planType === 'premium')) &&
-                      <Row className="mb-3 brand-settings">
-                        <Col md={12}>
-                          <h4 className="text-muted h6">Brand Name {campaign.campaignType == 'page'?' / Product Name':''}</h4>
+                      <Row className="mb-3">
+                        <Col md={12} className="pt-3">
+                          <label className="text-muted">Brand Name {campaign.campaignType == 'page'?' / Product Name':''}</label>
                           <Row>
                             <Col md={12}>
                               <FormControl
+                                className="select3"
                                 type="text"
                                 maxLength='15'
                                 value={contentText}
@@ -434,11 +435,12 @@ export class NotificationDesignSetting extends Component {
                             </Col>
                           </Row>
                         </Col>
-                        <Col md={12}>
-                          <h4 className="text-muted h6">Other Text</h4>
+                        <Col md={12} className="pt-4">
+                          <label className="text-muted">Other Text</label>
                           <Row>
                             <Col md={12}>
                               <FormControl
+                                className="select3"
                                 type="text"
                                 maxLength='35'
                                 value={otherText}
@@ -455,10 +457,11 @@ export class NotificationDesignSetting extends Component {
                     {notification.notificationName !== 'Recent Activity' &&
                       <Row className="mb-3">
                         <Col md={12}>
-                          <h4 className="text-muted h6">Identity User As</h4>
+                          <label className="text-muted mt-2">Identify User As</label>
                           <Row>
                             <Col md={12}>
                               <FormControl
+                                className="select3"
                                 type="text"
                                 maxLength="10"
                                 value={visitorText}
@@ -474,10 +477,11 @@ export class NotificationDesignSetting extends Component {
                     {notification.notificationName === 'Live Visitor Count' &&
                     <Row className="mb-3">
                       <Col md={12}>
-                        <h4 className="text-muted h6">Other Text</h4>
+                        <label className="text-muted">Other Text</label>
                         <Row>
                           <Col md={12}>
                             <FormControl
+                              className="select3"
                               type="text"
                               maxLength='35'
                               defaultValue={liveVisitorText}
@@ -497,12 +501,13 @@ export class NotificationDesignSetting extends Component {
                   <div className={`tab-pane ${activeClass == 3 ? 'show active' : ''}`} id="paypal">
                     {notification.notificationName === 'Live Visitor Count'  &&
                       <Row className="mb-3">
-                        <Col md={9} style={{padding: '8px 15px', width: '45%'}}>
-                          <span className="mt-5 text-muted h6"> Hide 'Live Viewer' if viewers less than</span>
+                        <Col md={9} className="text-center">
+                          <label className="text-muted pt-2"> Hide 'Live Viewer' if viewers less than</label>
                         </Col>
-                        <Col md={3} style={{'padding': 0, width: '10%'}}>
+                        <Col md={3}>
                           <FormGroup>
                             <FormControl
+                              className="select3"
                               type="number"
                               min="0"
                               value={notificationPanelStyle.liveVisitorCount}
@@ -515,12 +520,13 @@ export class NotificationDesignSetting extends Component {
                     }
                     {notification.notificationName === 'Bulk Activity'  &&
                       <Row className="mb-3">
-                        <Col md={7} style={{padding: '8px 15px', width: '45%'}}>
-                          <span className="mt-5 text-muted h6"> Display bulk data from last</span>
+                        <Col md={7}>
+                          <label className="text-muted pt-2"> Display bulk data from last</label>
                         </Col>
-                        <Col md={2} style={{'padding': 0, width: '10%'}}>
+                        <Col md={2}>
                           <FormGroup>
                             <FormControl
+                              className="select3"
                               type="number"
                               min="0"
                               value={notificationPanelStyle.bulkData}
@@ -530,7 +536,7 @@ export class NotificationDesignSetting extends Component {
                           </FormGroup>
                         </Col>
                         <Col md={3}>
-                          <FormControl componentClass="select" bsSize="small" value={notificationPanelStyle.selectDurationData} onChange={this.handleDurationChange}>
+                          <FormControl componentClass="select" className="select3" bsSize="small" value={notificationPanelStyle.selectDurationData} onChange={this.handleDurationChange}>
                             <option value="hours">hours</option>
                             <option value="days">days</option>
                           </FormControl>
@@ -539,13 +545,14 @@ export class NotificationDesignSetting extends Component {
                     }
                     {notification.notificationName === 'Recent Activity' &&
                       <div>
-                        <Row>
-                          <Col md={4} style={{padding: '8px 15px'}}>
-                            <span className="mt-5 text-muted h6">Display the last</span>
+                        <Row className="mb-3">
+                          <Col md={4} className="text-center pt-2 pr-0 pl-0">
+                            <label className="text-muted">Display the last</label>
                           </Col>
-                          <Col md={3} style={{'padding': 0, width: '10%'}}>
+                          <Col md={3}>
                             <FormGroup>
                               <FormControl
+                                className="select3"
                                 type="number"
                                 min="0"
                                 onChange={(e) => this.handleStateChangeNumber(e)}
@@ -554,17 +561,18 @@ export class NotificationDesignSetting extends Component {
                               />
                             </FormGroup>
                           </Col>
-                          <Col md={4} style={{padding: '10px 15px'}}>
-                            <span className="mt-5 text-muted h6">conversions</span>
+                          <Col md={4} className="pt-2">
+                            <label className="text-muted">conversions</label>
                           </Col>
                         </Row>
                         <Row>
-                          <Col md={7} style={{padding: '8px 15px', width: '50%', display: 'block'}}>
-                            <span className="mt-5 text-muted h6">Display conversions from last</span>
+                          <Col md={6}>
+                            <label className="text-muted text-center pt-2 pr-0 pl-2">Display conversions from last</label>
                           </Col>
-                          <Col md={2} style={{ padding: 0, width: '10%' }}>
+                          <Col md={3} className="pl-2 pr-0">
                             <FormGroup>
                               <FormControl
+                                className="select3"
                                 type="number"
                                 min="0"
                                 value={notificationPanelStyle.recentConv}
@@ -574,7 +582,7 @@ export class NotificationDesignSetting extends Component {
                             </FormGroup>
                           </Col>
                           <Col md={3}>
-                            <FormControl componentClass="select" bsSize="small" value={notificationPanelStyle.selectLastDisplayConversation} onChange={this.handleLastDisplayDurationChange}>
+                            <FormControl componentClass="select" className="select3" bsSize="small" value={notificationPanelStyle.selectLastDisplayConversation} onChange={this.handleLastDisplayDurationChange}>
                               <option value="hours">hours</option>
                               <option value="days">days</option>
                             </FormControl>
@@ -584,8 +592,8 @@ export class NotificationDesignSetting extends Component {
                           <div>
                             <Row className="mb-3">
                               <Col md={10}>
-                                <span className="mt-5 text-muted h6">Hide anonymous conversions
-                                </span>
+                                <label className="text-muted">Hide anonymous conversions
+                                </label>
                               </Col>
                               <Col md={2}>
                                 <input
@@ -600,7 +608,7 @@ export class NotificationDesignSetting extends Component {
                             </Row>
                             <Row className="mb-3">
                               <Col md={10}>
-                                <span className="mt-5 text-muted h6">Only display notifications from users country</span>
+                                <label className="text-muted">Only display notifications from users country</label>
                               </Col>
                               <Col md={2}>
                                 <input
@@ -621,7 +629,7 @@ export class NotificationDesignSetting extends Component {
                       <div>
                         <Row className="mb-3">
                           <Col md={10}>
-                            <span className="mt-5 text-muted h6">Notifications Clickable</span>
+                            <label className="text-muted">Notifications Clickable</label>
                           </Col>
                           <Col md={2}>
                             <input
@@ -637,6 +645,7 @@ export class NotificationDesignSetting extends Component {
                         <Row style={toggleTextBox?{ display:'block', marginBottom: '-9%' }:{ display:'none', marginBottom: '-9%' }}>
                           <Col md={12}>
                             <FormControl
+                              className="select3"
                               type="text"
                               value={notificationUrl}
                               placeholder="Enter URL"

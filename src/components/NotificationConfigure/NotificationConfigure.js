@@ -65,8 +65,8 @@ const NotificationConfigure = ({
             isDisabled={activity}
             content={
               <div className="notification-configure-content">
-                <Row className="notification-configure-row">
-                  <Col md={7} className="notification-configure-design">
+                <Row className="notif-configure">
+                  <Col md={7}>
                     <NotificationDesign
                       toggleMap={toggleMap}
                       contentText={contentText}
