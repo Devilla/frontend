@@ -159,6 +159,7 @@ class DashboardContainer extends Component {
       return;
 
     let breadcrumb = this.props.breadcrumb;
+    breadcrumb = breadcrumb.filter(crumb => crumb.name !== 'Profile Settings');
     breadcrumb.push({
       name: 'Profile Settings',
       path: '/profile'
