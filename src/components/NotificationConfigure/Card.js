@@ -5,9 +5,9 @@ export class Card extends Component{
   render(){
     return (
       <div className={this.props.isDisabled ? 'card card-plain inner-display' : 'card card-plain inner-display disabled'}>
-        <div className="header">
-          <h4 className="title">{this.props.title}</h4>
-          <div className="status">
+        <div className="header row">
+          <label className="title col-md-11 text-center">{this.props.title}</label>
+          <div className="status col-md-1">
             {this.props.status}
           </div>
         </div>
