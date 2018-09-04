@@ -25,18 +25,50 @@
       display: inline-block;
       position: absolute;
       left: 133px;
-      // .bar-1 {
-      //   margin: 8px -25px 8px 0px;
-      // }
-      // .bar-2 {
-      //  margin: 8px -25px 8px 0px;
-      // }
-      // .bar-3 {
-      //  margin: 8px -25px 8px 0px;
-      // }
-      // .bar-4 {
-      //  margin: 8px -25px 8px 0px;
-      // }
+      .rc-steps-item-tail {
+          width: 100%;
+          top: -2px;
+          margin: 0 0 0 60px;
+          padding: 0;
+      }
+      .rc-steps-item-process, .rc-steps-item-finish {
+        .rc-steps-item-icon  {
+          border: 4px solid white;
+        }
+      }
+      .rc-steps-item-wait {
+        .rc-steps-item-icon {
+          border: 4px solid gray;
+        }
+      }
+      .rc-steps-item-tail {
+        display: block;
+      }
+      .rc-steps-item-finish {
+        .rc-steps-item-tail:after {
+          background-color: white;
+        }
+      }
+      .rc-steps-item-icon  {
+        z-index: 1;
+        margin-left: 40px;
+        height: 20px;
+        width: 20px;
+        /* border-radius: 50%; */
+      }
+      .rc-steps-item-process .rc-steps-item-icon > .rc-steps-icon .rc-steps-icon-dot {
+          background: #57f157;
+          border-color: white;
+      }
+      .rc-steps-icon-dot  {
+        border-radius: 50%;
+      }
+      .rc-steps-item-tail {
+        top: 7px;
+      }
+      .rc-steps-item-tail:after {
+        height: 5px;
+      }
     }
     .btn-footer-1 {
       background: #5bc739;
