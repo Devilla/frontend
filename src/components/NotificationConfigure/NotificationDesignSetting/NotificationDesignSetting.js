@@ -279,7 +279,7 @@ export class NotificationDesignSetting extends Component {
           <Row>
             <Col md={12}>
               <div className="box2">
-                <ul className="nav-notif">
+                <ul className="nav nav-tabs nav-notif">
                   {showpopupfield ?
                     <li className="nav-item waves-effect">
                       <a data-toggle="tab" aria-expanded="false" className={`nav-link-2 btn-products${activeClass == 4 ? 'active' : ''}`} onClick={() => this.setActiveState(4)}>
