@@ -79,7 +79,7 @@ const NotificationConfigure = ({
                       image={selectedSubCampaign.productImage}
                     />
                   </Col>
-                  <Col md={5}>
+                  <Col md={5} className="notification-configure-design-setting">
                     <NotificationDesignSetting
                       profile={profile}
                       showpopup={showpopup}

@@ -44,12 +44,12 @@ class PageSpecific extends Component {
               <input type="text" className="form-control" id="productName" value={page.productName} aria-describedby="productName" placeholder="Enter Product Name" onChange={(e) => this.handleChange(e, index)} />
             </Col>
             <Col md={4} className="form-group">
-              <label htmlFor="productUrl">Product Url</label>
-              <input type="text" className="form-control" id="productUrl" value={page.productUrl} placeholder="Enter Product Url" onChange={(e) => this.handleChange(e, index)} />
+              <label htmlFor="productUrl">Product Path</label>
+              <input type="text" className="form-control" id="productUrl" value={page.productUrl} placeholder="Enter Product Path" onChange={(e) => this.handleChange(e, index)} />
             </Col>
             <Col md={4} className="form-group">
-              <label htmlFor="captureUrl">Capture Url</label>
-              <input type="text" className="form-control" id="captureUrl" value={page.captureUrl} placeholder="Enter Capture Url" onChange={(e) => this.handleChange(e, index)} />
+              <label htmlFor="captureUrl">Capture Path</label>
+              <input type="text" className="form-control" id="captureUrl" value={page.captureUrl} placeholder="Enter Capture Path" onChange={(e) => this.handleChange(e, index)} />
             </Col>
             <Col md={1} className="page-trash-button">
               <a href="javascript:;"><i className="ml-3 icon-trash" data-toggle="modal" data-target="#1"  onClick={() => this.deletePage(index)}></i></a>
@@ -63,8 +63,8 @@ class PageSpecific extends Component {
   addpage = () => {
     const initialData = {
       productName: '',
-      productUrl: '',
-      captureUrl: ''
+      productUrl: '/',
+      captureUrl: '/'
     };
     let pages = this.state.pages;
     if(pages.length)
@@ -81,6 +81,8 @@ class PageSpecific extends Component {
     pages.map(page => {
       if(!page.productName || !page.productUrl || !page.captureUrl)
         error = 'Enter all details';
+      else if(page.productUrl[0]!=='/' || page.captureUrl[0]!=='/')
+        error = 'Enter a valid path';
     });
     if(error)
       this.setState({ error });
@@ -96,6 +98,8 @@ class PageSpecific extends Component {
     pages.map(page => {
       if(!page.productName || !page.productUrl || !page.captureUrl)
         error = 'Enter all details';
+      else if(page.productUrl[0]!=='/' || page.captureUrl[0]!=='/')
+        error = 'Enter a valid path';
     });
     if(error)
       return this.setState({ error });
