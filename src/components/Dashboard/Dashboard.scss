@@ -25,8 +25,9 @@
     justify-content: center;
     align-items: center;
     .health-col {
-      display: flex;
-      justify-content: center;
+      .progress {
+        margin: 0 auto;
+      }
       .fa {
         font-size: 14px;
         margin-top: 1px;
@@ -45,6 +46,7 @@
         text-transform: capitalize;
         width: 15%;
       }
+
     }
   }
 }
@@ -377,5 +379,5 @@
 }
 
 .health-table {
-  
+
 }
