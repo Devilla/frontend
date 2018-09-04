@@ -92,7 +92,9 @@ class Notification extends Component {
       let campaignDetails = this.props.campaignInfo.websiteLive.filter(campaign => campaign._id === campaignId);
       campaignDetails.map(campaign => {
         let user = campaign.uniqueUsers;
-        (user && user.hits) ? totalUsers = totalUsers + user.hits.total : 0;
+        (user && user.aggregations) ? user.aggregations.users.buckets.map(bucket => {
+          totalUsers = totalUsers + bucket.visitors.sum_other_doc_count + bucket.visitors.buckets.length;
+        }) : 0;
       });
       return {totalUsers: totalUsers};
     } else
@@ -141,7 +143,7 @@ class Notification extends Component {
                   <div className="th col-md-2 text-center p-1 campaignName">CAMPAIGN</div>
                   {!mobile() && <div className="th col-md-3 text-center p-1 websiteUrl">DOMAIN</div>}
                   <div className="th col-md-1 text-center p-1 pr-3 isActive">STATUS</div>
-                  <div className="text-center th col-md-1 p-1 totalUsers">TOTAL VISITORS</div>
+                  <div className="text-center th col-md-1 p-1 totalUsers">UNIQUE VISITORS</div>
                   {!mobile() && <div className="th col-md-2 text-center p-1 trackingId">TRACK ID</div>}
                   {!mobile() && <div className="th col-md-1 text-center p-1 updatedAt">CREATED/UPDATED</div>}
                   <div className="th col-md-1 text-center p-1 campaignTrash">TRASH</div>
