@@ -176,9 +176,9 @@ class WebsiteHome extends Component {
             <div className="container p-0">
               <div className="row">
                 <div className="col-md-6 text-left pt-5 pb-5 ">
-                  <h2 className="color--white blue-strip-affiliate mb-0"> 1000+ brands are using Influence to get more sales. </h2>
+                  <h2 className="color--white blue-strip-affiliate mb-0"> 1000+ brands are using Influence to get more sales </h2>
                 </div>
-                <div className="col-md-6 text-left pt-5 pb-5  pl-3">
+                <div className="col-md-6 text-left">
                   <img src={Marvel} alt="img" className="enterprise-logo" />
                 </div>
               </div>
@@ -191,7 +191,7 @@ class WebsiteHome extends Component {
             <div className="container ">
               <div className="row">
                 <div className="col-md-10 col-lg-8">
-                  <h1 className="pt-5">Features</h1>
+                  <h2 className="pt-1 heading-texts mb-0">Features</h2>
                 </div>
               </div>
             </div>
@@ -201,7 +201,7 @@ class WebsiteHome extends Component {
               <div className="row justify-content-around">
                 <div className="col-md-6 my-auto">
                   <div className="features-text switchable__text">
-                    <h3>Recent user activity</h3>
+                    <h3 className="heading-texts-sub">Recent user activity</h3>
                     <p className="lead"> You can show your recent user activity to all your visitors and push to buy sign up more for your offerings </p> <Link to="/signup">Try Now »</Link>
                   </div>
                 </div>
@@ -224,7 +224,7 @@ class WebsiteHome extends Component {
               <div className="row justify-content-around">
                 <div className="col-md-6 my-auto">
                   <div className="features-text switchable__text">
-                    <h3>Live users activity</h3>
+                    <h3 className="heading-texts-sub">Live users activity</h3>
                     <p className="lead"> Show your visitors how many live people are seeing your offerings and influence them to buy from you <br /></p> <Link to="/signup">Try Now »</Link>
                   </div>
                 </div>
@@ -246,7 +246,7 @@ class WebsiteHome extends Component {
               <div className="row justify-content-around">
                 <div className="col-md-6 my-auto">
                   <div className="features-text switchable__text">
-                    <h3>Group activity</h3>
+                    <h3 className="heading-texts-sub">Group activity</h3>
                     <p className="lead">Show overall number of people that have signed up on your website <br /></p> <Link to="/signup">Try Now »</Link>
                   </div>
                 </div>
@@ -264,6 +264,8 @@ class WebsiteHome extends Component {
               </div>
             </div>
           </section>
+
+
 
 
           <section className="col-md-12 pl-0 pt-3 pr-0 slider-card  "  >
