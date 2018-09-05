@@ -163,6 +163,8 @@
         .main-title {
             font-size: 40px;
             font-weight: 600;
+            color: #3a3f52;
+            text-shadow: rgba(0, 0, 0, 0.19) 0 0 3px;
         }
         .sub-title {
             font-size: 18px !important;
@@ -248,6 +250,8 @@
         .main-title {
             font-size: 35px;
             font-weight: 800;
+            color: #3a3f52;
+            text-shadow: rgba(0, 0, 0, 0.19) 0 0 5px;
         }
         .sub-title {
             font-size: 19px !important;
@@ -302,4 +306,12 @@
     }
 
 }
+}
+
+.main-title {
+    color: #3a3f52 !important;
+    text-shadow: rgba(0, 0, 0, 0.10) 0 0 5px !important;
+    font-size: 46px !important;
+    font-weight: 900 !important;
+    line-height: 55px !important;
 }
