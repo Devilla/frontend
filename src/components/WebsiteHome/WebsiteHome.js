@@ -274,7 +274,7 @@ class WebsiteHome extends Component {
               </Slider>
             </div>
           </section>
-          <section className="switchable col-md-12 mb-5 mt-5">
+          <section className="switchable col-md-12 mb-5 mt-1 pt-1">
             <div className="container">
               <div className="row justify-content-between align-items-center">
                 <div className="col-md-6 col-lg-5 integration-title">
