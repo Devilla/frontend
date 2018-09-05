@@ -44,6 +44,8 @@ export { default as Smallicon } from './smallicon.png';
 export { default as Ticon } from './3icon.png';
 export { default as Profile } from './3profile.png';
 
+export { default as arrow_up } from './arrow_up.png';
+
 //Integration pic
 export { default as Aweber } from './Aweber.png';
 export { default as Clickfunnels }  from './clickfunnels.png';

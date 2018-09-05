@@ -1,5 +1,6 @@
     .websitehome-container {
       padding-top: 50px !important;
+      background: #f9f9f9;
         .mainImg {
             position: relative;
         }
@@ -311,7 +312,46 @@
 .main-title {
     color: #3a3f52 !important;
     text-shadow: rgba(0, 0, 0, 0.10) 0 0 5px !important;
-    font-size: 46px !important;
+    font-size: 45px !important;
     font-weight: 900 !important;
     line-height: 55px !important;
+    text-align: left;
+    padding-right: 84px !important;
+    margin-left: 130px !important;
+    font-style: unset;
+    padding-top: 13px !important;
+    letter-spacing: 1px;
+    margin-bottom: 15px !important;
+}
+
+.sub-title {
+    font-size: 16px;
+    color: #3a3f52;
+    margin-right: 0% !important;
+    text-shadow: rgba(0, 0, 0, 0.10) 0 0 2px !important;
+    font-weight: 300;
+    line-height: 23px;
+
+}
+
+.homescreen-num {
+    font-size: 2.474286em !important;
+    font-weight: 600 !important;
+    color: #3a3f52 !important;
+    text-shadow: rgba(0, 0, 0, 0.10) 0 0 5px !important;
+}
+
+.homescreen-num-text {
+    font-size: 14px;
+    font-weight: 400;
+    color: #3a3f52;
+    text-shadow: rgba(0, 0, 0, 0.10) 0 0 2px !important;
+    letter-spacing: 0.5px;
+
+}
+
+.num-arrow {
+    height: 20%;
+    margin-top: 24px !important;
+    margin-left: 37px !important;
 }
