@@ -13,15 +13,15 @@ const NotificationList = ({
   // handleContentChange,
   // selectedSubCampaign
 }) => {
-  
+
   const getNotificationNames = (notificationName) => {
     if(campaign && campaign.campaignType == 'page') {
       if(notificationName === 'Bulk Activity')
-        return 'Product Buyers';
+        return 'Total Purchases';
       if(notificationName === 'Live Visitor Count')
         return 'Product Viewers';
       if(notificationName === 'Recent Activity')
-        return 'Total Buyers';
+        return 'Recent Purchases';
     } else {
       return notificationName;
     }

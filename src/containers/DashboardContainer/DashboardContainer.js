@@ -36,6 +36,7 @@ class DashboardContainer extends Component {
   }
 
   componentWillMount() {
+
     document.body.style = 'background-color:#fafafa';
     this.checkLogin((err) => {
       if (err) {
@@ -65,6 +66,11 @@ class DashboardContainer extends Component {
     if (window.innerWidth < 993 && this.props.location.pathname !== e.location.pathname && document.documentElement.className.indexOf('nav-open') !== -1) {
       document.documentElement.classList.toggle('nav-open');
     }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if(this.props.children != nextProps.children)
+      window.scrollTo(0, 0);
   }
 
   openCloseDropdown = () => {
@@ -98,27 +104,27 @@ class DashboardContainer extends Component {
       content: <div className="help-container">
         <FormGroup>
           <Row className="help-form-fields">
-            <Radio name="radioGroup" inline={true} className="radio-text">
+            <Radio name="radioGroup" inline={true} className="radio-text" style={{textTransform:'none'}}>
               &nbsp;&nbsp; &nbsp; &nbsp;I need help setting up my Campaign
             </Radio>
           </Row>
           <Row className="help-form-fields">
-            <Radio name="radioGroup" inline="inline" className="radio-text">
+            <Radio name="radioGroup" inline="inline" className="radio-text" style={{textTransform:'none'}}>
               &nbsp;&nbsp; &nbsp; &nbsp;I want to know how to use Influence
             </Radio>
           </Row>
           <Row className="help-form-fields">
-            <Radio name="radioGroup" inline="inline" className="radio-text">
+            <Radio name="radioGroup" inline="inline" className="radio-text" style={{textTransform:'NONE'}}>
               &nbsp;&nbsp; &nbsp; &nbsp;Something is not working
             </Radio>
           </Row>
           <Row className="help-form-fields">
-            <Radio name="radioGroup" inline="inline" className="radio-text">
+            <Radio name="radioGroup" inline="inline" className="radio-text" style={{textTransform:'NONE'}}>
               &nbsp;&nbsp; &nbsp; &nbsp;I have feedback / feature request
             </Radio>
           </Row>
           <Row className="help-form-fields">
-            <Radio name="radioGroup" inline="inline" className="radio-text">
+            <Radio name="radioGroup" inline="inline" className="radio-text" style={{textTransform:'NONE'}}>
               &nbsp;&nbsp; &nbsp; &nbsp;I need help with something else
             </Radio>
           </Row>
@@ -129,13 +135,6 @@ class DashboardContainer extends Component {
         </Row>
       </div>,
       buttons: {
-        left: [{
-          text: 'Cancel',
-          className: 'success',
-          action: function () {
-            Popup.close();
-          }
-        }],
         right: [{
           text: 'Submit',
           className: 'success',
@@ -160,6 +159,7 @@ class DashboardContainer extends Component {
       return;
 
     let breadcrumb = this.props.breadcrumb;
+    breadcrumb = breadcrumb.filter(crumb => crumb.name !== 'Profile Settings');
     breadcrumb.push({
       name: 'Profile Settings',
       path: '/profile'
@@ -200,7 +200,7 @@ class DashboardContainer extends Component {
               </div>
 
               <div className="content dashboard-content" style={{ backgroundColor: '#f9f9f9' }} onClick={this.closeDropdown}>
-                <div style={{minHeight: '750px'}}>
+                <div>
                   <PageTransition className="content">
                     {this.props.children}
                   </PageTransition>

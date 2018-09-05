@@ -3,6 +3,7 @@ import * as api from 'services/api';
 import * as actions from 'ducks/oauth';
 import { load, loaded } from 'ducks/loading';
 import { toast } from 'react-toastify';
+import { browserHistory } from 'react-router';
 
 const toastConfig = {
   position: toast.POSITION.BOTTOM_LEFT,
@@ -70,6 +71,19 @@ function* deleteClientOauth(action) {
   }
 }
 
+function* OauthGetAccessToken(action) {
+  try {
+    yield put(load());
+    const res = yield call(api.POST, `oauth/access_token/${action.requestType}`, action.requestDetails);
+    yield toast.error(res.message, toastConfig);
+    yield browserHistory.push('/campaigns');
+    yield put(loaded());
+  } catch (error) {
+    yield put(loaded());
+    yield toast.error(error.message, toastConfig);
+  }
+}
+
 export function* watchFetch() {
   yield takeLatest(actions.FETCH_CLIENT_OAUTH, fetch);
 }
@@ -86,11 +100,16 @@ export function* watchDelete() {
   yield takeLatest(actions.DELETE_CLIENT_OAUTH, deleteClientOauth);
 }
 
+export function* watchOauthGetAccessToken() {
+  yield takeLatest(actions.OAUTH_GET_ACCESS_TOKEN, OauthGetAccessToken);
+}
+
 export default function* rootSaga() {
   yield [
     fork(watchFetch),
     fork(watchCreate),
     fork(watchUpdate),
-    fork(watchDelete)
+    fork(watchDelete),
+    fork(watchOauthGetAccessToken)
   ];
 }

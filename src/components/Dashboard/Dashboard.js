@@ -14,6 +14,7 @@ import Moment from 'moment';
 import { fetchCampaignInfo, successCampaign , fetchCampaign } from 'ducks/campaign';
 import { mapGraph, heatMapGraph } from 'ducks/elastic';
 import Card from './Card';
+import HealthTable from './HealthTable';
 
 import './Dashboard.scss';
 
@@ -441,7 +442,7 @@ class Dashboard extends Component {
               <Col md={12}>
                 <div className="card-box pt-0">
                   <Row>
-                    <Col md={12}>
+                    <Col md={12} style={{height: '700px'}}>
                       <div className="btn-group campaign-dropdown">
                         <button className="btn btn-primary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           {selectedCampaign.campaignName?selectedCampaign.campaignName:'All Campaigns'}
@@ -532,6 +533,11 @@ class Dashboard extends Component {
                 </div>
               </Col>
             </Row>
+            <div className="campaign-health-table">
+              <div className="health-table">
+                <HealthTable campaigns={campaigns} />
+              </div>
+            </div>
             {/* <Row  className="justify-content-around text-muted mb-5 heat-graph">
               <Col md={5} className="heatmap">
                 <HeatMap

@@ -46,6 +46,7 @@
       }
 
       .row-one-col-three {
+        display: flex;
         padding: 23px 0px;
 
         button {
@@ -53,7 +54,7 @@
         }
 
         .fa {
-          padding: 0 5%;
+          padding: 6% 5%;
         }
       }
 
@@ -68,7 +69,7 @@
       }
 
       .row-two-col-two {
-        padding: 0;
+        padding: 0px 10px;
 
         h5 {
           font-size: 14px;
@@ -91,7 +92,7 @@
       }
 
       .row-three-col-two {
-        padding: 0;
+        padding: 0px 10px;
 
         h5 {
           font-size: 14px;
@@ -347,18 +348,125 @@
 
 }
 
-@media only screen and (max-width: 768px) and (min-width: 100px) {
-  .billing-details {
-    padding-top: 20px !important;
+// @media only screen and (min-width: 100px) and (max-width: 768px) {
 
-    .container-fluid {
-      .inlineclr {
-        .card-box {
-          .Billing-container {
-            .billing-buttons {
-              padding-right: 0 !important;
-            }
+
+@media only screen and (max-width: 768px) and (min-width: 100px) {
+  .billing-transition-container {
+    .billing-container {
+      .billing-row {
+      }
+    }
+  }
+}
+
+
+@media only screen and (min-width: 1024px) and (max-width: 1224px) {
+  .billing-transition-container {
+    .billing-container {
+      padding: 2% 15%;
+      .billing-row {
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 924px) and (max-width: 1024px) {
+  .billing-transition-container {
+    .billing-container {
+      padding: 2% 12%;
+      .billing-row {
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 840px) and (max-width: 924px) {
+  .billing-transition-container {
+    .billing-container {
+      padding: 2% 8%;
+      .billing-row {
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 840px) {
+  .billing-transition-container {
+    .billing-container {
+      padding: 2% 4%;
+      .billing-row {
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 100px) and (max-width: 768px) {
+  .billing-transition-container {
+    .billing-container {
+      padding: 2% 0%;
+      .billing-row {
+        .row-one-col-one {
+          width: 35%;
+        }
+        .row-one-col-two {
+          width: 35%;
+        }
+        .row-one-col-three {
+          width: 30%;
+        }
+        .row-two-col-one, .row-three-col-one {
+          width: 10%;
+        }
+        .row-two-col-two, .row-three-col-two {
+          width: 80%;
+        }
+        .row-two-col-three, .row-three-col-three {
+          width: 10%;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 100px) and (max-width: 600px) {
+  .billing-transition-container {
+    .billing-container {
+      padding: 2% 0%;
+      .billing-row {
+        .row-one-col-one {
+          width: 35%;
+          img {
+            width: 50%;
           }
+          h5 {
+            font-size: 12px;
+          }
+        }
+        .row-one-col-two {
+          width: 35%;
+          h6 {
+            font-size: 12px;
+          }
+          span {
+            font-size: 10px !important;
+          }
+        }
+        .row-one-col-three {
+          width: 30%;
+          button {
+            width: 90%;
+            font-size: 12px;
+          }
+        }
+        .row-two-col-one, .row-three-col-one {
+          width: 10%;
+        }
+        .row-two-col-two, .row-three-col-two {
+          width: 80%;
+        }
+        .row-two-col-three, .row-three-col-three {
+          width: 10%;
         }
       }
     }

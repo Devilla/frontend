@@ -38,7 +38,7 @@ const CampaignInfo = ({
                       <ControlLabel className="text-muted h6">Name</ControlLabel>
                       <FormControl
                         type="text"
-                        bsClass="form-control"
+                        bsClass={`form-control ${errorName?'error-input':''}`}
                         id="campaignname"
                         placeholder="example: Acme Co, Blog, Online Store"
                         onChange={handleCampaignStateChange}
@@ -55,7 +55,7 @@ const CampaignInfo = ({
                       <ControlLabel className="text-muted h6">Website URL</ControlLabel>
                       <FormControl
                         type="text"
-                        bsClass="form-control"
+                        bsClass={`form-control ${errorWebsiteUrl?'error-input':''}`}
                         placeholder="http://"
                         id="website"
                         onChange={handleCampaignStateChange}
@@ -74,7 +74,7 @@ const CampaignInfo = ({
                       <ControlLabel className="text-muted h6">Conversions per day</ControlLabel> &nbsp;<i className="fa fa-info-circle" height="50px" width="50px" data-toggle="tooltip"  data-delay='{"show":"0", "hide":"100"}' title="Fill in for better monitoring"> </i>
                       <FormControl
                         type="number"
-                        bsClass="form-control"
+                        bsClass={`form-control ${errorAverageCustomer?'error-input':''}`}
                         placeholder="Number of customer Signups"
                         id="averageCustomer"
                         onChange={handleCampaignStateChange}

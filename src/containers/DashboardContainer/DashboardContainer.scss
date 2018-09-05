@@ -43,12 +43,21 @@
     font-weight: 400;
   }
 
-p {
+  .help-block {
+    .website-error {
+      margin-top: 0px;
+      color: red !important;
+    }
+  }
+  .error-input {
+    border-color: red !important;
+  }
+  p {
     margin-top: 21px;
     color: #98a6ad !important;
     line-height: 1.6;
     font-size: 13px;
-}
+  }
 
   .toast-style {
     background-color: rgba(0, 0, 0, 0.98) !important;
@@ -82,7 +91,7 @@ p {
 
   .mm-popup__overlay {
     z-index: 1000000000;
-    background: #101113d1 !important;
+    background: #3d3e40!important;
   }
 
   .mm-popup__box{
@@ -97,13 +106,12 @@ p {
     font-size: 14px;
   }
 
+
   .mm-popup__box__header {
-    padding: 0px !important;
-    background: #999;
-    color: #fff;
-    border-bottom: 1px solid #e9ecef;
-    border-top-left-radius: .3rem;
-    border-top-right-radius: .3rem;
+      padding: 0px!important;
+      background: #097fff !important;
+      color: #fff !important;
+      margin-top: -10px;
   }
 
   .mm-popup__box__body {
@@ -132,6 +140,9 @@ p {
     line-height: 0.5;
     border-radius: .25rem;
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+      &:hover {
+        background: #0f66f0;
+      }
   }
 
   .mm-popup__box__header__title {
@@ -187,7 +198,7 @@ p {
     overflow: hidden;
     box-sizing: border-box;
     padding: 20px;
-    min-height: 100vh;
+    min-height: 112vh;
     transition: 500ms ease-out;
 
     &.transition-leave {

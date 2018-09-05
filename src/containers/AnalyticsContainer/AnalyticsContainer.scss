@@ -1,9 +1,16 @@
+.help-container {
+    width: 100%;
+    padding: 1% 7%;
+    font-size: 15px;
+}
 .analytics-container {
-
-
-
+  .tab-row {
+  	justify-content: space-evenly !important;
+  }
   .analytics-tr {
-    cursor: pointer;
+    justify-content: space-evenly;
+  }
+  .analytics-tr {
     display: flex;
     padding: 1.5% 0% 1.5% 0%;
     margin: 10px auto;
@@ -18,21 +25,26 @@
     word-wrap: break-word;
 
     .td {
-      
+
     }
     .td-2 {
-     
+
     }
     .td-3 {
-     
+      color: #097fff;
+      &:hover {
+        color: #0065d6;
+        cursor: pointer;
+      }
+
     }
     .td-4 {
     }
     .td-5 {
-     
+
     }
     .td-6 {
-    
+
     }
   }
 
@@ -74,24 +86,47 @@
   .mm-popup__box {
     width: 45% !important;
     left: 42% !important;
+    border: none;
   }
   .mm-popup__overlay {
     z-index: 999999999 !important;
     overflow: scroll !important;
-    background: rgba(248, 247, 247, 0.7) !important;
   }
   .mm-popup__box__header {
-    padding: 0px 20px !important;
-    background: #fff !important;
+    padding: 0px inherit  !important;
+
+    background: #097fff !important;
     color: #000 !important;
+    margin-top: -10px;
     .mm-popup__box__header__title {
-      font-size: 19px !important;
+
+      color: #fff !important;
+      background: #097fff !important;
+      font-weight: 400 !important;
+      text-transform: capitalize;
+      font-size: 17px !important;
+      letter-spacing: -0.17px !important;
+      max-width: 200% !important;
+      text-shadow: 0.05px -0.01px 0.01px;
       position: relative !important;
-      font-weight: 500 !important;
     }
   }
+  .mm-popup__box__footer {
+    display:block;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: end;
+    justify-content: space-around;
+    padding-top: 0rem!important;
+    padding-bottom: 15px!important;
+    border-top: none;
+    overflow: hidden;
+    padding: 40px 34px 20px;
+  }
   .mm-popup__close {
-    background: none !important;
+    z-index: 9;
+    height: 9px;
+    background-image: url("../../img/close.svg");
   }
 }
 

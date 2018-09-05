@@ -51,6 +51,7 @@ class App extends Component {
       : null;
     if (authToken) {
       this.props.checkTokenExists(authToken);
+      browserHistory.push('/dashboard');
       this.setState({loggedIn: true});
     } else {
       if(this.props.location.pathname == '/checkout')

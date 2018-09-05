@@ -90,7 +90,7 @@ class Rules extends Component{
 
   componentWillUnmount() {
     this.setState({sampleDisplay: false});
-    this.props.setActiveState(1);
+    this.props.setActiveState(1, true);
   }
 
   handleNextState() {
@@ -116,9 +116,6 @@ class Rules extends Component{
     const { sampleDisplay, showNotification } = this.props;
     return (
       <div className="rules-container">
-        <div className="text-center  m-t-20">
-          <h4 className="lead m-l-100 m-b-30">Settings</h4>
-        </div>
         <div className="row m-t-30 m-b-30">
           <LeftView
             sampleDisplay={sampleDisplay}

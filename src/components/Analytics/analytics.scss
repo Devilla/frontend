@@ -1,5 +1,7 @@
 .table-responsive {
-	
+
+
+
 	.tab-header {
 		margin-bottom: 5px;
 	}
@@ -16,7 +18,127 @@
 		text-transform: uppercase;
 	}
 	.th {
-	
+
 	}
 
+}
+
+@media only screen and (min-width: 100px) and (max-width: 768px) {
+	.table-responsive {
+		.tab-row {
+			flex-wrap: nowrap !important;
+		}
+		.analytics-tr{
+			flex-wrap: nowrap !important;
+			.img {
+		   	width: 100%;
+			 	img {
+			    width: 20px;
+			   	height: 20px;
+				}
+			}
+		}
+		.analytics-profile {
+			.col-md-1 , .col-md-2, .col-md-3, .col-md-4, .col-md-5 {
+				padding-right: 5px !important;
+	    	padding-left: 5px !important;
+			}
+			.img {
+			   width: 100%;
+				 img {
+			    width: 20px;
+			    height: 20px;
+				}
+			}
+		}
+		.analytics-width-1 {
+			max-width: 5% !important;
+			font-size: 10px;
+		}
+
+		.analytics-width-5 {
+			max-width: 5% !important;
+			font-size: 10px;
+		}
+
+		.analytics-width-6 {
+			max-width: 6% !important;
+			font-size: 10px;
+		}
+
+		.analytics-width-10 {
+			max-width: 10% !important;
+			font-size: 10px;
+		}
+
+		.analytics-width-15 {
+			max-width: 15% !important;
+			font-size: 10px;
+		}
+
+		.analytics-width-20 {
+			max-width: 20% !important;
+			font-size: 10px;
+		}
+	}
+}
+
+@media only screen and (min-width: 768px) and (max-width: 964px) {
+	.analytics-profile {
+		.tab-row {
+			justify-content: space-evenly;
+		}
+		.analytics-tr {
+			justify-content: space-evenly;
+		}
+		.col-md-1 , .col-md-2, .col-md-3, .col-md-4, .col-md-5 {
+			padding-right: 5px !important;
+    	padding-left: 5px !important;
+		}
+	}
+
+	.analytics-table-container {
+		.tab-row {
+			justify-content: space-evenly !important;
+		}
+		.analytics-tr {
+			justify-content: space-evenly;
+		}
+		.col-md-1 , .col-md-2, .col-md-3, .col-md-4, .col-md-5 {
+			padding-right: 5px !important;
+    	padding-left: 5px !important;
+		}
+	}
+
+	.table-responsive {
+		.analytics-width-1 {
+			max-width: 5% !important;
+			font-size: 12px;
+		}
+
+		.analytics-width-5 {
+			max-width: 5% !important;
+			font-size: 12px;
+		}
+
+		.analytics-width-6 {
+			max-width: 6% !important;
+			font-size: 12px;
+		}
+
+		.analytics-width-10 {
+			max-width: 10% !important;
+			font-size: 12px;
+		}
+
+		.analytics-width-15 {
+			max-width: 15% !important;
+			font-size: 12px;
+		}
+
+		.analytics-width-20 {
+			max-width: 20% !important;
+			font-size: 12px;
+		}
+	}
 }
