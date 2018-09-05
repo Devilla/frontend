@@ -4,10 +4,10 @@
   left: 240px;
 }
 .box1 ,.box2{
-  width: 540px !important;
+  width: 100% !important;
   position: relative;
-  padding: 10px 24px;
-  height: 358px;
+  padding: 10px 30px;
+  height: 370px;
   background: #fafafa !important;
   border: 0.5px solid #d5d5d5;
   box-shadow: 0 0px 1px #c5c5c5;
@@ -15,11 +15,13 @@
 
 }
 
-.nav-notif {
-	display: flex;
-	color: #ffffff;
-
-}
+  .nav-notif {
+  	display: flex;
+  	color: #ffffff;
+    padding: 0;
+    border-bottom: 0 !important;
+    justify-content: space-between;
+  }
 
 .nav-link-2 {
 	padding: 6px 27px !important;
