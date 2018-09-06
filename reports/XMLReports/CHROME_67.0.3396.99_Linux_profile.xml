@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <testsuites errors="0"
-            failures="1"
-            tests="7">
+            failures="0"
+            tests="6">
 
   <testsuite name="profile"
-    errors="0" failures="1" hostname="" id="" package="profile" skipped="3"
-    tests="7" time="32.47" timestamp="Wed, 25 Jul 2018 11:16:57 GMT">
+    errors="0" failures="0" hostname="" id="" package="profile" skipped="0"
+    tests="6" time="26.77" timestamp="Thu, 06 Sep 2018 15:16:36 GMT">
   
-    <testcase name="Go to  login influence" classname="profile" time="25.15" assertions="5">
+    <testcase name="Go to  login influence" classname="profile" time="10.62" assertions="5">
 
     
 
@@ -20,18 +20,12 @@
     
     </testcase>
   
-    <testcase name="click on profile dropdown, if exists" classname="profile" time="2.249" assertions="1">
+    <testcase name="click on profile dropdown, if exists" classname="profile" time="2.309" assertions="1">
 
     
     </testcase>
   
-    <testcase name="fill profile details" classname="profile" time="4.996" assertions="9">
-
-    
-
-    
-
-    
+    <testcase name="fill profile details" classname="profile" time="5.926" assertions="6">
 
     
 
@@ -46,32 +40,40 @@
     
     </testcase>
   
-    <testcase name="verify  profile details" classname="profile" time="0.07100" assertions="1">  <failure message="Testing if value of &lt;#firstName&gt; equals: &#34;Raju&#34;.">    at Object.verify  profile details (/home/ray/Desktop/frontend/frontend/tests/profile.js:37:15)
-    at process._tickCallback (internal/process/next_tick.js:61:11)</failure>
+    <testcase name="verify  profile details" classname="profile" time="1.154" assertions="3">
+
+    
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="clear profile details" classname="profile" time="1.220" assertions="0">
+    </testcase>
+  
+    <testcase name="Log out from Influence" classname="profile" time="5.547" assertions="1">
 
     
     </testcase>
   
 
   
-
+    <system-err>
+      ERROR: Unable to locate element: &#34;#campaignForm &gt; span&#34; using: css selector
+    at Object.campaign test Influence (/home/devilla/frontend/tests/newCampaign.js:29:8)
+    at Module.call (/home/devilla/frontend/node_modules/nightwatch/lib/runner/module.js:62:34)
+    at /home/devilla/frontend/node_modules/nightwatch/lib/runner/testcase.js:70:29
+    at _fulfilled (/home/devilla/frontend/node_modules/nightwatch/node_modules/q/q.js:834:54)
+    at /home/devilla/frontend/node_modules/nightwatch/node_modules/q/q.js:863:30
+    at Promise.promise.promiseDispatch (/home/devilla/frontend/node_modules/nightwatch/node_modules/q/q.js:796:13)
+    at /home/devilla/frontend/node_modules/nightwatch/node_modules/q/q.js:556:49
+    at runSingle (/home/devilla/frontend/node_modules/nightwatch/node_modules/q/q.js:137:13)
+    at flush (/home/devilla/frontend/node_modules/nightwatch/node_modules/q/q.js:125:13)
+    at process._tickCallback (internal/process/next_tick.js:61:11)
+    </system-err>
   
-    
-    <testcase
-      name="clear profile details" classname="profile">
-      <skipped />
-    </testcase>
-    
-    <testcase
-      name="Watch billing button , if exists" classname="profile">
-      <skipped />
-    </testcase>
-    
-    <testcase
-      name="Log out from Influence" classname="profile">
-      <skipped />
-    </testcase>
-    
+
   
   </testsuite>
 </testsuites>
