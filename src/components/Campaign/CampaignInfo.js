@@ -94,7 +94,7 @@ const CampaignInfo = ({
                   style={{display: campaignType !== 'page'?'block':'none'}}
                   onClick={handleNextButton}
                 >
-                  Create Your Campaign
+                  <span>Create Your Campaign</span>
                 </button>
                 <div className="clearfix"></div>
               </form>
