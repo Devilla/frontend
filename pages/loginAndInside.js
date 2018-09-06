@@ -57,18 +57,18 @@ module.exports = function (browser) {
 
   this.clickProfile = function () {
     browser
-      .waitForElementVisible('.rounded-circle', 8000)
-      .click('.mdi.mdi-account-settings-variant')
-      .click('.dropdown-item.notify-item> .fi-head + span')
+      .waitForElementVisible('div > div.wrapper > div:nth-child(2) > div > div.topbar > nav > div > div.nav-topbar-flex > ul > li > div.profile-dropdown.name-header > a > div:nth-child(3)', 8000)
+      .click('#root > div > div.wrapper > div:nth-child(2) > div > div.topbar > nav > div > div.nav-topbar-flex > ul > li > div.profile-dropdown.name-header > a > div:nth-child(3)')
+      .click('#root > div > div.wrapper > div:nth-child(2) > div > div.topbar > nav > div > div.nav-topbar-flex > ul > li > div.dropdown-menu.dropdown-menu-right.dropdown-menu-animated.profile-dropdown > a:nth-child(1)')
       .pause(2000);
     return browser;
   };
 
   this.closeLoginPage = function () {
     browser
-      .waitForElementVisible('.rounded-circle', 18000)
-      .click('.mdi.mdi-account-settings-variant')
-      .click('.dropdown-item.notify-item> .fi-power')
+      .waitForElementVisible('div > div.wrapper > div:nth-child(2) > div > div.topbar > nav > div > div.nav-topbar-flex > ul > li > div.profile-dropdown.name-header > a > div:nth-child(3)', 8000)
+      .click('#root > div > div.wrapper > div:nth-child(2) > div > div.topbar > nav > div > div.nav-topbar-flex > ul > li > div.profile-dropdown.name-header > a > div:nth-child(3)')
+      .click('#root > div > div.wrapper > div:nth-child(2) > div > div.topbar > nav > div > div.nav-topbar-flex > ul > li > div.dropdown-menu.dropdown-menu-right.dropdown-menu-animated.profile-dropdown > a.dropdown-item.notify-item.logout-btn')
       .pause(5000)
       .end(() => {
         console.log('logging use out from influence...');
