@@ -99,7 +99,7 @@ class Sidebar extends Component {
                   return (
                     <li className={prop.upgrade ? 'active newbtn' : this.activeRoute(prop.path)} key={key}>
                       {prop.name === 'Help & Support' ?
-                        <Link onClick={renderHelp} data-tip={prop.name} data-place="right" className={prop.upgrade && disableButton ? 'new disabled-link' : (disableButton || campaignValidation) && prop.name != 'Getting Started' ? 'disabled-link' : prop.upgrade ? 'new nav-link' : 'nav-link card'} disabled={(disableButton || campaignValidation)  && prop.name != 'Getting Started'} activeClassName="active">
+                        <Link onClick={renderHelp} data-tip={prop.name} data-place="right" className={prop.upgrade && disableButton ? 'new disabled-link' : (disableButton || campaignValidation) && prop.name != 'Getting Started' ? 'disabled-link nav-link card' : prop.upgrade ? 'new nav-link' : 'nav-link card'} disabled={(disableButton || campaignValidation)  && prop.name != 'Getting Started'} activeClassName="active">
                           {
                             prop.upgrade ? '' : <i className={prop.icon} ></i>
                           }
@@ -113,7 +113,7 @@ class Sidebar extends Component {
                           }
                         </Link>
                         :
-                        <Link onClick={() => this.setBreadCrumbs(prop)} to={prop.path} data-tip={prop.name} data-place="right" className={prop.upgrade && disableButton ? 'new disabled-link' : (disableButton || campaignValidation) && prop.name != 'Getting Started' ? 'disabled-link' : prop.upgrade ? 'new nav-link' : 'nav-link card'} disabled={(disableButton || campaignValidation)  && prop.name != 'Getting Started'} activeClassName="active">
+                        <Link onClick={() => this.setBreadCrumbs(prop)} to={prop.path} data-tip={prop.name} data-place="right" className={prop.upgrade && disableButton ? 'new disabled-link' : (disableButton || campaignValidation) && prop.name != 'Getting Started' ? 'disabled-link nav-link card' : prop.upgrade ? 'new nav-link' : 'nav-link card'} disabled={(disableButton || campaignValidation)  && prop.name != 'Getting Started'} activeClassName="active">
                           { prop.name=='Getting Started' && <span className="red-dot"></span> }
                           {
                             prop.upgrade ? '' : <i className={prop.icon} ></i>

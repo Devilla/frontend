@@ -50,16 +50,16 @@ class PricePage extends Component {
     let { handleMonthChange, selectedPlan, handleCheckChange } = this.props;
     let { planList } = this.state;
     return planList.map((plan, index) =>
-      <div key={index} className="col-md-3 col-sm-6">
+      <div key={index} className="col-md-3 col-sm-6 pl-5 pr-5 price-page-cards">
         <div className="pricingTable" onClick={handleMonthChange}>
           <div className="price_card text-center"  className={selectedPlan.id === plan.id ? 'makebx' : ''} data-dismiss="modal" onClick={() => handleCheckChange(true, plan)}>
-            <div className="pricing-header bg-primary">
+            <div className="pricing-header">
               <span className="price pt-3">${plan.interval === 'month' ? plan.amount / 100 : '' }</span>
               <span className="name">{this.filterPlanName(plan.name)}</span>
             </div>
-            <div className="pricing-content pt-4 pb-2">
+            <div className="pricing-content p-1">
               <ul className="price-features">
-                <li><div className="font-desc" dangerouslySetInnerHTML={{ __html:  plan.details }} /></li>
+                <li className="pt-0 pb-0"><div className="font-desc" dangerouslySetInnerHTML={{ __html:  plan.details }} /></li>
               </ul>
             </div>
           </div>
@@ -72,16 +72,16 @@ class PricePage extends Component {
     let { handleYearChange, selectedPlan, handleCheckChange } = this.props;
     let { planList } = this.state;
     return planList.map((plan, index) =>
-      <div key={index} className="col-md-3 col-sm-6">
+      <div key={index} className="col-md-3 col-sm-6 pl-5 pr-5 price-page-cards">
         <div className="pricingTable"  onClick={handleYearChange}>
           <div className="price_card text-center"  className={selectedPlan.id === plan.id ? 'makebx' : ''} data-dismiss="modal" onClick={() => handleCheckChange(true, plan)}>
-            <div className="pricing-header bg-primary">
+            <div className="pricing-header">
               <span className="price pt-3">${plan.interval === 'year' ? plan.amount / 100 :  ''}</span>
               <span className="name">{this.filterPlanName(plan.name)}</span>
             </div>
-            <div className="pricing-content pt-4 pb-2">
+            <div className="pricing-content p-1">
               <ul className="price-features">
-                <li><div className="font-desc" dangerouslySetInnerHTML={{ __html:  plan.details }} /></li>
+                <li className="pt-0 pb-0"><div className="font-desc" dangerouslySetInnerHTML={{ __html:  plan.details }} /></li>
               </ul>
             </div>
           </div>
@@ -104,7 +104,7 @@ class PricePage extends Component {
 
     return (
       <Loading style={{width: '10%', height: '700px'}} strokeWidth='2' isLoading={!planList}>
-        <div style={{ width: '100%' }}>
+        <div className="price-page-container" style={{ width: '100%' }}>
           <div className="price pt-2">
             <div className="pricing-row w-row" style={{ width: '100%' }}>
               <div className="w-col">
@@ -124,7 +124,7 @@ class PricePage extends Component {
             }
 
           </div>
-          <div className="price">
+          <div className="price pt-2">
             <div className="pricing-row w-row" style={{ width: '100%' }}>
               <div className="w-col">
                 <span className={!externalValue

@@ -130,6 +130,23 @@
     .success {
       background-color: #4CAF50;
     }
+    .display-page-row {
+      margin: 0 -6% !important;
+      .display-page-header {
+        display: flex;
+        justify-content: space-around;
+        h4 {
+          width: 100%;
+        }
+        button {
+          height: 35px;
+          border-radius: 6px;
+          width: 30%;
+          padding: 0px;
+
+        }
+      }
+    }    
   }
 }
 

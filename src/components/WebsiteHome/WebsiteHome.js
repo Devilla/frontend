@@ -10,7 +10,8 @@ import {
   Lawsikho,
   Stagephod,
   Carpathy,
-  sideScreen_1
+  sideScreen_1,
+  arrow_up
 
 } from 'img';
 import { browserHistory } from 'react-router';
@@ -108,16 +109,16 @@ class WebsiteHome extends Component {
             <div className="container col-md-6 pt-5">
               <div className="row pb-5">
                 <div className="text-center">
-                  <h2 className="pt-1 main-title pb-3">Increase your website conversions using social proof notifications <br /> </h2>
-                  <p className="typed-text typed-text--cursor h4 sub-title"> Use Influence and get <span className="type--bold extrafocus">3x more business </span>right away &nbsp;</p>
+                  <h2 className="main-title">Boost your Sales and Leads conversions by 17% in less than 10 minutes! <br /> </h2>
+                  <p className="typed-text typed-text--cursor sub-title pt-2"> Single line of 'code' <span>|</span> No tech-skills required <span>|</span> Trusted by 1000+ websites </p>
                 </div>
               </div>
               <br />
               <div className="text-center pb-5 starttrial-form">
                 <form className="form--horizontal row">
-                  <div className="col-md-1 mr-1 pr-0 ml-0 pl-0"></div>
-                  <div className="col-md-6 ml-0 pl-0 mr-0 pr-0"> <input type="text" name="email" placeholder="Enter your email" onChange={(e) => this.setState({ email: e.target.value })} /> </div>
-                  <div className="col-md-4 ml-0 pl-0 mr-0 ml-0 pr-0 "> <button type="submit" onClick={() => browserHistory.push(`/signup?email=${this.state.email}`)} className="btn btn--primary freetrial-btn ml-0">Start Free Trial</button> </div>
+                  <div className="col-md-2 mr-1 pr-0 ml-0 pl-0"></div>
+                  <div className="col-md-5 ml-0 pl-0 mr-0 pr-0"> <input type="text" name="email" placeholder="Enter your email" onChange={(e) => this.setState({ email: e.target.value })} /> </div>
+                  <div className="col-md-3 ml-0 pl-0 mr-0 ml-0 pr-0 "> <button type="submit" onClick={() => browserHistory.push(`/signup?email=${this.state.email}`)} className="btn btn--primary freetrial-btn ml-0">Start Free Trial</button> </div>
 
                 </form>
                 <ul className="mobile-view">
@@ -138,13 +139,44 @@ class WebsiteHome extends Component {
 
           </section>
 
-          <p><br /></p><hr className="my-auto col-md-6" />
+          <div className="container mt-4 mb-5">
+            <div className="row text-center">
+              <div className="col-md-3">
+                <div className="row">
+                  <img alt="arrow-up" src={arrow_up} className="col-sm-1 num-arrow mr-0 mb-0 p-0" />
+                  <h1 className="homescreen-num col-sm-7 mb-0 ml-0 p-0">0.25M+</h1>
+                </div>  
+                <span className="homescreen-num-text">Notifications Served</span>
+              </div>
+              <div className="col-md-3">
+                <div className="row">
+                  <img alt="arrow-up" src={arrow_up} className="col-sm-1 num-arrow mr-0 mb-0 p-0" />
+                  <h1 className="homescreen-num col-sm-7 mb-0 ml-0 p-0">1.2K+</h1>
+                </div>  
+                <span className="homescreen-num-text">Happy Customers</span>
+              </div>
+              <div className="col-md-3">
+                <div className="row">
+                  <img alt="arrow-up" src={arrow_up} className="col-sm-1 num-arrow mr-0 mb-0 p-0" />
+                  <h1 className="homescreen-num col-sm-7 mb-0 ml-0 p-0">100K+</h1>
+                </div>  
+                <span className="homescreen-num-text">Website Impressions</span>
+              </div>
+              <div className="col-md-3">
+                <div className="row">
+                  <img alt="arrow-up" src={arrow_up} className="col-sm-1 num-arrow mr-0 mb-0 p-0" />
+                  <h1 className="homescreen-num col-sm-7 mb-0 ml-0 p-0">1.8x</h1>
+                </div>  
+                <span className="homescreen-num-text">Avg. Conversion Boosts</span>
+              </div>
+            </div>
+          </div>
 
-          <section className="col-md-12 pl-0 pt-3 pr-0 unpad--bottom " style={{ backgroundColor: '#00B7FF' }} >
-            <div className="container pt-5 pb-5">
-              <div className="row  ">
+          <section className="col-md-12 p-0" style={{ backgroundColor: '#00B7FF' }} >
+            <div className="container p-0">
+              <div className="row">
                 <div className="col-md-6 text-left pt-5 pb-5 ">
-                  <h2 className="color--white blue-strip-affiliate "> Thousands of brands are using Influence to get more customers </h2>
+                  <h2 className="color--white blue-strip-affiliate mb-0"> 1000+ brands are using Influence to get more sales. </h2>
                 </div>
                 <div className="col-md-6 text-left pt-5 pb-5  pl-3">
                   <img src={Marvel} alt="img" className="enterprise-logo" />
@@ -274,7 +306,7 @@ class WebsiteHome extends Component {
               </Slider>
             </div>
           </section>
-          <section className="switchable col-md-12 mb-5 mt-5">
+          <section className="switchable col-md-12 mb-5 mt-1 pt-1">
             <div className="container">
               <div className="row justify-content-between align-items-center">
                 <div className="col-md-6 col-lg-5 integration-title">

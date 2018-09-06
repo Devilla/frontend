@@ -9,6 +9,7 @@ export const DELETE_CLIENT_OAUTH = action('DELETE_CLIENT_OAUTH');
 export const SUCCESS_CLIENT_OAUTH = action('SUCCESS_CLIENT_OAUTH');
 export const CREATE_CLIENT_OAUTH_SUCCESS = action('CREATE_CLIENT_OAUTH_SUCCESS');
 export const POP_CLIENT_OAUTH = action('POP_CLIENT_OAUTH');
+export const OAUTH_GET_ACCESS_TOKEN = action('OAUTH_GET_ACCESS_TOKEN');
 
 export const fetchClientOauth = () => ({ type: FETCH_CLIENT_OAUTH });
 export const createClientOauth = () => ({ type: CREATE_CLIENT_OAUTH });
@@ -17,6 +18,7 @@ export const deleteClientOauth = (id, index) => ({ type: DELETE_CLIENT_OAUTH, id
 export const successClientOauth = (oauth) => ({ type: SUCCESS_CLIENT_OAUTH, oauth });
 export const createClientOauthSuccess = (oauth) => ({ type: CREATE_CLIENT_OAUTH_SUCCESS, oauth });
 export const popClientOauth = (index) => ({ type: POP_CLIENT_OAUTH, index });
+export const OauthGetAccessToken = (requestDetails, requestType) => ({ type: OAUTH_GET_ACCESS_TOKEN, requestDetails, requestType });
 
 const initialState = fromJS({
   oauths: [],

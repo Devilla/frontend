@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   call,
   put,
@@ -12,7 +11,6 @@ import * as actions from 'ducks/auth';
 import { fetchProfile } from 'ducks/profile';
 import { load, loaded } from 'ducks/loading';
 import { storeToken } from 'services/Request';
-import Popup from 'react-popup';
 
 import * as api from 'services/api';
 import moment from 'moment';
@@ -54,13 +52,6 @@ export function* checkTokenExists(action) {
 export function* logOut() {
   try {
     yield call(removeAuthToken);
-    Popup.create({
-      title: 'Logged out.',
-      content: <div style={{padding: '30px 15px', fontSize: 'medium'}}>
-        You have been logged out, please login again.
-      </div>,
-      buttons: {}
-    }, true);
     yield call(browserHistory.push, '/login');
   } catch(error) {
     yield console.log(error);
@@ -72,7 +63,8 @@ export function* fetchUser() {
     yield put(load());
     const res = yield call(api.GET, 'user/me');
     if(!res.error) {
-      browserHistory.push(res.path);
+      if(browserHistory.getCurrentLocation().pathname !== '/oauth-integration/verification/shopify/')
+        browserHistory.push(res.path);
       yield put(actions.fetchUserSuccess(res));
     }
     yield put(loaded());

@@ -34,7 +34,7 @@ class DisplayPage extends Component {
   }
 
   componentWillUnmount() {
-    this.props.setActiveState(1);
+    this.props.setActiveState(1, true);
     this.props.clearPageUrl();
   }
 
@@ -311,7 +311,7 @@ class DisplayPage extends Component {
         <div className="tabscontent">
           <Row className="display-page-row">
             <Col md={12} className="display-page-header">
-              <h4 className="lead text-center m-b-30 m-t-20">Where do you want to show notifications?</h4>
+              <label className="text-muted text-center mb-4 mt-5">Where do you want to show notifications?</label>
             </Col>
           </Row>
           <Row style={{justifyContent: 'center'}}>

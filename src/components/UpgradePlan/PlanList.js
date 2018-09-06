@@ -13,12 +13,12 @@ const PlanList = ({ plan, handleCheckChange, setPlanList }) => {
     <div className="planlist-container">
       <div className="content fill upgrade-plan ">
         <Grid fluid={false} >
-          <Row className="inlineclr">
+          <Row className="inlineclr pt-0">
             <Col md={12}>
-              <div className="card-box pt-0 pl-0">
-                <div className="plans ml-5">
+              <div className="card-box pt-0">
+                <div className="plans">
                   <Row>
-                    <Animated className="leftwrap center text-center ml-5" animationIn="fadeIn" animationOut="fadeOut" isVisible={true}>
+                    <Animated className="leftwrap center text-center" animationIn="fadeIn" animationOut="fadeOut" isVisible={true}>
                       <PricePage
                         setPlanList={setPlanList}
                         paymentPage={true}

@@ -76,14 +76,14 @@ class AnalyticsContainer extends Component {
     if(this.state.usersList.length)
       return this.state.usersList.map((user, index) => {
         return <div className="table-active analytics-tr tr row" key={index}>
-          <div className="text-center td col-md-1">{index + 1}</div>
-          <div className="img text-center td col-md-2"><img src={user.profile_pic?user.profile_pic:'https://www.totaldenturecare.com.au/wp-content/uploads/2017/06/default-user-image-female.png'}/></div>
-          <div className="text-center td col-md-1">{user.username}</div>
-          <div className="text-center td col-md-4">{user.email}</div>
-          <div className="text-center td col-md-1">{user.city}</div>
-          <div className="text-center td col-md-1">{user.country}</div>
-          <div className="text-center td col-md-1">{moment(user.timestamp).fromNow()}</div>
-          <div className="text-center td col-md-1">
+          <div className="text-center td col-md-1 analytics-width-1 pt-3">{index + 1}</div>
+          <div className="img text-center td col-md-2 analytics-width-10"><img src={user.profile_pic?user.profile_pic:'https://www.totaldenturecare.com.au/wp-content/uploads/2017/06/default-user-image-female.png'}/></div>
+          <div className="text-center td col-md-1 analytics-width-20 pt-3">{user.username}</div>
+          <div className="text-center td col-md-4 analytics-width-20 pt-3">{user.email}</div>
+          <div className="text-center td col-md-1 analytics-width-15 pt-3">{user.city}</div>
+          <div className="text-center td col-md-1 analytics-width-15 pt-3">{user.country}</div>
+          <div className="text-center td col-md-1 analytics-width-10 pt-3">{moment(user.timestamp).fromNow()}</div>
+          <div className="text-center td col-md-1 analytics-width-15 pt-3">
             <OverlayTrigger
               overlay={
                 <Tooltip id={user.email} placement="top">
@@ -192,16 +192,15 @@ class AnalyticsContainer extends Component {
 
         const uniqueUsers = website.uniqueUsers && website.uniqueUsers.aggregations ?website.uniqueUsers.aggregations.users.buckets:[];
         return <div className="table-active analytics-tr tr row" key={index}>
-          <div scope="row" className="text-center td col-md-1">{index + 1}</div>
-          <div className="text-center td col-md-3">{website.websiteUrl}</div>
-          <div className="text-center td-2 col-md-2">{visitor}</div>
-          <div className="text-center td-3 col-md-2">{userDetails && userDetails.length} <a onClick={() => userDetails?this.handleViewProfile(userDetails):null }>&nbsp; Profiles</a></div>
-          <div className="text-center td-4 col-md-1">-</div>
-          <div className="text-center td-5 col-md-2">
+          <div scope="row" className="text-center td col-md-1 analytics-width-5">{index + 1}</div>
+          <div className="text-center td col-md-3 analytics-width-20">{website.websiteUrl}</div>
+          <div className="text-center td-2 col-md-2 analytics-width-20">{visitor}</div>
+          <div className="text-center td-3 col-md-2 analytics-width-15">{userDetails && userDetails.length} <a onClick={() => userDetails?this.handleViewProfile(userDetails):null }>&nbsp; Profiles</a></div>
+          <div className="text-center td-5 col-md-2 analytics-width-20">
             {
               userDetails && userDetails.length ?((userDetails.length / visitor)   * 100).toFixed(2):0
             } %</div>
-          <div className="text-center td-6 col-md-1"><a href="javascript:;" onClick={() => this.showGraph(website.websiteUrl, website.averageCustomer, uniqueUsers, website.campaignName)}>Graph</a></div>
+          <div className="text-center td-6 col-md-2 analytics-width-20"><a href="javascript:;" onClick={() => this.showGraph(website.websiteUrl, website.averageCustomer, uniqueUsers, website.campaignName)}>Graph</a></div>
         </div>;
       });
     else

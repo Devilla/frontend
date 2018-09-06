@@ -14,7 +14,7 @@
         margin: 0 20px;
         cursor: pointer;
         border-radius: 5px;
-        border: 1px solid #95c5f8;
+        border: 1px solid #c1c1c1;
         .card-img-top {
           display: flex;
           justify-content: flex-end;
@@ -78,4 +78,24 @@
     max-width: 200% !important;
   }
 
+}
+
+@media only screen and (max-width: 600px) and (min-width: 100px) {
+  .settings-container {
+    .settings-card-container {
+      .card {
+        width: 190px;
+        height: 120px !important;
+        margin: 0 5px !important;
+        .card-body {
+          i {
+            font-size: 25px !important;
+          }
+          .card-text {
+            font-size: 8px !important;
+          }
+        }
+      }
+    }
+  }
 }

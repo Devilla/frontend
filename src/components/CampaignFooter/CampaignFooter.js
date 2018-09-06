@@ -1,6 +1,10 @@
 import React from 'react';
 import { browserHistory } from 'react-router';
-import { CircleIndicator, BarIndicator } from 'react-indicators';
+// import { CircleIndicator, BarIndicator } from 'react-indicators';
+// import Slider, { Range } from 'rc-slider';
+import 'rc-steps/assets/index.css';
+import 'rc-steps/assets/iconfont.css';
+import Steps, { Step } from 'rc-steps';
 
 import './CampaignFooter.scss';
 
@@ -26,15 +30,13 @@ const CampaignFooter = ({step, setActiveState, goLive, campaign}) => {
       <div className="campaign-footer-steps">
         <button type="button" className="text-left btn-footer-1" onClick={() => step==1?browserHistory.push('/campaigns'):handlePreviousState(step-1)}>Prev</button>
         <div className="influence-react-indicator" >
-          <CircleIndicator className="circle-1" progress={step>=1?1:0} stroke="white" strokeWidth={2} fill="#5bc739" fillBackground="#417ece" size={20} onClick={() => setActiveState(1)} />
-          <BarIndicator progress={step>1?1:0} width={120} color="#5bc739" backgroundColor="#417ece" className="footer-progress-bar bar-1" />
-          <CircleIndicator className="circle-2" progress={step>=2?1:0} stroke="white" strokeWidth={2} fill="#5bc739" fillBackground="#417ece" size={20} onClick={() => setActiveState(2)} />
-          <BarIndicator progress={step>2?1:0} width={120} color="#5bc739" backgroundColor="#417ece" className="footer-progress-bar bar-2" />
-          {campaignPageCondition && <CircleIndicator className="circle-3" progress={step>=3?1:0} stroke="white" strokeWidth={2} fill="#5bc739" fillBackground="#417ece" size={20} onClick={() => setActiveState(3)} />}
-          {campaignPageCondition && <BarIndicator progress={step>3?1:0} width={120} color="#5bc739" backgroundColor="#417ece" className="footer-progress-bar bar-3" />}
-          {campaignPageCondition && <CircleIndicator className="circle-4" progress={step>=4?1:0} stroke="white" strokeWidth={2} fill="#5bc739" fillBackground="#417ece" size={20} onClick={() => setActiveState(4)} />}
-          {campaignPageCondition && <BarIndicator progress={step>4?1:0} width={120} color="#5bc739" backgroundColor="#417ece" className="footer-progress-bar bar-4" />}
-          <CircleIndicator className="circle-5" progress={step>=5?1:0} stroke="white" strokeWidth={2} fill="#5bc739" fillBackground="#417ece" size={20} onClick={() => setActiveState(5)} />
+          <Steps progressDot size="small" current={step-1}>
+            <Step />
+            <Step />
+            {campaignPageCondition && <Step />}
+            {campaignPageCondition && <Step />}
+            <Step />
+          </Steps>
         </div>
         <button type="button" className="text-center btn-footer-2 mr-1" onClick={() => step == 5?'':handleNextState(step+1)}>{step == 5?'Finish':'Next'}</button>
         <button type="button" className="btn-right btn-footer-3 ml-1" data-toggle="modal" data-target="#myModallive" onClick={goLive}>Publish</button>

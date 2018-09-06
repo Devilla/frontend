@@ -17,7 +17,6 @@ const setup = [
     icon: 'fi-cog',
     path: 'integrations',
     text: 'Integrations',
-    head: 'Unique'
   },
   {
     icon: 'fi-book',
@@ -25,16 +24,15 @@ const setup = [
     text: 'Billing',
   },
   {
-    icon: 'fi-paper-stack',
+    icon: 'fa fa-gears',
     path: 'oauthshow',
     text: 'O-Auth',
     head: 'Detailed'
   },
   {
-    icon: 'fi-paper-stack',
+    icon: 'fa fa-flash',
     modal: 'upgradePlanModal',
     text: 'Upgrade',
-    head: 'Detailed'
   }
 ];
 
@@ -43,13 +41,12 @@ const configuration = [
     icon: 'fi-paper-stack',
     path: '',
     text: 'FAQs',
-    head: 'Detailed'
+    head: 'Support',
   },
   {
     icon: 'fi-link',
     path: '/campaigns/scripts',
     text: 'Campaign Keys',
-    head: 'Detailed'
   }
 ];
 

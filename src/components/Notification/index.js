@@ -92,7 +92,9 @@ class Notification extends Component {
       let campaignDetails = this.props.campaignInfo.websiteLive.filter(campaign => campaign._id === campaignId);
       campaignDetails.map(campaign => {
         let user = campaign.uniqueUsers;
-        (user && user.hits) ? totalUsers = totalUsers + user.hits.total : 0;
+        (user && user.aggregations) ? user.aggregations.users.buckets.map(bucket => {
+          totalUsers = totalUsers + bucket.visitors.sum_other_doc_count + bucket.visitors.buckets.length;
+        }) : 0;
       });
       return {totalUsers: totalUsers};
     } else
@@ -106,19 +108,19 @@ class Notification extends Component {
       const { totalUsers } = this.usersCount(campaign._id);
       return (
         <div className="campaign-td tr" key={i} onClick={(e) => this.handleRouteChange(e, campaign)}>
-          <div scope="row" className="th col-md-1 text-center">{campaign.campaignType=='page'?'Page Specific':'Normal'}</div>
-          <div className="td col-md-2 text-center p-1">{campaign.campaignName}</div>
-          {!mobile() && <div className="td col-md-3 text-center p-1">{campaign.websiteUrl}</div>}
-          <div className="switch td col-md-1">
+          <div scope="row" className="th col-md-1 text-center campaignType">{campaign.campaignType=='page'?'Page Specific':'Normal'}</div>
+          <div className="td col-md-2 text-center p-1 campaignName">{campaign.campaignName}</div>
+          {!mobile() && <div className="td col-md-3 text-center p-1 websiteUrl">{campaign.websiteUrl}</div>}
+          <div className="switch td col-md-1 pl-4 isActive">
             <input className="tgl tgl-ios" id="cb2" type="checkbox" checked={this.state.isActive}  readOnly/>
             <label className="tgl-btn m-0" htmlFor="cb2"  data-toggle="modal" data-target="#2"  onClick={(e) => this.handleActiveChange(!campaign.isActive, campaign, i)}>
               <div className="toggle-text">ON</div>
             </label>
           </div>
-          <div className="text-center td col-md-1 p-1">{totalUsers}</div>
-          {!mobile() && <div className="td col-md-2 text-center p-1">{campaign.trackingId}</div>}
-          {!mobile() && <div className="td col-md-1 text-center p-1">{moment(campaign.updatedAt).format('MM/DD/YYYY')}</div>}
-          <div className="td col-md-1 text-center p-1"><a href="javascript:;"><i className="ml-3 icon-trash" data-toggle="modal" data-target="#1"  onClick={(e) => this.deleteCampaign(i,campaign,e)}></i></a></div>
+          <div className="text-center td col-md-1 p-1 totalUsers">{totalUsers}</div>
+          {!mobile() && <div className="td col-md-2 text-center p-1 trackingId">{campaign.trackingId}</div>}
+          {!mobile() && <div className="td col-md-1 text-center p-1 updatedAt">{moment(campaign.updatedAt).format('MM/DD/YYYY')}</div>}
+          <div className="td col-md-1 text-center p-1 campaignTrash"><a href="javascript:;"><i className="ml-3 icon-trash" data-toggle="modal" data-target="#1"  onClick={(e) => this.deleteCampaign(i,campaign,e)}></i></a></div>
         </div>
       );
     })
@@ -131,20 +133,20 @@ class Notification extends Component {
     const { campaigns, profile, campaignInfo } = this.props;
 
     return (
-      <Loading className="transition-item manage-transition-notification" isLoading={!campaigns || !profile || !campaignInfo}>
+      <Loading className="transition-item manage-transition-notification" strokeWidth="2" style={{height: '700px', width: '10%'}} isLoading={!campaigns || !profile || !campaignInfo}>
         <div className="manage-notification mt-3">
           <div className="table-responsive">
             <div className="table table-striped">
               <div className="thead flex">
                 <div className="tr tab-row">
-                  <div className="th col-md-1 text-center p-1">CAMPAIGN TYPE</div>
-                  <div className="th col-md-2 text-center p-1">CAMPAIGN</div>
-                  {!mobile() && <div className="th col-md-3 text-center p-1">DOMAIN</div>}
-                  <div className="th col-md-1 text-center p-1">STATUS</div>
-                  <div className="text-center th col-md-1 p-1">TOTAL VISITORS</div>
-                  {!mobile() && <div className="th col-md-2 text-center p-1">TRACK ID</div>}
-                  {!mobile() && <div className="th col-md-1 text-center p-1">CREATED/UPDATED</div>}
-                  <div className="th col-md-1 text-center p-1">TRASH</div>
+                  <div className="th col-md-1 text-center p-1 campaignType">CAMPAIGN TYPE</div>
+                  <div className="th col-md-2 text-center p-1 campaignName">CAMPAIGN</div>
+                  {!mobile() && <div className="th col-md-3 text-center p-1 websiteUrl">DOMAIN</div>}
+                  <div className="th col-md-1 text-center p-1 pr-3 isActive">STATUS</div>
+                  <div className="text-center th col-md-1 p-1 totalUsers">UNIQUE VISITORS</div>
+                  {!mobile() && <div className="th col-md-2 text-center p-1 trackingId">TRACK ID</div>}
+                  {!mobile() && <div className="th col-md-1 text-center p-1 updatedAt">CREATED/UPDATED</div>}
+                  <div className="th col-md-1 text-center p-1 campaignTrash">TRASH</div>
                 </div>
               </div>
               <div className="tbody tab-body">
@@ -156,13 +158,12 @@ class Notification extends Component {
               id={modalname}
               title={modaltitle}
               content={
-                <div className="modal-body">
+                <div className="modal-body text-center mt-4">
                   {modalbody}
                 </div>
               }
               footer={
                 <div className="modal-footer">
-                  <button type="button" className="float-left btn btn-primary close-btn" data-dismiss="modal">Close</button>
                   <button type="button" className="btn btn-primary delete-btn" data-dismiss="modal"
                     onClick={modalfoot === 'Upgrade Plan' ? () => browserHistory.push('/upgrade') : modalfoot == 'Resume account' ? () => browserHistory.push('/profile') : this.deletepopupContent} >{modalfoot}</button>
                 </div>

@@ -36,6 +36,7 @@ class DashboardContainer extends Component {
   }
 
   componentWillMount() {
+
     document.body.style = 'background-color:#fafafa';
     this.checkLogin((err) => {
       if (err) {
@@ -65,6 +66,11 @@ class DashboardContainer extends Component {
     if (window.innerWidth < 993 && this.props.location.pathname !== e.location.pathname && document.documentElement.className.indexOf('nav-open') !== -1) {
       document.documentElement.classList.toggle('nav-open');
     }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if(this.props.children != nextProps.children)
+      window.scrollTo(0, 0);
   }
 
   openCloseDropdown = () => {
@@ -153,6 +159,7 @@ class DashboardContainer extends Component {
       return;
 
     let breadcrumb = this.props.breadcrumb;
+    breadcrumb = breadcrumb.filter(crumb => crumb.name !== 'Profile Settings');
     breadcrumb.push({
       name: 'Profile Settings',
       path: '/profile'
@@ -193,7 +200,7 @@ class DashboardContainer extends Component {
               </div>
 
               <div className="content dashboard-content" style={{ backgroundColor: '#f9f9f9' }} onClick={this.closeDropdown}>
-                <div style={{minHeight: '750px'}}>
+                <div>
                   <PageTransition className="content">
                     {this.props.children}
                   </PageTransition>

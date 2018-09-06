@@ -113,6 +113,7 @@
   .modal-body {
     color: #097fff !important;
     font-size: 17px !important;
+
   }
 
 }
@@ -130,4 +131,20 @@
 
 .mm-popup__box__header__title {
   text-align: center !important;
+}
+
+@media only screen and (min-width: 100px) and (max-width: 768px) {
+  .manage-notification {
+    .campaign-td {
+      .campaignType, .campaignName, .isActive, .updatedAt {
+        width: 15%;
+      }
+      .trackingId, .websiteUrl {
+        width: 30%;
+      }
+      .totalUsers, .campaignTrash {
+        width: 10%;
+      }
+    }
+  }
 }

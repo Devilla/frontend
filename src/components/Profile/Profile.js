@@ -214,9 +214,9 @@ class Profile extends Component {
 
         <div className="fill profile-container">
           <Col md={2}>
-            <div className={this.state.profileSetting?'content-tabs active mt-0 mr-3 ml-3':'content-tabs mt-0 mr-3 ml-3'} onClick={()=>this.showProfile()} >My Profile</div>
-            <div className={this.state.changePassword?'content-tabs active mt-0 mr-3 ml-3':'content-tabs mt-0 mr-3 ml-3'} onClick={()=>this.changePassword()} >Change Password</div>
-            <div className="content-tabs mt-0 mr-3 ml-3" data-toggle="modal" data-target="#deletemodal">More Options</div>
+            <div className={this.state.profileSetting?'content-tabs active mt-0 mr-3 ml-3 profile-tabs':'content-tabs mt-0 mr-3 ml-3 profile-tabs'} onClick={()=>this.showProfile()} >My Profile</div>
+            <div className={this.state.changePassword?'content-tabs active mt-0 mr-3 ml-3 profile-tabs':'content-tabs mt-0 mr-3 ml-3 profile-tabs'} onClick={()=>this.changePassword()} >Change Password</div>
+            <div className="content-tabs mt-0 mr-3 ml-3 profile-tabs" data-toggle="modal" data-target="#deletemodal">More Options</div>
           </Col>
 
           <Col md={10} className="profile-content-contaier">
@@ -247,7 +247,7 @@ class Profile extends Component {
                   <Col sm={7} className="profile-content-col-one">
                     <div className="profile-user-box" >
                       <Row>
-                        <Col sm={3}>
+                        <Col sm={2}>
                           <span className="pull-left">
                             <img src={profile.image?profile.image:'https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg'} alt="User profile" className="rounded-circle" />
                             <ImageUploader

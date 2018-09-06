@@ -76,13 +76,13 @@ const CampaignSettings = (props) => {
           </li>
         </ul>
 
-        <div className="tab-content p-5">
+        <div className="tab-content p-3">
 
-          <div className={`tab-pane ${props.activeClass == 1?'show active':''}`} id="profile1">
+          <div className={`tab-pane pt-4 mt-5 ${props.activeClass == 1?'show active':''}`} id="profile1">
             <NotificationSettings {...props} />
           </div>
 
-          <div className={`tab-pane ${props.activeClass == 2?'show active':''}`} id="messages1">
+          <div className={`tab-pane m-5 ${props.activeClass == 2?'show active':''}`} id="messages1">
             <Rules {...props} />
           </div>
 
@@ -94,7 +94,7 @@ const CampaignSettings = (props) => {
             <DisplayPage {...props} />
           </div>
 
-          <div className={`tab-pane ${props.activeClass == 5?'show active':''}`} id="home1">
+          <div className={`tab-pane m-5 ${props.activeClass == 5?'show active':''}`} id="home1">
             <InstallPixel {...props} />
           </div>
         </div>

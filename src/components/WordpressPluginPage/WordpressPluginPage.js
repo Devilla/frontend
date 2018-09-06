@@ -34,7 +34,7 @@ class WordpressPluginPage extends Component {
           <div className="td col-md-3 text-center">{campaign.campaignName}</div>
           <div className="td col-md-4 text-center">{campaign.trackingId}</div>
           <div className="td col-md-3 text-center">
-            <a className="btn btn-primary" href="javascript:;"><i className="fa fa-copy" onClick={() => this.handleTrackingIdCopy(campaign)}>Copy</i></a>
+            <button className="btn btn-primary btn-sm" href="javascript:;" onClick={() => this.handleTrackingIdCopy(campaign)}><i className="fa fa-copy">&nbsp; Copy</i></button>
           </div>
         </div>
       );

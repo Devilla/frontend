@@ -49,7 +49,8 @@ class NewCampaignContainer extends Component {
       content: '',
       buttonText: '',
       path: '',
-      campaignType: ''
+      campaignType: '',
+      integrationType: ''
     };
   }
 
@@ -94,20 +95,21 @@ class NewCampaignContainer extends Component {
     return this.props.createCampaign(data, pages);
   }
 
-  setActiveState = (val) => {
+  setActiveState = (val, unMounting) => {
     if(this.state.sampleDisplay && val != 3)
       this.setState({sampleDisplay: false});
     if(val == 2)
       this.setState({notification: ''});
     this.setState({activeClass: val});
-
-    let breadcrumb = this.props.breadcrumb;
-    breadcrumb.splice(1);
-    breadcrumb.push({
-      name: campaignTabs[val-1],
-      path: ''
-    });
-    this.props.setBreadCrumbs(breadcrumb);
+    if(!unMounting) {
+      let breadcrumb = this.props.breadcrumb;
+      breadcrumb.splice(1);
+      breadcrumb.push({
+        name: campaignTabs[val-1],
+        path: ''
+      });
+      this.props.setBreadCrumbs(breadcrumb);
+    }
   }
 
   verifyPixelStatus = (campaign) => {
@@ -191,6 +193,10 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
     this.props.clearSubDomain();
   }
 
+  setIntegrationType = (type) => {
+    this.setState({integrationType: type});
+  }
+
   render() {
 
     return (
@@ -208,6 +214,7 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
             setActiveState={this.setActiveState}
             setNotification={this.setNotification}
             clearNotification={this.clearNotification}
+            setIntegrationType={this.setIntegrationType}
             {...this.props}
             {...this.state}
           />

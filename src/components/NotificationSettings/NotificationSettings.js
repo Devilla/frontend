@@ -88,6 +88,7 @@ class Notifications extends Component {
   componentWillMount() {
     this.props.fetchNotification();
     this.props.fetchConfiguration(this.props.campaign._id);
+    this.props.fetchSubCampaign(this.props.campaign._id);
     let breadcrumb = this.props.breadcrumb;
     breadcrumb.push({
       name: 'Notifications',
@@ -258,7 +259,8 @@ class Notifications extends Component {
   }
 
   componentWillUnmount() {
-    this.props.setActiveState(1);
+    console.log('==========notntotnto');
+    this.props.setActiveState(1, true);
     this.props.clearConfiguration();
     this.setInitialState();
   }
@@ -292,13 +294,12 @@ class Notifications extends Component {
     return (
       <Loading data-transition-id="notification-settings-page" style={{width: '10%', height: '500px'}} strokeWidth='2' isLoading={!notifications || !configurations || !campaign || !profile}>
         <div className="notification-settings">
-          <div>
+          <div style={{position: 'absolute', top: '61%', width: '98%'}}>
             <div>
-              <h4 className="lead text-center m-b-2 m-t-20">Notifications</h4>
               {notification && campaign.campaignType == 'page' &&
                 <div className="notification-settings-options">
                   <div className="dropdown-campaigns">
-                    <button type="button" className="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                    <button type="button" className="btn-products dropdown-toggle" data-toggle="dropdown"> 
                       {this.state.pageName?this.state.pageName:'Products'}
                     </button>
                     <div className="dropdown-menu">
@@ -306,7 +307,7 @@ class Notifications extends Component {
                       <a className="dropdown-item" data-toggle="modal" data-target="#addNewProduct">Add/Edit Products</a>
                     </div>
                   </div>
-                  <button className="btn btn-primary" data-toggle="modal" data-target="#productImages">Add Product Images</button>
+                  <button className="btn-products ml-1" data-toggle="modal" data-target="#productImages">Add Product Images</button>
                 </div>
               }
             </div>

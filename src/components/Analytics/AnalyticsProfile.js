@@ -11,14 +11,14 @@ const AnalyticsProfile = ({renderProfileList }) => {
         <div className="table table-striped">
           <div className="thead tab-header flex">
             <div className="tr tab-row flex row">
-              <div className="th text-center col-md-1">#</div>
-              <div className="img th text-center col-md-2">Photo</div>
-              <div className="th text-center col-md-1">Name</div>
-              <div className="th text-center col-md-4">Email</div>
-              <div className="th text-center col-md-1">Location</div>
-              <div className="th text-center col-md-1">Country</div>
-              <div className="th text-center col-md-1">Sign up on</div>
-              <div className="th text-center col-md-1">Action</div>
+              <div className="th text-center col-md-1 analytics-width-1">#</div>
+              <div className="img th text-center col-md-2 analytics-width-10">Photo</div>
+              <div className="th text-center col-md-1 analytics-width-20">Name</div>
+              <div className="th text-center col-md-4 analytics-width-20">Email</div>
+              <div className="th text-center col-md-1 analytics-width-15">Location</div>
+              <div className="th text-center col-md-1 analytics-width-15">Country</div>
+              <div className="th text-center col-md-1 analytics-width-10">Sign up on</div>
+              <div className="th text-center col-md-1 analytics-width-15">Action</div>
             </div>
           </div>
           <div className="tbody tab-body">

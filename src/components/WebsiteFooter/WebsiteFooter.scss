@@ -20,24 +20,22 @@
         margin: auto;
     }
     .cookie-text {
-        padding: 10px;
+        padding: 5px;
         -webkit-box-align: center;
         align-items: center;
-        box-shadow: rgba(0, 0, 0, 0.3) 0px 2px 15px 0px;
+        box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 5px 0px;
         box-sizing: border-box;
         display: flex;
-        margin-bottom: 12px;
+        margin-bottom: 15px;
         min-height: 52px;
-        padding-left: 8px;
         position: relative;
         width: 550px;
         background: rgb(255, 255, 255);
-        border-width: 1px;
-        border-style: solid;
-        border-color: rgb(135, 138, 140);
+        border-width: 0.5px solid #a9a9a9;
         border-image: initial;
-        border-radius: 4px;
+        border-radius: 5px;
         transition: padding 0.3s;
+        opacity: 0.9;
     }
     .cookie-text {
       &before {
@@ -61,10 +59,10 @@
     .cookie-text {
       .cookie-label {
           font-family: "Lato", sans-serif;
-          font-size: 14px;
+          font-size: 12px;
           font-weight: 400;
-          line-height: 21px;
-          color: rgb(28, 28, 28);
+          line-height: 17px;
+          color: #696969;
           margin-left: 12px;
           flex: 1 1 0%;
       }
@@ -75,10 +73,10 @@
          box-sizing: border-box;
          cursor: pointer;
          text-align: center;
-         font-size: 10px;
+         font-size: 9px;
          font-weight: 700;
          letter-spacing: 0.5px;
-         line-height: 24px;
+         line-height: 23px;
          text-transform: uppercase;
          background-color: #097fff;
          color: rgb(255, 255, 255);
