@@ -128,3 +128,6 @@ export { default as Facebookpop }  from './facebook_1.png';
 export { default as Googlepop } from './google.png';
 export { default as FireIcon } from './fire.png';
 export { default as InfluenceMobile } from './influence-mobile-3.png';
+
+//features Page
+export { deafult as Campaignsetting } from './campaign_setting.png';

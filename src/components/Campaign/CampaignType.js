@@ -35,7 +35,7 @@ const CampaignType = ({handleCampaignType}) => {
                 </Row>
                 <Row className="campaign-type-info mr-5 mt-4">
                   <Col>
-                    <p className="mb-0 campaign-type-info">For online stores Or ecommerce websites.</p>
+                    <p className="mb-0 campaign-type-info">For online Stores or Ecommerce websites.</p>
                     <p className="mt-0 campaign-type-info">Notification specific to that Page/Product will be shown</p>
                   </Col>
                 </Row>
