@@ -380,4 +380,48 @@
     text-shadow: rgba(0, 0, 0, 0.10) 0 0 2px !important;
     font-weight: 600 !important;
     line-height: 23px;
+    line-height: 35px;
+}
+
+.para-heading {
+    margin-bottom: 0px;
+    font-size: 18px;
+    text-shadow: rgba(0, 0, 0, 0.10) 0 0 2px !important;
+    margin-left: 18px !important;
+    margin-top: 15px !important;
+}
+
+.para-text {
+    margin-bottom: 5px !important;
+    line-height: 30px;
+    text-shadow: rgba(0, 0, 0, 0.10) 0 0 2px !important;
+}
+
+.features-text {
+    float: right;
+}
+
+.features-text2 {
+    float: left;
+}
+
+.bg-start {
+    background: #f2f2f2;
+}
+
+.start-para-text {
+    font-size: 13px !important;
+    color: #3a3f52 !important;
+    text-shadow: rgba(0, 0, 0, 0.10) 0 0 2px !important;
+    font-weight: 600 !important;
+    line-height: 23px;
+}
+
+.btn.btn-bottom {
+    background: #ffffff !important;
+    color: #3a3f52 !important;
+    .btn__text2 {
+        color:#5a617d !important;
+        text-shadow: rgba(0, 0, 0, 0.10) 0 0 2px !important;
+    }
 }
