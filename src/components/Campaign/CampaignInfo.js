@@ -91,10 +91,10 @@ const CampaignInfo = ({
                   type="submit"
                   id="campaignForm"
                   className="btn btn-primary waves-light waves-effect newcamp-btn ml-2 pl-4 pr-4"
-                  style={{display: campaignType !== 'page'?'block':'none'}}
+                  style={{display: campaignType == 'page' && 'none'}}
                   onClick={handleNextButton}
                 >
-                  Create Your Campaign
+                  <span>Create Your Campaign</span>
                 </button>
                 <div className="clearfix"></div>
               </form>

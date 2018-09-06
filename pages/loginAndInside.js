@@ -3,7 +3,7 @@ module.exports = function (browser) {
   this.openBrowser = function () {
     browser
       .windowMaximize()
-      .url('https://useinfluence.co/home')
+      .url('http://localhost:3000/home')
       .waitForElementVisible('body', 1000);
     return browser;
   };
@@ -24,7 +24,7 @@ module.exports = function (browser) {
   };
   this.fillWrongDetails = function () {
     browser
-      .url('https://useinfluence.co/login')
+      .url('http://localhost:3000/login')
       .waitForElementVisible('body', 3000)
       .setValue('input[type=email]', 'devinair@gmail.com')
       .setValue('input[type=password]', '12345')
