@@ -205,7 +205,7 @@ class WebsiteHome extends Component {
                     <p className="sub-title"> Show notifications of: <br/>
                       <ol className="para-heading"><li className="para-text"> Recent Signups </li> <li className="para-text"> Recent Purchases</li> <li className="para-text"> Recent Subscriptions, and many more.. </li> </ol>
                     </p>
-                    <Link to="/signup">Try Now »</Link>
+                    <Link to="/signup" className="btn btn-trial">Forever Free Trial »</Link>
                   </div>
                 </div>
                 <div className="col-md-6 col-lg-6 col-12 text-center">
@@ -231,7 +231,7 @@ class WebsiteHome extends Component {
                     <p className="sub-title"> Show live activity of: <br/>
                       <ol className="para-heading"><li className="para-text"> Users active on the website </li> <li className="para-text"> Users viewing a product/page</li> <li className="para-text"> And many more customizations.. </li> </ol>
                     </p>
-                    <Link to="/signup">Try Now »</Link>
+                    <Link to="/signup" className="btn btn-trial">Forever Free Trial »</Link>
                   </div>
                 </div>
                 <div className="col-md-6 col-lg-6 col-12 text-center">
@@ -256,7 +256,7 @@ class WebsiteHome extends Component {
                     <p className="sub-title"> Show 'activity' over a period of time: <br/>
                       <ol className="para-heading"><li className="para-text"> Total Signups happened</li> <li className="para-text"> Total Product Purchases</li> <li className="para-text"> Total Subscriptions, and many more.. </li> </ol>
                     </p>
-                    <Link to="/signup">Try Now »</Link>
+                    <Link to="/signup" className="btn btn-trial">Forever Free Trial »</Link>
                   </div>
                 </div>
                 <div className="col-md-6 col-lg-6 col-12 text-center">
@@ -284,33 +284,33 @@ class WebsiteHome extends Component {
               </div>
               <div className="row">                
                 <div className="col-md-4">
-                  <div className="text-center"> <img className="icon-n2" alt="Image" src={NewInstall} />
+                  <div className="text-center"> <img className="icon-n2 mb-3" alt="Image" src={NewInstall} style={{height: '4.7em', opacity: '0.9'}} />
                     <div className="">
-                      <h3 className="heading-texts-sub">1. Create Campaign</h3>
-                      <p className="start-para-text">Follow the no-brainer steps. <br/>Customize youself or use pre-built. </p>
+                      <h3 className="heading-texts-sub mb-1">1. Create Campaign</h3>
+                      <p className="start-para-text">Follow the no-brainer steps.</p>
                     </div>
                   </div>
                 </div>
                 <div className="col-md-4">
-                  <div className="text-center"> <img className="icon-n2" alt="Image" src={NewIntegrate} />
+                  <div className="text-center"> <img className="icon-n2 mb-3" alt="Image" src={NewIntegrate} style={{height: '4.7em', opacity: '0.9'}} />
                     <div className="">
-                      <h3 className="heading-texts-sub">2. Install Your Pixel</h3>
-                      <p className="start-para-text"> Copy &amp; paste the pixel in the head tag of website. <br/> Do it on all the website's pages</p>
+                      <h3 className="heading-texts-sub mb-1">2. Install Your Pixel</h3>
+                      <p className="start-para-text"> Copy &amp; paste the pixel in the head tag of website.</p>
                     </div>
                   </div>
                 </div>        
                 <div className="col-md-4">
-                  <div className="text-center"> <img className="icon-n2" alt="Image" src={NewGoLive} />
+                  <div className="text-center"> <img className="icon-n2 mb-3" alt="Image" src={NewGoLive} style={{height: '4.7em', opacity: '0.9'}} />
                     <div className="">
-                      <h3 className="heading-texts-sub">3. Go Live</h3>
-                      <p className="start-para-text"> Launch your campaign on one click. <br/> See the notifications running! </p>
+                      <h3 className="heading-texts-sub mb-1">3. Go Live</h3>
+                      <p className="start-para-text"> Launch, sit back & relax!</p>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </section>
-          <section className="switchable col-md-12 mb-5 mt-5 pt-0">
+          <section className="switchable col-md-12 mb-5 mt-5 pt-2">
             <div className="container">
               <div className="row justify-content-between align-items-center">
                 <div className="col-md-6 col-lg-5 integration-title">
@@ -338,7 +338,7 @@ class WebsiteHome extends Component {
                     </div>
                     <div className="row ">
                       <div className="col-md-12 text-center pb-2">
-                        <Link className="btn btn-bottom" to="/signup"> <span className="btn__text2">Start my free trial<br /></span> </Link>
+                        <Link className="btn btn-bottom" to="/signup"> <span className="btn__text2">Start forever free trial<br /></span> </Link>
                       </div>
                     </div>
                   </div>

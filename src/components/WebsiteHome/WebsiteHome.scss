@@ -385,7 +385,8 @@
 
 .para-heading {
     margin-bottom: 0px;
-    font-size: 18px;
+    font-size: 17px;
+    font-weight: 600;
     text-shadow: rgba(0, 0, 0, 0.10) 0 0 2px !important;
     margin-left: 18px !important;
     margin-top: 15px !important;
@@ -424,4 +425,19 @@
         color:#5a617d !important;
         text-shadow: rgba(0, 0, 0, 0.10) 0 0 2px !important;
     }
+}
+
+.btn.btn-trial {
+    padding: 4px 8px !important;
+    background: #3483de !important;
+    color: #ffffff !important;
+    font-size: 12px !important;
+    border-radius: 5px !important;
+
+    &:hover {
+        background: #097fff !important;
+        border: 1px solid #00aeff !important;
+
+    }
+
 }
