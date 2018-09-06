@@ -19,17 +19,12 @@ module.exports = {
       .verify.visible('#phoneNumber')
       .verify.visible('#email')
       .verify.visible('#address')
-      .verify.visible('#formControlsSelect')
-      .verify.visible('#formfBillinControlsSelect')
-      .verify.visible('#companyName')
       .clearValue('#firstName')
       .setValue('#firstName', 'Dev')
       .clearValue('#lastName')
       .setValue('#lastName', 'Yadav')
       .clearValue('#address')
       .setValue('#address', '151-A Baker Street')
-      .clearValue('#companyName')
-      .setValue('#companyName', 'useinfluence')
       .assert.value('#email', 'devinair@gmail.com')
       .click('.text-right.save >  button')
       .pause(1000, () => console.log('Saving user data...'))
@@ -42,7 +37,6 @@ module.exports = {
       .assert.value('#firstName', 'Dev')
       .assert.value('#lastName', 'Yadav')
       .assert.value('#address', '151-A Baker Street')
-      .assert.value('#companyName', 'useinfluence')
       .pause(1000, () => console.log('User data verified...'));
   },
   'clear profile details': function (browser) {
@@ -50,12 +44,7 @@ module.exports = {
       .setValue('#firstName', '')
       .setValue('#lastName', '')
       .setValue('#address', '')
-      .setValue('#companyName', '')
       .pause(1000, () => console.log('User data cleared ...'));
-  },
-  'Watch billing button , if exists': function (browser) {
-    browser
-      .verify.visible('.billing1');
   },
   'Log out from Influence': function (browser) {
     login(browser).closeLoginPage();
