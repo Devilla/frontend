@@ -131,3 +131,4 @@ export { default as InfluenceMobile } from './influence-mobile-3.png';
 
 //features Page
 export { deafult as Campaignsetting } from './campaign_setting.png';
+export { deafult as FeatureAnalytics } from './feature_analytics.png';

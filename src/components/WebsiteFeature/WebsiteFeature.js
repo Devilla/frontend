@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {
-  Campaignsetting
+  Campaignsetting,
+  FeatureAnalytics
 } from 'img';
 import { Link } from 'react-router';
 import './WebsiteFeature.scss';
@@ -87,7 +88,7 @@ class WebsiteFeature extends Component {
               <p className="heading-texts-sub text-left">Track your conversion metrics with our dedicated analytics section.</p>
             </div>
             <div className="col-md-6">
-              <img />
+              <img alt="analytics" src={FeatureAnalytics} className="m-0 p-0" />
             </div>
           </section>
           <section className="row">
