@@ -31,28 +31,28 @@ class WebsiteFeature extends Component {
           <section className="row" style={{backgroundColor: '#f1f1f1'}}>
             <div className="row mt-3 mb-5" style={{width: '100%'}}>
               <div className="col-md-3 p-1">
-                <h3 className="heading-texts">Install in 5 minutes </h3>
+                <h3 className="heading-texts3">Install in 5 minutes </h3>
                 <p className="heading-texts-sub"> Set it up on your website in minutes </p>
               </div>
               <div className="col-md-3 p-1">
-                <h3 className="heading-texts">Unlimited Customizations!</h3>
+                <h3 className="heading-texts3">Unlimited Customizations!</h3>
                 <p className="heading-texts-sub"> Set your notification color, style, behaviours <br/> and so much more... </p>
               </div>
               <div className="col-md-3 p-1">
-                <h3 className="heading-texts">Dedicated Accounts Manager </h3>
+                <h3 className="heading-texts3">Dedicated Accounts Manager </h3>
                 <p className="heading-texts-sub"> Hands on support anytime you need </p>
               </div>
               <div className="col-md-3 p-1">
-                <h3 className="heading-texts">Mobile Ready </h3>
+                <h3 className="heading-texts3">Mobile Ready </h3>
                 <p className="heading-texts-sub"> Display mobile optimized notifications </p>
               </div>
             </div>
           </section>
           <hr className="my-auto col-md-12" pb-0 mb-0/>
-          <section className="row ml-5">
-            <div className="col-md-6 pr-3">
-              <h3>Display social proof notifications to your users </h3>
-              <p className="">We help you in increasing more sales and leads on your website by display social proof to your visitors and influence them into buying more from you.</p>
+          <section className="row ml-5 mt-5 mb-5">
+            <div className="col-md-5 pr-3">
+              <h3 className="heading-texts2">Display social proof notifications to your users </h3>
+              <p className="heading-texts-sub2">We help you in increasing more sales and leads on your website by display social proof to your visitors and influence them into buying more from you.</p>
               <h4 className="heading-texts text-left" >Recent Activity: </h4>
               <p className="heading-texts-sub text-left"> Recent Activity notifications show recent buying behavior of your customers to your website users. </p>
               <h4 className="heading-texts text-left" >Live visitors:</h4>
@@ -64,23 +64,30 @@ class WebsiteFeature extends Component {
               <img />
             </div>
           </section>
-          <section className="row">
+          <section className="row mt-5 mb-5">
             <div className="col-md-6">
               <img alt="campaign_setting" src={Campaignsetting} className="m-0 p-0" />
             </div>
-            <div className="col-md-6 pr-3">
-              <h3>Campaign types - Customized to your business needs: </h3>
-              <p className="">Create campaigns that suits your business type.</p>
-              <h4 className="heading-texts text-left" >Normal campaigns</h4>
+            <div className="col-md-5 pr-3">
+              <h3 className="heading-texts2">Campaign types - Customized to your business needs: </h3>
+              <p className="heading-texts-sub2">Create campaigns that suits your business type.</p>
+              <h4 className="heading-texts text-left" >Normal campaigns:</h4>
               <p className="heading-texts-sub text-left"> Create campaigns that are normal and convert best throughout your website. </p>
-              <h4 className="heading-texts text-left" >Product campaigns</h4>
+              <h4 className="heading-texts text-left" >Product campaigns:</h4>
               <p className="heading-texts-sub text-left">Create campaigns for specific products or pages. Useful for multiple product Stores and Ecommerce companies.</p>
             </div>
           </section>
-          <section className="row">
-            <div className="col-md-6">
+          <section className="row ml-5 mt-5 mb-5">
+            <div className="col-md-5 pr-3">
+              <h3 className="heading-texts2">Analytics Powerhouse! </h3>
+              <p className="heading-texts-sub2">See the analytics of your favorite campaigns and optimize then right away.</p>
+              <h4 className="heading-texts text-left" >Real Time Website Analytics: </h4>
+              <p className="heading-texts-sub text-left"> See the analytics on your dashboard in live real time manner. </p>
+              <h4 className="heading-texts text-left" >Conversion Tracking:</h4>
+              <p className="heading-texts-sub text-left">Track your conversion metrics with our dedicated analytics section.</p>
             </div>
             <div className="col-md-6">
+              <img />
             </div>
           </section>
           <section className="row">
