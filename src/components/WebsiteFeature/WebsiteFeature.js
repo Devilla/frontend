@@ -50,8 +50,8 @@ class WebsiteFeature extends Component {
             </div>
           </section>
           <hr className="my-auto col-md-12" pb-0 mb-0/>
-          <section className="row ml-5 mt-5 mb-5">
-            <div className="col-md-5 pr-3">
+          <section className="row mt-5 mb-5 pt-3">
+            <div className="col-md-4 analytics-text">
               <h3 className="heading-texts2">Display social proof notifications to your users </h3>
               <p className="heading-texts-sub2">We help you in increasing more sales and leads on your website by display social proof to your visitors and influence them into buying more from you.</p>
               <h4 className="heading-texts text-left" >Recent Activity: </h4>
@@ -67,9 +67,10 @@ class WebsiteFeature extends Component {
           </section>
           <section className="row mt-5 mb-5">
             <div className="col-md-6">
-              <img alt="campaign_setting" src={Campaignsetting} className="m-0 p-0" />
+              <img alt="campaign_setting" src={Campaignsetting} className="campaigntype-image" />
             </div>
-            <div className="col-md-5 pr-3">
+            <div className="col-md-1 p-0"> </div>
+            <div className="col-md-4 pr-3 campaigntype-text">
               <h3 className="heading-texts2">Campaign types - Customized to your business needs: </h3>
               <p className="heading-texts-sub2">Create campaigns that suits your business type.</p>
               <h4 className="heading-texts text-left" >Normal campaigns:</h4>
@@ -78,8 +79,8 @@ class WebsiteFeature extends Component {
               <p className="heading-texts-sub text-left">Create campaigns for specific products or pages. Useful for multiple product Stores and Ecommerce companies.</p>
             </div>
           </section>
-          <section className="row ml-5 mt-5 mb-5">
-            <div className="col-md-5 pr-3">
+          <section className="row mt-5 mb-5">
+            <div className="col-md-4 analytics-text">
               <h3 className="heading-texts2">Analytics Powerhouse! </h3>
               <p className="heading-texts-sub2">See the analytics of your favorite campaigns and optimize then right away.</p>
               <h4 className="heading-texts text-left" >Real Time Website Analytics: </h4>
@@ -87,8 +88,9 @@ class WebsiteFeature extends Component {
               <h4 className="heading-texts text-left" >Conversion Tracking:</h4>
               <p className="heading-texts-sub text-left">Track your conversion metrics with our dedicated analytics section.</p>
             </div>
+            <div className="col-md-1 p-0"> </div>
             <div className="col-md-6">
-              <img alt="analytics" src={FeatureAnalytics} className="m-0 p-0" />
+              <img alt="analytics" src={FeatureAnalytics} className="analytics-image" />
             </div>
           </section>
           <section className="row">
