@@ -7,11 +7,11 @@ import {
   Marvel,
   Illustration,
   Swivelscreen,
-  Lawsikho,
-  Stagephod,
-  Carpathy,
   sideScreen_1,
-  arrow_up
+  arrow_up,
+  NewIntegrate,
+  NewInstall,
+  NewGoLive
 
 } from 'img';
 import { browserHistory } from 'react-router';
@@ -176,9 +176,9 @@ class WebsiteHome extends Component {
             <div className="container p-0">
               <div className="row">
                 <div className="col-md-6 text-left pt-5 pb-5 ">
-                  <h2 className="color--white blue-strip-affiliate mb-0"> 1000+ brands are using Influence to get more sales. </h2>
+                  <h2 className="color--white blue-strip-affiliate mb-0"> 1000+ brands are using Influence to get more sales </h2>
                 </div>
-                <div className="col-md-6 text-left pt-5 pb-5  pl-3">
+                <div className="col-md-6 text-left">
                   <img src={Marvel} alt="img" className="enterprise-logo" />
                 </div>
               </div>
@@ -191,7 +191,7 @@ class WebsiteHome extends Component {
             <div className="container ">
               <div className="row">
                 <div className="col-md-10 col-lg-8">
-                  <h1 className="pt-5">Features</h1>
+                  <h2 className="pt-1 heading-texts mb-0">Features</h2>
                 </div>
               </div>
             </div>
@@ -199,10 +199,13 @@ class WebsiteHome extends Component {
           <section className="switchable feature-large unpad--bottom switchable--switch">
             <div className="container ">
               <div className="row justify-content-around">
-                <div className="col-md-6 my-auto">
+                <div className="col-md-5 my-auto">
                   <div className="features-text switchable__text">
-                    <h3>Recent user activity</h3>
-                    <p className="lead"> You can show your recent user activity to all your visitors and push to buy sign up more for your offerings </p> <Link to="/signup">Try Now »</Link>
+                    <h3 className="heading-texts-sub">Recent user activity</h3>
+                    <p className="sub-title"> Show notifications of: <br/>
+                      <ol className="para-heading"><li className="para-text"> Recent Signups </li> <li className="para-text"> Recent Purchases</li> <li className="para-text"> Recent Subscriptions, and many more.. </li> </ol>
+                    </p>
+                    <Link to="/signup" className="btn btn-trial">Forever Free Trial »</Link>
                   </div>
                 </div>
                 <div className="col-md-6 col-lg-6 col-12 text-center">
@@ -222,10 +225,13 @@ class WebsiteHome extends Component {
           <section className="switchable feature-large unpad--bottom">
             <div className="container">
               <div className="row justify-content-around">
-                <div className="col-md-6 my-auto">
-                  <div className="features-text switchable__text">
-                    <h3>Live users activity</h3>
-                    <p className="lead"> Show your visitors how many live people are seeing your offerings and influence them to buy from you <br /></p> <Link to="/signup">Try Now »</Link>
+                <div className="col-md-5 my-auto">
+                  <div className="features-text2 switchable__text">
+                    <h3 className="heading-texts-sub">Live user activity</h3>
+                    <p className="sub-title"> Show live activity of: <br/>
+                      <ol className="para-heading"><li className="para-text"> Users active on the website </li> <li className="para-text"> Users viewing a product/page</li> <li className="para-text"> And many more customizations.. </li> </ol>
+                    </p>
+                    <Link to="/signup" className="btn btn-trial">Forever Free Trial »</Link>
                   </div>
                 </div>
                 <div className="col-md-6 col-lg-6 col-12 text-center">
@@ -244,10 +250,13 @@ class WebsiteHome extends Component {
           <section className="switchable feature-large unpad--bottom switchable--switch">
             <div className="container">
               <div className="row justify-content-around">
-                <div className="col-md-6 my-auto">
+                <div className="col-md-5 my-auto">
                   <div className="features-text switchable__text">
-                    <h3>Group activity</h3>
-                    <p className="lead">Show overall number of people that have signed up on your website <br /></p> <Link to="/signup">Try Now »</Link>
+                    <h3 className="heading-texts-sub">Group activity</h3>
+                    <p className="sub-title"> Show 'activity' over a period of time: <br/>
+                      <ol className="para-heading"><li className="para-text"> Total Signups happened</li> <li className="para-text"> Total Product Purchases</li> <li className="para-text"> Total Subscriptions, and many more.. </li> </ol>
+                    </p>
+                    <Link to="/signup" className="btn btn-trial">Forever Free Trial »</Link>
                   </div>
                 </div>
                 <div className="col-md-6 col-lg-6 col-12 text-center">
@@ -266,54 +275,49 @@ class WebsiteHome extends Component {
           </section>
 
 
-          <section className="col-md-12 pl-0 pt-3 pr-0 slider-card  "  >
-            <div className="container pt-5 pb-5">
 
-              <Slider {...settings}>
-                <div>
-                  <div className="row ">
-                    <div className="col-md-4 text-left pt-5 pb-5  ">
-                      <img src={Carpathy} alt="img" className="slider-image"/>
-                    </div>
-                    <div className="col-md-8 text-left pt-5 pb-5 slider-text">
-                      <p className="h3 slider-title"> “We wanted a solution that could help us in increasing our conversions on our portal. We got an instant conversions boost after using Influence on our main portal ”  </p>
-                      <p className="h5 lead slider-author"> – Carpathy, Akshat Lavania</p>
-                    </div>
-                  </div>
-                </div>
-                <div>
-                  <div className="row ">
-                    <div className="col-md-4 text-left pt-5 pb-5  ">
-                      <img src={Stagephod} alt="img" className="slider-image"/>
-                    </div>
-                    <div className="col-md-8 text-left pt-5 pb-5 slider-text">
-                      <p className="h3 slider-title"> “ We got an instant boost of 84% in our landing page conversions after using influence ”  </p>
-                      <p className="h5 lead slider-author"> – Stagephod, Nikhilesh Tayal</p>
+
+          <section className="bg-start pt-4 pb-5">
+            <div className="container">
+              <div className="row">
+                <h2 className="col-md-12 text-center heading-texts"> Start in 5 minutes! </h2>
+              </div>
+              <div className="row">                
+                <div className="col-md-4">
+                  <div className="text-center"> <img className="icon-n2 mb-3" alt="Image" src={NewInstall} style={{height: '4.7em', opacity: '0.9'}} />
+                    <div className="">
+                      <h3 className="heading-texts-sub mb-1">1. Create Campaign</h3>
+                      <p className="start-para-text">Follow the no-brainer steps.</p>
                     </div>
                   </div>
                 </div>
-                <div>
-                  <div className="row ">
-                    <div className="col-md-4 text-left pt-5 pb-5  ">
-                      <img src={Lawsikho} alt="img"className="slider-image"/>
+                <div className="col-md-4">
+                  <div className="text-center"> <img className="icon-n2 mb-3" alt="Image" src={NewIntegrate} style={{height: '4.7em', opacity: '0.9'}} />
+                    <div className="">
+                      <h3 className="heading-texts-sub mb-1">2. Install Your Pixel</h3>
+                      <p className="start-para-text"> Copy &amp; paste the pixel in the head tag of website.</p>
                     </div>
-                    <div className="col-md-8 text-left pt-5 pb-5 slider-text">
-                      <p className="h3 slider-title"> “Great Tool. Gave us instant boost of 36% on our landing pages on an average ”  </p>
-                      <p className="h5 lead slider-author"> – LawSikho, Abhyudya Aggarwal </p>
+                  </div>
+                </div>        
+                <div className="col-md-4">
+                  <div className="text-center"> <img className="icon-n2 mb-3" alt="Image" src={NewGoLive} style={{height: '4.7em', opacity: '0.9'}} />
+                    <div className="">
+                      <h3 className="heading-texts-sub mb-1">3. Go Live</h3>
+                      <p className="start-para-text"> Launch, sit back & relax!</p>
                     </div>
                   </div>
                 </div>
-              </Slider>
+              </div>
             </div>
           </section>
-          <section className="switchable col-md-12 mb-5 mt-1 pt-1">
+          <section className="switchable col-md-12 mb-5 mt-5 pt-2">
             <div className="container">
               <div className="row justify-content-between align-items-center">
                 <div className="col-md-6 col-lg-5 integration-title">
-                  <h2 className="">Power up with Integrations</h2>
-                  <p className="lead"> Get upto 3x more conversion with integrations into your favorite tools</p>
+                  <h2 className="main-title ml-0 mb-3 pr-0">Power up with Integrations</h2>
+                  <p className="para-text mb-4 mr-5 pr-5"> Get upto 3x more conversion with integrations into your favorite tools.</p>
                   <Link className="btn btn--primary integration-btn" to="/integrations">
-                    <span className="btn__text col-md-7">Integration</span>
+                    <span className="btn__text col-md-7">Integrations</span>
                   </Link>
                 </div>
                 <div className="col-md-6">
@@ -322,19 +326,19 @@ class WebsiteHome extends Component {
               </div>
             </div>
           </section>
-          <section className="imagebg " style={{ background: '#14BBFA' }}>
+          <section className="imagebg pt-4 pb-4" style={{ background: '#14BBFA' }}>
             <div className="container pb-5 pt-5">
               <div className="row">
                 <div className="col-md-12">
                   <div className="cta cta-1 cta--horizontal text-center-xs">
-                    <div className="row p-2">
+                    <div className="row">
                       <div className="col-md-12 text-center ">
                         <span className="h2">Ready to boost up your conversion rates ?</span>
                       </div>
                     </div>
                     <div className="row ">
                       <div className="col-md-12 text-center pb-2">
-                        <Link className="btn " to="/signup"> <span className="btn__text">Start my free trial<br /></span> </Link>
+                        <Link className="btn btn-bottom" to="/signup"> <span className="btn__text2">Start forever free trial<br /></span> </Link>
                       </div>
                     </div>
                   </div>

@@ -80,7 +80,8 @@ class WebsiteHeader extends Component {
                   <div className="nav-content col-lg-10 col-md-11 text-right pr-0 pl-0">
                     <div className="bar__module links">
                       <ul className="menu-horizontal text-left nav-content-links" tabIndex="1">
-                        <li onClick={this.close}> <Link to="/how-it-works">How it works</Link> </li>
+                        <li className="dropdown-toggle" data-toggle="dropdown" onClick={this.close}> <Link to="">Products</Link> 
+                        </li>
                         <li onClick={this.close}> <Link to="/pricing">PRICING</Link> </li>
                         <li onClick={this.close}> <a href="https://blog.useinfluence.co/" target="_blank">BLOG</a></li>
                       </ul>
