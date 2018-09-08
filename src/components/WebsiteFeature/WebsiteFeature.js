@@ -1,7 +1,14 @@
 import React, { Component } from 'react';
 import {
   Campaignsetting,
-  FeatureAnalytics
+  FeatureAnalytics,
+  AccountsManager,
+  InstallinMins,
+  MobileReadyIcon,
+  UnlimitedCustomize,
+  RecentActivityPopup,
+  LiveActivityPopup,
+  BulkActivityPopup
 } from 'img';
 import { Link } from 'react-router';
 import './WebsiteFeature.scss';
@@ -29,21 +36,25 @@ class WebsiteFeature extends Component {
             </div>
           </section>
           <hr className="my-auto col-md-12" pb-0 mb-0/>
-          <section className="row" style={{backgroundColor: '#f1f1f1'}}>
+          <section className="row pt-3" style={{backgroundColor: '#f1f1f1'}}>
             <div className="row mt-3 mb-5" style={{width: '100%'}}>
               <div className="col-md-3 p-1">
+                <div className="text-center"> <img className="mb-3 feature-icons" alt="Image" src={InstallinMins} /> </div>
                 <h3 className="heading-texts3">Install in 5 minutes </h3>
                 <p className="heading-texts-sub"> Set it up on your website in minutes </p>
               </div>
               <div className="col-md-3 p-1">
+                <div className="text-center"> <img className="mb-3 feature-icons" alt="Image" src={UnlimitedCustomize} /> </div>
                 <h3 className="heading-texts3">Unlimited Customizations!</h3>
                 <p className="heading-texts-sub"> Set your notification color, style, behaviours <br/> and so much more... </p>
               </div>
               <div className="col-md-3 p-1">
+                <div className="text-center"> <img className="mb-3 feature-icons" alt="Image" src={AccountsManager} /> </div>
                 <h3 className="heading-texts3">Dedicated Accounts Manager </h3>
                 <p className="heading-texts-sub"> Hands on support anytime you need </p>
               </div>
               <div className="col-md-3 p-1">
+                <div className="text-center"> <img className="mb-3 feature-icons" alt="Image" src={MobileReadyIcon} /> </div>
                 <h3 className="heading-texts3">Mobile Ready </h3>
                 <p className="heading-texts-sub"> Display mobile optimized notifications </p>
               </div>
@@ -61,8 +72,11 @@ class WebsiteFeature extends Component {
               <h4 className="heading-texts text-left" >Bulk Activity: </h4>
               <p className="heading-texts-sub text-left">This notification shows the total user activity over a period of time. </p>
             </div>
-            <div className="col-md-6">
-              <img />
+            <div className="col-md-1"></div>
+            <div className="col-md-6 notification-images">
+              <img alt="Live Activity" src={RecentActivityPopup} className="recent-image mb-3" style={{}}/>
+              <img alt="Live Activity" src={LiveActivityPopup} className="live-image mb-3" />
+              <img alt="Live Activity" src={BulkActivityPopup} className="bulk-image" />
             </div>
           </section>
           <section className="row mt-5 mb-5">

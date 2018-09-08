@@ -44,7 +44,7 @@
 
 	.heading-texts-sub {
 	    font-size: 13px !important;
-	    color: #3a3f52 !important;
+	    color: #7f8fa4 !important;
 	    text-shadow: rgba(0, 0, 0, 0.10) 0 0 2px !important;
 	    font-weight: 500 !important;
 	    line-height: 21px;
@@ -62,7 +62,7 @@
 
 	.heading-texts-sub2 {
 	    font-size: 16px !important;
-	    color: #3a3f52 !important;
+	    color: #7f8fa4 !important;
 	    text-shadow: rgba(0, 0, 0, 0.10) 0 0 2px !important;
 	    font-weight: 500 !important;
 	    line-height: 20px;
@@ -82,6 +82,8 @@
 
 	.campaigntype-image {
 		margin-left: 8% !important;
+		box-shadow: 0px 0px 2.5px #a1a1a1;
+	    border-radius: 10px;
 	}
 
 	.campaigntype-text {
@@ -98,6 +100,46 @@
 	}
 
 	.analytics-image {
+		box-shadow: 0px 0px 2.5px #a1a1a1;
+	    border-radius: 10px;
 
+	}
+
+	.feature-icons {
+		border-radius: 20px;
+	    border: 0.5px solid #bebebe;
+	    box-shadow: 0px 0px 1.5px #c2c2c2;
+	}
+
+	.notification-images {
+		background: #f8f8f8;
+	    border-radius: 10px;
+      	box-shadow: 0px 0px 2.5px #a1a1a1;
+
+	}
+
+	.recent-image {
+		width: 50%;
+		margin-left: 12%;
+   		margin-top: 8%;
+    	border-radius: 49px;
+    	box-shadow: 1px 1px 5.5px #b0b0b0;
+	}
+
+	.live-image {
+		width: 64%;
+		height: 19%;
+		margin-left: 15%;
+	    border-radius: 55px;
+	    box-shadow: 1px 1px 5.5px #b0b0b0;
+	    margin-top: 6%;
+	}
+
+	.bulk-image {
+		width: 53%;
+		margin-left: 34%;
+	    border-radius: 8px;
+	    box-shadow: 1px 1px 5.5px #b0b0b0;
+	    margin-top: 6%;
 	}
 }
