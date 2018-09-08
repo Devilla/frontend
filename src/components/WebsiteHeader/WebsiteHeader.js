@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import { LogoInfluence } from 'img';
@@ -80,7 +79,26 @@ class WebsiteHeader extends Component {
                   <div className="nav-content col-lg-10 col-md-11 text-right pr-0 pl-0">
                     <div className="bar__module links">
                       <ul className="menu-horizontal text-left nav-content-links" tabIndex="1">
-                        <li className="dropdown-toggle" data-toggle="dropdown" onClick={this.close}> <Link to="">Products</Link> 
+                        {/*<li className="dropdown-toggle" data-toggle="dropdown" > <span className="dropdown__trigger"></span>
+                        </li>*/}
+                        <li className="dropdown dropdown--active" onClick={this.close}>
+                          <span className="dropdown__trigger">Products</span>
+                          <div className="dropdown__container" style={{left: '-431.016px;'}}>
+                            <div className="container">
+                              <div className="row">
+                                <div className="dropdown__content col-lg-2 col-md-4" style={{left: '431.016px;'}}>
+                                  <ul className="menu-vertical">
+                                    <li>
+                                      <span>Features</span>
+                                    </li>
+                                    <li>
+                                      <span>How It Works</span>
+                                    </li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
                         </li>
                         <li onClick={this.close}> <Link to="/pricing">PRICING</Link> </li>
                         <li onClick={this.close}> <a href="https://blog.useinfluence.co/" target="_blank">BLOG</a></li>
