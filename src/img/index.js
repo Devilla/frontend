@@ -132,3 +132,10 @@ export { default as InfluenceMobile } from './influence-mobile-3.png';
 //features Page
 export { default as Campaignsetting } from './campaign_setting.png';
 export { default as FeatureAnalytics } from './feature_analytics.png';
+export { default as AccountsManager } from './account_manager.png';
+export { default as InstallinMins } from './install_in_5_mins.png';
+export { default as MobileReadyIcon } from './mobile_ready.png';
+export { default as UnlimitedCustomize } from './unlimited_customize.png';
+export { default as RecentActivityPopup } from './recentActivity.png';
+export { default as LiveActivityPopup } from './liveActivity.png';
+export { default as BulkActivityPopup } from './bulkActivity.png';
