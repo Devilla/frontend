@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import { LogoInfluence } from 'img';
@@ -9,7 +8,8 @@ class WebsiteHeader extends Component {
     super();
     this.state= {
       toggleicon: '',
-      togglebool :  true
+      togglebool :  true,
+      hoverproduct : false
     };
   }
 
@@ -25,6 +25,18 @@ class WebsiteHeader extends Component {
         togglebool:  !prevState.togglebool
       }))
     );
+  }
+
+  onMouseHoverEvent = () => {
+    if(this.state.hoverproduct==false) {
+      this.setState({hoverproduct:true});
+    }
+  }
+
+  onMouseOutEvent = () => {
+    if(this.state.hoverproduct==true) {
+      this.setState({hoverproduct:false});
+    }
   }
 
   close = () => {
@@ -53,7 +65,7 @@ class WebsiteHeader extends Component {
   }
 
   render() {
-    const { toggleicon } = this.state;
+    let { toggleicon, hoverproduct } = this.state;
     const { loggedIn } = this.props;
     return (
       <div className="websiteheader-container" ref={node => this.node = node}>
@@ -77,12 +89,30 @@ class WebsiteHeader extends Component {
                 </div>
                 <div className="col-sm-0 pl-0 pr-0"></div>
                 {!loggedIn ?
-                  <div className="nav-content col-lg-10 col-md-11 text-right pr-0 pl-0">
+                  <div className="nav-content col-lg-10 col-md-11 text-right pr-0 pl-0" >
                     <div className="bar__module links">
                       <ul className="menu-horizontal text-left nav-content-links" tabIndex="1">
-                        <li onClick={this.close}> <Link to="/how-it-works">How it works</Link> </li>
-                        <li onClick={this.close}> <Link to="/pricing">PRICING</Link> </li>
-                        <li onClick={this.close}> <a href="https://blog.useinfluence.co/" target="_blank">BLOG</a></li>
+                        <li className='dropdown dropdown--active' onMouseOver={ this.onMouseHoverEvent }>
+                          <span className="dropdown__trigger">Products</span>
+                          <div className="dropdown__container" style={{ display: hoverproduct?'block':'none', left: '-431.016px;'}}>
+                            <div className="container">
+                              <div className="row">
+                                <div className="dropdown__content col-lg-2 col-md-4" style={{left: '431.016px;'}}>
+                                  <ul className="menu-vertical">
+                                    <li>
+                                      <Link to="/featurepage"><span>Features</span></Link>
+                                    </li>
+                                    <li>
+                                      <Link to="/how-it-works"><span >How It Works</span></Link>
+                                    </li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                        <li onClick={this.close} onMouseOver={ this.onMouseOutEvent }> <Link to="/pricing">PRICING</Link> </li>
+                        <li onClick={this.close} onMouseOver={ this.onMouseOutEvent }> <a href="https://blog.useinfluence.co/" target="_blank">BLOG</a></li>
                       </ul>
                     </div>
                     <div className="bar__module btns ">
