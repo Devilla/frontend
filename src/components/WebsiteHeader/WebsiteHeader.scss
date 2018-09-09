@@ -38,6 +38,18 @@
 
 }
 
+.website-app {
+   .dropdown {
+      .dropdown__trigger:after {
+     font-family: "caret";
+     display: none!important;
+     font-size: 8px;
+     position: relative;
+     bottom: 2px;
+   }
+}
+}
+
 .sticky {
   position: fixed;
   top: 0px;
