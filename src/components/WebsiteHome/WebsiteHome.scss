@@ -26,6 +26,11 @@
           left: 33%;
           overflow-y: hidden;
 
+          @media only screen and (min-width: 1472px) {
+                top: 81%;
+                left: 34%;
+            }
+
           #FPqR2fZIqJeA2fZI7MM9_0 .FPqR3zjZqJeA3zjZ7MM9_0 {
             width: 98% !important;
             height: 60px !important;
