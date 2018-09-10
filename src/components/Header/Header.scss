@@ -1,5 +1,97 @@
 .topbar {
+  .navbar {
+    background: white;
+    padding: 0px !important;
+    .container {
+      max-width: 100%;
+      width: 100%;
+      .navbar-header {
+        .breadcrumb {
+          margin-bottom: 5px;
+          margin-top: 5px;
+          color: black;
+          cursor: pointer;
+          font-family: "Rubik", sans-serif;
+          font-size: 15px;
+        }
+      }
+      .navbar-nav {
+        .icon-arrow-up {
+          display: none;
+        }
+        .icon-arrow-down {
+          display: block;
+        }
+        .dropdown.open {
+          .icon-arrow-up {
+            display: block;
+          }
+          .icon-arrow-down {
+            display: none;
+          }
+          .dropdown-menu {
+            display: block;
+            margin: 5px -12px;
+            width: 115%;
+            li {
+              padding: 12px 20px;
+              i {
+                margin-right: 10px;
+                color: gray;
+              }
+              span {
+                color: black;
+              }
+            }
+            li:hover {
+              background-color: #f9f9f9;
+            }
+            .divider {
+              padding: 0;
+              border-top: 1px solid lightgray;
+            }
+          }
+        }
+        .dropdown {
+          height: 50px;
 
+          padding: 8px 10px;
+        }
+        .dropdown:hover {
+          background: #f9f9f9;
+        }
+      }
+      .dropdown-title {
+        display: flex;
+        justify-content: space-evenly;
+        width: 150px;
+        .avatar {
+          width: 36px;
+          height: 33px;
+          border-radius: 50%;
+          font-size: 13px;
+          background-color: #fba62d;
+          background-position: center center;
+          text-align: center;
+          color: #fefefe;
+          padding: 9px 0px;
+        }
+        .user-name {
+          padding: 10px 15px;
+          font-size: 13px;
+          color: black;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          width: 70%;
+        }
+        .dropdown-arrow {
+          padding: 15px 0px;
+        }
+      }
+
+    }
+  }
 
   .navbar-custom {
     min-height: 50px !important;
@@ -108,16 +200,16 @@
       .name-header:hover {
         background-color: #f9f9f9;
       }
-      .avatar {
-        width: 50px;
-        height: 30px;
-        border-radius: 50%;
-        font-size: 13px;
-        background-color: #fba62d;
-        background-position: center center;
-        text-align: center;
-        color: #fefefe;
-      }
+      // .avatar {
+      //   width: 50px;
+      //   height: 30px;
+      //   border-radius: 50%;
+      //   font-size: 13px;
+      //   background-color: #fba62d;
+      //   background-position: center center;
+      //   text-align: center;
+      //   color: #fefefe;
+      // }
 
       .full-name {
         font-size: 13px;
