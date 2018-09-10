@@ -113,6 +113,7 @@ class CampaignSettings extends Component {
           campaign={props.campaign}
           setDefault={this.setDefault}
           saveConfigure={this.saveConfigure}
+          clearNotification={props.clearNotification}
         />
       </div>
     );

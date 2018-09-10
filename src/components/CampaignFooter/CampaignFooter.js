@@ -6,7 +6,16 @@ import Steps, { Step } from 'rc-steps';
 
 import './CampaignFooter.scss';
 
-const CampaignFooter = ({step, setActiveState, goLive, campaign, notification, saveConfigure, setDefault}) => {
+const CampaignFooter = ({
+  step, 
+  setActiveState, 
+  goLive, 
+  campaign,
+  notification,
+  saveConfigure,
+  setDefault,
+  clearNotification
+}) => {
   const campaignPageCondition = campaign.campaignType !== 'page';
 
   const handleNextState = (nextStep) => {
@@ -26,7 +35,15 @@ const CampaignFooter = ({step, setActiveState, goLive, campaign, notification, s
   return (
     <div className="campaign-footer-container">
       <div className="campaign-footer-steps">
-        <button type="button" className="text-left btn-footer-1" onClick={() => step==1?browserHistory.push('/campaigns'):handlePreviousState(step-1)}>Prev</button>
+        {notification?
+          <div>
+            <button type="button" className="text-left btn-footer-1" onClick={clearNotification}>Back</button>
+          </div>
+          :
+          <div>
+            <button type="button" className="text-left btn-footer-1" onClick={() => step==1?browserHistory.push('/campaigns'):handlePreviousState(step-1)}>Prev</button>
+          </div>
+        }
         <div className="influence-react-indicator" >
           <Steps progressDot size="small" current={step-1}>
             <Step />

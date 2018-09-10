@@ -149,6 +149,9 @@ trackingId:   '${this.props.campaign?this.props.campaign.trackingId:'INF-XXXXXXX
   }
 
   clearNotification = () => {
+    let breadcrumb = this.props.breadcrumb;
+    breadcrumb.splice(2);
+    this.props.setBreadCrumbs(breadcrumb);
     this.setState({notification: ''});
   }
 
