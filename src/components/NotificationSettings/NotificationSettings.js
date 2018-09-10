@@ -249,7 +249,6 @@ class Notifications extends Component {
         this.props.createConfiguration(configure);
       }
     }
-
   }
 
   backConfiguration = () => {
@@ -259,7 +258,6 @@ class Notifications extends Component {
   }
 
   componentWillUnmount() {
-    console.log('==========notntotnto');
     this.props.setActiveState(1, true);
     this.props.clearConfiguration();
     this.setInitialState();
@@ -290,7 +288,7 @@ class Notifications extends Component {
   }
 
   render() {
-    const { notification, notifications, configurations, createSuccess, campaign, profile, setNotification } = this.props;
+    const { notification, notifications, configurations, createSuccess, campaign, profile, setNotification, saveConfigure } = this.props;
     return (
       <Loading data-transition-id="notification-settings-page" style={{width: '10%', height: '500px'}} strokeWidth='2' isLoading={!notifications || !configurations || !campaign || !profile}>
         <div className="notification-settings">
@@ -299,7 +297,7 @@ class Notifications extends Component {
               {notification && campaign.campaignType == 'page' &&
                 <div className="notification-settings-options">
                   <div className="dropdown-campaigns">
-                    <button type="button" className="btn-products dropdown-toggle" data-toggle="dropdown"> 
+                    <button type="button" className="btn-products dropdown-toggle" data-toggle="dropdown">
                       {this.state.pageName?this.state.pageName:'Products'}
                     </button>
                     <div className="dropdown-menu">
@@ -333,6 +331,7 @@ class Notifications extends Component {
                   notification={notification}
                   profile={profile}
                   campaign={campaign}
+                  saveConfigure={saveConfigure}
                   handleContentChange={this.handleContentChange}
                   setDefaultPanel={this.setDefaultPanel}
                   handleActivityChange={this.handleActivityChange}
