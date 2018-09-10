@@ -438,7 +438,7 @@ class Dashboard extends Component {
       <Loading className="transition-item dashboard-transition-container" strokeWidth='2' style={{height: '700px', width: '10%'}} isLoading={!profile || !campaignInfo || !campaigns || !heatmap || !map}>
         <div className="content dashboard-inner-container">
           <div className="container-fluid">
-            <Row className="dashboard-boxes">
+            <div className="dashboard-boxes">
               <Col md={12}>
                 <div className="card-box pt-0">
                   <Row>
@@ -532,7 +532,7 @@ class Dashboard extends Component {
                   <div className="clearfix"></div>
                 </div>
               </Col>
-            </Row>
+            </div>
             <div className="campaign-health-table">
               <div className="health-table">
                 <HealthTable campaigns={campaigns} />
