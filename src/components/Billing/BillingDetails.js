@@ -50,7 +50,7 @@ class BillingDetails extends Component {
         return moment(a.created_at) < moment(b.created_at) ? 1 : moment(a.created_at) > moment(b.created_at) ? -1 : 0;
       });
       return this.props.invoices.map((invoice, index) => {
-        return <div className="campaign-td text-muted font-13" key={index}>
+        return <div className="campaign-td2 text-muted font-13" key={index}>
           <div className="name col-md-2 pl-3">{moment(invoice.created_at).format('DD MMM YYYY')}</div>
           <div className="email col-md-2 pl-4">${invoice.amount_due / 100}</div>
           <div className="location col-md-2">{invoice.invoice_id}</div>
@@ -283,7 +283,7 @@ class BillingDetails extends Component {
             <div className="table-responsive">
               <div className="table table-striped">
                 <div className="thead">
-                  <div className="tr tab-row">
+                  <div className="tr tab-row2">
                     {
                       billingHeader.map((prop, key) => {
                         return (
