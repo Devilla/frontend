@@ -139,3 +139,9 @@ export { default as UnlimitedCustomize } from './unlimited_customize.png';
 export { default as RecentActivityPopup } from './recentActivity.png';
 export { default as LiveActivityPopup } from './liveActivity.png';
 export { default as BulkActivityPopup } from './bulkActivity.png';
+
+//billing
+export { default as BetaPlanIcon } from './betaplan_icon.png';
+export { default as SmallPlanIcon } from './smallplan_icon.png';
+export { default as AdvancedPlanIcon } from './advancedplan_icon.png';
+export { default as EnterprisePlanIcon } from './enterpriseplan_icon.png';

@@ -33,8 +33,8 @@ class WebsiteHowItWorks extends Component {
             <div className="container">
               <div className="row">
                 <div className="col-md-12">
-                  <div className="typed-headline"> <span className="inline-block"><h2>Nothing beats Live Social Proof for&nbsp;</h2></span>
-                    <span className="h2 inline-block typed-text typed-text--cursor color--primary"> Businesses!</span>
+                  <div className="typed-headline"> <span className="inline-block">Nothing beats Live Social Proof for</span>
+                    <span className="inline-block typed-text typed-text--cursor"> Businesses!</span>
                   </div>
                 </div>
               </div>
@@ -44,7 +44,7 @@ class WebsiteHowItWorks extends Component {
 
 
           <section className="col-md-12 pl-0 pt-3 pr-0 slider-card  "  >
-            <div className="container pt-5 pb-5">
+            <div className="container pt-4 pb-4">
 
               <Slider {...settings}>
                 <div>
@@ -53,8 +53,8 @@ class WebsiteHowItWorks extends Component {
                       <img src={Carpathy} alt="img" className="slider-image"/>
                     </div>
                     <div className="col-md-8 text-left pt-5 pb-5 slider-text">
-                      <p className="h3 slider-title"> “We wanted a solution that could help us in increasing our conversions on our portal. We got an instant conversions boost after using Influence on our main portal ”  </p>
-                      <p className="h5 lead slider-author"> – Carpathy, Akshat Lavania</p>
+                      <p className="slider-title"> “We wanted a solution that could help us in increasing our conversions on our portal. We got an instant conversions boost after using Influence on our main portal ”  </p>
+                      <p className="lead slider-author"> – Carpathy, Akshat Lavania</p>
                     </div>
                   </div>
                 </div>
@@ -64,8 +64,8 @@ class WebsiteHowItWorks extends Component {
                       <img src={Stagephod} alt="img" className="slider-image"/>
                     </div>
                     <div className="col-md-8 text-left pt-5 pb-5 slider-text">
-                      <p className="h3 slider-title"> “ We got an instant boost of 84% in our landing page conversions after using influence ”  </p>
-                      <p className="h5 lead slider-author"> – Stagephod, Nikhilesh Tayal</p>
+                      <p className="slider-title"> “ We got an instant boost of 84% in our landing page conversions after using influence ”  </p>
+                      <p className="lead slider-author"> – Stagephod, Nikhilesh Tayal</p>
                     </div>
                   </div>
                 </div>
@@ -75,8 +75,8 @@ class WebsiteHowItWorks extends Component {
                       <img src={Lawsikho} alt="img"className="slider-image"/>
                     </div>
                     <div className="col-md-8 text-left pt-5 pb-5 slider-text">
-                      <p className="h3 slider-title"> “Great Tool. Gave us instant boost of 36% on our landing pages on an average ”  </p>
-                      <p className="h5 lead slider-author"> – LawSikho, Abhyudya Aggarwal </p>
+                      <p className="slider-title"> “Great Tool. Gave us instant boost of 36% on our landing pages on an average ”  </p>
+                      <p className="lead slider-author"> – LawSikho, Abhyudya Aggarwal </p>
                     </div>
                   </div>
                 </div>
@@ -137,7 +137,6 @@ class WebsiteHowItWorks extends Component {
               </div>
             </div>
           </section>
-          <hr className="my-auto col-md-6" />
           <section className="cover switchable text-center-xs switchable--switch mb-5">
             <div className="container">
               <div className="row justify-content-between align-items-center">
