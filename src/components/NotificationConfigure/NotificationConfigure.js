@@ -16,13 +16,11 @@ const NotificationConfigure = ({
   otherText,
   liveVisitorText,
   notificationUrl,
-  setDefaultPanel,
   handleActivityChange,
   handleContentChange,
   notificationPanelStyle,
   handleNotificationStyleChange,
   handleClickableNotification,
-  saveConfiguration,
   showpopupfield,
   showpopup,
   popupName,
@@ -104,17 +102,6 @@ const NotificationConfigure = ({
             }
           />
         </Col>
-      </Row>
-      <Row className="state-btn">
-
-        <span className="btn btn-primary" onClick={setDefaultPanel} >
-          Set Default
-        </span>
-
-        <span className="btn btn-primary" onClick={saveConfiguration}>
-          Save
-        </span>
-
       </Row>
     </div>
   );

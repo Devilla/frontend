@@ -68,15 +68,15 @@ class WebsiteHeader extends Component {
     let { toggleicon, hoverproduct } = this.state;
     const { loggedIn } = this.props;
     return (
-      <div className="websiteheader-container" ref={node => this.node = node}>
+      <div className="websiteheader-container" ref={node => this.node = node} onMouseLeave={ this.onMouseOutEvent }>
         <div className="nav-container">
           <div>
-            <div className="mainlogo">
+            <div className="mainlogo" onMouseOver={ this.onMouseOutEvent }>
               <Link to="/home" className={loggedIn?'disabled-link':''}> <img className="logo " alt="logo" src={LogoInfluence} href="/"/> </Link>
             </div>
             <div className="bar bar--sm small-bar sm-bar">
             </div>
-            <div  id="hello" className={'hamburger-toggle '+ toggleicon } tabIndex="0" onClick={this.togglemenu}  >
+            <div  id="hello" className={'hamburger-toggle '+ toggleicon } tabIndex="0" onClick={this.togglemenu} onMouseOver={ this.onMouseOutEvent } >
               <i className="fa fa-bars" ></i>
               <button className="cross"><i className="fa fa-close"></i></button>
             </div>
@@ -92,9 +92,9 @@ class WebsiteHeader extends Component {
                   <div className="nav-content col-lg-10 col-md-11 text-right pr-0 pl-0" >
                     <div className="bar__module links">
                       <ul className="menu-horizontal text-left nav-content-links" tabIndex="1">
-                        <li className='dropdown dropdown--active' onMouseOver={ this.onMouseHoverEvent }>
+                        <li className='dropdown dropdown--active' onMouseOver={ this.onMouseHoverEvent } >
                           <span className="dropdown__trigger">Products</span>
-                          <div className="dropdown__container" style={{ display: hoverproduct?'block':'none', left: '-431.016px;'}}>
+                          <div className="dropdown__container" style={{ display: hoverproduct?'block':'none', top: '45px'}}>
                             <div className="container">
                               <div className="row">
                                 <div className="dropdown__content col-lg-2 col-md-4" style={{left: '431.016px;'}}>
