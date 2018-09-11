@@ -9,8 +9,7 @@ import { updatePaymentMethod, fetchCards } from 'ducks/payment';
 import { fetchInvoices, downloadInvoice } from 'ducks/payment' ;
 import {
   Row,
-  Col,
-  Table
+  Col
 } from 'react-bootstrap';
 
 import './BillingDetails.scss';
@@ -51,18 +50,18 @@ class BillingDetails extends Component {
         return moment(a.created_at) < moment(b.created_at) ? 1 : moment(a.created_at) > moment(b.created_at) ? -1 : 0;
       });
       return this.props.invoices.map((invoice, index) => {
-        return <tr className=" text-muted font-13" key={index}>
-          <td className="name pl-3">{moment(invoice.created_at).format('DD MMM YYYY')}</td>
-          <td className="email pl-4">${invoice.amount_due / 100}</td>
-          <td className="location">{invoice.invoice_id}</td>
-          <td>{invoice.paid?'Paid':'Not Paid'}</td>
-          <td className="lastseen"><i className="fi-download pl-4" onClick={() => this.props.downloadInvoice(invoice.id)}></i></td>
-        </tr>;
+        return <div className="campaign-td text-muted font-13" key={index}>
+          <div className="name col-md-2 pl-3">{moment(invoice.created_at).format('DD MMM YYYY')}</div>
+          <div className="email col-md-2 pl-4">${invoice.amount_due / 100}</div>
+          <div className="location col-md-2">{invoice.invoice_id}</div>
+          <div className="col-md-2">{invoice.paid?'Paid':'Not Paid'}</div>
+          <div className="lastseen col-md-2"><i className="fi-download pl-4" onClick={() => this.props.downloadInvoice(invoice.id)}></i></div>
+        </div>;
       });
     } else
-      return <tr>
-        <td>nothing</td>
-      </tr>;
+      return <div>
+        <div>nothing</div>
+      </div>;
   }
 
   openCloseRowOne = (e) => {
@@ -282,22 +281,22 @@ class BillingDetails extends Component {
           </Row>
           <Row className="billing-info billing-info-three" style={{ display: openCloseRowThree?'block':'none' }}>
             <div className="table-responsive">
-              <Table className="table-striped">
-                <thead>
-                  <tr>
+              <div className="table table-striped">
+                <div className="thead">
+                  <div className="tr tab-row">
                     {
                       billingHeader.map((prop, key) => {
                         return (
-                          <th className=" h6" key={key}>{prop}</th>
+                          <div className="col-md-2" key={key}>{prop}</div>
                         );
                       })
                     }
-                  </tr>
-                </thead>
-                <tbody>
+                  </div>
+                </div>
+                <div className="tbody">
                   {this.renderPaymentList()}
-                </tbody>
-              </Table>
+                </div>
+              </div>
             </div>
           </Row>
         </div>
