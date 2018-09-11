@@ -130,7 +130,7 @@ class WebsiteHome extends Component {
               </div>
             </div>
 
-            <div className="container col-md-5 pr-0 ml-0 pt-4">
+            <div className="container col-md-5 pr-0 ml-0 pt-4" style={{display: window && window.screen.availWidth<768?'none':'block'}}>
               <img alt="homescreen" src={sideScreen_1} className="mb-1" style={{height: '400px'}} />
               <div className="im1  website-home-top-image">
                 <NotificationView tab={notificationTab} animation={animation} display={display} position='' notificationPanelStyle={this.state.notificationPanelStyle}/>
@@ -145,28 +145,28 @@ class WebsiteHome extends Component {
                 <div className="row">
                   <img alt="arrow-up" src={arrow_up} className="col-sm-1 num-arrow mr-0 mb-0 p-0" />
                   <h1 className="homescreen-num col-sm-7 mb-0 ml-0 p-0">0.25M+</h1>
-                </div>  
+                </div>
                 <span className="homescreen-num-text">Notifications Served</span>
               </div>
               <div className="col-md-3">
                 <div className="row">
                   <img alt="arrow-up" src={arrow_up} className="col-sm-1 num-arrow mr-0 mb-0 p-0" />
                   <h1 className="homescreen-num col-sm-7 mb-0 ml-0 p-0">1.2K+</h1>
-                </div>  
+                </div>
                 <span className="homescreen-num-text">Happy Customers</span>
               </div>
               <div className="col-md-3">
                 <div className="row">
                   <img alt="arrow-up" src={arrow_up} className="col-sm-1 num-arrow mr-0 mb-0 p-0" />
                   <h1 className="homescreen-num col-sm-7 mb-0 ml-0 p-0">100K+</h1>
-                </div>  
+                </div>
                 <span className="homescreen-num-text">Website Impressions</span>
               </div>
               <div className="col-md-3">
                 <div className="row">
                   <img alt="arrow-up" src={arrow_up} className="col-sm-1 num-arrow mr-0 mb-0 p-0" />
                   <h1 className="homescreen-num col-sm-7 mb-0 ml-0 p-0">1.8x</h1>
-                </div>  
+                </div>
                 <span className="homescreen-num-text">Avg. Conversion Boosts</span>
               </div>
             </div>
@@ -282,7 +282,7 @@ class WebsiteHome extends Component {
               <div className="row">
                 <h2 className="col-md-12 text-center heading-texts"> Start in 5 minutes! </h2>
               </div>
-              <div className="row">                
+              <div className="row">
                 <div className="col-md-4">
                   <div className="text-center"> <img className="icon-n2 mb-3" alt="Image" src={NewInstall} style={{height: '4.7em', opacity: '0.9'}} />
                     <div className="">
@@ -298,7 +298,7 @@ class WebsiteHome extends Component {
                       <p className="start-para-text"> Copy &amp; paste the pixel in the head tag of website.</p>
                     </div>
                   </div>
-                </div>        
+                </div>
                 <div className="col-md-4">
                   <div className="text-center"> <img className="icon-n2 mb-3" alt="Image" src={NewGoLive} style={{height: '4.7em', opacity: '0.9'}} />
                     <div className="">
