@@ -15,6 +15,7 @@ import {
 
 import './BillingDetails.scss';
 import { UpgradePlan } from 'components';
+import { BetaPlanIcon } from 'img';
 
 const billingHeader = [
   'Billing Date', 'Amount', 'Transaction Id', 'Status', 'Download'
@@ -176,7 +177,7 @@ class BillingDetails extends Component {
         <div className="billing-container">
           <Row className="billing-row" onClick={(e) => this.openCloseRowOne(e)}>
             <Col md={4} className="row-one-col-one">
-              <img src="https://web.freshchat.com/assets/images/billing_sprout-d577fed24b84e4e1899b8d59c4c5b164.svg" />
+              <img src={ BetaPlanIcon } />
               <h5>{planSelected?planSelected.name:profile && profile.plan?profile.plan.name:'SPROUT'}</h5>
             </Col>
             <Col md={5} className="row-one-col-two">

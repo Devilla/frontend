@@ -1,19 +1,37 @@
 .websitehowitworks-container {
-    background-color: #fff !important;
+    background-color: #f9f9f9 !important;
     .freebtn {
         background-color: #097fff !important;
     }
     .slider-card {
         padding-bottom: 15px;
-        background: #f3f0ee !important;
         margin-bottom: 50px !important;
+        background: #dedede !important;
+        box-shadow: 0px 0px 3px #969696;
     }
     .slider-title {
-        font-size: 23px !important;
-        font-weight: 600 !important;
+        font-size: 16px;
+        color: #3a3f52;
+        margin-right: 0% !important;
+        text-shadow: rgba(0, 0, 0, 0.10) 0 0 2px !important;
+        font-weight: 300;
+        line-height: 23px;
     }
     .slider-author {
         font-size: 15px !important;
+    }
+    .typed-headline {
+        color: #3a3f52 !important;
+        text-shadow: rgba(0, 0, 0, 0.10) 0 0 5px !important;
+        font-size: 45px !important;
+        font-weight: 900 !important;
+        line-height: 55px !important;
+        text-align: left;
+        font-style: unset;
+        padding-top: 13px !important;
+        letter-spacing: 1px;
+        margin-bottom: 40px !important;
+        margin-top: 32px;
     }
 }
 
