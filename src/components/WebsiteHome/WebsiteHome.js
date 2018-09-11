@@ -199,7 +199,7 @@ class WebsiteHome extends Component {
           <section className="switchable feature-large unpad--bottom switchable--switch">
             <div className="container ">
               <div className="row justify-content-around">
-                <div className="col-md-5 my-auto">
+                <div className="col-md-5 feature-text-1">
                   <div className="features-text switchable__text">
                     <h3 className="heading-texts-sub">Recent user activity</h3>
                     <p className="sub-title"> Show notifications of: <br/>
@@ -225,8 +225,8 @@ class WebsiteHome extends Component {
           <section className="switchable feature-large unpad--bottom">
             <div className="container">
               <div className="row justify-content-around">
-                <div className="col-md-5 my-auto">
-                  <div className="features-text2 switchable__text">
+                <div className="col-md-5 feature-text-2">
+                  <div className="switchable__text">
                     <h3 className="heading-texts-sub">Live user activity</h3>
                     <p className="sub-title"> Show live activity of: <br/>
                       <ol className="para-heading"><li className="para-text"> Users active on the website </li> <li className="para-text"> Users viewing a product/page</li> <li className="para-text"> And many more customizations.. </li> </ol>
@@ -236,7 +236,7 @@ class WebsiteHome extends Component {
                 </div>
                 <div className="col-md-6 col-lg-6 col-12 text-center">
                   <div className="mainImg">
-                    <img alt="Swivelscreen" src={Swivelscreen} />
+                    <img alt="Swivelscreen" src={Swivelscreen} style={{marginleft: '1%'}} />
 
                     <Slider {...settings} className="im1">
                       <div><NotificationView tab='2' animation='' display='block' position='' notificationPanelStyle={this.state.notificationPanelStyle}/></div>
@@ -250,7 +250,7 @@ class WebsiteHome extends Component {
           <section className="switchable feature-large unpad--bottom switchable--switch">
             <div className="container">
               <div className="row justify-content-around">
-                <div className="col-md-5 my-auto">
+                <div className="col-md-5 feature-text-3">
                   <div className="features-text switchable__text">
                     <h3 className="heading-texts-sub">Group activity</h3>
                     <p className="sub-title"> Show 'activity' over a period of time: <br/>
