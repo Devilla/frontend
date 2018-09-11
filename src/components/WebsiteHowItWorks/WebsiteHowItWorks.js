@@ -83,12 +83,12 @@ class WebsiteHowItWorks extends Component {
               </Slider>
             </div>
           </section>
-          <section className="text-center">
+          <section className="text-center pt-3">
             <div className="container">
               <div className="row">
                 <div className="col-md-10 col-lg-8">
-                  <h1 className="second-title">Up and running in minutes</h1>
-                  <p className="lead"> Influence easily connects to your website - no coding required! </p>
+                  <div className="second-title heading-texts">Up and running in minutes</div>
+                  <p className="lead para-heading-2"> Influence easily connects to your website - no coding required! </p>
                 </div>
               </div>
             </div>
@@ -96,41 +96,41 @@ class WebsiteHowItWorks extends Component {
           <section>
             <div className="container">
               <div className="row">
-                <div className="col-md-6 justify-content-center">
-                  <div className="feature feature-5 boxed  boxed--border"> <img className="icon-n2" alt="Image" src={NewIntegrate} />
-                    <div className="feature__body">
-                      <h3>1. Install our Pixel</h3>
-                      <p className="lead"> Just copy &amp; paste the pixel inside your the head tag of your website. We recommend you to do it on all of your website's pages.</p>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-md-6">
+                <div className="col-md-6 start-boxes">
                   <div className="feature feature-5 boxed boxed--border"> <img className="icon-n2" alt="Image" src={NewInstall} />
                     <div className="feature__body">
-                      <h3>2. Create Campaign</h3>
-                      <p className="lead"> Create notification campaign for your connected website. Customize the style & behaviour of your notifications.</p>
+                      <h3 className="heading-texts-sub">1. Create Campaign</h3>
+                      <p className="start-para-text"> Create notification campaign for your connected website. Customize the style & behaviour of your notifications.</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-md-6 start-boxes">
+                  <div className="feature feature-5 boxed  boxed--border"> <img className="icon-n2" alt="Image" src={NewIntegrate} />
+                    <div className="feature__body">
+                      <h3 className="heading-texts-sub">2. Install our Pixel</h3>
+                      <p className="start-para-text"> Just copy &amp; paste the pixel inside your the head tag of your website. We recommend you to do it on all of your website's pages.</p>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </section>
-          <section>
+          <section className="pt-3">
             <div className="container">
               <div className="row">
-                <div className="col-md-6">
+                <div className="col-md-6 start-boxes">
                   <div className="feature feature-5 boxed boxed--border"> <img className="icon-n2" alt="Image" src={NewGoLive} />
                     <div className="feature__body">
-                      <h3>3. Go Live</h3>
-                      <p className="lead"> Launch your campaign. See the notifications running on your website for more conversions. </p>
+                      <h3 className="heading-texts-sub">3. Go Live</h3>
+                      <p className="start-para-text"> Launch your campaign. See the notifications running on your website for more conversions. </p>
                     </div>
                   </div>
                 </div>
-                <div className="col-md-6">
+                <div className="col-md-6 start-boxes">
                   <div className="feature feature-5 boxed  boxed--border"> <img className="icon-n2" alt="Image" src={NewAnalyze} />
                     <div className="feature__body">
-                      <h3>4. Analyze & Monitor</h3>
-                      <p className="lead"> Look into your campaign analytics. Monitor the conversion charts, see the conversion charts shoot up! </p>
+                      <h3 className="heading-texts-sub">4. Analyze & Monitor</h3>
+                      <p className="start-para-text"> Look into your campaign analytics. Monitor the conversion charts, see the conversion charts shoot up! </p>
                     </div>
                   </div>
                 </div>
@@ -138,13 +138,13 @@ class WebsiteHowItWorks extends Component {
             </div>
           </section>
           <section className="cover switchable text-center-xs switchable--switch mb-5">
-            <div className="container">
+            <div className="container mt-5">
               <div className="row justify-content-between align-items-center">
                 <div className="col-md-8 col-lg-6">
-                  <h2>Set it up in 15 seconds ! </h2>
+                  <h2 className="heading-texts">Set it up in 5 minutes ! </h2>
                   <p className="lead"> </p>
-                  <Link className="btn btn--primary col-md-7 freebtn" to="/">
-                    <span className="btn__text">Try Free </span>
+                  <Link className="btn btn--primary col-md-7 freebtn ml-5" to="/">
+                    <span className="btn__text">Get Forever Free Account »</span>
                   </Link>
                 </div>
                 <div className="col-md-4">
