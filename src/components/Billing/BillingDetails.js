@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import moment from 'moment';
 import Loading from 'react-loading-animation';
 import StripeCard from '../UpgradeCard/StripeCard';
 import { Elements } from 'react-stripe-elements';
+import  { browserHistory } from 'react-router';
 
 import { fetchInvoices, downloadInvoice, createAgreement, updatePaymentMethod, fetchCards } from 'ducks/payment' ;
 import {
@@ -12,7 +13,7 @@ import {
 } from 'react-bootstrap';
 
 import './BillingDetails.scss';
-import { UpgradePlan } from 'components';
+import { UpgradePlan, Modal } from 'components';
 import { BetaPlanIcon } from 'img';
 
 const billingHeader = [
@@ -34,10 +35,16 @@ class BillingDetails extends Component {
       showAddCard: false,
       cvv: '',
       planList: [],
-      submitStarted: false
+      submitStarted: false,
+      modalType: ''
     };
     props.fetchInvoices();
     props.fetchCards();
+  }
+
+  componentWillMount() {
+    const location = this.props.location;
+    this.setState({modalType: location.query.type});
   }
 
   componentDidMount() {
@@ -167,7 +174,7 @@ class BillingDetails extends Component {
 
   submitPaypal = (e) => {
     e.preventDefault();
-    const { user, createAgreement } = this.props;
+    const {  createAgreement } = this.props;
     const { planSelected } = this.state;
     const paypalId = planSelected.references.service_template_properties.filter(item => item.name == 'paypal')[0];
     const paypalObject = {
@@ -175,23 +182,44 @@ class BillingDetails extends Component {
       'description': planSelected.description,
       'start_date': moment().add(5, 'minutes'),
       'payer': {
-        'payment_method': 'PAYPAL',
+        'payment_method': 'paypal',
         'payer_info': {
-          'email': user.email
+          'email': 'shankyrana-buyer1@hotmail.com'//user.email
         }
       },
       'plan': {
         'id': paypalId.data.value
+      },
+      'override_merchant_preferences': {
+        'return_url': `${process.env.NODE_ENV === 'production'?'https://staging.useinfluence.co/billing-details?type=success':'http://localhost:3000/billing-details?type=success'}`,
+        'cancel_url': `${process.env.NODE_ENV === 'production'?'https://staging.useinfluence.co/billing-details?type=cancel':'http://localhost:3000/billing-details?type=cancel'}`
       }
     };
     this.setState({submitStarted: true});
     createAgreement(paypalObject);
   }
 
+  closeModal = () => {
+    this.setState({modalType: ''});
+    browserHistory.push('billing-details');
+  }
+
   render() {
-    const { planSelected, error, show, showSavedCards, showAddCard, cvv, selectedCard } = this.state;
+    const {
+      planSelected,
+      error,
+      show,
+      showSavedCards,
+      showAddCard,
+      cvv,
+      selectedCard,
+      openCloseRowOne,
+      openCloseRowTwo,
+      openCloseRowThree,
+      submitStarted,
+      modalType
+    } = this.state;
     const { profile } = this.props;
-    const { openCloseRowOne, openCloseRowTwo, openCloseRowThree, submitStarted } = this.state;
 
     return (
       <Loading className="transition-item billing-transition-container" style={{width: '10%', height: '700px'}} strokeWidth='2' isLoading={!profile || submitStarted}>
@@ -334,6 +362,30 @@ class BillingDetails extends Component {
           </Row>
         </div>
         <UpgradePlan plan={planSelected?planSelected:profile && profile.plan?profile.plan:''} handleSelectedPlan={this.handleSelectedPlan} setPlanList={this.setPlanList} />
+        {modalType == 'cancel' &&
+          <Modal
+            id='cancelPayment'
+            title='Payment Failed'
+            content={
+              <div className="modal-body text-center mt-4 mb-4">
+                <h5>Your payment has been declined</h5>
+              </div>
+            }
+            openCloseModal={this.closeModal}
+            style={
+              {
+                alignModalStyle: {
+                  top: '100px'
+                },
+                modalStyle: {
+                  display: 'block',
+                  opacity: 1
+                }
+              }
+            }
+            modalSize= 'modal-md'
+          />
+        }
       </Loading>
     );
   }

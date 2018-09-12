@@ -24,7 +24,6 @@ export default class UpgradePlan extends Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.plan) {
       const { plan } = nextProps;
-      console.log(plan, '==========>');
       this.setState({ plan });
     }
   }
