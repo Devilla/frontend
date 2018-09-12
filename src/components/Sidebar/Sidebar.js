@@ -50,7 +50,7 @@ class Sidebar extends Component {
             >
               <span>
                 <Link to="/dashboard" className="logo">
-                  <img src={InfluenceMobile} className="" alt="influence-img" height="60" width="60"/>
+                  <img src={InfluenceMobile} className="" alt="influence-img" height="60px" width="60px"/>
                 </Link>
               </span>
             </div>
@@ -61,7 +61,7 @@ class Sidebar extends Component {
             >
               <Link to="/dashboard" className="logo ">
                 <span>
-                  <img src={Influence} className="ml-2" alt="influence-img" height="40" />
+                  <img src={Influence} className="ml-2" alt="influence-img" height="40px" />
                 </span>
               </Link>
             </div>
