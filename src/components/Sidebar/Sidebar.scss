@@ -135,12 +135,21 @@ span {
   }
 }
 
+.topbar-left {
+  .logo {
+    img {
+      height: 65px;
+    }
+  }
+}
+
 div {
   &#sidebar-menu {
       overflow-y: auto;
       text-align: center;
       margin-left: 0 !important;
       padding-left: 0 !important;
+
       .button-list {
         .disabled-link {
           pointer-events: visible;
