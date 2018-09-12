@@ -14,7 +14,7 @@ import {
 
 import './BillingDetails.scss';
 import { UpgradePlan, Modal } from 'components';
-import { BetaPlanIcon } from 'img';
+import { BetaPlanIcon, SmallPlanIcon, AdvancedPlanIcon, EnterprisePlanIcon } from 'img';
 
 const billingHeader = [
   'Billing Date', 'Amount', 'Transaction Id', 'Status', 'Download'
@@ -220,6 +220,21 @@ class BillingDetails extends Component {
       modalType
     } = this.state;
     const { profile } = this.props;
+    let planImage;
+
+    if(profile && profile.plan) {
+      const planName = profile.plan.name;
+      if(planName == 'Beta Plan' || planName == 'Startups Yearly Plan' || planName == 'Startups Monthly Plan')
+        planImage = BetaPlanIcon;
+      else if(planName == 'Small Businesses Yearly Plan')
+        planImage = SmallPlanIcon;
+      else if(planName == 'Advanced Monthly Plan' || planName == 'Advanced Yearly Plan')
+        planImage = AdvancedPlanIcon;
+      else if(planName == 'Enterprise Monthly Plan' || planName == 'Enterprise Yearly Plan')
+        planImage = EnterprisePlanIcon;
+    } else {
+      planImage = BetaPlanIcon;
+    }
 
     return (
       <Loading className="transition-item billing-transition-container" style={{width: '10%', height: '700px'}} strokeWidth='2' isLoading={!profile || submitStarted}>
@@ -227,7 +242,7 @@ class BillingDetails extends Component {
         <div className="billing-container">
           <Row className="billing-row" onClick={(e) => this.openCloseRowOne(e)}>
             <Col md={4} className="row-one-col-one">
-              <img src={ BetaPlanIcon } />
+              <img src={planImage} />
               <h5>{planSelected?planSelected.name:profile && profile.plan?profile.plan.name:'SPROUT'}</h5>
             </Col>
             <Col md={5} className="row-one-col-two">
