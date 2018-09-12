@@ -184,7 +184,7 @@ class BillingDetails extends Component {
       'payer': {
         'payment_method': 'paypal',
         'payer_info': {
-          'email': 'shankyrana-buyer1@hotmail.com'//user.email
+          'email': 'shankyrana-buyer1@hotmail.com' //user.email
         }
       },
       'plan': {
@@ -232,7 +232,7 @@ class BillingDetails extends Component {
             </Col>
             <Col md={5} className="row-one-col-two">
               <div>
-                <h6>Billed Monthly</h6>
+                <h6>Billed {profile && profile.plan && profile.plan.interval == 'month'?'Monthly':'Yearly'}</h6>
                 <span>Next Billing on {profile && profile.plan ? moment(profile.plan.updated_at).add(profile.plan.interval_count, profile.plan.interval).format('MMMM Do, YYYY') : '-'}</span>
               </div>
             </Col>
