@@ -165,6 +165,28 @@ class BillingDetails extends Component {
     this.setState({planList});
   }
 
+  submitPaypal = (e) => {
+    e.preventDefault();
+    const { user } = this.props;
+    const { planSelected } = this.state;
+    const paypalId = planSelected.references.service_template_properties.filter(item => item.name == 'paypal')[0];
+    const paypalObject = {
+      'name': planSelected.name,
+      'description': planSelected.description,
+      'start_date': new Date(),
+      'payer': {
+        'payment_method': 'PAYPAL',
+        'payer_info': {
+          'email': user.email
+        }
+      },
+      'plan': {
+        'id': paypalId.data.value
+      }
+    };
+    return;
+  }
+
   render() {
     const { planSelected, error, show, showSavedCards, showAddCard, cvv, selectedCard } = this.state;
     const { profile } = this.props;
@@ -214,7 +236,7 @@ class BillingDetails extends Component {
               <Row className="billing-final-info-two estimate">
                 <h4>You Pay</h4>
                 <div className="paypal-button">
-                  <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                  <form onClick={this.submitPaypal} target="_top">
                     <input type="hidden" name="cmd" value="_s-xclick" />
                     <input type="hidden" name="hosted_button_id" value="B2XEPPV8MYNXA" />
                     <input type="image" src="https://www.paypalobjects.com/en_GB/i/btn/btn_paynow_SM.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online!" />
@@ -315,6 +337,7 @@ class BillingDetails extends Component {
 }
 
 const mapStateToProps = state => ({
+  user: state.getIn(['auth', 'user']),
   profile: state.getIn(['profile', 'profile']),
   invoices: state.getIn(['payment', 'invoices']),
   cards: state.getIn(['payment', 'cards'])
