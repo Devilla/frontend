@@ -13,6 +13,7 @@ export const UPDATE_PAYMENT_METHOD = action('UPDATE_PAYMENT_METHOD');
 export const FETCH_CARDS = action('FETCH_CARDS');
 export const FETCH_CARDS_SUCCESS = action('FETCH_CARDS_SUCCESS');
 export const CREATE_AGREEMENT = action('CREATE_AGREEMENT');
+export const CREATE_PAYPAL_PAYMENT = action('CREATE_PAYPAL_PAYMENT');
 
 export const fetchPayment = () => ({ type: FETCH });
 export const fetchInvoices = () => ({ type: FETCH_INVOICES });
@@ -25,6 +26,7 @@ export const successInvoice = (invoices) => ({ type: SUCCESS_INVOICE, invoices }
 export const fetchCards = () => ({ type: FETCH_CARDS });
 export const fetchCardsSuccess = (cards) => ({ type: FETCH_CARDS_SUCCESS, cards });
 export const createAgreement = (details) => ({ type: CREATE_AGREEMENT, details });
+export const createPaypalPayment = (token) => ({ type: CREATE_PAYPAL_PAYMENT, token });
 
 const initialState = fromJS({});
 

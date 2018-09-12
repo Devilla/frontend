@@ -156,6 +156,8 @@ function* createAgreement(action) {
     else {
       let redirectLink = res.links.filter(link => link.method == 'REDIRECT')[0].href;
       let acceptLink = res.links.filter(link => link.method == 'POST')[0].href;
+      localStorage.setItem('redirectLink', redirectLink);
+      localStorage.setItem('acceptLink', acceptLink);
       window.open(`${redirectLink}?acceptLink=${acceptLink}`,'_self');
     }
 
@@ -165,6 +167,23 @@ function* createAgreement(action) {
     yield toast.error(error.message, toastConfig);
   }
 }
+
+function* createPaypalPayment(action) {
+  try {
+    yield put(load());
+    const res = yield call(api.POST, 'paypalpayments/payment', action.token);
+
+    if(res.error)
+      yield toast.error(res.message.message, toastConfig);
+    
+    yield browserHistory.push('billing-details');
+    yield put(loaded());
+  } catch (error) {
+    yield put(loaded());
+    yield toast.error(error.message, toastConfig);
+  }
+}
+
 
 export function* watchFetch() {
   yield takeLatest(actions.FETCH, fetch);
@@ -198,6 +217,10 @@ export function* watchCreateAgreement() {
   yield takeLatest(actions.CREATE_AGREEMENT, createAgreement);
 }
 
+export function* watchCreatePaypalPayment() {
+  yield takeLatest(actions.CREATE_PAYPAL_PAYMENT, createPaypalPayment);
+}
+
 export default function* rootSaga() {
   yield [
     fork(watchFetch),
@@ -207,6 +230,7 @@ export default function* rootSaga() {
     fork(watchUpdatePaymentMethod),
     fork(watchDownloadInvoice),
     fork(watchFetchCards),
-    fork(watchCreateAgreement)
+    fork(watchCreateAgreement),
+    fork(watchCreatePaypalPayment)
   ];
 }

@@ -6,7 +6,7 @@ import StripeCard from '../UpgradeCard/StripeCard';
 import { Elements } from 'react-stripe-elements';
 import  { browserHistory } from 'react-router';
 
-import { fetchInvoices, downloadInvoice, createAgreement, updatePaymentMethod, fetchCards } from 'ducks/payment' ;
+import { fetchInvoices, downloadInvoice, createAgreement, createPaypalPayment, updatePaymentMethod, fetchCards } from 'ducks/payment' ;
 import {
   Row,
   Col
@@ -43,8 +43,17 @@ class BillingDetails extends Component {
   }
 
   componentWillMount() {
-    const location = this.props.location;
-    this.setState({modalType: location.query.type});
+    const { location:{ query:{ type, token } } } = this.props;
+    if(type == 'cancel')
+      this.setState({modalType: type});
+    else if(type == 'success') {
+      const acceptLink = localStorage.getItem('acceptLink');
+      if(acceptLink) {
+        this.setState({submitStarted: true});
+        this.props.createPaypalPayment({token: token});
+      } else
+        browserHistory.push('/billing-details');
+    }
   }
 
   componentDidMount() {
@@ -174,7 +183,7 @@ class BillingDetails extends Component {
 
   submitPaypal = (e) => {
     e.preventDefault();
-    const {  createAgreement } = this.props;
+    const { createAgreement } = this.props;
     const { planSelected } = this.state;
     const paypalId = planSelected.references.service_template_properties.filter(item => item.name == 'paypal')[0];
     const paypalObject = {
@@ -182,9 +191,9 @@ class BillingDetails extends Component {
       'description': planSelected.description,
       'start_date': moment().add(5, 'minutes'),
       'payer': {
-        'payment_method': 'paypal',
+        'payment_method': 'Paypal',
         'payer_info': {
-          'email': 'shankyrana-buyer1@hotmail.com' //user.email
+          'email': 'accounts-buyer@useinfluence.co' //user.email
         }
       },
       'plan': {
@@ -418,7 +427,8 @@ const mapDispatchToProps = {
   downloadInvoice,
   updatePaymentMethod,
   fetchCards,
-  createAgreement
+  createAgreement,
+  createPaypalPayment
 };
 
 export default connect(mapStateToProps, mapDispatchToProps, null, { withRef: true })(BillingDetails);
