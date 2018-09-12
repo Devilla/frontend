@@ -4,9 +4,8 @@ import moment from 'moment';
 import Loading from 'react-loading-animation';
 import StripeCard from '../UpgradeCard/StripeCard';
 import { Elements } from 'react-stripe-elements';
-import { updatePaymentMethod, fetchCards } from 'ducks/payment';
 
-import { fetchInvoices, downloadInvoice } from 'ducks/payment' ;
+import { fetchInvoices, downloadInvoice, createAgreement, updatePaymentMethod, fetchCards } from 'ducks/payment' ;
 import {
   Row,
   Col
@@ -34,7 +33,8 @@ class BillingDetails extends Component {
       showSavedCards: false,
       showAddCard: false,
       cvv: '',
-      planList: []
+      planList: [],
+      submitStarted: false
     };
     props.fetchInvoices();
     props.fetchCards();
@@ -167,13 +167,13 @@ class BillingDetails extends Component {
 
   submitPaypal = (e) => {
     e.preventDefault();
-    const { user } = this.props;
+    const { user, createAgreement } = this.props;
     const { planSelected } = this.state;
     const paypalId = planSelected.references.service_template_properties.filter(item => item.name == 'paypal')[0];
     const paypalObject = {
       'name': planSelected.name,
       'description': planSelected.description,
-      'start_date': new Date(),
+      'start_date': moment().add(5, 'minutes'),
       'payer': {
         'payment_method': 'PAYPAL',
         'payer_info': {
@@ -184,16 +184,17 @@ class BillingDetails extends Component {
         'id': paypalId.data.value
       }
     };
-    return;
+    this.setState({submitStarted: true});
+    createAgreement(paypalObject);
   }
 
   render() {
     const { planSelected, error, show, showSavedCards, showAddCard, cvv, selectedCard } = this.state;
     const { profile } = this.props;
-    const { openCloseRowOne, openCloseRowTwo, openCloseRowThree } = this.state;
+    const { openCloseRowOne, openCloseRowTwo, openCloseRowThree, submitStarted } = this.state;
 
     return (
-      <Loading className="transition-item billing-transition-container" style={{width: '10%', height: '700px'}} strokeWidth='2' isLoading={!profile}>
+      <Loading className="transition-item billing-transition-container" style={{width: '10%', height: '700px'}} strokeWidth='2' isLoading={!profile || submitStarted}>
 
         <div className="billing-container">
           <Row className="billing-row" onClick={(e) => this.openCloseRowOne(e)}>
@@ -235,14 +236,16 @@ class BillingDetails extends Component {
 
               <Row className="billing-final-info-two estimate">
                 <h4>You Pay</h4>
-                <div className="paypal-button">
-                  <form onClick={this.submitPaypal} target="_top">
-                    <input type="hidden" name="cmd" value="_s-xclick" />
-                    <input type="hidden" name="hosted_button_id" value="B2XEPPV8MYNXA" />
-                    <input type="image" src="https://www.paypalobjects.com/en_GB/i/btn/btn_paynow_SM.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online!" />
-                    <img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1" />
-                  </form>
-                </div>
+                {planSelected &&
+                  <div className="paypal-button">
+                    <form onClick={this.submitPaypal} target="_top">
+                      <input type="hidden" name="cmd" value="_s-xclick" />
+                      <input type="hidden" name="hosted_button_id" value="B2XEPPV8MYNXA" />
+                      <input type="image" src="https://www.paypalobjects.com/en_GB/i/btn/btn_paynow_SM.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online!" />
+                      <img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1" />
+                    </form>
+                  </div>
+                }
                 <h4>${planSelected?(planSelected.amount/100):0}</h4>
               </Row>
             </Col>
@@ -347,7 +350,8 @@ const mapDispatchToProps = {
   fetchInvoices,
   downloadInvoice,
   updatePaymentMethod,
-  fetchCards
+  fetchCards,
+  createAgreement
 };
 
 export default connect(mapStateToProps, mapDispatchToProps, null, { withRef: true })(BillingDetails);
