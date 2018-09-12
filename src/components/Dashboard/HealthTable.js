@@ -1,6 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 import { ProgressBar } from 'react-bootstrap';
+import ReactTooltip from 'react-tooltip';
 
 const HealthTable = ({campaigns}) => {
 
@@ -11,7 +12,7 @@ const HealthTable = ({campaigns}) => {
           <div className="td col-md-3 text-center p-1">{campaign.campaignName}</div>
           <div className="td col-md-3 text-center p-1">{campaign.websiteUrl}</div>
           <div className="td col-md-3 text-center p-1 health-col">
-            <ProgressBar active bsStyle={campaign.health == 'good'?'info':campaign.health == 'poor'?'warning':'danger'} now={campaign.health == 'good'?100:campaign.health == 'poor'?50:25} key={1} />
+            <ProgressBar data-tip={campaign.health == 'good'?'Healthy':campaign.health == 'poor'?'Unhealthy':'Poor'} data-place="bottom" active bsStyle={campaign.health == 'good'?'info':campaign.health == 'poor'?'warning':'danger'} now={campaign.health == 'good'?100:campaign.health == 'poor'?50:25} key={1} />
           </div>
           <div className="td col-md-3 text-center p-1">{moment(campaign.updatedAt).format('MM/DD/YYYY')}</div>
         </div>
@@ -34,6 +35,7 @@ const HealthTable = ({campaigns}) => {
           {renderCampaignTable()}
         </div>
       </div>
+      <ReactTooltip />
     </div>
   );
 };

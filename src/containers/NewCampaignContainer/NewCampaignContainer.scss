@@ -1,4 +1,9 @@
-
+.dashboard-container img {
+    vertical-align: middle;
+    border-style: none;
+    height: 14px;
+    cursor: pointer;
+}
 .NewCampaignContainer {
   min-height: 90vh !important;
   .toast-style {

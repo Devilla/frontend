@@ -11,7 +11,7 @@ const Modal = ({className, id, title, content, footer, style, modalSize, openClo
           <div className="modal-header">
             <h4 className="modal-title">{title}</h4>
             <div data-dismiss="modal" onClick={openCloseModal}><div>
-              <span><img src={Close}/></span>
+              <span><img style ={{ height: '14px', cursor:'pointer'}} src={Close}/></span>
             </div></div>
           </div>
           {content}
