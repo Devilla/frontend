@@ -11,9 +11,11 @@ import {
   HelpBlock
 } from 'react-bootstrap';
 
+import { forgotPassword } from 'ducks/auth';
 import { Modal } from 'components';
 import { fetchProfile, updateProfile, submitAccountRequest, submitAccountOtp, clearResponse } from 'ducks/profile';
 import './Profile.scss';
+
 
 class Profile extends Component {
 
@@ -189,7 +191,10 @@ class Profile extends Component {
   }
 
   sendLink = () => {
-    console.log('link sent');
+    const data = {
+      'email': this.props.user.email
+    };
+    this.props.forgotPassword(data);
   }
 
   componentWillUnmount() {
@@ -368,7 +373,8 @@ const mapDispatchToProps = {
   updateProfile,
   submitAccountRequest,
   submitAccountOtp,
-  clearResponse
+  clearResponse,
+  forgotPassword
 };
 
 export default connect(mapStateToProps, mapDispatchToProps, null, { withRef: true })(Profile);
