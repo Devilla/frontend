@@ -36,12 +36,41 @@
     outline: none;
   }
 
+  .dropdown__container {
+    top: 25px;
+    left: -16px;
+    max-width: 105px;
+    border-radius: 5px
+  }
+
+  .dropdown__content {
+    max-width: 146px !important;
+    padding: 16px 14px !important;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.09) !important;
+  }
+
+  .menu-vertical {
+    border-radius: 5px;
+    color: #adadad;
+    letter-spacing: .05em;
+    padding: 8px 0px;
+    display: block;
+  }
+
+  .menu-items{
+    padding: 5px;
+    &:hover {
+      background: #ededed;
+      border-radius: 5px;
+    }
+  }
+
 }
 
 .website-app {
    .dropdown {
       .dropdown__trigger:after {
-     font-family: "caret";
+     font-family: "inherit";
      display: none!important;
      font-size: 8px;
      position: relative;
