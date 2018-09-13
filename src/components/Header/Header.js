@@ -65,7 +65,13 @@ const Header = ({
             eventKey={3}
             title={
               <div className="dropdown-title">
-                <div className="avatar" ><span className="profile-name">{username ? username.charAt(0).toUpperCase():'?'}</span></div>
+                {profile.image ?
+                  <img className="profile-image-header" src={profile.image}></img>
+                  :
+                  <div className="avatar" >
+                    <span className="profile-name">{username ? username.charAt(0).toUpperCase():'?'}</span>
+                  </div>
+                }
                 <div className="user-name" >
                   <span>{username ? username.charAt(0).toUpperCase() + username.slice(1): 'Anonymous'}</span>
                 </div>
