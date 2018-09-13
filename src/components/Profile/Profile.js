@@ -188,6 +188,10 @@ class Profile extends Component {
     this.setState({profileSetting: false, changePassword: true});
   }
 
+  sendLink = () => {
+    console.log('link sent');
+  }
+
   componentWillUnmount() {
     this.props.clearResponse();
   }
@@ -221,7 +225,7 @@ class Profile extends Component {
 
           <Col md={10} className="profile-content-contaier">
             {this.state.changePassword?
-              <Grid>
+              <Grid className="change-password-container">
                 <Col sm={8} style={{maxWidth: '1069px'}}>
                   <div className="profile-user-box card-box" >
                     <Row>
@@ -229,8 +233,7 @@ class Profile extends Component {
                         <div className="intelli-details clearfix">
                           <h5 className="title-h4">Change Password</h5>
                           <div>
-                            You can change your password from
-                            <a target="_blank" href="https://accounts.useinfluencce.com/profile"> Useinfluence Account Settings</a>
+                            <a onClick={this.sendLink}>Send Reset Password Link</a>
                           </div>
                         </div>
                       </div>

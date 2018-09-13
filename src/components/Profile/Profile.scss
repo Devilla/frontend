@@ -46,6 +46,23 @@
     .container-fluid {
       margin-top: 0;
     }
+    .change-password-container {
+      background-color: white;
+      box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);
+      border-radius: 5px;
+      padding: 15px 0px;
+      .profile-user-box {
+        margin-bottom: 0px;
+        background: white !important;
+        margin-top: -15px;
+        .intelli-details {
+          a {
+            color: blue;
+            cursor: pointer;
+          }
+        }
+      }
+    }
     .profile-content-col-one {
       background-color: white;
       box-shadow: 0px 0px 1px rgba(0,0,0,0.2);
