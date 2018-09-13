@@ -5,8 +5,9 @@ import Popup from 'react-popup';
 import { ToastContainer } from 'react-toastify';
 import Loading from 'react-loading-animation';
 import PageTransition from 'react-router-page-transition';
+import { HelpBlock } from 'react-bootstrap';
 
-import { checkTokenExists } from 'ducks/auth';
+import { checkTokenExists, contactUs } from 'ducks/auth';
 import { setBreadCrumbs } from 'ducks/breadcrumb';
 import { Header, Sidebar } from 'components';
 import {
@@ -31,17 +32,19 @@ class DashboardContainer extends Component {
       render: true,
       disableButton: false,
       style: {},
-      openClose: false
+      openClose: false,
+      comment: '',
+      help: '',
+      errorHelp: ''
     };
+    this.textAreaRef = React.createRef();
   }
 
   componentWillMount() {
-
     document.body.style = 'background-color:#fafafa';
     this.checkLogin((err) => {
-      if (err) {
+      if (err)
         browserHistory.push('/login');
-      }
     });
   }
 
@@ -96,49 +99,76 @@ class DashboardContainer extends Component {
     browserHistory.push('/home');
   }
 
+  handleStateChange = (target, value) => {
+    this.setState({[target]: value});
+  }
+
   renderHelp = (e, dropdown) => {
     if(dropdown)
       this.openCloseDropdown();
+    const that = this;
     Popup.create({
       title: 'How can we help you today?',
       content: <div className="help-container">
         <FormGroup>
           <Row className="help-form-fields">
-            <Radio name="radioGroup" inline={true} className="radio-text" style={{textTransform:'none'}}>
+            <Radio name="radioGroup" inline={true} className="radio-text" style={{textTransform:'none'}} onChange={() => this.handleStateChange('help', 'I need help setting up my Campaign')}>
               &nbsp;&nbsp; &nbsp; &nbsp;I need help setting up my Campaign
             </Radio>
           </Row>
           <Row className="help-form-fields">
-            <Radio name="radioGroup" inline="inline" className="radio-text" style={{textTransform:'none'}}>
+            <Radio name="radioGroup" inline="inline" className="radio-text" style={{textTransform:'none'}} onChange={() => this.handleStateChange('help', 'I want to know how to use Influence')}>
               &nbsp;&nbsp; &nbsp; &nbsp;I want to know how to use Influence
             </Radio>
           </Row>
           <Row className="help-form-fields">
-            <Radio name="radioGroup" inline="inline" className="radio-text" style={{textTransform:'NONE'}}>
+            <Radio name="radioGroup" inline="inline" className="radio-text" style={{textTransform:'NONE'}} onChange={() => this.handleStateChange('help', 'Something is not working')}>
               &nbsp;&nbsp; &nbsp; &nbsp;Something is not working
             </Radio>
           </Row>
           <Row className="help-form-fields">
-            <Radio name="radioGroup" inline="inline" className="radio-text" style={{textTransform:'NONE'}}>
+            <Radio name="radioGroup" inline="inline" className="radio-text" style={{textTransform:'NONE'}} onChange={() => this.handleStateChange('help', 'I have feedback / feature request')}>
               &nbsp;&nbsp; &nbsp; &nbsp;I have feedback / feature request
             </Radio>
           </Row>
           <Row className="help-form-fields">
-            <Radio name="radioGroup" inline="inline" className="radio-text" style={{textTransform:'NONE'}}>
+            <Radio name="radioGroup" inline="inline" className="radio-text" style={{textTransform:'NONE'}} onChange={() => this.handleStateChange('help', 'I need help with something else')}>
               &nbsp;&nbsp; &nbsp; &nbsp;I need help with something else
             </Radio>
           </Row>
+          <HelpBlock>
+            <p className="website-error">{that.state.errorHelp}</p>
+          </HelpBlock>
         </FormGroup>
         <Row>
           <h4>Tell us more</h4>
-          <textarea className="form-control z-depth-1" id="exampleFormControlTextarea6" rows="3" placeholder="Briefly explain about the issue you are facing."></textarea>
+          <textarea
+            className="form-control z-depth-1"
+            id="exampleFormControlTextarea6"
+            rows="3"
+            placeholder="Briefly explain about the issue you are facing."
+            ref={this.textAreaRef}
+          >
+          </textarea>
         </Row>
       </div>,
       buttons: {
         right: [{
           text: 'Submit',
           className: 'success',
-          action: function () {
+          action: () => {
+            const comment = that.textAreaRef.current.value;
+            const help = that.state.help;
+            if(!help)
+              return that.setState({errorHelp: 'Select a option'});
+            const { user, contactUs } = that.props;
+            const data = {
+              email: 'shankyrana@hotmail.com',//user.email,
+              name: user.username,
+              message: `${help} ${comment}`
+            };
+            contactUs(data);
+            that.setState({errorHelp: '', help: '', comment: ''});
             Popup.close();
           }
         }]
@@ -171,7 +201,8 @@ class DashboardContainer extends Component {
 
   render() {
     const {  user, profile } = this.props;
-    const { style , openClose, disableButton } = this.state;
+    const { style , openClose, disableButton, errorHelp } = this.state;
+    console.log(errorHelp, '===========errorHelp');
     return (
       <div className="dashboard-container">
         <Popup />
@@ -225,7 +256,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
   checkTokenExists,
-  setBreadCrumbs
+  setBreadCrumbs,
+  contactUs
 };
 
 export default connect(mapStateToProps, mapDispatchToProps, null, { withRef: true })(DashboardContainer);
