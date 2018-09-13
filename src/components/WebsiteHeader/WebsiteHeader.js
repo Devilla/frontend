@@ -94,15 +94,15 @@ class WebsiteHeader extends Component {
                       <ul className="menu-horizontal text-left nav-content-links" tabIndex="1">
                         <li className='dropdown dropdown--active' onMouseOver={ this.onMouseHoverEvent } >
                           <span className="dropdown__trigger">Products</span>
-                          <div className="dropdown__container" style={{ display: hoverproduct?'block':'none', top: '45px'}}>
+                          <div className="dropdown__container" style={{ display: hoverproduct?'block':'none', top: '30px'}}>
                             <div className="container">
                               <div className="row">
-                                <div className="dropdown__content col-lg-2 col-md-4" style={{left: '431.016px;'}}>
+                                <div className="dropdown__content" style={{left: '431.016px;'}}>
                                   <ul className="menu-vertical">
-                                    <li>
+                                    <li className="menu-items">
                                       <Link to="/featurepage"><span>Features</span></Link>
                                     </li>
-                                    <li>
+                                    <li className="menu-items">
                                       <Link to="/how-it-works"><span >How It Works</span></Link>
                                     </li>
                                   </ul>
