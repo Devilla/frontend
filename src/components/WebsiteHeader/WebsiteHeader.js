@@ -72,7 +72,7 @@ class WebsiteHeader extends Component {
         <div className="nav-container">
           <div>
             <div className="mainlogo" onMouseOver={ this.onMouseOutEvent }>
-              <Link to="/home" className={loggedIn?'disabled-link':''}> <img className="logo " alt="logo" src={LogoInfluence} href="/"/> </Link>
+              <Link to="/" className={loggedIn?'disabled-link':''}> <img className="logo " alt="logo" src={LogoInfluence} href="/"/> </Link>
             </div>
             <div className="bar bar--sm small-bar sm-bar">
             </div>

@@ -87,7 +87,6 @@ const MyRoutes = ({routerHistory}) => (
     <Route exact path="/verify/:code" component={VerificationPage} />
     <Route component={App}>
       <Route path="/" component={WebsiteHome} />
-      <Route path="/home" component={WebsiteHome} />
       <Route path="/how-it-works" component={WebsiteHowItWorks} />
       <Route path="/integration" component={WebsiteIntegrations} />
       <Route path="/pricing" component={WebsitePricing} />

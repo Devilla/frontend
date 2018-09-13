@@ -96,7 +96,7 @@ class DashboardContainer extends Component {
     document.body.style = 'background-color:white';
     this.openCloseDropdown();
     localStorage.removeItem('authToken');
-    browserHistory.push('/home');
+    browserHistory.push('/');
   }
 
   handleStateChange = (target, value) => {
