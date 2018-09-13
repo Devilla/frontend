@@ -25,7 +25,7 @@
 
   .content-tabs {
     height: 60px;
-    padding: 23px;
+    padding: 11%;
     margin: 5px 0px;
     background: #e2e5e7 !important;
     color: #7d7b8a;
@@ -243,7 +243,8 @@ button {
 @media only screen and (max-width: 1150px) and (min-width: 1024px) {
   .profile-container {
     .profile-tabs {
-      padding: 15px 15px;
+      text-align: center;
+      padding: 10px 15px;
       height: 50px;
       margin-left: 1px !important;
       margin-right: 1px !important;
@@ -264,7 +265,8 @@ button {
 @media only screen and (max-width: 1024px) and (min-width: 940px) {
   .profile-container {
     .profile-tabs {
-      padding: 15px;
+      text-align: center;
+      padding: 10px 15px;
       height: 50px;
       margin-left: 1px !important;
       margin-right: 1px !important;
@@ -282,10 +284,10 @@ button {
   }
 }
 
-@media only screen and (max-width: 940px) and (min-width: 768px) {
+@media only screen and (max-width: 940px) and (min-width: 577px) {
   .profile-container {
     .profile-tabs {
-      padding: 10px 3px;
+      padding: 10px 10px;
       height: 50px;
       margin-left: 1px !important;
       margin-right: 1px !important;
@@ -327,6 +329,20 @@ button {
 
 @media only screen and (max-width: 768px) and (min-width: 100px) {
   .profile-container {
+    .col-md-2 {
+      flex: 0 0 16.666667%;
+      max-width: 27.666667%;
+      .profile-tabs {
+        padding: 10px 10px;
+        height: 50px;
+        margin-left: 1px !important;
+        margin-right: 1px !important;
+        font-size: 12px;
+        text-align: center;
+        width: 75px;
+      }
+    }
+
     .profile-content-contaier {
       .container-fluid {
         .profile-content-col-one {
