@@ -136,12 +136,19 @@ class DashboardContainer extends Component {
       </div>,
       buttons: {
         right: [{
-          text: 'Submit',
+          text: 'Check FAQs',
           className: 'success',
           action: function () {
             Popup.close();
           }
-        }]
+        },{
+          text: 'Submit',
+          className: 'success',
+          action: function() {
+            Popup.close();
+          }
+        }
+        ]
       }
     }, true);
   }
