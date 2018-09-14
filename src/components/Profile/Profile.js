@@ -138,24 +138,24 @@ class Profile extends Component {
 
     return (
       <div>
-        <Row className="givemeborder justify-content-around">
+        <Row className="account-pause-content justify-content-around">
           <Col md={6} className="pauseContent">
             <button type="button" className={`btn btn-primary waves-effect ${(accountOption == 'pause' || accountOption == 'running') ?'selectedOption':''}`} onClick={() => this.selectAccountOption(user && user.status == 'paused'?'running':'pause')}>
-              <i className="mdi mdi-account-minus mr-1"></i>{user && user.status == 'paused'?'Resume':'Pause'} Account
+              <i className="mdi mdi-account-minus mr-2"></i>{user && user.status == 'paused'?'Resume':'Pause'} Account
             </button>
             <div className='content'>
-              <h3>Recommended:</h3>
+              <h3 className="pause-account-heading">Recommended:</h3>
               <p>Indefinitely deactivates your account till you activate it again.</p><br/>
-              <p>You will be charged just $3 month to safeguard your data in our secure vaults</p>
+              <p>You will be charged just $3 per month to safeguard your data in our secure vaults.</p>
             </div>
           </Col>
           <Col md={6} className="deleteContent">
-            <button type='button' className={`btn btn-primary waves-effect ${accountOption == 'delete'?'selectedOption':''}`} onClick={() => this.selectAccountOption('delete')}>
-              <i className="mdi mdi-account-remove mr-1"></i>Delete Account
+            <button type='button' className={`btn btn-delete-account waves-effect ${accountOption == 'delete'?'selectedOption':''}`} onClick={() => this.selectAccountOption('delete')}>
+              <i className="mdi mdi-account-remove mr-2"></i>Delete Account!
             </button>
             <div className='content'>
-              <h3>Warning: </h3>
-              <p>Deletes all your data & saved settings. This action is irreversible </p>
+              <h3 className="delete-account-heading">Warning! </h3>
+              <p className="delete-account-content">Deletes all your data & saved settings. This action is irreversible! </p>
             </div>
           </Col>
         </Row>

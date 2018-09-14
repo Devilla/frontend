@@ -197,8 +197,8 @@
     border-color: red !important;
   }
 
-  .givemeborder {
-    margin: 10px;
+  .account-pause-content {
+    margin: 3% !important;
     padding: 10px;
 
     .selectedOption {
@@ -209,7 +209,7 @@
       width: 45% !important;
 
       button {
-        margin-left: 80px !important;
+        margin-left: 90px !important;
       }
     }
 
@@ -217,18 +217,47 @@
       width: 45% !important;
 
       button {
-        margin-left: 80px !important;
+        margin-left: 90px !important;
       }
     }
 
     .content {
-      border: 1px solid #999;
-      padding: 10px;
+      border: 1px solid #c1c1c1;
+      padding: 15px;
       min-height: 250px !important;
+      border-radius: 5px;
+      background: #f2f2f2;
+      box-shadow: 0px 0px 1px #dadada;
 
       p {
         color: #5b5454 !important;
+        text-shadow: rgba(0, 0, 0, 0.2) 0 0 0.5px;
       }
+
+      .delete-account-content {
+          color: #ff3e57 !important;
+          font-weight: 300;
+          text-shadow: 0px 0px 0.1px #ff3e57; 
+      }
+    }
+
+    .btn-delete-account {
+      background-color: #ff3e57 !important;
+      border-color: #ff3e57 !important;
+      border-radius: 5px;
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .pause-account-heading {
+      color: #3a3f52 !important;
+      text-shadow: rgba(0, 0, 0, 0.1) 0 0 5px !important;
+    }
+
+    .delete-account-heading {
+      color: #ff3e57 !important;
+      text-shadow: 0px 0px 0.1px #ff3e57;
     }
   }
 
