@@ -74,9 +74,11 @@ class WebsiteFeature extends Component {
             </div>
             <div className="col-md-1"></div>
             <div className="col-md-6 notification-images">
-              <img alt="Live Activity" src={RecentActivityPopup} className="recent-image mb-3" style={{}}/>
-              <img alt="Live Activity" src={LiveActivityPopup} className="live-image mb-3" />
-              <img alt="Live Activity" src={BulkActivityPopup} className="bulk-image" />
+              <div className="custom-container">
+                <img alt="Live Activity" src={RecentActivityPopup} className="recent-image mb-3" style={{}}/>
+                <img alt="Live Activity" src={LiveActivityPopup} className="live-image mb-3" />
+                <img alt="Live Activity" src={BulkActivityPopup} className="bulk-image" />
+              </div>
             </div>
           </section>
           <section className="row mt-5 mb-5">
