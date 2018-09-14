@@ -13,7 +13,7 @@ class PricePage extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if(nextProps.planList != this.props.planList) {
+    if(nextProps.planList != this.props.planList || nextProps.externalValue != this.props.externalValue) {
       let { planList, couponDetails, planPeriod, setPlanList } = nextProps;
       if(couponDetails) {
         planList = planList.filter(plan => plan.references.service_template_properties.length && plan.references.service_template_properties[0].data.value === couponDetails.code);
@@ -47,14 +47,14 @@ class PricePage extends Component {
   }
 
   monthlyPriceHandler = () => {
-    let { handleMonthChange, selectedPlan, handleCheckChange } = this.props;
+    let { handleMonthChange, selectedPlan, handleCheckChange, externalValue } = this.props;
     let { planList } = this.state;
     return planList.map((plan, index) =>
       <div key={index} className="col-md-3 col-sm-6 pl-5 pr-5 price-page-cards">
         <div className="pricingTable" onClick={handleMonthChange}>
           <div className="price_card text-center"  className={selectedPlan.id === plan.id ? 'makebx' : ''} data-dismiss="modal" onClick={() => handleCheckChange(true, plan)}>
             <div className="pricing-header">
-              <span className="price pt-3">${plan.interval === 'month' ? plan.amount / 100 : '' }</span>
+              <span className="price pt-3">${externalValue ? plan.amount / 100 : '' }</span>
               <span className="name">{this.filterPlanName(plan.name)}</span>
             </div>
             <div className="pricing-content p-1">
@@ -69,14 +69,14 @@ class PricePage extends Component {
   }
 
   yearlyPriceHandler = () => {
-    let { handleYearChange, selectedPlan, handleCheckChange } = this.props;
+    let { handleYearChange, selectedPlan, handleCheckChange, externalValue } = this.props;
     let { planList } = this.state;
     return planList.map((plan, index) =>
       <div key={index} className="col-md-3 col-sm-6 pl-5 pr-5 price-page-cards">
         <div className="pricingTable"  onClick={handleYearChange}>
           <div className="price_card text-center"  className={selectedPlan.id === plan.id ? 'makebx' : ''} data-dismiss="modal" onClick={() => handleCheckChange(true, plan)}>
             <div className="pricing-header">
-              <span className="price pt-3">${plan.interval === 'year' ? plan.amount / 100 :  ''}</span>
+              <span className="price pt-3">${!externalValue ? plan.amount / 100 :  ''}</span>
               <span className="name">{this.filterPlanName(plan.name)}</span>
             </div>
             <div className="pricing-content p-1">
