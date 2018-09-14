@@ -1,5 +1,9 @@
 @import '../../components/SwitchPartialScss/toggle';
 
+#fc_frame, #fc_frame.fc-widget-normal {
+  bottom: 40px !important;
+}
+
 .dashboard-boxes {
   .m-b-10 {
     .campaign {
@@ -23,6 +27,7 @@
   }
 }
 .dashboard-container {
+
   [data-css-1ar5iql] {
     z-index: 9999999999;
   }

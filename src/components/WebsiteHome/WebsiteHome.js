@@ -202,9 +202,8 @@ class WebsiteHome extends Component {
                 <div className="col-md-5 feature-text-1">
                   <div className="features-text switchable__text">
                     <h3 className="heading-texts-sub">Recent user activity</h3>
-                    <p className="sub-title"> Show notifications of: <br/>
-                      <ol className="para-heading"><li className="para-text"> Recent Signups </li> <li className="para-text"> Recent Purchases</li> <li className="para-text"> Recent Subscriptions, and many more.. </li> </ol>
-                    </p>
+                    <p className="sub-title"> Show notifications of:</p> <br/>
+                    <ol className="para-heading"><li className="para-text"> Recent Signups </li> <li className="para-text"> Recent Purchases</li> <li className="para-text"> Recent Subscriptions, and many more.. </li> </ol>
                     <Link to="/signup" className="btn btn-trial">Forever Free Trial »</Link>
                   </div>
                 </div>
@@ -228,9 +227,8 @@ class WebsiteHome extends Component {
                 <div className="col-md-5 feature-text-2">
                   <div className="switchable__text">
                     <h3 className="heading-texts-sub">Live user activity</h3>
-                    <p className="sub-title"> Show live activity of: <br/>
-                      <ol className="para-heading"><li className="para-text"> Users active on the website </li> <li className="para-text"> Users viewing a product/page</li> <li className="para-text"> And many more customizations.. </li> </ol>
-                    </p>
+                    <p className="sub-title"> Show live activity of:</p> <br/>
+                    <ol className="para-heading"><li className="para-text"> Users active on the website </li> <li className="para-text"> Users viewing a product/page</li> <li className="para-text"> And many more customizations.. </li> </ol>
                     <Link to="/signup" className="btn btn-trial">Forever Free Trial »</Link>
                   </div>
                 </div>
@@ -253,9 +251,8 @@ class WebsiteHome extends Component {
                 <div className="col-md-5 feature-text-3">
                   <div className="features-text switchable__text">
                     <h3 className="heading-texts-sub">Group activity</h3>
-                    <p className="sub-title"> Show 'activity' over a period of time: <br/>
-                      <ol className="para-heading"><li className="para-text"> Total Signups happened</li> <li className="para-text"> Total Product Purchases</li> <li className="para-text"> Total Subscriptions, and many more.. </li> </ol>
-                    </p>
+                    <p className="sub-title"> Show 'activity' over a period of time:</p> <br/>
+                    <ol className="para-heading"><li className="para-text"> Total Signups happened</li> <li className="para-text"> Total Product Purchases</li> <li className="para-text"> Total Subscriptions, and many more.. </li> </ol>
                     <Link to="/signup" className="btn btn-trial">Forever Free Trial »</Link>
                   </div>
                 </div>
