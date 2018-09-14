@@ -233,7 +233,7 @@ class BillingDetails extends Component {
       const planName = profile.plan.name;
       if(planName == 'Beta Plan' || planName == 'Startups Yearly Plan' || planName == 'Startups Monthly Plan')
         planImage = BetaPlanIcon;
-      else if(planName == 'Small Businesses Yearly Plan')
+      else if(planName == 'Small Businesses Yearly Plan' || planName == 'Small Businesses Monthly Plan')
         planImage = SmallPlanIcon;
       else if(planName == 'Advanced Monthly Plan' || planName == 'Advanced Yearly Plan')
         planImage = AdvancedPlanIcon;
