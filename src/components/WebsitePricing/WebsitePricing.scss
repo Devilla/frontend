@@ -21,15 +21,24 @@
     font-size: 13px;
     padding: 10px 10px 10px 10px;
   }
+
   .pricing-below{
     padding-bottom: 0px !important;
   }
+
   .makeAlignConst {
     margin-top: 0px !important;
   }
+
   .pricing-title {
     padding-top: 100px;
     padding-bottom: 120px;
+  }
+
+  .price-info {
+    width: 75%;
+    margin: 0 auto;
+    text-align: left !important;
   }
 
   .tgl {
