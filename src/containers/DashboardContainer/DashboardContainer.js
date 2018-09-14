@@ -160,7 +160,7 @@ class DashboardContainer extends Component {
             const comment = that.textAreaRef.current.value;
             const help = that.state.help;
             if(!help)
-              return that.setState({errorHelp: 'Select a option'});
+              return that.setState({errorHelp: 'Select an option'});
             const { user, contactUs } = that.props;
             const data = {
               email: 'shankyrana@hotmail.com',//user.email,
