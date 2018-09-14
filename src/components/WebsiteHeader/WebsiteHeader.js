@@ -93,7 +93,7 @@ class WebsiteHeader extends Component {
                     <div className="bar__module links">
                       <ul className="menu-horizontal text-left nav-content-links" tabIndex="1">
                         <li className='dropdown dropdown--active' onMouseOver={ this.onMouseHoverEvent } >
-                          <span className="dropdown__trigger">Products</span>
+                          <span className="dropdown__trigger">Product</span>
                           <div className="dropdown__container" style={{ display: hoverproduct?'block':'none', top: '30px'}}>
                             <div className="container">
                               <div className="row">

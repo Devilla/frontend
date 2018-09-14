@@ -113,31 +113,45 @@
 	  border-radius: 10px;
     box-shadow: 0px 0px 2.5px #a1a1a1;
 		height: 1%;
+		margin-top: 60px;
 	}
 
 	.recent-image {
 		width: 50%;
-		margin-left: 12%;
- 		margin-top: 8%;
+		margin-left: 10%;
+ 		margin-top: 3.5%;
   	border-radius: 49px;
   	box-shadow: 1px 1px 5.5px #b0b0b0;
+		height: 18%;
 	}
 
 	.live-image {
-		width: 53%;
-		margin-left: 21%;
+		width: 50%;
+		height: 18%;
+		margin-left: 24%;
     border-radius: 55px;
     box-shadow: 1px 1px 5.5px #b0b0b0;
-    margin-top: 6%;
+    margin-top: 3.2%;
 	}
 
 	.bulk-image {
-		width: 53%;
-		margin-left: 34%;
+		width: 50%;
+		margin-left: 39%;
     border-radius: 8px;
     box-shadow: 1px 1px 5.5px #b0b0b0;
-    margin-top: 6%;
+    margin-top: 3.2%;
+		height: 18%;
 		margin-bottom: 8% !important;
+	}
+
+	.custom-container {
+		background: #ffffff;
+	    width: 99%;
+	    margin: 22.5px 4.2px;
+	    box-shadow: 0px 0px 1px #bdbdbd;
+	    border-radius: 5px;
+	    max-height: 400px;
+    	min-height: 200px;
 	}
 }
 
