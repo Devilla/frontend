@@ -97,7 +97,7 @@ class WebsiteHeader extends Component {
                           <div className="dropdown__container" style={{ display: hoverproduct?'block':'none', top: '30px'}}>
                             <div className="container">
                               <div className="row">
-                                <div className="dropdown__content" style={{left: '431.016px;'}}>
+                                <div className="dropdown__content">
                                   <ul className="menu-vertical">
                                     <li className="menu-items">
                                       <Link to="/featurepage"><span>Features</span></Link>
