@@ -181,7 +181,7 @@ class BillingDetails extends Component {
 
   submitPaypal = (e) => {
     e.preventDefault();
-    const { createAgreement } = this.props;
+    const { createAgreement, user } = this.props;
     const { planSelected } = this.state;
     const paypalId = planSelected.references.service_template_properties.filter(item => item.name == 'paypal')[0];
     const paypalObject = {
@@ -191,14 +191,14 @@ class BillingDetails extends Component {
       'payer': {
         'payment_method': 'Paypal',
         'payer_info': {
-          'email': 'accounts-buyer@useinfluence.co' //user.email
+          'email': user.email //'accounts-buyer@useinfluence.co'
         }
       },
       'plan': {
         'id': paypalId.data.value
       },
       'override_merchant_preferences': {
-        'return_url': `${process.env.NODE_ENV === 'production'?'https://staging.useinfluence.co/billing-details?type=success':`http://localhost:3000/billing-details?type=success&planId=${paypalId.data.value}&description=${planSelected.description}`}`,
+        'return_url': `${process.env.NODE_ENV === 'production'?`https://staging.useinfluence.co/billing-details?type=success&planId=${paypalId.data.value}&description=${planSelected.description}`:`http://localhost:3000/billing-details?type=success&planId=${paypalId.data.value}&description=${planSelected.description}`}`,
         'cancel_url': `${process.env.NODE_ENV === 'production'?'https://staging.useinfluence.co/billing-details?type=cancel':'http://localhost:3000/billing-details?type=cancel&planId=${paypalId.data.value}'}`
       }
     };
