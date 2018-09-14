@@ -143,7 +143,7 @@ class WebsiteHowItWorks extends Component {
                 <div className="col-md-8 col-lg-6">
                   <h2 className="heading-texts">Set it up in 5 minutes ! </h2>
                   <p className="lead"> </p>
-                  <Link className="btn btn--primary col-md-7 freebtn ml-5" to="/">
+                  <Link className="btn btn--primary freebtn" to="/">
                     <span className="btn__text">Get Forever Free Account »</span>
                   </Link>
                 </div>
