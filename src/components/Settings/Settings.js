@@ -47,6 +47,11 @@ const configuration = [
     icon: 'fi-link',
     path: '/campaigns/scripts',
     text: 'Campaign Keys',
+  },
+  {
+    icon: 'fa fa-users',
+    path: '/campaigns/scripts',
+    text: 'Affiliates',
   }
 ];
 
