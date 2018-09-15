@@ -87,9 +87,11 @@ class WebsiteSignUp extends Component {
     if (!email || !password)
       return this.setState({ error: 'All fields are required' });
 
+    const affiliate = this.props.location.query.affiliate;
+
     store.dispatch(load());
     // TODO: Show 'Check email for further instructions.' message on success
-    register(email, password).then(res => {
+    register(email, password, affiliate).then(res => {
       toast.info('Successfull', toastConfig);
       store.dispatch(loginSuccess(res));
       store.dispatch(loaded());
