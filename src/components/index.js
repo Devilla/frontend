@@ -67,3 +67,4 @@ export { default as ProductImages } from './ProductImages/ProductImages';
 export { default as Modal } from './Modal/Modal';
 export { default as OauthIntegrations } from './OauthIntegrations/OauthIntegrations';
 export { default as OauthVerification } from './OauthIntegrations/OauthVerification';
+export { default as AffiliatesPage } from './AffiliatesPage/AffiliatesPage';

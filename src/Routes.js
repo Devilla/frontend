@@ -39,7 +39,8 @@ import {
   GettingStarted,
   Settings,
   OauthIntegrations,
-  OauthVerification
+  OauthVerification,
+  AffiliatesPage
 } from 'components';
 
 import {
@@ -80,6 +81,7 @@ const MyRoutes = ({routerHistory}) => (
       <Route path="/settings" component={Settings} />
       <Route path="/oauth-integration/verification/:type" component={OauthVerification} />
       <Route path="/oauth-integration/:type" component={OauthIntegrations} />
+      <Route path="/affiliatespage" component={AffiliatesPage} />
     </Route>
     <Route exact path="/oauth/:type" component={OauthContainer} />
     <Route exact path="/connect/:provider" component={ConnectPage} />

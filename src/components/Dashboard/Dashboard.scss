@@ -214,6 +214,7 @@
     border: 2px solid #e8e8e8;
     padding: 60px 60px 20px;
     background: #f9f9f9;
+    border-radius: 5px;
 
     .category {
       text-align: center;
@@ -410,4 +411,8 @@
       }
     }
   }
+}
+
+.campaign-health-table {
+  border-radius: 5px;
 }

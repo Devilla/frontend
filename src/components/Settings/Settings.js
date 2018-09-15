@@ -50,7 +50,7 @@ const configuration = [
   },
   {
     icon: 'fa fa-users',
-    path: '/campaigns/scripts',
+    path: '/affiliatespage',
     text: 'Affiliates',
   }
 ];
