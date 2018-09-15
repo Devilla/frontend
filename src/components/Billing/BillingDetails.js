@@ -36,28 +36,26 @@ class BillingDetails extends Component {
       cvv: '',
       planList: [],
       submitStarted: false,
-      modalType: ''
+      modalType: '',
+      paymentStarted: false
     };
     props.fetchInvoices();
     props.fetchCards();
   }
 
-  componentWillMount() {
-    const { location:{ query:{ type, token } } } = this.props;
+  componentDidMount() {
+    window.scrollTo(0,0);
+    const { location:{ query:{ type, token, planId, description } } } = this.props;
     if(type == 'cancel')
       this.setState({modalType: type});
     else if(type == 'success') {
       const acceptLink = localStorage.getItem('acceptLink');
-      if(acceptLink) {
-        this.setState({submitStarted: true});
-        this.props.createPaypalPayment({token: token});
+      if(acceptLink && !this.state.paymentStarted) {
+        this.setState({submitStarted: true, paymentStarted: true});
+        this.props.createPaypalPayment({token: token, planId: planId, description: description});
       } else
         browserHistory.push('/billing-details');
     }
-  }
-
-  componentDidMount() {
-    window.scrollTo(0,0);
   }
 
   renderPaymentList() {
@@ -183,7 +181,7 @@ class BillingDetails extends Component {
 
   submitPaypal = (e) => {
     e.preventDefault();
-    const { createAgreement } = this.props;
+    const { createAgreement, user } = this.props;
     const { planSelected } = this.state;
     const paypalId = planSelected.references.service_template_properties.filter(item => item.name == 'paypal')[0];
     const paypalObject = {
@@ -193,15 +191,15 @@ class BillingDetails extends Component {
       'payer': {
         'payment_method': 'Paypal',
         'payer_info': {
-          'email': 'accounts-buyer@useinfluence.co' //user.email
+          'email': user.email //'accounts-buyer@useinfluence.co'
         }
       },
       'plan': {
         'id': paypalId.data.value
       },
       'override_merchant_preferences': {
-        'return_url': `${process.env.NODE_ENV === 'production'?'https://staging.useinfluence.co/billing-details?type=success':'http://localhost:3000/billing-details?type=success'}`,
-        'cancel_url': `${process.env.NODE_ENV === 'production'?'https://staging.useinfluence.co/billing-details?type=cancel':'http://localhost:3000/billing-details?type=cancel'}`
+        'return_url': `${process.env.NODE_ENV === 'production'?`https://staging.useinfluence.co/billing-details?type=success&planId=${paypalId.data.value}&description=${planSelected.description}`:`http://localhost:3000/billing-details?type=success&planId=${paypalId.data.value}&description=${planSelected.description}`}`,
+        'cancel_url': `${process.env.NODE_ENV === 'production'?'https://staging.useinfluence.co/billing-details?type=cancel':'http://localhost:3000/billing-details?type=cancel&planId=${paypalId.data.value}'}`
       }
     };
     this.setState({submitStarted: true});
@@ -235,7 +233,7 @@ class BillingDetails extends Component {
       const planName = profile.plan.name;
       if(planName == 'Beta Plan' || planName == 'Startups Yearly Plan' || planName == 'Startups Monthly Plan')
         planImage = BetaPlanIcon;
-      else if(planName == 'Small Businesses Yearly Plan')
+      else if(planName == 'Small Businesses Yearly Plan' || planName == 'Small Businesses Monthly Plan')
         planImage = SmallPlanIcon;
       else if(planName == 'Advanced Monthly Plan' || planName == 'Advanced Yearly Plan')
         planImage = AdvancedPlanIcon;

@@ -108,7 +108,7 @@ class WebsiteHome extends Component {
           <section className="pl-3 pr-3 pt-5 text-center row" data-overlay="0">
             <div className="container col-md-6 pt-5">
               <div className="row pb-5">
-                <div className="text-center">
+                <div className="main-title-container">
                   <h2 className="main-title">Boost your Sales and Leads conversions by 17% in less than 10 minutes! <br /> </h2>
                   <p className="typed-text typed-text--cursor sub-title pt-2"> Single line of 'code' <span>|</span> No tech-skills required <span>|</span> Trusted by 1000+ websites </p>
                 </div>
@@ -130,7 +130,7 @@ class WebsiteHome extends Component {
               </div>
             </div>
 
-            <div className="container col-md-5 pr-0 ml-0 pt-4" style={{display: window && window.screen.availWidth<768?'none':'block'}}>
+            <div className="container col-md-5 pr-0 pt-4" style={{display: window && window.screen.availWidth<768?'none':'block'}}>
               <img alt="homescreen" src={sideScreen_1} className="mb-1" style={{height: '400px'}} />
               <div className="im1  website-home-top-image">
                 <NotificationView tab={notificationTab} animation={animation} display={display} position='' notificationPanelStyle={this.state.notificationPanelStyle}/>
@@ -140,7 +140,7 @@ class WebsiteHome extends Component {
           </section>
 
           <div className="container mt-4 mb-5">
-            <div className="row text-center">
+            <div className="row text-center notification-served-container">
               <div className="col-md-3">
                 <div className="row">
                   <img alt="arrow-up" src={arrow_up} className="col-sm-1 num-arrow mr-0 mb-0 p-0" />
@@ -202,9 +202,8 @@ class WebsiteHome extends Component {
                 <div className="col-md-5 feature-text-1">
                   <div className="features-text switchable__text">
                     <h3 className="heading-texts-sub">Recent user activity</h3>
-                    <p className="sub-title"> Show notifications of: <br/>
-                      <ol className="para-heading"><li className="para-text"> Recent Signups </li> <li className="para-text"> Recent Purchases</li> <li className="para-text"> Recent Subscriptions, and many more.. </li> </ol>
-                    </p>
+                    <p className="sub-title"> Show notifications of:</p> <br/>
+                    <ol className="para-heading"><li className="para-text"> Recent Signups </li> <li className="para-text"> Recent Purchases</li> <li className="para-text"> Recent Subscriptions, and many more.. </li> </ol>
                     <Link to="/signup" className="btn btn-trial">Forever Free Trial »</Link>
                   </div>
                 </div>
@@ -228,9 +227,8 @@ class WebsiteHome extends Component {
                 <div className="col-md-5 feature-text-2">
                   <div className="switchable__text">
                     <h3 className="heading-texts-sub">Live user activity</h3>
-                    <p className="sub-title"> Show live activity of: <br/>
-                      <ol className="para-heading"><li className="para-text"> Users active on the website </li> <li className="para-text"> Users viewing a product/page</li> <li className="para-text"> And many more customizations.. </li> </ol>
-                    </p>
+                    <p className="sub-title"> Show live activity of:</p> <br/>
+                    <ol className="para-heading"><li className="para-text"> Users active on the website </li> <li className="para-text"> Users viewing a product/page</li> <li className="para-text"> And many more customizations.. </li> </ol>
                     <Link to="/signup" className="btn btn-trial">Forever Free Trial »</Link>
                   </div>
                 </div>
@@ -253,9 +251,8 @@ class WebsiteHome extends Component {
                 <div className="col-md-5 feature-text-3">
                   <div className="features-text switchable__text">
                     <h3 className="heading-texts-sub">Group activity</h3>
-                    <p className="sub-title"> Show 'activity' over a period of time: <br/>
-                      <ol className="para-heading"><li className="para-text"> Total Signups happened</li> <li className="para-text"> Total Product Purchases</li> <li className="para-text"> Total Subscriptions, and many more.. </li> </ol>
-                    </p>
+                    <p className="sub-title"> Show 'activity' over a period of time:</p> <br/>
+                    <ol className="para-heading"><li className="para-text"> Total Signups happened</li> <li className="para-text"> Total Product Purchases</li> <li className="para-text"> Total Subscriptions, and many more.. </li> </ol>
                     <Link to="/signup" className="btn btn-trial">Forever Free Trial »</Link>
                   </div>
                 </div>

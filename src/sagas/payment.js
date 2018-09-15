@@ -2,7 +2,7 @@ import React from 'react';
 import { call, put, fork, takeLatest } from 'redux-saga/effects';
 import * as api from 'services/api';
 import * as actions from 'ducks/payment';
-import { createProfile, updateProfile } from 'ducks/profile';
+import { createProfile, updateProfile, successProfile } from 'ducks/profile';
 import { load, loaded } from 'ducks/loading';
 import { toast } from 'react-toastify';
 import { browserHistory } from 'react-router';
@@ -175,7 +175,11 @@ function* createPaypalPayment(action) {
 
     if(res.error)
       yield toast.error(res.message.message, toastConfig);
-    
+    else {
+      yield toast.info('Payment Successful', toastConfig);
+      yield put(successProfile(res));
+    }
+
     yield browserHistory.push('billing-details');
     yield put(loaded());
   } catch (error) {

@@ -6,14 +6,19 @@
       max-width: 100%;
       width: 100%;
       .navbar-header {
-        .breadcrumb a {
+        .breadcrumb
+        {
           margin-bottom: 5px;
-          margin-top: 5px;
-          color: #3a3f52 !important;
-          text-shadow: rgba(0, 0, 0, 0.1) 0 0 5px !important;
-          cursor: pointer;
-          font-family: "Rubik", sans-serif;
-          font-size: 15px;
+          padding-top: 15px;
+          a {
+            margin-bottom: 5px;
+            margin-top: 5px;
+            color: #3a3f52 !important;
+            text-shadow: rgba(0, 0, 0, 0.1) 0 0 5px !important;
+            cursor: pointer;
+            font-family: "Rubik", sans-serif;
+            font-size: 15px;
+          }
         }
       }
       .navbar-nav {
@@ -23,7 +28,7 @@
         .icon-arrow-down {
           display: block;
         }
-        .dropdown.open {
+        .dropdown:hover  {
           .icon-arrow-up {
             display: block;
           }

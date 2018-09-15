@@ -1,178 +1,197 @@
 .websitehowitworks-container {
-    background-color: #f9f9f9 !important;
-    .freebtn {
-        background-color: #097fff !important;
-    }
-    .slider-card {
-        padding-bottom: 15px;
-        margin-bottom: 50px !important;
-        background: #dedede !important;
-        box-shadow: 0px 0px 3px #969696;
-    }
-    .slider-title {
-        font-size: 16px;
-        color: #3a3f52;
-        margin-right: 0% !important;
-        text-shadow: rgba(0, 0, 0, 0.10) 0 0 2px !important;
-        font-weight: 300;
-        line-height: 23px;
-    }
-    .slider-author {
-        font-size: 15px !important;
-    }
-    .typed-headline {
-        color: #3a3f52 !important;
-        text-shadow: rgba(0, 0, 0, 0.10) 0 0 5px !important;
-        font-size: 45px !important;
-        font-weight: 900 !important;
-        line-height: 55px !important;
-        text-align: left;
-        font-style: unset;
-        padding-top: 13px !important;
-        letter-spacing: 1px;
-        margin-bottom: 40px !important;
-        margin-top: 32px;
-    }
-    .feature {
-        background: #f2f2f2 !important;
-    }
-}
-
-@media only screen and (max-width: 1200px) {
-    .websitehowitworks-container {
-        span.typed-text {
-            position: relative;
-            top: -50px;
-        }
-        .feature__body {
-            & .lead {
-                font-size: 18px;
-            }
-        }
-    }
-}
-
-@media only screen and (max-width: 993px) {
-    .websitehowitworks-container {
-        .typed-headline {
-            font-size: 14px !important;
-            & span.typed-text {
-                position: relative;
-                top: -50px;
-            }
-        }
-        .second-title {
-            font-size: 44px !important;
-        }
-        .feature {
-            & img {
-                position: relative;
-                left: 100px;
-            }
-        }
-        .feature__body {
-            font-size: 13px;
-            & .lead {
-                font-size: 13px;
-            }
-        }
-    }
-}
-
-@media only screen and (max-width: 767px) {
-    .websitehowitworks-container {
-        .typed-headline {
-            h2{
-                font-size: 33px !important;
-                font-weight: 600 !important;
-            }
-         
-            & span.typed-text {
-                position: relative;
-                top: -30px;
-                font-weight: 600 !important;
-            }
-        }
-        .second-title {
-            font-size: 33px !important;
-            font-weight: 600 !important;
-            & + .lead {
-                font-size: 16px !important;
-            }
-        }
-        .feature {
-            & img {
-                position: relative;
-                left: 130px;
-                top: 0px;
-            }
-        }
-        .feature__body {
-            font-size: 16px;
-            position: relative;
-            left: -50px;
-            margin-top: 100px !important;
-            & .lead {
-                font-size: 16px;
-            }
-        }
-    }
-}
-
-@media only screen and (max-width: 425px) {
-    .websitehowitworks-container {
-        .feature {
-            & img {
-                position: relative;
-                left: 130px;
-                top: 0px;
-            }
-        }
-        .feature__body {
-            margin-top: 10px !important;
-            & .lead {
-                font-size: 16px;
-            }
-        }
-    }
-}
-@media only screen and (max-width: 370px) {
-    .websitehowitworks-container {
-        .feature {
-            & img {
-                position: relative;
-                left: 100px;
-                top: 0px;
-            }
-        }
-  
-    }
-}
-
-.heading-texts {
+  background-color: #f9f9f9 !important;
+  .freebtn {
+    background-color: #097fff !important;
+  }
+  .slider-card {
+    padding-bottom: 15px;
+    margin-bottom: 50px !important;
+    background: #dedede !important;
+    box-shadow: 0px 0px 3px #969696;
+  }
+  .slider-title {
+    font-size: 16px;
+    color: #3a3f52;
+    margin-right: 0% !important;
+    text-shadow: rgba(0, 0, 0, 0.10) 0 0 2px !important;
+    font-weight: 300;
+    line-height: 23px;
+  }
+  .slider-author {
+    font-size: 15px !important;
+  }
+  .typed-headline {
     color: #3a3f52 !important;
     text-shadow: rgba(0, 0, 0, 0.10) 0 0 5px !important;
     font-size: 45px !important;
-    font-weight: 600 !important;
+    font-weight: 900 !important;
     line-height: 55px !important;
-    text-align: center;
+    text-align: left;
     font-style: unset;
     padding-top: 13px !important;
     letter-spacing: 1px;
+    margin-bottom: 40px !important;
+    margin-top: 32px;
+  }
+  .feature {
+    background: #f2f2f2 !important;
+  }
+}
+
+@media only screen and (max-width: 1200px) and (min-width: 993px)  {
+  .websitehowitworks-container {
+    .typed-headline {
+      font-size: 35px !important;
+      text-align: center;
+      span.typed-text {
+        position: relative;
+      }
+    }
+
+    .feature__body {
+      & .lead {
+        font-size: 18px;
+      }
+    }
+
+    .heading-texts {
+      font-size: 35px !important;
+    }
+    .para-heading-2 {
+      margin-left: 0px !important;
+      font-size: 18px;
+    }
+    .freebtn {
+      margin: 0 auto;
+      width: 70%;
+      display: flex !important;
+      margin-right: auto !important;
+    }
+  }
+}
+
+@media only screen and (max-width: 993px) and (min-width: 768px) {
+  .websitehowitworks-container {
+    .typed-headline {
+      font-size: 25px !important;
+      text-align: center;
+      span.typed-text {
+          position: relative;
+      }
+    }
+    .second-title {
+        font-size: 44px !important;
+    }
+    .feature {
+        & img {
+            position: relative;
+            left: 100px;
+        }
+    }
+    .feature__body {
+        font-size: 13px;
+        width: 100% !important;
+        & .lead {
+            font-size: 13px;
+        }
+    }
+    .heading-texts {
+      font-size: 25px !important;
+    }
+    .para-heading-2 {
+      margin-left: 0px !important;
+      font-size: 16px !important;
+    }
+    .freebtn {
+      margin: 0 auto;
+      width: 70%;
+      display: flex !important;
+      margin-right: auto !important;
+    }
+  }
+}
+
+@media only screen and (max-width: 767px) and (min-width: 100px) {
+  .websitehowitworks-container {
+    .unpad--bottom {
+      .container {
+        max-width: 80%;
+      }
+    }
+    .typed-headline {
+      font-size: 20px !important;
+      text-align: center;
+      span.typed-text {
+        position: relative;
+        display: inline-block;
+      }
+    }
+    .second-title {
+        font-size: 20px !important;
+        font-weight: 600 !important;
+        & + .lead {
+            font-size: 16px !important;
+        }
+    }
+    .feature {
+        & img {
+            position: relative;
+            top: 0px;
+            width: 100%;
+        }
+    }
+    .feature__body {
+        font-size: 16px;
+        position: relative;
+        width: 100% !important;
+        padding: 0px 20%;
+        & .lead {
+            font-size: 16px;
+        }
+    }
+  }
+}
+
+@media only screen and (max-width: 594px) and (min-width: 100px) {
+  .websitehowitworks-container {
+    .start-boxes {
+      margin: 0px 20px;
+      .feature {
+        .feature__body {
+          padding: 0px 10%;
+          h3 {
+            font-size: 24px !important;
+          }
+        }
+      }
+    }
+  }
+}
+
+.heading-texts {
+  color: #3a3f52 !important;
+  text-shadow: rgba(0, 0, 0, 0.10) 0 0 5px !important;
+  font-size: 45px !important;
+  font-weight: 600 !important;
+  line-height: 55px !important;
+  text-align: center;
+  font-style: unset;
+  padding-top: 13px !important;
+  letter-spacing: 1px;
 }
 
 .start-boxes {
-    background: #f2f2f2;
-    border-radius: 5px;
-    box-shadow: 0px 0px 3px #c7c7c7;
+  background: #f2f2f2;
+  border-radius: 5px;
+  box-shadow: 0px 0px 3px #c7c7c7;
 }
 
 .para-heading-2 {
-    margin-bottom: 0px;
-    font-size: 17px;
-    font-weight: 600;
-    text-shadow: rgba(0, 0, 0, 0.10) 0 0 2px !important;
-    margin-left: 18px !important;
-    margin-top: 15px !important;
-    color: #3a3f52 !important;
+  margin-bottom: 0px;
+  font-size: 17px;
+  font-weight: 600;
+  text-shadow: rgba(0, 0, 0, 0.10) 0 0 2px !important;
+  margin-left: 18px !important;
+  margin-top: 15px !important;
+  color: #3a3f52 !important;
 }

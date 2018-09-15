@@ -82,7 +82,7 @@ class WebsitePricing extends Component {
 
     if(planList.length)
       return planList.map(plan => {
-        return <div key={plan.name} className="col-md-3 pl-3 pr-0 cards">
+        return <div key={plan.name} className="col-md-3 pl-2 pr-2 cards">
           <div className="pricing pricing-1  pr-0 pl-0 pricing-tab"  style={ /\b(year)\b/m.test(plan.interval) ? {minHeight:'820px'} : {minHeight:'720px'}} >
             <div className={`pricing__head ${this.stellarFeel(plan.name) }  boxed boxed--border boxed--lg price-head`}>
               <h3>{this.filterPlanName(plan.name)}</h3>
@@ -101,34 +101,34 @@ class WebsitePricing extends Component {
                 </span>
                 <p className=" mt-0 mb-0 visitors-text">Unique visitors</p>
               </li><hr/>
-              <li className="text-left pl-5">
+              <li className="text-center price-info">
                 <span className="checkmark bg--primary-1"></span>
                 <span className="h5 inline-block">
                   Unlimited Notifications</span>
               </li>
 
-              <li className="text-left pl-5">
+              <li className="text-center price-info">
                 <span className="checkmark bg--primary-1"></span>
                 <span className="h5 inline-block">Unlimited Domains</span>
               </li>
-              <li className="text-left pl-5">
+              <li className="text-center price-info">
                 <span className="checkmark bg--primary-1"></span>
                 <span className="h5 inline-block">Custom Settings</span>
               </li>
 
-              <li className="text-left pl-5">
+              <li className="text-center price-info">
                 <span className="checkmark bg--primary-1"></span>
                 <span className="h5 inline-block">All Notification Types</span>
               </li>
-              <li className="text-left pl-5">
+              <li className="text-center price-info">
                 <span className="checkmark bg--primary-1"></span>
                 <span className="h5 inline-block">Priority Support</span>
               </li>
-              <li className="text-left pl-5">
+              <li className="text-center price-info">
                 <span className="checkmark bg--primary-1"></span>
                 <span className="h5 inline-block">Beta Features</span>
               </li>
-              <li className="text-left pl-5">
+              <li className="text-center price-info">
                 <span className=" bg--primary-1"></span>
                 <span>&nbsp;</span>
               </li>

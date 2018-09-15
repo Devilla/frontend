@@ -265,7 +265,8 @@ export class NotificationDesignSetting extends Component {
       },
     });
 
-    const planType = profile.plan.references.service_template_properties[1]?profile.plan.references.service_template_properties[1].data.value:'';
+    let planType = profile.plan.references? profile.plan.references.service_template_properties.filter(item => item.name == 'planType'):[];
+    planType = planType.length?planType[0].data.value:'';
 
     return (
       <div data-transition-id="notification-design-settings-page">

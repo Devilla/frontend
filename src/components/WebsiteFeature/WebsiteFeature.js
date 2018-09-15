@@ -27,7 +27,7 @@ class WebsiteFeature extends Component {
             <div className="container  mt-4 mb-5 pb-0 pt-0">
               <div className="row">
                 <div className="col-md-10 col-lg-10">
-                  <h2 className="main-title">The #1 Powerful Conversion Tool!</h2>
+                  <h2 className="main-title text-center">The #1 Powerful Conversion Tool!</h2>
                   <p className="sub-title col-md-12 text-center"> From a team of passionate creators & creative thinkers.</p>
                   <Link className="btn btn--primary type--uppercase" to="#" style={{backgroundColor:'#097fff'}}> <span className="btn__text">Try influence now</span> </Link>
                   <div></div>
@@ -36,8 +36,8 @@ class WebsiteFeature extends Component {
             </div>
           </section>
           <hr className="my-auto col-md-12" pb-0 mb-0/>
-          <section className="row pt-3" style={{backgroundColor: '#f1f1f1'}}>
-            <div className="row mt-3 mb-5" style={{width: '100%'}}>
+          <section className="row pt-3 installation-setup-section" style={{backgroundColor: '#f1f1f1'}}>
+            <div className="row mt-3 mb-5 ml-2 mr-2" style={{width: '100%'}}>
               <div className="col-md-3 p-1">
                 <div className="text-center"> <img className="mb-3 feature-icons" alt="Image" src={InstallinMins} /> </div>
                 <h3 className="heading-texts3">Install in 5 minutes </h3>
@@ -61,7 +61,7 @@ class WebsiteFeature extends Component {
             </div>
           </section>
           <hr className="my-auto col-md-12" pb-0 mb-0/>
-          <section className="row mt-5 mb-5 pt-3">
+          <section className="row mt-5 mb-5 pt-3 notification-section">
             <div className="col-md-4 analytics-text">
               <h3 className="heading-texts2">Display social proof notifications to your users </h3>
               <p className="heading-texts-sub2">We help you in increasing more sales and leads on your website by display social proof to your visitors and influence them into buying more from you.</p>
@@ -81,7 +81,7 @@ class WebsiteFeature extends Component {
               </div>
             </div>
           </section>
-          <section className="row mt-5 mb-5">
+          <section className="row mt-5 mb-5 campaign-type-section">
             <div className="col-md-6">
               <img alt="campaign_setting" src={Campaignsetting} className="campaigntype-image" />
             </div>
@@ -95,7 +95,7 @@ class WebsiteFeature extends Component {
               <p className="heading-texts-sub text-left">Create campaigns for specific products or pages. Useful for multiple product Stores and Ecommerce companies.</p>
             </div>
           </section>
-          <section className="row mt-5 mb-5">
+          <section className="row mt-5 mb-5 analytics-powerhouse-section">
             <div className="col-md-4 analytics-text">
               <h3 className="heading-texts2">Analytics Powerhouse! </h3>
               <p className="heading-texts-sub2">See the analytics of your favorite campaigns and optimize then right away.</p>
@@ -115,7 +115,7 @@ class WebsiteFeature extends Component {
             <div className="col-md-6">
             </div>
           </section>
-          
+
 
         </div>
       </div>
