@@ -92,12 +92,13 @@ const login = (identifier, password) => {
 
 
 // Validate fields and register. returns json response received
-const register = (email, password) => {
+const register = (email, password, affiliate) => {
   return validateFields(email, password).then(() => {
     return POST(REGISTER_API_URL, {
       email,
       password,
-      username: email.match(/^(.+)@/)[1]
+      username: email.match(/^(.+)@/)[1],
+      affiliate
     }, true).then(res => {
 
       if (res.jwt) {
