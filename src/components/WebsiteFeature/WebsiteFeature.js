@@ -28,7 +28,7 @@ class WebsiteFeature extends Component {
               <div className="row">
                 <div className="col-md-10 col-lg-10">
                   <h2 className="main-title text-center">The #1 Powerful Conversion Tool!</h2>
-                  <p className="sub-title col-md-12 text-center"> From a team of passionate creators & creative thinkers.</p>
+                  <p className="sub-title col-md-12 text-center mb-4"> From a team of passionate creators & creative thinkers.</p>
                   <Link className="btn btn--primary type--uppercase" to="#" style={{backgroundColor:'#097fff'}}> <span className="btn__text">Try influence now</span> </Link>
                   <div></div>
                 </div>
