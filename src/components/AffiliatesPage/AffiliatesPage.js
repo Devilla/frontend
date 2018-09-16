@@ -92,8 +92,11 @@ class AffiliatesPage extends Component {
                   <div className="performance-text-2  m-3"> Balance</div>
                 </div>
                 <div className=" payout-fields">
-                  <h3 className="performance-text-1"> 23 </h3>
-                  <div className="performance-text-2 m-3"> Paying Accounts</div>
+                  <h3 className="affiliates-sub-heading m-0"> Enter your PayPal email: </h3>
+                  <div className="copy-url">
+                    <button className="btn btn-primary mt-3">Request For Payment </button>
+                    <div className="row ml-1" style={{width: '100%'}}><div className="mt-3 col-md-12 url-field"><span style={{float: 'left'}}>YourName@email.com</span><i className="fa fa-cc-paypal m-0" style={{float: 'right'}}></i></div></div>
+                  </div>
                 </div>               
               </div>
             </div>

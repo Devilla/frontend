@@ -66,7 +66,7 @@ class GettingStarted extends Component {
       <Loading strokeWidth="2" style={{height: '700px', width: '10%'}} isLoading={!profile || !campaignInfo} >
         <div className="transition-item list-modal-container card">
           <div className="list-header">
-            <p className="list-header-para">Hello {user.username}!  {step == 1?'Let`s get started.':step == 2?'You`re almost done':'Final Step'}</p>
+            <p className="list-header-para">Hello {user.username}!  {step == 1?'Let`s get started.':step == 2?'You`re almost done...':'Final Step'}</p>
           </div>
           <div className="list-content row border-between mr-0 ml-0">
             <Col md={6} className="list1-content pb-4 pr-0">
