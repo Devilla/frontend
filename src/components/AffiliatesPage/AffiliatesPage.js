@@ -46,7 +46,7 @@ class AffiliatesPage extends Component {
             <div>
               <div className="copy-url">
                 <button className="btn btn-primary mt-3">Copy </button>
-                <div className="row ml-1" style={{width: '75%'}}><div className="mt-3 col-md-12 url-field">Unique URL</div></div>
+                <div className="row ml-1" style={{width: '75%'}}><div className="mt-3 col-md-12 url-field2">Unique URL</div></div>
               </div>
             </div>
           </Col>
@@ -95,7 +95,7 @@ class AffiliatesPage extends Component {
                   <h3 className="affiliates-sub-heading m-0"> Enter your PayPal email: </h3>
                   <div className="copy-url">
                     <button className="btn btn-primary mt-3">Request For Payment </button>
-                    <div className="row ml-1" style={{width: '100%'}}><div className="mt-3 col-md-12 url-field"><span style={{float: 'left'}}>YourName@email.com</span><i className="fa fa-cc-paypal m-0" style={{float: 'right'}}></i></div></div>
+                    <div className="row ml-1" style={{width: '100%'}}><div className="mt-3 col-md-12 url-field2"><span style={{float: 'left'}}>YourName@email.com</span><i className="fa fa-cc-paypal m-0" style={{float: 'right'}}></i></div></div>
                   </div>
                 </div>               
               </div>
