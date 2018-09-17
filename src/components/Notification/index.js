@@ -145,7 +145,7 @@ class Notification extends Component {
                   <div className="th col-md-1 text-center p-1 pr-3 isActive">STATUS</div>
                   <div className="text-center th col-md-1 p-1 totalUsers">UNIQUE VISITORS</div>
                   {!mobile() && <div className="th col-md-2 text-center p-1 trackingId">TRACK ID</div>}
-                  {!mobile() && <div className="th col-md-1 text-center p-1 updatedAt">CREATED/UPDATED</div>}
+                  {!mobile() && <div className="th col-md-1 text-center p-1 updatedAt">CREATED/ &nbsp;UPDATED</div>}
                   <div className="th col-md-1 text-center p-1 campaignTrash">TRASH</div>
                 </div>
               </div>

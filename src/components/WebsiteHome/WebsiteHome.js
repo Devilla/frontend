@@ -107,7 +107,7 @@ class WebsiteHome extends Component {
         <div className="main-container">
           <section className="pl-3 pr-3 pt-5 text-center row" data-overlay="0">
             <div className="container col-md-6 pt-5">
-              <div className="row pb-5">
+              <div className="row pb-5 txt-container">
                 <div className="main-title-container">
                   <h2 className="main-title">Boost your Sales and Leads conversions by 17% in less than 10 minutes! <br /> </h2>
                   <p className="typed-text typed-text--cursor sub-title pt-2"> Single line of 'code' <span>|</span> No tech-skills required <span>|</span> Trusted by 1000+ websites </p>
@@ -115,9 +115,8 @@ class WebsiteHome extends Component {
               </div>
               <br />
               <div className="text-center pb-5 starttrial-form">
-                <form className="form--horizontal row">
-                  <div className="col-md-2 mr-1 pr-0 ml-0 pl-0"></div>
-                  <div className="col-md-5 ml-0 pl-0 mr-0 pr-0"> <input type="text" name="email" placeholder="Enter your email" onChange={(e) => this.setState({ email: e.target.value })} /> </div>
+                <form className="form--horizontal">
+                  <div className="col-md-6 landing-form"> <input type="text" name="email" placeholder="Enter your email" onChange={(e) => this.setState({ email: e.target.value })} /> </div>
                   <div className="col-md-3 ml-0 pl-0 mr-0 ml-0 pr-0 "> <button type="submit" onClick={() => browserHistory.push(`/signup?email=${this.state.email}`)} className="btn btn--primary freetrial-btn ml-0">Start Free Trial</button> </div>
 
                 </form>
@@ -131,7 +130,7 @@ class WebsiteHome extends Component {
             </div>
 
             <div className="container col-md-5 pr-0 pt-4" style={{display: window && window.screen.availWidth<768?'none':'block'}}>
-              <img alt="homescreen" src={sideScreen_1} className="mb-1" style={{height: '400px'}} />
+              <img alt="homescreen" src={sideScreen_1} className="mb-1 laptop-img" style={{height: '400px'}} />
               <div className="im1  website-home-top-image">
                 <NotificationView tab={notificationTab} animation={animation} display={display} position='' notificationPanelStyle={this.state.notificationPanelStyle}/>
               </div>
