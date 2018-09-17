@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 import { toast } from 'react-toastify';
 import {
   Row,
-  Col
+  Col,
+  HelpBlock
 } from 'react-bootstrap';
 
 import { fetchAffiliate, affiliateWithdraw } from 'ducks/affiliate';
@@ -18,6 +19,13 @@ const toastConfig = {
 };
 
 class AffiliatesPage extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      emailId: '',
+      error: ''
+    };
+  }
 
   componentWillMount () {
     this.props.fetchAffiliate();
@@ -31,8 +39,32 @@ class AffiliatesPage extends Component {
     return toast('Affiliate link copied', toastConfig);
   }
 
+  handleStateChange = (e) => {
+    this.setState({emailId: e.target.value});
+  }
+
+  withdrawBalance = () => {
+    const { emailId } = this.state;
+    const { affiliates } = this.props;
+    if(!this.state.emailId)
+      return this.setState({error: 'Enter a email id'});
+    let amount = 0;
+    affiliates.map(affiliate => {
+      if(affiliate.withdrawn)
+        amount = amount + Number(amount);
+    });
+    if(amount<25)
+      return this.setState({error: 'Minimum amount allowed $25'});
+
+    this.props.withdrawn({
+      emailId: emailId,
+      amount: amount
+    });
+  }
+
   render() {
     const { user, affiliates } = this.props;
+    const { error } = this.state;
     const totalSignups = affiliates.map(affiliate => affiliate);
     const payingAccounts = affiliates.filter(affiliate => affiliate.status == 'active');
     const monthlyRevenue = affiliates.filter(affiliate => affiliate.withdrawn == true);
@@ -99,8 +131,19 @@ class AffiliatesPage extends Component {
                 <div className=" payout-fields">
                   <h3 className="affiliates-sub-heading m-0"> Enter your PayPal email: </h3>
                   <div className="copy-url">
-                    <button className="btn btn-primary mt-3">Request For Payment </button>
-                    <div className="row ml-1" style={{width: '100%'}}><div className="mt-3 col-md-12 url-field2"><span style={{float: 'left'}}>YourName@email.com</span><i className="fa fa-cc-paypal m-0" style={{float: 'right'}}></i></div></div>
+                    <button className="btn btn-primary mt-3" onClick={this.withdrawBalance}>Request For Payment </button>
+                    <div className="row ml-1" style={{width: '100%'}}>
+                      <input
+                        className="mt-3 col-md-12 url-field2"
+                        style={{float: 'left'}}
+                        type="text"
+                        placeholder="Email Id"
+                        onChange={this.handleStateChange}
+                      />
+                      <HelpBlock>
+                        <p className="website-error">{error}</p>
+                      </HelpBlock>
+                    </div>
                   </div>
                 </div>
               </div>

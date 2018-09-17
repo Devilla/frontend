@@ -64,12 +64,11 @@ function* updateAffiliate(action) {
 function* affiliateWithdraw(action) {
   try {
     yield put(load());
-    const res = yield call(api.GET, `affiliate/otp/${action.requestType}`);
+    const res = yield call(api.POST, 'affiliate/withdraw', action.data);
     if (res.error)
       console.log(res.error);
     else
-      yield toast('Mail sent', toastConfig);
-    //   yield put(actions.successAccountRequest(res));
+      yield toast('Payout Successful', toastConfig);
     yield put(loaded());
   } catch (error) {
     yield put(loaded());

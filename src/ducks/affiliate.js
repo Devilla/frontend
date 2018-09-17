@@ -14,7 +14,7 @@ export const createAffiliate = () => ({ type: CREATE_AFFILIATE });
 export const updateAffiliate = (client) => ({ type: UPDATE_AFFILIATE, client });
 export const successAffiliate = (affiliate) => ({ type: SUCCESS_AFFILIATE, affiliate });
 export const createAffiliateSuccess = (affiliate) => ({ type: CREATE_AFFILIATE_SUCCESS, affiliate });
-export const affiliateWithdraw = (email) => ({ type: AFFILIATE_WITHDRAW, email });
+export const affiliateWithdraw = (data) => ({ type: AFFILIATE_WITHDRAW, data });
 
 const initialState = fromJS({
   affiliates: [],
