@@ -1,10 +1,9 @@
 import { call, put, fork, takeLatest } from 'redux-saga/effects';
 import * as api from 'services/api';
-import * as actions from 'ducks/profile';
+import * as actions from 'ducks/affiliate';
 import { load, loaded } from 'ducks/loading';
 import { toast } from 'react-toastify';
 import { browserHistory } from 'react-router';
-import { fetchUser } from 'ducks/auth';
 
 const toastConfig = {
   position: toast.POSITION.BOTTOM_LEFT,
