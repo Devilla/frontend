@@ -118,6 +118,26 @@ class WebsiteFeature extends Component {
 
 
         </div>
+        <section className="imagebg pt-4 pb-4" style={{ background: '#14BBFA' }}>
+          <div className="container pb-5 pt-5">
+            <div className="row">
+              <div className="col-md-12">
+                <div className="cta cta-1 cta--horizontal text-center-xs">
+                  <div className="row">
+                    <div className="col-md-12 text-center ">
+                      <span className="h2">Ready to boost up your conversion rates ?</span>
+                    </div>
+                  </div>
+                  <div className="row ">
+                    <div className="col-md-12 text-center pb-2">
+                      <Link className="btn btn-bottom" to="/signup"> <span className="btn__text2">Start forever free trial<br /></span> </Link>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
     );
   }
