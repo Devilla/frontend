@@ -62,9 +62,15 @@ class AnalyticsContainer extends Component {
   }
 
   handleViewProfile = (list) => {
+    if(!list.length)
+      return;
+
     this.setState({usersList: list});
 
     let breadcrumb = this.props.breadcrumb;
+    const checkCrumb = breadcrumb.filter(crumb => crumb.name == 'Analytics Profile');
+    if(checkCrumb.length)
+      return;
     breadcrumb.push({
       name: 'Analytics Profile',
       path: ''
