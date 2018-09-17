@@ -96,11 +96,13 @@
 
   .mm-popup__overlay {
     z-index: 1000000000;
-    background: #3d3e40!important;
+    background: #000000!important;
+    opacity: 0.85;
   }
 
   .mm-popup__box{
     z-index: 1000000000;
+    top: 150px !important;
   }
 
   .mm-popup__btn--success {
@@ -364,6 +366,4 @@
   background: #efefef !important;
 }
 
-.mm-pop__box {
-  top: 145px !important;
-}
+

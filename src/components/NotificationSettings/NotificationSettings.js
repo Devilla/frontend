@@ -365,7 +365,7 @@ class Notifications extends Component {
               style={
                 {
                   alignModalStyle: {
-                    top: '100px'
+                    top: '65px'
                   }
                 }
               }
