@@ -7,7 +7,7 @@ import {
   Col
 } from 'react-bootstrap';
 
-import { fetchAffiliate } from 'ducks/affiliate';
+import { fetchAffiliate, affiliateWithdraw } from 'ducks/affiliate';
 import './AffiliatesPage.scss';
 
 
@@ -32,7 +32,12 @@ class AffiliatesPage extends Component {
   }
 
   render() {
-    const { user } = this.props;
+    const { user, affiliates } = this.props;
+    const totalSignups = affiliates.map(affiliate => affiliate);
+    const payingAccounts = affiliates.filter(affiliate => affiliate.status == 'active');
+    const monthlyRevenue = affiliates.filter(affiliate => affiliate.withdrawn == true);
+    const totalPaid = affiliates.filter(affiliate => affiliate.withdrawn == true);
+
     return (
       <div className="m-5">
         <Row className="pt-3">
@@ -57,19 +62,19 @@ class AffiliatesPage extends Component {
               <div className="performance-heading mb-2 mt-2">Your Performance</div> <hr/>
               <div className="row">
                 <div className="col-md-3 performance-text">
-                  <h3 className="performance-text-1"> 23 </h3>
+                  <h3 className="performance-text-1"> {totalSignups.length || totalSignups.size} </h3>
                   <div className="performance-text-2  m-3"> Total Signups</div>
                 </div>
                 <div className="col-md-3">
-                  <h3 className="performance-text-1"> 23 </h3>
+                  <h3 className="performance-text-1"> {payingAccounts.length || payingAccounts.size} </h3>
                   <div className="performance-text-2 m-3"> Paying Accounts</div>
                 </div>
                 <div className="col-md-3">
-                  <h3 className="performance-text-1"> 23 </h3>
+                  <h3 className="performance-text-1"> {monthlyRevenue.length || monthlyRevenue.size} </h3>
                   <div className="performance-text-2 m-3"> Monthly Revenue</div>
                 </div>
                 <div className="col-md-3">
-                  <h3 className="performance-text-1"> 23 </h3>
+                  <h3 className="performance-text-1"> {totalPaid.length || totalPaid.size} </h3>
                   <div className="performance-text-2 m-3"> Total Paid</div>
                 </div>
               </div>
@@ -108,7 +113,8 @@ class AffiliatesPage extends Component {
 }
 
 const mapDispatchToProps = {
-  fetchAffiliate
+  fetchAffiliate,
+  affiliateWithdraw
 };
 
 const mapStateToProps = state => ({
