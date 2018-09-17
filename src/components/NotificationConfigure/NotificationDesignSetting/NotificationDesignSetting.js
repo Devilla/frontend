@@ -521,10 +521,10 @@ export class NotificationDesignSetting extends Component {
                     }
                     {notification.notificationName === 'Bulk Activity'  &&
                       <Row className="mb-3">
-                        <Col md={7}>
+                        <Col md={6}>
                           <label className="text-muted pt-2"> Display bulk data from last</label>
                         </Col>
-                        <Col md={2}>
+                        <Col md={3}>
                           <FormGroup>
                             <FormControl
                               className="select3"
