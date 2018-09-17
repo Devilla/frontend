@@ -265,7 +265,7 @@ export class NotificationDesignSetting extends Component {
       },
     });
 
-    let planType = profile.plan.references? profile.plan.references.service_template_properties.filter(item => item.name == 'planType'):[];
+    let planType = profile.plan && profile.plan.references? profile.plan.references.service_template_properties.filter(item => item.name == 'planType'):[];
     planType = planType.length?planType[0].data.value:'';
 
     return (

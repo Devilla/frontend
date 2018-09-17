@@ -16,6 +16,7 @@ import webhooks from './webhooks';
 import subcampaign from './subcampaign';
 import oauth from './oauth';
 import breadcrumb from './breadcrumb';
+import affiliate from './affiliate';
 
 const reducer = combineReducers({
   profile,
@@ -33,6 +34,7 @@ const reducer = combineReducers({
   subcampaign,
   oauth,
   breadcrumb,
+  affiliate,
   router: routerReducer
 });
 

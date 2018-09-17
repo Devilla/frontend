@@ -12,6 +12,7 @@ import pageurl from './pageurl';
 import webhooks from './webhooks';
 import subcampaign from './subcampaign';
 import oauth from './oauth';
+import affiliate from './affiliate';
 
 export default function* rootSaga() {
   yield [
@@ -27,6 +28,7 @@ export default function* rootSaga() {
     fork(pageurl),
     fork(webhooks),
     fork(subcampaign),
-    fork(oauth)
+    fork(oauth),
+    fork(affiliate)
   ];
 }
