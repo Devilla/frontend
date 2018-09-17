@@ -105,6 +105,8 @@ class Profile extends Component {
 
   componentDidMount() {
     window.scrollTo(0,0);
+    if(this.props.user && this.props.user.status)
+      this.setState({accountOption: this.props.user.status});
   }
 
   getCountryRows = () => {
@@ -139,25 +141,31 @@ class Profile extends Component {
     return (
       <div>
         <Row className="account-pause-content justify-content-around">
-          <Col md={6} className="pauseContent">
-            <button type="button" className={`btn btn-primary waves-effect ${(accountOption == 'pause' || accountOption == 'running') ?'selectedOption':''}`} onClick={() => this.selectAccountOption(user && user.status == 'paused'?'running':'pause')}>
-              <i className="mdi mdi-account-minus mr-2"></i>{user && user.status == 'paused'?'Resume':'Pause'} Account
-            </button>
-            <div className='content'>
-              <h3 className="pause-account-heading">Recommended:</h3>
-              <p>Indefinitely deactivates your account till you activate it again.</p><br/>
-              <p>You will be charged just $3 per month to safeguard your data in our secure vaults.</p>
-            </div>
-          </Col>
-          <Col md={6} className="deleteContent">
-            <button type='button' className={`btn btn-delete-account waves-effect ${accountOption == 'delete'?'selectedOption':''}`} onClick={() => this.selectAccountOption('delete')}>
-              <i className="mdi mdi-account-remove mr-2"></i>Delete Account!
-            </button>
-            <div className='content'>
-              <h3 className="delete-account-heading">Warning! </h3>
-              <p className="delete-account-content">Deletes all your data & saved settings. This action is irreversible! </p>
-            </div>
-          </Col>
+          <ul className="nav justify-content-center" style={{width: '100%'}}>
+            <li className="nav-item" style={{width: '50%', textAlign: 'center'}} onClick={() => this.selectAccountOption(user && user.status == 'paused'?'running':'pause')}>
+              <a className={`nav-link ${(accountOption == 'pause' || accountOption == 'running') ?'active active1':'nav-link-pause'}`}><i className="mdi mdi-account-minus mr-2"></i>{user && user.status == 'paused'?'Resume':'Pause'} Account</a>
+            </li>
+            <li className="nav-item" style={{width: '50%', textAlign: 'center'}} onClick={() => this.selectAccountOption('delete')}>
+              <a className={`nav-link ${(accountOption == 'delete') ?'active active2':'nav-link-delete'}`}><i className="mdi mdi-account-remove mr-2"></i>Delete Account!</a>
+            </li>
+          </ul>
+          {(accountOption == 'pause' || accountOption == 'running') &&
+            <Col md={12} className="pauseContent">
+              <div className='content'>
+                <h3 className="pause-account-heading">Recommended:</h3>
+                <p>Indefinitely deactivates your account till you activate it again.</p><br/>
+                <p>You will be charged just $3 per month to safeguard your data in our secure vaults.</p>
+              </div>
+            </Col>
+          }
+          {accountOption == 'delete' &&
+            <Col md={12} className="deleteContent">
+              <div className='content'>
+                <h3 className="delete-account-heading">Warning! </h3>
+                <p className="delete-account-content">Deletes all your data & saved settings. This action is irreversible! </p>
+              </div>
+            </Col>
+          }
         </Row>
         <Row className="justify-content-center mb-3">
           <button type="button" className={`btn btn-outline-primary waves-effect submitaccount ${error?'error-border':''}`} onClick={this.submitRequest}>Submit </button>

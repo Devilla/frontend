@@ -200,7 +200,28 @@
   .account-pause-content {
     margin: 3% !important;
     padding: 10px;
-
+    .nav {
+      .nav-item {
+        a.nav-link:hover:not(:focus) {
+          background-color: #f2f2f2;
+          cursor: pointer;
+        }
+        .nav-link-delete:hover {
+          color: red !important;
+        }
+        .nav-link.active1 {
+          border: 0;
+          border-bottom: 3px solid blue;
+        }
+        .nav-link.active2 {
+          border: 0;
+          border-bottom: 3px solid red;
+        }
+        .nav-link.active2:hover {
+          color: red !important;
+        }
+      }
+    }
     .selectedOption {
       background-color: #40c74094 !important;
     }
@@ -237,7 +258,7 @@
       .delete-account-content {
           color: #ff3e57 !important;
           font-weight: 300;
-          text-shadow: 0px 0px 0.1px #ff3e57; 
+          text-shadow: 0px 0px 0.1px #ff3e57;
       }
     }
 
