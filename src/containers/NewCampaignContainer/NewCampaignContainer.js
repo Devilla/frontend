@@ -57,8 +57,10 @@ class NewCampaignContainer extends Component {
   componentWillMount() {
     const { campaign } = this.props;
     this.verifyPixelStatus(campaign);
-    this.props.fetchSubdomain(campaign?campaign._id:null);
-    this.props.fetchSubCampaign(campaign?campaign._id:null);
+    if(campaign) {
+      this.props.fetchSubdomain(campaign._id);
+      this.props.fetchSubCampaign(campaign._id);
+    }
   }
 
   componentWillReceiveProps(nextProps) {
