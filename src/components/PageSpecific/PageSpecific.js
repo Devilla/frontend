@@ -81,7 +81,7 @@ class PageSpecific extends Component {
     pages.map(page => {
       if(!page.productName || !page.productUrl || !page.captureUrl)
         error = 'Enter all details';
-      else if(page.productUrl[0]!=='/' || page.captureUrl[0]!=='/')
+      else if(/\s/g.test(page.productUrl) || /\s/g.test(page.captureUrl))
         error = 'Enter a valid path';
     });
     if(error)
