@@ -169,7 +169,7 @@
 }
 
 
-@media only screen and (max-width:767px) {
+@media only screen and (max-width:800px) {
     .websiteheader-container {
         .links {
             margin: 0 auto !important;
@@ -223,9 +223,7 @@
             &:focus {
                 outline: none;
             }
-
-
-    }
+        }
     .customtoggleclass {
                 &:focus {
                     outline: none;
@@ -260,6 +258,7 @@
             outline: none !important;
             -webkit-outline : none !important;
             box-shadow: none;
+            cursor: pointer;
         }
 
 
@@ -272,6 +271,10 @@
         }
 
 
+    }
+
+    .container.bar-1 {
+      display: none;
     }
 
 }
