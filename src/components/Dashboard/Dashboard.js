@@ -75,13 +75,13 @@ class Dashboard extends Component {
     this.props.fetchCampaign();
   }
 
-  componentWillReceiveProps(nextProps) {
-    if(this.props.campaigns != nextProps.campaigns) {
-      const trackingIds = nextProps.campaigns.map(campaign => campaign.trackingId);
-      this.props.mapGraph(trackingIds);
-      this.props.heatMapGraph(trackingIds);
-    }
-  }
+  // componentWillReceiveProps(nextProps) {
+  //   if(this.props.campaigns != nextProps.campaigns) {
+  //     const trackingIds = nextProps.campaigns.map(campaign => campaign.trackingId);
+  //     this.props.mapGraph(trackingIds);
+  //     this.props.heatMapGraph(trackingIds);
+  //   }
+  // }
 
   createLegend(json) {
     var legend = [];

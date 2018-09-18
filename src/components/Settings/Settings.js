@@ -83,8 +83,8 @@ class Settings extends Component {
   renderConfigurations = () => {
     return configuration.map((item, index) => {
       return (
-        item.text=='FAQs' ? <a href="https://useinfluence.freshdesk.com/support/solutions" target="_blank" style={{color:'inherit'}}>
-          <div key={index+item.text} className="card mr-0">
+        item.text=='FAQs' ? <a  key={index+item.text} href="https://useinfluence.freshdesk.com/support/solutions" target="_blank" style={{color:'inherit'}}>
+          <div className="card mr-0">
             <div className="card-img-top">
               {item.head &&
             <p>

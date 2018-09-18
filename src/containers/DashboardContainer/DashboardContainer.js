@@ -208,8 +208,7 @@ class DashboardContainer extends Component {
 
   render() {
     const {  user, profile } = this.props;
-    const { style , openClose, disableButton, errorHelp } = this.state;
-    console.log(errorHelp, '===========errorHelp');
+    const { style, openClose, disableButton } = this.state;
     return (
       <div className="dashboard-container">
         <Popup />
