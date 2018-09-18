@@ -4,7 +4,8 @@ import moment from 'moment';
 import Loading from 'react-loading-animation';
 import StripeCard from '../UpgradeCard/StripeCard';
 import { Elements } from 'react-stripe-elements';
-import  { browserHistory } from 'react-router';
+import { browserHistory } from 'react-router';
+import { toast } from 'react-toastify';
 
 import { fetchInvoices, downloadInvoice, createAgreement, createPaypalPayment, updatePaymentMethod, fetchCards } from 'ducks/payment' ;
 import {
@@ -16,6 +17,11 @@ import './BillingDetails.scss';
 import { UpgradePlan, Modal } from 'components';
 import { BetaPlanIcon, SmallPlanIcon, AdvancedPlanIcon, EnterprisePlanIcon } from 'img';
 
+const toastConfig = {
+  position: toast.POSITION.BOTTOM_LEFT,
+  autoClose: 2000,
+  className: 'toast-style'
+};
 const billingHeader = [
   'Billing Date', 'Amount', 'Transaction Id', 'Status', 'Download'
 ];
@@ -183,6 +189,8 @@ class BillingDetails extends Component {
     e.preventDefault();
     const { createAgreement, user } = this.props;
     const { planSelected } = this.state;
+    if(!planSelected)
+      return toast('Select a plan', toastConfig);
     const paypalId = planSelected.references.service_template_properties.filter(item => item.name == 'paypal')[0];
     const paypalObject = {
       'name': planSelected.name,
@@ -242,7 +250,7 @@ class BillingDetails extends Component {
     } else {
       planImage = BetaPlanIcon;
     }
-
+    console.log(openCloseRowTwo, '=========');
     return (
       <Loading className="transition-item billing-transition-container" style={{width: '10%', height: '700px'}} strokeWidth='2' isLoading={!profile || submitStarted}>
 
@@ -300,16 +308,20 @@ class BillingDetails extends Component {
               </Row>
             </Col>
           </Row>
-
-          <Row className="billing-row" onClick={this.openCloseRowTwo}>
+          <Row className="billing-row" >
             <Col md={1} className="row-two-col-one">
               <i className="fa fa-credit-card"></i>
             </Col>
             <Col md={10} className="row-two-col-two">
-              <h5>ADD CARD DETAILS</h5>
-            </Col>
-            <Col md={1} className="row-two-col-three">
-              <i className={openCloseRowTwo?'fa fa-angle-up':'fa fa-angle-down'}></i>
+              <div className="dropdown">
+                <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                  Pay with
+                </button>
+                <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a className="dropdown-item" onClick={this.openCloseRowTwo}>Credit Card</a>
+                  <a className="dropdown-item" onClick={this.submitPaypal}>Paypal</a>
+                </div>
+              </div>
             </Col>
           </Row>
           <Row className="billing-info billing-info-two" style={{ display: openCloseRowTwo?'block':'none' }}>

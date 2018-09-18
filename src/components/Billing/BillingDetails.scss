@@ -6,7 +6,7 @@
       min-height: 80px;
       border-radius: 10px;
       padding: 0;
-      margin: 40px 0 0;
+      margin: 50px 0 0;
       background: white;
       box-shadow: 1px 2px 12px -4px #888888;
       cursor: pointer;
@@ -78,6 +78,43 @@
         h5 {
           font-size: 14px;
           padding: 21px 4px;
+        }
+        .dropdown {
+          width: 100%;
+          font-size: 14px;
+          padding: 21px 0px;
+          .dropdown-toggle {
+            width: 102%;
+            text-align: inherit;
+            margin: 0 !important;
+          }
+          .dropdown-toggle, .dropdown-toggle:hover  {
+            background-color: transparent;
+            border-color: transparent;
+            color: black;
+            padding: .375rem 0.1rem;
+            font-size: 14px;
+            font-weight: 500;
+            font-family: "Rubik", sans-serif;
+          }
+          .dropdown-toggle:focus {
+            box-shadow: none;
+          }
+          .dropdown-toggle::after {
+            margin-top: 8px;
+            float: right;
+            content: "\F107";
+            font: normal normal normal 14px/1 FontAwesome;
+            font-size: inherit;
+            text-rendering: auto;
+            border-top: 0;
+            border-right: 0;
+            border-bottom: 0;
+            border-left: 0;
+          }
+          .dropdown-menu {
+            left: 80% !important;
+          }
         }
       }
 
