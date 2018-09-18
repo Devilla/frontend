@@ -29,7 +29,7 @@ const CampaignInfo = ({
         <Row>
           <Col md={12}>
             <div className="card-box">
-              <h4 className="header-title">Create Your {campaignType == 'page'?'Product Specifc Campaign':'Campaign'}</h4>
+              <h4 className="header-title">Create Your {campaignType == 'page'?'Product Specific Campaign':'Campaign'}</h4>
               <hr/>
               <form id="campaignForm" onSubmit={handleNextButton}>
                 <Row>
