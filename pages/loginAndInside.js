@@ -3,7 +3,7 @@ module.exports = function (browser) {
   this.openBrowser = function () {
     browser
       .windowMaximize()
-      .url('https://staging.useinfluence.co/home')
+      .url('https://useinfluence.co/home')
       .waitForElementVisible('body', 1000);
     return browser;
   };
@@ -24,7 +24,7 @@ module.exports = function (browser) {
   };
   this.fillWrongDetails = function () {
     browser
-      .url('https://staging.useinfluence.co/login')
+      .url('https://useinfluence.co/login')
       .waitForElementVisible('body', 3000)
       .setValue('input[type=email]', 'devinair@gmail.com')
       .setValue('input[type=password]', '12345')
@@ -57,21 +57,21 @@ module.exports = function (browser) {
 
   this.clickProfile = function () {
     browser
-      .waitForElementVisible('div > div.wrapper > div:nth-child(2) > div > div.topbar > nav > div > div.nav-topbar-flex > ul > li > div.profile-dropdown.name-header > a > div:nth-child(3)', 8000)
-      .click('#root > div > div.wrapper > div:nth-child(2) > div > div.topbar > nav > div > div.nav-topbar-flex > ul > li > div.profile-dropdown.name-header > a > div:nth-child(3)')
-      .click('#root > div > div.wrapper > div:nth-child(2) > div > div.topbar > nav > div > div.nav-topbar-flex > ul > li > div.dropdown-menu.dropdown-menu-right.dropdown-menu-animated.profile-dropdown > a:nth-child(1)')
+      .waitForElementVisible('#basic-nav-dropdown > div > div.dropdown-arrow', 8000)
+      .click('#basic-nav-dropdown > div > div.dropdown-arrow')
+      // .click('#root > div > div.wrapper > div:nth-child(2) > div > div.topbar > nav > div > div.nav-topbar-flex > ul > li > div.dropdown-menu.dropdown-menu-right.dropdown-menu-animated.profile-dropdown > a:nth-child(1)')
       .pause(2000);
     return browser;
   };
 
   this.closeLoginPage = function () {
     browser
-      .waitForElementVisible('div > div.wrapper > div:nth-child(2) > div > div.topbar > nav > div > div.nav-topbar-flex > ul > li > div.profile-dropdown.name-header > a > div:nth-child(3)', 8000)
-      .click('#root > div > div.wrapper > div:nth-child(2) > div > div.topbar > nav > div > div.nav-topbar-flex > ul > li > div.profile-dropdown.name-header > a > div:nth-child(3)')
-      .click('#root > div > div.wrapper > div:nth-child(2) > div > div.topbar > nav > div > div.nav-topbar-flex > ul > li > div.dropdown-menu.dropdown-menu-right.dropdown-menu-animated.profile-dropdown > a.dropdown-item.notify-item.logout-btn')
+      // .waitForElementVisible('#basic-nav-dropdown > div > div.dropdown-arrow', 8000)
+      // .click('#root > #basic-nav-dropdown > div > div.dropdown-arrow')
+      // .click('#root > div > div.wrapper > div:nth-child(2) > div > div.topbar > nav > div > div.nav-topbar-flex > ul > li > div.dropdown-menu.dropdown-menu-right.dropdown-menu-animated.profile-dropdown > a.dropdown-item.notify-item.logout-btn')
       .pause(5000)
       .end(() => {
-        console.log('logging use out from influence...');
+        console.log('logging user out from influence...');
       });
     return browser;
   };

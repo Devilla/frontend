@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuites errors="0"
+<testsuites errors="1"
             failures="0"
             tests="6">
 
   <testsuite name="profile"
-    errors="0" failures="0" hostname="" id="" package="profile" skipped="0"
-    tests="6" time="26.77" timestamp="Thu, 06 Sep 2018 15:16:36 GMT">
+    errors="1" failures="0" hostname="" id="" package="profile" skipped="0"
+    tests="6" time="23.95" timestamp="Tue, 18 Sep 2018 11:25:07 GMT">
   
-    <testcase name="Go to  login influence" classname="profile" time="10.62" assertions="5">
+    <testcase name="Go to  login influence" classname="profile" time="10.45" assertions="5">
 
     
 
@@ -20,48 +20,28 @@
     
     </testcase>
   
-    <testcase name="click on profile dropdown, if exists" classname="profile" time="2.309" assertions="1">
+    <testcase name="click on profile dropdown, if exists" classname="profile" time="2.207" assertions="1">
 
     
     </testcase>
   
-    <testcase name="fill profile details" classname="profile" time="5.926" assertions="6">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
+    <testcase name="fill profile details" classname="profile" time="4.166" assertions="0">
     </testcase>
   
-    <testcase name="verify  profile details" classname="profile" time="1.154" assertions="3">
-
-    
-
-    
-
-    
+    <testcase name="verify  profile details" classname="profile" time="1.005" assertions="0">
     </testcase>
   
-    <testcase name="clear profile details" classname="profile" time="1.220" assertions="0">
+    <testcase name="clear profile details" classname="profile" time="1.056" assertions="0">
     </testcase>
   
-    <testcase name="Log out from Influence" classname="profile" time="5.547" assertions="1">
-
-    
+    <testcase name="Log out from Influence" classname="profile" time="5.069" assertions="0">
     </testcase>
   
 
   
     <system-err>
-      ERROR: Unable to locate element: &#34;#campaignForm &gt; span&#34; using: css selector
-    at Object.campaign test Influence (/home/devilla/frontend/tests/newCampaign.js:29:8)
+      ERROR: Unable to locate element: &#34;#address&#34; using: css selector
+    at Object.clear profile details (/home/devilla/frontend/tests/profile.js:46:8)
     at Module.call (/home/devilla/frontend/node_modules/nightwatch/lib/runner/module.js:62:34)
     at /home/devilla/frontend/node_modules/nightwatch/lib/runner/testcase.js:70:29
     at _fulfilled (/home/devilla/frontend/node_modules/nightwatch/node_modules/q/q.js:834:54)

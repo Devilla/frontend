@@ -206,8 +206,8 @@ class BillingDetails extends Component {
         'id': paypalId.data.value
       },
       'override_merchant_preferences': {
-        'return_url': `${process.env.NODE_ENV === 'production'?`https://staging.useinfluence.co/billing-details?type=success&planId=${paypalId.data.value}&description=${planSelected.description}`:`http://localhost:3000/billing-details?type=success&planId=${paypalId.data.value}&description=${planSelected.description}`}`,
-        'cancel_url': `${process.env.NODE_ENV === 'production'?'https://staging.useinfluence.co/billing-details?type=cancel':'http://localhost:3000/billing-details?type=cancel&planId=${paypalId.data.value}'}`
+        'return_url': `${process.env.NODE_ENV === 'production'?`https://useinfluence.co/billing-details?type=success&planId=${paypalId.data.value}&description=${planSelected.description}`:`http://localhost:3000/billing-details?type=success&planId=${paypalId.data.value}&description=${planSelected.description}`}`,
+        'cancel_url': `${process.env.NODE_ENV === 'production'?'https://useinfluence.co/billing-details?type=cancel':'http://localhost:3000/billing-details?type=cancel&planId=${paypalId.data.value}'}`
       }
     };
     this.setState({submitStarted: true});

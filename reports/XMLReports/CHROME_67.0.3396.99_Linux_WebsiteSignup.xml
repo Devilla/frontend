@@ -5,9 +5,9 @@
 
   <testsuite name="WebsiteSignup"
     errors="0" failures="0" hostname="" id="" package="WebsiteSignup" skipped="0"
-    tests="1" time="22.42" timestamp="Thu, 06 Sep 2018 15:15:40 GMT">
+    tests="1" time="11.62" timestamp="Tue, 18 Sep 2018 11:24:17 GMT">
   
-    <testcase name="Go to Signup Influence" classname="WebsiteSignup" time="22.42" assertions="4">
+    <testcase name="Go to Signup Influence" classname="WebsiteSignup" time="11.62" assertions="4">
 
     
 
@@ -21,8 +21,8 @@
 
   
     <system-err>
-      ERROR: Unable to locate element: &#34;#campaignForm &gt; span&#34; using: css selector
-    at Object.campaign test Influence (/home/devilla/frontend/tests/newCampaign.js:29:8)
+      ERROR: Unable to locate element: &#34;#address&#34; using: css selector
+    at Object.clear profile details (/home/devilla/frontend/tests/profile.js:46:8)
     at Module.call (/home/devilla/frontend/node_modules/nightwatch/lib/runner/module.js:62:34)
     at /home/devilla/frontend/node_modules/nightwatch/lib/runner/testcase.js:70:29
     at _fulfilled (/home/devilla/frontend/node_modules/nightwatch/node_modules/q/q.js:834:54)
