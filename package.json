@@ -6,7 +6,7 @@
   "dependencies": {
     "autoprefixer": "7.1.6",
     "aws-sdk": "^2.292.0",
-    "axios": "^0.18.0",
+    "axios": "^0.22.0",
     "babel-eslint": "^7.2.3",
     "babel-loader": "7.1.2",
     "babel-preset-react-app": "^3.1.1",
@@ -86,7 +86,7 @@
     "react-google-charts": "^2.0.21",
     "react-grecaptcha": "^1.2.5",
     "react-heatmap-grid": "^0.2.2",
-    "react-highlight": "^0.10.0",
+    "react-highlight": "^0.14.0",
     "react-hot-loader": "^4.1.1",
     "react-images-upload": "^1.2.2",
     "react-images-uploader": "^1.1.0",

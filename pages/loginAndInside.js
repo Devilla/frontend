@@ -3,36 +3,21 @@ module.exports = function (browser) {
   this.openBrowser = function () {
     browser
       .windowMaximize()
-      .url('https://useinfluence.co/home')
+      .url('https://blocklendr.herokuapp.com/')
       .waitForElementVisible('body', 1000);
     return browser;
   };
 
-  this.openLoginPage = function () {
+
+  this.createLoanRequest = function () {
     browser
-      .click('.btn.btn--sm.type--uppercase.loginbtn')
-      .waitForElementVisible('body', 1000)
-      .assert.visible('input[type=email]')
-      .setValue('input[type=email]', 'devinair@gmail.com')
-      .assert.visible('input[type=password]')
-      .setValue('input[type=password]', '12345')
-      .waitForElementVisible('input[type=submit]', 10000)
-      .click('input[type=submit]')
+       .click('#navbar_global > ul > li:nth-child(3) > a > span')
+       .waitForElementVisible('body', 1000)
+     
       .pause(2000);
     return browser;
 
   };
-  this.fillWrongDetails = function () {
-    browser
-      .url('https://useinfluence.co/login')
-      .waitForElementVisible('body', 3000)
-      .setValue('input[type=email]', 'devinair@gmail.com')
-      .setValue('input[type=password]', '12345')
-      .click('input[type=submit]')
-      .pause(2000);
-    return browser;
-  };
-
   this.checkSession = function () {
     browser
       .session(function (result) {

@@ -8,13 +8,13 @@
 
   "selenium": {
     "start_process": true,
-    "server_path": "lib/drivers/selenium-server-standalone-3.13.0.jar",
+    "server_path": "lib/drivers/selenium-server-standalone-3.141.59.jar",
     "start_session": true,
     "log_path": "log/",
     "host": "127.0.0.1",
     "port": 4444,
     "cli_args": {
-      "webdriver.chrome.driver": "lib/drivers/chromedriver"
+      "webdriver.chrome.driver": "lib/drivers/chromedriver.exe"
     }
   },
 
@@ -25,7 +25,7 @@
       "selenium_host": "localhost",
       "silent": true,
       "screenshots": {
-        "enabled": false,
+        "enabled": true,
         "path": "screenshots/Chrome/"
       },
       "desiredCapabilities": {
@@ -34,8 +34,8 @@
           "args": [
             "disable-web-security",
             "ignore-certificate-errors",
-            "--test-type",
-            "--no-sandbox"
+            "--test-type"
+            
           ]
         }
       }
@@ -45,12 +45,7 @@
       "desiredCapabilities": {
         "browserName": "chrome"
       }
-    },
-
-    "edge": {
-      "desiredCapabilities": {
-        "browserName": "MicrosoftEdge"
-      }
+    }
     }
   }
-}
+
